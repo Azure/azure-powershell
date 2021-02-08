@@ -27,7 +27,7 @@
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VpnGatewayName")]
+        [Alias("GrandParentName")]
         [Parameter(
             ParameterSetName = "ByName",
             Mandatory = true,
@@ -36,7 +36,7 @@
         [ValidateNotNullOrEmpty]
         public string VpnGatewayName { get; set; }
 
-        [Alias("VpnConnectionName")]
+        [Alias("ParentName")]
         [Parameter(
             ParameterSetName = "ByName",
             Mandatory = true,
@@ -135,26 +135,28 @@
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals("ByInputObject"))
-            {
-                //this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                //this.Name = this.InputObject.Name;
-            }
-            else
+            var parsedResourceId = new ResourceIdentifier();
+
+            if (!ParameterSetName.Equals("ByName"))
             {
                 if (ParameterSetName.Equals("ByResourceId"))
                 {
-                    var parsedResourceId = new ResourceIdentifier(ResourceId);
-                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                    this.VpnGatewayName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).First();
-                    this.VpnConnectionName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                    this.Name = parsedResourceId.ResourceName;
+                    parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 }
+                else if(ParameterSetName.Equals("ByInputObject"))
+                {
+                    parsedResourceId = new ResourceIdentifier(this.InputObject.Id);
+                }
+
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                var resources = parsedResourceId.ParentResource.Split(new[] { '/' }, 4, StringSplitOptions.RemoveEmptyEntries);
+                this.VpnGatewayName = resources[1];
+                this.VpnConnectionName = resources[3];
+                this.Name = parsedResourceId.ResourceName;
             }
 
             base.Execute();
 
-            // TODO: Update condition to IsVpnLinkConnectionPresent
             if (this.IsVpnConnectionPresent(this.ResourceGroupName, this.VpnGatewayName, this.VpnConnectionName))
             {
                 this.VpnLinkConnectionClient.GetIkeSas(this.ResourceGroupName, this.VpnGatewayName, this.VpnConnectionName, this.Name);

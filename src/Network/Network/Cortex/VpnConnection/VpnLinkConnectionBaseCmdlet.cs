@@ -15,11 +15,5 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnConnection
                 return NetworkClient.NetworkManagementClient.VpnLinkConnections;
             }
         }
-
-        // TODO: Check if Get operation available for VpnLinkConnections
-        //public bool IsVpnLinkConnectionPresent(string resourceGroupName, string vpnGatewayName, string vpnConnectionName, string vpnLinkConnectionName)
-        //{
-        //    return NetworkBaseCmdlet.IsResourcePresent(() => { GetVpnLinkConnection(resourceGroupName, vpnGatewayName, vpnConnectionName, vpnLinkConnectionName); });
-        //}
     }
 }
