@@ -226,7 +226,6 @@
         "tools/CleanupBuild.ps1",
         "tools/CommonIncrementVersion.ps1",
         "tools/CreateAliasMapping.ps1",
-        "tools/CreateFilterMappings.ps1",
         "tools/CreateMappings_rules.json",
         "tools/CreateMappings.ps1",
         "tools/CreateRegistryEntry.ps1"
