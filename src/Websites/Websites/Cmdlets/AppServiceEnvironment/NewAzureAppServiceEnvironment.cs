@@ -20,6 +20,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         private const string ASEv3SubnetIdParameterSet = "ASEv3SubnetIdParameterSet";
         private const string ASEv3SubnetNameParameterSet = "ASEv3SubnetNameParameterSet";
 
+        private const string SkipNetworkSecurityGroupHelpMessage = "Do not create the recommended network security group as part of the app service environment.";
+        private const string SkipRouteTableHelpMessage = "Do not create the recommended route table as part of the app service environment.";
+        private const string LoadBalancerModeHelpMessage = "Load balancer mode of the app service environment.";
+
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -45,20 +49,28 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         public string VirtualNetworkName { get; set; }
 
         [Parameter(ParameterSetName = ASEv2SubnetIdParameterSet, Mandatory = true, HelpMessage = "The subnet id.")]
-        [Parameter(ParameterSetName = ASEv3SubnetIdParameterSet, Mandatory = true, HelpMessage = "The inbound subnet id.")]
+        [Parameter(ParameterSetName = ASEv3SubnetIdParameterSet, Mandatory = true, HelpMessage = "The subnet id.")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name.")]
-        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = "The inbound subnet name.")]
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name (requires vNet name).")]
+        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name (requires vNet name).")]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 
-        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = "Load balancer mode of the app service environment.")]
-        [Parameter(ParameterSetName = ASEv2SubnetIdParameterSet, Mandatory = true, HelpMessage = "Load balancer mode of the app service environment.")]
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = LoadBalancerModeHelpMessage)]
+        [Parameter(ParameterSetName = ASEv2SubnetIdParameterSet, Mandatory = true, HelpMessage = LoadBalancerModeHelpMessage)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Internal", "External")]
         public string LoadBalancerMode { get; set; }
+
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = false, HelpMessage = SkipRouteTableHelpMessage)]
+        [Parameter(ParameterSetName = ASEv2SubnetIdParameterSet, Mandatory = false, HelpMessage = SkipRouteTableHelpMessage)]
+        public SwitchParameter SkipRouteTable { get; set; }
+
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = false, HelpMessage = SkipNetworkSecurityGroupHelpMessage)]
+        [Parameter(ParameterSetName = ASEv2SubnetIdParameterSet, Mandatory = false, HelpMessage = SkipNetworkSecurityGroupHelpMessage)]
+        public SwitchParameter SkipNetworkSecurityGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return the app service environment object.")]
         public SwitchParameter PassThru { get; set; }
@@ -89,8 +101,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
                         subnetResourceGroupName = !String.IsNullOrEmpty(subnetResourceGroupName) ? subnetResourceGroupName : ResourceGroupName;
                         var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subnetResourceGroupName, DefaultContext.Subscription.Id);
 
+                        if (!SkipRouteTable)
+                            NetworkClient.EnsureASEv2RouteTable(ResourceGroupName, Name, Location, subnetResourceId);
+
+                        if (!SkipNetworkSecurityGroup)
+                            NetworkClient.EnsureASEv2NetworkSecurityGroup(ResourceGroupName, Name, Location, subnetResourceId);
+
                         appServiceEnvironment.VirtualNetwork = new VirtualNetworkProfile(id: subnetResourceId);
-                        appServiceEnvironment.InternalLoadBalancingMode = LoadBalancerMode == "Internal" ? "Web,Publishing" : "None";
+                        appServiceEnvironment.InternalLoadBalancingMode = LoadBalancerMode == "External" ? "None" : "Web,Publishing";
                         
                         // Create ASEv2
                         ase = WebsitesClient.CreateAppServiceEnvironment(ResourceGroupName, Name, appServiceEnvironment);

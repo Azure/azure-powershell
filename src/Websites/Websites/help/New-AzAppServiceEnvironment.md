@@ -8,15 +8,16 @@ schema: 2.0.0
 # New-AzAppServiceEnvironment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an App Service Environment including the recommended Route Table and Network Security Group
 
 ## SYNTAX
 
 ### ASEv2SubnetNameParameterSet
 ```
 New-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Kind] <String>] -VirtualNetworkName <String> -SubnetName <String> -LoadBalancerMode <String> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Kind] <String>] -VirtualNetworkName <String> -SubnetName <String> -LoadBalancerMode <String>
+ [-SkipRouteTable] [-SkipNetworkSecurityGroup] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ASEv3SubnetNameParameterSet
@@ -29,8 +30,8 @@ New-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Loc
 ### ASEv2SubnetIdParameterSet
 ```
 New-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Kind] <String>] -SubnetId <String> -LoadBalancerMode <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Kind] <String>] -SubnetId <String> -LoadBalancerMode <String> [-SkipRouteTable] [-SkipNetworkSecurityGroup]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ASEv3SubnetIdParameterSet
@@ -41,16 +42,27 @@ New-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Loc
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzAppServiceEnvironment** cmdlet creates an App Service Environment.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
+        -VirtualNetworkName MyVirtualNetwork -SubnetName AseSubnet -LoadBalancerMode Internal
 ```
 
-{{ Add example description here }}
+Create App Service Environment named MyAseV2 including recommended Route Table and Network Security Group
+
+### Example 2
+```powershell
+PS C:\> New-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseV2 -Location WestEurope 
+        -VirtualNetworkName MyVirtualNetwork -SubnetName AseSubnet -LoadBalancerMode Internal
+        -SkipRouteTable -SkipNetworkSecurityGroup
+```
+
+Create App Service Environment named MyAseV2 without recommended Route Table and Network Security Group.
+These should be create before or right after provisioning the App Service Environment to ensure a functional instance.
 
 ## PARAMETERS
 
@@ -171,6 +183,36 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipNetworkSecurityGroup
+Do not create the recommended network security group as part of the app service environment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ASEv2SubnetNameParameterSet, ASEv2SubnetIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipRouteTable
+Do not create the recommended route table as part of the app service environment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ASEv2SubnetNameParameterSet, ASEv2SubnetIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

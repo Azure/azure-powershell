@@ -101,6 +101,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         public virtual INetworkInterfacesOperations NetworkInterfaces { get; private set; }
 
         /// <summary>
+        /// Gets the IRouteTablesOperations.
+        /// </summary>
+        public virtual IRouteTablesOperations RouteTables { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoutesOperations.
+        /// </summary>
+        public virtual IRoutesOperations Routes { get; private set; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityGroupsOperations.
+        /// </summary>
+        public virtual INetworkSecurityGroupsOperations NetworkSecurityGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the ISecurityRulesOperations.
+        /// </summary>
+        public virtual ISecurityRulesOperations SecurityRules { get; private set; }
+
+        /// <summary>
+        /// Gets the IDefaultSecurityRulesOperations.
+        /// </summary>
+        public virtual IDefaultSecurityRulesOperations DefaultSecurityRules { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the NetworkManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -345,6 +370,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
             Subnets = new SubnetsOperations(this);
             PrivateEndpoints = new PrivateEndpointsOperations(this);
             NetworkInterfaces = new NetworkInterfacesOperations(this);
+            RouteTables = new RouteTablesOperations(this);
+            Routes = new RoutesOperations(this);
+            NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
+            SecurityRules = new SecurityRulesOperations(this);
+            DefaultSecurityRules = new DefaultSecurityRulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-07-01";
             AcceptLanguage = "en-US";

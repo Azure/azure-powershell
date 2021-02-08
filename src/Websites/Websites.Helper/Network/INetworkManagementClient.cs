@@ -95,5 +95,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// </summary>
         INetworkInterfacesOperations NetworkInterfaces { get; }
 
+        /// <summary>
+        /// Gets the IRouteTablesOperations.
+        /// </summary>
+        IRouteTablesOperations RouteTables { get; }
+
+        /// <summary>
+        /// Gets the IRoutesOperations.
+        /// </summary>
+        IRoutesOperations Routes { get; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityGroupsOperations.
+        /// </summary>
+        INetworkSecurityGroupsOperations NetworkSecurityGroups { get; }
+
+        /// <summary>
+        /// Gets the ISecurityRulesOperations.
+        /// </summary>
+        ISecurityRulesOperations SecurityRules { get; }
+
+        /// <summary>
+        /// Gets the IDefaultSecurityRulesOperations.
+        /// </summary>
+        IDefaultSecurityRulesOperations DefaultSecurityRules { get; }
+
     }
 }

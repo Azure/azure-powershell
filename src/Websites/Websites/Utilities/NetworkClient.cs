@@ -157,6 +157,100 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
+        internal void EnsureASEv2NetworkSecurityGroup(string resourceGroupName, string aseName, string location, string subnetResourceId)
+        {
+            var subnetObj = GetSubnet(subnetResourceId);
+            if (subnetObj.NetworkSecurityGroup == null)
+            {
+                var subnetAddressPrefix = subnetObj.AddressPrefix;
+                var aseNsgName = $"{aseName}-functional-nsg";
+                var aseNsg = new NetworkSecurityGroup(location: location);
+                aseNsg = WrappedNetworkClient.NetworkSecurityGroups.CreateOrUpdate(resourceGroupName, aseNsgName, aseNsg);
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-management",
+                                100, "Used to manage ASE from public VIP", "*", "Allow", "Inbound",
+                                "*", "AppServiceManagement", "454-455", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-load-balancer-keep-alive",
+                                105, "Allow communication to ASE from Load Balancer", "*", "Allow", "Inbound",
+                                "*", "AzureLoadBalancer", "16001", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "ASE-internal-inbound",
+                                110, "ASE-internal-inbound", "*", "Allow", "Inbound",
+                                "*", subnetAddressPrefix, "*", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-HTTP",
+                                120, "Allow HTTP", "*", "Allow", "Inbound",
+                                "*", "*", "80", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-HTTPS",
+                                130, "Allow HTTPS", "*", "Allow", "Inbound",
+                                "*", "*", "443", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-FTP",
+                                140, "Allow FTP", "*", "Allow", "Inbound",
+                                "*", "*", "21", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-FTPS",
+                                150, "Allow FTPS", "*", "Allow", "Inbound",
+                                "*", "*", "990", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-FTP-Data",
+                                160, "Allow FTP Data", "*", "Allow", "Inbound",
+                                "*", "*", "10001-10020", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Inbound-Remote-Debugging",
+                                170, "Visual Studio remote debugging", "*", "Allow", "Inbound",
+                                "*", "*", "4016-4022", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-443",
+                                100, "Azure Storage blob", "*", "Allow", "Outbound",
+                                "*", "*", "443", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-DB",
+                                110, "Database", "*", "Allow", "Outbound",
+                                "*", "*", "1433", "Sql");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-DNS",
+                                120, "DNS", "*", "Allow", "Outbound",
+                                "*", "*", "53", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "ASE-internal-outbound",
+                                130, "Azure Storage queue", "*", "Allow", "Outbound",
+                                "*", "*", "*", subnetAddressPrefix);
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-80",
+                                140, "Outbound 80", "*", "Allow", "Outbound",
+                                "*", "*", "80", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-monitor",
+                                150, "Azure Monitor", "*", "Allow", "Outbound",
+                                "*", "*", "12000", "*");
+                AddSecurityRule(resourceGroupName, aseNsgName, "Outbound-NTP",
+                                160, "Clock", "*", "Allow", "Outbound",
+                                "*", "*", "123", "*");
+                subnetObj.NetworkSecurityGroup = aseNsg;
+                UpdateSubnet(subnetObj);
+            }
+            else
+                throw new Exception($"Subnet '{subnetObj.Name}' already has Network Security Group configured. Use -SkipNetworkSecurityGroup if this is properly configured.");
+        }
+
+        private void AddSecurityRule(string resourceGroupName, string nsgName, string securityRuleName,
+                     int priority, string description, string protocol, string access, string direction,
+                     string sourcePortRange="*", string sourceAddressPrefix="*",
+                     string destinationPortRange="*", string destinationAddressPrefix="*")
+        {
+            var securityRule = new SecurityRule(protocol: protocol, sourceAddressPrefix: sourceAddressPrefix,
+                            destinationAddressPrefix: destinationAddressPrefix, access: access,
+                            direction: direction, description: description, sourcePortRange: sourcePortRange,
+                            destinationPortRange: destinationPortRange, priority: priority, name: securityRuleName);
+            WrappedNetworkClient.SecurityRules.CreateOrUpdate(resourceGroupName, nsgName, securityRuleName, securityRule);
+        }
+
+        internal void EnsureASEv2RouteTable(string resourceGroupName, string aseName, string location, string subnetResourceId)
+        {
+            var subnetObj = GetSubnet(subnetResourceId);
+            if (subnetObj.RouteTable == null)
+            {
+                var aseRouteTableName = $"{aseName}-functional-routetable";
+                var aseRouteName = $"{aseName}-internet-route";
+                var aseRouteTable = new RouteTable(location: location);
+                aseRouteTable = WrappedNetworkClient.RouteTables.CreateOrUpdate(resourceGroupName, aseRouteTableName, aseRouteTable);
+                var aseRoute = new Route("Internet", name: aseRouteName, addressPrefix: "0.0.0.0/0");
+                WrappedNetworkClient.Routes.CreateOrUpdate(resourceGroupName, aseRouteTableName, aseRouteName, aseRoute);
+                subnetObj.RouteTable = aseRouteTable;
+                UpdateSubnet(subnetObj);
+            }
+            else
+                throw new Exception($"Subnet '{subnetObj.Name}' already has Route Table configured. Use -SkipRouteTable if this is properly configured.");
+        }
+
         public void EnsureSubnetDelegation(string subnetResourceId, string delegationServiceName)
         {
             Subnet subnetObj = GetSubnet(subnetResourceId);
