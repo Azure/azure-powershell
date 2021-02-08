@@ -213,9 +213,11 @@ New-AzResourceGroupDeployment -DeploymentDebugLogLevel RequestContent -Name myne
 ```powershell
 PS C:\> New-AzResourceGroupDeployment -ResourceGroupName "RGName" -TemplateUri "https://example.com/example.json" -QueryString "foo"
 ```
+
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
 Running this command effectively accesses the template using the url https://example.com/example.json?foo.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
+
 ## PARAMETERS
 
 ### -AsJob
@@ -425,7 +427,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Specifies the full path of a JSON template file.
+Specifies the full path of a template file. Supported template file type: json and bicep.
 This can be a custom template or a gallery template that is saved as a JSON file, such as one created by using the **Save-AzResourceGroupGalleryTemplate** cmdlet.
 
 ```yaml
@@ -522,7 +524,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Specifies the URI of a JSON template file.
+Specifies the URI of a template file. Supported template file type: json and bicep.
 This file can be a custom template or a gallery template that is saved as a JSON file, such as by using **Save-AzResourceGroupGalleryTemplate**.
 
 ```yaml

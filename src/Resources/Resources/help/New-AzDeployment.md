@@ -322,7 +322,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Local path to the template file.
+Local path to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String
@@ -412,7 +412,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Uri to the template file.
+Uri to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String

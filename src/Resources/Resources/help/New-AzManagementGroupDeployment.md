@@ -16,7 +16,7 @@ Create a deployment at a management group
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateFile <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterObject <Hashtable>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterObject <Hashtable>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -43,7 +43,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterObject <Hashtable>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -52,7 +52,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterFile <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -61,7 +61,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterFile <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterFile <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -79,7 +79,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterFile <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -88,7 +88,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterUri <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -97,7 +97,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterUri <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -106,7 +106,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterUri <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -115,7 +115,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateParameterUri <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -124,7 +124,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateObject <Hashtable>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -133,7 +133,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateUri <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -142,7 +142,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
 ```
 New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
- [-WhatIfExcludeChangeType <String[]>] [-QueryString <String>] [-AsJob] -TemplateSpecId <String>
+ [-WhatIfExcludeChangeType <String[]>] [-AsJob] [-QueryString <String>] -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -179,6 +179,7 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 ```
 PS C:\> New-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -TemplateUri "https://example.com/example.json" -QueryString "foo"
 ```
+
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
 Running this command effectively accesses the template using the url https://example.com/example.json?foo.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
@@ -349,7 +350,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Local path to the template file.
+Local path to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String
@@ -439,7 +440,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Uri to the template file.
+Uri to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String

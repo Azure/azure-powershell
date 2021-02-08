@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/releases to install Bicep..
+        /// </summary>
+        internal static string BicepNotFound {
+            get {
+                return ResourceManager.GetString("BicepNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling active deployment ....
         /// </summary>
         internal static string CancelDeploymentMessage {

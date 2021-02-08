@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json.Linq;
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -110,24 +112,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable TemplateObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file. Supported template file type: json and bicep.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ParameterlessTemplateFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file. Supported template file type: json and bicep.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ParameterlessTemplateUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
@@ -170,6 +172,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public virtual object GetDynamicParameters()
         {
+            if (BicepUtility.IsBicepFile(TemplateFile) ||
+                BicepUtility.IsBicepFile(TemplateUri))
+                BuildAndUseBicepTemplate();
+                
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
                 // Resolve the static parameter names for this cmdlet:
@@ -407,6 +413,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             CmdletInfo cmdletInfo = new CmdletInfo(commandName, this.GetType());
             return cmdletInfo.Parameters.Keys.ToArray();
+        }
+
+        protected void BuildAndUseBicepTemplate()
+        {
+            if (BicepUtility.IsBicepFile(TemplateFile))
+            {
+                TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, TemplateFile);
+            }
+
+            if (BicepUtility.IsBicepFile(TemplateUri))
+            {
+                TemplateUri = BicepUtility.BuildFile(this.ExecuteScript<Object>, TemplateUri);
+            }
         }
     }
 }
