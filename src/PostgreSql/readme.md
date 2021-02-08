@@ -59,7 +59,7 @@ title: PostgreSQL
 subject-prefix: 'PostgreSQL'
 
 directive:
-  - from: swagger-document
+  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
     where: $
     transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForPostgreSql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}")
   - from: swagger-document
