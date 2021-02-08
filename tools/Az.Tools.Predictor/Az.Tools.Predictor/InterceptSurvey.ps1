@@ -22,6 +22,7 @@ $mutexTiimeout = 1000
 $interceptDays = 30
 $interceptLoadTimes = 3
 $today = Get-Date
+$mutexTimeout = 500
 
 function ConvertTo-String {
     param (
@@ -120,7 +121,12 @@ function Update-InterceptObject {
 
 $mutex = New-Object System.Threading.Mutex($false, $mutexName)
 
-$mutex.WaitOne($mutexTimeout)
+$hasMutex = $mutex.WaitOne($mutexTimeout)
+
+if (-not $hasMutex) {
+    return
+}
+
 $shouldIntercept = $false
 
 try
@@ -154,11 +160,11 @@ Write-Host "To enable suggestions from Az predictor, run: Set-PSReadLineOption -
 
 if ($shouldIntercept) {
     $userId = (Get-AzContext).Account.Id
+    $surveyId = "000000"
+
     if ($userId -ne $null)
     {
         $surveyId = Get-Random -Maximum 1000000 -SetSeed $userId.GetHashCode()
-        Write-Host "We are listening, please share your feedback about Az Predictor: http://aka.ms/azpredictorsurvey?iQ_CHL=intercept&surveyId=$surveyId"
-
         try {
             $azPredictorSettingFilePath = Join-Path -Path (Join-Path -Path $env:USERPROFILE -ChildPath ".Azure") -ChildPath "AzPredictorSettings.json"
             $setting = @{
@@ -168,7 +174,7 @@ if ($shouldIntercept) {
             if (Test-Path $azPredictorSettingFilePath) {
                 try {
                     $setting = Get-Content $azPredictorSettingFilePath | Out-String | ConvertFrom-Json
-                    $setting | Add-Member -NotePropertyName "surveyId" -NotePropertyValue $surveyId
+                    $setting | Add-Member -NotePropertyName "surveyId" -NotePropertyValue $surveyId -Force
                 } catch {
                 }
             }
@@ -176,7 +182,7 @@ if ($shouldIntercept) {
             ConvertTo-Json -InputObject $setting | Out-File -FilePath $azPredictorSettingFilePath -Encoding utf8
         } catch {
         }
-    } else {
-        Write-Host "We are listening, please share your feedback about Az Predictor: http://aka.ms/azpredictorsurvey?iQ_CHL=intercept"
     }
+
+    Write-Host "How was your experience using Az predictor? " -NoNewLine -ForegroundColor  $host.privatedata.WarningForegroundColor -BackgroundColor $host.privatedata.WarningBackgroundColor ; Write-Host "http://aka.ms/azpredictorisurvey?SessionId=$surveyId" -ForegroundColor Cyan -BackgroundColor $host.privatedata.WarningBackgroundColor
 }
