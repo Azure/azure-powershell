@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubcertificate
+online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubcertificate
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Add-AzIotHubCertificate [-ResourceId] <String> [-Path] <String> [-Etag <String>]
 
 ## DESCRIPTION
 Uploads a new certificate or to replace the existing certificate with the same name.
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 

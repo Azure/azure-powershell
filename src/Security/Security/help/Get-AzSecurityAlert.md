@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityAlert
+online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityAlert
 schema: 2.0.0
 ---
 
@@ -76,7 +76,7 @@ InstanceId         : fff23c70-80ef-4a8b-9122-507b0ea8dfff
 RemediationSteps   : 1. If WordPress is installed, make sure that the application is up to date and automatic updates 
                      are enabled.
                      2. If only specific IPs should access to the web application, use IP Restrictions 
-                     (https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions).
+                     (https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions).
 ReportedSeverity   : High
 ReportedTimeUtc    : 10/07/2018 16:31:52
 State              : Active

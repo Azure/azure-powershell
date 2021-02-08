@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Advisor.dll-Help.xml
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.advisor/set-azadvisorConfiguration
+online version: https://docs.microsoft.com/powershell/module/az.advisor/set-azadvisorConfiguration
 schema: 2.0.0
 ---
 

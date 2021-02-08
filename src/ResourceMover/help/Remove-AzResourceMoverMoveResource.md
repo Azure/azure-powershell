@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+online version: https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 schema: 2.0.0
 ---
 

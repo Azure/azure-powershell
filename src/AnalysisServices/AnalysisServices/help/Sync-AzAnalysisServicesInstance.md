@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane.dll-Help.xml
 Module Name: Az.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/sync-azanalysisservicesinstance
+online version: https://docs.microsoft.com/powershell/module/az.analysisservices/sync-azanalysisservicesinstance
 schema: 2.0.0
 ---
 

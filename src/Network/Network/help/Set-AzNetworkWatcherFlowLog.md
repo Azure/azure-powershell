@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkwatcherflowlog
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherflowlog
 schema: 2.0.0
 ---
 

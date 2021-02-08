@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: CBD157D2-37C5-491F-A806-6B39F1D0415A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageblobcopystate
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobcopystate
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 43D01A97-75B9-46CE-B007-26FE6A97C31C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azcontainerservice
+online version: https://docs.microsoft.com/powershell/module/az.compute/update-azcontainerservice
 schema: 2.0.0
 ---
 
