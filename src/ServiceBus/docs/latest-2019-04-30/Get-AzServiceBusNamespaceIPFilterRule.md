@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusnamespaceipfilterrule
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceipfilterrule
 schema: 2.0.0
 ---
 

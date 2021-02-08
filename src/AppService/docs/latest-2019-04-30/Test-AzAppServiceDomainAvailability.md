@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/test-azappservicedomainavailability
+online version: https://docs.microsoft.com/powershell/module/az.appservice/test-azappservicedomainavailability
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdworkspace
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdworkspace
 schema: 2.0.0
 ---
 

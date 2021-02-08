@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageblob
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblob
 schema: 2.0.0
 ---
 

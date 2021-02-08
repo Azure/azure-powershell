@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultsecret
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret
 schema: 2.0.0
 ---
 

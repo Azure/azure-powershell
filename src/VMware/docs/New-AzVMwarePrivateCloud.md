@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+online version: https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 schema: 2.0.0
 ---
 

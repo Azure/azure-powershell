@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azdeletedwebappdeletedwebapp
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azdeletedwebappdeletedwebapp
 schema: 2.0.0
 ---
 

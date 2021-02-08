@@ -4,7 +4,7 @@ Regenerates the primary or secondary connection strings for the namespace.
 .Description
 Regenerates the primary or secondary connection strings for the namespace.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusnamespacekey
+https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacekey
 #>
 function New-AzServiceBusKey_Namespace {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

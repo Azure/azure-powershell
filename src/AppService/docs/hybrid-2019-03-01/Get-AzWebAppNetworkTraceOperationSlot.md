@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappnetworktraceoperationslot
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azwebappnetworktraceoperationslot
 schema: 2.0.0
 ---
 

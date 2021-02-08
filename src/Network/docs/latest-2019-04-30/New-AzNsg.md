@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznsg
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznsg
 schema: 2.0.0
 ---
 

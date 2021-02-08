@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccountkey
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountkey
 schema: 2.0.0
 ---
 

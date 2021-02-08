@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitauthorization
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 

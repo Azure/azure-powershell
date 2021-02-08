@@ -39,7 +39,7 @@ RESOURCEFORESTSETTING <IForestTrust[]>: List of settings for Resource Forest
   [TrustPassword <String>]: Trust Password
   [TrustedDomainFqdn <String>]: Trusted Domain FQDN
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/new-azaddomainservice
+https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
