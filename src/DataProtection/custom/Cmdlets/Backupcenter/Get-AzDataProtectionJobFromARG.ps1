@@ -23,22 +23,28 @@
 
         [Parameter(Mandatory=$false, HelpMessage='Name of the vault')]
         [System.DateTime]
-        ${EndTime}
+        ${EndTime},
+
+        [Parameter(Mandatory=$false, HelpMessage='Operation of the Job Filter')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
+        ${Operation},
+
+        [Parameter(Mandatory, HelpMessage='Datasource Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        ${DatasourceType}
     )
 
     process 
     {
-        $query = "RecoveryServicesResources"
-        $query = AddFilterToQuery -Query $query -FilterKey "type" -FilterValues "microsoft.dataprotection/backupvaults/backupjobs"
-        if($PSBoundParameters.ContainsKey("ResourceGroup"))
-        {
-            $query = AddFilterToQuery -Query $query -FilterKey "resourceGroup" -FilterValues  $resourceGroup
-        }
+        CheckResourceGraphModuleDependency
 
-        if($PSBoundParameters.ContainsKey("Vault"))
-        {
-            $query = AddFilterToQuery -Query $query -FilterKey "properties.vaultName" -FilterValues  $Vault
-        }
+        $manifest = LoadManifest -DatasourceType $DatasourceType
+        $query = GetBackupJobARGQuery
+        $query = AddFilterToQuery -Query $query -FilterKey "properties.dataSourceType" -FilterValues $manifest.datasourceType
+
+        if($PSBoundParameters.ContainsKey("ResourceGroup")) { $query = AddFilterToQuery -Query $query -FilterKey "resourceGroup" -FilterValues  $resourceGroup }
+        if($PSBoundParameters.ContainsKey("Vault")) { $query = AddFilterToQuery -Query $query -FilterKey "vaultName" -FilterValues  $Vault }
+        if($PSBoundParameters.ContainsKey("Operation")) { $query = AddFilterToQuery -Query $query -FilterKey "operation" -FilterValues $Operation }
 
         if($StartTime -ne $null)
         {   
@@ -51,10 +57,10 @@
         {   
             $utcEndTime = $EndTime.ToUniversalTime()
             $endTimeFilter = $utcEndTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
-            $query += "| where properties.endTime > datetime(" + $endTimeFilter + ")"
+            $query += "| where properties.endTime < datetime(" + $endTimeFilter + ")"
         }
 
-        foreach($param in @("Subscription", "ResourceGroup", "Vault", "StartTime", "EndTime"))
+        foreach($param in @("Subscription", "ResourceGroup", "Vault", "StartTime", "EndTime", "Operation", "DatasourceType"))
         {
             if($PSBoundParameters.ContainsKey($param))
             {
@@ -64,14 +70,16 @@
 
         $null = $PSBoundParameters.Add("Subscription", $Subscription)
         $null = $PSBoundParameters.Add("query", $query)
+        $null = $PSBoundParameters.Add("First", 1000)
 
         $argJobResponse = Az.ResourceGraph\Search-AzGraph @PSBoundParameters
-        $jobs = @()
+
+        $backupJobs = @()
         foreach($jobresponse in $argJobResponse)
         {
-            $jobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupJobResource]::DeserializeFromPSObject($jobresponse.properties)
+            $jsonStringResponse = $jobresponse | ConvertTo-Json -Depth 100
+            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
         }
-
-        return $jobs
+        return $backupJobs
     }
 }
