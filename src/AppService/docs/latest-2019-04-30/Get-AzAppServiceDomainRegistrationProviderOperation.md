@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappservicedomainregistrationprovideroperation
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azappservicedomainregistrationprovideroperation
 schema: 2.0.0
 ---
 

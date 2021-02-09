@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/restore-azwebappsiteconfigurationsnapshot
+online version: https://docs.microsoft.com/powershell/module/az.appservice/restore-azwebappsiteconfigurationsnapshot
 schema: 2.0.0
 ---
 

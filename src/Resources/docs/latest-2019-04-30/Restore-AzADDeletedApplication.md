@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/restore-azaddeletedapplication
+online version: https://docs.microsoft.com/powershell/module/az.resources/restore-azaddeletedapplication
 schema: 2.0.0
 ---
 

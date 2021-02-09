@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratenicmapping
+online version: https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 schema: 2.0.0
 ---
 

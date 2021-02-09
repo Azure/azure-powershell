@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlflexibleserver
+online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserver
 schema: 2.0.0
 ---
 

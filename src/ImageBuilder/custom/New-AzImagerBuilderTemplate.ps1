@@ -20,7 +20,7 @@ Create a virtual machine image template
 Create a virtual machine image template
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBuilderTemplate
+https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderTemplate
 #>
 function New-AzImageBuilderTemplate {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate])]

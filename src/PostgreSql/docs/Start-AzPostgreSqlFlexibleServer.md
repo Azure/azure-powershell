@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.postgresql/start-azpostgresqlflexibleserver
+online version: https://docs.microsoft.com/powershell/module/az.postgresql/start-azpostgresqlflexibleserver
 schema: 2.0.0
 ---
 

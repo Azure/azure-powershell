@@ -1,8 +1,8 @@
 {
-  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+1": {
+  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"storageProfile\": {\r\n      \"backupRetentionDays\": 12\r\n    }\r\n  }\r\n}",
       "Headers": {
       },
@@ -76,10 +76,10 @@
       "Content": "{\"name\":\"cf9e5966-8de2-4e44-9892-586629b697a7\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-03T07:10:58.927Z\"}"
     }
   },
-  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+3": {
+  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -308,10 +308,10 @@
       "Content": "{\"name\":\"c1fde063-0f72-47ec-98cf-51254764dcfc\",\"status\":\"Succeeded\",\"startTime\":\"2021-02-03T07:24:39.127Z\"}"
     }
   },
-  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+3": {
+  "Update-AzMySqlFlexibleServer+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBForMySql/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-100?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
