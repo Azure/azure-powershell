@@ -13,6 +13,7 @@
   FormatsToProcess = './Az.DataProtection.format.ps1xml'
   FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
                     'Get-AzDataProtectionBackupInstance',
+                    'Get-AzDataProtectionBackupInstanceFromARG'
                     'Get-AzDataProtectionBackupPolicy',
                     'Get-AzDataProtectionBackupVault',
                     'Get-AzDataProtectionBackupVaultStorageSetting',

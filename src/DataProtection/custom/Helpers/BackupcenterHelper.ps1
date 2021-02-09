@@ -11,15 +11,65 @@
         $FilterKey,
 
 		[Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
         [System.String[]]
         $FilterValues
 	)
 	
 	process{
-		$updatedQuery = $Query
-		$filterValueJoin = $FilterValues | Join-String -Separator "','"
-		$updatedQuery += " | where " + $FilterKey + " in~ ('" + $filterValueJoin + "')"
-		return $updatedQuery
+
+		if(($FilterValues -ne $null) -and ($FilterValues.Length -ne 0))
+		{
+			$updatedQuery = $Query
+			$filterValueJoin = $FilterValues | Join-String -Separator "','"
+			$updatedQuery += " | where " + $FilterKey + " in~ ('" + $filterValueJoin + "')"
+			return $updatedQuery
+		}
+
+		return $Query
+	}
+}
+
+function CheckResourceGraphModuleDependency
+{
+	param() 
+
+	process
+	{
+		$module = Get-InstalledModule | Where-Object {$_.Name -eq "Az.ResourceGraph"}
+		if($module -eq $null)
+		{
+			$message = "Az.ResourceGraph Module must be installed to run this command. Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
+			throw $message
+		}
+	}
+}
+
+function GetBackupInstanceARGQuery
+{
+	param()
+
+	process
+	{
+		$query = "RecoveryServicesResources | where type =~ 'microsoft.dataprotection/backupvaults/backupinstances'"
+		$query += "| extend vaultName = split(split(id, '/Microsoft.DataProtection/backupVaults/')[1],'/')[0]"
+		$query += "| extend protectionState = properties.currentProtectionState"
+
+		return $query
+	}
+}
+
+function GetBackupJobARGQuery
+{
+	param()
+
+	process
+	{
+		$query = "RecoveryServicesResources | where type =~ 'microsoft.dataprotection/backupvaults/backupjobs'"
+		$query += "| extend vaultName = properties.vaultName"
+		$query += "| extend operation = case( tolower(properties.operationCategory) startswith 'backup' and properties.isUserTriggered == 'true', strcat('OnDemand',properties.operationCategory)"
+		$query += ", tolower(properties.operationCategory) startswith 'backup' and properties.isUserTriggered == 'false', strcat('Scheduled', properties.operationCategory)"
+		$query += ", type =~ 'microsoft.dataprotection/backupVaults/backupJobs', properties.operationCategory, 'Invalid')"
+
+		return $query
 	}
 }

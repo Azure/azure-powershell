@@ -104,4 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         RestoreAsFiles
     }
 
+    public enum ProtectionStatus
+    {
+        ConfiguringProtection = 0,
+        ProtectionConfigured,
+        ConfiguringProtectionFailed,
+        ProtectionError
+    }
+
+    public enum JobOperation
+    {
+        OnDemandBackup = 0,
+        ScheduledBackup,
+        Restore
+    }
 }

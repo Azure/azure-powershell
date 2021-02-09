@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionjobfromarg
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupinstancefromarg
 schema: 2.0.0
 ---
 
-# Get-AzDataProtectionJobFromARG
+# Get-AzDataProtectionBackupInstanceFromARG
 
 ## SYNOPSIS
-Get Backup Vault storage setting object
+Get Backup Instances from ARG
 
 ## SYNTAX
 
 ```
-Get-AzDataProtectionJobFromARG -DatasourceType <DatasourceTypes> -Subscription <String[]>
- [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>] [-StartTime <DateTime>]
- [-Vault <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataProtectionBackupInstanceFromARG -DatasourceType <DatasourceTypes> -Subscription <String[]>
+ [-ProtectionStatus <ProtectionStatus[]>] [-ResourceGroup <String[]>] [-Vault <String[]>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Backup Vault storage setting object
+Get Backup Instances from ARG
 
 ## EXAMPLES
 
@@ -58,26 +58,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndTime
-Name of the vault
+### -ProtectionStatus
+Protection Status of the item
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Operation
-Operation of the Job Filter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProtectionStatus[]
 Parameter Sets: (All)
 Aliases:
 
@@ -93,21 +78,6 @@ Resource Group of Vault
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartTime
-Name of the vault
-
-```yaml
-Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
