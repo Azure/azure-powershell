@@ -114,17 +114,29 @@ function GetBackupFrequencyString {
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
 		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
-		$frequency
+		$frequency,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.Int32]
+		$count
 	)
 
 	process {
 		$freq = $frequency.ToString()
-		if($freq -eq "Weekly"){
+		if($freq -eq "Weekly")
+		{
 			return "P1W"
 		}
 
-		if($freq -eq "Daily"){
+		if($freq -eq "Daily")
+		{
 			return "P1D"
+		}
+
+		if($freq -eq "Hourly")
+		{
+			return "PT" + $count.ToString() + "H"
 		}
 	}
 }

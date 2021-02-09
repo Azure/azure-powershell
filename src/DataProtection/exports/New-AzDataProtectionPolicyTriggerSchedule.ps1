@@ -46,7 +46,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
     # Source Datastore
-    ${Frequency}
+    ${IntervalType},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Int32]
+    # interval count
+    ${IntervalCount}
 )
 
 begin {

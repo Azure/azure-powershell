@@ -38,7 +38,12 @@ param(
     [Parameter(Position=0, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
-    ${frequency}
+    ${frequency},
+
+    [Parameter(Position=1, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Int32]
+    ${count}
 )
 
 begin {

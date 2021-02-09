@@ -1,32 +1,32 @@
 ﻿{
-  "isProxyResource": true,
-  "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
-  "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
-  "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "isProxyResource": false,
+  "resourceType": "Microsoft.Compute/disks",
+  "parentResourceType": "Microsoft.Compute/disks",
+  "datasourceType": "Microsoft.Compute/disks",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
-  "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation" ],
   "policySettings": {
-    "supportedRetentionTags": [ "Daily", "Weekly", "Monthly", "Yearly" ],
-    "supportedDatastoreTypes": [ "VaultStore" ],
+    "supportedRetentionTags": [ "Daily", "Weekly" ],
+    "supportedDatastoreTypes": [ "OperationalStore" ],
     "disableAddRetentionRule": false,
-    "disableCustomRetentionTag": false,
+    "disableCustomRetentionTag":  true,
     "defaultPolicy": {
-      "DatasourceType": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
+      "DatasourceType": [ "Microsoft.Compute/disks" ],
       "ObjectType": "BackupPolicy",
       "PolicyRule": [
         {
           "BackupParameter": {
-            "BackupType": "Full",
+            "BackupType": "Incremental",
             "ObjectType": "AzureBackupParams"
           },
           "BackupParameterObjectType": "AzureBackupParams",
           "DataStoreObjectType": "DataStoreInfoBase",
-          "DataStoreType": "VaultStore",
-          "Name": "BackupWeekly",
+          "DataStoreType": "OperationalStore",
+          "Name": "BackupHourly",
           "ObjectType": "AzureBackupRule",
           "Trigger": {
             "ObjectType": "ScheduleBasedTriggerContext",
-            "ScheduleRepeatingTimeInterval": [ "R/2020-04-05T13:00:00+00:00/P1W" ],
+            "ScheduleRepeatingTimeInterval": [ "R/2020-04-05T13:00:00+00:00/PT4H" ],
             "TaggingCriterion": [
               {
                 "Criterion": null,
@@ -44,10 +44,10 @@
           "IsDefault": true,
           "Lifecycle": [
             {
-              "DeleteAfterDuration": "P10D",
+              "DeleteAfterDuration": "P7D",
               "DeleteAfterObjectType": "AbsoluteDeleteOption",
               "SourceDataStoreObjectType": "DataStoreInfoBase",
-              "SourceDataStoreType": "VaultStore",
+              "SourceDataStoreType": "OperationalStore",
               "TargetDataStoreCopySetting": null
             }
           ],

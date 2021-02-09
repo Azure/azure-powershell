@@ -67,11 +67,17 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [GetBackupFrequencyString](GetBackupFrequencyString.md)
 
 
+### [GetClientDatasourceType](GetClientDatasourceType.md)
+
+
 ### [GetDatasourceInfo](GetDatasourceInfo.md)
 
 
 ### [GetDatasourceSetInfo](GetDatasourceSetInfo.md)
 
+
+### [GetDatasourceTypes](GetDatasourceTypes.md)
+Prepares Datasource object for backup
 
 ### [GetRestoreType](GetRestoreType.md)
 

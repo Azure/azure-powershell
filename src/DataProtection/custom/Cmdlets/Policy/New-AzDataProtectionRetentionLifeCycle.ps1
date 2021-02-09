@@ -8,7 +8,7 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
         ${SourceDataStore},
 
-        [Parameter(Mandatory, HelpMessage='Target Datastore')]
+        [Parameter(Mandatory=$false, HelpMessage='Target Datastore')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
         ${TargetDataStore},
 
@@ -20,7 +20,7 @@
         [System.Int32]
         ${SourceRetentionDurationCount},
 
-        [Parameter(Mandatory, HelpMessage='CopyOption')]
+        [Parameter(Mandatory=$false, HelpMessage='CopyOption')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption]
         ${CopyOption}
     )
@@ -32,13 +32,15 @@
         $lifeCycle.DeleteAfterObjectType = "AbsoluteDeleteOption"
         $lifeCycle.DeleteAfterDuration = "P" + $SourceRetentionDurationCount + $SourceRetentionDurationType.ToString()[0]
 
-        $targetCopySetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.TargetCopySetting]::new()
-        $targetCopySetting.DataStoreObjectType = "DataStoreInfoBase"
-        $targetCopySetting.DataStoreType = $TargetDataStore
-        $targetCopySetting.CopyAfterObjectType = $CopyOption
+        if(($TargetDataStore -ne $null) -and ($CopyOption -ne $null))
+        {
+            $targetCopySetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.TargetCopySetting]::new()
+            $targetCopySetting.DataStoreObjectType = "DataStoreInfoBase"
+            $targetCopySetting.DataStoreType = $TargetDataStore
+            $targetCopySetting.CopyAfterObjectType = $CopyOption
 
-        $lifeCycle.TargetDataStoreCopySetting = @($targetCopySetting)
-
+            $lifeCycle.TargetDataStoreCopySetting = @($targetCopySetting)
+        }
         return $lifeCycle
     }
 }

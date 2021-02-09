@@ -7,9 +7,7 @@ function Get-AzDataProtectionPolicyTemplate {
 
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [System.String]
-        [ValidateSet("AzureDatabaseForPostgreSQL", "AzureBlob", IgnoreCase = $true)]
-        # ...
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
         ${DatasourceType}
     )
 
