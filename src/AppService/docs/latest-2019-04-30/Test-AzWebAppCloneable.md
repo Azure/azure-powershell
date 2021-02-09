@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/test-azwebappcloneable
+online version: https://docs.microsoft.com/powershell/module/az.appservice/test-azwebappcloneable
 schema: 2.0.0
 ---
 

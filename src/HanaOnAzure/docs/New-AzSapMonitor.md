@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitor
+online version: https://docs.microsoft.com/powershell/module/az.hanaonazure/new-azsapmonitor
 schema: 2.0.0
 ---
 

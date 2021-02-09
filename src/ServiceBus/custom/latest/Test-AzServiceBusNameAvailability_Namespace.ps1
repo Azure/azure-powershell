@@ -4,7 +4,7 @@ Check the give namespace name availability.
 .Description
 Check the give namespace name availability.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability
+https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusnameavailability
 #>
 function Test-AzServiceBusNameAvailability_Namespace {
 [Alias('Test-AzServiceBusName')]

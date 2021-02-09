@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/remove-azappservicecertificateordercertificate
+online version: https://docs.microsoft.com/powershell/module/az.appservice/remove-azappservicecertificateordercertificate
 schema: 2.0.0
 ---
 

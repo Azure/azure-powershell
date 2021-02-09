@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+online version: https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Create private cloud
 ## PARAMETERS
 
 ### -AcceptEULA
-Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+Accept EULA of AVS, legal term will pop up without this parameter provided
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusdisasterrecoveryconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusdisasterrecoveryconfiguration
 schema: 2.0.0
 ---
 

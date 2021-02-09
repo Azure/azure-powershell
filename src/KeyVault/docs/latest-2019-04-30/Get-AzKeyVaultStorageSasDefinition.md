@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultstoragesasdefinition
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultstoragesasdefinition
 schema: 2.0.0
 ---
 

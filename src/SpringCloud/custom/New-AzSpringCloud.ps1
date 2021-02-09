@@ -47,7 +47,7 @@ GITPROPERTYREPOSITORY <IGitPatternRepository[]>: Repositories of git.
   [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
   [Username <String>]: Username of git repository basic auth.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.springcloud/new-azspringcloud
+https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 #>
 function New-AzSpringCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource])]

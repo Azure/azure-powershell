@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteroutetable
 schema: 2.0.0
 ---
 

@@ -4,11 +4,11 @@ Creates or updates a record set within a DNS zone.
 .Description
 Creates or updates a record set within a DNS zone.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnsrecordset
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.dns/new-azdnsrecordset
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnsrecordset
+https://docs.microsoft.com/powershell/module/az.dns/new-azdnsrecordset
 #>
 function New-AzDnsRecordSet_CreateSrv {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet')]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvaultkey
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultkey
 schema: 2.0.0
 ---
 

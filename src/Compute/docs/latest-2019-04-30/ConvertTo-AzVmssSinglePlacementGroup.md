@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/convertto-azvmsssingleplacementgroup
+online version: https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmsssingleplacementgroup
 schema: 2.0.0
 ---
 
