@@ -19,7 +19,7 @@ Creates a new disk mapping
 .Description
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput])]
@@ -51,7 +51,25 @@ function New-AzMigrateDiskMapping {
     )
     
     process {
-    
+        # Validate the inputs
+        if ($DiskType -eq "Standard_LRS"){
+            $DiskType = "Standard_LRS"
+        }elseif ($DiskType -eq "Premium_LRS") {
+            $DiskType = "Premium_LRS"
+        }elseif ($DiskType -eq "StandardSSD_LRS") {
+            $DiskType = "StandardSSD_LRS"
+        }else{
+            throw "Valid DiskType values: Standard_LRS, Premium_LRS, StandardSSD_LRS"
+        }
+
+        if($IsOSDisk -eq "true"){
+            $IsOSDisk = "true"
+        }elseif ($IsOSDisk -eq "false") {
+            $IsOSDisk = "false"
+        }else {
+            throw "Valid IsOSDisk values: true, false"
+        }
+
         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
         $DiskObject.DiskId = $DiskID
         $DiskObject.DiskType = $DiskType

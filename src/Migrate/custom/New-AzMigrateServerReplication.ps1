@@ -19,7 +19,7 @@ Starts replication for the specified server.
 .Description
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -198,6 +198,7 @@ function New-AzMigrateServerReplication {
     )
     
     process {
+        
             $parameterSet = $PSCmdlet.ParameterSetName
             $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
             $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
@@ -227,6 +228,38 @@ function New-AzMigrateServerReplication {
 
             $null = $PSBoundParameters.Remove('MachineId')
             $null = $PSBoundParameters.Remove('InputObject')
+
+            # Validate some input.
+            if ($LicenseType -eq "NotSpecified"){
+                $LicenseType = "NotSpecified"
+            }elseif ($LicenseType -eq "NoLicenseType") {
+                $LicenseType = "NoLicenseType"
+            }elseif ($LicenseType -eq "WindowsServer") {
+                $LicenseType = "WindowsServer"
+            }else{
+                throw "Valid LicenseType values: NoLicenseType, WindowsServer"
+            }
+
+            if ($parameterSet -match "DefaultUser"){
+                if ($DiskType -eq "Standard_LRS"){
+                    $DiskType = "Standard_LRS"
+                }elseif ($DiskType -eq "Premium_LRS") {
+                    $DiskType = "Premium_LRS"
+                }elseif ($DiskType -eq "StandardSSD_LRS") {
+                    $DiskType = "StandardSSD_LRS"
+                }else{
+                    throw "Valid DiskType values: Standard_LRS, Premium_LRS, StandardSSD_LRS"
+                }
+
+                if ($parameterSet -eq "ByInputObjectDefaultUser"){
+                    foreach($onPremDisk in $InputObject.Disk){
+                        if($onPremDisk.Uuid -eq $OSDiskID){
+                            $OSDiskID = $onPremDisk.Uuid
+                            break
+                        }
+                    }
+                }
+            }
            
             if(($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')){
                 if(($parameterSet -match 'InputObject')){
@@ -342,6 +375,32 @@ function New-AzMigrateServerReplication {
             }
             $null = $PSBoundParameters.Remove('MappingName')
 
+            # Validate sku size
+            $hasAzComputeModule = $true
+            try{ Import-Module Az.Compute }catch{$hasAzComputeModule = $false}
+            if ($hasAzComputeModule -and $HasTargetVMSize){
+                $null = $PSBoundParameters.Remove("ProtectionContainerName")
+                $null = $PSBoundParameters.Remove("FabricName")
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('ResourceName')
+                $null = $PSBoundParameters.Remove('SubscriptionId')
+                $null = $PSBoundParameters.Add('Location', $TargetRegion)
+                $allAvailableSkus = Get-AzVMSize @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                if ($null -ne $allAvailableSkus){
+                    $matchingComputeSku = $allAvailableSkus | Where-Object {$_.Name -eq $TargetVMSize} 
+                    if ($null -ne $matchingComputeSku){
+                        $TargetVMSize = $matchingComputeSku.Name
+                    }
+                }
+
+                $null = $PSBoundParameters.Remove('Location')
+                $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+                $null = $PSBoundParameters.Add('FabricName', $FabricName)
+                $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+                $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+                $null = $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+            }
+
             $HashCodeInput = $SiteName + $TargetRegion
             $Source = @"
 using System;
@@ -445,6 +504,8 @@ public static int hashForArtifact(String artifact)
                 }
                 $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
             }
+
+            # normalise the values of 
             $null = $PSBoundParameters.add('ProviderSpecificDetail', $ProviderSpecificDetails)
             $null = $PSBoundParameters.Add('NoWait', $true)
             $output = Az.Migrate.internal\New-AzMigrateReplicationMigrationItem @PSBoundParameters

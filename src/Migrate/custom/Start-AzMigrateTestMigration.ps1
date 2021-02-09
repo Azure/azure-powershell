@@ -19,7 +19,7 @@ Starts the test migration for the replicating server.
 .Description
 The Start-AzMigrateTestMigration cmdlet initiates the test migration for the replicating server. 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigration
+https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]

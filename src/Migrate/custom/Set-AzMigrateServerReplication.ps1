@@ -19,7 +19,7 @@ Updates the target properties for the replicating server.
 .Description
 The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]

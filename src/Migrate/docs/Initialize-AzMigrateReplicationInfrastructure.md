@@ -1,56 +1,38 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
+online version: https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 schema: 2.0.0
 ---
 
-# Remove-AzMigrateProject
+# Initialize-AzMigrateReplicationInfrastructure
 
 ## SYNOPSIS
-Delete the migrate project.
-Deleting non-existent project is a no-operation.
+Initialises the infrastructure for the migrate project.
 
 ## SYNTAX
 
 ```
-Remove-AzMigrateProject -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AcceptLanguage <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
+ -Scenario <String> -TargetRegion <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the migrate project.
-Deleting non-existent project is a no-operation.
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 
 ## EXAMPLES
 
-### Example 1: Delete (Default)
+### Example 1: Initialises the infrastructure for the migrate project.
 ```powershell
-PS C:\> Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
+PS C:\> Initialize-AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName TestRG  -ProjectName TestProject -Vmwareagentless -TargetRegion centralus
 
---No output--
+True
 ```
 
-Delete the migrate project.
-Deleting non-existent project is a no-operation.
+Initialises the infrastructure for the migrate project.
 
 ## PARAMETERS
-
-### -AcceptLanguage
-Standard request header.
-Used by service to respond to client in appropriate language.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -67,13 +49,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the Azure Migrate project.
+### -ProjectName
+Specifies the name of the Azure Migrate project to be used for server migration.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: MigrateProjectName
+Aliases:
 
 Required: True
 Position: Named
@@ -82,23 +64,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ResourceGroupName
+Specifies the Resource Group of the Azure Migrate Project in the current subscription.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the Azure Resource Group that migrate project is part of.
+### -Scenario
+Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
 
 ```yaml
 Type: System.String
@@ -113,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription Id in which migrate project was created.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String
@@ -123,6 +105,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetRegion
+Specifies the target Azure region for server migrations.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
