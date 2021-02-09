@@ -16,7 +16,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
-    public class AfdResourceUtilities
+    public static class AfdResourceUtilities
     {
         private const string SubscriptionId = "subscriptionId";
         private const string ResourceGroup = "resourceGroup";
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 
         public static string GetResourceGroupFromAfdProfile(PSArmResource afdProfile)
         {
-            string formattedSting = string.Format(AfdProfilePattern, SubscriptionId, ResourceGroup, Profile);
+            string formattedString = string.Format(AfdProfilePattern, SubscriptionId, ResourceGroup, Profile);
 
-            Match match = Regex.Match(afdProfile.Id, formattedSting, RegexOptions.IgnoreCase);
+            Match match = Regex.Match(afdProfile.Id, formattedString, RegexOptions.IgnoreCase);
 
             return match.Groups[ResourceGroup].Value;
         }
