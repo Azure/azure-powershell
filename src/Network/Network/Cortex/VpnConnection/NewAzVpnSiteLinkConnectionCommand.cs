@@ -7,6 +7,7 @@
     using System.Security;
     using Microsoft.WindowsAzure.Commands.Common;
     using System.Linq;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(
         VerbsCommon.New,
@@ -84,6 +85,12 @@
             HelpMessage = "The list of egress  NAT rules that are associated with this link Connection.")]
         public PSResourceId[] EgressNatRule { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The connection mode for this link connection.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string VpnLinkConnectionMode { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -121,6 +128,9 @@
             vpnSiteLinkConnection.ConnectionBandwidth = this.ConnectionBandwidth > 0 ?
                 Convert.ToInt32(this.ConnectionBandwidth) :
                 20;
+
+            //// Set Connection Mode to "Default" if not specified
+            vpnSiteLinkConnection.VpnLinkConnectionMode = !String.IsNullOrEmpty(this.VpnLinkConnectionMode) ? this.VpnLinkConnectionMode : "Default";
 
             WriteObject(vpnSiteLinkConnection);
         }
