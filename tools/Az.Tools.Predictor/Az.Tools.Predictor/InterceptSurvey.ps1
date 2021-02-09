@@ -184,5 +184,7 @@ if ($shouldIntercept) {
         }
     }
 
-    Write-Host "How was your experience using Az predictor? " -NoNewLine -ForegroundColor  $host.privatedata.WarningForegroundColor -BackgroundColor $host.privatedata.WarningBackgroundColor ; Write-Host "http://aka.ms/azpredictorisurvey?SessionId=$surveyId" -ForegroundColor Cyan -BackgroundColor $host.privatedata.WarningBackgroundColor
+    $escape = $([char]27)
+    Write-Host "`n$escape[7mHow was your experience using Az predictor?      $escape[27m`n" -NoNewline; Write-Host "$escape[7mhttp://aka.ms/azpredictorisurvey?SessionId=$surveyId$escape[27m" -NoNewline
+    Write-Host "`n"
 }
