@@ -158,7 +158,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
-            databaseAccountCreateUpdateParameters.NetworkAclBypass = NetworkAclBypass;
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
 
             if (IpRule != null && IpRule.Length > 0)
@@ -169,6 +168,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (KeyVaultKeyUri != null)
             {
                 databaseAccountCreateUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
+            }
+
+            if (NetworkAclBypass != null)
+            {
+                databaseAccountCreateUpdateParameters.NetworkAclBypass = 
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
 
             if (!string.IsNullOrEmpty(ApiKind))

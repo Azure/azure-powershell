@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -103,7 +104,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             if (NetworkAclBypass != null)
             {
-                databaseAccountUpdateParameters.NetworkAclBypass = NetworkAclBypass;
+                databaseAccountUpdateParameters.NetworkAclBypass = 
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
