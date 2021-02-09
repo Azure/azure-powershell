@@ -20,6 +20,9 @@ Trigger adhoc backup
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instances belonging to a backup vault
 
+### [Get-AzDataProtectionBackupInstanceFromARG](Get-AzDataProtectionBackupInstanceFromARG.md)
+Get Backup Instances from ARG
+
 ### [Get-AzDataProtectionBackupPolicy](Get-AzDataProtectionBackupPolicy.md)
 Gets a backup policy belonging to a backup vault
 
