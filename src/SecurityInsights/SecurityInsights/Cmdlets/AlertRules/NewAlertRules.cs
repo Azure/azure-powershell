@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.AlertRules
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.Tactics)]
         [ValidateNotNullOrEmpty]
-        public IList<string> Tactic { get; set; }
+        public IList<string> Tactics { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ScheduledAlertRule, Mandatory = false, HelpMessage = ParameterHelpMessages.TriggerOperator)]
         [ValidateSet("Equal", "GreaterThan", "LessThan", "NotEqual")]
