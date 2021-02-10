@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Hyak.Common;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
