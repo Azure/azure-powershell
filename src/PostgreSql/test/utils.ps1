@@ -32,6 +32,7 @@ function setupEnv() {
     $location = "eastus"
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_D2s_v3"
+
     if ($TestMode -eq 'live') {
         $location = "eastus2euap"
         $PowershellPrefix = "powershell-pipeline-postgres-"
@@ -44,7 +45,6 @@ function setupEnv() {
         $resourceGroup = $PowershellPrefix + "group" + $RandomNumbers
         $restoreName = $PowershellPrefix + "restore-server" + $RandomNumbers
         $restoreName2 = $PowershellPrefix + "2-restore-server" + $RandomNumbers
-        $restoreName = $PowershellPrefix + "replica-server" + $RandomNumbers
         $firewallRuleName = $PowershellPrefix + "firewallrule" + $RandomNumbers
     }
 
@@ -89,6 +89,7 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {

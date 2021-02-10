@@ -32,10 +32,12 @@ Describe 'AzPostgreSqlFlexibleServerConfiguration' {
 
     It 'ViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/configurations/work_mem"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/configurations/TimeZone"
             $config = Get-AzPostgreSqlFlexibleServerConfiguration -InputObject $ID 
-            $config.Name | Should -Be work_mem
-            $config = Update-AzPostgreSqlFlexibleServerConfiguration -InputObject $config -Value 20480           
+            $config.Name | Should -Be TimeZone
+
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/configurations/work_mem"
+            $config = Update-AzPostgreSqlFlexibleServerConfiguration -InputObject $ID -Value 20480           
             $config.Value | Should -Be 20480
             $config.DefaultValue | Should -Be 4096
         } | Should -Not -Throw
