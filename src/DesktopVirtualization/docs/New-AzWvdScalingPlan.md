@@ -142,7 +142,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +224,7 @@ List of ScalingSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingPlan
 
 ## ALIASES
 
@@ -349,12 +349,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
   - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
   - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
+  - `[RampDownNotificationMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
   - `[RampDownStartTime <DateTime?>]`: Starting time for ramp down period.
   - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
-  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
+  - `[RampUpAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
   - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
-  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
-  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
+  - `[RampUpMinimumHostPct <Int32?>]`: Minimum host percentage for ramp up period.
   - `[RampUpStartTime <DateTime?>]`: Starting time for ramp up period.
 
 ## RELATED LINKS

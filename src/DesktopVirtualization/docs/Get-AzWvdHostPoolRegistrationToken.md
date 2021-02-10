@@ -1,50 +1,51 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 schema: 2.0.0
 ---
 
-# Update-AzWvdMsixPackage
+# Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Update an  MSIX Package.
+Registration token of the host pool.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Retrieve (Default)
 ```
-Update-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DisplayName <String>] [-IsActive] [-IsRegularRegistration]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### RetrieveViaIdentity
 ```
-Update-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DisplayName <String>] [-IsActive]
- [-IsRegularRegistration] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an  MSIX Package.
+Registration token of the host pool.
 
 ## EXAMPLES
 
-### Example 1: Update a MSIX Package 
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzWvdMsixPackage -HostPoolName HostPoolName `
-				-ResourceGroupName ResourceGroupName `
-				-SubscriptionId SubscriptionId `
-				-displayName 'Updated-display-Name' `
-        			-IsRegularRegistration:$False `
-				-IsActive:$True
+PS C:\> {{ Add code here }}
 
-Name                                                  Type
-----                                                  ----
-HostPoolName/MSIXPackage_FullName1                    Microsoft.DesktopVirtualization/hostpools/msixpackages
+{{ Add output here }}
 ```
 
-This command updates a MSIX Package in a HostPool.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -64,44 +65,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DisplayName
-Display name for MSIX Package.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -FullName
-The version specific package full name of the MSIX package within specified hostpool
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: MsixPackageFullName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Retrieve
 Aliases:
 
 Required: True
@@ -118,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: RetrieveViaIdentity
 Aliases:
 
 Required: True
@@ -129,46 +98,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IsActive
-Set a version of the package to be active across hostpool.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IsRegularRegistration
-Set Registration mode.
-Regular or Delayed.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Retrieve
 Aliases:
 
 Required: True
@@ -183,8 +119,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.String[]
+Parameter Sets: Retrieve
 Aliases:
 
 Required: False
@@ -237,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IRegistrationInfo
 
 ## ALIASES
 
