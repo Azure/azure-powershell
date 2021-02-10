@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                     Console.WriteLine("SAS revoked.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nUpload completed successfully.");
+                    Console.WriteLine("\nUpload complete.");
                     Console.ResetColor();
 
                 }

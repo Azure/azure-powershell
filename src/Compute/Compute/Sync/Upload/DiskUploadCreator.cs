@@ -170,17 +170,34 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             }
         }
 
+        //protected static void PopulateContextWithUploadableRanges(FileInfo vhdFile, UploadContextDisk context, bool resume)
+        //{
+        //    using (var vds = new VirtualDiskStream(vhdFile.FullName))
+        //    {
+        //        IEnumerable<IndexRange> ranges = vds.Extents.Select(e => e.Range).ToArray();
+
+        //        var bs = new BufferedStream(vds);
+        //        // linear still
+        //        var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
+
+        //        // detecting empty data blocks line. Takes long 
+        //        var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
+        //        context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
+        //        context.UploadableRanges = nonEmptyUploadableRanges;
+        //    }
+        //}
+
         protected static void PopulateContextWithUploadableRanges(FileInfo vhdFile, UploadContextDisk context, bool resume)
         {
-            using (var vds = new VirtualDiskStream(vhdFile.FullName))
+            using (FileStream stream = File.OpenRead(vhdFile.FullName))
             {
-                // broken in to 512 * 1024 bytes size blocks 
+                var vds = new VirtualDiskStream(vhdFile.FullName);
                 IEnumerable<IndexRange> ranges = vds.Extents.Select(e => e.Range).ToArray();
 
-                var bs = new BufferedStream(vds);
+                var bs = new BufferedStream(stream);
                 // linear still
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
-                
+
                 // detecting empty data blocks line. Takes long 
                 var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
                 context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
@@ -201,7 +218,6 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             int totalRangeCount = uploadableRanges.Count();
             int processedRangeCount = 0;
 
-            // looping through each range ( 512 * 1024 * 4 byte blocks )
             foreach (var range in uploadableRanges)
             {
 
@@ -238,23 +254,12 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         //    //IndexRange[] ranges = new List<IndexRange>();
         //    List<IndexRange> ranges = new List<IndexRange>();
 
-        //    // looping through each range ( 512 * 1024 * 4 byte blocks )
+
         //    Parallel.ForEach(uploadableRanges,
         //        range =>
         //        {
-        //            //byte[] data = ReadBytes(stream, range, manager);
-        //            //if (IsAllZero(vhdFile, range, manager))
-        //            //{
-        //            //    Program.SyncOutput.DebugEmptyBlockDetected(range);
-        //            //}
-        //            //else
-        //            //{
-        //            //    ranges.Add(range);
-        //            //}
-
         //            var dataWithRange = new DataWithRange(manager)
         //            {
-        //                //puting range bytes from stream to data using buffer(manager)
         //                Data = ReadBytes(stream, range, manager),
         //                Range = range
         //            };
@@ -262,7 +267,8 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         //            {
         //                if (dataWithRange.IsAllZero())
         //                {
-        //                    Program.SyncOutput.DebugEmptyBlockDetected(dataWithRange.Range);
+        //                    //causing problems this line below 
+        //                    //Program.SyncOutput.DebugEmptyBlockDetected(dataWithRange.Range);
         //                }
         //                else
         //                {
@@ -273,27 +279,8 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         //            //Program.SyncOutput.ProgressEmptyBlockDetection(++processedRangeCount, totalRangeCount);
         //        });
 
-        //    Program.SyncOutput.MessageDetectingActualDataBlocksCompleted();
+        //    //Program.SyncOutput.MessageDetectingActualDataBlocksCompleted();
         //    return ranges;
-        //}
-
-        //private static bool IsAllZero(FileInfo vhdFile, IndexRange rangeToRead, BufferManager manager)
-        //{
-        //    MemoryStream dest = new MemoryStream();
-        //    // put stream data into data with rangeToRead information
-        //    using (Stream stream = File.OpenRead(vhdFile.FullName))
-        //    {
-        //        var bufferSize = (int)rangeToRead.Length;
-        //        byte[] data = manager.TakeBuffer(bufferSize);
-        //        int read;
-        //        while ((read = stream.Read(data, 0, data.Length)) > 0)
-        //        {
-        //            dest.Write(data, 0, read);
-        //        }
-        //        var dataBlock = dest.ToArray();
-        //        var startIndex = Array.FindIndex(dataBlock, 0, dataBlock.Length, b => b != 0);
-        //        return startIndex == -1;
-        //    }
         //}
 
         protected static IEnumerable<DataWithRange> GetDataWithRangesToUpload(FileInfo vhdFile, UploadContextDisk context)
@@ -317,16 +304,29 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 
         private static byte[] ReadBytes(Stream stream, IndexRange rangeToRead, BufferManager manager)
         {
+
             stream.Seek(rangeToRead.StartIndex, SeekOrigin.Begin);
 
             var bufferSize = (int)rangeToRead.Length;
             var buffer = manager.TakeBuffer(bufferSize);
 
-            for (int bytesRead = stream.Read(buffer, 0, bufferSize);
-                 bytesRead < bufferSize;
-                 bytesRead += stream.Read(buffer, bytesRead, bufferSize - bytesRead))
+            //for (int bytesRead = stream.Read(buffer, 0, bufferSize);
+            //     bytesRead < bufferSize;
+            //     bytesRead += stream.Read(buffer, bytesRead, bufferSize - bytesRead))
+            //{
+            //}
+
+            int bytesRead = 0;
+            while (bytesRead < bufferSize)
             {
+                int bytess = stream.Read(buffer, bytesRead, bufferSize - bytesRead);
+                if (bytess < 0)
+                {
+                    Console.WriteLine("here");
+                }
+                bytesRead += bytess;
             }
+
             return buffer;
         }
 
