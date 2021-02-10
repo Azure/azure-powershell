@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetName
-The subnet name.
+The subnet name. Used in combination with -VirtualNetworkName and must be in same resource group as ASE. If not, use -SubnetId
 
 ```yaml
 Type: System.String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The vNet name.
+The vNet name. Used in combination with -SubnetName and must be in same resource group as ASE. If not, use -SubnetId
 
 ```yaml
 Type: System.String

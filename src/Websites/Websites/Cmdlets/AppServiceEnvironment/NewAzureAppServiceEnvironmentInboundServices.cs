@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         private const string SubnetIdParameterSet = "SubnetIdParameterSet";
         private const string SubnetNameParameterSet = "SubnetNameParameterSet";
 
+        private const string SubnetNameHelpMessage = "The subnet name. Used in combination with -VirtualNetworkName and must be in same resource group as ASE. If not, use -SubnetId";
+        private const string VirtualNetworkNameHelpMessage = "The vNet name. Used in combination with -SubnetName and must be in same resource group as ASE. If not, use -SubnetId";
+
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -26,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "The vNet name.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = VirtualNetworkNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
@@ -34,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name.")]
+        [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = true, HelpMessage = SubnetNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 

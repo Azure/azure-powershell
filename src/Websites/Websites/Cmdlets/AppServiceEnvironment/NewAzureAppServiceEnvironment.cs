@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         private const string SkipNetworkSecurityGroupHelpMessage = "Do not create the recommended network security group as part of the app service environment.";
         private const string SkipRouteTableHelpMessage = "Do not create the recommended route table as part of the app service environment.";
         private const string LoadBalancerModeHelpMessage = "Load balancer mode of the app service environment.";
+        private const string SubnetNameHelpMessage = "The subnet name. Used in combination with -VirtualNetworkName and must be in same resource group as ASE. If not, use -SubnetId";
+        private const string VirtualNetworkNameHelpMessage = "The vNet name. Used in combination with -SubnetName and must be in same resource group as ASE. If not, use -SubnetId";
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -43,8 +45,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateSet("ASEv2", "ASEv3")]
         public string Kind { get; set; } = "ASEv2";
 
-        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = "The vNet name.")]
-        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = "The vNet name.")]
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = VirtualNetworkNameHelpMessage)]
+        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = VirtualNetworkNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
@@ -53,8 +55,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name (requires vNet name).")]
-        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = "The subnet name (requires vNet name).")]
+        [Parameter(ParameterSetName = ASEv2SubnetNameParameterSet, Mandatory = true, HelpMessage = SubnetNameHelpMessage)]
+        [Parameter(ParameterSetName = ASEv3SubnetNameParameterSet, Mandatory = true, HelpMessage = SubnetNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 

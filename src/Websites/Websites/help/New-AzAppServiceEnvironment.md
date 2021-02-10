@@ -107,7 +107,7 @@ Accepted values: ASEv2, ASEv3
 
 Required: False
 Position: 3
-Default value: None
+Default value: ASEv2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetName
-The subnet name.
+The subnet name. Used in combination with -VirtualNetworkName and must be in same resource group as ASE. If not, use -SubnetId
 
 ```yaml
 Type: System.String
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The vNet name.
+The vNet name. Used in combination with -SubnetName and must be in same resource group as ASE. If not, use -SubnetId
 
 ```yaml
 Type: System.String

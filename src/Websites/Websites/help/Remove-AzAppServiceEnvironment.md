@@ -12,8 +12,15 @@ Remove App Service Environment.
 
 ## SYNTAX
 
+### InputValuesParameterSet
 ```
 Remove-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzAppServiceEnvironment [-Force] [-PassThru] [-AsJob] -InputObject <PSAppServiceEnvironment>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -76,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The app service environment object
+
+```yaml
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServiceEnvironment
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the app service environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InputValuesParameterSet
 Aliases:
 
 Required: True
@@ -111,7 +133,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InputValuesParameterSet
 Aliases:
 
 Required: True
