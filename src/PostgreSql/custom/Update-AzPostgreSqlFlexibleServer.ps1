@@ -93,7 +93,7 @@ function Update-AzPostgreSqlFlexibleServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Period of time (UTC) designated for maintenance. Examples: "Sun:23:30" to schedule on Sunday, 11:30pm UTC. To set back to default pass in "Disabled"')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${MaintenanceWindow},
 

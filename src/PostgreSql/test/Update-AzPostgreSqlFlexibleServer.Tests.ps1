@@ -28,13 +28,10 @@ Describe 'Update-AzPostgreSqlFlexibleServer' {
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSql/flexibleServers/$($env.flexibleServerName)/"
-            $server = Update-AzPostgreSqlFlexibleServer -InputObject $ID -StorageInMb 20480
+            # $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/"
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+            $server = Update-AzPostgreSqlFlexibleServer -InputObject $server -StorageInMb 20480
             $server.StorageProfileStorageMb | Should -Be 20480
-
-            $server = Update-AzPostgreSqlFlexibleServer -InputObject $ID -SkuTier GeneralPurpose -Sku Standard_D2ds_v4
-            $server.SkuTier | Should -Be 'GeneralPurpose'
-            $server.SkuName | Should -Be 'Standard_D2ds_v4'
         } | Should -Not -Throw
     }
 }
