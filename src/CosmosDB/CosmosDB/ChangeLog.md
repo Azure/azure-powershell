@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.0.1
+* This release fixes the issue with error propagation for failed requests in case of PITR and RBAC cmdlets.
+
 ## Version 2.0.0
 * This release introduces the cmdlets for the preview features of Continuous Backup(Point in time restore):
   - Introduced support for creating accounts with continuous mode backup policy.
