@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlRoleDefinitionGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleDefinition(Id, ResourceGroupName, AccountName);
             }
-            catch (DefaultErrorResponseException e)
+            catch (CloudException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {

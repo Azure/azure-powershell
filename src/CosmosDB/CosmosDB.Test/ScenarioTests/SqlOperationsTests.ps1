@@ -588,10 +588,12 @@ function Test-SqlRoleCmdlets
   $RoleName3 = "roleDefinitionName3"
   $RoleName4 = "roleDefinitionName4"
   $RoleName5 = "roleDefinitionName5"
+  $RoleName6 = "roleDefinitionName6"
 
   $DataActionRead = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
   $DataActionCreate = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
   $DataActionReplace = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace"
+  $DataActionInvalid = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/invalid-action"
 
   $PrincipalId = "ed4c2395-a18c-4018-afb3-6e521e7534d2"
   $PrincipalId2 = "d60019b0-c5a8-4e38-beb9-fb80daa3ce90"
@@ -611,6 +613,8 @@ function Test-SqlRoleCmdlets
   $FullyQualifiedRoleDefinitionId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/cf31c3a1-20f5-4ff1-bdd0-5e0782617e22"
   $RoleDefinitionId2 = "a36e56a5-9afc-4819-aa78-3a8083a3ee74"
   $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $RoleDefinitionId3 = "9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $FullyQualifiedRoleDefinitionId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/9ee200b5-73fd-4779-b36a-e2a31f9244f3"
 
   Try{
       $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
@@ -740,6 +744,11 @@ function Test-SqlRoleCmdlets
       # list Role Assignments
       $ListRoleAssignments = Get-AzCosmosDBSqlRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull $ListRoleAssignments
+
+      # check for correct error propagation
+      $PermissionsInvalid = New-AzCosmosDBPermission -DataAction $DataActionInvalid
+      $ScriptBlockRoleDef = { New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName6 -Permission $PermissionsInvalid -AssignableScope $Scope -Id $RoleDefinitionId3 -ParentObject $DatabaseAccount }
+      Assert-ThrowsContains $ScriptBlockRoleDef $DataActionInvalid
   }
   Finally 
   {
