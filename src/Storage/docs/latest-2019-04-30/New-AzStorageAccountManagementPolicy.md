@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccountmanagementpolicy
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountmanagementpolicy
 schema: 2.0.0
 ---
 
@@ -114,7 +114,7 @@ Dynamic: False
 
 ### -PolicyRule
 The Storage Account ManagementPolicies Rules.
-See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+See more details in: https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts.
 To construct, see NOTES section for POLICYRULE properties and create a hash table.
 
 ```yaml
@@ -246,7 +246,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ShareName <String>]`: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-#### POLICYRULE <IManagementPolicyRule[]>: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+#### POLICYRULE <IManagementPolicyRule[]>: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts.
   - `DeleteDaysAfterCreationGreaterThan <Single>`: Value indicating the age in days after creation
   - `DeleteDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
   - `FilterBlobType <String[]>`: An array of predefined enum values. Only blockBlob is supported.
@@ -257,7 +257,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[FilterPrefixMatch <String[]>]`: An array of strings for prefixes to be match.
 
 #### PROPERTY <IManagementPolicy>: The Get Storage Account ManagementPolicies operation response.
-  - `PolicyRule <IManagementPolicyRule[]>`: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+  - `PolicyRule <IManagementPolicyRule[]>`: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts.
     - `DeleteDaysAfterCreationGreaterThan <Single>`: Value indicating the age in days after creation
     - `DeleteDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
     - `FilterBlobType <String[]>`: An array of predefined enum values. Only blockBlob is supported.

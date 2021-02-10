@@ -4,6 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
+help-link-prefix: https://docs.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
 branch: master
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)

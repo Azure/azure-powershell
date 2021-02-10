@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/merge-azkeyvaultcertificate
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/merge-azkeyvaultcertificate
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedmachine/update-azconnectedmachineextension
+online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
 schema: 2.0.0
 ---
 

@@ -19,7 +19,7 @@ Get the network interfaces of a cloud service.
 .Description
 Get the network interfaces of a cloud service.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-AzCloudServiceNetworkInterfaces
+https://docs.microsoft.com/powershell/module/az.cloudservice/get-AzCloudServiceNetworkInterfaces
 #>
 
 function Get-AzCloudServiceNetworkInterfaces {

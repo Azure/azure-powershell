@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthBot
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/remove-azhealthbot
+online version: https://docs.microsoft.com/powershell/module/az.healthbot/remove-azhealthbot
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azkeyvaultstorageaccount
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultstorageaccount
 schema: 2.0.0
 ---
 
