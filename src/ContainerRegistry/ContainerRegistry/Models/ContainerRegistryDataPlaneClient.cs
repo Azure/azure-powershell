@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                    .AccessToken;
         }
 
-        private string GetRefreshToken()
+        public string GetRefreshToken()
         {
             return GetClient()
                     .RefreshTokens
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     .RefreshTokenProperty;
         }
 
-        private string GetAccessToken(string scope)
+        public string GetAccessToken(string scope)
         {
             return GetClient()
                     .AccessTokens
