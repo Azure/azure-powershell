@@ -15,18 +15,16 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $resourceGroup = "MySqlTestGroup"
     $location = "westus2"
-    $serverName = "mysql-test-100"
-    $serverName2 = "mysql-test-100-2"
     $flexibleServerName = "mysql-flexible-test-100"
     $flexibleServerName2 = "mysql-flexible-test-200"
     $flexibleServerName3 = "mysql-flexible-test-300"
-    $serverName = "mysql-test-100-2"
-    $serverName = "mysql-test-100-3"
+    $serverName = "mysql-test-100"
+    $serverName2 = "mysql-test-100-2"
+    $serverName3 = "mysql-test-100-3"
     $restoreName = "mysql-test-100-restore"
     $restoreName2 = "mysql-test-100-restore-2"
     $replicaName = "mysql-test-100-replica"
     $firewallRuleName = "mysqlrule01"
-    $firewallRuleName = "mysqlrule02"
     $databaseName = "mysqldb"
     $VNetName = "mysqlvnet"
     $SubnetName = "mysql-test-subnet"
@@ -50,6 +48,7 @@ function setupEnv() {
     
     $env.Add("serverName", $serverName)
     $env.Add("serverName2", $serverName2)
+    $env.Add("serverName3", $serverName3)
     $env.Add("flexibleServerName", $flexibleServerName)
     $env.Add("flexibleServerName2", $flexibleServerName2)
     $env.Add("flexibleServerName3", $flexibleServerName3)
