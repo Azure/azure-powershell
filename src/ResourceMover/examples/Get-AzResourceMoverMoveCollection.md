@@ -1,6 +1,6 @@
 ### Example 1:  Get details of all the Move collections in the subscription
 ```powershell
-PS C:\>Get-AzResourceMoverMoveCollection  -SubscriptionId e80eb9fa-c996-4435-aa32-5af6f3d3077c
+PS C:\>Get-AzResourceMoverMoveCollection  -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 Etag                                   Location      Name                                Type                             
 ----                                   --------      ----                                ----                             
@@ -15,7 +15,7 @@ Get details of all the Move collections in the subscription.
 
 ### Example 2: Get details of the Move collection with a specified move collection name in the subscription
 ```powershell
-PS C:\>Get-AzResourceMoverMoveCollection -ResourceGroupName RG-MoveCollection-demoRMS -Name PS-centralus-westcentralus-demoRMS
+PS C:\>Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PS-centralus-westcentralus-demoRMS"
 
 Etag                                   Location      Name                               Type                             
 ----                                   --------      ----                               ----                             
@@ -26,7 +26,7 @@ Etag                                   Location      Name                       
 
 ### Example 3: Get details of the Move collection with a specified resource group name in the subscription
 ```powershell
-PS C:\> Get-AzResourceMoverMoveCollection -ResourceGroupName RG-MoveCollection-demoRMS 
+PS C:\> Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" 
 
 Location    Name                               Type
 --------    ----                               ----

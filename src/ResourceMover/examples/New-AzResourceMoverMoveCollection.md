@@ -1,6 +1,6 @@
 ### Example 1: Create a new Move collection.
 ```powershell
-PS C:\> New-AzResourceMoverMoveCollection -Name PS-centralus-westcentralus-demoRMS  -ResourceGroupName RG-MoveCollection-demoRMS -SourceRegion centralus -TargetRegion westcentralus -Location centraluseuap -IdentityType "SystemAssigned"
+PS C:\> New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
 
 Etag                                   Location      Name                               Type                             
 ----                                   --------      ----                               ----                             
