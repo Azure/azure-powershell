@@ -4,7 +4,7 @@ Deletes a topic authorization rule.
 .Description
 Deletes a topic authorization rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusauthorizationrule
+https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusauthorizationrule
 #>
 function Remove-AzServiceBusAuthorizationRule_Topic {
 [OutputType('System.Boolean')]

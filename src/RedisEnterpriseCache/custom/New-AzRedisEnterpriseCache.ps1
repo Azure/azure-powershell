@@ -29,7 +29,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
 
 function New-AzRedisEnterpriseCache {

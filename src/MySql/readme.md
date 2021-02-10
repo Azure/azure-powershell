@@ -59,6 +59,9 @@ title: MySQL
 subject-prefix: 'MySQL'
 
 directive:
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForMySql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}")
   - from: swagger-document
     where: $
     transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForMySql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}")

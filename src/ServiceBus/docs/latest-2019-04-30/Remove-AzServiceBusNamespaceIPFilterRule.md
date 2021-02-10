@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusnamespaceipfilterrule
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespaceipfilterrule
 schema: 2.0.0
 ---
 

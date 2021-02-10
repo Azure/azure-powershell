@@ -4,7 +4,7 @@ Returns the specified authorization rule.
 .Description
 Returns the specified authorization rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusauthorizationrule
 #>
 function Get-AzServiceBusAuthorizationRule_Topic {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]

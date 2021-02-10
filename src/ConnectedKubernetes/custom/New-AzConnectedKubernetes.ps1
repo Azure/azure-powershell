@@ -22,7 +22,7 @@ API to register a new K8s cluster and thereby create a tracked resource in ARM
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://docs.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster])]

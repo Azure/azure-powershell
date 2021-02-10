@@ -4,7 +4,7 @@ Create a blockchain member.
 .Description
 Create a blockchain member.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember
 .Notes
@@ -16,7 +16,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets firewall rules
   [RuleName <String>]: Gets or sets the name of the firewall rules.
   [StartIPAddress <String>]: Gets or sets the start IP address of the firewall rule range.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 #>
 function New-AzBlockchainMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]

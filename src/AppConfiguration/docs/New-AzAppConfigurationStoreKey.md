@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
+online version: https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 schema: 2.0.0
 ---
 

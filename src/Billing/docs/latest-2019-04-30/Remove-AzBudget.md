@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/remove-azbudget
+online version: https://docs.microsoft.com/powershell/module/az.billing/remove-azbudget
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappmsdeploystatusslot
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azwebappmsdeploystatusslot
 schema: 2.0.0
 ---
 

@@ -31,7 +31,11 @@ Describe 'AzMySqlFlexibleServerConfiguration' {
 
     It 'ViaIdentity' {
         {
+<<<<<<< HEAD:src/MySql/test/AzMySqlFlexibleServerConfiguration.Tests.ps1
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/configurations/wait_timeout"
+=======
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/configurations/server_id"
+>>>>>>> 73e339caf274bda75f82966fa327b9cbf4e8af73:src/MySql/test/Get-AzMySqlFlexibleServerConfiguration.Tests.ps1
             $config = Get-AzMySqlFlexibleServerConfiguration -InputObject $ID 
             $config.Name | Should -Be wait_timeout
             $config = Update-AzMySqlFlexibleServerConfiguration -InputObject $config -Value 10000           

@@ -4,7 +4,7 @@ Creates or updates an authorization rule for a namespace.
 .Description
 Creates or updates an authorization rule for a namespace.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
 #>
 function New-AzServiceBusAuthorizationRule_Namespace {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]

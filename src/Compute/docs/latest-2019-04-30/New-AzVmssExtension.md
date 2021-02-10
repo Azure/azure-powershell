@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmssextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvmssextension
 schema: 2.0.0
 ---
 

@@ -46,7 +46,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud])]
@@ -126,7 +126,7 @@ function New-AzVMwarePrivateCloud {
     
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
-        # Accept EULA of AVS, legal term will pop up withoutt this parameter provided
+        # Accept EULA of AVS, legal term will pop up without this parameter provided
         ${AcceptEULA},
         
         [Parameter()]

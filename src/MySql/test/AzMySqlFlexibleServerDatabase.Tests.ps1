@@ -37,6 +37,7 @@ Describe 'AzMySqlFlexibleServerDatabase' {
 
     It 'ViaIdentity' {
         {
+<<<<<<< HEAD:src/MySql/test/AzMySqlFlexibleServerDatabase.Tests.ps1
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/databases/$($env.databaseName)"
             $database = New-AzMySqlFlexibleServerDatabase -InputObject $ID -Charset latin1
             $database.Name | Should -Be $env.databaseName
@@ -44,6 +45,10 @@ Describe 'AzMySqlFlexibleServerDatabase' {
             $database.Charset | Should -Be "latin1"
 
             $database = Get-AzMySqlFlexibleServerDatabase -InputObject $database
+=======
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/databases/$($env.databaseName)"
+            $database = Get-AzMySqlFlexibleServerDatabase -InputObject $ID
+>>>>>>> 73e339caf274bda75f82966fa327b9cbf4e8af73:src/MySql/test/Get-AzMySqlFlexibleServerDatabase.Tests.ps1
             $database.Collation | Should -Be "latin1_swedish_ci"
             $database.Charset | Should -Be "latin1"
             
