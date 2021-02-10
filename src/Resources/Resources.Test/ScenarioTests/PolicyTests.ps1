@@ -67,11 +67,24 @@ function Test-PolicyDefinitionCRUD
     $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
     Assert-True { $builtIns.Count -eq 0 }
 
+    # make a policy definition from export format, get it back and validate
+    $expected = New-AzPolicyDefinition -Name test3 -Policy "$TestOutputRoot\SamplePolicyDefinitionFromExport.json" -Description $description
+    $actual = Get-AzPolicyDefinition -Name test3
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+
     # clean up
     $remove = Remove-AzPolicyDefinition -Name $policyName -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyDefinition -Name 'test2' -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name 'test3' -Force
     Assert-AreEqual True $remove
 }
 
