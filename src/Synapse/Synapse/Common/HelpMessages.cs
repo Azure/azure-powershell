@@ -267,6 +267,8 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
+        public const string Scope = "The Scope of the user.";
+
         public const string SignInName = "The email address or the user principal name of the user.";
 
         public const string ServicePrincipalName = "The ServicePrincipalName of the service principal.";

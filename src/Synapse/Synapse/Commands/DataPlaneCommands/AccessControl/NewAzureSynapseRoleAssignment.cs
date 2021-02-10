@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string NewByWorkspaceNameAndIdParameterSet = "NewByWorkspaceNameAndIdParameterSet";
         private const string NewByWorkspaceObjectAndNameParameterSet = "NewByWorkspaceObjectAndNameParameterSet";
         private const string NewByWorkspaceObjectAndIdParameterSet = "NewByWorkspaceObjectAndIdParameterSet";
-        private const string NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet = "NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet";
-        private const string NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet = "NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet";
+        private const string NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet = "NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet";
+        private const string NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet = "NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet";
         private const string NewByWorkspaceNameAndServicePrincipalNameParameterSet = "NewByWorkspaceNameAndServicePrincipalNameParameterSet";
         private const string NewByWorkspaceObjectAndServicePrincipalNameParameterSet = "NewByWorkspaceObjectAndServicePrincipalNameParameterSet";
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
@@ -63,12 +63,19 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
+        [ValidateNotNullOrEmpty]
+        public string RoleAssignmentId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
@@ -89,13 +96,20 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
         [Alias("Id", "PrincipalId")]
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndIdParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.Scope)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndIdParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.Scope)]
+        [ValidateNotNullOrEmpty]
+        public string Scope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -122,9 +136,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleAssignmentId, this.ObjectId)))
             {
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(this.RoleDefinitionId, this.ObjectId));
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(this.RoleAssignmentId, this.RoleDefinitionId, this.ObjectId,  this.Scope));
                 WriteObject(roleAssignmentDetails);
             }
         }

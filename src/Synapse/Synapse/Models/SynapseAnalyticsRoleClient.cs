@@ -17,7 +17,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsRoleClient
     {
-        private readonly AccessControlClient _accessControlClient;
+        private readonly RoleAssignmentsClient _roleAssignmentsClient;
+        private readonly RoleDefinitionsClient _roleDefinitionsClient;
         private readonly ActiveDirectoryClient _activeDirectoryClient;
 
         public SynapseAnalyticsRoleClient(string workspaceName, IAzureContext context)
@@ -29,45 +30,46 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
-            _accessControlClient = new AccessControlClient(uri, new AzureSessionCredential(context));
+            _roleAssignmentsClient = new RoleAssignmentsClient(uri, new AzureSessionCredential(context));
+            _roleDefinitionsClient = new RoleDefinitionsClient(uri, new AzureSessionCredential(context));
             _activeDirectoryClient = new ActiveDirectoryClient(context);
         }
 
         public IReadOnlyList<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string continuationToken = null)
         {
-            return _accessControlClient.GetRoleAssignments(roleDefinitionId, objectId, continuationToken).Value;
+            return (IReadOnlyList<RoleAssignmentDetails>)_roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, continuationToken).Value;
         }
 
         public RoleAssignmentDetails GetRoleAssignmentById(string roleAssignmentId)
         {
-            return _accessControlClient.GetRoleAssignmentById(roleAssignmentId);
+            return _roleAssignmentsClient.GetRoleAssignmentById(roleAssignmentId);
         }
 
-        public RoleAssignmentDetails CreateRoleAssignment(string roleDefinitionId, string objectId)
+        public RoleAssignmentDetails CreateRoleAssignment(string roleAssignmentId, string RoleDefinitionId, string objectId, string scope)
         {
-            RoleAssignmentOptions roleAssignmentOptions = new RoleAssignmentOptions(roleDefinitionId, objectId);
-            return _accessControlClient.CreateRoleAssignment(roleAssignmentOptions).Value;
+            //RoleAssignmentOptions roleAssignmentOptions = new RoleAssignmentOptions(roleAssignmentId, objectId);
+            return _roleAssignmentsClient.CreateRoleAssignment(roleAssignmentId, new Guid(RoleDefinitionId), new Guid(objectId), scope);
         }
 
         public void DeleteRoleAssignmentById(string roleAssignmentId)
         {
-            _accessControlClient.DeleteRoleAssignmentById(roleAssignmentId);
+            _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
         public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId)
         {
             string roleAssignmentId = roleDefinitionId + "-" + objectId;
-            _accessControlClient.DeleteRoleAssignmentById(roleAssignmentId);
+            _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
-        public Pageable<SynapseRole> GetRoleDefinitions()
+        public IReadOnlyList<SynapseRoleDefinition> GetRoleDefinitions()
         {
-            return _accessControlClient.GetRoleDefinitions();
+            return (IReadOnlyList<SynapseRoleDefinition>)_roleDefinitionsClient.ListRoleDefinitions();
         }
 
-        public SynapseRole GetRoleDefinitionById(string roleId)
+        public SynapseRoleDefinition GetRoleDefinitionById(string roleId)
         {
-            return _accessControlClient.GetRoleDefinitionById(roleId).Value;
+            return _roleDefinitionsClient.GetRoleDefinitionById(roleId).Value;
         }
 
         public string GetObjectIdFromSignInName(string signInName)
@@ -106,12 +108,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
-            var roleDefinition = _accessControlClient.GetRoleDefinitions().SingleOrDefault(element => element.Name == roleDefinitionName);
+            var roleDefinition = _roleDefinitionsClient.ListRoleDefinitions().Value.SingleOrDefault(element => element.Name == roleDefinitionName);
             if (roleDefinition == null)
             {
                 throw new InvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));
             }
-            return roleDefinition.Id;
+            return roleDefinition.Id.ToString();
         }
     }
 }

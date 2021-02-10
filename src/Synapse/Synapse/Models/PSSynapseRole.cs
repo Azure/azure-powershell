@@ -7,9 +7,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSynapseRole
     {
-        public PSSynapseRole(SynapseRole synapseRole)
+        public PSSynapseRole(SynapseRoleDefinition synapseRole)
         {
-            this.Id = synapseRole.Id;
+            this.Id = synapseRole.Id.ToString();
             this.Name = synapseRole.Name;
             this.IsBuiltIn = synapseRole.IsBuiltIn;
         }
@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string Name { get; set; }
 
-        public bool IsBuiltIn { get; set; }
+        public bool? IsBuiltIn { get; set; }
     }
 }
