@@ -67,11 +67,17 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [GetBackupFrequencyString](GetBackupFrequencyString.md)
 
 
+### [GetClientDatasourceType](GetClientDatasourceType.md)
+
+
 ### [GetDatasourceInfo](GetDatasourceInfo.md)
 
 
 ### [GetDatasourceSetInfo](GetDatasourceSetInfo.md)
 
+
+### [GetDatasourceTypes](GetDatasourceTypes.md)
+Prepares Datasource object for backup
 
 ### [GetRestoreType](GetRestoreType.md)
 
@@ -176,6 +182,9 @@ Creates new Schedule object
 ### [Update-AzDataProtectionResourceOperationGatekeeper](Update-AzDataProtectionResourceOperationGatekeeper.md)
 Updates a ResourceOperationGatekeeper resource belonging to a resource group.
 For example, updating tags for a resource.
+
+### [ValidateBackupSchedule](ValidateBackupSchedule.md)
+
 
 ### [ValidateRestoreOptions](ValidateRestoreOptions.md)
 

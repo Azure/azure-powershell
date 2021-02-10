@@ -14,6 +14,9 @@
     )
 
     process {
+        $clientDatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+        ValidateBackupSchedule -DatasourceType $clientDatasourceType -Schedule $Schedule
+
         $backupRuleIndex = -1
         foreach($index in (0..$Policy.PolicyRule.Length)){
             if($Policy.PolicyRule[$index].ObjectType -eq "AzureBackupRule"){

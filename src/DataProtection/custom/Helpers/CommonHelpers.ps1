@@ -63,3 +63,26 @@ function GetDatasourceInfo
 		return $DataSourceInfo
 	}
 }
+
+function GetClientDatasourceType
+{
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$ServiceDatasourceType
+	)
+
+	process
+	{
+		$datasourceTypes = GetDatasourceTypes
+		foreach($datasourceInfo in $datasourceTypes.supportedDatasourceTypes)
+		{
+			if($datasourceInfo.serviceDatasourceType -eq $ServiceDatasourceType)
+			{
+				return $datasourceInfo.clientDatasourceType
+			}
+		}
+		return ""
+	}
+}

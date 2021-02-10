@@ -114,17 +114,29 @@ function GetBackupFrequencyString {
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
 		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
-		$frequency
+		$frequency,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.Int32]
+		$count
 	)
 
 	process {
 		$freq = $frequency.ToString()
-		if($freq -eq "Weekly"){
+		if($freq -eq "Weekly")
+		{
 			return "P1W"
 		}
 
-		if($freq -eq "Daily"){
+		if($freq -eq "Daily")
+		{
 			return "P1D"
+		}
+
+		if($freq -eq "Hourly")
+		{
+			return "PT" + $count.ToString() + "H"
 		}
 	}
 }
@@ -140,5 +152,37 @@ function GetTaggingPriority {
 	process{
 		$priorityMap = @{"Default"=99;"Weekly"=20;"Monthly"=15;"Yearly"=10}
 		return $priorityMap[$Name]
+	}
+}
+
+function ValidateBackupSchedule
+{
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String[]]
+		$Schedule
+	)
+
+	process
+	{
+		$manifest = LoadManifest -DatasourceType $DatasourceType
+		if($manifest.policySetting.backupScheduleSupported -eq $false)
+		{
+			$message = "Adding Backup Schedule is not supported for Datasource Type " + $DatasourceType
+			throw $message
+		}
+
+		$backupFrequencyMap = @{"D"="Daily";"H"="Hourly";"W"="Weekly"}
+		if($manifest.policySetting.supportedBackupFrequency.Contains($backupFrequencyMap[$Schedule[0][-1]]) -eq $false)
+		{
+			$message = $backupFrequencyMap[$Schedule[0][-1]] + " Backup Schedule is not supported for Datasource Type " + $DatasourceType
+			throw $message
+		}
 	}
 }

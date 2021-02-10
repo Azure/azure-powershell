@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/getbackupfrequencystring
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/validatebackupschedule
 schema: 2.0.0
 ---
 
-# GetBackupFrequencyString
+# ValidateBackupSchedule
 
 ## SYNOPSIS
 
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-GetBackupFrequencyString [-frequency] <BackupFrequency> [-count] <Int32> [<CommonParameters>]
+ValidateBackupSchedule [-DatasourceType] <String> [-Schedule] <String[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,31 +41,31 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -count
+### -DatasourceType
 
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -frequency
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Schedule
+
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
