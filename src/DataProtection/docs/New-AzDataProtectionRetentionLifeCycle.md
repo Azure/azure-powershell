@@ -13,9 +13,9 @@ Creates new Lifecycle object
 ## SYNTAX
 
 ```
-New-AzDataProtectionRetentionLifeCycle -CopyOption <CopyOption> -SourceDataStore <DataStoreType>
- -SourceRetentionDurationCount <Int32> -SourceRetentionDurationType <DurationType>
- -TargetDataStore <DataStoreType> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataProtectionRetentionLifeCycle -SourceDataStore <DataStoreType> -SourceRetentionDurationCount <Int32>
+ -SourceRetentionDurationType <DurationType> [-CopyOption <CopyOption>] [-TargetDataStore <DataStoreType>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,7 +111,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

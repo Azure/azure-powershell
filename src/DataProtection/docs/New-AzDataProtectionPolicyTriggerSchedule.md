@@ -13,8 +13,8 @@ Creates new Schedule object
 ## SYNTAX
 
 ```
-New-AzDataProtectionPolicyTriggerSchedule -Frequency <BackupFrequency> -ScheduleDays <DateTime[]> [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzDataProtectionPolicyTriggerSchedule -IntervalCount <Int32> -IntervalType <BackupFrequency>
+ -ScheduleDays <DateTime[]> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Frequency
+### -IntervalCount
+interval count
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IntervalType
 Source Datastore
 
 ```yaml

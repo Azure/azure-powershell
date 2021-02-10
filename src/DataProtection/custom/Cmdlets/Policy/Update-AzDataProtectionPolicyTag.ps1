@@ -24,6 +24,27 @@
     )
 
     process{
+        # Validate the Criteria
+
+        $clientDatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+        $manifest = LoadManifest -DatasourceType $clientDatasourceType
+
+        if($manifest.policySettings.supportedRetentionTags.Contains($Name) -eq $false)
+        {
+            throw "Selected Retention Tag " + $Name  + " is not applicable for Datasource Type " + $clientDatasourceType
+        }
+
+        if($manifest.policySettings.disableCustomRetentionTag -eq $true)
+        {
+            foreach($criterion in $criteria)
+            {
+                if($criterion.AbsoluteCriterion -eq $null)
+                {
+                    throw "Only Absolute Criteria is supported for this policy"
+                }
+            }
+        }
+
         $parameterSetName = $PsCmdlet.ParameterSetName
         $backupRuleIndex = -1
         foreach($index in (0..$Policy.PolicyRule.Length))

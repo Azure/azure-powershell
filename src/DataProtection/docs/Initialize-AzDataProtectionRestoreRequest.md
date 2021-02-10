@@ -15,7 +15,7 @@ Prepares Restore Request object for backup
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreMode <RestoreMode> -RestoreTargetType <RestoreTargetType> -SourceDataStore <DataStoreType>
- [-TargetResourceId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RecoveryPoint <String>] [-TargetResourceId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPoint
+Recovery Point Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

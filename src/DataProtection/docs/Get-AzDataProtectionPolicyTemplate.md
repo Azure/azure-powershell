@@ -13,7 +13,7 @@ Prepares Datasource object for backup
 ## SYNTAX
 
 ```
-Get-AzDataProtectionPolicyTemplate -DatasourceType <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ PS C:\> {{ Add code here }}
 Datasource Type
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
 

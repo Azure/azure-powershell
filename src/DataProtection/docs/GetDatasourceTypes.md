@@ -1,23 +1,23 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/getbackupfrequencystring
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/getdatasourcetypes
 schema: 2.0.0
 ---
 
-# GetBackupFrequencyString
+# GetDatasourceTypes
 
 ## SYNOPSIS
-
+Prepares Datasource object for backup
 
 ## SYNTAX
 
 ```
-GetBackupFrequencyString [-frequency] <BackupFrequency> [-count] <Int32> [<CommonParameters>]
+GetDatasourceTypes [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Prepares Datasource object for backup
 
 ## EXAMPLES
 
@@ -41,31 +41,32 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -count
-
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -frequency
-
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -78,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSObject
 
 ## NOTES
 

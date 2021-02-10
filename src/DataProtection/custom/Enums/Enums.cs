@@ -6,7 +6,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     public enum DatasourceTypes
     {
         AzureDatabaseForPostgreSQL = 0,
-        AzureBlob
+        AzureBlob,
+        AzureDisk
     }
 
     public enum StorageSettingType
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     public enum DataStoreType
     {
         ArchiveStore = 0,
-        SnapshotStore,
+        OperationalStore,
         VaultStore
     }
 
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     public enum BackupFrequency
     {
         Daily = 0,
-        Weekly
+        Weekly,
+        Hourly
     }
 
     public enum AbsoluteTagCriteria

@@ -39,15 +39,15 @@
         }
 
         if($DaysOfWeek -ne $null){
-            $criteria.DaysOfTheWeek = $DaysOfWeek
+            $criteria.DaysOfTheWeek = $DaysOfWeek | Foreach-Object { $_ = $_.ToString(); $_ }
         }
 
         if($WeeksOfMonth -ne $null){
-            $criteria.WeeksOfTheMonth = $WeeksOfMonth
+            $criteria.WeeksOfTheMonth = $WeeksOfMonth | Foreach-Object { $_ = $_.ToString(); $_ }
         }
 
         if($MonthsOfYear -ne $null){
-            $criteria.MonthsOfYear = $MonthsOfYear
+            $criteria.MonthsOfYear = $MonthsOfYear | Foreach-Object { $_ = $_.ToString(); $_ }
         }
 
         if($DaysOfMonth -ne $null){
