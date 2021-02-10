@@ -9,7 +9,9 @@
     "supportedRetentionTags": [ "Daily", "Weekly" ],
     "supportedDatastoreTypes": [ "OperationalStore" ],
     "disableAddRetentionRule": false,
-    "disableCustomRetentionTag":  true,
+    "disableCustomRetentionTag": true,
+    "backupScheduleSupported": true,
+    "supportedBackupFrequency": [ "Daily", "Hourly" ],
     "defaultPolicy": {
       "DatasourceType": [ "Microsoft.Compute/disks" ],
       "ObjectType": "BackupPolicy",

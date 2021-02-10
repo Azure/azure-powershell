@@ -44,12 +44,6 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
-    # Target Datastore
-    ${TargetDataStore},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DurationType]
     # Retention Duration Type
     ${SourceRetentionDurationType},
@@ -60,7 +54,13 @@ param(
     # Retention Duration Count
     ${SourceRetentionDurationCount},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
+    # Target Datastore
+    ${TargetDataStore},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption]
     # CopyOption

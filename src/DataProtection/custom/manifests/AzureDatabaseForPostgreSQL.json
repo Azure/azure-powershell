@@ -10,6 +10,8 @@
     "supportedDatastoreTypes": [ "VaultStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
+    "supportedBackupFrequency": [ "Daily", "Weekly" ],
+    "backupScheduleSupported":  true,
     "defaultPolicy": {
       "DatasourceType": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
       "ObjectType": "BackupPolicy",

@@ -183,6 +183,9 @@ Creates new Schedule object
 Updates a ResourceOperationGatekeeper resource belonging to a resource group.
 For example, updating tags for a resource.
 
+### [ValidateBackupSchedule](ValidateBackupSchedule.md)
+
+
 ### [ValidateRestoreOptions](ValidateRestoreOptions.md)
 
 

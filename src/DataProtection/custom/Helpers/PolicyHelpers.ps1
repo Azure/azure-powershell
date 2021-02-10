@@ -154,3 +154,35 @@ function GetTaggingPriority {
 		return $priorityMap[$Name]
 	}
 }
+
+function ValidateBackupSchedule
+{
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String[]]
+		$Schedule
+	)
+
+	process
+	{
+		$manifest = LoadManifest -DatasourceType $DatasourceType
+		if($manifest.policySetting.backupScheduleSupported -eq $false)
+		{
+			$message = "Adding Backup Schedule is not supported for Datasource Type " + $DatasourceType
+			throw $message
+		}
+
+		$backupFrequencyMap = @{"D"="Daily";"H"="Hourly";"W"="Weekly"}
+		if($manifest.policySetting.supportedBackupFrequency.Contains($backupFrequencyMap[$Schedule[0][-1]]) -eq $false)
+		{
+			$message = $backupFrequencyMap[$Schedule[0][-1]] + " Backup Schedule is not supported for Datasource Type " + $DatasourceType
+			throw $message
+		}
+	}
+}

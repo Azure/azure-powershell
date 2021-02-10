@@ -27,7 +27,11 @@
 
         [Parameter(Mandatory=$false, HelpMessage='Target Restore Location')]
         [System.String]
-        ${TargetResourceId}
+        ${TargetResourceId},
+
+        [Parameter(Mandatory=$false, HelpMessage='Recovery Point Name')]
+        [System.String]
+        ${RecoveryPoint}
     )
 
     process
@@ -42,6 +46,7 @@
         {
             $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPointBasedRestoreRequest]::new()
             $restoreRequest.ObjectType = "AzureBackupRecoveryPointBasedRestoreRequest"
+            $restoreRequest.RecoveryPointId = $RecoveryPoint
         }
 
         # Initialize Restore Target Info based on Type provided
