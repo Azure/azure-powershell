@@ -132,4 +132,7 @@ directive:
        suppress-format: true
   - no-inline:
     - ResourceSettings
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/error = true;/g, '//error = true;');
 ```
