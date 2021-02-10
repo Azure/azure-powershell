@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Added support for -QueryString parameter in Test-Az*Deployments cmdlets
 * Fixed issue with dynamic parameters when New-Az*Deployments is used with -QueryString
+* Added support for policy export format to New-AzPolicyDefinition -Policy
 
 ## Version 3.2.1
 * Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because current mapping was breaking certain scenarios
