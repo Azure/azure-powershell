@@ -68,7 +68,7 @@ function setupEnv() {
 
     # Create the test group
     write-host "start to create test group."
-    New-AzResourceGroup -Name $resourceGroup -Location $location -Force
+    New-AzResourceGroup -Name $resourceGroup -Location $location
 
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force    
@@ -97,5 +97,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
     write-host "Clean resources you create for testing."
-    Remove-AzResourceGroup -Name $env.resourceGroup -Force
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }

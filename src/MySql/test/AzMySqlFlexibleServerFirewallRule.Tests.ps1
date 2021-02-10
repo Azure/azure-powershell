@@ -13,6 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'AzMySqlFlexibleServerFirewallRule' {
 
+    It 'List' {
+        { 
+            New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+            $rule = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
+            $rule.Count | Should -Be 1 
+        } | Should -Not -Throw
+    }
+
     It 'ViaName' {
         { 
             #CreateExpanded
@@ -58,7 +66,7 @@ Describe 'AzMySqlFlexibleServerFirewallRule' {
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 255.255.255.255
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
 
             $rule = Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
             $rule.StartIPAddress | Should -Be 0.0.0.0

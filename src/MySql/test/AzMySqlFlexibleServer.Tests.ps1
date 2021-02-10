@@ -55,7 +55,7 @@ Describe 'AzMySqlFlexibleServer' {
 
     It 'ViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             $server = Get-AzMySqlFlexibleServer -InputObject $ID
             $server.Name | Should -Be $env.flexibleServerName
 
@@ -66,13 +66,13 @@ Describe 'AzMySqlFlexibleServer' {
             $server.SkuTier | Should -Be 'GeneralPurpose'
             $server.SkuName | Should -Be 'Standard_D2ds_v4'
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/stop"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/stop"
             Stop-AzMySqlFlexibleServer -InputObject $ID
             
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/start"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/start"
             Start-AzMySqlFlexibleServer -InputObject $ID
             
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzMySqlFlexibleServer -InputObject $ID
             
             $restorePointInTime = (Get-Date).AddMinutes(-10)
