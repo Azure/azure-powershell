@@ -25,18 +25,22 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
     public static class AfdModelExtensions
     {
-        public static PSAfdProfile ToPSAfdProfile(this SdkAfdProfile sdkAfdProfile)
+        public static PSAfdCustomDomain ToPSAfdCustomDomain(this SdkAfdCustomDomain sdkAfdCustomDomain)
         {
-            return new PSAfdProfile
+            return new PSAfdCustomDomain
             {
-                Id = sdkAfdProfile.Id,
-                Name = sdkAfdProfile.Name,
-                Type = sdkAfdProfile.Type,
-                ProvisioningState = sdkAfdProfile.ProvisioningState,
-                Location = sdkAfdProfile.Location,
-                Tags = (Dictionary<string, string>)sdkAfdProfile.Tags,
-                ResourceState = sdkAfdProfile.ResourceState,
-                Sku = sdkAfdProfile.Sku.Name
+                Id = sdkAfdCustomDomain.Id,
+                Name = sdkAfdCustomDomain.Name,
+                Type = sdkAfdCustomDomain.Type,
+                ProvisioningState = sdkAfdCustomDomain.ProvisioningState,
+                HostName = sdkAfdCustomDomain.HostName,
+                CertificateType = sdkAfdCustomDomain.TlsSettings?.CertificateType,
+                MinimumTlsVersion = sdkAfdCustomDomain.TlsSettings?.MinimumTlsVersion.ToString(),
+                Secret = sdkAfdCustomDomain.TlsSettings?.Secret?.Id,
+                ValidationToken = sdkAfdCustomDomain.ValidationProperties?.ValidationToken,
+                ExpirationDate = sdkAfdCustomDomain.ValidationProperties?.ExpirationDate,
+                AzureDnsZone = sdkAfdCustomDomain.AzureDnsZone?.Id,
+                DomainValidationState = sdkAfdCustomDomain.DomainValidationState
             };
         }
 
@@ -56,22 +60,18 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
             };
         }
 
-        public static PSAfdCustomDomain ToPSAfdCustomDomain(this SdkAfdCustomDomain sdkAfdCustomDomain)
+        public static PSAfdProfile ToPSAfdProfile(this SdkAfdProfile sdkAfdProfile)
         {
-            return new PSAfdCustomDomain
+            return new PSAfdProfile
             {
-                Id = sdkAfdCustomDomain.Id,
-                Name = sdkAfdCustomDomain.Name,
-                Type = sdkAfdCustomDomain.Type,
-                ProvisioningState = sdkAfdCustomDomain.ProvisioningState,
-                HostName = sdkAfdCustomDomain.HostName,
-                CertificateType = sdkAfdCustomDomain.TlsSettings?.CertificateType,
-                MinimumTlsVersion = sdkAfdCustomDomain.TlsSettings?.MinimumTlsVersion.ToString(),
-                Secret = sdkAfdCustomDomain.TlsSettings?.Secret?.Id,
-                ValidationToken = sdkAfdCustomDomain.ValidationProperties?.ValidationToken,
-                ExpirationDate = sdkAfdCustomDomain.ValidationProperties?.ExpirationDate,
-                AzureDnsZone = sdkAfdCustomDomain.AzureDnsZone?.Id,
-                DomainValidationState = sdkAfdCustomDomain.DomainValidationState
+                Id = sdkAfdProfile.Id,
+                Name = sdkAfdProfile.Name,
+                Type = sdkAfdProfile.Type,
+                ProvisioningState = sdkAfdProfile.ProvisioningState,
+                Location = sdkAfdProfile.Location,
+                Tags = (Dictionary<string, string>)sdkAfdProfile.Tags,
+                ResourceState = sdkAfdProfile.ResourceState,
+                Sku = sdkAfdProfile.Sku.Name
             };
         }
     }
