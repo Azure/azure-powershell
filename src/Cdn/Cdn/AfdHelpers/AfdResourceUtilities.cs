@@ -12,25 +12,27 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
     public static class AfdResourceUtilities
     {
-        private const string SubscriptionId = "subscriptionId";
-        private const string ResourceGroup = "resourceGroup";
-        private const string Profile = "profile";
-
-        public static string AfdProfilePattern = @"\/subscriptions\/(?<{0}>.*)\/resourcegroups\/(?<{1}>.*)\/providers\/Microsoft\.Cdn\/profiles\/(?<{2}>.*)";
-
-        public static string GetResourceGroupFromAfdProfile(PSArmResource afdProfile)
+        public static string GetResourceName(this ResourceIdentifier resourceId, string resourceType)
         {
-            string formattedString = string.Format(AfdProfilePattern, SubscriptionId, ResourceGroup, Profile);
+            string[] splitNames = resourceId.ToString().Split(new[] { '/' });
 
-            Match match = Regex.Match(afdProfile.Id, formattedString, RegexOptions.IgnoreCase);
+            for (int i = 0; i < splitNames.Length; i++)
+            {
+                if (splitNames[i].Equals(resourceType, StringComparison.OrdinalIgnoreCase))
+                {
+                    return splitNames[i + 1];
+                }
+            }
 
-            return match.Groups[ResourceGroup].Value;
+            return string.Empty;
         }
     }
 }

@@ -11,10 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdCustomDomain;
 using Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint;
 using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
 using System.Collections.Generic;
 
+using SdkAfdCustomDomain = Microsoft.Azure.Management.Cdn.Models.AFDDomain;
 using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 
@@ -51,6 +53,25 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 HostName = sdkAfdEndpoint.HostName,
                 OriginResponseTimeoutSeconds = (int)sdkAfdEndpoint.OriginResponseTimeoutSeconds,
                 EnabledState = sdkAfdEndpoint.EnabledState
+            };
+        }
+
+        public static PSAfdCustomDomain ToPSAfdCustomDomain(this SdkAfdCustomDomain sdkAfdCustomDomain)
+        {
+            return new PSAfdCustomDomain
+            {
+                Id = sdkAfdCustomDomain.Id,
+                Name = sdkAfdCustomDomain.Name,
+                Type = sdkAfdCustomDomain.Type,
+                ProvisioningState = sdkAfdCustomDomain.ProvisioningState,
+                HostName = sdkAfdCustomDomain.HostName,
+                CertificateType = sdkAfdCustomDomain.TlsSettings?.CertificateType,
+                MinimumTlsVersion = sdkAfdCustomDomain.TlsSettings?.MinimumTlsVersion.ToString(),
+                Secret = sdkAfdCustomDomain.TlsSettings?.Secret?.Id,
+                ValidationToken = sdkAfdCustomDomain.ValidationProperties?.ValidationToken,
+                ExpirationDate = sdkAfdCustomDomain.ValidationProperties?.ExpirationDate,
+                AzureDnsZone = sdkAfdCustomDomain.AzureDnsZone?.Id,
+                DomainValidationState = sdkAfdCustomDomain.DomainValidationState
             };
         }
     }

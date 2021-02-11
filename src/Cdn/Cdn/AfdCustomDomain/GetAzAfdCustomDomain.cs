@@ -11,9 +11,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdCustomDomain;
+using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
@@ -22,17 +22,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdEndpoint))]
-    public class GetAzAfdEndpoint : AzureCdnCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdCustomDomain))]
+    public class GetAzAfdCustomDomain : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdCustomDomainName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
+        public string CustomDomainName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNull]
         public PSAfdProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
@@ -40,9 +39,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
-        public string ResourceGroupName {get; set;}
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceId, ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         {
             try
             {
-                switch (ParameterSetName)
+               switch (ParameterSetName)
                 {
                     case FieldsParameterSet:
                         this.FieldsParameterSetCmdlet();
@@ -60,32 +59,33 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                     case ObjectParameterSet:
                         this.ObjectParameterSetCmdlet();
                         break;
-                    case ResourceIdParameterSet:
+                    case ResourceIdParameterSet: 
                         this.ResourceIdParameterSetCmdlet();
-                        break;
+                        break;     
                 }
             }
             catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponse)
             {
                 throw new PSArgumentException(errorResponse.Response.Content);
             }
+
         }
 
         private void FieldsParameterSetCmdlet()
         {
-            if (AfdUtilities.IsValuePresent(this.EndpointName))
+            if (AfdUtilities.IsValuePresent(this.CustomDomainName))
             {
-                PSAfdEndpoint afdEndpoint = CdnManagementClient.AFDEndpoints.Get(this.ResourceGroupName, this.ProfileName, this.EndpointName).ToPSAfdEndpoint();
+                PSAfdCustomDomain psAfdCustomDomain = CdnManagementClient.AFDCustomDomains.Get(this.ResourceGroupName, this.ProfileName, this.CustomDomainName).ToPSAfdCustomDomain();
 
-                WriteObject(afdEndpoint);
-            } 
+                WriteObject(psAfdCustomDomain);
+            }
             else
             {
-                List<PSAfdEndpoint> afdEndpoints = CdnManagementClient.AFDEndpoints.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                                   .Select(afdEndpoint => afdEndpoint.ToPSAfdEndpoint())
-                                                   .ToList();
+                List<PSAfdCustomDomain> psAfdCustomDomains = CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                               .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
+                               .ToList();
 
-                WriteObject(afdEndpoints);
+                WriteObject(psAfdCustomDomains);
             }
         }
 
@@ -96,24 +96,24 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
 
-            List<PSAfdEndpoint> afdEndpoints = CdnManagementClient.AFDEndpoints.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                               .Select(afdEndpoint => afdEndpoint.ToPSAfdEndpoint())
-                                               .ToList();
+            List<PSAfdCustomDomain> psAfdCustomDomains = CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                                .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
+                                .ToList();
 
-            WriteObject(afdEndpoints);
+            WriteObject(psAfdCustomDomains);
         }
 
         private void ResourceIdParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdCustomDomainResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
-            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
+            this.CustomDomainName = parsedAfdCustomDomainResourceId.ResourceName;
+            this.ProfileName = parsedAfdCustomDomainResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdCustomDomainResourceId.ResourceGroupName;
 
-            PSAfdEndpoint afdEndpoint = CdnManagementClient.AFDEndpoints.Get(this.ResourceGroupName, this.ProfileName, this.EndpointName).ToPSAfdEndpoint();
+            PSAfdCustomDomain psAfdCustomDomain = CdnManagementClient.AFDCustomDomains.Get(this.ResourceGroupName, this.ProfileName, this.CustomDomainName).ToPSAfdCustomDomain();
 
-            WriteObject(afdEndpoint);
+            WriteObject(psAfdCustomDomain);
         }
     }
 }

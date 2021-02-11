@@ -22,15 +22,17 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
     public static class HelpMessageConstants
     {
-        public const string ResourceGroupName = "The resource group name.";
-        public const string AfdProfileName = "Azure Front Door profile name.";
-        public const string AfdEndpointName = "Azure Front Door endpoint name.";
-        public const string AfdProfileObjectDescription = "Azure Front Door profile object.";
+        public const string AfdCustomDomainName = "The Azure Front Door custom domain name.";
+        public const string AfdEndpointName = "The Azure Front Door endpoint name.";
+        public const string AfdProfileName = "The Azure Front Door profile name.";
+        public const string AfdProfileObjectDescription = "The Azure Front Door profile object.";
+        public const string ResourceId = "The Azure resource id.";
+        public const string ResourceGroupName = "The Azure resource group name.";
     }
 
-    public static class AfdSku
+    public static class AfdSkuConstants
     {
-        public const string StandardAzureFrontDoor = "Standard_AzureFrontDoor";
         public const string PremiumAzureFrontDoor = "Premium_AzureFrontDoor";
+        public const string StandardAzureFrontDoor = "Standard_AzureFrontDoor"; 
     }
 }
