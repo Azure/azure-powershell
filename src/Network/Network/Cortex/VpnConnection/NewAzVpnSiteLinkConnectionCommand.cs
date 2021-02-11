@@ -31,8 +31,8 @@
         public PSVpnSiteLink VpnSiteLink { get; set; }
 
         [Parameter(
-                    Mandatory = false,
-                    HelpMessage = "The shared key required to set this link connection up.")]
+            Mandatory = false,
+            HelpMessage = "The shared key required to set this link connection up.")]
         [ValidateNotNullOrEmpty]
         public SecureString SharedKey { get; set; }
 
@@ -52,8 +52,8 @@
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
+            Mandatory = false,
+            HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
@@ -86,8 +86,8 @@
         public PSResourceId[] EgressNatRule { get; set; }
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "The connection mode for this link connection.")]
+            Mandatory = false,
+            HelpMessage = "The connection mode for this link connection.")]
         [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
         public string VpnLinkConnectionMode { get; set; }
 
@@ -103,7 +103,8 @@
                 UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
                 RoutingWeight = Convert.ToInt32(this.RoutingWeight),
                 IngressNatRules = IngressNatRule?.ToList(),
-                EgressNatRules = EgressNatRule?.ToList()
+                EgressNatRules = EgressNatRule?.ToList(),
+                VpnLinkConnectionMode = this.VpnLinkConnectionMode
             };
 
             if (this.VpnSiteLink == null)
@@ -128,9 +129,6 @@
             vpnSiteLinkConnection.ConnectionBandwidth = this.ConnectionBandwidth > 0 ?
                 Convert.ToInt32(this.ConnectionBandwidth) :
                 20;
-
-            //// Set Connection Mode to "Default" if not specified
-            vpnSiteLinkConnection.VpnLinkConnectionMode = !String.IsNullOrEmpty(this.VpnLinkConnectionMode) ? this.VpnLinkConnectionMode : "Default";
 
             WriteObject(vpnSiteLinkConnection);
         }
