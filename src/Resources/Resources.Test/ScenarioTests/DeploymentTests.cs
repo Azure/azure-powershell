@@ -66,6 +66,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewFailedSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewFailedSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
         public void TestNewMGDeploymentTemplateSpec()
         {
             TestRunner.RunTestScript("Test-NewMGDeploymentFromTemplateSpec");
