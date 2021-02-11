@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -29,11 +29,11 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.2 or above.
 
 The suggestions must be activated:
 - Enable-AzPredictor:  Activate the suggestions
-- Disable-AzPredictor: Disable the suggestions   
+- Disable-AzPredictor: Disable the suggestions
 
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
