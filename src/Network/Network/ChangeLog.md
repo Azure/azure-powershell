@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
 * Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
     - `Get-VpnSiteLinkConnectionIkeSa`
 
