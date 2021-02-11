@@ -8,43 +8,58 @@ Locale: en-US
 
 # Az.ResourceMover Module
 ## Description
-Microsoft Azure PowerShell: ResourceMover cmdlets.
-This topic provides an overview of Azure Resource Mover to move Azure resources across regions using Azure PowerShell cmdlets.
+Microsoft Azure PowerShell: ResourceMover cmdlets
 
 ## Az.ResourceMover Cmdlets
 ### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
-Adding a resource to the Move collection.
+Creates or updates a Move Resource in the move collection.
 
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
-Get details of the Move Collection.
+Gets the move collection.
 
 ### [Get-AzResourceMoverMoveResource](Get-AzResourceMoverMoveResource.md)
-Get details of the resources in Move collection.
+Gets the Move Resource.
+
+### [Get-AzResourceMoverRequiredForResources](Get-AzResourceMoverRequiredForResources.md)
+List of the move resources for which an arm resource is required for.
 
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
-Get list of unresolved dependent resources for a Move collection.
+Gets a list of unresolved dependencies.
+
+### [Invoke-AzResourceMoverBulkRemove](Invoke-AzResourceMoverBulkRemove.md)
+Removes the set of move resources included in the request body from move collection.
+The orchestration is done by service.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
-Commit the resources in the Move collection.
+Commits the set of resources included in the request body.
+The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverDiscard](Invoke-AzResourceMoverDiscard.md)
-Discards the move of the resources.
+Discards the set of resources included in the request body.
+The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverInitiateMove](Invoke-AzResourceMoverInitiateMove.md)
-Initiate Move for the resources in the Move collection.
+Moves the set of resources included in the request body.
+The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverPrepare](Invoke-AzResourceMoverPrepare.md)
-Initiate prepare for the resources in the Move collection.
+Initiates prepare for the set of resources included in the request body.
+The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-Create a new Move collection within a subscription.
+Creates or updates a move collection.
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
-Remove resources from the Move collection.
+Deletes a move collection.
 
 ### [Remove-AzResourceMoverMoveResource](Remove-AzResourceMoverMoveResource.md)
-Remove the resource from the Move Collection within the specified subscription.
+Deletes a Move Resource from the move collection.
 
 ### [Resolve-AzResourceMoverMoveCollectionDependency](Resolve-AzResourceMoverMoveCollectionDependency.md)
-Computes, resolves and validate the dependencies of the moveresources in the Move collection.
+Computes, resolves and validate the dependencies of the moveResources in the move collection.
 

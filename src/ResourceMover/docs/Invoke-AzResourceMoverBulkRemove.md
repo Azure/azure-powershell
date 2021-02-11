@@ -1,92 +1,89 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
 schema: 2.0.0
 ---
 
-# Invoke-AzResourceMoverDiscard
+# Invoke-AzResourceMoverBulkRemove
 
 ## SYNOPSIS
-Discards the set of resources included in the request body.
-The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
+Removes the set of move resources included in the request body from move collection.
+The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -MoveResource <String[]>
- [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <MoveResourceInputType>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Discards the set of resources included in the request body.
-The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
+Removes the set of move resources included in the request body from move collection.
+The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ## EXAMPLES
 
-### Example 1: Validate the dependecies before Discard of  the resources.
+### Example 1: Validate the dependecies before remove of the Move Resources from Move Collection
 ```powershell
-PS C:\> Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
+PS C:\> Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 
 AdditionalInfo : 
 Code           : 
 Detail         : 
-EndTime        : 2/10/2021 12:39:48 PM
-Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/095f3d5
-                 1-ebd1-4c5b-9a65-d78ebe3ac345
-Message        : 
-Name           : 095f3d51-ebd1-4c5b-9a65-d78ebe3ac345
-Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
-StartTime      : 2/10/2021 12:39:37 PM
-Status         : Succeeded
-
-```
-
-Validate the dependecies before Discard of  the resources.
-
-### Example 2: Discards the move of the resources using "MoveResource Name" as input.
-```powershell
-PS C:\> Invoke-AzResourceMoverDiscard -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
-
-AdditionalInfo : 
-Code           : 
-Detail         : 
-EndTime        : 2/10/2021 12:56:33 PM
+EndTime        : 2/10/2021 12:52:28 PM
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralu
-                 s-demoRMS/operations/290472e3-c8de-4c55-aba1-3a34a7a4ab38
+                 s-demoRMS/operations/b4e3f140-b36b-4fd5-a507-b1e663ecf7a3
 Message        : 
-Name           : 290472e3-c8de-4c55-aba1-3a34a7a4ab38
+Name           : b4e3f140-b36b-4fd5-a507-b1e663ecf7a3
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
-StartTime      : 2/10/2021 12:55:21 PM
+StartTime      : 2/10/2021 12:52:28 PM
 Status         : Succeeded
 
 ```
 
-Discards the move of the resources using "MoveResource Name" as input.
+Validate the dependecies before remove of the move resources from Move Collection.
 
-### Example 3: Discards the move of the resources using "SourceARMID" as input.
+### Example 2: Remove the Move Resource from Move Collection using "MoveResource Name" as input
 ```powershell
-PS C:\>  Invoke-AzResourceMoverDiscard -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId"
 
 AdditionalInfo : 
 Code           : 
 Detail         : 
-EndTime        : 2/10/2021 1:01:32 PM
+EndTime        : 2/10/2021 12:58:10 PM
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralu
-                 s-demoRMS/operations/955fd43c-10b6-481e-888b-d26d6ec42aea
+                 s-demoRMS/operations/d4827071-b797-45c5-b88c-00ddd7818d42
 Message        : 
-Name           : 955fd43c-10b6-481e-888b-d26d6ec42aea
+Name           : d4827071-b797-45c5-b88c-00ddd7818d42
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
-StartTime      : 2/10/2021 1:00:00 PM
+StartTime      : 2/10/2021 12:57:08 PM
 Status         : Succeeded
-
-
 ```
 
-Discards the move of the resources using "SourceARMID" as input.
+Remove the Move Resource from Move Collection using "MoveResource Name" as input
+
+### Example 3: Remove the Move Resource from Move Collection using "SourceARMID" as input
+```powershell
+Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+
+AdditionalInfo : 
+Code           : 
+Detail         : 
+EndTime        : 2/10/2021 1:05:13 PM
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralu
+                 s-demoRMS/operations/7b6904e2-fc3f-400d-b248-8908fcb282fb
+Message        : 
+Name           : 7b6904e2-fc3f-400d-b248-8908fcb282fb
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 2/10/2021 1:05:00 PM
+Status         : Succeeded
+```
+
+Remove the Move Resource from Move Collection using "SourceARMID" as input
 
 ## PARAMETERS
 
@@ -120,6 +117,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MoveCollectionName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveResource
 Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
 
@@ -128,7 +140,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,21 +156,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The Move Collection Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: MoveCollectionName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The Resource Group Name.
+.
 
 ```yaml
 Type: System.String
