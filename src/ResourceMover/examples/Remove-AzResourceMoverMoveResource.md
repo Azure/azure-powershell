@@ -1,4 +1,4 @@
-### Example 1: Remove one Move Rresource from the Move Collection
+### Example 1: Remove one Move Rresource from the Move Collection.
 ```powershell
 PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 
@@ -16,4 +16,4 @@ Status         : Succeeded
 
 ```
 
- Remove one Move Rresource from the Move Collection
+ Remove one Move Rresource from the Move Collection.

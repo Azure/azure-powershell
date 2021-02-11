@@ -7,4 +7,4 @@ Etag                                   Location      Name                       
 "0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
 ```
 
-Create a new Move collection within a subscription.
+Create a new Move Collection.

@@ -1,4 +1,4 @@
-### Example 1: Remove the Move Collection from the specified subscription
+### Example 1: Remove the Move Collection.
 ```powershell
 PS C:\> Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
 
@@ -15,4 +15,4 @@ StartTime      :
 Status         : Succeeded
 ```
 
-Remove the Move collection from the specified subscription.
+Remove the Move Collection.

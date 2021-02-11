@@ -20,7 +20,7 @@ Status         : Succeeded
 Validate the dependecies before Initiate Move for the resources.
 
 
-### Example 2: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input
+### Example 2: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input.
 ```powershell
 PS C:\>Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" 
 
@@ -40,7 +40,7 @@ Status         : Succeeded
 
 Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input.
 
-### Example 3: Initiate Move for the set of resources in the Move Collection using "SourceARMID" as input
+### Example 3: Initiate Move for the set of resources in the Move Collection using "SourceARMID" as input.
 ```powershell
 PS C:\> Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
 

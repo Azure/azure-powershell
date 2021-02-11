@@ -1,4 +1,4 @@
-### Example 1: Validate the dependecies before commit of the resources
+### Example 1: Validate the dependecies before commit of the resources.
 ```powershell
 PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 
@@ -18,7 +18,7 @@ Status         : Succeeded
 
 Validate the dependecies before commit of the resources.
 
-### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input
+### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input.
 ```powershell
 PS C:\>Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
 
@@ -37,9 +37,9 @@ Status         : Succeeded
 
 ```
 
-Commit the set of resources in the Move Collection using "MoveResource Name" as input
+Commit the set of resources in the Move Collection using "MoveResource Name" as input.
 
-### Example 3: Commit the set of resources in the Move Collection using "SourceARMID" as input
+### Example 3: Commit the set of resources in the Move Collection using "SourceARMID" as input.
 ```powershell
 PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
 
@@ -58,4 +58,4 @@ Status         : Succeeded
 
 ```
 
-Commit the set of resources in the Move Collection using "SourceARMID" as input
+Commit the set of resources in the Move Collection using "SourceARMID" as input.

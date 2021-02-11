@@ -1,4 +1,4 @@
-### Example 1: {{ Get a list of required resource ARMIDs that need to be added with the specified resource }}
+### Example 1: Get a list of required resource ARMIDs that are required to be added, to add the specified resource.
 ```powershell
 PS C:\> Get-AzResourceMoverRequiredForResources -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups"
 
@@ -8,4 +8,4 @@ PS C:\> Get-AzResourceMoverRequiredForResources -MoveCollectionName "PS-centralu
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
 ```
 
-Get a list of required resource ARMIDs that needs to be added with the specified resource
+Get a list of required resource ARMIDs that are required to be added, to add the specified resource.
