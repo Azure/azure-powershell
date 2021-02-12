@@ -271,11 +271,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (countOrIndex > 0)
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(clientId, session,  countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(clientId, session, countOrIndex));
             }
             else
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(clientId, session,  -countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(clientId, session, -countOrIndex));
             }
         }
 

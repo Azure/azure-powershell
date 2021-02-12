@@ -20,6 +20,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public enum SuggestionDisplayMode
     {
         /// <summary>
+        /// The display mode is unknown.
+        /// </summary>
+        Unknown,
+
+        /// <summary>
         /// The suggestion is displayed in a list.
         /// </summary>
         ListView,

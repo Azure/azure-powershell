@@ -310,7 +310,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     properties.Add("SuggestionCount", telemetryData.SuggestionCountOrIndex.ToString(CultureInfo.InvariantCulture));
                     break;
                 default:
-                    throw new NotImplementedException($"No implementation for the mode {telemetryData.DisplayMode.ToString()}");
+                    break;
             };
 
             SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/DisplaySuggestion", properties);
