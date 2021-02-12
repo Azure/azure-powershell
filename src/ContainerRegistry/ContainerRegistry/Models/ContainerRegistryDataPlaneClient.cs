@@ -21,17 +21,11 @@ using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
-        private const string _defaultGrantType = "access_token";
-        private const string _defaultScope = "registry:catalog:*";
-        private const string _https = "https://";
-        private const string _refreshTokenKey = "AcrRefreshToken";
-
         private AzureContainerRegistryClient _client;
         private string _accessToken = default(string);
         private string _endPoint;
@@ -61,13 +55,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return _client;
         }
 
-        public string Authenticate(string scope = _defaultScope)
+        public string Authenticate(string scope = DataPlaneConstants.DefaultScope)
         {
             _accessToken = GetToken(scope);
             return _accessToken;
         }
 
-        private string GetToken(string key)
+        public string GetToken(string key)
         {
             AcrTokenCache cache;
             if (!AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache))
@@ -79,7 +73,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             AcrToken value;
             if (!cache.TryGetToken(key, out value) || value.IsExpired(_minutesBeforeExpiration))
             {
-                string token = key.Equals(_refreshTokenKey) ? GetRefreshToken() : GetAccessToken(key);
+                string token = key.Equals(DataPlaneConstants.RefreshTokenKey) ? GetRefreshToken() : GetAccessToken(key);
                 try
                 {
                     value = new AcrToken(token);
@@ -97,7 +91,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public void SetEndPoint(string RegistryName)
         {
             _endPoint = RegistryName.ToLower() + '.' + _suffix;
-            _client.LoginUri = _https + _endPoint;
+            _client.LoginUri = Constants.Https + _endPoint;
         }
 
         public string GetEndPoint()
@@ -113,11 +107,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                    .AccessToken;
         }
 
-        public string GetRefreshToken()
+        private string GetRefreshToken()
         {
             return GetClient()
                     .RefreshTokens
-                    .GetFromExchangeAsync(grantType: _defaultGrantType, service: _endPoint, accessToken: GetArmAccessToken())
+                    .GetFromExchangeAsync(grantType: DataPlaneConstants.DefaultGrantType, service: _endPoint, accessToken: GetArmAccessToken())
                     .GetAwaiter()
                     .GetResult()
                     .RefreshTokenProperty;
@@ -127,7 +121,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             return GetClient()
                     .AccessTokens
-                    .GetAsync(service: _endPoint, scope: scope, refreshToken: GetToken(_refreshTokenKey))
+                    .GetAsync(service: _endPoint, scope: scope, refreshToken: GetToken(DataPlaneConstants.RefreshTokenKey))
                     .GetAwaiter()
                     .GetResult()
                     .AccessTokenProperty;
