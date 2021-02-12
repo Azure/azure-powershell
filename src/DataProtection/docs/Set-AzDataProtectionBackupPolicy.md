@@ -8,26 +8,17 @@ schema: 2.0.0
 # Set-AzDataProtectionBackupPolicy
 
 ## SYNOPSIS
-Creates or Updates a backup policy belonging to a backup vault
+
 
 ## SYNTAX
 
-### PutExpanded (Default)
 ```
-Set-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DatasourceType <String[]>] [-ObjectType <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Put
-```
-Set-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- -Parameter <IBaseBackupPolicyResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzDataProtectionBackupPolicy [-ResourceGroupName] <String> [-VaultName] <String> [-Name] <String>
+ [-Policy] <IBackupPolicy> [[-SubscriptionId] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or Updates a backup policy belonging to a backup vault
+
 
 ## EXAMPLES
 
@@ -51,84 +42,39 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -DatasourceType
-Type of datasource for the backup management
-
-```yaml
-Type: System.String[]
-Parameter Sets: PutExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-.
+Policy Name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: BackupPolicyName
+Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ObjectType
-.
+### -Policy
+Policy Object
+To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: PutExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-BaseBackupPolicy resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource
-Parameter Sets: Put
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -136,14 +82,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+SubscriptionId Id
 
 ```yaml
 Type: System.String
@@ -151,14 +97,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+Vault Name
 
 ```yaml
 Type: System.String
@@ -166,38 +112,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -208,11 +123,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource
+### System.Object
 
 ## NOTES
 
@@ -223,9 +136,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
+POLICY <IBackupPolicy>: Policy Object
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
+  - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backptype i.e Full/Incremental/Logs etc
+    - `Name <String>`: 
+    - `ObjectType <String>`: 
+    - `BackupParameterObjectType <String>`: Type of the specific object - used for deserializing
+    - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+    - `DataStoreType <DataStoreTypes>`: type of datastore; SnapShot/Hot/Archive
+    - `TriggerObjectType <String>`: Type of the specific object - used for deserializing
+    - `Lifecycle <ISourceLifeCycle[]>`: 
+      - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
+      - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
+      - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+      - `SourceDataStoreType <DataStoreTypes>`: type of datastore; SnapShot/Hot/Archive
+      - `[TargetDataStoreCopySetting <ITargetCopySetting[]>]`: 
+        - `CopyAfterObjectType <String>`: Type of the specific object - used for deserializing
+        - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+        - `DataStoreType <DataStoreTypes>`: type of datastore; SnapShot/Hot/Archive
+    - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
 

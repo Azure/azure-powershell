@@ -9,16 +9,21 @@ function Initialize-AzDataProtectionBackupInstance {
     param(
         [Parameter(Mandatory=$false, HelpMessage='Policy Id to be assiciated to Datasource')]
         [System.String]
+        [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/providers/(?<provider>.+)/backupVaults/(?<vault>.+)/backupPolicies/(?<name>.+)")]
         ${PolicyId},
 
         [Parameter(Mandatory=$false, HelpMessage='ARM ID of the datasource to be protected')]
         [System.String]
+        [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/(?<id>.+)")]
         ${DatasourceId},
 
-        [Parameter( Mandatory, HelpMessage='Datasource Type')]
+        [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet("AzureDatabaseForPostgreSQL", "AzureBlob", IgnoreCase = $true)]
-        ${DatasourceType}
+        ${DatasourceType},
+
+        [Parameter(Mandatory, HelpMessage='Location of the Datasource to be protected.')]
+        [System.String]
+        ${DatasourceLocation}
     )
 
     process {
@@ -29,17 +34,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
         {
-            $backupInstance.DataSourceInfo.ObjectType = "Datasource"
-            $backupInstance.DataSourceInfo.ResourceId = $DatasourceId
-            $backupInstance.DataSourceInfo.ResourceLocation = ""
-            $backupInstance.DataSourceInfo.ResourceName = $DatasourceId.Split("/")[-1]
-            $backupInstance.DataSourceInfo.ResourceType = $manifest.resourceType
-            $backupInstance.DataSourceInfo.ResourceUri = ""
-            if($manifest.isProxyResource -eq $false)
-            {
-                $backupInstance.DataSourceInfo.ResourceUri = $DatasourceId
-            }
-            $backupInstance.DataSourceInfo.Type = $manifest.datasourceType
+            $backupInstance.DataSourceInfo = GetDatasourceInfo -ResourceId $DatasourceId -ResourceLocation $DatasourceLocation -DatasourceType $DatasourceType
 
             if($manifest.isProxyResource -eq $true)
             {

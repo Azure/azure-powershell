@@ -13,8 +13,8 @@ Prepares Backup instance object for backup
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> [-DatasourceId <String>]
- [-PolicyId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
+ [-DatasourceId <String>] [-PolicyId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +51,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceLocation
+Location of the Datasource to be protected.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
