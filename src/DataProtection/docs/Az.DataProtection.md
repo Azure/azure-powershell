@@ -122,7 +122,7 @@ Deletes a ResourceOperationGateKeeper resource from the resource group.
 
 
 ### [Set-AzDataProtectionBackupPolicy](Set-AzDataProtectionBackupPolicy.md)
-Creates or Updates a backup policy belonging to a backup vault
+
 
 ### [Set-AzDataProtectionBackupVault](Set-AzDataProtectionBackupVault.md)
 Creates or updates a BackupVault resource belonging to a resource group.
