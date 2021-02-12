@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     this.VM.OSProfile.WindowsConfiguration.PatchSettings.PatchMode = this.PatchMode;
 
-                    if (this.IsParameterBound(c => c.EnableHotpatching))
+                    if (this.IsParameterBound(c => c.EnableHotpatching) && this.PatchMode == "AutomaticByPlatform") 
                     {
                         this.VM.OSProfile.WindowsConfiguration.PatchSettings.EnableHotpatching = this.EnableHotpatching;
                     }
