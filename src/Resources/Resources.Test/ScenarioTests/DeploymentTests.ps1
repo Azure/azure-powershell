@@ -231,7 +231,7 @@ function Test-NewMGDeploymentFromTemplateSpec
 	try
 	{
 		#Create New MG
-		New-AzManagementGroup -GroupName $managementGroupId
+		New-AzManagementGroup -GroupName $managementGroupId -ParentId "/providers/Microsoft.Management/managementGroups/AzDeploymentsPSTest"
 
 		# Prepare our RG and basic template spec:
 
