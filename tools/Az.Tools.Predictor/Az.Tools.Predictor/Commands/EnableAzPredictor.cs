@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// A cmdlet that enables Az Predictor with default settings.
     /// </summary>
-    [Cmdlet("Enable", "AzPredictor")]
+    [Cmdlet("Enable", "AzPredictor"), OutputType(typeof(bool))]
     public sealed class EnableAzPredictor : PSCmdlet
     {
         private static readonly string[] _EnableStatements = {
@@ -34,7 +34,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         [Parameter(Position = 0)]
         [ValidateSet(nameof(SessionParameterValue.All), nameof(SessionParameterValue.Current))]
-        public string Session { get; set; }
+        public SessionParameterValue Session { get; set; }
+
+        /// <summary>
+        /// Indicates whether the user would like to receive output.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <inheritdoc/>
         protected override void ProcessRecord()
@@ -42,13 +48,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var scriptToRun = new StringBuilder();
             var _ = scriptToRun.Append(EnableAzPredictor._EnableStatements[1]);
 
-            if (string.Equals(Session, nameof(SessionParameterValue.All), StringComparison.OrdinalIgnoreCase))
+            if (Session == SessionParameterValue.All)
             {
                 _ = scriptToRun.Append($";Add-Content -Path $PROFILE -Value \"`n{string.Join("`n", EnableAzPredictor._EnableStatements)}\" -NoNewline -Encoding UTF8 -Force")
                                 .Append($";Write-Host \"User profile ($PROFILE) has been updated.`n\"");
             }
 
             InvokeCommand.InvokeScript(scriptToRun.ToString());
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

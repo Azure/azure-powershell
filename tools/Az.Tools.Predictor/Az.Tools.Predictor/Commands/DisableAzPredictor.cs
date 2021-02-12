@@ -33,7 +33,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         [Parameter(Position = 0)]
         [ValidateSet(nameof(SessionParameterValue.All), nameof(SessionParameterValue.Current))]
-        public string Session { get; set; }
+        public SessionParameterValue Session { get; set; }
+
+        /// <summary>
+        /// Indicates whether the user would like to receive output.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <inheritdoc/>
         protected override void ProcessRecord()
@@ -41,12 +47,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var scriptToRun = new StringBuilder();
             var _ = scriptToRun.Append(DisableAzPredictor._DisableStatements[0]);
 
-            if (string.Equals(Session, nameof(SessionParameterValue.All), StringComparison.OrdinalIgnoreCase))
+            if (Session == SessionParameterValue.All)
             {
                 _ = scriptToRun.Append(";Write-Host \"To disable Az Predictor, please edit your profile ($PROFILE) and remove the following lines:`nImport-Module Az.Tools.Predictor`nSet-PSReadLineOption -PredictionSource HistoryAndPlugin`n\"");
             }
 
             InvokeCommand.InvokeScript(scriptToRun.ToString());
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The value used in the parameter -Session in the cmdlets.
     /// </summary>
-    enum SessionParameterValue
+    public enum SessionParameterValue
     {
         /// <value>
         /// All the session.
