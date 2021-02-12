@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
             bool encryptionAtHost,
-            int? platformFaultDomainCount)
+            int? platformFaultDomainCount
+            )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
