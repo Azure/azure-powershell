@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Creates or Updates a backup policy belonging to a backup vault
+
 .Description
-Creates or Updates a backup policy belonging to a backup vault
+
 .Example
 PS C:\> {{ Add code here }}
 
@@ -27,116 +27,69 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource
+System.Object
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
+POLICY <IBackupPolicy>: Policy Object
   DatasourceType <String[]>: Type of datasource for the backup management
   ObjectType <String>: 
+  PolicyRule <IBasePolicyRule[]>: Policy rule dictionary that contains rules for each backptype i.e Full/Incremental/Logs etc
+    Name <String>: 
+    ObjectType <String>: 
+    BackupParameterObjectType <String>: Type of the specific object - used for deserializing
+    DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
+    DataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+    TriggerObjectType <String>: Type of the specific object - used for deserializing
+    Lifecycle <ISourceLifeCycle[]>: 
+      DeleteAfterDuration <String>: Duration of deletion after given timespan
+      DeleteAfterObjectType <String>: Type of the specific object - used for deserializing
+      SourceDataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
+      SourceDataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+      [TargetDataStoreCopySetting <ITargetCopySetting[]>]: 
+        CopyAfterObjectType <String>: Type of the specific object - used for deserializing
+        DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
+        DataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+    [IsDefault <Boolean?>]: 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackuppolicy
 #>
 function Set-AzDataProtectionBackupPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource])]
-[CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Alias('BackupPolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Parameter(Position=1, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # .
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
-    [System.String]
-    # The name of the resource group where the backup vault is present.
+    # Resource Group Name
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Parameter(Position=2, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # The name of the backup vault.
+    # Vault Name
     ${VaultName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The subscription Id.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBaseBackupPolicyResource]
-    # BaseBackupPolicy resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String[]]
-    # Type of datasource for the backup management
-    ${DatasourceType},
-
-    [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(Position=3, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # .
-    ${ObjectType},
+    # Policy Name
+    ${Name},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+    [Parameter(Position=4, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy]
+    # Policy Object
+    # To construct, see NOTES section for POLICY properties and create a hash table.
+    ${Policy},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    [Parameter(Position=0)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # SubscriptionId Id
+    ${SubscriptionId}
 )
 
 begin {
@@ -147,11 +100,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Put = 'Az.DataProtection.private\Set-AzDataProtectionBackupPolicy_Put';
-            PutExpanded = 'Az.DataProtection.private\Set-AzDataProtectionBackupPolicy_PutExpanded';
-        }
-        if (('Put', 'PutExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            __AllParameterSets = 'Az.DataProtection.custom\Set-AzDataProtectionBackupPolicy';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
