@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlelasticpool
+online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlelasticpool
 schema: 2.0.0
 ---
 

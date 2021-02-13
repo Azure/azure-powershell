@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageusage
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageusage
 schema: 2.0.0
 ---
 

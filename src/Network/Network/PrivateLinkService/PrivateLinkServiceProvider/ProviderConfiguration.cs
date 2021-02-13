@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false);
             RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2020-10-01-preview");
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false);
+            RegisterConfiguration("Microsoft.Web/sites", "2020-10-01");
+            RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)

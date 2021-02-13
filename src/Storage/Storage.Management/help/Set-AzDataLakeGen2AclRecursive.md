@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azdatalakegen2aclrecursive
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The input ACL will replace original ACL completely.
 
 ## EXAMPLES
 
-### Example 1: Set ACL recursively on a directiry
+### Example 1: Set ACL recursively on a directory
 ```
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -41,7 +41,7 @@ ContinuationToken               :
 
 This command first creates an ACL object with 3 acl entries, then sets ACL recursively on a directory.
 
-### Example 2: Set ACL recursively on a root directiry of filesystem
+### Example 2: Set ACL recursively on a root directory of filesystem
 ```
 PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
 

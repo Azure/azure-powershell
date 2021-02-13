@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             {_recurrencePeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("recurrencePeriod"), out var __jsonRecurrencePeriod) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportRecurrencePeriod.FromJson(__jsonRecurrencePeriod) : RecurrencePeriod;}
-            {_recurrence = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("recurrence"), out var __jsonRecurrence) ? (string)__jsonRecurrence : (string)Recurrence;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
+            {_recurrence = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("recurrence"), out var __jsonRecurrence) ? (string)__jsonRecurrence : (string)Recurrence;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return container;
             }
             AddIf( null != this._recurrencePeriod ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._recurrencePeriod.ToJson(null,serializationMode) : null, "recurrencePeriod" ,container.Add );
-            AddIf( null != (((object)this._recurrence)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._recurrence.ToString()) : null, "recurrence" ,container.Add );
             AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
+            AddIf( null != (((object)this._recurrence)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._recurrence.ToString()) : null, "recurrence" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

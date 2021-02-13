@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azdatacollectionrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azdatacollectionrule
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ Remove-AzDataCollectionRule
 ## DESCRIPTION
 The **Remove-AzDataCollectionRule** cmdlet delete a data collection rule.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-overview).
 
 ## EXAMPLES
 

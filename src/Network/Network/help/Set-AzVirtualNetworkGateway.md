@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5C309071-A2ED-464C-9197-0A77859C8FBB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkgateway
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 

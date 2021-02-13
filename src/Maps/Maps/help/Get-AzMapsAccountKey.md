@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maps.dll-Help.xml
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/get-azmapsaccountkey
+online version: https://docs.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
 schema: 2.0.0
 ---
 
