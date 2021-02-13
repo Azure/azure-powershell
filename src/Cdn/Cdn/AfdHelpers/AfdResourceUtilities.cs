@@ -11,10 +11,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {

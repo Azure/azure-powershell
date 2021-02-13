@@ -11,14 +11,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile
+namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdProfile : PSArmTrackedResource
+    public class PSArmTrackedResource : PSArmBaseResource
     {
-        public string  ResourceState { get; set; }
+        /// <summary>
+        /// Gets or sets the Location
+        /// </summary>
+        public string Location { get; set; }
 
-        public string Sku { get; set; }
+        /// <summary>
+        /// Gets or sets the Tags
+        /// </summary>
+        public Dictionary<string, string> Tags { get; set; }
     }
 }
+

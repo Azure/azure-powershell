@@ -11,13 +11,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdCustomDomain;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using System.Collections.Generic;
 
 using SdkAfdCustomDomain = Microsoft.Azure.Management.Cdn.Models.AFDDomain;
 using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
+using SdkAfdOrigin = Microsoft.Azure.Management.Cdn.Models.AFDOrigin;
+using SdkAfdOriginGroup = Microsoft.Azure.Management.Cdn.Models.AFDOriginGroup;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 
 
@@ -55,11 +55,58 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Location = sdkAfdEndpoint.Location,
                 Tags = (Dictionary<string, string>)sdkAfdEndpoint.Tags,
                 HostName = sdkAfdEndpoint.HostName,
-                OriginResponseTimeoutSeconds = (int)sdkAfdEndpoint.OriginResponseTimeoutSeconds,
+                OriginResponseTimeoutSeconds = sdkAfdEndpoint.OriginResponseTimeoutSeconds,
                 EnabledState = sdkAfdEndpoint.EnabledState
             };
         }
 
+        public static PSAfdOrigin ToPSAfdOrigin(this SdkAfdOrigin sdkOrigin)
+        {
+            return new PSAfdOrigin
+            {
+                Id = sdkOrigin.Id,
+                Name = sdkOrigin.Name,
+                Type = sdkOrigin.Type,
+                ProvisioningState = sdkOrigin.ProvisioningState,
+                // OriginGroupName = sdkOrigin.AzureOrigin, // ensure AzureOrigin is changed in Swagger, NET SDK, and here
+                HostName = sdkOrigin.HostName,
+                HttpPort = sdkOrigin.HttpPort,
+                HttpsPort = sdkOrigin.HttpsPort,
+                OriginHostHeader = sdkOrigin.OriginHostHeader,
+                Priority = sdkOrigin.Priority,
+                Weight = sdkOrigin.Weight,
+                EnabledState = sdkOrigin.EnabledState,
+                //PrivateLinkId = ??,
+                //GroupId = ??,
+                //PrivateLinkLocation = ??,
+                //PrivateLinkStatus = ??,
+                //PrivateLinkRequestMessage = ??    
+            };
+        }
+
+        public static PSAfdOriginGroup ToPSAfdOriginGroup(this SdkAfdOriginGroup sdkOriginGroup)
+        {
+            return new PSAfdOriginGroup
+            {
+                Id = sdkOriginGroup.Id,
+                Name = sdkOriginGroup.Name,
+                Type = sdkOriginGroup.Type,
+                ProvisioningState = sdkOriginGroup.ProvisioningState,
+                SampleSize = sdkOriginGroup.LoadBalancingSettings?.SampleSize,
+                SuccessfulSamplesRequired = sdkOriginGroup.LoadBalancingSettings?.SuccessfulSamplesRequired,
+                AdditionalLatencyInMilliseconds = sdkOriginGroup.LoadBalancingSettings?.AdditionalLatencyInMilliseconds,
+                ProbePath = sdkOriginGroup.HealthProbeSettings?.ProbePath,
+                ProbeRequestType = sdkOriginGroup.HealthProbeSettings?.ProbeRequestType.ToString(),
+                ProbeProtocol = sdkOriginGroup.HealthProbeSettings?.ProbeProtocol.ToString(),
+                ProbeIntervalInSeconds = sdkOriginGroup.HealthProbeSettings?.ProbeIntervalInSeconds,
+                ResponseBasedDetectedErrorTypes = sdkOriginGroup.ResponseBasedAfdOriginErrorDetectionSettings?.ResponseBasedDetectedErrorTypes.Value.ToString(), // not showing up, something wrong with sdk?
+                ResponseBasedFailoverThresholdPercentage = sdkOriginGroup.ResponseBasedAfdOriginErrorDetectionSettings?.ResponseBasedFailoverThresholdPercentage, // not showing up, something wrong with sdk?
+                // HttpErrorRanges = Fill in when implementing New / Set
+                TrafficRestorationTimeToHealedOrNewEndpointsInMinutes = sdkOriginGroup.TrafficRestorationTimeToHealedOrNewEndpointsInMinutes,
+                SessionAffinityState = sdkOriginGroup.SessionAffinityState
+            };
+        }
+        
         public static PSAfdProfile ToPSAfdProfile(this SdkAfdProfile sdkAfdProfile)
         {
             return new PSAfdProfile

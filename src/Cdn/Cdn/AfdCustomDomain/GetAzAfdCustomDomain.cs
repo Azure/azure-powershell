@@ -12,8 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdCustomDomain;
-using Microsoft.Azure.Commands.Cdn.AfdModels.AfdProfile;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
@@ -75,15 +74,19 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         {
             if (AfdUtilities.IsValuePresent(this.CustomDomainName))
             {
+                // all fields are present (mandatory + optional)
+
                 PSAfdCustomDomain psAfdCustomDomain = CdnManagementClient.AFDCustomDomains.Get(this.ResourceGroupName, this.ProfileName, this.CustomDomainName).ToPSAfdCustomDomain();
 
                 WriteObject(psAfdCustomDomain);
             }
             else
             {
+                // only the mandatory fields are present
+
                 List<PSAfdCustomDomain> psAfdCustomDomains = CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                               .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
-                               .ToList();
+                                                             .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
+                                                             .ToList();
 
                 WriteObject(psAfdCustomDomains);
             }
@@ -97,8 +100,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
 
             List<PSAfdCustomDomain> psAfdCustomDomains = CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
-                                .ToList();
+                                                         .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
+                                                         .ToList();
 
             WriteObject(psAfdCustomDomains);
         }

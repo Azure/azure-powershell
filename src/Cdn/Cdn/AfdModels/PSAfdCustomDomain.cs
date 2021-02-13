@@ -11,16 +11,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels.Arm;
-
-namespace Microsoft.Azure.Commands.Cdn.AfdModels.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdEndpoint : PSArmTrackedResource
+    public class PSAfdCustomDomain : PSArmBaseResource
     {
         public string HostName { get; set; }
 
-        public int OriginResponseTimeoutSeconds { get; set; }
+        public string CertificateType { get; set; }
 
-        public string EnabledState { get; set; }
+        public string MinimumTlsVersion { get; set; }
+
+        public string Secret { get; set; }
+
+        public string ValidationToken { get; set; }
+
+        public string ExpirationDate { get; set; }
+
+        public string AzureDnsZone { get; set; }
+
+        public string DomainValidationState { get; set; }
     }
 }

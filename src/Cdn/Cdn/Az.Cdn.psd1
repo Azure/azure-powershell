@@ -91,9 +91,9 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'New-AzCdnDeliveryRule', 'New-AzCdnDeliveryRuleCondition', 
                'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy', 
                'New-AzCdnOrigin', 'Remove-AzCdnOrigin', 'New-AzCdnOriginGroup', 
-               'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 
-               'Set-AzCdnOriginGroup', 
-               'Get-AzAfdCustomDomain', 'Get-AzAfdEndpoint', 'Get-AzAfdProfile'
+               'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 'Set-AzCdnOriginGroup', 
+               'Get-AzAfdCustomDomain', 'Get-AzAfdEndpoint', 'Get-AzAfdOrigin',
+               'Get-AzAfdOriginGroup', 'Get-AzAfdProfile'
               
 # Variables to export from this module
 # VariablesToExport = @()

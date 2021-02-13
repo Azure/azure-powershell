@@ -11,18 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest.Azure;
-
-namespace Microsoft.Azure.Commands.Cdn.AfdModels.Arm
+namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSArmResource : IResource
+    public class PSAfdProfile : PSArmTrackedResource
     {
-        public string Id { get; set; }
+        public string ResourceState { get; set; }
 
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string ProvisioningState { get; set; }
+        public string Sku { get; set; }
     }
 }

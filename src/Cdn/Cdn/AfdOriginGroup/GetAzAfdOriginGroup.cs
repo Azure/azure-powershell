@@ -21,17 +21,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdEndpoint))]
-    public class GetAzAfdEndpoint : AzureCdnCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdOriginGroup", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdOriginGroup))]
+    public class GetAzAfdOriginGroup : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdOriginGroupName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
+        public string OriginGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNull]
         public PSAfdProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
@@ -39,9 +38,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
-        public string ResourceGroupName {get; set;}
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceId, ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -72,23 +71,23 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         private void FieldsParameterSetCmdlet()
         {
-            if (AfdUtilities.IsValuePresent(this.EndpointName))
+            if (AfdUtilities.IsValuePresent(this.OriginGroupName))
             {
                 // all fields are present (mandatory + optional)
 
-                PSAfdEndpoint psAfdEndpoint = CdnManagementClient.AFDEndpoints.Get(this.ResourceGroupName, this.ProfileName, this.EndpointName).ToPSAfdEndpoint();
+                PSAfdOriginGroup psAfdOriginGroup = CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
 
-                WriteObject(psAfdEndpoint);
-            } 
+                WriteObject(psAfdOriginGroup);
+            }
             else
             {
                 // only the mandatory fields are present 
 
-                List<PSAfdEndpoint> psAfdEndpoints = CdnManagementClient.AFDEndpoints.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                                   .Select(afdEndpoint => afdEndpoint.ToPSAfdEndpoint())
-                                                   .ToList();
+                List<PSAfdOriginGroup> pSAfdOriginGroups = CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                                                           .Select(afdOriginGroup => afdOriginGroup.ToPSAfdOriginGroup())
+                                                           .ToList();
 
-                WriteObject(psAfdEndpoints);
+                WriteObject(pSAfdOriginGroups);
             }
         }
 
@@ -99,24 +98,24 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
 
-            List<PSAfdEndpoint> psAfdEndpoints = CdnManagementClient.AFDEndpoints.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                               .Select(afdEndpoint => afdEndpoint.ToPSAfdEndpoint())
-                                               .ToList();
+            List<PSAfdOriginGroup> psAfdOriginGroups = CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                                                       .Select(afdOriginGroup => afdOriginGroup.ToPSAfdOriginGroup())
+                                                       .ToList();
 
-            WriteObject(psAfdEndpoints);
+            WriteObject(psAfdOriginGroups);
         }
 
         private void ResourceIdParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdOriginGroupResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
-            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
+            this.OriginGroupName = parsedAfdOriginGroupResourceId.ResourceName;
+            this.ProfileName = parsedAfdOriginGroupResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdOriginGroupResourceId.ResourceGroupName;
 
-            PSAfdEndpoint psAfdEndpoint = CdnManagementClient.AFDEndpoints.Get(this.ResourceGroupName, this.ProfileName, this.EndpointName).ToPSAfdEndpoint();
+            PSAfdOriginGroup psAfdOriginGroup = CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
 
-            WriteObject(psAfdEndpoint);
+            WriteObject(psAfdOriginGroup);
         }
     }
 }
