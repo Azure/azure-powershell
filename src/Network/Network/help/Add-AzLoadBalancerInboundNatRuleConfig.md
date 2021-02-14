@@ -38,10 +38,12 @@ The **Add-AzLoadBalancerInboundNatRuleConfig** cmdlet adds an inbound network ad
 ```
 PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewNatRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
+PS C:\> $slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named MyloadBalancer, and then stores it in the variable $slb.
 The second command uses the pipeline operator to pass the load balancer in $slb to **Add-AzLoadBalancerInboundNatRuleConfig**, which adds an inbound NAT rule configuration to the load balancer.
+The last command sets the configuration to the loadbalancer, if you don't perform Set-AzLoadBalancer, your changes will not be applied to the loadbalancer.
 
 ## PARAMETERS
 
