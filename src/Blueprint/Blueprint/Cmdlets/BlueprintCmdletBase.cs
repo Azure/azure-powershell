@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 using System.Linq;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -41,19 +42,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 return blueprintClient = blueprintClient ?? new BlueprintClient(DefaultProfile.DefaultContext);
             }
             set => blueprintClient = value;
-        }
-
-        /// <summary>
-        /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.
-        /// </summary>
-        private IBlueprintClient blueprintClientWithVersion;
-        public IBlueprintClient BlueprintClientWithVersion
-        {
-            get
-            {
-                return blueprintClientWithVersion = blueprintClientWithVersion ?? new BlueprintClient(DefaultProfile.DefaultContext, new ApiExpandHandler());
-            }
-            set => blueprintClientWithVersion = value;
         }
 
         /// <summary>
@@ -207,6 +195,51 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 .FirstOrDefault(name => String.Equals(name, "artifacts", StringComparison.OrdinalIgnoreCase));
 
             return artifactsFolderName == null ? null : Path.Combine(path, artifactsFolderName);
+        }
+
+        /// <summary>
+        /// Returns Blueprint client after registering delegating handler.  
+        /// </summary>
+        protected IBlueprintClient GetBlueprintClientWithversion()
+        {
+            RegisterDelegatingHandlerIfNotRegistered();
+
+            return BlueprintClient;
+        }
+
+        /// <summary>
+        /// Unregisters delegating handler if registered.  
+        /// </summary>
+        protected void UnregisterDelegatingHandlerIfRegistered()
+        {
+            var apiExpandHandler = GetExpandHandler();
+
+            if (apiExpandHandler != null)
+            {
+                AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
+            }
+        }
+
+        /// <summary>
+        /// Registers delegating handler if not already registered.  
+        /// </summary>
+        private void RegisterDelegatingHandlerIfNotRegistered()
+        {
+            var apiExpandHandler = GetExpandHandler();
+
+            if (apiExpandHandler == null)
+            {
+                AzureSession.Instance.ClientFactory.AddHandler(new ApiExpandHandler());
+            }
+        }
+
+        /// <summary>
+        /// Returns expand handler, if exists.  
+        /// </summary>
+        private DelegatingHandler GetExpandHandler()
+        {
+            return AzureSession.Instance.ClientFactory.GetCustomHandlers()?
+                .Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
         }
     }
 }

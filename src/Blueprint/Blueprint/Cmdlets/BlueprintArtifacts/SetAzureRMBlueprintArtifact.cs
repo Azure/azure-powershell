@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 DependsOn = DependsOn
                             };
 
-                            WriteObject(BlueprintClientWithVersion.CreateArtifact(scope, Blueprint.Name, Name,
+                            WriteObject(GetBlueprintClientWithversion().CreateArtifact(scope, Blueprint.Name, Name,
                                 templateArtifact));
                         }
 
@@ -197,6 +197,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             catch (Exception ex)
             {
                 WriteExceptionError(ex);
+            }
+            finally
+            {
+                UnregisterDelegatingHandlerIfRegistered();
             }
         }
         #endregion
