@@ -414,9 +414,26 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
-            if (FilesChanged != null && FilesChanged.Length > 0)
+            if (FilesChanged != null)
             {
-                return ProcessFileChanged(csprojMap);
+                if (FilesChanged.Length > 0)
+                {
+                    return ProcessFileChanged(csprojMap);
+                }
+                else
+                {
+                    Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
+                    {
+                        [BUILD_PHASE] = new HashSet<string>(),
+                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(),
+                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(),
+                        [ANALYSIS_HELP_PHASE] = new HashSet<string>(),
+                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(),
+                        [TEST_PHASE] = new HashSet<string>()
+                    };
+                    FilterTaskResult.PhaseInfo = influencedModuleInfo;
+                    return true;
+                }
             }
             else if (!string.IsNullOrWhiteSpace(TargetModule))
             {
