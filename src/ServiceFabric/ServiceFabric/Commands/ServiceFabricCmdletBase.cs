@@ -223,6 +223,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return GetSettingFromExtension(sfExtension, "nodeTypeRef");
         }
 
+        public string GetDurabilityLevelFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            return GetSettingFromExtension(sfExtension, "durabilityLevel");
+        }
+
         internal string GetSettingFromExtension(VirtualMachineScaleSetExtension sfExtension, string settingName)
         {
             JObject extSettings = sfExtension.Settings as JObject;

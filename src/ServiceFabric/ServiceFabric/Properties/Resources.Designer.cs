@@ -178,6 +178,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot parse vmImage {0}..
+        /// </summary>
+        internal static string CannotParseVmImage {
+            get {
+                return ResourceManager.GetString("CannotParseVmImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove Bronze durability Node Type when the durability level is mismatched in the SF VMSS extension. To unblock, upgrade the \&quot;durabilityLevel\&quot; of the Node Type to match VMSS setting: {0}. One way to do this is by calling Update-AzServiceFabricDurability..
+        /// </summary>
+        internal static string CannotRemoveMismatchedDurabilityNodeType {
+            get {
+                return ResourceManager.GetString("CannotRemoveMismatchedDurabilityNodeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot update node type with a durability level of Bronze, please update durability level to Silver or above first..
         /// </summary>
         internal static string CannotUpdateBronzeNodeType {
@@ -529,6 +547,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating reliability level is correlated with the node count of the primary node type. This cluster has multiple primary node types so the node type name has to be sent via -NodeType parameter..
+        /// </summary>
+        internal static string MultiplePrimaryNodeTypesTargetUndefined {
+            get {
+                return ResourceManager.GetString("MultiplePrimaryNodeTypesTargetUndefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cluster {0} already exists. Please remove the resource group and try again..
         /// </summary>
         internal static string NewExistingCluster {
@@ -543,6 +570,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string NoCertificateOperationReturned {
             get {
                 return ResourceManager.GetString("NoCertificateOperationReturned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node type {0} was not a primary node type..
+        /// </summary>
+        internal static string NodeTypeNotPrimary {
+            get {
+                return ResourceManager.GetString("NodeTypeNotPrimary", resourceCulture);
             }
         }
         
