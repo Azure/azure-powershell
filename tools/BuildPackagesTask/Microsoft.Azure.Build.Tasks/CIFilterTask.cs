@@ -424,14 +424,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 {
                     Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
                     {
-                        [BUILD_PHASE] = new HashSet<string>(),
-                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(),
-                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(),
-                        [ANALYSIS_HELP_PHASE] = new HashSet<string>(),
-                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(),
-                        [TEST_PHASE] = new HashSet<string>()
+                        [BUILD_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
+                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
+                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
+                        [ANALYSIS_HELP_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
+                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
+                        [TEST_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME }
                     };
-                    FilterTaskResult.PhaseInfo = influencedModuleInfo;
+                    FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
                     return true;
                 }
             }
