@@ -23,7 +23,7 @@ function Test-GremlinOperationsCmdlets
   $DatabaseName = "dbName"
   $graphName = "graph1"
 
-  $DatabaseName2 = "dbName2"
+  $DatabaseName2 = "dbName29"
   $graphName2 = "graph2"
 
   $PartitionKeyPathValue = "/foo"
@@ -254,7 +254,7 @@ function Test-GremlinThroughputCmdlets
 {
   $AccountName = "db1002"
   $rgName = "CosmosDBResourceGroup2510"
-  $DatabaseName = "dbName3"
+  $DatabaseName = "dbName30"
   $GraphName = "graphName"
 
   $PartitionKeyPathValue = "/foo"

@@ -71,9 +71,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             DatabaseAccountUpdateParameters databaseAccountUpdateParameters = new DatabaseAccountUpdateParameters(locations: readDatabase.Locations, location: readDatabase.WriteLocations.ElementAt(0).LocationName);
 
-            databaseAccountUpdateParameters.NetworkAclBypass = readDatabase.NetworkAclBypass;
-            databaseAccountUpdateParameters.NetworkAclBypassResourceIds = readDatabase.NetworkAclBypassResourceIds;
-
             if (EnableMultipleWriteLocations != null)
             {
                 databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
