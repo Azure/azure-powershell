@@ -170,31 +170,13 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             }
         }
 
-        //protected static void PopulateContextWithUploadableRanges(FileInfo vhdFile, UploadContextDisk context, bool resume)
-        //{
-        //    using (var vds = new VirtualDiskStream(vhdFile.FullName))
-        //    {
-        //        IEnumerable<IndexRange> ranges = vds.Extents.Select(e => e.Range).ToArray();
-
-        //        var bs = new BufferedStream(vds);
-        //        // linear still
-        //        var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
-
-        //        // detecting empty data blocks line. Takes long 
-        //        var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
-        //        context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
-        //        context.UploadableRanges = nonEmptyUploadableRanges;
-        //    }
-        //}
-
         protected static void PopulateContextWithUploadableRanges(FileInfo vhdFile, UploadContextDisk context, bool resume)
         {
-            using (FileStream stream = File.OpenRead(vhdFile.FullName))
+            using (var vds = new VirtualDiskStream(vhdFile.FullName))
             {
-                var vds = new VirtualDiskStream(vhdFile.FullName);
                 IEnumerable<IndexRange> ranges = vds.Extents.Select(e => e.Range).ToArray();
 
-                var bs = new BufferedStream(stream);
+                var bs = new BufferedStream(vds);
                 // linear still
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
 
@@ -309,12 +291,6 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 
             var bufferSize = (int)rangeToRead.Length;
             var buffer = manager.TakeBuffer(bufferSize);
-
-            //for (int bytesRead = stream.Read(buffer, 0, bufferSize);
-            //     bytesRead < bufferSize;
-            //     bytesRead += stream.Read(buffer, bytesRead, bufferSize - bytesRead))
-            //{
-            //}
 
             int bytesRead = 0;
             while (bytesRead < bufferSize)
