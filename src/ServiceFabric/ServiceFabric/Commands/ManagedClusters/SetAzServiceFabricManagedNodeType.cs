@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(new Type[] { typeof(bool), typeof(PSManagedNodeType) })]
-    public class SetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class SetAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         protected const string ReimageByName = "ReimageByName";
         protected const string ReimageById = "ReimageById";

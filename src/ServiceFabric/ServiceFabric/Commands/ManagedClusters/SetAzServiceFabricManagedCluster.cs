@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
-    public class SetAzServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
+    public class SetAzServiceFabricManagedCluster : ServiceFabricManagedCmdletBase
     {
         protected const string WithParamsByName = "WithPramsByName";
         protected const string WithParamsById = "ByNameById";

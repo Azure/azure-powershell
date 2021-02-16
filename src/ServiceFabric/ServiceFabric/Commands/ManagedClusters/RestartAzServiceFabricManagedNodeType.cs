@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class RestartAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 

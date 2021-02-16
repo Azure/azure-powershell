@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
-    public class NewAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class NewAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
