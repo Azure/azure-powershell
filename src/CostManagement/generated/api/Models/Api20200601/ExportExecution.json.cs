@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportExecutionProperties.FromJson(__jsonProperties) : Property;}
             AfterFromJson(json);
         }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

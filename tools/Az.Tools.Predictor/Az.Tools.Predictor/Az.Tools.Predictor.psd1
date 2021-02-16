@@ -47,6 +47,8 @@ NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
 ScriptsToProcess = @("PromptSurvey.ps1")
 
+CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor")
+
 # Format files (.ps1xml) to be loaded when importing this module
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/set-azdatafactoryv2dataflow
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2dataflow
 schema: 2.0.0
 ---
 

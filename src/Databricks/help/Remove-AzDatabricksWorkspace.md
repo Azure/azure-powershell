@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databricks/remove-azdatabricksworkspace
+online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
 schema: 2.0.0
 ---
 

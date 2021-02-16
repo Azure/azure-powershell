@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadspcredential
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 schema: 2.0.0
 ---
 
