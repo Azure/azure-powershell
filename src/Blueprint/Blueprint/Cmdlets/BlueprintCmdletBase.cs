@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             set => blueprintClient = value;
         }
 
-        /// <summary>	
-        /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.	
-        /// </summary>	
+        /// <summary>
+        /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.
+        /// </summary>
         private IBlueprintClient blueprintClientWithVersion;
         public IBlueprintClient BlueprintClientWithVersion
         {

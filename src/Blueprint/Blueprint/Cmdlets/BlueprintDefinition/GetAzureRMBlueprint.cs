@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 switch (ParameterSetName)
                 {
-                    case ParameterSetNames.ManagementGroupScope:                        
+                    case ParameterSetNames.ManagementGroupScope:
                         foreach (var bp in BlueprintClientWithVersion.ListBlueprints(scope))
                             WriteObject(bp, true);
 

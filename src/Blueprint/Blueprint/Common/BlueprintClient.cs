@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         /// <param name="subscription"></param>
         /// <param name="blueprintManagementClient"></param>
         public BlueprintClient(IAzureContext context)
-        { 
-            //Remove our custom api handler if it's in the current session's custom handlers list	
+        {
+            //Remove our custom api handler if it's in the current session's custom handlers list
             var customHandlers = AzureSession.Instance.ClientFactory.GetCustomHandlers();
             var apiExpandHandler = customHandlers?.Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
 
