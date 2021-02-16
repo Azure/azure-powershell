@@ -15,7 +15,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginDeleteWithHttpMessagesAsync(
+                    var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginDeleteWithHttpMessagesAsync(
                                                     this.ResourceGroupName,
                                                     this.Name).GetAwaiter().GetResult();
 

@@ -17,10 +17,10 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    NodeType nodeType = SafeGetResource(() => this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name));
+                    NodeType nodeType = SafeGetResource(() => this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name));
                     if (nodeType != null)
                     {
                         WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Node type '{0}' already exists.", this.Name)),
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     else
                     {
                         NodeType newNodeTypeParams = this.GetNewNodeTypeParameters();
-                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
+                        var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
                             .GetAwaiter().GetResult();
 
                         nodeType = this.PollLongRunningOperation(beginRequestResponse);

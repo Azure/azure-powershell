@@ -16,10 +16,10 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     ManagedCluster updatedCluster = this.GetClusterWithAddedClientCert();
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedCluster)
+                    var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedCluster)
                         .GetAwaiter().GetResult();
 
                     var cluster = this.PollLongRunningOperation(beginRequestResponse);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetClusterWithAddedClientCert()
         {
-            ManagedCluster currentCluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+            ManagedCluster currentCluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
 
             if (currentCluster.Clients == null)
             {

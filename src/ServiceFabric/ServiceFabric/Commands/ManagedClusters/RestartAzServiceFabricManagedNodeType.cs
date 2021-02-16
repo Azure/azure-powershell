@@ -15,7 +15,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
                             this.Name,

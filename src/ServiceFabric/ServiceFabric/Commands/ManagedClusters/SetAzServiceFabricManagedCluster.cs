@@ -15,10 +15,11 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Cluster code version upgrade mode. Automatic or Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Cluster code version upgrade mode. Automatic or Manual.")]
-        public ClusterUpgradeMode? UpgradeMode { get; set; }
+        public Models.ClusterUpgradeMode? UpgradeMode { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Cluster code version. Only use if upgrade mode is Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Cluster code version. Only use if upgrade mode is Manual.")]
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
+        [CmdletParameterBreakingChange("ReverseProxyEndpointPort", ChangeDescription = "Parameter is not supported in managed clusters. It will be depreacated without being replaced.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Endpoint used by reverse proxy.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Endpoint used by reverse proxy.")]
         public int? ReverseProxyEndpointPort { get; set; }
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             throw new ArgumentException("Invalid parameter set", ParameterSetName);
                     }
 
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedClusterParams)
+                    var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedClusterParams)
                         .GetAwaiter().GetResult();
 
                     var cluster = this.PollLongRunningOperation(beginRequestResponse);
@@ -125,13 +127,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetUpdatedClusterParams()
         {
-            var currentCluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+            var currentCluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
             this.ValidateParams(currentCluster);
-
-            if (this.UpgradeMode.HasValue)
-            {
-                currentCluster.ClusterUpgradeMode = this.UpgradeMode.ToString();
-            }
 
             if (!string.IsNullOrEmpty(this.CodeVersion))
             {
@@ -148,11 +145,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentCluster.DnsName = DnsName;
             }
 
-            if (this.ReverseProxyEndpointPort.HasValue)
-            {
-                currentCluster.ReverseProxyEndpointPort = ReverseProxyEndpointPort;
-            }
-
             return currentCluster;
         }
 
@@ -160,21 +152,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             if (this.UpgradeMode.HasValue)
             {
-                if (this.UpgradeMode == ClusterUpgradeMode.Automatic)
+                if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual)
                 {
-                    if (!string.IsNullOrEmpty(this.CodeVersion))
-                    {
-                        throw new PSArgumentException("CodeVersion should only be used when upgrade mode is set to Manual.", "CodeVersion");
-                    }
+                    throw new PSArgumentException("Currently only upgrade mode Automatic is supported. Support for Manual mode will be added latter on.", "UpgradeMode");
                 }
             }
-            else if (!string.IsNullOrEmpty(this.CodeVersion))
+            
+            if (!string.IsNullOrEmpty(this.CodeVersion))
             {
+                throw new PSArgumentException("Currently the cluster upgrade mode is set to Automatic and CodeVersion should only be used when upgrade mode is set to Manual.", "CodeVersion");
+
+                // TODO: when manual is available add this validation
+                /*
                 Enum.TryParse(currentCluster.ClusterUpgradeMode, out ClusterUpgradeMode upgradeMode);
                 if (upgradeMode == ClusterUpgradeMode.Automatic)
                 {
                     throw new PSArgumentException("Currently the cluster upgrade mode is set to Automatic and CodeVersion should only be used when upgrade mode is set to Manual.", "CodeVersion");
                 }
+                */
             }
         }
 
