@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                 AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
             }
 
-
             this.blueprintManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<BlueprintManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
