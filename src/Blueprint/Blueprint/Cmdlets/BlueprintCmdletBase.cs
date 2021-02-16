@@ -44,6 +44,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             set => blueprintClient = value;
         }
 
+        /// <summary>	
+        /// Blueprint client with delegating handler. The delegating handler is needed to get blueprint versions info.	
+        /// </summary>	
+        private IBlueprintClient blueprintClientWithVersion;
+        public IBlueprintClient BlueprintClientWithVersion
+        {
+            get
+            {
+                return blueprintClientWithVersion = blueprintClientWithVersion ?? new BlueprintClient(DefaultProfile.DefaultContext, new ApiExpandHandler());
+            }
+            set => blueprintClientWithVersion = value;
+        }
+
         /// <summary>
         /// Service client credentials client to hold credentials
         /// </summary>
@@ -198,16 +211,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
-        /// Returns Blueprint client after registering delegating handler.  
-        /// </summary>
-        protected IBlueprintClient GetBlueprintClientWithversion()
-        {
-            RegisterDelegatingHandlerIfNotRegistered();
-
-            return BlueprintClient;
-        }
-
-        /// <summary>
         /// Unregisters delegating handler if registered.  
         /// </summary>
         protected void UnregisterDelegatingHandlerIfRegistered()
@@ -217,19 +220,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             if (apiExpandHandler != null)
             {
                 AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
-            }
-        }
-
-        /// <summary>
-        /// Registers delegating handler if not already registered.  
-        /// </summary>
-        private void RegisterDelegatingHandlerIfNotRegistered()
-        {
-            var apiExpandHandler = GetExpandHandler();
-
-            if (apiExpandHandler == null)
-            {
-                AzureSession.Instance.ClientFactory.AddHandler(new ApiExpandHandler());
             }
         }
 

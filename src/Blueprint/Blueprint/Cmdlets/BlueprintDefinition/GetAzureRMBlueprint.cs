@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.ManagementGroupScope:                        
-                        foreach (var bp in GetBlueprintClientWithversion().ListBlueprints(scope))
+                        foreach (var bp in BlueprintClientWithVersion.ListBlueprints(scope))
                             WriteObject(bp, true);
 
                         break;
@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         //add current subscription scope to the list of MG scopes that we'll query
                         queryScopes.Add(scope);
 
-                        foreach (var bp in GetBlueprintClientWithversion().ListBlueprints(queryScopes))
+                        foreach (var bp in BlueprintClientWithVersion.ListBlueprints(queryScopes))
                             WriteObject(bp, true);
 
                         break;
                     case ParameterSetNames.BySubscriptionAndName: case ParameterSetNames.ByManagementGroupAndName:
-                        WriteObject(GetBlueprintClientWithversion().GetBlueprint(scope, Name));
+                        WriteObject(BlueprintClientWithVersion.GetBlueprint(scope, Name));
                         break;
                     case ParameterSetNames.BySubscriptionNameAndVersion: case ParameterSetNames.ByManagementGroupNameAndVersion:
                         WriteObject(BlueprintClient.GetPublishedBlueprint(scope, Name, Version));
