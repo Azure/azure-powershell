@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = DeleteNodeTypeByObj, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class RemoveAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         protected const string DeleteNodeTypeByName = "DeleteNodeTypeByName";
         protected const string DeleteNodeTypeByObj = "DeleteNodeTypeByObj";

@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = ByName), OutputType(typeof(PSManagedNodeType))]
-    public class GetAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class GetAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ByResourceGroup = "ByResourceGroup";

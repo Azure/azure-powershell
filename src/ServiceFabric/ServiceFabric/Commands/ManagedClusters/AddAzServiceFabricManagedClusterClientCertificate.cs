@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterClientCertificate", DefaultParameterSetName = ClientCertByTpByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
-    public class AddAzServiceFabricManagedClusterClientCertificate : ServiceFabricCommonCmdletBase
+    public class AddAzServiceFabricManagedClusterClientCertificate : ServiceFabricManagedCmdletBase
     {
         protected const string ClientCertByTpByName = "ClientCertByTpByName";
         protected const string ClientCertByCnByName = "ClientCertByCnByName";
