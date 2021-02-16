@@ -12,6 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# This file is a temporary approach to prompt the user for a survey.
+# It doesn't cover every case well or not tested well:
+# 1. Allow two or more modules to show the survey link.
+# 2. When the major version is changed.
+# 3. Not sure about the way to handle survey id or if it's needed in future.
+# 4. The file format is also subject to change in future.
+
 param (
     [Parameter(Mandatory)]
     [string] $moduleName,

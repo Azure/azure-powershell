@@ -101,8 +101,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        /// <inheritdoc/>
         public bool IsInternal { get; internal set; }
 
+        /// <summary>
+        /// The survey session id appended to the survey.
+        /// </summary>
+        /// <remarks>
+        /// We only collect this information in the preview. So make it internal and not to make it to the interface.
+        /// </remarks>
         internal string SurveyId { get; set; }
 
         /// <inheritdoc/>
