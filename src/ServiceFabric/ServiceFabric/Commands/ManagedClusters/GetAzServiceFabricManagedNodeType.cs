@@ -16,9 +16,9 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ParameterSetName = ByName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         [Alias("NodeTypeName")]
@@ -58,16 +58,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             try
             {
-                if (ParameterSetName == ByName)
+                if (!string.IsNullOrEmpty(this.Name))
                 {
-                    var nodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+                    var nodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
                     WriteObject(new PSManagedNodeType(nodeType), false);
                 }
                 else
                 {
                     var nodeTypeList = this.ReturnListByPageResponse(
-                        this.SFRPClient.NodeTypes.ListByManagedClusters(this.ResourceGroupName, this.ClusterName),
-                        this.SFRPClient.NodeTypes.ListByManagedClustersNext);
+                        this.SfrpMcClient.NodeTypes.ListByManagedClusters(this.ResourceGroupName, this.ClusterName),
+                        this.SfrpMcClient.NodeTypes.ListByManagedClustersNext);
                     WriteObject(nodeTypeList.Select(nt => new PSManagedNodeType(nt)), true);
                 }
             }

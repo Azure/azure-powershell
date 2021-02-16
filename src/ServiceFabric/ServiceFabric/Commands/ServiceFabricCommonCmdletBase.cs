@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,12 +42,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         internal static int WriteVerboseIntervalInSec = 20;
 
         private Lazy<ServiceFabricManagementClient> sfrpClient;
+        private Lazy<ServiceFabricManagedClustersManagementClient> sfrpMcClient;
         private Lazy<IResourceManagementClient> resourcesClient;
 
         internal ServiceFabricManagementClient SFRPClient
         {
             get { return sfrpClient.Value; }
             set { sfrpClient = new Lazy<ServiceFabricManagementClient>(() => value); }
+        }
+
+        internal ServiceFabricManagedClustersManagementClient SfrpMcClient
+        {
+            get { return sfrpMcClient.Value; }
+            set { sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() => value); }
         }
 
         internal IResourceManagementClient ResourcesClient

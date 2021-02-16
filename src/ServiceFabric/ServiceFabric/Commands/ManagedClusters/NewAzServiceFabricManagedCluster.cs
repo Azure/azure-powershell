@@ -17,13 +17,14 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Sku = Microsoft.Azure.Management.ServiceFabric.Models.Sku;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Sku = Microsoft.Azure.Management.ServiceFabricManagedClusters.Models.Sku;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
-        public ClusterUpgradeMode UpgradeMode { get; set; }
+        public Models.ClusterUpgradeMode UpgradeMode { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
@@ -115,6 +116,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
+        [CmdletParameterBreakingChange("ReverseProxyEndpointPort", ChangeDescription = "Parameter is not supported in managed clusters. It will be depreacated without being replaced.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Endpoint used by reverse proxy.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Endpoint used by reverse proxy.")]
         public int? ReverseProxyEndpointPort { get; set; }
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    ManagedCluster cluster = SafeGetResource(() => this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name));
+                    ManagedCluster cluster = SafeGetResource(() => this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name));
                     if (cluster != null)
                     {
                         WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Cluster '{0}' already exists.", this.Name)),
@@ -157,7 +159,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         }
 
                         ManagedCluster newClusterParams = this.GetNewManagedClusterParameters();
-                        var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)
+                        var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)
                             .GetAwaiter().GetResult();
 
                         cluster = this.PollLongRunningOperation(beginRequestResponse);
@@ -175,7 +177,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetNewManagedClusterParameters()
         {
-            if (this.UpgradeMode == ClusterUpgradeMode.Automatic && !string.IsNullOrEmpty(this.CodeVersion))
+            if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual)
+            {
+                throw new PSArgumentException("Currently only upgrade mode Automatic is supported. Support for Manual mode will be added latter on.", "UpgradeMode");
+            }
+
+            if (this.UpgradeMode == Models.ClusterUpgradeMode.Automatic && !string.IsNullOrEmpty(this.CodeVersion))
             {
                 throw new PSArgumentException("CodeVersion should only be used when upgrade mode is set to Manual.", "CodeVersion");
             }
@@ -204,24 +211,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.DnsName = this.Name;
             }
 
+            // TODO alsantam: add new values
             var newCluster = new ManagedCluster(
                 location: this.Location,
                 dnsName: this.DnsName,
-                clusterUpgradeMode: this.UpgradeMode.ToString(),
-                useTestExtension: this.UseTestExtension,
                 clients: clientCerts,
                 adminUserName: this.AdminUserName,
                 adminPassword: this.AdminPassword.ConvertToString(),
                 httpGatewayConnectionPort: this.HttpGatewayConnectionPort,
                 clientConnectionPort: this.ClientConnectionPort,
-                reverseProxyEndpointPort: this.ReverseProxyEndpointPort,
                 sku: new Sku(name: this.Sku.ToString())
             );
-
-            if (this.UpgradeMode == ClusterUpgradeMode.Manual)
-            {
-                newCluster.ClusterCodeVersion = this.CodeVersion;
-            }
 
             return newCluster;
         }

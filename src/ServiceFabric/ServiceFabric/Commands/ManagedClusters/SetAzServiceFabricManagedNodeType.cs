@@ -17,9 +17,9 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
 
                             var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceReimage.IsPresent);
-                            var beginRequestResponse = this.SFRPClient.NodeTypes.BeginReimageWithHttpMessagesAsync(
+                            var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginReimageWithHttpMessagesAsync(
                                     this.ResourceGroupName,
                                     this.ClusterName,
                                     this.Name,
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 if (ShouldProcess(target: this.Name, action: string.Format("Update node type name {0}, cluster: {1}", this.Name, this.ClusterName)))
                 {
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedNodeTypeParams)
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedNodeTypeParams)
                         .GetAwaiter().GetResult();
 
                     var nodeType = this.PollLongRunningOperation(beginRequestResponse);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private NodeType GetUpdatedNodeTypeParams()
         {
-            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+            NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
 
             if (this.InstanceCount.HasValue)
             {

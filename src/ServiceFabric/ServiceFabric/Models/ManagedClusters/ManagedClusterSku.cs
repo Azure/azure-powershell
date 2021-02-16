@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Models
+namespace Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters
 {
     public enum ManagedClusterSku
     {
