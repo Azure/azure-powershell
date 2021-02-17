@@ -14,11 +14,11 @@ function GetDatasourceSetInfo
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
         $DataSourceSetInfo.ObjectType = "DatasourceSet"
         $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
-        $DataSourceSetInfo.ResourceId = $splitResourceId[0..($splitResourceId.Count -3)] | Join-String -Separator '/'
+        $DataSourceSetInfo.ResourceId =  [System.String]::Join('/', $splitResourceId[0..($splitResourceId.Count -3)]) 
         $DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
         $DataSourceSetInfo.ResourceName = $splitResourceId[$splitResourceId.Count -3]
         $splitResourceType = $DatasourceInfo.ResourceType.Split("/")
-        $DataSourceSetInfo.ResourceType =  $splitResourceType[0..($splitResourceType.Count -2)] | Join-String -Separator '/'     # Use manifest for datasource set type
+        $DataSourceSetInfo.ResourceType =  [System.String]::Join('/', $splitResourceType[0..($splitResourceType.Count -2)])     # Use manifest for datasource set type
         $DataSourceSetInfo.ResourceUri = ""
 
 		return $DataSourceSetInfo
