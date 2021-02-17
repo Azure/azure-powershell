@@ -172,6 +172,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "Skips the resizing of VHD")]
+        public SwitchParameter skipResizing { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -196,13 +202,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 checkVhdFileSize(this.LocalFilePath);
 
                 // 2.            RESIZE VHD
-                if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
+                if (this.skipResizing.IsPresent)
                 {
-                    resizeVhdFile();
+                    Console.WriteLine("Skipping VHD resizing.");
                 }
-                else // does not need resizing
+                else
                 {
-                    WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
+                    if ((this.LocalFilePath.Length - 512) % 1048576 != 0)
+                    {
+                        resizeVhdFile();
+                    }
+                    else // does not need resizing
+                    {
+                        WriteVerbose("Vhd file already sized correctly. Proceeding to uploading.");
+                    }
                 }
 
                 if (this.ParameterSetName == DirectUploadToManagedDiskSet)

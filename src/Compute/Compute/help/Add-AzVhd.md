@@ -16,15 +16,14 @@ Uploads a virtual hard disk from an on-premises machine to Azure (managed disk o
 ### DefaultParameterSet
 ```
 Add-AzVhd [[-ResourceGroupName] <String>] [-Destination] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-AsJob]
+ [[-NumberOfUploaderThreads] <Int32>] [[-BaseImageUriToPatch] <Uri>] [-OverWrite] [-skipResizing] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DirectUploadToManagedDiskSet
 ```
 Add-AzVhd [-ResourceGroupName] <String> [-LocalFilePath] <FileInfo> -DiskName <String> [-Location] <String>
- [-DiskSku <String>] [-Zone <String[]>]
- [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
+ [-DiskSku <String>] [-Zone <String[]>] [[-NumberOfUploaderThreads] <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -83,7 +82,7 @@ This command create a managed disk with given ResourceGroupName, Location, and D
 
 ### Example 6: Add a VHD file directly to a more configured disk.
 ```
-PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS 
+PS C:\> Add-AzVhd -LocalFilePath C:\Data.vhdx -ResourceGroupName rgname -Location eastus -DiskName newDisk -Zone 1 -DiskSku Premium_LRS
 ```
 
 This command will tried to convert vhdx file to vhd file first using Hyper-V. If Hyper-V is not found, it will return an error asking to use a vhd file. After successful conversion, it will create a managed disk with provided parameters, then upload the vhd file. 
@@ -266,6 +265,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -skipResizing
+Skips the resizing of the VHD file. 
+Users that wish to upload a VHD files that has its size misaligned (not N * Mib + 512 bytes) to a blob can use this switch parameter.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
