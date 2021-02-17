@@ -103,7 +103,9 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
                'Add-AzWebAppTrafficRouting', 'Remove-AzWebAppTrafficRouting', 
                'Get-AzWebAppTrafficRouting', 'Update-AzWebAppTrafficRouting', 
                'New-AzWebAppCertificate', 'Remove-AzWebAppCertificate', 
-               'Import-AzWebAppKeyVaultCertificate'
+               'Import-AzWebAppKeyVaultCertificate',
+               'Get-AzAppServiceEnvironment', 'New-AzAppServiceEnvironment',
+               'Remove-AzAppServiceEnvironment', 'New-AzAppServiceEnvironmentInboundServices'
 
 # Variables to export from this module
 # VariablesToExport = @()
