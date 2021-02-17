@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: A39A415A-B403-48D3-AF80-CF7CFE382577
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchlocationquota
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchlocationquota
 schema: 2.0.0
 ---
 

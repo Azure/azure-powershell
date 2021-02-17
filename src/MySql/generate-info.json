@@ -1,12 +1,8 @@
 {
-  "autorest_remodeler": "2.1.27",
-  "swagger_commit": "96ba256c1f61d4dc2a7928d7658e024b9b1615a6",
-  "autorest_core": "3.0.6320",
-  "microsoft.azure_autorest.csharp": "2.3.82",
-  "autorest_modelerfour": "4.15.414",
+  "autorest_powershell": "3.0.414",
+  "swagger_commit": "c95619ec11a9e817c49fdfe23de4224b990c5a61",
   "node": "v10.16.0",
-  "microsoft.azure_autorest.modeler": "2.3.55",
-  "microsoft.azure_autorest-core": "2.0.4417",
-  "autorest": "3.0.6187",
-  "autorest_powershell": "3.0.403"
+  "autorest_core": "3.0.6365",
+  "autorest_modelerfour": "4.15.414",
+  "autorest": "3.0.6187"
 }

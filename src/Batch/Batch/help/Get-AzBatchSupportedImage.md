@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchsupportedimage.md
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage.md
 schema: 2.0.0
 ---
 

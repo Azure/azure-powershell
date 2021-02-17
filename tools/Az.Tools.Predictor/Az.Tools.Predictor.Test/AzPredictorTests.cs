@@ -306,8 +306,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = _service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
-            var actual = _azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
+            var expected = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
+            var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
 
             Assert.Equal(expected.Count, actual.Count);
             Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.First().SuggestionText);

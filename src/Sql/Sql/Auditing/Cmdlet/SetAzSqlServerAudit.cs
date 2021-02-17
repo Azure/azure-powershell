@@ -58,9 +58,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             base.ApplyUserInputToModel(model);
 
+            if (AuditActionGroup != null)
+            {
+                model.AuditActionGroup = AuditActionGroup;
+            }
+
+            if (PredicateExpression != null)
+            {
+                model.PredicateExpression = PredicateExpression;
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
             {
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+            }
+
+            if (RetentionInDays != null)
+            {
+                model.RetentionInDays = RetentionInDays;
             }
 
             return model;

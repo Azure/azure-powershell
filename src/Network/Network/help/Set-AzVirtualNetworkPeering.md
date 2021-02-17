@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 06DAD751-3A43-4EF6-94C5-AA7AC1A67FC8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkpeering
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 

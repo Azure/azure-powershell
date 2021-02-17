@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 164DC871-0F0C-4E71-A37A-2B85CE65C2C4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/remove-azdatalakestoreitem
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreitem
 schema: 2.0.0
 ---
 

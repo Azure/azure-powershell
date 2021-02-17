@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private string templateSpecId;
 
+        protected string protectedTemplateUri;
+
         private ITemplateSpecsClient templateSpecsClient;
 
         protected ResourceWithParameterCmdletBase()
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.templateSpecsClient = value; }
         }
 
-        public object GetDynamicParameters()
+        public virtual object GetDynamicParameters()
         {
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
@@ -217,11 +219,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 else if (!string.IsNullOrEmpty(TemplateUri) &&
                     !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
                 {
-                    templateUri = TemplateUri;
+                    if (string.IsNullOrEmpty(protectedTemplateUri))
+                    {
+                        templateUri = TemplateUri;
+                    }
+                    else
+                    {
+                        templateUri = protectedTemplateUri;
+                    }
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            TemplateUri,
+                            templateUri,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
@@ -229,7 +238,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     else
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            TemplateUri,
+                            templateUri,
                             TemplateParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
