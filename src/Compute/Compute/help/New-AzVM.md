@@ -399,7 +399,7 @@ Specifies a license type, which indicates that the image or disk for the virtual
 Possible values for Windows Server are:
 - Windows_Client
 - Windows_Server
-<br>Possible values for Linux Server operating system are: 
+Possible values for Linux Server operating system are: 
 - RHEL_BYOS (for RHEL) 
 - SLES_BYOS (for SUSE) 
 
