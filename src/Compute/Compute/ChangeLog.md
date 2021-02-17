@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Update the documentation files for cmdlets `Export-AzLogAnalyticRequestRateByInterval` and `Export-AzLogAnalyticThrottledRequest`. Updates include showing the expected results and use of the new parameters `-GroupByUserAgent` and `-GroupByApplicationId`.
+* Updated the documentation files for cmdlets `Export-AzLogAnalyticRequestRateByInterval` and `Export-AzLogAnalyticThrottledRequest`. Updates include showing the expected results and use of the new parameters `-GroupByUserAgent` and `-GroupByApplicationId`.
 
 ## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
