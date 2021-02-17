@@ -237,8 +237,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EdgeZone for Network Interface.")]
-        public string EdgeZone { get; set; }
+            HelpMessage = "ExtendedLocation of Network Interface.")]
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -435,11 +435,7 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
-            if (!string.IsNullOrEmpty(this.EdgeZone))
-            {
-                networkInterface.ExtendedLocation = new MNM.ExtendedLocation(this.EdgeZone);
-                networkInterface.ExtendedLocationType = ExtendedLocationTypes.EdgeZone;
-            }
+            networkInterface.ExtendedLocation = this.ExtendedLocation;
 
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
