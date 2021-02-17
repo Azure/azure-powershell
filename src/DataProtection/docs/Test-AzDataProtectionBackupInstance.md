@@ -281,6 +281,11 @@ BACKUPINSTANCE <IBackupInstance>: Backup instance
     - `[Type <String>]`: DatasourceType of the resource.
   - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
     - `PolicyId <String>`: 
+    - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+      - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
+        - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
+        - `ObjectType <String>`: Type of the specific object - used for deserializing
+        - `[ResourceGroupId <String>]`: Gets or sets the Resource Group Uri.
   - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
     - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
     - `[DatasourceType <String>]`: DatasourceType of the resource.
@@ -316,6 +321,11 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
       - `[Type <String>]`: DatasourceType of the resource.
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
+      - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+        - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
+          - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
+          - `ObjectType <String>`: Type of the specific object - used for deserializing
+          - `[ResourceGroupId <String>]`: Gets or sets the Resource Group Uri.
     - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
       - `[DatasourceType <String>]`: DatasourceType of the resource.

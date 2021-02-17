@@ -38,14 +38,14 @@ function ValidateRestoreOptions {
 		$manifest = LoadManifest -DatasourceType $DatasourceType
 		if($manifest.allowedRestoreModes.Contains($RestoreMode) -eq $false)
 		{
-			$allowedValues = $manifest.allowedRestoreModes | Join-String -Separator ', '
+			$allowedValues = [System.String]::Join(', ', $manifest.allowedRestoreModes)
 			$errormsg = "Specified Restore Mode is not supported for DatasourceType " + $DatasourceType + ". Allowed Values are " + $allowedValues
 			throw $errormsg
 		}
 
 		if($manifest.allowedRestoreTargetTypes.Contains($RestoreTargetType) -eq $false)
 		{
-			$allowedValues = $manifest.allowedRestoreTargetTypes | Join-String -Separator ', '
+			$allowedValues = [System.String]::Join(', ', $manifest.allowedRestoreTargetTypes)
 			$errormsg = "Specified Restore Target Type is not supported for DatasourceType " + $DatasourceType + ". Allowed Values are " + $allowedValues
 			throw $errormsg
 		}

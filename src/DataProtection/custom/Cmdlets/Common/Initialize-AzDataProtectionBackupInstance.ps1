@@ -65,6 +65,15 @@ function Initialize-AzDataProtectionBackupInstance {
             $backupInstanceResource.BackupInstanceName = $name
         }
 
+        if($DatasourceType.ToString() -eq "AzureDisk")
+        {
+            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureOperationalStoreParameters]::new()
+            $operationalParam.DataStoreType = "OperationalStore"
+            $operationalParam.ObjectType = "AzureOperationalStoreParameters"
+            $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+            $backupInstanceResource.Property.PolicyInfo.PolicyParameter.DataStoreParametersList += @($operationalParam)
+        }
+
         return $backupInstanceResource
        
         #/subscriptions/e3d2d341-4ddb-4c5d-9121-69b7e719485e/resourceGroups/sarath-dpprg/providers/Microsoft.Storage/storageAccounts/sarathblobsa

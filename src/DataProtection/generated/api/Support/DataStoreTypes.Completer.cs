@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("VaultStore", "VaultStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "VaultStore");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OperationalStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("OperationalStore", "OperationalStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "OperationalStore");
+            }
         }
     }
 }
