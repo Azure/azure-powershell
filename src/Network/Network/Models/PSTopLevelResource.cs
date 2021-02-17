@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections;
 
@@ -25,6 +26,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
+
+        public ExtendedLocation ExtendedLocation { get; set; }
+
+        // Not sure that is right
+        public string ExtendedLocationType { get; set; }
 
         public string ResourceGuid { get; set; }
 
