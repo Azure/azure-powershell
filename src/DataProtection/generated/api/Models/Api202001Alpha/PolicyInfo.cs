@@ -17,6 +17,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string PolicyId { get => this._policyId; set => this._policyId = value; }
 
+        /// <summary>Backing field for <see cref="PolicyParameter" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters _policyParameter;
+
+        /// <summary>Policy parameters for the backup instance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters PolicyParameter { get => (this._policyParameter = this._policyParameter ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters()); set => this._policyParameter = value; }
+
         /// <summary>Backing field for <see cref="PolicyVersion" /> property.</summary>
         private string _policyVersion;
 
@@ -40,6 +47,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         SerializedName = @"policyId",
         PossibleTypes = new [] { typeof(string) })]
         string PolicyId { get; set; }
+        /// <summary>Policy parameters for the backup instance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Policy parameters for the backup instance",
+        SerializedName = @"policyParameters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters PolicyParameter { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -55,6 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
 
     {
         string PolicyId { get; set; }
+        /// <summary>Policy parameters for the backup instance</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters PolicyParameter { get; set; }
 
         string PolicyVersion { get; set; }
 

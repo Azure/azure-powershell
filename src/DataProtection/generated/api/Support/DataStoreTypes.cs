@@ -11,6 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes ArchiveStore = @"ArchiveStore";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes OperationalStore = @"OperationalStore";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes SnapshotStore = @"SnapshotStore";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes VaultStore = @"VaultStore";

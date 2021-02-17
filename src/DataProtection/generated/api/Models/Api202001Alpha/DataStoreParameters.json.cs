@@ -2,8 +2,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
 
-    /// <summary>Policy Info in backupInstance</summary>
-    public partial class PolicyInfo
+    /// <summary>Parameters for DataStore</summary>
+    public partial class DataStoreParameters
     {
 
         /// <summary>
@@ -47,22 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject json ? new PolicyInfo(json) : null;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject into a new instance of <see cref="PolicyInfo" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject into a new instance of <see cref="DataStoreParameters" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal PolicyInfo(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject json)
+        internal DataStoreParameters(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -70,20 +58,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
             {
                 return;
             }
-            {_policyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("policyId"), out var __jsonPolicyId) ? (string)__jsonPolicyId : (string)PolicyId;}
-            {_policyParameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("policyParameters"), out var __jsonPolicyParameters) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters.FromJson(__jsonPolicyParameters) : PolicyParameter;}
-            {_policyVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("policyVersion"), out var __jsonPolicyVersion) ? (string)__jsonPolicyVersion : (string)PolicyVersion;}
+            {_dataStoreType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("dataStoreType"), out var __jsonDataStoreType) ? (string)__jsonDataStoreType : (string)DataStoreType;}
+            {_objectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("objectType"), out var __jsonObjectType) ? (string)__jsonObjectType : (string)ObjectType;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="PolicyInfo" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters.
+        /// Note: the Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters interface is polymorphic,
+        /// and the precise model class that will get deserialized is determined at runtime based on the payload.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode node)
+        {
+            if (!(node is Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject json))
+            {
+                return null;
+            }
+            // Polymorphic type -- select the appropriate constructor using the discriminator
+
+            switch ( json.StringProperty("objectType") )
+            {
+                case "AzureOperationalStoreParameters":
+                {
+                    return new AzureOperationalStoreParameters(json);
+                }
+            }
+            return new DataStoreParameters(json);
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="DataStoreParameters" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="PolicyInfo" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="DataStoreParameters" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode)
         {
@@ -95,12 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
             {
                 return container;
             }
-            AddIf( null != (((object)this._policyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._policyId.ToString()) : null, "policyId" ,container.Add );
-            AddIf( null != this._policyParameter ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._policyParameter.ToJson(null,serializationMode) : null, "policyParameters" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != (((object)this._policyVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._policyVersion.ToString()) : null, "policyVersion" ,container.Add );
-            }
+            AddIf( null != (((object)this._dataStoreType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._dataStoreType.ToString()) : null, "dataStoreType" ,container.Add );
+            AddIf( null != (((object)this._objectType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._objectType.ToString()) : null, "objectType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

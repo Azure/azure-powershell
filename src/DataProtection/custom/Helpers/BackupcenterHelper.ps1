@@ -20,7 +20,7 @@
 		if(($FilterValues -ne $null) -and ($FilterValues.Length -ne 0))
 		{
 			$updatedQuery = $Query
-			$filterValueJoin = $FilterValues | Join-String -Separator "','"
+			$filterValueJoin = [System.String]::Join("','", $FilterValues)
 			$updatedQuery += " | where " + $FilterKey + " in~ ('" + $filterValueJoin + "')"
 			return $updatedQuery
 		}

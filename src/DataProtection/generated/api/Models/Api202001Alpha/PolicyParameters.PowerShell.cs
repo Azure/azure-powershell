@@ -2,9 +2,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PowerShell;
 
-    /// <summary>Policy Info in backupInstance</summary>
-    [System.ComponentModel.TypeConverter(typeof(PolicyInfoTypeConverter))]
-    public partial class PolicyInfo
+    /// <summary>Parameters in Policy</summary>
+    [System.ComponentModel.TypeConverter(typeof(PolicyParametersTypeConverter))]
+    public partial class PolicyParameters
     {
 
         /// <summary>
@@ -48,44 +48,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyInfo"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new PolicyInfo(content);
+            return new PolicyParameters(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyInfo"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new PolicyInfo(content);
+            return new PolicyParameters(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="PolicyInfo" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="PolicyParameters" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="className" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfo FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyInfo"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal PolicyInfo(global::System.Collections.IDictionary content)
+        internal PolicyParameters(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -94,18 +94,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.DataStoreParametersTypeConverter.ConvertFrom));
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyInfo"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal PolicyInfo(global::System.Management.Automation.PSObject content)
+        internal PolicyParameters(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -114,9 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyParameter = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParameters) content.GetValueForProperty("PolicyParameter",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyParameter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.PolicyParametersTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyVersion = (string) content.GetValueForProperty("PolicyVersion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyInfoInternal)this).PolicyVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParametersInternal)this).DataStoreParametersList = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters[]) content.GetValueForProperty("DataStoreParametersList",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IPolicyParametersInternal)this).DataStoreParametersList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDataStoreParameters>(__y, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.DataStoreParametersTypeConverter.ConvertFrom));
             AfterDeserializePSObject(content);
         }
 
@@ -125,9 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alph
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// Policy Info in backupInstance
-    [System.ComponentModel.TypeConverter(typeof(PolicyInfoTypeConverter))]
-    public partial interface IPolicyInfo
+    /// Parameters in Policy
+    [System.ComponentModel.TypeConverter(typeof(PolicyParametersTypeConverter))]
+    public partial interface IPolicyParameters
 
     {
 
