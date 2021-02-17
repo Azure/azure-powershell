@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Ephemeral end port of a range of ports.")]
         public int? EphemeralEndPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The size of virtual machines in the pool. All virtual machines in a pool are the same size. Default: Standard_D2.")]
-        public string VmSize { get; set; } = "Standard_D2";
+        [Parameter(Mandatory = false, HelpMessage = "The size of virtual machines in the pool. All virtual machines in a pool are the same size. Default: Standard_D2_v2.")]
+        public string VmSize { get; set; } = "Standard_D2_v2";
 
         [Parameter(Mandatory = false, HelpMessage = "The publisher of the Azure Virtual Machines Marketplace image. Default: MicrosoftWindowsServer.")]
         public string VmImagePublisher { get; set; } = "MicrosoftWindowsServer";
