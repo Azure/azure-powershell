@@ -104,5 +104,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionGetIkeSa");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayConnectionReset()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionReset");
+        }
     }
 }
