@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ExecuteClientAction(() =>
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V, a Windows naitive virtualization product. \nFor more information visit *link*");
+                Console.WriteLine("To be compatible with Azure, Add-AzVhd will automatically try to convert VHDX files to VHD, and resize VHD files to N * Mib using Hyper-V Platform, a Windows naitive virtualization product. \nFor more information visit https://aka.ms/usingAdd-AzVhd \n");
                 Console.ResetColor();
 
 
@@ -218,7 +218,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     createManagedDisk(this.ResourceGroupName, this.DiskName, diskConfig);
 
                     // 3-3: GENERATE SAS
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Generating SAS");
+                    Console.ResetColor();
                     GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = "Write";
@@ -230,11 +232,17 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
 
                     // 3-4: UPLOAD                  
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Preparing for Upload");
+                    Console.ResetColor();
                     PageBlobClient managedDisk = new PageBlobClient(sasUri, null);
                     DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
                     var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
                     var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);
-                    
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Uploading");
+                    Console.ResetColor();
                     if (synchronizer.Synchronize())
                     {
                         var result = new VhdUploadContext { LocalFilePath = this.LocalFilePath, DestinationUri = sasUri };
@@ -248,7 +256,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     }
 
                     // 3-5: REVOKE SAS
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Revoking SAS");
+                    Console.ResetColor();
                     RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
                     var RevokeResult = revokeSas.DisksClient.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -393,9 +403,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 return;
             }
 
-            //string backupPath = returnAvailExtensionName(filePath, "_backup", Path.GetExtension(filePath));
             string backupPath = filePath;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Making a copy of the VHD file before resizing.");
+            Console.ResetColor();
 
             byte[] buffer = new byte[1024 * 1024 * 100]; // 100MB buffer
             bool cancelFlag = false;
@@ -451,7 +462,11 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             var result = newDisk.DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
             var psObject = new PSDisk();
             ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
-            Console.WriteLine("Created Managed Disk:");
+            
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nCreated Managed Disk:");
+            Console.ResetColor();
+            
             WriteObject(psObject);
         }
 
@@ -522,7 +537,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 using (ManagementObject imageManagementService =
                 StorageUtilities.GetImageManagementService(scope))
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Converting VHDX file to VHD file.");
+                    Console.ResetColor();
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                     {
@@ -558,7 +575,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHDx file. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
+                    Exception outputEx = new Exception("Failed to convert VHDx file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
@@ -584,7 +601,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 using (ManagementObject imageManagementService =
                 StorageUtilities.GetImageManagementService(scope))
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Converting dynamically sized VHD to fixed size VHD.");
+                    Console.ResetColor();
+                    
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ConvertVirtualHardDisk"))
                     {
@@ -619,7 +639,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to convert VHD file to fixed size. Hyper-V is not found.\nFollow this link to enabled Hyper-V or convert file manually: *link*");
+                    Exception outputEx = new Exception("Failed to convert VHD file to fixed size. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or convert file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
@@ -647,7 +667,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     StorageUtilities.GetImageManagementService(scope))
                 {
                     createBackUp(this.LocalFilePath.FullName);
-                    Console.WriteLine("Resizing to: " + this.LocalFilePath);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Resizing VHD file");
+                    Console.ResetColor();
                     long sizeBefore = this.LocalFilePath.Length;
                     using (ManagementBaseObject inParams =
                         imageManagementService.GetMethodParameters("ResizeVirtualHardDisk"))
@@ -681,7 +703,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (ex.Message == "Invalid namespace ")
                 {
-                    Exception outputEx = new Exception("Failed to resize VHD file. Hyper-V is not found.\nFollow this link to enabled Hyper-V or resize file manually: *link*");
+                    Exception outputEx = new Exception("Failed to resize VHD file. Hyper-V Platform is not found.\nFollow this link to enabled Hyper-V or resize file manually: https://aka.ms/usingAdd-AzVhd");
                     ThrowTerminatingError(new ErrorRecord(
                         outputEx,
                         "Hyper-V is unavailable",
