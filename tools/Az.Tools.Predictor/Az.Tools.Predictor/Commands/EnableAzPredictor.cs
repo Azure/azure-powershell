@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Text;
 using System.Management.Automation;
 
@@ -30,11 +29,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         };
 
         /// <summary>
-        /// Gets and sets the session that this cmdlet applies to.
+        /// Indicates whether it's applied to all sessions.
         /// </summary>
-        [Parameter(Position = 0)]
-        [ValidateSet(nameof(SessionParameterValue.All), nameof(SessionParameterValue.Current))]
-        public SessionParameterValue Session { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter AllSession { get; set; }
 
         /// <summary>
         /// Indicates whether the user would like to receive output.
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var scriptToRun = new StringBuilder();
             var _ = scriptToRun.Append(EnableAzPredictor._EnableStatements[1]);
 
-            if (Session == SessionParameterValue.All)
+            if (AllSession.IsPresent)
             {
                 _ = scriptToRun.Append($";Add-Content -Path $PROFILE -Value \"`n{string.Join("`n", EnableAzPredictor._EnableStatements)}\" -NoNewline -Encoding UTF8 -Force")
                                 .Append($";Write-Host \"User profile ($PROFILE) has been updated.`n\"");
