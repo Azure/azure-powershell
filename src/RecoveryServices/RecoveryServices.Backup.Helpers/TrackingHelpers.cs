@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                }
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                }                
                 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -122,12 +122,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -157,12 +157,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -191,12 +191,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -240,12 +240,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (!TestMockSupport.RunningMocked)
                 {
                     TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
 
-                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    Thread.Sleep(5000);
-                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
