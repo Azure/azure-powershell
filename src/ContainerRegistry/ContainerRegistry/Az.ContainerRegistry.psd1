@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.2.0'
+ModuleVersion = '2.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -132,16 +132,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added cmdlets to supported repository, manifest, and tag operations:
-    - ''Get-AzContainerRegistryRepository''
-    - ''Update-AzContainerRegistryRepository''
-    - ''Remove-AzContainerRegistryRepository''
-    - ''Get-AzContainerRegistryManifest''
-    - ''Update-AzContainerRegistryManifest''
-    - ''Remove-AzContainerRegistryManifest''
-    - ''Get-AzContainerRegistryTag''
-    - ''Update-AzContainerRegistryTag''
-    - ''Remove-AzContainerRegistryTag'''
+        ReleaseNotes = 'Fixed authentication for `Connect-AzContainerRegistry`'
 
         # Prerelease string of this module
         # Prerelease = ''
