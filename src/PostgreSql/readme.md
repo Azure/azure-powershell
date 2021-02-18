@@ -80,7 +80,7 @@ directive:
   - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
     where: $.paths..operationId
     transform: return $.replace(/^VirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
-  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
     where: 
       verb: Restore$
       subject: ^FlexibleServer$
