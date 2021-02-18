@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
 * Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
     - `New-AzVpnSiteLinkConnection`
     - `Update-AzVpnConnection`
