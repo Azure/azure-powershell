@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Text;
 using System.Management.Automation;
 
@@ -29,11 +28,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         };
 
         /// <summary>
-        /// Gets and sets the session that this cmdlet applies to.
+        /// Indicates whether it's applied to all sessions.
         /// </summary>
-        [Parameter(Position = 0)]
-        [ValidateSet(nameof(SessionParameterValue.All), nameof(SessionParameterValue.Current))]
-        public SessionParameterValue Session { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter AllSession { get; set; }
 
         /// <summary>
         /// Indicates whether the user would like to receive output.
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var scriptToRun = new StringBuilder();
             var _ = scriptToRun.Append(DisableAzPredictor._DisableStatements[0]);
 
-            if (Session == SessionParameterValue.All)
+            if (AllSession.IsPresent)
             {
                 _ = scriptToRun.Append(";Write-Host \"To disable Az Predictor, please edit your profile ($PROFILE) and remove the following lines:`nImport-Module Az.Tools.Predictor`nSet-PSReadLineOption -PredictionSource HistoryAndPlugin`n\"");
             }
