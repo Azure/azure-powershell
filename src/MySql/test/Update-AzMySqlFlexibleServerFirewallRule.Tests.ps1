@@ -12,6 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMySqlFlexibleServerFirewallRule' {
+    # Tests moved to AzMySqlFlexibleServerFirewallRule.Tests for faster live testing.
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

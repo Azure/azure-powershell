@@ -12,6 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzMySqlFlexibleServer' {
+    # Tests moved to AzMySqlFlexibleServer.Tests for faster live testing.
     It 'Start' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

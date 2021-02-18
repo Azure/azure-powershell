@@ -34,6 +34,12 @@ Describe 'AzMySqlFlexibleServer' {
             
             $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 12 
             $server.StorageProfileBackupRetentionDay | Should -Be 12
+
+            $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -MaintenanceWindow "Mon:1:30"
+            $server.MaintenanceWindowCustomWindow | Should -Be 'Enabled'
+            $server.MaintenanceWindowDayOfWeek | Should -Be '1'
+            $server.MaintenanceWindowStartHour | Should -Be '1'
+            $server.MaintenanceWindowStartMinute | Should -Be '30'
             
             Stop-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
             
