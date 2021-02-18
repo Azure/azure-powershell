@@ -46,6 +46,11 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
  [-Confirm] [<CommonParameters>]
 ```
 
+### MigrateADEVersionParameterSet
+```
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-Migrate]
+```
+
 ## DESCRIPTION
 The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.  It enables encryption by installing the disk encryption extension on the virtual machine. 
 
@@ -395,6 +400,21 @@ Accept wildcard characters: False
 
 ### -Force
 Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Migrate
+Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without AAD credentials).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
