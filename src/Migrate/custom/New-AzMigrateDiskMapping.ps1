@@ -23,7 +23,7 @@ https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -32,14 +32,18 @@ function New-AzMigrateDiskMapping {
         ${DiskID},
 
         [Parameter(Mandatory)]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies whether the disk contains the Operating System for the source server to be migrated.
         ${IsOSDisk},
 
         [Parameter(Mandatory)]
+        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
+        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
+        [System.String]
         # Specifies the type of disks to be used for the Azure VM.
         ${DiskType},
 
@@ -51,30 +55,22 @@ function New-AzMigrateDiskMapping {
     )
     
     process {
-        # Validate the inputs
-        if ($DiskType -eq "Standard_LRS"){
-            $DiskType = "Standard_LRS"
-        }elseif ($DiskType -eq "Premium_LRS") {
-            $DiskType = "Premium_LRS"
-        }elseif ($DiskType -eq "StandardSSD_LRS") {
-            $DiskType = "StandardSSD_LRS"
-        }else{
-            throw "Valid DiskType values: Standard_LRS, Premium_LRS, StandardSSD_LRS"
-        }
-
-        if($IsOSDisk -eq "true"){
-            $IsOSDisk = "true"
-        }elseif ($IsOSDisk -eq "false") {
-            $IsOSDisk = "false"
-        }else {
-            throw "Valid IsOSDisk values: true, false"
-        }
-
         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
         $DiskObject.DiskId = $DiskID
-        $DiskObject.DiskType = $DiskType
-        $DiskObject.IsOSDisk = $IsOSDisk
-        if($PSBoundParameters.ContainsKey('DiskEncryptionSetID')){
+
+        $validDiskTypeSpellings = @{ 
+            Standard_LRS    = "Standard_LRS";
+            Premium_LRS     = "Premium_LRS";
+            StandardSSD_LRS = "StandardSSD_LRS"
+        }
+        $DiskObject.DiskType = $validDiskTypeSpellings[$DiskType]
+
+        $validBooleanSpellings = @{ 
+            true  = "true";
+            false = "false"
+        }
+        $DiskObject.IsOSDisk = $validBooleanSpellings[$IsOSDisk]
+        if ($PSBoundParameters.ContainsKey('DiskEncryptionSetID')) {
             $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
         }
         return $DiskObject 

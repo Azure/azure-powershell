@@ -341,20 +341,3 @@ directive:
       model-name: Fabric
     set:
       suppress-format: true
-  # adding argument auto completer
-  - where:
-      parameter-name: Scenario
-    set:
-      completer:
-        name: Scenario Completer
-        description: Gets the list of scenarios available.
-        script: "'agentlessVMware'"
-  - where:
-      parameter-name: IsOSDisk
-      verb: New$
-      subject: DiskMapping$
-    set:
-      completer:
-        name: IsOSDisk Completer
-        description: Gets true/false.
-        script: "'true', 'false'"
