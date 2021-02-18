@@ -11,6 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.AfdModels;
+using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
     public static class AfdUtilities
@@ -18,6 +23,55 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
         public static bool IsValuePresent(string value)
         {
             return !string.IsNullOrWhiteSpace(value);
+        }
+
+        public static string GetResourceName(this ResourceIdentifier resourceId, string resourceType)
+        {
+            string[] splitNames = resourceId.ToString().Split(new[] { '/' });
+
+            for (int i = 0; i < splitNames.Length; i++)
+            {
+                if (splitNames[i].Equals(resourceType, StringComparison.OrdinalIgnoreCase))
+                {
+                    return splitNames[i + 1];
+                }
+            }
+
+            return string.Empty;
+        }
+ 
+        public static Microsoft.Azure.Management.Cdn.Models.Sku GenerateAfdProfileSku(string sku)
+        {
+            string lowercaseSku = sku.ToLower();
+
+            Microsoft.Azure.Management.Cdn.Models.Sku afdSku = new Microsoft.Azure.Management.Cdn.Models.Sku();
+
+            switch(lowercaseSku)
+            {
+                case "premium_azurefrontdoor":
+                    afdSku.Name = AfdSkuConstants.PremiumAzureFrontDoor;
+                    break;
+
+                case "standard_azurefrontdoor":
+                    afdSku.Name = AfdSkuConstants.StandardAzureFrontDoor;
+                    break;
+
+                default:
+                    afdSku = null;
+                    break;
+            }
+
+            return afdSku;
+        }
+
+        public static bool IsAfdProfile(PSAfdProfile psAfdProfile)
+        {
+            if (psAfdProfile.Sku == AfdSkuConstants.PremiumAzureFrontDoor || psAfdProfile.Sku == AfdSkuConstants.StandardAzureFrontDoor)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

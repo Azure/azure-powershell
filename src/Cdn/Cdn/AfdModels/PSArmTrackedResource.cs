@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdModels
         /// <summary>
         /// Gets or sets the Tags
         /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
     }
 }
 

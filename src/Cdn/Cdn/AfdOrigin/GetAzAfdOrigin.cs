@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -61,10 +60,10 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
                         this.FieldsParameterSetCmdlet();
                         break;
                     case ObjectParameterSet:
-                        // this.ObjectParameterSetCmdlet();
+                        this.ObjectParameterSetCmdlet();
                         break;
                     case ResourceIdParameterSet:
-                        // this.ResourceIdParameterSetCmdlet();
+                        this.ResourceIdParameterSetCmdlet();
                         break;
                 }
             }
@@ -82,6 +81,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
 
                 PSAfdOrigin psAfdOrigin = this.CdnManagementClient.AFDOrigins.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName, this.OriginName).ToPSAfdOrigin();
 
+                // add origin group name from the parameter input since its not provided by the SDK
+                psAfdOrigin.OriginGroupName = this.OriginGroupName;
+
                 WriteObject(psAfdOrigin);
             }
             else
@@ -92,8 +94,58 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
                                                  .Select(afdOrigin => afdOrigin.ToPSAfdOrigin())
                                                  .ToList();
 
+                // add the origin group name for each of the origins
+                foreach (PSAfdOrigin psAfdOrigin in psAfdOrigins)
+                {
+                    psAfdOrigin.OriginGroupName = this.OriginGroupName;
+                }
+
+                // sdk will not give an error if the origin group is invalid / does not exist
+                if (psAfdOrigins.Count == 0)
+                {
+                    WriteObject($"No origins were found in the origin group {this.OriginGroupName}. Please ensure the origin group name is correct and has origins.");
+                }
+
                 WriteObject(psAfdOrigins);
             }
+        }
+
+        private void ObjectParameterSetCmdlet()
+        {
+            ResourceIdentifier parsedAfdOriginGroupResourceId = new ResourceIdentifier(this.OriginGroup.Id);
+
+            this.OriginGroupName = parsedAfdOriginGroupResourceId.ResourceName;
+            this.ProfileName = parsedAfdOriginGroupResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdOriginGroupResourceId.ResourceGroupName;
+
+            List<PSAfdOrigin> psAfdOrigins = CdnManagementClient.AFDOrigins.ListByOriginGroup(this.ResourceGroupName, this.ProfileName, this.OriginGroupName)
+                                             .Select(afdOrigin => afdOrigin.ToPSAfdOrigin())
+                                             .ToList();
+
+            // add the origin group name for each of the origins
+            foreach (PSAfdOrigin psAfdOrigin in psAfdOrigins)
+            {
+                psAfdOrigin.OriginGroupName = this.OriginGroupName;
+            }
+
+            WriteObject(psAfdOrigins);
+        }
+
+        private void ResourceIdParameterSetCmdlet()
+        {
+            ResourceIdentifier parsedAfdOriginId = new ResourceIdentifier(this.ResourceId);
+
+            this.OriginName = parsedAfdOriginId.ResourceName;
+            this.OriginGroupName = parsedAfdOriginId.GetResourceName("origingroups");
+            this.ProfileName = parsedAfdOriginId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdOriginId.ResourceGroupName;
+
+            PSAfdOrigin psAfdOrigin = CdnManagementClient.AFDOrigins.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName, this.OriginName).ToPSAfdOrigin();
+
+            // add origin group name from the parameter input since its not provided by the SDK
+            psAfdOrigin.OriginGroupName = this.OriginGroupName;
+
+            WriteObject(psAfdOrigin);                         
         }
     }
 }

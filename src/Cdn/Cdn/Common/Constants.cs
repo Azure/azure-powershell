@@ -19,23 +19,4 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const int PurgeLoadMinimumCollectionCount = 1;
         public const int PurgeLoadMaximumCollectionCount = 50;
     }
-
-    public static class HelpMessageConstants
-    {
-        public const string AfdCustomDomainName = "The Azure Front Door custom domain name.";
-        public const string AfdEndpointName = "The Azure Front Door endpoint name.";
-        public const string AfdOriginName = "The Azure Front Door origin name.";
-        public const string AfdOriginGroupName = "The Azure Front Door origin group name.";
-        public const string AfdOriginGroupObjectDescription = "The Azure Front Door origin group object.";
-        public const string AfdProfileName = "The Azure Front Door profile name.";
-        public const string AfdProfileObjectDescription = "The Azure Front Door profile object.";
-        public const string ResourceId = "The Azure resource id.";
-        public const string ResourceGroupName = "The Azure resource group name.";
-    }
-
-    public static class AfdSkuConstants
-    {
-        public const string PremiumAzureFrontDoor = "Premium_AzureFrontDoor";
-        public const string StandardAzureFrontDoor = "Standard_AzureFrontDoor"; 
-    }
 }

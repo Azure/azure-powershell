@@ -12,14 +12,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Cdn.AfdModels;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 using SdkAfdCustomDomain = Microsoft.Azure.Management.Cdn.Models.AFDDomain;
 using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
 using SdkAfdOrigin = Microsoft.Azure.Management.Cdn.Models.AFDOrigin;
 using SdkAfdOriginGroup = Microsoft.Azure.Management.Cdn.Models.AFDOriginGroup;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
-
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Type = sdkAfdEndpoint.Type,
                 ProvisioningState = sdkAfdEndpoint.ProvisioningState,
                 Location = sdkAfdEndpoint.Location,
-                Tags = (Dictionary<string, string>)sdkAfdEndpoint.Tags,
+                Tags = TagsConversionHelper.CreateTagHashtable(sdkAfdEndpoint.Tags),
                 HostName = sdkAfdEndpoint.HostName,
                 OriginResponseTimeoutSeconds = sdkAfdEndpoint.OriginResponseTimeoutSeconds,
                 EnabledState = sdkAfdEndpoint.EnabledState
@@ -62,13 +61,16 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 
         public static PSAfdOrigin ToPSAfdOrigin(this SdkAfdOrigin sdkOrigin)
         {
+            var sharedPrivateLinkResource = sdkOrigin.SharedPrivateLinkResource; //??
+
+            // origin group name is omitted since it is not provided by the SDK
+            // we extract the origin group name via the input and utility methods
             return new PSAfdOrigin
             {
                 Id = sdkOrigin.Id,
                 Name = sdkOrigin.Name,
                 Type = sdkOrigin.Type,
                 ProvisioningState = sdkOrigin.ProvisioningState,
-                // OriginGroupName = sdkOrigin.AzureOrigin, // ensure AzureOrigin is changed in Swagger, NET SDK, and here
                 HostName = sdkOrigin.HostName,
                 HttpPort = sdkOrigin.HttpPort,
                 HttpsPort = sdkOrigin.HttpsPort,
@@ -77,10 +79,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Weight = sdkOrigin.Weight,
                 EnabledState = sdkOrigin.EnabledState,
                 //PrivateLinkId = ??,
-                //GroupId = ??,
+                //PrivateLinkGroupId = ??,
                 //PrivateLinkLocation = ??,
                 //PrivateLinkStatus = ??,
-                //PrivateLinkRequestMessage = ??    
+                //PrivateLinkRequestMessage = ?? 
+                //AzureOrigin = ??
             };
         }
 
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Type = sdkAfdProfile.Type,
                 ProvisioningState = sdkAfdProfile.ProvisioningState,
                 Location = sdkAfdProfile.Location,
-                Tags = (Dictionary<string, string>)sdkAfdProfile.Tags,
+                Tags = TagsConversionHelper.CreateTagHashtable(sdkAfdProfile.Tags),
                 ResourceState = sdkAfdProfile.ResourceState,
                 Sku = sdkAfdProfile.Sku.Name
             };

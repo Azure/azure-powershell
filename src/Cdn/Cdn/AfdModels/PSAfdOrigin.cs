@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdModels
 
         public string PrivateLinkId { get; set; }
 
-        public string GroupId { get; set; }
+        public string PrivateLinkGroupId { get; set; }
 
         public string PrivateLinkLocation { get; set; }
 
@@ -42,30 +42,3 @@ namespace Microsoft.Azure.Commands.Cdn.AfdModels
         public string PrivateLinkRequestMessage { get; set; }
     }
 }
-
-/*
-      "id": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/jomejia-dev-resourcegroup/providers/Microsoft.Cdn/profiles/jomejia-dev-afdx-profile-1/originGroups/jomejia-dev-afdx-origingroup-1/origins/jomejia-dev-afdx-origin-1",
-      "type": "Microsoft.Cdn/profiles/originGroups/origins",
-      "name": "jomejia-dev-afdx-origin-1",
-      "properties": {
-        "originGroupName": "jomejia-dev-afdx-origingroup-1",
-        "hostName": "contoso.com",
-        "httpPort": 80,
-        "httpsPort": 443,
-        "originHostHeader": null,
-        "priority": 3,
-        "weight": 200,
-        "enabledState": "Enabled",
-        "sharedPrivateLinkResource": {
-          "privateLink": {
-            "id": "/subscriptions/da61bba1-cbd5-438c-a738-c717a6b2d59f/resourceGroups/moeidrg/providers/Microsoft.Network/privateLinkServices/pls-east-3"
-          },
-          "groupId": null,
-          "privateLinkLocation": "eastus",
-          "status": null,
-          "requestMessage": "Private link service from AFD"
-        },
-        "provisioningState": "Succeeded",
-        "deploymentStatus": "NotStarted" 
-
- */
