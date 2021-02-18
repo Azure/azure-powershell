@@ -22,7 +22,7 @@
     - `New-AzAppServiceEnvironment`
     - `Remove-AzAppServiceEnvironment`
     - `Get-AzAppServiceEnvironment`
-    - `New-AzAppServiceEnvironmentIncomingServices`
+    - `New-AzAppServiceEnvironmentInboundServices`
 
 ## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.
