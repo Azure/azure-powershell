@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             return null;
                         }
                         //Throw for any other error that is not due to a 404 for the template resource.
-                        throw e;
+                        throw;
                     }
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
