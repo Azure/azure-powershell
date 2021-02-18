@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview",
-      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2s_v3\",\r\n    \"tier\": \"GeneralPurpose\"\r\n  },\r\n  \"properties\": {\r\n    \"storageProfile\": {\r\n      \"backupRetentionDays\": 7,\r\n      \"storageMB\": 131072\r\n    },\r\n    \"administratorLogin\": \"mysql_test\",\r\n    \"administratorLoginPassword\": \"Pasword01!!2020\",\r\n    \"version\": \"12\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2s_v3\",\r\n    \"tier\": \"GeneralPurpose\"\r\n  },\r\n  \"properties\": {\r\n    \"storageProfile\": {\r\n      \"backupRetentionDays\": 7,\r\n      \"storageMB\": 131072\r\n    },\r\n    \"administratorLogin\": \"postgresql_test\",\r\n    \"administratorLoginPassword\": \"Pasword01!!2020\",\r\n    \"version\": \"12\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
