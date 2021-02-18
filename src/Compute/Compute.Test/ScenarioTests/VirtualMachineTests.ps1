@@ -4582,44 +4582,22 @@ function Test-VirtualMachinePatchAPI
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS1_v2';
-        $vmname = 'vm' + $rgname;
+        $vmsize = 'Standard_E2s_v3';
+        $vmname0 = 'v' + $rgname;
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-
-        # NRP
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Subnets[0].Id;
-        #1
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
-        $pubipId = $pubip.Id;
-        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-        $nicId = $nic.Id;
-
-        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-
-        # OS & Image
-        $user = "Foo2";
-        $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        # Creating a VM using simple parameter set
+        $username = "admin01";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "d"+ $rgname;
         $computerName = 'test';
 
-        # Windows OS test case. 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        
+        # EnableHotPatching for Windows machine. 
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
+        $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode "AutomaticByPlatform";
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
-
-        # Virtual Machine
-        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
-        Assert-NotNull $vm;
-
-
+        
     }
     finally
     {
