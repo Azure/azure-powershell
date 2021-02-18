@@ -50,10 +50,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableFreeTierHelpMessage)]
         public bool? EnableFreeTier { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
-        public string ServerVersion { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] Location { get; set; }

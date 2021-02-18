@@ -134,6 +134,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
             }
 
+            if (ServerVersion != null)
+            {
+                if (databaseAccountUpdateParameters.ApiProperties == null)
+                {
+                    databaseAccountUpdateParameters.ApiProperties = new ApiProperties();
+                }
+
+                databaseAccountUpdateParameters.ApiProperties.ServerVersion = ServerVersion;
+            }
+
             if (ShouldProcess(Name, "Updating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
