@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             DatabaseAccountGetResults readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
 
             DatabaseAccountUpdateParameters databaseAccountUpdateParameters = new DatabaseAccountUpdateParameters(locations: readDatabase.Locations, location: readDatabase.WriteLocations.ElementAt(0).LocationName);
-
             if (EnableMultipleWriteLocations != null)
             {
                 databaseAccountUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
