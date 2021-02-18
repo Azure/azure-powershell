@@ -144,11 +144,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     if (!TestMockSupport.RunningMocked)
                     {
-                        TestMockSupport.Delay(30 * 1000);
-                        if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
-                        {
-                            Thread.Sleep(30000);
-                        }
+                        TestMockSupport.Delay(30 * 1000);                        
+                    }
+                    if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        Thread.Sleep(30000);
                     }
 
                 }

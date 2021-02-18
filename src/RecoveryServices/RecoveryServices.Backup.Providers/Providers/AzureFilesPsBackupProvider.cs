@@ -216,11 +216,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureFileShareRestoreRequest restoreRequest = new AzureFileShareRestoreRequest();
             restoreRequest.CopyOptions = copyOptions;
 
-            if (targetStorageAccountResource == null)
-            {
-                throw new ArgumentException(string.Format(Resources.InvalidTargetStorageAccount));
-            }
-
             restoreRequest.SourceResourceId = storageAccountResource.Id;
             if (sourceFilePath != null)
             {
