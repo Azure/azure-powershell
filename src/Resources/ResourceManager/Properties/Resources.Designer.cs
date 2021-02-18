@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Bicep file path or uri..
+        ///   Looks up a localized string similar to Invalid Bicep file path or URI..
         /// </summary>
         internal static string InvalidBicepFilePathOrUri {
             get {

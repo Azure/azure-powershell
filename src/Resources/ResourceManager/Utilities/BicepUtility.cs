@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
                 else
                 {
-                    throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePathOrUri, bicepTemplateFilePath);
+                    throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePathOrUri, "TemplateFile");
                 }
                 executeScript($"bicep build '{tempPath}'");
                 return tempPath.Replace(".bicep", ".json");
