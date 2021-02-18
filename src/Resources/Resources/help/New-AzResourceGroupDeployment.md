@@ -524,7 +524,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Specifies the URI of a template file. Supported template file type: json and bicep.
+Specifies the URI of a template file.
 This file can be a custom template or a gallery template that is saved as a JSON file, such as by using **Save-AzResourceGroupGalleryTemplate**.
 
 ```yaml

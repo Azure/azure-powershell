@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string TemplateFile { get; set; }
 
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file. Supported template file type: json and bicep.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
@@ -172,8 +172,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public virtual object GetDynamicParameters()
         {
-            if (BicepUtility.IsBicepFile(TemplateFile) ||
-                BicepUtility.IsBicepFile(TemplateUri))
+            if (BicepUtility.IsBicepFile(TemplateFile))
                 BuildAndUseBicepTemplate();
                 
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
@@ -417,15 +416,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected void BuildAndUseBicepTemplate()
         {
-            if (BicepUtility.IsBicepFile(TemplateFile))
-            {
-                TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, this.ResolvePath(TemplateFile));
-            }
-
-            if (BicepUtility.IsBicepFile(TemplateUri))
-            {
-                TemplateUri = BicepUtility.BuildFile(this.ExecuteScript<Object>, TemplateUri);
-            }
+            TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, this.ResolvePath(TemplateFile));
         }
     }
 }

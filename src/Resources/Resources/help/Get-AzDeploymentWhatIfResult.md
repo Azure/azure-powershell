@@ -319,7 +319,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Uri to the template file. Supported template file type: json and bicep.
+Uri to the template file.
 
 ```yaml
 Type: System.String
