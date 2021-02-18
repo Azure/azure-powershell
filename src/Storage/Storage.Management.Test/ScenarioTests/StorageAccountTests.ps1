@@ -317,7 +317,7 @@ function Test-SetAzureRmStorageAccountKeySource
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
-        Assert-AreNotEqual SystemAssigned $sto.Identity.Type
+        Assert-AreEqual "SystemAssigned" $sto.Identity.Type
         Assert-AreEqual $true $sto.Encryption.Services.Blob.Enabled
         Assert-AreEqual $true $sto.Encryption.Services.File.Enabled
         Assert-AreEqual Microsoft.Storage $sto.Encryption.KeySource;
