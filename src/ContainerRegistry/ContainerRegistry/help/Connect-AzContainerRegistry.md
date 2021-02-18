@@ -14,12 +14,13 @@ Login to an azure container registry.
 
 ### WithoutNameAndPasswordParameterSet (Default)
 ```
-Connect-AzContainerRegistry -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Connect-AzContainerRegistry -RegistryName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### WithNameAndPasswordParameterSet
 ```
-Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String>
+Connect-AzContainerRegistry -RegistryName <String> -UserName <String> -Password <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -66,21 +67,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Azure Container Registry Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: RegistryName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Password
 Password For Azure Container Registry.
 
@@ -93,6 +79,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegistryName
+Azure Container Registry Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
