@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                     profileSettings.SurveyId = null;
 
-                    fileContent = JsonSerializer.Serialize<Settings>(profileSettings, new JsonSerializerOptions(Settings._jsonSerializerOptions) { IgnoreNullValues = true });
+                    fileContent = JsonSerializer.Serialize<Settings>(profileSettings, new JsonSerializerOptions(Settings._jsonSerializerOptions) { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
                     File.WriteAllText(profileSettingFilePath, fileContent, Encoding.UTF8);
                 }
                 catch
