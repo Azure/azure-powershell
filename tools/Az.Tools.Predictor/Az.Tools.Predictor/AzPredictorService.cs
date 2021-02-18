@@ -248,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
+                    AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId);
 
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         try
                         {
-                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
+                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.HashUserId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
                             hasSentHttpRequest = true;

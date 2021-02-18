@@ -356,7 +356,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             {
                 { "SessionId", telemetryData.SessionId },
                 { "CorrelationId", telemetryData.CorrelationId },
-                { "UserId", _azContext.UserId },
+                { "UserId", _azContext.HashUserId },
                 { "HashMacAddress", _azContext.MacAddress },
                 { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", _azContext.ModuleVersion.ToString() },

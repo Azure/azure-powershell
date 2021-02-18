@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
     sealed class MockAzContext : IAzContext
     {
-        public string UserId => "TestUserId";
+        public string HashUserId => "TestUserId";
 
         public string MacAddress => "TestMacAddress";
 

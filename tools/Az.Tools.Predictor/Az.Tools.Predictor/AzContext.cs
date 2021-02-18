@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version AzVersion { get; private set; } = DefaultVersion;
 
         /// <inheritdoc/>
-        public string UserId { get; private set; } = string.Empty;
+        public string HashUserId { get; private set; } = string.Empty;
 
         private string _macAddress;
         /// <inheritdoc/>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void UpdateContext()
         {
             AzVersion = GetAzVersion();
-            UserId = GenerateSha256HashString(GetUserAccountId());
+            HashUserId = GenerateSha256HashString(GetUserAccountId());
         }
 
         /// <summary>
