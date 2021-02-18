@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -43,7 +43,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '7.1'
+PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})

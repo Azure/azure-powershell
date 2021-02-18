@@ -374,8 +374,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // There is no new request prediction. The correlation id isn't changed.
+            AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);

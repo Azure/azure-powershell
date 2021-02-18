@@ -77,10 +77,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             PostTelemetryData(telemetryData);
 
-            // OnRequestPrediction may be running as a task on a different thread. Can't count on that to update
-            // CorrelationId in time.
-            CorrelationId = Guid.NewGuid().ToString();
-
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
 #endif
@@ -89,6 +85,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public virtual void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
+            // OnRequestPrediction may be running as a task on a different thread, or it's not triggerred at all because the history isn't changed,
+            // regardless, we only update the correlation id when that happens.
+            // If correlation id isn't updated, that's the same as the prediction used for suggestion isn't updated yet.
+            // The correlation id should be to correlate the prediction from the server and the suggestions presented to the user.
+            CorrelationId = Guid.NewGuid().ToString();
+
             PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
