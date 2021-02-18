@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'AzMySqlFlexibleServerCreateVnet.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'AzMySqlFlexibleServerCreateWithVnet.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,7 +15,7 @@ $DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
-Describe 'AzMySqlFlexibleServerCreateVnet' {
+Describe 'AzMySqlFlexibleServerCreateWithVnet' {
     function WaitServerDelete(){
         if ($TestMode -eq 'live') {
             Start-Sleep -Seconds 450
@@ -102,54 +102,54 @@ Describe 'AzMySqlFlexibleServerCreateVnet' {
         } | Should -Not -Throw
     }
 
-    It 'VnetNameScenario-InvalidVnet' {
-        if ($TestMode -eq 'live') {
-            {
-                # invalid vnet name
-                $InvalidName = "hi/df!@$@#$@"
-                New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $InvalidName
+    # It 'VnetNameScenario-InvalidVnet' {
+    #     if ($TestMode -eq 'live') {
+    #         {
+    #             # invalid vnet name
+    #             $InvalidName = "hi/df!@$@#$@"
+    #             New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $InvalidName
                 
-            } | Should -Throw
-        }
-    }
+    #         } | Should -Throw
+    #     }
+    # }
 
-    It 'VnetIdScenario-ValidVnet' {
-        {
-            if ($TestMode -eq 'live') {           
-                # valid vnet Id but the vnet doesn't exist
-                $VnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest"
-                $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
+    # It 'VnetIdScenario-ValidVnet' {
+    #     {
+    #         if ($TestMode -eq 'live') {           
+    #             # valid vnet Id but the vnet doesn't exist
+    #             $VnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest"
+    #             $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
 
-                $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName
-                RemoveServerVnet $env.flexibleServerName3 nonexistingvnetforpowershelltest $SubnetName
-            }
-        } | Should -Not -Throw
-    }
+    #             $SubnetName = 'Subnet' + $Server.Name
+    #             ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName
+    #             RemoveServerVnet $env.flexibleServerName3 nonexistingvnetforpowershelltest $SubnetName
+    #         }
+    #     } | Should -Not -Throw
+    # }
 
-    It 'VnetIdScenario-ValidVnetNotExist' {
-        {
-            if ($TestMode -eq 'live') {
-                # valid vnet Id and the vnet exists (subnet does not exist) 
-                $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.Location -AddressPrefix $DEFAULT_VNET_PREFIX -Force
-                $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Id
+    # It 'VnetIdScenario-ValidVnetNotExist' {
+    #     {
+    #         if ($TestMode -eq 'live') {
+    #             # valid vnet Id and the vnet exists (subnet does not exist) 
+    #             $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.Location -AddressPrefix $DEFAULT_VNET_PREFIX -Force
+    #             $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Id
                 
-                $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server $env.VNetName $SubnetName
-                RemoveServerVnet $env.flexibleServerName2 $env.VNetName $SubnetName
-            }
-        } | Should -Not -Throw
-    }
+    #             $SubnetName = 'Subnet' + $Server.Name
+    #             ValidateSubnetVnet $Server $env.VNetName $SubnetName
+    #             RemoveServerVnet $env.flexibleServerName2 $env.VNetName $SubnetName
+    #         }
+    #     } | Should -Not -Throw
+    # }
 
-    It 'VnetIdScenario-InvalidVnet' {
-        if ($TestMode -eq 'live') {
-            {
-                # invalid vnet Id
-                $VnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/virtualNetworks/Vnet/Wrong/Vnet/itis"
-                New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
-            } | Should -Throw
-        }
-    }
+    # It 'VnetIdScenario-InvalidVnet' {
+    #     if ($TestMode -eq 'live') {
+    #         {
+    #             # invalid vnet Id
+    #             $VnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/virtualNetworks/Vnet/Wrong/Vnet/itis"
+    #             New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
+    #         } | Should -Throw
+    #     }
+    # }
 
     It 'SubnetIdScenario-ValidSubnet' {
         {
@@ -192,57 +192,57 @@ Describe 'AzMySqlFlexibleServerCreateVnet' {
         } | Should -Not -Throw
     }
 
-    It 'SubnetIdScenario-ValidSubnetDelegation' {
-        {
-            if ($TestMode -eq 'live') {
-                # valid subnet Id and the subnet exists with delegation
-                $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
-                $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
-                $Subnet = Add-AzDelegation -Name $DELEGATION_SERVICE_NAME -ServiceName $DELEGATION_SERVICE_NAME -Subnet $Subnet
-                $Vnet | Set-AzVirtualNetwork
-                $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
-                $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id
+    # It 'SubnetIdScenario-ValidSubnetDelegation' {
+    #     {
+    #         if ($TestMode -eq 'live') {
+    #             # valid subnet Id and the subnet exists with delegation
+    #             $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
+    #             $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
+    #             $Subnet = Add-AzDelegation -Name $DELEGATION_SERVICE_NAME -ServiceName $DELEGATION_SERVICE_NAME -Subnet $Subnet
+    #             $Vnet | Set-AzVirtualNetwork
+    #             $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
+    #             $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id
                 
-                ValidateSubnetVnet $Server $env.VNetName $env.SubnetName
-                RemoveServerVnet $env.flexibleServerName2 $env.VNetName $env.SubnetName
-            }
-        } | Should -Not -Throw
-    }
+    #             ValidateSubnetVnet $Server $env.VNetName $env.SubnetName
+    #             RemoveServerVnet $env.flexibleServerName2 $env.VNetName $env.SubnetName
+    #         }
+    #     } | Should -Not -Throw
+    # }
 
-    It 'SubnetIdScenario-ValidSubnetNotExist' {
-        {
-            if ($TestMode -eq 'live') {
-                # valid subnet Id but the subnet doesn't exist
-                $SubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest/subnets/nonexistingsubnetforpowershelltest"
-                $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
+    # It 'SubnetIdScenario-ValidSubnetNotExist' {
+    #     {
+    #         if ($TestMode -eq 'live') {
+    #             # valid subnet Id but the subnet doesn't exist
+    #             $SubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest/subnets/nonexistingsubnetforpowershelltest"
+    #             $Server = New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
                 
-                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest nonexistingsubnetforpowershelltest
-                RemoveServerVnet $env.flexibleServerName3 nonexistingvnetforpowershelltest nonexistingsubnetforpowershelltest
-            }
-        } | Should -Not -Throw
-    }
+    #             ValidateSubnetVnet $Server nonexistingvnetforpowershelltest nonexistingsubnetforpowershelltest
+    #             RemoveServerVnet $env.flexibleServerName3 nonexistingvnetforpowershelltest nonexistingsubnetforpowershelltest
+    #         }
+    #     } | Should -Not -Throw
+    # }
 
-    It 'SubnetIdScenario-InvalidSubnet' {
-        if ($TestMode -eq 'live') {
-            {
-                # invalid subnet Id
-                $SubnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/VirtualNetworks/Wrong/subnetss/wrong"
-                New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
-            } | Should -Throw
-            {
-                # invalid delegation on the subnet
-                $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
-                $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
-                $Subnet = Add-AzDelegation -Name "faultydelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $Subnet
-                Set-AzVirtualNetwork -VirtualNetwork $Vnet
-                $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
-                New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id  | Should -Throw
-                Remove-AzDelegation -Name "faultydelegation" -Subnet $Subnet
-                Set-AzVirtualNetwork $Vnet
-                Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup
-            }
-        }
-    }
+    # It 'SubnetIdScenario-InvalidSubnet' {
+    #     if ($TestMode -eq 'live') {
+    #         {
+    #             # invalid subnet Id
+    #             $SubnetId = "/subscriptions/00000-000-000000000000/resourceGroups/providers/Microsoft.Network/VirtualNetworks/Wrong/subnetss/wrong"
+    #             New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
+    #         } | Should -Throw
+    #         {
+    #             # invalid delegation on the subnet
+    #             $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
+    #             $Vnet = New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
+    #             $Subnet = Add-AzDelegation -Name "faultydelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $Subnet
+    #             Set-AzVirtualNetwork -VirtualNetwork $Vnet
+    #             $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -VirtualNetwork $Vnet
+    #             New-AzMySqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $Subnet.Id  | Should -Throw
+    #             Remove-AzDelegation -Name "faultydelegation" -Subnet $Subnet
+    #             Set-AzVirtualNetwork $Vnet
+    #             Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup
+    #         }
+    #     }
+    # }
 
     It 'VnetSubnetScenario-ValidVnetSubnetNotExist' {
         {

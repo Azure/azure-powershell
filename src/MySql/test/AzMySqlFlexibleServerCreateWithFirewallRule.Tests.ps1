@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'AzMySqlFlexibleServerCreateFirewallRule.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'AzMySqlFlexibleServerCreateWithFirewallRule.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -17,14 +17,14 @@ $DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
-Describe 'AzMySqlFlexibleServerCreateFirewallRule' {
+Describe 'AzMySqlFlexibleServerCreateWithFirewallRule' {
 
     It 'PublicAccessScenario-AllowAll' {
         If ($TestMode -eq 'live') {
             {
                 # Public Access All
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2 -PublicAccess All -Sku Standard_D2s_v3 -SkuTier GeneralPurpose
-                $FirewallRules = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName2
+                $FirewallRules = Get-AzMySqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName2
                 $FirewallRules[0].Name | Should -BeLike "AllowAll*"
                 $FirewallRules[0].StartIPAddress | Should -Be "0.0.0.0"
                 $FirewallRules[0].EndIPAddress | Should -Be "255.255.255.255"
