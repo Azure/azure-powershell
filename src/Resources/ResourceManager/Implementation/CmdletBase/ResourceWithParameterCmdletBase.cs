@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (BicepUtility.IsBicepFile(TemplateFile))
             {
-                TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, TemplateFile);
+                TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, this.ResolvePath(TemplateFile));
             }
 
             if (BicepUtility.IsBicepFile(TemplateUri))

@@ -66,6 +66,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 {
                     File.Copy(bicepTemplateFilePath, tempPath, true);
                 }
+                else
+                {
+                    throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePathOrUri, bicepTemplateFilePath);
+                }
                 executeScript($"bicep build '{tempPath}'");
                 return tempPath.Replace(".bicep", ".json");
             }
