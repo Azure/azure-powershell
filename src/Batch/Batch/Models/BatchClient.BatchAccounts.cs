@@ -62,7 +62,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Tags = tagDictionary,
                 AutoStorage = autoStorage,
                 PoolAllocationMode = parameters.PoolAllocationMode,
+<<<<<<< HEAD
                 KeyVaultReference = keyVaultRef
+=======
+                KeyVaultReference = keyVaultRef,
+                PublicNetworkAccess = parameters.PublicNetworkAccess,
+                Identity = parameters.Identity
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);
@@ -86,7 +92,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // need to the location in order to call
             var getResponse = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
 
@@ -235,7 +245,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="maxCount">The number of results.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
         /// <returns>The node agent SKUs matching the specified filter.</returns>
+<<<<<<< HEAD
         public IEnumerable<PSNodeAgentSku> ListNodeAgentSkus(
+=======
+        public IEnumerable<PSImageInformation> ListSupportedImages(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             BatchAccountContext context,
             string filterClause = default(string),
             int maxCount = default(int),
@@ -244,10 +258,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             ODATADetailLevel filterLevel = new ODATADetailLevel(filterClause: filterClause);
 
+<<<<<<< HEAD
             IPagedEnumerable<NodeAgentSku> nodeAgentSkus = poolOperations.ListNodeAgentSkus(filterLevel, additionalBehaviors);
             Func<NodeAgentSku, PSNodeAgentSku> mappingFunction = p => { return new PSNodeAgentSku(p); };
 
             return PSPagedEnumerable<PSNodeAgentSku, NodeAgentSku>.CreateWithMaxCount(nodeAgentSkus, mappingFunction,
+=======
+            IPagedEnumerable<ImageInformation> supportedImages = poolOperations.ListSupportedImages(filterLevel, additionalBehaviors);
+            Func<ImageInformation, PSImageInformation> mappingFunction = p => { return new PSImageInformation(p); };
+
+            return PSPagedEnumerable<PSImageInformation, ImageInformation>.CreateWithMaxCount(supportedImages, mappingFunction,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 maxCount, () => WriteVerbose(string.Format(Resources.MaxCount, maxCount)));
         }
 

@@ -235,7 +235,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 // Upload cert into ID Mgmt
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
+<<<<<<< HEAD
                 var bytes = Encoding.ASCII.GetBytes(certificate);
+=======
+                X509Certificate2 x509 = new X509Certificate2();
+                byte[] data = Convert.FromBase64String(certificate);
+                x509.Import(data);
+                var bytes = x509.RawData;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var certificateArgs = new CertificateRequest
                 {
                     Properties = new RawCertificateData {Certificate = bytes, AuthType = AuthType.AAD}
@@ -250,7 +257,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Vault.ResourceGroupName,
                     Vault.Name,
                     friendlyName,
+<<<<<<< HEAD
                     certificateArgs,
+=======
+                    certificateArgs.Properties,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     RecoveryServicesClient.GetRequestHeaders()).Result.Body;
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
             }
@@ -304,13 +315,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 var fullFilePath = System.IO.Path.Combine(filePath, fileName);
                 // Upload cert into ID Mgmt
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
+<<<<<<< HEAD
                 var bytes = Encoding.ASCII.GetBytes(certificate);
+=======
+                X509Certificate2 x509 = new X509Certificate2();
+                byte[] data = Convert.FromBase64String(certificate);
+                x509.Import(data);
+                var bytes = x509.RawData;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var certificateArgs = new CertificateRequest
                 {
                     Properties = new RawCertificateData {Certificate = bytes, AuthType = AuthType.AAD}
                 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var dateString = DateTime.Now.ToString("M-d-yyyy");
 
                 var friendlyName = string.Format("{0}{1}-{2}-vaultcredentials", Vault.Name, subscriptionId, dateString);
@@ -318,7 +339,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Vault.ResourceGroupName,
                     Vault.Name,
                     friendlyName,
+<<<<<<< HEAD
                     certificateArgs,
+=======
+                    certificateArgs.Properties,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     RecoveryServicesClient.GetRequestHeaders()).Result.Body;
                 WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
 
@@ -661,7 +686,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         },
                         ChannelIntegrityKey = RecoveryServicesClient.GetCurrentVaultChannelIntegrityKey(),
                         SiteId = asrSite.ID ?? String.Empty,
+<<<<<<< HEAD
                         SiteName = asrSite.Name ?? String.Empty
+=======
+                        SiteName = asrSite.Name ?? String.Empty,
+                        PrivateEndpointStateForSiteRecovery = Vault.Properties.PrivateEndpointStateForSiteRecovery
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
 
                     var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));

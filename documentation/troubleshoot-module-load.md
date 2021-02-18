@@ -1,6 +1,10 @@
 # Troubleshooting Module Loading With Azure PowerShell
 
+<<<<<<< HEAD
 ## Potential Incompatibilies
+=======
+## Potential Incompatibilities
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Azure PowerShell consists of multiple modules, each of which has a dependency on specific version of the central authentication module 'Az.Accounts'. If all versions of Azure PowerShell modules are kept up to date, and all are installed to the same scope, there should never be any incompatibility issues.
 
@@ -36,7 +40,11 @@ At line:1 char:1
 
 ## Reason: Missing .NET Framework 4.7.2 or greater
 
+<<<<<<< HEAD
 If you are recieving type loading errors when trying to import/run Az modules in Windows PowerShell, you'll need to install [.NET Framework 4.7.2](https://dotnet.microsoft.com/download) or greater. This is required as Windows PowerShell does not natively support .NET Standard.
+=======
+If you are receiving type loading errors when trying to import/run Az modules in Windows PowerShell, you'll need to install [.NET Framework 4.7.2](https://dotnet.microsoft.com/download) or greater. This is required as Windows PowerShell does not natively support .NET Standard.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 You can also avoid this issue by using [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest). PowerShell Core natively supports .NET Standard assemblies. PowerShell Core also works cross platform, so Linux and Mac can use Az modules in PowerShell Core.
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: EAAF615B-6139-438B-A2FD-6966E72B3AA9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappbackup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappbackup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,8 +33,13 @@ The **Get-AzWebAppBackup** cmdlet gets the specified backup of an Azure Web App.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:
 ```
+=======
+### Example 1
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -BackupId "12345"
 ```
 

@@ -22,7 +22,11 @@ function Test-GetReservationOrder
     # Please create reservation through portal and use id to run tests
     # Once reservation is created you will have reservationOrderId to run this test
 	$type = "Microsoft.Capacity/reservationOrders"
+<<<<<<< HEAD
 	$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
+=======
+	$reservationOrderId = "154ed3db-262c-40e5-baa3-a0505b6cdfdd"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $reservation = Get-AzReservationOrder -ReservationOrderId $reservationOrderId
 
 	Assert-NotNull $reservation

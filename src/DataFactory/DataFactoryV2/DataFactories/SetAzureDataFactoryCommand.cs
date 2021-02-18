@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -228,6 +232,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public SwitchParameter Force { get; set; }
 
         #region Attributes
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpGlobalParameter)]
+        #endregion
+        public IDictionary<string, GlobalParameterSpecification> GlobalParameterDefinition { get; set; }
+
+        #region Attributes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoGitConfig,
             Mandatory = false,
@@ -461,7 +473,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Tags = Tag,
                 Force = Force.IsPresent,
                 RepoConfiguration = repoConfiguration,
+<<<<<<< HEAD
                 ConfirmAction = ConfirmAction
+=======
+                ConfirmAction = ConfirmAction,
+                GlobalParameters = GlobalParameterDefinition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
@@ -498,6 +515,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
+<<<<<<< HEAD
+=======
+                
+                this.GlobalParameterDefinition = InputObject.GlobalParameters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (!string.IsNullOrWhiteSpace(ResourceId))

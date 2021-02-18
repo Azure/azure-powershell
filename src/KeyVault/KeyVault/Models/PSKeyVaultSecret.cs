@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public SecureString SecretValue { get; set; }
 
+<<<<<<< HEAD
         public string SecretValueText
         {
             get
@@ -67,6 +68,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 return text;
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSKeyVaultSecretAttributes Attributes { get; set; }
 
     }

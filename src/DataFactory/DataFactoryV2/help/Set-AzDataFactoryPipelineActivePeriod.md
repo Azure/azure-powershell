@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: D853A91F-95E7-4C36-AC0F-2C10DFCF68F8
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/set-azdatafactorypipelineactiveperiod
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactorypipelineactiveperiod
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

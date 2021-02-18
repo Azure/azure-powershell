@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1B39809C-90DA-4ECB-B949-D4A9A54ED982
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceipconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfaceipconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

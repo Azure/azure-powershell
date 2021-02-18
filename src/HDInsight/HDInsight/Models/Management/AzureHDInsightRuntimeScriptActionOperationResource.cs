@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightRuntimeScriptActionOperationResource : AzureHDInsightRuntimeScriptAction
     {
+<<<<<<< HEAD
         public AzureHDInsightRuntimeScriptActionOperationResource(RuntimeScriptAction runtimeScriptAction, OperationResource operationResource)
             : base(runtimeScriptAction)
         {
@@ -27,6 +28,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             }
 
             OperationState = operationResource.State.ToString();
+=======
+        public AzureHDInsightRuntimeScriptActionOperationResource(RuntimeScriptAction runtimeScriptAction, ErrorResponseException errorResponse)
+            : base(runtimeScriptAction)
+        {
+            if (errorResponse != null)
+            {
+                ErrorMessage = errorResponse.Body?.Message;
+                OperationState = errorResponse.Body?.Code;
+            }
+            else
+            {
+                OperationState = AsyncOperationState.Succeeded.ToString();
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public string OperationState { get; set; }

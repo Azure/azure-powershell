@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 811671E9-592E-4E58-8174-34D665206A65
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragefile
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragefile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -139,12 +143,20 @@ This cmdlet removes a file in the folder that this parameter specifies.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileDirectory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -156,12 +168,20 @@ To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -222,12 +242,20 @@ If you specify this parameter, do not specify the *Context* parameter.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -293,7 +321,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Storage.File.CloudFile
+=======
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

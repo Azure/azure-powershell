@@ -34,11 +34,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ResourceFile omObject;
         
+<<<<<<< HEAD
         public PSResourceFile(string blobSource, string filePath, string fileMode = null)
         {
             this.omObject = new Microsoft.Azure.Batch.ResourceFile(blobSource, filePath, fileMode);
         }
         
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal PSResourceFile(Microsoft.Azure.Batch.ResourceFile omObject)
         {
             if ((omObject == null))
@@ -48,11 +51,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+<<<<<<< HEAD
         public string BlobSource
         {
             get
             {
                 return this.omObject.BlobSource;
+=======
+        public string AutoStorageContainerName
+        {
+            get
+            {
+                return this.omObject.AutoStorageContainerName;
+            }
+        }
+        
+        public string BlobPrefix
+        {
+            get
+            {
+                return this.omObject.BlobPrefix;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
         
@@ -71,5 +90,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.FilePath;
             }
         }
+<<<<<<< HEAD
+=======
+        
+        public string HttpUrl
+        {
+            get
+            {
+                return this.omObject.HttpUrl;
+            }
+        }
+        
+        public string StorageContainerUrl
+        {
+            get
+            {
+                return this.omObject.StorageContainerUrl;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

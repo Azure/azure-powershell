@@ -24,19 +24,31 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
+=======
+            HelpMessage = "The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateRange(300, 172799)]
         public int SALifeTime { get; set; }
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
+=======
+            HelpMessage = "The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateRange(1024, int.MaxValue)]
         public int SADataSize { get; set; }
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IPSec encryption algorithm (IKE Phase 1)")]
+=======
+            HelpMessage = "The VpnClient IPSec encryption algorithm (IKE Phase 1)")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IpsecEncryption.GCMAES256,
@@ -47,7 +59,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IPSec integrity algorithm (IKE Phase 1)")]
+=======
+            HelpMessage = "The VpnClient IPSec integrity algorithm (IKE Phase 1)")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IpsecIntegrity.GCMAES256,
@@ -57,7 +73,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IKE encryption algorithm (IKE Phase 2)")]
+=======
+            HelpMessage = "The VpnClient IKE encryption algorithm (IKE Phase 2)")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IkeEncryption.GCMAES256,
@@ -68,7 +88,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient IKE integrity algorithm (IKE Phase 2)")]
+=======
+            HelpMessage = "The VpnClient IKE integrity algorithm (IKE Phase 2)")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IkeIntegrity.SHA384,
@@ -77,7 +101,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient DH Groups used in IKE Phase 1 for initial SA")]
+=======
+            HelpMessage = "The VpnClient DH Groups used in IKE Phase 1 for initial SA")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.DhGroup.DHGroup24,
@@ -89,7 +117,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The Vpnclient PFS Groups used in IKE Phase 2 for new child SA")]
+=======
+            HelpMessage = "The VpnClient PFS Groups used in IKE Phase 2 for new child SA")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.PfsGroup.PFS24,
@@ -118,7 +150,11 @@ namespace Microsoft.Azure.Commands.Network
             if ((vpnclientIPsecParameters.IpsecEncryption.Contains("GCM") || vpnclientIPsecParameters.IpsecIntegrity.Contains("GCM"))
                 && vpnclientIPsecParameters.IpsecEncryption != vpnclientIPsecParameters.IpsecIntegrity)
             {
+<<<<<<< HEAD
                 throw new ArgumentException("Vpnclient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+=======
+                throw new ArgumentException("VpnClient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             vpnclientIPsecParameters.IkeEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IkeEncryption")) ? MNM.IkeEncryption.AES256 : this.IkeEncryption;

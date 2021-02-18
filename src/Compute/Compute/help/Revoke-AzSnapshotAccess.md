@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/revoke-azsnapshotaccess
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/revoke-azsnapshotaccess
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,7 +28,11 @@ The **Revoke-AzSnapshotAccess** cmdlet revokes an access to a snapshot.
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\> Revoke-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
+=======
+PS C:\> Revoke-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Revoke the access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01'

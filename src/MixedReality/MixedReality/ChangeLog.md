@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 0.1.4
+* Added Azure Remote Rendering Management Cmdlets
+
+## Version 0.1.3
+* Update references in .psd1 to use relative path
+
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.1.1
 
 * General availability of `Az.MixedReality` module

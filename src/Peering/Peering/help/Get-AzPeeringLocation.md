@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringlocation
+=======
+online version: https://docs.microsoft.com/powershell/module/az.peering/get-azpeeringlocation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,7 +16,11 @@ Gets the Peering locations offered by Microsoft
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### PeeringByKind (Default)
+=======
+### Default (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -20,10 +28,23 @@ Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProf
 
 ### LocationByFacilityId
 ```
+<<<<<<< HEAD
 Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+=======
+Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### LocationByDirectType
+```
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType <String>]
+ [-PeeringDbFacilityId <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 Gets the Peering Facilities where users can connect with ARM.
 
@@ -103,6 +124,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -DirectPeeringType
+Select 'Edge', 'CDN', and 'Transit'.
+
+```yaml
+Type: System.String
+Parameter Sets: LocationByDirectType
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Kind
 Shows all Peering resource by Kind.
 
@@ -122,12 +161,21 @@ Accept wildcard characters: False
 The PeeringDB.com Facility ID
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Int32
 Parameter Sets: LocationByFacilityId
 Aliases:
 
 Required: True
 Position: 0
+=======
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: LocationByFacilityId, LocationByDirectType
+Aliases:
+
+Required: False
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,7 +186,11 @@ The location of the resource.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: PeeringByKind
+=======
+Parameter Sets: Default, LocationByDirectType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -149,7 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

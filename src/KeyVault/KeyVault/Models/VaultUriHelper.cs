@@ -20,11 +20,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal class VaultUriHelper
     {
+<<<<<<< HEAD
         public VaultUriHelper(string keyVaultDnsSuffix)
+=======
+        // it doesn't matter if this class acts as a vault uri helper or hsm uri helper
+        // the logic is basically the same
+        // todo: combine them together
+        public VaultUriHelper(string keyVaultDnsSuffix, string managedHsmDnsSuffix = null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (string.IsNullOrEmpty(keyVaultDnsSuffix))
                 throw new ArgumentNullException("keyVaultDnsSuffix");
             this.KeyVaultDnsSuffix = keyVaultDnsSuffix;
+<<<<<<< HEAD
+=======
+            ManagedHsmDnsSuffix = managedHsmDnsSuffix;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public string GetVaultName(string vaultAddress)
@@ -39,6 +50,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         public string KeyVaultDnsSuffix { get; private set; }
+<<<<<<< HEAD
+=======
+        public string ManagedHsmDnsSuffix { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         private Uri CreateAndValidateVaultUri(string vaultAddress)
         {
@@ -56,7 +71,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return vaultUri;
         }
 
+<<<<<<< HEAD
         private Uri CreateVaultUri(string vaultName)
+=======
+        public Uri CreateVaultUri(string vaultName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -65,5 +84,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return builder.Uri;
         }
+<<<<<<< HEAD
+=======
+
+        public Uri CreateManagedHsmUri(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+
+            UriBuilder builder = new UriBuilder("https", name+ "." + ManagedHsmDnsSuffix);
+
+            return builder.Uri;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

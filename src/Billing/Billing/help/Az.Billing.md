@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.Billing
 Module Guid: a1f34ce9-bf46-4180-b36c-be232a1f8f63
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.billing
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.billing
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 2.0.0.0
 Locale: en-US
 ---
@@ -50,3 +54,15 @@ Remove a budget in either a subscription or a resource group.
 ### [Set-AzConsumptionBudget](Set-AzConsumptionBudget.md)
 Update a budget in either a subscription or a resource group.
 
+<<<<<<< HEAD
+=======
+### [Get-AzBillingAccount](Get-AzBillingAccount.md)
+Get billing accounts.
+
+### [Get-AzBillingProfile](Get-AzBillingProfile.md)
+Get billing profiles.
+
+### [Get-AzInvoiceSection](Get-AzInvoiceSection.md)
+Get invoice sections.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

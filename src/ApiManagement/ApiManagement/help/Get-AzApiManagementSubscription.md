@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementsubscription
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementsubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -51,11 +55,19 @@ Get-AzApiManagementSubscription -Context <PsApiManagementContext> -Scope <String
 
 ## DESCRIPTION
 The **Get-AzApiManagementSubscription** cmdlet gets a specified subscription, or all subscriptions, if no subscription is specified.
+<<<<<<< HEAD
+=======
+Keys will not be included into result details. To get keys, use **Get-AzApiManagementSubscriptionKey**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
 ### Example 1: Get all subscriptions
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext
 ```
@@ -63,7 +75,11 @@ PS C:\>Get-AzApiManagementSubscription -Context $apimContext
 This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
@@ -71,7 +87,11 @@ PS C:\>Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "01
 This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
 ```
@@ -79,7 +99,11 @@ PS C:\>Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
 This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
@@ -87,7 +111,11 @@ PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
 This command gets all subscriptions for the product.
 
 ### Example 5: Get all subscriptions for a Scope
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -Scope "/apis"
 
@@ -114,8 +142,13 @@ ServiceName       : contoso
 
 This command gets all subscriptions which are configured for global api scope
 
+<<<<<<< HEAD
 ### Example 5: Get all subscriptions for a product and user scope
 ```
+=======
+### Example 6: Get all subscriptions for a product and user scope
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId 59b872f28a82740f547e6270 -UserId 1
 
@@ -207,7 +240,11 @@ Scope identifier. The Scope of the Subscription, whether it is Api Scope /apis/{
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: GetByApiId
+=======
+Parameter Sets: GetByScope
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True

@@ -71,11 +71,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
 
         /// <summary>
         /// </summary>
+<<<<<<< HEAD
         [JsonProperty(PropertyName = "operationsMonitoringProperties")]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
         /// <summary>
         /// </summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "routing")]
         public PSRoutingProperties Routing { get; set; }
 
@@ -91,5 +94,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "features")]
         public PSCapabilities Features { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets primary and secondary location for iot hub
+        /// </summary>
+        [JsonProperty(PropertyName = "locations")]
+        public IList<PSIotHubLocationDescription> Locations { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

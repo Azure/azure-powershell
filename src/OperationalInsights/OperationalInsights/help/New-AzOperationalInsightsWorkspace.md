@@ -2,25 +2,43 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 4682807D-34E8-4057-8894-36820447067B
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace
+=======
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # New-AzOperationalInsightsWorkspace
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Creates a workspace.
+=======
+Creates a workspace, or restore a soft-deleted workspace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
 ```
 New-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+<<<<<<< HEAD
  [[-Sku] <String>] [[-CustomerId] <Guid>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the specified resource group and location.
+=======
+ [[-Sku] <String>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [[-PublicNetworkAccessForIngestion] <String>]
+ [[-PublicNetworkAccessForQuery] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **New-AzOperationalInsightsWorkspace** cmdlet creates a workspace in the specified resource group and location. Or restore a soft-deleted workspace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -44,6 +62,7 @@ The command creates a standard SKU workspace named MyWorkspace that is linked to
 
 ## PARAMETERS
 
+<<<<<<< HEAD
 ### -CustomerId
 Specifies the account to which this workspace will be linked.
 The Get-AzOperationalInsightsLinkTargets cmdlet can also be used to list the potential accounts.
@@ -60,6 +79,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -120,6 +141,39 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PublicNetworkAccessForIngestion
+The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccessForQuery
+The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceGroupName
 Specifies the name of an Azure resource group.
 The workspace is created in this resource group.
@@ -152,7 +206,11 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
+<<<<<<< HEAD
 Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
+=======
+Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Valid values are:
 - free
 - pergb2018
@@ -165,7 +223,10 @@ Valid values are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: free, pergb2018, pernode, premium, standalone, standard
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: 3
@@ -221,7 +282,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -239,7 +304,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+<<<<<<< HEAD
 A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
+=======
+A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## RELATED LINKS
 

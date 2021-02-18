@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 18E1AD70-42A6-47A2-A685-6E218B6DC4BE
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/save-azvhd
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/save-azvhd
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

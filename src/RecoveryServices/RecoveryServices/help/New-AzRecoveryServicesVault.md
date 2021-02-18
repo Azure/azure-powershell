@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesvault
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
+Module Name: Az.RecoveryServices
+ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +22,11 @@ Creates a new Recovery Services vault.
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 New-AzRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String>
+=======
+New-AzRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,6 +104,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Tag
+
+Specifies the Tags to add to the Recovery Services Vault
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -123,7 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

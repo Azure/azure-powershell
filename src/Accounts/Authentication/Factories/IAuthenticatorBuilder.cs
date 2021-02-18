@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -21,5 +24,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         IAuthenticator Authenticator { get; }
         bool AppendAuthenticator(Func<IAuthenticator> constructor);
+<<<<<<< HEAD
+=======
+        void Reset();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

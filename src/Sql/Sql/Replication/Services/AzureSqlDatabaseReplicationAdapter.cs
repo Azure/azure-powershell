@@ -13,14 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Services;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
@@ -150,7 +156,12 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
+<<<<<<< HEAD
                 LicenseType = model.LicenseType
+=======
+                LicenseType = model.LicenseType,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -214,6 +225,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.CopyLocation = database.Location;
             model.CreationDate = database.CreationDate.Value;
             model.LicenseType = database.LicenseType;
+<<<<<<< HEAD
+=======
+            model.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return model;
         }
@@ -259,7 +274,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                         serverName,
                         model.SecondaryElasticPoolName);
 
+<<<<<<< HEAD
             var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, new Management.Sql.Models.Database
+=======
+            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.PartnerDatabaseName, new Management.Sql.Models.Database
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 Location = model.PartnerLocation,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
@@ -273,7 +292,13 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
+<<<<<<< HEAD
                 LicenseType = model.LicenseType
+=======
+                LicenseType = model.LicenseType,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                SecondaryType = model.SecondaryType,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
@@ -348,6 +373,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.LinkId = new Guid(resp.Name);
             model.PartnerResourceGroupName = partnerResourceGroupName;
             model.PartnerServerName = resp.Properties.PartnerServer;
+<<<<<<< HEAD
+=======
+            model.PartnerDatabaseName = resp.Properties.PartnerDatabase;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             model.ResourceGroupName = resourceGroupName;
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
@@ -385,6 +414,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.LinkId = new Guid(resp.Name);
             model.PartnerResourceGroupName = partnerResourceGroupName;
             model.PartnerServerName = resp.PartnerServer;
+<<<<<<< HEAD
+=======
+            model.PartnerDatabaseName = resp.PartnerDatabase;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             model.ResourceGroupName = resourceGroupName;
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
@@ -461,5 +494,53 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
 
             return GetLink(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
+        {
+            switch (backupStorageRedundancy)
+            {
+                case "GRS":
+                    return "Geo";
+                case "LRS":
+                    return "Local";
+                case "ZRS":
+                    return "Zone";
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

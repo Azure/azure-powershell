@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/remove-azpeerasn
+=======
+online version: https://docs.microsoft.com/powershell/module/az.peering/remove-azpeerasn
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,15 +16,31 @@ Remove Peer Asn
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Default (Default)
+=======
+### ByName (Default)
+```
+Remove-AzPeerAsn -Name <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Remove-AzPeerAsn [-InputObject] <PSPeerAsn> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### ByName
 ```
 Remove-AzPeerAsn [-Name] <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+=======
+### ByResourceId
+```
+Remove-AzPeerAsn -ResourceId <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +108,11 @@ The PeerAsn object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
+<<<<<<< HEAD
 Parameter Sets: Default
+=======
+Parameter Sets: InputObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -107,7 +131,11 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
+<<<<<<< HEAD
 Position: 0
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,6 +156,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ResourceId
+The resource id string name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -159,12 +205,21 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
 
+<<<<<<< HEAD
+=======
+### System.String
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## OUTPUTS
 
 ### System.Boolean

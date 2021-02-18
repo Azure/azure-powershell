@@ -31,13 +31,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         /// <param name="address">The address of the direct peering
         /// facility.</param>
+<<<<<<< HEAD
+=======
+        /// <param name="directPeeringType">The type of the direct peering.
+        /// Possible values include: 'Edge', 'Transit', 'Cdn', 'Internal',
+        /// 'Ix', 'IxRs'</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <param name="peeringDBFacilityId">The PeeringDB.com ID of the
         /// facility.</param>
         /// <param name="peeringDBFacilityLink">The PeeringDB.com URL of the
         /// facility.</param>
+<<<<<<< HEAD
         public PSDirectPeeringFacility(string address = default(string), int? peeringDBFacilityId = default(int?), string peeringDBFacilityLink = default(string))
         {
             Address = address;
+=======
+        public PSDirectPeeringFacility(string address = default(string), string directPeeringType = default(string), int? peeringDBFacilityId = default(int?), string peeringDBFacilityLink = default(string))
+        {
+            Address = address;
+            DirectPeeringType = directPeeringType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             PeeringDBFacilityId = peeringDBFacilityId;
             PeeringDBFacilityLink = peeringDBFacilityLink;
             CustomInit();
@@ -55,6 +68,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public string Address { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the type of the direct peering. Possible values
+        /// include: 'Edge', 'Transit', 'Cdn', 'Internal', 'Ix', 'IxRs'
+        /// </summary>
+        [JsonProperty(PropertyName = "directPeeringType")]
+        public string DirectPeeringType { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the PeeringDB.com ID of the facility.
         /// </summary>
         [JsonProperty(PropertyName = "peeringDBFacilityId")]

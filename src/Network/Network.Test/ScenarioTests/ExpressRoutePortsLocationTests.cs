@@ -27,7 +27,11 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, Category.pgtm)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestExpressRoutePortsLocationRead()
         {
             TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortsLocationRead"));

@@ -14,7 +14,15 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>RegistrationDefinitionId</Label>
+=======
+            <Label>Id</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -26,7 +34,15 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <ScriptBlock>$_.Properties.RegistrationDefinitionId</ScriptBlock>
+=======
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Properties.ProvisioningState</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -46,6 +62,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>ManagedByTenantId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -55,6 +72,13 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>RoleDefinitionId</Label>
+=======
+            <Label>Id</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -66,6 +90,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <ScriptBlock>$_.Properties.ManagedByTenantId</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
@@ -75,6 +100,13 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.Properties.Authorization.RoleDefinitionId</ScriptBlock>
+=======
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Properties.ProvisioningState</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: B3C8A2DB-6571-418D-8C4B-3BE3FDA42F89
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/stop-azbatchcertificatedeletion
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: B3C8A2DB-6571-418D-8C4B-3BE3FDA42F89
+online version: https://docs.microsoft.com/powershell/module/az.batch/stop-azbatchcertificatedeletion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -21,7 +29,11 @@ Stop-AzBatchCertificateDeletion [-ThumbprintAlgorithm] <String> [-Thumbprint] <S
 ## DESCRIPTION
 The **Stop-AzBatchCertificateDeletion** cmdlet cancels a failed deletion of a certificate in the Azure Batch service.
 You can stop a deletion only if the certificate is in the **DeleteFailed** state.
+<<<<<<< HEAD
 This cmldet restores the certificate to the **Active** state.
+=======
+This cmdlet restores the certificate to the **Active** state.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -36,7 +48,11 @@ This command cancels the deletion of the certificate that has the specified thum
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -97,7 +113,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -113,6 +133,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 [Remove-AzBatchCertificate](./Remove-AzBatchCertificate.md)
@@ -120,3 +141,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+
+[Remove-AzBatchCertificate](./Remove-AzBatchCertificate.md)
+
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

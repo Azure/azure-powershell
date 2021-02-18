@@ -34,7 +34,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
+<<<<<<< HEAD
         [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentScopeHelp)]
+=======
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentScopeHelp)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -47,6 +51,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Id { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the policy assignment input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentInputObjectHelp)]
+        public PsPolicyAssignment InputObject { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -98,7 +111,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
+<<<<<<< HEAD
             return this.Id ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+=======
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyAssignmentId(this.Scope, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

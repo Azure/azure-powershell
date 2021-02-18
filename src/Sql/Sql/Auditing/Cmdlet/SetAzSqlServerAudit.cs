@@ -13,8 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Sql.Common;
 using System;
+=======
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -25,7 +31,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
+<<<<<<< HEAD
     public class SetAzSqlServerAudit : SqlServerAuditCmdlet
+=======
+    public class SetAzSqlServerAudit : SetSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(
             Mandatory = false,
@@ -40,6 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = AuditingHelpMessages.BlobStorageTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
@@ -53,6 +64,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
         [ValidateSet(
             SecurityConstants.Primary,
@@ -66,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
+<<<<<<< HEAD
         [Parameter(
             Mandatory = false,
             HelpMessage = AuditingHelpMessages.EventHubTargetState)]
@@ -103,17 +117,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override ServerAuditModel ApplyUserInputToModel(ServerAuditModel model)
         {
             base.ApplyUserInputToModel(model);
 
+<<<<<<< HEAD
             if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+=======
+            if (AuditActionGroup != null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
 
             if (PredicateExpression != null)
             {
+<<<<<<< HEAD
                 model.PredicateExpression = PredicateExpression = PredicateExpression;
             }
 
@@ -126,6 +147,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (StorageAccountResourceId != null)
             {
                 model.StorageAccountResourceId = StorageAccountResourceId;
+=======
+                model.PredicateExpression = PredicateExpression;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
@@ -138,6 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.RetentionInDays = RetentionInDays;
             }
 
+<<<<<<< HEAD
             if (EventHubTargetState != null)
             {
                 model.EventHubTargetState = EventHubTargetState == SecurityConstants.Enabled ?
@@ -172,6 +197,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             ModelAdapter.PersistAuditChanges(entity);
             return null;
+=======
+            return model;
+        }
+
+        protected override SqlServerAuditAdapter InitModelAdapter()
+        {
+            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

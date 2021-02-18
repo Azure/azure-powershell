@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 38ED2854-23D0-400E-A5C8-239346B2AF99
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchnodefile
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 38ED2854-23D0-400E-A5C8-239346B2AF99
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchnodefile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -69,7 +77,11 @@ False       StdOut.txt    Microsoft.Azure.Commands.Batch.Models.PSFile... https:
 ```
 
 This command gets the properties of the StdOut.txt node file associated with the task that has the ID Task26 in the job that has the ID Job-000001.
+<<<<<<< HEAD
 Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+=======
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Get the properties of node files associated with a task by using a filter
 ```
@@ -78,7 +90,11 @@ IsDirectory Name        Properties                                      Url
 
 ----------- ----        ----------                                      ---
 
+<<<<<<< HEAD
 False       StdErr.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
+=======
+False       StdErr.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 False       StdOut.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
 ```
 
@@ -91,10 +107,17 @@ IsDirectory Name             Properties                                      Url
 
 ----------- ----             ----------                                      ---
 
+<<<<<<< HEAD
 False       ProcessEnv.cmd   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 False       StdErr.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 False       StdOut.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 True        wd                                                               https://cmdletexample.westus.Batch.contoso... 
+=======
+False       ProcessEnv.cmd   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       StdErr.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       StdOut.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+True        wd                                                               https://cmdletexample.westus.Batch.contoso...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 False       wd\newFile.txt   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
 ```
 
@@ -117,10 +140,17 @@ This command gets the file that is named Startup\StdOut.txt from the compute nod
 PS C:\>Get-AzBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Filter "startswith(name,'startup')" -Recursive -BatchContext $Context
 IsDirectory Name                      Properties                                      Url
 ----------- ----                      ----------                                      ---
+<<<<<<< HEAD
 True        startup                                                                   https://cmdletexample.westus.Batch.contoso... 
 False       startup\ProcessEnv.cmd    Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 False       startup\stderr.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 False       startup\stdout.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
+=======
+True        startup                                                                   https://cmdletexample.westus.Batch.contoso...
+False       startup\ProcessEnv.cmd    Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       startup\stderr.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       startup\stdout.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 True        startup\wd                                                                https://cmdletexample.westus.Batch.contoso...
 ```
 
@@ -132,8 +162,13 @@ This cmdlet specifies the *Recursive* parameter.
 PS C:\>Get-AzBatchComputeNode "Pool22" -Id "ComputeNode01" -BatchContext $Context | Get-AzBatchNodeFile -BatchContext $Context
 IsDirectory Name           Properties       Url
 ----------- ----           ----------       ---
+<<<<<<< HEAD
 True        shared                          https://cmdletexample.westus.Batch.contoso... 
 True        startup                         https://cmdletexample.westus.Batch.contoso... 
+=======
+True        shared                          https://cmdletexample.westus.Batch.contoso...
+True        startup                         https://cmdletexample.westus.Batch.contoso...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 True        workitems                       https://cmdletexample.westus.Batch.contoso...
 ```
 
@@ -143,7 +178,11 @@ This command gets all the files at the root folder of the compute node that has 
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -330,7 +369,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -350,7 +393,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzBatchComputeNode](./Get-AzBatchComputeNode.md)
 
@@ -358,6 +405,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzBatchTask](./Get-AzBatchTask.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

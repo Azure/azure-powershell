@@ -34,7 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudJob omObject;
         
+<<<<<<< HEAD
         private IList<PSEnvironmentSetting> commonEnvironmentSettings;
+=======
+        private IDictionary commonEnvironmentSettings;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         private PSJobConstraints constraints;
         
@@ -46,7 +50,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSJobReleaseTask jobReleaseTask;
         
+<<<<<<< HEAD
         private IList<PSMetadataItem> metadata;
+=======
+        private IDictionary metadata;
+        
+        private PSJobNetworkConfiguration networkConfiguration;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         private PSPoolInformation poolInformation;
         
@@ -61,24 +71,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+<<<<<<< HEAD
         public IList<PSEnvironmentSetting> CommonEnvironmentSettings
+=======
+        public IDictionary CommonEnvironmentSettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             get
             {
                 if (((this.commonEnvironmentSettings == null) 
                             && (this.omObject.CommonEnvironmentSettings != null)))
                 {
+<<<<<<< HEAD
                     List<PSEnvironmentSetting> list;
                     list = new List<PSEnvironmentSetting>();
+=======
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     IEnumerator<Microsoft.Azure.Batch.EnvironmentSetting> enumerator;
                     enumerator = this.omObject.CommonEnvironmentSettings.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
+<<<<<<< HEAD
                         list.Add(new PSEnvironmentSetting(enumerator.Current));
                     }
                     this.commonEnvironmentSettings = list;
+=======
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
+                    }
+                    this.commonEnvironmentSettings = dict;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.commonEnvironmentSettings;
             }
@@ -257,24 +282,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
         public IList<PSMetadataItem> Metadata
+=======
+        public IDictionary Metadata
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             get
             {
                 if (((this.metadata == null) 
                             && (this.omObject.Metadata != null)))
                 {
+<<<<<<< HEAD
                     List<PSMetadataItem> list;
                     list = new List<PSMetadataItem>();
+=======
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
                     enumerator = this.omObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
+<<<<<<< HEAD
                         list.Add(new PSMetadataItem(enumerator.Current));
                     }
                     this.metadata = list;
+=======
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
+                    }
+                    this.metadata = dict;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.metadata;
             }
@@ -292,6 +332,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
+=======
+        public PSJobNetworkConfiguration NetworkConfiguration
+        {
+            get
+            {
+                if (((this.networkConfiguration == null) 
+                            && (this.omObject.NetworkConfiguration != null)))
+                {
+                    this.networkConfiguration = new PSJobNetworkConfiguration(this.omObject.NetworkConfiguration);
+                }
+                return this.networkConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.NetworkConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.NetworkConfiguration = value.omObject;
+                }
+                this.networkConfiguration = value;
+            }
+        }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Microsoft.Azure.Batch.Common.OnAllTasksComplete? OnAllTasksComplete
         {
             get

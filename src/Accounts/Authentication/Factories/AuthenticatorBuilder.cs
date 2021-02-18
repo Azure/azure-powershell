@@ -11,7 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -43,11 +46,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
+<<<<<<< HEAD
         private static IAuthenticatorBuilder Instance => new AuthenticatorBuilder();
 
         public static void Apply(IAzureSession session)
         {
             session.RegisterComponent<IAuthenticatorBuilder>(AuthenticatorBuilderKey, () => AuthenticatorBuilder.Instance);
+=======
+        public void Reset()
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

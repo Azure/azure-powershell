@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
+<<<<<<< HEAD
         public PSConnectionMonitorSource Source { get; set; }
 
         public PSConnectionMonitorDestination Destination { get; set; }
@@ -35,6 +36,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public int? MonitoringIntervalInSeconds { get; set; }
 
+=======
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? AutoStart { get; set; }
+
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+        public string Notes { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Hashtable Tag { get; set; }
 
         public string TagsTable
@@ -43,6 +54,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
         public string SourceText
         {
             get { return JsonConvert.SerializeObject(this.Source, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -52,6 +64,29 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationText
         {
             get { return JsonConvert.SerializeObject(this.Destination, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+=======
+        public string EndpointsText
+        {
+            get { return JsonConvert.SerializeObject(this.Endpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TestConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(this.TestConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TestGroupText
+        {
+            get { return JsonConvert.SerializeObject(this.TestGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string OuputText
+        {
+            get { return JsonConvert.SerializeObject(this.Output, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

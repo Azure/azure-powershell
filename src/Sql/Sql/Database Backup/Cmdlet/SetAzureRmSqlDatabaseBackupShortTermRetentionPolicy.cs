@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             Position = 3,
             HelpMessage = "The backup retention setting, in days.")]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         [ValidateRetentionDays]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public int RetentionDays{ get; set; }
 
         /// <summary>
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
             };
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Custom validator for retention days.
@@ -98,6 +102,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 }
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }
 

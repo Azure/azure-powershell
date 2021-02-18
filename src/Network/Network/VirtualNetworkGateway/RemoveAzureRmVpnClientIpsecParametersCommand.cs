@@ -48,7 +48,11 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ParameterSetNames.ByFactoryObject,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             HelpMessage = "The virtual network gateaway object")]
+=======
+            HelpMessage = "The virtual network gateway object")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public PSVirtualNetworkGateway InputObject { get; set; }
 

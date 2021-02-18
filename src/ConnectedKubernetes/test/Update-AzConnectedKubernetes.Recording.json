@@ -1,0 +1,187 @@
+{
+  "Update-AzConnectedKubernetes+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key2\": \"2\",\n    \"key1\": \"1\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "67eff90a-ec7a-4cc2-8d57-3473c952cbbd" ],
+        "x-ms-correlation-request-id": [ "0e541615-9aac-417c-b57b-a5f08d5a4219" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200615T023028Z:0e541615-9aac-417c-b57b-a5f08d5a4219" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Jun 2020 02:30:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1265" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb\",\"name\":\"connaks-deq5jb\",\"type\":\"Microsoft.Kubernetes/connectedClusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d5cd956f-02f6-438e-bbd2-0fbf2345f0fb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAt6pHqmxsKsyoArEOEip33Ur3jKAvN53nOWB1Kjoxd/PnZCxaaesZIvdqEuX0K5AVdc+rTjrZE8ibLSEkzNtsjL4wncw8o0ze2sJ487eNrVebzJx3By3XEpTuGEbgDazvECrJtZxUZpiBKsQRFNuTArRF5dkFIyhHFKBbOTTyEjkXaFlI2Zyv3057jAnJL6txpJhxIu/lL2XDJCtVsQF8owpdVedAYroM1UxA6zcLOReHRdXfbbnChWBmog90Mgeyu1acWITGYnoAVi5vOts0P0kBF//YKVPXYqShegmWWzCwOQRWAg3KMkLrVUt66jUnYLpnhhHokdogbDcSNuT1KBCj16YGKWCcgXbWKBYR8sD2dYlIoAZsCnVScXTT5b65bRZBhW69p0jPjt4IgoArjB43hJb/kwEMh+GFE9ZSiS92qOyAWQ5WNEYimUH8lu3pvYIDoPZ2/eX6kz4Dv+pBPp251r5VJBRBvn3apLZ08QfgxjAnTgIJGOAt4Sz6g3ikmvdPHUPbPgEYymPBrxBIML8kOqL5LUeuMAA4i8B10NPU5AM7A0WJZX3TuQOyj5YNhhvztdVbAnbhPwSO1V3y6h9uv7ks27Krp7sLuLMIDangVb61hFkzI7Vm8WCgpSxrWVLSdx5z9dhtMoPdp5NZILUSiLsIuGfq9NpEGWgIZBUCAwEAAQ==\",\"aadProfile\":{\"tenantId\":\"\",\"clientAppId\":\"\",\"serverAppId\":\"\"}}}"
+    }
+  },
+  "Update-AzConnectedKubernetes+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "d75273b2-e209-4b98-be78-0505515208c5" ],
+        "CommandName": [ "Get-AzConnectedKubernetes" ],
+        "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-request-id": [ "08dd5b32-46f9-412c-9edd-5f2562680fb4" ],
+        "x-ms-correlation-request-id": [ "4dcc53d5-8a6b-4f01-972c-efef7181131c" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200615T023028Z:4dcc53d5-8a6b-4f01-972c-efef7181131c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Jun 2020 02:30:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1265" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb\",\"name\":\"connaks-deq5jb\",\"type\":\"Microsoft.Kubernetes/connectedClusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d5cd956f-02f6-438e-bbd2-0fbf2345f0fb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAt6pHqmxsKsyoArEOEip33Ur3jKAvN53nOWB1Kjoxd/PnZCxaaesZIvdqEuX0K5AVdc+rTjrZE8ibLSEkzNtsjL4wncw8o0ze2sJ487eNrVebzJx3By3XEpTuGEbgDazvECrJtZxUZpiBKsQRFNuTArRF5dkFIyhHFKBbOTTyEjkXaFlI2Zyv3057jAnJL6txpJhxIu/lL2XDJCtVsQF8owpdVedAYroM1UxA6zcLOReHRdXfbbnChWBmog90Mgeyu1acWITGYnoAVi5vOts0P0kBF//YKVPXYqShegmWWzCwOQRWAg3KMkLrVUt66jUnYLpnhhHokdogbDcSNuT1KBCj16YGKWCcgXbWKBYR8sD2dYlIoAZsCnVScXTT5b65bRZBhW69p0jPjt4IgoArjB43hJb/kwEMh+GFE9ZSiS92qOyAWQ5WNEYimUH8lu3pvYIDoPZ2/eX6kz4Dv+pBPp251r5VJBRBvn3apLZ08QfgxjAnTgIJGOAt4Sz6g3ikmvdPHUPbPgEYymPBrxBIML8kOqL5LUeuMAA4i8B10NPU5AM7A0WJZX3TuQOyj5YNhhvztdVbAnbhPwSO1V3y6h9uv7ks27Krp7sLuLMIDangVb61hFkzI7Vm8WCgpSxrWVLSdx5z9dhtMoPdp5NZILUSiLsIuGfq9NpEGWgIZBUCAwEAAQ==\",\"aadProfile\":{\"tenantId\":\"\",\"clientAppId\":\"\",\"serverAppId\":\"\"}}}"
+    }
+  },
+  "Update-AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "8f6ef71a-473b-4d1b-810b-a5b5d7e46d61" ],
+        "CommandName": [ "Get-AzConnectedKubernetes" ],
+        "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-request-id": [ "64439cc2-030e-4e95-8a56-204f7b7fae37" ],
+        "x-ms-correlation-request-id": [ "11157ba1-149c-4e9e-a205-9752e833267f" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200615T023029Z:11157ba1-149c-4e9e-a205-9752e833267f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Jun 2020 02:30:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1265" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb\",\"name\":\"connaks-deq5jb\",\"type\":\"Microsoft.Kubernetes/connectedClusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d5cd956f-02f6-438e-bbd2-0fbf2345f0fb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAt6pHqmxsKsyoArEOEip33Ur3jKAvN53nOWB1Kjoxd/PnZCxaaesZIvdqEuX0K5AVdc+rTjrZE8ibLSEkzNtsjL4wncw8o0ze2sJ487eNrVebzJx3By3XEpTuGEbgDazvECrJtZxUZpiBKsQRFNuTArRF5dkFIyhHFKBbOTTyEjkXaFlI2Zyv3057jAnJL6txpJhxIu/lL2XDJCtVsQF8owpdVedAYroM1UxA6zcLOReHRdXfbbnChWBmog90Mgeyu1acWITGYnoAVi5vOts0P0kBF//YKVPXYqShegmWWzCwOQRWAg3KMkLrVUt66jUnYLpnhhHokdogbDcSNuT1KBCj16YGKWCcgXbWKBYR8sD2dYlIoAZsCnVScXTT5b65bRZBhW69p0jPjt4IgoArjB43hJb/kwEMh+GFE9ZSiS92qOyAWQ5WNEYimUH8lu3pvYIDoPZ2/eX6kz4Dv+pBPp251r5VJBRBvn3apLZ08QfgxjAnTgIJGOAt4Sz6g3ikmvdPHUPbPgEYymPBrxBIML8kOqL5LUeuMAA4i8B10NPU5AM7A0WJZX3TuQOyj5YNhhvztdVbAnbhPwSO1V3y6h9uv7ks27Krp7sLuLMIDangVb61hFkzI7Vm8WCgpSxrWVLSdx5z9dhtMoPdp5NZILUSiLsIuGfq9NpEGWgIZBUCAwEAAQ==\",\"aadProfile\":{\"tenantId\":\"\",\"clientAppId\":\"\",\"serverAppId\":\"\"}}}"
+    }
+  },
+  "Update-AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key2\": \"2\",\n    \"key1\": \"1\",\n    \"key3\": \"3\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "aa3ae2a6-0ffd-4302-98e0-f7113da88c01" ],
+        "x-ms-correlation-request-id": [ "e2f430e8-b619-4801-bb4b-1d94f5149b8b" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200615T023033Z:e2f430e8-b619-4801-bb4b-1d94f5149b8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Jun 2020 02:30:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1276" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb\",\"name\":\"connaks-deq5jb\",\"type\":\"Microsoft.Kubernetes/connectedClusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d5cd956f-02f6-438e-bbd2-0fbf2345f0fb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAt6pHqmxsKsyoArEOEip33Ur3jKAvN53nOWB1Kjoxd/PnZCxaaesZIvdqEuX0K5AVdc+rTjrZE8ibLSEkzNtsjL4wncw8o0ze2sJ487eNrVebzJx3By3XEpTuGEbgDazvECrJtZxUZpiBKsQRFNuTArRF5dkFIyhHFKBbOTTyEjkXaFlI2Zyv3057jAnJL6txpJhxIu/lL2XDJCtVsQF8owpdVedAYroM1UxA6zcLOReHRdXfbbnChWBmog90Mgeyu1acWITGYnoAVi5vOts0P0kBF//YKVPXYqShegmWWzCwOQRWAg3KMkLrVUt66jUnYLpnhhHokdogbDcSNuT1KBCj16YGKWCcgXbWKBYR8sD2dYlIoAZsCnVScXTT5b65bRZBhW69p0jPjt4IgoArjB43hJb/kwEMh+GFE9ZSiS92qOyAWQ5WNEYimUH8lu3pvYIDoPZ2/eX6kz4Dv+pBPp251r5VJBRBvn3apLZ08QfgxjAnTgIJGOAt4Sz6g3ikmvdPHUPbPgEYymPBrxBIML8kOqL5LUeuMAA4i8B10NPU5AM7A0WJZX3TuQOyj5YNhhvztdVbAnbhPwSO1V3y6h9uv7ks27Krp7sLuLMIDangVb61hFkzI7Vm8WCgpSxrWVLSdx5z9dhtMoPdp5NZILUSiLsIuGfq9NpEGWgIZBUCAwEAAQ==\",\"aadProfile\":{\"tenantId\":\"\",\"clientAppId\":\"\",\"serverAppId\":\"\"}}}"
+    }
+  },
+  "Update-AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb?api-version=2020-01-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "db0ce91f-1780-4150-9f9f-5616637f17ce" ],
+        "CommandName": [ "Get-AzConnectedKubernetes" ],
+        "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-request-id": [ "5a61fd44-7494-48b2-a618-59fa538984e6" ],
+        "x-ms-correlation-request-id": [ "d1163bd2-6f2f-47c0-8bed-b1b81ddcca52" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200615T023033Z:d1163bd2-6f2f-47c0-8bed-b1b81ddcca52" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Jun 2020 02:30:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1276" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/connaks-rg-576v9w/providers/Microsoft.Kubernetes/connectedClusters/connaks-deq5jb\",\"name\":\"connaks-deq5jb\",\"type\":\"Microsoft.Kubernetes/connectedClusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d5cd956f-02f6-438e-bbd2-0fbf2345f0fb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAt6pHqmxsKsyoArEOEip33Ur3jKAvN53nOWB1Kjoxd/PnZCxaaesZIvdqEuX0K5AVdc+rTjrZE8ibLSEkzNtsjL4wncw8o0ze2sJ487eNrVebzJx3By3XEpTuGEbgDazvECrJtZxUZpiBKsQRFNuTArRF5dkFIyhHFKBbOTTyEjkXaFlI2Zyv3057jAnJL6txpJhxIu/lL2XDJCtVsQF8owpdVedAYroM1UxA6zcLOReHRdXfbbnChWBmog90Mgeyu1acWITGYnoAVi5vOts0P0kBF//YKVPXYqShegmWWzCwOQRWAg3KMkLrVUt66jUnYLpnhhHokdogbDcSNuT1KBCj16YGKWCcgXbWKBYR8sD2dYlIoAZsCnVScXTT5b65bRZBhW69p0jPjt4IgoArjB43hJb/kwEMh+GFE9ZSiS92qOyAWQ5WNEYimUH8lu3pvYIDoPZ2/eX6kz4Dv+pBPp251r5VJBRBvn3apLZ08QfgxjAnTgIJGOAt4Sz6g3ikmvdPHUPbPgEYymPBrxBIML8kOqL5LUeuMAA4i8B10NPU5AM7A0WJZX3TuQOyj5YNhhvztdVbAnbhPwSO1V3y6h9uv7ks27Krp7sLuLMIDangVb61hFkzI7Vm8WCgpSxrWVLSdx5z9dhtMoPdp5NZILUSiLsIuGfq9NpEGWgIZBUCAwEAAQ==\",\"aadProfile\":{\"tenantId\":\"\",\"clientAppId\":\"\",\"serverAppId\":\"\"}}}"
+    }
+  }
+}

@@ -16,6 +16,10 @@ using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Linq;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Sql;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -29,7 +33,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// The Sql client to be used by this end points communicator
         /// </summary>
+<<<<<<< HEAD
         private static SqlManagementClient LegacySqlClient { get; set; }
+=======
+        private static Management.Sql.LegacySdk.SqlManagementClient LegacySqlClient { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or set the Azure subscription
@@ -39,7 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
+<<<<<<< HEAD
         public IAzureContext Context { get; set; }
+=======
+        public static IAzureContext Context { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Creates a communicator for Azure Sql Data Sync
@@ -107,35 +119,61 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Create a sync group
         /// </summary>
+<<<<<<< HEAD
         public SyncGroup CreateSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncDatabaseId, SyncGroupCreateOrUpdateParameters parameters)
         {
             SqlManagementClient client = GetLegacySqlClient();
             parameters.Properties.SyncDatabaseId = syncDatabaseId == null ? null : string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncDatabaseId);            
             return client.DataSync.CreateOrUpdateSyncGroup(resourceGroupName, serverName, databaseName, parameters).SyncGroup;
+=======
+        public Management.Sql.Models.SyncGroup CreateSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncDatabaseId, string syncGroupName, Management.Sql.Models.SyncGroup parameters)
+        {
+            Management.Sql.SqlManagementClient client = GetCurrentSqlClient();
+            parameters.SyncDatabaseId = syncDatabaseId == null ? null : string.Format("/subscriptions/{0}/{1}", Subscription.Id, syncDatabaseId);            
+            return client.SyncGroups.CreateOrUpdate(resourceGroupName, serverName, databaseName, syncGroupName, parameters);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// Update a sync group
         /// </summary>
+<<<<<<< HEAD
         public SyncGroup UpdateSyncGroup(string resourceGroupName, string serverName, string databaseName, SyncGroupCreateOrUpdateParameters parameters)
         {
             return GetLegacySqlClient().DataSync.UpdateSyncGroup(resourceGroupName, serverName, databaseName, parameters).SyncGroup;
+=======
+        public Management.Sql.Models.SyncGroup UpdateSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName, Management.Sql.Models.SyncGroup parameters)
+        {
+            return GetCurrentSqlClient().SyncGroups.Update(resourceGroupName, serverName, databaseName, syncGroupName, parameters);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// Get a sync group
         /// </summary>
+<<<<<<< HEAD
         public SyncGroup GetSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
             return GetLegacySqlClient().DataSync.GetSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName).SyncGroup;
+=======
+        public Management.Sql.Models.SyncGroup GetSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+            return GetCurrentSqlClient().SyncGroups.Get(resourceGroupName, serverName, databaseName, syncGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// List all sync groups
         /// </summary>
+<<<<<<< HEAD
         public IList<SyncGroup> ListSyncGroups(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().DataSync.ListSyncGroup(resourceGroupName, serverName, databaseName).SyncGroups;
+=======
+        public IEnumerable<Management.Sql.Models.SyncGroup> ListSyncGroups(string resourceGroupName, string serverName, string databaseName)
+        {
+            return GetCurrentSqlClient().SyncGroups.ListByDatabase(resourceGroupName, serverName, databaseName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -174,17 +212,29 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Get a sync group
         /// </summary>
+<<<<<<< HEAD
         public SyncMember GetSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberGeneralParameters parameters)
         {
             return GetLegacySqlClient().DataSync.GetSyncMember(resourceGroupName, serverName, databaseName, parameters).SyncMember;
+=======
+        public Management.Sql.Models.SyncMember GetSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberGeneralParameters parameters)
+        {
+            return GetCurrentSqlClient().SyncMembers.Get(resourceGroupName, serverName, databaseName, parameters.SyncGroupName, parameters.SyncMemberName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// List all sync members
         /// </summary>
+<<<<<<< HEAD
         public IList<SyncMember> ListSyncMembers(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
             return GetLegacySqlClient().DataSync.ListSyncMember(resourceGroupName, serverName, databaseName, syncGroupName).SyncMembers;
+=======
+        public IEnumerable<Management.Sql.Models.SyncMember> ListSyncMembers(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+            return GetCurrentSqlClient().SyncMembers.ListBySyncGroup(resourceGroupName, serverName, databaseName, syncGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -198,6 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <summary>
         /// Create a new sync member
         /// </summary>
+<<<<<<< HEAD
         public SyncMember CreateSyncMember(string resourceGroupName, string serverName, string databaseName, string syncAgentId, SyncMemberCreateOrUpdateParameters parameters)
         {
             SqlManagementClient client = GetLegacySqlClient();
@@ -206,14 +257,30 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 parameters.Properties.SyncAgentId = string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncAgentId);
             }
             return client.DataSync.CreateOrUpdateSyncMember(resourceGroupName, serverName, databaseName, parameters).SyncMember;
+=======
+        public Management.Sql.Models.SyncMember CreateSyncMember(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, string syncAgentId, Management.Sql.Models.SyncMember parameters)
+        {
+            Management.Sql.SqlManagementClient client = GetCurrentSqlClient();
+            if (syncAgentId != null)
+            {
+                parameters.SyncAgentId = string.Format("/subscriptions/{0}/{1}", Subscription.Id, syncAgentId);
+            }
+            return client.SyncMembers.CreateOrUpdate(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, parameters);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// Update an existing sync member
         /// </summary>
+<<<<<<< HEAD
         public SyncMember UpdateSyncMember(string resourceGroupName, string serverName, string databaseName, SyncMemberCreateOrUpdateParameters parameters)
         {
             return GetLegacySqlClient().DataSync.UpdateSyncMember(resourceGroupName, serverName, databaseName, parameters).SyncMember;
+=======
+        public Management.Sql.Models.SyncMember UpdateSyncMember(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, Management.Sql.Models.SyncMember parameters)
+        {
+            return GetCurrentSqlClient().SyncMembers.Update(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, parameters);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -245,7 +312,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// </summary>
         public SyncAgent CreateSyncAgent(string resourceGroupName, string serverName, string syncAgentName, string syncDatabaseId, SyncAgentCreateOrUpdateParameters parameters)
         {
+<<<<<<< HEAD
             SqlManagementClient client = GetLegacySqlClient();
+=======
+            Management.Sql.LegacySdk.SqlManagementClient client = GetLegacySqlClient();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (syncDatabaseId != null)
             {
                 parameters.Properties.SyncDatabaseId = string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncDatabaseId);
@@ -266,6 +337,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
+<<<<<<< HEAD
+=======
+        public static Management.Sql.SqlManagementClient GetCurrentSqlClient()
+        {
+            // Get the SQL management client for the current subscription
+            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
+            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            return sqlClient;
+        }
+
+        /// <summary>
+        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
+        /// id tracing headers for the current cmdlet invocation.
+        /// </summary>
+        /// <returns>The SQL Management client for the currently selected subscription.</returns>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
         {
             // Get the SQL management client for the current subscription

@@ -65,7 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             this.Init(address, prefixLength, true);
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Initializes a new instance of the <see cref="RoutePrefix"/> class.
         /// </summary>
@@ -103,6 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     case AddressFamily.InterNetwork:
                         return BigInteger.Pow(2, 32 - this.PrefixMaskWidth);
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     case AddressFamily.InterNetworkV6:
                         return BigInteger.Pow(2, 128 - this.PrefixMaskWidth);
                 }
@@ -230,4 +237,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

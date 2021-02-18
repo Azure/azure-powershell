@@ -17,7 +17,10 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -31,6 +34,10 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 0,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
@@ -41,6 +48,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 1,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.DomainNameHelp)]
@@ -69,6 +80,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (!string.IsNullOrEmpty(this.DomainResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.DomainResourceId);
@@ -82,6 +94,27 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
 
             DomainSharedAccessKeys domainSharedAccessKeys = this.Client.GetDomainSharedAccessKeys(this.ResourceGroupName, this.Name);
+=======
+            string resourceGroupName;
+            string domainName;
+
+            if (!string.IsNullOrEmpty(this.DomainResourceId))
+            {
+                EventGridUtils.GetResourceGroupNameAndDomainName(this.DomainResourceId, out resourceGroupName, out domainName);
+            }
+            else if (this.DomainObject != null)
+            {
+                resourceGroupName = this.DomainObject.ResourceGroupName;
+                domainName = this.DomainObject.DomainName;
+            }
+            else
+            {
+                resourceGroupName = this.ResourceGroupName;
+                domainName = this.Name;
+            }
+
+            DomainSharedAccessKeys domainSharedAccessKeys = this.Client.GetDomainSharedAccessKeys(resourceGroupName, domainName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
             this.WriteObject(psDomainSharedAccessKeys);
         }

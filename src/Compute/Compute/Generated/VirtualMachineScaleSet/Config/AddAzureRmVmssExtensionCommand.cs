@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public Object ProtectedSetting { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false)]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ForceUpdateTag { get; set; }
@@ -106,22 +113,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
+<<<<<<< HEAD
                 this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // ExtensionProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
             {
+<<<<<<< HEAD
                 this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+=======
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // Extensions
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
             {
+<<<<<<< HEAD
                 this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
             }
 
             var vExtensions = new VirtualMachineScaleSetExtension();
+=======
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
+            }
+
+            var vExtensions = new PSVirtualMachineScaleSetExtension();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             vExtensions.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vExtensions.ForceUpdateTag = this.IsParameterBound(c => c.ForceUpdateTag) ? this.ForceUpdateTag : null;
@@ -132,6 +154,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.Settings = this.IsParameterBound(c => c.Setting) ? this.Setting : null;
             vExtensions.ProtectedSettings = this.IsParameterBound(c => c.ProtectedSetting) ? this.ProtectedSetting : null;
             vExtensions.ProvisionAfterExtensions = this.IsParameterBound(c => c.ProvisionAfterExtension) ? this.ProvisionAfterExtension : null;
+<<<<<<< HEAD
+=======
+            vExtensions.EnableAutomaticUpgrade = this.IsParameterBound(c => c.EnableAutomaticUpgrade) ? this.EnableAutomaticUpgrade : null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

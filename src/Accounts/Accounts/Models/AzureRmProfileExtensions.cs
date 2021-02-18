@@ -27,7 +27,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public static class AzureRMProfileExtensions
     {
         /// <summary>
+<<<<<<< HEAD
         /// Set the context for the current profile, preserving token cache information
+=======
+        /// Set the context for the current profile, preserving token cache information.
+        /// After MSAL, token cache is no longer stored in contexts. So this method roughly equals to TrySetDefaultContext().
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <param name="profile">The profile to change the context for</param>
         /// <param name="newContext">The new context, with no token cache information.</param>
@@ -43,6 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
             }
 
+<<<<<<< HEAD
             if (newContext.TokenCache != null && newContext.TokenCache.CacheData != null && newContext.TokenCache.CacheData.Length > 0)
             {
                 AzureSession.Instance.TokenCache.CacheData = newContext.TokenCache.CacheData;
@@ -50,6 +56,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             newContext.TokenCache = AzureSession.Instance.TokenCache;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var rmProfile = profile as AzureRmProfile;
             if (rmProfile != null)
             {

@@ -33,7 +33,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>IStorageQueueManagement object</returns>
         protected override IStorageQueueManagement CreateChannel()
         {
+<<<<<<< HEAD
             //init storage blob managment channel
+=======
+            //init storage blob management channel
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (Channel == null || !ShareChannel)
             {
                 Channel = new StorageQueueManagement(GetCmdletStorageContext());

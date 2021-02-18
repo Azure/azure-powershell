@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>AnalysisServices</PsModuleName>
@@ -10,9 +14,12 @@
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).Dataplane</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Dataplane</RootNamespace>
   </PropertyGroup>
+<<<<<<< HEAD
 
   <ItemGroup>
     <ProjectReference Include="..\..\Accounts\Authentication\Authentication.csproj" />
   </ItemGroup>
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

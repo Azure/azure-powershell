@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/update-azmlwebservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -145,7 +149,11 @@ Accept wildcard characters: False
 ```
 
 ### -IsReadOnly
+<<<<<<< HEAD
 Specifies that this web serviceis readonly.
+=======
+Specifies that this web service is readonly.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Once set, the web service can longer be updated, including changing the value of this property, and can only be deleted.
 
 ```yaml

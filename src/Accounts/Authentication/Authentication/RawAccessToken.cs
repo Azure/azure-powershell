@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -38,11 +42,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             get; set;
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             authTokenSetter("Bearer", AccessToken);
         }
 
         public DateTimeOffset ExpiresOn { get; set; }
+<<<<<<< HEAD
+=======
+
+        public string HomeAccountId { get; set; }
+
+        public IDictionary<string, string> ExtendedProperties { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

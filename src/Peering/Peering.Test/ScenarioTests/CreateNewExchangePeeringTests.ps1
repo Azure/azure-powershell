@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Helper Function NewExchangeConnectionV4V6 
 #>
 function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
@@ -63,6 +64,8 @@ function Test-NewExchangePeeringPipeTwoConnections
 }
 <#
 .SYNOPSIS
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests new Exchange Peering 
 #>
 function Test-NewExchangePeering()
@@ -70,6 +73,7 @@ function Test-NewExchangePeering()
 #Hard Coded locations becuase of limitations in locations
 	$resourceName = getAssetName "NewExchangePeeringCVS"
     $resourceGroup = "testCarrier"
+<<<<<<< HEAD
     $peeringLocation = "Berlin"
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
@@ -81,14 +85,44 @@ function Test-NewExchangePeering()
 	Write-Debug "Getting the Asn Information"
 	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
 	$asn = $peerAsn.Id
+=======
+    $peeringLocation = "Seattle"
+	$kind = IsDirect $false
+	Write-Debug "Getting the Facility Information"
+	try {
+	Write-Debug "Getting the Asn Information"
+	$randNum = getRandomNumber
+	Write-Debug "Random Number $randNum";
+	$peerAsn = makePeerAsn $randNum
+	$asn = $peerAsn.Id
+	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
+	$microsoftIpAddressV4 = $facility[1].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
+	$microsoftIpAddressV6 = $facility[1].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
+	$facilityId = $facility[1].PeeringDBFacilityId
+	$peeringLocation = $facility[1].PeeringLocation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	Write-Debug "Creating Connections"
 	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
 	$connection2 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
 	Write-Debug "Created $connection1 $connection1"
+<<<<<<< HEAD
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	Write-Debug "Creating Resource $resourceName"
     $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1,$connection2 -Tag $tags
 	Assert-NotNull $createdPeering
+=======
+    $tags = @{"tfs_$randNum" = "Active"; "tag2" = "value2"}
+	Write-Debug "Tags: $tags";
+	Write-Debug "Creating Resource $resourceName"
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1,$connection2 -Tag $tags
+	Assert-NotNull $createdPeering
+	Assert-NotNull $createdPeering.Connections.ConnectionIdentifier
+	}
+	finally{
+		$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru;
+		Assert-True {$isRemoved}
+	}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 <#
 .SYNOPSIS
@@ -101,6 +135,10 @@ function Test-NewExchangePeeringPipe
     $resourceGroup = "testCarrier"
     $peeringLocation = "Amsterdam"
 	$kind = IsDirect $false
+<<<<<<< HEAD
+=======
+	try{
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	Write-Debug "Getting the Facility Information"
 	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
 	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address
@@ -108,6 +146,7 @@ function Test-NewExchangePeeringPipe
 	$facilityId = $facility[0].PeeringDBFacilityId
 	$peeringLocation = $facility[0].PeeringLocation
 	Write-Debug "Getting the Asn Information"
+<<<<<<< HEAD
 	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
 	$asn = $peerAsn.Id
 	Write-Debug "Creating Connections"
@@ -116,4 +155,23 @@ function Test-NewExchangePeeringPipe
 	Write-Debug "Creating Resource $resourceName"
 	$createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags -ExchangeConnection $connection1
 	Assert-NotNull $createdPeering
+=======
+	$randNum = getRandomNumber
+	Write-Debug "Random Number $randNum";
+	$peerAsn = makePeerAsn $randNum
+	$asn = $peerAsn.Id
+	Write-Debug "Creating Connections"
+	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
+    $tags = @{"tfs_$randNum" = "Active"; "tag2" = "value2"}
+	Write-Debug "Creating Resource $resourceName"
+	$createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags -ExchangeConnection $connection1
+	Assert-NotNull $createdPeering
+	Assert-NotNull $createdPeering.Connections.ConnectionIdentifier
+	}
+	catch{}
+	finally{
+	$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
+		Assert-True {$isRemoved}
+	}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

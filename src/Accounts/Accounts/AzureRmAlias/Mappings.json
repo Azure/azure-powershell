@@ -1262,7 +1262,11 @@
     "Set-AzApplicationGatewayAutoscaleConfiguration": "Set-AzureRmApplicationGatewayAutoscaleConfiguration",
     "Set-AzApplicationGatewayAuthenticationCertificate": "Set-AzureRmApplicationGatewayAuthenticationCertificate",
     "Get-AzApplicationGatewayAvailableWafRuleSets": "Get-AzureRmApplicationGatewayAvailableWafRuleSets",
+<<<<<<< HEAD
    	"Get-AzApplicationGatewayAvailableServerVariableAndHeader": "Get-AzureRmApplicationGatewayAvailableServerVariableAndHeader",
+=======
+    "Get-AzApplicationGatewayAvailableServerVariableAndHeader": "Get-AzureRmApplicationGatewayAvailableServerVariableAndHeader",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "Get-AzApplicationGatewayAvailableSslOptions": "Get-AzureRmApplicationGatewayAvailableSslOptions",
     "Add-AzApplicationGatewayBackendAddressPool": "Add-AzureRmApplicationGatewayBackendAddressPool",
     "Get-AzApplicationGatewayBackendAddressPool": "Get-AzureRmApplicationGatewayBackendAddressPool",
@@ -1340,6 +1344,10 @@
     "New-AzApplicationGatewayRewriteRule": "New-AzureRmApplicationGatewayRewriteRule",
     "New-AzApplicationGatewayRewriteRuleActionSet": "New-AzureRmApplicationGatewayRewriteRuleActionSet",
     "New-AzApplicationGatewayRewriteRuleHeaderConfiguration": "New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration",
+<<<<<<< HEAD
+=======
+    "New-AzApplicationGatewayRewriteRuleUrlConfiguration": "New-AzureRmApplicationGatewayRewriteRuleUrlConfiguration",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "New-AzApplicationGatewayRewriteRuleCondition": "New-AzureRmApplicationGatewayRewriteRuleCondition",
     "Add-AzApplicationGatewayRedirectConfiguration": "Add-AzureRmApplicationGatewayRedirectConfiguration",
     "Get-AzApplicationGatewayRedirectConfiguration": "Get-AzureRmApplicationGatewayRedirectConfiguration",
@@ -1487,6 +1495,14 @@
     "Set-AzVirtualNetworkGatewayConnectionSharedKey": "Set-AzureRmVirtualNetworkGatewayConnectionSharedKey",
     "Set-AzVirtualNetworkGatewayConnection": "Set-AzureRmVirtualNetworkGatewayConnection",
     "New-AzIpsecPolicy": "New-AzureRmIpsecPolicy",
+<<<<<<< HEAD
+=======
+    "Get-AzLoadBalancerBackendAddressPool": "Get-AzureRmLoadBalancerBackendAddressPool",
+    "Set-AzLoadBalancerBackendAddressPool": "Set-AzureRmLoadBalancerBackendAddressPool",
+    "New-AzLoadBalancerBackendAddressPool": "New-AzureRmLoadBalancerBackendAddressPool",
+    "Remove-AzLoadBalancerBackendAddressPool": "Remove-AzureRmLoadBalancerBackendAddressPool",
+    "New-AzLoadBalancerBackendAddressConfig": "New-AzureRmLoadBalancerBackendAddressConfig",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "Get-AzLoadBalancerBackendAddressPoolConfig": "Get-AzureRmLoadBalancerBackendAddressPoolConfig",
     "Add-AzLoadBalancerBackendAddressPoolConfig": "Add-AzureRmLoadBalancerBackendAddressPoolConfig",
     "New-AzLoadBalancerBackendAddressPoolConfig": "New-AzureRmLoadBalancerBackendAddressPoolConfig",
@@ -1911,7 +1927,13 @@
     "Merge-AzReservation": "Merge-AzureRmReservation",
     "Split-AzReservation": "Split-AzureRmReservation",
     "Get-AzReservationOrderId": "Get-AzureRmReservationOrderId",
+<<<<<<< HEAD
     "Get-AzReservationCatalog": "Get-AzureRmReservationCatalog"
+=======
+    "Get-AzReservationCatalog": "Get-AzureRmReservationCatalog",
+    "Get-AzReservationQuote": "Get-AzureRmReservationQuote",
+    "New-AzReservation": "New-AzureRmReservation"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   "Az.ResourceGraph": {
     "Search-AzGraph": "Search-AzureRmGraph"
@@ -1921,6 +1943,10 @@
     "Remove-AzRoleAssignment": "Remove-AzureRmRoleAssignment",
     "Get-AzRoleAssignment": "Get-AzureRmRoleAssignment",
     "New-AzRoleAssignment": "New-AzureRmRoleAssignment",
+<<<<<<< HEAD
+=======
+    "Set-AzRoleAssignment": "Set-AzureRmRoleAssignment",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "Get-AzRoleDefinition": "Get-AzureRmRoleDefinition",
     "New-AzRoleDefinition": "New-AzureRmRoleDefinition",
     "Set-AzRoleDefinition": "Set-AzureRmRoleDefinition",
@@ -2020,7 +2046,12 @@
     "Set-AzADUser": "Set-AzureRmADUser",
     "Remove-AzTag": "Remove-AzureRmTag",
     "Get-AzTag": "Get-AzureRmTag",
+<<<<<<< HEAD
     "New-AzTag": "New-AzureRmTag"
+=======
+    "New-AzTag": "New-AzureRmTag",
+    "Update-AzTag": "Update-AzureRmTag"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   "Az.Scheduler": {
     "Disable-AzSchedulerJobCollection": "Disable-AzureRmSchedulerJobCollection",
@@ -2073,7 +2104,28 @@
     "Get-AzSecurityTask": "Get-AzureRmSecurityTask",
     "Get-AzSecurityWorkspaceSetting": "Get-AzureRmSecurityWorkspaceSetting",
     "Set-AzSecurityWorkspaceSetting": "Set-AzureRmSecurityWorkspaceSetting",
+<<<<<<< HEAD
     "Remove-AzSecurityWorkspaceSetting": "Remove-AzureRmSecurityWorkspaceSetting"
+=======
+    "Remove-AzSecurityWorkspaceSetting": "Remove-AzureRmSecurityWorkspaceSetting",
+    "Get-AzSecurityAnalytics": "Get-AzureRmIotSecurityAnalytics",
+    "Disable-AzIotSecurityAnalyticsAggregatedAlert": "Disable-AzureRmIotSecurityAnalyticsAggregatedAlert",
+    "Get-AzIotSecurityAnalyticsAggregatedAlert": "Get-AzureRmIotSecurityAnalyticsAggregatedAlert",
+    "Get-AzIotSecurityAnalyticsAggregatedRecommendation": "Get-AzureRmIotSecurityAnalyticsAggregatedRecommendation",
+    "Get-AzDeviceSecurityGroup": "Get-AzureRmDeviceSecurityGroup",
+    "Set-AzDeviceSecurityGroup": "Set-AzureRmDeviceSecurityGroup",
+    "Remove-AzDeviceSecurityGroup": "Remove-AzureRmDeviceSecurityGroup",
+    "New-AzDeviceSecurityGroupAllowlistCustomAlertRuleObject": "New-AzureRmDeviceSecurityGroupAllowlistCustomAlertRuleObject",
+    "New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject": "New-AzureRmDeviceSecurityGroupDenylistCustomAlertRuleObject",
+    "New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject": "New-AzureRmDeviceSecurityGroupThresholdCustomAlertRuleObject",
+    "New-AzDeviceSecurityGroupTimeWindowRuleObject": "New-AzureRmDeviceSecurityGroupTimeWindowRuleObject",
+    "Get-AzIotSecuritySolution": "Get-AzureRmIotSecuritySolution",
+    "Set-AzIotSecuritySolution": "Set-AzureRmIotSecuritySolution",
+    "Remove-AzIotSecuritySolution": "Remove-AzureRmIotSecuritySolution",
+    "Update-AzIotSecuritySolution": "Update-AzureRmIotSecuritySolution",
+    "New-AzIotSecuritySolutionRecommendationConfigurationObject": "New-AzureRmIotSecuritySolutionRecommendationConfigurationObject",
+    "New-AzIotSecuritySolutionUserDefinedResourcesObject": "New-AzureRmIotSecuritySolutionUserDefinedResourcesObject"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   "Az.ServiceBus": {
     "New-AzServiceBusNamespace": "New-AzureRmServiceBusNamespace",
@@ -2315,7 +2367,13 @@
     "Set-AzSqlDatabaseServerAuditingPolicy": "Set-AzureRmSqlDatabaseServerAuditingPolicy",
     "Use-AzSqlDatabaseServerAuditingPolicy": "Use-AzureRmSqlDatabaseServerAuditingPolicy",
     "Get-AzSqlDatabaseLongTermRetentionPolicy": "Get-AzureRmSqlDatabaseLongTermRetentionPolicy",
+<<<<<<< HEAD
     "Set-AzSqlDatabaseLongTermRetentionPolicy": "Set-AzureRmSqlDatabaseLongTermRetentionPolicy"
+=======
+    "Set-AzSqlDatabaseLongTermRetentionPolicy": "Set-AzureRmSqlDatabaseLongTermRetentionPolicy",
+    "Get-AzSqlInstanceOperation": "Get-AzureRmSqlInstanceOperation",
+    "Stop-AzSqlInstanceOperation": "Stop-AzureRmSqlInstanceOperation"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   "Az.Storage": {
     "Get-AzStorageAccount": "Get-AzureRmStorageAccount",
@@ -2519,4 +2577,8 @@
     "New-AzWebAppAzureStoragePath": "New-AzureRmWebAppAzureStoragePath",
     "Swap-AzWebAppSlot": "Swap-AzureRmWebAppSlot"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

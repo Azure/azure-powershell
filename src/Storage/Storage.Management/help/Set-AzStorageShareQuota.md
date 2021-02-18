@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 176294FA-BB08-4A63-AD45-1E6C6D67A5D8
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragesharequota
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragesharequota
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,7 +17,11 @@ Sets the storage capacity for a share.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### ShareName
+=======
+### ShareName (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
@@ -110,12 +118,20 @@ Accept wildcard characters: False
 
 ### -Quota
 Specifies the quota value in gigabytes (GB).
+<<<<<<< HEAD
 See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
+=======
+See the quota limitation in https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-files-limits. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: QuotaGiB
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 1
@@ -146,12 +162,20 @@ To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -183,7 +207,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Storage.File.FileShareProperties
+=======
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

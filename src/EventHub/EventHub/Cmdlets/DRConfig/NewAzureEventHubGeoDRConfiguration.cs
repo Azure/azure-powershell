@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "DR Configuration PartnerNamespace")]
+=======
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "DR Configuration PartnerNamespace ARM ID")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string PartnerNamespace { get; set; }
 

@@ -61,6 +61,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public IList<LinkedIntegrationRuntime> Links => _status.Links;
 
+<<<<<<< HEAD
+=======
+        public DateTime? AutoUpdateETA => _status.AutoUpdateETA;
+
+        public string LatestVersion => _status.LatestVersion;
+
+        public string PushedVersion => _status.PushedVersion;
+
+        public string TaskQueueId => _status.TaskQueueId;
+
+        public string VersionStatus => _status.VersionStatus;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private TimeSpan? ConvertStringTimeSpan(string ts)
         {
             if (string.IsNullOrWhiteSpace(ts))

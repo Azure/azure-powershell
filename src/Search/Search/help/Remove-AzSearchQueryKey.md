@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchquerykey
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
+Module Name: Az.Search
+online version: https://docs.microsoft.com/powershell/module/az.search/remove-azsearchquerykey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzSearchQueryKey
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Remove the query key from the Azure Search service.
+=======
+Remove the query key from the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +42,11 @@ Remove-AzSearchQueryKey [-ParentResourceId] <String> -KeyValue <String> [-Force]
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Remove-AzSearchQueryKey** cmdlet removes the query key from the Azure Search service.
+=======
+The **Remove-AzSearchQueryKey** cmdlet removes the query key from the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -52,7 +67,11 @@ Are you sure you want to remove query key 'B4C13E3F6FA76100D3488673CFDCD438'?
 PS C:\>
 ```
 
+<<<<<<< HEAD
 The example removes the query key from the Azure Search service.
+=======
+The example removes the query key from the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -87,7 +106,11 @@ Accept wildcard characters: False
 ```
 
 ### -KeyValue
+<<<<<<< HEAD
 Search Service query key value.
+=======
+Azure Cognitive Search Service query key value.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -102,7 +125,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
+<<<<<<< HEAD
 Search Service Input Object.
+=======
+Azure Cognitive Search Service Input Object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -117,7 +144,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
+<<<<<<< HEAD
 Search Service Resource Id.
+=======
+Azure Cognitive Search Service Resource Id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -162,7 +193,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
+<<<<<<< HEAD
 Search Service name.
+=======
+Azure Cognitive Search Service name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -208,7 +243,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

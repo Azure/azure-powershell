@@ -32,12 +32,28 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSPrivateEndpointConnection : PSChildResource
     {
+<<<<<<< HEAD
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "PrivateEndpoint", Target = ViewControl.Table, ScriptBlock = "$_.PrivateEndpoint.Name")]
         public PSPrivateEndpoint PrivateEndpoint { get; set; }
         [JsonProperty(Order = 1)]
         public PSPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
+=======
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "PrivateEndpoint", Target = ViewControl.Table, ScriptBlock = "$_.PrivateEndpoint.Name")]
+        public PSPrivateEndpoint PrivateEndpoint { get; set; }
+
+        public PSPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
+
+        public string GroupId { get; set; }
+
+        public string LinkIdentifier { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string PrivateEndpointText
         {

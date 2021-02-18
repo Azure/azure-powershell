@@ -24,13 +24,21 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update attribute of a key vault key.
     /// </summary>
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyAttribute")]
+<<<<<<< HEAD
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
+=======
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSKeyVaultKey))]
     public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+<<<<<<< HEAD
+=======
+        private const string HsmInteractiveParameterSet = "HsmInteractive";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private const string InputObjectParameterSet = "InputObject";
 
         #endregion
@@ -48,6 +56,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmInteractiveParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string HsmName { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// key name
         /// </summary>
@@ -55,6 +73,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = HsmInteractiveParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -80,7 +104,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Version { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// If present, enable a key if value is true. 
+=======
+        /// If present, enable a key if value is true.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Disable a key if value is false.
         /// If not present, no change on current key enabled/disabled state.
         /// </summary>
@@ -96,32 +124,49 @@ namespace Microsoft.Azure.Commands.KeyVault
         public DateTime? Expires { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// The UTC time before which key can't be used 
+=======
+        /// The UTC time before which key can't be used
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The UTC time before which key can't be used. If not specified, the existing NotBefore attribute of the key remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Key operations 
+=======
+        /// Key operations
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.")]
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
+=======
+            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
+=======
+            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
@@ -135,6 +180,29 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name,
                 Version ?? string.Empty,
                 new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+=======
+            NormalizeParameterSets();
+
+            if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
+            {
+                PSKeyVaultKey keyBundle;
+                if (string.IsNullOrEmpty(HsmName))
+                {
+                    keyBundle = DataServiceClient.UpdateKey(
+                        VaultName,
+                        Name,
+                        Version ?? string.Empty,
+                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                }
+                else
+                {
+                    keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
+                        HsmName,
+                        Name,
+                        Version ?? string.Empty,
+                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (PassThru)
                 {
@@ -142,5 +210,25 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        private void NormalizeParameterSets()
+        {
+            if (InputObject != null)
+            {
+                if (InputObject.IsHsm)
+                {
+                    HsmName = InputObject.VaultName;
+                }
+                else
+                {
+                    VaultName = InputObject.VaultName;
+                }
+                Name = InputObject.Name;
+                Version = InputObject.Version;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

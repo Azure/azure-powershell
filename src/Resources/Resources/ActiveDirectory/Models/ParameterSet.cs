@@ -42,7 +42,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public const string ApplicationWithPasswordCredential = "ApplicationWithPasswordCredentialParameterSet";
         public const string ApplicationWithKeyPlain = "ApplicationWithKeyPlainParameterSet";
         public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
+<<<<<<< HEAD
         public const string ApplicationObjectWithoutCredential = "ApplicationObjectWithoutCredentialParameterSet";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string ApplicationObjectWithPasswordPlain = "ApplicationObjectWithPasswordPlainParameterSet";
         public const string ApplicationObjectWithPasswordCredential = "ApplicationObjectWithPasswordCredentialParameterSet";
         public const string ApplicationObjectWithKeyPlain = "ApplicationObjectWithKeyPlainParameterSet";
@@ -99,6 +102,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public const string InputObjectWithDisplayName = "InputObjectWithDisplayNameParameterSet";
         public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
         public const string RoleAssignment = "RoleAssignmentParameterSet";
+<<<<<<< HEAD
+=======
+        public const string RoleAssignmentId = "RoleAssignmentIdParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string Explicit = "ExplicitParameterSet";
         public const string MemberUPNWithGroupDisplayName = "MemberUPNWithGroupDisplayNameParameterSet";
         public const string MemberUPNWithGroupObjectId = "MemberUPNWithGroupObjectIdParameterSet";

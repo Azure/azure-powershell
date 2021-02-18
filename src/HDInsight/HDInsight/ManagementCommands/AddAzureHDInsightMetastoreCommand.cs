@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.HDInsight
                 case AzureHDInsightMetastoreType.OozieMetastore:
                     Config.OozieMetastore = _metastore;
                     break;
+<<<<<<< HEAD
+=======
+                case AzureHDInsightMetastoreType.AmbariDatabase:
+                    Config.AmbariDatabase = _metastore;
+                    break;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             WriteObject(Config);

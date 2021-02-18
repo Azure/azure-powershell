@@ -13,7 +13,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.1.1" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.3.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>

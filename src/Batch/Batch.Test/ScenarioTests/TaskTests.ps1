@@ -97,6 +97,7 @@ function Test-CreateTaskCollection
     $maxRetryCount = $taskConstraints.MaxRetryCount
 
     $resourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+<<<<<<< HEAD
     $file = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile("https://testacct.blob.core.windows.net/", "file1")
     $resourceFiles.Add($file)
 
@@ -106,13 +107,23 @@ function Test-CreateTaskCollection
     $envSettings.Add($env1)
     $envSettings.Add($env2)
 
+=======
+    $file = New-AzBatchResourceFile -HttpUrl "https://testacct.blob.core.windows.net/" -FilePath "file1"
+    $resourceFiles.Add($file)
+
+    $envSettings = @{ env1 = "value1"; env2 = "value2" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $numInstances = 3
     $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @("cmd /c echo coordinating", $numInstances)
     $coordinationCommandLine = $multiInstanceSettings.CoordinationCommandLine
     $multiInstanceSettings.CommonResourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
     $commonResourceBlob = "https://common.blob.core.windows.net/"
     $commonResourceFile = "common.exe"
+<<<<<<< HEAD
     $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
+=======
+    $commonResource = New-AzBatchResourceFile -HttpUrl $commonResourceBlob -FilePath $commonResourceFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
 
     $taskId3 = "complex1"
@@ -148,7 +159,11 @@ function Test-CreateTaskCollection
     Assert-AreEqual $numInstances $task3.MultiInstanceSettings.NumberOfInstances
     Assert-AreEqual $coordinationCommandLine $task3.MultiInstanceSettings.CoordinationCommandLine
     Assert-AreEqual 1 $task3.MultiInstanceSettings.CommonResourceFiles.Count
+<<<<<<< HEAD
     Assert-AreEqual $commonResourceBlob $task3.MultiInstanceSettings.CommonResourceFiles[0].BlobSource
+=======
+    Assert-AreEqual $commonResourceBlob $task3.MultiInstanceSettings.CommonResourceFiles[0].HttpUrl
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-AreEqual $commonResourceFile $task3.MultiInstanceSettings.CommonResourceFiles[0].FilePath
 
     Assert-AreEqual $taskId4 $task4.Id

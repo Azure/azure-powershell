@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/export-azmlwebservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,7 +29,11 @@ Export-AzMlWebService -WebService <WebService> [-ToJsonString] [-Force]
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Exports the definition object for the specified web servive as a JSON formatted string.
+=======
+Exports the definition object for the specified web service as a JSON formatted string.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 You can return the string immediately or save it to a file.
 
 ## EXAMPLES

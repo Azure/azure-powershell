@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: EF2D377C-C000-4BCA-8EB9-58C805FA5C31
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappslotconfigname
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotconfigname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,8 +33,13 @@ The **Get-AzWebAppSlotConfigName** cmdlet retrieves the list of App Setting and 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:
 ```
+=======
+### Example 1
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 

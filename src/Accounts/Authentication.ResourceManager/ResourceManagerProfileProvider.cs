@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
@@ -21,11 +22,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+=======
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ResourceManagerProfileProvider : AzureRmProfileProvider
     {
+<<<<<<< HEAD
         AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
         public override void ResetDefaultProfile()
         {
@@ -49,6 +56,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureSession.Instance.TokenCache = cache;
             profile.SetTokenCache(cache);
         }
+=======
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override T GetProfile<T>()
         {

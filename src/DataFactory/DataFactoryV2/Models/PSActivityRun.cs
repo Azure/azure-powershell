@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
@@ -58,6 +62,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+<<<<<<< HEAD
+=======
+        public string ActivityType
+        {
+            get
+            {
+                return this.activityRun.ActivityType;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string PipelineRunId
         {
             get
@@ -137,5 +152,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 return this.activityRun.Error;
             }
         }
+<<<<<<< HEAD
+=======
+
+        public IDictionary<string, object> AdditionalProperties
+        {
+            get
+            {
+                return this.activityRun.AdditionalProperties;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

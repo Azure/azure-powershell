@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 818C2250-DE43-409E-AC68-B4A7E945401E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvpnclientrevokedcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvpnclientrevokedcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,8 +31,13 @@ If you remove a client-revocation certificate client computers can then use the 
 ## EXAMPLES
 
 ### Example 1: Remove a client-revocation certificate from a virtual network gateway
+<<<<<<< HEAD
 ```
 PS C:\>Remove-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName"ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+=======
+```powershell
+PS C:\>Remove-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName"ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command removes a client-revocation certificate from a virtual network gateway named ContosoVirtualNetwork.

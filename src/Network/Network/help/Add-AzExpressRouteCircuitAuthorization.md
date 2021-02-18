@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9994E2B2-20A1-4E95-9A9F-379B8B63F7F5
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azexpressroutecircuitauthorization
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azexpressroutecircuitauthorization
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

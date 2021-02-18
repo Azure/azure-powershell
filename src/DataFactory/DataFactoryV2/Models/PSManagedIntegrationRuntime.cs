@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataFactory.Models;
 
@@ -59,12 +63,35 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
+<<<<<<< HEAD
+=======
+        public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
+
+        public int? DataFlowCoreCount => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.CoreCount;
+
+        public string DataFlowComputeType => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.ComputeType;
+
+        public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string State => ManagedIntegrationRuntime.State;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;
 
         public string SetupScriptContainerSasUri => ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.BlobContainerUri + ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.SasToken?.Value;
 
+<<<<<<< HEAD
         public string Edition => ManagedIntegrationRuntime.SsisProperties?.Edition;
+=======
+        public string DataProxyIntegrationRuntimeName => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.ConnectVia?.ReferenceName;
+
+        public string DataProxyStagingLinkedServiceName => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.StagingLinkedService?.ReferenceName;
+
+        public string DataProxyStagingPath => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.Path;
+
+        public string Edition => ManagedIntegrationRuntime.SsisProperties?.Edition;
+
+        public System.Collections.Generic.IList<CustomSetupBase> ExpressCustomSetup => ManagedIntegrationRuntime.SsisProperties?.ExpressCustomSetupProperties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusmigration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,6 +41,7 @@ The **Get-AzServiceBusMigration** Retrieves Migration Configuration for the name
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 
 Name              : TestingNamespaceStandardMirgation
@@ -49,6 +54,20 @@ PostMigrationName : TestingNamespaceStandardMirgationPostMigration
 ```
 
 Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgation'
+=======
+PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
+
+Name              : TestingNamespaceStandardMigration
+Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMigration/migrationConfigurations/$default
+Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
+ProvisioningState : Succeeded
+PendingReplicationOperationsCount : 40
+TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMigration
+PostMigrationName : TestingNamespaceStandardMigrationPostMigration
+```
+
+Gets the Migration Configuration properties of 'TestingNamespaceStandardMigration'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

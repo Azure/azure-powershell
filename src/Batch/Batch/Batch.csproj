@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>Batch</PsModuleName>
@@ -12,9 +16,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Batch" Version="9.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.1" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Batch" Version="13.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Batch" Version="11.0.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>
 

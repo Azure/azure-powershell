@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A29E9921-C1B9-42C2-B816-5D4873AC6688
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallapplicationrulecollection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrulecollection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,8 +28,13 @@ The **New-AzFirewallApplicationRuleCollection** cmdlet creates a collection of F
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:  Create a collection with one rule
 ```
+=======
+### Example 1: Create a collection with one rule
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule1 = New-AzFirewallApplicationRule -Name "httpsRule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
 New-AzFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 1000 -Rule $rule1 -ActionType "Allow"
 ```
@@ -35,8 +44,13 @@ The first rule is for all HTTPS traffic on port 443 from 10.0.0.0.
 If there is another application rule collection with higher priority (smaller number) which also matches traffic identified in $rule1,
 the action of the rule collection with higher priority will take in effect instead. 
 
+<<<<<<< HEAD
 ### 2:  Add a rule to a rule collection
 ```
+=======
+### Example 2: Add a rule to a rule collection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule1 = New-AzFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
 $ruleCollection = New-AzFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1 -ActionType "Allow"
 
@@ -47,8 +61,13 @@ $ruleCollection.AddRule($rule2)
 This example creates a new application rule collection with one rule and then adds a second rule to the rule collection using method
 AddRule on the rule collection object. Each rule name in a given rule collection must have a unique name and is case insensitive.
 
+<<<<<<< HEAD
 ### 3:  Get a rule from a rule collection
 ```
+=======
+### Example 3: Get a rule from a rule collection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule1 = New-AzFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
 $ruleCollection = New-AzFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1 -ActionType "Allow"
 $getRule=$ruleCollection.GetRuleByName("r1")
@@ -57,8 +76,13 @@ $getRule=$ruleCollection.GetRuleByName("r1")
 This example creates a new application rule collection with one rule and then gets the rule by name, calling method GetRuleByName on the 
 rule collection object. The rule name for method GetRuleByName is case-insensitive.
 
+<<<<<<< HEAD
 ### 4:  Remove a rule from a rule collection
 ```
+=======
+### Example 4: Remove a rule from a rule collection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule1 = New-AzFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
 $rule2 = New-AzFirewallApplicationRule -Name R2 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" 
 $ruleCollection = New-AzFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1, $rule1 -ActionType "Allow"

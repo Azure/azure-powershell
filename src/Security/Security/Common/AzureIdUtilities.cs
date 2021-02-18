@@ -26,11 +26,56 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
         private static Regex subscriptionRegex = new Regex("/subscriptions/(?<subscriptionId>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+<<<<<<< HEAD
+=======
+        private static Regex regulatoryStandardRegex = new Regex("regulatoryComplianceStandards/(?<StandardName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex regulatoryStandardControlRegex = new Regex("regulatoryComplianceControls/(?<ControlName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex regulatoryStandardAssessmentRegex = new Regex("regulatoryComplianceAssessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex AssessmentNameRegex = new Regex("assessments/(?<AssessmentName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex ExtendedResourceRegex = new Regex("(?<extendedId>.*?)/providers/microsoft.security.*?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex iotHubNameRegex = new Regex("/iotHubs/(?<iotHubName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static Regex iotSolutionNameRegex = new Regex("/iotSecuritySolutions/(?<iotSolutionName>.*?)/", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static string GetResourceName(string id)
         {
             return id.Split('/').Last();
         }
 
+<<<<<<< HEAD
+=======
+        public static string GetIotHubResourceName(string id)
+        {
+            var match = iotHubNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["iotHubName"].Value;
+        }
+
+        public static string GetIotSolutionResourceName(string id)
+        {
+            var match = iotSolutionNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "id");
+            }
+
+            return match.Groups["iotSolutionName"].Value;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static string GetResourceLocation(string id)
         {
             var match = locationRegex.Match(id);
@@ -66,5 +111,102 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Common
 
             return match.Groups["subscriptionId"].Value;
         }
+<<<<<<< HEAD
+=======
+
+        public static string GetRegulatoryStandardName(string id)
+        {
+            var match = regulatoryStandardRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the resource identifier.", "standardName");
+            }
+
+            return match.Groups["StandardName"].Value;
+        }
+
+        /// <summary>
+        /// Parse from the resourceId the control name
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <param name="isLast">true if the control name is the last element in the id</param>
+        /// <returns>Control name</returns>
+        public static string GetRegulatoryStandardControlName(string id, bool isLast)
+        {
+            if (isLast)
+            {
+                return id.Split('/').Last();
+            }
+            else
+            {
+                var match = regulatoryStandardControlRegex.Match(id);
+
+                if (match.Success != true)
+                {
+                    throw new ArgumentException("Invalid format of the resource identifier.", "ControlName");
+                }
+
+                return match.Groups["ControlName"].Value;
+            }
+        }
+
+        /// <summary>
+        /// Parse from the resourceId the assessment name
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <param name="isLast">true if the control name is the last element in the id</param>
+        /// <returns>Assessment name</returns>
+        public static string GetRegulatoryStandardAssessmentName(string id, bool isLast)
+        {
+            if (isLast)
+            {
+                return id.Split('/').Last();
+            }
+            else
+            {
+                var match = regulatoryStandardAssessmentRegex.Match(id);
+
+                if (match.Success != true)
+                {
+                    throw new ArgumentException("Invalid format of the resource identifier.", "AssessmentName");
+                }
+
+                return match.Groups["AssessmentName"].Value;
+            }
+        }
+
+        /// <summary>
+        /// extracting the extended resource ID from an extension resource
+        /// </summary>
+        /// <param name="id">resource id</param>
+        /// <returns>Assessment name</returns>
+        public static string GetExtendedResourceId(string id)
+        {
+            var match = ExtendedResourceRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the extension resource identifier.", nameof(id));
+            }
+
+            return match.Groups["extendedId"].Value;
+        }
+
+        /// <summary>
+        /// Gets the name of the resource above the nested resource
+        /// </summary>
+        public static string GetAssessmentResourceName(string id)
+        {
+            var match = AssessmentNameRegex.Match(id);
+
+            if (match.Success != true)
+            {
+                throw new ArgumentException("Invalid format of the extension resource identifier.", nameof(id));
+            }
+
+            return match.Groups["AssessmentName"].Value;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

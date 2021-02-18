@@ -80,7 +80,21 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
+<<<<<<< HEAD
 
+=======
+        
+        [Parameter(
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -91,18 +105,38 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.BackendAddressPoolId = this.BackendAddressPool.Id;
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (BackendHttpSettings != null)
                 {
                     this.BackendHttpSettingsId = this.BackendHttpSettings.Id;
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (RewriteRuleSet != null)
                 {
                     this.RewriteRuleSetId = this.RewriteRuleSet.Id;
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (RedirectConfiguration != null)
                 {
                     this.RedirectConfigurationId = this.RedirectConfiguration.Id;
                 }
+<<<<<<< HEAD
+=======
+
+                if (FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -136,6 +170,15 @@ namespace Microsoft.Azure.Commands.Network
                 pathRule.RedirectConfiguration = new PSResourceId();
                 pathRule.RedirectConfiguration.Id = this.RedirectConfigurationId;
             }
+<<<<<<< HEAD
+=======
+            
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
+            {
+                pathRule.FirewallPolicy = new PSResourceId();
+                pathRule.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return pathRule;
         }

@@ -13,7 +13,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="27.0.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="43.0.0-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
@@ -30,4 +34,8 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

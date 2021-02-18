@@ -37,8 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
+<<<<<<< HEAD
         /// <summary>
         /// Initializes the provider with the data recieved from the cmdlet layer
+=======
+
+        /// <summary>
+        /// Initializes the provider with the data received from the cmdlet layer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -102,6 +108,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
+<<<<<<< HEAD
+=======
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
+
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             return EnableOrModifyProtection();
@@ -234,6 +273,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+<<<<<<< HEAD
+=======
+            bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -243,7 +286,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 container,
                 policy,
                 ServiceClientModel.BackupManagementType.AzureWorkload,
+<<<<<<< HEAD
                 DataSourceType.SQLDataBase);
+=======
+                DataSourceType.SQLDataBase,
+                UseSecondaryRegion);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
@@ -372,7 +420,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadRecoveryConfig)ProviderData[RestoreWLBackupItemParams.WLRecoveryConfig];
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
 
+<<<<<<< HEAD
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null)
+=======
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
+
+            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
@@ -396,6 +451,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
                 }
+<<<<<<< HEAD
+=======
+                if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                {
+                    azureWorkloadSQLRestoreRequest.RecoveryMode = "FileRecovery";
+                    azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
+                    {
+                        OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
+                        OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
+                        ContainerId = wLRecoveryConfig.ContainerId,
+                        TargetDirectoryForFileRestore = wLRecoveryConfig.FilePath
+                    };
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 triggerRestoreRequest.Properties = azureWorkloadSQLRestoreRequest;
             }
             else
@@ -422,18 +491,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
                 }
+<<<<<<< HEAD
+=======
+
+                if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
+                {
+                    azureWorkloadSQLPointInTimeRestoreRequest.RecoveryMode = "FileRecovery";
+                    azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
+                    {
+                        OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
+                        OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
+                        ContainerId = wLRecoveryConfig.ContainerId,
+                        TargetDirectoryForFileRestore = wLRecoveryConfig.FilePath
+                    };
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 azureWorkloadSQLPointInTimeRestoreRequest.PointInTime = wLRecoveryConfig.PointInTime;
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
 
+<<<<<<< HEAD
             var response = ServiceClientAdapter.RestoreDisk(
+=======
+            if (useSecondaryRegion)
+            {
+                AzureRecoveryPoint rp = (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
+
+                // get access token
+                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName);
+
+                // AzureWorkload  CRR Request
+                Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);
+
+                CrossRegionRestoreRequest crrRestoreRequest = new CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = triggerRestoreRequest.Properties;
+
+                // storage account location isn't required in case of workload restore
+                var response = ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    rp,
+                    triggerCRRRestoreRequest: crrRestoreRequest,
+                    secondaryRegion: secondaryRegion);
+                return response;
+            }
+            else
+            {
+                var response = ServiceClientAdapter.RestoreDisk(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
                 vaultLocation: vaultLocation);
+<<<<<<< HEAD
             return response;
+=======
+                return response;
+            }          
+            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> CreateorModifyPolicy()
@@ -454,6 +572,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
                 (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
+<<<<<<< HEAD
+=======
+            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ?
+                (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
 
             if (policy != null)
@@ -465,6 +588,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 // RetentionPolicy and SchedulePolicy both should not be empty
                 if (retentionPolicy == null && schedulePolicy == null)
                 {
+<<<<<<< HEAD
                     throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
                 }
 
@@ -503,6 +627,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
                 serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
+=======
+                    if (fixForInconsistentItems == false)
+                    {
+                        throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
+                    }
+                    AzureVmWorkloadProtectionPolicy azureVmWorkloadModifyPolicy = new AzureVmWorkloadProtectionPolicy();
+                    azureVmWorkloadModifyPolicy.Settings = new Settings("UTC",
+                        ((AzureVmWorkloadPolicy)policy).IsCompression,
+                        ((AzureVmWorkloadPolicy)policy).IsCompression);
+                    azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
+                    serviceClientRequest.Properties = azureVmWorkloadModifyPolicy;
+                }
+                else
+                {
+                    // validate RetentionPolicy and SchedulePolicy
+                    if (schedulePolicy != null)
+                    {
+                        AzureWorkloadProviderHelper.ValidateSQLSchedulePolicy(schedulePolicy);
+                        AzureWorkloadProviderHelper.GetUpdatedSchedulePolicy(policy, (SQLSchedulePolicy)schedulePolicy);
+                        Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
+                    }
+                    if (retentionPolicy != null)
+                    {
+                        AzureWorkloadProviderHelper.ValidateSQLRetentionPolicy(retentionPolicy);
+                        AzureWorkloadProviderHelper.GetUpdatedRetentionPolicy(policy, (SQLRetentionPolicy)retentionPolicy);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+
+                    // copy the backupSchedule time to retentionPolicy after converting to UTC
+                    AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
+                        (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
+                        (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
+                    Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
+
+                    // Now validate both RetentionPolicy and SchedulePolicy matches or not
+                    PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                        (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
+                        (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
+                    Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
+
+                    // construct Service Client policy request
+                    AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
+                    azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                        ((AzureVmWorkloadPolicy)policy).IsCompression,
+                        ((AzureVmWorkloadPolicy)policy).IsCompression);
+                    azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else
             {

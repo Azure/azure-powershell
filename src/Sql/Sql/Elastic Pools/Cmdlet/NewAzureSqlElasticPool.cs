@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [PSArgumentCompleter("None",
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseEdition.Basic,
             Management.Sql.Models.DatabaseEdition.Standard,
             Management.Sql.Models.DatabaseEdition.Premium,
@@ -57,6 +58,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             Management.Sql.Models.DatabaseEdition.Free,
             Management.Sql.Models.DatabaseEdition.Stretch,
             "GeneralPurpose", "BusinessCritical")]
+=======
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose",
+            "BusinessCritical")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Edition { get; set; }
 
@@ -122,7 +133,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the maximum vcore any database can consume in the pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The maxmium VCore number any Azure SQL Database can consume in the pool.")]
+=======
+            HelpMessage = "The maximum VCore number any Azure SQL Database can consume in the pool.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public double DatabaseVCoreMax { get; set; }
 
@@ -147,11 +162,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database.")]
         [PSArgumentCompleter(
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
             Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
+=======
+            "LicenseIncluded",
+            "BasePrice")]
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the elastic pool
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Elastic Pool.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -212,7 +242,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
+<<<<<<< HEAD
                 LicenseType = LicenseType
+=======
+                LicenseType = LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
 

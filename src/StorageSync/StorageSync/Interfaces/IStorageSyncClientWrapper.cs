@@ -12,19 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+=======
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.StorageSync;
 using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// <summary>
     /// Interface IStorageSyncClientWrapper
     /// </summary>
     public interface IStorageSyncClientWrapper
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Gets or sets the active directory client.
         /// </summary>
@@ -48,6 +64,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// </summary>
         /// <value>The authorization management client.</value>
         IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the resource management client.
+        /// </summary>
+        /// <value>The resource management client.</value>
+        IResourceManagementClient ResourceManagementClient { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Gets or sets the verbose logger.
         /// </summary>
@@ -70,9 +96,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// Ensures the role assignment.
         /// </summary>
         /// <param name="serverPrincipal">The server principal.</param>
+<<<<<<< HEAD
         /// <param name="resourceId">The resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
         RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal,string resourceId);
+=======
+        /// <param name="storageAccountSubscriptionId">The storage account subscription identifier.</param>
+        /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
+        /// <returns>RoleAssignment.</returns>
+        RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId);
+
+        /// <summary>
+        /// This function will invoke the registration and continue operation with a success function call.
+        /// </summary>
+        /// <param name="currentSubscriptionId">Current SubscriptionId in Azure Context</param>
+        /// <param name="resourceProviderNamespace">Resource provider name</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>true if request was successfully made. else false</returns>
+        bool TryRegisterProvider(string currentSubscriptionId, string resourceProviderNamespace, string subscription);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets the afs agent installer path.

@@ -23,11 +23,23 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVirtualHubObject = "ByVirtualHubObject";
         internal const string ByVirtualHubResourceId = "ByVirtualHubResourceId";
         internal const string ByVirtualHubName = "ByVirtualHubName";
+<<<<<<< HEAD
 
+=======
+        internal const string NoVirtualWanUpdate = "NoVirtualWanUpdate";
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string ByVpnGatewayObject = "ByVpnGatewayObject";
         internal const string ByVpnGatewayResourceId = "ByVpnGatewayResourceId";
         internal const string ByVpnGatewayName = "ByVpnGatewayName";
 
+<<<<<<< HEAD
+=======
+        internal const string ByP2SVpnGatewayObject = "ByP2SVpnGatewayObject";
+        internal const string ByP2SVpnGatewayResourceId = "ByP2SVpnGatewayResourceId";
+        internal const string ByP2SVpnGatewayName = "ByP2SVpnGatewayName";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string ByExpressRouteGatewayObject = "ByExpressRouteGatewayObject";
         internal const string ByExpressRouteGatewayResourceId = "ByExpressRouteGatewayResourceId";
         internal const string ByExpressRouteGatewayName = "ByExpressRouteGatewayName";
@@ -35,11 +47,31 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVpnSiteObject = "ByVpnSiteObject";
         internal const string ByVpnSiteResourceId = "ByVpnSiteResourceId";
         internal const string ByVpnSiteName = "ByVpnSiteName";
+<<<<<<< HEAD
 
+=======
+        internal const string ByVpnSiteIpAddress = "ByVpnSiteIpAddress";
+        internal const string ByVpnSiteLinkObject = "ByVpnSiteLinkObject";
+
+        internal const string ByVpnSiteLinkIpAddress = "ByVpnSiteLinkIpAddress";
+        internal const string ByVpnSiteLinkFqdn = "ByVpnSiteLinkFqdn";
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string ByVpnConnectionObject = "ByVpnConnectionObject";
         internal const string ByVpnConnectionResourceId = "ByVpnConnectionResourceId";
         internal const string ByVpnConnectionName = "ByVpnConnectionName";
 
+<<<<<<< HEAD
+=======
+        internal const string NoVpnServerConfigurationUpdate = "NoVpnServerConfigurationUpdate";
+        internal const string ByVpnServerConfigurationObject = "ByVpnServerConfigurationObject";
+        internal const string ByVpnServerConfigurationResourceId = "ByVpnServerConfigurationResourceId";
+        internal const string ByVpnServerConfigurationName = "ByVpnServerConfigurationName";
+        internal const string ByCertificateAuthentication = "ByCertificateAuthentication";
+        internal const string ByRadiusAuthentication = "ByRadiusAuthentication";
+        internal const string ByAadAuthentication = "ByAadAuthentication";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string ByExpressRouteConnectionObject = "ByExpressRouteConnectionObject";
         internal const string ByExpressRouteConnectionResourceId = "ByExpressRouteConnectionResourceId";
         internal const string ByExpressRouteConnectionName = "ByExpressRouteConnectionName";
@@ -50,5 +82,20 @@ namespace Microsoft.Azure.Commands.Network
 
         internal const string ByRemoteVirtualNetworkObject = "ByRemoteVirtualNetworkObject";
         internal const string ByRemoteVirtualNetworkResourceId = "ByRemoteVirtualNetworkResourceId";
+<<<<<<< HEAD
+=======
+
+        internal const string ByVirtualHubRouteTableObject = "ByVirtualHubRouteTableObject";
+        internal const string ByVirtualHubRouteTableResourceId = "ByVirtualHubRouteTableResourceId";
+        internal const string ByVirtualHubRouteTableName = "ByVirtualHubRouteTableName";
+        
+        internal const string ByVHubRouteTableObject = "ByVHubRouteTableObject";
+        internal const string ByVHubRouteTableResourceId = "ByVHubRouteTableResourceId";
+        internal const string ByVHubRouteTableName = "ByVHubRouteTableName";
+
+        internal const string ByVpnGatewayNatRuleObject = "ByVpnGatewayNatRuleObject";
+        internal const string ByVpnGatewayNatRuleResourceId = "ByVpnGatewayNatRuleResourceId";
+        internal const string ByVpnGatewayNatRuleName = "ByVpnGatewayNatRuleName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

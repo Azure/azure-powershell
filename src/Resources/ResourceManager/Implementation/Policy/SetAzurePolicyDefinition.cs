@@ -18,6 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -26,7 +30,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+=======
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyDefinition))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class SetAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -104,6 +112,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the policy definition input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyDefinitionInputObjectHelp)]
+        public PsPolicyDefinition InputObject { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -131,16 +148,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
+<<<<<<< HEAD
             this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
         /// Constructs the resource
+=======
+            this.WriteObject(this.GetOutputPolicyDefinitions(JObject.Parse(result)), enumerateCollection: true);
+        }
+
+        /// <summary>
+        /// Constructs the policy definition by combining command line parameters and existing policy definition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         private JToken GetResource(string resourceId, string apiVersion)
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
+<<<<<<< HEAD
             var policyRuleJson = string.IsNullOrEmpty(this.Policy) ? resource.Properties["policyRule"]?.ToString() : GetObjectFromParameter(this.Policy).ToString();
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
             var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
@@ -159,6 +185,48 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 }
             };
 
+=======
+            // apply incoming object properties if present
+            if (this.InputObject != null)
+            {
+                resource.Properties = this.InputObject.Properties.ToJToken();
+            }
+
+            var policyDefinitionObject = new PolicyDefinition
+            {
+                Name = this.Name ?? resource.Name,
+                Properties = new PolicyDefinitionProperties()
+            };
+
+            JObject policyObject = this.Policy != null ? this.GetObjectFromParameter(this.Policy, nameof(this.Policy)) : null;
+            if (policyObject != null && policyObject["policyRule"] != null)
+            {
+                // policy parameter was a full policy object, populate the properties from it, override from other command line parameters
+                policyDefinitionObject.Properties.Description = this.Description ?? policyObject["description"]?.ToString() ?? resource.Properties["description"]?.ToString();
+                policyDefinitionObject.Properties.DisplayName = this.DisplayName ?? policyObject["displayName"]?.ToString() ?? resource.Properties["displayName"]?.ToString();
+                policyDefinitionObject.Properties.PolicyRule = policyObject["policyRule"] as JObject ?? resource.Properties["policyRule"] as JObject;
+                policyDefinitionObject.Properties.Metadata = this.Metadata == null
+                    ? policyObject["metadata"] as JObject ?? resource.Properties["metadata"] as JObject
+                    : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
+                policyDefinitionObject.Properties.Parameters = this.Parameter == null
+                    ? policyObject["parameters"] as JObject ?? resource.Properties["metadata"] as JObject
+                    : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter));
+                policyDefinitionObject.Properties.Mode = string.IsNullOrEmpty(this.Mode)
+                    ? policyObject["mode"]?.ToString() ?? resource.Properties["mode"]?.ToString() ?? PolicyDefinitionMode.All
+                    : this.Mode;
+            }
+            else
+            {
+                // policy parameter was a rule object, populate policy rule from it and the properties from command line parameters
+                policyDefinitionObject.Properties.Description = this.Description ?? resource.Properties["description"]?.ToString();
+                policyDefinitionObject.Properties.DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString();
+                policyDefinitionObject.Properties.PolicyRule = policyObject ?? resource.Properties["policyRule"] as JObject;
+                policyDefinitionObject.Properties.Metadata = this.Metadata == null ? resource.Properties["metadata"] as JObject : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
+                policyDefinitionObject.Properties.Parameters = this.Parameter == null ? resource.Properties["parameters"] as JObject : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter));
+                policyDefinitionObject.Properties.Mode = string.IsNullOrEmpty(this.Mode) ? resource.Properties["mode"]?.ToString() ?? PolicyDefinitionMode.All : this.Mode;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return policyDefinitionObject.ToJToken();
         }
 
@@ -167,7 +235,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
+<<<<<<< HEAD
             return this.Id ?? this.MakePolicyDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+=======
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicyDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

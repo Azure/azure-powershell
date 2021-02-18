@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 48C143BE-3BF6-43E3-99B0-1A1D12A0A3F3
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/import-azapimanagementapi
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/import-azapimanagementapi
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,7 +40,11 @@ The **Import-AzApiManagementApi** cmdlet imports an Azure API Management API fro
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 Import an API from a WADL file
+=======
+### Example 1: Import an API from a WADL file
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationPath "C:\contoso\specifications\echoapi.wadl" -Path "apis"
@@ -44,7 +52,11 @@ PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "
 
 This command imports an API from the specified WADL file.
 
+<<<<<<< HEAD
 ### Example 2 Import an API from a Swagger file
+=======
+### Example 2: Import an API from a Swagger file
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"
@@ -86,9 +98,15 @@ SubscriptionRequired          :
 ApiRevisionDescription        :
 ApiVersionSetDescription      :
 ApiVersionSetId               :
+<<<<<<< HEAD
 Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/constoso/apis/af3f57bab399455aa875d7050654e9d1     
 ResourceGroupName             : Api-Default-West-US
 ServiceName                   : constoso
+=======
+Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso/apis/af3f57bab399455aa875d7050654e9d1     
+ResourceGroupName             : Api-Default-West-US
+ServiceName                   : contoso
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command imports an API from the specified Open 3.0 specification link.
@@ -274,7 +292,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceUrl
+<<<<<<< HEAD
 A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.
+=======
+A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specified in the Specifications document.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -296,7 +318,11 @@ psdx_paramvalues Wadl, Wsdl, and Swagger.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: Wadl, Swagger, Wsdl, OpenApi
+=======
+Accepted values: Wadl, Swagger, Wsdl, OpenApi, OpenApiJson
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: Named

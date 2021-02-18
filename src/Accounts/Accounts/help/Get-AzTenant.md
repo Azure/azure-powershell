@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-aztenant
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/get-aztenant
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,10 +30,17 @@ The Get-AzTenant cmdlet gets tenants authorized for the current user.
 PS C:\> Connect-AzAccount
 PS C:\> Get-AzTenant
 
+<<<<<<< HEAD
 Id                                   Directory
 --                                   ---------
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx microsoft.com
 yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy microsoft.com
+=======
+Id                                   Name        Category Domains
+--                                   ----------- -------- -------
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}
+yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy Testhost    Home     testhost.onmicrosoft.com
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This example shows how to get all of the authorized tenants of an Azure account.
@@ -39,9 +50,15 @@ This example shows how to get all of the authorized tenants of an Azure account.
 PS C:\> Connect-AzAccount
 PS C:\> Get-AzTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
+<<<<<<< HEAD
 Id                                   Directory
 --                                   ---------
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx microsoft.com
+=======
+Id                                   Name        Category Domains
+--                                   ----------- -------- -------
+xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft   Home     {test0.com, test1.com, test2.microsoft.com, test3.microsoft.com...}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This example shows how to get a specific authorized tenant of an Azure account.
@@ -79,7 +96,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

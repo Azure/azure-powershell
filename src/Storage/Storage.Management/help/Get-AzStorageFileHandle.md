@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragefilehandle
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,6 +52,7 @@ The **Get-AzStorageFileHandle** cmdlet lists file handles of a  file share, or f
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: List all file handles on a file share recursively 
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Recursive
@@ -62,6 +67,25 @@ HandleId    Path      ClientIp       ClientPort OpenTime             LastReconne
 This command lists file handles on a file share.
 
 ### Example 2: List first 2 file handles on a file directory recursively 
+=======
+### Example 1: List all file handles on a file share recursively, and sort by ClientIp and OpenTime
+```
+PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Recursive | Sort-Object ClientIP,OpenTime 
+
+HandleId    Path                  ClientIp       ClientPort OpenTime             LastReconnectTime FileId               ParentId             SessionId          
+--------    ----                  --------       ---------- --------             ----------------- ------               --------             ---------          
+28506980357                       104.46.105.229 49805      2019-07-29 08:37:36Z                   0                    0                    9297571480349046273
+28506980537 dir1                  104.46.105.229 49805      2019-07-30 09:28:48Z                   10376363910205800448 0                    9297571480349046273
+28506980538 dir1                  104.46.105.229 49805      2019-07-30 09:28:48Z                   10376363910205800448 0                    9297571480349046273
+28582543365                       104.46.119.170 51675      2019-07-30 09:29:32Z                   0                    0                    9477733061320772929
+28582543375 dir1                  104.46.119.170 51675      2019-07-30 09:29:38Z                   10376363910205800448 0                    9477733061320772929
+28582543376 dir1                  104.46.119.170 51675      2019-07-30 09:29:38Z                   10376363910205800448 0                    9477733061320772929
+```
+
+This command lists file handles on a file share, and sort the output by ClientIp, then by OpenTime.
+
+### Example 2: List first 2 file handles on a file directory recursively
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2'  -Recursive -First 2
 
@@ -73,7 +97,11 @@ HandleId    Path      ClientIp       ClientPort OpenTime             LastReconne
 
 This command lists first 2 file handles on a file directory recursively .
 
+<<<<<<< HEAD
 ### Example 3: List the 3rd to the 6th file handles on a file 
+=======
+### Example 3: List the 3rd to the 6th file handles on a file
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -skip 2 -First 4 
 
@@ -156,12 +184,20 @@ CloudFileDirectory object indicated the base folder where the files/directories 
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileDirectory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -171,12 +207,20 @@ CloudFile object indicated the file to list File Handles.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -232,12 +276,20 @@ CloudFileShare object indicated the share where the files/directories would be l
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesyncservice
+=======
+online version: https://docs.microsoft.com/powershell/module/Az.storagesync/new-Azstoragesyncservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,7 +17,11 @@ This command creates a new storage sync service in a resource group.
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 New-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Tag <Hashtable>]
+=======
+New-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-IncomingTrafficPolicy] <String> [-Tag <Hashtable>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +32,11 @@ A storage sync service is the top level resource for Azure File Sync. This comma
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> New-AzStorageSyncService -ResourceGroupName "myResourceGroup" -Location "myLocation" -StorageSyncServiceName "myStorageSyncServiceName"
+=======
+PS C:\> New-AzStorageSyncService -ResourceGroupName "myResourceGroup" -Location "myLocation" -StorageSyncServiceName "myStorageSyncServiceName" -IncomingTrafficPolicy "AllowAllTraffic"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command will create a storage sync service.
@@ -61,6 +73,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -IncomingTrafficPolicy
+Storage Sync Service IncomingTrafficPolicy
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Name of the storage sync service.
 

@@ -14,7 +14,11 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.HDInsight;
+=======
+using Microsoft.Azure.Management.HDInsight.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,9 +26,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+<<<<<<< HEAD
     [GenericBreakingChange("Add-AzHDInsightConfigValues alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValue"),OutputType(typeof(AzureHDInsightConfig))]
     [Alias("Add-AzHDInsightConfigValues")]
+=======
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValue"),OutputType(typeof(AzureHDInsightConfig))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Hashtable> _configurations;
@@ -81,6 +89,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the RServer configurations.")]
         public Hashtable RServer { get; set; }
 
+<<<<<<< HEAD
         [Parameter(HelpMessage = "Gets the Spark Defaults configurations of this HDInsight cluster.", ParameterSetName = "Spark1")]
         public Hashtable SparkDefaults { get; set; }
 
@@ -91,6 +100,18 @@ namespace Microsoft.Azure.Commands.HDInsight
         public Hashtable Spark2Defaults { get; set; }
 
         [Parameter(HelpMessage = "Gets the Spark2 Thrift SparkConf configurations of this HDInsight cluster.", ParameterSetName = "Spark2")]
+=======
+        [Parameter(HelpMessage = "Gets the Spark Defaults configurations of this HDInsight cluster.")]
+        public Hashtable SparkDefaults { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark Thrift SparkConf configurations of this HDInsight cluster.")]
+        public Hashtable SparkThriftConf { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark2 Defaults configurations of this HDInsight cluster.")]
+        public Hashtable Spark2Defaults { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark2 Thrift SparkConf configurations of this HDInsight cluster.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Hashtable Spark2ThriftConf { get; set; }
 
         #endregion

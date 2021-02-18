@@ -38,6 +38,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExportLogAnalyticRequestRateByIntervalNegative");
         }
 
+<<<<<<< HEAD
+=======
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestExportLogAnalyticGroupByParameters()
+        {
+            TestRunner.RunTestScript("Test-ExportLogAnalyticGroupByParameters");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact(Skip = "BUG: LogAnalytics does not work.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]

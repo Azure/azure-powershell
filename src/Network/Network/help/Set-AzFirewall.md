@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 40E56EC1-3327-4DFF-8262-E2EEBB5E4447
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azfirewall
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azfirewall
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -69,18 +73,39 @@ $firewall.Deallocate()
 $firewall | Set-AzFirewall
 
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
+<<<<<<< HEAD
 $pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
 
+=======
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
+$firewall.Allocate($vnet, $pip)
+$firewall | Set-AzFirewall
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
 service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 If user wants to start the service again, the Allocate method should be called on the firewall.
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
+<<<<<<< HEAD
 ### 5:	Add a Public IP address to an Azure Firewall
+=======
+### 5: Allocate with a management public IP address for forced tunneling scenarios
+```
+$vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
+$mgmtPip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name MgmtPublicIpName
+$firewall.Allocate($vnet, $pip, $mgmtPip)
+$firewall | Set-AzFirewall
+```
+This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
+
+### 6:	Add a Public IP address to an Azure Firewall
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 $pip = New-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -91,7 +116,11 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as attached to the Firewall.
 
+<<<<<<< HEAD
 ### 6:	Remove a Public IP address from an Azure Firewall
+=======
+### 7:	Remove a Public IP address from an Azure Firewall
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 $pip = Get-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg"
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -102,6 +131,53 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
 
+<<<<<<< HEAD
+=======
+### 8:	Change the management public IP address on an Azure Firewall
+```
+$newMgmtPip = New-AzPublicIpAddress -Name "azFwMgmtPublicIp2" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.ManagementIpConfiguration.PublicIpAddress = $newMgmtPip
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the management public IP address of the firewall will be changed to "AzFwMgmtPublicIp2"
+
+### 9:	Add DNS configuration to an Azure Firewall
+```
+$dnsServers = @("10.10.10.1", "20.20.20.2")
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.DNSEnableProxy = $true
+$azFw.DNSServer = $dnsServers
+
+$azFw | Set-AzFirewall
+```
+
+In this example, DNS Proxy and DNS Server configuration is attached to the Firewall.
+
+### 10:	Update destination of an existing rule within a Firewall application rule collection
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
+$rule=$ruleCollection.GetRuleByName("ruleName")
+$rule.DestinationAddresses = "10.10.10.10"
+Set-AzFirewall -AzureFirewall $azFw
+```
+
+This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
+
+### 11:	Allow Active FTP on Azure Firewall
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.AllowActiveFTP = $true
+
+$azFw | Set-AzFirewall
+```
+
+In this example, Active FTP is allowed on the Firewall.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -AsJob

@@ -1,0 +1,524 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50cy9zaGVuZ2xvbC1wcy10ZXN0LWJwP2FwaS12ZXJzaW9uPTIwMTgtMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "400a568b-74c8-4089-be94-b792ac17082d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bd5b5c97-8bb3-4653-adfd-aaf241f16ba3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "53a7d83b-716e-4082-9d29-22ed8d5e9b3e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230819Z:53a7d83b-716e-4082-9d29-22ed8d5e9b3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:18 GMT"
+        ],
+        "Content-Length": [
+          "658"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"parameters\": {},\r\n    \"resourceGroups\": {\r\n      \"ProdRG\": {\r\n        \"metadata\": {\r\n          \"displayName\": \"Production resource group\"\r\n        },\r\n        \"dependsOn\": []\r\n      }\r\n    },\r\n    \"targetScope\": \"subscription\",\r\n    \"status\": {\r\n      \"timeCreated\": \"2020-04-14T13:59:48-07:00\",\r\n      \"lastModified\": \"2020-04-14T14:00:46.9452902-07:00\"\r\n    },\r\n    \"displayName\": \"Common Policies\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp\",\r\n  \"type\": \"Microsoft.Blueprint/blueprints\",\r\n  \"name\": \"shenglol-ps-test-bp\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50QXNzaWdubWVudHMvc2hlbmdsb2wtcHMtdGVzdC10cmFuc2llbnQtYXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "647bb9f3-77b6-45ba-b2ef-d4d17f656543"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "83c9e04b-bcf3-4ce9-8873-f8c89b6afc8a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "0980379c-20ce-4581-b80c-7395db45937d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230819Z:0980379c-20ce-4581-b80c-7395db45937d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:18 GMT"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AssignmentNotFound\",\r\n    \"message\": \"Assignment 'shenglol-ps-test-transient-assignment' could not be found in management group 'AzBlueprintAssignTest'.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50QXNzaWdubWVudHMvc2hlbmdsb2wtcHMtdGVzdC10cmFuc2llbnQtYXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ae542c06-a386-4d6d-b031-d1bd52ec7e8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a1fb187a-a6be-4560-8d3a-0e3a7d984ac5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "9dba2c22-e8c6-4c34-824e-8b50da64f56d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230834Z:9dba2c22-e8c6-4c34-824e-8b50da64f56d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:34 GMT"
+        ],
+        "Content-Length": [
+          "1113"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"systemAssigned\",\r\n    \"principalId\": \"497b7101-b38c-4da9-8faa-9d89d75e7a09\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"deploying\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp/versions/1.0\",\r\n    \"parameters\": {},\r\n    \"resourceGroups\": {\r\n      \"ProdRG\": {\r\n        \"name\": \"shenglol-ps-test-02\",\r\n        \"location\": \"westus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2020-04-14T16:08:24-07:00\",\r\n      \"lastModified\": \"2020-04-14T16:08:23.9533462-07:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"shenglol-ps-test-transient-assignment\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50QXNzaWdubWVudHMvc2hlbmdsb2wtcHMtdGVzdC10cmFuc2llbnQtYXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8b01f305-2b5d-4968-8f5f-e4f22c2934fe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e4664c89-9fb6-43ad-a22d-b936e6ea1a33"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "15653741-a2b1-400b-90f3-62c54d61a493"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230844Z:15653741-a2b1-400b-90f3-62c54d61a493"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:44 GMT"
+        ],
+        "Content-Length": [
+          "1144"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"systemAssigned\",\r\n    \"principalId\": \"497b7101-b38c-4da9-8faa-9d89d75e7a09\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"succeeded\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp/versions/1.0\",\r\n    \"parameters\": {},\r\n    \"resourceGroups\": {\r\n      \"ProdRG\": {\r\n        \"name\": \"shenglol-ps-test-02\",\r\n        \"location\": \"westus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"managedResources\": [],\r\n      \"timeCreated\": \"2020-04-14T16:08:24-07:00\",\r\n      \"lastModified\": \"2020-04-14T16:08:23.9533462-07:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"shenglol-ps-test-transient-assignment\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment/WhoIsBlueprint?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50QXNzaWdubWVudHMvc2hlbmdsb2wtcHMtdGVzdC10cmFuc2llbnQtYXNzaWdubWVudC9XaG9Jc0JsdWVwcmludD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f1c8d67c-7ceb-40d2-8951-8392d4665682"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a3871ddd-5668-4ca8-9168-559867155466"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "5633015b-c13b-4a11-ae07-7a1918d23c2a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230819Z:5633015b-c13b-4a11-ae07-7a1918d23c2a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:18 GMT"
+        ],
+        "Content-Length": [
+          "58"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"objectId\": \"ffeb3a44-712a-4d2e-9b97-b1e032a40b29\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Authorization/roleAssignments?$filter=assignedTo('ffeb3a44-712a-4d2e-9b97-b1e032a40b29')&api-version=2015-07-01",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3JvbGVBc3NpZ25tZW50cz8kZmlsdGVyPWFzc2lnbmVkVG8oJ2ZmZWIzYTQ0LTcxMmEtNGQyZS05Yjk3LWIxZTAzMmE0MGIyOScpJmFwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c069e402-fee6-4f96-82d5-817aa0110d9f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Authorization.Version2015.07.01.AuthorizationManagementClient/1.3.11"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fa68da56-fe6e-49e5-85e0-9d37c8da0366"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=Production; path=/; SameSite=None; secure; HttpOnly"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed3798e9-8d1f-4abc-9425-55cc0659fbc3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230820Z:ed3798e9-8d1f-4abc-9425-55cc0659fbc3"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:19 GMT"
+        ],
+        "Content-Length": [
+          "719"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n        \"principalId\": \"ffeb3a44-712a-4d2e-9b97-b1e032a40b29\",\r\n        \"scope\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest\",\r\n        \"createdOn\": \"2020-04-14T21:02:17.755131Z\",\r\n        \"updatedOn\": \"2020-04-14T21:02:17.755131Z\",\r\n        \"createdBy\": \"b0b8600b-83ec-4fed-8430-bec5b21d2c8a\",\r\n        \"updatedBy\": \"b0b8600b-83ec-4fed-8430-bec5b21d2c8a\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Authorization/roleAssignments/a2090015-c331-4e2f-ad0f-6d9f8508def8\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"a2090015-c331-4e2f-ad0f-6d9f8508def8\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Authorization/roleAssignments/1aea2945-fdda-4516-b476-e5550d6c75ab?api-version=2015-07-01",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3JvbGVBc3NpZ25tZW50cy8xYWVhMjk0NS1mZGRhLTQ1MTYtYjQ3Ni1lNTU1MGQ2Yzc1YWI/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n    \"principalId\": \"ffeb3a44-712a-4d2e-9b97-b1e032a40b29\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0454d4db-fb13-4e23-bb00-42c1fa2c1167"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Authorization.Version2015.07.01.AuthorizationManagementClient/1.3.11"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "203"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "edf34d12-0f75-43ec-8712-309e04878de5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=Production; path=/; secure; HttpOnly; SameSite=None"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "47a5e237-2d09-4e88-8644-fb0d4776b603"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230820Z:47a5e237-2d09-4e88-8644-fb0d4776b603"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:20 GMT"
+        ],
+        "Content-Length": [
+          "89"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"RoleAssignmentExists\",\r\n    \"message\": \"The role assignment already exists.\"\r\n  }\r\n}",
+      "StatusCode": 409
+    },
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludEFzc2lnblRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5CbHVlcHJpbnQvYmx1ZXByaW50QXNzaWdubWVudHMvc2hlbmdsb2wtcHMtdGVzdC10cmFuc2llbnQtYXNzaWdubWVudD9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp\",\r\n    \"scope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"parameters\": {},\r\n    \"resourceGroups\": {\r\n      \"ProdRG\": {\r\n        \"name\": \"shenglol-ps-test-02\",\r\n        \"location\": \"westus\"\r\n      }\r\n    },\r\n    \"locks\": {\r\n      \"mode\": \"None\"\r\n    }\r\n  },\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "55325a7c-4fae-49a0-a28b-ed604c34fdf4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28619.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.20.6.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "530"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f8461b1f-83df-4d65-8a36-4be4da9c01e5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "428bdbb4-b802-42e1-8ac1-04e4f8cb7d47"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200414T230824Z:428bdbb4-b802-42e1-8ac1-04e4f8cb7d47"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 14 Apr 2020 23:08:24 GMT"
+        ],
+        "Content-Length": [
+          "1112"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"systemAssigned\",\r\n    \"principalId\": \"497b7101-b38c-4da9-8faa-9d89d75e7a09\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"creating\",\r\n    \"blueprintId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprints/shenglol-ps-test-bp/versions/1.0\",\r\n    \"parameters\": {},\r\n    \"resourceGroups\": {\r\n      \"ProdRG\": {\r\n        \"name\": \"shenglol-ps-test-02\",\r\n        \"location\": \"westus\"\r\n      }\r\n    },\r\n    \"status\": {\r\n      \"timeCreated\": \"2020-04-14T16:08:24-07:00\",\r\n      \"lastModified\": \"2020-04-14T16:08:23.9533462-07:00\"\r\n    },\r\n    \"scope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"locks\": {\r\n      \"mode\": \"none\"\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Blueprint/blueprintAssignments/shenglol-ps-test-transient-assignment\",\r\n  \"type\": \"Microsoft.Blueprint/blueprintAssignments\",\r\n  \"name\": \"shenglol-ps-test-transient-assignment\"\r\n}",
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+  }
+}

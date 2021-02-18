@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementidentityprovider
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementidentityprovider
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,22 +30,75 @@ Get-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
 
 ## DESCRIPTION
 Get the identity provider configuration details.
+<<<<<<< HEAD
+=======
+ClientSecret will not be included into result details. To get client secret, use **Get-AzApiManagementIdentityProviderClientSecret**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
 ### Example 1: Get all Identity Providers
 
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementIdentityProvider -Context $apimContext
 ```
 
 Get all the identity provider Configuration on the service.
 
+<<<<<<< HEAD
 ### Get the AAD Type Identity Provider
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementIdentityProvider -Context $apimContext -Type Aad
+=======
+### Example 2: Get the AAD Type Identity Provider
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\> Get-AzApiManagementIdentityProvider -Context $apimContext -Type Aad
+
+
+Type                     : Aad
+ClientId                 : aaa
+ClientSecret             : xxxxx
+AllowedTenants           : {contosotest.onmicrosoft.com}
+Authority                : login.microsoftonline.com
+SignupPolicyName         :
+SigninPolicyName         :
+ProfileEditingPolicyName :
+PasswordResetPolicyName  :
+SigninTenant             :
+Id                       : /subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso/identityProviders/Aad
+ResourceGroupName        : Api-Default-West-US
+ServiceName              : contoso
+```
+
+Gets the Identity Provider Configuration of Azure Active Directory.
+
+### Example 3: Get the AAD B2C Type Identity Provider
+```powershell
+PS C:\>$context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\> Get-AzApiManagementIdentityProvider -Context $context -Type AadB2C
+
+
+Type                     : AadB2C
+ClientId                 : f02dafe2-b8b8-48ec-a38e-27e5c16c51e5
+ClientSecret             : xxxxxx
+AllowedTenants           : {contosoaadb2c.onmicrosoft.com}
+Authority                : login.microsoftonline.com
+SignupPolicyName         : B2C_1_policy-signup
+SigninPolicyName         : B2C_1_policy-signin
+ProfileEditingPolicyName :
+PasswordResetPolicyName  :
+SigninTenant             : contosoaadb2c.onmicrosoft.com
+Id                       : /subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso/identityProviders/AadB2C
+ResourceGroupName        : Api-Default-West-US
+ServiceName              : contoso
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Gets the Identity Provider Configuration of Azure Active Directory.

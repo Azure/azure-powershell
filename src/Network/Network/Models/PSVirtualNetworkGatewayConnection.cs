@@ -35,12 +35,27 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public int RoutingWeight { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int DpdTimeoutSeconds { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ConnectionMode { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string SharedKey { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+<<<<<<< HEAD
+=======
+        public bool UseLocalAzureIpAddress { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ConnectionStatus { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -59,6 +74,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
+<<<<<<< HEAD
+=======
+        public List<PSTrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public bool ExpressRouteGatewayBypass { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

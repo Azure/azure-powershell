@@ -59,7 +59,11 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetVirtualNetworkGatewayCRUD");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
@@ -111,6 +115,17 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+<<<<<<< HEAD
+=======
+        public void VirtualNetworkGatewayRadiusTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayRadius");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");
@@ -123,5 +138,24 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnClientConnectionHealth");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset5)]
+        public void TestVirtualNetworKGatewayPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworKGatewayPacketCapture");
+        }
+
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset5)]
+        public void TestDisconnectVirtualNetworkGatewayVpnConnection()
+        {
+            TestRunner.RunTestScript("Test-DisconnectVNGVpnConnection");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

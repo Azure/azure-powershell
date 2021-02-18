@@ -24,6 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 {
@@ -76,6 +80,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets a list of all managed instances in an instance pool
+        /// </summary>
+        /// <returns>A list of all managed instances in an instance pool</returns>
+        public List<AzureSqlManagedInstanceModel> ListManagedInstancesByInstancePool(string resourceGroupName, string instancePoolName)
+        {
+            var resp = Communicator.ListByInstancePool(resourceGroupName, instancePoolName);
+            return resp.Select((s) => CreateManagedInstanceModelFromResponse(s)).ToList();
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets a list of all the managed instances in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -90,6 +107,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Failovers a managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the instance is in.</param>
+        /// <param name="name">The name of Azure Managed Instance to failover.</param>
+        /// <param name="replicaType">The type of replica to failover.</param>
+        public void FailoverManagedInstance(string resourceGroupName, string name, string replicaType)
+        {
+            Communicator.Failover(resourceGroupName, name, replicaType);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Upserts a managed instance
         /// </summary>
         /// <param name="model">The managed instance to upsert</param>
@@ -113,6 +144,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 ProxyOverride = model.ProxyOverride,
                 TimezoneId = model.TimezoneId,
                 DnsZonePartner = model.DnsZonePartner,
+<<<<<<< HEAD
+=======
+                InstancePoolId = model.InstancePoolName != null ?
+                    string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
+                        Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName): null,
+                MinimalTlsVersion = model.MinimalTlsVersion,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                MaintenanceConfigurationId = model.MaintenanceConfigurationId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -185,10 +225,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.ProxyOverride = resp.ProxyOverride;
             managedInstance.TimezoneId = resp.TimezoneId;
             managedInstance.DnsZone = resp.DnsZone;
+<<<<<<< HEAD
+=======
+            managedInstance.InstancePoolName = resp.InstancePoolId != null ?
+                new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
+            managedInstance.MinimalTlsVersion = resp.MinimalTlsVersion;
+            managedInstance.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(resp.StorageAccountType);
+            managedInstance.MaintenanceConfigurationId = resp.MaintenanceConfigurationId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
             sku.Tier = resp.Sku.Tier;
+<<<<<<< HEAD
+=======
+            sku.Family = resp.Sku.Family;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             managedInstance.Sku = sku;
 
@@ -212,5 +264,53 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
             return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy to Internal
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        public static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Map internal BackupStorageRedundancy to external
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        public static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
+        {
+            switch (backupStorageRedundancy)
+            {
+                case "GRS":
+                    return "Geo";
+                case "LRS":
+                    return "Local";
+                case "ZRS":
+                    return "Zone";
+                default:
+                    return null;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

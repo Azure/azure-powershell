@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplication
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,25 +46,43 @@ Deletes the azure active directory application.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Remove application by object id
 
 ```
+=======
+### Example 1: Remove application by object id
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738
 ```
 
 Removes the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' from the tenant.
 
+<<<<<<< HEAD
 ### Example 2 - Remove application by application id
 
 ```
+=======
+### Example 2: Remove application by application id
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzADApplication -ApplicationId f9c5ea4f-28f0-401a-a491-491a037fa346
 ```
 
 Removes the application with application id 'f9c5ea4f-28f0-401a-a491-491a037fa346' from the tenant.
 
+<<<<<<< HEAD
 ### Example 3 - Remove application by piping
 
 ```
+=======
+### Example 3: Remove application by piping
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 | Remove-AzADApplication
 ```
 
@@ -205,7 +227,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -228,7 +254,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 [Get-AzADApplication](./Get-AzADApplication.md)
 
+<<<<<<< HEAD
 [Set-AzADApplication](./Set-AzADApplication.md)
+=======
+[Update-AzADApplication](./Update-AzADApplication.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 

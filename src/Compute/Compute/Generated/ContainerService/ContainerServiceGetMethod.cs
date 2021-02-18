@@ -32,6 +32,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+<<<<<<< HEAD
+=======
+    [WindowsAzure.Commands.Common.CustomAttributes.CmdletDeprecation()]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSContainerService))]
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet

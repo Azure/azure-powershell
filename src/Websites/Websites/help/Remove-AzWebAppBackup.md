@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 65A78654-A490-4B60-8C16-B0CC597EE995
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappbackup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappbackup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,8 +33,13 @@ The **Remove-AzWebAppBackup** cmdlet removes the specified backup of an Azure We
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:
 ```
+=======
+### Example 1
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Remove-AzWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -BackupId "12345"
 ```
 

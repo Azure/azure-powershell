@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -23,6 +24,20 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret))]
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Runtime.InteropServices;
+using System.Security;
+
+namespace Microsoft.Azure.Commands.KeyVault
+{
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret", DefaultParameterSetName = ByVaultNameParameterSet)]
+    [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret), typeof(string))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -188,6 +203,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, ParameterSetName = BySecretNameParameterSet, HelpMessage = "When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByVaultNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectBySecretNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectByVaultNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdBySecretNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdByVaultNameParameterSet)]
+        public SwitchParameter AsPlainText { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         public override void ExecuteCmdlet()
@@ -207,7 +232,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrEmpty(Version))
             {
                 secret = DataServiceClient.GetSecret(VaultName, Name, Version);
+<<<<<<< HEAD
                 WriteObject(secret);
+=======
+                WriteSecret(secret);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (IncludeVersions)
             {
@@ -239,7 +268,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 else
                 {
                     secret = DataServiceClient.GetSecret(VaultName, Name, string.Empty);
+<<<<<<< HEAD
                     WriteObject(secret);
+=======
+                    WriteSecret(secret);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
@@ -257,7 +290,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     VaultName = vaultName,
                     NextLink = null
+<<<<<<< HEAD
                 }, 
+=======
+                },
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetSecrets(options)));
 
         private void GetAndWriteSecretVersions(string vaultName, string name, string currentSecretVersion) =>
@@ -266,7 +303,37 @@ namespace Microsoft.Azure.Commands.KeyVault
                     VaultName = vaultName,
                     Name = name,
                     NextLink = null
+<<<<<<< HEAD
                 }, 
                 (options) => DataServiceClient.GetSecretVersions(options).Where(s => s.Version != currentSecretVersion));
+=======
+                },
+                (options) => DataServiceClient.GetSecretVersions(options).Where(s => s.Version != currentSecretVersion));
+
+        private void WriteSecret(PSKeyVaultSecret secret)
+        {
+            if (AsPlainText)
+            {
+                WriteObject(ConvertFromSecureString(secret.SecretValue));
+            }
+            else
+            {
+                WriteObject(secret);
+            }
+        }
+
+        private string ConvertFromSecureString(SecureString secretValue)
+        {
+            var ssPtr = Marshal.SecureStringToBSTR(secretValue);
+            try
+            {
+                return Marshal.PtrToStringBSTR(ssPtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeBSTR(ssPtr);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

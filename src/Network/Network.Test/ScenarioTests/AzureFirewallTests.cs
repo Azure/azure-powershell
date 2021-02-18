@@ -57,5 +57,63 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallAllocateAndDeallocate");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallThreatIntelWhitelistCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPrivateRangeCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPrivateRangeCRUD");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDwithManagementIpConfig()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDwithManagementIpConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallWithDNSProxy()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallWithDNSProxy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubMultiPublicIPCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubMultiPublicIPCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDWithAllowActiveFTP()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDAllowActiveFTP");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

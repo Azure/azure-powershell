@@ -14,6 +14,50 @@
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Converts an object to a Hashtable.
+#>
+function ConvertTo-Hashtable {
+	[CmdletBinding()]
+	[OutputType('hashtable')]
+	param (
+		[Parameter(ValueFromPipeline)]
+		$InputObject
+	)
+ 
+	process {
+		if ($null -eq $InputObject) {
+			return $null
+		}
+ 
+		if ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [string]) {
+			$collection = @(
+				foreach ($object in $InputObject) {
+					ConvertTo-Hashtable -InputObject $object
+				}
+			)
+ 
+			Write-Output -NoEnumerate $collection
+		}
+		elseif ($InputObject -is [psobject]) {
+			$hashtable = @{}
+
+			foreach ($property in $InputObject.PSObject.Properties) {
+				$hashtable[$property.Name] = ConvertTo-Hashtable -InputObject $property.Value
+			}
+
+			$hashtable
+		}
+		else {
+			$InputObject
+		}
+	}
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests deployment template validation.
 #>
 function Test-ValidateDeployment
@@ -42,21 +86,38 @@ function Test-NewDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
+<<<<<<< HEAD
+=======
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
+<<<<<<< HEAD
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+=======
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -Tag $expectedTags
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+<<<<<<< HEAD
+=======
+
+		[hashtable]$actualTags = $getById.Tags
+		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
 	}
 
 	finally
@@ -66,6 +127,193 @@ function Test-NewDeploymentFromTemplateFile
     }
 }
 
+function Test-NewDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "sampleTemplate.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateSpecId $resourceId -TemplateParameterFile "sampleTemplateParams.json"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<<<<<<< HEAD
+=======
+function Test-NewSubscriptionDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "subscription_level_template.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzSubscriptionDeployment -Name $rname -TemplateSpecId $resourceId -TemplateParameterFile "subscription_level_parameters.json" -Location $rglocation
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+		Clean-DeploymentAtSubscription $deployment
+		Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-NewFailedSubscriptionDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		#Use template that will fail at subscription scope
+        $sampleTemplateJson = Get-Content -Raw -Path "subscription_level_template.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		try {
+			$deployment = New-AzSubscriptionDeployment -Name $rname -TemplateSpecId $resourceId -TemplateParameterFile "subscription_level_parameters.json" -Location $rglocation
+		}
+		Catch {
+			Assert-True { $Error[0].Contains("ResourceNotFound")}
+		}
+
+	}
+
+	finally
+    {
+        # Cleanup
+		Clean-DeploymentAtSubscription $deployment
+		Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-NewMGDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+	$managementGroupId = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		#Create New MG
+		New-AzManagementGroup -GroupName $managementGroupId -ParentId "/providers/Microsoft.Management/managementGroups/AzDeploymentsPSTest"
+
+		# Prepare our RG and basic template spec:
+
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "simpleTemplate.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzManagementGroupDeployment -ManagementGroupId $managementGroupId -Name $rname -TemplateSpecId $resourceId -TemplateParameterFile "simpleTemplateParams.json" -Location $rglocation
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+		Remove-AzManagementGroupDeployment -ManagementGroup $managementGroupId -Name $rname
+		Clean-ResourceGroup $rgname
+		Remove-AzManagementGroup -GroupName $managementGroupId
+    }
+}
+
+function Test-NewTenantDeploymentFromTemplateSpec
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $sampleTemplateJson = Get-Content -Raw -Path "simpleTemplate.json"
+        $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
+
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+
+		#Create deployment
+		$deployment = New-AzTenantDeployment -Name $rname -TemplateSpecId $resourceId -TemplateParameterFile "simpleTemplateParams.json" -Location $rglocation
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+		Clean-ResourceGroup $rgname
+		Remove-AzTenantDeployment -Name $rname
+		Clean-DeploymentAtTenant $rname
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 function Test-NewDeploymentFromTemplateObject
 {
     # Setup
@@ -80,11 +328,17 @@ function Test-NewDeploymentFromTemplateObject
 
         $path = (Get-Item ".\").FullName
         $file = Join-Path $path "sampleDeploymentTemplate.json"
+<<<<<<< HEAD
         $json = ConvertFrom-Json ([System.IO.File]::ReadAllText($file))
         $templateObject = @{}
         $json.PSObject.Properties | % { $templateObject[$_.Name] = $_.Value }
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json
 
+=======
+		$templateObject = ConvertFrom-Json ([System.IO.File]::ReadAllText($file)) | ConvertTo-Hashtable
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json 
+		
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Assert
         Assert-AreEqual Succeeded $deployment.ProvisioningState
 
@@ -147,6 +401,10 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 	$rgname2 = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
+<<<<<<< HEAD
+=======
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
@@ -155,15 +413,27 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 		New-AzResourceGroup -Name $rgname2 -Location $rglocation
 
 		$parameters = @{ "NestedDeploymentResourceGroup" = $rgname2 }
+<<<<<<< HEAD
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+=======
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplateWithCrossResourceGroupDeployment.json -TemplateParameterObject $parameters -Tag $expectedTags
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+<<<<<<< HEAD
+=======
+		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$nestedDeploymentId = "/subscriptions/$subId/resourcegroups/$rgname2/providers/Microsoft.Resources/deployments/nestedTemplate"
 		$nestedDeployment = Get-AzResourceGroupDeployment -Id $nestedDeploymentId
@@ -219,16 +489,28 @@ function Test-NestedDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$rglocation = "West US 2"
+<<<<<<< HEAD
+=======
+	$expectedTags = @{"key1"="value1"; "key2"="value2";}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
+<<<<<<< HEAD
 		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
+=======
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleNestedTemplate.json -TemplateParameterFile sampleNestedTemplateParams.json -Tag $expectedTags
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+		Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$subId = (Get-AzContext).Subscription.SubscriptionId
 		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
@@ -475,7 +757,11 @@ function Test-NewDeploymentWithKeyVaultReferenceInParameterObject
 	# Setup
 	$location = "West US"
 
+<<<<<<< HEAD
 	$vaultId = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/powershelltest-keyvaultrg/providers/Microsoft.KeyVault/vaults/saname"
+=======
+	$vaultId = "/subscriptions/996a2f3f-ee01-4ffd-9765-d2c3fc98f30a/resourceGroups/demo-rg-2/providers/Microsoft.KeyVault/vaults/pstestsaname"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$secretName = "examplesecret"
 
 	try
@@ -554,4 +840,40 @@ function Test-NewDeploymentFromNonexistentTemplateParameterFile
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+<<<<<<< HEAD
+=======
+}
+
+<#
+.SYNOPSIS
+Tests deployment from a template in a storage account using a query string.
+#>
+function Test-NewDeploymentWithQueryString
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG and basic template spec:
+
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		#Create deployment
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.blob.core.windows.net/testqsblob/linkedTemplateParent.json" -QueryString "foo"
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

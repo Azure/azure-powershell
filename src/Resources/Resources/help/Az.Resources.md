@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.resources
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 5.5.2.0
 Locale: en-US
 ---
@@ -17,6 +21,12 @@ Adds a user to an existing AD group.
 ### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
 
+<<<<<<< HEAD
+=======
+### [Export-AzTemplateSpec](Export-AzTemplateSpec.md)
+Exports a Template Spec to the local filesystem
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Retrieves a list of credentials associated with an application.
 
@@ -49,6 +59,18 @@ Get deployment
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Get deployment operation
 
+<<<<<<< HEAD
+=======
+### [Get-AzDeploymentScript](Get-AzDeploymentScript.md)
+Gets or lists deployment scripts.
+
+### [Get-AzDeploymentScriptLog](Get-AzDeploymentScriptLog.md)
+Gets the log of a deployment script execution.
+
+### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at subscription scope. 
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
 
@@ -61,6 +83,18 @@ Gets managed application definitions
 ### [Get-AzManagementGroup](Get-AzManagementGroup.md)
 Gets Management Group(s)
 
+<<<<<<< HEAD
+=======
+### [Get-AzManagementGroupDeployment](Get-AzManagementGroupDeployment.md)
+Get deployment at a management group
+
+### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
+Get deployment operation for management group deployment
+
+### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at management group scope. 
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
 given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
@@ -93,6 +127,12 @@ Gets the deployments in a resource group.
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
 
+<<<<<<< HEAD
+=======
+### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at resource group scope. 
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.
 
@@ -108,7 +148,23 @@ Use respective parameters to list assignments to a specific user, or to list ass
 Lists all Azure RBAC roles that are available for assignment.
 
 ### [Get-AzTag](Get-AzTag.md)
+<<<<<<< HEAD
 Gets predefined Azure tags.
+=======
+Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
+
+### [Get-AzTemplateSpec](Get-AzTemplateSpec.md)
+Gets or lists Template Specs
+
+### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
+Get deployment at tenant scope
+
+### [Get-AzTenantDeploymentOperation](Get-AzTenantDeploymentOperation.md)
+Get deployment operation for deployment at tenant scope
+
+### [Get-AzTenantDeploymentWhatIfResult](Get-AzTenantDeploymentWhatIfResult.md)
+Gets an ARM template What-If result for a deployment at tenant scope. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -126,7 +182,11 @@ Creates a new azure active directory application.
 Creates a new active directory group.
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
+<<<<<<< HEAD
 Creates a new azure active directory service principal.
+=======
+Creates a new Azure active directory service principal.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzADSpCredential](New-AzADSpCredential.md)
 Adds a credential to an existing service principal.
@@ -146,6 +206,12 @@ Creates a managed application definition.
 ### [New-AzManagementGroup](New-AzManagementGroup.md)
 Creates a Management Group
 
+<<<<<<< HEAD
+=======
+### [New-AzManagementGroupDeployment](New-AzManagementGroupDeployment.md)
+Create a deployment at a management group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Adds a Subscription to a Management Group.
 
@@ -181,7 +247,17 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzTag](New-AzTag.md)
+<<<<<<< HEAD
 Creates a predefined Azure tag or adds values to an existing tag.
+=======
+Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
+
+### [New-AzTemplateSpec](New-AzTemplateSpec.md)
+Creates a new Template Spec.
+
+### [New-AzTenantDeployment](New-AzTenantDeployment.md)
+Create a deployment at tenant scope
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
@@ -213,6 +289,12 @@ Deletes an active directory user.
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
 
+<<<<<<< HEAD
+=======
+### [Remove-AzDeploymentScript](Remove-AzDeploymentScript.md)
+Removes a deployment script and its associated resources.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzManagedApplication](Remove-AzManagedApplication.md)
 Removes a managed application
 
@@ -222,6 +304,12 @@ Removes a managed application definition
 ### [Remove-AzManagementGroup](Remove-AzManagementGroup.md)
 Removes a Management Group
 
+<<<<<<< HEAD
+=======
+### [Remove-AzManagementGroupDeployment](Remove-AzManagementGroupDeployment.md)
+Removes a deployment at a management group and any associated operations
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 Removes a Subscription from a Management Group.
 
@@ -255,14 +343,39 @@ The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
 
 ### [Remove-AzTag](Remove-AzTag.md)
+<<<<<<< HEAD
 Deletes predefined Azure tags or values.
+=======
+Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
+
+### [Remove-AzTemplateSpec](Remove-AzTemplateSpec.md)
+Removes a Template Spec
+
+### [Remove-AzTenantDeployment](Remove-AzTenantDeployment.md)
+Removes a deployment at tenant scope and any associated operations
+
+### [Save-AzDeploymentScriptLog](Save-AzDeploymentScriptLog.md)
+Saves the log of a deployment script execution to disk.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
+Saves a deployment template to a file.
+
+<<<<<<< HEAD
+### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
+Saves a resource group deployment template to a file.
+
+=======
+### [Save-AzManagementGroupDeploymentTemplate](Save-AzManagementGroupDeploymentTemplate.md)
 Saves a deployment template to a file.
 
 ### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
 
+### [Save-AzTenantDeploymentTemplate](Save-AzTenantDeploymentTemplate.md)
+Saves a deployment template to a file.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Updates managed application
 
@@ -287,6 +400,12 @@ Modifies a resource group.
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
+<<<<<<< HEAD
+=======
+### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
+Update a role assignment.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
@@ -294,18 +413,50 @@ First, use the Get-AzRoleDefinition command to retrieve the custom role that you
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
+<<<<<<< HEAD
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancal a running deployment
+=======
+### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
+Modifies a Template Spec.
+
+### [Stop-AzDeployment](Stop-AzDeployment.md)
+Cancel a running deployment
+
+### [Stop-AzManagementGroupDeployment](Stop-AzManagementGroupDeployment.md)
+Cancel a running deployment at a management group
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.
 
+<<<<<<< HEAD
 ### [Test-AzDeployment](Test-AzDeployment.md)
 Validates a deployment.
 
 ### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
 Validates a resource group deployment.
 
+=======
+### [Stop-AzTenantDeployment](Stop-AzTenantDeployment.md)
+Cancel a running deployment at tenant scope
+
+### [Test-AzDeployment](Test-AzDeployment.md)
+Validates a deployment.
+
+### [Test-AzManagementGroupDeployment](Test-AzManagementGroupDeployment.md)
+Validates a deployment at a management group.
+
+### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
+Validates a resource group deployment.
+
+### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
+Validates a deployment at tenant scope.
+
+### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
+Unregisters an Azure provider feature in your account.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
@@ -321,3 +472,8 @@ Updates an existing active directory user.
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
 
+<<<<<<< HEAD
+=======
+### [Update-AzTag](Update-AzTag.md)
+Selectively updates the set of tags on a resource or subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 2.0.0
+* [Breaking Change] Updated parameters naming conventions and associated examples
+
+## Version 1.1.1
+* Updated breaking change warnings on cmdlets of managed services assignment and definition
+
+## Version 1.1.0
+* Added breaking change warnings on cmdlets of managed services assignment and definition
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Added support for api version 2019-06-01 (GA)
 
 ## Version 0.0.1

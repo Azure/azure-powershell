@@ -22,6 +22,14 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string ResourceGroupName { get; set; }
 
         public string Name { get; set; }
+<<<<<<< HEAD
+=======
+        public string ComputerName { get; set; }
+        public string OsName { get; set; }
+        public string OsVersion { get; set; }
+        public string HyperVGeneration { get; set; }
+        public string AssignedHost {get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
@@ -40,6 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
+<<<<<<< HEAD
+=======
+        public VirtualMachinePatchStatus PatchStatus { get; set; }
+        public VirtualMachineHealthStatus VMHealth { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -61,7 +74,18 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
                 RemoteDesktopThumbprint = virtualMachineInstanceView.RdpThumbPrint,
                 VMAgent = virtualMachineInstanceView.VmAgent,
+<<<<<<< HEAD
                 MaintenanceRedeployStatus = virtualMachineInstanceView.MaintenanceRedeployStatus
+=======
+                MaintenanceRedeployStatus = virtualMachineInstanceView.MaintenanceRedeployStatus,
+                ComputerName = virtualMachineInstanceView.ComputerName,
+                OsName = virtualMachineInstanceView.OsName,
+                OsVersion = virtualMachineInstanceView.OsVersion,
+                HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
+                PatchStatus = virtualMachineInstanceView.PatchStatus,
+                VMHealth = virtualMachineInstanceView.VmHealth,
+                AssignedHost = virtualMachineInstanceView.AssignedHost
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             return result;

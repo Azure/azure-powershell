@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlcommitmentassociation
+=======
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlcommitmentassociation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,11 @@ Get-AzMlCommitmentAssociation -ResourceGroupName <String> -CommitmentPlanName <S
 
 ## DESCRIPTION
 Retrieves commitment association information.
+<<<<<<< HEAD
 Depending on the paramenters passed, the cmdlet returns a specific commitment association or a collection of commitment associations for the specified commitment plan.
+=======
+Depending on the parameters passed, the cmdlet returns a specific commitment association or a collection of commitment associations for the specified commitment plan.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

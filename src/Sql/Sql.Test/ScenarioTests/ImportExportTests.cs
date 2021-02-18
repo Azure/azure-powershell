@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ImportExportTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
         }
 
 
@@ -30,6 +31,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         // TODO: Remove "CallSite.Target" from Get-SqlDatabaseImportExportTestEnvironmentParameters in GetName when re-recording
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
@@ -37,11 +47,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Sql, "Needs to be re-recorded")]
         // TODO: Remove "CallSite.Target" from Get-SqlDatabaseImportExportTestEnvironmentParameters in GetName when re-recording
         public void TestImportDatabase()
         {
             RunPowerShellTest("Test-ImportDatabase");
+=======
+        public void TestExportDatabase_NetworkIsolation()
+        {
+            RunPowerShellTest("Test-ExportDatabaseNetworkIsolation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, "Needs to be re-recorded")]
+        public void TestImportNewDatabase()
+        {
+            RunPowerShellTest("Test-ImportNewDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, "Needs to be re-recorded")]
+        public void TestImportNewDatabase_NetworkIsolation()
+        {
+            RunPowerShellTest("Test-ImportNewDatabaseNetworkIsolation");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

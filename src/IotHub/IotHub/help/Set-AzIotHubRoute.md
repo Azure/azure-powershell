@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubroute
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubroute
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -221,7 +225,11 @@ Source of the route
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
+=======
+Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents, DigitalTwinChangeEvents
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named

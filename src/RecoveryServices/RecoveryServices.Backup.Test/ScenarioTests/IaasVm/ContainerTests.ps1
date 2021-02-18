@@ -19,7 +19,11 @@ Test Recovery Services Backup Vault
 
 function Test-AzureVMGetContainers
 {
+<<<<<<< HEAD
 	$location = Get-ResourceGroupLocation
+=======
+	$location = "southeastasia"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try

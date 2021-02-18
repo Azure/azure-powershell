@@ -45,13 +45,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Cognitive Services Account NetworkRule DefaultAction.")]
+=======
+            HelpMessage = "Cognitive Services Account NetworkRule DefaultAction. Default value `Deny`.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public PSNetWorkRuleDefaultActionEnum DefaultAction
         {
             get
             {
+<<<<<<< HEAD
                 return defaultAction == null ? PSNetWorkRuleDefaultActionEnum.Allow : defaultAction.Value;
+=======
+                return defaultAction == null ? PSNetWorkRuleDefaultActionEnum.Deny : defaultAction.Value;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             set
             {
@@ -99,7 +107,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -114,11 +125,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 var account = this.CognitiveServicesClient.Accounts.GetProperties(
                     this.ResourceGroupName,
                     this.Name);
+<<<<<<< HEAD
                 NetworkRuleSet accountACL = account.NetworkAcls;
+=======
+                NetworkRuleSet accountACL = account.Properties.NetworkAcls;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
+<<<<<<< HEAD
+=======
+                    accountACL.DefaultAction = NetworkRuleAction.Deny;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 PSNetworkRuleSet psNetworkRule = PSNetworkRuleSet.Create(accountACL);
@@ -138,6 +157,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     psNetworkRule.DefaultAction = defaultAction.Value;
                 }
 
+<<<<<<< HEAD
                 var properties = new JObject();
                 properties["networkAcls"] = JToken.FromObject(psNetworkRule.ToNetworkRuleSet());
                 this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name, null, null, properties);
@@ -145,6 +165,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
                 WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls));
+=======
+                var properties = new CognitiveServicesAccountProperties();
+                properties.NetworkAcls = psNetworkRule.ToNetworkRuleSet();
+                this.CognitiveServicesClient.Accounts.Update(
+                    this.ResourceGroupName,
+                    this.Name,
+                    new CognitiveServicesAccount()
+                    {
+                        Properties = properties
+                    }
+                    );
+
+                account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
+
+                WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

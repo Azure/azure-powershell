@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/switch-azsqldatabasefailovergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -21,6 +25,10 @@ Switch-AzSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <
 ## DESCRIPTION
 This command swaps the roles of the servers in a Failover Group and switches all secondary databases to the primary role. All new TDS sessions are automatically re-routed to the secondary server after the DNS client cache is refreshed. When the original primary server is back online, all formerly primary databases in it will switch to the secondary role.
 The Failover Group's secondary server must be used to execute this command.
+<<<<<<< HEAD
+=======
+If the AllowDataLoss parameter is not specified, this command waits until both roles are switched. If the AllowDataLoss parameter is specified, the command only waits until the new primary assumes its role.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

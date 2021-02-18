@@ -83,7 +83,11 @@ function Test-RemoveAzureRmServiceFabricClusterCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
+<<<<<<< HEAD
     $thumbprint  = Get-Thumbprint
+=======
+    $thumbprint  = Get-InitialThumbprint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
 
@@ -293,6 +297,7 @@ function Test-SetAzureRmServiceFabricUpgradeType
 	$cluster = Set-AzServiceFabricUpgradeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Manual -Verbose
 	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-AreEqual $clusters[0].UpgradeMode 'Manual'
+<<<<<<< HEAD
 }
 
 function Test-AddAzureRmServiceFabricApplicationCertificate
@@ -328,4 +333,6 @@ function Test-AddAzureRmServiceFabricApplicationCertificateRollback
 	}
 
 	Assert-AreEqual $true $exceptionThrown "Expected Exception keyvault in different location than VMSS not thrown"
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

@@ -354,6 +354,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="backupName">The backup name.</param>
+<<<<<<< HEAD
+=======
+        /// <param name="resourceGroupName">The resource group name</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
         /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
         internal IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> GetDatabaseLongTermRetentionBackups(
@@ -361,6 +365,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string serverName,
             string databaseName,
             string backupName,
+<<<<<<< HEAD
+=======
+            string resourceGroupName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             bool? onlyLatestPerDatabase,
             string databaseState)
         {
@@ -368,12 +376,20 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {
+<<<<<<< HEAD
                     GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName), locationName)
+=======
+                    GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName), locationName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
             }
             else
             {
+<<<<<<< HEAD
                 return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState)
+=======
+                return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, resourceGroupName, onlyLatestPerDatabase, databaseState)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     .Select(b => GetBackupModel(b, locationName));
             }
         }
@@ -390,10 +406,27 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Location = locationName,
                 ResourceId = backup.Id,
                 ServerCreateTime = backup.ServerCreateTime,
+<<<<<<< HEAD
                 ServerName = backup.ServerName
             };
         }
 
+=======
+                ServerName = backup.ServerName,
+                ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
+            };
+        }
+
+        private string GetResourceGroupNameFromResourceId(string resourceId)
+        {
+            if (resourceId.Contains("/resourceGroups/"))
+            {
+                return resourceId.Split('/')[4];
+            }
+            return null;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Removes a Long Term Retention backup.
         /// </summary>
@@ -401,13 +434,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="backupName">The backup name.</param>
+<<<<<<< HEAD
+=======
+        /// <param name="resourceGroupName">The name of the resource group</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal void RemoveDatabaseLongTermRetentionBackup(
             string locationName,
             string serverName,
             string databaseName,
+<<<<<<< HEAD
             string backupName)
         {
             Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName);
+=======
+            string backupName,
+            string resourceGroupName)
+        {
+            Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -509,6 +553,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Family = model.Family,
                     Capacity = model.Capacity
                 },
+<<<<<<< HEAD
                 LicenseType = model.LicenseType
             };
 
@@ -528,6 +573,31 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     break;
                 default:
                     throw new ArgumentException("Restore mode not supported");
+=======
+                LicenseType = model.LicenseType,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+            };
+
+            if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
+            {
+                dbModel.RecoverableDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
+            {
+                dbModel.RestorableDroppedDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
+            {
+                dbModel.SourceDatabaseId = resourceId;
+            }
+            else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+            {
+                dbModel.LongTermRetentionBackupResourceId = resourceId;
+            }
+            else
+            {
+                throw new ArgumentException("Restore mode not supported");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
@@ -593,5 +663,33 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
 
             return new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(resourceGroup, serverName, databaseName, baPolicy);
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -22,9 +22,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Updates the advanced threat protection properties for a specific database.
     /// </summary>
+<<<<<<< HEAD
     [GenericBreakingChange("Set-AzSqlDatabaseThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     [Alias("Set-AzSqlDatabaseThreatDetectionPolicy")]
+=======
+    [GenericBreakingChange("Set-AzSqlDatabaseAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSetting", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Alias("Set-AzSqlDatabaseAdvancedThreatProtectionSettings")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -40,7 +46,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the whether to email administrators
+=======
+        /// Gets or sets the whether to email administrators.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
@@ -55,7 +65,12 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             DetectionType.Sql_Injection_Vulnerability,
             DetectionType.Unsafe_Action,
             DetectionType.Data_Exfiltration,
+<<<<<<< HEAD
             DetectionType.Access_Anomaly)]
+=======
+            DetectionType.Access_Anomaly,
+            DetectionType.Brute_Force)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
@@ -116,7 +131,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.StorageAccountName = StorageAccountName;
             }
 
+<<<<<<< HEAD
             model.ValidateContent();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return model;
         }
     }

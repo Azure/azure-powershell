@@ -61,6 +61,18 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to &quot;A Routing Rule with name &apos;{0}&apos; in WebApp &apos;{1}&apos; already exists.Please use Update-AzWebAppTrafficRouting to update an existing Routing Rule.&quot;.
+        /// </summary>
+        internal static string AddRoutingRuleErrorMessage {
+            get {
+                return ResourceManager.GetString("AddRoutingRuleErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Creating a new remote PowerShell session. Confirm?.
         /// </summary>
         internal static string EnterContainerPSSessionConfirmation {
@@ -230,5 +242,17 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
                 return ResourceManager.GetString("SimpleWebAppCreateTarget", resourceCulture);
             }
         }
+<<<<<<< HEAD
+=======
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Given Routing Rule with name &apos;{0}&apos; in WebApp &apos;{1}&apos; is not present.Please use a valid Name to remove &quot;.
+        /// </summary>
+        internal static string UpdateAndGetRoutingRuleErrorMessage {
+            get {
+                return ResourceManager.GetString("UpdateAndGetRoutingRuleErrorMessage", resourceCulture);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

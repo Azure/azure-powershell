@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: 35CE5C5F-F8D4-426F-A33A-4F9EA50E9B83
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+=======
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -28,24 +32,39 @@ If you specify the *Force* parameter and specify an existing input name, the inp
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### EXAMPLE 1: Create a job input with a definition from a file
 ```
+=======
+### Example 1: Create a job input with a definition from a file
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json"
 ```
 
 This command creates an input from the file Input.json.
 If an existing input with the name specified in the input definition file is already defined, the cmdlet will ask whether or not to replace it.
 
+<<<<<<< HEAD
 ### EXAMPLE 2: Create a job input
 ```
+=======
+### Example 2: Create a job input
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream"
 ```
 
 This command creates a new input on the job called EntryStream.
 If an existing input with this name is already defined, the cmdlet will ask whether or not to replace it.
 
+<<<<<<< HEAD
 ### EXAMPLE 3: Replace a job input with a definition from a file
 ```
+=======
+### Example 3: Replace a job input with a definition from a file
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream" -Force
 ```
 

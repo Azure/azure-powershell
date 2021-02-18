@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿using Microsoft.WindowsAzure.Commands.ScenarioTest;
+=======
+﻿using Microsoft.Azure.Commands.RedisCache.Models;
+using Microsoft.Azure.Management.Redis.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using Xunit;
 
@@ -48,5 +54,40 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
             Utility.ValidateResourceGroupAndResourceName(resourceGroup, name);
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateSize_InvalidSizePremium()
+        {
+            string sku = "Premium";
+            string size = "C1";
+
+            var ex = Assert.Throws<ArgumentException>(() => SizeConverter.ValidateSize(size.ToUpper(), SkuName.Premium.Equals(sku)));
+            Assert.Contains("Invalid Size. Example for valid values: For Standard or Basic Sku: (C0, C1, C2, C3, C4, C5, C6), for Premium Sku: (P1, P2, P3, P4, P5)", ex.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateSize_InvalidSizeStandard()
+        {
+            string sku = "Standard";
+            string size = "P1";
+
+            var ex = Assert.Throws<ArgumentException>(() => SizeConverter.ValidateSize(size.ToUpper(), SkuName.Premium.Equals(sku)));
+            Assert.Contains("Invalid Size. Example for valid values: For Standard or Basic Sku: (C0, C1, C2, C3, C4, C5, C6), for Premium Sku: (P1, P2, P3, P4, P5)", ex.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateSize_Success()
+        {
+            string sku = "Premium";
+            string size = "P1";
+
+            SizeConverter.ValidateSize(size.ToUpper(), SkuName.Premium.Equals(sku));            
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 28DECA86-37A5-48BE-9727-0C1A3B867E9B
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofile
+=======
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

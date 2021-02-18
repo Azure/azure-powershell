@@ -78,7 +78,11 @@ function EventHubsTests
 	$createdEventHub.CaptureDescription.Destination.Name = "EventHubArchive.AzureBlockBlob"
 	$createdEventHub.CaptureDescription.Destination.BlobContainer = "container01"
 	$createdEventHub.CaptureDescription.Destination.ArchiveNameFormat = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+<<<<<<< HEAD
 	$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/v-ajnavtest/providers/Microsoft.Storage/storageAccounts/testingsdkeventhub11"
+=======
+	$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Storage/storageAccounts/testingsdkeventhubnew"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		
 	$result = Set-AzEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
 	
@@ -120,6 +124,13 @@ function EventHubsAuthTests
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$eventHubName = getAssetName "EventHub-"
 	$authRuleName = getAssetName "Eventhub-Namespace-AuthorizationRule"
+<<<<<<< HEAD
+=======
+    $authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	# Create ResourceGroup
 	Write-Debug " Create resource group"    
@@ -164,6 +175,26 @@ function EventHubsAuthTests
 	Assert-True { $result.Rights -Contains "Listen" }
 	Assert-True { $result.Rights -Contains "Send" }
 
+<<<<<<< HEAD
+=======
+	$resultListen = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultall3 = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultall3.Name
+    Assert-AreEqual 3 $resultall3.Rights.Count
+    Assert-True { $resultall3.Rights -Contains "Send" }
+	Assert-True { $resultall3.Rights -Contains "Listen" }
+	Assert-True { $resultall3.Rights -Contains "Manage" }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	# Get Created Eventhub Authorization Rule
 	Write-Debug "Get created authorizationRule"
 	$createdAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName

@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -49,8 +52,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string ResourceClientUri { get; set; }
 
+<<<<<<< HEAD
         public TokenCache TokenCache { get; set; }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public AdalConfiguration()
         {
             ClientId = PowerShellClientId;

@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2B4BFDDA-9721-42E6-84E1-A209CB782954
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchtask
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 2B4BFDDA-9721-42E6-84E1-A209CB782954
+online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchtask
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,8 +23,13 @@ Creates a Batch task under a job.
 
 ### JobId_Single (Default)
 ```
+<<<<<<< HEAD
 New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] [-CommandLine <String>]
  [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+=======
+New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] -CommandLine <String>
+ [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
@@ -39,8 +52,13 @@ New-AzBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <Batc
 
 ### JobObject_Single
 ```
+<<<<<<< HEAD
 New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] [-CommandLine <String>]
  [-ResourceFiles <IDictionary>] [-EnvironmentSettings <IDictionary>]
+=======
+New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] -CommandLine <String>
+ [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
  [-MultiInstanceSettings <PSMultiInstanceSettings>] [-DependsOn <TaskDependencies>]
@@ -61,7 +79,11 @@ PS C:\>New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir
 
 This command creates a task that has the ID Task23 under the job that has the ID Job-000001.
 The task runs the specified command.
+<<<<<<< HEAD
 Use the **Get-AzBatchAccountKeys** cmdlet to assign a context to the $Context variable.
+=======
+Use the **Get-AzBatchAccountKey** cmdlet to assign a context to the $Context variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Create a Batch task
 ```
@@ -77,13 +99,21 @@ The task runs the specified command by using elevated permissions.
 
 ### Example 3: Add a collection of tasks to the specified job by using the pipeline
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $Task01 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task23", "cmd /c dir /s")
 PS C:\> $Task02 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task24", "cmd /c dir /s")
 PS C:\> Get-AzBatchJob -Id "Job-000001" -BatchContext $Context | New-AzBatchTask -Tasks @($Task01, $Task02) -BatchContext $Context
 ```
 
+<<<<<<< HEAD
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+=======
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The command stores this object reference in the $Context variable.
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
@@ -94,13 +124,21 @@ The command uses the context stored in $Context.
 
 ### Example 4: Add a collection of tasks to the specified job
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $Task01 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task23", "cmd /c dir /s")
 PS C:\> $Task02 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task24", "cmd /c dir /s")
 PS C:\> New-AzBatchTask -JobId "Job-000001" -Tasks @($Task01, $Task02) -BatchContext $Context
 ```
 
+<<<<<<< HEAD
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+=======
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The command stores this object reference in the $Context variable.
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
@@ -161,10 +199,17 @@ Accept wildcard characters: False
 
 ### -AuthenticationTokenSettings
 The settings for an authentication token that the task can use to perform Batch service operations.
+<<<<<<< HEAD
 If this is set, the Batch service provides the task with an authentication token which can be used to 
 authenticate Batch service operations without requiring an account access key. The token is provided via the 
 AZ_BATCH_AUTHENTICATION_TOKEN environment variable. The operations that the task can carry out using the token 
 depend on the settings. For example, a task can request job permissions in order to add other tasks to the job, 
+=======
+If this is set, the Batch service provides the task with an authentication token which can be used to
+authenticate Batch service operations without requiring an account access key. The token is provided via the
+AZ_BATCH_AUTHENTICATION_TOKEN environment variable. The operations that the task can carry out using the token
+depend on the settings. For example, a task can request job permissions in order to add other tasks to the job,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 or check the status of the job or of other tasks.
 
 ```yaml
@@ -181,7 +226,11 @@ Accept wildcard characters: False
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -203,7 +252,11 @@ Type: System.String
 Parameter Sets: JobId_Single, JobObject_Single
 Aliases:
 
+<<<<<<< HEAD
 Required: False
+=======
+Required: True
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,8 +281,13 @@ Accept wildcard characters: False
 ### -ContainerSettings
 The settings for the container under which the task runs.
 If the pool that will run this task has containerConfiguration set, this must be set as well. If the pool that will run this task
+<<<<<<< HEAD
 doesn't have containerConfiguration set, this must not be set. When this is specified, all directories recursively below the 
 AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables 
+=======
+doesn't have containerConfiguration set, this must not be set. When this is specified, all directories recursively below the
+AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 are mapped into the container, and the task command line is executed in the container.
 
 ```yaml
@@ -403,7 +461,11 @@ The key is the resource file path.
 The value is the resource file blob source.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Collections.IDictionary
+=======
+Type: Microsoft.Azure.Commands.Batch.Models.PSResourceFile[]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: JobId_Single, JobObject_Single
 Aliases: ResourceFile
 
@@ -446,7 +508,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -462,7 +528,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzBatchJob](./Get-AzBatchJob.md)
 
@@ -474,6 +544,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

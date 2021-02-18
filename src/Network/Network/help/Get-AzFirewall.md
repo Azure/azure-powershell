@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 91D58F60-F22A-454A-B04C-E5AEF33E9D06
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azfirewall
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azfirewall
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -217,7 +221,11 @@ This example retrieves a firewall, then adds a application rule collection to th
 ### 5:  Retrieve a firewall and then add a network rule collection to the Firewall
 ```
 $azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
+<<<<<<< HEAD
 $netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+=======
+$netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "UDP" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $netRuleCollection = New-AzFirewallNetworkRuleCollection -Name "MyNetworkRuleCollection" -Priority 100 -Rule $netRule -ActionType "Allow"
 $azFw.AddNetworkRuleCollection($netRuleCollection)
 ```
@@ -277,7 +285,11 @@ This example retrieves a firewall and calls Allocate on the firewall to start th
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+=======
+Type: IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -292,7 +304,11 @@ Accept wildcard characters: False
 Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -300,14 +316,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that Firewall belongs to.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +339,11 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### CommonParameters

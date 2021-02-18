@@ -22,9 +22,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
+<<<<<<< HEAD
     /// Restores the backup key into a vault 
     /// </summary>
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
+=======
+    /// Restores the backup key into a vault
+    /// </summary>
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSKeyVaultKey))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -33,6 +39,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
         private const string ByResourceIdParameterSet = "ByResourceId";
+<<<<<<< HEAD
+=======
+        private const string HsmByVaultNameParameterSet = "HsmByVaultName";
+        private const string HsmByInputObjectParameterSet = "HsmByInputObject";
+        private const string HsmByResourceIdParameterSet = "HsmByResourceId";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         #endregion
 
@@ -42,17 +54,34 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Vault name
         /// </summary>
         [Parameter(Mandatory = true,
+<<<<<<< HEAD
                    Position = 0,
                    ParameterSetName = ByVaultNameParameterSet,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+=======
+            Position = 0,
+            ParameterSetName = ByVaultNameParameterSet,
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmByVaultNameParameterSet,
+            HelpMessage = "HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string HsmName { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// KeyVault object
         /// </summary>
         [Parameter(Mandatory = true,
+<<<<<<< HEAD
                    Position = 0,
                    ParameterSetName = ByInputObjectParameterSet,
                    ValueFromPipeline = true,
@@ -60,10 +89,28 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public PSKeyVault InputObject { get; set; }
 
+=======
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "KeyVault object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = HsmByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "HSM object")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedHsm HsmObject { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// KeyVault ResourceId
         /// </summary>
         [Parameter(Mandatory = true,
+<<<<<<< HEAD
                    Position = 0,
                    ParameterSetName = ByResourceIdParameterSet,
                    ValueFromPipelineByPropertyName = true,
@@ -71,12 +118,33 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+=======
+            Position = 0,
+            ParameterSetName = ByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = HsmByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Hsm Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string HsmResourceId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// The input file in which the backup blob is stored
         /// </summary>
         [Parameter(Mandatory = true,
+<<<<<<< HEAD
                    Position = 1,
                    HelpMessage = "Input file. The input file containing the backed-up blob")]
+=======
+            Position = 1,
+            HelpMessage = "Input file. The input file containing the backed-up blob")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
@@ -84,19 +152,59 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            NormalizeParameterSets();
+
+            if (string.IsNullOrEmpty(HsmName))
+            {
+                RestoreKeyVaultKey();
+            }
+            else
+            {
+                RestoreHsmKey();
+            }
+        }
+
+        private void NormalizeParameterSets()
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
             }
+<<<<<<< HEAD
             else if (ResourceId != null)
+=======
+            if (ResourceId != null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 VaultName = resourceIdentifier.ResourceName;
             }
+<<<<<<< HEAD
 
             if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
             {
                 var filePath = ResolveKeyVaultPath(InputFile);
+=======
+            if (HsmObject != null)
+            {
+                HsmName = HsmObject.VaultName;
+            }
+            if (HsmResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(HsmResourceId);
+                HsmName = resourceIdentifier.ResourceName;
+            }
+        }
+
+        private void RestoreKeyVaultKey()
+        {
+            if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
+            {
+                var filePath = ResolveKeyPath(InputFile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
@@ -104,7 +212,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
+<<<<<<< HEAD
         private string ResolveKeyVaultPath(string filePath)
+=======
+        private string ResolveKeyPath(string filePath)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             FileInfo keyFile = new FileInfo(this.ResolveUserPath(filePath));
             if (!keyFile.Exists)
@@ -113,5 +225,20 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             return keyFile.FullName;
         }
+<<<<<<< HEAD
+=======
+
+        private void RestoreHsmKey()
+        {
+            if (ShouldProcess(HsmName, Properties.Resources.RestoreKey))
+            {
+                var filePath = ResolveKeyPath(InputFile);
+
+                var restoredKeyBundle = this.Track2DataClient.RestoreManagedHsmKey(HsmName, filePath);
+
+                this.WriteObject(restoredKeyBundle);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

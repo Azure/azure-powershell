@@ -45,6 +45,11 @@ using Xunit;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 
+<<<<<<< HEAD
 [assembly: AssemblyVersion( "1.0.0" )]
 [assembly: AssemblyFileVersion("1.0.0")]
+=======
+[assembly: AssemblyVersion( "0.1.2" )]
+[assembly: AssemblyFileVersion("0.1.2")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

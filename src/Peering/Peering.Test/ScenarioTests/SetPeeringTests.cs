@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// The test get and set use for peering service.
         /// </summary>
         [Fact]
@@ -53,6 +54,19 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
         /// <summary>
         /// The test set new ip.
+=======
+        /// The test set new bandwidth.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewBandwidth()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
+        }
+
+        /// <summary>
+        /// The test set new bandwidth.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -62,7 +76,11 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// The test set new i pv 6.
+=======
+        /// The test set new bandwidth.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -76,6 +94,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestSetNewBandwidth()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
@@ -86,6 +105,8 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestSetNewMd5Hash()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewMd5Hash");

@@ -16,7 +16,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
+<<<<<<< HEAD
     /// The paginated list of peerings.
+=======
+    /// The paginated list of [T].
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     public partial class PSPeeringListResult
     {
@@ -31,9 +35,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Initializes a new instance of the PSPeeringListResult class.
         /// </summary>
+<<<<<<< HEAD
         /// <param name="value">The list of peerings.</param>
         /// <param name="nextLink">The link to fetch the next page of
         /// peerings.</param>
+=======
+        /// <param name="value">The list of [T].</param>
+        /// <param name="nextLink">The link to fetch the next page of
+        /// [T].</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSPeeringListResult(IList<PSPeering> value = default(IList<PSPeering>), string nextLink = default(string))
         {
             Value = value;
@@ -47,13 +57,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         partial void CustomInit();
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the list of peerings.
+=======
+        /// Gets or sets the list of [T].
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<PSPeering> Value { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the link to fetch the next page of peerings.
+=======
+        /// Gets or sets the link to fetch the next page of [T].
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
         public string NextLink { get; set; }

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/new-azrelayhybridconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.relay/new-azrelayhybridconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,7 +19,11 @@ Creates a HybridConnection in the specified Relay namespace.
 ### HybridConnectionInputObjectSet
 ```
 New-AzRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+<<<<<<< HEAD
  [-InputObject <PSHybridConnectionAttibutes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+=======
+ [-InputObject <PSHybridConnectionAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
@@ -91,7 +99,11 @@ Accept wildcard characters: False
 HybridConnections object.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+=======
+Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: HybridConnectionInputObjectSet
 Aliases:
 
@@ -216,13 +228,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+=======
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+=======
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

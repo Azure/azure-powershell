@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnclientconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnclientconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +18,11 @@ This command allows the users to create the Vpn profile package based on pre-con
 
 ```
 New-AzVpnClientConfiguration [-Name <String>] -ResourceGroupName <String> [-ProcessorArchitecture <String>]
+<<<<<<< HEAD
  -AuthenticationMethod <String> [-RadiusRootCertificateFile <String>]
+=======
+ [-AuthenticationMethod <String>] [-RadiusRootCertificateFile <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ClientRootCertificateFileList <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -43,7 +51,11 @@ Parameter Sets: (All)
 Aliases:
 Accepted values: EAPTLS, EAPMSCHAPv2
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ResourceIdParameterSet,
+<<<<<<< HEAD
                    HelpMessage = "Get Action rule by resoure id.")]
+=======
+                   HelpMessage = "Get Action rule by resource id.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -109,7 +113,14 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Filter on Moniter Service")]
+<<<<<<< HEAD
         [PSArgumentCompleter("Platform", "Log Analytics", "SCOM", "Activity Log")]
+=======
+        [PSArgumentCompleter("Application Insights", "ActivityLog Administrative", "ActivityLog Security",
+                                "ActivityLog Recommendation", "ActivityLog Policy", "ActivityLog Autoscale",
+                                "Log Analytics", "Nagios", "Platform", "SCOM", "ServiceHealth", "SmartDetector",
+                                "VM Insights", "Zabbix")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string MonitorService { get; set; }
 
         /// <summary>

@@ -163,10 +163,17 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - Added ```EncryptionSettingsCollection``` Property to enclose `EncryptionSettings` property in `PSDisk`
   #### Before
   ```powershell
+<<<<<<< HEAD
   $disk = New-AzDisk ... | Set-AzDiskDiskEncrytionKey ...
   $disk.EncryptionSettings
 
   $disk = New-AzDisk ... | Set-AzDiskKeyEncrytionKey ...
+=======
+  $disk = New-AzDisk ... | Set-AzDiskDiskEncryptionKey ...
+  $disk.EncryptionSettings
+
+  $disk = New-AzDisk ... | Set-AzDiskKeyEncryptionKey ...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   $disk.EncryptionSettings
 
   $update = New-AzDiskUpdateConfig | Set-AzDiskUpdateDiskEncryptionKey ...
@@ -177,10 +184,17 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
   #### After
   ```powershell
+<<<<<<< HEAD
   $disk = New-AzDisk ... | Set-AzDiskDiskEncrytionKey ...
   $disk.EncryptionSettingsCollection.EncryptionSettings
 
   $disk = New-AzDisk ... | Set-AzDiskKeyEncrytionKey ...
+=======
+  $disk = New-AzDisk ... | Set-AzDiskDiskEncryptionKey ...
+  $disk.EncryptionSettingsCollection.EncryptionSettings
+
+  $disk = New-AzDisk ... | Set-AzDiskKeyEncryptionKey ...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   $disk.EncryptionSettingsCollection.EncryptionSettings
 
   $update = New-AzDiskUpdateConfig | Set-AzDiskUpdateDiskEncryptionKey ...
@@ -237,11 +251,19 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
   #### After
   ```powershell
+<<<<<<< HEAD
   Set-AzVMBootDIagnostic
   ```
 - Cmdlet `Export-AzLogAnalyticThrottledRequest` removed alias to `Export-AzLogAnalyticThrottledRequests`
   #### Before
   Using deprectaed alias
+=======
+  Set-AzVMBootDiagnostic
+  ```
+- Cmdlet `Export-AzLogAnalyticThrottledRequest` removed alias to `Export-AzLogAnalyticThrottledRequests`
+  #### Before
+  Using deprecated alias
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   ```powershell
   Export-AzLogAnalyticThrottledRequests
   ```
@@ -327,7 +349,11 @@ For more information about these role-based access changes, see [aka.ms/hdi-conf
 
 
 
+<<<<<<< HEAD
 - The default service behavior when creating a storage account withous specifying a Kind has changed.  In previous versions, when a storage account was created with no `Kind` specified, the Storage account Kind of `Storage` was used, in the new version `StorageV2` is the default `Kind` value. If you need to create a V1 Storage account with Kind 'Storage', add parameter '-Kind Storage'
+=======
+- The default service behavior when creating a storage account without specifying a Kind has changed.  In previous versions, when a storage account was created with no `Kind` specified, the Storage account Kind of `Storage` was used, in the new version `StorageV2` is the default `Kind` value. If you need to create a V1 Storage account with Kind 'Storage', add parameter '-Kind Storage'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   #### Example : Create a storage Account (Default Kind change)  
   Before:
   ```powershell

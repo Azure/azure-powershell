@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azcontext
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,12 @@ Get-AzContext [-DefaultProfile <IAzureContextContainer>] [[-Name] <String>] [<Co
 
 ### ListAllContexts
 ```
+<<<<<<< HEAD
 Get-AzContext [-ListAvailable] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+Get-AzContext [-ListAvailable] [-RefreshContextFromTokenCache] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -101,8 +110,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+### -RefreshContextFromTokenCache
+Refresh contexts from token cache
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListAllContexts
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

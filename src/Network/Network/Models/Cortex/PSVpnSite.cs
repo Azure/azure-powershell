@@ -15,6 +15,10 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+<<<<<<< HEAD
+=======
+    using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     public class PSVpnSite : PSTopLevelResource
     {
@@ -33,5 +37,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+<<<<<<< HEAD
+=======
+
+        public List<PSVpnSiteLink> VpnSiteLinks { get; set; }
+
+        public PSO365PolicyProperties O365Policy { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

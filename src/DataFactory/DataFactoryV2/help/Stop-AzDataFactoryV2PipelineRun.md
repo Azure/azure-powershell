@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/stop-azdatafactoryv2pipelinerun
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/stop-azdatafactoryv2pipelinerun
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Stop-AzDataFactoryV2PipelineRun
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Stops a pieline run in a data factory.
+=======
+Stops a pipeline run in a data factory.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -32,7 +40,11 @@ Stop-AzDataFactoryV2PipelineRun [-PipelineRunId] <String> [-PassThru] [-DataFact
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Stop-AzDataFactoryV2PipelineRun** cmdlet stops a pipeline run in a data factory specified with the pieline run ID.
+=======
+The **Stop-AzDataFactoryV2PipelineRun** cmdlet stops a pipeline run in a data factory specified with the pipeline run ID.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

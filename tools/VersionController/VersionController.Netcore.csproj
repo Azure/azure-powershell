@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
 
@@ -22,8 +26,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.0-preview.2" />
+=======
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>
@@ -45,4 +57,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
+=======
+
+  <ItemGroup>
+    <Content Include="MinimalVersion.csv" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

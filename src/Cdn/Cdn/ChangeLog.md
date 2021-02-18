@@ -20,6 +20,31 @@
 
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.6.0
+* Added cmdlets to support multi-origin and private link functionality 
+
+## Version 1.4.3
+* Fixed ChinaCDN related pricing SKU display
+
+## Version 1.4.2
+* Display error response detail in New-AzCdnEndpoint cmdlet
+
+## Version 1.4.1
+* Update references in .psd1 to use relative path
+
+## Version 1.4.0
+* Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
+* Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.
+
+Fixed enabling CDN custom domain HTTPS for Microsoft and Akamai SKU's
+
+## Version 1.3.1
+* Fixed miscellaneous typos across module
+* Fixed a typo in CDN module conversion helper
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.3.0
 * Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
 

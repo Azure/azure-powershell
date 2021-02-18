@@ -1,7 +1,11 @@
 ---
 Module Name: Az.DataBox
 Module Guid: '39B6B3E6-A15E-48BA-BE20-FE0D441D92B4'
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.databox
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.databox
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---

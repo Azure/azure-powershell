@@ -52,7 +52,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = new ScenarioTestContext();
+<<<<<<< HEAD
                     thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName);
+=======
+                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName).ToLowerInvariant();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     CertificateReference certRef = new CertificateReference();
                     certRef.StoreLocation = CertStoreLocation.CurrentUser;
                     certRef.StoreName = "My";

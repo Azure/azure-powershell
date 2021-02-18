@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $location = "southeastasia"
+<<<<<<< HEAD
 $resourceGroupName = "pstestFSRG1bca8f8e"
 $vaultName = "PSTestFSRSV1bca8f8e"
 $fileShareFriendlyName = "pstestfs1bca8f8e"
@@ -21,6 +22,16 @@ $saName = "pstestsa1bca8f8e"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
 $storageAccountId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.Storage/storageAccounts/pstestsa1bca8f8e"
+=======
+$resourceGroupName = "pstestrg8895"
+$vaultName = "pstestrsv8895"
+$fileShareFriendlyName = "fs1"
+$fileShareName = "AzureFileShare;fs1"
+$saName = "pstestsa8895"
+$skuName="Standard_LRS"
+$policyName = "afspolicy1"
+$storageAccountId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Setup Instructions:
 # 1. Create a resource group

@@ -15,6 +15,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Cdn.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
@@ -56,6 +60,11 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 
         public PSEndpointResourceState ResourceState { get; set; }
 
+<<<<<<< HEAD
+=======
+        public ResourceReference DefaultOriginGroup { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ResourceGroupName
         {
             get

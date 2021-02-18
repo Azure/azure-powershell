@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 39AADD19-2EDD-4C1F-BC9E-22186DD9A085
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -17,14 +21,23 @@ Sets operating system properties for a virtual machine.
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+<<<<<<< HEAD
  [[-TimeZone] <String>] [-WinRMHttp] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### WindowsWinRmHttps
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+<<<<<<< HEAD
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri>
+=======
+ [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,14 +45,23 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+<<<<<<< HEAD
  [[-TimeZone] <String>] [-WinRMHttp] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### WindowsDisableVMAgentWinRmHttps
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+<<<<<<< HEAD
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri>
+=======
+ [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,6 +80,7 @@ You can specify logon credentials, computer name, and operating system type.
 
 ### Example 1: Set operating system properties for a new virtual machines
 ```
+<<<<<<< HEAD
 PS C:\> $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 PS C:\> $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 PS C:\> $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
@@ -67,13 +90,28 @@ PS C:\> $WinRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/
 PS C:\> $TimeZone = "Pacific Standard Time"
 PS C:\> $CustomData = "echo 'Hello World'"
 PS C:\> $VirtualMachine = Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -WinRMHttp -WinRMHttps -WinRMCertificateUrl $WinRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $TimeZone
+=======
+$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
+$AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+$ComputerName = "ContosoVM122"
+$WinRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion"
+$TimeZone = "Pacific Standard Time"
+$CustomData = "echo 'Hello World'"
+$VirtualMachine = Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -WinRMHttp -WinRMHttps -WinRMCertificateUrl $WinRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $TimeZone -PatchMode "AutomaticByPlatform"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
 For more information, type `Get-Help ConvertTo-SecureString`.
 The second command creates a credential for the user FullerP and the password stored in $SecurePassword, and then stores the credential in the $Credential variable.
 For more information, type `Get-Help New-Object`.
+<<<<<<< HEAD
 The third command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+=======
+The third command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The fourth command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
@@ -119,9 +157,15 @@ Accept wildcard characters: False
 ```
 
 ### -CustomData
+<<<<<<< HEAD
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
 The maximum length of the binary array is 65535 bytes.
+=======
+Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/custom-data).
+**Note: It is not recommended to store sensitive information in custom data.**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -210,6 +254,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PatchMode
+Specifies the mode of in-guest patching to IaaS virtual machine.<br><br>
+Possible values are:<br>
+**Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br>
+**AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br >
+**AutomaticByPlatform** - the virtual machine will automatically updated by the OS. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+
+```yaml
+Type: System.String
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ProvisionVMAgent
 Indicates that the settings require that the virtual machine agent be installed on the virtual machine.
 
@@ -226,7 +292,12 @@ Accept wildcard characters: False
 ```
 
 ### -TimeZone
+<<<<<<< HEAD
 Specifies the time zone for the virtual machine.
+=======
+Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

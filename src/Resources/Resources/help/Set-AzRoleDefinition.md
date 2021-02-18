@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azroledefinition
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azroledefinition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -60,8 +64,13 @@ Following is a sample updated role definition json for Set-AzRoleDefinition
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Update using PSRoleDefinitionObject
 ```
+=======
+### Example 1: Update using PSRoleDefinitionObject
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $roleDef = Get-AzRoleDefinition "Contoso On-Call"
 PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
 PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
@@ -69,8 +78,13 @@ PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xx
 PS C:\> Set-AzRoleDefinition -Role $roleDef
 ```
 
+<<<<<<< HEAD
 ### Create using JSON file
 ```
+=======
+### Example 2: Create using JSON file
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
@@ -124,7 +138,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

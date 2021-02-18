@@ -15,12 +15,21 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
+<<<<<<< HEAD
+=======
+    using System.Collections;
+    using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Management.Automation;
     using Azure.Management.Internal.Resources;
     using Azure.Management.Internal.Resources.Models;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+<<<<<<< HEAD
+=======
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
@@ -68,6 +77,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateSet(new string[] { "S1" }, IgnoreCase = true)]
         public string SkuName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "IoT Device Provisioning Service instance tags. Property bag in key-value pairs in the form of a hash table.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, DPSResources.AddDeviceProvisioningService))
@@ -115,6 +133,14 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     provisioningServiceDescription.Sku = new IotDpsSkuInfo(IotDpsSku.S1);
                 }
 
+<<<<<<< HEAD
+=======
+                if (this.IsParameterBound(c => c.Tag))
+                {
+                    provisioningServiceDescription.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
                 this.WriteObject(IotDpsUtils.ToPSProvisioningServiceDescription(GetIotDpsResource(this.ResourceGroupName, this.Name)), false);
             }

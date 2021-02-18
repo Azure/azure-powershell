@@ -25,7 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
+<<<<<<< HEAD
         "AzPeeringExchangeConnectionObject",
+=======
+        Constants.AzPeeringExchangeConnectionObject,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         DefaultParameterSetName = Constants.ParameterSetNameIPv4Address, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class NewAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
@@ -140,6 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         private PSExchangeConnection CreateExchangePeeringConnection()
         {
             var peeringRequest = new PSExchangeConnection
+<<<<<<< HEAD
                                      {
                                          BgpSession = new PSBgpSession
                                                           {
@@ -151,6 +156,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                                                           },
                                          PeeringDBFacilityId = this.PeeringDBFacilityId,
                                      };
+=======
+            {
+                ConnectionIdentifier = Guid.NewGuid().ToString(),
+                BgpSession = new PSBgpSession
+                {
+                    MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.PeerSessionIPv4Address) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
+                    MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.PeerSessionIPv6Address) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
+                    Md5AuthenticationKey = this.MD5AuthenticationKey,
+                    PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim(),
+                    PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim()
+                },
+                PeeringDBFacilityId = this.PeeringDBFacilityId,
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IsValidConnection(peeringRequest))
             {
                 return peeringRequest;
@@ -159,4 +178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             throw new PSArgumentException(string.Format(Resources.Error_InvalidConnection));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

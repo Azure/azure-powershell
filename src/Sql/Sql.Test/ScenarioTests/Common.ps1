@@ -32,6 +32,7 @@ Gets the values of the parameters used at the blob auditing tests
 function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 {
 	$subscriptionId = (Get-AzContext).Subscription.Id
+<<<<<<< HEAD
 	return @{ rgname = "blob-audit-cmdlet-test-rg" + $testSuffix;
 			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
 			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
@@ -39,6 +40,15 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
 			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
 			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "blob-audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "blobaudit" + $testSuffix
+=======
+	return @{ rgname = "audit-cmdlet-test-rg" + $testSuffix;
+			  serverName = "audit-cmdlet-server" + $testSuffix;
+			  databaseName = "audit-cmdlet-db" + $testSuffix;
+			  storageAccount = "blobaudit" + $testSuffix
+			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
+			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
+			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "blobaudit" + $testSuffix
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		}
 }
 
@@ -79,6 +89,7 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-AuditingTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
@@ -95,6 +106,14 @@ function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Cent
 {
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Create-TestEnvironmentWithParams $params $location $serverVersion
+=======
+Creates the test environment needed to perform the Sql blob auditing tests
+#>
+function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0", $denyAsNetworkRuleDefaultAction = $False)
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $location $serverVersion $denyAsNetworkRuleDefaultAction
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.workspaceName -Sku "Standard" -Location "eastus"
 	New-AzEventHubNamespace -ResourceGroupName $params.rgname -NamespaceName $params.eventHubNamespace -Location $location
 }
@@ -143,10 +162,17 @@ function Create-ThreatDetectionClassicTestEnvironment ($testSuffix, $location = 
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
+<<<<<<< HEAD
 function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
 	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
 	New-AzStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS
+=======
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion, $denyAsNetworkRuleDefaultAction = $False)
+{
+	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
+	New-AzStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS -DenyAsNetworkRuleDefaultAction $denyAsNetworkRuleDefaultAction
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	Wait-Seconds 10
 }
 
@@ -201,8 +227,13 @@ Creates the basic test environment needed to perform the Sql data security tests
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+<<<<<<< HEAD
 	
 	# Setup VNET 
+=======
+
+	# Setup VNET
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
@@ -211,7 +242,11 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
+<<<<<<< HEAD
  	$skuName = "GP_Gen4"
+=======
+ 	$skuName = "GP_Gen5"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$collation = "SQL_Latin1_General_CP1_CI_AS"
 
 	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
@@ -235,7 +270,11 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
     New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials
 	New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
 	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
 		$fullServerName = $params.serverName + ".database.windows.net"
@@ -302,6 +341,35 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 }
 
 <#
+<<<<<<< HEAD
+=======
+Creates the basic test environment needed to perform the Elastic Job agent tests
+#>
+function Create-ElasticJobAgentTestEnvironment ()
+{
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+	$rg1 = Create-ResourceGroupForTest
+	$s1 = Create-ServerForTest $rg1 $location
+	$s1fw = $s1 | New-AzSqlServerFirewallRule -AllowAllAzureIPs # allow azure ips
+	$db1 = Create-DatabaseForTest $s1
+	$agent = Create-AgentForTest $db1
+	return $agent
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql elastic pool CRUD tests
+#>
+function Create-ElasticPoolForTest ($server)
+{
+	$epName = Get-ElasticPoolName
+	$ep = New-AzSqlElasticPool -ResourceGroupName  $server.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $epName
+	return $ep
+}
+
+
+<#
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 .SYNOPSIS
 Gets the values of the parameters used in the Server Key Vault Key tests
 #>
@@ -358,11 +426,19 @@ function Get-ManagedInstanceForTdeTest ($params)
 	$rg = Create-ResourceGroupForTest
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
+<<<<<<< HEAD
 	
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 	
+=======
+
+	# Setup VNET
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
 
@@ -389,6 +465,18 @@ function Get-ServerName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Gets valid user name
+#>
+function Get-UserName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets valid database name
 #>
 function Get-DatabaseName
@@ -398,6 +486,81 @@ function Get-DatabaseName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Gets valid shard map name
+#>
+function Get-ShardMapName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid shard agent name
+#>
+function Get-AgentName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid target group name
+#>
+function Get-TargetGroupName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job credential name
+#>
+function Get-JobCredentialName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job name
+#>
+function Get-JobName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job step name
+#>
+function Get-JobStepName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid schema name
+#>
+function Get-SchemaName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid table name
+#>
+function Get-TableName
+{
+	return getAssetname
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets valid elastic pool name
 #>
 function Get-ElasticPoolName
@@ -461,6 +624,18 @@ function Get-VNetName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Gets valid managed instance operation name
+#>
+function Get-ManagedInstanceOperationName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {
@@ -495,7 +670,11 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null)
 			{
 				return "East US"
+<<<<<<< HEAD
 			} 
+=======
+			}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
 			{
 				return $location.Locations[0]
@@ -539,7 +718,27 @@ function Get-ServerCredential
 	$serverLogin = "testusername"
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
+<<<<<<< HEAD
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+=======
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	return $credentials
+}
+
+<#
+	.SYNOPSIS
+	Gets a random credential
+#>
+function Get-Credential ($serverLogin)
+{
+	if ($serverLogin -eq $null)
+	{
+		$serverLogin = Get-UserName
+	}
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	return $credentials
 }
 
@@ -566,6 +765,77 @@ function Remove-ServerForTest ($server)
 }
 
 <#
+<<<<<<< HEAD
+=======
+	.SYNOPSIS
+	Creates a database with test params
+#>
+function Create-DatabaseForTest ($server)
+{
+	$dbName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dbName -Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	return $db
+}
+
+<#
+	.SYNOPSIS
+	Creates a sql elastic job agent with test params
+#>
+function Create-AgentForTest ($db)
+{
+	$agentName = Get-AgentName
+	return New-AzSqlElasticJobAgent -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job credential with test params
+#>
+function Create-JobCredentialForTest ($a)
+{
+	$credentialName = Get-JobCredentialName
+	$credential = Get-ServerCredential
+
+	$jobCredential = New-AzSqlElasticJobCredential -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -CredentialName $credentialName -Credential $credential
+	return $jobCredential
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job target group with test params
+#>
+function Create-TargetGroupForTest ($a)
+{
+	$targetGroupName = Get-TargetGroupName
+	$tg = New-AzSqlElasticJobTargetGroup -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -TargetGroupName $targetGroupName
+	return $tg
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job with test params
+#>
+function Create-JobForTest ($a, $enabled = $false)
+{
+	$jobName = Get-JobName
+	$job = New-AzSqlElasticJob -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -Name $jobName
+	return $job
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job step with test params
+#>
+function Create-JobStepForTest ($j, $tg, $c, $ct)
+{
+	$jobStepName = Get-JobStepName
+	$jobStep = Add-AzSqlElasticJobStep -ResourceGroupName $j.ResourceGroupName -ServerName $j.ServerName -AgentName $j.AgentName -JobName $j.jobName -Name $jobStepName -TargetGroupName $tg.TargetGroupName -CredentialName $c.CredentialName -CommandText $ct
+	return $jobStep
+}
+
+
+<#
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 .SYNOPSIS
 Removes the test environment that was needed to perform the Sql threat detection tests
 #>
@@ -613,17 +883,29 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
     # TODO: Remove "CallSite.Target" when re-recording ImportExportTests
+<<<<<<< HEAD
     $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd", "CallSite.Target");
+=======
+    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
     $storageKey = "StorageKey"
+<<<<<<< HEAD
+=======
+    $storageResourceId = "/subscriptions/xys/resourcegroups/default/providers/Microsoft.Storage/test"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
     if($testMode -eq "Record"){
         $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
         $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
         $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+<<<<<<< HEAD
+=======
+        $storageResourceId = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_RESOURCE_ID")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
        if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
           throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
@@ -634,6 +916,12 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
        if ([System.string]::IsNullOrEmpty($storageKey)){
           throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
        }
+<<<<<<< HEAD
+=======
+       if ([System.string]::IsNullOrEmpty($storageResourceId)){
+          throw "The  TEST_STORAGE_RESOURCE_ID environment variable should point to the resource id for the storage account"
+       }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
 	return @{
@@ -647,12 +935,22 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
               storageKey = $storageKey;
               exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
               importBacpacUri = $importBacpacUri;
+<<<<<<< HEAD
               location = "Australia East";
               version = "12.0";
               databaseEdition = "Standard";
               serviceObjectiveName = "S0";
               databaseMaxSizeBytes = "5000000";
               authType = "Sql";
+=======
+              location = "West Central US";
+              version = "12.0";
+              databaseEdition = "GeneralPurpose";
+              serviceObjectiveName = "GP_Gen5_2";
+              databaseMaxSizeBytes = "1073741824";
+              authType = "Sql";
+              storageResourceId = $storageResourceId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
              }
 }
 
@@ -729,7 +1027,11 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
  	$vCore = 16
+<<<<<<< HEAD
  	$skuName = "GP_Gen4"
+=======
+ 	$skuName = "GP_Gen5"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
@@ -740,6 +1042,91 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 
 <#
 	.SYNOPSIS
+<<<<<<< HEAD
+=======
+	Asyn update of hardware generation on Sql managed instance
+#>
+function Update-ManagedInstanceGenerationForTest ($resourceGroup, $managedInstance)
+{
+ 	$computeGeneration = "Gen5"
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+ 			 -ComputeGeneration $computeGeneration -Force -AsJob
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Sync update of storage on Sql managed instance
+#>
+function Update-ManagedInstanceStorageForTest ($resourceGroup, $managedInstance)
+{
+	$storageSize = 928
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+ 			-StorageSizeInGb $storageSize -Force
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Creates a managed instance in an instance pool
+#>
+function Create-ManagedInstanceInInstancePoolForTest ($instancePool)
+{
+    $managedInstanceName = Get-ManagedInstanceName
+    $credentials = Get-ServerCredential
+    $vCore = 2
+    $managedInstance = $instancePool | New-AzSqlInstance -Name $managedInstanceName -VCore $vCore -AdministratorCredential $credentials -StorageSizeInGb 32 -PublicDataEndpointEnabled
+    return $managedInstance
+}
+
+function Remove-ManagedInstancesInInstancePool($instancePool)
+{
+    $instancePool | Get-AzSqlInstance | Remove-AzSqlInstance -Force
+}
+
+
+function Get-InstancePoolTestProperties()
+{
+    $tags = @{ instance="Pools" };
+
+    $instancePoolTestProperties = @{
+        resourceGroup = "ps3995"
+        name = "myinstancepool1"
+        subnetName = "ManagedInsanceSubnet"
+        vnetName = "MIVirtualNetwork"
+        tags = $tags
+        computeGen = "Gen5"
+        edition = "GeneralPurpose"
+        location = "westeurope"
+        licenseType = "LicenseIncluded"
+        vCores = 16
+    }
+    return $instancePoolTestProperties
+}
+
+<#
+	.SYNOPSIS
+	Creates an instance pool for Sql instance pool CRUD tests
+#>
+function Create-InstancePoolForTest()
+{
+    $props = Get-InstancePoolTestProperties
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location "v-urmila"
+    $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
+    $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
+                -Location $props.location -SubnetId $subnetId -VCore $props.vCores `
+                -Edition $props.Edition -ComputeGeneration $props.computeGen `
+                -LicenseType $props.licenseType -Tag $props.tags
+    return $instancePool
+}
+
+<#
+	.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	Create a virtual network
 
 	If resource group $resourceGroupName does not exist, then please create it before running the test.
@@ -753,7 +1140,11 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 	$defaultSubnetAddressPrefix = "10.0.0.0/24"
 
 	try {
+<<<<<<< HEAD
 		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+=======
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		return $getVnet
 	} catch {
 		$virtualNetwork = New-AzVirtualNetwork `
@@ -785,7 +1176,93 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
+<<<<<<< HEAD
 		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 		return $getVnet
 	}
 }
+=======
+		$getVnet = DelegateSubnetToSQLMIAndGetVnet $vnetName $subnetName $resourceGroupName
+		return $getVnet
+	}
+}
+
+<#
+	.SYNOPSIS
+	Delegate subnet to SQL MI service if not already delegated.
+#>
+function DelegateSubnetToSQLMIAndGetVnet ($vnetName, $subnetName, $resourceGroupName)
+{
+	$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+	$subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+	$delegations = Get-AzDelegation -Subnet $subnet | ? {$_.ServiceName -eq "Microsoft.Sql/managedInstances"}
+
+	# Condition (Get-SqlTestMode) -eq 'Record' is addedd in order to skip this path in Playback mode
+	if ($delegations -eq $null -and (Get-SqlTestMode) -eq 'Record'){
+		$subnet = Add-AzDelegation -Name "test-delegation-sqlmi" -ServiceName "Microsoft.Sql/managedInstances" -Subnet $subnet
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+	}
+
+	if ($subnet.NetworkSecurityGroup -eq $null -and (Get-SqlTestMode) -eq 'Record'){
+		$inboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-inbound -Description "Allow all inbound" `
+					-Access Allow -Protocol * -Direction Inbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$outboundAllowAllRule = New-AzNetworkSecurityRuleConfig -Name allow-all-outbound -Description "Allow all outbound" `
+					-Access Allow -Protocol * -Direction Outbound -Priority 100 -SourceAddressPrefix * `
+					-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange *
+
+		$nsg = New-AzNetworkSecurityGroup `
+			-Name "$vnetName-$subnetName-nsg-allow-all" `
+			-ResourceGroupName $resourceGroupName `
+			-location $vnet.Location `
+			-SecurityRules $inboundAllowAllRule, $outboundAllowAllRule `
+            -Force
+
+        $subnet.NetworkSecurityGroup += $nsg
+
+		Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+    }
+
+	return $vnet
+}
+
+<#
+	.SYNOPSIS
+	Generates default public maintenance configuration id for specified location
+#>
+function Get-DefaultPublicMaintenanceConfigurationId($location)
+{
+	$subscriptionId = (Get-AzContext).Subscription.Id
+
+	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default";
+}
+
+<#
+	.SYNOPSIS
+	Generates public maintenance configuration id for specified location and schedule name
+#>
+function Get-PublicMaintenanceConfigurationName($location, $scheduleName)
+{
+	$shortLocation = $location -replace '\s',''
+
+	return "SQL_${shortLocation}_${scheduleName}";
+}
+
+<#
+	.SYNOPSIS
+	Generates public maintenance configuration id for specified location and schedule name
+#>
+function Get-PublicMaintenanceConfigurationId($location, $scheduleName)
+{
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$configName = Get-PublicMaintenanceConfigurationName $location $scheduleName
+
+	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/${configName}";
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

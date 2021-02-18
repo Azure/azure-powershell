@@ -12,18 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+=======
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+=======
+    [Cmdlet("Stop", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class StopAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -54,6 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -65,6 +80,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ProjectResources.CancelDeploymentMessage,
                 ResourceGroupName,
                 () => ResourceManagerSdkClient.CancelDeployment(ResourceGroupName, Name));
+=======
+        protected override void OnProcessRecord()
+        {
+            var options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+            {
+                ResourceGroupName = !string.IsNullOrEmpty(this.ResourceGroupName) ? this.ResourceGroupName : ResourceIdUtility.GetResourceGroupName(Id),
+                DeploymentName = !string.IsNullOrEmpty(this.Name) ? this.Name : ResourceIdUtility.GetResourceName(Id)
+            };
+
+            ConfirmAction(
+                ProjectResources.CancelDeploymentMessage,
+                ResourceGroupName,
+                () => ResourceManagerSdkClient.CancelDeployment(options));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             WriteObject(true);
 

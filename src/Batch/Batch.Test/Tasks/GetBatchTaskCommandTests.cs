@@ -337,12 +337,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Filter = null;
 
             // Build a CloudTask instead of querying the service on a Get CloudTask call
+<<<<<<< HEAD
             string applicationId = "foo";
+=======
+            string applicationName = "foo";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string applicationVersion = "beta";
             ProxyModels.CloudTask cloudTask = new ProxyModels.CloudTask
             {
                 Id = "task-1",
+<<<<<<< HEAD
                 ApplicationPackageReferences = new[] { new ProxyModels.ApplicationPackageReference(applicationId, applicationVersion) }
+=======
+                ApplicationPackageReferences = new[] { new ProxyModels.ApplicationPackageReference(applicationName, applicationVersion) }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cloudTask);
@@ -363,7 +371,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].ApplicationPackageReferences.First();
+<<<<<<< HEAD
             Assert.Equal(applicationId, psApplicationPackageReference.ApplicationId);
+=======
+            Assert.Equal(applicationName, psApplicationPackageReference.ApplicationId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }

@@ -190,7 +190,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
+<<<<<<< HEAD
                     Type = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
+=======
+                    Type1 = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -205,7 +209,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
+<<<<<<< HEAD
                     Type = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+=======
+                    Type1 = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,

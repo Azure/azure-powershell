@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -25,6 +26,19 @@ using System;
 using System.Linq;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.Commands.Profile.Properties;
+=======
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -43,7 +57,18 @@ namespace Microsoft.Azure.Commands.Profile
         {
             get
             {
+<<<<<<< HEAD
                 if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+=======
+                try
+                {
+                    if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                    {
+                        return null;
+                    }
+                }
+                catch (InvalidOperationException)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     return null;
                 }
@@ -52,6 +77,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+<<<<<<< HEAD
         [Parameter(Mandatory =true, ParameterSetName = ListAllParameterSet, HelpMessage ="List all available contexts in the current session.")]
         public SwitchParameter ListAvailable { get; set; }
 
@@ -59,16 +85,57 @@ namespace Microsoft.Azure.Commands.Profile
         {
             // If no context is found, return
             if (DefaultContext == null)
+=======
+        [Parameter(Mandatory = true, ParameterSetName = ListAllParameterSet, HelpMessage = "List all available contexts in the current session.")]
+        public SwitchParameter ListAvailable { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ListAllParameterSet, HelpMessage = "Refresh contexts from token cache")]
+        public SwitchParameter RefreshContextFromTokenCache { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            // Skip BeginProcessing()
+        }
+
+        public override void ExecuteCmdlet()
+        {
+            if (ListAvailable.IsPresent && RefreshContextFromTokenCache.IsPresent)
+            {
+                try
+                {
+                    var defaultProfile = DefaultProfile as AzureRmProfile;
+                    if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
+                    {
+                        defaultProfile.RefreshContextsFromCache();
+                    }
+                }
+                catch (Exception e)
+                {
+                    WriteWarning(e.ToString());
+                }
+            }
+
+            // If no context is found, return
+            if (DefaultContext == null && !this.ListAvailable.IsPresent)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return;
             }
 
+<<<<<<< HEAD
             if (ListAvailable.IsPresent)
+=======
+            if (this.ListAvailable.IsPresent)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
+<<<<<<< HEAD
                     foreach( var context in profile.Contexts)
+=======
+                    foreach (var context in profile.Contexts)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         WriteContext(context.Value, context.Key);
                     }

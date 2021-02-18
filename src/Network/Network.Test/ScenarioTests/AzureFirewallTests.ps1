@@ -16,8 +16,12 @@
 .SYNOPSIS
 Tests AzureFirewallCRUD.
 #>
+<<<<<<< HEAD
 function Test-AzureFirewallCRUD
 {
+=======
+function Test-AzureFirewallCRUD {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -58,6 +62,16 @@ function Test-AzureFirewallCRUD
     $appRule2Port1 = 8080
     $appRule2ProtocolType1 = "http"
 
+<<<<<<< HEAD
+=======
+    # AzureFirewallApplicationRule 3
+    $appRule3Name = "appRule3"
+    $appRule3Fqdn1 = "sql1.database.windows.net"
+    $appRule3Protocol1 = "mssql:1433"
+    $appRule3Port1 = 1433
+    $appRule3ProtocolType1 = "mssql"
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # AzureFirewallNetworkRuleCollection
     $networkRcName = "networkRc"
     $networkRcPriority = 200
@@ -90,14 +104,33 @@ function Test-AzureFirewallCRUD
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
+<<<<<<< HEAD
     try 
     {
+=======
+    # AzureFirewallNatRule 2
+    $natRule2Name = "natRule2"
+    $natRule2Desc = "desc2"
+    $natRule2SourceAddress1 = "10.0.0.0"
+    $natRule2SourceAddress2 = "111.1.0.0/24"
+    $natRule2Protocol1 = "UDP"
+    $natRule2Protocol2 = "TCP"
+    $natRule2DestinationPort1 = "95"
+    $natRule2TranslatedFqdn = "server1.internal.com"
+    $natRule2TranslatedPort = "96"
+
+    try {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Get full subnet details
         $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
 
@@ -105,7 +138,11 @@ function Test-AzureFirewallCRUD
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
+<<<<<<< HEAD
         $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+=======
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -160,11 +197,20 @@ function Test-AzureFirewallCRUD
 
         $appRule2 = New-AzFirewallApplicationRule -Name $appRule2Name -Protocol $appRule2Protocol1 -TargetFqdn $appRule2Fqdn1
 
+<<<<<<< HEAD
+=======
+        $appRule3 = New-AzFirewallApplicationRule -Name $appRule3Name -Protocol $appRule3Protocol1 -TargetFqdn $appRule3Fqdn1
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create Application Rule Collection with 1 rule
         $appRc = New-AzFirewallApplicationRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
 
         # Add a rule to the rule collection using AddRule method
         $appRc.AddRule($appRule2)
+<<<<<<< HEAD
+=======
+        $appRc.AddRule($appRule3)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create a second Application Rule Collection with 1 rule
         $appRc2 = New-AzFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
@@ -191,6 +237,7 @@ function Test-AzureFirewallCRUD
         Assert-ThrowsContains { $natRule.AddProtocol("ABCD") } "Invalid protocol"
         # Test handling of ICMP protocol
         Assert-ThrowsContains {
+<<<<<<< HEAD
             New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1,"ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
         } "The argument `"ICMP`" does not belong to the set"
         Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
@@ -198,6 +245,22 @@ function Test-AzureFirewallCRUD
         # Create a NAT Rule Collection
         $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
 
+=======
+            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1, "ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        } "The argument `"ICMP`" does not belong to the set"
+        Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
+
+        # Create second NAT rule
+        $natRule2 = New-AzFirewallNatRule -Name $natRule2Name -Description $natRule2Desc -Protocol $natRule2Protocol1 -SourceAddress $natRule2SourceAddress1, $natRule2SourceAddress2 -DestinationAddress $publicip.IpAddress -DestinationPort $natRule2DestinationPort1 -TranslatedFqdn $natRule2TranslatedFqdn -TranslatedPort $natRule2TranslatedPort
+        $natRule2.AddProtocol($natRule2Protocol2)
+
+        # Create a NAT Rule Collection
+        $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
+
+        # Add second NAT Rule to rule Collection
+        $natRc.AddRule($natRule2)
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
         $azureFirewall.AddApplicationRuleCollection($appRc)
         $azureFirewall.AddApplicationRuleCollection($appRc2)
@@ -233,11 +296,19 @@ function Test-AzureFirewallCRUD
 
         # Check rule collections
         Assert-AreEqual 2 @($getAzureFirewall.ApplicationRuleCollections).Count
+<<<<<<< HEAD
         Assert-AreEqual 2 @($getAzureFirewall.ApplicationRuleCollections[0].Rules).Count
         Assert-AreEqual 1 @($getAzureFirewall.ApplicationRuleCollections[1].Rules).Count
 
         Assert-AreEqual 1 @($getAzureFirewall.NatRuleCollections).Count
         Assert-AreEqual 1 @($getAzureFirewall.NatRuleCollections[0].Rules).Count
+=======
+        Assert-AreEqual 3 @($getAzureFirewall.ApplicationRuleCollections[0].Rules).Count
+        Assert-AreEqual 1 @($getAzureFirewall.ApplicationRuleCollections[1].Rules).Count
+
+        Assert-AreEqual 1 @($getAzureFirewall.NatRuleCollections).Count
+        Assert-AreEqual 2 @($getAzureFirewall.NatRuleCollections[0].Rules).Count
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections).Count
         Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count
@@ -245,6 +316,10 @@ function Test-AzureFirewallCRUD
         $appRc = $getAzureFirewall.GetApplicationRuleCollectionByName($appRcName)
         $appRule = $appRc.GetRuleByName($appRule1Name)
         $appRule2 = $appRc.GetRuleByName($appRule2Name)
+<<<<<<< HEAD
+=======
+        $appRule3 = $appRc.GetRuleByName($appRule3Name)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Verify application rule collection 1 
         Assert-AreEqual $appRcName $appRc.Name
@@ -281,6 +356,22 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual 1 $appRule2.TargetFqdns.Count 
         Assert-AreEqual $appRule2Fqdn1 $appRule2.TargetFqdns[0]
 
+<<<<<<< HEAD
+=======
+        # Verify application rule 3
+        Assert-AreEqual $appRule3Name $appRule3.Name
+        Assert-Null $appRule3.Description
+
+        Assert-AreEqual 0 $appRule3.SourceAddresses.Count
+
+        Assert-AreEqual 1 $appRule3.Protocols.Count
+        Assert-AreEqual $appRule3ProtocolType1 $appRule3.Protocols[0].ProtocolType
+        Assert-AreEqual $appRule3Port1 $appRule3.Protocols[0].Port
+
+        Assert-AreEqual 1 $appRule3.TargetFqdns.Count
+        Assert-AreEqual $appRule3Fqdn1 $appRule3.TargetFqdns[0]
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Verify application rule collection 2
         $appRc2 = $getAzureFirewall.GetApplicationRuleCollectionByName($appRc2Name)
 
@@ -307,7 +398,11 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
         Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
+<<<<<<< HEAD
         # Verify NAT rule collection and NAT rule
+=======
+        # Verify NAT rule collection and NAT rules
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $natRc = $getAzureFirewall.GetNatRuleCollectionByName($natRcName)
         $natRule = $natRc.GetRuleByName($natRule1Name)
 
@@ -334,7 +429,33 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual $natRule1TranslatedAddress $natRule.TranslatedAddress
         Assert-AreEqual $natRule1TranslatedPort $natRule.TranslatedPort
 
+<<<<<<< HEAD
         # Verify network rule collection and network rule
+=======
+        $natRule2 = $natRc.GetRuleByName($natRule2Name)
+
+        Assert-AreEqual $natRule2Name $natRule2.Name
+        Assert-AreEqual $natRule2Desc $natRule2.Description
+
+        Assert-AreEqual 2 $natRule2.SourceAddresses.Count 
+        Assert-AreEqual $natRule2SourceAddress1 $natRule2.SourceAddresses[0]
+        Assert-AreEqual $natRule2SourceAddress2 $natRule2.SourceAddresses[1]
+
+        Assert-AreEqual 1 $natRule2.DestinationAddresses.Count 
+        Assert-AreEqual $publicip.IpAddress $natRule2.DestinationAddresses[0]
+
+        Assert-AreEqual 2 $natRule2.Protocols.Count 
+        Assert-AreEqual $natRule2Protocol1 $natRule2.Protocols[0]
+        Assert-AreEqual $natRule2Protocol2 $natRule2.Protocols[1]
+
+        Assert-AreEqual 1 $natRule2.DestinationPorts.Count 
+        Assert-AreEqual $natRule2DestinationPort1 $natRule2.DestinationPorts[0]
+
+        Assert-AreEqual $natRule2TranslatedFqdn $natRule2.TranslatedFqdn
+        Assert-AreEqual $natRule2TranslatedPort $natRule2.TranslatedPort
+
+        # Verify network rule collection and network rules
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $networkRc = $getAzureFirewall.GetNetworkRuleCollectionByName($networkRcName)
         $networkRule = $networkRc.GetRuleByName($networkRule1Name)
 
@@ -371,8 +492,12 @@ function Test-AzureFirewallCRUD
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
+<<<<<<< HEAD
     finally
     {
+=======
+    finally {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -382,8 +507,12 @@ function Test-AzureFirewallCRUD
 .SYNOPSIS
 Tests AzureFirewallCRUD With Availability Zones.
 #>
+<<<<<<< HEAD
 function Test-AzureFirewallCRUDWithZones
 {
+=======
+function Test-AzureFirewallCRUDWithZones {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -456,20 +585,32 @@ function Test-AzureFirewallCRUDWithZones
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
+<<<<<<< HEAD
     try 
     {
+=======
+    try {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create public ip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
+<<<<<<< HEAD
         $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -Zone 1,2,3
+=======
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -Zone 1, 2, 3
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -505,6 +646,7 @@ function Test-AzureFirewallCRUDWithZones
         Assert-AreEqual @($list[0].NetworkRuleCollections).Count @($getAzureFirewall.NetworkRuleCollections).Count
 
         # list all Azure Firewalls under subscription
+<<<<<<< HEAD
         $listAll = Get-AzureRmFirewall
         Assert-NotNull $listAll
 
@@ -515,6 +657,18 @@ function Test-AzureFirewallCRUDWithZones
         Assert-NotNull $listAll
 
         $listAll = Get-AzureRmFirewall -ResourceGroupName "*" -Name "*"
+=======
+        $listAll = Get-AzFirewall
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzFirewall -Name "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzFirewall -ResourceGroupName "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzFirewall -ResourceGroupName "*" -Name "*"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-NotNull $listAll
 
         # Create Application Rules
@@ -553,7 +707,11 @@ function Test-AzureFirewallCRUDWithZones
         Assert-ThrowsContains { $natRule.AddProtocol("ABCD") } "Invalid protocol"
         # Test handling of ICMP protocol
         Assert-ThrowsContains {
+<<<<<<< HEAD
             New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1,"ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+=======
+            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1, "ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         } "The argument `"ICMP`" does not belong to the set"
         Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
 
@@ -570,8 +728,13 @@ function Test-AzureFirewallCRUDWithZones
         # Add NetworkRuleCollections to the Firewall using method AddNetworkRuleCollection
         $azureFirewall.AddNetworkRuleCollection($netRc)
 
+<<<<<<< HEAD
 		# Update ThreatIntel mode
 		$azureFirewall.ThreatIntelMode = "Deny"
+=======
+        # Update ThreatIntel mode
+        $azureFirewall.ThreatIntelMode = "Deny"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Set AzureFirewall
         Set-AzFirewall -AzureFirewall $azureFirewall
@@ -586,7 +749,11 @@ function Test-AzureFirewallCRUDWithZones
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual $location $getAzureFirewall.Location
         Assert-NotNull $getAzureFirewall.Etag
+<<<<<<< HEAD
 		Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
+=======
+        Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
         Assert-NotNull $azureFirewallIpConfiguration[0].Subnet.Id
@@ -736,8 +903,12 @@ function Test-AzureFirewallCRUDWithZones
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
+<<<<<<< HEAD
     finally
     {
+=======
+    finally {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -747,8 +918,12 @@ function Test-AzureFirewallCRUDWithZones
 .SYNOPSIS
 Tests AzureFirewall with new style params for VNET and Public IPs - objects instead of strings
 #>
+<<<<<<< HEAD
 function Test-AzureFirewallPIPAndVNETObjectTypeParams
 {
+=======
+function Test-AzureFirewallPIPAndVNETObjectTypeParams {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -760,14 +935,22 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
     $publicIp1Name = Get-ResourceName
     $publicIp2Name = Get-ResourceName
 
+<<<<<<< HEAD
     try 
     {
+=======
+    try {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Get full subnet details
         $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
 
@@ -893,8 +1076,120 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
+<<<<<<< HEAD
     finally
     {
+=======
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AzureFirewallCRUDwithManagementIpConfig {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+	$mgmtSubnetName = "AzureFirewallManagementSubnet"
+    $publicIp1Name = Get-ResourceName
+    $mgmtPublicIpName = Get-ResourceName
+	$mgmtPublicIp2Name = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $mgmtSubnet = New-AzVirtualNetworkSubnetConfig -Name $mgmtSubnetName -AddressPrefix 10.0.100.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$mgmtSubnet
+        
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+        $mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
+
+        # Create public ips
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard
+        $mgmtPublicIp2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIp2Name -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall with a management IP
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1 -ManagementPublicIpAddress $mgmtPublicIp
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual $subnet.Id $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-AreEqual $publicip1.Id $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+        Assert-AreEqual $mgmtSubnet.Id $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-AreEqual $mgmtPublicIp.Id $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+
+
+        # Test handling of incorrect values when adding public IP address
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress() } "Cannot find an overload"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress($null) } "Public IP Address cannot be null"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress("ABCD") } "Cannot convert argument"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress($publicip1) } "already attached to firewall"
+
+        # Test handling of incorrect values when removing public IP Address
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress() } "Cannot find an overload"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($null) } "Public IP Address cannot be null"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress("ABCD") } "Cannot convert argument"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($mgmtPublicIp) } "not attached to firewall"
+
+        # Change Management PIP
+        $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress = $mgmtPublicIp2
+
+        # Set AzureFirewall
+        Set-AzFirewall -AzureFirewall $getAzureFirewall
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgName
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual $location $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+        Assert-AreEqual $mgmtSubnet.Id $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-AreEqual $mgmtPublicIp2.Id $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork 
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -904,8 +1199,12 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
 .SYNOPSIS
 Tests AzureFirewall Set and Remove IpConfiguration
 #>
+<<<<<<< HEAD
 function Test-AzureFirewallAllocateAndDeallocate
 {
+=======
+function Test-AzureFirewallAllocateAndDeallocate {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -916,14 +1215,22 @@ function Test-AzureFirewallAllocateAndDeallocate
     $subnetName = "AzureFirewallSubnet"
     $publicIpName = Get-ResourceName
 
+<<<<<<< HEAD
     try 
     {
+=======
+    try {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create public ip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
@@ -1007,9 +1314,371 @@ function Test-AzureFirewallAllocateAndDeallocate
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
+<<<<<<< HEAD
     finally
     {
+=======
+    finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Set and Remove IpConfiguration
+#>
+function Test-AzureFirewallVirtualHubCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $policyLocation = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $azureFirewallPolicyName = Get-ResourceName
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $policyLocation
+
+        # Get the AzureFirewallPolicy
+        $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        
+        Assert-NotNull $azureFirewallPolicy
+        Assert-NotNull $getazureFirewallPolicy.Id
+
+        $azureFirewallPolicyId = $getazureFirewallPolicy.Id
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -FirewallPolicyId $azureFirewallPolicyId
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.FirewallPolicy
+        Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall ThreatIntelWhitelist
+#>
+function Test-AzureFirewallThreatIntelWhitelistCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN @("*.microsoft.com", "microsoft.com") -IpAddress @("8.8.8.8", "1.1.1.1")
+    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ", "  3.3.3.3  ") -FQDN @("  bing.com  ", "yammer.com  ")
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -ThreatIntelWhitelist $threatIntelWhitelist1
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $threatIntelWhitelist1.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqualArray $threatIntelWhitelist1.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
+
+        # Modify
+        $azureFirewall.ThreatIntelWhitelist = $threatIntelWhitelist2
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $threatIntelWhitelist2.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqualArray $threatIntelWhitelist2.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall PrivateRange
+#>
+function Test-AzureFirewallPrivateRangeCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $privateRange1 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
+    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
+    
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -PrivateRange $privateRange1
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $privateRange1 $getAzureFirewall.PrivateRange
+
+        # Modify
+        $azureFirewall.PrivateRange = $privateRange2
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualArray $privateRange2 $getAzureFirewall.PrivateRange
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall DNS Proxy
+#>
+function Test-AzureFirewallWithDNSProxy {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $dnsServers = @("10.10.10.1", "20.20.20.2")
+
+    # AzureFirewallNetworkRuleCollection
+    $networkRcName = "networkRc"
+    $networkRcPriority = 200
+    $networkRcActionType = "Deny"
+
+    # AzureFirewallNetworkRule 1
+    $networkRule1Name = "networkRule"
+    $networkRule1Desc = "desc1"
+    $networkRule1SourceAddress1 = "10.0.0.0"
+    $networkRule1SourceAddress2 = "111.1.0.0/24"
+    $networkRule1DestinationAddress1 = "*"
+    $networkRule1Protocol1 = "UDP"
+    $networkRule1Protocol2 = "TCP"
+    $networkRule1Protocol3 = "ICMP"
+    $networkRule1DestinationPort1 = "90"
+
+    # AzureFirewallNetworkRule 2
+    $networkRule2Name = "networkRule2"
+    $networkRule2Desc = "desc2"
+    $networkRule2SourceAddress1 = "10.0.0.0"
+    $networkRule2SourceAddress2 = "111.1.0.0/24"
+    $networkRule2DestinationFqdn1 = "www.bing.com"
+    $networkRule2Protocol1 = "UDP"
+    $networkRule2Protocol2 = "TCP"
+    $networkRule2Protocol3 = "ICMP"
+    $networkRule2DestinationPort1 = "80"
+
+    $skuName = "AZFW_VNet"
+    $skuTier = "Standard"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+         # Create Network Rule
+        $networkRule = New-AzFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule.AddProtocol($networkRule1Protocol3)
+
+        # Test handling of incorrect values
+        Assert-ThrowsContains { $networkRule.AddProtocol() } "Cannot find an overload"
+        Assert-ThrowsContains { $networkRule.AddProtocol($null) } "A protocol must be provided"
+        Assert-ThrowsContains { $networkRule.AddProtocol("ABCD") } "Invalid protocol"
+
+        # Create Network Rule Collection
+        $netRc = New-AzFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
+
+        # Create Second Network Rule
+        $networkRule2 = New-AzFirewallNetworkRule -Name $networkRule2Name -Description $networkRule2Desc -Protocol $networkRule2Protocol1, $networkRule2Protocol2 -SourceAddress $networkRule2SourceAddress1, $networkRule2SourceAddress2 -DestinationFqdn $networkRule2DestinationFqdn1 -DestinationPort $networkRule2DestinationPort1
+        $networkRule2.AddProtocol($networkRule2Protocol3)
+
+        # Add this second Network Rule to the rule collection
+        $netRc.AddRule($networkRule2)
+
+        # Create AzureFirewall with DNSProxy enabled and DNS Servers provided
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -NetworkRuleCollection $netRc -EnableDnsProxy -DnsServer $dnsServers -SkuName $skuName -SkuTier $skuTier
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+
+        # Check rule collections
+        Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections).Count
+        Assert-AreEqual 2 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count
+
+        # Check DNS Proxy
+        Assert-AreEqual true $getAzureFirewall.DNSEnableProxy
+        Assert-AreEqualArray $dnsServers $getAzureFirewall.DnsServer
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall with Multip IPs on Virtual Hub
+#>
+function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = "eastus2euap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $virtualHubAddressPrefix = "10.0.0.0/16"
+    $firewallPIPCount = "2"
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.HubIPAddresses
+        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
+        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
+    }
+    finally {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<<<<<<< HEAD
+=======
+
+<#
+.SYNOPSIS
+Tests AzureFirewall AllowActiveFTP
+#>
+function Test-AzureFirewallCRUDAllowActiveFTP {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -AllowActiveFTP
+
+        # Verify
+        $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual true $azFirewall.AllowActiveFTP
+
+        # Reset the AllowActiveFTP flag
+        $azFirewall.AllowActiveFTP = $false
+        Set-AzFirewall -AzureFirewall $azFirewall
+        $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        
+        Assert-AreEqual false $azfw.AllowActiveFTP
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

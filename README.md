@@ -5,6 +5,7 @@
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
 Try it out in Azure Cloud Shell!
+<<<<<<< HEAD
 
 [![CloudShellIcon]][CloudShell]
 
@@ -32,6 +33,37 @@ This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramewo
 If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 
 ```powershell
+=======
+* Direct link: Open a browser to https://shell.azure.com
+* Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
+
+[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
+
+## Modules
+Below is a table containing our Azure PowerShell rollup module.
+
+Description       | Module Name  | PowerShell Gallery Link
+----------------- | ------------ | -----------------------
+Azure PowerShell  | `Az`         | [![Az]][AzGallery]
+
+For a full list of modules found in this repository, please see the [Azure PowerShell Modules][AzurePowerShelModules] document.
+
+## Installation
+
+### PowerShell Gallery
+
+Run the following command in an elevated PowerShell session to install the rollup module for Azure PowerShell cmdlets:
+
+```powershell
+Install-Module -Name Az
+```
+
+This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
+
+If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Update-Module -Name Az
 ```
 
@@ -48,6 +80,7 @@ To connect to Azure, use the [`Connect-AzAccount`][ConnectAzAccount] cmdlet:
 ```powershell
 # Device Code login - Provides a link to sign into Azure via your web browser
 Connect-AzAccount
+<<<<<<< HEAD
 
 # Service Principal login - Use a previously created service principal to log in
 Connect-AzAccount -ServicePrincipal -ApplicationId 'http://my-app' -Credential $PSCredential -TenantId $TenantId
@@ -65,6 +98,25 @@ Connect-AzAccount -Environment AzureChinaCloud
 A session context persists login information across Azure PowerShell modules and PowerShell instances. To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`][GetAzContext] cmdlet:
 
 ```powershell
+=======
+
+# Service Principal login - Use a previously created service principal to log in
+Connect-AzAccount -ServicePrincipal -ApplicationId 'http://my-app' -Credential $PSCredential -TenantId $TenantId
+```
+
+To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `-Environment` parameter:
+
+```powershell
+# Specific cloud login - Logs into the Azure China cloud
+Connect-AzAccount -Environment AzureChinaCloud
+```
+
+### Getting and setting your Azure PowerShell session context
+
+A session context persists login information across Azure PowerShell modules and PowerShell instances. To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`][GetAzContext] cmdlet:
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 # Gets the Azure PowerShell context for the current PowerShell session
 Get-AzContext
 
@@ -95,6 +147,7 @@ Get-AzSubscription -SubscriptionName $SubscriptionName | Set-AzContext -Name 'My
 For details on Azure PowerShell contexts, see our [persisted credentials guide][PersistedCredentialsGuide].
 
 ### Discovering cmdlets
+<<<<<<< HEAD
 
 Use the `Get-Command` cmdlet to discover cmdlets within a specific module, or cmdlets that follow a specific search pattern:
 
@@ -111,6 +164,24 @@ Get-Command -Module Az.Compute -Name '*VM*'
 
 ### Cmdlet help and examples
 
+=======
+
+Use the `Get-Command` cmdlet to discover cmdlets within a specific module, or cmdlets that follow a specific search pattern:
+
+```powershell
+# List all cmdlets in the Az.Accounts module
+Get-Command -Module Az.Accounts
+
+# List all cmdlets that contain VirtualNetwork
+Get-Command -Name '*VirtualNetwork*'
+
+# List all cmdlets that contain VM in the Az.Compute module
+Get-Command -Module Az.Compute -Name '*VM*'
+```
+
+### Cmdlet help and examples
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 To view the help content for a cmdlet, use the `Get-Help` cmdlet:
 
 ```powershell
@@ -119,10 +190,17 @@ Get-Help -Name Get-AzSubscription
 
 # View the examples for Get-AzSubscription
 Get-Help -Name Get-AzSubscription -Examples
+<<<<<<< HEAD
 
 # View the full help content for Get-AzSubscription
 Get-Help -Name Get-AzSubscription -Full
 
+=======
+
+# View the full help content for Get-AzSubscription
+Get-Help -Name Get-AzSubscription -Full
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 # View the help content for Get-AzSubscription on https://docs.microsoft.com
 Get-Help -Name Get-AzSubscription -Online
 ```
@@ -147,6 +225,15 @@ If you would like to become an active contributor to this project, please follow
 
 Additional information about contributing to this repository can be found in the [`CONTRIBUTING.md`][Contributing] document and the [_Azure PowerShell Developer Guide_][DeveloperGuide] document.
 
+<<<<<<< HEAD
+=======
+## Telemetry
+
+Azure PowerShell collects telemetry data by default. Microsoft aggregates collected data to identify patterns of usage to identify common issues and to improve the experience of Azure PowerShell. Microsoft Azure PowerShell does not collect any private or personal data.
+For example, the usage data helps identify issues such as cmdlets with low success and helps prioritize our work.
+While we appreciate the insights this data provides, we also understand that not everyone wants to send usage data. You can disable data collection with the [`Disable-AzDataCollection`](/powershell/module/az.accounts/disable-azdatacollection) cmdlet. You can also read our [privacy statement](https://privacy.microsoft.com/privacystatement) to learn more.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Learn More
 
 * [Microsoft Azure Documentation][MicrosoftAzureDocs]
@@ -161,6 +248,7 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [GitHubIssues]: https://github.com/Azure/azure-powershell/issues
 
 [Contributing]: CONTRIBUTING.md
+<<<<<<< HEAD
 
 [AzureIcon]: documentation/images/MicrosoftAzure-32px.png
 [PowershellIcon]: documentation/images/MicrosoftPowerShellCore-32px.png
@@ -178,6 +266,22 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [CloudShellIcon]: https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell"
 
 [ContributionGuidelines]: https://azure.github.io/guidelines/
+=======
+
+[AzureIcon]: documentation/images/MicrosoftAzure-32px.png
+[PowershellIcon]: documentation/images/MicrosoftPowerShellCore-32px.png
+[AzurePowerShelModules]: documentation/azure-powershell-modules.md
+[DeveloperGuide]: documentation/development-docs/azure-powershell-developer-guide.md
+
+<!-- External -->
+[Az]: https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
+[AzGallery]: https://www.powershellgallery.com/packages/Az/
+
+[DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
+[PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest
+
+[ContributionGuidelines]: https://opensource.microsoft.com/collaborate/
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [CodeOfConduct]: https://opensource.microsoft.com/codeofconduct/
 [CodeOfConductFaq]: https://opensource.microsoft.com/codeofconduct/faq/
 [OpenCodeEmail]: mailto:opencode@microsoft.com

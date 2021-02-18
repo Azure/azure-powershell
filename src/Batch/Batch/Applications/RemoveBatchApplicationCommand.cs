@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
@@ -41,6 +42,17 @@ namespace Microsoft.Azure.Commands.Batch
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.DeleteApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId);
+=======
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
+
+        protected override void ExecuteCmdletImpl()
+        {
+            WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
+            BatchClient.DeleteApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

@@ -21,5 +21,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         /// Azure Data Lake Store
         /// </summary>
         AzureDataLakeStore,
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Azure Data Lake Storage Gen2
+        /// </summary>
+        AzureDataLakeStorageGen2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

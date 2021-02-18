@@ -68,7 +68,11 @@ namespace Microsoft.Azure.Commands.Profile.CommonModule
         /// </summary>
         /// <param name="name">The name of the profile</param>
         /// <returns>If the input name of the profile is a well-formed profile name, 
+<<<<<<< HEAD
         /// the creation date of the profile.  Otherwise an emoty string.</returns>
+=======
+        /// the creation date of the profile.  Otherwise an empty string.</returns>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal static object GetDateString(string name)
         {
             if (!string.IsNullOrWhiteSpace(name))

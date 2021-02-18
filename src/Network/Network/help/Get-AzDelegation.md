@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azdelegation
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azdelegation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -39,7 +43,11 @@ The first line retrieves the subnet of interest. The second line shows the deleg
 
 ### 2: Retrieving all subnet delegations
 ```powershell
+<<<<<<< HEAD
 PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
+=======
+PS C:\> $subnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $delegations = Get-AzDelegation -Subnet $subnet
 ```
 
@@ -113,4 +121,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzDelegation](./New-AzDelegation.md)
 [Remove-AzDelegation](./Remove-AzDelegation.md)
 [Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
+<<<<<<< HEAD
 [Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)
+=======
+[Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

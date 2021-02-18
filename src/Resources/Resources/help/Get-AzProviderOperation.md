@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azprovideroperation
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azprovideroperation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,6 +31,7 @@ Use Get-AzProviderOperation Microsoft.Compute/* to get all operations of Microso
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Get all actions for all providers
 ```
 PS C:\> Get-AzProviderOperation *
@@ -39,6 +44,20 @@ PS C:\> Get-AzProviderOperation Microsoft.Insights/*
 
 ### Get all actions that can be performed on virtual machines
 ```
+=======
+### Example 1: Get all actions for all providers
+```powershell
+PS C:\> Get-AzProviderOperation *
+```
+
+### Example 2: Get actions for a particular resource provider
+```powershell
+PS C:\> Get-AzProviderOperation Microsoft.Insights/*
+```
+
+### Example 3: Get all actions that can be performed on virtual machines
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzProviderOperation */virtualMachines/*
 ```
 
@@ -75,7 +94,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

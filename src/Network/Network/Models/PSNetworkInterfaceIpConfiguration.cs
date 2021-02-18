@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSVirtualNetworkTap> VirtualNetworkTaps { get; set; }
 
+<<<<<<< HEAD
+=======
+        [JsonProperty(Order = 2)]
+        public PSIpConfigurationConnectivityInformation PrivateLinkConnectionProperties { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
         {
@@ -73,6 +79,15 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(VirtualNetworkTaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+<<<<<<< HEAD
+=======
+        [JsonIgnore]
+        public string PrivateLinkConnectionPropertiesText
+        {
+            get { return JsonConvert.SerializeObject(PrivateLinkConnectionProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public bool ShouldSerializeLoadBalancerBackendAddressPools()
         {
             return !string.IsNullOrEmpty(this.Name);

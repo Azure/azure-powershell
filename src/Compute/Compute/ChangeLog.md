@@ -17,9 +17,216 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
+<<<<<<< HEAD
 -->
 ## Upcoming Release
 
+=======
+
+-->
+## Upcoming Release
+
+## Version 4.9.0
+* Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
+* Removed FilterExpression parameter from `Get-AzVMImage` cmdlet documentation. 
+* Added deprecation message to the ContainerService cmdlets:
+    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+    - `Get-AzContainerService`
+    - `New-AzContainerService`
+    - `New-AzContainerServiceConfig`
+    - `Remove-AzContainerService`
+    - `Remove-AzContainerServiceAgentPoolProfile`
+    - `Update-AzContainerService`
+* Added parameter `-BurstingEnabled` to `New-AzDiskConfig` and `New-AzDiskUpdateConfig`
+* Added `-GroupByApplicationId` and `-GroupByUserAgent` parameters to the `Export-AzLogAnalyticThrottledRequest` and `Export-AzLogAnalyticRequestRateByInterval` cmdlets.
+* Added `VMParameterSet` parameter set to `Get-AzVMExtension` cmdlet. Added new parameter `-VM` to this parameter set. 
+
+## Version 4.8.0
+* New parameter `VM` in new parameter set `VMParameterSet` added to `Get-AzVMDscExtensionStatus` and `Get-AzVMDscExtension` cmdlets. 
+* Edited `New-AzSnapshot` cmdlet to check for existing snapshot with the same name in the same resource group. 
+    - Throws an error if a duplicate snapshot exists. 
+
+## Version 4.7.0
+* Edited Get-AzVm to filter by `-Name` prior to checking for throttling due to too many resources. 
+* New cmdlet `Start-AzVmssRollingExtensionUpgrade`.
+## Version 4.6.0
+* Added `-VmssId` parameter to `New-AzVm`
+* Added `PlatformFaultDomainCount` parameter to the `New-AzVmss` cmdlet.
+* New cmdlet `Get-AzDiskEncryptionSetAssociatedResource`
+* Added `Tier` and `LogicalSectorSize` optional parameters to the New-AzDiskConfig cmdlet. 
+* Added `Tier`, `MaxSharesCount`, `DiskIOPSReadOnly`, and `DiskMBpsReadOnly` optional parameters to the `New-AzDiskUpdateConfig` cmdlet. 
+* Modified `Get-AzVmBootDiagnostics` cmdlet to use the new RetrieveBootDiagnosticsData API instead of directly accessing the BootDiagnostics properties on the virtual machine.  
+
+## Version 4.5.0
+* Fixed issue in `Update-ASRRecoveryPlan` by populating FailoverTypes
+* Added the `-Top` and `-OrderBy` optional parameters to the `Get-AzVmImage` cmdlet. 
+
+## Version 4.4.0
+* Added the `-EncryptionType` optional parameter to `New-AzVmDiskEncryptionSetConfig`
+* New cmdlets for new resource type: DiskAccess `Get-AzDiskAccess`, `New-AzDiskAccess`, `Get-AzDiskAccess`
+* Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzSnapshotConfig`
+* Added optional parameters `-DiskAccessId` and `-NetworkAccessPolicy` to `New-AzDiskConfig`
+* Added `PatchStatus` property to VirtualMachine Instance View
+* Added `VMHealth` property to the virtual machine's instance view, which is the returned object when `Get-AzVm` is invoked with `-Status`
+* Added `AssignedHost` field to `Get-AzVM` and `Get-AzVmss` instance views. The field shows the resource id of the virtual machine instance
+* Added optional parameter `-SupportAutomaticPlacement` to `New-AzHostGroup` 
+* Added the `-HostGroupId` parameter to `New-AzVm` and `New-AzVmss`
+
+## Version 4.3.1
+* Patched `-EncryptionAtHost` parameter in `New-AzVm` to remove default value of false [#12776]
+
+## Version 4.3.0
+* Added `-EncryptionAtHost` parameter to `New-AzVm`, `New-AzVmss`, `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss`
+* Added `SecurityProfile` to `Get-AzVM` and `Get-AzVmss` return object
+* Added `-InstanceView` switch as optional parameter to `Get-AzHostGroup`
+* Added new cmdlet `Invoke-AzVmPatchAssessment`
+
+## Version 4.2.1
+* Added warning when using `New-AzVmss` without "latest" image version
+* Added '-Location' as optional positional parameter to Get-AzComputeResourceSku cmdlet
+
+## Version 4.2.0
+* Added SimulateEviction parameter to Set-AzVM and Set-AzVmssVM cmdlets.
+* Added 'Premium_LRS' to the argument completer of StorageAccountType parameter for New-AzGalleryImageVersion cmdlet.
+* Added Substatuses to VMCustomScriptExtension [#11297]
+* Added 'Delete' to the argument completer of EvictionPolicy parameter for New-AzVM and New-AzVMConfig cmdlets.
+* Fixed name of new VM Extension for SAP
+
+## Version 4.1.0
+* Added HostId parameter to `Update-AzVM` cmdlet
+* Updated Help documents for `New-AzVMConfig`, `New-AzVmssConfig`, `Update-AzVmss`, `Set-AzVMOperatingSystem` and `Set-AzVmssOsProfile` cmdlets.
+* Breaking changes
+    - FilterExpression parameter is removed from `Get-AzVMImage` cmdlet.
+    - AssignIdentity parameter is removed from `New-AzVmssConfig`, `New-AzVMConfig` and `Update-AzVM` cmdlets.
+    - AutomaticRepairMaxInstanceRepairsPercent is removed from `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+    - AvailabilitySetsColocationStatus, VirtualMachinesColocationStatus and VirtualMachineScaleSetsColocationStatus properties are removed from ProximityPlacementGroup.
+    - MaxInstanceRepairsPercent property is removed from AutomaticRepairsPolicy.
+    - The types of AvailabilitySets, VirtualMachines and VirtualMachineScaleSets are changed from IList<SubResource> to IList<SubResourceWithColocationStatus>.
+* Description for `Get-AzVM` cmdlet has been updated to better describe it. 
+
+## Version 3.7.0
+* Added `Set-AzVmssOrchestrationServiceState` cmdlet.
+* `Get-AzVmss` with -InstanceView shows OrchestrationService states.
+
+## Version 3.6.0
+* Added the following parameters to `New-AzDiskConfig` cmdlet: 
+    - DiskIOPSReadOnly, DiskMBpsReadOnly, MaxSharesCount, GalleryImageReference
+* Allowed Encryption property to Target parameter of `New-AzGalleryImageVersion` cmdlet.
+* Fixed tempDisk issue for `Set-AzVmss` -Reimage and `Invoke-AzVMReimage` cmdlets. [#11354]
+* Added support to below cmdlets for new SAP Extension
+    - `Set-AzVMAEMExtension`
+    - `Get-AzVMAEMExtension`
+    - `Remove-AzVMAEMExtension`
+    - `Update-AzVMAEMExtension`
+* Fixed errors in examples of help document
+* Showed the exact string value for VM PowerState in the table format.
+* `New-AzVmssConfig`: fixed serialization of AutomaticRepairs property when SinglePlacementGroup is disabled. [#11257]
+
+## Version 3.5.0
+* Allowed empty value for ProximityPlacementGroupId during update
+
+## Version 3.4.0
+* Limit the number of VM status to 100 to avoid throttling when Get-AzVM -Status is performed without VM name.
+* Add Update-AzDiskEncryptionSet cmdlet
+* Add EncryptionType and DiskEncryptionSetId parameters to the following cmdlets:
+    - New-AzDiskUpdateConfig, New-AzSnapshotUpdateConfig
+* Add ColocationStatus parameter to Get-AzProximityPlacementGroup cmdlet.
+* Fix broken example code for 'Revoke-AzSnapshotAccess' and 'Grant-AzSnapshotAccess'
+* Fix broken example code for 'Set-AzDiskDiskEncryptionKey' and 'Set-AzDiskKeyEncryptionKey'
+
+## Version 3.3.0
+* Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+* Updated the example of `Set-AzVMAccessExtension` to use version 2.4 instead of 2.0
+
+## Version 3.2.0
+* Add ProximityPlacementGroupId parameter to the following cmdlets:
+    - Update-AzAvailabilitySet, Update-AzVM, Update-AzVmss
+* Change ProximityPlacementGroup parameter to ProximityPlacementGroupId parameter in New-AzVM and New-AzVmss.
+  (ProximityPlacementGroup parameter is still supported as an alias)
+* Update help message for VM and VMSS priority.
+* Update references in .psd1 to use relative path
+
+## Version 3.1.0
+* VM Reapply feature
+    - Add Reapply parameter to Set-AzVM cmdlet
+* VM Scale Set AutomaticRepairs feature:
+    - Add EnableAutomaticRepair, AutomaticRepairGracePeriod, and AutomaticRepairMaxInstanceRepairsPercent parameters to the following cmdlets:
+        New-AzVmssConfig
+        Update-AzVmss
+* Cross tenant gallery image support for New-AzVM
+* Add 'Spot' to the argument completer of Priority parameter in New-AzVM, New-AzVMConfig and New-AzVmss cmdlets
+* Add DiskIOPSReadWrite and DiskMBpsReadWrite parameters to Add-AzVmssDataDisk cmdlet
+* Change SourceImageId parameter of New-AzGalleryImageVersion cmdlet to optional
+* Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
+* Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
+* Add SkipExtensionsOnOverprovisionedVMs parameters to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+
+## Version 3.0.0
+* Disk Encryption Set feature
+    - New cmdlets:
+        New-AzDiskEncryptionSetConfig
+        New-AzDiskEncryptionSet
+        Get-AzDiskEncryptionSet
+        Remove-AzDiskEncryptionSet
+    - DiskEncryptionSetId parameter is added to the following cmdlets:
+        Set-AzImageOSDisk
+        Set-AzVMOSDisk
+        Set-AzVmssStorageProfile        
+        Add-AzImageDataDisk
+        New-AzVMDataDisk
+        Set-AzVMDataDisk
+        Add-AzVMDataDisk
+        Add-AzVmssDataDisk
+        Add-AzVmssVMDataDisk
+    - DiskEncryptionSetId and EncryptionType parameters are added to the following cmdlets:
+        New-AzDiskConfig
+        New-AzSnapshotConfig
+* Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
+* Move FileUris of custom script extension from public setting to protected setting
+* Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+* Breaking changes
+    - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
+    - PublishingProfile.Source.ManagedImage.Id is replaced with StorageProfile.Source.Id in GalleryImageVersion object
+
+## Version 2.7.0
+* Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
+* Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
+* Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
+
+## Version 2.6.0
+* Add UploadSizeInBytes parameter tp New-AzDiskConfig
+* Add Incremental parameter to New-AzSnapshotConfig
+* Add a low priority virtual machine feature:
+    - MaxPrice, EvictionPolicy and Priority parameters are added to New-AzVMConfig.
+    - MaxPrice parameter is added to New-AzVmssConfig, Update-AzVM and Update-AzVmss cmdlets.
+* Fix VM reference issue for Get-AzAvailabilitySet cmdlet when it lists all availability sets in the subscription.
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+* Fix code to allow non default extension publisher, type and name for Get-AzVMDiskEncryptionStatus
+
+## Version 2.5.0
+* Add VmssId to New-AzVMConfig cmdlet
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
+    - New cmdlets:
+        New-AzHostGroup
+        New-AzHost
+        Get-AzHostGroup
+        Get-AzHost
+        Remove-AzHostGroup
+        Remove-AzHost
+    - HostId parameter is added to New-AzVMConfig and New-AzVM
+* Fixed miscellaneous typos across module
+* Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
+* Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
+
+## Version 2.4.1
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig
 * Use the extension type instead of the name when disabling vmss disk encryption
@@ -64,6 +271,7 @@
 ## Version 2.0.0
 * Proximity placement group feature.
     - The following new cmdlets are added:
+<<<<<<< HEAD
 	    New-AzProximityPlacementGroup
 		Get-AzProximityPlacementGroup
 		Remove-AzProximityPlacementGroup
@@ -74,6 +282,18 @@
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
 * SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+=======
+        New-AzProximityPlacementGroup
+        Get-AzProximityPlacementGroup
+        Remove-AzProximityPlacementGroup
+    - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+        New-AzAvailabilitySet
+        New-AzVMConfig
+        New-AzVmssConfig
+* StorageAccountType parameter is added to New-AzGalleryImageVersion.
+* TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Breaking changes
     - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
     - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.

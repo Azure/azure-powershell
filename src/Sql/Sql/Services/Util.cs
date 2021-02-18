@@ -78,15 +78,23 @@ namespace Microsoft.Azure.Commands.Sql.Services
         /// Checks if email addresses are in a correct format
         /// </summary>
         /// <param name="emailAddresses">The email addresses</param>
+<<<<<<< HEAD
         /// <param name="seperator">The character that seperates different emails in the emailAddresses string</param>
         /// <returns>Returns whether the email addresses are in a correct format</returns>
         public static bool AreEmailAddressesInCorrectFormat(string emailAddresses, char seperator)
         {
             if (string.IsNullOrEmpty(emailAddresses))
+=======
+        /// <returns>Returns whether the email addresses are in a correct format</returns>
+        public static bool AreEmailAddressesInCorrectFormat(string[] emailAddresses)
+        {
+            if (emailAddresses == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return true;
             }
 
+<<<<<<< HEAD
             string[] emailAddressesArray = emailAddresses.Split(seperator).Where(s => !string.IsNullOrEmpty(s)).ToArray();
             return AreEmailAddressesInCorrectFormat(emailAddressesArray);
         }
@@ -108,6 +116,30 @@ namespace Microsoft.Azure.Commands.Sql.Services
                     @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
             return !emailAddresses.Any(e => !emailRegex.IsMatch(e));
+=======
+            var emailRegex =
+                new Regex(string.Format("{0}{1}",
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
+            return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
+        }
+
+        /// <summary>
+        /// Validates SQL server nameValidateServerName
+        /// </summary>
+        public static bool ValidateServerName(string serverName)
+        {
+            // Basic character validation
+            foreach (char c in serverName)
+            {
+                if (char.IsUpper(c) || c == '.' || c == '_') return false;
+            }
+
+            // Additional LiveDns restrictions
+            if (serverName.StartsWith("-", StringComparison.Ordinal) || serverName.EndsWith("-", StringComparison.Ordinal)) return false;
+
+            return true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

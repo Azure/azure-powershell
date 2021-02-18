@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Billing.Common;
 using Microsoft.Azure.Commands.Billing.Models;
 using Microsoft.Azure.Management.Billing;
@@ -19,6 +23,7 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 {
@@ -27,6 +32,18 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
     {
         const string DownloadUrlExpand = "downloadUrl";
 
+=======
+using System.Text.RegularExpressions;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
+{
+
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingInvoice", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSInvoice))]
+    public class GetAzureRmBillingInvoice : AzureBillingCmdletBase
+    {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = true, HelpMessage = "Get the latest invoice.", ParameterSetName = Constants.ParameterSetNames.LatestItemParameterSet)]
         public SwitchParameter Latest { get; set; }
 
@@ -39,13 +56,33 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
         [ValidateRange(1, 100)]
         public int? MaxCount { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Generate the download url of the invoices.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         public SwitchParameter GenerateDownloadUrl { get; set; }
 
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Generate the download url of the invoices.")]
+        public SwitchParameter GenerateDownloadUrl { get; set; }
+
+        // 2020 GA Parameters
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "Name of the billing account to get invoices.")]
+        public string BillingAccountName { get; set; }
+
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "Name of the billing profile to get invoices.")]
+        public string BillingProfileName { get; set; }
+
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "The start date to fetch the invoices. The date should be specified in MM-DD-YYYY format.")]
+        public DateTime? PeriodStartDate { get; set; }
+
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "The end date to fetch the invoices. The date should be specified in MM-DD-YYYY format.")]
+        public DateTime? PeriodEndDate { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             try
             {
+<<<<<<< HEAD
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
                     string expand = this.GenerateDownloadUrl.IsPresent ? DownloadUrlExpand : null;
@@ -60,13 +97,131 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                     WriteObject(new PSInvoice(invoice));
                 }
                 else if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
+=======
+                var endDate = DateTime.Now;
+                var oneYearSpan = endDate.Subtract(new TimeSpan(365, 0, 0, 0));
+                var startDate = new DateTime(oneYearSpan.Year, oneYearSpan.Month,1);
+
+                if (PeriodStartDate != null && PeriodEndDate != null)
+                {
+                    startDate = PeriodStartDate.Value;
+                    endDate = PeriodEndDate.Value;
+                }
+
+                var periodStartDate = startDate.ToString("O");
+                var periodEndDate = endDate.ToString("O");
+
+                IPage<Invoice> invoices = null;
+                
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet) ||
+                    ParameterSetName.Equals(Constants.ParameterSetNames.LatestItemParameterSet))
+                {
+                    // modern flow
+                    if (!string.IsNullOrWhiteSpace(BillingAccountName))
+                    {
+                        if (!string.IsNullOrWhiteSpace(BillingProfileName))
+                        {
+                            //fetch by /{ba}/{bp}
+                            invoices =
+                                BillingManagementClient.Invoices.ListByBillingProfile(
+                                    billingAccountName: BillingAccountName,
+                                    billingProfileName: BillingProfileName,
+                                    periodStartDate: periodStartDate,
+                                    periodEndDate: periodEndDate);
+                        }
+                        else // fetch by /{ba}
+                        {
+                            invoices = BillingManagementClient.Invoices.ListByBillingAccount(
+                                billingAccountName: BillingAccountName,
+                                periodStartDate: periodStartDate,
+                                periodEndDate: periodEndDate);
+                        }
+                    }
+                    else // ba/billingSub/{subId}/invoices
+                    {
+                        invoices = BillingManagementClient.Invoices.ListByBillingSubscription(
+                            periodStartDate: periodStartDate,
+                            periodEndDate: periodEndDate);
+                    }
+
+                    if (invoices != null && invoices.Any())
+                    {
+                        var recentInvoices = (from invoice in invoices
+                            where invoice.InvoiceDate.HasValue
+                            orderby invoice.InvoiceDate descending
+                            select invoice).Take(MaxCount??100);
+
+                        if (ParameterSetName.Equals(Constants.ParameterSetNames.LatestItemParameterSet))
+                        {
+                            var psInvoice = new PSInvoice(recentInvoices.FirstOrDefault());
+                            if (GenerateDownloadUrl)
+                            {
+                                this.GetDownloadUrl(
+                                    recentInvoices.FirstOrDefault(), 
+                                    psInvoice,
+                                    BillingAccountName ?? null);
+                            }
+                            WriteObject(psInvoice);
+                        }
+                        else
+                        {
+                            foreach (var invoice in recentInvoices)
+                            {
+                                var psInvoice = new PSInvoice(invoice);
+                                if (GenerateDownloadUrl)
+                                {
+                                    this.GetDownloadUrl(
+                                        invoice, 
+                                        psInvoice,
+                                        BillingAccountName ?? null);
+                                }
+
+                                WriteObject(psInvoice);
+                            }
+                        }
+                    }
+                    return;
+                }
+
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     foreach (var invoiceName in Name)
                     {
                         try
                         {
+<<<<<<< HEAD
                             var invoice = new PSInvoice(BillingManagementClient.Invoices.Get(invoiceName));
                             WriteObject(invoice);
+=======
+                            var downloadBySubscription = false;
+                            Invoice invoice = null;
+                            if (!string.IsNullOrWhiteSpace(BillingAccountName)) // modern 
+                            {
+                                invoice = BillingManagementClient.Invoices.Get(
+                                    billingAccountName: BillingAccountName,
+                                    invoiceName: invoiceName);
+                            }
+                            else // legacy
+                            {
+                                // getbyId retrieves legacy and modern invoices 
+                                invoice =
+                                    BillingManagementClient.Invoices.GetById(invoiceName);
+                                downloadBySubscription = true;
+                            }
+                            
+                            var psInvoice = new PSInvoice(invoice);
+                            if (GenerateDownloadUrl)
+                            {
+                                this.GetDownloadUrl(
+                                    invoice,
+                                    psInvoice,
+                                    BillingAccountName ?? null,
+                                    downloadBySubscription);
+                            }
+
+                            WriteObject(psInvoice);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                         catch (ErrorResponseException error)
                         {
@@ -81,5 +236,45 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                 WriteWarning(e.Body.Error.Message);
             }
         }
+<<<<<<< HEAD
     }
 }
+=======
+
+        private void GetDownloadUrl(Invoice invoice, PSInvoice psInvoice, string billingAccountName, bool downloadBySubscription = false)
+        {
+            var invoiceDocument = invoice.Documents.FirstOrDefault(p =>
+                p.Kind.Equals("INVOICE", StringComparison.InvariantCultureIgnoreCase)  
+                && p.Url.Contains(invoice.Name) 
+                && p.Source.Equals("DRS", StringComparison.InvariantCultureIgnoreCase));
+
+            if (invoiceDocument != null)
+            {
+                DownloadUrl downloadUrl = null;
+
+                var downloadToken = invoiceDocument.Url.Split('=')?[1].Split('&')?[0];
+
+                if (invoiceDocument.Url.ToLowerInvariant().Contains("billingaccounts/default/billingsubscriptions") ||
+                    downloadBySubscription)
+                {
+                    downloadUrl = BillingManagementClient.Invoices
+                        .DownloadBillingSubscriptionInvoice(
+                            invoiceName: invoice.Name,
+                            downloadToken: downloadToken);
+                }
+                else
+                {
+                    downloadUrl = BillingManagementClient.Invoices
+                        .DownloadInvoice(
+                            billingAccountName: billingAccountName,
+                            invoiceName: invoice.Name,
+                            downloadToken: downloadToken);
+                }
+
+                psInvoice.DownloadUrl = downloadUrl.Url;
+                psInvoice.DownloadUrlExpiry = downloadUrl.ExpiryTime;
+            }
+        }
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

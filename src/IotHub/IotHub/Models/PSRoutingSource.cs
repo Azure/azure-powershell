@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         DeviceMessages,
         TwinChangeEvents,
         DeviceLifecycleEvents,
+<<<<<<< HEAD
         DeviceJobLifecycleEvents
+=======
+        DeviceJobLifecycleEvents,
+        DigitalTwinChangeEvents
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

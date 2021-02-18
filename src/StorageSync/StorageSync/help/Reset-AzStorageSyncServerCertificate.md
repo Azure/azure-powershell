@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/reset-Azstoragesyncservercertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/Az.storagesync/reset-Azstoragesyncservercertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,7 +41,11 @@ This command will roll storage sync server certificate used to describe the serv
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
+=======
+PS C:\> Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command will roll the local server certificate and inform the corresponding storage sync service of the server's new identity, in a secure way.

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FD3A0013-4365-4E65-891C-5C50A9D5658C
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageshare
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -202,7 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Storage.File.CloudFileShare
+=======
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

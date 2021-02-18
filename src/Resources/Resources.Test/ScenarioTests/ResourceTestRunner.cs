@@ -17,8 +17,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+<<<<<<< HEAD
 using System.Threading;
 using System.Threading.Tasks;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.TestFx;
@@ -52,16 +55,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore))
                 .WithExtraUserAgentsToIgnore(new Dictionary<string, string>
                 {
+<<<<<<< HEAD
                     {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
+=======
+                    {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 })
                 .WithMockContextAction(() =>
                 {
                     var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
                         ? new Func<ServiceClientCredentials>(() =>
+<<<<<<< HEAD
                             {
                                 var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
                                 return testEnvironment.TokenInfo[TokenAudience.Management];
                             })()
+=======
+                        {
+                            var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                            return testEnvironment.TokenInfo[TokenAudience.Management];
+                        })()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         : new TokenCredentials("foo");
 
                     HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);

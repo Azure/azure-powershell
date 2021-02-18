@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSJobSpecification jobSpecification;
         
+<<<<<<< HEAD
         private IList<PSMetadataItem> metadata;
+=======
+        private IDictionary metadata;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         private PSSchedule schedule;
         
@@ -139,24 +143,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
         public IList<PSMetadataItem> Metadata
+=======
+        public IDictionary Metadata
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             get
             {
                 if (((this.metadata == null) 
                             && (this.omObject.Metadata != null)))
                 {
+<<<<<<< HEAD
                     List<PSMetadataItem> list;
                     list = new List<PSMetadataItem>();
+=======
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
                     enumerator = this.omObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
+<<<<<<< HEAD
                         list.Add(new PSMetadataItem(enumerator.Current));
                     }
                     this.metadata = list;
+=======
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
+                    }
+                    this.metadata = dict;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.metadata;
             }

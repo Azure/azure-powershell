@@ -17,12 +17,23 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
+<<<<<<< HEAD
 using System;
+=======
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+<<<<<<< HEAD
     public class SqlServerAuditCmdlet : AzureSqlCmdletBase<ServerAuditModel, SqlAuditAdapter>
+=======
+    public abstract class SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : AzureSqlCmdletBase<ServerAuditModelType, ServerAuditAdapterType>
+        where ServerAuditPolicyType : ProxyResource 
+        where ServerAuditModelType : ServerDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
@@ -55,7 +66,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+<<<<<<< HEAD
         protected override ServerAuditModel GetEntity()
+=======
+        protected override ServerAuditModelType GetEntity()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (ServerObject != null)
             {
@@ -63,7 +78,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 ServerName = ServerObject.ServerName;
             }
 
+<<<<<<< HEAD
             ServerAuditModel model = new ServerAuditModel()
+=======
+            ServerAuditModelType model = new ServerAuditModelType()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName
@@ -72,10 +91,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
             return model;
         }
+<<<<<<< HEAD
 
         protected override SqlAuditAdapter InitModelAdapter()
         {
             return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

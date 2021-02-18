@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/remove-azactionrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzActionRule
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Deletes a action group
+=======
+Deletes a action rule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -120,7 +128,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 Get Action rule by resoure id.
+=======
+Get Action rule by resource id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

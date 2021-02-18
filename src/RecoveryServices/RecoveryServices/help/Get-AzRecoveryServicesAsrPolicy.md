@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesasrpolicy
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
+Module Name: Az.RecoveryServices
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrpolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,7 +45,11 @@ The **Get-AzRecoveryServicesAsrPolicy** cmdlet gets the list of configured Azure
 PS C:\> $Policy = Get-AzRecoveryServicesAsrPolicy
 ```
 
+<<<<<<< HEAD
 Retuns the list of replication policies
+=======
+Returns the list of replication policies
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```
@@ -52,7 +63,11 @@ ReplicationProvider         : HyperVReplicaAzure
 ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
 ```
 
+<<<<<<< HEAD
 Retuns replication policy with name.
+=======
+Returns replication policy with name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3
 ```
@@ -117,7 +132,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

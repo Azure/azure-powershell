@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/export-azapimanagementapi
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/export-azapimanagementapi
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -40,6 +44,17 @@ PS C:\>Export-AzApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -S
 
 This command exports an API to a WADL file.
 
+<<<<<<< HEAD
+=======
+### Example 2: Export an API in OpenApi 3.0 Specification Format as Json Document
+```powershell
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\> Export-AzApiManagementApi -Context $context -ApiId swagger-petstore -SpecificationFormat OpenApiJson -SaveAs D:\github\petstore.json
+```
+
+This command exports an API definitions in Open Api format as Json document
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiId
@@ -149,13 +164,21 @@ Accept wildcard characters: False
 
 ### -SpecificationFormat
 Specifies the API format.
+<<<<<<< HEAD
 psdx_paramvalues Wadl and Swagger.
+=======
+psdx_paramvalues Wadl, Wsdl, Swagger, OpenApi and OpenApiJson
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: Wadl, Swagger, Wsdl, OpenApi
+=======
+Accepted values: Wadl, Swagger, Wsdl, OpenApi, OpenApiJson
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: Named

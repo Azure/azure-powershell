@@ -129,6 +129,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Failovers a database
+        /// </summary>
+        public void Failover(string resourceGroupName, string serverName, string databaseName, string replicaType)
+        {
+            GetCurrentSqlClient().Databases.Failover(resourceGroupName, serverName, databaseName, replicaType);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Renames a database
         /// </summary>
         internal void Rename(string resourceGroupName, string serverName, string databaseName, string newName)

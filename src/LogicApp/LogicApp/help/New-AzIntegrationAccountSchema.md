@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 91FFBEE9-A488-49ED-8C6C-2DE891CE0749
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccountschema
+=======
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/new-azintegrationaccountschema
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -34,7 +38,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ### Example 1: Create the integration account schema
 ```
 PS C:\>New-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema1" -SchemaFilePath "c:\temp\schema1"
+<<<<<<< HEAD
 Id          : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema1
+=======
+Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Name        : IntegrationAccountSchema1
 Type        : Microsoft.Logic/integrationAccounts/schemas
 CreatedTime : 3/26/2016 7:21:10 PM

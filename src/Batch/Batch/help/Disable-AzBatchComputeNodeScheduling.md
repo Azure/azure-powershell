@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2DF5FB4D-A5CB-439C-AC6F-DF2130AF33EC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchcomputenodescheduling
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 2DF5FB4D-A5CB-439C-AC6F-DF2130AF33EC
+online version: https://docs.microsoft.com/powershell/module/az.batch/disable-azbatchcomputenodescheduling
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -43,7 +51,11 @@ Tasks stopped in this manner will not be rescheduled.
 
 ### Example 1: Disable task scheduling on a compute node
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
 ```
 
@@ -55,7 +67,11 @@ Because the *DisableComputeNodeSchedulingOptions* parameter was not included any
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
 ```
 
@@ -70,7 +86,11 @@ Because the *DisableComputeNodeSchedulingOptions* parameter was not included any
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -177,7 +197,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -193,7 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Enable-AzBatchComputeNodeScheduling](./Enable-AzBatchComputeNodeScheduling.md)
 

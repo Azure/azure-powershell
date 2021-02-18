@@ -94,7 +94,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateRange(0, long.MaxValue)]
         public long? ByteRangeEnd { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             DestinationPath = ResolveUserPath(DestinationPath);
             if (this.ByteRangeEnd != null && this.ByteRangeStart == null)

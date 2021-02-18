@@ -298,7 +298,11 @@ Set-AzureRmVMAccessExtension [other required parameters] -Credential $PSCredenti
 - The 'Get-AzureRmEventHubNamespaceKey' cmdlet has been removed. Please use the 'Get-AzureRmEventHubKey' cmdlet
 	
 ### **New-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old
@@ -313,7 +317,11 @@ $namespace = Get-AzureRmEventHubNamespace <parameters>
 ```
 	
 ### **Get-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old
@@ -328,7 +336,11 @@ $namespace = Get-AzureRmEventHubNamespace <parameters>
 ```
 	
 ### **Set-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old
@@ -583,7 +595,11 @@ Set-AzureRmADUser [other required parameters] -Password $SecureStringVariable
 - The 'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Remove-AzureRmServiceBusAuthorizationRule' cmdlet.
 
 ### **Set-AzureRmServiceBusTopicAuthorizationRule**
+<<<<<<< HEAD
 - The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule'cmdlet.
+=======
+- The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule' cmdlet.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### **New-AzureRmServiceBusNamespaceKey**
 - The 'New-AzureRmServiceBusNamespaceKey' cmdlet has been removed. Please use the 'New-AzureRmServiceBusKey' cmdlet.
@@ -694,7 +710,11 @@ $topic = Get-AzureRmServiceBusTopic <parameters>
 ```powershell
 # Old
 # The $subscription has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing properties
+<<<<<<< HEAD
 $subscription = Get-AzureRmServiceBussubscription <parameters>
+=======
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $subscription.EntityAvailabilityStatus
 $subscription.EnableSubscriptionPartitioning
 $subscription.IsAnonymousAccessible
@@ -704,5 +724,9 @@ $subscription.Location
 
 # New
 # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
+<<<<<<< HEAD
 $subscription = Get-AzureRmServiceBussubscription <parameters>
+=======
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```

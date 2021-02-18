@@ -21,11 +21,17 @@ function Test-CreateAttestation
 {
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
+<<<<<<< HEAD
     $attestationPolicy = "SgxDisableDebugMode"
+=======
+	$attestationName2 = getAssetName
+	$location = "East US"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
 	    $rgName = Create-ResourceGroup
+<<<<<<< HEAD
 		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -AttestationPolicy $attestationPolicy
 		
 		Assert-NotNull attestationCreated
@@ -39,6 +45,79 @@ function Test-CreateAttestation
 
 		# Test throws for resourcegroup nonexistent
 		Assert-Throws { New-AzAttestation -Name $attestationName -ResourceGroupName $unknownRGName -AttestationPolicy $attestationPolicy}
+=======
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -Location $location
+
+		Assert-NotNull $attestationCreated
+		Assert-AreEqual $attestationName $attestationCreated.Name
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
+
+		# Test throws for existing attestation
+		Assert-Throws { New-AzAttestation -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName  -Location $location }
+
+		# Test throws for resourcegroup nonexistent
+		Assert-Throws { New-AzAttestation -Name $attestationName2 -ResourceGroupName $unknownRGName -Location $location }
+
+		# Test throws if location not specified 
+		Assert-Throws { New-AzAttestation -Name $attestationName2 -ResourceGroupName rgName.ResourceGroupName }
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
+function Test-CreateAttestationWithPolicySigningCertificate
+{
+	$attestationName = getAssetName
+	$location = "East US"
+	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+	$PemDir = Join-Path $TestOutputRoot "PemFiles"
+    $file = Join-Path $PemDir "policySigningCerts.pem"
+
+	try
+	{
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySignersCertificateFile $file
+
+		Assert-NotNull $attestationCreated
+		Assert-AreEqual $attestationName $attestationCreated.Name
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
+
+function Test-CreateAttestationWithTags
+{
+	$attestationName = getAssetName
+	$location = "East US"
+	$tags = @{Key1="value1";Key2="value2";Key3="value3"}
+
+	try
+	{
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -Location $location -Tag $tags
+
+		Assert-NotNull $attestationCreated
+		Assert-AreEqual $attestationName $attestationCreated.Name
+		Assert-AreEqual $location $attestationCreated.Location
+		Assert-NotNull $attestationCreated.AttestUri
+		Assert-NotNull $attestationCreated.Id
+		Assert-NotNull $attestationCreated.Status
+		Assert-AreEqual $tags.Count $attestationCreated.Tags.Count
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 
 	finally
@@ -53,6 +132,7 @@ Test Get-AzAttestation
 #>
 #------------------------------Get-AzAttestation-----------------------------------
 function Test-GetAttestation
+<<<<<<< HEAD
 {	
 	$attestationName = getAssetName
 	$attestationPolicy = "SgxDisableDebugMode"
@@ -64,6 +144,26 @@ function Test-GetAttestation
 		$got = Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
 		Assert-NotNull got
 		Assert-AreEqual $attestationName $got.Name
+=======
+{
+	$attestationName = getAssetName
+	$location = "East US"
+	
+	try
+	{
+	    $rgName = Create-ResourceGroup
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -Location $location
+
+		$got = Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
+
+		Assert-NotNull $got
+		Assert-AreEqual $attestationName $got.Name
+		Assert-AreEqual $location $got.Location
+		Assert-NotNull $got.AttestUri
+		Assert-NotNull $got.Id
+		Assert-NotNull $got.Status
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 
 	finally
@@ -72,6 +172,48 @@ function Test-GetAttestation
 	}
 }
 
+<<<<<<< HEAD
+=======
+function Test-GetDefaultProviders
+{
+	$got = Get-AzAttestation -DefaultProvider
+
+	Assert-NotNull $got
+
+	Assert-True { $got.Count -gt 0 }
+
+	foreach ($defaultProvider in $got) 
+	{
+		Assert-NotNull $defaultProvider
+		Assert-NotNull $defaultProvider.Status
+		Assert-NotNull $defaultProvider.Location
+
+		Assert-StartsWith "shared" $defaultProvider.Name
+
+		$attestUriStart = "https://" + $defaultProvider.Name
+		Assert-StartsWith $attestUriStart $defaultProvider.attestUri
+		Assert-True { $defaultProvider.attestUri.EndsWith(".attest.azure.net") }
+
+		$resourceId = "/providers/Microsoft.Attestation/attestationProviders/" + $defaultProvider.Name
+		Assert-AreEqual $resourceId $defaultProvider.Id
+    }
+}
+
+function Test-GetDefaultProviderByLocation
+{
+	$location = "East US"
+
+	$got = Get-AzAttestation -DefaultProvider -Location $location
+
+	Assert-NotNull $got
+	Assert-AreEqual "sharedeus" $got.Name
+	Assert-AreEqual $location $got.Location
+	Assert-AreEqual "https://sharedeus.eus.test.attest.azure.net" $got.AttestUri
+	Assert-AreEqual "/providers/Microsoft.Attestation/attestationProviders/sharedeus" $got.Id
+	Assert-NotNull $got.Status
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Test Remove-AzAttestation
@@ -80,6 +222,7 @@ Test Remove-AzAttestation
 function Test-DeleteAttestationByName
 {
 	$attestationName = getAssetName
+<<<<<<< HEAD
 	$attestationPolicy = "SgxDisableDebugMode"
 	try
 	{
@@ -90,8 +233,25 @@ function Test-DeleteAttestationByName
 		Assert-Throws {Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName}
 	}
 	
+=======
+	$location = "East US"
+
+	try
+	{
+		$rgName = Create-ResourceGroup
+		New-AzAttestation -Name $attestationName -ResourceGroupName $rgName.ResourceGroupName -Location $location
+		Remove-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName
+
+		Assert-Throws { Get-AzAttestation  -Name $attestationName  -ResourceGroupName $rgName.ResourceGroupName }
+	}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	finally
 	{
 		Clean-ResourceGroup $rgName.ResourceGroupName
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

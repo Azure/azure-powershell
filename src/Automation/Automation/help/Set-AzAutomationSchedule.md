@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 6429C564-1995-4D9B-BF9B-963B4F5FB3BD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationschedule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/set-azautomationschedule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

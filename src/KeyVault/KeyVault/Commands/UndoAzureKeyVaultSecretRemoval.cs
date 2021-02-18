@@ -14,6 +14,11 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault

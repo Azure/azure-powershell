@@ -26,7 +26,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
+<<<<<<< HEAD
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet})]
+=======
+    [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class AddAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -111,6 +115,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     storageACL = new NetworkRuleSet();
                 }
+<<<<<<< HEAD
+=======
+                bool ruleChanged = false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 switch (ParameterSetName)
                 {
@@ -119,8 +127,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (string s in VirtualNetworkResourceId)
                         {
+<<<<<<< HEAD
                             VirtualNetworkRule rule = new VirtualNetworkRule(s);
                             storageACL.VirtualNetworkRules.Add(rule);
+=======
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
+                            {
+                                if (originRule.VirtualNetworkResourceId.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add VirtualNetworkRule as it already exist: {0}", s));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                VirtualNetworkRule rule = new VirtualNetworkRule(s);
+                                storageACL.VirtualNetworkRules.Add(rule);
+                                ruleChanged = true;
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                         break;
                     case IpRuleStringParameterSet:
@@ -128,8 +155,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             storageACL.IpRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
+<<<<<<< HEAD
                             IPRule rule = new IPRule(s);
                             storageACL.IpRules.Add(rule);
+=======
+                            bool ruleExist = false;
+                            foreach (IPRule originRule in storageACL.IpRules)
+                            {
+                                if (originRule.IPAddressOrRange.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add IPAddressOrRange as it already exist: {0}", s));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                IPRule rule = new IPRule(s);
+                                storageACL.IpRules.Add(rule);
+                                ruleChanged = true;
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                         break;
                     case NetworkRuleObjectParameterSet:
@@ -137,7 +183,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             storageACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
                         {
+<<<<<<< HEAD
                             storageACL.VirtualNetworkRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleVirtualNetworkRule(rule));
+=======
+                            bool ruleExist = false;
+                            foreach (VirtualNetworkRule originRule in storageACL.VirtualNetworkRules)
+                            {
+                                if (originRule.VirtualNetworkResourceId.Equals(rule.VirtualNetworkResourceId, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add IPAddressOrRange as it already exist: {0}", rule.VirtualNetworkResourceId));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                storageACL.VirtualNetworkRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleVirtualNetworkRule(rule));
+                                ruleChanged = true;
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                         break;
                     case IpRuleObjectParameterSet:
@@ -145,11 +209,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             storageACL.IpRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
+<<<<<<< HEAD
                             storageACL.IpRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
+=======
+                            bool ruleExist = false;
+                            foreach (IPRule originRule in storageACL.IpRules)
+                            {
+                                if (originRule.IPAddressOrRange.Equals(rule.IPAddressOrRange, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add IPAddressOrRange as it already exist: {0}", rule.IPAddressOrRange));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+
+                                storageACL.IpRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
+                                ruleChanged = true;
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                         break;
                 }
 
+<<<<<<< HEAD
                 StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
                 updateParameters.NetworkRuleSet = storageACL;
 
@@ -159,6 +243,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     updateParameters);
 
                 storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+=======
+                if (ruleChanged)
+                {
+                    StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
+                    updateParameters.NetworkRuleSet = storageACL;
+
+                    var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
+                        this.ResourceGroupName,
+                        this.Name,
+                        updateParameters);
+
+                    storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 switch (ParameterSetName)
                 {

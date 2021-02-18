@@ -54,6 +54,16 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
+<<<<<<< HEAD
+=======
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewA2AManagedDiskReplicationConfigWithCmk()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #if NETSTANDARD
         [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
 #else
@@ -75,5 +85,43 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewContainer");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ARemoveReplicationProtectedItemDisk()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RemoveReplicationProtectedItemDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AReplicateProximityPlacementGroupVm()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ReplicateProximityPlacementGroupVm");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AVMNicConfig()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMNicConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AZoneToZoneRecoveryPlanReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ZoneToZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ARecoveryPlanReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RecoveryPlanReplication");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

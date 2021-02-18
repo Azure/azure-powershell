@@ -36,7 +36,11 @@ function Test-JobScheduleCRUD
         $jobSpec2.PoolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $jobSpec2.PoolInformation.PoolId = "testPool2"
         $schedule2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
+<<<<<<< HEAD
         $schedule2.DoNotRunUntil = New-Object System.DateTime -ArgumentList @(2020, 01, 01, 12, 30, 0)
+=======
+        $schedule2.DoNotRunUntil = New-Object System.DateTime -ArgumentList @(2023, 01, 01, 12, 30, 0)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         New-AzBatchJobSchedule -Id $jsId2 -JobSpecification $jobSpec2 -Schedule $schedule2 -BatchContext $context
 
         # List the job schedules to ensure they were created

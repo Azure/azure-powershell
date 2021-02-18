@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: E94B88AA-B8B0-49F0-AD36-6707E17B40AD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementproduct
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementproduct
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -177,7 +181,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionsLimit
 Specifies the maximum number of simultaneous subscriptions.
+<<<<<<< HEAD
 The default value is 1.
+=======
+The default value is None.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

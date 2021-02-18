@@ -1,21 +1,38 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FB37494B-4035-45B7-88AB-DF33CEEF0D0A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightsecurityprofile
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
+Module Name: Az.HDInsight
+ms.assetid: FB37494B-4035-45B7-88AB-DF33CEEF0D0A
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightsecurityprofile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Add-AzHDInsightSecurityProfile
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Adds a security profileto a cluster configuration object.
+=======
+Adds a security profile to a cluster configuration object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 Add-AzHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -Domain <String>
  -DomainUserCredential <PSCredential> -OrganizationalUnitDN <String> -LdapsUrls <String[]>
+=======
+Add-AzHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -DomainResourceId <String>
+ -DomainUserCredential <PSCredential> [-OrganizationalUnitDN <String>] -LdapsUrls <String[]>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ClusterUsersGroupDNs <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,12 +43,65 @@ Security profile contains configuration related joining the cluster to Active Di
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1
 ```
 PS C:\> {{ Add example code here }}
 ```
 
 {{ Add example description here }}
+=======
+### Example 1: Add security profile to the cluster configuration object
+```
+PS C:\> #Primary storage account info
+PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
+PS C:\> $storageAccountName = "yourstorageacct001"
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+
+PS C:\> $storageContainer = "container001"
+
+# Cluster configuration info
+PS C:\> $location = "East US 2"
+PS C:\> $clusterResourceGroupName = "Group"
+PS C:\> $clusterName = "your-hadoop-001"
+PS C:\> $clusterCreds = Get-Credential
+
+# If the cluster's resource group doesn't exist yet, run:
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+#Security profile info
+PS C:\> $domain="sampledomain.onmicrosoft.com"
+PS C:\> $domainUser="sample.user@sampledomain.onmicrosoft.com"
+PS C:\> $domainPassword=ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+PS C:\> $domainUserCredential=New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+PS C:\> $organizationalUnitDN="ou=testunitdn"
+PS C:\> $ldapsUrls=("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
+PS C:\> $clusterUsersGroupDNs=("groupdn1","groupdn2")
+
+# Create the cluster
+PS C:\> New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightSecurityProfile `
+                -Domain $domain `
+                -DomainUserCredential $domainUserCredential `
+                -OrganizationalUnitDN $organizationalUnitDN `
+                -LdapsUrls $ldapsUrls `
+                -ClusterUsersGroupDNs $clusterUsersGroupDNs `
+            | New-AzHDInsightCluster `
+                -ClusterType Spark `
+                -OSType Linux `
+                -ClusterSizeInNodes 4 `
+                -ResourceGroupName $clusterResourceGroupName `
+                -ClusterName $clusterName `
+                -HttpCredential $clusterCreds `
+                -Location $location `
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
+```
+
+This command adds a security profile value to the cluster named your-hadoop-001.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -81,8 +151,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -Domain
 Active Directory domain for the cluster
+=======
+### -DomainResourceId
+Active Directory domain resource id for the cluster.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -135,7 +210,11 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,7 +231,11 @@ Aliases: cf
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -165,22 +248,36 @@ Aliases: wi
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+<<<<<<< HEAD
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile
 
+=======
+## OUTPUTS
+
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

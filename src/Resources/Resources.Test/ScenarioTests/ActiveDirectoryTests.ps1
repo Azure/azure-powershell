@@ -466,10 +466,17 @@ function Test-NewADApplication
     Assert-NotNull $apps
     Assert-True { $apps.Count -ge 0 }
 
+<<<<<<< HEAD
 	# Get Application by ObjectId
 	$app1 =  Get-AzADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
 	Assert-AreEqual $app1.Count 1
+=======
+    # Get Application by ObjectId
+    $app1 =  Get-AzADApplication -ObjectId $application.ObjectId
+    Assert-NotNull $app1
+    Assert-AreEqual $app1.Count 1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Get Application by ApplicationId
     $app1 =  Get-AzADApplication -ApplicationId $application.ApplicationId
@@ -521,6 +528,14 @@ function Test-NewADServicePrincipal
 
     # Assert
     Assert-NotNull $servicePrincipal
+<<<<<<< HEAD
+=======
+    Assert-Null $servicePrincipal.Secret
+
+    #Verify credential
+    $cred = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-Null $cred
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # GetServicePrincipal by ObjectId
     $sp1 = Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
@@ -540,7 +555,11 @@ function Test-NewADServicePrincipal
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Tests Creating and deleting service principal without an exisitng application.
+=======
+Tests Creating and deleting service principal without an existing application.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #>
 function Test-NewADServicePrincipalWithoutApp
 {
@@ -549,7 +568,11 @@ function Test-NewADServicePrincipalWithoutApp
 
     # Test
     $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName
+<<<<<<< HEAD
 	$role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
+=======
+    $role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -596,6 +619,7 @@ Tests creating a service principal with reader permissions
 #>
 function Test-NewADServicePrincipalWithReaderRole
 {
+<<<<<<< HEAD
 	# Setup
 	$displayName = getAssetName
 	$roleDefinitionName = "Reader"
@@ -619,6 +643,38 @@ function Test-NewADServicePrincipalWithReaderRole
 		Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
 		Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName $roleDefinitionName
 	}
+=======
+    # Setup
+    $displayName = getAssetName
+    $roleDefinitionName = "Reader"
+
+    # Test
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -Role $roleDefinitionName
+    Assert-NotNull $servicePrincipal
+    Assert-AreEqual $servicePrincipal.DisplayName $displayName
+    Assert-NotNull $servicePrincipal.Secret
+
+    #Verify credential
+    $cred = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-Null $cred
+    $cred = Get-AzADAppCredential -ApplicationId $servicePrincipal.ApplicationId
+    Assert-AreEqual $cred.Count 1
+
+    try
+    {
+        $role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
+        Assert-AreEqual $role.Count 1
+        Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
+        Assert-AreEqual $role.ObjectId $servicePrincipal.Id
+        Assert-AreEqual $role.RoleDefinitionName $roleDefinitionName
+        Assert-AreEqual $role.ObjectType "ServicePrincipal"
+    }
+    finally
+    {
+        Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+        Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName $roleDefinitionName
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -627,6 +683,7 @@ Tests creating a service principal with permissions over a custom scope
 #>
 function Test-NewADServicePrincipalWithCustomScope
 {
+<<<<<<< HEAD
 	# Setup
 	$displayName = getAssetName
 	$defaultRoleDefinitionName = "Contributor"
@@ -654,6 +711,42 @@ function Test-NewADServicePrincipalWithCustomScope
 		Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
 		Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -Scope $scope -RoleDefinitionName $defaultRoleDefinitionName
 	}
+=======
+    # Setup
+    $displayName = getAssetName
+    $defaultRoleDefinitionName = "Contributor"
+    $subscription = Get-AzSubscription | Select -Last 1 -Wait
+    $resourceGroup = Get-AzResourceGroup | Select -Last 1 -Wait
+    $scope = "/subscriptions/" + $subscription.Id + "/resourceGroups/" + $resourceGroup.ResourceGroupName
+
+    # Test
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -Scope $scope
+    Assert-NotNull $servicePrincipal
+    Assert-AreEqual $servicePrincipal.DisplayName $displayName
+    Assert-NotNull $servicePrincipal.Secret
+
+    #Verify credential
+    $cred = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-Null $cred
+    $cred = Get-AzADAppCredential -ApplicationId $servicePrincipal.ApplicationId
+    Assert-AreEqual $cred.Count 1
+
+    try
+    {
+        $role = Get-AzRoleAssignment -ObjectId $servicePrincipal.Id
+        Assert-AreEqual $role.Count 1
+        Assert-AreEqual $role.DisplayName $servicePrincipal.DisplayName
+        Assert-AreEqual $role.ObjectId $servicePrincipal.Id
+        Assert-AreEqual $role.RoleDefinitionName $defaultRoleDefinitionName
+        Assert-AreEqual $role.Scope $scope
+        Assert-AreEqual $role.ObjectType "ServicePrincipal"
+    }
+    finally
+    {
+        Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+        Remove-AzRoleAssignment -ObjectId $servicePrincipal.Id -Scope $scope -RoleDefinitionName $defaultRoleDefinitionName
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -663,6 +756,7 @@ Tests Creating and deleting application using App Credentials.
 function Test-CreateDeleteAppCredentials
 {
     # Setup
+<<<<<<< HEAD
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
     $displayName = "test"
     $identifierUri = "http://" + $displayName
@@ -670,13 +764,26 @@ function Test-CreateDeleteAppCredentials
 	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
 	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
 	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
+=======
+    $getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = "test"
+    $identifierUri = "http://" + $displayName
+    $password = $getAssetName
+    $keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
+    $keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
+    $keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Test - Add application with a password cred
     $application = New-AzADApplication -DisplayName $displayName -IdentifierUris $identifierUri -Password $password
 
     # Assert
     Assert-NotNull $application
+<<<<<<< HEAD
 	Try {
+=======
+    Try {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Get Application by ObjectId
     $app1 =  Get-AzADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
@@ -698,6 +805,7 @@ function Test-CreateDeleteAppCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+<<<<<<< HEAD
 	$cred2 = $cred
 
 	# Add 1 key credential to the same app
@@ -709,6 +817,19 @@ function Test-CreateDeleteAppCredentials
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
 	$cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+=======
+    $cred2 = $cred
+
+    # Add 1 key credential to the same app
+    $certPath = Join-Path $ResourcesPath "certificate.pfx"
+    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
+    $binCert = $cert.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert)
+    $start = (Get-Date).ToUniversalTime()
+    $end = $start.AddDays(1)
+    $cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $cred
 
     # Get credential should fetch 3 credentials
@@ -717,6 +838,7 @@ function Test-CreateDeleteAppCredentials
     Assert-AreEqual $cred3.Count 3
     $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 3
+<<<<<<< HEAD
 	$cred3 = $cred
 
 	# Add 1 more key credential to the same app
@@ -725,6 +847,16 @@ function Test-CreateDeleteAppCredentials
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
 	$cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+=======
+    $cred3 = $cred
+
+    # Add 1 more key credential to the same app
+    $binCert = $cert.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert)
+    $start = (Get-Date).ToUniversalTime()
+    $end = $start.AddDays(1)
+    $cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $cred
 
     # Get credential should fetch 4 credentials
@@ -745,6 +877,7 @@ function Test-CreateDeleteAppCredentials
     Remove-AzADAppCredential -ObjectId $application.ObjectId -Force
     $cred5 = Get-AzADAppCredential -ObjectId $application.ObjectId
     Assert-Null $cred5                     
+<<<<<<< HEAD
 	 
     $newApplication = Get-AzADApplication -DisplayNameStartWith "PowershellTestingApp"
     Assert-Throws { New-AzADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
@@ -753,6 +886,16 @@ function Test-CreateDeleteAppCredentials
 		# Remove App
 		Remove-AzADApplication -ObjectId $application.ObjectId -Force
 	}
+=======
+
+    $newApplication = Get-AzADApplication -DisplayNameStartWith "PowershellTestingApp"
+    Assert-Throws { New-AzADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
+    }
+    Finally{
+        # Remove App
+        Remove-AzADApplication -ObjectId $application.ObjectId -Force
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 
@@ -762,6 +905,7 @@ Tests Creating and deleting application using Service Principal Credentials.
 #>
 function Test-CreateDeleteSpCredentials
 {
+<<<<<<< HEAD
 	param([string]$applicationId)
 
     # Setup
@@ -772,12 +916,28 @@ function Test-CreateDeleteSpCredentials
 	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
 	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
 	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
+=======
+    param([string]$applicationId)
+
+    # Setup
+    $getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = "test"
+    $identifierUri = "http://" + $displayName
+    $password = $getAssetName
+    $keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
+    $keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
+    $keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Test - Add SP
     $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -ApplicationId $applicationId
 
     # Assert
     Assert-NotNull $servicePrincipal
+<<<<<<< HEAD
+=======
+    Assert-Null $servicePrincipal.Secret
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     Try
     {
@@ -787,8 +947,12 @@ function Test-CreateDeleteSpCredentials
 
     # Get credential should fetch 1 credential
     $cred1 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+<<<<<<< HEAD
     Assert-NotNull $cred1
     Assert-AreEqual $cred1.Count 1
+=======
+    Assert-Null $cred1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
@@ -799,6 +963,7 @@ function Test-CreateDeleteSpCredentials
     # Get credential should fetch 2 credentials
     $cred2 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred2
+<<<<<<< HEAD
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
@@ -813,11 +978,28 @@ function Test-CreateDeleteSpCredentials
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
 	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+=======
+    Assert-AreEqual $cred2.Count 1
+    $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 1
+    $cred2 = $cred
+
+    # Add 1 key credential to the same app
+    $certPath = Join-Path $ResourcesPath "certificate.pfx"
+    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
+    $binCert = $cert.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert)
+    $start = (Get-Date).ToUniversalTime()
+    $end = $start.AddDays(1)
+    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $cred
 
     # Get credential should fetch 3 credentials
     $cred3 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred3
+<<<<<<< HEAD
     Assert-AreEqual $cred3.Count 3
     $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 3
@@ -829,21 +1011,44 @@ function Test-CreateDeleteSpCredentials
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
 	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+=======
+    Assert-AreEqual $cred3.Count 2
+    $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 2
+    $cred3 = $cred
+
+    # Add 1 more key credential to the same app
+    $binCert = $cert.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert)
+    $start = (Get-Date).ToUniversalTime()
+    $end = $start.AddDays(1)
+    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $cred
 
     # Get credential should fetch 4 credentials
     $cred4 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred4
+<<<<<<< HEAD
     Assert-AreEqual $cred4.Count 4
     $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 4
+=======
+    Assert-AreEqual $cred4.Count 3
+    $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 3
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
     # Remove cred by KeyId
     Remove-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
     $cred5 = Get-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
     Assert-NotNull $cred5
+<<<<<<< HEAD
     Assert-AreEqual $cred5.Count 3
+=======
+    Assert-AreEqual $cred5.Count 2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-AreEqual $cred5[2].KeyId $cred1.KeyId
 
     # Remove All creds
@@ -853,7 +1058,25 @@ function Test-CreateDeleteSpCredentials
     }
     Finally
     {
+<<<<<<< HEAD
 		# Remove Service Principal
 		Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
     }
 }
+=======
+        # Remove Service Principal
+        Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests registering and a resource provider feature.
+#>
+function Test-RemoveServicePrincipalWithNameNotFound
+{
+    $FakeServicePrincipalName = "this is a fake service principal name and there are no way this can be valid"
+
+    Assert-ThrowsContains {Remove-AzADServicePrincipal -ServicePrincipalName $FakeServicePrincipalName} "Could not find a service principal with the name"
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -51,6 +51,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         public List<PSExpressRouteLink> Links { get; set; }
         public List<PSResourceId> Circuits { get; set; }
+<<<<<<< HEAD
+=======
+        public PSManagedServiceIdentity Identity { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [JsonIgnore]
         public string LinksText
@@ -63,5 +67,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(Circuits, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string IdentityText
+        {
+            get { return JsonConvert.SerializeObject(Identity, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

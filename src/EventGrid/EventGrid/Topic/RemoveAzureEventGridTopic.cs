@@ -16,7 +16,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -72,6 +75,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.Name, $"Remove topic {this.Name} in resource group {this.ResourceGroupName}"))
             {
+<<<<<<< HEAD
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
                     var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
@@ -85,6 +89,27 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
 
                 this.Client.DeleteTopic(this.ResourceGroupName, this.Name);
+=======
+                string resourceGroupName = string.Empty;
+                string topicName = string.Empty;
+
+                if (!string.IsNullOrEmpty(this.Name))
+                {
+                    resourceGroupName = this.ResourceGroupName;
+                    topicName = this.Name;
+                }
+                else if (!string.IsNullOrEmpty(this.ResourceId))
+                {
+                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                }
+                else if (this.InputObject != null)
+                {
+                    resourceGroupName = this.InputObject.ResourceGroupName;
+                    topicName = this.InputObject.TopicName;
+                }
+
+                this.Client.DeleteTopic(resourceGroupName, topicName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

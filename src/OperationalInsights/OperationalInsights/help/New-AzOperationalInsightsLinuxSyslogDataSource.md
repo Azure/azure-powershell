@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: D6CBDF09-E243-425B-8677-256163A6DFBF
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxsyslogdatasource
+=======
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxsyslogdatasource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,6 +39,49 @@ Azure Operational Insights can collect syslog data.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
+=======
+### Example 1: Create syslog data sources
+```
+$FacilityNames       = @()
+$FacilityNames      += 'auth'
+$FacilityNames      += 'authpriv'
+$FacilityNames      += 'cron'
+$FacilityNames      += 'daemon'
+$FacilityNames      += 'ftp'
+$FacilityNames      += 'kern'
+$FacilityNames      += 'mail'
+$FacilityNames      += 'syslog'
+$FacilityNames      += 'user'
+$FacilityNames      += 'uucp'
+$ResourceGroupName   = 'MyResourceGroup'
+$WorkspaceName       = 'MyWorkspaceName'
+
+$Count = 0
+foreach ($FacilityName in $FacilityNames) {
+    $Count++
+    $null = New-AzOperationalInsightsLinuxSyslogDataSource `
+    -ResourceGroupName $ResourceGroupName `
+    -WorkspaceName $WorkspaceName `
+    -Name "Linux-syslog-$($Count)" `
+    -Facility $FacilityName `
+    -CollectEmergency `
+    -CollectAlert `
+    -CollectCritical `
+    -CollectError `
+    -CollectWarning `
+    -CollectNotice `
+    -CollectDebug `
+    -CollectInformational
+}
+
+Get-AzOperationalInsightsDataSource `
+   -ResourceGroupName $ResourceGroupName `
+   -WorkspaceName $WorkspaceName `
+   -Kind 'LinuxSyslog'
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -CollectAlert
@@ -203,7 +250,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Specifies a name for the data source.
+=======
+Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used as long as it is unique.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

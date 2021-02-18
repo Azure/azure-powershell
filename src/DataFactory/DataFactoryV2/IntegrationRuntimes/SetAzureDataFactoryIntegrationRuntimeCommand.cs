@@ -24,7 +24,10 @@ using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
@@ -248,6 +251,70 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
+        [ValidateNotNull]
+        public string[] PublicIPs { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
+        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General, 
+            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized, 
+            Management.DataFactory.Models.DataFlowComputeType.ComputeOptimized)]
+        [ValidateNotNullOrEmpty]
+        public string DataFlowComputeType { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
+        public int? DataFlowCoreCount { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowTimeToLive)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowTimeToLive)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowTimeToLive)]
+        public int? DataFlowTimeToLive { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = Constants.HelpIntegrationRuntimeSetupScriptContainerSasUri)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -282,6 +349,69 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [ValidateNotNullOrEmpty]
+        public System.Collections.ArrayList ExpressCustomSetup { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyIntegrationRuntimeName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyStagingLinkedServiceName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyStagingPath { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -653,6 +783,46 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.DataFlowProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties = new IntegrationRuntimeDataFlowProperties();
+                }
+
+                integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
+                integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
+                integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+            }
+
+            if (PublicIPs != null)
+            {
+                if (string.IsNullOrWhiteSpace(VNetId))
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.IntegrationRuntimeVNetNotProvided),
+                        "VNetId");
+                }
+
+                if (PublicIPs.Length != 2)
+                {
+                    throw new PSArgumentException(string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidPublicIPCount),
+                        "PublicIPs");
+                }
+
+                integrationRuntime.ComputeProperties.VNetProperties.PublicIPs = PublicIPs;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrWhiteSpace(LicenseType))
             {
                 if (integrationRuntime.SsisProperties == null)
@@ -679,6 +849,62 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 };
             }
 
+<<<<<<< HEAD
+=======
+            if (ExpressCustomSetup != null && ExpressCustomSetup.ToArray().Length > 0)
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                System.Collections.Generic.IList<CustomSetupBase> setups = new System.Collections.Generic.List<CustomSetupBase>();
+                foreach (CustomSetupBase setup in ExpressCustomSetup)
+                {
+                    setups.Add(setup);
+                }
+                integrationRuntime.SsisProperties.ExpressCustomSetupProperties = setups;
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyIntegrationRuntimeName))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.ConnectVia = new EntityReference("IntegrationRuntimeReference", DataProxyIntegrationRuntimeName);
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyStagingLinkedServiceName))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.StagingLinkedService = new EntityReference("LinkedServiceReference", DataProxyStagingLinkedServiceName);
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyStagingPath))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.Path = DataProxyStagingPath;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrEmpty(Edition))
             {
                 if (integrationRuntime.SsisProperties == null)

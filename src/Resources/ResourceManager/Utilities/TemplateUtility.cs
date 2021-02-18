@@ -60,6 +60,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return dynamicParameters;
         }
 
+<<<<<<< HEAD
+=======
+        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(object template, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        {
+            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(template.ToString(), templateParameterObject, templateParameterFilePath, staticParameters);
+
+            return dynamicParameters;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(Hashtable templateObject, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
         {
             string templateContent = null;
@@ -144,21 +154,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
             if (templateParameterObject != null)
             {
+<<<<<<< HEAD
                 UpdateParametersWithObject(dynamicParameters, templateParameterObject);
+=======
+                UpdateParametersWithObject(staticParameters, dynamicParameters, templateParameterObject);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = ParseTemplateParameterFileContents(templateParameterFilePath);
+<<<<<<< HEAD
                 UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromFile));
+=======
+                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromFile));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             if (templateParameterFilePath != null && Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
             {
                 var parametersFromUri = ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath));
+<<<<<<< HEAD
                 UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromUri));
+=======
+                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromUri));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             return dynamicParameters;
         }
 
+<<<<<<< HEAD
         private static void UpdateParametersWithObject(RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
         {
             if (templateParameterObject != null)
@@ -189,6 +212,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                         throw new ArgumentException(string.Format(ProjectResources.FailureParsingTemplateParameterObject,
                                                                   dynamicParameter.Key,
                                                                   templateParameterObject[dynamicParameter.Key]));
+=======
+        private static void UpdateParametersWithObject(string[] staticParameters, RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
+        {
+            const string duplicatedParameterSuffix = "FromTemplate";
+
+            if (templateParameterObject != null)
+            {
+                foreach (string paramName in templateParameterObject.Keys)
+                {
+                    string dynamicParamName = staticParameters.Contains(paramName, StringComparer.OrdinalIgnoreCase)
+                        ? paramName + duplicatedParameterSuffix
+                        : paramName;
+
+                    if (dynamicParameters.TryGetValue(dynamicParamName, out RuntimeDefinedParameter dynamicParameter))
+                    {
+                        dynamicParameter.Value = templateParameterObject[paramName] is TemplateFileParameterV1 templateFileParameterV1
+                            ? templateFileParameterV1.Value
+                            : templateParameterObject[paramName];
+
+                        dynamicParameter.IsSet = true;
+                        ((ParameterAttribute)dynamicParameter.Attributes[0]).Mandatory = false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 }
             }
@@ -249,8 +294,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             RuntimeDefinedParameter runtimeParameter = new RuntimeDefinedParameter()
             {
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
+<<<<<<< HEAD
                 Name = staticParameters.Any(n => n.StartsWith(name, StringComparison.OrdinalIgnoreCase))
                     ? name + duplicatedParameterSuffix : name,
+=======
+                Name = staticParameters.Contains(name, StringComparer.OrdinalIgnoreCase) ? name + duplicatedParameterSuffix : name,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ParameterType = GetParameterType(parameter.Value.Type),
                 Value = defaultValue
             };

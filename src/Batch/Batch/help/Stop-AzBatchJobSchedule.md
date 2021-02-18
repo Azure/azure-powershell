@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: D1C5B35C-5419-4739-9D57-6C4228E98DAC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/stop-azbatchjobschedule
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: D1C5B35C-5419-4739-9D57-6C4228E98DAC
+online version: https://docs.microsoft.com/powershell/module/az.batch/stop-azbatchjobschedule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,13 +37,21 @@ PS C:\>Stop-AzBatchJobSchedule -Id "JobSchedule17" -BatchContext $Context
 ```
 
 This command stops the job schedule that has the ID JobSchedule17.
+<<<<<<< HEAD
 Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+=======
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -80,7 +96,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -100,7 +120,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Enable-AzBatchJobSchedule](./Enable-AzBatchJobSchedule.md)
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzBatchJobSchedule](./Get-AzBatchJobSchedule.md)
 
@@ -108,6 +132,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzBatchJobSchedule](./Remove-AzBatchJobSchedule.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

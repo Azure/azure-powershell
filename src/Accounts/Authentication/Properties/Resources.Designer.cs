@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -88,7 +92,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to [Common.Authentication]: Authenticating using configuration values: Domain: &apos;{0}&apos;, Endpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirect: &apos;{3}&apos;, ResourceClientUri: &apos;{4}&apos;, ValidateAuthrity: &apos;{5}&apos;.
+=======
+        ///   Looks up a localized string similar to [Common.Authentication]: Authenticating using configuration values: Domain: &apos;{0}&apos;, Endpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirect: &apos;{3}&apos;, ResourceClientUri: &apos;{4}&apos;, ValidateAuthority: &apos;{5}&apos;.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public static string AdalAuthConfigurationTrace {
             get {
@@ -151,6 +159,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to No authentication client factory has been registered, please try to re-authenticate using Connect-AzAccount..
+        /// </summary>
+        public static string AuthenticationClientFactoryNotRegistered {
+            get {
+                return ResourceManager.GetString("AuthenticationClientFactoryNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        /// </summary>
+        public static string AutosaveNotSupportedWithSuggestion {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to .Azure.
         /// </summary>
         public static string AzureDirectoryName {
@@ -187,7 +216,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Changing public environment is not supported..
+=======
+        ///   Looks up a localized string similar to Changing built-in or discovered environment is not supported..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public static string ChangingDefaultEnvironmentNotSupported {
             get {
@@ -241,6 +274,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to INITIALIZATION: Failed to migrate ADAL token to MSAL token with error : {0}.
+        /// </summary>
+        public static string FailedToMigrateAdal2Msal {
+            get {
+                return ResourceManager.GetString("FailedToMigrateAdal2Msal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to File path is not valid.
         /// </summary>
         public static string FilePathIsNotValid {
@@ -394,6 +439,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Password is missing and no cache found for the current user..
+        /// </summary>
+        public static string MissingPasswordAndNoCache {
+            get {
+                return ResourceManager.GetString("MissingPasswordAndNoCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to There was an error retrieving the managed service access token for resource &apos;{0}&apos; using the URI &apos;{1}&apos;.  Please check that this managed service is configured to emit tokens at this address and that the associated managed service identity has the appropriate role assignment and try logging in again..
         /// </summary>
         public static string MSITokenRequestFailed {
@@ -484,7 +541,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Removing public environment is not supported..
+=======
+        ///   Looks up a localized string similar to Removing built-in or discovered environment is not supported..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public static string RemovingDefaultEnvironmentsNotSupported {
             get {
@@ -565,6 +626,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to We have launched a browser for you to log in. For the old experience with device code flow, please run &apos;Connect-AzAccount -UseDeviceAuthentication&apos;..
+        /// </summary>
+        public static string SuccessfullyLaunchedBrowser {
+            get {
+                return ResourceManager.GetString("SuccessfullyLaunchedBrowser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to No tenant was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount..
         /// </summary>
         public static string TenantNotFound {
@@ -583,6 +656,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Attempting to launch a browser for authorization code login..
+        /// </summary>
+        public static string TryLaunchBrowser {
+            get {
+                return ResourceManager.GetString("TryLaunchBrowser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to launch a browser for authorization code login. Reverting to device code login..
+        /// </summary>
+        public static string UnableToLaunchBrowser {
+            get {
+                return ResourceManager.GetString("UnableToLaunchBrowser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unable to update mismatching Json structured: {0} {1}..
         /// </summary>
         public static string UnableToPatchJson {
@@ -619,7 +713,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, CorrelationId: &apos;{1}&apos;, ValidateAuthority: &apos;{2}&apos;.
+=======
+        ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, ClientId: &apos;{1}&apos;.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public static string UPNAcquireTokenContextTrace {
             get {
@@ -664,7 +762,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to [Common.Authentication]: User info for token DisplayId: &apos;{0}&apos;, Name: {2} {1}, IdProvider: &apos;{3}&apos;, Uid: &apos;{4}&apos;.
+=======
+        ///   Looks up a localized string similar to [Common.Authentication]: User info for token Username: &apos;{0}&apos;, HomeAccountId: {1}, Environment: &apos;{2}&apos;, Uid: &apos;{3}&apos;.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public static string UPNRenewTokenUserInfoTrace {
             get {

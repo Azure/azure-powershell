@@ -44,7 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             serviceProperties.MinuteMetrics = null;
             serviceProperties.Cors = null;
             serviceProperties.DefaultServiceVersion = null;
+<<<<<<< HEAD
             serviceProperties.DeleteRetentionPolicy = null;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

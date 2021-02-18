@@ -164,6 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Created AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncGroupModel CreateSyncGroup(AzureSqlSyncGroupModel model, string syncDatabaseId)
         {
+<<<<<<< HEAD
             var resp = Communicator.CreateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncDatabaseId, new SyncGroupCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
@@ -179,6 +180,20 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
             resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
+=======
+            var createResp = Communicator.CreateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncDatabaseId, model.SyncGroupName, new Management.Sql.Models.SyncGroup()
+            {
+                ConflictResolutionPolicy = model.ConflictResolutionPolicy,
+                Interval = model.IntervalInSeconds,
+                HubDatabaseUserName = model.HubDatabaseUserName,
+                HubDatabasePassword = model.HubDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
+                Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
+                UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+            });
+
+            // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
+            var resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return CreateSyncGroupModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }
 
@@ -189,6 +204,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Updated AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncGroupModel UpdateSyncGroup(AzureSqlSyncGroupModel model)
         {
+<<<<<<< HEAD
             var resp = Communicator.UpdateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncGroupCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
@@ -203,6 +219,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
             resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
+=======
+            var updateResp = Communicator.UpdateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, new Management.Sql.Models.SyncGroup()
+            {
+                Interval = model.IntervalInSeconds,
+                HubDatabaseUserName = model.HubDatabaseUserName,
+                HubDatabasePassword = model.HubDatabasePassword == null ? null: AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
+                Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
+                UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+            });
+            
+            // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
+            var resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return CreateSyncGroupModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }
 
@@ -306,17 +335,28 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Created AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncMemberModel CreateSyncMember(AzureSqlSyncMemberModel model, string syncAgentId)
         {
+<<<<<<< HEAD
             SyncMemberCreateOrUpdateProperties properties = new SyncMemberCreateOrUpdateProperties()
             {
                 SyncDirection = (SyncDirectionEnum?)(model.SyncDirection != null ? Enum.Parse(typeof(SyncDirectionEnum), model.SyncDirection, true) : null),
                 DatabaseType = (DatabaseTypeEnum)(model.MemberDatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.MemberDatabaseType, true) : null)
             };
             if (properties.DatabaseType == DatabaseTypeEnum.AzureSqlDatabase)
+=======
+            Management.Sql.Models.SyncMember properties = new Management.Sql.Models.SyncMember()
+            {
+                SyncDirection = model.SyncDirection,
+                DatabaseType = model.MemberDatabaseType,
+            };
+            
+            if (properties.DatabaseType == DatabaseTypeEnum.AzureSqlDatabase.ToString())
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 properties.DatabaseName = model.MemberDatabaseName;
                 properties.ServerName = model.MemberServerName;
                 properties.UserName = model.MemberDatabaseUserName;
                 properties.Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword);
+<<<<<<< HEAD
             }
             else 
             {
@@ -332,6 +372,20 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
             resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
+=======
+                properties.UsePrivateLinkConnection = model.UsePrivateLinkConnection;
+                properties.SyncMemberAzureDatabaseResourceId = model.SyncMemberAzureDatabaseResourceId;
+            }
+            else 
+            {
+                properties.SqlServerDatabaseId = model.SqlServerDatabaseId == null ? null : (Guid?)Guid.Parse(model.SqlServerDatabaseId);
+                properties.SyncAgentId = model.SyncAgentId;
+            }
+            var createResp = Communicator.CreateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, model.SyncMemberName, syncAgentId, properties);
+
+            // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
+            var resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -348,6 +402,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Updated AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncMemberModel UpdateSyncMember(AzureSqlSyncMemberModel model)
         {
+<<<<<<< HEAD
             SyncMemberCreateOrUpdateProperties properties = new SyncMemberCreateOrUpdateProperties()
             {
                 DatabaseType = (DatabaseTypeEnum)(model.MemberDatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.MemberDatabaseType, true) : null),
@@ -365,6 +420,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
             resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
+=======
+            Management.Sql.Models.SyncMember properties = new Management.Sql.Models.SyncMember()
+            {
+                DatabaseType = model.MemberDatabaseType,
+                DatabaseName = model.MemberDatabaseName,
+                ServerName = model.MemberServerName,
+                UserName = model.MemberDatabaseUserName,
+                Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword),
+                UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+                SyncMemberAzureDatabaseResourceId = model.SyncMemberAzureDatabaseResourceId
+            };
+            var updateResp = Communicator.UpdateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, model.SyncMemberName, properties);
+
+            // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
+            var resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -487,7 +558,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="databaseName">The name of the database</param>
         /// <param name="syncGroup">The sync group object from the response</param>
         /// <returns>The converted model</returns>
+<<<<<<< HEAD
         public static AzureSqlSyncGroupModel CreateSyncGroupModelFromResponse(string resourceGroupName, string serverName, string databaseName, SyncGroup syncGroup)
+=======
+        public static AzureSqlSyncGroupModel CreateSyncGroupModelFromResponse(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.SyncGroup syncGroup)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return new AzureSqlSyncGroupModel(resourceGroupName, serverName, databaseName, syncGroup);
         }
@@ -510,7 +585,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="databaseName">The name of the database</param>
         /// <param name="syncMember">The sync member object from the response</param>
         /// <returns>The converted model</returns>
+<<<<<<< HEAD
         public static AzureSqlSyncMemberModel CreateSyncMemberModelFromResponse(string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncMember syncMember)
+=======
+        public static AzureSqlSyncMemberModel CreateSyncMemberModelFromResponse(string resourceGroupName, string serverName, string databaseName, string syncGroupName, Management.Sql.Models.SyncMember syncMember)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return new AzureSqlSyncMemberModel(resourceGroupName, serverName, databaseName, syncGroupName, syncMember);
         }

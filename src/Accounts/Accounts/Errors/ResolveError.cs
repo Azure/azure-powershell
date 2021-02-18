@@ -17,11 +17,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
+=======
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
+using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+namespace Microsoft.Azure.Commands.Profile.Errors
+{
+    [GenericBreakingChange("The `Resolve-Error` alias will be removed in a future release.  Please change any scripts that use this alias to use `Resolve-AzError` instead.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Alias("Resolve-Error")]
     [Cmdlet("Resolve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
@@ -77,6 +89,13 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                     HandleError(record);
                 }
             }
+<<<<<<< HEAD
+=======
+            var informationMessage = new HostInformationMessage();
+            informationMessage.Message = $"{Environment.NewLine}{AzureProfileConstants.AzurePowerShellFeedbackMessage}{Environment.NewLine}";
+            informationMessage.NoNewLine = false;
+            WriteInformation(informationMessage, new string[] { "PSHOST" });
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private IEnumerable<ErrorRecord> GetErrorVariable()

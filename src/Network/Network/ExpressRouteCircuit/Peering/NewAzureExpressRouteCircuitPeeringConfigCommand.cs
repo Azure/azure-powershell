@@ -53,7 +53,11 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
+<<<<<<< HEAD
             if (this.PeerAddressType == IPv6)
+=======
+            if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 this.SetIpv6PeeringParameters(peering);
             }

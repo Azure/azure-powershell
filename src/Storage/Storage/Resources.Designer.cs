@@ -158,6 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("BlobUriNotFound", resourceCulture);
             }
         }
+<<<<<<< HEAD
         
         /// <summary>
         ///   Looks up a localized string similar to The specified blob &apos;{0}&apos; is already a snapshot with snapshot time {1}. Can&apos;t use &quot;DeleteSnapshot&quot; option for it..
@@ -168,6 +169,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
             }
         }
         
+=======
+
+        /// <summary>
+        ///   Looks up a localized string similar to The specified blob &apos;{0}&apos; is already a snapshot with snapshot time {1}. Can&apos;t use &quot;DeleteSnapshot&quot; option for it..
+        /// </summary>
+        internal static string CannotDeleteSnapshotForSnapshot
+        {
+            get
+            {
+                return ResourceManager.GetString("CannotDeleteSnapshotForSnapshot", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The specified blob &apos;{0}&apos; is a blob Version with VersionId {1}. Can&apos;t use &quot;DeleteSnapshot&quot; option for it..
+        /// </summary>
+        internal static string CannotDeleteSnapshotForBlobVersion
+        {
+            get
+            {
+                return ResourceManager.GetString("CannotDeleteSnapshotForBlobVersion", resourceCulture);
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         ///   Looks up a localized string similar to Can not get storage account  from subscription. Please check the subscription settings using &quot;Get-AzSubscription&quot;..
         /// </summary>

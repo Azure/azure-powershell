@@ -30,7 +30,12 @@ function Test-SnapshotCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
+<<<<<<< HEAD
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+=======
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus2euap" -UseCanonical
+    $resourceLocation = "eastus2euap"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -63,6 +68,11 @@ function Test-SnapshotCrud
         # create two snapshots and check
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
+<<<<<<< HEAD
+=======
+        # check created date has been populated
+        Assert-NotNull $retrieveSn.Created
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # one without using the filesystem id
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2
@@ -115,7 +125,12 @@ function Test-SnapshotPipelines
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
+<<<<<<< HEAD
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+=======
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -141,7 +156,11 @@ function Test-SnapshotPipelines
         $retrievedVolume = New-AnfVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
         
         # create a snapshot from the piped volume input
+<<<<<<< HEAD
         $retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot -SnapshotName $snName1
+=======
+        $retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot   -SnapshotName $snName1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
         
         # delete the snapshot by piping from snapshot get
@@ -156,4 +175,155 @@ function Test-SnapshotPipelines
         # Cleanup
         Clean-ResourceGroup $resourceGroup
     }
+<<<<<<< HEAD
+=======
+}
+
+<#
+.SYNOPSIS
+Test Create new Volume from a Snapshot operation
+#>
+function Test-CreateVolumeFromSnapshot
+{
+    $currentSub = (Get-AzureRmContext).Subscription	
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName = Get-ResourceName
+    $snName1 = Get-ResourceName
+    $snName2 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte
+    $doubleUsage = 2 * $usageThreshold
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
+    $subnetName = "default"
+    $standardPoolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+		
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+
+        # create account, pool and volume
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $standardPoolSize -ServiceLevel $serviceLevel
+		
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
+        Assert-AreEqual "$accName/$poolName/$volName" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+
+        # create two snapshots and check
+        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
+        # check created date has been populated
+        Assert-NotNull $retrieveSn.Created
+
+        # get and check a snapshot by name
+        $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshot.Name
+		
+        # get and check the snapshot again using the resource id just obtained
+        $retrievedSnapshotById = Get-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
+
+        # Create volume from snapshot
+        $restoredVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
+        Assert-AreEqual $retrievedVolume.Name $restoredVolume.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
+Test Restore/Revert Volume from one of its Snapshots
+#>
+function Test-RestoreVolumeFromSnapshot
+{
+    $currentSub = (Get-AzureRmContext).Subscription	
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName = Get-ResourceName
+    $snName1 = Get-ResourceName
+    $snName2 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte
+    $doubleUsage = 2 * $usageThreshold
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "eastus2euap"
+    $subnetName = "default"
+    $standardPoolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+		
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+
+        # create account, pool and volume
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $standardPoolSize -ServiceLevel $serviceLevel
+		
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId
+        Assert-AreEqual "$accName/$poolName/$volName" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+
+        # create two snapshots and check
+        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
+        # check created date has been populated
+        Assert-NotNull $retrieveSn.Created
+
+        # get and check a snapshot by name
+        $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshot.Name
+		
+        # get and check the snapshot again using the resource id just obtained
+        $retrievedSnapshotById = Get-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
+        Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
+
+        # revert the volume from snapshot
+        Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

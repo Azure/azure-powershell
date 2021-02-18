@@ -40,5 +40,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SnapshotPipelines");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateVolumeFromSnapshot()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateVolumeFromSnapshot");
+        }
+               
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreVolumeFromSnapshot()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreVolumeFromSnapshot");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

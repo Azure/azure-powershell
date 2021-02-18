@@ -34,7 +34,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = true, HelpMessage = "Match variable of the condition.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("RemoteAddress", "RequestMethod", "QueryString", "PostArgs", "RequestUri",
+<<<<<<< HEAD
             "RequestHeader", "RequestBody", "RequestScheme", "UrlPath", "UrlFileExtension", "UrlFileName", "IsDevice")]
+=======
+            "RequestHeader", "RequestBody", "RequestScheme", "UrlPath", "UrlFileExtension", "UrlFileName", "IsDevice", "Cookies", "HttpVersion")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string MatchVariable { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Describes operator to be matched")]
@@ -42,11 +46,21 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains","LessThan", "GreaterThan",
             "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Wildcard")]
         public string Operator { get; set; }
+<<<<<<< HEAD
+=======
+        
+        [Parameter(Mandatory = false, HelpMessage = "Name of Selector to be matched")]
+        public string Selector { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = true, HelpMessage = "List of possible match values.")]
         public string[] MatchValue { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Tranform to apply before matching. Possible values are Lowercase and Uppercase")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Transform to apply before matching. Possible values are Lowercase and Uppercase")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [PSArgumentCompleter("Uppercase", "Lowercase")]
         public string Transform { get; set; }
 
@@ -59,6 +73,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             {
                 MatchVariable = MatchVariable,
                 Operator = Operator,
+<<<<<<< HEAD
+=======
+                Selector = Selector,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 MatchValue = MatchValue,
                 NegateCondition = NegateCondition,
                 Transfroms = Transform == null? null : new List<string> { Transform }

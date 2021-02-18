@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.batch
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.batch
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -71,9 +75,12 @@ Gets job summary statistics for a Batch account.
 ### [Get-AzBatchLocationQuota](Get-AzBatchLocationQuota.md)
 Gets the Batch service quotas for your subscription at the given location.
 
+<<<<<<< HEAD
 ### [Get-AzBatchNodeAgentSku](Get-AzBatchNodeAgentSku.md)
 Gets Batch node agent SKUs available in a Batch account.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzBatchNodeFile](Get-AzBatchNodeFile.md)
 Gets the properties of Batch node files.
 
@@ -101,6 +108,12 @@ Gets remote logon settings for a compute node.
 ### [Get-AzBatchSubtask](Get-AzBatchSubtask.md)
 Gets the subtask information of the specified task.
 
+<<<<<<< HEAD
+=======
+### [Get-AzBatchSupportedImage](Get-AzBatchSupportedImage.md)
+Gets Batch supported images for a Batch account.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzBatchTask](Get-AzBatchTask.md)
 Gets the Batch tasks for a job.
 
@@ -134,6 +147,12 @@ Creates a job schedule in the Batch service.
 ### [New-AzBatchPool](New-AzBatchPool.md)
 Creates a pool in the Batch service.
 
+<<<<<<< HEAD
+=======
+### [New-AzBatchResourceFile](New-AzBatchResourceFile.md)
+Creates a Resource File for usage by `New-AzBatchTask`.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzBatchTask](New-AzBatchTask.md)
 Creates a Batch task under a job.
 
@@ -194,9 +213,12 @@ Sets a job schedule.
 ### [Set-AzBatchPool](Set-AzBatchPool.md)
 Updates the properties of a pool.
 
+<<<<<<< HEAD
 ### [Set-AzBatchPoolOSVersion](Set-AzBatchPoolOSVersion.md)
 Changes the operating system version of the specified pool.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzBatchTask](Set-AzBatchTask.md)
 Updates the properties of a task.
 

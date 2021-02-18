@@ -18,6 +18,13 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Internal.Resources;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Network;
+using InternalNetwork = Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -25,6 +32,10 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.RecoveryServices.Backup;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -43,6 +54,12 @@ namespace RecoveryServices.SiteRecovery.Test
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public ResourceManagementClient ResourceManagementRestClient { get; private set; }
+<<<<<<< HEAD
+=======
+        public StorageManagementClient StorageClient { get; private set; }
+        public ComputeManagementClient ComputeManagementRestClient { get; private set; }
+        public RecoveryServicesBackupClient RecoveryServicesBackupClient { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, string scenario, params string[] scripts)
         {
@@ -70,7 +87,14 @@ namespace RecoveryServices.SiteRecovery.Test
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+<<<<<<< HEAD
                 {"Microsoft.Authorization", null}
+=======
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null},
+                {"Microsoft.Storage", null},
+                {"Microsoft.Network", null}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             var providersToIgnore = new Dictionary<string, string>
@@ -79,7 +103,11 @@ namespace RecoveryServices.SiteRecovery.Test
             };
 
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
+<<<<<<< HEAD
             HttpMockServer.RecordsDirectory = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+=======
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
@@ -88,11 +116,21 @@ namespace RecoveryServices.SiteRecovery.Test
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var rmProfileModule = _helper.RMProfileModule;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     PowershellFile,
                     PowershellHelperFile,
                     rmProfileModule,
+<<<<<<< HEAD
+=======
+                    _helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    "AzureRM.Storage.ps1",
+                    _helper.GetRMModulePath("AzureRM.Compute.psd1"),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"),
 #if !NETSTANDARD
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"),
@@ -119,11 +157,27 @@ namespace RecoveryServices.SiteRecovery.Test
             ResourceManagementRestClient = GetResourceManagementClientRestClient(context);
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(context);
+<<<<<<< HEAD
             
             _helper.SetupManagementClients(
                 RecoveryServicesMgmtClient,
                 SiteRecoveryMgmtClient,
                 ResourceManagementRestClient);
+=======
+            StorageClient = GetStorageManagementClient(context);
+            ComputeManagementRestClient = GetComputeManagementClientRestClient(context);
+            RecoveryServicesBackupClient = GetRecoveryServicesBackupClient(context);
+
+            _helper.SetupManagementClients(
+                RecoveryServicesMgmtClient,
+                SiteRecoveryMgmtClient,
+                ResourceManagementRestClient,
+                StorageClient,
+                ComputeManagementRestClient,
+                GetNetworkManagementClientRestClient(context),
+                GetNetworkManagementClient(context),
+                RecoveryServicesBackupClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static RecoveryServicesClient GetRecoveryServicesManagementClient(MockContext context)
@@ -136,9 +190,40 @@ namespace RecoveryServices.SiteRecovery.Test
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+<<<<<<< HEAD
+=======
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static InternalNetwork.NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<InternalNetwork.NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static NetworkManagementClient GetNetworkManagementClientRestClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ComputeManagementClient GetComputeManagementClientRestClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static SiteRecoveryManagementClient GetSiteRecoveryManagementClient(MockContext context)
         {
             return context.GetServiceClient<SiteRecoveryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+<<<<<<< HEAD
+=======
+
+        private static RecoveryServicesBackupClient GetRecoveryServicesBackupClient(MockContext context)
+        {
+            return context.GetServiceClient<RecoveryServicesBackupClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

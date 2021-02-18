@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/new-azrelayauthorizationrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.relay/new-azrelayauthorizationrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,8 +41,13 @@ The **New-AzRelayAuthorizationRule** cmdlet creates a new authorization rule for
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Namespace
 ```
+=======
+### Example 1: Namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}
@@ -49,8 +58,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
 
+<<<<<<< HEAD
 ### Example 2 - WcfRelay
 ```
+=======
+### Example 2: WcfRelay
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}
@@ -61,8 +75,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Creates authorization rule `AuthoRule1` with **Listen** rights for the WcfRelay `TestWCFRelay1`.
 
+<<<<<<< HEAD
 ### Example 3 - HybridConnection
 ```
+=======
+### Example 3: HybridConnection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
 
 Rights : {Listen}

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoor
+=======
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,6 +16,19 @@ Create a new Azure Front Door load balancer
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### ByFieldsWithBackendPoolsSettingParameterSet (Default)
+```
+New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
+ -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
+ -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSetting>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsWithCertificateNameCheckParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
@@ -27,12 +44,21 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 
 ### Example 1: Create a Front Door based on given parameters.
 ```powershell
+<<<<<<< HEAD
 PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
+=======
+PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 FriendlyName                : frontdoor1
 RoutingRules                : {routingrule1}
 BackendPools                : {backendpool1}
+<<<<<<< HEAD
 EnforceCertificateNameCheck : Enabled
+=======
+BackendPoolsSetting         : {backendPoolsSetting1}
+EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 HealthProbeSettings         : {healthProbeSetting1}
 LoadBalancingSettings       : {loadbalancingsetting1}
 FrontendEndpoints           : {frontendendpoint1}
@@ -65,6 +91,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -BackendPoolsSetting
+Settings for all backendPools
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
+Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -85,7 +129,11 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -254,11 +302,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+<<<<<<< HEAD
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
 
+=======
+## OUTPUTS
+
+### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

@@ -27,6 +27,7 @@
 
 # Upcoming Breaking Changes
 
+<<<<<<< HEAD
 ## Release 5.0.0
 
 The following cmdlets were affected this release:
@@ -37,3 +38,15 @@ The following cmdlets were affected this release:
 
 **Add-AzureBatchPool**
  - The `Caching` default for `Microsoft.Azure.Commands.Batch.Models.PSDataDisk` is now `ReadWrite` instead of `None`.
+=======
+The following cmdlets were affected this release:
+
+**Get-AzBatchApplication**
+ - Removed `ApplicationPackages` property from `PSApplication` returned by the **Get-AzBatchApplication** cmdlet. This property was previously always `$null`.
+ - The specific packages inside of an application now can be retrieved using **Get-AzBatchApplicationPackage**. For example: `Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication`.
+
+**New-AzBatchPool**
+- When creating a pool using **New-AzBatchPool**, the `VirtualMachineImageId` property of `PSImageReference` can now only refer to a Shared Image Gallery image.
+- When creating a pool using **New-AzBatchPool**, the pool can be provisioned without a public IP using the new `PublicIPAddressConfiguration` property of `PSNetworkConfiguration`.
+  - The `PublicIPs` property of `PSNetworkConfiguration` has moved in to `PSPublicIPAddressConfiguration` as well. This property can only be specified if `IPAddressProvisioningType` is `UserManaged`.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

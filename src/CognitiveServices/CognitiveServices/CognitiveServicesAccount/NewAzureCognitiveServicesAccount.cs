@@ -21,6 +21,10 @@ using Microsoft.Azure.Management.CognitiveServices.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Globalization;
 using System.Management.Automation;
 using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
@@ -33,6 +37,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class NewAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// CognitiveServices Encryption parameter set name
+        /// </summary>
+        private const string CognitiveServicesEncryptionParameterSet = "CognitiveServicesEncryption";
+
+        /// <summary>
+        /// KeyVault Encryption parameter set name
+        /// </summary>
+        private const string KeyVaultEncryptionParameterSet = "KeyVaultEncryption";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -96,11 +113,71 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "Generate and assign a new Cognitive Services Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            HelpMessage = "List of User Owned Storage Accounts.",
+            Mandatory = false)]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public string[] StorageAccountId { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Cognitive Services Account Encryption KeySource to Microsoft.CognitiveServices or not.",
+            Mandatory = false,
+            ParameterSetName = CognitiveServicesEncryptionParameterSet)]
+        public SwitchParameter CognitiveServicesEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Cognitive Services Account encryption keySource to Microsoft.KeyVault or not.",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        public SwitchParameter KeyVaultEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyVersion",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "Cognitive Services Account encryption keySource KeyVault KeyVaultUri",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri
+        {
+            get; set;
+        }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as how to handle requests that don't match any of the defined rules")]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for Cognitive Services Account. Commonly `Enabled` or `Disabled`.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ApiProperties of Cognitive Services Account. Required by specific account types.")]
+        public CognitiveServicesAccountApiProperties ApiProperty { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -110,6 +187,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
+<<<<<<< HEAD
                 var properties = new JObject();
                 if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
                 {
@@ -125,10 +203,73 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     Location = Location,
                     Kind = Type, // must have value, mandatory parameter
                     Sku = new Sku(SkuName),
+=======
+                var properties = new CognitiveServicesAccountProperties();
+                if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
+                {
+                    properties.CustomSubDomainName = CustomSubdomainName;
+                }
+
+                if (NetworkRuleSet != null)
+                {
+                    properties.NetworkAcls = NetworkRuleSet.ToNetworkRuleSet();
+                }
+
+                if (ApiProperty != null)
+                {
+                    properties.ApiProperties = ApiProperty;
+                }
+
+                CognitiveServicesAccount createParameters = new CognitiveServicesAccount()
+                {
+                    Location = Location,
+                    Kind = Type, // must have value, mandatory parameter
+                    Sku = new Sku(SkuName, null),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
                     Properties = properties
                 };
 
+<<<<<<< HEAD
+=======
+                if (!string.IsNullOrEmpty(PublicNetworkAccess))
+                {
+                    createParameters.Properties.PublicNetworkAccess = PublicNetworkAccess;
+                }
+
+                if (AssignIdentity.IsPresent)
+                {
+                    createParameters.Identity = new Identity(IdentityType.SystemAssigned);
+                }
+
+                if (CognitiveServicesEncryption.IsPresent)
+                {
+                    createParameters.Properties.Encryption = new Encryption(null, KeySource.MicrosoftCognitiveServices);
+                }
+
+                if (ParameterSetName == KeyVaultEncryptionParameterSet)
+                {
+                    createParameters.Properties.Encryption = new Encryption(
+                        new KeyVaultProperties()
+                        {
+                            KeyName = KeyName,
+                            KeyVersion = KeyVersion,
+                            KeyVaultUri = KeyVaultUri
+                        }, 
+                        KeySource.MicrosoftKeyVault);
+                }
+
+
+                if (StorageAccountId != null && StorageAccountId.Length > 0)
+                {
+                    createParameters.Properties.UserOwnedStorage = new List<UserOwnedStorage>();
+                    foreach(var storageAccountId in StorageAccountId)
+                    {
+                        createParameters.Properties.UserOwnedStorage.Add(new UserOwnedStorage(storageAccountId));
+                    }
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (ShouldProcess(
                     Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, Name, Type, SkuName, Location)))
                 {
@@ -147,6 +288,27 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                             }
                         }
                     }
+<<<<<<< HEAD
+=======
+
+                    if (Type.Equals("Face", StringComparison.InvariantCultureIgnoreCase) || Type.Equals("CognitiveServices", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        if (Force.IsPresent)
+                        {
+                            WriteWarning(Resources.NewAccount_LegalTerm_NotPolice);
+                        }
+                        else
+                        {
+                            bool yesToAll = false, noToAll = false;
+                            if (!ShouldContinue(Resources.NewAccount_LegalTerm_NotPolice, "Notice", true, ref yesToAll, ref noToAll))
+                            {
+                                return;
+                            }
+                        }
+                    }
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     try
                     {
                         CognitiveServicesAccount createAccountResponse = CognitiveServicesClient.Accounts.Create(
@@ -154,10 +316,26 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                         Name,
                                         createParameters);
                     }
+<<<<<<< HEAD
                     catch (Exception ex)
                     {
                         // Give users a specific message says `Failed to create Cognitive Services account.`
                         // Details should able be found in the exception.
+=======
+                    catch (ErrorException ex)
+                    {
+                        // If the Exception is ErrorException, clone the exception with modified message.
+                        var newEx = new ErrorException($"Failed to create Cognitive Services account. {ex.Message}", ex);
+                        newEx.Body = ex.Body;
+                        newEx.Request = ex.Request;
+                        newEx.Response = ex.Response;
+                        throw newEx;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Give users a specific message says `Failed to create Cognitive Services account.`
+                        // Details should able be found in the inner exception.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         throw new Exception("Failed to create Cognitive Services account.", ex);
                     }
 

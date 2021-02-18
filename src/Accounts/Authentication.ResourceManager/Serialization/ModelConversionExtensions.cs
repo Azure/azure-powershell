@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             result.Subscription = context.Subscription.Convert();
             result.Tenant = context.Tenant.Convert();
             result.Environment = context.Environment.Convert();
+<<<<<<< HEAD
             var cache = AzureSession.Instance.TokenCache;
             if ( context.TokenCache != null && context.TokenCache.Length > 0)
             {
@@ -53,6 +54,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             }
 
             result.TokenCache = cache;
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return result;
         }
 

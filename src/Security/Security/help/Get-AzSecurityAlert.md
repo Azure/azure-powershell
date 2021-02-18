@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityAlert
+=======
+online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityAlert
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -76,7 +80,11 @@ InstanceId         : fff23c70-80ef-4a8b-9122-507b0ea8dfff
 RemediationSteps   : 1. If WordPress is installed, make sure that the application is up to date and automatic updates 
                      are enabled.
                      2. If only specific IPs should access to the web application, use IP Restrictions 
+<<<<<<< HEAD
                      (https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions).
+=======
+                     (https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ReportedSeverity   : High
 ReportedTimeUtc    : 10/07/2018 16:31:52
 State              : Active
@@ -180,7 +188,11 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
+<<<<<<< HEAD
 Gets all the security alerts that were detected on resoruces inside a subscription
+=======
+Gets all the security alerts that were detected on resources inside a subscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
@@ -308,7 +320,11 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
+<<<<<<< HEAD
 Gets all the security alerts that were detected on resoruces inside the "myService1" resource group
+=======
+Gets all the security alerts that were detected on resources inside the "myService1" resource group
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3
 ```powershell
@@ -346,7 +362,11 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
+<<<<<<< HEAD
 Gets a specific security alert that were detected on resoruces inside the "myService1" resource group
+=======
+Gets a specific security alert that were detected on resources inside the "myService1" resource group
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -426,7 +446,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

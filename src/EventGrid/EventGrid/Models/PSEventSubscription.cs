@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Topic = eventSubscription.Topic;
             this.EventTtl = eventSubscription.RetryPolicy?.EventTimeToLiveInMinutes;
             this.MaxDeliveryAttempt = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
+<<<<<<< HEAD
+=======
+            this.EventDeliverySchema = eventSubscription.EventDeliverySchema;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.deadletterDestination = eventSubscription.DeadLetterDestination;
             this.ExpirationDate = eventSubscription.ExpirationTimeUtc;
         }
@@ -118,6 +122,27 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
                     return hybridConnDestination.ResourceId;
                 }
 
+<<<<<<< HEAD
+=======
+                var serviceBusTopic = this.Destination as ServiceBusTopicEventSubscriptionDestination;
+                if (serviceBusTopic != null)
+                {
+                    return serviceBusTopic.ResourceId;
+                }
+
+                var serviceBusQueue = this.Destination as ServiceBusQueueEventSubscriptionDestination;
+                if (serviceBusQueue != null)
+                {
+                    return serviceBusQueue.ResourceId;
+                }
+
+                var azureFunction = this.Destination as AzureFunctionEventSubscriptionDestination;
+                if (azureFunction != null)
+                {
+                    return azureFunction.ResourceId;
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 return null;
             }
         }

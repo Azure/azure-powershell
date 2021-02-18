@@ -27,7 +27,11 @@ namespace Microsoft.Azure.Commands.Common
         /// Translate the given Uri into the appropriate Uri for the current environment.
         /// </summary>
         /// <param name="environment">The current Azure Environment</param>
+<<<<<<< HEAD
         /// <param name="baseEndpoint">The Uri to tranform</param>
+=======
+        /// <param name="baseEndpoint">The Uri to transform</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <returns>The Uri, with naseUri appropriately altered for the current Azure environment</returns>
         public static Uri GetUriFromBaseRequestUri(this IAzureEnvironment environment, Uri baseEndpoint)
         {
@@ -237,8 +241,13 @@ namespace Microsoft.Azure.Commands.Common
             if (baseUri.IsAbsoluteUri)
             {
                 output.Path = output.Uri.AppendPathRemoveDuplicates(baseUri.AbsolutePath);
+<<<<<<< HEAD
                 output.Query = baseUri.Query;
                 output.Fragment = baseUri.Fragment;
+=======
+                output.Query = baseUri.Query?.TrimStart('?');
+                output.Fragment = baseUri.Fragment?.TrimStart('#');
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 return output.Uri;
             }
 

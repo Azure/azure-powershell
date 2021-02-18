@@ -28,6 +28,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Routing Weight", Target = ViewControl.Table)]
         public uint RoutingWeight { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
+
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
@@ -36,5 +44,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ExpressRouteCircuitPeering, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

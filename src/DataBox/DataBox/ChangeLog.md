@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 0.1.1
+* Update references in .psd1 to use relative path
+
+## Version 0.1.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * General Availability of `Az.Databox` Module
 * Added cmdlet `Get-AzDataBoxJob`
 	- This cmdlet fetches the databox job/jobs of the user based on the filters applied like resource group name etc.

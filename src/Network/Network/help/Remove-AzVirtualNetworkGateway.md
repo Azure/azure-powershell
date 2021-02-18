@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A35BB728-A7EF-4ADF-B1A9-25A156434E99
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworkgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,8 +28,13 @@ The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Delete a Virtual Network Gateway
 ```
+=======
+### Example 1: Delete a Virtual Network Gateway
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Remove-AzVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
 

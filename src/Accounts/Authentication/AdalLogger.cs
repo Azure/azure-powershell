@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+=======
+using Microsoft.Identity.Client;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.Generic;
 
@@ -22,6 +26,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Implements logging callback for ADAL - since only a single logger is allowed, allow
     /// reporting logs to multiple logging mechanisms
     /// </summary>
+<<<<<<< HEAD
+=======
+    /// TODO: AdalLogger should be useless, will verify after engineering bits
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class AdalLogger :  IDisposable
     {
         Action<string> _logger;
@@ -96,8 +104,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 lock (_lockObject)
                 {
                     Instance._loggers.Add(logger);
+<<<<<<< HEAD
                     LoggerCallbackHandler.LogCallback = Instance.Log;
                     LoggerCallbackHandler.PiiLoggingEnabled = true;
+=======
+                    //LoggerCallbackHandler.LogCallback = Instance.Log;
+                    //LoggerCallbackHandler.PiiLoggingEnabled = true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 
@@ -109,7 +122,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 lock (_lockObject)
                 {
                     Instance._loggers.Clear();
+<<<<<<< HEAD
                     LoggerCallbackHandler.UseDefaultLogging = false;
+=======
+                    //LoggerCallbackHandler.UseDefaultLogging = false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 

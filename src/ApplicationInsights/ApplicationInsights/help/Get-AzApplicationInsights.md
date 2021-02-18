@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsights
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -59,7 +66,11 @@ SamplingPercentage :
 TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
 ```
 
+<<<<<<< HEAD
 Get application insights resource named "test" in resoruce group "testgroup"
+=======
+Get application insights resource named "test" in resource group "testgroup"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2 Get application insights resource with pricing plan information
 ```
@@ -91,7 +102,11 @@ TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
 PricingPlan        : Basic
 ```
 
+<<<<<<< HEAD
 Get application insights resource and include pricing plan information for resource named "test" in resoruce group "testgroup"
+=======
+Get application insights resource and include pricing plan information for resource named "test" in resource group "testgroup"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -183,7 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

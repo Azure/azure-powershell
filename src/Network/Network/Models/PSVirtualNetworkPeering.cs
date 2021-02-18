@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAddressSpace RemoteVirtualNetworkAddressSpace { get; set; }
 
         [JsonProperty(Order = 1)]
+<<<<<<< HEAD
+=======
+        public PSVirtualNetworkBgpCommunities RemoteBgpCommunities { get; set; }
+
+        [JsonProperty(Order = 1)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
@@ -76,6 +82,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RemoteVirtualNetworkAddressSpaceText
         {
             get { return JsonConvert.SerializeObject(RemoteVirtualNetworkAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+<<<<<<< HEAD
         }        
+=======
+        }
+
+        [JsonIgnore]
+        public string RemoteBgpCommunitiesText
+        {
+            get { return JsonConvert.SerializeObject(RemoteBgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

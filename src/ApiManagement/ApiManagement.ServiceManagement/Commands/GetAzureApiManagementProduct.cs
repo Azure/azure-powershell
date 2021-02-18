@@ -19,12 +19,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
+<<<<<<< HEAD
     [OutputType(typeof(PsApiManagementProduct))]
+=======
+    [OutputType(typeof(PsApiManagementProduct), ParameterSetName = new[] { GetAllProducts, GetByTitle, GetById, GetByApiId })]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "GetAllProducts";
         private const string GetById = "GetByProductId";
         private const string GetByTitle = "GetByTitle";
+<<<<<<< HEAD
+=======
+        private const string GetByApiId = "GetByApiId";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -49,6 +57,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Title of the Product to look for. If specified will try to get the Product by title. This parameter is optional.")]
         public String Title { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            ParameterSetName = GetByApiId,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "ApiId of the Api to find the correlated products. This parameter is optional.")]
+        public String ApiId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(GetAllProducts))
@@ -66,6 +84,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var products = Client.ProductList(Context, Title);
                 WriteObject(products, true);
             }
+<<<<<<< HEAD
+=======
+            else if (ParameterSetName.Equals(GetByApiId))
+            {
+                var products = Client.ProductListByApi(Context, ApiId);
+                WriteObject(products, true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
             {
                 throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));

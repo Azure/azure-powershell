@@ -18,6 +18,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+<<<<<<< HEAD
+=======
+using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -47,6 +51,17 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+<<<<<<< HEAD
+=======
+        protected IVirtualHubsOperations VirtualHubClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.VirtualHubs;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected IPublicIPAddressesOperations PublicIPAddressesClient
         {
             get

@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RMTestBase
     {
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadProtectableItem()
@@ -31,7 +35,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadProtectableItem");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadInitializeProtectableItem()
@@ -40,7 +48,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadInitializeProtectableItem");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadEnableProtectableItem()
@@ -49,7 +61,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadEnableProtectableItem");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadEnableAutoProtectableItem()
@@ -59,7 +75,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadEnableAutoProtectableItem");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadBackupProtectionItem()
@@ -77,7 +97,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadGetRPs");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadGetLogChains()
@@ -86,7 +110,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadGetLogChains");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadFullRestore()
@@ -94,5 +122,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestore");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact(Skip = "To be fixed in upcoming release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadFullRestoreWithFiles()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestoreWithFiles");
+        }
+
+        [Fact(Skip = "To be fixed in upcoming release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadRestoreAsFiles()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadRestoreAsFiles");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

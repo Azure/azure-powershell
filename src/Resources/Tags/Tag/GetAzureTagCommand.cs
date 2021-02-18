@@ -15,16 +15,25 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Tags.Model;
+=======
+using Microsoft.Azure.Commands.Tags.Client;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
     /// <summary>
+<<<<<<< HEAD
     /// Creates a new tag with the specified values
+=======
+    /// Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tag"), OutputType(typeof(PSTag))]
     public class GetAzureTagCommand : TagBaseCmdlet
     {
+<<<<<<< HEAD
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -59,6 +68,78 @@ namespace Microsoft.Azure.Commands.Tags.Tag
                     }
                 }
             }
+=======
+        #region Parameter Set Names
+
+        private const string GetPredefinedTagParameterSet = "GetPredefinedTagParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
+        #endregion
+
+        #region Input Parameter Definitions
+
+        [Parameter(Position = 0, 
+            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = GetPredefinedTagParameterSet, 
+            HelpMessage = "Name of the tag. If not specified, return all the predefined and used tags under the subscription.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = false, 
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = GetPredefinedTagParameterSet, 
+            HelpMessage = "Whether should get the tag values information as well.")]
+        public SwitchParameter Detailed { get; set; }
+
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = GetByResourceIdParameterSet, 
+            HelpMessage = "The resource identifier for the tagged entity. A resource, a resource group or a subscription may be tagged.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        #endregion
+
+        public override void ExecuteCmdlet()
+        {
+            if(!string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                var res = TagsClient.GetTagAtScope(this.ResourceId);
+                
+                WriteObject(res);
+            }
+            else
+            {
+                List<PSTag> tags = string.IsNullOrEmpty(Name) ? TagsClient.ListTags() : new List<PSTag>() { TagsClient.GetTag(Name) };
+
+                if (tags != null && tags.Count > 0)
+                {
+                    if (Name != null)
+                    {
+                        WriteObject(tags[0]);
+                    }
+                    else
+                    {
+                        if (Detailed)
+                        {
+                            WriteObject(tags, true);
+                        }
+                        else
+                        {
+                            List<PSObject> output = new List<PSObject>();
+                            tags.ForEach(t => output.Add(base.ConstructPSObject(
+                                null,
+                                "Name", t.Name,
+                                "Count", t.Count)));
+
+                            WriteObject(output, true);
+                        }
+                    }
+                }
+            }
+            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -17,8 +17,59 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+<<<<<<< HEAD
 ## Upcoming Release
 
+=======
+
+## Upcoming Release
+
+## Version 0.9.0
+* Added breaking change notification in AzSecurityAlert:
+                    `Get-AzSecurityAlert`
+                    `Set-AzSecurityAlert`
+* Added new cmdlets: 
+                    `Get-AzSecuritySecureScore`
+                    `Get-AzSecuritySecureScoreControl`
+                    `Get-AzSecuritySecureScoreControlDefinition`
+
+## Version 0.8.0
+* Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
+* Added new cmdlet: `Get-AzSecurityTopology`, `Get-AzSecurityAdaptiveNetworkHardening` and `Add-AzSecurityAdaptiveNetworkHardening`
+
+## Version 0.7.10
+* Added new cmdlet: `Get-AzAllowedConnection`
+* Added new cmdlet: `Get-AzSecurityTopology`
+
+## Version 0.7.9
+* Add new cmdlets: `Get-AzSecurityAssessment`,
+                   `Set-AzSecurityAssessment`,
+                   `Remove-AzSecurityAssessment`,
+                   `Get-AzSecurityAssessmentMetadata`,
+                   `Set-AzSecurityAssessmentMetadata`,
+                   `Remove-AzSecurityAssessmentMetadata`,
+                   `Get-AzSecuritySubAssessment`
+
+## Version 0.7.9
+* Added new cmdlets: 
+	- `Get-AzSecuritySetting`
+	- `Set-AzSecuritySetting`
+
+## Version 0.7.8
+* Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
+					`Get-AzRegulatoryComplianceControl`, 
+					`Get-AzRegulatoryComplainceAssessment`
+* Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
+* Support management of SQL Information Protection Policy.
+
+## Version 0.7.7
+* Update references in .psd1 to use relative path
+
+## Version 0.7.6
+* Fixed miscellaneous typos across module
+* Add CosmosDB ATP to md files
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.7.5
 * Use NextLink for return maximum of 1500 security alerts in command Get-AzSecurityAlert
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: E460D108-2BF9-4F57-AF3D-13868DC73EA0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroleassignment
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,19 +19,30 @@ Assigns the specified RBAC role to the specified principal, at the specified sco
 
 ### EmptyParameterSet (Default)
 ```
+<<<<<<< HEAD
 New-AzRoleAssignment -ObjectId <String> -Scope <String> -RoleDefinitionName <String> [-AllowDelegation]
+=======
+New-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-Description <String>]
+ [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
 New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+<<<<<<< HEAD
  [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
 New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceName <String>
+<<<<<<< HEAD
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -35,53 +50,101 @@ New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceNam
 ### ScopeWithObjectIdParameterSet
 ```
 New-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
+=======
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
+ [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
+<<<<<<< HEAD
 New-AzRoleAssignment -ObjectId <String> -Scope <String> -RoleDefinitionId <Guid> [-AllowDelegation]
+=======
+New-AzRoleAssignment -ObjectId <String> -Scope <String> [-Description <String>] [-Condition <String>]
+ [-ConditionVersion <String>] -RoleDefinitionId <Guid> [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
 New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+<<<<<<< HEAD
  [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ResourceWithSignInNameParameterSet
 ```
 New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
+<<<<<<< HEAD
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
+=======
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
+ [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
 ```
+<<<<<<< HEAD
 New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
+=======
+New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
 New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+<<<<<<< HEAD
  [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ResourceWithSPNParameterSet
 ```
 New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -ResourceName <String>
+<<<<<<< HEAD
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
+=======
+ -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
+ [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
 ```
+<<<<<<< HEAD
 New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+=======
+New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-AllowDelegation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### InputFileParameterSet
+```
+New-AzRoleAssignment -InputFile <String> [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 Use the New-AzRoleAssignment command to grant access.
 Access is granted by assigning the appropriate RBAC role to them at the right scope.
@@ -178,6 +241,39 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Condition
+Condition to be applied to the RoleAssignment.
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ConditionVersion
+Version of the condition.
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -193,12 +289,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Description
+Brief description of the role assignment.
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputFile
+Path to role assignment json
+
+```yaml
+Type: System.String
+Parameter Sets: InputFileParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ObjectId
 Azure AD Objectid of the user, group or service principal.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet
+=======
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: Id, PrincipalId
 
 Required: True
@@ -298,7 +431,11 @@ Reader, Contributor, Virtual Network Administrator, etc.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+=======
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -318,10 +455,17 @@ If specified, it should start with "/subscriptions/{id}".
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: EmptyParameterSet, RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
 Required: True
+=======
+Parameter Sets: EmptyParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
+Aliases:
+
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -330,10 +474,17 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
 Required: False
+=======
+Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
+Aliases:
+
+Required: True
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -356,7 +507,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

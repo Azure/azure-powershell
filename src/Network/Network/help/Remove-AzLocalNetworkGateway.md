@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 75E30205-97AD-44E3-A61F-62B81ADB532C
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azlocalnetworkgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azlocalnetworkgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,8 +28,13 @@ The **Remove-AzLocalNetworkGateway** cmdlet deletes the object representing your
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Delete a Local Network Gateway
 ```
+=======
+### Example 1: Delete a Local Network Gateway
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Remove-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
 

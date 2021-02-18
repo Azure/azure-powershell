@@ -2,6 +2,7 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+<<<<<<< HEAD
       <Name>Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace</TypeName>
@@ -52,6 +53,8 @@
       </ListControl>
     </View>
     <View>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       <Name>Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount</TypeName>

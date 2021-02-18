@@ -17,9 +17,22 @@ GetLocationKindExchange
 #>
 function Test-GetLegacyKindExchangeAshburn
 {
+<<<<<<< HEAD
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 	Assert-NotNull $legacy
 	Assert-True {$legacy.Count -ge 1}
+=======
+try{
+#must be hard coded asn because they have legacy items.
+	$peerAsn = makePeerAsn 15224;
+    $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
+	Assert-NotNull $legacy
+	Assert-True {$legacy.Count -ge 1}
+	}finally {
+			$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
+		Assert-True {$isRemoved}
+	}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -28,6 +41,7 @@ GetLocationKindDirect
 #>
 function Test-GetLegacyKindDirectAmsterdam
 {
+<<<<<<< HEAD
 	$peerAsn = makePeerAsn 3257
     $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam 
 	Assert-NotNull $legacy
@@ -47,3 +61,18 @@ function makePeerAsn($asn)
 	Assert-NotNull $created
 	return $created
 }
+=======
+try{
+#must be hard coded asn because they have legacy items.
+	$peerAsn = makePeerAsn 20940
+    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam 
+	Assert-NotNull $legacy
+	Assert-True {$legacy.Count -ge 1}
+	}
+	finally {
+		$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
+		Assert-True {$isRemoved}
+	}
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

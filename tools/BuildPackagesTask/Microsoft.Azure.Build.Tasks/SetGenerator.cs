@@ -17,8 +17,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using System;
     using System.Collections.Generic;
+<<<<<<< HEAD
     using Newtonsoft.Json;
     using System.IO;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Linq;
 
     /// <summary>
@@ -34,6 +37,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         /// <summary>
         /// Static method used to generate a set of tests to be run based on
+<<<<<<< HEAD
         /// a Json file which maps files to test Dlls.
         /// </summary>
         /// <param name="files">This is a set of paths.</param>
@@ -64,6 +68,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         }
         /// <summary>
         /// Static method used to generate a set of tests to be run based on
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// a set of paths
         /// </summary>
         /// <param name="files">This is a set of paths.</param>
@@ -89,7 +95,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
 
             var outputSet = new HashSet<string>();
+<<<<<<< HEAD
             var filesProvidedCount = filesChangedSet.Count;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var filesFoundCount = 0;
             var useFullMapping = false;
             if (filesChangedSet.Count >= MaxFilesPossible || filesChangedSet.Count == 0)
@@ -152,5 +161,37 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             return outputSet;
         }
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Generate set according to module names
+        /// </summary>
+        /// <param name="moduleNames"></param>
+        /// <param name="mappingsDictionary"></param>
+        /// <returns></returns>
+        public static HashSet<string> Generate(string[] moduleNames, Dictionary<string, string[]> mappingsDictionary)
+        {
+            var outputSet = new HashSet<string>();
+
+            foreach (var module in moduleNames)
+            {
+                var key = $"src/{module}/";
+                if (mappingsDictionary.ContainsKey(key))
+                {
+                    var lines = mappingsDictionary[key];
+                    foreach (var line in lines)
+                    {
+                        if (line.Contains($"/src/{module}/") || line.Contains($"\\src\\{module}\\") || line.Equals($"Az.{module}"))
+                        {
+                            outputSet.Add(line);
+                        }
+                    }
+                }
+            }
+
+            return outputSet;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

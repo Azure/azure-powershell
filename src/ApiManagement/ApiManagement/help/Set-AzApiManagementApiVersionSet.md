@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementapiversionset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementapiversionset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -107,7 +111,11 @@ Accept wildcard characters: False
 
 ### -HeaderName
 The Header value which will contain the versioning information.
+<<<<<<< HEAD
 If versioning Scheme HEADER is choosen, then this value must be specified.
+=======
+If versioning Scheme HEADER is chosen, then this value must be specified.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -169,7 +177,11 @@ Accept wildcard characters: False
 
 ### -QueryName
 The Query value which will contain the versioning information.
+<<<<<<< HEAD
 If versioning Scheme Query is choosen, then this value must be specified.
+=======
+If versioning Scheme Query is chosen, then this value must be specified.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

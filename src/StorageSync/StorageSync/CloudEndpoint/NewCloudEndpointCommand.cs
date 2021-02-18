@@ -24,6 +24,10 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
+=======
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -192,8 +196,31 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new PSArgumentException(nameof(StorageAccountResourceId));
                 }
 
+<<<<<<< HEAD
                 PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
                 RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
+=======
+                if(this.IsParameterBound(c=>c.StorageAccountTenantId))
+                {
+                    if(StorageAccountTenantId != AzureContext.Tenant.Id)
+                    {
+                        throw new PSArgumentException(string.Format(StorageSyncResources.NewCloudEndpointCrossTenantErrorFormat, StorageAccountTenantId, AzureContext.Tenant.Id));
+                    }
+                }
+
+                if(storageAccountResourceIdentifier.Subscription != AzureContext.Subscription.Id)
+                {
+                    WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointCrossSubscriptionWarningFormat, storageAccountResourceIdentifier.Subscription , AzureContext.Subscription.Id));
+
+                    if(!StorageSyncClientWrapper.TryRegisterProvider(AzureContext.Subscription.Id,StorageSyncConstants.ResourceProvider, storageAccountResourceIdentifier.Subscription))
+                    {
+                        WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointUnableToRegisterErrorFormat, storageAccountResourceIdentifier.Subscription));
+                    }
+                }
+
+                PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
@@ -211,7 +238,11 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     AzureFileShareName = AzureFileShareName,
+<<<<<<< HEAD
                     StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
+=======
+                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
@@ -233,5 +264,9 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 }
             });
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

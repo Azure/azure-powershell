@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6847ECFD-2E3D-46F6-ABE9-9D8E08C7858F
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresourcelock
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,6 +52,7 @@ New-AzResourceLock -LockName <String> -LockLevel <LockLevel> [-LockNotes <String
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### ByTenantLevel
 ```
 New-AzResourceLock -LockName <String> -LockLevel <LockLevel> [-LockNotes <String>] [-Force]
@@ -55,6 +60,8 @@ New-AzResourceLock -LockName <String> -LockLevel <LockLevel> [-LockNotes <String
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### ByLockId
 ```
 New-AzResourceLock -LockLevel <LockLevel> [-LockNotes <String>] [-Force] -LockId <String>
@@ -74,6 +81,16 @@ PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "My lock notes" -Lo
 
 This command creates a resource lock on a website.
 
+<<<<<<< HEAD
+=======
+### Example 2: Create a resource lock on a database
+```
+PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "Lock note" -LockName "db-lock" -ResourceName "server1/ContosoDB"  -ResourceGroupName "RG1" -ResourceType "Microsoft.Sql/servers/databases"
+```
+
+This command creates a resource lock on a Azure database.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiVersion
@@ -159,7 +176,11 @@ Specifies the name of the lock.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: BySpecifiedScope, ByResourceGroup, ByResourceGroupLevel, BySubscription, BySubscriptionLevel, ByTenantLevel
+=======
+Parameter Sets: BySpecifiedScope, ByResourceGroup, ByResourceGroupLevel, BySubscription, BySubscriptionLevel
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: ExtensionResourceName, Name
 
 Required: True
@@ -221,7 +242,11 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+=======
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -236,7 +261,11 @@ Specifies the resource type of the resource for which the lock applies.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
+=======
+Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -265,6 +294,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -TenantLevel
 Indicates that this cmdlet operates at the tenant level.
 
@@ -280,6 +310,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -312,7 +344,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

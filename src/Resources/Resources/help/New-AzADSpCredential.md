@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadspcredential
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadspcredential
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -55,9 +59,15 @@ The service principal is identified by supplying either the object id or service
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Create a new service principal credential using a generated password
 
 ```
+=======
+### Example 1: Create a new service principal credential using a generated password
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> New-AzADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
 
 Secret    : System.Security.SecureString
@@ -69,9 +79,15 @@ Type      : Password
 
 A new password credential is added to the existing service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
 
+<<<<<<< HEAD
 ### Example 2 - Create a new service principal credential using a certificate
 
 ```
+=======
+### Example 2: Create a new service principal credential using a certificate
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 PS C:\> $cer.Import("C:\myapp.cer")
 PS C:\> $binCert = $cer.GetRawCertData()
@@ -81,9 +97,15 @@ PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
 
+<<<<<<< HEAD
 ### Example 3 - Create a new service principal credential using piping
 
 ```
+=======
+### Example 3: Create a new service principal credential using piping
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzADSpCredential
 
 Secret    : System.Security.SecureString
@@ -251,7 +273,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

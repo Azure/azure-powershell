@@ -84,7 +84,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                             Metrics = x.Metrics,
                             StorageAccountId = x.StorageAccountId,
                             WorkspaceId = x.WorkspaceId,
+<<<<<<< HEAD
                             ServiceBusRuleId = x.ServiceBusRuleId
+=======
+                            ServiceBusRuleId = x.ServiceBusRuleId,
+                            LogAnalyticsDestinationType = x.LogAnalyticsDestinationType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         };
                         return Task.FromResult(new AzureOperationResponse<DiagnosticSettingsResource>
                         {
@@ -185,6 +190,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
             DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.WorkspaceId = newWorkspaceId;
+<<<<<<< HEAD
+=======
+            expectedSettings.LogAnalyticsDestinationType = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
@@ -192,6 +201,34 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void SetWorkspaceAndResourceSpecific()
+        {
+            string newWorkspaceId = "otherworkspace";
+            cmdlet.WorkspaceId = newWorkspaceId;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.WorkspacetIdParamName] = newWorkspaceId;
+            cmdlet.ExecuteCmdlet();
+
+            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            expectedSettings.WorkspaceId = newWorkspaceId;
+            expectedSettings.LogAnalyticsDestinationType = null;
+
+            VerifyCalledOnce();
+            VerifySettings(expectedSettings, this.calledSettings);
+
+            cmdlet.ExportToResourceSpecific = true;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.WorkspacetIdParamName] = newWorkspaceId;
+            cmdlet.ExecuteCmdlet();
+
+            expectedSettings.LogAnalyticsDestinationType = "Dedicated";
+
+            VerifySettings(expectedSettings, this.calledSettings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void SetSomeCategories()
         {
             cmdlet.Category = new List<string> { "TestCategory1" };
@@ -276,6 +313,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
             DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.WorkspaceId = null;
+<<<<<<< HEAD
+=======
+            expectedSettings.LogAnalyticsDestinationType = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
@@ -324,6 +365,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             Assert.Equal(expectedSettings.StorageAccountId, actualSettings.StorageAccountId);
             Assert.Equal(expectedSettings.EventHubName, actualSettings.EventHubName);
             Assert.Equal(expectedSettings.WorkspaceId, actualSettings.WorkspaceId);
+<<<<<<< HEAD
+=======
+            Assert.Equal(expectedSettings.LogAnalyticsDestinationType, actualSettings.LogAnalyticsDestinationType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (expectedSettings.Logs == null)
             {
                 Assert.Null(actualSettings.Logs);

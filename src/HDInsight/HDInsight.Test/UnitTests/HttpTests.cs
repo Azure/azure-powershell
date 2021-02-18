@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -54,6 +58,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(
                 c =>
                     c.UpdateGatewayCredential(ResourceGroupName, ClusterName,
+<<<<<<< HEAD
                         It.Is<HttpSettingsParameters>(
                             param =>
                                 param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
@@ -105,18 +110,39 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
                                 param.HttpPassword == _httpCred.Password.ConvertToString())))
                 .Returns(result)
+=======
+                        It.Is<UpdateGatewaySettingsParameters>(
+                            param =>
+                                param.IsCredentialEnabled.HasValue && param.UserName == _httpCred.UserName &&
+                                param.Password == _httpCred.Password.ConvertToString())))
+                .Verifiable();
+
+            var gatewaySettings = new GatewaySettings("true", _httpCred.UserName, _httpCred.Password.ConvertToString());
+
+            hdinsightManagementMock.Setup(c => c.GetGatewaySettings(ResourceGroupName, ClusterName))
+                .Returns(gatewaySettings)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .Verifiable();
 
             setcmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
             commandRuntimeMock.Verify(
+<<<<<<< HEAD
                 f =>
                     f.WriteError(It.Is<ErrorRecord>(
                         record =>
                             record.Exception.Message == $"{result.ErrorInfo.Code}: {result.ErrorInfo.Message}" &&
                             string.IsNullOrEmpty(record.FullyQualifiedErrorId) &&
                             record.CategoryInfo.Category == ErrorCategory.InvalidArgument)),
+=======
+                f => f.WriteObject(
+                    It.Is<AzureHDInsightGatewaySettings>(
+                        rsp =>
+                            rsp.IsCredentialEnabled == gatewaySettings.IsCredentialEnabled
+                            && rsp.UserName == gatewaySettings.UserName
+                            && rsp.Password == gatewaySettings.Password)),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Times.Once);
         }
     }

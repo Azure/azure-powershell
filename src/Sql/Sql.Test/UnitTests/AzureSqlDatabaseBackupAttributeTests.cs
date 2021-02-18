@@ -32,9 +32,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void GetAzureSqlDatabaseRestorePointsAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseRestorePoints);
+=======
+        public void GetAzureSqlDatabaseRestorePointAttributes()
+        {
+            Type type = typeof(GetAzureSqlDatabaseRestorePoint);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
 

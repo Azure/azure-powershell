@@ -11,7 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="2.1.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="6.2.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>

@@ -105,6 +105,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestSetAResourceTagCase()
+        {
+            TestRunner.RunTestScript("Test-SetAResourceTagCase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestSetAResourceUsingPiping()
         {
             TestRunner.RunTestScript("Test-SetAResourceUsingPiping");
@@ -140,6 +150,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestGetResourceByNameAndType()
+        {
+            TestRunner.RunTestScript("Test-GetResourceByNameAndType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestGetResourceByIdAndProperties()
         {
             TestRunner.RunTestScript("Test-GetResourceByIdAndProperties");
@@ -186,5 +206,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RemoveASetOfResources");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetComplexResourceByDifferentFiltersTest()
+        {
+            TestRunner.RunTestScript("Test-GetComplexResourceByDifferentFilters");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

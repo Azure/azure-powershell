@@ -23,6 +23,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DataClassificationTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances",
+                "Microsoft.Sql/servers",
+                "Microsoft.Sql/managedInstances/databases"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
@@ -46,11 +54,25 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ErrorIsThrownWhenInvalidClassificationIsSet");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "not able to re - record because 'Managed Instance is not accepting creation of instances with General Purpose edition and Generation 4 hardware in this region.'")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBasicDataClassificationOnSqlManagedDatabase()
         {
             RunPowerShellTest("Test-BasicDataClassificationOnSqlManagedDatabase");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableDisableRecommendationsOnSqlDatabase()
+        {
+            RunPowerShellTest("Test-EnableDisableRecommendationsOnSqlDatabase");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: AD97BCAF-69BA-4C16-8B57-AB243D796B71
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnsrecordconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.dns/new-azdnsrecordconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

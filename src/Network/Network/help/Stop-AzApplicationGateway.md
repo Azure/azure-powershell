@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2C9609E8-0D8B-471B-9F0E-672BF55C3A0E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/stop-azapplicationgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/stop-azapplicationgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

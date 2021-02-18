@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+=======
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Set-AzApplicationInsightsPricingPlan
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Set pricing plan and daily data volume information for an applicaiton insights resource
+=======
+Set pricing plan and daily data volume information for an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -34,11 +42,21 @@ Set-AzApplicationInsightsPricingPlan [-ResourceId] <String> [-PricingPlan <Strin
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Set pricing plan and daily data volume information for an applicaiton insights resource
 
 ## EXAMPLES
 
 ### Example 1 Set pricing plan and daily data volume information for an applicaiton insights resource
+=======
+Set pricing plan and daily data volume information for an application insights resource.
+Pricing plan of application insights created after April 2018 cannot be set by this cmdlet: 
+https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier
+
+## EXAMPLES
+
+### Example 1 Set pricing plan and daily data volume information for an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
 
@@ -47,7 +65,11 @@ PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "
 400         0                           False Basic
 ```
 
+<<<<<<< HEAD
 Set the pricing plan to "Basic", set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
+=======
+Set the pricing plan to "Basic", set the daily data volume cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

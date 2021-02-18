@@ -22,25 +22,42 @@ function Test-AccountActiveDirectory
     $accName1 = Get-ResourceName
     $accName2 = Get-ResourceName
     $accName3 = Get-ResourceName
+<<<<<<< HEAD
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     
+=======
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = 'westus2'
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $activeDirectory1 = @{
         Username = "sdkuser"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass"
         Domain = "sdkdomain"
+<<<<<<< HEAD
         Dns = "127.0.0.1"
+=======
+        Dns = "192.0.2.2"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         SmbServerName = "PSSMBSName"
     }
     $activeDirectory2 = @{
         Username = "sdkuser1"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass1"
+<<<<<<< HEAD
         Domain = "sdkdomain1"
         Dns = "127.0.0.2"
         SmbServerName = "PSSMBSNam1"
     }
     
+=======
+        Domain = "sdkdomain"
+        Dns = "192.0.2.2"
+        SmbServerName = "PSSMBSName"
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     try
     {
@@ -56,13 +73,25 @@ function Test-AccountActiveDirectory
             # create and check account 1
             $newTagName = "tag1"
             $newTagValue = "tagValue1"
+<<<<<<< HEAD
             $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
             Assert-True { $false }
+=======
+            #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
+
+            Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
+            #Assert-True { $false }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
         catch
         {
             $ErrorMessage = $_.Exception.Message
+<<<<<<< HEAD
             Assert-True { ($ErrorMessage -contains 'Only one active directory allowed') }
+=======
+            #Assert-True { ($ErrorMessage -contains 'Only one active directory allowed') }
+            Assert-True { ($ErrorMessage -contains 'Only one') }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             #Assert-AreEqual $accName1 $retrievedAcc.Name
         }
 
@@ -79,7 +108,11 @@ function Test-AccountActiveDirectory
         Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
 
         # patch an Active Directory with no active directory. Should be no change
+<<<<<<< HEAD
         # create and check account 1
+=======
+        # except for the tag update
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $newTagName = "tag1"
         $newTagValue = "tagValue2"
         $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Tag @{$newTagName = $newTagValue}
@@ -89,10 +122,20 @@ function Test-AccountActiveDirectory
         Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
         Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
 
+<<<<<<< HEAD
+=======
+        # update (put) the account. The absence of an active directory should result in the removal of any currently associated. Also tags
+        $retrievedAcc = Set-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $resourceLocation
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-Null $retrievedAcc.Tags
+        Assert-Null $retrievedAcc.ActiveDirectories
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # patch an Active Directory. Should be updated to contain only the new one
         $activedirectories = @( $activeDirectory2 )
         $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -ActiveDirectory $activedirectories
         Assert-AreEqual $accName1 $retrievedAcc.Name
+<<<<<<< HEAD
         Assert-AreEqual $activeDirectory2.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
         Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
         Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
@@ -103,6 +146,13 @@ function Test-AccountActiveDirectory
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-Null $retrievedAcc.Tags
         Assert-Null $retrievedAcc.ActiveDirectories
+=======
+        # correction to (wildcard values in) returned password expected in RP
+        # add this check back in at that time since username/password are the two fields of concern
+        # Assert-AreEqual $activeDirectory2.Password $retrievedAcc.ActiveDirectories[0].Password
+        Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
+        Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {
@@ -122,7 +172,11 @@ function Test-AccountCrud
     $accName2 = Get-ResourceName
     $accName3 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     try
     {
         # create the resource group

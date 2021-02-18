@@ -22,6 +22,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using System.Globalization;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -89,6 +93,17 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerServerName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the name of the secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the secondary database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
@@ -106,7 +121,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+<<<<<<< HEAD
             HelpMessage = "The compute generation of teh Azure Sql Database secondary.")]
+=======
+            HelpMessage = "The compute generation of the Azure Sql Database secondary.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         [ValidateNotNullOrEmpty]
@@ -127,15 +146,58 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database.")]
         [PSArgumentCompleter(
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
             Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
+=======
+            "LicenseIncluded",
+            "BasePrice")]
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeSourceWarning));
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             base.ExecuteCmdlet();
         }
 
@@ -148,7 +210,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
+<<<<<<< HEAD
                 ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, this.DatabaseName);
+=======
+                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (CloudException ex)
             {
@@ -164,7 +230,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
+<<<<<<< HEAD
                 string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.PartnerServerName),
+=======
+                string.Format(Resources.DatabaseNameExists, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName), this.PartnerServerName),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 "DatabaseName");
         }
 
@@ -187,10 +257,20 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 DatabaseName = this.DatabaseName,
                 PartnerResourceGroupName = this.PartnerResourceGroupName,
                 PartnerServerName = this.PartnerServerName,
+<<<<<<< HEAD
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType
+=======
+                PartnerDatabaseName = GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName),
+                SecondaryElasticPoolName = this.SecondaryElasticPoolName,
+                AllowConnections = this.AllowConnections,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                LicenseType = LicenseType,
+                BackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -231,5 +311,19 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
             };
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Returns the partner database name to be used in request based on input
+        /// </summary>
+        /// <param name="database">Source database name</param>
+        /// <param name="partnerDatabase">Partner database name if given</param>
+        /// <returns>The input entity</returns>
+        private string GetEffectivePartnerDatabaseName(string database, string partnerDatabase)
+        {
+            return string.IsNullOrEmpty(partnerDatabase) ? database : partnerDatabase;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

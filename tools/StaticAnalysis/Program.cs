@@ -27,6 +27,7 @@ namespace StaticAnalysis
     public class Program
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
+<<<<<<< HEAD
         {
             new DependencyAnalyzer.DependencyAnalyzer()
         };
@@ -41,17 +42,43 @@ namespace StaticAnalysis
             "SignatureIssues.csv"
         };
 
+=======
+        {
+        };
+
+        static IList<string> ExceptionFileNames = new List<string>()
+        {
+            "SharedAssemblyConflict.csv",
+            "AssemblyVersionConflict.csv",
+            "BreakingChangeIssues.csv",
+            "ExtraAssemblies.csv",
+            "HelpIssues.csv",
+            "MissingAssemblies.csv",
+            "SignatureIssues.csv"
+        };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static string ExceptionsDirectory { get; set; }
 
         public static void Main(string[] args)
         {
             AnalysisLogger analysisLogger = null;
+<<<<<<< HEAD
             try
             {
                 string installDir = null;
                 if (args.Any(a => a == "--package-directory" || a == "-p"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--package-directory" || a == "-p");
+=======
+            Console.WriteLine("Analyzer invoked with parameters: {0}", string.Join(" ", args));
+            try
+            {
+                string installDir = null;
+                if (args.Any(a => a.Equals("--package-directory") || a.Equals("-p")))
+                {
+                    int idx = Array.FindIndex(args, a => a.Equals("--package-directory") || a.Equals("-p"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --package-directory parameter.");
@@ -75,7 +102,11 @@ namespace StaticAnalysis
                 bool logReportsDirectoryWarning = true;
                 if (args.Any(a => a == "--reports-directory" || a == "-r"))
                 {
+<<<<<<< HEAD
                     int idx = Array.FindIndex(args, a => a == "--reports-directory" || a == "-r");
+=======
+                    int idx = Array.FindIndex(args, a => a.Equals("--reports-directory") || a.Equals("-r"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --reports-directory parameter.");
@@ -91,9 +122,15 @@ namespace StaticAnalysis
                 }
 
                 var modulesToAnalyze = new List<string>();
+<<<<<<< HEAD
                 if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--modules-to-analyze" || a == "-m");
+=======
+                if (args.Any(a => a.Equals("--modules-to-analyze") || a.Equals("-m")))
+                {
+                    int idx = Array.FindIndex(args, a => a.Equals("--modules-to-analyze") || a.Equals("-m"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (idx + 1 == args.Length)
                     {
                         Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
@@ -104,6 +141,7 @@ namespace StaticAnalysis
                     }
                 }
 
+<<<<<<< HEAD
                 Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                 Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
 
@@ -116,13 +154,66 @@ namespace StaticAnalysis
                 if (!skipHelp)
                 {
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
+=======
+                foreach (var moduleName in modulesToAnalyze)
+                {
+                    Console.WriteLine(string.Format("Module: {0}", moduleName));
+                }
+
+                bool needToCheckIssue = false;
+                if (args.Any(a => a.Equals("--analyzers")))
+                {
+                    int idx = Array.FindIndex(args, a => a.Equals("--analyzers"));
+                    if (idx + 1 == args.Length)
+                    {
+                        throw new ArgumentException("No value provided for the --package-directory parameter.");
+                    }
+
+                    string analyzerNameList = args[idx + 1];
+                    foreach (string analyzerName in analyzerNameList.Split(';'))
+                    {
+                        if (analyzerName.ToLower().Equals("breaking-change"))
+                        {
+                            Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
+                        }
+                        if (analyzerName.ToLower().Equals("dependency"))
+                        {
+                            Analyzers.Add(new DependencyAnalyzer.DependencyAnalyzer());
+                        }
+                        if (analyzerName.ToLower().Equals("signature"))
+                        {
+                            Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                        }
+                        if (analyzerName.ToLower().Equals("help"))
+                        {
+                            Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
+                        }
+                        if (analyzerName.ToLower().Equals("check-error"))
+                        {
+                            needToCheckIssue = true;
+                        }
+                    }
+                }
+                else
+                {
+                    Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
+                    Analyzers.Add(new DependencyAnalyzer.DependencyAnalyzer());
+                    Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                    Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
+                    needToCheckIssue = true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 // https://stackoverflow.com/a/9737418/294804
                 var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
                 ExceptionsDirectory = Path.Combine(assemblyDirectory, "Exceptions");
+<<<<<<< HEAD
                 bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
                 var useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
+=======
+                bool useExceptions = !args.Any(a => a.Equals("--dont-use-exceptions") || a.Equals("-d"));
+                var useNetcore = args.Any(a => a.Equals("--use-netcore") || a.Equals("-u"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ConsolidateExceptionFiles(ExceptionsDirectory, useNetcore);
 
                 analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) : new AnalysisLogger(reportsDirectory);
@@ -140,6 +231,7 @@ namespace StaticAnalysis
                 }
 
                 analysisLogger.WriteReports();
+<<<<<<< HEAD
                 analysisLogger.CheckForIssues(2);
             }
             catch(Exception ex)
@@ -187,6 +279,55 @@ namespace StaticAnalysis
                             fileEmpty = false;
                         }
 
+=======
+                if (needToCheckIssue)
+                {
+                    var analyzer = new IssueChecker.IssueChecker();
+                    analyzer.Analyze(new[] { reportsDirectory });
+                }
+                //analysisLogger.CheckForIssues(2);
+            }
+            finally
+            {
+                foreach (var exceptionFileName in ExceptionFileNames)
+                {
+                    var exceptionFilePath = Path.Combine(ExceptionsDirectory, exceptionFileName);
+                    if (File.Exists(exceptionFilePath))
+                    {
+                        File.Delete(exceptionFilePath);
+                    }
+                }
+            }
+        }
+
+        private static void ConsolidateExceptionFiles(string exceptionsDirectory, bool useNetcore)
+        {
+            foreach (var exceptionFileName in ExceptionFileNames)
+            {
+                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories)
+                                                        .Where(f => useNetcore ? Directory.GetParent(f).Name.StartsWith("Az.") : Directory.GetParent(f).Name.StartsWith("Azure"))
+                                                        .ToList();
+                var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
+                if (File.Exists(exceptionFilePath))
+                {
+                    File.Delete(exceptionFilePath);
+                }
+
+                File.Create(exceptionFilePath).Close();
+                var fileEmpty = true;
+                foreach (var moduleExceptionFilePath in moduleExceptionFilePaths)
+                {
+                    var content = File.ReadAllLines(moduleExceptionFilePath);
+                    if (content.Length > 1)
+                    {
+                        if (fileEmpty)
+                        {
+                            // Write the header
+                            File.WriteAllLines(exceptionFilePath, new string[] { content.FirstOrDefault() });
+                            fileEmpty = false;
+                        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         // Write everything but the header
                         content = content.Skip(1).ToArray();
                         File.AppendAllLines(exceptionFilePath, content);

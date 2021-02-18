@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 existingVault.EnabledForDiskEncryption,
                 existingVault.EnableSoftDelete,
                 existingVault.EnablePurgeProtection,
+<<<<<<< HEAD
+=======
+                existingVault.EnableRbacAuthorization,
+                existingVault.SoftDeleteRetentionInDays,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 updatedNetworkAcls,
                 ActiveDirectoryClient);
         }

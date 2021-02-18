@@ -141,6 +141,12 @@
   <data name="Error_CloudError" xml:space="preserve">
     <value>ErrorCode: {0} ErrorMessage: {1}</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="Error_ConnectionIdentifierNull" xml:space="preserve">
+    <value>Connection Identifier cannot be null.</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="Error_GenericSyntax" xml:space="preserve">
     <value>Unable to complete the request. Check your syntax for errors.</value>
   </data>
@@ -177,6 +183,15 @@
   <data name="Error_NullSession" xml:space="preserve">
     <value>Session cannot be null or empty.</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="Error_ProviderNotFound" xml:space="preserve">
+    <value>The provider {0} was not found at location {1}. Status: {2}</value>
+  </data>
+  <data name="Error_Sku" xml:space="preserve">
+    <value>Sku should be of type {0}</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="Error_UnableToConvertLegacy" xml:space="preserve">
     <value>Unable to convert legacy peering because {0} was null or empty.</value>
   </data>
@@ -195,4 +210,10 @@
   <data name="Route_PrefixUnrecognized" xml:space="preserve">
     <value>Unrecognized routePrefix {0}</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="ShouldProcessMessage" xml:space="preserve">
+    <value>This should return {0}</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </root>

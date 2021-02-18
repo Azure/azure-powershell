@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 60E0D10F-9B93-45A9-A1FF-5C943B8CA09C
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,9 +40,15 @@ We recommend that you provision a dedicated Azure AD group as an administrator.
 ### Example 1: Provision an administrator group for a server
 ```
 PS C:\>Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs" 
+<<<<<<< HEAD
 ResourceGroupName ServerName DisplayName ObjectId 
 ----------------- ---------- ----------- -------- 
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+=======
+ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
+----------------- ---------- ----------- -------- ---------------------------
+ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command provisions an Azure AD administrator group named DBAs for the server named Server01.
@@ -47,9 +57,15 @@ This server is associated with resource group ResourceGroup01.
 ### Example 2: Provision an administrator user for a server
 ```
 PS C:\>Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "David Chew"
+<<<<<<< HEAD
 ResourceGroupName ServerName DisplayName ObjectId 
 ----------------- ---------- ----------- -------- 
 resourcegroup01   server01   David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9
+=======
+ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
+----------------- ---------- ----------- -------- 
+resourcegroup01   server01   David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9 False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command provisions an Azure AD user as an administrator for the server named Server01.
@@ -57,14 +73,24 @@ This command provisions an Azure AD user as an administrator for the server name
 ### Example 3: Provision an administrator group by specifying its ID
 ```
 PS C:\>Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+<<<<<<< HEAD
 ResourceGroupName ServerName DisplayName ObjectId 
 ----------------- ---------- ----------- -------- 
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+=======
+ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication 
+----------------- ---------- ----------- -------- 
+ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command provisions an Azure AD administrator group named DBAs for the server named Server01.
 The command specifies an ID for the *ObjectId* parameter.
+<<<<<<< HEAD
 This makes sure that that the command succeeds even if the display name of the group is not unique.
+=======
+This makes sure that the command succeeds even if the display name of the group is not unique.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -196,6 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlServerActiveDirectoryAdministrator](./Remove-AzSqlServerActiveDirectoryAdministrator.md)
 
+<<<<<<< HEAD
+=======
+[Disable-AzSqlServerActiveDirectoryOnlyAuthentication](./Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

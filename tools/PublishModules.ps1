@@ -11,6 +11,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<#
+
+.SYNOPSIS
+    Create nuget packages for each module.
+
+.PARAMETER IsNetCore
+    If built using .NET core.
+
+.PARAMETER BuildConfig
+    Either Debug or Release.
+
+.PARAMETER Scope
+    Either All, Latest, Stack, NetCore, ServiceManagement, AzureStorage
+
+.PARAMETER ApiKey
+    ApiKey used to publish nuget to PS repository.
+
+.PARAMETER RepositoryLocation
+    Location we want to publish too.
+
+.PARAMETER NugetExe
+    Path to the nuget executable.
+
+#>
 
 <#
 
@@ -60,6 +84,7 @@ param(
     [string]$NugetExe
 )
 
+<<<<<<< HEAD
 <#################################################
 #
 #               Helper functions
@@ -828,6 +853,9 @@ function Publish-AllModules {
         }
     }
 }
+=======
+Import-Module "$PSScriptRoot\PublishModules.psm1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 <###################################
 #
@@ -851,6 +879,7 @@ if ([string]::IsNullOrEmpty($nugetExe)) {
 }
 
 Write-Host "Publishing $Scope package (and its dependencies)"
+<<<<<<< HEAD
 
 Get-PackageProvider -Name NuGet -Force
 Write-Host " "
@@ -895,6 +924,52 @@ try {
     Unregister-PSRepository -Name $tempRepoName
 }
 
+=======
+
+Get-PackageProvider -Name NuGet -Force
+Write-Host " "
+
+# NOTE: Can only be Azure or Azure Stack, not both.
+$packageFolder = "$PSScriptRoot\..\artifacts"
+if ($Scope -eq 'Stack') {
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
+# Set temporary repo location
+$PublishLocal = test-path $repositoryLocation
+[string]$tempRepoPath = "$packageFolder"
+if ($PublishLocal) {
+    if ($Scope -eq 'Stack') {
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
+    } else {
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts")
+    }
+}
+
+$null = New-Item -ItemType Directory -Force -Path $tempRepoPath
+$tempRepoName = ([System.Guid]::NewGuid()).ToString()
+$repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
+if ($repo -ne $null) {
+    $tempRepoName = $repo.Name
+} else {
+    Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+}
+
+$env:PSModulePath = "$env:PSModulePath;$tempRepoPath"
+
+$Errors = $null
+
+try {
+    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
+    Add-AllModules -ModulePaths $modules -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -NugetExe $NugetExe
+    Publish-AllModules -ModulePaths $modules -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -NugetExe $NugetExe -PublishLocal:$PublishLocal
+} catch {
+    $Errors = $_
+    Write-Error ($_ | Out-String)
+} finally {
+    Unregister-PSRepository -Name $tempRepoName
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 if ($Errors -ne $null) {
     exit 1
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 15958F3D-291A-4E49-A667-9792E9A1577A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,8 +28,13 @@ The **Remove-AzVirtualNetworkGatewayConnection** cmdlet deletes the object of yo
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Delete a Virtual Network Gateway Connection
 ```
+=======
+### Example 1: Delete a Virtual Network Gateway Connection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Remove-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
 

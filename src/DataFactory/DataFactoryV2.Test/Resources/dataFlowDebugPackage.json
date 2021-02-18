@@ -1,0 +1,81 @@
+{
+  "dataFlow": {
+    "name": "dataflow5",
+    "properties": {
+      "type": "MappingDataFlow",
+      "typeProperties": {
+        "sources": [
+          {
+            "dataset": {
+              "referenceName": "DelimitedTextInput",
+              "type": "DatasetReference"
+            },
+            "name": "source1",
+            "typeProperties": {}
+          }
+        ],
+        "sinks": [],
+        "transformations": [],
+        "script": "\n\nsource(output(\n\t\tResourceAgencyNum as string,\n\t\tPublicName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1"
+      }
+    }
+  },
+  "datasets": [
+    {
+      "name": "DelimitedTextInput",
+      "properties": {
+        "linkedServiceName": {
+          "referenceName": "AzureBlobStorage1",
+          "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+          "location": {
+            "type": "AzureBlobStorageLocation",
+            "container": "20192019"
+          },
+          "columnDelimiter": ",",
+          "escapeChar": "\\",
+          "firstRowAsHeader": true,
+          "quoteChar": "\""
+        },
+        "schema": [
+          {
+            "name": "ResourceAgencyNum",
+            "type": "String"
+          },
+          {
+            "name": "PublicName",
+            "type": "String"
+          }
+        ]
+      },
+      "type": "Microsoft.DataFactory/factories/datasets"
+    }
+  ],
+  "linkedServices": [
+    {
+      "name": "AzureBlobStorage1",
+      "type": "Microsoft.DataFactory/factories/linkedservices",
+      "properties": {
+        "annotations": [],
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+          "connectionString": "DefaultEndpointsProtocol=https;AccountName=name;AccountKey=key;EndpointSuffix=core.windows.net"
+        }
+      }
+    }
+  ],
+  "debugSettings": {
+    "sourceSettings": [
+      {
+        "sourceName": "source1",
+        "rowLimit": 1000
+      }
+    ]
+  },
+  "sessionId": "4f988caf-e765-47d2-82cd-430334a6b135",
+  "userSessionId": "82de11be-9e33-4371-a841-fabe8f43db03",
+  "incrementalDebug": false
+}

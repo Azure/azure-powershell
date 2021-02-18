@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>netstandard2.0</TargetFramework>
+=======
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <AssemblyName>BatchModelGenerator</AssemblyName>
     <RootNamespace>BatchModelGenerator</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -14,6 +22,12 @@
     <WarningsAsErrors />
     <IsPackable>false</IsPackable>
     <DelaySign>false</DelaySign>
+<<<<<<< HEAD
+=======
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

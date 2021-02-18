@@ -79,7 +79,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents Azure Workload
         /// </summary>
+<<<<<<< HEAD
         AzureWorkload
+=======
+        AzureWorkload,
+
+        /// <summary>
+        /// Represents MAB agent
+        /// </summary>
+        MAB,
+
+        /// <summary>
+        /// represents that the BackupManagementType is Not Applicable.
+        /// </summary>
+        NA
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -118,6 +132,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents MSSQL in Azure VM.
         /// </summary>
         MSSQL,
+<<<<<<< HEAD
+=======
+        FileFolder
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -197,6 +215,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// represents the delete state of the item
+    /// </summary>
+    public enum ItemDeleteState
+    {
+        /// <summary>
+        /// in a softdeleted state
+        /// </summary>
+        ToBeDeleted = 1,
+
+        /// <summary>
+        /// not deleted
+        /// </summary>
+        NotDeleted,
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// State of the protection of the item by the recovery services vault.
     /// </summary>
     public enum ItemProtectionState
@@ -308,7 +345,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Disable protection with delete data
         /// </summary>
+<<<<<<< HEAD
         DeleteBackupData
+=======
+        DeleteBackupData,
+
+        /// <summary>
+        /// Data move between source and target vaults
+        /// </summary>
+        BackupDataMove,
+
+        /// <summary>
+        /// update the customer managed key
+        /// </summary>
+        UpdateCustomerManagedKey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>

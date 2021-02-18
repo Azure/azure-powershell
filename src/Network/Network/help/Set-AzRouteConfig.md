@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6E967F9C-949E-4485-9B57-FC4F523D5DC9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azrouteconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azrouteconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,7 +29,11 @@ The **Set-AzRouteConfig** cmdlet updates a route configuration for a route table
 ## EXAMPLES
 
 ### Example 1: Modify a route
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Set-AzRouteConfig -Name "Route02" -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
 Name              : Routetable01
 ResourceGroupName : ResourceGroup11

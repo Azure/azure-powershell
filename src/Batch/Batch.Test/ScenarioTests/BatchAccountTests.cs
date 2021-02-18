@@ -37,9 +37,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestListNodeAgentSkus()
         {
             BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchNodeAgentSkus");
+=======
+        public void TestGetBatchSupportedImages()
+        {
+            BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchSupportedImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewBatchAccountWithNoPublicIp()
+        {
+            BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithNoPublicIp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewBatchAccountWithSystemIdentity()
+        {
+            BatchController.NewInstance.RunPsTest(_logger, "Test-CreateNewBatchAccountWithSystemIdentity");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

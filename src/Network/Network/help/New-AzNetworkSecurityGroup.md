@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecuritygroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,6 +28,7 @@ The **New-AzNetworkSecurityGroup** cmdlet creates an Azure network security grou
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Create a new network securtiy group
 ```
 New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
@@ -42,6 +47,26 @@ $rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
 
 $nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name
+=======
+### Example 1: Create a new network security group
+```powershell
+New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
+```
+
+This command creates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus".
+
+### Example 2: Create a detailed network security group
+```powershell
+$rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix `
+    Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+$rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix `
+    Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
+
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 ```
 

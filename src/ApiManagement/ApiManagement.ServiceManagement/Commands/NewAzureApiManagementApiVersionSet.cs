@@ -52,14 +52,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Header value which will contain the versioning information. " +
+<<<<<<< HEAD
             "If versioning Scheme HEADER is choosen, then this value must be specified.")]
+=======
+            "If versioning Scheme HEADER is chosen, then this value must be specified.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public String HeaderName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Query value which will contain the versioning information. " +
+<<<<<<< HEAD
             "If versioning Scheme Query is choosen, then this value must be specified.")]
+=======
+            "If versioning Scheme Query is chosen, then this value must be specified.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public String QueryName { get; set; }
 
         [Parameter(

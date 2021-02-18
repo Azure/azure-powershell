@@ -75,11 +75,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : new List<ActiveDirectory>(),
                 Tags = Tag
+=======
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
+            var netAppAccountBody = new NetAppAccount()
+            {
+                Location = Location,
+                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
+                Tags = tagPairs
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

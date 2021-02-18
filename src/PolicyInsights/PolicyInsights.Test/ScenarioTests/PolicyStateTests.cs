@@ -149,5 +149,33 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
         }
 
         #endregion
+<<<<<<< HEAD
+=======
+
+        #region Trigger Evaluation
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TriggerEvaluationSubscriptionScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Start-AzPolicyComplianceScan-SubscriptionScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TriggerEvaluationResourceGroupScope()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Start-AzPolicyComplianceScan-ResourceGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TriggerEvaluationSubscriptionScope_AsJob()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Start-AzPolicyComplianceScan-SubscriptionScope-AsJob");
+        }
+
+        #endregion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

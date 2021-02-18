@@ -15,6 +15,10 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Rest.Azure;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -68,6 +72,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -88,10 +98,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
+<<<<<<< HEAD
                 var container = this.StorageClient.BlobContainers.List(
                            this.ResourceGroupName,
                            this.StorageAccountName);
                 WriteContainerList(container);
+=======
+                IPage<ListContainerItem> containerlistResult = this.StorageClient.BlobContainers.List(
+                               this.ResourceGroupName,
+                               this.StorageAccountName);
+                WriteContainerList(containerlistResult);
+                while (containerlistResult.NextPageLink != null)
+                {
+                    containerlistResult = this.StorageClient.BlobContainers.ListNext(containerlistResult.NextPageLink);
+                    WriteContainerList(containerlistResult);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

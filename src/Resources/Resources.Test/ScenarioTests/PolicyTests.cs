@@ -68,6 +68,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestPolicyAssignmentEnforcementMode()
+        {
+            TestRunner.RunTestScript("Test-PolicyAssignmentEnforcementMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestPolicyDefinitionWithParameters()
         {
             TestRunner.RunTestScript("Test-PolicyDefinitionWithParameters");
@@ -96,6 +106,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestPolicySetDefinitionCRUDWithGroups()
+        {
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDWithGroups");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestPolicySetDefinitionCRUDAtManagementGroup()
         {
             TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDAtManagementGroup");
@@ -117,6 +137,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestPolicyObjectPiping()
+        {
+            TestRunner.RunTestScript("Test-PolicyObjectPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyDefinitionWithFullObject()
+        {
+            TestRunner.RunTestScript("Test-PolicyDefinitionWithFullObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestGetCmdletFilterParameter()
         {
             TestRunner.RunTestScript("Test-GetCmdletFilterParameter");

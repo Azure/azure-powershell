@@ -18,7 +18,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
     using System.Linq;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
     using Microsoft.Azure.Internal.Subscriptions;
+=======
+    using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Subscriptions cache
@@ -51,9 +55,23 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
                         var subscriptionsClient =
                             AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
                                 azureContext, AzureEnvironment.Endpoint.ResourceManager);
+<<<<<<< HEAD
 
                         _subscriptions = subscriptionsClient.ListAllSubscriptions()
                             .Select(sub => sub.SubscriptionId).ToList();
+=======
+                        
+                        var subscriptionList = new List<string>();
+                        var page = subscriptionsClient.Subscriptions.List();
+                        subscriptionList.AddRange(page.ToList().Select(s => s.SubscriptionId));
+                        while (!string.IsNullOrEmpty(page.NextPageLink))
+                        {
+                            page = subscriptionsClient.Subscriptions.ListNext(page.NextPageLink);
+                            subscriptionList.AddRange(page.ToList().Select(s => s.SubscriptionId));
+                        }
+
+                        _subscriptions = subscriptionList;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 }
             }

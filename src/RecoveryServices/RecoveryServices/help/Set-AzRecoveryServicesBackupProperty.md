@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: C635D723-0F03-4EF8-9435-24DBE0859899
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
+Module Name: Az.RecoveryServices
+ms.assetid: C635D723-0F03-4EF8-9435-24DBE0859899
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,9 +22,14 @@ Sets the properties for backup management.
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 Set-AzRecoveryServicesBackupProperty -Vault <ARSVault>
  [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Set-AzRecoveryServicesBackupProperty -Vault <ARSVault>  [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>]
+ [-EnableCrossRegionRestore] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -42,7 +55,11 @@ Specifies the backup storage redundancy type.
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.AzureRmRecoveryServicesBackupStorageRedundancyType]
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: GeoRedundant, LocallyRedundant
+=======
+Accepted values: GeoRedundant, ZoneRedundant, LocallyRedundant
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -98,7 +115,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+<<<<<<< HEAD
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
+=======
+Shows what would happen if the cmdlet runs. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +134,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

@@ -15,6 +15,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
     using System;
+<<<<<<< HEAD
+=======
+    using System.Collections;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
@@ -26,12 +30,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
+<<<<<<< HEAD
     using Newtonsoft.Json;
 
     /// <summary>
     ///     The get InputObject locations.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeeringLocation", DefaultParameterSetName = Constants.ParameterSetNamePeeringByKind)]
+=======
+    /// <summary>
+    ///     The get InputObject locations.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringLocation,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSPeeringLocation))]
     public class GetAzurePeeringLocationCommand : PeeringBaseCmdlet
     {
@@ -41,13 +53,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 0,
+<<<<<<< HEAD
             ParameterSetName = Constants.ParameterSetNamePeeringByKind,
+=======
+            ParameterSetName = Constants.ParameterSetNameDefault,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
             Position = 0,
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.KindHelp)]
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = Constants.ParameterSetNameLocationByDirectType,
+            HelpMessage = Constants.KindHelp)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]
         public string Kind { get; set; }
@@ -57,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             ParameterSetName = Constants.ParameterSetNamePeeringByKind,
             HelpMessage = Constants.LocationHelp)]
         [ValidateNotNullOrEmpty]
@@ -72,6 +97,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.PeeringDbFacilityIdHelp)]
         [ValidateNotNullOrEmpty]
         public int PeeringDbFacilityId { get; set; }
+=======
+            ParameterSetName = Constants.ParameterSetNameDefault,
+            HelpMessage = Constants.LocationHelp)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameLocationByDirectType,
+            HelpMessage = Constants.LocationHelp)]
+        public string PeeringLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Direct Peering Type
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameLocationByDirectType,
+            HelpMessage = Constants.DirectPeeringTypeHelp)]
+        [PSArgumentCompleter(Constants.Edge, Constants.Transit, Constants.CDN)]
+        [PSDefaultValue(Value = Constants.Edge)]
+        [ValidateNotNullOrEmpty]
+        public string DirectPeeringType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the peering db facility id.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
+            HelpMessage = Constants.PeeringDbFacilityIdHelp)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameLocationByDirectType,
+            HelpMessage = Constants.PeeringDbFacilityIdHelp)]
+        [ValidateNotNullOrEmpty]
+        public int? PeeringDbFacilityId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <inheritdoc />
         /// <summary>
@@ -83,6 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 base.Execute();
                 var peeringLocation = this.GetPeeringLocation();
+<<<<<<< HEAD
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNamePeeringByKind))
                 {
                     this.WriteObject(
@@ -96,6 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 {
                     this.WriteObject(this.GetByFacilityId(peeringLocation, this.PeeringDbFacilityId), true);
                 }
+=======
+                this.WriteObject(this.FilterPeeringLocations(peeringLocation));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (InvalidOperationException mapException)
             {
@@ -108,6 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
         }
 
+<<<<<<< HEAD
         private object ListByLocation(List<PSPeeringLocation> peeringLocation, string s)
         {
             var newPsPeeringLocations = new List<PSPeeringLocationObject>();
@@ -184,6 +249,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
 
             throw new ItemNotFoundException(string.Format(Resources.Item_NotFound, "PeeringDbFacilityId", facilityId));
+=======
+        /// <summary>
+        /// Filters the peering location.
+        /// </summary>
+        /// <param name="peeringLocation"></param>
+        /// <returns></returns>
+        private List<PSPeeringLocationObject> FilterPeeringLocations(List<PSPeeringLocationObject> peeringLocation)
+        {
+            IEnumerable<PSPeeringLocationObject> peeringLocationFiltered = null;
+            if (this.PeeringLocation != null)
+            {
+
+                peeringLocationFiltered = peeringLocation.Where(x => x.PeeringLocation.StartsWith(this.PeeringLocation, StringComparison.InvariantCultureIgnoreCase) || x.PeeringLocation.Contains(this.PeeringLocation));
+            }
+
+            if (this.PeeringDbFacilityId != null)
+            {
+                peeringLocationFiltered = (peeringLocationFiltered ?? peeringLocation).Where(x => x.PeeringDBFacilityId.Equals(this.PeeringDbFacilityId));
+            }
+
+            if (this.PeeringLocation == null && this.PeeringDbFacilityId == null)
+            {
+                return peeringLocation;
+            }
+
+            return peeringLocationFiltered.ToList();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private List<PSPeeringLocationObject> ConvertToPsObject(List<PSPeeringLocation> peeringLocation)
@@ -217,11 +309,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets the InputObject location.
         /// </summary>
         /// <returns>List of InputObject locations.</returns>
+<<<<<<< HEAD
         public List<PSPeeringLocation> GetPeeringLocation()
         {
             var icList = this.PeeringLocationClient.List(this.Kind);
 
             return icList.Select(this.TopSPeeringLocation).ToList();
+=======
+        private List<PSPeeringLocationObject> GetPeeringLocation()
+        {
+            var icList = this.PeeringLocationClient.List(this.Kind, this.DirectPeeringType ?? null);
+            return this.ConvertToPsObject(icList.Select(this.TopSPeeringLocation).ToList());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

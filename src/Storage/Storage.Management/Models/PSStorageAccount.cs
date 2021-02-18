@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
+<<<<<<< HEAD
             this.Sku = storageAccount.Sku;
+=======
+            this.Sku = new PSSku(storageAccount.Sku);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.Encryption = storageAccount.Encryption;
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
@@ -52,7 +56,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+<<<<<<< HEAD
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
+=======
+            this.FailoverInProgress = storageAccount.FailoverInProgress;
+            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
+            this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
+            this.AllowBlobPublicAccess = storageAccount.AllowBlobPublicAccess;
+            this.MinimumTlsVersion = storageAccount.MinimumTlsVersion;
+            this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
+            this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -67,7 +83,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
+<<<<<<< HEAD
         public Sku Sku { get; set; }
+=======
+        public PSSku Sku { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
         public string Kind { get; set; }
@@ -87,6 +107,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public Endpoints PrimaryEndpoints { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
@@ -109,8 +133,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableHierarchicalNamespace { get; set; }
 
+<<<<<<< HEAD
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
+=======
+        public bool? FailoverInProgress { get; set; }
+
+        public string LargeFileSharesState { get; set; }
+
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSRoutingPreference RoutingPreference { get; set; }
+
+        public PSBlobRestoreStatus BlobRestoreStatus { get; set; }
+
+        public PSGeoReplicationStats GeoReplicationStats { get; set; }
+
+        public bool? AllowBlobPublicAccess { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
@@ -153,4 +196,32 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return new CustomDomain(this.Name, this.UseSubDomain);
         }
     }
+<<<<<<< HEAD
+=======
+
+    public class PSSku
+    {
+        public string Name { get; set; }
+        public SkuTier? Tier { get; set; }
+        public string ResourceType { get; set; }
+        public string Kind { get; set; }
+        public IList<string> Locations { get; set; }
+        public IList<SKUCapability> Capabilities { get; set; }
+        public IList<Restriction> Restrictions { get; set; }
+
+        public PSSku(Sku sku)
+        {
+            if (sku != null)
+            {
+                this.Name = sku.Name;
+                this.Tier = sku.Tier;
+            }
+        }
+
+        public Sku ParseSku()
+        {
+            return new Sku(Name, Tier);
+        }
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

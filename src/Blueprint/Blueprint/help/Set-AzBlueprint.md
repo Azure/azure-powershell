@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/set-azblueprint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.blueprint/set-azblueprint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -52,8 +56,13 @@ Update a blueprint definition with new parameters.
 Path to a Blueprint JSON file on disk.
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
+=======
+Type: System.String
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -67,7 +76,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: IAzureContextContainer
+=======
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,8 +95,13 @@ Accept wildcard characters: False
 Management Group Id where the blueprint definition is or will be saved.
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: CreateBlueprintByManagementGroup, ManagementGroupScope, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
+=======
+Type: System.String
+Parameter Sets: UpdateBlueprintByManagementGroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -93,6 +111,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ```yaml
 Type: String
 Parameter Sets: ImportBlueprint
@@ -105,12 +124,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Blueprint definition name.
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup, ImportBlueprint
+=======
+Type: System.String
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -124,8 +150,13 @@ Accept wildcard characters: False
 Subscription Id where the blueprint definition is or will be saved.
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: CreateBlueprintBySubscription, ImportBlueprint, SubscriptionScope, BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished
+=======
+Type: System.String
+Parameter Sets: UpdateBlueprintBySubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -139,7 +170,11 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: cf
 
@@ -155,7 +190,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: wi
 
@@ -167,8 +206,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

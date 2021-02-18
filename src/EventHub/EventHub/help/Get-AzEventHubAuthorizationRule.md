@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhubauthorizationrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,43 +42,73 @@ If (Disaster Recovery) Alias name provided, the details of authorization rule of
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1.0 - AuthorizationRule for namespace
 ```
+=======
+### Example 1: AuthorizationRule for namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyAuthRuleName
 ```
 
 Gets the authorization rule \`MyAuthRuleName\` in the namespace \`MyNamespaceName\`.
 
+<<<<<<< HEAD
 ### Example 1.1 - AuthorizationRules for namespace
 ```
+=======
+### Example 2: AuthorizationRules for namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Gets a list of all authorization rules in the namespace \`MyNamespaceName\`.
 
+<<<<<<< HEAD
 ### Example 2.0 - AuthorizationRule for EventHub
 ```
+=======
+### Example 3: AuthorizationRule for EventHub
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -Name MyAuthRuleName
 ```
 
 Gets the authorization rule \`MyAuthRuleName\` in the Event Hub \`MyEventHubName\`, which is scoped by the namespace \`MyNamespaceName\`.
 
+<<<<<<< HEAD
 ### Example 2.1 - AuthorizationRules for EventHub
 ```
+=======
+### Example 4: AuthorizationRules for EventHub
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Gets list authorization rules in the Event Hub \`MyEventHubName\`, which is scoped by the namespace \`MyNamespaceName\`.
 
+<<<<<<< HEAD
 ### Example 3.0 - AuthorizationRule for Alias (GeoRecovery Configuration)
 ```
+=======
+### Example 5: AuthorizationRule for Alias (GeoRecovery Configuration)
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AliasName MyAliasNameName -Name MyAuthRuleName
 ```
 
 Gets the authorization rule \`MyAuthRuleName\` in the namespace \`MyNamespaceName\`.
 
+<<<<<<< HEAD
 ### Example 3.1 -AuthorizationRules for Alias (GeoRecovery Configuration)
 ```
+=======
+### Example 6: AuthorizationRules for Alias (GeoRecovery Configuration)
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AliasName MyAliasNameName
 ```
 

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/clear-azdefault
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/clear-azdefault
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,14 +28,23 @@ the user depending on the switch parameters specified by the user.
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Clear-AzDefault
 ```
 
 This command removes all the defaults set by the user in the current context.
 
+<<<<<<< HEAD
 ### Example 1
 ```
+=======
+### Example 2
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Clear-AzDefault -ResourceGroup
 ```
 
@@ -147,7 +160,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

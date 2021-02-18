@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.machinelearning
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -27,9 +31,19 @@ Retrieves the summary information for one or more commitment plans.
 Retrieves usage history information for a specified commitment plan.
 
 ### [Get-AzMlOpCluster](Get-AzMlOpCluster.md)
+<<<<<<< HEAD
 Gets an operationalization cluster object.
 
 ### [Get-AzMlOpClusterKey](Get-AzMlOpClusterKey.md)
+=======
+**Important: This cmdlet is deprecated**
+
+Gets an operationalization cluster object.
+
+### [Get-AzMlOpClusterKey](Get-AzMlOpClusterKey.md)
+**Important: This cmdlet is deprecated**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets the access keys associated with an operationalization cluster.
 
 ### [Get-AzMlWebService](Get-AzMlWebService.md)
@@ -48,6 +62,11 @@ Moves a commitment association from one commitment plan to another.
 Creates a new commitment plan.
 
 ### [New-AzMlOpCluster](New-AzMlOpCluster.md)
+<<<<<<< HEAD
+=======
+**Important: This cmdlet is deprecated**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Creates a new operationalization cluster.
 
 ### [New-AzMlWebService](New-AzMlWebService.md)
@@ -63,15 +82,30 @@ Removes an operationalization cluster.
 Deletes a web service.
 
 ### [Set-AzMlOpCluster](Set-AzMlOpCluster.md)
+<<<<<<< HEAD
 Sets the properties of an operationalization cluster.
 
 ### [Test-AzMlOpClusterSystemServicesUpdateAvailability](Test-AzMlOpClusterSystemServicesUpdateAvailability.md)
+=======
+**Important: This cmdlet is deprecated**
+
+Sets the properties of an operationalization cluster.
+
+### [Test-AzMlOpClusterSystemServicesUpdateAvailability](Test-AzMlOpClusterSystemServicesUpdateAvailability.md)
+**Important: This cmdlet is deprecated**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Checks if there are updates available for the system services associated with an operationalization cluster.
 
 ### [Update-AzMlCommitmentPlan](Update-AzMlCommitmentPlan.md)
 Updates properties of an existing commitment plan resource.
 
 ### [Update-AzMlOpClusterSystemService](Update-AzMlOpClusterSystemService.md)
+<<<<<<< HEAD
+=======
+**Important: This cmdlet is deprecated**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Starts an update on the operationalization cluster's system services.
 
 ### [Update-AzMlWebService](Update-AzMlWebService.md)

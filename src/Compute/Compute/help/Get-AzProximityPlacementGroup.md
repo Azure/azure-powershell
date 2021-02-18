@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azproximityplacementgroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azproximityplacementgroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,14 +18,23 @@ Get or list Proximity Placement Group resource(s).
 
 ### DefaultParameter (Default)
 ```
+<<<<<<< HEAD
 Get-AzProximityPlacementGroup [[-ResourceGroupName] <String>] [[-Name] <String>]
+=======
+Get-AzProximityPlacementGroup [[-ResourceGroupName] <String>] [[-Name] <String>] [-ColocationStatus]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
+<<<<<<< HEAD
 Get-AzProximityPlacementGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+=======
+Get-AzProximityPlacementGroup [-ColocationStatus] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -74,6 +87,24 @@ This command list all proximity placement groups under the subscription.
 
 ## PARAMETERS
 
+<<<<<<< HEAD
+=======
+### -ColocationStatus
+Shows the colocation status of a resource in the proximity placement group.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 

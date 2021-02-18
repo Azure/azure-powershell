@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementuser
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,7 +42,11 @@ The **Get-AzApiManagementUser** cmdlet gets a specified user, or all users, if n
 ## EXAMPLES
 
 ### Example 1: Get all users
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementUser -Context $apimContext
 ```
@@ -46,15 +54,24 @@ PS C:\>Get-AzApiManagementUser -Context $apimContext
 This command gets all users.
 
 ### Example 2: Get a user by ID
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementUser -Context $apimContext -UserId "0123456789"
 ```
 
 This command gets a user by ID.
 
+<<<<<<< HEAD
 ### Example: Get users by last name
 ```
+=======
+### Example 3: Get users by last name
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementUser -Context $apimContext -LastName "Fuller"
 ```
@@ -62,7 +79,11 @@ PS C:\>Get-AzApiManagementUser -Context $apimContext -LastName "Fuller"
 This command gets users that have a specified last name, Fuller.
 
 ### Example 4: Get a user by email address
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementUser -Context $apimContext -Email "user@contoso.com"
 ```
@@ -70,7 +91,11 @@ PS C:\>Get-AzApiManagementUser -Context $apimContext -Email "user@contoso.com"
 This command gets the user that has the specified email address.
 
 ### Example 5: Get all users within a group
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementUser -Context $apimContext -GroupId "0001"
 ```

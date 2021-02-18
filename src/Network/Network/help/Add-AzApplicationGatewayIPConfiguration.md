@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5358C08F-A1EB-457E-85B1-7F12396A873A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayipconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayipconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,7 +46,11 @@ PS C:\> $AppGw = Add-AzApplicationGatewayIPConfiguration -ApplicationGateway $Ap
 The first command gets a virtual network.
 The second command gets a subnet using the previously created virtual network.
 The third command gets the application gateway and stores it in the $AppGw variable.
+<<<<<<< HEAD
 The fouth command adds the IP configuration to the application gateway stored in $AppGw.
+=======
+The fourth command adds the IP configuration to the application gateway stored in $AppGw.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

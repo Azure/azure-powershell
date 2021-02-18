@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestRunV2()
+=======
+        public void TestPipelineRunV2()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             RunPowerShellTest(_logger, "Test-Run");
         }

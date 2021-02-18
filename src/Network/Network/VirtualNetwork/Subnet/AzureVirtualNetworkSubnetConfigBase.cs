@@ -122,5 +122,14 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PrivateLinkServiceNetworkPoliciesFlag { get; set; }
+<<<<<<< HEAD
+=======
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpAllocation")]
+        public PSIpAllocation[] IpAllocation { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

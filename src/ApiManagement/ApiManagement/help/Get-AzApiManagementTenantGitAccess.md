@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6F01F494-CD1D-483A-9E57-BF693B1F2FC1
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementtenantgitaccess
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementtenantgitaccess
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -20,6 +24,10 @@ Get-AzApiManagementTenantGitAccess -Context <PsApiManagementContext> [-DefaultPr
 
 ## DESCRIPTION
 The **Get-AzApiManagementTenantGitAccess** cmdlet gets the Git access configuration for a tenant.
+<<<<<<< HEAD
+=======
+Keys will not be included into result details. To get client secret, use **Get-AzApiManagementTenantGitAccessSecret**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

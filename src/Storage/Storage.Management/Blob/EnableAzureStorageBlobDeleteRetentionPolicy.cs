@@ -107,8 +107,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
+<<<<<<< HEAD
                 BlobServiceProperties serviceProperties = this.StorageClient.BlobServices.GetServiceProperties( this.ResourceGroupName, this.StorageAccountName);
 
+=======
+                BlobServiceProperties serviceProperties = new BlobServiceProperties();
+
+                serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 serviceProperties.DeleteRetentionPolicy.Enabled = true;
                 serviceProperties.DeleteRetentionPolicy.Days = RetentionDays;
 

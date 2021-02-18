@@ -126,7 +126,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                           "Allowed options: 'none', 'service' and 'task'" +
                           "none - Currently prevents the chef-client service from being configured as a service." +
                           "service - Configures the chef-client to run automatically in the background as a service." +
+<<<<<<< HEAD
                           "task - Configures the chef-client to run automatically in the background as a secheduled task.")]
+=======
+                          "task - Configures the chef-client to run automatically in the background as a scheduled task.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateSet("none", "service", "task", IgnoreCase = true)]
         public string Daemon { get; set; }
 
@@ -244,7 +248,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             }
         }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter NoWait { get; set; }
 
         private Hashtable PublicConfiguration

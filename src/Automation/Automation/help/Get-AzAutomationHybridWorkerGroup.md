@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 9B0BBBB4-A7A0-4243-9264-362A00F5B399
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationhybridworkergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationhybridworkergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

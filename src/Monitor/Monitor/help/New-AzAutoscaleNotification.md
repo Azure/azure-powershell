@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azautoscalenotification
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azautoscalenotification
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

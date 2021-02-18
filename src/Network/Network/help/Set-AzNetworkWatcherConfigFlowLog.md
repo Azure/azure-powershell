@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkwatcherconfigflowlog
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -145,7 +149,11 @@ Format           : {
                    }
 ```
 
+<<<<<<< HEAD
 In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specificed, Network Watcher will write the default supported version in the region.
+=======
+In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specified, Network Watcher will write the default supported version in the region.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3: Configure Flow Logging and Traffic Analytics for a Specified NSG
 ```
@@ -181,6 +189,44 @@ FlowAnalyticsConfiguration : {
 
 In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format, and no retention policy set.
 
+<<<<<<< HEAD
+=======
+### Example 4: Disable Traffic Analytics for a Specified NSG with Flow Logging and Traffic Analytics configured
+```
+PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
+PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
+PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -Name WorkspaceName -ResourceGroupName WorkspaceRg
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics -Workspace $workspace -TrafficAnalyticsInterval 60
+
+
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics:$false -Workspace $workspace
+
+TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
+StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
+Enabled          : True
+RetentionPolicy  : {
+                     "Days": 0,
+                     "Enabled": false
+                   }
+Format           : {
+                     "Type ": "Json",
+                     "Version": 1
+                   }
+FlowAnalyticsConfiguration : {
+            "networkWatcherFlowAnalyticsConfiguration": {
+              "enabled": false,
+              "workspaceId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "workspaceRegion": "WorkspaceLocation",
+              "workspaceResourceId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/WorkspaceRg/providers/microsoft.operationalinsights/workspaces/WorkspaceName",
+	      "TrafficAnalyticsInterval": 60
+            }
+          }
+```
+
+In this example we disable Traffic Analytics for a Network Security Group which has flow logging and Traffic Analytics configured earlier. In the response, we see the specified NSG has flow logging enabled but Traffic Analytics disabled.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -AsJob
@@ -394,7 +440,11 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficAnalyticsInterval
+<<<<<<< HEAD
 Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.
+=======
+Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics. Supported values are 10 and 60 minutes.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32
@@ -586,6 +636,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
+<<<<<<< HEAD
 [Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
+=======
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

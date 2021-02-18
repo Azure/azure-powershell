@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 0.8.0
+* Added new cmdlets to support query resource
+
+## Version 0.7.7
+* Update references in .psd1 to use relative path
+
+## Version 0.7.6
+* Ignoring subscription from azure context
+* Add two examples for cmdlet `Search-AzGraph` with parameter `-Include`.
+
+## Version 0.7.5
+* Showing warnings in cases when too many subscriptions were used or results got truncated.
+* Adding param to extend query result with subscription and tenant names
+
+## Version 0.7.4
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
 
 ## Version 0.7.3

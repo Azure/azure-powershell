@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhubnetworkruleset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnetworkruleset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Removes the NetwrokRuleSet for the Given Namespace
+=======
+Removes the NetworkRuleSet for the Given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +39,11 @@ Remove-AzEventHubNetworkRuleSet [-ResourceId] <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Removes the NetwrokRuleSet for the Given Namespace
+=======
+Removes the NetworkRuleSet for the Given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -47,14 +59,22 @@ IpRules             :
 VirtualNetworkRules : 
 
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet for the Given "Eventhub-Namespace1-1375" namesapce 
+=======
+Deletes the NetworkRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
 PS C:\> Remove-AzEventHubNetworkRuleSet -InputObject $result1375
 ```
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet using InputObject 
+=======
+Deletes the NetworkRuleSet using InputObject 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3
 ```powershell
@@ -67,7 +87,11 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet using ResourceId of the Namepsace
+=======
+Deletes the NetworkRuleSet using ResourceId of the Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 ## PARAMETERS

@@ -15,10 +15,19 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage.File;
+<<<<<<< HEAD
     using System.Globalization;
     using System.Management.Automation;
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using System.Globalization;
+    using System.Management.Automation;
+
+    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileDirectory))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class RemoveAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -33,18 +42,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the directory would be removed.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share where the directory would be removed.")]
+        [ValidateNotNull]
+        [Alias("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the directory would be removed.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.DirectoryParameterSetName,
+            HelpMessage = "CloudFileDirectory object indicated the base folder where the directory would be removed.")]
+        [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
@@ -59,7 +84,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Path to the directory to be removed.")]
         [Parameter(
             Position = 1,
+<<<<<<< HEAD
             ValueFromPipeline = true,
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "Path to the directory to be removed.")]
@@ -102,7 +130,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 if (this.PassThru)
                 {
+<<<<<<< HEAD
                     this.OutputStream.WriteObject(taskId, directoryToBeRemoved);
+=======
+                    WriteCloudFileDirectoryeObject(taskId, this.Channel, directoryToBeRemoved);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             });
         }

@@ -65,11 +65,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
 
         /// <summary>
         /// </summary>
+<<<<<<< HEAD
         [JsonProperty(PropertyName = "operationsMonitoringProperties")]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
         /// <summary>
         /// </summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "routing")]
         public PSRoutingProperties Routing { get; set; }
 

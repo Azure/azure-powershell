@@ -78,7 +78,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNameValuePair(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.values = list.AsReadOnly();
+=======
+                    this.values = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.values;
             }

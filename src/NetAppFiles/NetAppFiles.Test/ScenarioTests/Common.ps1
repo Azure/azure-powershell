@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿# ----------------------------------------------------------------------------------
+=======
+# ----------------------------------------------------------------------------------
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,17 +50,28 @@ function Get-ProviderLocation($provider)
   
             if ($location -eq $null) 
             {  
+<<<<<<< HEAD
                 return "eastus2"  
+=======
+                return "westcentralus"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             } else 
             {  
                 return $location.Locations[0]  
             }  
         }
         
+<<<<<<< HEAD
         return "eastus2"
     }
 
     return "eastus2"
+=======
+        return "westcentralus"
+    }
+
+    return "westcentralus"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#

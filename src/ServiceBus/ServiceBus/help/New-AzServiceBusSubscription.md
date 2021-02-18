@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebussubscription
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -100,7 +104,11 @@ Accept wildcard characters: False
 Timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
+<<<<<<< HEAD
 For Standard = Timespan.Max and Basic = 14 dyas
+=======
+For Standard = Timespan.Max and Basic = 14 days
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

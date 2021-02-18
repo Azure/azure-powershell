@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/set-azanalysisservicesserver
+=======
+online version: https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -161,7 +165,11 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayResourceId
+<<<<<<< HEAD
 Gateway resource Id for assocaite to an Analysis server
+=======
+Gateway resource Id to associate to an Analysis server
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -237,7 +245,11 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the server.
+<<<<<<< HEAD
 The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
+=======
+The supported values are 'S0', 'S1', 'S2', 'S4', 'S8', 'S9', 'S8v2', 'S9v2' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

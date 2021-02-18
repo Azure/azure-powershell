@@ -19,8 +19,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         internal const string Default = "default";
         internal const string Oem = "oem";
         internal const string BigEndianUtf32 = "bigendianutf32";
+<<<<<<< HEAD
         
         
+=======
+        internal const string Byte = "byte";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     internal sealed class ArgumentToEncodingTransformationAttribute : ArgumentTransformationAttribute
@@ -54,6 +58,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             var oemCP = NativeMethods.GetOEMCP();
                             return Encoding.GetEncoding((int)oemCP);
                         }
+<<<<<<< HEAD
+=======
+                    case EncodingUtils.Byte:
+                        return new ByteEncoding();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     default:
                         // Default to unicode encoding
                         throw new ArgumentException($"{encodingName} is not a supported Encoding type");

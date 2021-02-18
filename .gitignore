@@ -8,7 +8,11 @@ src/local-artifacts/*
 
 obj
 bin
+<<<<<<< HEAD
 TestResults
+=======
+**/*TestResults*
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 *.orig
 *.ncrunchsolution
 *.patch
@@ -227,3 +231,9 @@ launchSettings.json
 /tools/Modules/tmp
 /tools/Az/Az.psm1
 /Azure.PowerShell.sln
+<<<<<<< HEAD
+=======
+
+# Added due to scan
+src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataFactoryV2.Test.RunTests/TestRunV2.json
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

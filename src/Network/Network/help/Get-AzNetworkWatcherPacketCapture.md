@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherpacketcapture
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherpacketcapture
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -53,6 +57,12 @@ In this example we create a packet capture named "PacketCaptureTest" with multip
 We then call Get-AzNetworkWatcherPacketCapture to retrieve the status of the capture session. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
+<<<<<<< HEAD
+=======
+>[!NOTE]
+>If you create a reference to the packet capture directly from the New-AzNetworkWatcherPacketCapture command, it won't have all the properties. You can get all of the properties of the packet capture by making a call to the Get-AzNetworkWatcherPacketCapture command.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### Example 2: Create a Packet Capture with multiple filters and retrieve its status
 ```
 Get-AzNetworkWatcherPacketCapture -ResourceGroupName rg1 -NetworkWatcherName nw1 -PacketCaptureName PacketCapture*
@@ -235,7 +245,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
+<<<<<<< HEAD
 [Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
+=======
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)
 

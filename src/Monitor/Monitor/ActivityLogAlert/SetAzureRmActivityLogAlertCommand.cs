@@ -150,7 +150,11 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                         resourceGroupName: out resourceGroupName,
                         activityLogAlertName: out activityLogAlertName);
 
+<<<<<<< HEAD
                     requestBody = this.UpdateActivityLogAlertResource(this.InputObject);
+=======
+                    requestBody = this.UpdateActivityLogAlertPsResource(this.InputObject);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(this.ResourceId))
                 {
@@ -205,6 +209,26 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
             }
         }
 
+<<<<<<< HEAD
+=======
+        private ActivityLogAlertResource UpdateActivityLogAlertPsResource(PSActivityLogAlertResource inputObject)
+        {
+            var activityLogAlertResource = new ActivityLogAlertResource(
+                inputObject.Location,
+                inputObject.Scopes,
+                new ActivityLogAlertAllOfCondition(inputObject.Condition.AllOf.Select(e => new ActivityLogAlertLeafCondition(field: e.Field, equals: e.Equals)).ToList()), 
+                new ActivityLogAlertActionList(inputObject.Actions.ActionGroups.Select(e => new ActivityLogAlertActionGroup(actionGroupId: e.ActionGroupId, webhookProperties: e.WebhookProperties)).ToList()),
+                inputObject.Id,
+                inputObject.Name,
+                inputObject.Type,
+                inputObject.Tags,
+                inputObject.Enabled,
+                inputObject.Description);
+
+            return UpdateActivityLogAlertResource(activityLogAlertResource);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private ActivityLogAlertResource UpdateActivityLogAlertResource(ActivityLogAlertResource requestBody)
         {
             // There was an ActivityLogAlert already there, just modify what can be modifed

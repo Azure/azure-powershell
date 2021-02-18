@@ -28,6 +28,7 @@ function Test-AzureContainerRegistry
 	{
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
+<<<<<<< HEAD
 		# Creating a container registry with a default new storage account
 		$classicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName -Sku "Classic"
 		Verify-ContainerRegistry $classicRegistry $resourceGroupName $classicRegistryName "Classic" $null $false
@@ -43,6 +44,8 @@ function Test-AzureContainerRegistry
 		$retrievedRegistry = Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName
 		Verify-ContainerRegistry $retrievedRegistry $resourceGroupName $classicRegistryName "Classic" $storageAccountName $false
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$basicRegistryName = Get-RandomRegistryName
 		$basicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $basicRegistryName -Sku "Basic" -EnableAdminUser
 		Verify-ContainerRegistry $basicRegistry $resourceGroupName $basicRegistryName "Basic" $null $true
@@ -62,12 +65,19 @@ function Test-AzureContainerRegistry
 
 		# Get list of container registries under a resource group
 		$registries = Get-AzContainerRegistry -ResourceGroupName $resourceGroupName
+<<<<<<< HEAD
 		Assert-AreEqual 4 $registries.Count
+=======
+		Assert-AreEqual 3 $registries.Count
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		foreach($r in $registries)
 		{
 			switch($r.SkuName)
 			{
+<<<<<<< HEAD
 				"Classic" { Verify-ContainerRegistry $r $resourceGroupName $classicRegistryName "Classic" $storageAccountName $false }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 				"Basic" { Verify-ContainerRegistry $r $resourceGroupName $basicRegistryName "Basic" $null $true }
 				"Standard" { Verify-ContainerRegistry $r $resourceGroupName $standardRegistryName "Standard" $null $false }
 				"Premium" { Verify-ContainerRegistry $r $resourceGroupName $premiumRegistryName "Premium" $null $false }
@@ -75,13 +85,17 @@ function Test-AzureContainerRegistry
 		}
 
 		# Delete container registry
+<<<<<<< HEAD
 		Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName | Remove-AzContainerRegistry
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $standardRegistryName | Remove-AzContainerRegistry
 		Remove-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName
 		Remove-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $basicRegistryName
 		$registries = Get-AzContainerRegistry -ResourceGroupName $resourceGroupName
 		Assert-AreEqual 0 $registries.Count
 
+<<<<<<< HEAD
 		# Creating a container registry with an existing storage account
 		$classicRegistryName = Get-RandomRegistryName
 		$classicRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $classicRegistryName -Sku "Classic" -StorageAccountName $storageAccountName
@@ -98,6 +112,13 @@ function Test-AzureContainerRegistry
 		# update premium sku container registry with storage account
 		$premiumRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -Sku "Premium"
 		Assert-Error {Update-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -EnableAdminUser -StorageAccountName $storageAccountName} "Storage account cannot be updated in SKU Premium"
+=======
+		# Creating a premium sku container registry with an existing storage account
+		$premiumRegistryName = Get-RandomRegistryName
+	
+		# update premium sku container registry with storage account
+		$premiumRegistry = New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName -Sku "Premium"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		Get-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $premiumRegistryName | Update-AzContainerRegistry -DisableAdminUser
 		Verify-ContainerRegistry $premiumRegistry $resourceGroupName $premiumRegistryName "Premium" $null $false
@@ -155,8 +176,11 @@ function Test-AzureContainerRegistryCredential
     $location = Get-ProviderLocation "Microsoft.ContainerRegistry/registries"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
+<<<<<<< HEAD
 	
 	Test-AzureContainerRegistryCredentialBySku $resourceGroupName $location "Classic"
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	Test-AzureContainerRegistryCredentialBySku $resourceGroupName $location "Basic"	
 
@@ -207,7 +231,11 @@ function Test-AzureContainerRegistryNameAvailability
     $nameStatus = Test-AzContainerRegistryNameAvailability -Name "Microsoft"
     Assert-True {!$nameStatus.nameAvailable}
     Assert-AreEqual "Invalid" $nameStatus.Reason
+<<<<<<< HEAD
     Assert-AreEqual "The specified resource name is disallowed" $nameStatus.Message
+=======
+    Assert-AreEqual "The specified resource name is disallowed." $nameStatus.Message
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 

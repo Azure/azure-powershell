@@ -50,7 +50,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string name = "webhookName";
 
             this.mockAutomationClient.Setup(
+<<<<<<< HEAD
                 f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false));
+=======
+                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false, "TestHybridGroup"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -58,11 +62,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.Name = name;
             this.cmdlet.IsEnabled = false;
             this.cmdlet.Parameters = null;
+<<<<<<< HEAD
+=======
+            this.cmdlet.RunOn = "TestHybridGroup";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
             this.mockAutomationClient.Verify(
+<<<<<<< HEAD
                 f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false),
+=======
+                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false, "TestHybridGroup"),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Times.Once());
         }
     }

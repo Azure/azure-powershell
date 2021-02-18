@@ -176,6 +176,34 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public double? MinimumCapacity { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
+        /// </summary>
+        public int? ReadReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
+        /// </summary>
+        public int? HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup storage redundancy for the database
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -191,7 +219,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
+<<<<<<< HEAD
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
@@ -218,13 +249,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
             RequestedServiceObjectiveId = id;
+<<<<<<< HEAD
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
+=======
+            
+            DatabaseReadScale readScale;
+            if (Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale))
+            {
+                ReadScale = readScale;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ZoneRedundant = false;
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
+<<<<<<< HEAD
+=======
+            ReadReplicaCount = null;
+            HighAvailabilityReplicaCount = null;
+            BackupStorageRedundancy = null;
+            SecondaryType = null;
+            MaintenanceConfigurationId = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -235,8 +283,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
+<<<<<<< HEAD
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             CollationName = database.Collation;
@@ -259,8 +310,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             RequestedServiceObjectiveName = database.RequestedServiceObjectiveName;
 
+<<<<<<< HEAD
             Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
+=======
+            DatabaseReadScale readScale;
+            if (Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale))
+            {
+                ReadScale = readScale;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ZoneRedundant = database.ZoneRedundant;
 
@@ -274,6 +333,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
+<<<<<<< HEAD
+=======
+            HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
+            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            SecondaryType = database.SecondaryType;
+            MaintenanceConfigurationId = database.MaintenanceConfigurationId;
+        }
+
+        /// <summary>
+        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapInternalBackupStorageRedundancyToExternal(string backupStorageRedundancy)
+        {
+            switch (backupStorageRedundancy)
+            {
+                case "GRS":
+                    return "Geo";
+                case "LRS":
+                    return "Local";
+                case "ZRS":
+                    return "Zone";
+                default:
+                    return null;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

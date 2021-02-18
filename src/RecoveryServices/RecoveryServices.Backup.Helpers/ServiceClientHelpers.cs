@@ -110,6 +110,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.BackupManagementType.AzureStorage:
                     providerType = ServiceClientModel.BackupManagementType.AzureStorage.ToString();
                     break;
+<<<<<<< HEAD
+=======
+                case CmdletModel.BackupManagementType.MAB:
+                    providerType = ServiceClientModel.BackupManagementType.MAB.ToString();
+                    break;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 default:
                     break;
             }

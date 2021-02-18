@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 383402B2-6B7C-41AB-AFF9-36C86156B0A9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontext
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -74,7 +78,11 @@ New-AzStorageContext [-Local] [<CommonParameters>]
 ## DESCRIPTION
 The **New-AzStorageContext** cmdlet creates an Azure Storage context.
 The default Authentication of a Storage Context is OAuth (Azure AD), if only input Storage account name.
+<<<<<<< HEAD
 See details of authentication of the Storage Service in https://docs.microsoft.com/en-us/rest/api/storageservices/authorization-for-the-azure-storage-services.
+=======
+See details of authentication of the Storage Service in https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -161,7 +169,11 @@ PS C:\>Connect-AzAccount
 PS C:\> $Context = New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
+<<<<<<< HEAD
 This command creates a context by using the OAuth (Azure AD)  Authentication.
+=======
+This command creates a context by using the OAuth (Azure AD) Authentication.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -319,7 +331,11 @@ Accept wildcard characters: False
 
 ### -UseConnectedAccount
 Indicates that this cmdlet creates an Azure Storage context with OAuth (Azure AD) Authentication.
+<<<<<<< HEAD
 The cmdlet will use OAuth Authentication by default, when other anthentication not specified.
+=======
+The cmdlet will use OAuth Authentication by default, when other authentication not specified.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

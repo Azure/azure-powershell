@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the artifact source.")]
         [ValidateNotNullOrEmpty]
@@ -77,6 +81,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
+<<<<<<< HEAD
             var psArtifactSource = new PSArtifactSource()
             {
                 ResourceGroupName = this.ResourceGroupName,
@@ -85,6 +90,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
             psArtifactSource = this.DeploymentManagerClient.GetArtifactSource(psArtifactSource);
             this.WriteObject(psArtifactSource);
+=======
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var psArtifactSource = new PSArtifactSource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name,
+                };
+
+                psArtifactSource = this.DeploymentManagerClient.GetArtifactSource(psArtifactSource);
+                this.WriteObject(psArtifactSource);
+            }
+            else
+            {
+                var psArtifactSources = this.DeploymentManagerClient.ListArtifactSources(this.ResourceGroupName);
+                this.WriteObject(psArtifactSources, enumerateCollection: true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

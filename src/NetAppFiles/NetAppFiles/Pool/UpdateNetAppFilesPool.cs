@@ -20,6 +20,11 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -81,9 +86,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
         public string ServiceLevel { get; set; }
+=======
+            HelpMessage = "The qos type of the pool. Possible values include: 'Auto', 'Manual'")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Auto", "Manual")]
+        public string QosType { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -118,6 +130,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
@@ -142,16 +169,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
 
             var capacityPoolBody = new CapacityPoolPatch()
+<<<<<<< HEAD
             {
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
                 Location = Location,
                 Tags = Tag
+=======
+            {                
+                Size = PoolSize,
+                Location = Location,
+                Tags = tagPairs,
+                QosType = QosType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
+<<<<<<< HEAD
                 var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name);
+=======
+                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name).ToPsNetAppFilesPool();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(anfPool);
             }
         }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/disconnect-azaccount
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,22 +52,37 @@ After executing this cmdlet, you will need to login again using Connect-AzAccoun
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Logout of the current account
 ```
+=======
+### Example 1: Logout of the current account
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Disconnect-AzAccount
 ```
 
 Logs out of the Azure account associated with the current context.
 
+<<<<<<< HEAD
 ### Logout of the account associated with a particular context
 ```
+=======
+### Example 2: Logout of the account associated with a particular context
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzContext "Work" | Disconnect-AzAccount -Scope CurrentUser
 ```
 
 Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrentUser' scope, all credentials and contexts will be permanently deleted.
 
+<<<<<<< HEAD
 ### Log out a particular user
 ```
+=======
+### Example 3: Log out a particular user
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Disconnect-AzAccount -Username 'user1@contoso.org'
 ```
 
@@ -224,7 +243,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

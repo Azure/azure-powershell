@@ -58,7 +58,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreVMBackupItemParams
     {
         TargetResourceGroupName,
+<<<<<<< HEAD
         OsaOption
+=======
+        OsaOption,
+        RestoreDiskList,
+        RestoreOnlyOSDisk,
+        RestoreAsUnmanagedDisks,
+        DiskEncryptionSetId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public enum RestoreFSBackupItemParams
@@ -68,13 +76,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         SourceFileType,
         TargetStorageAccountName,
         TargetFileShareName,
+<<<<<<< HEAD
         TargetFolder
+=======
+        TargetFolder,
+        MultipleSourceFilePath
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     public enum RestoreWLBackupItemParams
     {
         WLRecoveryConfig
     }
 
+<<<<<<< HEAD
+=======
+    public enum CRRParams
+    {
+        UseSecondaryRegion,
+        SecondaryRegion
+    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public enum WorkloadRecoveryConfigParams
     {
         PointInTime,
@@ -94,7 +116,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RetentionPolicy,
         ProtectionPolicy,
         ResourceGroupName,
+<<<<<<< HEAD
         ResourceName
+=======
+        ResourceName,
+        FixForInconsistentItems
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public enum ItemParams
@@ -115,7 +142,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ExpiryDateTimeUTC,
         StorageAccountName,
         BackupType,
+<<<<<<< HEAD
         EnableCompression
+=======
+        EnableCompression,
+        DeleteState,
+        FriendlyName,
+        InclusionDisksList,
+        ExclusionDisksList,
+        ResetExclusionSettings,
+        ExcludeAllDataDisks
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public enum ProtectionCheckParams

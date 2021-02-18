@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicysetdefinition
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicysetdefinition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,31 +19,61 @@ Modifies a policy set definition
 ### NameParameterSet (Default)
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
+<<<<<<< HEAD
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ManagementGroupNameParameterSet
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -ManagementGroupName <String>
+<<<<<<< HEAD
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### SubscriptionIdParameterSet
 ```
 Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -SubscriptionId <Guid>
+<<<<<<< HEAD
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### IdParameterSet
 ```
 Set-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
+<<<<<<< HEAD
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Set-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
+ [-Metadata <String>] [-Parameter <String>] -InputObject <PsPolicySetDefinition> [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -73,6 +107,24 @@ PolicySetDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/prov
 
 This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
 
+<<<<<<< HEAD
+=======
+### Example 3: Update the groups of a policy set definition
+```
+PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ "name": "group1", "displayName": "Virtual Machine Security" }, { "name": "group2" }]'
+```
+
+This command updates the groups of a policy set definition named VMPolicySetDefinition.
+
+### Example 4: Update the groups of a policy set definition using a hash table
+```
+$groupsJson = ConvertTo-Json @{ name = "group1", displayName = "Virtual Machine Security" }, @{ name = "group2" }
+PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
+```
+
+This command updates the groups of a policy set definition named VMPolicySetDefinition using a hash table to construct the groups.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiVersion
@@ -136,6 +188,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -GroupDefinition
+The policy definition groups of the updated policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Id
 The fully qualified policy definition Id, including the subscription.
 e.g.
@@ -153,6 +223,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -InputObject
+The policy set definition object to update that was output from another cmdlet.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ManagementGroupName
 The name of the management group of the policy set definition to update.
 
@@ -169,7 +257,11 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
+<<<<<<< HEAD
 The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a string.
+=======
+The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a JSON string.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -199,7 +291,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
+<<<<<<< HEAD
 The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.
+=======
+The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a JSON string.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -214,7 +310,11 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
+<<<<<<< HEAD
 The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as string.
+=======
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as a JSON string.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

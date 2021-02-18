@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgriddomaintopic
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaintopic
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -136,7 +140,11 @@ ProvisioningState : Succeeded
 
 ### Example 5
 
+<<<<<<< HEAD
 List the Event Grid domain topics (if any) iunder domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domain topics at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+=======
+List the Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domain topics at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 PS C:\> $total = 0
@@ -180,7 +188,11 @@ Aliases: Domain
 Required: True
 Position: 1
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -195,7 +207,11 @@ Aliases: DomainTopicName
 Required: False
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -210,7 +226,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -225,7 +245,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -240,7 +264,11 @@ Aliases: ResourceGroup
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -270,12 +298,20 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

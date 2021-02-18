@@ -18,7 +18,13 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Management.Automation;
+=======
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -28,6 +34,11 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition", DefaultParameterSetName = ParameterSet.RoleDefinitionName), OutputType(typeof(PSRoleDefinition))]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
+<<<<<<< HEAD
+=======
+        #region Parameters
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -46,6 +57,12 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
+<<<<<<< HEAD
+=======
+        #endregion
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
@@ -67,7 +84,22 @@ namespace Microsoft.Azure.Commands.Resources
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
+<<<<<<< HEAD
             WriteObject(PoliciesClient.FilterRoleDefinitions(options), enumerateCollection: true);
+=======
+            IEnumerable<PSRoleDefinition> filteredRoleDefinitions = PoliciesClient.FilterRoleDefinitions(options);
+
+            if (filteredRoleDefinitions?.Count() == 0)
+            {
+                WriteWarning("No role definitions were found with those conditions.");
+                WriteWarning("If the role was created recently keep in mind there's a slight delay between creation and public view.");
+                WriteWarning("Please try again later.");
+            }
+            else
+            {
+                WriteObject(filteredRoleDefinitions, enumerateCollection: true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private void WriteTerminatingError(string message, params object[] args)

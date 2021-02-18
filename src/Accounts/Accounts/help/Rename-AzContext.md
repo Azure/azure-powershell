@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/rename-azcontext
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/rename-azcontext
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,16 +34,26 @@ Rename an Azure context.  By default contexts are named by user account and subs
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Rename a context using named parameters
 ```
+=======
+### Example 1: Rename a context using named parameters
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Rename-AzContext -SourceName "[user1@contoso.org; 12345-6789-2345-3567890]" -TargetName "Work"
 ```
 
 Rename the context for 'user1@contoso.org' with subscription '12345-6789-2345-3567890' to 'Work'.  After this command, you will be able to target the context using 
 'Select-AzContext Work'.  Note that you can tab through the values for 'SourceName' using tab completion.
 
+<<<<<<< HEAD
 ### Rename a context using positional parameters
 ```
+=======
+### Example 2: Rename a context using positional parameters
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Rename-AzContext "My context" "Work"
 ```
 
@@ -186,7 +200,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

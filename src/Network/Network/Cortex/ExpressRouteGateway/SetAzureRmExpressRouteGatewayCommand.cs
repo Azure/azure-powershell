@@ -71,12 +71,20 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
+=======
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Min for the scale units for this ExpressRouteGateway.")]
         public uint MinScaleUnits { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
+=======
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Max for the scale units for this ExpressRouteGateway.")]
         public uint MaxScaleUnits { get; set; }
 
@@ -116,6 +124,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ExpressRouteGatewayNotFound);
             }
 
+<<<<<<< HEAD
             if (this.MinScaleUnits > this.MaxScaleUnits)
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnits, this.MaxScaleUnits));
@@ -123,6 +132,18 @@ namespace Microsoft.Azure.Commands.Network
 
             existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
             existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnits);
+=======
+            if (this.MinScaleUnits > 0 && this.MaxScaleUnits > 0)
+            {
+                if (this.MinScaleUnits > this.MaxScaleUnits)
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnits, this.MaxScaleUnits));
+                }
+
+                existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
+                existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnits);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ConfirmAction(
                     Properties.Resources.SettingResourceMessage,

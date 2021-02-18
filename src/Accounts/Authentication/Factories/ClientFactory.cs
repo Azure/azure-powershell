@@ -19,6 +19,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.Exceptions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -56,7 +60,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context == null)
             {
+<<<<<<< HEAD
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
+=======
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
@@ -129,7 +137,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 var exceptionMessage = endpoint == AzureEnvironment.Endpoint.ServiceManagement
                     ? Resources.InvalidDefaultSubscription
                     : Resources.NoSubscriptionInContext;
+<<<<<<< HEAD
                 throw new ApplicationException(exceptionMessage);
+=======
+                throw new AzPSApplicationException(exceptionMessage, ErrorKind.UserError);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
@@ -165,21 +177,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (subscription == null)
             {
+<<<<<<< HEAD
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
+=======
+                throw new AzPSApplicationException(Resources.InvalidDefaultSubscription, ErrorKind.UserError);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var account = profile.Accounts.FirstOrDefault((a) => string.Equals(a.Id, (subscription.GetAccount()), StringComparison.OrdinalIgnoreCase));
 
             if (null == account)
             {
+<<<<<<< HEAD
                 throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
+=======
+                throw new AzPSArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName", ErrorKind.UserError);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var environment = profile.Environments.FirstOrDefault((e) => string.Equals(e.Name, subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase));
 
             if (null == environment)
             {
+<<<<<<< HEAD
                 throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
+=======
+                throw new AzPSArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()), "environment", ErrorKind.UserError);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             AzureContext context = new AzureContext(subscription, account, environment);

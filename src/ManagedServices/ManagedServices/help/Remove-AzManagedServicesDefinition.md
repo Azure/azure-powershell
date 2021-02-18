@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.dll-Help.xml
 Module Name: Az.ManagedServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+=======
+online version: https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,6 +18,7 @@ Deletes the registration definition.
 
 ### Default (Default)
 ```
+<<<<<<< HEAD
 Remove-AzManagedServicesDefinition -Id <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -21,12 +26,19 @@ Remove-AzManagedServicesDefinition -Id <String> [-AsJob] [-DefaultProfile <IAzur
 ### ByResourceId
 ```
 Remove-AzManagedServicesDefinition -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+=======
+Remove-AzManagedServicesDefinition [-Scope <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
+<<<<<<< HEAD
 Remove-AzManagedServicesDefinition -InputObject <PSRegistrationDefinition> [-AsJob]
+=======
+Remove-AzManagedServicesDefinition -InputObject <PSRegistrationDefinition>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,6 +48,7 @@ Deletes the registration definition.
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```powershell
 PS C:\> Remove-RegistrationDefinition -Id 0513b566-cab0-4fef-9b53-a285cd33389f
 ```
@@ -82,6 +95,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+```
+PS C:\> Remove-AzManagedServicesDefinition -Name 0c146106-c927-4098-a7ca-30bbcf44a502
+PS C:\>
+```
+
+Removes the registration definition by name at the default scope.
+
+### Example 2
+```
+PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
+PS C:\> Remove-AzManagedServicesDefinition -InputObject $definition
+PS C:\>
+```
+
+Deletes the registration definition given the input object.
+
+## PARAMETERS
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -97,17 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -Id
 The registration definition identifier.
 
 ```yaml
 Type: System.String
 Parameter Sets: Default
+=======
+### -InputObject
+The registration definition object.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
+Parameter Sets: ByInputObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,11 +161,24 @@ The registration definition object.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
 Parameter Sets: ByInputObject
+=======
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the Registration Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: Default
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
@@ -139,6 +195,24 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+=======
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+The scope where the registration definition created.
+
+```yaml
+Type: System.String
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -152,7 +226,11 @@ Aliases: cf
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,7 +246,11 @@ Aliases: wi
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,12 +260,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### None
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
 
+=======
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
+## OUTPUTS
+
+### System.Void
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

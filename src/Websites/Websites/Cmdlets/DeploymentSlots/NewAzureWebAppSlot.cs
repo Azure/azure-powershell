@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 			Hashtable appSettings = new Hashtable();
 			if (ContainerRegistryUrl != null)
 			{
+<<<<<<< HEAD
 				appSettings[CmdletHelpers.DocerRegistryServerUrl] = ContainerRegistryUrl;
 			}
 			if (ContainerRegistryUser != null)
@@ -114,6 +115,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 			if (ContainerRegistryPassword != null)
 			{
 				appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+=======
+				appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
+			}
+			if (ContainerRegistryUser != null)
+			{
+				appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
+			}
+			if (ContainerRegistryPassword != null)
+			{
+				appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 			}
 			if (EnableContainerContinuousDeployment.IsPresent)
 			{
@@ -171,6 +183,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                 cloningInfo = new CloningInfo
                 {
                     SourceWebAppId = SourceWebApp.Id,
+<<<<<<< HEAD
+=======
+                    SourceWebAppLocation = SourceWebApp.Location,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
                     CloneSourceControl = !IgnoreSourceControl.IsPresent,
                     ConfigureLoadBalancing = false,

@@ -15,8 +15,15 @@ $rules = Get-Content -Raw -Path $RulesFile | ConvertFrom-Json;
 $results = @{};
 $warnings = @();
 
+<<<<<<< HEAD
 # Find all cmdlet names by help file names in the repository.
 $cmdlets = Get-ChildItem $RootPath -Recurse | Where-Object { $_.FullName -cmatch ".*\\help\\.*-.*.md" -and $_.Fullname -notlike "*Stack*" };
+=======
+.($PSScriptRoot + "\PreloadToolDll.ps1")
+# Find all cmdlet names by help file names in the repository.
+$cmdlets = Get-ChildItem $RootPath -Recurse | Where-Object { $_.FullName -cmatch ".*\\help\\.*-.*.md" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 $k = 0;
 $cmdlets | ForEach-Object {

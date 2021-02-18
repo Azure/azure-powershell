@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.deploymentmanager/get-azdeploymentmanagerserviceunit
+=======
+online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerserviceunit
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,31 +19,52 @@ Gets the service unit.
 ### Interactive (Default)
 ```
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
+<<<<<<< HEAD
  [-ServiceName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-ServiceName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByServiceObject
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ServiceObject] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServiceResourceId
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> [-ServiceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [[-Name] <String>]
+ [-ServiceResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByTopologyObjectAndServiceName
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ServiceTopologyResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,7 +76,11 @@ Get-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-DefaultProfile <IAzu
 
 ### InputObject
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerServiceUnit [-ServiceUnitObject] <PSServiceUnitResource>
+=======
+Get-AzDeploymentManagerServiceUnit [-InputObject] <PSServiceUnitResource>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -102,6 +131,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -InputObject
+Service unit resource object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 The name of the service unit.
 
@@ -110,7 +157,11 @@ Type: System.String
 Parameter Sets: Interactive, ByServiceObject, ByServiceResourceId, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -237,6 +288,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -ServiceUnitObject
 Service unit resource object.
 
@@ -254,6 +306,10 @@ Accept wildcard characters: False
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

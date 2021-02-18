@@ -773,3 +773,144 @@ function Test-SiteRecoveryNewModelE2ETest
     $Policy = Get-AzRecoveryServicesAsrPolicy | Where-Object {$_.Name -eq $PolicyName}
     Assert-Null($Policy)
 }
+<<<<<<< HEAD
+=======
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with DiskIdToDiskEncryptionSetMap
+#>
+function Test-UpdateRPIWithDiskEncryptionSetMap
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "HyperVSite"    
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="b2a-vm1"
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $diskId="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy"
+    $diskEncryptionSetMap = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+    $diskEncryptionSetMap.Add($rpi.ProviderSpecificDetails.AzureVMDiskDetails[0].DiskId, $diskId)
+    Set-AsrReplicationProtectedItem -InputObject $rpi -DiskIdToDiskEncryptionSetMap $diskEncryptionSetMap
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    Assert-NotNull($rpi.ProviderSpecificDetails.AzureVMDiskDetails[0].DiskEncryptionSetId)
+}
+
+<#
+.SYNOPSIS
+Site Recovery Create RPI with ProximityPlacementGroup
+#>
+function Test-CreateRPIWithProximityPlacementGroup
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "H2ASite"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $pcm = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="A020-VJ-Dum1"
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $ResourceGroupId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg"
+    $LogStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Storage/storageAccounts/hrasa"
+    $ppg = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Compute/proximityPlacementGroups/ppgh2a"
+    $EnableDRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $pcm -RecoveryAzureStorageAccountId $LogStorageAccountId -OSDiskName $($VMFriendlyName+"disk") -OS Windows -RecoveryResourceGroupId $ResourceGroupId -RecoveryProximityPlacementGroupId $ppg
+}
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with ProximityPlacementGroup
+#>
+function Test-UpdateRPIWithProximityPlacementGroup
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "H2ASite"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="A020-VJ-Dum1"
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $ppgSet="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Compute/proximityPlacementGroups/ppgh2aset"
+    Set-AsrReplicationProtectedItem -InputObject $rpi -RecoveryProximityPlacementGroupId $ppgSet
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    Assert-NotNull($rpi.ProviderSpecificDetails.RecoveryProximityPlacementGroupId)
+}
+
+<#
+.SYNOPSIS
+Site Recovery Create RPI with AvailabilityZone
+#>
+function Test-CreateRPIWithAvailabilityZone
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "H2ASite"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $pcm = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="A020-VJ-Dum2"
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $ResourceGroupId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg"
+    $LogStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Storage/storageAccounts/hrasa"
+    $avZone = "1"
+    $EnableDRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $pcm -RecoveryAzureStorageAccountId $LogStorageAccountId -OSDiskName $($VMFriendlyName+"disk") -OS Windows -RecoveryResourceGroupId $ResourceGroupId -RecoveryAvailabilityZone $avZone
+}
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with AvailabilityZone
+#>
+function Test-UpdateRPIWithAvailabilityZone
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "H2ASite"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="A020-VJ-Dum2"
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $avZoneSet="2"
+    Set-AsrReplicationProtectedItem -InputObject $rpi -RecoveryAvailabilityZone $avZoneSet
+    $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    Assert-NotNull($rpi.ProviderSpecificDetails.RecoveryAvailabilityZone)
+}
+
+function Test-CreateRPIWithManagedDisk
+{
+    param([string] $vaultSettingsFilePath)
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "H2ASite"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $pcm = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policyName ="b2apolicy"
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $policyName
+    $VMFriendlyName ="NestedDum1"
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMFriendlyName
+    $ResourceGroupId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg"
+    $LogStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Storage/storageAccounts/hrasa"
+    $ppg = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/h2arg/providers/Microsoft.Compute/proximityPlacementGroups/ppgh2a"
+    $EnableDRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $pcm -RecoveryAzureStorageAccountId $LogStorageAccountId -OSDiskName $($VMFriendlyName+"disk") -OS Windows -RecoveryResourceGroupId $ResourceGroupId -RecoveryProximityPlacementGroupId $ppg -UseManagedDisk true
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -213,4 +213,8 @@ else
     Write-Host "No switch parameter set - checking all files in current directory" -ForegroundColor Yellow
 }
 
+<<<<<<< HEAD
 Check-All $path
+=======
+Check-All $path
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

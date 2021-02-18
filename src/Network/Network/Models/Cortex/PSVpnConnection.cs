@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+<<<<<<< HEAD
+=======
+    using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     public class PSVpnConnection : PSChildResource
     {
@@ -47,7 +51,29 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Use Local Azure IpAddress", Target = ViewControl.Table)]
         public bool UseLocalAzureIpAddress { get; set; }
 
+<<<<<<< HEAD
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+=======
+        [Ps1Xml(Label = "UsePolicyBasedTrafficSelectors", Target = ViewControl.Table)]
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "VpnLink Connections", Target = ViewControl.Table)]
+        public List<PSVpnSiteLinkConnection> VpnLinkConnections { get; set; }
+
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
+
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

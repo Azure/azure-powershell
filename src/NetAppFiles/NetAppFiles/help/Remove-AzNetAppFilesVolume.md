@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/remove-aznetappfilesvolume
+=======
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesvolume
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -54,7 +58,11 @@ This command deletes the ANF volume "MyAnfVolume".
 The name of the ANF account
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -69,7 +77,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: IAzureContextContainer
+=======
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +96,11 @@ Accept wildcard characters: False
 The volume object to remove
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesVolume
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -99,7 +115,11 @@ Accept wildcard characters: False
 The name of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
@@ -114,7 +134,11 @@ Accept wildcard characters: False
 Return whether the specified volume was successfully removed
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +153,11 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -144,7 +172,11 @@ Accept wildcard characters: False
 The pool object containing the volume to remove
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesPool
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -159,7 +191,11 @@ Accept wildcard characters: False
 The resource group of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -174,7 +210,11 @@ Accept wildcard characters: False
 The resource id of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -189,7 +229,11 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: cf
 
@@ -205,7 +249,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: wi
 
@@ -217,8 +265,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

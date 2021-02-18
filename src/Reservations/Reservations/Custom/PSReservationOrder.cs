@@ -33,11 +33,14 @@ namespace Microsoft.Azure.Commands.Reservations.Models
 
         public IList<ReservationResponse> Reservations{ get; set; }
 
+<<<<<<< HEAD
 
         public PSReservationOrder()
         {
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string PrintItems()
         {
             string builder = "";

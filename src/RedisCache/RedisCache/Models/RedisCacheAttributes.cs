@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
+<<<<<<< HEAD
+=======
+            MinimumTlsVersion = cache.MinimumTlsVersion;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Tag = cache.Tags;
             Zone = cache.Zones;
         }
@@ -97,6 +101,11 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int? ShardCount { get; protected set; }
 
+<<<<<<< HEAD
+=======
+        public string MinimumTlsVersion { get; protected set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string SubnetId { get; protected set; }
 
         public string StaticIP { get; protected set; }

@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
             Assert.True(webKey.T.SequenceEqual(byokBlob));
             Assert.Equal(webKey.Kty, JsonWebKeyType.RsaHsm);
         }
+<<<<<<< HEAD
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -75,5 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
             Assert.True(webKey.IsValid());
             Assert.Equal(webKey.Kty, JsonWebKeyType.Rsa);
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

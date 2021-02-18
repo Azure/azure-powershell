@@ -22,18 +22,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Get all locations with the supported providers.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Location"), OutputType(typeof(PSResourceProviderLocation))]
+<<<<<<< HEAD
     public class GetAzureLocationCmdlet : ResourceManagerCmdletBase
+=======
+    public class GetAzureLocationCmdlet : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
+=======
+        protected override void OnProcessRecord()
+        {
+            if(DefaultContext.Subscription == null)
+            {
+                throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);

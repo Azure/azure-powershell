@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhubGeodrconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubGeodrconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,10 +41,17 @@ The **Get-AzEventHubGeoDRConfiguration** Retrieves Alias(Disaster Recovery confi
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\> Get-AzEventHubGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
 
 Name              : SampleDRCongifName
 Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.EventHub/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
+=======
+PS C:\> Get-AzEventHubGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRConfigName"
+
+Name              : SampleDRConfigName
+Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.EventHub/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRConfigName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type              : Microsoft.EventHub/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
@@ -49,7 +60,11 @@ Role              : Primary
 PendingReplicationOperationsCount : 0
 ```
 
+<<<<<<< HEAD
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
+=======
+Retrieves alias "SampleDRConfigName" configuration for primary namespace "SampleNamespace_Primary"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

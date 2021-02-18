@@ -1,0 +1,285 @@
+{
+  "Get-AzAppConfigurationStore+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "bff52165-8e58-4168-8d20-5850d7c8d97e" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053928Z:3e50e3e8-8816-4745-8f57-f0d638347153" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Link": [ "\u003c/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=yemingacusersys\u003e; rel=\"next\"" ],
+        "x-ms-request-id": [ "6e2f41e9-89c5-4825-8054-aa5dbd462a23" ],
+        "x-ms-correlation-request-id": [ "3e50e3e8-8816-4745-8f57-f0d638347153" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4250" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appconfstore-rg-3bve84/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentity-49mi7o\":{\"principalId\":\"901b68e5-2116-4ef3-9950-b5c64503daa9\",\"clientId\":\"36f4e3d4-318a-4f0f-ac82-945fe7a3d7d4\"}}},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:34+00:00\",\"endpoint\":\"https://appconf-8jpsaz.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"free\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz\",\"name\":\"appconf-8jpsaz\",\"location\":\"eastus\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"0413e9ba-777b-4f0c-b1ad-74d93e7db46d\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:57+00:00\",\"endpoint\":\"https://appconf-rc3ln7.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-rc3ln7\",\"name\":\"appconf-rc3ln7\",\"location\":\"eastus\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa104d9b-e4de-414b-a59c-462ef24413d5\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-16T02:23:09+00:00\",\"endpoint\":\"https://yemingac.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingac/providers/Microsoft.AppConfiguration/configurationStores/yemingac\",\"name\":\"yemingac\",\"location\":\"eastus\",\"tags\":{\"what\":\"ever\"}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"SystemAssigned, UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/yemingac/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yemingactest\":{\"principalId\":\"2255326d-b3c6-4dcf-92f8-b45db10dd812\",\"clientId\":\"81bdb0b3-cc24-4210-8462-1060c4e53970\"}},\"principalId\":\"39c8842d-4d2e-4e83-bb3f-809216fb8f27\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-16T05:08:30+00:00\",\"endpoint\":\"https://yemingacuser.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingac/providers/Microsoft.AppConfiguration/configurationStores/yemingacuser\",\"name\":\"yemingacuser\",\"location\":\"eastus\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"SystemAssigned, UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/yemingac/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yemingactest\":{\"principalId\":\"2255326d-b3c6-4dcf-92f8-b45db10dd812\",\"clientId\":\"81bdb0b3-cc24-4210-8462-1060c4e53970\"}},\"principalId\":\"021b013d-211f-4112-8db3-2ff3839b3c40\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-16T07:30:12+00:00\",\"endpoint\":\"https://yemingacusersys.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/yemingac/providers/Microsoft.AppConfiguration/configurationStores/yemingacusersys\",\"name\":\"yemingacusersys\",\"location\":\"eastus\",\"tags\":{}}],\"nextLink\":\"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=yemingacusersys\"}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=yemingacusersys+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=yemingacusersys",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1", "2" ],
+        "x-ms-client-request-id": [ "bff52165-8e58-4168-8d20-5850d7c8d97e", "bff52165-8e58-4168-8d20-5850d7c8d97e" ],
+        "CommandName": [ "Get-AzAppConfigurationStore", "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List", "Get-AzAppConfigurationStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "e686c277-8542-49b6-9387-c96ab0324e9c" ],
+        "x-ms-correlation-request-id": [ "f9e26935-4718-4374-a5d1-7c781fa9d478" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053929Z:f9e26935-4718-4374-a5d1-7c781fa9d478" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "4b7d6ce0-a690-4edc-b55e-bf77ed40b6e8" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053929Z:927754e7-ec0e-40cb-b38e-3e0627ff0304" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Link": [ "\u003c/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=appconf-rc3ln7\u003e; rel=\"next\"" ],
+        "x-ms-request-id": [ "9551c974-e880-4a25-901d-cfd7eca7c84c" ],
+        "x-ms-correlation-request-id": [ "927754e7-ec0e-40cb-b38e-3e0627ff0304" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1765" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appconfstore-rg-3bve84/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentity-49mi7o\":{\"principalId\":\"901b68e5-2116-4ef3-9950-b5c64503daa9\",\"clientId\":\"36f4e3d4-318a-4f0f-ac82-945fe7a3d7d4\"}}},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:34+00:00\",\"endpoint\":\"https://appconf-8jpsaz.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"free\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz\",\"name\":\"appconf-8jpsaz\",\"location\":\"eastus\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"0413e9ba-777b-4f0c-b1ad-74d93e7db46d\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:57+00:00\",\"endpoint\":\"https://appconf-rc3ln7.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-rc3ln7\",\"name\":\"appconf-rc3ln7\",\"location\":\"eastus\",\"tags\":{}}],\"nextLink\":\"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=appconf-rc3ln7\"}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=appconf-rc3ln7+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores?api-version=2020-06-01\u0026$skipToken=appconf-rc3ln7",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3", "4" ],
+        "x-ms-client-request-id": [ "4b7d6ce0-a690-4edc-b55e-bf77ed40b6e8", "4b7d6ce0-a690-4edc-b55e-bf77ed40b6e8" ],
+        "CommandName": [ "Get-AzAppConfigurationStore", "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List1", "Get-AzAppConfigurationStore_List1" ],
+        "ParameterSetName": [ "__AllParameterSets", "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview", "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "eedef4be-f147-4d26-ab0a-ebb213e59532" ],
+        "x-ms-correlation-request-id": [ "4f6d946b-edc4-4ba0-8ea0-7c259d1e0a42" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053930Z:4f6d946b-edc4-4ba0-8ea0-7c259d1e0a42" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "f29f4ae0-7ab5-4781-aa2f-7a87c903da2e" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"1700aaf5-0000-0100-0000-5f17b2620000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053930Z:87aebb1d-1775-4139-a4b3-546e1752ecb7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "bf79c25c-0c41-4c70-896e-ef138438a96b" ],
+        "x-ms-correlation-request-id": [ "87aebb1d-1775-4139-a4b3-546e1752ecb7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "856" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appconfstore-rg-3bve84/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentity-49mi7o\":{\"principalId\":\"901b68e5-2116-4ef3-9950-b5c64503daa9\",\"clientId\":\"36f4e3d4-318a-4f0f-ac82-945fe7a3d7d4\"}}},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:34+00:00\",\"endpoint\":\"https://appconf-8jpsaz.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"free\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz\",\"name\":\"appconf-8jpsaz\",\"location\":\"eastus\",\"tags\":{}}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "34c93e7c-81c3-4e70-a774-c1a1a5be7811" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"1700aaf5-0000-0100-0000-5f17b2620000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053931Z:2d301be4-24c5-4bd7-9c9c-cd4eb5e34623" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "0ba243a3-2b28-4f0d-bd4c-e910e031a23e" ],
+        "x-ms-correlation-request-id": [ "2d301be4-24c5-4bd7-9c9c-cd4eb5e34623" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "856" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appconfstore-rg-3bve84/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentity-49mi7o\":{\"principalId\":\"901b68e5-2116-4ef3-9950-b5c64503daa9\",\"clientId\":\"36f4e3d4-318a-4f0f-ac82-945fe7a3d7d4\"}}},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:34+00:00\",\"endpoint\":\"https://appconf-8jpsaz.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"free\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz\",\"name\":\"appconf-8jpsaz\",\"location\":\"eastus\",\"tags\":{}}"
+    }
+  },
+  "Get-AzAppConfigurationStore+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz?api-version=2020-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "fa3e4211-e6c3-423f-96fa-36dd48024bdf" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"1700aaf5-0000-0100-0000-5f17b2620000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200722T053931Z:029d7f5b-15ad-406a-a805-a45f02e93ede" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "9a7f9cd9-d5e8-441f-8a59-512ae3f8a3f8" ],
+        "x-ms-correlation-request-id": [ "029d7f5b-15ad-406a-a805-a45f02e93ede" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "openresty/1.15.8.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Jul 2020 05:39:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "856" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appconfstore-rg-3bve84/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentity-49mi7o\":{\"principalId\":\"901b68e5-2116-4ef3-9950-b5c64503daa9\",\"clientId\":\"36f4e3d4-318a-4f0f-ac82-945fe7a3d7d4\"}}},\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2020-07-22T03:28:34+00:00\",\"endpoint\":\"https://appconf-8jpsaz.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null},\"sku\":{\"name\":\"free\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appconfstore-rg-3bve84/providers/Microsoft.AppConfiguration/configurationStores/appconf-8jpsaz\",\"name\":\"appconf-8jpsaz\",\"location\":\"eastus\",\"tags\":{}}"
+    }
+  }
+}

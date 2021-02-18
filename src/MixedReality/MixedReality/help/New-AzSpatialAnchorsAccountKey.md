@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.dll-Help.xml
 Module Name: Az.MixedReality
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -49,7 +53,11 @@ New-AzSpatialAnchorsAccountKey -InputObject <PSSpatialAnchorsAccount> -Secondary
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Renegrate primary key or secondary key of Spatial Anchors Account.
+=======
+Regenerate primary key or secondary key of Spatial Anchors Account.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -239,7 +247,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys
+=======
+### Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSAccountKeys
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

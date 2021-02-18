@@ -1,7 +1,11 @@
 ---
 Module Name: Az.StorageSync
 Module Guid: 001b4bbc-9d7d-43b2-9e95-7a70325e9509
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.storagesync
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.storagesync
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -47,6 +51,12 @@ This command creates a new server endpoint on a registered server. This enables 
 ### [New-AzStorageSyncService](New-AzStorageSyncService.md)
 This command creates a new storage sync service in a resource group.
 
+<<<<<<< HEAD
+=======
+### [Set-AzStorageSyncService](New-AzStorageSyncService.md)
+This command sets a storage sync service in a resource group.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Register-AzStorageSyncServer](Register-AzStorageSyncServer.md)
 This command registers a server to a storage sync service which creates a trust relationship. PowerShell or the Azure portal can then be used to configure sync on this server.
 

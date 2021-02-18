@@ -6,7 +6,11 @@
       "Name": "Get-AzDataFactoryActivityWindow",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryActivityWindowsCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -14,7 +18,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "OutputDatasets": "System.Collections.Generic.IList`1[System.String]",
               "InputDatasets": "System.Collections.Generic.IList`1[System.String]",
@@ -103,7 +111,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -472,7 +484,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1619,7 +1635,11 @@
       "Name": "Get-AzDataFactory",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [
@@ -1627,7 +1647,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1938,7 +1962,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2061,7 +2089,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2208,7 +2240,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2372,7 +2408,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2486,7 +2526,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2554,7 +2598,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2679,7 +2727,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2747,7 +2799,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2821,7 +2877,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2889,7 +2949,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2956,7 +3020,11 @@
       "Name": "Get-AzDataFactoryDataset",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryDatasetCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -2964,7 +3032,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
               "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
@@ -3035,7 +3107,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3196,7 +3272,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3529,7 +3609,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
               "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
@@ -3600,7 +3684,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3722,7 +3810,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3797,7 +3889,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3919,7 +4015,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4083,7 +4183,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4199,7 +4303,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4293,7 +4401,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4311,7 +4423,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4474,7 +4590,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4568,7 +4688,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4642,7 +4766,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4784,7 +4912,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4877,7 +5009,11 @@
       "Name": "Get-AzDataFactoryRun",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryRunCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -4885,7 +5021,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "DataSliceEnd": "System.DateTime",
@@ -4964,7 +5104,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5143,7 +5287,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5540,7 +5688,11 @@
       "Name": "Get-AzDataFactorySlice",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactorySliceCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -5548,7 +5700,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Start": "System.DateTime",
               "End": "System.DateTime",
@@ -5638,7 +5794,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5933,7 +6093,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6286,7 +6450,11 @@
       "Name": "Save-AzDataFactoryLog",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.SaveAzureDataFactoryLog",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -6294,7 +6462,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSRunLogInfo",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSRunLogInfo, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSRunLogInfo, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "SasUri": "System.String",
               "StorageAccountName": "System.String",
@@ -6361,7 +6533,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6465,7 +6641,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6558,7 +6738,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6656,7 +6840,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6820,7 +7008,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6936,7 +7128,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7027,7 +7223,11 @@
       "Name": "Set-AzDataFactorySliceStatus",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.SetAzureDataFactorySliceStatusCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -7117,7 +7317,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7469,7 +7673,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7936,7 +8144,11 @@
       "Name": "New-AzDataFactoryEncryptValue",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.NewAzureDataFactoryEncryptValueCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -7963,7 +8175,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8085,7 +8301,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8265,7 +8485,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8387,7 +8611,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8662,7 +8890,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8932,7 +9164,11 @@
       "Name": "Get-AzDataFactoryGatewayAuthKey",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryGatewayAuthKeyCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -8940,7 +9176,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -9005,7 +9245,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9168,7 +9412,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9493,7 +9741,11 @@
       "Name": "Get-AzDataFactoryGateway",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryGatewayCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -9501,7 +9753,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "CreateTime": "System.Nullable`1[System.DateTime]",
               "RegisterTime": "System.Nullable`1[System.DateTime]",
@@ -9579,7 +9835,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9740,7 +10000,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10073,7 +10337,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -10138,7 +10406,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10322,7 +10594,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10728,7 +11004,11 @@
       "Name": "New-AzDataFactoryGateway",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.NewAzureDataFactoryGatewayCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -10736,7 +11016,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "CreateTime": "System.Nullable`1[System.DateTime]",
               "RegisterTime": "System.Nullable`1[System.DateTime]",
@@ -10814,7 +11098,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10993,7 +11281,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11417,7 +11709,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11521,7 +11817,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11596,7 +11896,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11694,7 +11998,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11834,7 +12142,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11926,7 +12238,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11993,7 +12309,11 @@
       "Name": "Set-AzDataFactoryGateway",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.SetAzureDataFactoryGatewayCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -12001,7 +12321,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "CreateTime": "System.Nullable`1[System.DateTime]",
               "RegisterTime": "System.Nullable`1[System.DateTime]",
@@ -12079,7 +12403,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12258,7 +12586,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12655,7 +12987,11 @@
       "Name": "Get-AzDataFactoryHub",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryHubCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -12663,7 +12999,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSHub",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
               "HubName": "System.String",
@@ -12748,7 +13088,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12959,7 +13303,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13224,7 +13572,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSHub",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
               "HubName": "System.String",
@@ -13327,7 +13679,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13345,7 +13701,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13536,7 +13896,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13604,7 +13968,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13726,7 +14094,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13890,7 +14262,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14004,7 +14380,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14022,7 +14402,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14191,7 +14575,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14259,7 +14647,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14359,7 +14751,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14501,7 +14897,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14568,7 +14968,11 @@
       "Name": "Get-AzDataFactoryLinkedService",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryLinkedServiceCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -14576,7 +14980,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
               "LinkedServiceName": "System.String",
@@ -14643,7 +15051,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -14804,7 +15216,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15137,7 +15553,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
               "LinkedServiceName": "System.String",
@@ -15204,7 +15624,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15326,7 +15750,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15401,7 +15829,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15523,7 +15955,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15687,7 +16123,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15803,7 +16243,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15897,7 +16341,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15915,7 +16363,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16078,7 +16530,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16172,7 +16628,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16246,7 +16706,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16388,7 +16852,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16481,7 +16949,11 @@
       "Name": "Get-AzDataFactoryPipeline",
       "ClassName": "Microsoft.Azure.Commands.DataFactories.GetAzureDataFactoryPipelineCommand",
       "SupportsShouldProcess": false,
+<<<<<<< HEAD
       "ConfirmImpact": 2,
+=======
+      "ConfirmImpact": 0,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByFactoryName",
       "OutputTypes": [
@@ -16489,7 +16961,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
               "PipelineName": "System.String",
@@ -16574,7 +17050,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -16785,7 +17265,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17050,7 +17534,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
               "PipelineName": "System.String",
@@ -17135,7 +17623,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17239,7 +17731,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17362,7 +17858,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17430,7 +17930,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17552,7 +18056,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17716,7 +18224,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17810,7 +18322,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17848,7 +18364,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -17991,7 +18511,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18085,7 +18609,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18159,7 +18687,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18301,7 +18833,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18441,7 +18977,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18654,7 +19194,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -18962,7 +19506,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19084,7 +19632,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19102,7 +19654,11 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19251,7 +19807,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19275,7 +19835,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19343,7 +19907,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -19491,7 +20059,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19515,7 +20087,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19705,7 +20281,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19729,7 +20309,11 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19843,7 +20427,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -20056,7 +20644,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataFactories.Models",
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.PowerShell.Cmdlets.DataFactories, Version=1.11.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -20629,6 +21221,11 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+<<<<<<< HEAD
+=======
+        "Name": "System.String",
+        "AdTenant": "System.String",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -20638,7 +21235,10 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
+<<<<<<< HEAD
         "StorageEndpointSuffix": "System.String",
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -20647,8 +21247,13 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
+<<<<<<< HEAD
         "AdTenant": "System.String",
         "Name": "System.String"
+=======
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       },
       "ElementType": null,
       "GenericTypeArguments": [],

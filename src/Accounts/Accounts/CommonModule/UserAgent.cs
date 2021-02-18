@@ -16,6 +16,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.Authentication;
+using System.Net.Http.Headers;
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -25,12 +31,28 @@ namespace Microsoft.Azure.Commands.Common
     /// <summary>
     /// Pipeline step for adding x-ms-unique-id header
     /// </summary>
+<<<<<<< HEAD
     public class UniqueId
     {
         private static UniqueId _instance;
         public static UniqueId Instance => UniqueId._instance ?? (UniqueId._instance = new UniqueId());
 
         private int count;
+=======
+    public class UserAgent
+    {
+        Version _version;
+
+        public UserAgent(InvocationInfo invocation)
+            : this(invocation?.MyCommand?.Module?.Version ?? new Version("1.0.0"))
+        {
+        }
+
+        public UserAgent(Version moduleVersion)
+        {
+            _version = moduleVersion;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
@@ -39,12 +61,26 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>
+<<<<<<< HEAD
         /// <param name="next">The next setp in the pipeline</param>
         /// <returns>Amended pipeline for retrieving a response</returns>
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
         {
             // add a header...
             request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
+=======
+        /// <param name="next">The next step in the pipeline</param>
+        /// <returns>Amended pipeline for retrieving a response</returns>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
+        {
+            var userAgents = new ProductInfoHeaderValue[] { new ProductInfoHeaderValue("AzurePowershell", $"Az4.0.0-preview") };
+            // add user agent headers
+
+            foreach (var userAgent in userAgents)
+            {
+                request.Headers.UserAgent.Add(userAgent);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // continue with pipeline.
             return next(request, token, cancel, signal);

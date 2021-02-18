@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
+=======
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.19
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceProvisioningServices", "DeviceProvisioningServices\DeviceProvisioningServices.csproj", "{3AAECB0D-386B-4C7A-B46E-4D89E36ADCDF}"
 EndProject
@@ -11,7 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceProvisioningServices.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+<<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IotHub", "..\IotHub\IotHub\IotHub.csproj", "{78770A60-B18A-4442-A982-0CEE0356F8DB}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
@@ -21,6 +32,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IotHub", "..\IotHub\IotHub\IotHub.csproj", "{7F81FF1A-8216-4F21-BC14-53BA42FC6478}"
+EndProject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +55,13 @@ Global
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,13 +78,24 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4802BBF0-70F7-4FCB-81A6-381810234F14} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
+<<<<<<< HEAD
 		{78770A60-B18A-4442-A982-0CEE0356F8DB} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
+=======
+		{7F81FF1A-8216-4F21-BC14-53BA42FC6478} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {930E4484-D6C7-4C25-AE5B-05EDACF6ED88}

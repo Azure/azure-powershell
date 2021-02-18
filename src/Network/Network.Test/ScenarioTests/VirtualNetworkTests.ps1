@@ -35,10 +35,17 @@ function Test-VirtualNetworkCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $job = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -AsJob
         $job | Wait-Job
         $actual = $job | Receive-Job
         $expected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $job = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         Assert-AreEqual $expected.ResourceGroupName $rgname    
         Assert-AreEqual $expected.Name $actual.Name    
@@ -53,7 +60,11 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
         
         # List virtual Network
+<<<<<<< HEAD
         $list = Get-AzvirtualNetwork -ResourceGroupName $rgname
+=======
+        $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName    
         Assert-AreEqual $list[0].Name $actual.Name    
@@ -65,6 +76,7 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual "10.0.1.0/24" $list[0].Subnets[0].AddressPrefix
         Assert-AreEqual $expected.Etag $list[0].Etag
 
+<<<<<<< HEAD
         $listAll = Get-AzvirtualNetwork
         Assert-NotNull $listAll
 
@@ -83,6 +95,26 @@ function Test-VirtualNetworkCRUD
 
         # Test virtual network private ip address - not available - TestByResource
         $testResponse2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.3"
+=======
+        $listAll = Get-AzVirtualNetwork
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzVirtualNetwork -ResourceGroupName "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzVirtualNetwork -Name "*"
+        Assert-NotNull $listAll
+
+        $listAll = Get-AzVirtualNetwork -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $listAll
+
+        # Test virtual network private ip address - available - TestByResource
+        $testResponse1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.10"
+        Assert-AreEqual true $testResponse1.Available
+
+        # Test virtual network private ip address - not available - TestByResource
+        $testResponse2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzPrivateIPAddressAvailability -IPAddress "10.0.1.3"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual false $testResponse2.Available
         Assert-AreEqual 5 @($testResponse2.AvailableIpAddresses).Count
 
@@ -96,12 +128,20 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual 5 @($testResponse2.AvailableIpAddresses).Count
         
         # Delete VirtualNetwork
+<<<<<<< HEAD
         $job = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force -AsJob
+=======
+        $job = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force -AsJob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $job | Wait-Job
         $delete = $job | Receive-Job
         Assert-AreEqual true $delete
                 
+<<<<<<< HEAD
         $list = Get-AzvirtualNetwork -ResourceGroupName $rgname
+=======
+        $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -136,8 +176,13 @@ function Test-subnetCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Add a subnet
         $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
@@ -146,7 +191,11 @@ function Test-subnetCRUD
         $vnet | Set-AzVirtualNetwork
         
         # Get VirtualNetwork
+<<<<<<< HEAD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
@@ -154,23 +203,40 @@ function Test-subnetCRUD
         Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
         
         # Edit a subnet
+<<<<<<< HEAD
         $job = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/24 | Set-AzVirtualNetwork -AsJob
         $job | Wait-Job
 
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $job = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/24 | Set-AzVirtualNetwork -AsJob
+        $job | Wait-Job
+
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
         Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
         Assert-AreEqual "10.0.3.0/24" $vnetExpected.Subnets[1].AddressPrefix
 
         # Get subnet
+<<<<<<< HEAD
         $subnet2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
         $subnetAll = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+=======
+        $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
+        $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+        $subnet2ById = Get-AzVirtualNetworkSubnetConfig -ResourceId $subnet2.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($subnetAll).Count
         Assert-AreEqual $subnetName $subnetAll[0].Name
         Assert-AreEqual $subnet2Name $subnetAll[1].Name
         Assert-AreEqual $subnet2Name $subnet2.Name
+<<<<<<< HEAD
+=======
+        Assert-AreEqual $subnet2Name $subnet2ById.Name
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Get non-existing subnet
         try
@@ -186,9 +252,15 @@ function Test-subnetCRUD
         }
 
         # Remove a subnet
+<<<<<<< HEAD
         Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork
         
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork
+        
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 1 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name        
     }
@@ -201,6 +273,71 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Tests creating, updating & deleting a virtualNetwork with BGP Communities.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-bgpCommunitiesCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnet1Name = Get-ResourceName
+    $vnet2Name = Get-ResourceName
+    $peering1Name = Get-ResourceName
+    $peering2Name = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create two virtual networks with BGP communities
+        New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -BgpCommunity 12076:20001
+        New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -BgpCommunity 12076:20002
+
+        # Perform GET operations to retrieve both virtual networks and verify that the VirtualNetworkCommunity is set to the expected value
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "12076:20001" $vnet1.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20002" $vnet2.BgpCommunities.VirtualNetworkCommunity
+
+        # Update the VirtualNetworkCommunity on both virtual networks
+        $vnet1.BgpCommunities.VirtualNetworkCommunity = "12076:20111"
+        $vnet2.BgpCommunities.VirtualNetworkCommunity = "12076:20222"
+        $vnet1 | Set-AzVirtualNetwork
+        $vnet2 | Set-AzVirtualNetwork
+
+        # Perform GET operations to retrieve both virtual networks and verify that the VirtualNetworkCommunity is set to the expected value
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "12076:20111" $vnet1.BgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20222" $vnet2.BgpCommunities.VirtualNetworkCommunity
+
+        # Peer both virtual networks
+        Add-AzVirtualNetworkPeering -Name $peering1Name -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+        Add-AzVirtualNetworkPeering -Name $peering2Name -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+
+        # Perform GET operations to retrieve both virtual networks and validate the RemoteBgpCommunity property on the child peering resource
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname   
+        Assert-AreEqual "12076:20222" $vnet1.VirtualNetworkPeerings[0].RemoteBgpCommunities.VirtualNetworkCommunity
+        Assert-AreEqual "12076:20111" $vnet2.VirtualNetworkPeerings[0].RemoteBgpCommunities.VirtualNetworkCommunity
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests creating new virtualNetwork w/ delegated subnets.
 .DESCRIPTION
 SmokeTest
@@ -227,7 +364,11 @@ function Test-subnetDelegationCRUD
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -delegation $delegation
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         # Add a subnet
@@ -237,7 +378,11 @@ function Test-subnetDelegationCRUD
         $vnet | Set-AzVirtualNetwork
         
         # Get VirtualNetwork
+<<<<<<< HEAD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
@@ -250,7 +395,11 @@ function Test-subnetDelegationCRUD
 		Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet | Add-AzDelegation -Name "bareMetalDelegation" -ServiceName "Microsoft.Netapp/volumes"
 		Set-AzVirtualNetwork -VirtualNetwork $vnet
 
+<<<<<<< HEAD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
 		Assert-AreEqual "Microsoft.Sql/managedInstances" $vnetExpected.Subnets[0].Delegations[0].ServiceName
@@ -258,9 +407,15 @@ function Test-subnetDelegationCRUD
 		Assert-AreEqual "Microsoft.Netapp/volumes" $vnetExpected.Subnets[1].Delegations[0].ServiceName
 
         # Get subnet
+<<<<<<< HEAD
         $subnet2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
 		Assert-AreEqual 1 @($subnet2.Delegations).Count
         $subnetAll = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+=======
+        $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
+		Assert-AreEqual 1 @($subnet2.Delegations).Count
+        $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($subnetAll).Count
 
@@ -272,12 +427,20 @@ function Test-subnetDelegationCRUD
 		}
 
         # Remove a delegation
+<<<<<<< HEAD
         $vnetToEdit = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetToEdit = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$subnetWithoutDelegation = Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet | Remove-AzDelegation -Name "bareMetalDelegation"
 		$vnetToEdit.Subnets[1] = $subnetWithoutDelegation
 		$vnet = Set-AzVirtualNetwork -VirtualNetwork $vnetToEdit
         
+<<<<<<< HEAD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
 		Assert-AreEqual 0 @($vnetExpected.Subnets[1].Delegations).Count
@@ -291,6 +454,209 @@ function Test-subnetDelegationCRUD
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Tests creating new virtualNetwork w/ network security group associated and disassociated from subnets.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-subnetNetworkSecurityGroupCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnet1Name = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $subnet3Name = Get-ResourceName
+    $networkSecurityGroupName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create a network security group
+        $networkSecurityGroup = New-AzNetworkSecurityGroup -Name $networkSecurityGroupName -ResourceGroupName $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $networkSecurityGroup
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Add subnets
+        $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+        $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet3Name -AddressPrefix 10.0.3.0/24
+        
+        # Set VirtualNetwork
+        $vnet | Set-AzVirtualNetwork
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual $subnet1Name $vnetExpected.Subnets[0].Name
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
+        Assert-AreEqual $subnet3Name $vnetExpected.Subnets[2].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].NetworkSecurityGroup.Count
+
+        # Associate a network security group to a subnet using the NetworkSecurityGroup parameter
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -NetworkSecurityGroup $networkSecurityGroup
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Associate a network security group to a subnet using the NetworkSecurityGroupId parameter
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet3Name -VirtualNetwork $vnet -AddressPrefix 10.0.3.0/24 -NetworkSecurityGroupId $networkSecurityGroup.Id
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
+        Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[0].NetworkSecurityGroup.Id
+        Assert-AreEqual 1 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
+        Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[1].NetworkSecurityGroup.Id
+        Assert-AreEqual 1 ($vnetExpected.Subnets[2].NetworkSecurityGroup).Count
+        Assert-AreEqual $networkSecurityGroup.Id $vnetExpected.Subnets[2].NetworkSecurityGroup.Id
+
+        # Get subnets
+        $subnet1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet1Name
+        Assert-AreEqual 1 $subnet1.NetworkSecurityGroup.Count
+        $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
+        Assert-AreEqual 1 $subnet2.NetworkSecurityGroup.Count
+        $subnet3 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet3Name
+        Assert-AreEqual 1 $subnet3.NetworkSecurityGroup.Count
+        $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+
+        Assert-AreEqual 3 $subnetAll.Count
+
+        # Disassociate a network security group with the NetworkSecurityGroup parameter as $null
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet1Name -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -NetworkSecurityGroup $null
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Disassociate a network security group with the NetworkSecurityGroupId parameter as $null
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -NetworkSecurityGroupId $null
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Disassociate a network security group with the NetworkSecurityGroupId parameter as an empty string
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet3Name -VirtualNetwork $vnet -AddressPrefix 10.0.3.0/24 -NetworkSecurityGroupId ""
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+        
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[0].NetworkSecurityGroup.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].NetworkSecurityGroup.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].NetworkSecurityGroup.Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating new virtualNetwork w/ route table associated and disassoicated from subnets.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-subnetRouteTableCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnet1Name = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $subnet3Name = Get-ResourceName
+    $routeTableName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create a route table
+        $routeTable = New-AzRouteTable -Name $routeTableName -ResourceGroupName $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.1.0/24 -RouteTable $routeTable
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Add subnets
+        $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+        $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet3Name -AddressPrefix 10.0.3.0/24
+        
+        # Set VirtualNetwork
+        $vnet | Set-AzVirtualNetwork
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual $subnet1Name $vnetExpected.Subnets[0].Name
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].RouteTable.Count
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].RouteTable.Count
+        Assert-AreEqual $subnet3Name $vnetExpected.Subnets[2].Name
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].RouteTable.Count
+
+        # Associate a route table to a subnet using the RouteTable parameter
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -RouteTable $routeTable
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Associate a route table to a subnet using the RouteTableId parameter
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet3Name -VirtualNetwork $vnet -AddressPrefix 10.0.3.0/24 -RouteTableId $routeTable.Id
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 1 $vnetExpected.Subnets[0].RouteTable.Count
+        Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[0].RouteTable.Id
+        Assert-AreEqual 1 $vnetExpected.Subnets[1].RouteTable.Count
+        Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[1].RouteTable.Id
+        Assert-AreEqual 1 $vnetExpected.Subnets[2].RouteTable.Count
+        Assert-AreEqual $routeTable.Id $vnetExpected.Subnets[2].RouteTable.Id
+
+        # Get subnets
+        $subnet1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet1Name
+        Assert-AreEqual 1 $subnet1.RouteTable.Count
+        $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
+        Assert-AreEqual 1 $subnet2.RouteTable.Count
+        $subnet3 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet3Name
+        Assert-AreEqual 1 $subnet3.RouteTable.Count
+        $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+
+        Assert-AreEqual 3 $subnetAll.Count
+
+        # Disassociate a route table with the RouteTable parameter as $null
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet1Name -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -RouteTable $null
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Disassociate a route table with the RouteTableId parameter as $null
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet -AddressPrefix 10.0.2.0/24 -RouteTableId $null
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+
+        # Disassociate a route table with the RouteTableId parameter as an empty string
+        Set-AzVirtualNetworkSubnetConfig -Name $subnet3Name -VirtualNetwork $vnet -AddressPrefix 10.0.3.0/24 -RouteTableId ""
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
+        
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 3 $vnetExpected.Subnets.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[0].RouteTable.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[1].RouteTable.Count
+        Assert-AreEqual 0 $vnetExpected.Subnets[2].RouteTable.Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests creating new simple virtualNetwork and subnets.
 .DESCRIPTION
 SmokeTest
@@ -314,8 +680,13 @@ function Test-multiPrefixSubnetCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/28,10.0.2.0/28
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Add a subnet
         $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/28,10.0.4.0/28
@@ -324,7 +695,11 @@ function Test-multiPrefixSubnetCRUD
         $vnet | Set-AzVirtualNetwork
         
         # Get VirtualNetwork
+<<<<<<< HEAD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
@@ -333,18 +708,30 @@ function Test-multiPrefixSubnetCRUD
         Assert-AreEqual "10.0.3.0/28 10.0.4.0/28" $vnetExpected.Subnets[1].AddressPrefix
         
         # Edit a subnet
+<<<<<<< HEAD
         $job = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.5.0/28,10.0.6.0/28 | Set-AzVirtualNetwork -AsJob
         $job | Wait-Job
 
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $job = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.5.0/28,10.0.6.0/28 | Set-AzVirtualNetwork -AsJob
+        $job | Wait-Job
+
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
         Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
         Assert-AreEqual "10.0.5.0/28 10.0.6.0/28" $vnetExpected.Subnets[1].AddressPrefix
 
         # Get subnet
+<<<<<<< HEAD
         $subnet2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
         $subnetAll = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+=======
+        $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
+        $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual 2 @($subnetAll).Count
         Assert-AreEqual $subnetName $subnetAll[0].Name
@@ -365,9 +752,15 @@ function Test-multiPrefixSubnetCRUD
         }
 
         # Remove a subnet
+<<<<<<< HEAD
         Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork
         
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork
+        
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 1 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name        
     }
@@ -406,8 +799,13 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
         # Create the Virtual Network
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $actual = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
         $expected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $actual = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual $expected.ResourceGroupName $rgname
         Assert-AreEqual $expected.Name $actual.Name
@@ -426,20 +824,32 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
         $expected.EnableDDoSProtection = $false
         $expected.DdosProtectionPlan = $null
         Set-AzVirtualNetwork -VirtualNetwork $expected
+<<<<<<< HEAD
         $expected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual false $expected.EnableDDoSProtection
         Assert-AreEqual $null $expected.DdosProtectionPlan
        
         $expected.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
         $expected.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
         Set-AzVirtualNetwork -VirtualNetwork $expected
+<<<<<<< HEAD
         $expected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual false $expected.EnableDDoSProtection
         Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan.Id
 
         # Delete the virtual network
 
+<<<<<<< HEAD
         $deleteVnet = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+=======
+        $deleteVnet = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual true $deleteVnet
 
         # Delete the DDoS protection plan
@@ -478,7 +888,11 @@ function Test-VirtualNetworkPeeringCRUD
         
         # Create the Virtual Network1
         $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet1 = New-AzvirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+=======
+        $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
         Assert-AreEqual $vnet1.ResourceGroupName $rgname    
@@ -489,7 +903,11 @@ function Test-VirtualNetworkPeeringCRUD
 
         # Create the Virtual Network2
         $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
+<<<<<<< HEAD
         $vnet2 = New-AzvirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+=======
+        $vnet2 = New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual $vnet2.ResourceGroupName $rgname    
         Assert-AreEqual $vnet2.Name $vnet2Name    
@@ -584,10 +1002,17 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
+<<<<<<< HEAD
         $delete = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
         Assert-AreEqual true $delete
 
         $delete = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+=======
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual true $delete
     }
     finally
@@ -615,11 +1040,19 @@ function Test-MultiTenantVNetPCRUD
     $location = Get-ProviderLocation $resourceTypeParent "East US"
 
 	# The remote VNet in this case lives under a different tenant and hence can is assumed to be created by the time the test is run
+<<<<<<< HEAD
 	# Create the remote Virtual Network : This needs to e done ins a seperate subscription that lives under a different tenant
 	# As of now the steps are manual
 
     # $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
     # $vnet2 = New-AzvirtualNetwork -Name myVirtualNetwork1 -ResourceGroupName $rgname -Location eastus -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+=======
+	# Create the remote Virtual Network : This needs to e done ins a separate subscription that lives under a different tenant
+	# As of now the steps are manual
+
+    # $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
+    # $vnet2 = New-AzVirtualNetwork -Name myVirtualNetwork1 -ResourceGroupName $rgname -Location eastus -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     try 
     {
@@ -628,7 +1061,11 @@ function Test-MultiTenantVNetPCRUD
         
         # Create the Virtual Network1
         $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet1 = New-AzvirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet2
+=======
+        $vnet1 = New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 
         Assert-AreEqual $vnet1.ResourceGroupName $rgname    
         Assert-AreEqual $vnet1.Name $vnet1Name    
@@ -708,11 +1145,19 @@ function Test-MultiTenantVNetPCRUD
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
+<<<<<<< HEAD
         $delete = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
         Assert-AreEqual true $delete
 
 		# Delete VNet2 in the remote tenant
         # $delete = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+=======
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
+        Assert-AreEqual true $delete
+
+		# Delete VNet2 in the remote tenant
+        # $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Assert-AreEqual true $delete
     }
     finally
@@ -744,14 +1189,22 @@ function Test-ResourceNavigationLinksCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 
         Assert-AreEqual $vnet.ResourceGroupName $rgname    
         Assert-AreEqual $vnet.Name $vnetName    
         Assert-AreEqual $vnet.Location $rglocation
         Assert-AreEqual "Succeeded" $vnet.ProvisioningState
 
+<<<<<<< HEAD
         $subnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+=======
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 0 @($subnet.ResourceNavigationLinks).Count
 
         # Create redis-cache
@@ -773,7 +1226,11 @@ function Test-ResourceNavigationLinksCRUD
         $cache = Get-AzRedisCache -ResourceGroupName $rgname -Name $cacheName
 
         # Get subnet and check resource navigation links
+<<<<<<< HEAD
         $subnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+=======
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual 1 @($subnet.ResourceNavigationLinks).Count
         Assert-AreEqual $cache.Id $subnet.ResourceNavigationLinks[0].Link
         Assert-AreEqual "Microsoft.Cache/redis" $subnet.ResourceNavigationLinks[0].LinkedResourceType
@@ -811,8 +1268,13 @@ function Test-VirtualNetworkUsage
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-NotNull $vnet;
         Assert-NotNull $vnet.Subnets;
@@ -860,8 +1322,13 @@ function Test-VirtualNetworkSubnetServiceEndpoint
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint;
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-NotNull $vnet;
         Assert-NotNull $vnet.Subnets;
@@ -960,8 +1427,13 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         Assert-AreEqual $getserviceEndpointPolicy[0].ProvisioningState $provisioningStateSucceeded;
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint -ServiceEndpointPolicy $serviceEndpointPolicy;
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-NotNull $vnet;
         Assert-NotNull $vnet.Subnets;
@@ -1027,4 +1499,8 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

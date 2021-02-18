@@ -137,7 +137,11 @@
   </data>
   <data name="DataFactoryExists" xml:space="preserve">
     <value>A data factory with the name {0} in the resource group {1} exists. 
+<<<<<<< HEAD
 Continuing execution may overwrite the exisiting one. 
+=======
+Continuing execution may overwrite the existing one. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Are you sure you want to continue?</value>
   </data>
   <data name="DataFactoryNotFound" xml:space="preserve">
@@ -176,7 +180,11 @@ Timestamp (Utc):{4}</value>
   </data>
   <data name="HubExists" xml:space="preserve">
     <value>A hub with the name {0} in the data factory {1} exists. 
+<<<<<<< HEAD
 Continuing execution may overwrite the exisiting one. 
+=======
+Continuing execution may overwrite the existing one. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Are you sure you want to continue?</value>
   </data>
   <data name="HubNotFound" xml:space="preserve">
@@ -193,7 +201,11 @@ Are you sure you want to continue?</value>
   </data>
   <data name="LinkedServiceExists" xml:space="preserve">
     <value>A linked service with the name {0} in the data factory {1} exists. 
+<<<<<<< HEAD
 Continuing execution may overwrite the exisiting one. 
+=======
+Continuing execution may overwrite the existing one. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Are you sure you want to continue?</value>
   </data>
   <data name="LinkedServiceNotFound" xml:space="preserve">
@@ -213,7 +225,11 @@ Are you sure you want to continue?</value>
   </data>
   <data name="PipelineExists" xml:space="preserve">
     <value>A pipeline with the name {0} in the data factory {1} exists. 
+<<<<<<< HEAD
 Continuing execution may overwrite the exisiting one. 
+=======
+Continuing execution may overwrite the existing one. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Are you sure you want to continue?</value>
   </data>
   <data name="PipelineNotFound" xml:space="preserve">
@@ -233,7 +249,11 @@ Are you sure you want to continue?</value>
   </data>
   <data name="DatasetExists" xml:space="preserve">
     <value>A dataset with the name {0} in the data factory {1} already exists. 
+<<<<<<< HEAD
 Continuing execution will overwrite the exisiting one. 
+=======
+Continuing execution will overwrite the existing one. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Are you sure you want to continue?</value>
   </data>
   <data name="DatasetNotFound" xml:space="preserve">
@@ -261,4 +281,8 @@ For data factory naming restrictions, please see http://msdn.microsoft.com/en-us
   <data name="EndDateTimeNotSpecifiedForSetSliceStatus" xml:space="preserve">
     <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzDataFactorySliceStatus command if you want to specify EndDateTime.</value>
   </data>
+<<<<<<< HEAD
 </root>
+=======
+</root>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

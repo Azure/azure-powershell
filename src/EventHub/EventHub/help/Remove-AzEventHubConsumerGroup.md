@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhubconsumergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubconsumergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,18 +41,28 @@ The Remove-AzEventHubConsumerGroup cmdlet removes and deletes the specified cons
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
 ```
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using Variable
 ```
+=======
+### Example 2: InputObject - Using Variable
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $inputobject = Get-AzEventHubConsumerGroup <params>
 PS C:\> Remove-AzEventHubConsumerGroup -InputObject $inputobject
 ```
 
+<<<<<<< HEAD
 ### Example 2.2 - InputObject - Using Piping
 ```
 PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
@@ -56,12 +70,26 @@ PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
 
 ### Example 3.1 - ResourceId Using Vairable
 ```
+=======
+### Example 3: InputObject - Using Piping
+```powershell
+PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
+```
+
+### Example 4: ResourceId Using Variable
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $resourceid = Get-AzEventHubConsumerGroup <params>
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id
 ```
 
+<<<<<<< HEAD
 ### Example 3.2 - ResourceId Using string
 ```
+=======
+### Example 5: ResourceId Using string
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
 ```
 

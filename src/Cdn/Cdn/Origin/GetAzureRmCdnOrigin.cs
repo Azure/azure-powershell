@@ -21,6 +21,10 @@ using Microsoft.Azure.Management.Cdn;
 using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
@@ -44,6 +48,13 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true, HelpMessage = "The resource id of the Azure CDN origin.", ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
@@ -58,6 +69,18 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
                 ResourceGroupName = CdnEndpoint.ResourceGroupName;
             }
 
+<<<<<<< HEAD
+=======
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+                ProfileName = parsedResourceId.GetProfileName();
+                EndpointName = parsedResourceId.GetEndpointName();
+                OriginName = parsedResourceId.ResourceName;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (OriginName == null)
             {
                 //list all origins on this endpoint

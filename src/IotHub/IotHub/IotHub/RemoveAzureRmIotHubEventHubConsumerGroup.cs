@@ -17,9 +17,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
+<<<<<<< HEAD
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+=======
+    using Microsoft.Azure.Management.IotHub;
+    using Microsoft.Azure.Management.IotHub.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
@@ -44,6 +50,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Position = 2,
             Mandatory = true,
             HelpMessage = "EventHubEndpointName. Possible values events, operationsMonitoringEvents")]
@@ -55,12 +62,18 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+=======
+           Position = 2,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Name of the EventHub ConsumerGroupName")]
         [ValidateNotNullOrEmpty]
         public string EventHubConsumerGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.RemoveEventHubConsumerGroup))
             {
                 this.IotHubClient.IotHubResource.DeleteEventHubConsumerGroup(this.ResourceGroupName, this.Name, this.EventHubEndpointName, this.EventHubConsumerGroupName);
@@ -71,5 +84,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         private const string EventsEndpointName = "events";
         private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
+=======
+            string eventsEndpointName = "events";
+            if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.RemoveEventHubConsumerGroup))
+            {
+                this.IotHubClient.IotHubResource.DeleteEventHubConsumerGroup(this.ResourceGroupName, this.Name, eventsEndpointName, this.EventHubConsumerGroupName);
+                IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, eventsEndpointName);
+                this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

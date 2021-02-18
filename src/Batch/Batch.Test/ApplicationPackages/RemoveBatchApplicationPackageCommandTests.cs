@@ -43,18 +43,30 @@ namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
+=======
+            string applicationName = "applicationName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string version = "version";
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
+<<<<<<< HEAD
             cmdlet.ApplicationId = applicationId;
+=======
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlet.ApplicationVersion = version;
 
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
+<<<<<<< HEAD
             batchClientMock.Verify(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationId, version), Times.Once());
+=======
+            batchClientMock.Verify(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationName, version), Times.Once());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

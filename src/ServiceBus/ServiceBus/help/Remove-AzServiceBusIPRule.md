@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusiprule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusiprule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzServiceBusIPRule
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Remove a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -26,7 +34,11 @@ Remove-AzServiceBusIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Remove a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

@@ -18,6 +18,11 @@ using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections;
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
@@ -33,8 +38,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
         [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Isolated", "PremiumContainer")]
+=======
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3]")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated", "PremiumContainer")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
@@ -63,11 +73,26 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
             if (HyperV.IsPresent && Tier != "PremiumContainer")
             {
                 throw new Exception("HyperV switch is only allowed for PremiumContainer tier");
+=======
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false)]
+        public SwitchParameter Linux { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (HyperV.IsPresent && 
+                (Tier != "PremiumContainer" && Tier != "PremiumV3"))
+            {
+                throw new Exception("HyperV switch is only allowed for PremiumContainer or PremiumV3 tiers");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             if (!HyperV.IsPresent && Tier == "PremiumContainer")
             {
@@ -107,7 +132,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Location = Location,
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
+<<<<<<< HEAD
                 IsXenon = HyperV.IsPresent
+=======
+                IsXenon = HyperV.IsPresent,
+                Tags= (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
+                Reserved = Linux.IsPresent
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);

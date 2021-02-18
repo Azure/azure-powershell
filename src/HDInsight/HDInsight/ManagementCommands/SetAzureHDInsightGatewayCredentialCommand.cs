@@ -15,17 +15,28 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
 using System;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(HttpConnectivitySettings))]
+=======
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureHDInsightGatewaySettings))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class SetAzureHDInsightGatewayCredentialCommand : HDInsightCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -99,11 +110,19 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             var httpParams = new HttpSettingsParameters
             {
                 HttpUserEnabled = true,
                 HttpUsername = HttpCredential.UserName,
                 HttpPassword = HttpCredential.Password.ConvertToString()
+=======
+            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters
+            {
+                IsCredentialEnabled = true,
+                UserName = HttpCredential.UserName,
+                Password = HttpCredential.Password.ConvertToString()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -126,6 +145,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess(Name, "set gateway http credential"))
             {
+<<<<<<< HEAD
                 var result = HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, httpParams);
 
                 if (result.State == AsyncOperationState.Failed)
@@ -136,6 +156,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     WriteObject(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name));
                 }
+=======
+                HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
+                WriteObject(new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name)));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

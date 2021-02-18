@@ -83,6 +83,13 @@
                 <PropertyName>ShardCount</PropertyName>
               </ListItem>
               <ListItem>
+<<<<<<< HEAD
+=======
+                <Label>MinimumTlsVersion</Label>
+                <PropertyName>MinimumTlsVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <Label>Tag</Label>
                 <PropertyName>Tag</PropertyName>
               </ListItem>

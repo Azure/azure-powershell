@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsslsetting
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementsslsetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,7 +28,11 @@ This command is to be used with New-AzApiManagement command.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 : Create an SSL Setting to enable TLS 1.0 on both Backend and Frontent
+=======
+### Example 1: Create an SSL Setting to enable TLS 1.0 on both Backend and Frontend
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS D:\github\azure-powershell\artifacts\Debug\Az.ApiManagement> $enableTls=@{"Tls10" = "True"}
 PS D:\github\azure-powershell\artifacts\Debug\Az.ApiManagement> New-AzApiManagementSslSetting -FrontendProtocol $enableTls -BackendProtocol $enableTls
@@ -40,6 +48,13 @@ Create an new instance of PsApiManagementSslSetting to Enable TLSv 1.0 in both F
 
 ### -BackendProtocol
 Backend Security protocol settings. This parameter is optional.
+<<<<<<< HEAD
+=======
+The valid Protocol Settings are 
+`Tls11` - Tls 1.1
+`Tls10` - Tls 1.0
+`Ssl30` - SSL 3.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -55,6 +70,11 @@ Accept wildcard characters: False
 
 ### -CipherSuite
 Ssl cipher suites settings in the specified order. This parameter is optional.
+<<<<<<< HEAD
+=======
+The valid Settings are 
+`TripleDes168` - Enable / Disable Tripe Des 168
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -85,6 +105,14 @@ Accept wildcard characters: False
 
 ### -FrontendProtocol
 Frontend Security protocols settings. This parameter is optional.
+<<<<<<< HEAD
+=======
+The valid Protocol Settings are 
+`Tls11` - Tls 1.1
+`Tls10` - Tls 1.0
+`Ssl30` - SSL 3.0
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -100,6 +128,11 @@ Accept wildcard characters: False
 
 ### -ServerProtocol
 Server protocol settings like Http2. This parameter is optional.
+<<<<<<< HEAD
+=======
+The valid Settings are 
+`Http2` - Enable Http 2.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable

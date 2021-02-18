@@ -90,7 +90,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public int? Capacity { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the Minumum capacity of database in the elastic pool
+=======
+        /// Gets or sets the Minimum capacity of database in the elastic pool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///    For Dtu pool, it is the min Database Dtu of the pool; for Vcore pool, it is the min vcore capacity of the pool
         /// </summary>
         public double? DatabaseCapacityMin { get; set; }
@@ -102,7 +106,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public double? DatabaseCapacityMax { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the the sku family of the elastic pool
+=======
+        /// Gets or sets the sku family of the elastic pool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public string Family { get; set; }
 
@@ -130,5 +138,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the license type of the elastic pool
         /// </summary>
         public string LicenseType { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the elastic pool
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectionPolicy",SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
+<<<<<<< HEAD
+=======
+        public const string ModifyPolicyParamSet = "ModifyPolicyParamSet";
+        public const string FixInconsistentPolicyParamSet = "FixPolicyParamSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Policy object to be modified
         /// </summary>
@@ -43,17 +48,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Retention policy object to be modified
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy)]
+=======
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.RetentionPolicy,
+            ParameterSetName = ModifyPolicyParamSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
         /// <summary>
         /// Schedule policy object to be modified
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy)]
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
 
+=======
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy,
+            ParameterSetName = ModifyPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public SchedulePolicyBase SchedulePolicy { get; set; }
+
+        /// <summary>
+        /// Retry Policy Update for Failed Items
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.FixForInConsistentItems,
+            ParameterSetName = FixInconsistentPolicyParamSet)]
+        public SwitchParameter FixForInconsistentItems { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -93,6 +118,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.ProtectionPolicy, Policy },
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
+<<<<<<< HEAD
+=======
+                        { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(

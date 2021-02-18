@@ -1,8 +1,13 @@
 ---
 Module Name: Az.Cdn
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn
 Help Version: 4.2.2.0
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.cdn
+Help Version: 4.2.4.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Locale: en-US
 ---
 
@@ -44,6 +49,12 @@ Gets the resource usage of a CDN endpoint.
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets a CDN origin server.
 
+<<<<<<< HEAD
+=======
+### [Get-AzCdnOriginGroup](Get-AzCdnOriginGroup.md)
+Gets a CDN origin group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 Gets a CDN profile.
 
@@ -57,12 +68,17 @@ Gets the single sign-on URL of a CDN profile.
 Gets the supported optimization types for a CDN profile.
 
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
+<<<<<<< HEAD
 Gets the resource usage for a susbscription.
+=======
+Gets the resource usage for a subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
 
 ### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
+<<<<<<< HEAD
 Creates a deliveryPolicy for a CDN endpoint.
 
 ### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
@@ -73,10 +89,31 @@ Creates a deliveryRuleAction for deliveryRule creation.
 
 ### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
 Creates a deliveryRuleCondition for deliveryRule creation.
+=======
+Creates a delivery policy.
+
+### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
+Creates a delivery rule.
+
+### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
+Creates a delivery action.
+
+### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
+Creates a delivery rule condition.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
 
+<<<<<<< HEAD
+=======
+### [New-AzCdnOrigin](New-AzCdnOrigin.md)
+Creates a CDN origin
+
+### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
+Creates a CDN origin group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
@@ -89,6 +126,15 @@ Removes a custom domain.
 ### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Removes a CDN endpoint.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzCdnOrigin](Remove-AzCdnOrigin.md)
+Removes a CDN origin
+
+### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
+Removes a CDN origin group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Removes a CDN profile.
 
@@ -98,6 +144,12 @@ Updates a CDN endpoint.
 ### [Set-AzCdnOrigin](Set-AzCdnOrigin.md)
 Updates a CDN origin server.
 
+<<<<<<< HEAD
+=======
+### [Set-AzCdnOriginGroup](Set-AzCdnOriginGroup.md)
+Updates a CDN origin group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.
 

@@ -16,7 +16,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
 {
     public static class CmdletNoun
     {
+<<<<<<< HEAD
         public const string AzureRmServiceFabricApplicationCertificate = "AzureRmServiceFabricApplicationCertificate";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string AzureRmServiceFabricClientCertificate = "AzureRmServiceFabricClientCertificate";
         public const string AzureRmServiceFabricClusterCertificate = "AzureRmServiceFabricClusterCertificate";
         public const string AzureRmServiceFabricNode = "AzureRmServiceFabricNode";

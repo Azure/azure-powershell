@@ -19,8 +19,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
+<<<<<<< HEAD
 
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+
+    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(AzureStorageFileShare))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -37,9 +44,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "File share object to be removed.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "File share object to be removed.")]
+        [ValidateNotNull]
+        [Alias("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(HelpMessage = "Remove File Share with all of its snapshots")]
@@ -139,7 +154,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
+<<<<<<< HEAD
                         this.OutputStream.WriteObject(taskId, share);
+=======
+                        WriteCloudShareObject(taskId, this.Channel, share);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 });
             }

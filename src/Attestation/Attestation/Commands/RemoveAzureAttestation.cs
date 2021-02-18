@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (InputObject != null)
             {
                 Name = InputObject.Name;
@@ -96,6 +97,12 @@ namespace Microsoft.Azure.Commands.Attestation
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
+=======
+            var resolvedResourceId = (InputObject != null) ? InputObject.Id : ResourceId;
+            if (resolvedResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(resolvedResourceId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }

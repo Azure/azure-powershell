@@ -18,11 +18,22 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+<<<<<<< HEAD
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.IO;
+=======
+using Microsoft.Rest;
+using System;
+using System.IO;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
+using System.Linq;
+using System.Net.Http;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -121,6 +132,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="subscriptionId"> SubscriptionId passed from the cmdlet</param>
         protected void RegisterBlueprintRp(string subscriptionId)
         {
+<<<<<<< HEAD
             ResourceManagerClient.SubscriptionId = subscriptionId;
             var response = ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
 
@@ -130,6 +142,43 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
 
+=======
+            // To save time, we'll check the registration state first before making the register call.
+            ResourceManagerClient.SubscriptionId = subscriptionId;
+            Provider provider = ResourceManagerClient.Providers.Get(BlueprintConstants.BlueprintProviderNamespace);
+
+            if (provider.RegistrationState == RegistrationState.Registered)
+            {
+                return;
+            }
+
+            // The reason we poll for the registrationState for RP registration is because we'd like to make sure the RP registering
+            // happens before the blueprint creation/assignment request is submitted. This should help alleviate the spike in
+            // blueprint creation/assignment failures due to RP not being registered.
+            const int MaxPoll = 20;
+            int pollCount = 0;
+
+            do
+            {
+                if (pollCount > MaxPoll)
+                {
+                    // We should ideally throw a timeout exception here but we're collecting logs on service side about RP registration failures
+                    // and would like to continue with blueprint/assignment creation flow.
+                    //
+                    // To-Do: Add TimeoutException
+                    break;
+                }
+
+                provider = ResourceManagerClient.Providers.Register(BlueprintConstants
+                    .BlueprintProviderNamespace); // Instead of Get, do Register call again since GET takes its sweet time to return the status.
+
+                TestMockSupport.Delay(TimeSpan.FromSeconds(1));
+
+                pollCount++;
+
+            } while (provider.RegistrationState != RegistrationState.Registered);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Expects a string that consist of full file path with file extension and check if it exists.
@@ -148,6 +197,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///  This overloaded function expects a folder path and a file name and combines them. Checks if resulting full file name exist.
         /// </summary>
         /// <param name="inputPath"></param>
@@ -186,6 +236,61 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
 
             return artifactsPath;
+=======
+        ///  Returns the blueprint file path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        protected string GetValidatedFilePathForBlueprint(string path)
+        {
+            var blueprintFileName = AzureSession.Instance.DataStore.GetFiles(path, "*.*", SearchOption.TopDirectoryOnly)
+                .Select(file => Path.GetFileName(file))
+                .FirstOrDefault(name => String.Equals(name, "blueprint.json", StringComparison.OrdinalIgnoreCase));
+                    
+            if (blueprintFileName == null)
+            {
+                throw new Exception(
+                    $"Cannot locate Blueprint.json in: {path}.");
+            }
+
+            return Path.Combine(path, blueprintFileName);
+        }
+
+        /// <summary>
+        /// Returns the artifacts folder path. 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        protected string GetValidatedFolderPathForArtifacts(string path)
+        {
+            var artifactsFolderName = AzureSession.Instance.DataStore.GetDirectories(path)
+                .Select(folder => Path.GetFileName(folder))
+                .FirstOrDefault(name => String.Equals(name, "artifacts", StringComparison.OrdinalIgnoreCase));
+
+            return artifactsFolderName == null ? null : Path.Combine(path, artifactsFolderName);
+        }
+
+        /// <summary>
+        /// Unregisters delegating handler if registered.  
+        /// </summary>
+        protected void UnregisterDelegatingHandlerIfRegistered()
+        {
+            var apiExpandHandler = GetExpandHandler();
+
+            if (apiExpandHandler != null)
+            {
+                AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
+            }
+        }
+
+        /// <summary>
+        /// Returns expand handler, if exists.  
+        /// </summary>
+        private DelegatingHandler GetExpandHandler()
+        {
+            return AzureSession.Instance.ClientFactory.GetCustomHandlers()?
+                .Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

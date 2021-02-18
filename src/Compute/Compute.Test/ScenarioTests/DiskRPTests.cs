@@ -51,5 +51,73 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SnapshotEncrypt");
         }
+<<<<<<< HEAD
     }
 }
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskUpload()
+        {
+            TestRunner.RunTestScript("Test-DiskUpload");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskEncryptionSet()
+        {
+            TestRunner.RunTestScript("Test-DiskEncryptionSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskEncryptionSetConfigEncryptionType()
+        {
+            TestRunner.RunTestScript("Test-DiskEncryptionSetConfigEncryptionType");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskAccessObject()
+        {
+            TestRunner.RunTestScript("Test-DiskAccessObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskConfigDiskAccessNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-DiskConfigDiskAccessNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotConfigDiskAccessNetworkPolicy()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigDiskAccessNetworkPolicy");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskConfigTierSectorSizeReadOnly()
+        {
+            TestRunner.RunTestScript("Test-DiskConfigTierSectorSizeReadOnly");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDiskEncryptionSetAssociatedResource()
+        {
+            TestRunner.RunTestScript("Test-GetDiskEncryptionSetAssociatedResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotDuplicateCreationFails()
+        {
+            TestRunner.RunTestScript("Test-SnapshotDuplicateCreationFails");
+        }
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

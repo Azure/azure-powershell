@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherprotocolconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherprotocolconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,11 @@ New-AzNetworkWatcherProtocolConfiguration -Protocol <String> [-Method <String>] 
 
 ## DESCRIPTION
 The New-AzNetworkWatcherProtocolConfiguration cmdlet creates a new protocol configuration object. 
+<<<<<<< HEAD
 This object is used to restrict the protocol confiuration during a connecitivity check session using the specified criteria. 
+=======
+This object is used to restrict the protocol configuration during a connectivity check session using the specified criteria. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -108,7 +116,11 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
+<<<<<<< HEAD
 Procotol type
+=======
+Protocol type
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -203,6 +215,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
+<<<<<<< HEAD
 [Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
+=======
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

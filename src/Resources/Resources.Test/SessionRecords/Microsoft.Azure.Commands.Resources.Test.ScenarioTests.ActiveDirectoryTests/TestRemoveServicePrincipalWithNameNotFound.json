@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?$filter=servicePrincipalNames/any(c:%20c%20eq%20'this%20is%20a%20fake%20service%20principal%20name%20and%20there%20are%20no%20way%20this%20can%20be%20valid')&api-version=1.6",
+      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzolMjBjJTIwZXElMjAndGhpcyUyMGlzJTIwYSUyMGZha2UlMjBzZXJ2aWNlJTIwcHJpbmNpcGFsJTIwbmFtZSUyMGFuZCUyMHRoZXJlJTIwYXJlJTIwbm8lMjB3YXklMjB0aGlzJTIwY2FuJTIwYmUlMjB2YWxpZCcpJmFwaS12ZXJzaW9uPTEuNg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "023d82c3-dd04-4fcf-ba8d-3215e8fa3f31"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.5.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "c8DY5Cyqg4IL7KiGriFCQeHrjFZ8C7gcRElrb3kPNd4="
+        ],
+        "request-id": [
+          "23c0a95f-26a7-4059-ab22-36f697593784"
+        ],
+        "client-request-id": [
+          "023d82c3-dd04-4fcf-ba8d-3215e8fa3f31"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "G5vRJTABa9Zl0M_Nmi3bNo4kwoqFoxnDsBB_PNeZ4_CNCOy2oXI-J6TGRbA6Zv-66MQ7hMKHNdckkRQlT2Rv3igAiMD7b-0pOHk3_iMcqm3fADkGSM_7TeIf_L52A5jg.pgEafdpA7_aUQ5Vr2PCx0JGfx8ORmYSlAEfFg9PQbbU"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Duration": [
+          "432900"
+        ],
+        "Date": [
+          "Wed, 06 Nov 2019 11:02:03 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "121"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects\",\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+  }
+}

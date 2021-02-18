@@ -44,6 +44,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestInvokeAndStopTriggerRun()
+        {
+            RunPowerShellTest(_logger, "Test-TriggerInvokeAndStop");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestTriggerRun()
         {
             RunPowerShellTest(_logger, "Test-TriggerRun");
@@ -55,5 +65,29 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest(_logger, "Test-TriggerWithResourceId");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptions()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptionsByInputObject()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByInputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptionsByResourceId()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByResourceId");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

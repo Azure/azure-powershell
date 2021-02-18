@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+<<<<<<< HEAD
+=======
+using Xunit;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -34,3 +38,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
+<<<<<<< HEAD
+=======
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

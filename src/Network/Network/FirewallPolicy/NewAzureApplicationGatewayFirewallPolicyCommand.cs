@@ -17,6 +17,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,12 +57,33 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of CustomRules")]
         public PSApplicationGatewayFirewallCustomRule[] CustomRule { get; set; }
 
         [Parameter(
+=======
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "The list of CustomRules")]
+        public PSApplicationGatewayFirewallCustomRule[] CustomRule { get; set; }
+
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Policysettings of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicySettings PolicySetting { get; set; }
+
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "ManagedRules of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRule { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -96,17 +121,57 @@ namespace Microsoft.Azure.Commands.Network
             firewallPolicy.ResourceGroupName = this.ResourceGroupName;
             firewallPolicy.Location = this.Location;
             firewallPolicy.CustomRules = this.CustomRule?.ToList();
+<<<<<<< HEAD
 
             // Map to the sdk object
             var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);
 
+=======
+            firewallPolicy.PolicySettings = this.PolicySetting;
+            firewallPolicy.ManagedRules = this.ManagedRule;
+
+            // Populate default values
+            if (this.ManagedRule == null)
+            {
+                firewallPolicy.ManagedRules = new PSApplicationGatewayFirewallPolicyManagedRules()
+                {
+                    ManagedRuleSets = new List<PSApplicationGatewayFirewallPolicyManagedRuleSet>()
+                    {
+                        new PSApplicationGatewayFirewallPolicyManagedRuleSet()
+                        {
+                            RuleSetType = "OWASP",
+                            RuleSetVersion = "3.0"
+                        }
+                    }
+                };
+            }
+            
+            if (this.PolicySetting == null)
+            {
+                firewallPolicy.PolicySettings = new PSApplicationGatewayFirewallPolicySettings()
+                {
+                    FileUploadLimitInMb = 100,
+                    MaxRequestBodySizeInKb = 128,
+                    Mode = "Detection",
+                    State = "Enabled",
+                    RequestBodyCheck = true
+                };
+            }
+
+            // Map to the sdk object
+            var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             firewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ApplicationGatewayFirewallPolicy call
             this.ApplicationGatewayFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, firewallPolicyModel);
+<<<<<<< HEAD
 
             var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(this.ResourceGroupName, this.Name);
 
+=======
+            var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(this.ResourceGroupName, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return getApplicationGatewayFirewallPolicy;
         }
     }

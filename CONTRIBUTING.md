@@ -4,7 +4,11 @@ This repository contains PowerShell cmdlets for developers and administrators to
 
 ## Basics
 
+<<<<<<< HEAD
 If you would like to become an active contributor to this project (or any other open source Microsoft project), please see the list of resources found on [this page](https://opensource.microsoft.com/resources).
+=======
+If you would like to become an active contributor to this project (or any other open source Microsoft project), please see the list of resources found on [this page](https://opensource.microsoft.com/collaborate/).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## Before Starting
 
@@ -65,12 +69,23 @@ The following is a list of guidelines that pull requests opened in the Azure Pow
 The following guidelines must be followed in **EVERY** pull request that is opened.
 
 - Title of the pull request is clear and informative
+<<<<<<< HEAD
 - The appropriate `ChangeLog.md` file has been updated with a snippet describing the changes being made
 - There are a [small number of commits](documentation/development-docs/cleaning-up-commits.md) that each have an informative message
 - All files shipped with a module should contain a proper Microsoft license header
 - For public API changes to cmdlets:
     - a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr)
     - the markdown help files have been regenerated using the commands listed [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
+=======
+- The appropriate `ChangeLog.md` file(s) has been updated:
+    - For any service, the `ChangeLog.md` file can be found at `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`
+    - A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header -- no new version header should be added
+- There are a [small number of commits](documentation/development-docs/cleaning-up-commits.md) that each have an informative message
+- All files shipped with a module should contain a proper Microsoft license header
+- For public API changes to cmdlets:
+    - a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (_Microsoft internal only_)
+    - the markdown help files have been regenerated using the commands listed [here](documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 #### Testing guidelines
 

@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSNetworkInterface> NetworkInterfaces { get; set; }
         public List<PSPrivateLinkServiceConnection> PrivateLinkServiceConnections { get; set; }
         public List<PSPrivateLinkServiceConnection> ManualPrivateLinkServiceConnections { get; set; }
+<<<<<<< HEAD
+=======
+        public List<PSPrivateEndpointCustomDnsConfig> CustomDnsConfigs { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [JsonIgnore]
         public string SubnetText
@@ -64,5 +68,31 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ManualPrivateLinkServiceConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string CustomDnsConfigsText
+        {
+            get { return JsonConvert.SerializeObject(CustomDnsConfigs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+
+        public bool ShouldSerializeNetworkInterfaces()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializePrivateLinkServiceConnections()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeManualPrivateLinkServiceConnections()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

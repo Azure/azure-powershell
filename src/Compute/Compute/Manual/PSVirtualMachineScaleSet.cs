@@ -19,14 +19,21 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+<<<<<<< HEAD
 using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSVirtualMachineScaleSet
     {
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

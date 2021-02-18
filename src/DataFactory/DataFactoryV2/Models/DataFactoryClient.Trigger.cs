@@ -106,6 +106,34 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             this.DataFactoryManagementClient.Triggers.Stop(resourceGroupName, dataFactoryName, triggerName);
         }
 
+<<<<<<< HEAD
+=======
+        public virtual PSTriggerSubscriptionStatus SubscribeToTriggerEvents(string resourceGroupName, string dataFactoryName, string triggerName)
+        {
+            return new PSTriggerSubscriptionStatus(this.DataFactoryManagementClient.Triggers.SubscribeToEvents(resourceGroupName, dataFactoryName, triggerName));
+        }
+
+        public virtual PSTriggerSubscriptionStatus UnsubscribeFromTriggerEvents(string resourceGroupName, string dataFactoryName, string triggerName)
+        {
+            return new PSTriggerSubscriptionStatus(this.DataFactoryManagementClient.Triggers.UnsubscribeFromEvents(resourceGroupName, dataFactoryName, triggerName));
+        }
+
+        public virtual PSTriggerSubscriptionStatus GetTriggerEventSubscriptionStatus(string resourceGroupName, string dataFactoryName, string triggerName)
+        {
+            return new PSTriggerSubscriptionStatus(this.DataFactoryManagementClient.Triggers.GetEventSubscriptionStatus(resourceGroupName, dataFactoryName, triggerName));
+        }
+
+        public virtual void StopTriggerRun(string resourceGroupName, string dataFactoryName, string triggerName, string triggerRunId)
+        {
+            this.DataFactoryManagementClient.TriggerRuns.Cancel(resourceGroupName, dataFactoryName, triggerName, triggerRunId);
+        }
+
+        public virtual void RerunTriggerRun(string resourceGroupName, string dataFactoryName, string triggerName, string triggerRunId)
+        {
+            this.DataFactoryManagementClient.TriggerRuns.Rerun(resourceGroupName, dataFactoryName, triggerName, triggerRunId);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private TriggerResource CreateOrUpdateTrigger(string resourceGroupName, string dataFactoryName,
             string triggerName, string rawJsonContent)
         {

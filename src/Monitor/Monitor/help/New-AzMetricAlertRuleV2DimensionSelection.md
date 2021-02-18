@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -18,11 +22,19 @@ New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToInclu
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **New-AzMetricAlertRuleV2DimensionSelection** cmdlet creates a local dimension selection object to help with the construction of metric alert criteria using **New-AzMetricAlertRuleV2Criteria** cmdlet.
 
 ## EXAMPLES
 
 ### Example 1 : Create a dimension selection object
+=======
+The **New-AzMetricAlertRuleV2DimensionSelection** cmdlet creates a local dimension selection object to help with the construction of metric alert criteria using [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet.
+
+## EXAMPLES
+
+### Example 1: Create a dimension selection object
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 PS C:\> New-AzMetricAlertRuleV2DimensionSelection -DimensionName LUN -ValuesToInclude 1,3,4

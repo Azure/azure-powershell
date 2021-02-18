@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementAuthorizationServer", DefaultParameterSetName = ContextParameterSet)]
+<<<<<<< HEAD
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
+=======
+    [OutputType(typeof(PsApiManagementOAuth2AuthorizationServer))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
         #region ParameterSet
@@ -59,7 +63,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
+<<<<<<< HEAD
                 var authorizationServer = new PsApiManagementOAuth2AuthrozationServer(ResourceId);
+=======
+                var authorizationServer = new PsApiManagementOAuth2AuthorizationServer(ResourceId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 resourceGroupName = authorizationServer.ResourceGroupName;
                 serviceName = authorizationServer.ServiceName;
                 authorizationserverId = authorizationServer.ServerId;

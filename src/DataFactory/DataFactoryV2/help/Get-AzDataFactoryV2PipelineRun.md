@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryv2pipelinerun
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2pipelinerun
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -43,7 +47,11 @@ The **Get-AzDataFactoryV2PipelineRun** command returns information about runs fo
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: Get information for a pipline run
+=======
+### Example 1: Get information for a pipeline run
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> Get-AzDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 9057185C-6F22-4C4A-8480-BE542B5D6BAF
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebapp
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebapp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

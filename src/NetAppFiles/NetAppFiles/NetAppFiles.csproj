@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+=======
+<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>NetAppFiles</PsModuleName>
@@ -7,7 +11,24 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.0.0" />
+=======
+    <Compile Remove="Account\Replication\**" />
+    <Compile Remove="Replications\**" />
+    <EmbeddedResource Remove="Account\Replication\**" />
+    <EmbeddedResource Remove="Replications\**" />
+    <None Remove="Account\Replication\**" />
+    <None Remove="Replications\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AuthorizeNetAppFilesReplicatione.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.8.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>

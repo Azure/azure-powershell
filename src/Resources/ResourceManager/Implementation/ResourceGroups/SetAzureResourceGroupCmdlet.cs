@@ -24,7 +24,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Updates an existing resource group.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(PSResourceGroup))]
+<<<<<<< HEAD
     public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
+=======
+    public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// List resources group by name parameter set.
@@ -51,7 +55,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void OnProcessRecord()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             PSUpdateResourceGroupParameters parameters = new PSUpdateResourceGroupParameters
             {

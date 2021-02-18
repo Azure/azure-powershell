@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 13901193-8C68-4969-ADCD-2E82EA714354
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvirtualnetworkpeering
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworkpeering
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -60,7 +64,11 @@ New-AzResourceGroup -Name $rgName  -Location westcentralus
 $vnet1 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
 
 # Create virtual network 2.
+<<<<<<< HEAD
 $vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
+=======
+$vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location canadacentral
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Peer VNet1 to VNet2.
 Add-AzVirtualNetworkPeering -Name 'myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id

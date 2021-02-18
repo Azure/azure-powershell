@@ -26,7 +26,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         { }
 
         /// <summary>
+<<<<<<< HEAD
         /// The name of the local windows account created.
+=======
+        /// The name of the local Windows account created.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public string ComputeNodeUserName { get; set; }
 

@@ -26,7 +26,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
+=======
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class SetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -69,12 +73,33 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false,
+            HelpMessage = "Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not. When disabled, only connections made through Private Links can reach this server.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sql server minimal tls version
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        [PSArgumentCompleter("1.0", "1.1", "1.2")]
+        public string MinimalTlsVersion { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Get the server to update
         /// </summary>
@@ -91,6 +116,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerModel> model)
         {
+<<<<<<< HEAD
+=======
+            if (!Sql.Services.Util.ValidateServerName(this.ServerName))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlServerModel> updateData = new List<Model.AzureSqlServerModel>();
             updateData.Add(new Model.AzureSqlServerModel()
@@ -102,6 +135,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+<<<<<<< HEAD
+=======
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                MinimalTlsVersion = this.MinimalTlsVersion,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
             return updateData;
         }

@@ -86,6 +86,36 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Add Configuration.
+        /// </summary>
+        internal static string AddIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("AddIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Device.
+        /// </summary>
+        internal static string AddIotHubDevice {
+            get {
+                return ResourceManager.GetString("AddIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Device Children.
+        /// </summary>
+        internal static string AddIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("AddIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Add an IoT Hub Key.
         /// </summary>
         internal static string AddIotHubKey {
@@ -95,6 +125,27 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Add Message Enrichment.
+        /// </summary>
+        internal static string AddIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("AddIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Module.
+        /// </summary>
+        internal static string AddIotHubModule {
+            get {
+                return ResourceManager.GetString("AddIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Add Route.
         /// </summary>
         internal static string AddIotHubRoute {
@@ -113,6 +164,63 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Execute Metrics Query.
+        /// </summary>
+        internal static string InvokeIotHubConfigurationMetricsQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubConfigurationMetricsQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoke Direct Method on a device.
+        /// </summary>
+        internal static string InvokeIotHubDeviceMethod {
+            get {
+                return ResourceManager.GetString("InvokeIotHubDeviceMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query an Iot Hub.
+        /// </summary>
+        internal static string InvokeIotHubQuery {
+            get {
+                return ResourceManager.GetString("InvokeIotHubQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failover Iot Hub to the secondary location..
+        /// </summary>
+        internal static string ManualFailoverIotHub {
+            get {
+                return ResourceManager.GetString("ManualFailoverIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The enrichment&apos;s key &quot;{0}&quot; already exists..
+        /// </summary>
+        internal static string MessageEnrichmentKeyExist {
+            get {
+                return ResourceManager.GetString("MessageEnrichmentKeyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No message enrichment with key &quot;{0}&quot; exists..
+        /// </summary>
+        internal static string MessageEnrichmentKeyMissing {
+            get {
+                return ResourceManager.GetString("MessageEnrichmentKeyMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Export All Devices.
         /// </summary>
         internal static string NewAzureRmIotHubExportDevices {
@@ -140,6 +248,18 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Generate Sas Token.
+        /// </summary>
+        internal static string NewIotHubSasToken {
+            get {
+                return ResourceManager.GetString("NewIotHubSasToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
         internal static string RemoveEventHubConsumerGroup {
@@ -167,6 +287,36 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Remove Configuration.
+        /// </summary>
+        internal static string RemoveIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Device.
+        /// </summary>
+        internal static string RemoveIotHubDevice {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Device Children.
+        /// </summary>
+        internal static string RemoveIotHubDeviceChildren {
+            get {
+                return ResourceManager.GetString("RemoveIotHubDeviceChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Remove IoT Hub Key.
         /// </summary>
         internal static string RemoveIotHubKey {
@@ -176,6 +326,27 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Remove Message Enrichment.
+        /// </summary>
+        internal static string RemoveIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("RemoveIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Module.
+        /// </summary>
+        internal static string RemoveIotHubModule {
+            get {
+                return ResourceManager.GetString("RemoveIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Remove Route.
         /// </summary>
         internal static string RemoveIotHubRoute {
@@ -194,6 +365,54 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Send Device to Cloud Message.
+        /// </summary>
+        internal static string SendIotHubD2CMessage {
+            get {
+                return ResourceManager.GetString("SendIotHubD2CMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Configuration.
+        /// </summary>
+        internal static string SetIotHubConfiguration {
+            get {
+                return ResourceManager.GetString("SetIotHubConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Distributed Tracing.
+        /// </summary>
+        internal static string SetIotHubDistributedTracing {
+            get {
+                return ResourceManager.GetString("SetIotHubDistributedTracing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply Configuration on Edge Devices.
+        /// </summary>
+        internal static string SetIotHubEdgeModules {
+            get {
+                return ResourceManager.GetString("SetIotHubEdgeModules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Parent Device.
+        /// </summary>
+        internal static string SetParentDevice {
+            get {
+                return ResourceManager.GetString("SetParentDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Update IoT Hub .
         /// </summary>
         internal static string UpdateIotHub {
@@ -203,6 +422,54 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Update Device.
+        /// </summary>
+        internal static string UpdateIotHubDevice {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Device Twin.
+        /// </summary>
+        internal static string UpdateIotHubDeviceTwin {
+            get {
+                return ResourceManager.GetString("UpdateIotHubDeviceTwin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Message Enrichment.
+        /// </summary>
+        internal static string UpdateIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("UpdateIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Module.
+        /// </summary>
+        internal static string UpdateIotHubModule {
+            get {
+                return ResourceManager.GetString("UpdateIotHubModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Device Module Twin.
+        /// </summary>
+        internal static string UpdateIotHubModuleTwin {
+            get {
+                return ResourceManager.GetString("UpdateIotHubModuleTwin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Update Route.
         /// </summary>
         internal static string UpdateIotHubRoute {

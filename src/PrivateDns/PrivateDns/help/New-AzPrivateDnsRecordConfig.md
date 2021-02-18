@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/new-azprivatednsrecordconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.privatedns/new-azprivatednsrecordconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -127,7 +131,11 @@ This example creates a RecordSet named www in the private zone myzone.com. The r
 ```powershell
 PS C:\> $Records = @()
 PS C:\> $Records += New-AzPrivateDnsRecordConfig -Cname www.contoso.com
+<<<<<<< HEAD
 PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+=======
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Micros
                     oft.Network/privateDnsZones/myzone.com/CNAME/www
@@ -148,7 +156,11 @@ This example creates a RecordSet named www in the private zone myzone.com. The r
 ```powershell
 PS C:\> $Records = @()
 PS C:\> $Records += New-AzPrivateDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+<<<<<<< HEAD
 PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+=======
+PS C:\> $RecordSet = New-AzPrivateDnsRecordSet -Name "www" -RecordType MX -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -PrivateDnsRecords $Records
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Micros
                     oft.Network/privateDnsZones/myzone.com/MX/www

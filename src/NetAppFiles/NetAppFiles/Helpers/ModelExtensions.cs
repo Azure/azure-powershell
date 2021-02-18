@@ -16,14 +16,18 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Collections;
 using System;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
     public static class ModelExtensions
     {
+<<<<<<< HEAD
         public static List<ActiveDirectory> ConvertActiveDirectoriesFromPs(PSNetAppFilesActiveDirectory[] psActiveDirectories)
         {
             return psActiveDirectories.Select(psActiveDirectory => new ActiveDirectory
@@ -62,19 +66,79 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }
 
             return PsActiveDirectories;
+=======
+        public static List<Management.NetApp.Models.ActiveDirectory> ConvertFromPs(this PSNetAppFilesActiveDirectory[] psActiveDirectories)
+        {
+            return psActiveDirectories.Select(psActiveDirectory => new Management.NetApp.Models.ActiveDirectory
+            {
+                // ActiveDirectoryId
+                Username = psActiveDirectory.Username,
+                Password = psActiveDirectory.Password,
+                Domain = psActiveDirectory.Domain,
+                Dns = psActiveDirectory.Dns,                
+                SmbServerName = psActiveDirectory.SmbServerName,
+                OrganizationalUnit = psActiveDirectory.OrganizationalUnit,
+                Site = psActiveDirectory.Site,
+                BackupOperators = psActiveDirectory.BackupOperators,
+                KdcIP = psActiveDirectory.KdcIP,
+                AdName = psActiveDirectory.AdName,
+                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate
+
+            }).ToList();
+        }
+
+        public static List<PSNetAppFilesActiveDirectory> ConvertToPs(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories, string resourceGroupName, string accountName)
+        {
+            return activeDirectories.Select(e => e.ConvertToPs(resourceGroupName, accountName)).ToList();
+        }
+
+        public static PSNetAppFilesActiveDirectory ConvertToPs(this Management.NetApp.Models.ActiveDirectory activeDirectory, string resourceGroupName, string accountName)
+        {
+            var psActiveDirectory = new PSNetAppFilesActiveDirectory
+            {
+                ResourceGroupName = resourceGroupName,
+                AccountName = accountName,
+                ActiveDirectoryId = activeDirectory.ActiveDirectoryId,
+                Username = activeDirectory.Username,
+                Password = activeDirectory.Password,
+                Domain = activeDirectory.Domain,
+                Dns = activeDirectory.Dns,
+                Status = activeDirectory.Status,
+                StatusDetails = activeDirectory.StatusDetails,
+                SmbServerName = activeDirectory.SmbServerName,
+                OrganizationalUnit = activeDirectory.OrganizationalUnit,
+                Site = activeDirectory.Site,
+                BackupOperators = activeDirectory.BackupOperators,
+                KdcIP = activeDirectory.KdcIP,
+                AdName = activeDirectory.AdName,
+                ServerRootCACertificate = activeDirectory.ServerRootCACertificate
+            };
+            return psActiveDirectory;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public static PSNetAppFilesAccount ToPsNetAppFilesAccount(this NetAppAccount netAppAccount)
         {
+<<<<<<< HEAD
             return new PSNetAppFilesAccount
             {
                 ResourceGroupName = new ResourceIdentifier(netAppAccount.Id).ResourceGroupName,
+=======
+            string resourceGroupName = new ResourceIdentifier(netAppAccount.Id).ResourceGroupName;
+            return new PSNetAppFilesAccount
+            {
+                ResourceGroupName = resourceGroupName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Location = netAppAccount.Location,
                 Id = netAppAccount.Id,
                 Name = netAppAccount.Name,
                 Type = netAppAccount.Type,
                 Tags = netAppAccount.Tags,
+<<<<<<< HEAD
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? ConvertActiveDirectoriesToPs(netAppAccount.ActiveDirectories) : null,
+=======
+                ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ProvisioningState = netAppAccount.ProvisioningState
             };
         }
@@ -92,7 +156,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 PoolId = capacityPool.PoolId,
                 Size = capacityPool.Size,
                 ServiceLevel = capacityPool.ServiceLevel,
+<<<<<<< HEAD
                 ProvisioningState = capacityPool.ProvisioningState
+=======
+                ProvisioningState = capacityPool.ProvisioningState,
+                QosType = capacityPool.QosType,
+                TotalThroughputMibps = capacityPool.TotalThroughputMibps,
+                UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -109,8 +180,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = rule.UnixReadWrite,
                     Cifs = rule.Cifs,
                     Nfsv3 = rule.Nfsv3,
+<<<<<<< HEAD
                     Nfsv4 = rule.Nfsv4,
                     AllowedClients = rule.AllowedClients
+=======
+                    Nfsv41 = rule.Nfsv41,
+                    AllowedClients = rule.AllowedClients,
+                    HasRootAccess = rule.HasRootAccess,
+                    Kerberos5iReadOnly = rule.Kerberos5iReadOnly,
+                    Kerberos5iReadWrite = rule.Kerberos5iReadWrite,
+                    Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
+                    Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
+                    Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -132,8 +215,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = rule.UnixReadWrite,
                     Cifs = rule.Cifs,
                     Nfsv3 = rule.Nfsv3,
+<<<<<<< HEAD
                     Nfsv4 = rule.Nfsv4,
                     AllowedClients = rule.AllowedClients
+=======
+                    Nfsv41 = rule.Nfsv41,
+                    AllowedClients = rule.AllowedClients,
+                    HasRootAccess = rule.HasRootAccess,
+                    Kerberos5iReadOnly = rule.Kerberos5iReadOnly,
+                    Kerberos5iReadWrite = rule.Kerberos5iReadWrite,
+                    Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
+                    Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
+                    Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -156,8 +251,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = Rule.UnixReadWrite,
                     Cifs = Rule.Cifs,
                     Nfsv3 = Rule.Nfsv3,
+<<<<<<< HEAD
                     Nfsv4 = Rule.Nfsv4,
                     AllowedClients = Rule.AllowedClients
+=======
+                    Nfsv41 = Rule.Nfsv41,
+                    AllowedClients = Rule.AllowedClients,
+                    HasRootAccess = Rule.HasRootAccess,
+                    Kerberos5iReadOnly = Rule.Kerberos5iReadOnly,
+                    Kerberos5iReadWrite = Rule.Kerberos5iReadWrite,
+                    Kerberos5pReadOnly = Rule.Kerberos5pReadOnly,
+                    Kerberos5pReadWrite = Rule.Kerberos5pReadWrite,
+                    Kerberos5ReadOnly = Rule.Kerberos5ReadOnly,
+                    Kerberos5ReadWrite = Rule.Kerberos5ReadWrite
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
                 rules.Add(PsExportPolicyRule);
             }
@@ -165,6 +272,93 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return PsExportPolicy;
         }
 
+<<<<<<< HEAD
+=======
+        public static PSNetAppFilesVolumeDataProtection ConvertDataProtectionToPs(VolumePropertiesDataProtection DataProtection)
+        {
+            var psDataProtection = new PSNetAppFilesVolumeDataProtection();            
+            if (DataProtection.Replication != null)
+            {
+                var replication = new PSNetAppFilesReplicationObject();
+                // replication.ReplicationId = DataProtection.Replication.ReplicationId;
+                replication.EndpointType = DataProtection.Replication.EndpointType;
+                replication.ReplicationSchedule = DataProtection.Replication.ReplicationSchedule;
+                replication.RemoteVolumeResourceId = DataProtection.Replication.RemoteVolumeResourceId;
+                // replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
+                psDataProtection.Replication = replication;
+            }
+            if (DataProtection.Snapshot != null)
+            {
+                var snapshot = new PSNetAppFilesVolumeSnapshot();
+                snapshot.SnapshotPolicyId = DataProtection.Snapshot.SnapshotPolicyId;
+                psDataProtection.Snapshot = snapshot;
+            }
+            if (DataProtection.Backup != null)
+            {
+                var psBackupProps = new PSNetAppFilesVolumeBackupProperties()
+                {
+                    BackupEnabled = DataProtection.Backup.BackupEnabled,
+                    BackupPolicyId = DataProtection.Backup.BackupPolicyId,
+                    PolicyEnforced = DataProtection.Backup.PolicyEnforced,
+                    VaultId = DataProtection.Backup.VaultId
+                };
+                psDataProtection.Backup = psBackupProps;
+            }
+
+            return psDataProtection;
+        }
+
+        public static VolumePropertiesDataProtection ConvertDataProtectionFromPs(PSNetAppFilesVolumeDataProtection psDataProtection)
+        {
+            var dataProtection = new VolumePropertiesDataProtection();
+            if (psDataProtection.Replication != null)
+            {
+                var replication = new ReplicationObject();
+
+                // replication.ReplicationId = psDataProtection.Replication.ReplicationId;
+                replication.EndpointType = psDataProtection.Replication.EndpointType;
+                replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
+                replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
+                // replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
+                dataProtection.Replication = replication;
+            }
+            
+            if (psDataProtection.Snapshot != null)
+            {
+                var snapshot = new VolumeSnapshotProperties();
+                snapshot.SnapshotPolicyId = psDataProtection.Snapshot.SnapshotPolicyId;
+                dataProtection.Snapshot = snapshot;
+            }
+
+            if (psDataProtection.Backup != null)
+            {
+                var backup = new VolumeBackupProperties();
+                backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
+                backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
+                backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
+                dataProtection.Backup = backup;
+            }
+            return dataProtection;
+        }
+
+        public static VolumePatchPropertiesDataProtection ConvertToPatchFromPs(this PSNetAppFilesVolumeDataProtection psDataProtection)
+        {
+            var dataProtection = new VolumePatchPropertiesDataProtection();
+
+            if (psDataProtection.Backup != null)
+            {
+                var backup = new VolumeBackupProperties();
+                backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
+                backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
+                backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
+                backup.VaultId = psDataProtection.Backup.VaultId;
+                dataProtection.Backup = backup;
+            }
+            return dataProtection;
+        }
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static PSNetAppFilesVolume ToPsNetAppFilesVolume(this Management.NetApp.Models.Volume volume)
         {
             return new PSNetAppFilesVolume
@@ -180,9 +374,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ServiceLevel = volume.ServiceLevel,
                 UsageThreshold = volume.UsageThreshold,
                 ExportPolicy = (volume.ExportPolicy != null) ? ConvertExportPolicyToPs(volume.ExportPolicy) : null,
+<<<<<<< HEAD
                 SnapshotId = volume.SnapshotId,
                 BaremetalTenantId = volume.BaremetalTenantId,
                 SubnetId = volume.SubnetId
+=======
+                ProtocolTypes = volume.ProtocolTypes,
+                MountTargets = volume.MountTargets,
+                SnapshotId = volume.SnapshotId,
+                BaremetalTenantId = volume.BaremetalTenantId,
+                SubnetId = volume.SubnetId,
+                CreationToken = volume.CreationToken,
+                VolumeType = volume.VolumeType,
+                DataProtection = (volume.DataProtection != null) ? ConvertDataProtectionToPs(volume.DataProtection) : null,
+                IsRestoring = volume.IsRestoring,
+                SnapshotDirectoryVisible = volume.SnapshotDirectoryVisible,
+                BackupId = volume.BackupId,
+                SecurityStyle = volume.SecurityStyle,
+                ThroughputMibps = volume.ThroughputMibps,
+                KerberosEnabled = volume.KerberosEnabled
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -195,6 +406,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Id = snapshot.Id,
                 Name = snapshot.Name,
                 Type = snapshot.Type,
+<<<<<<< HEAD
                 Tags = snapshot.Tags,
                 FileSystemId = snapshot.FileSystemId,
                 SnapshotId = snapshot.SnapshotId,
@@ -202,5 +414,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ProvisioningState = snapshot.ProvisioningState,
             };
         }
+=======
+                SnapshotId = snapshot.SnapshotId,
+                Created = snapshot.Created,
+                ProvisioningState = snapshot.ProvisioningState,
+            };
+        }
+
+        public static PSNetAppFilesReplicationStatus ToPsNetAppFilesReplicationStatus(this Management.NetApp.Models.ReplicationStatus replicationStatus)
+        {
+            return new PSNetAppFilesReplicationStatus
+            {
+                Healthy = replicationStatus.Healthy,
+                RelationshipStatus = replicationStatus.RelationshipStatus,
+                MirrorState = replicationStatus.MirrorState,
+                TotalProgress = replicationStatus.TotalProgress,
+                ErrorMessage = replicationStatus.ErrorMessage
+            };
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

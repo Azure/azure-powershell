@@ -67,6 +67,26 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
 
+<<<<<<< HEAD
 
+=======
+        public static readonly string ServiceTemplateRelativePath = Path.Combine("Template", "Service");
+
+        public const string clusterProvider = "clusters";
+        public const string applicationTypeProvider = "applicationTypes";
+        public const string applicationTypeVersionProvider = "versions";
+        public const string applicationProvider = "applications";
+        public const string serviceProvider = "services";
+
+        public const string ServiceFabricPrefix = "ServiceFabric";
+        
+        public const string AzureAsyncOperationHeader = "Azure-AsyncOperation";
+
+        // Managed clusters
+        public const string ManagedClusterProvider = "managedClusters";
+        public const string ManagedNodeTypeProvider = "nodeTypes";
+        public const string ManagedClustersFullType = "Microsoft.ServiceFabric/managedClusters";
+        public const string ManagedNodeTypesFullType = "Microsoft.ServiceFabric/managedClusters/nodeTypes";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

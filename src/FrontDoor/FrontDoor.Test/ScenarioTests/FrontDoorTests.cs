@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -20,7 +23,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 {
     public class FrontDoorTests
     {
+<<<<<<< HEAD
         private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+=======
+        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public FrontDoorTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -37,23 +44,54 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestFrontDoorCrudWithPiping()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudWithPiping");
+=======
+        public void TestFrontDoorCrudDefaults()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudDefaults");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestFrontDoorEndpointCustomDomainHTTPSFrontDoor()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor");
         }
 
+=======
+        public void TestFrontDoorCrudWithPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudWithPiping");
+        }
+
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestFrontDoorEndpointCustomDomainHTTPSFrontDoor()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor");
+        //}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudRedirect()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudRedirect");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorCrudPrivateLink()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudPrivateLink");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -92,27 +92,47 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 3,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
@@ -180,8 +200,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name
             };
 
+<<<<<<< HEAD
             var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
             this.WriteObject(serviceUnitResource);
+=======
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
+                this.WriteObject(serviceUnitResource);
+            }
+            else
+            {
+                var serviceUnitResources = this.DeploymentManagerClient.ListServiceUnits(
+                    resourceGroupName: this.ResourceGroupName,
+                    serviceTopologyName: this.ServiceTopologyName,
+                    serviceName: this.ServiceName);
+                this.WriteObject(serviceUnitResources, enumerateCollection: true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private void ResolveParameters()

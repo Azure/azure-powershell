@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/new-azdatafactoryv2linkedserviceencryptedcredential
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryv2linkedserviceencryptedcredential
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,6 +31,7 @@ New-AzDataFactoryV2LinkedServiceEncryptedCredential [-IntegrationRuntimeName] <S
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The New-AzDataFactoryV2LinkedServiceEncryptCredential cmdlet encrypt credential in linked service with specified integration runtime.
 
 ## EXAMPLES
@@ -37,6 +42,23 @@ PS C:\> New-AzDataFactoryV2LinkedServiceEncryptCredential -ResourceGroupName res
 ```
 
 This command encrypts credential in file D:\sql.json with the integration runtime named myIR.
+=======
+The New-AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet encrypt credential in linked service with specified integration runtime.
+
+Please ensure the following prerequisites are met:
+* **Remote access** option is enabled on the self-hosted integration runtime.
+* Powershell 7.0 or higher is used to execute the cmdlet.
+
+## EXAMPLES
+
+### Example 1: Encrypt credentials in a linked service
+
+This command encrypts credential in file C:\samples\WikiSample\TaxiDemo1.json with the integration runtime named test-selfhost-ir.
+
+```powershell <!-- Aladdin Generated Example --> 
+New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName WikiADF -DefinitionFile 'C:\samples\WikiSample\TaxiDemo1.json' -IntegrationRuntimeName 'test-selfhost-ir' -ResourceGroupName MyResourceGroup
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

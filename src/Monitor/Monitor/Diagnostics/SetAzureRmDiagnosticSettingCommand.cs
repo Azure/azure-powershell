@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// ----------------------------------------------------------------------------------
+=======
+// ----------------------------------------------------------------------------------
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +26,10 @@ using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -40,6 +48,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public const string EventHubRuleIdParamName = "EventHubAuthorizationRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
         public const string EnabledParamName = "Enabled";
+<<<<<<< HEAD
+=======
+        public const string EnableLogParamName = "EnableLog";
+        public const string EnableMetricsParamName = "EnableMetrics";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// This is a temporary constant to provide backwards compatibility
@@ -140,6 +153,27 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
         public int? RetentionInDays { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets the retention in days
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether to export (to ODS) to resource-specific (if present) or to AzureDiagnostics (default, not present)")]
+        public SwitchParameter ExportToResourceSpecific { get; set; }
+
+        /// <summary>
+        /// Gets or sets the logs enable parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostic logs should be enabled or disabled")]
+        public bool EnableLog { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the metrics enable parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostic metrics should be enabled or disabled")]
+        public bool EnableMetrics { get; set; }
+		
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         private bool isStorageParamPresent;
@@ -152,7 +186,15 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private bool isWorkspaceParamPresent;
 
+<<<<<<< HEAD
         private bool isEnbledParameterPresent;
+=======
+        private bool isEnabledParameterPresent;
+
+        private bool isEnableMetricsParameterPresent;
+
+        private bool isEnableLogParameterPresent;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected override void ProcessRecordInternal()
         {
@@ -176,24 +218,53 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     this.isEventHubParamPresent = usedParams.Contains(EventHubNameParamName);
                     this.isEventHubRuleParamPresent = usedParams.Contains(EventHubRuleIdParamName);
                     this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
+<<<<<<< HEAD
                     this.isEnbledParameterPresent = usedParams.Contains(EnabledParamName);
+=======
+                    this.isEnabledParameterPresent = usedParams.Contains(EnabledParamName);
+                    this.isEnableMetricsParameterPresent = usedParams.Contains(EnableMetricsParamName);
+                    this.isEnableLogParameterPresent = usedParams.Contains(EnableLogParamName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (!this.isStorageParamPresent &&
                         !this.isServiceBusParamPresent &&
                         !this.isEventHubParamPresent &&
                         !this.isEventHubRuleParamPresent &&
                         !this.isWorkspaceParamPresent &&
+<<<<<<< HEAD
                         !this.isEnbledParameterPresent)
                     {
                         throw new ArgumentException("No operation is specified");
                     }
+=======
+                        !(this.isEnabledParameterPresent ||
+                          this.isEnableLogParameterPresent ||
+                          this.isEnableMetricsParameterPresent))
+                    {
+                        throw new ArgumentException("No operation is specified");
+                    }
+					
+					if (!this.isEnableMetricsParameterPresent)
+					{
+						this.EnableMetrics = this.Enabled;
+					}
+
+					if (!this.isEnableLogParameterPresent)
+					{
+						this.EnableLog = this.Enabled;
+					}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     try
                     {
                         WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", this.ResourceId));
                         IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result.Value;
                         DiagnosticSettingsResource singleResource = listSettings.FirstOrDefault(e => string.Equals(e.Name, settingName, StringComparison.OrdinalIgnoreCase));
+<<<<<<< HEAD
                         if (singleResource == null)
+=======
+						if (singleResource == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         {
                             // Creating a new setting with settingName as name
                             WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Diagnostic setting named: '{0}' not found in list of {1} settings. Creating a new one.", settingName, listSettings.Count));
@@ -353,7 +424,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
                 EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId,
+<<<<<<< HEAD
                 ServiceBusRuleId = properties.ServiceBusRuleId
+=======
+                ServiceBusRuleId = properties.ServiceBusRuleId,
+                LogAnalyticsDestinationType = properties.LogAnalyticsDestinationType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
             return putParameters;
         }
@@ -366,6 +442,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 Days = this.RetentionInDays.Value
             };
 
+<<<<<<< HEAD
             if (properties.Logs != null)
             {
                 WriteDebugWithTimestamp("Setting retention policy for logs");
@@ -382,14 +459,46 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 {
                     metricSettings.RetentionPolicy = retentionPolicy;
                 }
+=======
+            if (properties.Logs != null && this.IsParameterBound(c => c.Category))
+            {
+                WriteDebugWithTimestamp("Setting retention policy for logs");
+                properties.Logs = properties.Logs.Select(setting => 
+                {
+                    if (setting != null)
+                    {
+                        setting.RetentionPolicy = this.Category.Contains(setting.Category) ? retentionPolicy : (setting.RetentionPolicy == null ? null : setting.RetentionPolicy);
+                    }
+                    return setting; 
+                }).ToList();
+            }
+
+            if (properties.Metrics != null && this.IsParameterBound(c => c.MetricCategory))
+            {
+                WriteDebugWithTimestamp("Setting retention policy for metrics");
+                properties.Metrics = properties.Metrics.Select(setting =>
+                {
+                    if (setting != null)
+                    {
+                        setting.RetentionPolicy = this.MetricCategory.Contains(setting.Category) ? retentionPolicy : (setting.RetentionPolicy == null ? null : setting.RetentionPolicy);
+                    }
+                    return setting;
+                }).ToList();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
         private void SetSelectedTimegrains(DiagnosticSettingsResource properties)
         {
+<<<<<<< HEAD
             if (!this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrain' parameter.");
+=======
+            if (!(this.isEnableMetricsParameterPresent || this.isEnabledParameterPresent))
+            {
+                throw new ArgumentException("Parameters 'Enabled' or 'EnableMetrics' are required by 'Timegrain' parameter.");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (this.Timegrain != null && this.Timegrain.Count > 0)
@@ -403,16 +512,26 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 WriteDebugWithTimestamp("Setting Enabled property for metrics since timegrain argument is non-empty");
                 foreach (MetricSettings metric in properties.Metrics)
                 {
+<<<<<<< HEAD
                     metric.Enabled = this.Enabled;
+=======
+                    metric.Enabled = this.EnableMetrics;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
 
         private void SetSelectedCategories(DiagnosticSettingsResource properties)
         {
+<<<<<<< HEAD
             if (!this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Category' parameter.");
+=======
+            if (!(this.isEnableLogParameterPresent || this.isEnabledParameterPresent))
+            {
+                throw new ArgumentException("Parameters 'Enabled' or 'EnableLog' are required by 'Category' parameter.");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             WriteDebugWithTimestamp("Setting log categories, including Enabled property");
@@ -435,7 +554,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                             Days = 0,
                             Enabled = false
                         },
+<<<<<<< HEAD
                         Enabled = this.Enabled
+=======
+                        Enabled = this.EnableLog
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
 
                     properties.Logs.Add(logSettings);
@@ -443,16 +566,26 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 else
                 {
                     // else update it
+<<<<<<< HEAD
                     logSettings.Enabled = this.Enabled;
+=======
+                    logSettings.Enabled = this.EnableLog;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
 
         private void SetSelectedMetricsCategories(DiagnosticSettingsResource properties)
         {
+<<<<<<< HEAD
             if (!this.isEnbledParameterPresent)
             {
                 throw new ArgumentException("Parameter 'Enabled' is required by 'MetricCategory' parameter.");
+=======
+			if (!(this.isEnableMetricsParameterPresent || this.isEnabledParameterPresent))
+            {
+                throw new ArgumentException("Parameters 'Enabled' or 'EnableMetrics' are required by 'MetricCategory' parameter.");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             WriteDebugWithTimestamp("Setting metric categories, including Enabled property");
@@ -471,7 +604,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     metricSettings = new MetricSettings
                     {
                         Category = category,
+<<<<<<< HEAD
                         Enabled = this.Enabled,
+=======
+                        Enabled = this.EnableMetrics,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         RetentionPolicy = new RetentionPolicy
                         {
                             Days = 0,
@@ -485,14 +622,22 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 else
                 {
                     // else update it
+<<<<<<< HEAD
                     metricSettings.Enabled = this.Enabled;
+=======
+                    metricSettings.Enabled = this.EnableMetrics;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
 
         private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
         {
+<<<<<<< HEAD
             if (!this.isEnbledParameterPresent)
+=======
+            if (!(this.isEnableMetricsParameterPresent || this.isEnableLogParameterPresent || this.isEnabledParameterPresent))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return;
             }
@@ -505,7 +650,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             foreach (var log in properties.Logs)
             {
+<<<<<<< HEAD
                 log.Enabled = this.Enabled;
+=======
+                log.Enabled = this.EnableLog;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             WriteDebugWithTimestamp("Setting Enabled property for metrics");
@@ -516,7 +665,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             foreach (var metric in properties.Metrics)
             {
+<<<<<<< HEAD
                 metric.Enabled = this.Enabled;
+=======
+                metric.Enabled = this.EnableMetrics;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -526,6 +679,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             {
                 WriteDebugWithTimestamp("Setting workspace Id");
                 properties.WorkspaceId = this.WorkspaceId;
+<<<<<<< HEAD
+=======
+
+                WriteDebugWithTimestamp("Setting LogAnalyticsDestinationType");
+                properties.LogAnalyticsDestinationType = this.ExportToResourceSpecific.IsPresent
+                    ? "Dedicated"
+                    : null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

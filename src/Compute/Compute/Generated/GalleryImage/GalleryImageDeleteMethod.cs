@@ -48,11 +48,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName;
                     string galleryName;
+<<<<<<< HEAD
                     string galleryImageName;
+=======
+                    string galleryImageDefinitionName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
+<<<<<<< HEAD
                             galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
                             galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
                             break;
@@ -60,15 +65,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
                             galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
                             galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
+=======
+                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/galleries", "images");
+                            galleryImageDefinitionName = GetInstanceId(this.ResourceId, "Microsoft.Compute/galleries", "images");
+                            break;
+                        case "ObjectParameter":
+                            resourceGroupName = GetResourceGroupName(this.InputObject.Id);
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/galleries", "images");
+                            galleryImageDefinitionName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/galleries", "images");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
                             galleryName = this.GalleryName;
+<<<<<<< HEAD
                             galleryImageName = this.Name;
                             break;
                     }
 
                     var result = GalleryImagesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName).GetAwaiter().GetResult();
+=======
+                            galleryImageDefinitionName = this.Name;
+                            break;
+                    }
+
+                    var result = GalleryImagesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName).GetAwaiter().GetResult();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,

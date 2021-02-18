@@ -180,7 +180,11 @@ function Test-AzMarkdownHelp
                     "## EXAMPLES"
                     {
                         # Move the index to the start of the PowerShell code
+<<<<<<< HEAD
                         while ($content[$idx] -notcontains "``````" -and $content[$idx] -notcontains "``````powershell")
+=======
+                        while (-not $content[$idx].StartsWith("``````"))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         {
                             $idx++
                             if ($idx -ge $content.Length)
@@ -225,7 +229,11 @@ function Test-AzMarkdownHelp
                     }
                     "online version:"
                     {
+<<<<<<< HEAD
                         $onlineString = "https://docs.microsoft.com/en-us/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+=======
+                        $onlineString = "https://docs.microsoft.com/powershell/module/$($ModuleName.ToLower())/$($CmdletName.ToLower())"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         $split = $content[$idx] -split "online version:"
                         if ([string]::IsNullOrWhiteSpace($split[1]) -or $split[1] -notlike "*$onlineString*")
                         {

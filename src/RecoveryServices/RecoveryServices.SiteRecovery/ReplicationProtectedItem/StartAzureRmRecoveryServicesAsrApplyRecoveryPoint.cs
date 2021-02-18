@@ -21,7 +21,11 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
+<<<<<<< HEAD
     ///    Changes a recovery point for a failed over protected item before commiting the failover operation.
+=======
+    ///    Changes a recovery point for a failed over protected item before committing the failover operation.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrApplyRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByPEObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRApplyRecoveryPoint")]

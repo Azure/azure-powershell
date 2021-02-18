@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.Resources
     /// Removes a resource group.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(bool))]
+<<<<<<< HEAD
     public class RemoveAzureResourceGroupCmdlet : ResourceManagerCmdletBase
+=======
+    public class RemoveAzureResourceGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// List resources group by name parameter set.
@@ -54,7 +58,11 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void OnProcessRecord()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 

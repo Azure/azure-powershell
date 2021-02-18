@@ -50,16 +50,53 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     GalleryImageVersion galleryImageVersion = new GalleryImageVersion();
 
                     galleryImageVersion.Location = this.Location;
+<<<<<<< HEAD
                     galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
                     galleryImageVersion.PublishingProfile.Source = new GalleryArtifactSource();
                     galleryImageVersion.PublishingProfile.Source.ManagedImage = new ManagedArtifact();
                     galleryImageVersion.PublishingProfile.Source.ManagedImage.Id = this.SourceImageId;
+=======
+
+                    if (this.IsParameterBound(c => c.SourceImageId))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        if (galleryImageVersion.StorageProfile.Source == null)
+                        {
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
+                        }
+                        galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImageVersion.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.IsParameterBound(c => c.DataDiskImage))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        galleryImageVersion.StorageProfile.DataDiskImages = this.DataDiskImage;
+                    }
+
+                    if (this.IsParameterBound(c => c.OSDiskImage))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        galleryImageVersion.StorageProfile.OsDiskImage = this.OSDiskImage;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.IsParameterBound(c => c.ReplicaCount))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
@@ -105,7 +142,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
+<<<<<<< HEAD
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"], (string)t["StorageAccountType"]));
+=======
+                            var target = new TargetRegion()
+                            {
+                                Name = (string)t["Name"],
+                                RegionalReplicaCount = (int?)t["ReplicaCount"],
+                                StorageAccountType = (string)t["StorageAccountType"],
+                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
+                            };
+
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
                     }
 
@@ -157,19 +206,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Location { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
            Mandatory = true,
            ValueFromPipelineByPropertyName = true)]
         public string SourceImageId { get; set; }
+=======
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public GalleryDataDiskImage [] DataDiskImage { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public Hashtable Tag { get; set; }
+=======
+        public GalleryOSDiskImage OSDiskImage { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public int ReplicaCount { get; set; }
+=======
+        public DateTime PublishingProfileEndOfLifeDate { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -179,17 +242,38 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public DateTime PublishingProfileEndOfLifeDate { get; set; }
+=======
+        public int ReplicaCount { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public string SourceImageId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         [PSArgumentCompleter("Standard_LRS", "Standard_ZRS")]
+=======
+        [PSArgumentCompleter("Standard_LRS", "Standard_ZRS", "Premium_LRS")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+=======
+        public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Hashtable[] TargetRegion { get; set; }
     }
 
@@ -282,10 +366,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
+<<<<<<< HEAD
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"]));
                         }
                     }
 
+=======
+                            var target = new TargetRegion()
+                            {
+                                Name = (string)t["Name"],
+                                RegionalReplicaCount = (int?)t["ReplicaCount"],
+                                StorageAccountType = (string)t["StorageAccountType"],
+                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
+                            };
+
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
+                        }
+                    }
+
+                    galleryImageVersion.StorageProfile.DataDiskImages = null;
+                    galleryImageVersion.StorageProfile.OsDiskImage = null;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
                     var psObject = new PSGalleryImageVersion();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
@@ -345,22 +447,38 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int ReplicaCount { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public SwitchParameter PublishingProfileExcludeFromLatest { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+=======
         public DateTime PublishingProfileEndOfLifeDate { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public int ReplicaCount { get; set; }
+=======
+        public SwitchParameter PublishingProfileExcludeFromLatest { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public SwitchParameter PublishingProfileExcludeFromLatest { get; set; }
+=======
+        public int ReplicaCount { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public DateTime PublishingProfileEndOfLifeDate { get; set; }
+=======
+        public Hashtable Tag { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,

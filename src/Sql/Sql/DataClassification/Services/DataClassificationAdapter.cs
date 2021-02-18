@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         internal void SetSensitivityLabels(SqlDatabaseSensitivityClassificationModel model)
         {
+<<<<<<< HEAD
             ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.SetSensitivityLabel(
                     model.ResourceGroupName,
                     model.ServerName,
@@ -46,10 +47,29 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                     sensitivityLabelModel.TableName,
                     sensitivityLabelModel.ColumnName,
                     ToSensitivityLabel(sensitivityLabelModel)));
+=======
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchSensitivityLabels(
+                    model.ResourceGroupName,
+                    model.ServerName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Set,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                            SensitivityLabel = ToSensitivityLabel(sensitivityLabelModel)
+                        }).ToList()
+                    }));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal void SetSensitivityLabels(ManagedDatabaseSensitivityClassificationModel model)
         {
+<<<<<<< HEAD
             ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.SetManagedDatabaseSensitivityLabel(
                     model.ResourceGroupName,
                     model.InstanceName,
@@ -70,6 +90,149 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                     try
                     {
                         modifySensitivityLabel(sensitivityLabelModel);
+=======
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchManagedDatabaseSensitivityLabels(
+                    model.ResourceGroupName,
+                    model.InstanceName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Set,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                            SensitivityLabel = ToSensitivityLabel(sensitivityLabelModel)
+                        }).ToList()
+                    }));
+        }
+
+        internal void RemoveSensitivityLabels(SqlDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchSensitivityLabels(
+                    model.ResourceGroupName,
+                    model.ServerName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Remove,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+
+        internal void RemoveSensitivityLabels(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchManagedDatabaseSensitivityLabels(
+                    model.ResourceGroupName,
+                    model.InstanceName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Remove,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+
+        internal void EnableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchSensitivityRecommendations(
+                    model.ResourceGroupName,
+                    model.ServerName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Enable,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+
+        internal void EnableSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchManagedDatabaseSensitivityRecommendations(
+                    model.ResourceGroupName,
+                    model.InstanceName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Enable,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+
+        internal void DisableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchSensitivityRecommendations(
+                    model.ResourceGroupName,
+                    model.ServerName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Disable,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+        internal void DisableSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            SplitSensitivityLabelsIntoListsAndPatch(model.SensitivityLabels,
+                list => Communicator.PatchManagedDatabaseSensitivityRecommendations(
+                    model.ResourceGroupName,
+                    model.InstanceName,
+                    model.DatabaseName,
+                    new PatchOperations
+                    {
+                        Operations = list.Select(sensitivityLabelModel => new PatchOperation
+                        {
+                            OperationKind = PatchOperationKind.Disable,
+                            Schema = sensitivityLabelModel.SchemaName,
+                            Table = sensitivityLabelModel.TableName,
+                            Column = sensitivityLabelModel.ColumnName,
+                        }).ToList()
+                    }));
+        }
+
+        internal void SplitSensitivityLabelsIntoListsAndPatch(List<SensitivityLabelModel> sensitivityLabelsToModify,
+            Action<List<SensitivityLabelModel>> patchSensitivityLabels)
+        {
+            ConcurrentQueue<Exception> exceptions = new ConcurrentQueue<Exception>();
+            Parallel.ForEach<List<SensitivityLabelModel>>(SplitList(sensitivityLabelsToModify),
+                sensitivityLabelsList =>
+                {
+                    try
+                    {
+                        patchSensitivityLabels(sensitivityLabelsList);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                     catch (Exception e)
                     {
@@ -86,6 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             }
         }
 
+<<<<<<< HEAD
         internal void RemoveSensitivityLabels(SqlDatabaseSensitivityClassificationModel model)
         {
             ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DeleteSensitivityLabel(
@@ -108,6 +272,8 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 sensitivityLabelModel.ColumnName));
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal List<SensitivityLabelModel> GetCurrentSensitivityLabel(
             string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
@@ -119,7 +285,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal List<SensitivityLabelModel> GetCurrentSensitivityLabels(
             string resourceGroupName, string serverName, string databaseName)
         {
+<<<<<<< HEAD
             var n = Context.Environment.Name;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return ToSensitivityLabelModelList(Communicator.GetCurrentSensitivityLabels(resourceGroupName, serverName, databaseName));
         }
 
@@ -154,7 +323,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         internal async Task<InformationProtectionPolicy> RetrieveInformationProtectionPolicyAsync()
         {
+<<<<<<< HEAD
             return Context.Environment.Name == EnvironmentName.AzureCloud
+=======
+            return Context.Environment.Name == EnvironmentName.AzureCloud ||
+                Context.Environment.Name == EnvironmentName.AzureUSGovernment
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ? await AzureCommunicator.RetrieveInformationProtectionPolicyAsync(Context.Tenant.GetId())
                 : InformationProtectionPolicy.DefaultInformationProtectionPolicy;
         }
@@ -171,12 +345,18 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 LabelName = sensitivityLabelModel.SensitivityLabel,
                 LabelId = sensitivityLabelModel.SensitivityLabelId,
                 InformationType = sensitivityLabelModel.InformationType,
+<<<<<<< HEAD
                 InformationTypeId = sensitivityLabelModel.InformationTypeId
+=======
+                InformationTypeId = sensitivityLabelModel.InformationTypeId,
+                Rank = ToSensitivityLabelRank(sensitivityLabelModel.Rank)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
         private static SensitivityLabelModel ToSensitivityLabelModel(SensitivityLabel sensitivityLabel)
         {
+<<<<<<< HEAD
             string[] idComponents = sensitivityLabel.Id.Split('/');
             return new SensitivityLabelModel
             {
@@ -189,5 +369,92 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 InformationTypeId = sensitivityLabel.InformationTypeId
             };
         }
+=======
+            var match = new global::System.Text.RegularExpressions.Regex("/schemas/(?<schemaName>.*)/tables/(?<tableName>.*)/columns/(?<columnName>.*)/sensitivityLabels/",
+                global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(sensitivityLabel.Id);
+
+            return new SensitivityLabelModel
+            {
+                SchemaName = match.Groups["schemaName"].Value,
+                TableName = match.Groups["tableName"].Value,
+                ColumnName = match.Groups["columnName"].Value,
+                SensitivityLabel = NullifyStringIfEmpty(sensitivityLabel.LabelName),
+                SensitivityLabelId = NullifyStringIfEmpty(sensitivityLabel.LabelId),
+                InformationType = NullifyStringIfEmpty(sensitivityLabel.InformationType),
+                InformationTypeId = NullifyStringIfEmpty(sensitivityLabel.InformationTypeId),
+                Rank = ToSensitivityRank(sensitivityLabel.Rank)
+            };
+        }
+
+        private static string NullifyStringIfEmpty(string s)
+        {
+            return string.IsNullOrEmpty(s) ? null : s;
+        }
+
+        private static SensitivityRank? ToSensitivityRank(SensitivityLabelRank? rank)
+        {
+            SensitivityRank? sensitivityRank = null;
+            if (rank.HasValue)
+            {
+                switch (rank.Value)
+                {
+                    case SensitivityLabelRank.None:
+                        sensitivityRank = SensitivityRank.None;
+                        break;
+                    case SensitivityLabelRank.Low:
+                        sensitivityRank = SensitivityRank.Low;
+                        break;
+                    case SensitivityLabelRank.Medium:
+                        sensitivityRank = SensitivityRank.Medium;
+                        break;
+                    case SensitivityLabelRank.High:
+                        sensitivityRank = SensitivityRank.High;
+                        break;
+                    case SensitivityLabelRank.Critical:
+                        sensitivityRank = SensitivityRank.Critical;
+                        break;
+                }
+            }
+
+            return sensitivityRank;
+        }
+
+        private static SensitivityLabelRank? ToSensitivityLabelRank(SensitivityRank? rank)
+        {
+            SensitivityLabelRank? sensitivityLabelRank = null;
+            if (rank.HasValue)
+            {
+                switch (rank.Value)
+                {
+                    case SensitivityRank.None:
+                        sensitivityLabelRank = SensitivityLabelRank.None;
+                        break;
+                    case SensitivityRank.Low:
+                        sensitivityLabelRank = SensitivityLabelRank.Low;
+                        break;
+                    case SensitivityRank.Medium:
+                        sensitivityLabelRank = SensitivityLabelRank.Medium;
+                        break;
+                    case SensitivityRank.High:
+                        sensitivityLabelRank = SensitivityLabelRank.High;
+                        break;
+                    case SensitivityRank.Critical:
+                        sensitivityLabelRank = SensitivityLabelRank.Critical;
+                        break;
+                }
+            }
+
+            return sensitivityLabelRank;
+        }
+
+        private static IEnumerable<List<T>> SplitList<T>(List<T> elements)
+        {
+            const int ListSize = 5000;
+            for (int i = 0; i < elements.Count; i += ListSize)
+            {
+                yield return elements.GetRange(i, Math.Min(ListSize, elements.Count - i));
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresource
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azresource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -99,7 +103,11 @@ Accept wildcard characters: False
 
 ### -ExtensionResourceName
 Specifies the name of an extension resource of the resource that this cmdlet removes.
+<<<<<<< HEAD
 For instance, to specify a database, use the following format: 
+=======
+For instance, to specify a database, use the following format:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 server name`/`database name
 
 ```yaml
@@ -117,7 +125,11 @@ Accept wildcard characters: False
 ### -ExtensionResourceType
 Specifies the resource type for an extension resource.
 Specifies the extension resource type for the resource.
+<<<<<<< HEAD
 For instance: 
+=======
+For instance:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -195,7 +207,11 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Specifies the fully qualified resource ID of the resource that this cmdlet removes.
+<<<<<<< HEAD
 The ID includes the subscription, as in the following example: 
+=======
+The ID includes the subscription, as in the following example:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
 ```yaml
@@ -212,7 +228,11 @@ Accept wildcard characters: False
 
 ### -ResourceName
 Specifies the name of the resource that this cmdlet removes.
+<<<<<<< HEAD
 For instance, to specify a database, use the following format: 
+=======
+For instance, to specify a database, use the following format:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 `ContosoServer/ContosoDatabase`
 
 ```yaml
@@ -229,7 +249,11 @@ Accept wildcard characters: False
 
 ### -ResourceType
 Specifies the type of the resource that this cmdlet removes.
+<<<<<<< HEAD
 For instance, for a database, the resource type is as follows: 
+=======
+For instance, for a database, the resource type is as follows:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -291,7 +315,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -305,8 +333,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Find-AzResource](./Find-AzResource.md)
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [Get-AzResource](./Get-AzResource.md)
 
 [Move-AzResource](./Move-AzResource.md)

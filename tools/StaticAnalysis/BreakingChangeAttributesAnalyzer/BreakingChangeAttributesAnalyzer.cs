@@ -28,6 +28,10 @@ using System.Threading.Tasks;
 using Tools.Common.Helpers;
 using Tools.Common.Issues;
 using Tools.Common.Loggers;
+<<<<<<< HEAD
+=======
+using Tools.Common.Utilities;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 {
@@ -104,7 +108,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             try
             {
                 foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
+<<<<<<< HEAD
                                                                             !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
+=======
+                                                                            !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     var probingDirectories = new List<string> {baseDirectory};
 

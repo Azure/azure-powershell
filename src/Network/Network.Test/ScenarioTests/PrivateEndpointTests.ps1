@@ -33,7 +33,11 @@ function Test-PrivateEndpointCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
+<<<<<<< HEAD
     $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "eastus2euap";
+=======
+    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "westcentralus";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Dependency parameters
     $vnetName = Get-ResourceName;
     $ilbFrontName = "LB-Frontend";
@@ -104,6 +108,26 @@ function Test-PrivateEndpointCRUD
         Assert-True { $vPrivateEndpoint.NetworkInterfaces.Length -gt 0 };
         Assert-AreEqual "Succeeded" $vPrivateEndpoint.ProvisioningState;
 
+<<<<<<< HEAD
+=======
+        # Verify connectivity info on associated NIC
+        $nicName = ($vPrivateEndpoint.NetworkInterfaces[0].Id -split "/")[-1];
+        Assert-True { $nicName -is [string] -and $nicName.Length -gt 0 };
+
+        $nic = Get-AzNetworkInterface -ResourceGroupName $rgname -Name $nicName;
+        Assert-NotNull $nic;
+        Assert-NotNull $nic.PrivateEndpoint;
+        Assert-AreEqual $nic.PrivateEndpoint.Id $vPrivateEndpoint.Id;
+        Assert-NotNull $nic.IpConfigurations;
+        Assert-True { $nic.IpConfigurations.Length -gt 0 };
+
+        $plsProps = $nic.IpConfigurations[0].PrivateLinkConnectionProperties;
+        Assert-NotNull $plsProps;
+        Assert-True { $plsProps.GroupId -is [string] };
+        Assert-True { $plsProps.RequiredMemberName -is [string] };
+        Assert-True { $plsProps.Fqdns -is [System.Collections.Generic.List[string]] };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Get all PrivateEndpoints in resource group
         $listPrivateEndpoint = Get-AzPrivateEndpoint -ResourceGroupName $rgname;
         Assert-NotNull ($listPrivateEndpoint | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
@@ -133,8 +157,11 @@ function Test-PrivateEndpointCRUD
         $list = Get-AzPrivateEndpoint -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
 
+<<<<<<< HEAD
         #Start-Sleep -s 60
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Remove Private Link Service
         $job = Remove-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -143,8 +170,11 @@ function Test-PrivateEndpointCRUD
 
         $list = Get-AzPrivateLinkService -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
+<<<<<<< HEAD
 
         #Start-Sleep -s 30
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {
@@ -152,3 +182,107 @@ function Test-PrivateEndpointCRUD
         Clean-ResourceGroup $rgname;
     }
 }
+<<<<<<< HEAD
+=======
+
+<#
+.SYNOPSIS
+Test creating new dns zone group 
+#>
+function Test-PrivateDnsZoneGroupCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rname = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "westus";
+    # Dependency parameters
+    $vnetName = Get-ResourceName;
+    $ilbFrontName = "LB-Frontend";
+    $ilbBackendName = "LB-Backend";
+    $ilbName = Get-ResourceName;
+    $PrivateLinkServiceConnectionName = "PrivateLinkServiceConnectionName";
+    $IpConfigurationName = "IpConfigurationName";
+    $PrivateLinkServiceName = "PrivateLinkServiceName";
+    $vnetPEName = "VNetPE";
+    
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+
+        # Create Virtual networks
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
+        $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled";
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
+
+        # Create LoadBalancer
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $ilbFrontName -PrivateIpAddress "10.0.1.5" -SubnetId $vnet.subnets[0].Id;
+        $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName;
+        $job = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -AsJob;
+        $job | Wait-Job
+        $ilbcreate = $job | Receive-Job
+
+        # Create PrivateLinkService
+        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
+        $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig;
+
+        $job = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob;
+        $job | Wait-Job
+        $plscreate = $job | Receive-Job
+        $vPrivateLinkService = Get-AzPrivateLinkService -Name $PrivateLinkServiceName -ResourceGroupName $rgName
+
+        # Create virtual network for private endpoint
+        $peSubnet = New-AzVirtualNetworkSubnetConfig -Name "peSubnet" -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag "Disabled"
+        $vnetPE = New-AzVirtualNetwork -Name $vnetPEName -ResourceGroupName $rgName -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+
+        # Create PrivateEndpoint
+        $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName -PrivateLinkServiceId  $vPrivateLinkService.Id
+
+        $job = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection -AsJob;
+        $job | Wait-Job
+        $pecreate = $job | Receive-Job
+        
+        $vPrivateEndpoint = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        
+        # New private dns zone created by Az.PrivateDns.
+        $zone1 = New-AzPrivateDnsZone -ResourceGroupName $rgname -Name "xdm.vault.azure.com"
+        $config = New-AzPrivateDnsZoneConfig -Name xdm-vault-azure-com -PrivateDnsZoneId $zone1.ResourceId
+        $job = New-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PrivateDnsZoneConfig $config -AsJob
+        $job | Wait-Job
+        $dnsZoneGroup = $job | Receive-Job
+
+        # Assert
+        Assert-AreEqual $dnsZoneGroup.Name dnsgroup1
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].Name xdm-vault-azure-com
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $zone1.ResourceId
+
+        # Update dns zone
+        $zone2 = New-AzPrivateDnsZone -ResourceGroupName $rgname -Name "xdm1.vault.azure.com"
+        $config1 = New-AzPrivateDnsZoneConfig -Name xdm1-vault-azure-com -PrivateDnsZoneId $zone2.ResourceId
+        $job = Set-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PrivateDnsZoneConfig $config1 -AsJob
+        $job | Wait-Job
+        $dnsZoneGroup = $job | Receive-Job
+
+        # Assert
+        Assert-AreEqual $dnsZoneGroup.Name dnsgroup1
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].Name xdm1-vault-azure-com
+        Assert-AreEqual $dnsZoneGroup.PrivateDnsZoneConfigs[0].PrivateDnsZoneId $zone2.ResourceId
+
+        # Remove zone group
+        $job = Remove-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname -name dnsgroup1 -PassThru -Force -AsJob
+        $job | Wait-Job
+        $jobResult = $job | Receive-Job;
+        Assert-AreEqual true $jobResult;
+        
+        # Check deleted objects
+        $list = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgname -PrivateEndpointName $rname
+        Assert-AreEqual 0 @($list).Count
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

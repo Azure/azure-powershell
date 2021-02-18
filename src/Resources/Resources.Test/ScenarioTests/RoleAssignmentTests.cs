@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// ----------------------------------------------------------------------------------
+=======
+// ----------------------------------------------------------------------------------
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,7 +66,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Test fails during parallelization. Test uses RoleDefinitionNames statically.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void RaPropertiesValidation() {
+=======
+        public void RaPropertiesValidation()
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             TestRunner.RunTestScript("Test-RaPropertiesValidation");
         }
 
@@ -131,14 +140,22 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaDeletionByScope");
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "Need AD team to re-record")]
+=======
+        [Fact]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             TestRunner.RunTestScript("Test-RaDeletionByScopeAtRootScope");
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "Need AD team to re-record")]
+=======
+        [Fact]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
@@ -161,11 +178,66 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void RaGetOnlyByRoleDefinitionName()
+        {
+            TestRunner.RunTestScript("Test-RaGetOnlyByRoleDefinitionName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void RaGetByUPNWithExpandPrincipalGroups()
         {
             TestRunner.RunTestScript("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
+<<<<<<< HEAD
+=======
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaCreatedBySP()
+        {
+            TestRunner.RunTestScript("Test-RaCreatedBySP");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV1Conditions()
+        {
+            TestRunner.RunTestScript("Test-RaWithV1Conditions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2Conditions()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2Conditions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2ConditionsOnly()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2ConditionsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaWithV2ConditionVersionOnly()
+        {
+            TestRunner.RunTestScript("Test-RaWithV2ConditionVersionOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRa()
+        {
+            TestRunner.RunTestScript("Test-UpdateRa");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
@@ -214,8 +286,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                             .List()
                                             .First();
 
+<<<<<<< HEAD
                     // Wait to allow newly created object changes to propagate
                     TestMockSupport.Delay(20000);
+=======
+                        // Wait to allow newly created object changes to propagate
+                        TestMockSupport.Delay(20000);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         return new[]
                         {
@@ -239,8 +316,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     // scriptBuilder
                     () =>
                     {
+<<<<<<< HEAD
                     // Wait to allow for the role assignment to propagate
                     TestMockSupport.Delay(20000);
+=======
+                        // Wait to allow for the role assignment to propagate
+                        TestMockSupport.Delay(20000);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         return new[]
                         {

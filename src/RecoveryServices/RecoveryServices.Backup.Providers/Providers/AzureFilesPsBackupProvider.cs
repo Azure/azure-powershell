@@ -23,6 +23,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -39,6 +43,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const CmdletModel.RetentionDurationType defaultFileRetentionType =
             CmdletModel.RetentionDurationType.Days;
         private const int defaultFileRetentionCount = 30;
+<<<<<<< HEAD
+=======
+        private const int defaultWeeklyRetentionCount = 12;
+        private const int defaultMonthlyRetentionCount = 60;
+        private const int defaultYearlyRetentionCount = 10;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Dictionary<Enum, object> ProviderData { get; set; }
 
@@ -47,7 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Initializes the provider with the data recieved from the cmdlet layer
+=======
+        /// Initializes the provider with the data received from the cmdlet layer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -117,6 +131,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
+<<<<<<< HEAD
+=======
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<ContainerBase> ListProtectionContainers()
         {
             CmdletModel.BackupManagementType? backupManagementTypeNullable =
@@ -172,12 +194,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFileShareName] : null;
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
+<<<<<<< HEAD
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType);
 
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName);
+=======
+            string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
+                (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
+
+            //validate file recovery request
+            ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
+
+            //validate alternate location restore request
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
             {
@@ -223,6 +256,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 restoreFileSpecs = new List<RestoreFileSpecs>();
                 restoreFileSpecs.Add(restoreFileSpec);
             }
+<<<<<<< HEAD
+=======
+            else if(multipleSourceFilePaths != null)
+            {
+                restoreFileSpecs = new List<RestoreFileSpecs>();
+                foreach (string filepath in multipleSourceFilePaths)
+                {
+                    RestoreFileSpecs fileSpec = new RestoreFileSpecs();
+                    fileSpec.Path = filepath;
+                    fileSpec.FileSpecType = sourceFileType;
+                    restoreRequest.RestoreRequestType = RestoreRequestType.ItemLevelRestore;
+                    if(targetFolder != null)
+                    {
+                        fileSpec.TargetFolderPath = targetFolder;
+                        targetDetails = new TargetAFSRestoreInfo();
+                        targetDetails.Name = targetFileShareName;
+                        targetDetails.TargetResourceId = targetStorageAccountResource.Id;
+                        restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
+                    }
+                    else
+                    {
+                        fileSpec.TargetFolderPath = null;
+                        restoreRequest.RecoveryType = RecoveryType.OriginalLocation;
+                    }
+                    restoreFileSpecs.Add(fileSpec);
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
             {
                 restoreRequest.RestoreRequestType = RestoreRequestType.FullShareRestore;
@@ -322,13 +383,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 // validate RetentionPolicy and SchedulePolicy
                 if (schedulePolicy != null)
                 {
+<<<<<<< HEAD
                     AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
+=======
+                    AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     ((AzureFileSharePolicy)policy).SchedulePolicy = schedulePolicy;
                     Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
                 }
                 if (retentionPolicy != null)
                 {
+<<<<<<< HEAD
                     AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
+=======
+                    AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
                     Logger.Instance.WriteDebug("Validation of Retention policy is successful");
                 }
@@ -363,11 +432,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 // do validations
                 ValidateAzureFilesWorkloadType(workloadType);
+<<<<<<< HEAD
                 AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
                 // validate RetentionPolicy
                 AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
+=======
+                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);
+                Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
+
+                // validate RetentionPolicy
+                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
                 // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
@@ -433,6 +510,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string storageAccountName,
             string vaultName = null,
             string vaultResourceGroupName = null)
+<<<<<<< HEAD
         {
             //Trigger Discovery
             ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
@@ -442,6 +520,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             //get registered storage accounts
             bool isRegistered = false;
+=======
+        {   
+            //get registered storage accounts
+            bool isRegistered = false;            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string storageContainerName = null;
             List<ContainerBase> registeredStorageAccounts = GetRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
             ContainerBase registeredStorageAccount = registeredStorageAccounts.Find(
@@ -451,16 +534,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isRegistered = true;
                 storageContainerName = "StorageContainer;" + registeredStorageAccount.Name;
+<<<<<<< HEAD
             }
 
             //get unregistered storage account
             if (!isRegistered)
             {
+=======
+                Logger.Instance.WriteDebug("Storage account was already registered");
+            }
+
+            //get unregistered storage account, trigger dicovery if not found.
+            bool isBreak = false;
+            bool isRefreshed = false; // have we triggered discovery yet
+            while (!isRegistered && !isBreak )
+            {                   
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 List<ProtectableContainerResource> unregisteredStorageAccounts =
                     GetUnRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
                 ProtectableContainerResource unregisteredStorageAccount = unregisteredStorageAccounts.Find(
                     storageAccount => string.Compare(storageAccount.Name.Split(';').Last(),
                     storageAccountName, true) == 0);
+<<<<<<< HEAD
+=======
+
+                // refresh containers as the given storage account is not found
+                if (unregisteredStorageAccount == null && !isRefreshed)
+                {
+                    ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                        q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+                    AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+
+                    isRefreshed = true;
+                    Logger.Instance.WriteDebug("Triggered container discovery");
+                }
+                else {
+                    isBreak = true; // we explicitly break while loop after second execution
+                }                
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (unregisteredStorageAccount != null)
                 {
                     //unregistered
@@ -479,6 +591,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         protectionContainerResource,
                         vaultName,
                         vaultResourceGroupName);
+<<<<<<< HEAD
                 }
             }
 
@@ -489,12 +602,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //get protectable item
             WorkloadProtectableItemResource protectableObjectResource = null;
             protectableObjectResource = GetProtectableItem(vaultName, vaultResourceGroupName, azureFileShareName, storageAccountName);
+=======
+
+                    isRegistered = true;
+                    Logger.Instance.WriteDebug("Registered a new storage account");
+                }                
+            }
+
+            //get protectable item, trigger inquiry if item not found
+            bool isInquired =false;
+            isBreak = false;
+            WorkloadProtectableItemResource protectableObjectResource = null;
+            while (!isBreak) 
+            {
+                protectableObjectResource = GetProtectableItem(vaultName, vaultResourceGroupName, azureFileShareName, storageAccountName);
+                
+                //inquiry
+                if (protectableObjectResource == null  && !isInquired)
+                {
+                    AzureWorkloadProviderHelper.TriggerInquiry(vaultName, vaultResourceGroupName,
+                        storageContainerName, ServiceClientModel.WorkloadType.AzureFileShare);
+                    
+                    isInquired = true;
+                    Logger.Instance.WriteDebug("Triggered protectable item inquiry");
+                }
+                else
+                {
+                    isBreak = true;
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (protectableObjectResource == null)
             {
                 // Container is not discovered. Throw exception
                 string errorMessage = string.Format(
+<<<<<<< HEAD
                     Resources.DiscoveryFailure,
+=======
+                    Resources.AFSDiscoveryFailure,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     azureFileShareName,
                     vaultResourceGroupName);
                 Logger.Instance.WriteDebug(errorMessage);
@@ -587,6 +734,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
+<<<<<<< HEAD
+=======
+            string backupMnagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -596,6 +747,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
             defaultRetention.DailySchedule.DurationCountInDays = defaultFileRetentionCount;
+<<<<<<< HEAD
+=======
+            defaultRetention.DailySchedule.BackupManagementType = backupMnagementType;
+
+            // Weekly Retention Policy
+            defaultRetention.IsWeeklyScheduleEnabled = false;
+            defaultRetention.WeeklySchedule = new CmdletModel.WeeklyRetentionSchedule();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek = new List<System.DayOfWeek>();
+            defaultRetention.WeeklySchedule.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
+            defaultRetention.WeeklySchedule.DurationCountInWeeks = defaultWeeklyRetentionCount;
+            defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.WeeklySchedule.BackupManagementType = backupMnagementType;
+
+            //Monthly retention policy
+            defaultRetention.IsMonthlyScheduleEnabled = false;
+            defaultRetention.MonthlySchedule = new CmdletModel.MonthlyRetentionSchedule();
+            defaultRetention.MonthlySchedule.DurationCountInMonths = defaultMonthlyRetentionCount;
+            defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.MonthlySchedule.RetentionScheduleFormatType =
+                CmdletModel.RetentionScheduleFormat.Weekly;
+            defaultRetention.MonthlySchedule.BackupManagementType = backupMnagementType;
+
+            //Initialize day based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+
+            //Initialize Week based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
+
+            //Yearly retention policy
+            defaultRetention.IsYearlyScheduleEnabled = false;
+            defaultRetention.YearlySchedule = new CmdletModel.YearlyRetentionSchedule();
+            defaultRetention.YearlySchedule.DurationCountInYears = 10;
+            defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
+            defaultRetention.YearlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.YearlySchedule.RetentionScheduleFormatType =
+                CmdletModel.RetentionScheduleFormat.Weekly;
+            defaultRetention.YearlySchedule.MonthsOfYear = new List<Month>();
+            defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
+            defaultRetention.YearlySchedule.BackupManagementType = backupMnagementType;
+
+            defaultRetention.BackupManagementType = backupMnagementType;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return defaultRetention;
         }
 
@@ -613,6 +811,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
+<<<<<<< HEAD
+=======
+            string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
+
+            if( itemName != null && isFriendlyName(itemName) )
+            {
+                Logger.Instance.WriteWarning(Resources.FriendlyNamePassedWarning);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // 1. Filter by container
             List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
@@ -645,7 +852,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
                             serviceClientExtendedInfo.RecoveryPointCount : 0);
                     ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
+<<<<<<< HEAD
                 });
+=======
+                }, friendlyName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
@@ -873,9 +1084,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
+<<<<<<< HEAD
         private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType)
         {
             if (sourceFilePath == null && sourceFileType != null)
+=======
+        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType,
+            string[] multipleSourceFilePaths)
+        {
+            if (sourceFilePath == null && multipleSourceFilePaths == null && sourceFileType != null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
             }
@@ -883,9 +1101,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
             }
+<<<<<<< HEAD
         }
 
         private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName)
+=======
+            else if(sourceFilePath != null && multipleSourceFilePaths != null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathRedundantException));
+            }
+        }
+
+        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName, string targetFolder)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (targetFileShareName == null && targetStorageAccountName != null)
             {
@@ -895,11 +1123,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }
+<<<<<<< HEAD
+=======
+            else if(targetFolder != null && targetFileShareName == null && targetStorageAccountName == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();
         }
+<<<<<<< HEAD
+=======
+
+        private bool isFriendlyName(string name)
+        {
+            if (name.Contains(";"))
+                return false;
+            return true;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

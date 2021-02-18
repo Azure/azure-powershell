@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 8188C617-4895-4B43-8D3B-FA6FC5B868DD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolstatistic
+=======
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpoolstatistic
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,9 +30,15 @@ Statistics are aggregated across all pools that have ever existed in the account
 
 ### Example 1: Get resource statistics of all pools in an account
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
 PS C:\> $PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
 PS C:\> $PoolStatistics.ResourceStatistics 
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+PS C:\> $PoolStatistics = Get-AzBatchPoolStatistic -BatchContext $Context
+PS C:\> $PoolStatistics.ResourceStatistics
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 AverageCpuPercentage : 0.351232518750755
 AverageDiskGiB       : 55.2569014701165
 AverageMemoryGiB     : 2.87273772318252
@@ -44,7 +54,11 @@ PeakMemoryGiB        : 1.11184692382813
 StartTime            : 2/10/2016 7:07:24 PM
 ```
 
+<<<<<<< HEAD
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+=======
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The command stores this object reference in the $Context variable.
 The second command gets the statistics of all of the pools in the specified account, and then stores them in the $PoolStatistics.
 The final command displays the **ResourceStatistics** property of $PoolStatistics.
@@ -53,7 +67,11 @@ The final command displays the **ResourceStatistics** property of $PoolStatistic
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -83,7 +101,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -97,6 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 [Get-AzBatchPoolUsageMetrics](./Get-AzBatchPoolUsageMetrics.md)
@@ -104,3 +127,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzBatchJobStatistic](./Get-AzBatchJobStatistic.md)
 
 
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+
+[Get-AzBatchPoolUsageMetrics](./Get-AzBatchPoolUsageMetric.md)
+
+[Get-AzBatchJobStatistic](./Get-AzBatchJobStatistic.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

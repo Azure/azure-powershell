@@ -28,12 +28,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets a recovery plan or all the recovery plans in the Recovery Services vault
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.Default)]
+<<<<<<< HEAD
     [CmdletOutputBreakingChange(
         typeof(ASRRecoveryPlan),
         DeprecatedOutputProperties = new String[] {
             "ASRRecoveryPlanGroup.ReplicationProtectedItems",
             "ASRRecoveryPlanGroup.StartGroupActions",
             "ASRRecoveryPlanGroup.EndGroupActions" })]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Alias(
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]
@@ -202,7 +205,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 var json = JsonConvert.SerializeObject(
                     recoveryPlan,
+<<<<<<< HEAD
                     Formatting.Indented);
+=======
+                    Formatting.Indented,
+                     new RecoveryPlanActionDetailsConverter(),
+                     new RecoveryPlanProviderSpecificDetailsConverter());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 file.WriteLine(json);
             }
         }

@@ -49,6 +49,49 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewFailedSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewFailedSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewMGDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewMGDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewTenantDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewTenantDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestTestResourceGroupDeploymentErrors()
         {
             TestRunner.RunTestScript("Test-TestResourceGroupDeploymentErrors");
@@ -140,5 +183,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithQueryString");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

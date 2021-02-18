@@ -15,6 +15,10 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -67,7 +71,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 1,
                    ParameterSetName = DNSNamesParameterSet,
                    ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
                    HelpMessage = "Specifies the DNS names in the certificate.")]
+=======
+                   HelpMessage = "Specifies the DNS names in the certificate. Subject Alternative Names (SANs) can be specified as DNS names.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias("DnsNames")]
         public List<string> DnsName { get; set; }
 
@@ -167,6 +175,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false, 
                    ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
                    HelpMessage = "Specifies the key type of the key backing the certificate.")]
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
         public string KeyType { get; set; }
@@ -179,21 +188,57 @@ namespace Microsoft.Azure.Commands.KeyVault
                  HelpMessage = "Specifies the key size of the certificate.")]
       [ValidateSet("2048", "3072", "4096")]
       public int KeySize { get; set; } = 2048;
+=======
+                   HelpMessage = "Specifies the key type of the key backing the certificate. Default is RSA.")]
+        [ValidateSet(Constants.RSA, Constants.RSAHSM, Constants.EC, Constants.ECHSM)]
+        public string KeyType { get; set; }
+
+        /// <summary>
+        /// Key size
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
+        [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
+        public int KeySize { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// KeyNotExportable
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Mandatory = false, 
+=======
+        [Parameter(Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
 
+<<<<<<< HEAD
+=======
+
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
+        public bool? CertificateTransparency { get; set; }
+
+        /// <summary>
+        /// Elliptic Curve Name of the key
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
+        [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
+        public string Curve { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificatePolicy))
             {
+<<<<<<< HEAD
                 // Validate input parameters
                 ValidateSubjectName();
                 ValidateDnsNames();
@@ -230,10 +275,33 @@ namespace Microsoft.Azure.Commands.KeyVault
                   KeySize = KeySize,
                   Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
                 };
+=======
+                var policy = new PSKeyVaultCertificatePolicy(
+                    DnsName,
+                    (KeyUsage == null || !KeyUsage.Any()) ? null : KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList<string>(),
+                    Ekus,
+                    !Disabled.IsPresent,
+                    IssuerName,
+                    CertificateType,
+                    RenewAtNumberOfDaysBeforeExpiry,
+                    RenewAtPercentageLifetime,
+                    EmailAtNumberOfDaysBeforeExpiry,
+                    EmailAtPercentageLifetime,
+                    ReuseKeyOnRenewal.IsPresent,
+                    SecretContentType,
+                    SubjectName,
+                    ValidityInMonths,
+                    KeyType,
+                    KeySize,
+                    Curve,
+                    KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
+                    CertificateTransparency ?? (bool?)null);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 this.WriteObject(policy);
             }
         }
+<<<<<<< HEAD
 
         private void ValidateBothPercentageAndNumberOfDaysAreNotPresent()
         {
@@ -286,5 +354,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

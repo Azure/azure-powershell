@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaselongtermretentionbackup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaselongtermretentionbackup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,21 +18,37 @@ Gets one or more long term retention backups.
 
 ### Location (Default)
 ```
+<<<<<<< HEAD
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-OnlyLatestPerDatabase]
  [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceGroupName <String>]
+ [-OnlyLatestPerDatabase] [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ServerName
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName <String>]
+<<<<<<< HEAD
  [-OnlyLatestPerDatabase] [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+ [-ResourceGroupName <String>] [-OnlyLatestPerDatabase] [-DatabaseState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### BackupName
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> -DatabaseName <String>
+<<<<<<< HEAD
  [-BackupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-BackupName] <String> [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### GetBackupByResourceId
@@ -65,6 +85,19 @@ The **Get-AzSqlDatabaseLongTermRetentionBackup** cmdlet gets all long term reten
 PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope
 
 
+<<<<<<< HEAD
+=======
+BackupExpirationTime : 3/22/2018 5:50:55 AM
+BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime           : 3/15/2018 5:50:55 AM
+DatabaseName         : database01
+DatabaseDeletionTime :
+Location         : northeurope
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName           : server01
+ServerCreateTime     : 2/29/2018 12:12:19 AM
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 BackupExpirationTime : 3/22/2018 11:43:18 PM
 BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 BackupTime           : 3/15/2018 11:43:18 PM
@@ -74,6 +107,17 @@ Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 ServerName           : server02
 ServerCreateTime     : 2/28/2018 12:12:19 AM
+<<<<<<< HEAD
+=======
+```
+
+This command gets all long term retention backups for all databases (which may be alive or deleted) in northeurope, resource group will be set only if server is live.
+
+### Example 2: Get all backups for a location under a resource group
+```powershell
+PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroup resourceGroup01
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
@@ -81,14 +125,24 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
+<<<<<<< HEAD
 This command gets all long term retention backups for all databases (which may be alive or deleted) in northeurope.
 
 ### Example 2: Get a specific long term retention backup
+=======
+This command gets all long term retention backups for all databases (which may be alive or deleted) under a resource group in northeurope.
+
+### Example 3: Get a specific long term retention backup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
 
@@ -99,14 +153,22 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
 This command gets the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 
+<<<<<<< HEAD
 ### Example 3: Get all long term retention backups for a database
+=======
+### Example 4: Get all long term retention backups for a database
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Get-AzSqlDatabaseLongTermRetentionBackup
 
@@ -117,14 +179,22 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
 This command gets all long term retention backups for database01
 
+<<<<<<< HEAD
 ### Example 4: Get long term retention backups using filtering
+=======
+### Example 5: Get long term retention backups using filtering
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7*"
 
@@ -134,8 +204,13 @@ BackupTime           : 3/15/2018 11:43:18 PM
 DatabaseName         : database02
 DatabaseDeletionTime : 3/18/2018 4:36:00 PM
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
 ServerName           : server02
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database02/longTermRetentionBackups/601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
+ServerName           : server01
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerCreateTime     : 2/28/2018 12:12:19 AM
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
@@ -144,7 +219,11 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
@@ -165,7 +244,11 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### -DatabaseName
@@ -273,6 +356,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Location, ServerName, BackupName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceId
 The database Resource ID to get backups for.
 

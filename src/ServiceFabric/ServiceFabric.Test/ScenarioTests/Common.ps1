@@ -68,25 +68,46 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
+<<<<<<< HEAD
     return "https://azurermsfkvtest.vault.azure.net/secrets/AzureRMSFTestCert2/f6bb2b6492e04ffb8fb6acc6cd05005a"
+=======
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/4e680cd578ba4e57b650d9f89cd20835"
+}
+
+function Get-InitialThumbprint
+{
+    return "3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
+<<<<<<< HEAD
     return "EC8CA0BBC391A08860115619701E2B858FF44C72"
+=======
+    return "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
+<<<<<<< HEAD
     return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/722cb6a2fd80461d8c60f2fc6107346e"
+=======
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/599d307311bf4508b7511ed482fa746f"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
+<<<<<<< HEAD
     return "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC"
+=======
+    return "3B892D25432FDA538F54B1EADD0B28BA82C488CC"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-CACertCommonName
@@ -101,12 +122,20 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
+<<<<<<< HEAD
 	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/6f453495b69c4cf9ae42f12bd7f89620"
+=======
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/219a6d1803c34447b686db16ecd6285a"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-CertWUSecretUrl
 {
+<<<<<<< HEAD
 	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/7d400ad07f874c08b6325338bc44be39"
+=======
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/5236086354ac470e8efa4e0426b6144d"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 function Get-DurabilityLevel
@@ -180,4 +209,66 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
 
     Write-Error "WaitForClusterReadyState timed out"
     return $false
+<<<<<<< HEAD
+=======
+}
+
+function WaitForAllJob($timeoutInSeconds = 1200)
+{
+    $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
+    $allJobs = Get-Job
+    do
+    {
+        $completed = Get-Job | Where-Object {  $_.State -eq "Completed" }
+        if ($completed.Count -eq $allJobs.Count)
+        {
+            return $true
+            break
+		}
+
+        $failed = Get-Job | Where-Object {  $_.State -eq "Failed" }
+        if ($failed.Count -gt 0)
+        {
+            Write-Error "At least one Job failed" $failed
+            return $false
+		}
+
+        Start-Sleep -Seconds 15
+    } while ((Get-Date) -lt $timeoutTime)
+
+    Write-Error "WaitForJob timed out"
+    return $false
+}
+
+# Application functions
+
+function Get-AppTypeName
+{
+    return "CalcServiceApp"
+}
+
+function Get-AppTypeV1Name
+{
+    return "1.0"
+}
+
+function Get-AppTypeV2Name
+{
+    return "1.1"
+}
+
+function Get-AppPackageV1
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+}
+
+function Get-AppPackageV2
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+}
+
+function Get-ServiceTypeName
+{
+    return "CalcServiceType"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

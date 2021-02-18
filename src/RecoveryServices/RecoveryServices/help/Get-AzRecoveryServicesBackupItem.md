@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: DEB3D7B5-D974-472B-B8B4-9A19CA6AECCC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
+=======
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,6 +19,7 @@ Gets the items from a container in Backup.
 ## SYNTAX
 
 ### GetItemsForContainer (Default)
+<<<<<<< HEAD
 
 ```
 Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
@@ -38,11 +43,38 @@ Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> 
 Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+```
+Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
+ [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
+ [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+```
+
+### GetItemsForVault
+```
+Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
+ [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
+ [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+```
+
+### GetItemsForPolicy
+```
+Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
+ [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
+ [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
 
+<<<<<<< HEAD
 The **Get-AzRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
+=======
+The **Get-AzRecoveryServicesBackupItem** cmdlet gets the list of protected items in a container and the protection status of the items.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
 Set the vault context by using the -VaultId parameter.
@@ -53,17 +85,37 @@ Set the vault context by using the -VaultId parameter.
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+<<<<<<< HEAD
 PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
+=======
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM" -VaultId $vault.ID
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
 ```
 
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
 The second command gets the Backup item named V2VM in $Container, and then stores it in the $BackupItem variable.
 
+<<<<<<< HEAD
+=======
+### Example 2: Get an Azure File Share Item from FriendlyName
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "StorageAccount1" -VaultId $vault.ID
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
+```
+
+The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
+The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
+Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases, execute the cmdlet by passing value for -Name parameter as the Name property returned in the result set of $BackupItem.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -BackupManagementType
 
+<<<<<<< HEAD
 Specifies the Backup management type.
 The acceptable values for this parameter are:
 
@@ -72,6 +124,12 @@ The acceptable values for this parameter are:
 - SCDPM
 - AzureBackupServer
 - AzureSQL
+=======
+The class of resources being protected. The acceptable values for this parameter are:
+
+- AzureVM
+- MAB
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - AzureStorage
 - AzureWorkload
 
@@ -79,7 +137,11 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+=======
+Accepted values: AzureVM, MARS, AzureStorage, AzureWorkload
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 1
@@ -121,9 +183,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -Name
 
 Specifies the name of the container.
+=======
+### -DeleteState
+Specifies the deletestate of the item
+The acceptable values for this parameter are:
+
+- ToBeDeleted
+- NotDeleted
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemDeleteState
+Parameter Sets: (All)
+Aliases:
+Accepted values: ToBeDeleted, NotDeleted
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+FriendlyName of the backed up item
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+
+Specifies the name of backup item. For file share, specify the unique ID of protected file share.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -219,11 +322,17 @@ Accept wildcard characters: False
 
 ### -WorkloadType
 
+<<<<<<< HEAD
 Specifies the workload type.
 The acceptable values for this parameter are:
 
 - AzureVM
 - AzureSQLDatabase
+=======
+Workload type of the resource. The acceptable values for this parameter are:
+
+- AzureVM
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - AzureFiles
 - MSSQL
 
@@ -231,7 +340,11 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+=======
+Accepted values: AzureVM, AzureFiles, MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 5
@@ -240,8 +353,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -CommonParameters
 
+=======
+### CommonParameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

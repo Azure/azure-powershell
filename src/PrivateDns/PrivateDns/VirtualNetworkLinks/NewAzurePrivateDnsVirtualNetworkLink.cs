@@ -12,6 +12,10 @@
 namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 {
     using System.Collections;
+<<<<<<< HEAD
+=======
+    using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PrivateDns.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,6 +30,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     {
         private const string IdParameterSetName = "VirtualNetworkId";
         private const string ObjectParameterSetName = "VirtualNetworkObject";
+<<<<<<< HEAD
+=======
+        private const string RemoteIdParameterSetName = "RemoteVirtualNetworkId";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the virtual network link. Should match resource group of the private DNS zone")]
         [ResourceGroupCompleter]
@@ -49,6 +57,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public IVirtualNetwork VirtualNetwork { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true, HelpMessage = "The resource id of the virtual network in another tenant.", ParameterSetName = RemoteIdParameterSetName)]
+        public string RemoteVirtualNetworkId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter EnableRegistration { get; set; }
@@ -65,13 +79,34 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 this.Name,
                 () =>
                 {
+<<<<<<< HEAD
+=======
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    // If link is being created in a VNet belonging to a diff tenant than the Private DNS zone
+                    if (this.VirtualNetwork == null && this.VirtualNetworkId == null && !string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
+                    {
+                        var auxHeaderDict = GetAuxilaryAuthHeaderFromResourceIds(new List<string>() { this.RemoteVirtualNetworkId });
+                        if (auxHeaderDict != null && auxHeaderDict.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDict);
+                        }
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var result = this.PrivateDnsClient.CreatePrivateDnsLink(
                         this.Name,
                         this.ResourceGroupName,
                         this.ZoneName,
+<<<<<<< HEAD
                         (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : this.VirtualNetworkId,
                         this.EnableRegistration.IsPresent,
                         this.Tag);
+=======
+                        (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : (this.VirtualNetworkId != null) ? this.VirtualNetworkId : this.RemoteVirtualNetworkId,
+                        this.EnableRegistration.IsPresent,
+                        this.Tag,
+                        auxAuthHeader);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteVerbose(string.Format(ProjectResources.Success_NewVirtualNetworkLink, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);

@@ -120,6 +120,33 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+<<<<<<< HEAD
+=======
+        public string HomeTenantId
+        {
+            get
+            {
+                return this.GetHomeTenant();
+            }
+            set
+            {
+                this.SetHomeTenant(value);
+            }
+        }
+
+        public string[] ManagedByTenantIds
+        {
+            get
+            {
+                return this.GetManagedByTenants();
+            }
+            set
+            {
+                this.SetManagedByTenants(value);
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string CurrentStorageAccountName
         {
             get
@@ -128,6 +155,22 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+<<<<<<< HEAD
+=======
+        private PSAzureSubscriptionPolicy _subscriptionPolicies;
+
+        public PSAzureSubscriptionPolicy SubscriptionPolicies {
+            get
+            {
+                if (this._subscriptionPolicies == null)
+                {
+                    this._subscriptionPolicies= new PSAzureSubscriptionPolicy(this.GetSubscriptionPolicies());
+                }
+                return this._subscriptionPolicies;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         public string CurrentStorageAccount

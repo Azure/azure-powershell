@@ -103,6 +103,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
+<<<<<<< HEAD
+=======
+            cmdlet.MountConfiguration = new[] { new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))) };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             
             PoolAddParameter requestParameters = null;
 
@@ -126,7 +130,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
             Assert.Equal(cmdlet.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
             Assert.Equal(cmdlet.CloudServiceConfiguration.OSFamily, requestParameters.CloudServiceConfiguration.OsFamily);
+<<<<<<< HEAD
             Assert.Equal(cmdlet.CloudServiceConfiguration.TargetOSVersion, requestParameters.CloudServiceConfiguration.TargetOSVersion);
+=======
+            Assert.Equal(cmdlet.CloudServiceConfiguration.OSVersion, requestParameters.CloudServiceConfiguration.OsVersion);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
             Assert.Equal(cmdlet.MaxTasksPerComputeNode, requestParameters.MaxTasksPerNode);
@@ -142,6 +150,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Offer, requestParameters.VirtualMachineConfiguration.ImageReference.Offer);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Sku, requestParameters.VirtualMachineConfiguration.ImageReference.Sku);
             Assert.Equal(cmdlet.VirtualMachineSize, requestParameters.VmSize);
+<<<<<<< HEAD
+=======
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -214,6 +229,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void NewBatchPoolOSDiskGetsPassedToRequest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -249,6 +265,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void NewBatchPoolUserAccountsGetPassedToRequest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.ServiceBus
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.servicebus
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.servicebus
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -87,7 +91,11 @@ Removes the namespace from the specified resource group.
 Removes the queue from the specified Service Bus namespace.
 
 ### [Remove-AzServiceBusRule](Remove-AzServiceBusRule.md)
+<<<<<<< HEAD
 Removes the speficied rule of a given subscription .
+=======
+Removes the specified rule of a given subscription .
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzServiceBusSubscription](Remove-AzServiceBusSubscription.md)
 Removes the subscription to a topic from the specified Service Bus namespace.

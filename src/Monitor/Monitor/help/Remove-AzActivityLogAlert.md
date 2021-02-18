@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azactivitylogalert
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azactivitylogalert
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -199,5 +203,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzActionGroup](./New-AzActionGroup.md)
 
+<<<<<<< HEAD
 [New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
+=======
+[New-AzActivityLogAlertCondition](./New-AzActivityLogAlertCondition.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 

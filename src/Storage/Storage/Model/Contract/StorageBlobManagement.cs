@@ -29,6 +29,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Blob management
@@ -145,6 +150,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        public BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null)
+        {
+            return GetBlobServiceClient(options).GetBlobContainerClient(name);
+        }
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        public BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null)
+        {
+            if (blobServiceClient == null)
+            {
+                if (this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                }
+                else if (this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, 
+                        new StorageSharedKeyCredential(this.StorageContext.StorageAccountName, this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+                }
+                else //sas, Anonymous
+                {
+                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                }
+            }
+            return blobServiceClient;
+        }
+        private BlobServiceClient blobServiceClient = null;
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Create the container if not exists
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
@@ -570,6 +615,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
+<<<<<<< HEAD
         public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             try
@@ -578,6 +624,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
 
                 return Util.GetCorrespondingTypeBlobReference(blob);
+=======
+        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            try
+            {
+                CloudBlob blob = container.GetBlobReference(blobName, snapshotTime);
+                await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
+
+                return Util.GetCorrespondingTypeBlobReference(blob, operationContext);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (XSCL.StorageException e)
             {
@@ -717,7 +773,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return blob.SetMetadataAsync(accessCondition, options, operationContext, cmdletCancellationToken);
         }
+<<<<<<< HEAD
 
+=======
+        
+        /// Return a task that asynchronously set Premium page blob Tier
+        /// </summary>
+        /// <param name="blob">CloudPageBlob object</param>
+        /// <param name="tier">Premium pageblob Tier</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+        }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Return a task that asynchronously set block blob Tier
         /// </summary>
@@ -726,9 +797,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
+<<<<<<< HEAD
         public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+=======
+        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            return blob.SetStandardBlobTierAsync(tier, rehydratePriority, accessCondition, options, operationContext, cmdletCancellationToken);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -822,6 +899,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudBlob object whcih is a Block blob</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartCopyAsync(source, standardBlobTier, rehydratePriority, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Return a task that asynchronously start Incremental copy operation to a page blob.
         /// </summary>
         /// <param name="blob">Dest CloudPageBlob object</param>
@@ -844,5 +941,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return this.BlobClient.GetAccountPropertiesAsync().Result;
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Get UserDelegationKey, this key will be used to get  UserDelegation SAS token
+        /// </summary>
+        /// <param name="keyStart">The key valid start time</param>
+        /// <param name="keyEnd">The key valid end time</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The UserDelegationKey</returns>
+        public UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, XSCL.OperationContext operationContext = null)
+        {
+            try
+            {
+                DateTimeOffset userDelegationKeyStartTime = keyStart == null ? DateTime.Now : keyStart.Value;
+                DateTimeOffset userDelegationKeyEndTime = keyEnd == null ? userDelegationKeyStartTime.AddHours(1) : keyEnd.Value;
+
+                //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+                Util.ValidateUserDelegationKeyStartEndTime(userDelegationKeyStartTime, userDelegationKeyEndTime);
+
+                return this.BlobClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime, accessCondition, options, operationContext);
+            }
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
+            {
+                throw e.InnerException;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

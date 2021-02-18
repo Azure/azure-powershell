@@ -86,6 +86,10 @@
         <Ext Check="1">.xaml</Ext>
         <Ext Check="1">.ttml</Ext>
         <Ext Check="1">.ddue</Ext>
+<<<<<<< HEAD
+=======
+        <Ext Check="1">.cscfg</Ext>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       </Extensions>
     </Type>
     <Type ID="3" Check="1">
@@ -278,5 +282,14 @@
         <Ext Check="1">.vssx</Ext>
       </Extensions>
     </Type>
+<<<<<<< HEAD
+=======
+    <Type ID="35" Check="0">
+      <Name>Binary files</Name>
+      <Extensions>
+        <Ext Check="1">.cspkg</Ext>
+      </Extensions>
+    </Type>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </PckFileTypes>
 </xmldata>

@@ -2,6 +2,11 @@
 
 The Azure PowerShell Developer Guide was created to help with the development and testing of Azure PowerShell cmdlets. This guide contains information on how to set up your environment, create a new project, implement cmdlets, record and run tests, and more.
 
+<<<<<<< HEAD
+=======
+**Note: Except for the way described in this page, There is a new way to generate PowerShell modules through AutoRest PowerShell generator. And related links are attached in the end.**
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 # Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -14,7 +19,11 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [Before Adding a New Project](#before-adding-a-new-project)
     - [.NET SDK](#net-sdk)
     - [Design Review](#design-review)
+<<<<<<< HEAD
     - [Contact](#contact)
+=======
+    - [Contact](#point-of-contact)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - [Setting Up a New Project](#setting-up-a-new-project)
     - [Getting Started](#getting-started)
         - [Creating the Project](#creating-the-project)
@@ -36,12 +45,20 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [After Development](#after-development)
 - [Misc](#misc)
     - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
+<<<<<<< HEAD
+=======
+- [Autorest PowerShell Generator](#autorest-powershell-generator)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Prerequisites
 
 The following prerequisites should be completed before contributing to the Azure PowerShell repository:
 
+<<<<<<< HEAD
 - Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+=======
+- Install [Visual Studio 2019 or above](https://www.visualstudio.com/downloads/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
@@ -55,7 +72,11 @@ The following prerequisites should be completed before contributing to the Azure
 
 ## GitHub Basics
 
+<<<<<<< HEAD
 If you don't have experience with Git and GitHub, some of the terminology and process can be confusing. [Here is a guide to understanding the GitHub flow](https://guides.github.com/introduction/flow/) and [here is a guide to understanding the basic Git commands](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf).
+=======
+If you don't have experience with Git and GitHub, some of the terminology and process can be confusing. [Here is a guide to understanding the GitHub flow](https://guides.github.com/introduction/flow/) and [here is a guide to understanding the basic Git commands](https://education.github.com/git-cheat-sheet-education.pdf).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 To develop in the Azure PowerShell repository locally, you first need to create your own fork. For more information on how to fork, click [here](https://guides.github.com/activities/forking/).
 
@@ -105,7 +126,11 @@ msbuild build.proj /t:GenerateHelp
 
 ## Running Static Analysis
 
+<<<<<<< HEAD
 To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (depdencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+=======
+To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (dependencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 msbuild build.proj /t:StaticAnalysis
@@ -143,7 +168,11 @@ Before submitting a design review, please be sure that you have read the documen
 
 Please submit a design review here: https://github.com/Azure/azure-powershell-cmdlet-review-pr
 
+<<<<<<< HEAD
 _Note_: You will need to be part of the `GitHub Azure` org to see this repository. Please go to [this link](aka.ms/azuregithub) to become part of the `Azure` org.
+=======
+_Note_: You will need to be part of the `GitHub Azure` org to see this repository. Please go to [this link](https://aka.ms/azuregithub) to become part of the `Azure` org.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 We recommend using the `platyPS` module to easily generate markdown files that contains the above information and including the files in the design submission.
 
@@ -224,7 +253,11 @@ To import modules automatically when debug has started, follow the below steps:
 
 - In the **Debug** tab mentioned previously, go to **Start Options**
 - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
+<<<<<<< HEAD
   - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
+=======
+  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$DebugPreference='Continue'"`
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 
 ## Adding Help Content
@@ -271,6 +304,17 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
     - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
+<<<<<<< HEAD
+=======
+#### Use local files in test
+CI in DevOps will happens under `Debug` folder. So you need to make sure that these files will be copied to that folder during the CI runs. One way to do this is config the `Module.Test.csproj`. There is a example:
+```xml
+  <ItemGroup>
+    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### Using Active Directory
 
 - Use the `Set-TestEnvironment` cmdlet from `Repo-Tasks.psd1` to setup your connection string
@@ -302,10 +346,21 @@ Once all of your cmdlets have been created and the appropriate tests have been a
 
 ## Change Log
 
+<<<<<<< HEAD
 Whenver you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
+=======
+Whenever you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Misc
 
 ## Publish to PowerShell Gallery
 
 To publish your module to the [official PowerShell gallery](http://www.powershellgallery.com/) or the test gallery site, contact the Azure PowerShell team
+<<<<<<< HEAD
+=======
+
+# AutoRest PowerShell Generator
+- [autorest.powershell documentation](https://github.com/Azure/autorest.powershell/tree/master/docs)
+- [examples](https://github.com/Azure/azure-powershell/tree/generation/src)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

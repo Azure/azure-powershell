@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -934,6 +938,18 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to No new secret was created. This ServicePrincipal will use the password associated with application &apos;{0}&apos;..
+        /// </summary>
+        internal static string ServicePrincipalCreatedWithCredentials {
+            get {
+                return ResourceManager.GetString("ServicePrincipalCreatedWithCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Service principal with object id &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ServicePrincipalDoesntExist {
@@ -1024,6 +1040,18 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Updating role assignment for AD object &apos;{0}&apos; on scope &apos;{1}&apos; with role definition &apos;{2}&apos;.
+        /// </summary>
+        internal static string UpdatingRoleAssignment {
+            get {
+                return ResourceManager.GetString("UpdatingRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to User with display name &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string UserWithDisplayNameDoesntExist {

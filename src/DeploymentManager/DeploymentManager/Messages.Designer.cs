@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to There might be rollouts or topologies referencing the artifact source {0}. Are you sure you want to remove the artifact source?.
         /// </summary>
         internal static string ConfirmRemoveArtifactSource {
@@ -124,6 +125,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Are you sure you want to restart the rollout {0} and re-run all the steps from the start? If you want to skip all the steps that succeeded on the previous attempt, enter No and pass the SkipSucceeded parameter..
         /// </summary>
         internal static string ConfirmRestartRollout {
@@ -187,6 +190,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The health check properties file path &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string HealthCheckPropertiesFileNotFound {
+            get {
+                return ResourceManager.GetString("HealthCheckPropertiesFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Removed artifact source {0}..
         /// </summary>
         internal static string RemovedArtifactSource {

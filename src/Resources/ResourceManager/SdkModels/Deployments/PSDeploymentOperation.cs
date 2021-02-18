@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeploymentOperation

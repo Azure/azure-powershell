@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificates { get; set; }
 
+<<<<<<< HEAD
+=======
+        public List<PSApplicationGatewayTrustedClientCertificate> TrustedClientCertificates { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
@@ -45,6 +50,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
 
+<<<<<<< HEAD
+=======
+        public List<PSApplicationGatewaySslProfile> SslProfiles { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
 
         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
@@ -63,12 +73,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
 
+<<<<<<< HEAD
+=======
+        public List<PSApplicationGatewayPrivateLinkConfiguration> PrivateLinkConfigurations { get; set; }
+
+        public List<PSApplicationGatewayPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableHttp2 { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? ForceFirewallPolicyAssociation { get; set; }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<string> Zones { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -87,6 +110,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
+=======
+        public string TrustedClientCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(TrustedClientCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string AuthenticationCertificatesText
         {
             get { return JsonConvert.SerializeObject(AuthenticationCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -123,6 +155,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
+=======
+        public string SslProfilesText
+        {
+            get { return JsonConvert.SerializeObject(SslProfiles, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string HttpListenersText
         {
             get { return JsonConvert.SerializeObject(HttpListeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -169,5 +210,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(FirewallPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string PrivateLinkConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(PrivateLinkConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PrivateLinkEndpointConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(PrivateEndpointConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

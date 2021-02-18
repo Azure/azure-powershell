@@ -69,7 +69,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
 
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
+<<<<<<< HEAD
 
+=======
+                Identity = new PSIdentityAttributes(evResource.Identity);
+                ZoneRedundant = evResource.ZoneRedundant;
+                ClusterArmId = evResource.ClusterArmId;
+                Encryption = new PSEncryptionAttributes(evResource.Encryption);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
         
@@ -142,6 +149,17 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// </summary>
         public bool? KafkaEnabled { get; set; }
 
+<<<<<<< HEAD
+=======
+        public bool? ZoneRedundant { get; set; }
+
+        public string ClusterArmId { get; set; }     
+        
+        public PSIdentityAttributes Identity { get; set; }
+
+        public PSEncryptionAttributes Encryption { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
     }
 }

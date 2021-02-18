@@ -46,6 +46,17 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Pricing tier for IoT Central applications. Default value is ST2.")]
+        [PSArgumentCompleter("ST2")]
+        [ValidateNotNullOrEmpty]
+        public string Sku { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             this.SetNameAndResourceGroup();
@@ -59,7 +70,11 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private AppPatch CreateApplicationPatch()
         {
+<<<<<<< HEAD
             return new AppPatch(TagsConversionHelper.CreateTagDictionary(this.Tag, true), null, this.DisplayName, this.Subdomain);
+=======
+            return new AppPatch(TagsConversionHelper.CreateTagDictionary(this.Tag, true), new AppSkuInfo(this.Sku), null, this.DisplayName, this.Subdomain);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

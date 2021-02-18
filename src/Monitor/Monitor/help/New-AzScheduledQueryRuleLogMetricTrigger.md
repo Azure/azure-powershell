@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # New-AzScheduledQueryRuleLogMetricTrigger
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Creates an object of type Log Metric Trigger
+=======
+Creates an object of type Log Metric Trigger.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -47,7 +55,12 @@ Accept wildcard characters: False
 ```
 
 ### -MetricColumn
+<<<<<<< HEAD
 Column on which metric value is being aggregated
+=======
+Column on which metric value is being aggregated.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -62,7 +75,12 @@ Accept wildcard characters: False
 ```
 
 ### -MetricTriggerType
+<<<<<<< HEAD
 The metric trigger type
+=======
+The metric trigger type.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -77,7 +95,12 @@ Accept wildcard characters: False
 ```
 
 ### -Threshold
+<<<<<<< HEAD
 The metric threshold value
+=======
+The metric threshold value: Consecutive, Total.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Double
@@ -92,7 +115,12 @@ Accept wildcard characters: False
 ```
 
 ### -ThresholdOperator
+<<<<<<< HEAD
 The metric threshold operator : GreaterThan, LessThan, Equal
+=======
+The metric threshold operator : GreaterThan, LessThan, Equal.
+The input is not validated. It will first be validated when New-AzScheduledQueryRule is eventually called.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

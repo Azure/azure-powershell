@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,12 +65,28 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
+        /// </summary>
+        internal static string ArmAccountNotFound {
+            get {
+                return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
         ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
+<<<<<<< HEAD
         ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+=======
+        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection [rest of string was truncated]&quot;;.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string ARMDataCollectionMessage {
             get {

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragefilesastoken
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragefilesastoken
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -125,7 +129,11 @@ You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: FileSasPermission, FileSasPolicy
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: Named

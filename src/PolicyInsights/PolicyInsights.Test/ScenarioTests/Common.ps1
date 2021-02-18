@@ -27,7 +27,11 @@ Gets test resource group group name
 #>
 function Get-TestResourceGroupName
 {
+<<<<<<< HEAD
    "jilimpolicytest2"
+=======
+   "cheggpolicy"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -36,7 +40,11 @@ Gets test resource id
 #>
 function Get-TestResourceId
 {
+<<<<<<< HEAD
    "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/govintpolicyrp/providers/microsoft.network/trafficmanagerprofiles/gov-int-policy-rp"
+=======
+   "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.keyvault/vaults/cheggkv"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -45,7 +53,11 @@ Gets test policy set definition name
 #>
 function Get-TestPolicySetDefinitionName
 {
+<<<<<<< HEAD
    "875cf75e-49c3-47f8-ab8d-89ba3d2311a0"
+=======
+   "81811175-958c-478d-936a-d96e158a8c66"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -54,7 +66,11 @@ Gets test policy definition name
 #>
 function Get-TestPolicyDefinitionName
 {
+<<<<<<< HEAD
    "24813039-7534-408a-9842-eb99f45721b1"
+=======
+   "3520924f-7a65-4cbf-83e6-e2ed67bbf0da"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -63,7 +79,11 @@ Gets test policy assignment name
 #>
 function Get-TestPolicyAssignmentName
 {
+<<<<<<< HEAD
    "f54e881207924ca8b2e39f6a"
+=======
+   "1e4e70f9cd4846268b6998ee"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -72,7 +92,11 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentEvents
 {
+<<<<<<< HEAD
    "jilimpolicytest2"
+=======
+   "cheggpolicy"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -81,7 +105,20 @@ Gets test policy assignment name (resource group level) (for event tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelEvents
 {
+<<<<<<< HEAD
    "e9860612d8ec4a469f59af06"
+=======
+   "8a4555d353ed46bb856e9890"
+}
+
+<#
+.SYNOPSIS
+Gets test policy definition name for events
+#>
+function Get-TestPolicyDefinitionNameForEvents
+{
+   "926d9eb2-ac1e-4408-b27a-9c61a70f8ff8"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -90,7 +127,11 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentStates
 {
+<<<<<<< HEAD
    "jilimpolicytest2"
+=======
+   "cheggpolicy"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -99,7 +140,11 @@ Gets test policy assignment name (resource group level) (for state tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelStates
 {
+<<<<<<< HEAD
    "e9860612d8ec4a469f59af06"
+=======
+   "8a4555d353ed46bb856e9890"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -108,7 +153,11 @@ Gets test query interval start
 #>
 function Get-TestQueryIntervalStart
 {
+<<<<<<< HEAD
    "2019-01-20 00:00:00Z"
+=======
+   "2020-03-24 00:00:00Z"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -117,7 +166,11 @@ Gets test query interval end
 #>
 function Get-TestQueryIntervalEnd
 {
+<<<<<<< HEAD
    "2019-04-15 00:00:00Z"
+=======
+   "2020-03-30 00:00:00Z"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -126,7 +179,11 @@ Gets the policy assignment used in remediation tests at subscription level and b
 #>
 function Get-TestRemediationSubscriptionPolicyAssignmentId
 {
+<<<<<<< HEAD
    "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
+=======
+   "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policyAssignments/fcddeb6113ec43798567dce2"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -135,7 +192,11 @@ Gets the policy assignment used in remediation tests at management group scope
 #>
 function Get-TestRemediationMgPolicyAssignmentId
 {
+<<<<<<< HEAD
    "/providers/Microsoft.Management/managementGroups/PolicyUIMG/providers/Microsoft.Authorization/policyAssignments/326b090398a649e3858e3f23"
+=======
+   "/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -249,8 +310,15 @@ function Validate-PolicyStateSummary
       Assert-NotNullOrEmpty $policyAssignmentSummary.PolicyAssignmentId
 
       Assert-NotNull $policyAssignmentSummary.Results
+<<<<<<< HEAD
       Assert-NotNull $policyAssignmentSummary.Results.NonCompliantResources
       Assert-NotNull $policyAssignmentSummary.Results.NonCompliantPolicies
+=======
+      Validate-SummaryResults -results:$policyAssignmentSummary.Results -nonCompliantPoliciesAssertNull:$false
+	  Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
+	  Assert-NotNull $policyAssignmentSummary.PolicyGroups
+	  Assert-True { $policyAssignmentSummary.PolicyGroups.Count -gt 0 }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
       Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
       if ($policyAssignmentSummary.PolicyDefinitions.Count -gt 0)
@@ -260,6 +328,7 @@ function Validate-PolicyStateSummary
 		  Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
 		  {
 			 Assert-NotNull $policyDefinitionSummary
+<<<<<<< HEAD
 
 			 Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
 			 Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
@@ -267,6 +336,14 @@ function Validate-PolicyStateSummary
 			 Assert-NotNull $policyDefinitionSummary.Results
 			 Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
 			 Assert-Null $policyDefinitionSummary.Results.NonCompliantPolicies
+=======
+			 Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
+			 Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
+
+			 Assert-NotNull $policyDefinitionSummary.PolicyDefinitionGroupNames
+			 Assert-NotNull $policyDefinitionSummary.Results
+			 Validate-SummaryResults -results:$policyDefinitionSummary.Results
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		  }
 	  }
    }
@@ -274,6 +351,34 @@ function Validate-PolicyStateSummary
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Validates a summary results
+#>
+function Validate-SummaryResults
+{
+   param([Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults] $results,
+   [switch]$nonCompliantPoliciesAssertNull = $true
+   )
+   
+   Assert-NotNull $results.NonCompliantResources
+   if($nonCompliantPoliciesAssertNull)
+   {
+      Assert-Null $results.NonCompliantPolicies
+   }
+   else
+   {
+      Assert-NotNull $results.NonCompliantPolicies
+   }
+   Assert-NotNull $results.ResourceDetails
+   Assert-NotNull $results.PolicyDetails
+   Assert-True { $results.PolicyDetails.Count -gt 0 }
+   Assert-NotNull $results.PolicyGroupDetails
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Validates a remediation
 #>
 function Validate-Remediation
@@ -311,6 +416,35 @@ function Validate-RemediationDeployment
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Validates a policy metadata resource
+#>
+function Validate-PolicyMetadata
+{
+   param([Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata]$policyMetadata,
+   [switch]$validateExtendedProperties = $false)
+
+   Assert-NotNull $policyMetadata
+
+   Assert-NotNull $policyMetadata.Name
+   Assert-AreEqual "Microsoft.PolicyInsights/policyMetadata" $policyMetadata.Type
+   Assert-True { $policyMetadata.Id -like "/providers/Microsoft.PolicyInsights/policyMetadata/" + $policyMetadata.Name }
+
+   Assert-NotNull $policyMetadata.Owner
+   Assert-NotNull $policyMetadata.Title
+   Assert-NotNull $policyMetadata.Category
+   Assert-NotNull $policyMetadata.MetadataId
+   if($validateExtendedProperties)
+   {
+      Assert-NotNull $policyMetadata.Requirements
+      Assert-NotNull $policyMetadata.Description
+   }
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Validates a string is not null or empty
 #>
 function Assert-NotNullOrEmpty

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -26,6 +27,16 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+=======
+using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -96,6 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
         /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+<<<<<<< HEAD
         /// <param name="parameters">Parameters describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, string resourceId, AzureSqlManagedDatabaseModel model)
@@ -135,6 +147,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             {
                 return null;
             }
+=======
+        /// <param name="model">Model describing the managed database restore request</param>
+        /// <returns>Restored database object</returns>
+        public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, Management.Sql.Models.ManagedDatabase model)
+        {
+            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdate(resourceGroupName, managedInstanceName, managedDatabaseName, model);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -167,6 +186,58 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 return null;
             }
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Completes log replay restore execution.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
+        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="lastBackupName"></param>
+        public void CompleteLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, string lastBackupName)
+        {
+            GetCurrentSqlClient().ManagedDatabases.CompleteRestore(
+                resourceGroupName,
+                managedInstanceName,
+                databaseName,
+                new CompleteDatabaseRestoreDefinition(lastBackupName));
+        }
+
+        /// <summary>
+        /// Starts log replay restore execution.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
+        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="model">Model describing the managed database log replay request</param>
+        public Management.Sql.Models.ManagedDatabase StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
+        {
+            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdate(
+                resourceGroupName,
+                managedInstanceName,
+                databaseName,
+                model);
+        }
+
+
+        /// <summary>
+        /// Get the status of log replay restore.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
+        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+        /// <returns>The managed database restore details.</returns>
+        public ManagedDatabaseRestoreDetailsResult GetLogReplayStatus(string resourceGroupName, string managedInstanceName, string databaseName)
+        {
+            return GetCurrentSqlClient().ManagedDatabaseRestoreDetails.Get(
+                resourceGroupName,
+                managedInstanceName,
+                databaseName);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.

@@ -124,5 +124,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the dns zone of the managed instance
         /// </summary>
         public string DnsZone { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        public string InstancePoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance minimal tls version
+        /// </summary>
+        public string MinimalTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance backup storage redundancy
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

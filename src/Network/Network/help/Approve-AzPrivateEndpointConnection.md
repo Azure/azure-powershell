@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/approve-azprivateendpointconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/approve-azprivateendpointconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -21,7 +25,12 @@ Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 ### ByResource
 ```
 Approve-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
+<<<<<<< HEAD
  [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-PrivateLinkResourceType <string>][-Description <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -83,6 +92,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PrivateLinkResourceType
+The private link resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: 'Microsoft.Network/privateLinkServices'
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceGroupName
 The resource group name.
 
@@ -128,6 +155,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -143,8 +174,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
 
 [Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
 
 [Remove-AzPrivateEndpointConnection](./Remove-AzPrivateEndpointConnection.md)
+=======
+[Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
+
+[Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
+
+[Remove-AzPrivateEndpointConnection](./Remove-AzPrivateEndpointConnection.md)
+
+[Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

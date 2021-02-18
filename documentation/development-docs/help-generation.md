@@ -12,13 +12,20 @@ To do so, you can follow the below steps (which are outlined in the [**Quick sta
 
 ```powershell
 Install-Module -Name platyPS -Scope CurrentUser
+<<<<<<< HEAD
 Import-Module platyPS
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 **Note:** this module will need to be installed from the [PowerShell Gallery](http://www.powershellgallery.com/). If, for some reason, this isn't a registered repository when running the `Get-PSRepository` cmdlet, then you will need to register it by running the following command:
 
 ```powershell
+<<<<<<< HEAD
 Register-PSRepository -Name PSGallery -SourceLocation https://www.powershellgallery.com/api/v2/
+=======
+Register-PSRepository -Default -InstallationPolicy Trusted
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## Using `platyPS`
@@ -38,6 +45,20 @@ Import-Module -Name $PathToModuleManifest
 
 **Note**: if you do not see all of the changes you made to the cmdlets in your markdown files (_e.g.,_ a cmdlet you deleted is still appearing), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed either through the PowerShell Gallery or by Web Platform Installer) before you import your module.
 
+<<<<<<< HEAD
+=======
+### Generating help for a new module
+
+For new modules with no existing `help` folder containing the markdown help files, run the following command to do an initial generation:
+
+```powershell
+$PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be generated (e.g., src/Accounts/Accounts/help)
+New-MarkdownHelp -Module {{moduleName}} -OutputFolder $PathToHelpFolder -AlphabeticParamsOrder -UseFullTypeName -WithModulePage
+```
+
+Once this folder has been generated, follow the steps provided in the below section to update the files with any changes made to the public interface of the cmdlets.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### Updating help after making cmdlet changes
 
 Whenever the public interface for a cmdlet has changed, the corresponding markdown file for that cmdlet will need to be updated to reflect the changes. Public interface changes include the following:
@@ -58,7 +79,11 @@ Whenever the public interface for a cmdlet has changed, the corresponding markdo
 To update all of the markdown files for a single module, use the [`Update-MarkdownHelpModule`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelpModule.md) cmdlet:
 
 ```powershell
+<<<<<<< HEAD
 $PathToModuleManifest = "../../<module.psd1" # Full path to the module manifest that you have updated
+=======
+$PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest that you have updated
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Import-Module -Name $PathToModuleManifest
 
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be updated
@@ -69,8 +94,13 @@ If you would like to update the inputs/outputs for a markdown file, please run t
 
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Accounts.md`) with any added or removed cmdlets.
 
+<<<<<<< HEAD
 _This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
 
+=======
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/master/src/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/master/src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
+ 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #### Updating a single markdown file
 
 To update a single markdown file with the changes made to the corresponding cmdlet, use the [`Update-MarkdownHelp`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelp.md) cmdlet:

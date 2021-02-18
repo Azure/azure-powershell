@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubeventhubconsumergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubeventhubconsumergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +18,11 @@ Gets all the eventhub consumergroups.
 
 ```
 Get-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
+<<<<<<< HEAD
  [-EventHubEndpointName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -24,11 +32,16 @@ Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 
 ### Example 1 Gets all the eventhub consumergroups for the telemetry eventhub
 ```
+<<<<<<< HEAD
 PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
+=======
+PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 
+<<<<<<< HEAD
 ### Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub
 ```
 PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
@@ -36,6 +49,8 @@ PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -
 
 Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -53,6 +68,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -EventHubEndpointName
 Name of the Event Hub endpoint.
 Possible values events, operationsMonitoringEvents
@@ -70,6 +86,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Name of the IotHub
 

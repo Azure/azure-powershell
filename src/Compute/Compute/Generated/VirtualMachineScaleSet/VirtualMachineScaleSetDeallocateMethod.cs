@@ -48,7 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
+<<<<<<< HEAD
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+=======
+                    IList<string> instanceIds = this.InstanceId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     Rest.Azure.AzureOperationResponse result = null;
                     if (this.ParameterSetName.Equals("FriendMethod"))
@@ -115,10 +119,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] InstanceId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         [Parameter(
             ParameterSetName = "FriendMethod",
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 

@@ -12,6 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System;
+using System.Configuration.Internal;
+using System.Runtime.CompilerServices;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
@@ -26,7 +33,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " (for example: ResourceGroup name of the VM).";
             public const string Status = "The registration status of the Azure Backup container.";
             public const string ContainerType = "The type of the Azure Backup container (for example:  Windows Server or Azure IaaS VM).";
+<<<<<<< HEAD
             public const string BackupManagementType = "The backup management type of the Azure Backup container";
+=======
+            public const string BackupManagementType = "The class of resources being protected.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             public const string RegisteredContainer = "The recovery services backup container.";
             public const string FriendlyName = "The name of the resource being managed by the" +
                 " Azure Backup service (for example: resource name of the VM).";
@@ -39,9 +50,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
             public const string VaultId = "Resource ID of the Recovery Services Vault.";
+<<<<<<< HEAD
             public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).";
             public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM, AzureWorkload).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
+=======
+            public const string WorkloadType = "Workload type of the resource. The current supported values are ";
+            public const string ConfirmationMessage = "Don't ask for confirmation.";
+            public const string BackupManagementType = "The class of resources being protected. Currently the values supported for this cmdlet are ";
+            public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
+            public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class Policy
@@ -50,6 +69,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RetentionPolicy = "Retention Policy object for the policy.";
             public const string SchedulePolicy = "Schedule Policy object for the policy.";
             public const string ProtectionPolicy = "Protection policy object.";
+<<<<<<< HEAD
+=======
+            public const string FixForInConsistentItems = "Switch Parameter indicating whether or not to retry Policy Update for failed items.";
+            public const string EnableProtectionPolicy = "Protection policy object. If policy ID is not present or the backup item is not associated with any" +
+                " policy, then this command will expect a policyID.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class Job
@@ -58,7 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ToFilter = "Ending value of time range for which jobs have to be fetched.";
             public const string OperationFilter = "Filter value for type of job.";
             public const string StatusFilter = "Filter value for status of job.";
+<<<<<<< HEAD
             public const string BackupManagementTypeFilter = "Filter value for Backup Management Type of job.";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             public const string JobIdFilter = "Filter value for Id of job.";
             public const string JobFilter = "Job whose latest object has to be fetched.";
             public const string WaitJobOrListFilter = "Job or List of jobs until end of which the cmdlet should wait.";
@@ -69,6 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class Item
         {
+<<<<<<< HEAD
             public const string ItemName = "Name of the item.";
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
@@ -83,6 +112,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
             public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which" +
                 " the recovery points created by this backup will no longer be available for restore";
+=======
+            public const string ItemName = "Specifies the name of backup item. For file share, specify the unique ID of protected file share.";
+            public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
+            public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
+            public const string ProtectedItem = "Specifies the item to be protected with the given policy.";
+            public const string ProtectableItem = "Specifies the protectable item to be protected using Azure Backup.";
+            public const string ProtectionStatus = "Protection status of Item";
+            public const string Status = "Status of the data source";
+            public const string DeleteState = "Delete state of the item";
+            public const string Container = "Container where the item resides";
+            public const string RemoveProtectionOption = "If this option is used, all the recovery points for this item will " +
+                "also be deleted and restoring will not be possible.";
+            public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
+            public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
+            public const string ExpiryDateTimeUTC = "Specifies an expiry time for the Recovery point as a DateTime object, " + 
+                "if nothing is given it takes the default value of  30 days. Applicable to VM, SQL (for only Copy-only-full backup type), AFS backup items.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             public const string ProtectionPolicy = "The id of the backup policy which is used to protect the backup items";
             public const string AzureFileShareName = "Azure FileShare Name.";
             public const string AzureFileStorageAccountName = "Azure file share storage account name";
@@ -90,15 +136,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string BackupType = "Specifies the type of backup to be taken for an on-demand backup. Allowed values are “CopyOnlyFull”, “Full”, “Differential”, “Log”.";
             public const string EnableCompression = "A switch which will specify that the requested on-demand SQL backup should be compressed.";
             public const string ParentID = "Specified the ARM ID of an Instance or AG.";
+<<<<<<< HEAD
+=======
+            public const string FriendlyName = "FriendlyName of the backed up item";
+            public const string inclusionDiskList = "List of Disk LUNs to be included in backup and the rest are automatically excluded except OS disk.";
+            public const string exclusionDiskList = "List of Disk LUNs to be excluded in backup and the rest are automatically included.";
+            public const string resetExclusionSettings = "Specifies to reset disk exclusion setting associated with the item";
+            public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
+            public const string ReprotectItem = "Specifies the backup item for which this cmdlet reverts the deletion."; 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class ProtectableItem
         {
             public const string ItemType = "Specifies the type of protectable item. Applicable values: (SQLDataBase, SQLInstance, SQLAvailabilityGroup).";
             public const string ItemId = "Specifies the parent entity under which the protectable items (DBs) are to be retrieved. IDs of protectable item types SQLInstance, SQLAvailabilityGroup are applicable.";
+<<<<<<< HEAD
             public const string ItemObject = "Specifies the protectable item object that can be passed as an input.";
             public const string Name = "Specifies the name of the Database, Instance or AvailabilityGroup.";
             public const string ServerName = "Specifies the name of the server to which the item belongs.";
+=======
+            public const string ItemObject = "Specifies the protectable item object that can be passed as an input." +
+                " The current supported value is a protectableItem object of type 'SQLInstance'." ;
+            public const string Name = "Specifies the name of the Database, Instance or AvailabilityGroup.";
+            public const string ServerName = "Specifies the name of the server to which the item belongs.";
+            public const string ItemContainer = "Returns the container where the discovery is being triggered.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class RecoveryPoint
@@ -123,16 +186,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class RestoreDisk
         {
+<<<<<<< HEAD
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
             public const string RecoveryConfig = "Recovery config";
+=======
+            public const string RecoveryPoint = "Specifies the recovery point to which to restore the backup item.";
+            public const string StorageAccountName = "Storage account name where the disks need to be recovered";
+            public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+            public const string RecoveryConfig = "Recovery config";
+            public const string UseSecondaryReg = "Trigger restore to secondary region (Cross Region Restore)";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class RestoreVM
         {
             public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
+<<<<<<< HEAD
+=======
+            public const string RestoreOnlyOSDisk = "Use this switch to restore only OS disks of a backed up VM";
+            public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
+            public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class RestoreFS
@@ -143,14 +220,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetStorageAccountName = "The storage account to which the file share has to be restored to.";
             public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
             public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
+<<<<<<< HEAD
 
+=======
+            public const string MultipleSourceFilePath = "Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         internal static class ProtectionCheck
         {
             public const string Name = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
             public const string ResourceGroupName = "Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
+<<<<<<< HEAD
             public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
+=======
+            public const string Type = "Type of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
             public const string ProtectableObjName = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
         }
@@ -161,6 +246,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetItem = "Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.";
             public const string OriginalWorkloadRestore = "Specifies that the backed up DB is to be overwritten with the DB information present in the recovery point.";
             public const string AlternateWorkloadRestore = "Specifies that the backed up DB should be restored as a new DB in another instance or as a new DB in the same instance";
+<<<<<<< HEAD
+=======
+            public const string TargetContainer = "Specifies the target machine on which DB Files need to be restored.";
+            public const string RestoeAsFiles = "Specifies to restore Database as files in a machine.";
+            public const string FilePath = "Specifies the filepath which is used for restore operation.";
+            public const string FromFull = "Specifies the Full RecoveryPoint to which Log backups will be applied.";
+        }
+
+        internal static class DSMove
+        {
+            public const string SourceVault = "The source vault object to trigger data move.";
+            public const string TargetVault = "The target vault object where the data has to be moved.";
+            public const string ForceOption = "Forces the data move operation (prevents confirmation dialog). This parameter is optional.";
+            public const string CmdletOutput = "Please monitor the operation using Get-AzRecoveryServicesBackupJob cmdlet";
+            public const string RetryOnlyFailed = "Switch parameter to try data move only for containers in the source vault which are not yet moved.";
+        }
+
+        internal static class Encryption
+        {
+            public const string EncryptionSettings = "Get CMK vault encryption settings."; 
+            public const string EncryptionKeyID = "KeyID of the encryption key to be used for CMK.";
+            public const string KeyVaultSubscriptionId = "Subscription Id where the key vault is created.";
+            public const string InfrastructureEncryption = "Enables infrastructure encryption on this vault. Infrastructure encryption must be enabled when configuring encryption." +
+                " of the vault for the first time. Once enabled, infrastructure encryption cannot be disabled. ";
+            public const string DES = "The disk encryption set is used to encrypt disks at rest when they are created from vault-based recovery points. Please ensure that the disk encryption" +
+                " set also has access to the relevant key vault. For instant restores, where data is restored from snapshot recovery points, the currently active disk encryption set is automatically" +
+                " used to encrypt newly created disks.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

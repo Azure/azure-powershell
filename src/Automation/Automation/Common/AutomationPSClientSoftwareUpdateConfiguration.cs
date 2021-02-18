@@ -87,7 +87,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         Interval = configuration.ScheduleConfiguration.Interval,
                         IsEnabled = configuration.ScheduleConfiguration.IsEnabled,
                         TimeZone = configuration.ScheduleConfiguration.TimeZone,
+<<<<<<< HEAD
                         AdvancedSchedule = configuration.ScheduleConfiguration.GetAdvancedSchedule()
+=======
+                        AdvancedSchedule = configuration.ScheduleConfiguration.GetAdvancedSchedule(),
+                        Description = configuration.ScheduleConfiguration.Description
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     UpdateConfiguration = new Sdk.UpdateConfiguration()
                     {
@@ -109,7 +114,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 : null,
                             ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null,
                             IncludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.IncludedPackageNameMasks : null,
+<<<<<<< HEAD
                             RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
+=======
+                            RebootSetting = updateConfig.Linux != null ? updateConfig.Linux.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         },
                         Duration = updateConfig.Duration,
                         AzureVirtualMachines = updateConfig.AzureVirtualMachines,

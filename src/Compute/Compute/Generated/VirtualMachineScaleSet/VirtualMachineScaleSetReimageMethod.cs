@@ -45,7 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
+<<<<<<< HEAD
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+=======
+                    IList<string> instanceIds = this.InstanceId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     Rest.Azure.AzureOperationResponse result = null;
                     if (this.ParameterSetName.Equals("FriendMethod"))
@@ -64,7 +68,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var vmScaleSetReimageInput = new VirtualMachineScaleSetReimageParameters();
                         vmScaleSetReimageInput.InstanceIds = instanceIds;
+<<<<<<< HEAD
                         vmScaleSetReimageInput.TempDisk = this.TempDisk.IsPresent;
+=======
+                        vmScaleSetReimageInput.TempDisk = this.TempDisk.IsPresent ? true : (bool?) null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
                     }
 

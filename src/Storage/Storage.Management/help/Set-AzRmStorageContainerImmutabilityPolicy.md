@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,7 +22,11 @@ Creates or updates ImmutabilityPolicy of a Storage blob containers
 ### AccountName (Default)
 ```
 Set-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
+<<<<<<< HEAD
  -ContainerName <String> -ImmutabilityPeriod <Int32> [-Etag <String>]
+=======
+ -ContainerName <String> [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,8 +40,13 @@ Set-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-Stora
 ### AccountObject
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccount <PSStorageAccount>
+<<<<<<< HEAD
  -ImmutabilityPeriod <Int32> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ExtendAccountObject
@@ -42,8 +58,14 @@ Set-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccou
 
 ### ContainerObject
 ```
+<<<<<<< HEAD
 Set-AzRmStorageContainerImmutabilityPolicy -Container <PSContainer> -ImmutabilityPeriod <Int32>
  [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Set-AzRmStorageContainerImmutabilityPolicy -Container <PSContainer> [-ImmutabilityPeriod <Int32>]
+ [-AllowProtectedAppendWrite <Boolean>] [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ExtendContainerObject
@@ -54,8 +76,14 @@ Set-AzRmStorageContainerImmutabilityPolicy -Container <PSContainer> -Immutabilit
 
 ### ImmutabilityPolicyObject
 ```
+<<<<<<< HEAD
 Set-AzRmStorageContainerImmutabilityPolicy [-InputObject] <PSImmutabilityPolicy> -ImmutabilityPeriod <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Set-AzRmStorageContainerImmutabilityPolicy [-InputObject] <PSImmutabilityPolicy> [-ImmutabilityPeriod <Int32>]
+ [-AllowProtectedAppendWrite <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ExtendImmutabilityPolicyObject
@@ -85,14 +113,26 @@ PS C:\>Set-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject
 
 This command extend ImmutabilityPolicy of a Storage blob container, with Storage account object. Extend ImmutabilityPolicy can only run after ImmutabilityPolicy is locked.
 
+<<<<<<< HEAD
 ### Example 3: Update ImmutabilityPolicyof a Storage blob container
+=======
+### Example 3: Update ImmutabilityPolicy of a Storage blob container
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -ImmutabilityPeriod 12
 PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -ImmutabilityPeriod 9 -Etag $policy.Etag
+<<<<<<< HEAD
 ```
 
 This command updates ImmutabilityPolicy of a Storage blob container with Storage container object 2 times, first to ImmutabilityPeriod 12 days without etag, then to ImmutabilityPeriod 9 days with etag.
+=======
+PS C:\>$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -AllowProtectedAppendWrite $true
+```
+
+This command updates ImmutabilityPolicy of a Storage blob container with Storage container object 3 times:
+First to ImmutabilityPeriod 12 days without etag, then to ImmutabilityPeriod 9 days with etag, finally enabled AllowProtectedAppendWrite.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 4: Extend ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object
 ```
@@ -103,6 +143,26 @@ This command extend ImmutabilityPolicy of a Storage blob container, with Immutab
 
 ## PARAMETERS
 
+<<<<<<< HEAD
+=======
+### -AllowProtectedAppendWrite
+This property can only be changed for unlocked time-based retention policies. 
+With this property enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. 
+Only new blocks can be added and any existing blocks cannot be modified or deleted.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AccountName, AccountObject, ContainerObject, ImmutabilityPolicyObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Container
 Storage container object
 
@@ -195,7 +255,23 @@ Immutability period since creation in days.
 
 ```yaml
 Type: System.Int32
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: AccountName, AccountObject, ContainerObject, ImmutabilityPolicyObject
+Aliases: ImmutabilityPeriodSinceCreationInDays
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Int32
+Parameter Sets: ExtendAccountName, ExtendAccountObject, ExtendContainerObject, ExtendImmutabilityPolicyObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: ImmutabilityPeriodSinceCreationInDays
 
 Required: True

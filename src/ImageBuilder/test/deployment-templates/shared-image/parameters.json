@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "galleries_testsharedgallery_name": {
+            "value": "sharedgallery"
+        },
+        "images_test_linux_image_externalid": {
+            "value": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/WYUNCHI-IMAGEBUILDER/providers/Microsoft.Compute/images/image_managed_linux"
+        }
+    }
+}

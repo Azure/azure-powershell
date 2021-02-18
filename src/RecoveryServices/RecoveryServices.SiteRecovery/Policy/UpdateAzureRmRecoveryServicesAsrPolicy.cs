@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
+<<<<<<< HEAD
         ///    Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
+=======
+        ///    Switch parameter indicating that the specified policy is used to replicate VMware virtual machines to Azure.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(
             Position = 0,
@@ -48,7 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///    Switch parameter indicating that the specfied policy is used to replicate failed over virtual machines 
+=======
+        ///    Switch parameter indicating that the specified policy is used to replicate failed over virtual machines 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///    running in Azure back to an on-premises VMware site.
         /// </summary>
         [Parameter(Position = 0,
@@ -57,7 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToVMware { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///    Switch parameter indicating that the specfied policy is used to replicate Hyper-V virtual machines to Azure.
+=======
+        ///    Switch parameter indicating that the specified policy is used to replicate Hyper-V virtual machines to Azure.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(
             Position = 0,
@@ -66,7 +78,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter HyperVToAzure { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///    Switch parameter indicating that the specfied policy is used to replicate VMM managed Hyper-V virtual machines
+=======
+        ///    Switch parameter indicating that the specified policy is used to replicate VMM managed Hyper-V virtual machines
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///    between two Hyper-V sites.
         /// </summary>
         [Parameter(
@@ -327,7 +343,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.replicationStartTime =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationStartTime))
+<<<<<<< HEAD
                     ? this.replicationStartTime
+=======
+                    ? this.ReplicationStartTime
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     : replicationProviderSettings.OnlineReplicationStartTime;
             this.recoveryAzureStorageAccountId =
                 this.MyInvocation.BoundParameters.ContainsKey(
@@ -428,7 +448,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.compression =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.Compression)) ? this.Compression
+<<<<<<< HEAD
                     : replicationProviderSettings.Compression;
+=======
+                    : replicationProviderSettings.Compression == Constants.Disabled ? Constants.Disable
+                    : Constants.Enable;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.replicationPort =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationPort)) ? this.ReplicationPort
@@ -451,12 +476,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.replicationStartTime =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicationStartTime))
+<<<<<<< HEAD
                     ? this.replicationStartTime
+=======
+                    ? this.ReplicationStartTime
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     : replicationProviderSettings.OnlineReplicationStartTime;
             this.replicaDeletion =
                 this.MyInvocation.BoundParameters.ContainsKey(
                     Utilities.GetMemberName(() => this.ReplicaDeletion)) ? this.ReplicaDeletion
+<<<<<<< HEAD
                     : replicationProviderSettings.ReplicaDeletionOption;
+=======
+                    : replicationProviderSettings.ReplicaDeletionOption == Constants.SecondaryVMOnRecoveryCloud ? Constants.Required
+                    : Constants.NotRequired;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var updatePolicyProperties = new UpdatePolicyInputProperties();
 

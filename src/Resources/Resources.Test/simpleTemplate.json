@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "foo": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "bar": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    }
+  },
+  "functions": [],
+  "variables": {
+
+  },
+  "resources": [],
+  "outputs": {
+    "foo": {
+      "type": "string",
+      "value": "[parameters('foo')]"
+    },
+    "bar": {
+      "type": "string",
+      "value": "[parameters('bar')]"
+    }
+  }
+}

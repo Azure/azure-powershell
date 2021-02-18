@@ -166,6 +166,10 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Configuration",
             "System.Net.WebClient",
             "System.Memory",
+<<<<<<< HEAD
+=======
+            "System.Memory.Data",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "System.Text.Encoding.CodePages",
             "System.Private.Xml",
             "System.Reflection.DispatchProxy",
@@ -181,7 +185,12 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Security.AccessControl",
             "System.Security.Principal.Windows",
             "System.Data.SqlClient",
+<<<<<<< HEAD
             "System.Security.Cryptography.ProtectedData"
+=======
+            "System.Security.Cryptography.ProtectedData",
+            "System.Text.Json" //TODO: Compare Version along with Azure.Core
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         };
 
         private readonly Dictionary<string, AssemblyRecord> _assemblies =
@@ -226,6 +235,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             _dependencyMapLogger = Logger.CreateLogger<DependencyMap>("DependencyMap.csv");
             foreach (var baseDirectory in directories)
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 foreach (var directoryPath in Directory.EnumerateDirectories(baseDirectory))
                 {
                     if (modulesToAnalyze != null &&
@@ -291,6 +301,12 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 var stored = _sharedAssemblyReferences[assembly.AssemblyName];
                 if (assembly.Equals(stored) || IsFrameworkAssembly(assembly.AssemblyName) && assembly.Version.Major <= 4) return true;
+<<<<<<< HEAD
+=======
+                //TODO: Compare Azure.Core version
+                if (string.Equals(assembly.AssemblyName.Name, "Azure.Core", StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
                 {
@@ -384,7 +400,11 @@ namespace StaticAnalysis.DependencyAnalyzer
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 var assembly = CreateAssemblyRecord(file);
+<<<<<<< HEAD
                 if (!IsFrameworkAssembly(assembly.Name))
+=======
+                if (assembly?.Name != null && !IsFrameworkAssembly(assembly.Name))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     _assemblies[assembly.Name] = assembly;
                     AddSharedAssembly(assembly);

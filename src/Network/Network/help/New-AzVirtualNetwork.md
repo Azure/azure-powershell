@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 81D55C43-C9A3-4DA7-A469-A3A7550FE9A4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,9 +19,15 @@ Creates a virtual network.
 
 ```
 New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
+<<<<<<< HEAD
  [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-Tag <Hashtable>] [-EnableDdosProtection]
  [-DdosProtectionPlanId <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+ [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-Tag <Hashtable>]
+ [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -25,8 +35,13 @@ The **New-AzVirtualNetwork** cmdlet creates an Azure virtual network.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:  Create a virtual network with two subnets
 ```
+=======
+### Example 1: Create a virtual network with two subnets
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 $backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
@@ -40,8 +55,13 @@ is one subnet called frontendSubnet and one subnet called backendSubnet. The
 New-AzVirtualNetwork cmdlet then creates a virtual network using the CIDR 10.0.0.0/16 as the
 address prefix and two subnets.
 
+<<<<<<< HEAD
 ### 2:  Create a virtual network with DNS settings
 ```
+=======
+### Example 2: Create a virtual network with DNS settings
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
 $backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
@@ -54,8 +74,13 @@ virtual network inherit these DNS servers as defaults. These defaults can be ove
 through a NIC-level setting. If no DNS servers are specified on a VNET and no DNS servers on the
 NICs, then the default Azure DNS servers are used for DNS resolution.
 
+<<<<<<< HEAD
 ### 3: Create a virtual network with a subnet referencing a network security group
 ```
+=======
+### Example 3: Create a virtual network with a subnet referencing a network security group
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $rdpRule              = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName TestResourceGroup -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
@@ -103,6 +128,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -BgpCommunity
+The BGP Community advertised over ExpressRoute.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DdosProtectionPlanId
 Reference to the DDoS protection plan resource associated with the virtual network.
 
@@ -178,6 +221,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -IpAllocation
+Specifies IpAllocations for a virtual network.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Location
 Specifies the region for the virtual network.
 
@@ -286,7 +347,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

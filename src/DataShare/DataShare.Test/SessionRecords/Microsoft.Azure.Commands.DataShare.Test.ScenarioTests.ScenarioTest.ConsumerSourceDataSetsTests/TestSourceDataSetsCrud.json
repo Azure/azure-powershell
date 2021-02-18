@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shareSubscriptions/psshare1/ConsumerSourceDataSets?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3Bzc2hhcmVhY2NvdW50OTc3Ni9zaGFyZVN1YnNjcmlwdGlvbnMvcHNzaGFyZTEvQ29uc3VtZXJTb3VyY2VEYXRhU2V0cz9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\"value\":[{\"properties\":{\"dataSetName\":\"filesystem1/Folders Design Review.pptx\",\"dataSetId\":\"63116d3f-515a-47a2-9b18-d981b16a9d21\",\"dataSetType\":\"Blob\"},\"id\":\"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shareSubscriptions/psshare1/consumerSourceDataSets/71e8a3ac-8d03-4799-8169-21fc9182e20f\",\"name\":\"71e8a3ac-8d03-4799-8169-21fc9182e20f\",\"type\":\"Microsoft.DataShare/ConsumerSourceDataSet\"},{\"properties\":{\"dataSetName\":\"container2\",\"dataSetId\":\"7c808e0b-80fa-491b-9b2f-ef2d49a12b27\",\"dataSetType\":\"Container\"},\"id\":\"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psshareaccount9776/shareSubscriptions/psshare1/consumerSourceDataSets/798a61dc-f656-49d9-ad42-843c48ddea81\",\"name\":\"798a61dc-f656-49d9-ad42-843c48ddea81\",\"type\":\"Microsoft.DataShare/ConsumerSourceDataSet\"}]}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-SourceDataSetsCrud": [
+      "psrg4712",
+      "psshareaccount9776",
+      "psshare1"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}

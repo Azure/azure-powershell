@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 9F9B2691-BB3F-4644-BD95-6D74777D1E99
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azaduser
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azaduser
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,25 +52,43 @@ Deletes an active directory user (work/school account also popularly known as or
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Remove a user by user principal name
 
 ```
+=======
+### Example 1: Remove a user by user principal name
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzADUser -UserPrincipalName foo@domain.com
 ```
 
 Removes the user with user principal name "foo@domain.com" from the tenant.
 
+<<<<<<< HEAD
 ### Example 2 - Remove a user by object id
 
 ```
+=======
+### Example 2: Remove a user by object id
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69
 ```
 
 Removes the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' from the tenant.
 
+<<<<<<< HEAD
 ### Example 3 - Remove a user by piping
 
 ```
+=======
+### Example 3: Remove a user by piping
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69 | Remove-AzADUser
 ```
 
@@ -226,7 +248,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -246,5 +272,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzADUser](./Get-AzADUser.md)
 
+<<<<<<< HEAD
 [Set-AzADUser](./Set-AzADUser.md)
+=======
+[Update-AzADUser](./Update-AzADUser.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 

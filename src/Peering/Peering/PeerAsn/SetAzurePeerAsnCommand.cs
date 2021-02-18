@@ -14,26 +14,41 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
+<<<<<<< HEAD
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+=======
+    using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+<<<<<<< HEAD
     using Microsoft.Rest.Azure;
 
     using Newtonsoft.Json;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
+<<<<<<< HEAD
         "AzPeerAsn",
         DefaultParameterSetName = Constants.ParameterSetNameByName,
+=======
+        Constants.AzPeerAsn,
+        DefaultParameterSetName = Constants.ParameterSetNameInputObject,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
@@ -46,6 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
+<<<<<<< HEAD
             ParameterSetName = Constants.ParameterSetNameDefault)]
         public PSPeerAsn InputObject { get; set; }
 
@@ -79,6 +95,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             ParameterSetName = Constants.ParameterSetNameByName)]
         public string[] Phone { get; set; }
 
+=======
+            ParameterSetName = Constants.ParameterSetNameInputObject)]
+        public PSPeerAsn InputObject { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
@@ -93,10 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 base.Execute();
+<<<<<<< HEAD
                 this.WriteObject(
                     this.ParameterSetName.Equals(Constants.ParameterSetNameByName)
                         ? this.ToPeeringAsnPs(this.GetAndSetContactInformation())
                         : this.ToPeeringAsnPs(this.UpdatePeerContactInfo()));
+=======
+                this.WriteObject(UpdatePeerContactInfo());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (InvalidOperationException mapException)
             {
@@ -117,6 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private object UpdatePeerContactInfo()
         {
+<<<<<<< HEAD
             // Get old and verify its the same
             var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.InputObject.Name);
             if (oldPeerAsn.Name == this.InputObject.Name
@@ -179,3 +205,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         }
     }
 }
+=======
+            try
+            {
+                var peerAsn = this.PeerAsnClient.CreateOrUpdate(this.InputObject.Name, PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(this.InputObject));
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peerAsn);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
+            }
+            catch (ErrorResponseException ex)
+            {
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
+        }
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

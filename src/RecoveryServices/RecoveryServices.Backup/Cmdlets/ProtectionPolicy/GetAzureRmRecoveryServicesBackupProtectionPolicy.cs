@@ -37,6 +37,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected const string WorkloadBackupMangementTypeParamSet = "WorkloadBackupManagementTypeParamSet";
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "AzureVM, AzureStorage, AzureWorkload ";
+
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Name of the policy to be fetched.
         /// </summary>
         [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1,
@@ -48,9 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Workload type of the policy to be fetched
         /// </summary>
         [Parameter(ParameterSetName = WorkloadParamSet, Position = 2,
+<<<<<<< HEAD
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2,
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+=======
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2,
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public WorkloadType? WorkloadType { get; set; }
 
@@ -58,7 +77,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Backup management type of the policy to be fetched
         /// </summary>
         [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3,
+<<<<<<< HEAD
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
+=======
+            Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 

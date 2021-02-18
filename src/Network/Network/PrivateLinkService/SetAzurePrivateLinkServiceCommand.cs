@@ -21,6 +21,13 @@ using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Network.Common;
+using Microsoft.Azure.Management.Network.Models;
+using System.Net;
+using Newtonsoft.Json.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -42,7 +49,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsPrivateLinkServicePresent(this.PrivateLinkService.ResourceGroupName, this.PrivateLinkService.Name))
             {
+<<<<<<< HEAD
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+=======
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PrivateLinkService.Name));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // Map to the sdk object

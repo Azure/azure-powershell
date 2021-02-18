@@ -43,13 +43,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
+=======
+            string applicationName = "applicationName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string displayName = "name";
             string defaultVersion = "version";
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
+<<<<<<< HEAD
             cmdlet.ApplicationId = applicationId;
+=======
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlet.AllowUpdates = true;
             cmdlet.DefaultVersion = defaultVersion;
             cmdlet.DisplayName = displayName;
@@ -57,7 +65,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
+<<<<<<< HEAD
             batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, defaultVersion, displayName), Times.Once());
+=======
+            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationName, true, defaultVersion, displayName), Times.Once());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -66,17 +78,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;
+=======
+            string applicationName = "applicationName";
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlet.AllowUpdates = true;
 
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
+<<<<<<< HEAD
             batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, true, null, null), Times.Once());
+=======
+            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationName, true, null, null), Times.Once());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -85,16 +109,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;
+=======
+            string applicationName = "applicationName";
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
+<<<<<<< HEAD
             batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationId, null, null, null), Times.Once());
+=======
+            batchClientMock.Verify(b => b.UpdateApplication(resourceGroup, accountName, applicationName, null, null, null), Times.Once());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

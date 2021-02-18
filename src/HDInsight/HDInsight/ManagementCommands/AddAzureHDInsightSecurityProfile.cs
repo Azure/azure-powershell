@@ -34,11 +34,19 @@ namespace Microsoft.Azure.Commands.HDInsight
         public AzureHDInsightConfig Config { get; set; }
 
         [Parameter(Mandatory = true,
+<<<<<<< HEAD
             HelpMessage = "Active Directory domain for the cluster.")]
         public string Domain
         {
             get { return _securityProfile.Domain; }
             set { _securityProfile.Domain = value; } 
+=======
+            HelpMessage = "Active Directory domain resource id for the cluster.")]
+        public string DomainResourceId
+        {
+            get { return _securityProfile.DomainResourceId; }
+            set { _securityProfile.DomainResourceId = value; } 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Parameter(Mandatory = true,
@@ -49,7 +57,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _securityProfile.DomainUserCredential = value; } 
         }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = true,
+=======
+        [Parameter(Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created.")]
         public string OrganizationalUnitDN
         {

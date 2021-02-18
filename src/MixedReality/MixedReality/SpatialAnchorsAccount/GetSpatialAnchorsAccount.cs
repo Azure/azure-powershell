@@ -65,7 +65,11 @@ namespace Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount
                     var resourceId = new ResourceId(ResourceId);
 
                     ResourceGroupName = resourceId.ResourceGroupName;
+<<<<<<< HEAD
                     Name = resourceId.SpatialAnchorsAccountName;
+=======
+                    Name = resourceId.ResourceName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 var account = Client.SpatialAnchorsAccounts.Get(this.ResourceGroupName, this.Name);

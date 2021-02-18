@@ -26,9 +26,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
     /// </summary>
     public abstract class ManagedServicesCmdletBase : AzureRMCmdlet
     {
+<<<<<<< HEAD
         public string SubscriptionScopeStringFormat = "/subscriptions/{0}";
         public string RegistrationAssignmentFormat = "/{0}/providers/Microsoft.ManagedServices/registrationAssignments/{1}";
         private PSManagedServicesClient client;
+=======
+        public const string SubscriptionScopeStringFormat = "/subscriptions/{0}";
+
+        private PSManagedServicesClient client;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSManagedServicesClient PSManagedServicesClient
         {
             get
@@ -45,6 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
             }
         }
 
+<<<<<<< HEAD
         public string SubscriptionId
         {
             get
@@ -60,20 +68,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
                 assignments.ForEach(assignment => output.Add(new PSRegistrationAssignment(assignment)));
                 WriteObject(output, true);
             }
+=======
+        protected void WriteRegistrationAssignmentList(IPage<RegistrationAssignment> assignments)
+        {
+            List<PSRegistrationAssignment> output = new List<PSRegistrationAssignment>();
+            assignments?.ForEach(assignment => output.Add(new PSRegistrationAssignment(assignment)));
+            WriteObject(output, true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected void WriteRegistrationDefinitionsList(IPage<RegistrationDefinition> definitions)
         {
+<<<<<<< HEAD
             if (definitions != null)
             {
                 List<PSRegistrationDefinition> output = new List<PSRegistrationDefinition>();
                 definitions.ForEach(definition => output.Add(new PSRegistrationDefinition(definition)));
                 WriteObject(output, true);
             }
+=======
+            List<PSRegistrationDefinition> output = new List<PSRegistrationDefinition>();
+            definitions?.ForEach(definition => output.Add(new PSRegistrationDefinition(definition)));
+            WriteObject(output, true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public string GetDefaultScope()
         {
+<<<<<<< HEAD
             return string.Format(this.SubscriptionScopeStringFormat, DefaultContext.Subscription.Id);
         }
 
@@ -93,3 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         }
     }
 }
+=======
+            return string.Format(ManagedServicesCmdletBase.SubscriptionScopeStringFormat, DefaultContext.Subscription.Id);
+        }
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

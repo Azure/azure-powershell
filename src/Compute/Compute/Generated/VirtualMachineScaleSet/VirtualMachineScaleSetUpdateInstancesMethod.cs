@@ -45,7 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
+<<<<<<< HEAD
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+=======
+                    IList<string> instanceIds = this.InstanceId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     var result = VirtualMachineScaleSetsClient.UpdateInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse

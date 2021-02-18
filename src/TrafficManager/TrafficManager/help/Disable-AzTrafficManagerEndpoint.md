@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 8CC749F1-B961-4F8F-BAD4-2C0F4385D1C2
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -40,7 +44,11 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 PS C:\> Disable-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName ResourceGroup11 -Type ExternalEndpoints
 ```
 
+<<<<<<< HEAD
 This command disables the external endpoint named contoso in the profile named ContosoProfile in resource group ResouceGroup11.
+=======
+This command disables the external endpoint named contoso in the profile named ContosoProfile in resource group ResourceGroup11.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The command prompts you for confirmation.
 
 ### Example 2: Disable an endpoint by using the pipeline

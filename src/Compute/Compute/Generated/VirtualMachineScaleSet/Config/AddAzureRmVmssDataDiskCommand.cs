@@ -77,9 +77,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
+=======
+        public long DiskIOPSReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public long DiskMBpsReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
+        public string StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -93,7 +114,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
+<<<<<<< HEAD
                 this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // StorageProfile
@@ -116,12 +141,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
             vDataDisks.CreateOption = this.IsParameterBound(c => c.CreateOption) ? this.CreateOption : null;
             vDataDisks.DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null;
+<<<<<<< HEAD
+=======
+            vDataDisks.DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (long?)null;
+            vDataDisks.DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (long?)null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IsParameterBound(c => c.StorageAccountType))
             {
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
                 vDataDisks.ManagedDisk.StorageAccountType = this.StorageAccountType;
             }
+<<<<<<< HEAD
+=======
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vDataDisks.ManagedDisk == null)
+                {
+                    vDataDisks.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
+                }
+                // DiskEncryptionSet
+                vDataDisks.ManagedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                vDataDisks.ManagedDisk.DiskEncryptionSet.Id = this.DiskEncryptionSetId;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.VirtualMachineScaleSet);
         }

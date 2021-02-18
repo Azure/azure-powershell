@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
                 }
 
+<<<<<<< HEAD
                 if (compute.SubscriptionId != resourceId.SubscriptionId)
                 {
                     throw new ArgumentException(Resources.ComputeMismatchSubscription);
@@ -107,6 +108,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 if (resourceId.ResourceType.Provider == "galleries")
                 {
                     return await compute.GetGalleryImageAndOsTypeAsync(resourceId.ResourceGroupName, imageName);
+=======
+                if (resourceId.ResourceType.Provider == "galleries")
+                {
+                    var compute2 = client.GetClient<ComputeManagementClient>();
+                    compute2.SubscriptionId = resourceId.SubscriptionId;
+                    return await compute2.GetGalleryImageAndOsTypeAsync(resourceId.ResourceGroupName, imageName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 else
                 {

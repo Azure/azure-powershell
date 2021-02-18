@@ -26,6 +26,7 @@ function NamespaceAuthTests
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
 	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule"
+<<<<<<< HEAD
     
 
 	$StartTime = Get-Date
@@ -33,6 +34,13 @@ function NamespaceAuthTests
 	New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/eventhubs/testingsastoken/authorizationRules/BaseAuthorizationRule -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 	
 
+=======
+	$authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
+    
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
@@ -66,6 +74,26 @@ function NamespaceAuthTests
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
 
+<<<<<<< HEAD
+=======
+	$resultListen = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultAll3 = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultAll3.Name
+    Assert-AreEqual 3 $resultAll3.Rights.Count
+    Assert-True { $resultAll3.Rights -Contains "Send" }
+	Assert-True { $resultAll3.Rights -Contains "Listen" }
+	Assert-True { $resultAll3.Rights -Contains "Manage" }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug "Get created authorizationRule"
     $createdAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
@@ -118,6 +146,7 @@ function NamespaceAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
+<<<<<<< HEAD
     
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
@@ -127,6 +156,16 @@ function NamespaceAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
+=======
+
+
+	Write-Debug "Update Namespace AuthorizationRules"
+    $updatedAuthRule = Set-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen")
+    
+    Assert-AreEqual $authRuleName $updatedAuthRule.Name
+    Assert-AreEqual 1 $updatedAuthRule.Rights.Count
+    Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	
     Write-Debug "Get namespace authorizationRules connectionStrings"
     $namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
@@ -162,6 +201,10 @@ function NamespaceAuthTests
     
     Write-Debug " Delete namespaces"
     Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+<<<<<<< HEAD
+=======
+    Remove-AzEventHubNamespace -ResourceId $resultkafka.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
@@ -222,6 +265,14 @@ function NamespaceTests
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
 
+<<<<<<< HEAD
+=======
+	### change the Namespace SKU to Basic
+	Write-Debug "Namespace name : $namespaceName2"
+	$result = Set-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location -SkuName "Basic"
+	Assert-AreEqual $result.Sku.Name "Basic" "Namespace SKU not changed."
+	   
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzEventHubNamespace -ResourceGroup $secondResourceGroup
 	

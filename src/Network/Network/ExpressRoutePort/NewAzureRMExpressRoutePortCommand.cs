@@ -109,6 +109,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "User Assigned Identity for reading MacSec configuration")]
+        public PSManagedServiceIdentity Identity { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void Execute()
         {
             base.Execute();
@@ -129,6 +137,14 @@ namespace Microsoft.Azure.Commands.Network
                 Links = this.Link?.ToList(),
             };
 
+<<<<<<< HEAD
+=======
+            if (this.Identity != null)
+            {
+                vExpressRoutePort.Identity = this.Identity;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var vExpressRoutePortModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRoutePort>(vExpressRoutePort);
             vExpressRoutePortModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             var present = true;

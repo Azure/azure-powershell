@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ElasticPoolCrudTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         // Currently the test runs too long to be marked as a check-in test.
@@ -58,6 +64,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestElasticPoolCreateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-CreateElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
@@ -86,6 +102,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestElasticPoolUpdateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-UpdateElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestElasticPoolGet()
         {
             RunPowerShellTest("Test-GetElasticPool");
@@ -100,6 +126,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestElasticPoolGetWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-GetElasticPoolWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestElasticPoolRemove()
         {
             RunPowerShellTest("Test-RemoveElasticPool");

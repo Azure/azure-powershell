@@ -1,7 +1,11 @@
 ---
 Module Name: Az.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.datalakestore
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -27,7 +31,11 @@ Adds a virtual network rule to the specified Data Lake Store account.
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
 ### [Export-AzDataLakeStoreChildItemProperty](Export-AzDataLakeStoreChildItemProperty.md)
+<<<<<<< HEAD
 Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+=======
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a output path
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Export-AzDataLakeStoreItem](Export-AzDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.

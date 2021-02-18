@@ -41,12 +41,25 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
+=======
+           Mandatory = false,
+           HelpMessage = "The source addresses of the rule")]
+        public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
@@ -73,7 +86,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (FqdnTag != null)
             {
+<<<<<<< HEAD
                 this.Protocol = new string[] { "http", "https" };
+=======
+                this.Protocol = PSAzureFirewallApplicationRuleProtocol.AllProtocols().ToArray();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient).ToArray();
             }
 
@@ -84,6 +101,10 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress?.ToList(),
+<<<<<<< HEAD
+=======
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList()

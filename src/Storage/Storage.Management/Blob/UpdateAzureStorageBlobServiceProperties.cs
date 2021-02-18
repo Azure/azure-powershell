@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+<<<<<<< HEAD
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Modify Azure Storage service properties
@@ -83,6 +87,43 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public string DefaultServiceVersion { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableChangeFeed
+        {
+            get
+            {
+                return enableChangeFeed is null ? false : enableChangeFeed.Value;
+            }
+            set
+            {
+                enableChangeFeed = value;
+            }
+        }
+        private bool? enableChangeFeed = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Gets or sets versioning is enabled if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool IsVersioningEnabled
+        {
+            get
+            {
+                return isVersioningEnabled is null ? false : isVersioningEnabled.Value;
+            }
+            set
+            {
+                isVersioningEnabled = value;
+            }
+        }
+        private bool? isVersioningEnabled = null;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -103,17 +144,39 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
+<<<<<<< HEAD
                 BlobServiceProperties serviceProperties = null;
 
                 serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+=======
+                BlobServiceProperties serviceProperties = new BlobServiceProperties();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (DefaultServiceVersion != null)
                 {
                     serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
                 }
+<<<<<<< HEAD
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 
+=======
+                if (enableChangeFeed != null)
+                {
+                    serviceProperties.ChangeFeed = new ChangeFeed();
+                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
+                }
+                if (isVersioningEnabled != null)
+                {
+                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
+                }
+
+                serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
+
+                //Get the full service properties for output
+                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(new PSBlobServiceProperties(serviceProperties));
             }
         }

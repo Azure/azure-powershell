@@ -15,14 +15,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Management.ManagedServices.Models;
+<<<<<<< HEAD
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Collections.Generic;
 
     public class PSRegistrationDefinitionProperties
     {
         public string Description { get; set; }
 
+<<<<<<< HEAD
         public string Name { get; set; }
+=======
+        public string DisplayName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public string ManagedByTenantId { get; set; }
 
@@ -35,7 +42,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         public PSRegistrationDefinitionProperties(RegistrationDefinitionProperties registrationDefinitionProperties)
         {
             this.Description = registrationDefinitionProperties.Description;
+<<<<<<< HEAD
             this.Name = registrationDefinitionProperties.RegistrationDefinitionName;
+=======
+            this.DisplayName = registrationDefinitionProperties.RegistrationDefinitionName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.ManagedByTenantId = registrationDefinitionProperties.ManagedByTenantId;
             this.ManagedByTenantName = registrationDefinitionProperties.ManagedByTenantName;
             this.ProvisioningState = registrationDefinitionProperties.ProvisioningState;

@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -133,6 +137,18 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Connection Identifier cannot be null..
+        /// </summary>
+        internal static string Error_ConnectionIdentifierNull {
+            get {
+                return ResourceManager.GetString("Error_ConnectionIdentifierNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
         /// </summary>
         internal static string Error_GenericSyntax {
@@ -241,6 +257,27 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The provider {0} was not found at location {1}. Status: {2}.
+        /// </summary>
+        internal static string Error_ProviderNotFound {
+            get {
+                return ResourceManager.GetString("Error_ProviderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sku should be of type {0}.
+        /// </summary>
+        internal static string Error_Sku {
+            get {
+                return ResourceManager.GetString("Error_Sku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unable to convert legacy peering because {0} was null or empty..
         /// </summary>
         internal static string Error_UnableToConvertLegacy {
@@ -293,5 +330,17 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
                 return ResourceManager.GetString("Route_PrefixUnrecognized", resourceCulture);
             }
         }
+<<<<<<< HEAD
+=======
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This should return {0}.
+        /// </summary>
+        internal static string ShouldProcessMessage {
+            get {
+                return ResourceManager.GetString("ShouldProcessMessage", resourceCulture);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

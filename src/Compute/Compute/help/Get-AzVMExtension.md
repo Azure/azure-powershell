@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 842652D4-0F1C-4D0D-AB55-0D43D3C5D82A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmextension
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmextension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,11 +17,30 @@ Gets properties of Virtual Machine Extensions installed on a virtual machine.
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### GetExtensionParameterSet (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### VMParameterSet
+```
+Get-AzVMExtension [-Status] [-VMObject <PSVirtualMachine>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzVMExtension [-Status] [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **Get-AzVMExtension** cmdlet gets properties of Virtual Machine Extensions installed on a virtual machine.
 Specify the name of an extension for which to get properties.
@@ -98,6 +121,33 @@ AutoUpgradeMinorVersion : True
 ForceUpdateTag          :
 ```
 
+<<<<<<< HEAD
+=======
+### Example 4: Get properties of an extension using the VM parameter
+```
+PS C:\> $vm = Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine22"
+PS C:\> Get-AzVMExtension -VM $vm
+
+ResourceGroupName       : ResourceGroup11
+VMName                  : VirtualMachine22
+Name                    : CustomScriptExtension
+Location                : eastus
+Etag                    : null
+Publisher               : Microsoft.Azure.Extensions
+ExtensionType           : CustomScript
+TypeHandlerVersion      : 2.0
+Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup11
+                          /providers/Microsoft.Compute/virtualMachines/VirtualMachine22/extensions/CustomScriptExtension
+PublicSettings          : {}
+ProtectedSettings       :
+ProvisioningState       : Succeeded
+Statuses                :
+SubStatuses             :
+AutoUpgradeMinorVersion : True
+ForceUpdateTag          :
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This command gets the list of extensions installed on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 
 ## PARAMETERS
@@ -123,7 +173,11 @@ This cmdlet gets properties for the extension that this parameter specifies.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetExtensionParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: ExtensionName
 
 Required: False
@@ -138,7 +192,11 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetExtensionParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -148,6 +206,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ResourceId
+Resource Id specifying the virtual machine object the extension is on.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Status
 Indicates that this cmdlet gets only the instance view of an extension.
 
@@ -169,7 +245,11 @@ This cmdlet gets properties of an extension from the virtual machine that this p
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetExtensionParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: ResourceName
 
 Required: True
@@ -179,6 +259,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -VMObject
+Specifies the virtual machine object the extension is on.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameter Sets: VMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 

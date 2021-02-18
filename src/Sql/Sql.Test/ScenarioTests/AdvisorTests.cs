@@ -23,6 +23,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public AdvisorTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers",
+                "Microsoft.Sql/servers/databases"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         #region Server Advisor Tests
@@ -59,15 +66,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         #region Database Advisor Tests
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "unable to re-record")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseAdvisors()
         {
             RunPowerShellTest("Test-ListDatabaseAdvisors");
         }
 
+<<<<<<< HEAD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+=======
+        [Fact(Skip = "unable to re-record")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestListDatabaseAdvisorsExpanded()
         {
             RunPowerShellTest("Test-ListDatabaseAdvisorsExpanded");

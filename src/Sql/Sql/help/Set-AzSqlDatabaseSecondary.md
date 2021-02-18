@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F9703508-DD4D-4D25-A7CA-7E3432B5DCA9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasesecondary
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,14 +40,24 @@ In the latter case, the secondary database is synchronized with the primary befo
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Initiate a planned failover
 ```
+=======
+### Example 1: Initiate a planned failover
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $database = Get-AzSqlDatabase -DatabaseName $databaseName -ResourceGroupName $secondaryResourceGroupName -ServerName $secondaryServerName
 $database | Set-AzSqlDatabaseSecondary -PartnerResourceGroupName $primaryResourceGroupName -Failover
 ```
 
+<<<<<<< HEAD
 ### 2: Initiate a forced failover (with potential data loss)
 ```
+=======
+### Example 2: Initiate a forced failover (with potential data loss)
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $database = Get-AzSqlDatabase -DatabaseName $databaseName -ResourceGroupName $secondaryResourceGroupName -ServerName $secondaryServerName
 $database | Set-AzSqlDatabaseSecondary -PartnerResourceGroupName $primaryResourceGroupName -Failover -AllowDataLoss
 ```

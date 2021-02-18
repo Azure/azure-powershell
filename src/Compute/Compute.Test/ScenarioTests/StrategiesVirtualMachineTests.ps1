@@ -53,10 +53,17 @@ Test Simple Paremeter Set for New Vm
 function Test-SimpleNewVmFromSIGImage
 {
     #This test needs to be run form the following subscription in record mode :
+<<<<<<< HEAD
 	# 9e223dbe-3399-4e19-88eb-0975f02ac87f
 	#The vm needs to be created in the one of the following regions :
 	# "South Central US", "East US 2" and "Central US"
 	#To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+=======
+    # 9e223dbe-3399-4e19-88eb-0975f02ac87f
+    #The vm needs to be created in the one of the following regions :
+    # "South Central US", "East US 2" and "Central US"
+    #To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Setup
     $vmname = Get-ResourceName
 
@@ -102,14 +109,24 @@ function Test-SimpleNewVmWithUltraSSD
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
+<<<<<<< HEAD
 		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
 		#Use the follwing command to figure out the one to use 
 		#Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+=======
+        #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+        #Use the follwing command to figure out the one to use 
+        #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
+<<<<<<< HEAD
 		Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
+=======
+        Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
@@ -434,7 +451,10 @@ function Test-SimpleNewVmWithAvailabilitySet2
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
@@ -452,9 +472,14 @@ function Test-SimpleNewVmImageName
         [string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
+<<<<<<< HEAD
         $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" `
 							-offer "WindowsServer" -sku "2016-Datacenter"
 		$x = New-AzVM `
+=======
+        $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" -offer "WindowsServer" -sku "2016-Datacenter"
+        $x = New-AzVM `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
@@ -469,7 +494,10 @@ function Test-SimpleNewVmImageName
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
@@ -561,7 +589,11 @@ function Test-SimpleNewVmPpgId
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
+<<<<<<< HEAD
         $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppg.Id
+=======
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
     }
@@ -571,4 +603,75 @@ function Test-SimpleNewVmPpgId
         Clean-ResourceGroup $rgname
         Clean-ResourceGroup $vmname
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New VM with eviction policy, priority and max price.
+#>
+function Test-SimpleNewVmBilling
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EvictionPolicy 'Deallocate' -Priority 'Low' -MaxPrice 0.2;
+
+        Assert-AreEqual $vmname $vm.Name;
+        Assert-AreEqual 'Deallocate' $vm.EvictionPolicy;
+        Assert-AreEqual 'Low' $vm.Priority;     
+        Assert-AreEqual 0.2 $vm.BillingProfile.MaxPrice;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing creating VM with a shared gallery image from a different subscription.
+#>
+function Test-SimpleGalleryCrossTenant
+{
+    # Setup
+    # In order to record this test, please use another subscription to create a gallery image and share the image to the test subscription.  And then set the gallery image id here.
+    $imageId = "/subscriptions/97f78232-382b-46a7-8a72-964d692c4f3f/resourceGroups/xwRg/providers/Microsoft.Compute/galleries/galleryForCirrus/images/xwGalleryImageForCirrusWindows/versions/1.0.0";
+
+    $vmname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $password);
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Virtual Machine
+        New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName $imageId
+
+        $vm = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Assert-AreEqual $imageId $vm.StorageProfile.ImageReference.Id;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

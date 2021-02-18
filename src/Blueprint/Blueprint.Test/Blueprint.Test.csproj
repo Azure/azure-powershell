@@ -15,7 +15,11 @@
     <None Remove="UnitTests\**" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.14.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.20.7-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blueprint\Blueprint.csproj" />
@@ -25,7 +29,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
   </ItemGroup>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

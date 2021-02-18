@@ -14,7 +14,11 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.HDInsight.Models;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.HDInsight;
+=======
+using Microsoft.Azure.Management.HDInsight.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
@@ -78,8 +82,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&
+<<<<<<< HEAD
                                 string.IsNullOrEmpty(c.DefaultStorageAccountKey) &&
                                 string.IsNullOrEmpty(c.DefaultStorageAccountName) &&
+=======
+                                string.IsNullOrEmpty(c.StorageAccountKey) &&
+                                string.IsNullOrEmpty(c.StorageAccountResourceId) &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 string.IsNullOrEmpty(c.HeadNodeSize) &&
                                 string.IsNullOrEmpty(c.ZookeeperNodeSize) &&
                                 ((!setEdgeNodeVmSize && string.IsNullOrEmpty(c.EdgeNodeSize)) || (setEdgeNodeVmSize && c.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&

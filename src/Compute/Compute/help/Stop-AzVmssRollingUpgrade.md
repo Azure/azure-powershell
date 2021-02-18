@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/stop-azvmssrollingupgrade
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/stop-azvmssrollingupgrade
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,18 +16,24 @@ Cancels the current virtual machine scale set rolling upgrade.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### DefaultParameter (Default)
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Stop-AzVmssRollingUpgrade [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### FriendMethod
 ```
 Stop-AzVmssRollingUpgrade [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 Cancels the current virtual machine scale set rolling upgrade.
 
@@ -88,7 +98,11 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: DefaultParameter
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -103,7 +117,11 @@ The name of the VM scale set.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: DefaultParameter
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: Name
 
 Required: True

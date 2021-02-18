@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 98CB62E1-0A18-4207-81FA-07CC60310896
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azfirewallfqdntag
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azfirewallfqdntag
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

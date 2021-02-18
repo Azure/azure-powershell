@@ -587,7 +587,11 @@ function Test-DataLakeStoreFileSystem
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
 		[DateTimeOffset]$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::UtcNow.AddSeconds(120))
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath -Expiration $timeToUse
+<<<<<<< HEAD
 		Assert-NumAreInRange $timeToUse.UtcTicks $result.Expiration.UtcTicks 500000 # range of 50 milliseconds
+=======
+		Assert-NumAreInRange $timeToUse.UtcTicks $result.Expiration.UtcTicks 5000000 # range of 50 milliseconds
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		
 		# set it back to "never expire"
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath
@@ -647,6 +651,16 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual 3 $headTailResult[0]
 		Assert-AreEqual 4 $headTailResult[1]
 
+<<<<<<< HEAD
+=======
+        #Create a file with byte and read it
+        $byteDataFile="/byteData/filetest.txt"
+        [byte[]] $byteData = 1,2,3,4,5
+        New-AdlStoreItem -Account $accountName -Path $byteDataFile -Force -Value $byteData -Encoding Byte
+        $result = Get-AdlStoreItemContent -Account $accountName -path $byteDataFile -Encoding Byte
+        Assert-True {@(Compare-Object $byteData $result -SyncWindow 0).Length -eq 0}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		# Import and get file
 		$localFileInfo = Get-ChildItem $fileToCopy
 		$result = Import-AdlStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile
@@ -701,11 +715,19 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
+<<<<<<< HEAD
 		$targetFile = Join-Path $currentDir "DuOutput"
 		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
 		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
         Remove-Item -Path $targetFile
+=======
+		#$targetFile = Join-Path $currentDir "DuOutputAlias"
+		#Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		#$result = Get-Item -Path $targetFile
+		#Assert-NotNull $result "No file was created on export properties"
+        #Remove-Item -Path $targetFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# delete a file
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
@@ -856,11 +878,19 @@ function Test-DataLakeStoreFileSystemPermissions
 		Assert-AreEqual $($currentCount+1) $result.Count
 
 		# Export Acl
+<<<<<<< HEAD
 		$targetFile = "./ScenarioTests/acloutput"
 		Export-AdlStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile
         $result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
         Remove-Item -Path $targetFile
+=======
+		#$targetFile = "./ScenarioTests/acloutput"
+		#Export-AdlStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile
+        #$result = Get-Item -Path $targetFile
+		#Assert-NotNull $result "No file was created on export properties"
+        #Remove-Item -Path $targetFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		#Recursive Acl remove
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
@@ -984,7 +1014,11 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 	$serviceEndpoint = "Microsoft.AzureActiveDirectory"
 
 	$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
+<<<<<<< HEAD
 	$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+	$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
@@ -1012,7 +1046,11 @@ function Test-AdlsEnumerateAndRestoreDeletedItem
 	{
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
+<<<<<<< HEAD
 		$accountName = Get-DataLakeStoreAccountName
+=======
+		$accountName = Get-DataLakeStoreAccountName + "-c12" # testing accountname validation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
 		Assert-AreEqual $accountName $accountCreated.Name

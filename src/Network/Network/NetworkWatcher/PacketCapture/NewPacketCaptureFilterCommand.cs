@@ -29,7 +29,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipeline = true,
+<<<<<<< HEAD
              HelpMessage = "Procotol")]
+=======
+             HelpMessage = "Protocol")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 

@@ -117,6 +117,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.SystemLoadStatus = processServer.SystemLoadStatus;
             this.TotalMemoryInBytes = processServer.TotalMemoryInBytes;
             this.TotalSpaceInBytes = processServer.TotalSpaceInBytes;
+<<<<<<< HEAD
+=======
+            this.Health = processServer.Health;
+            this.PSStatsRefreshTime = processServer.PsStatsRefreshTime;
+            this.ThroughputUploadPendingDataInBytes = processServer.ThroughputUploadPendingDataInBytes;
+            this.ThroughputInMBps = processServer.ThroughputInMBps;
+            this.ThroughputInBytes = processServer.ThroughputInBytes;
+            this.ThroughputStatus = processServer.ThroughputStatus;
+            this.MarsCommunicationStatus = processServer.MarsCommunicationStatus;
+            this.MarsRegistrationStatus = processServer.MarsRegistrationStatus;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.Updates =
                 this.TranslateMobilityServiceUpdate(processServer.MobilityServiceUpdates);
         }
@@ -233,6 +244,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string VersionStatus { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///     Gets or sets the health of Process Server.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server stats refresh time.
+        /// </summary>
+        public DateTime? PSStatsRefreshTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the uploading pending data in bytes.
+        /// </summary>
+        public long? ThroughputUploadPendingDataInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput in MBps.
+        /// </summary>
+        public long? ThroughputInMBps { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput in bytes.
+        /// </summary>
+        public long? ThroughputInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput status.
+        /// </summary>
+        public string ThroughputStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MARS communication status.
+        /// </summary>
+        public string MarsCommunicationStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MARS registration status.
+        /// </summary>
+        public string MarsRegistrationStatus { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///     Translate Mobility updates into Powershell object.
         /// </summary>
         /// <param name="mobilityUpdates">List of Mobility service update object.</param>
@@ -576,6 +630,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.TargetDiskLocation = hyperVReplicaAzureVmDiskDetails.TargetDiskLocation;
             this.TargetDiskName = hyperVReplicaAzureVmDiskDetails.TargetDiskName;
             this.LunId = hyperVReplicaAzureVmDiskDetails.LunId;
+<<<<<<< HEAD
+=======
+            this.DiskId = hyperVReplicaAzureVmDiskDetails.DiskId;
+            this.DiskEncryptionSetId = hyperVReplicaAzureVmDiskDetails.DiskEncryptionSetId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -589,6 +648,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string VhdId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the disk id.
+        /// </summary>
+        public string DiskId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///    Gets or sets VHD name.
         /// </summary>
         public string VhdName { get; set; }
@@ -612,6 +679,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets ordinal\LunId of the disk for the Azure VM.
         /// </summary>
         public string LunId { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the DiskEncryptionSet ARM ID.
+        /// </summary>
+        public string DiskEncryptionSetId { get; set; }
+
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -670,6 +748,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRHyperVReplicaAzureSpecificRPIDetails(HyperVReplicaAzureReplicationDetails details)
         {
             this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
+<<<<<<< HEAD
+=======
+            this.RecoveryAvailabilityZone = details.TargetAvailabilityZone;
+            this.RecoveryProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.EnableRDPOnTargetOption = details.EnableRdpOnTargetOption;
             this.SourceVmCPUCount = details.SourceVmCpuCount;
             this.SourceVmRAMSizeInMB = details.SourceVmRamSizeInMB;
@@ -789,6 +872,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string LicenseType { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        ///     Gets or sets the resource ID of the availability zone to failover this virtual machine to.
+        /// </summary>
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the proximity placement group Id for replication protected item after failover.
+        /// </summary>
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -812,6 +908,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.OSDiskId = details.OsDiskId;
             this.OSType = details.OsType;
             this.ProcessServerId = details.ProcessServerId;
+<<<<<<< HEAD
+=======
+            this.ProcessServerName = details.ProcessServerName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.ProtectionStage = details.ProtectionStage;
             this.RecoveryAzureLogStorageAccountId = details.RecoveryAzureLogStorageAccountId;
             this.VHDName = details.VhdName;
@@ -841,6 +941,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VmId = details.VmId;
             this.VmProtectionState = details.VmProtectionState;
             this.VmProtectionStateDescription = details.VmProtectionStateDescription;
+<<<<<<< HEAD
+=======
+            this.RecoveryAvailabilityZone = details.TargetAvailabilityZone;
+            this.RecoveryProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (details.ProtectedDisks != null)
             {
                 this.ProtectedDiskDetails = new List<AsrVirtualHardDisk>();
@@ -912,6 +1017,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ProcessServerId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///     Process Server Name.
+        /// </summary>
+        public string ProcessServerName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///     Gets or sets Protected Disk Details of the Virtual machine.
         /// </summary>
         public List<AsrVirtualHardDisk> ProtectedDiskDetails { get; set; }
@@ -931,7 +1044,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string VHDName { get; set; }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         //
         // Summary:
         //     Gets or sets agent expiry date.
@@ -1091,6 +1207,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         // Summary:
         //     Gets or sets the protection state description for the vm.
         public string VmProtectionStateDescription { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        ///     Gets or sets the resource ID of the availability zone to failover this virtual machine to.
+        /// </summary>
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the proximity placement group Id for replication protected item after failover.
+        /// </summary>
+        public string RecoveryProximityPlacementGroupId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -1162,6 +1291,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     VHD Name.
         /// </summary>
         public string VHDName { get; set; }
+<<<<<<< HEAD
+=======
+
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VmId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -1184,6 +1321,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryAzureCloudService = details.RecoveryCloudService;
             this.RecoveryFabricLocation = details.RecoveryFabricLocation;
             this.RecoveryAvailabilitySet = details.RecoveryAvailabilitySet;
+<<<<<<< HEAD
+=======
+            this.RecoveryProximityPlacementGroupId = details.RecoveryProximityPlacementGroupId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.TestFailoverRecoveryFabricObjectId = details.TestFailoverRecoveryFabricObjectId;
             this.MonitoringJobType = details.MonitoringJobType;
             this.MonitoringPercentageCompletion = details.MonitoringPercentageCompletion;
@@ -1191,6 +1332,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
             this.RpoInSeconds = details.RpoInSeconds;
             this.IsReplicationAgentUpdateRequired = details.IsReplicationAgentUpdateRequired;
+<<<<<<< HEAD
+=======
+            this.VmEncryptionType = details.VmEncryptionType;
+            this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
+            this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
+            this.InitialPrimaryZone = details.InitialPrimaryZone;
+            this.InitialRecoveryZone = details.InitialRecoveryZone;
+            this.LifecycleId = details.LifecycleId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (details.LastHeartbeat != null)
             {
@@ -1213,11 +1363,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.A2ADiskDetails.AddRange(details.ProtectedManagedDisks.ToList().ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk)));
             }
 
+<<<<<<< HEAD
             if (details.ProtectedManagedDisks != null)
             {
                 this.A2ADiskDetails =
                     details.ProtectedManagedDisks.ToList()
                     .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+=======
+            if (details.UnprotectedDisks != null && details.UnprotectedDisks.Count > 0)
+            {
+                this.A2AUnprotectedDiskDetails = new List<AsrA2AUnprotectedDiskDetails>();
+                foreach (var unprotectedDisk in details.UnprotectedDisks)
+                {
+                    this.A2AUnprotectedDiskDetails.Add(
+                        new AsrA2AUnprotectedDiskDetails
+                        {
+                            DiskLunId = unprotectedDisk.DiskLunId ?? -1
+                        });
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (details.VmSyncedConfigDetails != null)
@@ -1229,6 +1393,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets A2A unprotected disk details.
+        /// </summary>
+        public List<AsrA2AUnprotectedDiskDetails> A2AUnprotectedDiskDetails { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Fabric object ARM Id.
         /// </summary>
         public string FabricObjectId { get; set; }
@@ -1275,6 +1447,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySet { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Recovery proximity placement group Id.
+        /// </summary>
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Synced configuration details of the virtual machine.
         /// </summary>
         public ASRAzureToAzureVmSyncedConfigDetails VmSyncedConfigDetails { get; set; }
@@ -1331,12 +1511,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public bool? IsReplicationAgentUpdateRequired;
 
+<<<<<<< HEAD
         // check do we need to expoxed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
         // public string LifecycleId;
         // public string managementId;
     }
 
+=======
+        /// <summary>
+        /// Gets or sets the VM encryption type.
+        /// </summary>
+        public string VmEncryptionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary fabric location.
+        /// </summary>
+        public string InitialPrimaryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery fabric location.
+        /// </summary>
+        public string InitialRecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary zone.
+        /// </summary>
+        public string InitialPrimaryZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery zone.
+        /// </summary>
+        public string InitialRecoveryZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the only constant ID throught out the enable disable cycle.
+        /// (with multiple switch protections in the middle) - Recovery Plans refer this ID.
+        /// </summary>
+        public string LifecycleId { get; set; }
+
+        // check do we need to expoxed these 2 (TODO)
+        // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
+        // public string managementId;
+    }
+
+    //
+    // Summary:
+    //     A2A unprotected disk details.
+    public class AsrA2AUnprotectedDiskDetails
+    {
+        //
+        // Summary:
+        //     Gets or sets the source lun Id for the data disk.
+        public int? DiskLunId { get; set; }
+    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// <summary>
     ///     types of process server failover.
     /// </summary>

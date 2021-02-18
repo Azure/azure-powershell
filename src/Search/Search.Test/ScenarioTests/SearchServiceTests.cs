@@ -36,56 +36,144 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchService()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchService");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchService");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceBasic()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceBasic");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchServiceBasic");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceL1()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceL1");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchServiceL1");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceIdentity()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchServiceIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServicePublicNetworkAccessDisabled()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchServicePublicNetworkAccessDisabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceIpRules()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzSearchServiceIpRules");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSearchService()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmSearchService");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchService");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSearchService()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RemoveAzureRmSearchService");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RemoveAzSearchService");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetSearchService()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmSearchService");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzSearchService");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSearchServiceAdminKey()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzureRmSearchServiceAdminKey");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchServiceAdminKey");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSearchServiceQueryKey()
         {
+<<<<<<< HEAD
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzureRmSearchServiceQueryKey");
+=======
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchServiceQueryKey");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateLinkResource()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateLinkResourcePipeline()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzSearchPrivateLinkResourcePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResources()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResources");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesPipeline()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResourcePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesJob()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzSearchSharedPrivateLinkResourceJob");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -23,7 +23,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public AzureHDInsightRuntimeScriptAction(RuntimeScriptAction runtimeScriptAction)
         {
             Name = runtimeScriptAction.Name;
+<<<<<<< HEAD
             Uri = runtimeScriptAction.Uri;
+=======
+            Uri =  runtimeScriptAction.Uri != null ? new Uri(runtimeScriptAction.Uri) : null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Parameters = runtimeScriptAction.Parameters;
             NodeTypes = runtimeScriptAction.Roles.ToArray();
             ApplicationName = runtimeScriptAction.ApplicationName;

@@ -94,8 +94,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 cacheId = CacheId;
             }
 
+<<<<<<< HEAD
             var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.CacheRemoveDescription, CacheId);
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.CacheRemoveWarning, CacheId);
+=======
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.CacheRemoveDescription, cacheId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.CacheRemoveWarning, cacheId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -106,7 +111,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
+<<<<<<< HEAD
             Client.CacheRemove(resourceGroupName, serviceName, CacheId);
+=======
+            Client.CacheRemove(resourceGroupName, serviceName, cacheId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (PassThru.IsPresent)
             {

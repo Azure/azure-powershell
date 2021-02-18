@@ -2,7 +2,11 @@
   <Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net461</TargetFramework>
+=======
+    <TargetFramework>netstandard2.0</TargetFramework>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <AssemblyName>Microsoft.Azure.PowerShell.Authenticators</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Authenticators</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -23,7 +27,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="System.Windows.Forms" />
+=======
+    <PackageReference Include="Azure.Identity" Version="1.4.0-beta.1" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>

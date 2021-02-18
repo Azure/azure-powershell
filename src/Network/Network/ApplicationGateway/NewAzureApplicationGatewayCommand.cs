@@ -94,6 +94,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
+=======
+             HelpMessage = "The list of trusted client CA certificate chains")]
+        public PSApplicationGatewayTrustedClientCertificate[] TrustedClientCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
              HelpMessage = "The list of frontend IP config")]
         public PSApplicationGatewayFrontendIPConfiguration[] FrontendIPConfigurations { get; set; }
 
@@ -122,6 +131,15 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of ssl profiles")]
+        public PSApplicationGatewaySslProfile[] SslProfiles { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of http listener")]
@@ -185,6 +203,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = " Whether Force firewallPolicy association is enabled.")]
+        public SwitchParameter ForceFirewallPolicyAssociation { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A list of availability zones denoting where the application gateway needs to come from.")]
         public string[] Zone { get; set; }
 
@@ -224,6 +250,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of privateLink Configuration")]
+        public PSApplicationGatewayPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -284,6 +316,14 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.TrustedRootCertificates =this.TrustedRootCertificate?.ToList();
             }
 
+<<<<<<< HEAD
+=======
+            if (this.TrustedClientCertificates != null)
+            {
+                applicationGateway.TrustedClientCertificates = this.TrustedClientCertificates?.ToList();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.FrontendIPConfigurations != null)
             {
                 applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations?.ToList();
@@ -309,6 +349,14 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection?.ToList();
             }
 
+<<<<<<< HEAD
+=======
+            if (this.SslProfiles != null)
+            {
+                applicationGateway.SslProfiles = this.SslProfiles?.ToList();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.HttpListeners != null)
             {
                 applicationGateway.HttpListeners = this.HttpListeners?.ToList();
@@ -350,6 +398,14 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
             }
 
+<<<<<<< HEAD
+=======
+            if (this.PrivateLinkConfiguration != null)
+            {
+                applicationGateway.PrivateLinkConfigurations = this.PrivateLinkConfiguration?.ToList();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.EnableHttp2.IsPresent)
             {
                 applicationGateway.EnableHttp2 = true;
@@ -360,6 +416,14 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.EnableFips = true;
             }
 
+<<<<<<< HEAD
+=======
+            if (this.ForceFirewallPolicyAssociation.IsPresent)
+            {
+                applicationGateway.ForceFirewallPolicyAssociation = true;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.Zone != null)
             {
                 applicationGateway.Zones = this.Zone?.ToList();

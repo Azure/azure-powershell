@@ -1,0 +1,73 @@
+{
+  "Remove-AzMigrateProject+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview",
+      "Content": "{\n  \"eTag\": \"*\",\n  \"location\": \"centralus\",\n  \"properties\": {\n    \"registeredTools\": [ \"\" ]\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "97" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000722e-0000-0300-0000-5f6e412c0000\"" ],
+        "x-ms-request-id": [ "2f205689-49aa-417d-b241-aab504968318" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "94ad3aa7-ac67-41f8-b62a-891db1d9c50c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191244Z:94ad3aa7-ac67-41f8-b62a-891db1d9c50c" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1429" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/AzMigratePwshTestProj\",\"name\":\"AzMigratePwshTestProj\",\"type\":\"Microsoft.Migrate/MigrateProjects\",\"etag\":\"\\\"0000722e-0000-0300-0000-5f6e412c0000\\\"\",\"location\":\"centralus\",\"properties\":{\"registeredTools\":[\"ServerMigration\"],\"serviceEndpoint\":\"https://pod01-amh1.cus.hypervrecoverymanager.windowsazure.com/resources/689c266c-5605-4b38-8bd4-4946d64ad3a6\",\"summary\":{\"servers\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":0,\"testMigratedCount\":0,\"migratedCount\":0,\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{\"microsoftDiscoveredCount\":\"0\",\"microsoftMachinesCount\":\"0\"}},\"databases\":{\"instanceType\":\"Databases\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{}},\"webApplications\":{\"instanceType\":\"WebApplications\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:44.5102112Z\",\"extendedSummary\":{}},\"desktopVirtualization\":{\"instanceType\":\"DesktopVirtualization\",\"refreshSummaryState\":\"Completed\",\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"extendedSummary\":{}}},\"lastSummaryRefreshedTime\":\"2020-09-25T19:12:39.6843326Z\",\"refreshSummaryState\":\"Completed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Remove-AzMigrateProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "021f4be9-e499-4233-950d-3602a04e7322" ],
+        "CommandName": [ "Remove-AzMigrateProject" ],
+        "FullCommandName": [ "Remove-AzMigrateProject_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "0003c910-902f-4542-bcb4-e69a93598a86" ],
+        "x-ms-correlation-request-id": [ "0003c910-902f-4542-bcb4-e69a93598a86" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191246Z:0003c910-902f-4542-bcb4-e69a93598a86" ],
+        "Date": [ "Fri, 25 Sep 2020 19:12:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

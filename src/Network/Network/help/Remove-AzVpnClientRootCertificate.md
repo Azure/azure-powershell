@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5D857FF6-A27D-4031-948D-8A69D24B4AD4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvpnclientrootcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvpnclientrootcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,10 +33,17 @@ For more information about the text representation of a certificate see the *Pub
 ## EXAMPLES
 
 ### Example 1: Remove a client root certificate from a virtual network gateway
+<<<<<<< HEAD
 ```
 PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
 PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway"-VpnClientRootCertificateName "ContosoRootCertificate"
+=======
+```powershell
+PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
+PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoRootCertificate"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This example removes a client root certificate named ContosoRootCertificate from the virtual network gateway ContosoVirtualGateway.
@@ -67,7 +78,11 @@ MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
 You can retrieve the PublicCertData using Windows PowerShell commands similar to this:
+<<<<<<< HEAD
 $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+=======
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml

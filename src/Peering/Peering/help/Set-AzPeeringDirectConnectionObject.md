@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringdirectconnectionobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.peering/set-azpeeringdirectconnectionobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -32,7 +36,17 @@ Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -SessionPr
 
 ### Md5Authentication
 ```
+<<<<<<< HEAD
 Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-MD5AuthenticationKey <String>]
+=======
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -MD5AuthenticationKey <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ParameterSetNameUseForPeeringService
+```
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -UseForPeeringService <Boolean>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,6 +69,22 @@ PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1
 
 Updates the Peering Address for the first connection in the Peering object in memory. 
 
+<<<<<<< HEAD
+=======
+### Update Use for peering service
+```powershell
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
+
+PeeringDBFacilityId    : 99999
+UseForPeeringService   : True
+SessionAddressProvider : Microsoft
+ConnectionIdentifier   : 16c24fd5-89aa-48d7-a101-38ca68a4ce6d
+BandwidthInMbps        : 30000
+```
+
+Updates the connection for use with peering service
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -BandwidthInMbps
@@ -140,7 +170,11 @@ Type: System.String
 Parameter Sets: Md5Authentication
 Aliases:
 
+<<<<<<< HEAD
 Required: False
+=======
+Required: True
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -177,8 +211,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+### -UseForPeeringService
+Enable for use with Microsoft Peering Service (MPS).
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: ParameterSetNameUseForPeeringService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

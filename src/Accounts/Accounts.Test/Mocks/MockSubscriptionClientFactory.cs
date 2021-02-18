@@ -12,13 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
+=======
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Rest.Azure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,12 +33,26 @@ using System.Collections;
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
     public class MockSubscriptionClientFactory
+=======
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
+{
+    public partial class MockSubscriptionClientFactory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         private IList<string> _tenants;
         private Queue<List<string>> _subscriptions;
         private HashSet<string> _subscriptionSet;
+<<<<<<< HEAD
         private static Queue<Func<AzureOperationResponse<Subscription>>> _getAsyncQueue;
         private static Queue<Func<AzureOperationResponse<IPage<Subscription>>>> _listAsyncQueue;
+=======
+
+        public delegate Task<AzureOperationResponse<T>> DeGetAsyncQueue<T>();
+        public delegate Task<AzureOperationResponse<IPage<T>>> DeListAsyncQueue<T>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public MockSubscriptionClientFactory(List<string> tenants, Queue<List<string>> subscriptions)
         {
@@ -49,6 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }
         }
 
+<<<<<<< HEAD
         public static string GetSubscriptionNameFromId(string id)
         {
             return "Sub-" + id;
@@ -176,6 +197,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
 
         private class MockPage<T> : IPage<T>
+=======
+        public MockSubscriptionClientFactory()
+        {
+        }
+
+        public static string GetSubscriptionNameFromId(string id)
+        {
+            return "Sub-" + id;
+        }
+
+        internal class MockPage<T> : IPage<T>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             public MockPage(IList<T> Items)
             {

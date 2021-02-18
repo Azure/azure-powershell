@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,6 +42,7 @@ Set-AzIotHub -ResourceGroupName <String> -Name <String> -CloudToDevice <PSCloudT
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### UpdateOperationsMonitoringProperties
 ```
 Set-AzIotHub -ResourceGroupName <String> -Name <String>
@@ -45,6 +50,8 @@ Set-AzIotHub -ResourceGroupName <String> -Name <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### UpdateRoutingProperties
 ```
 Set-AzIotHub -ResourceGroupName <String> -Name <String> [-RoutingProperties <PSRoutingProperties>]
@@ -81,7 +88,11 @@ Update the sku to S1 and units to 5 for the IotHub named "myiothub"
 PS C:\> Set-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubRetentionTimeInDays 4
 ```
 
+<<<<<<< HEAD
 Update the retention time in days to 4 for both the telemetry and operationsmonitoringevents events for the IotHub named "myiothub"
+=======
+Update the retention time of telemetry in days to 4 for the IotHub named "myiothub"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -250,6 +261,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -OperationsMonitoringProperties
 The properties related to operations monitoring. 
 
@@ -265,6 +277,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceGroupName
 Resource Group Name
 

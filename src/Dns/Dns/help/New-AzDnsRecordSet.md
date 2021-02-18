@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnsrecordset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.dns/new-azdnsrecordset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -104,7 +108,11 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 ```
 PS C:\> $Records = @()
 PS C:\> $Records += New-AzDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+<<<<<<< HEAD
 PS C:\> $RecordSet = New-AzDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
+=======
+PS C:\> $RecordSet = New-AzDnsRecordSet -Name "mail" -RecordType MX -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command creates a **RecordSet** named www in the zone myzone.com.
@@ -239,7 +247,11 @@ Accept wildcard characters: False
 
 ### -Metadata
 Specifies an array of metadata to associate with the RecordSet.
+<<<<<<< HEAD
 Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).
+=======
+Metadata is specified using name-value pairs that are represented as hash tables, for example @{"dept"="shopping";"env"="production"}.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable

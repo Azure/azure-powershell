@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/start-azservicebusmigration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,6 +29,7 @@ The **Start-AzServiceBusMigration** cmdlet creates an new Migration configuratio
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> Start-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation -TargetNameSpace /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation -PostMigrationName TestingNamespaceStandardMirgationPostMigration
 
 Name              : TestingNamespaceStandardMirgation
@@ -36,6 +41,19 @@ PostMigrationName : TestingNamespaceStandardMirgationPostMigration
 ```
 
 Creates a new migration configuration for 'TestingNamespaceStandardMirgation' to 'TestingNamespacePremiumMirgation' namespaces
+=======
+PS C:\> Start-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration -TargetNameSpace /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMigration -PostMigrationName TestingNamespaceStandardMigrationPostMigration
+
+Name              : TestingNamespaceStandardMigration
+Id                : /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMigration/migrationConfigurations/$default
+Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
+ProvisioningState : Accepted
+TargetNamespace   : /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMigration
+PostMigrationName : TestingNamespaceStandardMigrationPostMigration
+```
+
+Creates a new migration configuration for 'TestingNamespaceStandardMigration' to 'TestingNamespacePremiumMigration' namespaces
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -85,7 +103,11 @@ Accept wildcard characters: False
 ```
 
 ### -PostMigrationName
+<<<<<<< HEAD
 Post Migration Name for Standrad Namespace in Migration
+=======
+Post Migration Name for Standard Namespace in Migration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

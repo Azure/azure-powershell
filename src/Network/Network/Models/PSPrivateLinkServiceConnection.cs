@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSPrivateLinkServiceConnection : PSChildResource
     {
+<<<<<<< HEAD
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateLinkServiceId { get; set; }
@@ -30,6 +31,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string RequestMessage { get; set; }
         [JsonProperty(Order = 1)]
+=======
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateLinkServiceId { get; set; }
+
+        public List<string> GroupIds { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string RequestMessage { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
         [JsonIgnore]

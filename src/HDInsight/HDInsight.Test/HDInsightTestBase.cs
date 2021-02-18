@@ -13,6 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -44,6 +49,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         public virtual void SetupTestsForData()
         {
+<<<<<<< HEAD
+=======
+            //This is because job test need to use ClientFactory,however scenario test will create a MockClientFactory
+            AzureSession.Instance.ClientFactory = new ClientFactory();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             hdinsightManagementMock = new Mock<AzureHdInsightManagementClient>();
             var cred = new BasicAuthenticationCloudCredentials { Username = "username", Password = "Password1!" };
             hdinsightJobManagementMock = new Mock<AzureHdInsightJobManagementClient>(ClusterName, cred);
@@ -53,6 +64,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public virtual void SetupManagementClientForJobTests()
         {
             // Update HDInsight Management properties for Job.
+<<<<<<< HEAD
             var cluster1 = new Cluster
             {
                 Id = "/subscriptions/" + Guid.NewGuid() + "/resourceGroups/" + ResourceGroupName + "/providers/Microsoft.HDInsight/clusters/" + ClusterName,
@@ -65,17 +77,39 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            var cluster1 = new Cluster(
+                id: $"/subscriptions/{Guid.NewGuid()}/resourceGroups/{ResourceGroupName}/providers/Microsoft.HDInsight/clusters/{ClusterName}",
+                name: ClusterName)
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows,
+=======
+                    OsType = OSType.Linux,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     ConnectivityEndpoints = new List<ConnectivityEndpoint> { new ConnectivityEndpoint { Location = ClusterName, Name = "HTTPS" } }
                 }
             };
 
+<<<<<<< HEAD
             var listresponse = new ClusterListResponse { Clusters = new[] { cluster1 } };
+=======
+            var listresponse = new[] { cluster1 };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             hdinsightManagementMock.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();
@@ -92,6 +126,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Returns(configurationResponse)
                 .Verifiable();
 
+<<<<<<< HEAD
             var listConfigurationsResponse = new ClusterListConfigurationsResponse
             {
                 Configurations = new Dictionary<string, ClusterConfiguration>
@@ -101,6 +136,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         {
                             Configuration=configurationResponse
                         }
+=======
+            var listConfigurationsResponse = new ClusterConfigurations
+            {
+                Configurations = new Dictionary<string, IDictionary<string, string>>
+                {
+                    {
+                        "core-site", configurationResponse
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 }
             };

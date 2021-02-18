@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Common
                 sb.Append(cloudException.Message);
             }
 
+<<<<<<< HEAD
             if (cloudException.Response == null)
             {
                 return sb.ToString();
@@ -96,6 +97,74 @@ namespace Microsoft.Azure.Commands.Network.Common
                 sb.AppendLine().AppendFormat(
                     "OperationID : '{0}'",
                     operationId);
+=======
+            if (cloudException.Response != null)
+            {
+                sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
+
+                if (cloudException.Response.ReasonPhrase != null)
+                {
+                    sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
+                }
+
+                if (cloudException.Response.Content != null)
+                {
+                    var errorReturned = JsonConvert.DeserializeObject<PSNetworkLongRunningOperation>(
+                        cloudException.Response.Content);
+
+                    if (!string.IsNullOrEmpty(errorReturned.Status))
+                    {
+                        sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
+                    }
+
+                    if (errorReturned.Error != null)
+                    {
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Code))
+                        {
+                            sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                        }
+
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Target))
+                        {
+                            sb.AppendLine().AppendFormat("Target: {0}", errorReturned.Error.Target);
+                        }
+
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Message))
+                        {
+                            sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+                        }
+                    }
+                }
+            }
+
+            if (cloudException.Body != null && cloudException.Body.Details != null)
+            {
+                if (cloudException.Body.Details.Count != 0)
+                {
+                    sb.AppendLine().Append("Additional details:");
+
+                    for (int i = 0, l = cloudException.Body.Details.Count; i < l; i++)
+                    {
+                        var details = cloudException.Body.Details[i];
+                        string index = l == 1 ? string.Empty : string.Format("{0}. ", i + 1);
+
+                        if (!string.IsNullOrEmpty(details.Code))
+                        {
+                            sb.AppendLine().AppendFormat("    {0}Code: {1}", index, details.Code);
+                        }
+
+                        if (!string.IsNullOrEmpty(details.Message))
+                        {
+                            sb.AppendLine().AppendFormat("    {0}Message: {1}", index, details.Message);
+                        }
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(cloudException.RequestId))
+            {
+                sb.AppendLine().AppendFormat("OperationID : {0}", cloudException.RequestId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return sb.ToString();

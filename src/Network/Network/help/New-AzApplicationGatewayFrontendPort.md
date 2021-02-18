@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3C046A0A-A2B6-413C-8D3B-8991A1FC4926
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfrontendport
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfrontendport
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,8 +27,13 @@ The **New-AzApplicationGatewayFrontendPort** cmdlet creates a front-end port for
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example1: Create a front-end port
 ```
+=======
+### Example 1: Example1: Create a front-end port
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>$FrontEndPort = New-AzApplicationGatewayFrontendPort -Name "FrontEndPort01" -Port 80
 ```
 

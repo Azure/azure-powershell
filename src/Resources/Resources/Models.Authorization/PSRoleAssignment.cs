@@ -35,5 +35,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public string ObjectType { get; set; }
 
         public bool CanDelegate { get; set; }
+<<<<<<< HEAD
+=======
+
+        public string Description { get; set; }
+
+        public string ConditionVersion { get; set; }
+
+        public string Condition { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

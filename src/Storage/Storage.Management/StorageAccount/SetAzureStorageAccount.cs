@@ -42,6 +42,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string KeyvaultEncryptionParameterSet = "KeyvaultEncryption";
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Set ActiveDirectoryDomainServicesForFile parameter set name
+        /// </summary>
+        private const string ActiveDirectoryDomainServicesForFileParameterSet = "ActiveDirectoryDomainServicesForFile";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -78,6 +86,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.SkuName.StandardGRS,
             StorageModels.SkuName.StandardRAGRS,
             StorageModels.SkuName.PremiumLRS,
+<<<<<<< HEAD
+=======
+            StorageModels.SkuName.StandardGZRS,
+            StorageModels.SkuName.StandardRAGZRS,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -151,7 +164,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string KeyName { get; set; }
 
         [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion",
+<<<<<<< HEAD
         Mandatory = true,
+=======
+        Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ParameterSetName = KeyvaultEncryptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string KeyVersion { get; set; }
@@ -185,7 +202,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+=======
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.",
+            ParameterSetName = StorageEncryptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.",
+            ParameterSetName = KeyvaultEncryptionParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public bool EnableAzureActiveDirectoryDomainServicesForFile
         {
@@ -200,6 +226,152 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
+        public SwitchParameter EnableLargeFileShare { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'")]
+        [ValidateSet(
+            Microsoft.Azure.Management.Storage.Models.RoutingChoice.MicrosoftRouting,
+            Microsoft.Azure.Management.Storage.Models.RoutingChoice.InternetRouting,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RoutingChoice;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether microsoft routing storage endpoints are to be published")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishMicrosoftEndpoint
+        {
+            get
+            {
+                return publishMicrosoftEndpoint.Value;
+            }
+            set
+            {
+                publishMicrosoftEndpoint = value;
+            }
+        }
+        private bool? publishMicrosoftEndpoint = null;
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether internet  routing storage endpoints are to be published")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishInternetEndpoint
+        {
+            get
+            {
+                return publishInternetEndpoint.Value;
+            }
+            set
+            {
+                publishInternetEndpoint = value;
+            }
+        }
+        private bool? publishInternetEndpoint = null;
+        
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Enable Azure Files Active Directory Domain Service Authentication for the storage account.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool EnableActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableActiveDirectoryDomainServicesForFile = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryNetBiosDomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Active Directory forest to get. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryForestName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainGuid { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the security identifier (SID). This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryDomainSid { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryAzureStorageSid { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow or disallow public access to all blobs or containers in the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowBlobPublicAccess
+        {
+            get
+            {
+                return allowBlobPublicAccess.Value;
+            }
+            set
+            {
+                allowBlobPublicAccess = value;
+            }
+        }
+        private bool? allowBlobPublicAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage.")]
+        [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
+            StorageModels.MinimumTlsVersion.TLS11,
+            StorageModels.MinimumTlsVersion.TLS12,
+            IgnoreCase = true)]
+        public string MinimumTlsVersion
+        {
+            get
+            {
+                return minimumTlsVersion;
+            }
+            set
+            {
+                minimumTlsVersion = value;
+            }
+        }
+        private string minimumTlsVersion = null;
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -269,6 +441,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (enableAzureActiveDirectoryDomainServicesForFile != null)
                     {
+<<<<<<< HEAD
                         updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                         if (enableAzureActiveDirectoryDomainServicesForFile.Value)
                         {
@@ -279,6 +452,116 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                         }
                     }
+=======
+                        if (enableAzureActiveDirectoryDomainServicesForFile.Value) // enable AADDS
+                        {
+                            //if user want to enable AADDS, must first disable AD
+                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null 
+                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            {
+                                throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
+                            }
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                        }
+                        else //Disable AADDS
+                        {
+                            // Only disable AADDS; else keep unchanged
+                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+                            {
+                                updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                                updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                            }
+                            else
+                            {
+                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                            }
+                        }
+                    }
+                    if (enableActiveDirectoryDomainServicesForFile != null)
+                    {
+
+                        if (enableActiveDirectoryDomainServicesForFile.Value) // Enable AD
+                        {
+                            if (string.IsNullOrEmpty(this.ActiveDirectoryDomainName)
+                                || string.IsNullOrEmpty(this.ActiveDirectoryNetBiosDomainName)
+                                || string.IsNullOrEmpty(this.ActiveDirectoryForestName)
+                                || string.IsNullOrEmpty(this.ActiveDirectoryDomainGuid)
+                                || string.IsNullOrEmpty(this.ActiveDirectoryDomainSid)
+                                || string.IsNullOrEmpty(this.ActiveDirectoryAzureStorageSid)
+                                )
+                            {
+                                throw new System.ArgumentNullException("ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid",
+                                    "To enable ActiveDirectoryDomainServicesForFile, user must specify all of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid.");
+                            }
+
+                            //if user want to enable AD, must first disable AADDS
+                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
+                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+                            {
+                                throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
+                            }
+
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AD;
+                            updateParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()
+                            {
+                                DomainName = this.ActiveDirectoryDomainName,
+                                NetBiosDomainName = this.ActiveDirectoryNetBiosDomainName,
+                                ForestName = this.ActiveDirectoryForestName,
+                                DomainGuid = this.ActiveDirectoryDomainGuid,
+                                DomainSid = this.ActiveDirectoryDomainSid,
+                                AzureStorageSid = this.ActiveDirectoryAzureStorageSid
+                            };
+                        }
+                        else // Disable AD
+                        {
+                            if (!string.IsNullOrEmpty(this.ActiveDirectoryDomainName)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryNetBiosDomainName)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryForestName)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryDomainGuid)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryDomainSid)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryAzureStorageSid)
+                                )
+                            {
+                                throw new System.ArgumentException("To Disable ActiveDirectoryDomainServicesForFile, user can't specify any of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid.");
+                            }
+
+                            // Only disable AD; else keep unchanged
+                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            {
+                                updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                                updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                            }
+                            else
+                            {
+                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                            }
+                        }
+                    }
+                    if (this.EnableLargeFileShare.IsPresent)
+                    {
+                        updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
+                    }
+                    if (this.minimumTlsVersion != null)
+                    {
+                        updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
+                    }
+                    if (this.allowBlobPublicAccess != null)
+                    {
+                        updateParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
+                    }
+                    if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+                    { 
+                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                         this.ResourceGroupName,

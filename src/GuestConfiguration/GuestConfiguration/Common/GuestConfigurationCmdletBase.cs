@@ -196,6 +196,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
                 {
                     var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
+<<<<<<< HEAD
                     GuestConfigurationAssignmentReport gcrpReport = null;
                     if (gcPolicyAssignment.LatestReportId != null)
                     {
@@ -208,6 +209,43 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                     queryOptions.OrderBy = "Timestamp desc";
                     queryOptions.Top = 1;
                     PolicyStatesQueryResults policyDbResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition("latest", DefaultContext.Subscription.Id, gcPolicyAssignment.PolicySetDefinitionName, queryOptions);
+=======
+                    GuestConfigurationAssignmentReport gcrpVMReport = null;
+                    GuestConfigurationAssignmentReport gcrpHCReport = null;
+                    GuestConfigurationAssignmentReport gcrpReport = null;
+                    if (gcPolicyAssignment.LatestReportId != null)
+                    {
+                        //check Azure VM
+                        try
+                        {
+                            gcrpVMReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                        }
+                        catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+                        {
+                            this.WriteVerbose(string.Format(StringResources.NotFoundByReportId, reportGuid));
+                        }
+
+                        //check HybridCompute machine
+                        try
+                        {
+                            gcrpHCReport = GuestConfigurationClient.GuestConfigurationHCRPAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                        }
+                        catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+                        {
+                            this.WriteVerbose(string.Format(StringResources.NotFoundByReportId, reportGuid));
+                        }
+                        
+                        gcrpReport = gcrpVMReport != null ? gcrpVMReport : gcrpHCReport;
+                    }
+                    
+
+                    PolicyStatusDetailed policyDetailed = new PolicyStatusDetailed(gcrpReport, gcPolicyAssignment);
+                    QueryOptions queryOptions = new QueryOptions();
+                    queryOptions.Filter = string.Format("PolicySetDefinitionName eq '{0}' and contains(ResourceId,'{1}')", gcPolicyAssignment.PolicySetDefinitionName, vmName);
+                    queryOptions.OrderBy = "Timestamp desc";
+                    queryOptions.Top = 1;
+                    PolicyStatesQueryResults policyDbResults= PolicyInsightsClient.PolicyStates.ListQueryResultsForResourceGroup("latest", DefaultContext.Subscription.Id, resourceGroupName, queryOptions);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].IsCompliant.HasValue && !policyDbResults.Value[0].IsCompliant.Value)
                     {
                         policyDetailed.ComplianceStatus = "NonCompliant";
@@ -286,15 +324,45 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         protected IEnumerable<GuestConfigurationAssignment> GetAllGCRPAssignments(string resourceGroupName, string vmName)
         {
             IEnumerable<GuestConfigurationAssignment> gcrpAssignments = null;
+<<<<<<< HEAD
             try
             {
                 gcrpAssignments = GuestConfigurationClient.GuestConfigurationAssignments.List(resourceGroupName, vmName);
+=======
+            IEnumerable<GuestConfigurationAssignment> gcrpVMAssignments = null;
+            IEnumerable<GuestConfigurationAssignment> gcrpHCAssignments = null;
+            //check Azure VM
+            try
+            {
+                gcrpVMAssignments = GuestConfigurationClient.GuestConfigurationAssignments.List(resourceGroupName, vmName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
             {
                 this.WriteVerbose(string.Format(StringResources.InvalidRGOrVMName, resourceGroupName, vmName));
+<<<<<<< HEAD
                 throw exception;
             }
+=======
+            }
+
+            //check HybridCompute machine
+            try
+            {
+                gcrpHCAssignments = GuestConfigurationClient.GuestConfigurationHCRPAssignments.List(resourceGroupName, vmName);
+            }
+            catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+            {
+                this.WriteVerbose(string.Format(StringResources.InvalidRGOrVMName, resourceGroupName, vmName));
+            }
+
+            gcrpAssignments = gcrpVMAssignments != null ? gcrpVMAssignments : gcrpHCAssignments;
+            if (gcrpAssignments == null)
+            {
+                throw new ErrorResponseException(StringResources.InvalidRGOrVMName);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return gcrpAssignments;
         }
 
@@ -466,7 +534,34 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             foreach (var gcPolicyAssignment in policyStatusesArray)
             {
+<<<<<<< HEAD
                 var gcrpReportss = GuestConfigurationClient.GuestConfigurationAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
+=======
+                GuestConfigurationAssignmentReportList gcrpVMReportss = null;
+                GuestConfigurationAssignmentReportList gcrpHCReportss = null;
+
+                //check Azure VM
+                try
+                {
+                    gcrpVMReportss = GuestConfigurationClient.GuestConfigurationAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
+                }
+                catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+                {
+                    this.WriteVerbose(string.Format(StringResources.InvalidRGOrVMName, resourceGroupName, vmName));
+                }
+
+                //check HybridCompute machine
+                try
+                {
+                    gcrpHCReportss = GuestConfigurationClient.GuestConfigurationHCRPAssignmentReports.List(resourceGroupName, gcPolicyAssignment.Configuration.Name, vmName);
+                }
+                catch (GuestConfigurationErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
+                {
+                    this.WriteVerbose(string.Format(StringResources.InvalidRGOrVMName, resourceGroupName, vmName));
+                }
+
+                var gcrpReportss = gcrpVMReportss != null ? gcrpVMReportss : gcrpHCReportss;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var gcrpReportsList = gcrpReportss.Value;
 
                 if (isShowStatusChangeOnlyPresent)

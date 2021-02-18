@@ -27,6 +27,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -40,6 +44,11 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
+<<<<<<< HEAD
+=======
+        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string UserDomain { get; private set; }
 
         public static WebsitesController NewInstance => new WebsitesController();
@@ -57,12 +66,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
             _helper.TracingInterceptor = logger;
 
+<<<<<<< HEAD
+=======
+            logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
+<<<<<<< HEAD
+=======
+            logger.Information(string.Format("Test method finished: {0}.{1}", callingClassType, mockName));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public void RunPsTestWorkflow(
@@ -120,12 +137,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             NewResourceManagementClient = GetResourceManagementClient(context);
             WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
+<<<<<<< HEAD
 
+=======
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var armStorageManagementClient = GetArmStorageManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
+<<<<<<< HEAD
+=======
+                KeyVaultManagementClient,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 armStorageManagementClient
                 );
         }
@@ -149,5 +174,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+<<<<<<< HEAD
+=======
+
+        private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

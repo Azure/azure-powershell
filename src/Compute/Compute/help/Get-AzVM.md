@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvm
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvm
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,10 +40,17 @@ Get-AzVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Get-AzVM** cmdlet gets the model view and instance view of an Azure virtual machine.
 The model view is the user specified properties of the virtual machine.
 The instance view is the instance level status of the virtual machine.
 Specify the *Status* parameter to get only the instance view of a virtual machine.
+=======
+The **Get-AzVM** cmdlet gets the model view or the instance view of an Azure virtual machine.
+The model view is the user specified properties of the virtual machine.
+The instance view is the instance level status of the virtual machine.
+Specify the *Status* parameter to get the instance view of a virtual machine instead of the model view which is the default.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

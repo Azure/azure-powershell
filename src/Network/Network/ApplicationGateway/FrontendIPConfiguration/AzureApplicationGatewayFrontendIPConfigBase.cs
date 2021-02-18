@@ -54,6 +54,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "PublicIPAddress")]
         public PSPublicIpAddress PublicIPAddress { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "PrivateLinkConfiguration")]
+        public PSApplicationGatewayPrivateLinkConfiguration PrivateLinkConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "PrivateLinkConfigurationId")]
+        public string PrivateLinkConfigurationId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -69,6 +84,14 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.PublicIPAddressId = this.PublicIPAddress.Id;
                 }
+<<<<<<< HEAD
+=======
+
+                if (this.PrivateLinkConfiguration != null)
+                {
+                    this.PrivateLinkConfigurationId = this.PrivateLinkConfiguration.Id;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -99,6 +122,15 @@ namespace Microsoft.Azure.Commands.Network
                 frontendIPConfig.PublicIPAddress.Id = this.PublicIPAddressId;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrEmpty(this.PrivateLinkConfigurationId))
+            {
+                frontendIPConfig.PrivateLinkConfiguration = new PSResourceId();
+                frontendIPConfig.PrivateLinkConfiguration.Id = this.PrivateLinkConfigurationId;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             frontendIPConfig.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIPConfigName,

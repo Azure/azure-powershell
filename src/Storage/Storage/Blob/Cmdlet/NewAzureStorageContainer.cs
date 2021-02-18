@@ -22,13 +22,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// create a new azure container
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer"),OutputType(typeof(AzureStorageContainer))]
     public class NewAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
+=======
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer", DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageContainer))]
+    [Alias("New-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DatalakeGen2FileSystem")]
+    public class NewAzureStorageContainerCommand : StorageCloudBlobCmdletBase
+    {
+        /// <summary>
+        /// Container Name parameter
+        /// </summary>
+        private const string ContainerNameParameterSet = "ContainerName";
+
+        /// <summary>
+        /// Container create with EncryptionScope parameter
+        /// </summary>
+        private const string EncryptionScopeParameterSet = "EncryptionScope";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias("N", "Container")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container name",
             ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
@@ -46,6 +69,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private BlobContainerPublicAccessType accessLevel = BlobContainerPublicAccessType.Off;
 
+<<<<<<< HEAD
+=======
+        [Parameter(HelpMessage = "Default the container to use specified encryption scope for all writes.",
+            Mandatory = true,
+            ParameterSetName = EncryptionScopeParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string DefaultEncryptionScope { get; set; }
+
+        [Parameter(HelpMessage = "Prevent override of encryption scope from the container default.",
+            Mandatory = true,
+            ParameterSetName = EncryptionScopeParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool PreventEncryptionScopeOverride
+        {
+            get
+            {
+                return preventEncryptionScopeOverride is null ? false : preventEncryptionScopeOverride.Value;
+            }
+            set
+            {
+                preventEncryptionScopeOverride = value;
+            }
+        }
+        private bool? preventEncryptionScopeOverride;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageContainerCommand class.
         /// </summary>
@@ -76,6 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             BlobRequestOptions requestOptions = RequestOptions;
             CloudBlobContainer container = localChannel.GetContainerReference(name);
+<<<<<<< HEAD
 
             BlobContainerPermissions permissions = new BlobContainerPermissions();
 
@@ -84,10 +134,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             bool created = await localChannel.CreateContainerIfNotExistsAsync(container, permissions.PublicAccess, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
             if (!created)
+=======
+            BlobContainerClient containerClient = AzureStorageContainer.GetTrack2BlobContainerClient(container, localChannel.StorageContext);
+
+            PublicAccessType containerPublicAccess = PublicAccessType.None;
+            if (accesslevel == BlobContainerPublicAccessType.Blob)
+            {
+                containerPublicAccess = PublicAccessType.Blob;
+            }
+            else if (accesslevel == BlobContainerPublicAccessType.Container)
+            {
+                containerPublicAccess = PublicAccessType.BlobContainer;
+            }
+
+            global::Azure.Storage.Blobs.Models.BlobContainerEncryptionScopeOptions encryptionScopeOption = null;
+            if (this.DefaultEncryptionScope != null)
+            {
+                encryptionScopeOption = new global::Azure.Storage.Blobs.Models.BlobContainerEncryptionScopeOptions()
+                {
+                    // parameterset can ensure the 2 parameters must be set together.
+                    DefaultEncryptionScope = this.DefaultEncryptionScope,
+                    PreventEncryptionScopeOverride = this.preventEncryptionScopeOverride.Value
+                };
+            }
+
+            Response<BlobContainerInfo> responds  = await containerClient.CreateIfNotExistsAsync(containerPublicAccess, null, encryptionScopeOption, CmdletCancellationToken).ConfigureAwait(false);
+            if (responds == null || responds.Value == null) // Container already exist so not created again
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ResourceAlreadyExistException(String.Format(Resources.ContainerAlreadyExists, name));
             }
 
+<<<<<<< HEAD
+=======
+            BlobContainerPermissions permissions = new BlobContainerPermissions() { PublicAccess = accesslevel };
+            container.FetchAttributes();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteCloudContainerObject(taskId, localChannel, container, permissions);
         }
 

@@ -29,7 +29,11 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, Category.brooklynft)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestCortexCRUD()
         {
             TestRunner.RunTestScript("Test-CortexCRUD");
@@ -37,18 +41,86 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, Category.pgtm)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestCortexExpressRouteCRUD()
         {
             TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
         }
 
         [Fact]
+<<<<<<< HEAD
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
+=======
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestCortexDownloadConfig()
         {
             TestRunner.RunTestScript("Test-CortexDownloadConfig");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestP2SCortexCRUD()
+        {
+            TestRunner.RunTestScript("Test-P2SCortexCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestDisconnectAzP2sVpnGatewayVpnConnection()
+        {
+            TestRunner.RunTestScript("Test-DisconnectAzP2sVpnGatewayVpnConnection");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestBgpSettingsUpdateVpnGateway()
+        {
+            TestRunner.RunTestScript("Test-BgpUpdateVpnGateway");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestCortexVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVHubRouteTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-VHubRouteTableCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVpnGatewayPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-VpnGatewayPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVpnConnectionPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-VpnConnectionPacketCapture");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

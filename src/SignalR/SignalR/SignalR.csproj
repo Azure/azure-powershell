@@ -11,7 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.SignalR" Version="0.11.0-preview" />
   </ItemGroup>
 
 </Project>
+=======
+    <PackageReference Include="Microsoft.Azure.Management.SignalR" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
+
+
+
+
+</Project>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

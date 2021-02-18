@@ -28,7 +28,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
+<<<<<<< HEAD
     {
+=======
+    {        
+        /// <summary>
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "AzureVM, AzureStorage, AzureWorkload, MAB";
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Filter value for status of job.
         /// </summary>
@@ -74,10 +83,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Filter value for backup management type of job.
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Job.BackupManagementTypeFilter)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
+=======
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
+        [ValidateNotNullOrEmpty]
+        public BackupManagementType? BackupManagementType { get; set; }
+
+        /// <summary>
+        /// Switch param to filter jobs based on secondary region (Cross Region Restore).
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UseSecondaryRegion { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -143,11 +166,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 List<JobBase> result = new List<JobBase>();
 
                 WriteDebug(string.Format("Filters provided are: StartTime - {0} " +
+<<<<<<< HEAD
                     "EndTime - {1} Status - {2} Operation - {3} Type - {4}",
+=======
+                    "EndTime - {1} Status - {2} Operation - {3} Type - {4} UseSecondaryRegion - {5}", 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     From,
                     To,
                     Status,
                     Operation,
+<<<<<<< HEAD
                     BackupManagementType));
 
                 int resultCount = 0;
@@ -165,6 +193,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 JobConversions.AddServiceClientJobsToPSList(
                     adapterResponse, result, ref resultCount);
+=======
+                    BackupManagementType,
+                    UseSecondaryRegion.ToString()));
+
+                int resultCount = 0;
+
+                if (UseSecondaryRegion.IsPresent)
+                {
+                    ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
+                    string secondaryRegion = BackupUtils.regionMap[vault.Location];
+
+                    WriteDebug(" Getting CRR jobs from secondary region: " + secondaryRegion);
+                    var adapterResponse = ServiceClientAdapter.GetCrrJobs(VaultId,
+                        JobId,
+                        ServiceClientHelpers.GetServiceClientJobStatus(Status),
+                        Operation.ToString(),
+                        rangeStart,
+                        rangeEnd,
+                        ServiceClientHelpers.GetServiceClientBackupManagementType(BackupManagementType),
+                        secondaryRegion);
+                    
+                    JobConversions.AddServiceClientJobsToPSList(
+                    adapterResponse, result, ref resultCount);
+                }
+                else
+                {
+                    var adapterResponse = ServiceClientAdapter.GetJobs(
+                        JobId,
+                        ServiceClientHelpers.GetServiceClientJobStatus(Status),
+                        Operation.ToString(),
+                        rangeStart,
+                        rangeEnd,
+                        ServiceClientHelpers.GetServiceClientBackupManagementType(
+                            BackupManagementType),
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+
+                    JobConversions.AddServiceClientJobsToPSList(
+                    adapterResponse, result, ref resultCount);
+                }                
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 WriteDebug("Number of jobs fetched: " + result.Count);
                 WriteObject(result, enumerateCollection: true);

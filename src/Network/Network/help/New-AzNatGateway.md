@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznatgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,19 +35,31 @@ A natgateway requires the following:
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 : Create Nat Gateway with Public Ip Address
+=======
+### Example 1: Create Nat Gateway with Public Ip Address
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:> $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
 PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
 ```
 
+<<<<<<< HEAD
 ### Example 2 : Create Nat Gateway with Public Ip Prefix
+=======
+### Example 2: Create Nat Gateway with Public Ip Prefix
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:> $publicipprefix = New-AzPublicIpPrefix -Name "prefix2" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -PrefixLength "31"
 PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpPrefix $publicipprefix
 ```
 
+<<<<<<< HEAD
 ### Example 3 : Create Nat Gateway with Public IP Address in Availability Zone 1
+=======
+### Example 3: Create Nat Gateway with Public IP Address in Availability Zone 1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:> $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
 PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip -Zone "1"

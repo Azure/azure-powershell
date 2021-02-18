@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
+<<<<<<< HEAD
     using System.Collections.Generic;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Linq;
     using System.Management.Automation;
 
@@ -24,13 +27,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
+<<<<<<< HEAD
     using Newtonsoft.Json;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// <inheritdoc />
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Get, "AzLegacyPeering")]
+=======
+    [Cmdlet(VerbsCommon.Get, Constants.AzLegacyPeering)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSPeering))]
     public class GetAzureLegacyPeeringCommand : PeeringBaseCmdlet
     {
@@ -67,7 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
+<<<<<<< HEAD
         /// <exception cref="ErrorResponseException">Http Response 
+=======
+        /// <exception cref="ErrorResponseException">Http Response
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </exception>
         private object PeeringByLegacyPeering()
         {

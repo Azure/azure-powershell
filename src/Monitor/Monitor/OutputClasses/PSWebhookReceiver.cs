@@ -26,6 +26,34 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         public string ServiceUri { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or set a value indicating whether common alert schema is to be used or not
+        /// </summary>
+        public bool UseCommonAlertSchema { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not use AAD authentication.
+        /// </summary>
+        public bool UseAadAuth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the webhook app object Id for aad auth.
+        /// </summary>
+        public string ObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Identifier uri for aad auth.
+        /// </summary>
+        public string IdentifierUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tenant id for aad auth.
+        /// </summary>
+        public string TenantId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>Initializes a new instance of the PSWebhookReceiver class</summary>
         public PSWebhookReceiver()
         {
@@ -39,6 +67,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Name = receiver.Name;
             this.ServiceUri = receiver.ServiceUri;
+<<<<<<< HEAD
+=======
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseAadAuth = receiver.UseAadAuth ?? false;
+            this.ObjectId = receiver.ObjectId;
+            this.IdentifierUri = receiver.IdentifierUri;
+            this.TenantId = receiver.TenantId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -11,7 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.2.2-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.4.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

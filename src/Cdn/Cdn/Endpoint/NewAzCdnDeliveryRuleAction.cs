@@ -71,7 +71,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string CustomPath { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Host to redirect. Leave empty to use use the incoming host as the destination host.", ParameterSetName = UrlRedirectActionParameterSet)]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Host to redirect. Leave empty to use the incoming host as the destination host.", ParameterSetName = UrlRedirectActionParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string CustomHostname { get; set; }
 
@@ -83,6 +87,25 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string CustomFragment { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true, HelpMessage = "QueryString behavior for the requests", ParameterSetName = CacheKeyQueryStringActionParameterSet)]
+        [PSArgumentCompleter("Include", "IncludeAll", "Exclude", "ExcludeAll")]
+        [ValidateNotNullOrEmpty]
+        public string QueryStringBehavior { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Query parameters to include or exclude (comma separated).", ParameterSetName = CacheKeyQueryStringActionParameterSet)]
+        public string[] QueryParameter { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.", ParameterSetName = UrlRewriteActionParameterSet)]
+        public string SourcePattern { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Define the relative URL to which the above requests will be rewritten by.", ParameterSetName = UrlRewriteActionParameterSet)]
+        public string Destination { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to preserve unmatched path.", ParameterSetName = UrlRewriteActionParameterSet)]
+        public SwitchParameter PreservePath { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override void ExecuteCmdlet()
         {
@@ -120,6 +143,35 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                    CustomFragment = CustomFragment
                 };
             }
+<<<<<<< HEAD
+=======
+            else if (ParameterSetName == CacheKeyQueryStringActionParameterSet)
+            {
+                if ((QueryStringBehavior == "Exclude" || QueryStringBehavior == "Include") && QueryParameter == null)
+                {
+                    throw new PSArgumentException("QueryParameter cannot be empty when QueryStringBehavior is {0}", QueryStringBehavior);
+                }
+                else if (QueryStringBehavior == "ExcludeAll" || QueryStringBehavior == "IncludeAll")
+                {
+                    QueryParameter = null;
+                }
+
+                deliveryRuleAction = new PSDeliveryRuleCacheKeyQueryStringAction
+                {
+                    QueryStringBehavior = QueryStringBehavior,
+                    QueryParameter = QueryParameter == null? string.Empty : string.Join(",", QueryParameter)
+                };
+            }
+            else if (ParameterSetName == UrlRewriteActionParameterSet)
+            {
+                deliveryRuleAction = new PSDeliveryRuleUrlRewriteAction
+                {
+                    SourcePattern = SourcePattern,
+                    Destination = Destination,
+                    PreservePath = PreservePath
+                };
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
             {
                 deliveryRuleAction = new PSDeliveryRuleAction();

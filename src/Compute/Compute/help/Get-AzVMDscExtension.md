@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5B7A1BE6-F5F5-4968-BE32-7743D0E25FE3
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmdscextension
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmdscextension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,11 +17,24 @@ Gets the settings of the DSC extension on a particular virtual machine.
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### GetDscExtension (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Get-AzVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### VMParameterSet
+```
+Get-AzVMDscExtension [-Status] [-VM <PSVirtualMachine>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **Get-AzVMDscExtension** cmdlet gets the settings of the Desired State Configuration (DSC) extension on a particular virtual machine.
 
@@ -54,7 +71,11 @@ Specify this parameter only if you changed the default name in the **Set-AzVMDsc
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetDscExtension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -69,7 +90,11 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetDscExtension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -94,12 +119,34 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -VM
+Specifies the virtual machine object the extension is on.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameter Sets: VMParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -VMName
 Specifies the name of a virtual machine for which this cmdlet gets the DSC extension.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: GetDscExtension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True

@@ -1,22 +1,38 @@
 {
   "Entries": [
     {
+<<<<<<< HEAD
       "RequestUri": "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/providers/Microsoft.Cdn/checkResourceUsage?api-version=2019-04-15",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDdmNGJjNjgtNmZlNC00M2EyLWJlOGItZGZkMGUyOTBlZmEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL2NoZWNrUmVzb3VyY2VVc2FnZT9hcGktdmVyc2lvbj0yMDE5LTA0LTE1",
+=======
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2020-04-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL2NoZWNrUmVzb3VyY2VVc2FnZT9hcGktdmVyc2lvbj0yMDIwLTA0LTE1",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
+<<<<<<< HEAD
           "206fb146-5e0e-4586-b31c-b3adc6f37bea"
+=======
+          "5bd911fb-d90a-4fe9-a936-0b8f09879164"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
+<<<<<<< HEAD
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.2.2.0"
+=======
+          "FxVersion/4.6.29220.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19041.",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.4.0.0"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ]
       },
       "ResponseHeaders": {
@@ -27,10 +43,17 @@
           "no-cache"
         ],
         "x-ms-request-id": [
+<<<<<<< HEAD
           "0e47a5c0-9e35-4442-b625-cf1816b9b13f"
         ],
         "x-ms-client-request-id": [
           "206fb146-5e0e-4586-b31c-b3adc6f37bea"
+=======
+          "2913a687-c905-4e7c-af55-cbfe1d1340c8"
+        ],
+        "x-ms-client-request-id": [
+          "5bd911fb-d90a-4fe9-a936-0b8f09879164"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "OData-Version": [
           "4.0"
@@ -39,7 +62,11 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
+<<<<<<< HEAD
           "Microsoft-IIS/8.5"
+=======
+          "Microsoft-IIS/10.0"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -51,19 +78,33 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
+<<<<<<< HEAD
           "86686725-848a-48e1-8b43-08b2d67d8a3a"
         ],
         "x-ms-routing-request-id": [
           "CENTRALUS:20190520T192600Z:86686725-848a-48e1-8b43-08b2d67d8a3a"
+=======
+          "12864863-6060-43a5-bd70-b502afef93f0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20201008T111242Z:12864863-6060-43a5-bd70-b502afef93f0"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
+<<<<<<< HEAD
           "Mon, 20 May 2019 19:25:59 GMT"
         ],
         "Content-Length": [
           "112"
+=======
+          "Thu, 08 Oct 2020 11:12:41 GMT"
+        ],
+        "Content-Length": [
+          "114"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Content-Type": [
           "application/json; odata.metadata=minimal; odata.streaming=true"
@@ -72,12 +113,20 @@
           "-1"
         ]
       },
+<<<<<<< HEAD
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"resourceType\": \"profile\",\r\n      \"unit\": \"count\",\r\n      \"currentValue\": 16,\r\n      \"limit\": 25\r\n    }\r\n  ]\r\n}",
+=======
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"resourceType\": \"profile\",\r\n      \"unit\": \"count\",\r\n      \"currentValue\": 100,\r\n      \"limit\": 200\r\n    }\r\n  ]\r\n}",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
+<<<<<<< HEAD
     "SubscriptionId": "47f4bc68-6fe4-43a2-be8b-dfd0e290efa2"
+=======
+    "SubscriptionId": "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   }
 }

@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
 using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
+<<<<<<< HEAD
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 
@@ -39,6 +40,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     public class SqlTestsBase : RMTestBase
     {
         protected EnvironmentSetupHelper Helper;
+=======
+using Microsoft.Azure.Management.KeyVault;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
+namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
+{
+    public class SqlTestsBase : RMTestBase, IDisposable
+    {
+        protected EnvironmentSetupHelper Helper;
+        protected string[] resourceTypesToIgnoreApiVersion;
+        private const string TenantIdKey = "TenantId";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
@@ -69,22 +83,37 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
                 {"Microsoft.Network", null},
+<<<<<<< HEAD
                 {"Microsoft.KeyVault", null}
 
             };
+=======
+                {"Microsoft.KeyVault", null},
+            };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
+<<<<<<< HEAD
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+=======
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithResourceApiExclusion(true, d, providersToIgnore, resourceTypesToIgnoreApiVersion);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             // Enable undo functionality as well as mock recording
             using (var context = MockContext.Start(callingClassType, mockName))
             {
+<<<<<<< HEAD
                 SetupManagementClients(context);
                 Helper.SetupEnvironment(AzureModule.AzureResourceManager);
+=======
+                Helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                SetupManagementClients(context);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
@@ -139,6 +168,38 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return graphClient;
         }
 
+<<<<<<< HEAD
+=======
+        protected Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient GetGraphClientVersion1_6(MockContext context)
+        {
+            Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
+            string tenantId = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
+            graphClient.TenantID = tenantId;
+            if (AzureRmProfileProvider.Instance != null &&
+                AzureRmProfileProvider.Instance.Profile != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
+            {
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
+            }
+            return graphClient;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
@@ -154,5 +215,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+<<<<<<< HEAD
+=======
+        public void Dispose()
+        {
+            XunitTracingInterceptor.RemoveFromContext(Helper.TracingInterceptor);
+            Helper.TracingInterceptor = null;
+            Helper = null;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

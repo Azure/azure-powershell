@@ -18,16 +18,27 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 {
     public class AttestationManagementCmdletBase : AzureRMCmdlet
     {
+<<<<<<< HEAD
         private AttestationClient attestationClient;
 
 
         public AttestationClient AttestationClient
+=======
+        private AttestationManagementClient attestationClient;
+
+
+        public AttestationManagementClient AttestationClient
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             get
             {
                 if (attestationClient == null)
                 {
+<<<<<<< HEAD
                     attestationClient = new AttestationClient(DefaultContext);
+=======
+                    attestationClient = new AttestationManagementClient(DefaultContext);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return attestationClient;
             }

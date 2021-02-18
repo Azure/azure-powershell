@@ -103,7 +103,11 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
         # Create a Virtual Network with the DDoS protection plan
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual true $vnet.EnableDdoSProtection
         Assert-AreEqual $ddosProtectionPlan.Id $vnet.DdosProtectionPlan.Id
@@ -116,7 +120,11 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
 
         # Delete the virtual network
 
+<<<<<<< HEAD
         $deleteVnet = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+=======
+        $deleteVnet = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual true $deleteVnet
 
         # Delete the DDoS protection plan

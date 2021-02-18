@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 29CCF141-CC2F-4E11-8235-64025CFB5782
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementapi
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementapi
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,12 +42,41 @@ The **Set-AzApiManagementApi** cmdlet modifies an Azure API Management API.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 Modify an API
+=======
+### Example 1: Modify an API
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Set-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
 ```
 
+<<<<<<< HEAD
+=======
+### Example 2: Add an API to an existing ApiVersionSet
+```powershell
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$versionSet = New-AzApiManagementApiVersionSet -Context $context -Name "Echo API Version Set" -Scheme Segment -Description "version set sample"
+PS C:\>$api = Get-AzApiManagementApi -Context $ApiMgmtContext -ApiId "echo-api"
+PS C:\>$api.ApiVersionSetId = $versionSet.Id
+PS C:\>$api.ApiVersion = "v1"
+PS C:\>$api.ApiVersionSetDescription = $versionSet.Description
+PS C:\>Set-AzApiManagementApi -InputObject $api -PassThru
+```
+
+This example adds an API to an existing API Version Set
+
+### Example 3: Change the Backend ServiceUrl where the API is pointing to
+```powershell
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$updatedApiServiceUrl = "http://newechoapi.cloudapp.net/updateapi"
+PS C:\>$updatedApi = Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId $echoApiId -ServiceUrl $updatedApiServiceUrl
+```
+
+This example updates the ServiceUrl the `echo-api` is pointing to.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiId

@@ -51,11 +51,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Sql Fillter Expression")]
         [ValidateNotNullOrEmpty]
         public string SqlExpression { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = RuleResourceActionParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Action SqlFillter Expression")]
+=======
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Sql Filter Expression")]
+        [ValidateNotNullOrEmpty]
+        public string SqlExpression { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = RuleResourceActionParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Action SqlFilter Expression")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string ActionSqlExpression { get; set; }
 

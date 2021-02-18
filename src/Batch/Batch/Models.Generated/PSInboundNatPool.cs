@@ -99,7 +99,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNetworkSecurityGroupRule(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.networkSecurityGroupRules = list.AsReadOnly();
+=======
+                    this.networkSecurityGroupRules = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.networkSecurityGroupRules;
             }

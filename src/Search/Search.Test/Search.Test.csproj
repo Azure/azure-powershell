@@ -11,7 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Search" Version="3.0.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Search" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.2.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

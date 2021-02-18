@@ -1,12 +1,18 @@
 {
   "Entries": [
     {
+<<<<<<< HEAD
       "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/externalSecuritySolutions?api-version=2015-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvZXh0ZXJuYWxTZWN1cml0eVNvbHV0aW9ucz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLXByZXZpZXc=",
+=======
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/externalSecuritySolutions?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvZXh0ZXJuYWxTZWN1cml0eVNvbHV0aW9ucz9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
+<<<<<<< HEAD
           "b475d94a-8774-4308-b61c-97c9a743bf02"
         ],
         "accept-language": [
@@ -29,12 +35,33 @@
         ],
         "Expires": [
           "-1"
+=======
+          "26dceec1-4b78-4de6-b137-5bc8c774c18a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-original-request-ids": [
+<<<<<<< HEAD
           "997f14c8-908a-4dca-9516-e55f967691cc",
+=======
+          "",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           "",
           ""
         ],
@@ -42,6 +69,7 @@
           "749"
         ],
         "x-ms-request-id": [
+<<<<<<< HEAD
           "8b842444-827a-4b55-93f9-5f5c7db450fd"
         ],
         "x-ms-correlation-request-id": [
@@ -49,6 +77,15 @@
         ],
         "x-ms-routing-request-id": [
           "UKSOUTH2:20180820T185830Z:8b842444-827a-4b55-93f9-5f5c7db450fd"
+=======
+          "fdd42211-40ac-4893-9ef6-4542d8ce816d"
+        ],
+        "x-ms-correlation-request-id": [
+          "fdd42211-40ac-4893-9ef6-4542d8ce816d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20201203T064328Z:fdd42211-40ac-4893-9ef6-4542d8ce816d"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,6 +93,7 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+<<<<<<< HEAD
         "Cache-Control": [
           "no-cache"
         ],
@@ -63,6 +101,22 @@
           "Mon, 20 Aug 2018 18:58:29 GMT"
         ]
       },
+=======
+        "Date": [
+          "Thu, 03 Dec 2020 06:43:28 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "StatusCode": 200
     }
   ],

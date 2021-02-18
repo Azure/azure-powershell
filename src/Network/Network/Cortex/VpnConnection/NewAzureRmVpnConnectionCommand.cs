@@ -136,12 +136,20 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+=======
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+=======
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
@@ -165,6 +173,29 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "Use policy based traffic selectors for this connection.")]
+        public SwitchParameter UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of VpnSiteLinkConnections that this VpnConnection have.")]
+        public PSVpnSiteLinkConnection[] VpnSiteLinkConnection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public SwitchParameter EnableInternetSecurity { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The routing configuration for this vpn connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -220,9 +251,27 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 EnableBgp = this.EnableBgp.IsPresent,
+<<<<<<< HEAD
                 UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent
             };
 
+=======
+                UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent,
+                UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
+                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
+            };
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                vpnConnection.RoutingConfiguration = RoutingConfiguration;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             //// Resolve the VpnSite reference
             //// And set it in the VpnConnection object.
             string vpnSiteResolvedId = null;
@@ -254,16 +303,41 @@ namespace Microsoft.Azure.Commands.Network
                 vpnConnection.VpnConnectionProtocolType = this.VpnConnectionProtocolType;
             }
 
+<<<<<<< HEAD
             //// Connection bandwidth
             vpnConnection.ConnectionBandwidth = this.ConnectionBandwidthInMbps > 0 ?
                 Convert.ToInt32(this.ConnectionBandwidthInMbps) :
                 20;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IpSecPolicy != null)
             {
                 vpnConnection.IpsecPolicies = new List<PSIpsecPolicy> { this.IpSecPolicy };
             }
 
+<<<<<<< HEAD
+=======
+            if (this.VpnSiteLinkConnection != null)
+            {
+                //// Use only link connection properties instead of vpn connection properties.
+                if (this.SharedKey != null || this.ConnectionBandwidthInMbps > 0 || this.EnableBgp.IsPresent || this.UseLocalAzureIpAddress.IsPresent || this.UsePolicyBasedTrafficSelectors.IsPresent || this.IpSecPolicy != null)
+                {
+                    throw new PSArgumentException(Properties.Resources.VpnConnectionPropertyIsDeprecated);
+                }
+
+                vpnConnection.VpnLinkConnections = new List<PSVpnSiteLinkConnection>();
+                vpnConnection.VpnLinkConnections.AddRange(this.VpnSiteLinkConnection);
+            }
+            else
+            {
+                //// Connection bandwidth
+                vpnConnection.ConnectionBandwidth = this.ConnectionBandwidthInMbps > 0 ?
+                    Convert.ToInt32(this.ConnectionBandwidthInMbps) :
+                    20;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             parentVpnGateway.Connections.Add(vpnConnection);
 
             WriteVerbose(string.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));

@@ -13,18 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
     using Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+<<<<<<< HEAD
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+<<<<<<< HEAD
+=======
+    using Microsoft.Rest.Azure;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -32,7 +43,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using System.Runtime.ExceptionServices;
     using System.Threading;
+<<<<<<< HEAD
     using System.Threading.Tasks;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// The base class for resource manager cmdlets.
@@ -66,6 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private SubscriptionSdkClient subscriptionSdkClient;
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the API version.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
@@ -73,6 +88,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ApiVersion { get; set; }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the switch that indicates if pre-release API version should be considered.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.")]
@@ -165,7 +182,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The <c>ProcessRecord</c> method.
         /// </summary>
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        public sealed override void ExecuteCmdlet()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             try
             {
@@ -222,6 +243,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Determines the API version.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
@@ -258,6 +280,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets a new instance of the <see cref="ResourceManagerRestRestClient"/>.
         /// </summary>
         public ResourceManagerRestRestClient GetResourcesClient()
@@ -413,6 +437,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets the source exception from a captured exception.
+        /// </summary>
+        /// <param name="capturedException">The captured exception</param>
+        private static Exception GetSourceException(ExceptionDispatchInfo capturedException)
+        {
+            if (capturedException.SourceException is AggregateException aggregateException)
+            {
+                var innerException = aggregateException.InnerExceptions?.SingleOrDefault();
+
+                if (innerException != null) 
+                {
+                    return innerException;
+                }
+            }
+
+            return capturedException.SourceException;
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Provides specialized exception handling.
         /// </summary>
         /// <param name="capturedException">The captured exception</param>
@@ -420,6 +466,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
+<<<<<<< HEAD
                 var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
                 if (errorResponseException != null)
                 {
@@ -447,6 +494,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 }
 
                 throw capturedException.SourceException;
+=======
+                var sourceException = GetSourceException(capturedException);
+
+                if (sourceException is CloudException cloudException)
+                {
+                    throw new ResourceManagerCloudException(cloudException);
+                }
+
+                throw sourceException;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             finally
             {

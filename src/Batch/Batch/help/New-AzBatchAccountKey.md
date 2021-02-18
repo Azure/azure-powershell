@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchaccountkey
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
+online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccountkey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -28,6 +36,7 @@ The cmdlet returns a **BatchAccountContext** object that has its current **Prima
 ```
 PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 AccountName                  : pfuller
+<<<<<<< HEAD
 
 Location                     : westus
 
@@ -40,6 +49,15 @@ PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 
 Tags                         : 
+=======
+Location                     : westus
+ResourceGroupName            : CmdletExampleRG
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
+PoolQuota                    : 20
+ActiveJobAndJobScheduleQuota : 20
+Tags                         :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```
 
@@ -79,7 +97,11 @@ Accept wildcard characters: False
 
 ### -KeyType
 Specifies the type of key that this cmdlet regenerates.
+<<<<<<< HEAD
 Valid values are: 
+=======
+Valid values are:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Primary
 - Secondary
 
@@ -112,7 +134,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -126,8 +152,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

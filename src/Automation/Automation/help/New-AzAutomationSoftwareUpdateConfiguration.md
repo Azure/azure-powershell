@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -63,7 +67,11 @@ New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
                                                  -Windows `
+<<<<<<< HEAD
                                                  -AzVMResourceId $targetMachines `
+=======
+                                                 -AzureVMResourceId $targetMachines `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                                  -IncludedUpdateClassification Critical `
                                                  -Duration $duration
 
@@ -369,7 +377,11 @@ Accept wildcard characters: False
 ```
 
 ### -RebootSetting
+<<<<<<< HEAD
 Reboot Seeting.
+=======
+Reboot Setting.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.RebootSetting

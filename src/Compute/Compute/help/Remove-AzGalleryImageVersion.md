@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azgalleryimageversion
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryimageversion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,7 +42,11 @@ Delete a gallery image version.
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -ImageDefinitionName $image -GalleryImageVersionName $version
+=======
+PS C:\> Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $image -Name $version
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Delete the given gallery image version.

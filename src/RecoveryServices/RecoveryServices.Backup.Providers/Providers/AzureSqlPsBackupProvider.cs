@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Initializes the provider with the data recieved from the cmdlet layer
+=======
+        /// Initializes the provider with the data received from the cmdlet layer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -106,6 +110,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     resourceGroupName: resourceGroupName);
         }
 
+<<<<<<< HEAD
+=======
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public RestAzureNS.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();

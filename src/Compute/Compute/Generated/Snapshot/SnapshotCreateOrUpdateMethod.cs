@@ -41,6 +41,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+<<<<<<< HEAD
+=======
+                Snapshot existingResource;
+                try
+                { 
+                    existingResource = SnapshotsClient.Get(this.ResourceGroupName, this.SnapshotName);
+                }
+                catch
+                {
+                    existingResource = null;
+                }
+                
+                if (existingResource != null)
+                {
+                    throw new Exception(string.Format("A Snapshot with name '{0}' in resource group '{1}' already exists. Please use Update-AzSnapshot to update an existing Snapshot.", this.SnapshotName, this.ResourceGroupName));
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (ShouldProcess(this.SnapshotName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;

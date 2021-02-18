@@ -14,7 +14,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -704,7 +708,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -1421,7 +1429,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -2245,7 +2257,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -4076,7 +4092,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -4232,7 +4252,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Rights": "System.Collections.Generic.IList`1[System.String]",
               "Name": "System.String",
@@ -4470,7 +4494,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -4705,7 +4733,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -4940,7 +4972,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -5127,7 +5163,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Rights": "System.Collections.Generic.IList`1[System.String]",
                     "Name": "System.String",
@@ -5413,7 +5453,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -5702,7 +5746,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -5829,7 +5877,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6135,7 +6187,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6790,7 +6846,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -6917,7 +6977,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -7162,7 +7226,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
@@ -7502,8 +7570,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7664,8 +7737,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -7964,8 +8042,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -8366,8 +8449,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -8925,8 +9013,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9087,8 +9180,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9367,8 +9465,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
+<<<<<<< HEAD
                   "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "Name": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -9744,7 +9847,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Reason": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
@@ -9959,7 +10066,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10258,7 +10369,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10834,7 +10949,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11013,7 +11132,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
@@ -11197,7 +11320,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Relay.Models",
                   "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
@@ -11327,7 +11454,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Relay.Models",
             "Name": "Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Display": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes",
               "Name": "System.String"
@@ -11872,7 +12003,11 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes]",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11884,7 +12019,11 @@
     "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
       "Name": "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSUnavailableReasonAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11989,7 +12128,11 @@
     "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
       "Name": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSSkuAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -12034,7 +12177,11 @@
     "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes": {
       "Namespace": "Microsoft.Azure.Commands.Relay.Models",
       "Name": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.PSOperationDisplayAttributes, Microsoft.Azure.PowerShell.Cmdlets.Relay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Provider": "System.String",
         "Resource": "System.String",

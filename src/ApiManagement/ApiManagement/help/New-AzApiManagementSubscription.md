@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B85BF332-503D-41CB-A3B7-221B85B9BE30
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsubscription
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementsubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -55,7 +59,11 @@ PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/products/start
 ## PARAMETERS
 
 ### -AllowTracing
+<<<<<<< HEAD
 Flag which determines whether Tracing can be enabled at the Subscription Leve. This is optional parameter and default is $null.
+=======
+Flag which determines whether Tracing can be enabled at the Subscription Level. This is optional parameter and default is $null.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

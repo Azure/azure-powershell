@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementproduct
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementproduct
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,6 +35,15 @@ Get-AzApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### GetByApiId
+```
+Get-AzApiManagementProduct -Context <PsApiManagementContext> -ApiId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **Get-AzApiManagementProduct** cmdlet gets a list or a particular product.
 
@@ -54,6 +67,24 @@ This command get an API Management product by ID.
 
 ## PARAMETERS
 
+<<<<<<< HEAD
+=======
+### -ApiId
+ApiId of the Api to find the correlated products. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Context
 Specifies an instance of a **PsApiManagementContext** object.
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 2AB1B227-68C4-49AE-84C0-E1421E609DE7
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmbackup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmbackup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

@@ -138,8 +138,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     this.ResourceGroupName,
                                     this.StorageAccountName,
                                     this.Name,
+<<<<<<< HEAD
                                     (PublicAccess?)this.publicAccess,
                                     MetadataDictionary);
+=======
+                                    new BlobContainer(
+                                        publicAccess: (PublicAccess?)this.publicAccess,
+                                        metadata: MetadataDictionary));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 WriteObject(new PSContainer(container));
             }

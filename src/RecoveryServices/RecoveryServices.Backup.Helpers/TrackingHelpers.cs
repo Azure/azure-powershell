@@ -13,6 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using System.Threading;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -42,11 +47,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+<<<<<<< HEAD
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
 
+=======
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Body.Status ==
+                ServiceClientModel.OperationStatusValues.InProgress)
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -70,11 +86,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+<<<<<<< HEAD
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
 
+=======
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Body.Status ==
+                ServiceClientModel.OperationStatusValues.InProgress)
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -98,10 +125,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+<<<<<<< HEAD
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
 
+=======
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -112,6 +149,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         /// <summary>
         /// Block to track the operation to completion.
+<<<<<<< HEAD
+=======
+        /// Waits till the status of the data-move operation is InProgress.
+        /// </summary>
+        /// <param name="response">Response of the operation returned by the service.</param>
+        /// <param name="getOpStatus">Delegate method to fetch the operation status of the operation.</param>
+        /// <returns>Result of the operation once it completes.</returns>
+        public static RestAzureNS.AzureOperationResponse<T> GetOperationStatusDataMove<T>(
+            RestAzureNS.AzureOperationResponse response,
+            Func<string, RestAzureNS.AzureOperationResponse<T>> getOpStatus)
+            where T: ServiceClientModel.OperationStatus
+        {
+            var operationId = response.Response.Headers.GetOperationResultId();
+            var opStatusResponse = getOpStatus(operationId);
+
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Body.Status == "InProgress")
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+                opStatusResponse = getOpStatus(operationId);
+            }
+            opStatusResponse = getOpStatus(operationId);
+            
+            return opStatusResponse;
+        }
+
+        /// <summary>
+        /// Block to track the operation to completion.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Waits till the HTTP status code of the operation becomes something other than Accepted.
         /// </summary>
         /// <param name="response">Response of the operation returned by the service.</param>
@@ -123,6 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T: ServiceClientModel.ProtectionContainerResource
         {
             var operationId = response.Response.Headers.GetOperationResultId();
+<<<<<<< HEAD
 
             var opStatusResponse = getOpStatus(operationId);
 
@@ -135,6 +205,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             opStatusResponse = getOpStatus(operationId);
 
+=======
+            var opStatusResponse = getOpStatus(operationId);
+
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+                opStatusResponse = getOpStatus(operationId);
+            }
+            opStatusResponse = getOpStatus(operationId);
+            return opStatusResponse;
+        }
+
+        /// <summary>
+        /// This method is used to fetch the prepare data move CorrelationId.
+        /// </summary>
+        /// <param name="response">Response of the operation returned by the service.</param>
+        /// <param name="getCorrelationId">Delegate method to fetch the correlation id of the operation.</param>
+        /// <returns>Result of the operation once it completes.</returns>
+        public static PrepareDataMoveResponse GetCorrelationId(
+            RestAzureNS.AzureOperationResponse response,
+            Func<string, PrepareDataMoveResponse> getCorrelationId)            
+        {
+            var operationId = response.Response.Headers.GetAzureAsyncOperationId(); 
+            var opStatusResponse = getCorrelationId(operationId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return opStatusResponse;
         }
 
@@ -153,11 +252,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             var operationId = response.Response.Headers.GetOperationResultId();
 
             var opStatusResponse = getOpStatus(operationId);
+<<<<<<< HEAD
 
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
 
+=======
+            
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
+            {
+                if (String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0 && !TestMockSupport.RunningMocked)
+                {
+                    Thread.Sleep(5000);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 opStatusResponse = getOpStatus(operationId);
             }
 

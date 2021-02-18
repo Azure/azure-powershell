@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
+<<<<<<< HEAD
             Mandatory = true,
+=======
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the step.")]
         [ValidateNotNullOrEmpty]
@@ -83,8 +87,21 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name,
             };
 
+<<<<<<< HEAD
             psStepResource = this.DeploymentManagerClient.GetStep(psStepResource);
             this.WriteObject(psStepResource);
+=======
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                psStepResource = this.DeploymentManagerClient.GetStep(psStepResource);
+                this.WriteObject(psStepResource);
+            }
+            else
+            {
+                var psStepResources = this.DeploymentManagerClient.ListSteps(this.ResourceGroupName);
+                this.WriteObject(psStepResources, enumerateCollection: true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

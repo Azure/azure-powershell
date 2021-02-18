@@ -16,12 +16,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
     using Microsoft.Azure.Management.ManagedServices;
     using Microsoft.Rest.Azure;
     using System;
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
     using System.Threading.Tasks;
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+    using Microsoft.Azure.Management.ManagedServices;
+    using Microsoft.Azure.Management.ManagedServices.Models;
+    using Microsoft.Rest.Azure;
+    using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Low-level API implementation for the ManagedServicesClient service.
@@ -76,7 +84,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         public RegistrationAssignment CreateOrUpdateRegistrationAssignment(
             string scope,
             string registrationDefinitionId,
+<<<<<<< HEAD
             Guid registrationAssignmentId = default(Guid))
+=======
+            string registrationAssignmentId)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             var registrationAssignment = new RegistrationAssignment
             {
@@ -88,7 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 
             return this.ManagedServicesClient.RegistrationAssignments.CreateOrUpdateAsync(
                 scope: scope,
+<<<<<<< HEAD
                 registrationAssignmentId: registrationAssignmentId.ToString(),
+=======
+                registrationAssignmentId: registrationAssignmentId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 requestBody: registrationAssignment)
                 .GetAwaiter()
                 .GetResult();
@@ -112,11 +128,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         public RegistrationDefinition CreateOrUpdateRegistrationDefinition(
             string scope,
             RegistrationDefinition registrationDefinition,
+<<<<<<< HEAD
             Guid registratonDefinitionId = default(Guid))
         {
             return this.ManagedServicesClient.RegistrationDefinitions.CreateOrUpdateAsync(
                 scope: scope,
                 registrationDefinitionId: registratonDefinitionId.ToString(),
+=======
+            string registratonDefinitionId)
+        {
+            return this.ManagedServicesClient.RegistrationDefinitions.CreateOrUpdateAsync(
+                scope: scope,
+                registrationDefinitionId: registratonDefinitionId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 requestBody: registrationDefinition)
                 .GetAwaiter()
                 .GetResult();
@@ -124,8 +148,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 
         public IPage<RegistrationDefinition> ListRegistrationDefinitions(string scope)
         {
+<<<<<<< HEAD
             return this.ManagedServicesClient.RegistrationDefinitions.ListAsync(
                 scope: scope)
+=======
+            return this.ManagedServicesClient.RegistrationDefinitions.ListAsync(scope: scope)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .GetAwaiter()
                 .GetResult();
         }

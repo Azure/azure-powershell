@@ -23,9 +23,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseActivationTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
         }
 
         [Fact]
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+        }
+
+        [Fact(Skip = "The test takes the longest time to run. Skip it to workaround timeout temporarily.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabasePauseResume()
         {

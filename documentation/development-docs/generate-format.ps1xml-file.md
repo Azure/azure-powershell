@@ -106,9 +106,15 @@ The default table output reveals some issues:
 
 # File format.ps1xml.
 
+<<<<<<< HEAD
 Powershell allows to configure cmdlets output view with the [format.ps1xml](https://msdn.microsoft.com/en-us/library/gg580992) files.
 
 To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml?view=powershell-6) file:
+=======
+Powershell allows to configure cmdlets output view with the [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) files.
+
+To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a format.ps1xml file:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 1. Mark all the cmdlet output type public properties that should go to the table output with the *Ps1XmlAttribute* attribute.
@@ -409,7 +415,11 @@ FunctionsToExport = @()
 PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 ```
 
+<<<<<<< HEAD
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
+=======
+4. Try your cmdlet out. In our example it is Get-AzureRmSubscription:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```Powershell
 PS C:\> Get-AzSubscription
 

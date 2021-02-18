@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager;
@@ -28,7 +31,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Get an existing resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyAlias"), OutputType(typeof(PsResourceProviderAlias))]
+<<<<<<< HEAD
     public class GetAzurePolicyAlias : ResourceManagerCmdletBase
+=======
+    public class GetAzurePolicyAlias : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Gets or sets the provider namespace match string
@@ -89,7 +96,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void OnProcessRecord()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             // remove leading and trailing whitespace
             this.NamespaceMatch = this.NamespaceMatch?.Trim() ?? string.Empty;
@@ -116,12 +127,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private IEnumerable<Provider> GetAllProviders()
         {
             var returnList = new List<Provider>();
+<<<<<<< HEAD
             var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
+=======
+            var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListAtTenantScope(expand: "resourceTypes/aliases");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             returnList.AddRange(tempResult);
 
             while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
             {
+<<<<<<< HEAD
                 tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListNext(tempResult.NextPageLink);
+=======
+                tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListAtTenantScopeNext(tempResult.NextPageLink);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 returnList.AddRange(tempResult);
             }
 
@@ -173,7 +192,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             foreach (var provider in providers)
             {
                 var match = provider.ResourceTypes.Where(r => this.FilterFunction(r, listAvailable, resourceTypeMatch, aliasMatch, pathMatch, apiVersionMatch, locationMatch));
+<<<<<<< HEAD
                 rv.AddRange(match.Select(t => new PsResourceProviderAlias {Aliases = t.Aliases, ApiVersions = t.ApiVersions, Locations = t.Locations, Namespace = provider.NamespaceProperty, ResourceType = t.ResourceType}));
+=======
+                rv.AddRange(match.Select(t => new PsResourceProviderAlias { Aliases = t.Aliases, ApiVersions = t.ApiVersions, Locations = t.Locations, Namespace = provider.NamespaceProperty, ResourceType = t.ResourceType }));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return rv;

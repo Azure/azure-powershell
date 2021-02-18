@@ -59,6 +59,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
+<<<<<<< HEAD
+=======
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHostList>();
+                cfg.CreateMap<TO.PSHostList, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, TO.PSHostList>();
+                cfg.CreateMap<FROM.DiskEncryptionSet, TO.PSDiskEncryptionSetList>();
+                cfg.CreateMap<TO.PSDiskEncryptionSetList, TO.PSDiskEncryptionSet>();
+                cfg.CreateMap<TO.PSDiskEncryptionSet, TO.PSDiskEncryptionSetList>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 cfg.CreateMap<FROM.Disk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDiskList, TO.PSDisk>()
@@ -89,12 +101,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+<<<<<<< HEAD
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
@@ -108,6 +123,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
+<<<<<<< HEAD
+=======
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, FROM.DedicatedHost>();
+                cfg.CreateMap<FROM.DiskEncryptionSet, TO.PSDiskEncryptionSet>();
+                cfg.CreateMap<TO.PSDiskEncryptionSet, FROM.DiskEncryptionSet>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()
@@ -163,6 +187,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
                 cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>();
 
+<<<<<<< HEAD
+=======
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVMProfile, TO.PSVirtualMachineScaleSetVMProfile>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetVMProfile, FROM.VirtualMachineScaleSetVMProfile>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
+                    .ForMember(c => c.Type, o => o.MapFrom(r => r.Type1));
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
+                    .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
+
+                cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
+                cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
+                cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccessList>();
+                cfg.CreateMap<TO.PSDiskAccessList, TO.PSDiskAccess>();
+                cfg.CreateMap<TO.PSDiskAccess, TO.PSDiskAccessList>();
+
+                cfg.CreateMap<FROM.VirtualMachineAssessPatchesResult, TO.PSVirtualMachinePatchAssessmentResult>();
+                cfg.CreateMap<TO.PSVirtualMachinePatchAssessmentResult, FROM.VirtualMachineAssessPatchesResult>();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
             _mapper = config.CreateMapper();
         }

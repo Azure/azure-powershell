@@ -23,6 +23,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Object defining the retention days for a snapshot
         /// </summary>
         public int? SnapshotRetentionInDays { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Object defining the number of associated items for the policy
+        /// </summary>
+        public int? ProtectedItemsCount { get; set; }
+
+        /// <summary>
+        /// object defining the RG Name to store Restore Points
+        /// </summary>
+        public string AzureBackupRGName { get; set; }
+
+        /// <summary>
+        /// object defining the RG Name suffix to store Restore Points
+        /// </summary>
+        public string AzureBackupRGNameSuffix { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
 }

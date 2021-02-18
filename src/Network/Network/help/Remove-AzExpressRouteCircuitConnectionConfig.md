@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: cc944e06-4fa0-4ce5-88e9-ea6454b41d55
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azexpressroutecircuitconnectionconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitconnectionconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,6 +40,21 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzExpressRouteCircuit
 ```
 
+<<<<<<< HEAD
+=======
+### Example 3: Remove a circuit connection configuration from an ExpressRoute circuit for a specific address family
+```
+$circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -AddressPrefixType IPv4
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
+```
+
+### Example 4: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit for a specific address family
+```
+Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -AddressPrefixType IPv6|Set-AzExpressRouteCircuit
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -82,6 +101,24 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+<<<<<<< HEAD
+=======
+### -AddressPrefixType
+Specifies the address family that needs to be removed from the config 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, IPv6, All
+
+Required: False
+Position: Named
+Default value: IPv4 
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

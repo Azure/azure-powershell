@@ -76,6 +76,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -89,6 +103,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // EncryptionSettingsCollection
             EncryptionSettingsCollection vEncryptionSettingsCollection = null;
 
+<<<<<<< HEAD
+=======
+            // Encryption
+            Encryption vEncryption = null;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Sku
             SnapshotSku vSku = null;
 
@@ -138,6 +158,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+<<<<<<< HEAD
+=======
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.DiskEncryptionSetId = this.DiskEncryptionSetId;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionType))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.Type = this.EncryptionType;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -153,6 +194,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
+<<<<<<< HEAD
+=======
+                Encryption = vEncryption,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Sku = vSku,
             };
 

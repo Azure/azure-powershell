@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/get-azsignalr
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azsignalr
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -34,7 +41,11 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 ## EXAMPLES
 
 ### Get all SignalR services in the subscription
+<<<<<<< HEAD
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzSignalR
 
 
@@ -46,8 +57,12 @@ mysignalr3.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get all SignalR services in a resource group
+<<<<<<< HEAD
 
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -57,8 +72,12 @@ mysignalr2.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get a specific SignalR service
+<<<<<<< HEAD
 
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -67,8 +86,12 @@ mysignalr1.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get a specific SignalR service from the default resource group
+<<<<<<< HEAD
 
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzSignalR -Name mysignalr2
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -76,7 +99,11 @@ HostName                                           Location       ServerPort Pub
 mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
+<<<<<<< HEAD
 The default resource group can be set by `Set-AzDefault -ResourceGroupName myResourceGroup`.
+=======
+The default resource group can be set by \`Set-AzDefault -ResourceGroupName myResourceGroup\`.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -141,16 +168,26 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
 ### System.String
+<<<<<<< HEAD
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 
+=======
+## OUTPUTS
+
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

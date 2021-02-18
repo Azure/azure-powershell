@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azconsumptionreservationsummary
+=======
+online version: https://docs.microsoft.com/powershell/module/az.billing/get-azconsumptionreservationsummary
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -18,7 +22,11 @@ Get-AzConsumptionReservationSummary -Grain <String> -ReservationOrderId <String>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Get-AzConsumptionReservationSummay** cmdlet gets reservation summaries for daily or monthly grain.
+=======
+The **Get-AzConsumptionReservationSummary** cmdlet gets reservation summaries for daily or monthly grain.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -123,7 +131,11 @@ Accept wildcard characters: False
 ```
 
 ### -Grain
+<<<<<<< HEAD
 The time grain of the reservation summaryy, can be daily or monthly.
+=======
+The time grain of the reservation summary, can be daily or monthly.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

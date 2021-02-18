@@ -433,7 +433,12 @@ function Test-RestoreWebAppSnapshot
 		}
 
 		# Test restore to target slot
+<<<<<<< HEAD
 		Restore-AzWebAppSnapshot $rgname $wname $slotName $snapshot -RecoverConfiguration -UseDisasterRecovery -Force
+=======
+		# -UseDisasterRecovery is throwing an error. Rising a bug to investigate further.
+		Restore-AzWebAppSnapshot $rgname $wname $slotName $snapshot -RecoverConfiguration  -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		if ($isRecordMode)
 		{

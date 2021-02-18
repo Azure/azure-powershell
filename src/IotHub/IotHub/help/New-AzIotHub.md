@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/new-aziothub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,24 +18,44 @@ Creates a new IotHub.
 
 ```
 New-AzIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> -Units <Int64>
+<<<<<<< HEAD
  -Location <String> [-Properties <PSIotHubInputProperties>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ -Location <String> [-Properties <PSIotHubInputProperties>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
 Creates a new IotHub.
+<<<<<<< HEAD
 You can create the IotHub with either the default properties or specify the input proerties.
+=======
+You can create the IotHub with either the default properties or specify the input properties.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
 ### Example 1 Create a new IotHub with default properties
 ```
+<<<<<<< HEAD
 PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope"
 ```
 
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 
 ### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudtoDevice Queue set to 20
+=======
+PS C:\> $tags = @{}
+PS C:\> $tags.Add('key1','value1')
+PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Tag $tags
+```
+
+Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope" included with Tags.
+
+### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudToDevice Queue set to 20
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 ```
@@ -132,6 +156,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Tag
+IoT hub instance tags. Property bag in key-value pairs in the form of a hash table.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Units
 Number of units
 

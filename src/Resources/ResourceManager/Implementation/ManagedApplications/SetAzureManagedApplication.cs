@@ -18,6 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -150,7 +154,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
                 var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                     .WaitOnOperation(operationResult: operationResult);
+<<<<<<< HEAD
                 this.WriteObject(this.GetOutputObjects("ManagedApplicationId", JObject.Parse(result)), enumerateCollection: true);
+=======
+
+                this.ProcessResult(result, resourceId, apiVersion);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

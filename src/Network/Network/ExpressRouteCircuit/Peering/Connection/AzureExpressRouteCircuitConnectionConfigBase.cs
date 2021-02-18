@@ -48,6 +48,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "Specify address family of the configured AddressPrefix. Valid values [IPv4|IPv6]")]
+        [ValidateSet(
+           IPv4,
+           IPv6,
+           IgnoreCase = true)]
+        public string AddressPrefixType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Authorization Key to peer to circuit in another subscription")]
         [ValidateNotNullOrEmpty]
         public string AuthorizationKey { get; set; }

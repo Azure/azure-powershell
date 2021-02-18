@@ -26,7 +26,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
+<<<<<<< HEAD
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile,SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+=======
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class InvokeAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -72,6 +76,51 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpReferencePipelineRunIdForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterObject, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpReferencePipelineRunIdForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpReferencePipelineRunIdForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpReferencePipelineRunIdForRun)]
+        [ValidateNotNullOrEmpty]
+        public string ReferencePipelineRunId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIsRecoveryForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterObject, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIsRecoveryForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIsRecoveryForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpIsRecoveryForRun)]
+        public SwitchParameter IsRecovery { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartActivityNameForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterObject, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartActivityNameForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartActivityNameForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartActivityNameForRun)]
+        [ValidateNotNullOrEmpty]
+        public string StartActivityName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartFromFailureForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByParameterObject, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartFromFailureForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterObject, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartFromFailureForRun)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpStartFromFailureForRun)]
+        public SwitchParameter StartFromFailure { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByPipelineObjectByParameterFile, StringComparison.OrdinalIgnoreCase)
@@ -103,7 +152,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 paramDictionary = ReadParametersFromJson();
             }
 
+<<<<<<< HEAD
             WriteObject(DataFactoryClient.CreatePipelineRun(ResourceGroupName, DataFactoryName, PipelineName, paramDictionary));
+=======
+            bool? isRecovery = null;
+            bool? startFromFailure = null;
+            if (IsRecovery.IsPresent)
+            {
+                isRecovery = true;
+
+                if (StartFromFailure.IsPresent)
+                {
+                    startFromFailure = true;
+                }
+            }
+
+            if (ShouldProcess(this.ResourceGroupName, string.Format(Constants.ActionDescriptionForInvokePipeline, this.PipelineName, this.DataFactoryName)))
+            {
+                WriteObject(DataFactoryClient.CreatePipelineRun(ResourceGroupName, DataFactoryName, PipelineName, paramDictionary, ReferencePipelineRunId, isRecovery, StartActivityName, startFromFailure));
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private Dictionary<string, object> ReadParametersFromJson()

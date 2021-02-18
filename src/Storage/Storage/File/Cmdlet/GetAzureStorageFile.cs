@@ -16,12 +16,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.File;
+<<<<<<< HEAD
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Globalization;
     using System.Management.Automation;
     using System.Net;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+<<<<<<< HEAD
     [OutputType(typeof(CloudFile))]
+=======
+    [OutputType(typeof(AzureStorageFile))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -36,18 +45,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the files/directories would be listed.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share where the files/directories would be listed.")]
+        [ValidateNotNull]
+        [Alias("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would be listed.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.DirectoryParameterSetName,
+            HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would be listed.")]
+        [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
@@ -82,7 +107,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     await this.Channel.EnumerateFilesAndDirectoriesAsync(
                         baseDirectory,
+<<<<<<< HEAD
                         item => this.OutputStream.WriteObject(taskId, item),
+=======
+                        item => this.WriteListFileItemObject(taskId, this.Channel, item),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         this.RequestOptions,
                         this.OperationContext,
                         this.CmdletCancellationToken).ConfigureAwait(false);
@@ -118,7 +147,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (foundAFolder)
                     {
+<<<<<<< HEAD
                         this.OutputStream.WriteObject(taskId, targetDir);
+=======
+                        WriteCloudFileDirectoryeObject(taskId, this.Channel, targetDir);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         return;
                     }
 
@@ -132,7 +165,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OperationContext,
                         this.CmdletCancellationToken).ConfigureAwait(false);
 
+<<<<<<< HEAD
                     this.OutputStream.WriteObject(taskId, targetFile);
+=======
+                    WriteCloudFileObject(taskId, this.Channel, targetFile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 });
             }
         }

@@ -33,13 +33,20 @@ function New-AzureRmStorageAccount
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)][alias("StorageAccountName")] $Name,
     [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Location,
+<<<<<<< HEAD
     [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString)
+=======
+    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $typeString,
+    [string] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $Kind,
+	[bool]   [Parameter(Position=5, ValueFromPipelineByPropertyName=$true)] $DenyAsNetworkRuleDefaultAction)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   BEGIN { 
     $context = Get-Context
     $client = Get-StorageClient $context
   }
   PROCESS {
     $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters
+<<<<<<< HEAD
 	  if ([string]::IsNullOrEmpty($typeString))
 		{
 		  $Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
@@ -51,6 +58,28 @@ function New-AzureRmStorageAccount
 
 		$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
     $createParms.Location = $Location
+=======
+	if ([string]::IsNullOrEmpty($typeString))
+	{
+		$Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
+	}
+	else
+	{
+		$Type = Parse-Type $typeString
+	}
+    if ([string]::IsNullOrEmpty($Kind))
+    {
+        $Kind = 'StorageV2'
+    }  
+    $createParms.Kind = $Kind
+	$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
+    $createParms.Location = $Location
+	if ($DenyAsNetworkRuleDefaultAction)
+	{
+		$createParms.NetworkRuleSet = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.NetworkRuleSet -Property @{DefaultAction="Deny"}
+	}
+	
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms)
     $sa = $getTask.Result.Body
     Write-Output $sa
@@ -59,6 +88,10 @@ function New-AzureRmStorageAccount
 
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 function Set-AzureRmStorageAccount
 {
   [CmdletBinding()]

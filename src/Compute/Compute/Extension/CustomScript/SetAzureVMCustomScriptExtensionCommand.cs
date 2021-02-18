@@ -12,11 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
+=======
+using System;
+using System.Collections;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
@@ -25,10 +36,13 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+<<<<<<< HEAD
 using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -325,7 +339,10 @@ namespace Microsoft.Azure.Commands.Compute
 
                         this.Location = string.IsNullOrEmpty(this.Location) ? this.InputObject.Location : this.Location;
                         this.TypeHandlerVersion = string.IsNullOrEmpty(this.TypeHandlerVersion) ? this.InputObject.TypeHandlerVersion : this.TypeHandlerVersion;
+<<<<<<< HEAD
                         this.FileUri = (this.FileUri == null || !this.FileUri.Any()) ? this.InputObject.Uri : this.FileUri;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         string cmdToExe = this.InputObject.CommandToExecute;
                         int startIndexFile = cmdToExe.IndexOf("-file ");
@@ -346,6 +363,23 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name = identifier.ResourceName;
                     }
 
+<<<<<<< HEAD
+=======
+                    var vmResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName
+                        ).GetAwaiter().GetResult();
+
+                    if (vmResponse.Body.OsProfile?.LinuxConfiguration != null)
+                    {
+                        ThrowTerminatingError(new ErrorRecord(new ArgumentException(
+                            string.Format(CultureInfo.CurrentUICulture, "The current VM is a Linux VM.  Custom script extension can be set only to Windows VM.")),
+                            "InvalidArgument",
+                            ErrorCategory.InvalidArgument,
+                            null));
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.ParameterSetName.Contains(WithContainerAndFileNamesParameterSet))
                     {
                         this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
@@ -372,7 +406,10 @@ namespace Microsoft.Azure.Commands.Compute
                     var privateSettings = GetPrivateConfiguration();
 
                     var publicSettings = new Hashtable();
+<<<<<<< HEAD
                     publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (this.SecureExecution.IsPresent)
                     {
@@ -481,15 +518,34 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected Hashtable GetPrivateConfiguration()
         {
+<<<<<<< HEAD
             if (string.IsNullOrEmpty(this.StorageAccountName) || string.IsNullOrEmpty(this.StorageAccountKey))
+=======
+            if (string.IsNullOrEmpty(this.StorageAccountName) && string.IsNullOrEmpty(this.StorageAccountKey) && this.FileUri == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return null;
             }
             else
             {
                 var privateSettings = new Hashtable();
+<<<<<<< HEAD
                 privateSettings.Add(storageAccountNameKey, StorageAccountName);
                 privateSettings.Add(storageAccountKeyKey, StorageAccountKey);
+=======
+                if (!string.IsNullOrEmpty(this.StorageAccountName))
+                {
+                    privateSettings.Add(storageAccountNameKey, StorageAccountName);
+                }
+                if (!string.IsNullOrEmpty(this.StorageAccountKey))
+                {
+                    privateSettings.Add(storageAccountKeyKey, StorageAccountKey);
+                }
+                if (this.FileUri != null)
+                {
+                    privateSettings.Add(fileUrisKey, this.FileUri);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 return privateSettings;
             }
         }

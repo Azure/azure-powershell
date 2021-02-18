@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Add-AzSqlInstanceKeyVaultKey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/Add-AzSqlInstanceKeyVaultKey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,19 +16,31 @@ Adds a key vault key to the provided Managed Instance.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### AddAzureRmSqlInstanceKeyVaultKeyDefaultParameterSet (Default)
+=======
+### AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Add-AzSqlInstanceKeyVaultKey [-ResourceGroupName] <String> [-InstanceName] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### AddAzureRmSqlInstanceKeyVaultKeyInputObjectParameterSet
+=======
+### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Add-AzSqlInstanceKeyVaultKey [-Instance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### AddAzureRmSqlInstanceKeyVaultKeyResourceIdParameterSet
+=======
+### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Add-AzSqlInstanceKeyVaultKey [-InstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

@@ -17,6 +17,10 @@ using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Search.Models;
 using System;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
@@ -69,6 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = HostingModeHelpMessage)]
         public PSHostingMode? HostingMode { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
             Azure.Management.Search.Models.SearchService searchService = null;
@@ -90,6 +95,46 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                                                                                     partitionCount: PartitionCount,
                                                                                     hostingMode: (HostingMode)HostingMode);
             }
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = PublicNetworkAccessMessage)]
+        public PSPublicNetworkAccess? PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IdentityMessage)]
+        public PSIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IPRulesMessage)]
+        public PSIpRule[] IPRuleList { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
+            {
+                IpRules = IPRuleList
+            } : null;
+
+            var identity = IdentityType.HasValue ? new PSIdentity
+            {
+                Type = IdentityType.Value
+            } : null;
+
+            Azure.Management.Search.Models.SearchService searchService = 
+                new Azure.Management.Search.Models.SearchService(
+                    name: Name,
+                    location: Location,
+                    sku: new Sku((SkuName)Sku),
+                    replicaCount: ReplicaCount,
+                    partitionCount: PartitionCount,
+                    hostingMode: (HostingMode?)HostingMode,
+                    publicNetworkAccess: (PublicNetworkAccess?)PublicNetworkAccess,
+                    identity: (Identity)identity,
+                    networkRuleSet: (NetworkRuleSet)networkRuleSet);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

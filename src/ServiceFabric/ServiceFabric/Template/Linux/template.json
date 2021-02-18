@@ -158,6 +158,17 @@
     "vmNodeType0Size": {
       "type": "string",
       "defaultValue": "Standard_D2_v2"
+<<<<<<< HEAD
+=======
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "defaultValue": "Bronze"
+    },
+    "reliabilityLevel": {
+      "type": "string",
+      "defaultValue": "Silver"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
   },
   "variables": {
@@ -178,7 +189,11 @@
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "overProvision": "false",
     "vmssApiVersion": "2017-03-30",
+<<<<<<< HEAD
     "sfrpApiVersion": "2017-07-01-preview",
+=======
+    "sfrpApiVersion": "2019-03-01",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     "lbApiVersion": "2015-06-15",
     "vNetApiVersion": "2015-06-15",
     "storageApiVersion": "2016-01-01",
@@ -477,7 +492,11 @@
                   "settings": {
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
                     "nodeTypeRef": "[variables('vmNodeType0Name')]",
+<<<<<<< HEAD
                     "durabilityLevel": "Bronze",
+=======
+                    "durabilityLevel": "[parameters('durabilityLevel')]",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     "enableParallelJobs": true,
                     "nicPrefixOverride": "[variables('subnet0Prefix')]",
                     "certificate": {
@@ -627,7 +646,11 @@
               "startPort": "[variables('nt0applicationStartPort')]"
             },
             "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+<<<<<<< HEAD
             "durabilityLevel": "Bronze",
+=======
+            "durabilityLevel": "[parameters('durabilityLevel')]",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "ephemeralPorts": {
               "endPort": "[variables('nt0ephemeralEndPort')]",
               "startPort": "[variables('nt0ephemeralStartPort')]"
@@ -638,7 +661,11 @@
           }
         ],
         "provisioningState": "Default",
+<<<<<<< HEAD
         "reliabilityLevel": "Silver",
+=======
+        "reliabilityLevel": "[parameters('reliabilityLevel')]",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         "upgradeMode": "Automatic",
         "vmImage": "Linux"
       },

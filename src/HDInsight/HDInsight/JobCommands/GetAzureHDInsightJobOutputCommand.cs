@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -25,11 +26,22 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.IO;
 using System.Linq;
+=======
+using Microsoft.Azure.Management.HDInsight.Job.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+<<<<<<< HEAD
     [GenericBreakingChange("Users with reader role need to specify `DefaultStorageAccountKey` parameter explicitly, otherwise error occurs.", "2.0.0", "05/06/2019")]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJobOutput"), OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {
@@ -145,9 +157,15 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             try
             {
+<<<<<<< HEAD
                 ClusterConfiguration coreSiteClusterConfiguration;
                 HDInsightManagementClient.ListConfigurations(resourceGroupName, clusterName).Configurations.TryGetValue(ConfigurationKey.CoreSite, out coreSiteClusterConfiguration);
                 coreSiteClusterConfiguration?.Configuration.TryGetValue(Constants.ClusterConfiguration.StorageAccountKeyPrefix + DefaultStorageAccountName, out storageAccountKey);
+=======
+                IDictionary<string, string> coreSiteClusterConfiguration;
+                HDInsightManagementClient.ListConfigurations(resourceGroupName, clusterName).Configurations.TryGetValue(ConfigurationKey.CoreSite, out coreSiteClusterConfiguration);
+                coreSiteClusterConfiguration?.TryGetValue(Constants.ClusterConfiguration.StorageAccountKeyPrefix + DefaultStorageAccountName, out storageAccountKey);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (CloudException cloudEx)
             {

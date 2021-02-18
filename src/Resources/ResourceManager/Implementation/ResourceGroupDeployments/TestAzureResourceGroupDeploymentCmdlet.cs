@@ -12,22 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+=======
+using System;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+=======
+    [Cmdlet("Test", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
+    public class TestAzureResourceGroupDeploymentCmdlet : TestDeploymentCmdletBase
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -50,7 +67,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.Mode = DeploymentMode.Incremental;
         }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void OnProcessRecord()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
             {
@@ -59,10 +80,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+<<<<<<< HEAD
                 DeploymentName = DeploymentName ?? Guid.NewGuid().ToString(),
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
+=======
+                ScopeType = DeploymentScopeType.ResourceGroup,
+                DeploymentName = DeploymentName ?? Guid.NewGuid().ToString(),
+                ResourceGroupName = ResourceGroupName,
+                DeploymentMode = Mode,
+                TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
+                QueryString = QueryString,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
@@ -74,7 +105,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     : null
             };
 
+<<<<<<< HEAD
             WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters, Mode));
+=======
+            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

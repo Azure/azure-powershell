@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultsecret
+=======
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,13 +19,21 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+=======
+Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String>
+=======
+Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,13 +45,21 @@ Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
 
 ### ByInputObjectVaultName
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+=======
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretName
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+=======
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String> [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,13 +71,21 @@ Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersi
 
 ### ByResourceIdVaultName
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+=======
+Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdSecretName
 ```
+<<<<<<< HEAD
 Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
+=======
+Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -175,6 +203,7 @@ This command gets a specific version of the secret named secret1 in the key vaul
 
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
+<<<<<<< HEAD
 PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
 PS C:\> Write-Host "Secret Value is:" $secret.SecretValueText
 
@@ -182,6 +211,12 @@ Secret Value is: P@ssw0rd
 ```
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
+=======
+PS C:\> $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -AsPlainText
+```
+
+The cmdlet returns the secret as a string when `-AsPlainText` is applied.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
@@ -210,7 +245,11 @@ Expires              :
 Not Before           :
 Created              : 4/6/2018 8:39:15 PM
 Updated              : 4/6/2018 10:11:24 PM
+<<<<<<< HEAD
 Content Type         : 
+=======
+Content Type         :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tags                 :
 ```
 
@@ -271,6 +310,24 @@ This command gets the current versions of all secrets in the key vault named Con
 
 ## PARAMETERS
 
+<<<<<<< HEAD
+=======
+### -AsPlainText
+When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, ByResourceIdVaultName, ByResourceIdSecretName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 

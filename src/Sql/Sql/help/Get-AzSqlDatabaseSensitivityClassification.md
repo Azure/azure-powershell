@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasesensitivityclassification
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -52,6 +56,7 @@ ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
+<<<<<<< HEAD
                         SchemaName: schema1,
                         TableName: table1,
                         ColumnName: column1,
@@ -67,6 +72,25 @@ SensitivityLabels : {{
                         TableName: table3,
                         ColumnName: column3,
                         SensitivityLabel: label3,
+=======
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailBody,
+                        InformationType: Contact Info
+                    }, {
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailSubject,
+                        SensitivityLabel: Confidential,
+                        Rank: Medium
+                    }, {
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }}
 ```
 
@@ -78,6 +102,7 @@ ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
+<<<<<<< HEAD
                         SchemaName: schema1,
                         TableName: table1,
                         ColumnName: column1,
@@ -93,38 +118,83 @@ SensitivityLabels : {{
                         TableName: table3,
                         ColumnName: column3,
                         SensitivityLabel: label3,
+=======
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailBody,
+                        InformationType: Contact Info
+                    }, {
+                        SchemaName: dbo,
+                        TableName: Report,
+                        ColumnName: ReportEmailSubject,
+                        SensitivityLabel: Confidential,
+                        Rank: Medium
+                    }, {
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }}
 ```
 
 ### Example 3: Get current information type and sensitivity label of a specific column of an Azure SQL Database.
 ```powershell
+<<<<<<< HEAD
 PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+=======
+PS C:\> Get-AzSqlDatabaseSensitivityClassification -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
+<<<<<<< HEAD
                         SchemaName: schema,
                         TableName: table,
                         ColumnName: column,
                         SensitivityLabel: label,
                         InformationType: informationType,
+=======
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }}
 ```
 
 ### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Database using Piping.
 ```powershell
+<<<<<<< HEAD
 PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
+=======
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityClassification -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
 SensitivityLabels : {{
+<<<<<<< HEAD
                         SchemaName: schema,
                         TableName: table,
                         ColumnName: column,
                         SensitivityLabel: label,
                         InformationType: informationType,
+=======
+                        SchemaName: dbo,
+                        TableName: EMailLog,
+                        ColumnName: BounceEmailSubject,
+                        SensitivityLabel: Confidential,
+                        InformationType: Contact Info,
+                        Rank: Medium
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }}
 ```
 
@@ -280,4 +350,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
+=======
+[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -47,13 +47,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string HyperVGeneration { get; set; }
         public CreationData CreationData { get; set; }
         public int? DiskSizeGB { get; set; }
+<<<<<<< HEAD
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
         public string ProvisioningState { get; set; }
+=======
+        public long? DiskSizeBytes { get; set; }
+        public string UniqueId { get; set; }
+        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
+        public string ProvisioningState { get; set; }
+        public bool? Incremental { get; set; }
+        public Encryption Encryption { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+<<<<<<< HEAD
+=======
+        //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
+        public string NetworkAccessPolicy { get; set; }
+        public string DiskAccessId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     }
 }

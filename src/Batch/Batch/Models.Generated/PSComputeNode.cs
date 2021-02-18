@@ -90,7 +90,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSCertificateReference(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.certificateReferences = list.AsReadOnly();
+=======
+                    this.certificateReferences = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.certificateReferences;
             }
@@ -126,7 +130,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSComputeNodeError(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.errors = list.AsReadOnly();
+=======
+                    this.errors = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.errors;
             }
@@ -194,7 +202,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSTaskInformation(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.recentTasks = list.AsReadOnly();
+=======
+                    this.recentTasks = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.recentTasks;
             }

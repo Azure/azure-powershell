@@ -10,6 +10,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
+<<<<<<< HEAD
+=======
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

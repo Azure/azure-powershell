@@ -53,6 +53,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public JObject Metadata { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The policy assignment enforcement mode.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The policy definition id.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

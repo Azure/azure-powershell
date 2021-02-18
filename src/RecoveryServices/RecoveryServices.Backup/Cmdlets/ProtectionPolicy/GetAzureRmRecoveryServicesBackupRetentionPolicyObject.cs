@@ -28,10 +28,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
+<<<<<<< HEAD
         /// Workload type of the policy to be created.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0,
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+=======
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "AzureVM, AzureWorkload, AzureStorage";
+
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+
+        /// <summary>
+        /// Workload type of the policy to be created.
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0,
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
@@ -39,7 +56,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Backup management type of the policy to be created.
         /// </summary>
         [Parameter(Mandatory = false, Position = 1,
+<<<<<<< HEAD
             HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
+=======
+            HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 

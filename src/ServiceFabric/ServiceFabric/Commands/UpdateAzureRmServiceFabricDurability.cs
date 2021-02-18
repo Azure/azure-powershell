@@ -26,6 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+<<<<<<< HEAD
+=======
+using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -68,14 +72,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             var vmss = GetVmss(this.NodeType);
+=======
+            var cluster = GetCurrentCluster();
+            var vmss = GetVmss(this.NodeType, cluster.ClusterId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             VirtualMachineScaleSetExtension ext;
             if (!TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions, out ext))
             {
                 throw new InvalidOperationException(string.Format(ServiceFabricProperties.Resources.SFExtensionNotFoundInVMSS, vmss.Name, vmss.Id));
             }
 
+<<<<<<< HEAD
             var cluster = GetCurrentCluster();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var nodeType = GetNodeType(cluster, this.NodeType);
             var oldDurabilityLevel = GetDurabilityLevel(nodeType.DurabilityLevel);
             var newDurabilityLevel = this.DurabilityLevel;

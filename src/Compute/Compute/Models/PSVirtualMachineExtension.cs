@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public bool? AutoUpgradeMinorVersion { get; set; }
 
         public string ForceUpdateTag { get; set; }
+<<<<<<< HEAD
+=======
+        public bool? EnableAutomaticUpgrade { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public static class PSVirtualMachineExtensionConversions
@@ -85,7 +89,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses,
                 SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.Substatuses,
                 AutoUpgradeMinorVersion = ext.AutoUpgradeMinorVersion,
+<<<<<<< HEAD
                 ForceUpdateTag = ext.ForceUpdateTag
+=======
+                ForceUpdateTag = ext.ForceUpdateTag,
+                EnableAutomaticUpgrade = ext.EnableAutomaticUpgrade
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             return result;

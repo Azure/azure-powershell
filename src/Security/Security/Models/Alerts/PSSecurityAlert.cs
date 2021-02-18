@@ -45,7 +45,11 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
 
         public List<PSSecurityAlertEntity> Entities { get; set; }
 
+<<<<<<< HEAD
         public IDictionary<string,object> ExtendedProperties { get; set; }
+=======
+        public IDictionary<string, object> ExtendedProperties { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public string InstanceId { get; set; }
 

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/test-aziothubroute
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/test-aziothubroute
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -73,7 +77,11 @@ R1        DeviceMessages events        True
 R5        DeviceMessages E1            True
 ```
 
+<<<<<<< HEAD
 Test all route with source "DeviceMessges".
+=======
+Test all route with source "DeviceMessages".
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```
@@ -95,6 +103,22 @@ Syntax error. error    1                 29                  1               30
 
 Test a specific route and showing the reason of failure.
 
+<<<<<<< HEAD
+=======
+### Example 4
+```
+PS C:\> $ap = @{}
+PS C:\> $ap.add("key0","value0")
+PS C:\> $sp = @{}
+PS C:\> $sp.add("key1", "value1")
+PS C:\> Test-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -AppProperty $ap -SystemProperty $sp
+
+Result : true
+```
+
+Test a specific route with AppProperty and SystemProperty.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -AppProperty
@@ -239,7 +263,11 @@ Source of the route
 Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource
 Parameter Sets: InputObjectTestAllRouteSet, TestAllRouteSet, ResourceIdTestAllRouteSet
 Aliases:
+<<<<<<< HEAD
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
+=======
+Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents, DigitalTwinChangeEvents
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 1

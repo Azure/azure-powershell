@@ -14,11 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+<<<<<<< HEAD
     using AutoMapper;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
+<<<<<<< HEAD
     using System.Security;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -28,6 +32,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+=======
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
@@ -78,11 +88,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+<<<<<<< HEAD
+=======
+        public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
+        [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = false,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
 
+<<<<<<< HEAD
+=======
+        public const String RTv1ChangeDesc = "Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.";
+        [CmdletParameterBreakingChange("RouteTable", ChangeDescription = RTv1ChangeDesc)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = false,
             HelpMessage = "The route table associated with this Virtual Hub.")]
@@ -95,12 +115,25 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The sku of the Virtual Hub.")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
             base.Execute();
+<<<<<<< HEAD
+=======
+            Dictionary<string, List<string>> auxAuthHeader = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (this.IsVirtualHubPresent(this.ResourceGroupName, this.Name))
             {
@@ -145,6 +178,7 @@ namespace Microsoft.Azure.Commands.Network
                         Location = this.Location
                     };
 
+<<<<<<< HEAD
                     virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
                     if (this.HubVnetConnection != null)
                     {
@@ -158,6 +192,28 @@ namespace Microsoft.Azure.Commands.Network
                         this.Name,
                         virtualHub,
                         this.Tag));
+=======
+                    virtualHub.RouteTable = this.RouteTable;
+                    virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
+
+                    if (this.HubVnetConnection != null)
+                    {
+                        virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                        virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
+                    }
+
+                    if (string.IsNullOrWhiteSpace(this.Sku))
+                    {
+                        virtualHub.Sku = "Standard";
+                    }
+
+                    WriteObject(CreateOrUpdateVirtualHub(
+                        this.ResourceGroupName,
+                        this.Name,
+                        virtualHub,
+                        this.Tag,
+                        auxAuthHeader));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 });
         }
     }

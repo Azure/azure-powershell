@@ -15,6 +15,10 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using System.Threading;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -139,7 +143,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     // sleep for 30 seconds before checking again
+<<<<<<< HEAD
                     TestMockSupport.Delay(30 * 1000);
+=======
+                    string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+                    
+                    if(String.Compare(testMode, "Playback", StringComparison.OrdinalIgnoreCase) != 0  && !TestMockSupport.RunningMocked)
+                    {
+                        Thread.Sleep(30000);
+                    }                    
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 WriteObject(finalJobs, enumerateCollection: true);

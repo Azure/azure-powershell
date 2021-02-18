@@ -20,10 +20,18 @@ using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+=======
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -191,6 +199,44 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
         public string OfflineDataTransferShareName { get; set; }
 
+<<<<<<< HEAD
+=======
+        // <summary>
+        /// Gets or sets a value indicating the policy to use for the initial download sync.
+        /// </summary>
+        /// <value>The initial download policy.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.InitialDownloadPolicyParameter)]
+        // #TODO : Update swagger to make them string constants
+        //[ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
+        //    StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
+        //    StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
+        //    IgnoreCase = true)]
+        [ValidateSet("AvoidTieredFiles",
+            "NamespaceOnly",
+            "NamespaceThenModifiedFiles",
+            IgnoreCase = true)]
+        public string InitialDownloadPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the policy to use for regular download sync sessions.
+        /// </summary>
+        /// <value>The local cache mode.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.LocalCacheModeParameter)]
+        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
+        //    IgnoreCase = true)]
+        [ValidateSet("DownloadNewAndModifiedFiles",
+            "UpdateLocallyCachedFiles",
+            IgnoreCase = true)]
+        public string LocalCacheMode { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Gets or sets as job.
         /// </summary>
@@ -230,7 +276,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     }
                 }
 
+<<<<<<< HEAD
                 var createParameters = new ServerEndpointCreateParameters()
+=======
+                var createParameters = new StorageSyncModels.ServerEndpointCreateParameters()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
@@ -241,6 +291,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
+<<<<<<< HEAD
+=======
+                StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;
+                if (this.IsParameterBound(c => c.InitialDownloadPolicy))
+                {
+                    if (!Enum.TryParse(InitialDownloadPolicy, true, out initialDownloadPolicy))
+                    {
+                        throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
+                    }
+                    createParameters.InitialDownloadPolicy = initialDownloadPolicy;
+                }
+
+                StorageSyncModels.LocalCacheMode localCacheMode;
+                if (this.IsParameterBound(c => c.LocalCacheMode))
+                {
+                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
+                    {
+                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
+                    }
+                    createParameters.LocalCacheMode = localCacheMode;
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
@@ -248,7 +321,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))
                 {
+<<<<<<< HEAD
                     ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
+=======
+                    StorageSyncModels.ServerEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Create(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         resourceGroupName,
                         storageSyncServiceName,
                         syncGroupName,

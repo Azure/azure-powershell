@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalr
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/new-azsignalr
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,8 +21,14 @@ Create a SignalR service.
 
 ```
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
+<<<<<<< HEAD
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-ServiceMode <String>] [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -27,6 +40,7 @@ The following values will be used for the parameters if not specified:
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Create a SignalR serivce
 ```powershell
 PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
@@ -34,10 +48,46 @@ PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Loca
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+=======
+### Create a SignalR service
+```powershell
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1 -UnitCount 5
+
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
+```
+
+### Specify ServiceMode and AllowedOrigin
+```powershell
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -ServiceMode Serverless -AllowedOrigin http://example1.com:12345, https://example2.cn
+
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## PARAMETERS
 
+<<<<<<< HEAD
+=======
+### -AllowedOrigin
+The allowed origins for the SignalR service. To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -AsJob
 Run the cmdlet in background job.
 
@@ -113,6 +163,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ServiceMode
+The service mode for the SignalR service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Sku
 The SignalR service SKU.
 
@@ -190,11 +258,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## OUTPUTS
 

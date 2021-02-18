@@ -12,15 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store;
 using Microsoft.Rest.Azure;
+<<<<<<< HEAD
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+namespace Microsoft.Azure.Commands.DataLakeStore
+{
+    [GenericBreakingChange("For store side import failures, Import-AzDataLakeStoreItem will throw exception instead of printing message on screen", "2.0.0", "05/18/2020")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase

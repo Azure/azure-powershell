@@ -119,7 +119,11 @@ namespace RecoveryServices.SiteRecovery.Test
              "\"");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Need to ReRecord")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2ACreateRPI()
         {
@@ -242,5 +246,110 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.VaultSettingsFilePath +
                 "\"");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithDES()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput","V2A.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithDES -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithDESEnabledDiskInput()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "CMKInput", "V2A.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithDESEnabledDiskInput -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithPPG()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithPPG()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithAvZone()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithAvZone()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

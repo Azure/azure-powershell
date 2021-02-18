@@ -36,6 +36,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string ReRegisterParamSet = "ReRegister";
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// List of supported BackupManagementTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validBackupManagementTypes = "AzureWorkload";
+
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "MSSQL";
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Azure Vm Id.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = RegisterParamSet,
@@ -55,7 +68,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// The backup management type of the container(s) to be fetched.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1,
+<<<<<<< HEAD
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
+=======
+            HelpMessage = ParamHelpMsgs.Common.BackupManagementType + validBackupManagementTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureWorkload")]
         public Models.BackupManagementType BackupManagementType { get; set; }
@@ -64,7 +81,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Workload type of the item to be returned.
         /// </summary>
         [Parameter(Mandatory = true, Position = 2,
+<<<<<<< HEAD
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+=======
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 

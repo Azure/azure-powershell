@@ -88,6 +88,19 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "Enable internet security for this connection")]
+        public bool? EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The routing configuration for this ExpressRoute Gateway connection")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -140,6 +153,24 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
                 expressRouteConnectionToModify.RoutingWeight = this.RoutingWeight;
             }
 
+<<<<<<< HEAD
+=======
+            if (this.EnableInternetSecurity.HasValue)
+            {
+                expressRouteConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
+                {
+                    throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
+                }
+
+                expressRouteConnectionToModify.RoutingConfiguration = RoutingConfiguration;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // TODO: drop this hack after ER Gateways backend updated with all the functionality exposed
             if (expressRouteGateway.AutoScaleConfiguration.Bounds.Max < expressRouteGateway.AutoScaleConfiguration.Bounds.Min)
             {

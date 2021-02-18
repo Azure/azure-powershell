@@ -24,12 +24,19 @@ function Test-CertificateCrudOperations
     $localDir = ($pwd).Path # Use $pwd to get the local directory. If $pwd is not used, paths are relative to [Environment]::CurrentDirectory, which can be different
 
     $certPathVs = $localDir + "/Resources/BatchTestCert01.cer"
+<<<<<<< HEAD
     # $certPathConsole = [System.IO.Path]::GetDirectoryName($PSScriptRoot) + "/Resources/BatchTestCert01.cer"
     # $certPath = if (Test-Path $certPathVs -PathType Leaf) { $certPathVs } Else { $certPathConsole }
     $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPathVs
 
     # Add the cert
     $x509cert | New-AzBatchCertificate -BatchContext $context
+=======
+    $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPathVs
+
+    # Add the cert
+    $x509cert | New-AzBatchCertificate -Kind "Cer" -BatchContext $context
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     # Get the cert and ensure its properties match expectations
     $addedCert = Get-AzBatchCertificate $thumbprintAlgorithm $x509cert.Thumbprint -BatchContext $context
@@ -67,5 +74,9 @@ function Test-TestCancelCertificateDelete
     $filter = "state eq 'active'"
     $cert = Get-AzBatchCertificate -Filter $filter -BatchContext $context
     
+<<<<<<< HEAD
     Assert-AreEqual $thumbprint $cert.Thumbprint
+=======
+    Assert-AreEqual $thumbprint $cert.Thumbprint.ToLowerInvariant()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

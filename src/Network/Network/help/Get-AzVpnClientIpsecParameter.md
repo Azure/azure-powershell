@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpnclientipsecparameter
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnclientipsecparameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,8 +27,13 @@ The **Get-AzVpnClientIpsecParameter** cmdlet returns the object of your vpn ipse
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
 ```
+=======
+### Example 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $VpnClientIPsecParameters = Get-AzVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
 ```
 

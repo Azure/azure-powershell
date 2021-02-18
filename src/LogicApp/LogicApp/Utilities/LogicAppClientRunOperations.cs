@@ -40,9 +40,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <returns>List of workflow runs</returns>
+<<<<<<< HEAD
         public Page<WorkflowRun> GetWorkflowRuns(string resourceGroupName, string workflowName)
         {
             return (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.List(resourceGroupName, workflowName);
+=======
+        public Page<WorkflowRun> GetWorkflowRuns(string resourceGroupName, string workflowName, string nextPageLink = "")
+        {
+            return string.IsNullOrWhiteSpace(nextPageLink) ? 
+                (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.List(resourceGroupName, workflowName) :
+                (Page<WorkflowRun>)this.LogicManagementClient.WorkflowRuns.ListNext(nextPageLink);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -80,9 +88,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="runName">Name of the workflow run</param>
         /// <returns>Actions of the specified workflow run</returns>
+<<<<<<< HEAD
         public Page<WorkflowRunAction> GetWorkflowRunActions(string resourceGroupName, string workflowName, string runName)
         {
             return (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.List(resourceGroupName, workflowName, runName);
+=======
+        public Page<WorkflowRunAction> GetWorkflowRunActions(string resourceGroupName, string workflowName, string runName, string nextPageLink = "")
+        {
+            return string.IsNullOrWhiteSpace(nextPageLink) ?
+                (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.List(resourceGroupName, workflowName, runName) :
+                (Page<WorkflowRunAction>)this.LogicManagementClient.WorkflowRunActions.ListNext(nextPageLink);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -84,11 +84,38 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string FailoverGroupId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the failover group Id
+=======
+        /// Gets or sets the recoverable database id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public string RecoverableDatabaseId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the restorable dropped database Id
+        /// </summary>
+        public string RestorableDroppedDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the long term retention backup resource ID
+        /// </summary>
+        public string LongTermRetentionBackupResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the autocomplete restore flag
+        /// </summary>
+        public bool? AutoCompleteRestore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last backup name
+        /// </summary>
+        public string LastBackupName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -122,6 +149,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             SourceDatabaseId = database.SourceDatabaseId;
             FailoverGroupId = database.FailoverGroupId;
             RecoverableDatabaseId = database.RecoverableDatabaseId;
+<<<<<<< HEAD
+=======
+            RestorableDroppedDatabaseId = database.RestorableDroppedDatabaseId;
+            LongTermRetentionBackupResourceId = database.LongTermRetentionBackupResourceId;
+            AutoCompleteRestore = database.AutoCompleteRestore;
+            LastBackupName = database.LastBackupName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

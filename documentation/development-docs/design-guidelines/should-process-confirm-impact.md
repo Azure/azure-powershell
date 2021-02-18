@@ -1,6 +1,10 @@
 ## ShouldProcess
 
+<<<<<<< HEAD
 From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
+=======
+From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-attribute-declaration):
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 > _All cmdlets that change resources outside of PowerShell should include the `SupportsShouldProcess` keyword when the `Cmdlet` attribute is declared, which allows the cmdlet to call the `ShouldProcess` method before the cmdlet performs its action. If the `ShouldProcess` call returns false, the action should not be taken._
 >
@@ -30,11 +34,19 @@ By default, `ShouldProcess` interacts with the cmdlet `ConfirmImpact` and the us
 
 PowerShell has several tools that allow users to explore and control what happens during execution of cmdlets, and this change in implementation allows them to use these tools.
 
+<<<<<<< HEAD
 Users who specify the `-Confirm` parameter on the command prompt will automatically be prompted for **any** call to `ShouldProcess`, and can decide whether to continue processing. Users can increase or decrease their `$ConfirmPreference` level to decide which kinds of changes will be confirmed automaticlaly without user interaction.
 
 Users can specify the `-WhatIf` parameter to see all the `ShouldProcess` prompts that would occur during exeuction of a cmdlet, without actually making any changes.
 
 Some cmdlets required additional confirmation. For example, if a cmdlet would destroy existing resources in some circumstances, the cmdlet might detect that condition and prompt the user to verify before continuing. Overwriting an existing resource during resource creation, overwriting a file when downloading data, deleting a resource that is currently in use, or deleting a container that contains additional resources are all example of this pattern. To implement additional confirmation, and allow scripts to opt out of additional prompts, the above pattern is enhanced with calles to `ShouldContinue()` and the `Force` parameter:
+=======
+Users who specify the `-Confirm` parameter on the command prompt will automatically be prompted for **any** call to `ShouldProcess`, and can decide whether to continue processing. Users can increase or decrease their `$ConfirmPreference` level to decide which kinds of changes will be confirmed automatically without user interaction.
+
+Users can specify the `-WhatIf` parameter to see all the `ShouldProcess` prompts that would occur during execution of a cmdlet, without actually making any changes.
+
+Some cmdlets required additional confirmation. For example, if a cmdlet would destroy existing resources in some circumstances, the cmdlet might detect that condition and prompt the user to verify before continuing. Overwriting an existing resource during resource creation, overwriting a file when downloading data, deleting a resource that is currently in use, or deleting a container that contains additional resources are all example of this pattern. To implement additional confirmation, and allow scripts to opt out of additional prompts, the above pattern is enhanced with calls to `ShouldContinue()` and the `Force` parameter:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```cs
 if (ShouldProcess(target, actionMessage))
@@ -93,7 +105,11 @@ void ConfirmAction(bool force, string continueMessage, string processMessage, st
 
 ## ConfirmImpact
 
+<<<<<<< HEAD
 From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
+=======
+From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-attribute-declaration):
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 > _Specifies when the action of the cmdlet should be confirmed by a call to the `ShouldProcess` method. `ShouldProcess` will only be called when the `ConfirmImpact` value of the cmdlet (by default, Medium) is equal to or greater than the value of the `$ConfirmPreference` variable. This parameter should be specified only when the `SupportsShouldProcess` parameter is specified._
 

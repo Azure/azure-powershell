@@ -25,8 +25,13 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("76158def-441b-472a-9b1a-a75726a813f4")]
+<<<<<<< HEAD
 [assembly: AssemblyVersion("1.3.0")]
 [assembly: AssemblyFileVersion("1.3.0")]
+=======
+[assembly: AssemblyVersion("2.3.0")]
+[assembly: AssemblyFileVersion("2.3.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Websites.Test")]
 #endif

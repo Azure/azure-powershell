@@ -17,4 +17,17 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+<<<<<<< HEAD
 ## Upcoming Release
+=======
+## Upcoming Release
+
+## Version 0.7.3
+* Update references in .psd1 to use relative path
+
+## Version 0.7.2
+* Fixed miscellaneous typos across module
+
+## Version 0.7.1
+* Update release with latest service features and serialization fixes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubroutingendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,7 +39,11 @@ Add-AzIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName] <String> -End
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints
+=======
+Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, see https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -116,7 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointResourceGroup
+<<<<<<< HEAD
 Resource group of the Endpoint resoure
+=======
+Resource group of the Endpoint resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

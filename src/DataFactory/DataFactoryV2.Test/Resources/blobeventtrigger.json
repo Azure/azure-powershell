@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "type": "BlobTrigger",
+    "typeProperties": {
+      "maxConcurrency": "10",
+      "folderPath": "blobtriggertestpath",
+      "linkedService": {
+        "referenceName": "foo1",
+        "type": "LinkedServiceReference"
+      }
+
+    },
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "samplePipeline"
+        },
+        "parameters": {
+          "OutputBlobName": "triggertest"
+        }
+      }
+    ]
+  }
+}

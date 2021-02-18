@@ -14,9 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+=======
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Rest.Azure.OData;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,10 +120,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel UpsertServerActiveDirectoryAdministrator(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryAdministratorModel model)
         {
+<<<<<<< HEAD
             var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAdministratorCreateOrUpdateParameters()
             {
                 Properties = GetActiveDirectoryInformation(model.DisplayName, model.ObjectId)
             });
+=======
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroup, serverName, resp);
         }
@@ -138,6 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
         /// <param name="admin">The service response</param>
         /// <returns>The converted model</returns>
+<<<<<<< HEAD
         public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerAdministrator admin)
         {
             AzureSqlServerActiveDirectoryAdministratorModel model = new AzureSqlServerActiveDirectoryAdministratorModel();
@@ -148,6 +160,23 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             model.ObjectId = admin.Properties.Sid;
 
             return model;
+=======
+        public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerAzureADAdministrator admin)
+        {
+            if (admin != null)
+            {
+                AzureSqlServerActiveDirectoryAdministratorModel model = new AzureSqlServerActiveDirectoryAdministratorModel();
+
+                model.ResourceGroupName = resourceGroup;
+                model.ServerName = serverName;
+                model.DisplayName = admin.Login;
+                model.ObjectId = admin.Sid;
+                model.IsAzureADOnlyAuthentication = admin.AzureADOnlyAuthentication;
+                return model;
+            }
+
+            return null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -156,13 +185,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="displayName">Azure Active Directory user or group display name</param>
         /// <param name="objectId">Azure Active Directory user or group object id</param>
         /// <returns></returns>
+<<<<<<< HEAD
         protected ServerAdministratorCreateOrUpdateProperties GetActiveDirectoryInformation(string displayName, Guid objectId)
+=======
+        protected ServerAzureADAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
 
             // Check for a Azure Active Directory group. Recommended to always use group.
             IEnumerable<PSADGroup> groupList = null;
+<<<<<<< HEAD
+=======
+            PSADGroup group = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var filter = new ADObjectFilterOptions()
             {
@@ -174,21 +211,33 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             // Get a list of groups from Azure Active Directory
             groupList = ActiveDirectoryClient.FilterGroups(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
+<<<<<<< HEAD
             if (groupList.Count() > 1)
+=======
+            if (groupList != null && groupList.Count() > 1)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 // More than one group was found with that display name.
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADGroupMoreThanOneFound, displayName));
             }
+<<<<<<< HEAD
             else if (groupList.Count() == 1)
             {
                 // Only one group was found. Get the group display name and object id
                 var group = groupList.First();
+=======
+            else if (groupList != null && groupList.Count() == 1)
+            {
+                // Only one group was found. Get the group display name and object id
+                group = groupList.First();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 // Only support Security Groups
                 if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidADGroupNotSecurity, displayName));
                 }
+<<<<<<< HEAD
 
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
@@ -199,6 +248,64 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             }
 
             // No group was found. Check for a user
+=======
+            }
+
+            // Lookup for serviceprincipals
+            ODataQuery<ServicePrincipal> odataQueryFilter;
+
+            if ((objectId != null && objectId != Guid.Empty))
+            {
+                var applicationIdString = objectId.ToString();
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.AppId == applicationIdString);
+            }
+            else
+            {
+                odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(a => a.DisplayName == displayName);
+            }
+
+            var servicePrincipalList = ActiveDirectoryClient.FilterServicePrincipals(odataQueryFilter);
+
+            if (servicePrincipalList != null && servicePrincipalList.Count() > 1)
+            {
+                // More than one service principal was found.
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationMoreThanOneFound, displayName));
+            }
+            else if (servicePrincipalList != null && servicePrincipalList.Count() == 1)
+            {
+                // Only one user was found. Get the user display name and object id
+                PSADServicePrincipal app = servicePrincipalList.First();
+
+                if (displayName != null && string.CompareOrdinal(displayName, app.DisplayName) != 0)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADApplicationDisplayNameMismatch, displayName, app.DisplayName));
+                }
+
+                if (group != null)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADDuplicateGroupAndApplicationFound, displayName));
+                }
+
+                return new ServerAzureADAdministrator()
+                {
+                    Login = displayName,
+                    Sid = app.ApplicationId,
+                    TenantId = tenantId
+                };
+            }
+
+            if (group != null)
+            {
+                return new ServerAzureADAdministrator()
+                {
+                    Login = group.DisplayName,
+                    Sid = group.Id,
+                    TenantId = tenantId
+                };
+            }
+
+            // No group or service principal was found. Check for a user
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
@@ -223,6 +330,23 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
+<<<<<<< HEAD
+=======
+            // No user was found. Check if the display name is a guest user. 
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    Mail = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // No user was found
             if (userList == null || userList.Count() == 0)
             {
@@ -238,11 +362,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 // Only one user was found. Get the user display name and object id
                 var obj = userList.First();
 
+<<<<<<< HEAD
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
                     Login = displayName,
                     Sid = obj.Id,
                     TenantId = tenantId,
+=======
+                return new ServerAzureADAdministrator()
+                {
+                    Login = displayName,
+                    Sid = obj.Id,
+                    TenantId = tenantId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
             }
         }
@@ -266,4 +398,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             return tenantIdGuid;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

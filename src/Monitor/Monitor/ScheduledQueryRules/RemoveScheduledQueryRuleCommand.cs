@@ -99,7 +99,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 }
                 catch (Exception ex)
                 {
+<<<<<<< HEAD
                     throw new Exception("Error occured while removing the Log ALert Rule", ex);
+=======
+                    throw new Exception("Error occurred while removing the Log ALert Rule", ex);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 

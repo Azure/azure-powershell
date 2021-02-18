@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+<<<<<<< HEAD
     using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
@@ -23,12 +24,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Policy;
     using System;
     using System.IO;
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+
+    using Newtonsoft.Json.Linq;
+    using Policy;
+    using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Management.Automation;
 
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+=======
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsPolicySetDefinition))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class SetAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -98,6 +112,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the policy set definition input object parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionInputObjectHelp)]
+        public PsPolicySetDefinition InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy definition groups parameter of the new policy set definition
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicySetDefinitionGroupDefinitionHelp)]
+        [ValidateNotNullOrEmpty]
+        public string GroupDefinition { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -127,7 +157,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                     .WaitOnOperation(operationResult: operationResult);
 
+<<<<<<< HEAD
                 this.WriteObject(this.GetOutputObjects("PolicySetDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+=======
+                this.WriteObject(this.GetOutputPolicySetDefinitions(JObject.Parse(result)), enumerateCollection: true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -138,8 +172,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
 
+<<<<<<< HEAD
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
             var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : GetObjectFromParameter(this.Parameter).ToString();
+=======
+            // apply incoming object properties if present
+            if (this.InputObject != null)
+            {
+                resource.Properties = this.InputObject.Properties.ToJToken();
+            }
+
+            var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
+            var parameterJson = string.IsNullOrEmpty(this.Parameter) ? resource.Properties["parameters"]?.ToString() : this.GetObjectFromParameter(this.Parameter, nameof(this.Parameter)).ToString();
+            var groupsJson = string.IsNullOrEmpty(this.GroupDefinition) ? resource.Properties["policyDefinitionGroups"]?.ToString() : this.GetArrayFromParameter(this.GroupDefinition, nameof(this.GroupDefinition)).ToString();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var policySetDefinitionObject = new PolicySetDefinition
             {
@@ -148,9 +194,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? resource.Properties["description"]?.ToString(),
                     DisplayName = this.DisplayName ?? resource.Properties["displayName"]?.ToString(),
+<<<<<<< HEAD
                     PolicyDefinitions = string.IsNullOrEmpty(this.PolicyDefinition) ? JArray.Parse(resource.Properties["policyDefinitions"].ToString()) : GetPolicyDefinitionsObject(),
                     Metadata = string.IsNullOrEmpty(metaDataJson) ?  null : JObject.Parse(metaDataJson),
                     Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson)
+=======
+                    PolicyDefinitions = string.IsNullOrEmpty(this.PolicyDefinition) ? resource.Properties["policyDefinitions"] as JArray : this.GetArrayFromParameter(this.PolicyDefinition, nameof(this.PolicyDefinition)),
+                    Metadata = string.IsNullOrEmpty(metaDataJson) ?  null : JObject.Parse(metaDataJson),
+                    Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson),
+                    PolicyDefinitionGroups = string.IsNullOrEmpty(groupsJson) ? null : JArray.Parse(groupsJson)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             };
 
@@ -158,6 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets the policy definitions object
         /// </summary>
         private JArray GetPolicyDefinitionsObject()
@@ -170,11 +224,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
         private string GetResourceId()
         {
+<<<<<<< HEAD
             return this.Id ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+=======
+            return this.Id ?? this.InputObject?.ResourceId ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

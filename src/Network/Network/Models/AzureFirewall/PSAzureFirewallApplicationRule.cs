@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 6)]
         public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
 
+<<<<<<< HEAD
+=======
+        [JsonProperty(Order = 7)]
+        public List<string> SourceIpGroups { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string ProtocolsText
         {
@@ -51,6 +57,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
+=======
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string TargetFqdnsText
         {
             get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }

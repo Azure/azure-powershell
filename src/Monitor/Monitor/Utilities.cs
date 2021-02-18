@@ -22,6 +22,10 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+<<<<<<< HEAD
+=======
+    using System.IO;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System.Linq;
 
     /// <summary>
@@ -76,5 +80,15 @@ namespace Microsoft.Azure.Commands.Insights
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        public static string ReadFileContent(string path)
+        {
+            if (!File.Exists(path)) throw new FileNotFoundException(path);
+            using (TextReader reader = new StreamReader(path))
+                return reader.ReadToEnd();
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

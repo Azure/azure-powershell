@@ -12,14 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Network.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+=======
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using NM = Microsoft.Azure.Management.Network.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -75,7 +85,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else 
             {
+<<<<<<< HEAD
                 IPage<PrivateLinkService> plsPage;
+=======
+                IPage<NM.PrivateLinkService> plsPage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     plsPage = this.PrivateLinkServiceClient.List(this.ResourceGroupName);
@@ -86,7 +100,11 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
 
+<<<<<<< HEAD
                 var plsList = ListNextLink<PrivateLinkService>.GetAllResourcesByPollingNextLink(plsPage, this.PrivateLinkServiceClient.ListNext);
+=======
+                var plsList = ListNextLink<NM.PrivateLinkService>.GetAllResourcesByPollingNextLink(plsPage, this.PrivateLinkServiceClient.ListNext);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var psPLSs = new List<PSPrivateLinkService>();
                 foreach (var pls in plsList)
                 {

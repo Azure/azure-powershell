@@ -84,7 +84,11 @@ Set-TestEnvironment -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSe
 #### Environment Variables
 
 `TEST_CSM_ORGID_AUTHENTICATION`
+<<<<<<< HEAD
 * This is the connection string that determines how to connect to Azure. This includes both your authentiation and the Azure environment to connect to.
+=======
+* This is the connection string that determines how to connect to Azure. This includes both your authentication and the Azure environment to connect to.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 `AZURE_TEST_MODE`
 * This specifies whether the test framework will `Record` test sessions or `Playback` previously recorded test sessions.

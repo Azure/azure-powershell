@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string ContainerImageName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url", ParameterSetName = ParameterSet1Name)]
+<<<<<<< HEAD
         [ValidateNotNullOrEmpty]
         public string ContainerRegistryUrl { get; set; }
 
@@ -105,6 +106,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password", ParameterSetName = ParameterSet1Name)]
         [ValidateNotNullOrEmpty]
+=======
+        [ValidateNotNull]
+        public string ContainerRegistryUrl { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNull]
+        public string ContainerRegistryUser { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password", ParameterSetName = ParameterSet1Name)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SecureString ContainerRegistryPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook", ParameterSetName = ParameterSet1Name)]
@@ -130,6 +141,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it")]
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Ensure web app gets loaded all the time, rather unloaded after been idle.")]
+        public bool AlwaysOn { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "The minimum version of TLS required for SSL requests. Allowed Values [1.0 | 1.1 | 1.2].")]
+        [ValidateSet("1.0", "1.1", "1.2")]
+        public string MinTlsVersion { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Set the Ftps state value for an app. Allowed Values [AllAllowed | Disabled | FtpsOnly].")]
+        [ValidateSet("AllAllowed", "Disabled", "FtpsOnly")]
+        public string FtpsState { get; set; }
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -144,6 +170,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+<<<<<<< HEAD
+=======
+                    if (parameters.Contains("AppServicePlan"))
+                    {
+                        // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, so simply set this to null
+                        WebApp.AzureStoragePath = null;
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan, WebApp);
+                    }
+ 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
                     {
                         siteConfig = new SiteConfig
@@ -165,7 +201,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Use32BitWorkerProcess =
                                 parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
+<<<<<<< HEAD
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
+=======
+                            NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
+                            AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
+                            MinTlsVersion = parameters.Contains("MinTlsVersion") ? MinTlsVersion : WebApp.SiteConfig.MinTlsVersion,
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState: WebApp.SiteConfig.FtpsState
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         };
                     }
 
@@ -176,7 +219,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         siteConfig = WebApp.SiteConfig;
                     }
 
+<<<<<<< HEAD
                     //According to current implementation if AppSettings paramter is provided we are overriding existing AppSettings
+=======
+                    //According to current implementation if AppSettings parameter is provided we are overriding existing AppSettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (WebApp.SiteConfig.AppSettings != null && AppSettings == null)
                     {
                         foreach (var setting in WebApp.SiteConfig.AppSettings)
@@ -198,6 +245,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         }
                     }
                     
+<<<<<<< HEAD
 
                     if (ContainerRegistryUrl != null)
                     {
@@ -210,6 +258,35 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     if (ContainerRegistryPassword != null)
                     {
                         appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+=======
+                    if (ContainerRegistryUrl != null)
+                    {
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerUrl);
+
+                        if (ContainerRegistryUrl != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
+                        }
+                    }
+
+                    if (ContainerRegistryUser != null)
+                    {
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerUserName);
+
+                        if (ContainerRegistryUser != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
+                        }
+                    }
+
+                    if (ContainerRegistryPassword != null)
+                    {
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))
@@ -239,6 +316,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Location = location,
                             Tags = tags,
                             ServerFarmId = WebApp.ServerFarmId,
+<<<<<<< HEAD
                             Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
@@ -249,6 +327,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     if (parameters.Contains("AppServicePlan"))
                     {
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan);
+=======
+                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned, null, null) : new ManagedServiceIdentity(ManagedServiceIdentityType.None, null, null) : WebApp.Identity,
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
+                            
+                        };
+
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, new PSSite(site));
+
+                        //Update WebApp object after site update
+                        WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
 
                     if (parameters.Contains("HostNames"))
@@ -290,7 +380,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, we will some value for this
                     WebApp.AzureStoragePath = null;
+<<<<<<< HEAD
                     WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName, WebApp);
+=======
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName, WebApp,rg);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray());
                     break;
             }

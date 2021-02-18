@@ -1,0 +1,8 @@
+{
+  "autorest_remodeler": "2.1.27",
+  "autorest_powershell": "2.1.384",
+  "autorest_core": "3.0.6282",
+  "node": "v10.16.3",
+  "autorest": "3.0.6149",
+  "swagger_commit": "76b6bd1989a8248987219b840f525b02e07807dc"
+}

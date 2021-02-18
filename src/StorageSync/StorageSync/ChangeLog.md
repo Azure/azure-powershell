@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 1.4.0
+* Added Sync tiering policy feature with download policy and local cache mode
+
+## Version 1.3.0
+* Added a new version StorageSync SDK targeting ApiVersion 2020-03-01
+* Added Update Storage Sync Service cmdlet
+    - `Set-AzStorageSyncService`
+* Added IncomingTrafficPolicy and PrivateEndpointConnections to StorageSyncService cmdlets.
+
+## Version 1.2.3
+* Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
+
+## Version 1.2.2
+* Update references in .psd1 to use relative path
+
+## Version 1.2.1
+
+* Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.
+
+## Version 1.2.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Adding Invoke-AzStorageSyncChangeDetection cmdlet.
 * Fix Issue 9551 for honoring TierFilesOlderThanDays
 

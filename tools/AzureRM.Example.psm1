@@ -13,7 +13,11 @@ function Test-DotNet
 {
     try
     {
+<<<<<<< HEAD
         if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (-not (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Where { $_ -ge 461808 })))
+=======
+        if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (-not (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Where-Object { $_ -ge 461808 })))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
         }
@@ -34,6 +38,11 @@ if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
     Test-DotNet
 }
 
+<<<<<<< HEAD
+=======
+%AZURECOREPREREQUISITE%
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
 {
     Get-ChildItem "$PSScriptRoot\StartupScripts" -ErrorAction Stop | ForEach-Object {
@@ -55,7 +64,17 @@ if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath -ErrorAction Ignore))
     try
     {
         Get-ChildItem -ErrorAction Stop -Path $preloadPath -Filter "*.dll" | ForEach-Object {
+<<<<<<< HEAD
             Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+=======
+            try
+            {
+                Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+            }
+            catch {
+                Write-Verbose $_
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
     catch {}
@@ -66,13 +85,27 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
 {
     try
     {
+<<<<<<< HEAD
         $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | %{New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
+=======
+        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | ForEach-Object {New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Get-ChildItem -ErrorAction Stop -Path $netCorePath -Filter "*.dll" | ForEach-Object {
             $assemblyName = ([System.Reflection.AssemblyName]::GetAssemblyName($_.FullName))
             $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
             if (-not $matches)
             {
+<<<<<<< HEAD
                 Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+=======
+                try
+                {
+                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                }
+                catch {
+                    Write-Verbose $_
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7320B832-50FD-48AE-9089-445318F3B08A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azavailabilityset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azavailabilityset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -28,7 +32,11 @@ The **Remove-AzAvailabilitySet** cmdlet removes an availability set from Azure.
 PS C:\> Remove-AzAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"
 ```
 
+<<<<<<< HEAD
 This command removes an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
+=======
+This command removes an availability set named AvailabilitySet03 in the resource group named ResourceGroup11.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

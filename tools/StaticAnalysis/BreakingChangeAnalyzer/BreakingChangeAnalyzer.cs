@@ -30,6 +30,10 @@ using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+<<<<<<< HEAD
+=======
+using Tools.Common.Utilities;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -97,8 +101,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
+<<<<<<< HEAD
                                                                         !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
+=======
+                                                                        !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
+            {
+                SharedAssemblyLoader.Load(baseDirectory);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var probingDirectories = new List<string> {baseDirectory};
 
                 // Add current directory for probing
@@ -131,11 +141,22 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var parentDirectory = Directory.GetParent(psd1).FullName;
                     var psd1FileName = Path.GetFileName(psd1);
                     var powershell = PowerShell.Create();
+<<<<<<< HEAD
                     powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
                                          " -FileName " + psd1FileName +
                                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
                     var cmdletResult = powershell.Invoke();
                     var nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+=======
+
+                    var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata;";
+                    powershell.AddScript($"{script} $ModuleMetadata.NestedModules;");
+                    var cmdletResult = powershell.Invoke();
+                    var nestedModules = cmdletResult.Where(c => c != null).Select(c => c.ToString()).Select(c => (c.StartsWith(".") ? c.Substring(2) : c)).ToList();
+
+                    powershell.AddScript($"{script} $ModuleMetadata.RequiredModules | % {{ $_[\"ModuleName\"] }};");
+                    cmdletResult = powershell.Invoke();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
                     if (!nestedModules.Any()) continue;
@@ -171,7 +192,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         var executingPath =
                             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
+<<<<<<< HEAD
                         var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
+=======
+                        var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 #if SERIALIZE
                         SerializeCmdlets(filePath, newModuleMetadata);

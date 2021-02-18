@@ -1,2 +1,6 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+<<<<<<< HEAD
 "Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll","Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.RestoreAzureRmRecoveryServicesBackupItem","Restore-AzRecoveryServicesBackupItem","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Restore-AzRecoveryServicesBackupItem' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Restore-AzRecoveryServicesBackupItem'."
+=======
+"Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll","Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.GetAzureRmRecoveryServicesVaultProperties","Get-AzRecoveryServicesVaultProperty","0","1020","The cmdlet 'Get-AzRecoveryServicesVaultProperty' no longer has output type 'Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupResourceVaultConfig'.","Make cmdlet 'Get-AzRecoveryServicesVaultProperty' return type 'Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupResourceVaultConfig'."
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

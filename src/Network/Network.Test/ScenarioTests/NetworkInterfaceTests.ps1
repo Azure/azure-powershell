@@ -36,7 +36,11 @@ function Test-NetworkInterfaceExpandResource
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -67,7 +71,11 @@ function Test-NetworkInterfaceExpandResource
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -129,7 +137,11 @@ function Test-NetworkInterfaceCRUD
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -168,7 +180,11 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -221,7 +237,11 @@ function Test-NetworkInterfaceCRUDUsingId
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -247,7 +267,11 @@ function Test-NetworkInterfaceCRUDUsingId
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -298,7 +322,11 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
@@ -323,7 +351,11 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
     }
@@ -357,7 +389,11 @@ function Test-NetworkInterfaceNoPublicIpAddress
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0]
@@ -372,7 +408,11 @@ function Test-NetworkInterfaceNoPublicIpAddress
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -425,7 +465,11 @@ function Test-NetworkInterfaceSet
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -448,7 +492,11 @@ function Test-NetworkInterfaceSet
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -474,7 +522,11 @@ function Test-NetworkInterfaceSet
         Assert-Null $publicip.IpConfiguration
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -510,7 +562,11 @@ function Test-NetworkInterfaceIDns
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -InternalDnsNameLabel "idnstest"
@@ -566,7 +622,11 @@ function Test-NetworkInterfaceEnableIPForwarding
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -EnableIPForwarding
@@ -635,7 +695,11 @@ function Test-NetworkInterfaceIpv6
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
 		$subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -650,7 +714,11 @@ function Test-NetworkInterfaceIpv6
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -771,7 +839,11 @@ function Test-NetworkInterfaceWithIpConfiguration
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -799,7 +871,11 @@ function Test-NetworkInterfaceWithIpConfiguration
         Assert-AreEqual $nic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
@@ -855,7 +931,11 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -883,7 +963,11 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
+<<<<<<< HEAD
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+=======
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 

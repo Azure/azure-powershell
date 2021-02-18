@@ -22,6 +22,10 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
+<<<<<<< HEAD
+=======
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -62,8 +66,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithoutCredential,
             HelpMessage = "The object representing the application for which the service principal is created.")]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The object representing the application for which the service principal is created.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordCredential,
@@ -173,6 +180,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+<<<<<<< HEAD
+=======
+                //safe gauard for login status, check if DefaultContext not existed, PSInvalidOperationException will be thrown
+                var CheckDefaultContext = DefaultContext;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (this.ParameterSetName == SimpleParameterSet)
                 {
                     CreateSimpleServicePrincipal();
@@ -203,6 +216,31 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         HomePage = uri
                     };
 
+<<<<<<< HEAD
+=======
+                    if (this.IsParameterBound(c => c.PasswordCredential))
+                    {
+                        appParameters.PasswordCredentials = PasswordCredential;
+                    }
+                    else if (this.IsParameterBound(c => c.CertValue))
+                    {
+                        appParameters.KeyCredentials = new PSADKeyCredential[]
+                            {
+                            new PSADKeyCredential
+                            {
+                                StartDate = StartDate,
+                                EndDate = EndDate,
+                                KeyId = Guid.NewGuid(),
+                                CertValue = CertValue
+                            }
+                            };
+                    }
+                    else if (this.IsParameterBound(c => c.KeyCredential))
+                    {
+                        appParameters.KeyCredentials = KeyCredential;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (ShouldProcess(target: appParameters.DisplayName, action: string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName)))
                     {
                         var application = ActiveDirectoryClient.CreateApplication(appParameters);
@@ -216,6 +254,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AccountEnabled = true
                 };
 
+<<<<<<< HEAD
                 if (this.IsParameterBound(c => c.PasswordCredential))
                 {
                     createParameters.PasswordCredentials = PasswordCredential;
@@ -238,6 +277,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     createParameters.KeyCredentials = KeyCredential;
                 }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
                 {
                     var servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
@@ -248,6 +289,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private void CreateSimpleServicePrincipal()
         {
+<<<<<<< HEAD
             var subscriptionId = DefaultProfile.DefaultContext.Subscription.Id;
             if (!this.IsParameterBound(c => c.Scope))
             {
@@ -263,6 +305,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 WriteVerbose(string.Format("No role provided - using the default role '{0}'", Role));
             }
 
+=======
+            var subscriptionId = DefaultContext.Subscription?.Id;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!this.IsParameterBound(c => c.StartDate))
             {
                 DateTime currentTime = DateTime.UtcNow;
@@ -284,10 +329,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             var identifierUri = "http://" + DisplayName;
 
+<<<<<<< HEAD
+=======
+            bool printPassword = false;
+            bool printUseExistingSecret = true;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Handle credentials
             var Password = Guid.NewGuid().ToString().ConvertToSecureString();
 
             // Create an application and get the applicationId
+<<<<<<< HEAD
             var passwordCredential = new PSADPasswordCredential()
             {
                 StartDate = StartDate,
@@ -298,6 +350,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             if (!this.IsParameterBound(c => c.ApplicationId))
             {
+=======
+            if (!this.IsParameterBound(c => c.ApplicationId))
+            {
+                printUseExistingSecret = false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
@@ -305,7 +362,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     HomePage = identifierUri,
                     PasswordCredentials = new PSADPasswordCredential[]
                     {
+<<<<<<< HEAD
                         passwordCredential
+=======
+                        new PSADPasswordCredential()
+                        {
+                            StartDate = StartDate,
+                            EndDate = EndDate,
+                            KeyId = Guid.NewGuid(),
+                            Password = SecureStringExtensions.ConvertToString(Password)
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 };
 
@@ -314,6 +381,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     var application = ActiveDirectoryClient.CreateApplication(appParameters);
                     ApplicationId = application.ApplicationId;
                     WriteVerbose(string.Format("No application id provided - created new AD application with application id '{0}'", ApplicationId));
+<<<<<<< HEAD
+=======
+                    printPassword = true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 
@@ -321,6 +392,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ApplicationId = ApplicationId,
                 AccountEnabled = true,
+<<<<<<< HEAD
                 PasswordCredentials = new PSADPasswordCredential[]
                 {
                     passwordCredential
@@ -336,6 +408,44 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
                 servicePrincipal.Secret = Password;
+=======
+            };
+
+            var shouldProcessMessage = string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with no permissions.", createParameters.ApplicationId);
+
+            if (!SkipRoleAssignment())
+            {
+                if (!this.IsParameterBound(c => c.Scope))
+                {
+                    Scope = string.Format("/subscriptions/{0}", subscriptionId);
+                    WriteVerbose(string.Format("No scope provided - using the default scope '{0}'", Scope));
+                }
+
+                AuthorizationClient.ValidateScope(Scope, true);
+
+                if (!this.IsParameterBound(c => c.Role))
+                {
+                    Role = "Contributor";
+                    WriteVerbose(string.Format("No role provided - using the default role '{0}'", Role));
+                }
+
+                shouldProcessMessage = string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
+            }
+
+            if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
+            {
+                PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
+                if(printPassword)
+                {
+                    servicePrincipal.Secret = Password;
+                }
+                else if(printUseExistingSecret)
+                {
+                    WriteVerbose(String.Format(ProjectResources.ServicePrincipalCreatedWithCredentials, ApplicationId));
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
                 {
@@ -383,7 +493,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private bool SkipRoleAssignment()
         {
+<<<<<<< HEAD
             return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope));
+=======
+            return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope) && !HasSubscription());
+        }
+
+        private bool HasSubscription()
+        {
+            return DefaultContext.Subscription?.Id != null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

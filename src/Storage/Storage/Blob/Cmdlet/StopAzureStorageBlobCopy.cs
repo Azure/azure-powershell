@@ -26,6 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Blobs.Specialized;
+    using Track2Models = global::Azure.Storage.Blobs.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     [Cmdlet("Stop", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
     [Alias("Stop-CopyAzureStorageBlob")]
@@ -122,6 +127,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     target = localName;
                     break;
                 case BlobPipelineParameterSet:
+<<<<<<< HEAD
+=======
+                    if (CloudBlob is InvalidCloudBlob)
+                    {
+                        throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     CloudBlob localBlob = CloudBlob;
                     taskGenerator = (taskId) => StopCopyBlob(taskId, localChannel, localBlob, copyId, true);
                     target = localBlob.Name;
@@ -173,6 +185,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             ValidateBlobType(blob);
 
+<<<<<<< HEAD
             AccessCondition accessCondition = null;
             BlobRequestOptions abortRequestOption = RequestOptions ?? new BlobRequestOptions();
 
@@ -231,6 +244,127 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             await localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             string message = String.Format(Resources.StopCopyBlobSuccessfully, blob.Name, blob.Container.Name);
             OutputStream.WriteObject(taskId, message);
+=======
+            if (UseTrack2Sdk()) // Use Track2
+            {
+                if (null == blob)
+                {
+                    throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+                }
+
+                BlobBaseClient blobBaseClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
+
+                string specifiedCopyId = copyId;
+
+                if (string.IsNullOrEmpty(specifiedCopyId) && fetchCopyIdFromBlob)
+                {
+                    if (blob.CopyState != null)
+                    {
+                        specifiedCopyId = blob.CopyState.CopyId;
+                    }
+                }
+
+                string abortCopyId = string.Empty;
+
+                if (string.IsNullOrEmpty(specifiedCopyId) || Force)
+                {
+                    //Make sure we use the correct copy id to abort
+                    //Use default retry policy for FetchBlobAttributes
+                    Track2Models.BlobProperties blobProperties = blobBaseClient.GetProperties(this.BlobRequestConditions, this.CmdletCancellationToken).Value;
+
+                    if (String.IsNullOrEmpty(blobProperties.CopyId))
+                    {
+                        ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, blobBaseClient.Name, blobBaseClient.BlobContainerName));
+                        OutputStream.WriteError(taskId, e);
+                    }
+                    else
+                    {
+                        abortCopyId = blobProperties.CopyId;
+                    }
+
+                    if (!Force)
+                    {
+                        string confirmation = String.Format(Resources.ConfirmAbortCopyOperation, blobBaseClient.Name, blobBaseClient.BlobContainerName, abortCopyId);
+                        if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
+                        {
+                            string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, blobBaseClient.Name, blobBaseClient.BlobContainerName);
+                            OutputStream.WriteVerbose(taskId, cancelMessage);
+                        }
+                    }
+                }
+                else
+                {
+                    abortCopyId = specifiedCopyId;
+                }
+
+                await blobBaseClient.AbortCopyFromUriAsync(abortCopyId, this.BlobRequestConditions, this.CmdletCancellationToken).ConfigureAwait(false);
+                //localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                string message = String.Format(Resources.StopCopyBlobSuccessfully, blobBaseClient.Name, blobBaseClient.BlobContainerName);
+                OutputStream.WriteObject(taskId, message);
+            }
+            else // use Track1
+            {
+
+                AccessCondition accessCondition = null;
+                BlobRequestOptions abortRequestOption = RequestOptions ?? new BlobRequestOptions();
+
+                //Set no retry to resolve the 409 conflict exception
+                abortRequestOption.RetryPolicy = new NoRetry();
+
+                if (null == blob)
+                {
+                    throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+                }
+
+                string specifiedCopyId = copyId;
+
+                if (string.IsNullOrEmpty(specifiedCopyId) && fetchCopyIdFromBlob)
+                {
+                    if (blob.CopyState != null)
+                    {
+                        specifiedCopyId = blob.CopyState.CopyId;
+                    }
+                }
+
+                string abortCopyId = string.Empty;
+
+                if (string.IsNullOrEmpty(specifiedCopyId) || Force)
+                {
+                    //Make sure we use the correct copy id to abort
+                    //Use default retry policy for FetchBlobAttributes
+                    BlobRequestOptions options = RequestOptions;
+                    await localChannel.FetchBlobAttributesAsync(blob, accessCondition, options, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+
+                    if (blob.CopyState == null || String.IsNullOrEmpty(blob.CopyState.CopyId))
+                    {
+                        ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, blob.Name, blob.Container.Name));
+                        OutputStream.WriteError(taskId, e);
+                    }
+                    else
+                    {
+                        abortCopyId = blob.CopyState.CopyId;
+                    }
+
+                    if (!Force)
+                    {
+                        string confirmation = String.Format(Resources.ConfirmAbortCopyOperation, blob.Name, blob.Container.Name, abortCopyId);
+                        if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
+                        {
+                            string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, blob.Name, blob.Container.Name);
+                            OutputStream.WriteVerbose(taskId, cancelMessage);
+                        }
+                    }
+                }
+                else
+                {
+                    abortCopyId = specifiedCopyId;
+                }
+
+                await localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                string message = String.Format(Resources.StopCopyBlobSuccessfully, blob.Name, blob.Container.Name);
+                OutputStream.WriteObject(taskId, message);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

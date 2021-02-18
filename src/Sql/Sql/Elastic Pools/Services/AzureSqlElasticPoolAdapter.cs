@@ -111,7 +111,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
+<<<<<<< HEAD
                 LicenseType = model.LicenseType
+=======
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -144,7 +149,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
+<<<<<<< HEAD
                 LicenseType = model.LicenseType
+=======
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -176,6 +186,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Failovers an elastic pool
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
+        public void FailoverElasticPool(string resourceGroupName, string serverName, string databaseName)
+        {
+            Communicator.Failover(resourceGroupName, serverName, databaseName);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets a list of Azure Sql Databases in an ElasticPool.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -401,7 +425,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 DatabaseDtuMin = pool.DatabaseDtuMin,
                 DatabaseDtuMax = pool.DatabaseDtuMax,
                 Family = pool.Sku.Family,
+<<<<<<< HEAD
                 LicenseType = pool.LicenseType
+=======
+                LicenseType = pool.LicenseType,
+                MaintenanceConfigurationId = pool.MaintenanceConfigurationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             return model;

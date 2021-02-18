@@ -15,7 +15,11 @@
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
     /// <summary>
+<<<<<<< HEAD
     /// The possible disable alert types
+=======
+    /// The possible disable alert types.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary> 
     public static class DetectionType
     {
@@ -24,6 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         public const string Access_Anomaly = "Access_Anomaly";
         public const string Data_Exfiltration = "Data_Exfiltration";
         public const string Unsafe_Action = "Unsafe_Action";
+<<<<<<< HEAD
+=======
+        public const string Brute_Force = "Brute_Force";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string None = "None";
     }
 }

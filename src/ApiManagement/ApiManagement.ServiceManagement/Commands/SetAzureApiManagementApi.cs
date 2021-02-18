@@ -173,7 +173,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 ServiceUrl,
                 Path,
                 SubscriptionRequired.IsPresent,
+<<<<<<< HEAD
                 Protocols.Distinct().ToArray(),
+=======
+                Protocols,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 AuthorizationServerId,
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,

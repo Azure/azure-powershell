@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 1246C3AC-A123-4EA1-B99E-458A85789109
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationdscnodereport
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdscnodereport
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -40,7 +44,11 @@ The **Get-AzAutomationDscNodeReport** cmdlet gets reports sent from an APS Desir
 ### Example 1: Get all reports for a DSC node
 ```
 PS C:\>$Node = Get-AzAutomationDscNode -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "Computer14"
+<<<<<<< HEAD
 PS C:\> Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup14" -AutomationAccountName "Contoso17" -NodeId $Node.Id
+=======
+PS C:\> Get-AzAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -NodeId $Node.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.

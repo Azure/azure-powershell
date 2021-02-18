@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 1F86CE62-AA01-44FB-A935-484EC51DDE5A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachekey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachekey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

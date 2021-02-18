@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/add-azenvironment
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/add-azenvironment
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,8 +29,16 @@ Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
+<<<<<<< HEAD
  [-AzureAnalysisServicesEndpointResourceId <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
+ [-AzureAttestationServiceEndpointResourceId <String>] [-AzureSynapseAnalyticsEndpointSuffix <String>]
+ [-ContainerRegistryEndpointSuffix <String>] [-AzureSynapseAnalyticsEndpointResourceId <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ARMEndpoint
@@ -36,8 +48,21 @@ Add-AzEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] 
  [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
  [-AzureAnalysisServicesEndpointSuffix <String>] [-AzureAnalysisServicesEndpointResourceId <String>]
+<<<<<<< HEAD
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-AzureAttestationServiceEndpointSuffix <String>] [-AzureAttestationServiceEndpointResourceId <String>]
+ [-AzureSynapseAnalyticsEndpointSuffix <String>] [-ContainerRegistryEndpointSuffix <String>]
+ [-AzureSynapseAnalyticsEndpointResourceId <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Discovery
+```
+Add-AzEnvironment [-AutoDiscover] [-Uri <Uri>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -87,6 +112,7 @@ AzureKeyVaultServiceEndpointResourceId            :
 AzureOperationalInsightsEndpointResourceId        :
 AzureOperationalInsightsEndpoint                  :
 AzureAnalysisServicesEndpointSuffix               :
+<<<<<<< HEAD
 VersionProfiles                                   : {}
 ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
@@ -94,6 +120,68 @@ BatchEndpointResourceId                           :
 In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
 ```
 
+=======
+AzureAttestationServiceEndpointSuffix             :
+AzureAttestationServiceEndpointResourceId         :
+AzureSynapseAnalyticsEndpointSuffix               :
+AzureSynapseAnalyticsEndpointResourceId           :
+VersionProfiles                                   : {}
+ExtendedProperties                                : {}
+BatchEndpointResourceId                           :
+```
+
+In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
+
+### Example 2: Discovering a new environment via Uri
+```
+<#
+Uri https://configuredmetadata.net returns an array of environment metadata. The following example contains a payload for the AzureCloud default environment.
+
+[
+  {
+    "portal": "https://portal.azure.com",
+    "authentication": {
+      "loginEndpoint": "https://login.microsoftonline.com/",
+      "audiences": [
+        "https://management.core.windows.net/"
+      ],
+      "tenant": "common",
+      "identityProvider": "AAD"
+    },
+    "media": "https://rest.media.azure.net",
+    "graphAudience": "https://graph.windows.net/",
+    "graph": "https://graph.windows.net/",
+    "name": "AzureCloud",
+    "suffixes": {
+      "azureDataLakeStoreFileSystem": "azuredatalakestore.net",
+      "acrLoginServer": "azurecr.io",
+      "sqlServerHostname": ".database.windows.net",
+      "azureDataLakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+      "keyVaultDns": "vault.azure.net",
+      "storage": "core.windows.net",
+      "azureFrontDoorEndpointSuffix": "azurefd.net"
+    },
+    "batch": "https://batch.core.windows.net/",
+    "resourceManager": "https://management.azure.com/",
+    "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+    "activeDirectoryDataLake": "https://datalake.azure.net/",
+    "sqlManagement": "https://management.core.windows.net:8443/",
+    "gallery": "https://gallery.azure.com/"
+  },
+……
+]
+#>
+
+PS C:\> Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
+```
+
+In this example, we are discovering a new Azure environment from the `https://configuredmetadata.net` Uri.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ActiveDirectoryEndpoint
@@ -156,12 +244,34 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -AutoDiscover
+Discovers environments via default or configured endpoint.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Discovery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -AzureAnalysisServicesEndpointResourceId
 The resource identifier of the Azure Analysis Services resource.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -176,7 +286,11 @@ The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -186,6 +300,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -AzureAttestationServiceEndpointResourceId
+The The resource identifier of the Azure Attestation service that is the recipient of the requested token.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ARMEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureAttestationServiceEndpointSuffix
+Dns suffix of Azure Attestation service.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ARMEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
 Dns Suffix of Azure Data Lake Analytics job and catalog services
 
@@ -221,7 +368,11 @@ Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -236,7 +387,11 @@ Resource identifier of Azure Key Vault data service that is the recipient of the
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -251,7 +406,11 @@ The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -266,7 +425,11 @@ The audience for tokens authenticating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -276,12 +439,49 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -AzureSynapseAnalyticsEndpointResourceId
+The The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ARMEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureSynapseAnalyticsEndpointSuffix
+Dns suffix of Azure Synapse Analytics.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ARMEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -BatchEndpointResourceId
 The resource identifier of the Azure Batch service that is the recipient of the requested token
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: BatchResourceId, BatchAudience
 
 Required: False
@@ -291,12 +491,34 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ContainerRegistryEndpointSuffix
+Suffix of Azure Container Registry.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, ARMEndpoint
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DataLakeAudience
 The audience for tokens authenticating with the AD Data Lake services Endpoint.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: DataLakeEndpointResourceId, DataLakeResourceId
 
 Required: False
@@ -307,7 +529,11 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+<<<<<<< HEAD
 The credeetnails, tenant and subscription used for communication with azure
+=======
+The credentials, tenant and subscription used for communication with azure
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -401,7 +627,11 @@ Specifies the name of the environment to add.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -492,7 +722,11 @@ Specifies the endpoint for storage (blob, table, queue, and file) access.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: Name, ARMEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: StorageEndpointSuffix
 
 Required: False
@@ -517,6 +751,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Uri
+Specifies URI of the internet resource to fetch environments.
+
+```yaml
+Type: System.Uri
+Parameter Sets: Discovery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -548,7 +800,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

@@ -29,7 +29,11 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 1)]
         public string TerminateReason { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             TerminateJobParameters parameters = new TerminateJobParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {

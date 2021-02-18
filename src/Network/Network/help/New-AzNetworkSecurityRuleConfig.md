@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 633FB5C9-BEB3-42A3-AF4F-A54CC3F9E0F7
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecurityruleconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,19 +40,33 @@ The **New-AzNetworkSecurityRuleConfig** cmdlet creates an Azure network security
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Create a network security rule to allow RDP
 ```
 $rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
+=======
+### Example 1: Create a network security rule to allow RDP
+```powershell
+$rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 ```
 
 This command creates a security rule allowing access from the Internet to port 3389
 
+<<<<<<< HEAD
 ### 2: Create a network security rule that allows HTTP
 ```
 $rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix 
+=======
+### Example 2: Create a network security rule that allows HTTP
+```powershell
+$rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
 ```
 

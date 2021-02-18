@@ -87,7 +87,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
         [ArgumentToEncodingTransformation]
+<<<<<<< HEAD
         [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32)]
+=======
+        [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32, EncodingUtils.Byte)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         public Encoding Encoding { get; set; } = Encoding.UTF8;
 
@@ -97,6 +101,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            var useByteEncoding = UsingByteEncoding(Encoding);
+            // Byte encoding is not possible to use for reading rows from the stream. It has to be a defined encoding.
+            // Previously also we used to fall back to UTF8 in case of reading head rows and tail rows. 
+            var fallBackEncoding = useByteEncoding ? Encoding.UTF8 : Encoding;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ParameterSetName.Equals(BaseParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
                 ConfirmAction(
@@ -137,19 +148,38 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             {
                                 Array.Resize(ref byteArray, (int)totalLengthRead);
                             }
+<<<<<<< HEAD
 
                             WriteObject(BytesToString(byteArray, Encoding));
+=======
+                            if (useByteEncoding)
+                            {
+                                WriteObject(byteArray);
+                            }
+                            else
+                            {
+                                WriteObject(BytesToString(byteArray, Encoding));
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             
                         }
                     });
             }
             else if (ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
+<<<<<<< HEAD
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, Encoding), true);
             }
             else
             {
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, Encoding, true), true);
+=======
+                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, fallBackEncoding), true);
+            }
+            else
+            {
+                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, fallBackEncoding, true), true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

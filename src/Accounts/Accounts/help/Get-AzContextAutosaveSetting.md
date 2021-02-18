@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontextautosavesetting
+=======
+online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azcontextautosavesetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,7 +40,11 @@ CacheFile        : None
 Settings         : {}
 ```
 
+<<<<<<< HEAD
 Get details about whether and wehere the context is saved.  In the above example, the autosave feature has been disabled.
+=======
+Get details about whether and where the context is saved.  In the above example, the autosave feature has been disabled.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Get context save metadata for the current user
 ```
@@ -50,7 +58,11 @@ CacheFile        : TokenCache.dat
 Settings         : {}
 ```
 
+<<<<<<< HEAD
 Get details about whether and wehere the context is saved by default for the current user.  Note that this may be different than 
+=======
+Get details about whether and where the context is saved by default for the current user.  Note that this may be different than 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 the settings that are active in the current session. In the above example, the autosave feature has been enabled, and data is saved 
 to the default location.
 
@@ -88,7 +100,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

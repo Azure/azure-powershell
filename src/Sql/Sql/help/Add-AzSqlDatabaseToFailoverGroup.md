@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/add-azsqldatabasetofailovergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,11 @@ Add-AzSqlDatabaseToFailoverGroup [-ServerName] <String> [-FailoverGroupName] <St
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Adds one or more databases on a Azure SQL Database Failover Group's primary server to to that Failover Group. The databases must not be secondary databases in existing replication relationships. The command will start geo-replication of any added databases to the Failover Group's secondary server.
+=======
+Adds one or more databases on a Azure SQL Database Failover Group's primary server to that Failover Group. The databases must not be secondary databases in existing replication relationships. The command will start geo-replication of any added databases to the Failover Group's secondary server.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 To obtain database objects with which to populate the '-Database' parameter, use (for example) the Get-AzSqlDatabase cmdlet.
 The Failover Group's primary server must be used to execute the command.
 

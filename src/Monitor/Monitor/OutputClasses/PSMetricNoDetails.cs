@@ -17,7 +17,11 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
+<<<<<<< HEAD
     /// Wrapps around the Metric and exposes a summary of the properties properties
+=======
+    /// Wraps around the Metric and exposes a summary of the property's properties
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     public class PSMetricNoDetails : PSMetric
     {

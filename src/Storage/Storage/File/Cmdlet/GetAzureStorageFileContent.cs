@@ -27,10 +27,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
+<<<<<<< HEAD
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
+=======
+    using System.Runtime.InteropServices;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [OutputType(typeof(AzureStorageFile))]
+    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(
            Position = 0,
@@ -44,27 +54,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = LocalConstants.ShareParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
+        [ValidateNotNull]
+        [Alias("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = LocalConstants.DirectoryParameterSetName,
+            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
+        [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = LocalConstants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = LocalConstants.FileParameterSetName,
+            HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
+        [ValidateNotNull]
+        [Alias("CloudFile")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFile File { get; set; }
 
         [Parameter(
@@ -201,7 +235,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             targetFile,
                             new DownloadOptions
                             {
+<<<<<<< HEAD
                                 DisableContentMD5Validation = !this.CheckMd5
+=======
+                                DisableContentMD5Validation = !this.CheckMd5,
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
@@ -211,7 +250,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
+<<<<<<< HEAD
                         this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
+=======
+                        WriteCloudFileObject(taskId, this.Channel, fileToBeDownloaded);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 });
             }
@@ -221,5 +264,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 DoEndProcessing();
             }
         }
+<<<<<<< HEAD
+=======
+        public object GetDynamicParameters()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                context = new WindowsOnlyParameters();
+                return context;
+            }
+            else return null;
+        }
+        private WindowsOnlyParameters context;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

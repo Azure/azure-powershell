@@ -19,6 +19,10 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -112,7 +116,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string CloudServiceCreationOption { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///     Gets or sets data encryption priamry certificate file path for failover of protected item.
+=======
+        ///     Gets or sets data encryption primary certificate file path for failover of protected item.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -252,6 +260,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
 
+<<<<<<< HEAD
+=======
+                    if (this.IsParameterBound(c => c.RecoveryPoint))
+                    {
+                        failoverInput.RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
                 else
@@ -315,7 +330,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForTestFailover,
                         this.ReplicationProtectedItem.ReplicationProvider));
+<<<<<<< HEAD
             }else if (Constants.A2A.Equals(
+=======
+            }
+            else if (Constants.A2A.Equals(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               this.ReplicationProtectedItem.ReplicationProvider,
                StringComparison.OrdinalIgnoreCase))
             {

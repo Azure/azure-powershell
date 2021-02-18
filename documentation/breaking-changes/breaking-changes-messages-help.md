@@ -12,7 +12,11 @@ To suppress these warning messages, set the environment variable 'SuppressAzureP
 Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
 ```
 
+<<<<<<< HEAD
 More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-attribute-help.md#supress-the-breaking-change-messages-at-runtime).
+=======
+More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## Further reading
 

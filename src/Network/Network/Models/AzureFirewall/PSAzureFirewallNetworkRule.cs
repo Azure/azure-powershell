@@ -29,7 +29,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> SourceAddresses { get; set; }
 
         public List<string> DestinationAddresses { get; set; }
+<<<<<<< HEAD
         
+=======
+
+        public List<string> SourceIpGroups { get; set; }
+
+        public List<string> DestinationIpGroups { get; set; }
+
+        public List<string> DestinationFqdns { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<string> DestinationPorts { get; set; }
 
         [JsonIgnore]
@@ -45,11 +55,36 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
+=======
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string DestinationAddressesText
         {
             get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
         }
+<<<<<<< HEAD
         
+=======
+
+        [JsonIgnore]
+        public string DestinationIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationFqdnsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationFqdns, Formatting.Indented); }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string DestinationPortsText
         {

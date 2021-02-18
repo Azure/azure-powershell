@@ -99,7 +99,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
                 && context.Environment.IsEqual(other.Environment)
                 && context.Subscription.IsEqual(other.Subscription)
                 && context.Tenant.IsEqual(other.Tenant)
+<<<<<<< HEAD
                 && context.TokenCache.IsEqual(other.TokenCache)
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 && string.Equals(context.VersionProfile, other.VersionProfile, StringComparison.OrdinalIgnoreCase));
         }
 

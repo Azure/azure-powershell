@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string PartnerServerName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the name of the secondary
+        /// </summary>
+        public string PartnerDatabaseName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Get or sets the AllowConnections setting for the Replication Link
         /// </summary>
         public AllowConnections AllowConnections { get; set; }
@@ -106,5 +114,18 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the license type of the database
         /// </summary>
         public string LicenseType { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the backup storage redundancy for the database
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -24,13 +24,20 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+<<<<<<< HEAD
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
+=======
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSAzureOperationResponse))]
     public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
         private const string IdParameterSet = "IdParameterSetName";
+<<<<<<< HEAD
         private const string AssignIdentityParameterSet = "AssignIdentityParameterSet";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
 
         [Parameter(
@@ -42,12 +49,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            Position = 0,
+<<<<<<< HEAD
            ParameterSetName = AssignIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [Parameter(
            Mandatory = true,
            Position = 0,
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
            ParameterSetName = ExplicitIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
@@ -86,6 +96,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] IdentityId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
             ParameterSetName = AssignIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
@@ -93,6 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public bool OsDiskWriteAccelerator { get; set; }
@@ -102,10 +115,36 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public bool UltraSSDEnabled { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+=======
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The max price of the billing of a low priority virtual machine")]
+        public double MaxPrice { get; set; }
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        public bool EncryptionAtHost { get; set; }
+        [Parameter(
+            Mandatory = false)]
+        [AllowEmptyString]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of Host")]
+        public string HostId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
@@ -128,17 +167,49 @@ namespace Microsoft.Azure.Commands.Compute
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
+<<<<<<< HEAD
+=======
+                        BillingProfile = this.VM.BillingProfile,
+                        SecurityProfile = this.VM.SecurityProfile,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         Plan = this.VM.Plan,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
+<<<<<<< HEAD
                         Identity = this.AssignIdentity.IsPresent 
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
                                    : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
                     };
 
+=======
+                        Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
+                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId)
+                                                ? new SubResource(this.ProximityPlacementGroupId)
+                                                : this.VM.ProximityPlacementGroup,
+                        Host = this.IsParameterBound(c => c.HostId)
+                             ? new SubResource(this.HostId)
+                             : this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
+                        EvictionPolicy = this.VM.EvictionPolicy,
+                        Priority = this.VM.Priority
+                    };
+
+                    if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
+                    {
+                        parameters.Host.Id = null;
+                    }
+
+                    if (parameters.ProximityPlacementGroup != null && string.IsNullOrWhiteSpace(parameters.ProximityPlacementGroup.Id))
+                    {
+                        parameters.ProximityPlacementGroup.Id = null;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.IsParameterBound(c => c.IdentityType))
                     {
                         parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType, null);
@@ -182,6 +253,27 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.IsParameterBound(c => c.MaxPrice))
+                    {
+                        if (parameters.BillingProfile == null)
+                        {
+                            parameters.BillingProfile = new BillingProfile();
+                        }
+                        parameters.BillingProfile.MaxPrice = this.MaxPrice;
+                    }
+
+                    if (this.IsParameterBound(c => c.EncryptionAtHost))
+                    {
+                        if (parameters.SecurityProfile == null)
+                        {
+                            parameters.SecurityProfile = new SecurityProfile();
+                        }
+                        parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (NoWait.IsPresent)
                     {
                         var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(

@@ -171,7 +171,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Resource is not associted with the selected Resource group.
+=======
+        ///   Looks up a localized string similar to Resource is not associated with the selected Resource group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string InvalidResource {
             get {
@@ -198,7 +202,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+=======
+        ///   Looks up a localized string similar to {0} will be a mandatory parameter from next release..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {

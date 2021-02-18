@@ -12,12 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Attestation.Models;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
     public class AttestationCreationParameters
     {
         public string ProviderName { get; set; }
         public string ResourceGroupName { get; set; }
+<<<<<<< HEAD
         public string AttestationPolicy { get; set; }
+=======
+        public AttestationServiceCreationParams CreationParameters { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubjob
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubjob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,11 @@ Get-AzIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <String
 
 ## DESCRIPTION
 Gets the information about an IotHub Job.
+<<<<<<< HEAD
 An IotHub Job gets created when an import or export operation is initialted using the New-AzIotHubExportDevices or New-AzIotHubImportDevices commands.
+=======
+An IotHub Job gets created when an import or export operation is initialized using the New-AzIotHubExportDevices or New-AzIotHubImportDevices commands.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 You can either list all the jobs or filter the jobs by the Job Identifier.
 
 ## EXAMPLES

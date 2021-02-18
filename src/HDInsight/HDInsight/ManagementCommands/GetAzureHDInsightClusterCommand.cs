@@ -15,7 +15,10 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Linq;
 using System.Management.Automation;
 

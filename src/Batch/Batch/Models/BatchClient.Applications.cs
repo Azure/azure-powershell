@@ -27,7 +27,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
+<<<<<<< HEAD
         public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool? allowUpdates, string displayName)
+=======
+        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationName, bool? allowUpdates, string displayName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -35,7 +39,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
+<<<<<<< HEAD
             AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
+=======
+            Application addApplicationParameters = new Application()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 DisplayName = displayName,
                 AllowUpdates = allowUpdates
@@ -44,13 +52,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
              var response = BatchManagementClient.Application.Create(
                 resourceGroupName,
                 accountName,
+<<<<<<< HEAD
                 applicationId,
+=======
+                applicationName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 addApplicationParameters);
 
             return ConvertApplicationToPSApplication(response);
         }
 
+<<<<<<< HEAD
         public virtual void DeleteApplication(string resourceGroupName, string accountName, string applicationId)
+=======
+        public virtual void DeleteApplication(string resourceGroupName, string accountName, string applicationName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -58,10 +74,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
+<<<<<<< HEAD
             BatchManagementClient.Application.Delete(resourceGroupName, accountName, applicationId);
         }
 
         public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
+=======
+            BatchManagementClient.Application.Delete(resourceGroupName, accountName, applicationName);
+        }
+
+        public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             // single account lookup - find its resource group if not specified
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -69,7 +92,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
+<<<<<<< HEAD
             Application response = BatchManagementClient.Application.Get(resourceGroupName, accountName, applicationId);
+=======
+            Application response = BatchManagementClient.Application.Get(resourceGroupName, accountName, applicationName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return ConvertApplicationToPSApplication(response);
         }
@@ -99,7 +126,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public virtual void UpdateApplication(
             string resourceGroupName,
             string accountName,
+<<<<<<< HEAD
             string applicationId,
+=======
+            string applicationName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             bool? allowUpdates,
             string defaultVersion,
             string displayName)
@@ -110,26 +141,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
+<<<<<<< HEAD
             UpdateApplicationParameters uap = new UpdateApplicationParameters();
 
             if (allowUpdates != null)
             {
                 uap.AllowUpdates = allowUpdates;
+=======
+            Application application = new Application();
+
+            if (allowUpdates != null)
+            {
+                application.AllowUpdates = allowUpdates;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (defaultVersion != null)
             {
+<<<<<<< HEAD
                 uap.DefaultVersion = defaultVersion;
+=======
+                application.DefaultVersion = defaultVersion;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (displayName != null)
             {
+<<<<<<< HEAD
                 uap.DisplayName = displayName;
+=======
+                application.DisplayName = displayName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             BatchManagementClient.Application.Update(
                 resourceGroupName,
                 accountName,
+<<<<<<< HEAD
                 applicationId,
                 uap);
         }
@@ -143,12 +191,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 if (psApplication.AllowUpdates == false)
                 {
                     var allowUpdateErrorMessage = string.Format(Resources.ApplicationDoesNotAllowUpdates, applicationId, version);
+=======
+                applicationName,
+                application);
+        }
+
+        private void CheckApplicationAllowsUpdates(string resourceGroupName, string accountName, string applicationName, string version)
+        {
+            try
+            {
+                PSApplication psApplication = this.GetApplication(resourceGroupName, accountName, applicationName);
+
+                if (psApplication.AllowUpdates == false)
+                {
+                    var allowUpdateErrorMessage = string.Format(Resources.ApplicationDoesNotAllowUpdates, applicationName, version);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     throw new NewApplicationPackageException(allowUpdateErrorMessage);
                 }
             }
             catch (CloudException exception)
             {
+<<<<<<< HEAD
                 var errorMessage = string.Format(Resources.FailedToCheckApplication, applicationId, version, exception);
+=======
+                var errorMessage = string.Format(Resources.FailedToCheckApplication, applicationName, version, exception);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 throw new CloudException(errorMessage, exception);
             }
         }
@@ -158,10 +225,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSApplication()
             {
                 AllowUpdates = application.AllowUpdates.Value,
+<<<<<<< HEAD
                 ApplicationPackages = ConvertApplicationPackagesToPsApplicationPackages(application.Packages),
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
                 Id = application.Id,
+=======
+                DefaultVersion = application.DefaultVersion,
+                DisplayName = application.DisplayName,
+                Name = application.Name,
+                Id = application.Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
     }

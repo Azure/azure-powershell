@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class ManagedServiceAccessToken : ManagedServiceAccessTokenBase<ManagedServiceTokenInfo>
     {
+<<<<<<< HEAD
         public ManagedServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
+=======
+        public ManagedServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "organizations")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             : base(account, environment, resourceId, tenant)
         {
         }

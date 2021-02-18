@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanResizeCluster()
         {
+<<<<<<< HEAD
             var cluster = new Cluster
             {
                 Id = "id",
@@ -57,11 +58,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            var cluster = new Cluster(id: "id", name: ClusterName + "1")
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 },
             };
@@ -69,6 +83,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var getresponse = new ClusterGetResponse { Cluster = cluster };
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
                 .Returns(getresponse)
+=======
+                    OsType = OSType.Linux
+                },
+            };
+
+            hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
+                .Returns(cluster)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .Verifiable();
 
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
@@ -80,12 +102,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     c.ResizeCluster(ResourceGroupName, ClusterName,
                         It.Is<ClusterResizeParameters>(
                             param => param.TargetInstanceCount == targetcount)))
+<<<<<<< HEAD
                 .Returns(new OperationResource
                 {
                     ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
                     State = AsyncOperationState.Succeeded
                 })
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .Verifiable();
 
             cmdlet.ExecuteCmdlet();

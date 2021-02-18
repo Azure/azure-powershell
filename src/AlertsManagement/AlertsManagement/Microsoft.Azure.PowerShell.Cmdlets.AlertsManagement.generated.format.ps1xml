@@ -70,10 +70,13 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             <Label>StartDateTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -92,6 +95,13 @@
             <Alignment>Left</Alignment>
             <Label>MonitorService</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
+=======
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -102,10 +112,13 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <PropertyName>StartDateTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -124,6 +137,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>MonitorService</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
+=======
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -140,11 +160,19 @@
             <ListItems>
               <ListItem>
                 <PropertyName>GroupBy</PropertyName>
+<<<<<<< HEAD
                 <Label>TotalSmartGroups</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>TotalAlerts</PropertyName>
                 <Label>TotalSmartGroups</Label>
+=======
+                <Label>GroupBy</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TotalAlerts</PropertyName>
+                <Label>TotalAlerts</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </ListItem>
               <ListItem>
                 <PropertyName>TotalSmartGroups</PropertyName>
@@ -172,10 +200,13 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             <Label>State</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -186,6 +217,13 @@
             <Alignment>Left</Alignment>
             <Label>AlertsCount</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
+=======
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -196,10 +234,13 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <PropertyName>State</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -210,6 +251,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>AlertsCount</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
+=======
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>

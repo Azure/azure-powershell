@@ -16,7 +16,10 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Batch.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -34,6 +37,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+<<<<<<< HEAD
+=======
+using BatchAccount = Microsoft.Azure.Management.Batch.Models.BatchAccount;
+using BatchAccountCreateParameters = Microsoft.Azure.Management.Batch.Models.BatchAccountCreateParameters;
+using BatchAccountKeys = Microsoft.Azure.Management.Batch.Models.BatchAccountKeys;
+using ApplicationPackage = Microsoft.Azure.Management.Batch.Models.ApplicationPackage;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -42,6 +53,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
+<<<<<<< HEAD
+=======
+        // We expect that the following pools be created, with a configuration like:
+        // testPool:
+        //  - 2 nodes
+        //  - PAAS
+        //  - A start task with: "cmd /c "echo hello""
+
+        // testIaasPool
+        //  - 1 node
+        //  - IAAS (Ubuntu 18.04)
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string SharedPool = "testPool";
         internal const string SharedIaasPool = "testIaasPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -120,7 +144,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 }
             }
 
+<<<<<<< HEAD
             NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData);
+=======
+            NewCertificateParameters parameters = new NewCertificateParameters(
+                context, null, cert.RawData, PSCertificateKind.Cer);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             client.AddCertificate(parameters);
 
@@ -554,7 +583,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Uploads an application package to Storage
         /// </summary>
+<<<<<<< HEAD
         public static ApplicationPackage CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version, string filePath)
+=======
+        public static ApplicationPackage CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version, string filePath)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             ApplicationPackage applicationPackage = null;
 
@@ -563,7 +596,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 applicationPackage = controller.BatchManagementClient.ApplicationPackage.Create(
                     context.ResourceGroupName,
                     context.AccountName,
+<<<<<<< HEAD
                     applicationId,
+=======
+                    applicationName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     version);
 
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(applicationPackage.StorageUrl));
@@ -580,21 +617,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes an application used in a Scenario test.
         /// </summary>
+<<<<<<< HEAD
         public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationId)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationId);
+=======
+        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationName)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// Deletes an application package used in a Scenario test.
         /// </summary>
+<<<<<<< HEAD
         public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationId, version);
+=======
+        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationName, version);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6BCB36BC-F5E6-4EDD-983C-8BDE7A9B004D
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdiskencryptionextension
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -47,6 +51,7 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.
 This cmdlet enables encryption by installing the disk encryption extension on the virtual machine. 
 
@@ -55,6 +60,18 @@ The *VolumeType* parameter is required when encrypting Linux virtual machines, a
 This cmdlet requires confirmation from the users as one of the steps to enable encryption requires a restart of the virtual machine.
 It is advised that you save your work on the virtual machine before you run this cmdlet.
 
+=======
+The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.  It enables encryption by installing the disk encryption extension on the virtual machine. 
+
+This cmdlet requires confirmation from the users as one of the steps to enable encryption requires a restart of the virtual machine.
+
+It is advised that you save your work on the virtual machine before you run this cmdlet.
+
+Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
+
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## EXAMPLES
 
 ### Example 1: Enable encryption
@@ -456,7 +473,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named “AzureDiskEncryption” on Windows virtual machines and “AzureDiskEncryptionForLinux” on Linux virtual machines.
+=======
+Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named Â“AzureDiskEncryptionÂ” on Windows virtual machines and Â“AzureDiskEncryptionForLinuxÂ” on Linux virtual machines.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 ```yaml
@@ -565,10 +586,18 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
+<<<<<<< HEAD
 Specifies the type of virtual machine volumes on which to perform the encryption operation.
 Allowed values for Windows virtual machines: All, OS, and Data.
 The only allowed value for Linux virtual machines: Data.
 The VolumeType parameter is required when encrypting Linux virtual machines, but can be omitted when encrypting Windows virtual machines.
+=======
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
+
+Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
+
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

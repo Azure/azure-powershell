@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -19,6 +20,13 @@ using System.Text.RegularExpressions;
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {    
     public class PSFrontendEndpoint: PSResource
+=======
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.FrontDoor.Models
+{
+    public class PSFrontendEndpoint : PSResource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
 
         public string HostName { get; set; }
@@ -37,7 +45,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string CertificateSource { get; set; }
 
+<<<<<<< HEAD
         public string ProtocolType { get; set; }
+=======
+        public string ProtocolType { get; set; } = "ServerNameIndication";
+
+        public string MinimumTlsVersion { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public string Vault { get; set; }
 

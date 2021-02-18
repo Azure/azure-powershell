@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroup/
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagementgroup/
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,6 +33,7 @@ The **Remove-AzManagementGroup** cmdlet deletes a Management Group.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Remove a Management Group
 ```
 PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
@@ -37,6 +42,16 @@ PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
 ### Example 2 - Remove a Management Group by piping PSManagementGroup Object
 ```
 PS C:\> Get-Remove-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
+=======
+### Example 1: Remove a Management Group
+```powershell
+PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
+```
+
+### Example 2: Remove a Management Group by piping PSManagementGroup Object
+```powershell
+PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## PARAMETERS
@@ -62,7 +77,11 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: GroupOperations
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: GroupId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
@@ -133,7 +152,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

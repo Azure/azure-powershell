@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 93614655-A8F2-4A67-887D-43D41AB91F82
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchcomputenode
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 93614655-A8F2-4A67-887D-43D41AB91F82
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchcomputenode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -50,17 +58,30 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+<<<<<<< HEAD
 VirtualMachineSize    : small
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
 StartTask             : 
 CertificateReferences : 
+=======
+VirtualMachineSize    : standard_d1_v2
+TotalTasksRun         : 1
+StartTaskInformation  :
+RecentTasks           : {}
+StartTask             :
+CertificateReferences :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Errors                :
 ```
 
 This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06.
+<<<<<<< HEAD
 Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+=======
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Get all idle compute nodes from a pool
 ```
@@ -73,6 +94,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+<<<<<<< HEAD
 VirtualMachineSize    : small
 TotalTasksRun         : 1
 StartTaskInformation  : 
@@ -80,6 +102,15 @@ RecentTasks           : {}
 StartTask             : 
 CertificateReferences : 
 Errors                : 
+=======
+VirtualMachineSize    : standard_d1_v2
+TotalTasksRun         : 1
+StartTaskInformation  :
+RecentTasks           : {}
+StartTask             :
+CertificateReferences :
+Errors                :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Id                    : tvm-2316545714_2-20150726t172920z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_2-20150726t172920z
@@ -89,12 +120,21 @@ LastBootTime          : 7/26/2015 5:33:58 PM
 AllocationTime        : 7/26/2015 5:29:20 PM
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
+<<<<<<< HEAD
 VirtualMachineSize    : small
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
 StartTask             : 
 CertificateReferences : 
+=======
+VirtualMachineSize    : standard_d1_v2
+TotalTasksRun         : 0
+StartTaskInformation  :
+RecentTasks           :
+StartTask             :
+CertificateReferences :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Errors                :
 ```
 
@@ -112,6 +152,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
+<<<<<<< HEAD
 VirtualMachineSize    : small
 TotalTasksRun         : 1
 StartTaskInformation  : 
@@ -119,6 +160,15 @@ RecentTasks           : {}
 StartTask             : 
 CertificateReferences : 
 Errors                : 
+=======
+VirtualMachineSize    : standard_d1_v2
+TotalTasksRun         : 1
+StartTaskInformation  :
+RecentTasks           : {}
+StartTask             :
+CertificateReferences :
+Errors                :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 Id                    : tvm-2316545714_2-20150726t172920z
@@ -130,12 +180,21 @@ AllocationTime        : 7/26/2015 5:29:20 PM
 
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
+<<<<<<< HEAD
 VirtualMachineSize    : small
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
 StartTask             : 
 CertificateReferences : 
+=======
+VirtualMachineSize    : standard_d1_v2
+TotalTasksRun         : 0
+StartTaskInformation  :
+RecentTasks           :
+StartTask             :
+CertificateReferences :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Errors                :
 ```
 
@@ -147,7 +206,11 @@ That cmdlet gets all compute nodes from that pool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -274,7 +337,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -304,6 +371,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Restart-AzBatchComputeNode](./Restart-AzBatchComputeNode.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

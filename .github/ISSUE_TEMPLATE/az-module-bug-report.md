@@ -2,7 +2,11 @@
 name: Az module bug report
 about: Report errors or unexpected behaviors for the Az module
 title: ''
+<<<<<<< HEAD
 labels: ''
+=======
+labels: needs-triage
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 assignees: ''
 
 ---
@@ -29,7 +33,12 @@ assignees: ''
 
 ## Environment data
 
+<<<<<<< HEAD
 <!-- Please run $PSVersionTable and paste the output in the below code block -->
+=======
+<!-- Please run $PSVersionTable and paste the output in the below code block
+     If running the Docker container image, indicate the tag of the image used and the version of Docker engine-->
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 
@@ -45,7 +54,12 @@ assignees: ''
 
 ## Debug output
 
+<<<<<<< HEAD
 <!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block -->
+=======
+<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 
@@ -53,7 +67,12 @@ assignees: ''
 
 ## Error output
 
+<<<<<<< HEAD
 <!-- Please run Resolve-AzError and paste the output in the below code block -->
+=======
+<!-- Please run Resolve-AzError and paste the output in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 

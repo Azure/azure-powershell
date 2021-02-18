@@ -12,6 +12,31 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+function Check-ColocationStatus
+{
+    param ($colocationStatus)
+
+    Assert-NotNull $colocationStatus;
+    Assert-AreEqual  "Aligned" $colocationStatus.DisplayStatus;
+    Assert-AreEqual  "ColocationStatus/Aligned" $colocationStatus.Code;
+    Assert-AreEqual  "Info" $colocationStatus.Level;
+    Assert-AreEqual  "All resources in the proximity placement group are aligned." $colocationStatus.Message;
+}
+
+function Check-ColocationStatusUnknown
+{
+    param ($colocationStatus)
+
+    Assert-NotNull $colocationStatus;
+    Assert-AreEqual  "Unknown" $colocationStatus.DisplayStatus;
+    Assert-AreEqual  "ColocationStatus/Unknown" $colocationStatus.Code;
+    Assert-AreEqual  "Warning" $colocationStatus.Level;
+    Assert-AreEqual  "Colocation status is currently unknown." $colocationStatus.Message;
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Test ProximityPlacementGroup
@@ -27,13 +52,21 @@ function Test-ProximityPlacementGroup
         # Common
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $ppgname = $rgname + 'ppg'
         New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key1 = "val1"};
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
 
         Assert-AreEqual $rgname $ppg.ResourceGroupName;
@@ -42,6 +75,20 @@ function Test-ProximityPlacementGroup
         Assert-AreEqual "Standard" $ppg.ProximityPlacementGroupType;
         Assert-True { $ppg.Tags.Keys.Contains("key1") };
         Assert-AreEqual "val1" $ppg.Tags["key1"];
+<<<<<<< HEAD
+=======
+        Assert-Null $ppg.ColocationStatus;
+
+        $ppgStatus = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+        Assert-AreEqual $rgname $ppgStatus.ResourceGroupName;
+        Assert-AreEqual $ppgname $ppgStatus.Name;
+        Assert-AreEqual $loc $ppgStatus.Location;
+        Assert-AreEqual "Standard" $ppgStatus.ProximityPlacementGroupType;
+        Assert-True { $ppgStatus.Tags.Keys.Contains("key1") };
+        Assert-AreEqual "val1" $ppgStatus.Tags["key1"];
+
+        Check-ColocationStatus $ppgStatus.ColocationStatus;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         $ppgs = Get-AzProximityPlacementGroup -ResourceGroupName $rgname;
         Assert-AreEqual 1 $ppgs.Count;
@@ -76,6 +123,7 @@ function Test-ProximityPlacementGroupAvSet
         # Common
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
+<<<<<<< HEAD
         
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -105,6 +153,90 @@ function Test-ProximityPlacementGroupAvSet
         Assert-Null $ppg.AvailabilitySets;
 
         Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
+=======
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $ppgname1 = $rgname + 'ppg'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key1 = "val1"};
+
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
+        Assert-AreEqual $rgname $ppg1.ResourceGroupName;
+        Assert-AreEqual $ppgname1 $ppg1.Name;
+        Assert-AreEqual $loc $ppg1.Location;
+        Assert-AreEqual "Standard" $ppg1.ProximityPlacementGroupType;
+        Assert-True { $ppg1.Tags.Keys.Contains("key1") };
+        Assert-AreEqual "val1" $ppg1.Tags["key1"];
+
+        Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -ColocationStatus;
+
+        $asetName = $rgname + 'as';
+        New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -ProximityPlacementGroupId $ppg1.Id -Sku 'Classic';
+        $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-AreEqual $ppg1.Id $av.ProximityPlacementGroup.Id;
+
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
+        Assert-AreEqual $av.Id $ppg1.AvailabilitySets[0].Id;
+        Assert-Null $ppg1.ColocationStatus;
+
+        $ppgStatus1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -ColocationStatus;
+        Assert-AreEqual $av.Id $ppgStatus1.AvailabilitySets[0].Id;
+        Check-ColocationStatus $ppgStatus1.ColocationStatus;
+
+        # Create another PPG
+        $ppgname2 = $rgname + 'ppg2'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key2 = "val2"};
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.AvailabilitySets;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-Null $ppgStatus2.AvailabilitySets;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+
+        # Update AvSet to another PPG
+        Update-AzAvailabilitySet -AvailabilitySet $av -ProximityPlacementGroupId $ppg2.Id;
+
+        $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-AreEqual $ppg2.Id $av.ProximityPlacementGroup.Id;
+
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
+        Assert-Null $ppg1.AvailabilitySets;
+        Assert-Null $ppg1.ColocationStatus;
+
+        $ppgStatus1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -ColocationStatus;
+        Assert-Null $ppgStatus1.AvailabilitySets;
+        Check-ColocationStatus $ppgStatus1.ColocationStatus;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-AreEqual $av.Id $ppg2.AvailabilitySets[0].Id;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-AreEqual $av.Id $ppgStatus2.AvailabilitySets[0].Id;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+
+        Remove-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
+        Assert-Null $ppg1.AvailabilitySets;
+        Assert-Null $ppg1.ColocationStatus;
+
+        $ppgStatus1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -ColocationStatus;
+        Assert-Null $ppgStatus1.AvailabilitySets;
+        Check-ColocationStatus $ppgStatus1.ColocationStatus;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.AvailabilitySets;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-Null $ppgStatus2.AvailabilitySets;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -Force;
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Force;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {
@@ -128,13 +260,21 @@ function Test-ProximityPlacementGroupVM
         # Common
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $ppgname = $rgname + 'ppg'
         New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key1 = "val1"};
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
 
         Assert-AreEqual $rgname $ppg.ResourceGroupName;
@@ -144,6 +284,11 @@ function Test-ProximityPlacementGroupVM
         Assert-True { $ppg.Tags.Keys.Contains("key1") };
         Assert-AreEqual "val1" $ppg.Tags["key1"];
 
+<<<<<<< HEAD
+=======
+        Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         # Create a subnet configuration
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix 192.168.1.0/24;
 
@@ -181,12 +326,75 @@ function Test-ProximityPlacementGroupVM
 
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;
+<<<<<<< HEAD
+=======
+        Assert-Null $ppg.ColocationStatus;
+
+        $ppgStatus1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+        Assert-AreEqual $vm.Id $ppgStatus1.VirtualMachines[0].Id;
+        Check-ColocationStatus $ppgStatus1.ColocationStatus;
+
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmName -Force;
+
+        $ppgname2 = $rgname + 'ppg2'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key2 = "val2"};
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.VirtualMachines;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-Null $ppgStatus2.VirtualMachines;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -ProximityPlacementGroupId $ppg2.Id;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg2.Id $vm.ProximityPlacementGroup.Id;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-AreEqual $vm.Id $ppg2.VirtualMachines[0].Id;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 =Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-AreEqual $vm.Id $ppgStatus2.VirtualMachines[0].Id;
+        Check-ColocationStatusUnknown $ppgStatus2.ColocationStatus;
+
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -ProximityPlacementGroupId "";
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-Null $vm.ProximityPlacementGroup.Id;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-AreEqual 0 $ppg2.VirtualMachines.Count;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 =Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-AreEqual 0 $ppgStatus2.VirtualMachines.Count;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Remove-AzVM -ResourceGroupName $rgname -Name $vmName -Force;
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-Null $ppg.VirtualMachines;
+<<<<<<< HEAD
 
         Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
+=======
+        Assert-Null $ppg.ColocationStatus;
+
+        $ppgStatus1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+        Assert-Null $ppgStatus1.VirtualMachines;
+        Check-ColocationStatus $ppgStatus1.ColocationStatus;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.VirtualMachines;
+        Assert-Null $ppg2.ColocationStatus;
+
+        $ppgStatus2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -ColocationStatus;
+        Assert-Null $ppgStatus2.VirtualMachines;
+        Check-ColocationStatus $ppgStatus2.ColocationStatus;
+
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Force;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {

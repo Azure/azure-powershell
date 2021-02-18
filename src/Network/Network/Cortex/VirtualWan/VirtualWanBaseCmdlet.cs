@@ -50,7 +50,11 @@ namespace Microsoft.Azure.Commands.Network
             var psVirtualWan = NetworkResourceManagerProfile.Mapper.Map<PSVirtualWan>(virtualWan);
 
             psVirtualWan.Tag = TagsConversionHelper.CreateTagHashtable(virtualWan.Tags);
+<<<<<<< HEAD
 
+=======
+            psVirtualWan.AllowVnetToVnetTraffic = true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return psVirtualWan;
         }
 
@@ -107,6 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVirtualWanPresent(string resourceGroupName, string name)
         {
+<<<<<<< HEAD
             try
             {
                 GetVirtualWan(resourceGroupName, name);
@@ -121,6 +126,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return true;
+=======
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetVirtualWan(resourceGroupName, name); });
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

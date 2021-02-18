@@ -109,5 +109,36 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssPpg");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssHostGroup()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssHostGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssBilling()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssBilling");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssScaleInPolicy()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssScaleInPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SimpleNewVmssSkipExtOverprovision()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssSkipExtOverprovision");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

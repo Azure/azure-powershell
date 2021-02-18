@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azdelegation
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azdelegation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -22,7 +26,11 @@ The **Add-AzDelegation** cmdlet adds a service delegation to an Azure subnet.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Adding a delegation
+=======
+### Example 1: Adding a delegation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
 PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet

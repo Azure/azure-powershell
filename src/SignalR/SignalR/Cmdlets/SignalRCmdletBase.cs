@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -58,6 +59,21 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 DefaultProfile.DefaultContext, endpoint ?? AzureEnvironment.Endpoint.ResourceManager);
             return postBuild == null ? instance : postBuild(instance);
         }
+=======
+using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.SignalR.Properties;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.SignalR;
+
+namespace Microsoft.Azure.Commands.SignalR.Cmdlets
+{
+    public abstract class SignalRCmdletBase : SignalRCmdletBottom
+    {
+        private IResourceManagementClient _resourceClient;
+
+        protected IResourceManagementClient ResourceClient => _resourceClient ?? (_resourceClient = BuildClient<ResourceManagementClient>());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public abstract string ResourceGroupName { get; set; }
 
@@ -73,6 +89,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 return context?.GetProperty(Resources.DefaultResourceGroupKey);
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Use the DefaultResourceGroupName for ResourceGroupName if not specified, and optionally validate it.
         /// </summary>
@@ -87,5 +107,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 throw new ArgumentException("ResourceGroupName is not specified and the default value is not present.");
             }
         }
+<<<<<<< HEAD
+=======
+
+        protected string GetLocationFromResourceGroup()
+        {
+            return ResourceClient.ResourceGroups.Get(ResourceGroupName).Location;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

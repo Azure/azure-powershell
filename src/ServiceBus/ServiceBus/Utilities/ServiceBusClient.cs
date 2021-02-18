@@ -139,7 +139,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         public bool BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {
+<<<<<<< HEAD
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
+=======
+            Client.Namespaces.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, null, new CancellationToken()).ConfigureAwait(false);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return true;
         }        
 
@@ -889,6 +893,33 @@ namespace Microsoft.Azure.Commands.ServiceBus
             }
         }
 
+<<<<<<< HEAD
+=======
+        public static bool CheckErrorforNotfound(ErrorResponseException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (errorExtract.error.message.ToLower().Contains("not found"))
+                {
+                    return false;
+                }
+                else
+                {
+                    new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                    return true;
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+                return true;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static ErrorRecord WriteErrorVirtualNetworkExists(string caller = "Add")
         {
             if (caller.Equals("Add"))

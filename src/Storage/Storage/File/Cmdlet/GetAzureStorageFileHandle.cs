@@ -36,27 +36,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the files/directories would list File Handles.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share where the files/directories would list File Handles.")]
+        [ValidateNotNull]
+        [Alias("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would list File Handles.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.DirectoryParameterSetName,
+            HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would list File Handles.")]
+        [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the file to list File Handles.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.FileParameterSetName,
+            HelpMessage = "CloudFile object indicated the file to list File Handles.")]
+        [ValidateNotNull]
+        [Alias("CloudFile")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFile File { get; set; }
 
         [Parameter(
@@ -119,6 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     string[] subfolders = NamingUtil.ValidatePath(this.Path);
                     targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
 
+<<<<<<< HEAD
                     if (!targetDir.Exists())
                     {
                         foundAFolder = false;
@@ -137,6 +162,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             this.OperationContext,
                             this.CmdletCancellationToken).ConfigureAwait(false);
                     }
+=======
+                    // Don't need check the path target to File or FileDir since: 
+                    // 1. check File/FileDir exist will fail on File/FileDir with DeletePending status
+                    // 2. The File handle request send with CloudFileDirectory and CloudFile are same with same path, so need to differ it.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 

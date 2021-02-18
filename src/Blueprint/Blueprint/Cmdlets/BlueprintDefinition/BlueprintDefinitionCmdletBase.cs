@@ -68,7 +68,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <returns></returns>
         private async Task<string> GetManagementGroupAncestorsAsync(string subscriptionId)
         {
+<<<<<<< HEAD
             var url = string.Format(BlueprintConstants.MgAncestorsRequestUrlTemplate, subscriptionId);
+=======
+            var url = string.Format(BlueprintConstants.MgAncestorsRequestUrlTemplate, DefaultContext.Environment.ResourceManagerUrl, subscriptionId);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
@@ -100,8 +105,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportBlueprint(string blueprintName, string scope, string inputPath, bool force)
         {
+<<<<<<< HEAD
             const string blueprintFileName = "Blueprint";
             var blueprintPath = GetValidatedFilePath(inputPath, blueprintFileName);
+=======
+            var blueprintPath = GetValidatedFilePathForBlueprint(ResolveUserPath(inputPath));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             BlueprintModel bpObject;
             try
@@ -167,18 +176,28 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             return folderPath;
         }
 
+<<<<<<< HEAD
         protected void ImportArtifacts(string blueprintName, string scope, string inputPath)
         {
             const string artifacts = "Artifacts";
 
             var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
+=======
+        protected void ImportArtifacts(string blueprintName, string scope, string inputPath, bool includeSubfolders = false)
+        {
+            var artifactsPath = GetValidatedFolderPathForArtifacts(ResolveUserPath(inputPath));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (artifactsPath == null)
             {
                 return; // if blueprint doesn't contain artifacts don't proceed.
             }
 
+<<<<<<< HEAD
             var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
+=======
+            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             foreach (var artifactFile in artifactFiles)
             {

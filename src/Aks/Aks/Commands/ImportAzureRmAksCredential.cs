@@ -18,12 +18,25 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+=======
+
+using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerService.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using YamlDotNet.RepresentationModel;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -140,11 +153,42 @@ namespace Microsoft.Azure.Commands.Aks
                         WriteVerbose(Admin
                             ? Resources.FetchingTheClusterAdminKubectlConfig
                             : Resources.FetchingTheDefaultClusterUserKubectlConfig);
+<<<<<<< HEAD
                         var accessProfile = Client.ManagedClusters.GetAccessProfiles(ResourceGroupName, Name,
                             Admin ? "clusterAdmin" : "clusterUser");
 
                         var decodedKubeConfig =
                             Encoding.UTF8.GetString(Convert.FromBase64String(accessProfile.KubeConfig));
+=======
+
+                        CredentialResult credentialResult = null;
+
+                        try
+                        {
+                            if (Admin)
+                            {
+                                credentialResult = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                            }
+                            else
+                            {
+                                credentialResult = Client.ManagedClusters.ListClusterUserCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                            }
+                        }
+                        catch (ValidationException e)
+                        {
+                            var sdkApiParameterMap = new Dictionary<string, CmdletParameterNameValuePair>()
+                                {
+                                    { Constants.DotNetApiParameterResourceGroupName, new CmdletParameterNameValuePair(nameof(ResourceGroupName), ResourceGroupName) },
+                                    { Constants.DotNetApiParameterResourceName, new CmdletParameterNameValuePair(nameof(Name), Name) },
+                                };
+
+                            if (!HandleValidationException(e, sdkApiParameterMap))
+                                throw;
+                        }
+
+                        var decodedKubeConfig =
+                            Encoding.UTF8.GetString(credentialResult.Value);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         if (ConfigPath == "-")
                         {
                             WriteObject(decodedKubeConfig);

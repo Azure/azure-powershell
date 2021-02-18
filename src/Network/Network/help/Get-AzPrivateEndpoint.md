@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azprivateendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azprivateendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,8 +33,13 @@ The **Get-AzPrivateEndpoint** cmdlet gets one or more private endpoints.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Retrieve a private endpoint
 ```
+=======
+### Example 1: Retrieve a private endpoint
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get-AzPrivateEndpoint -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
 
 Name                                : MyPrivateEndpoint1
@@ -68,8 +77,13 @@ ManualPrivateLinkServiceConnections : [
 
 This command gets the private endpoint named MyPrivateEndpoint1 in the resource group TestResourceGroup
 
+<<<<<<< HEAD
 ### 2: List all private endpoints in ResourceGroup
 ```
+=======
+### Example 2: List all private endpoints in ResourceGroup
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get-AzPrivateEndpoint -ResourceGroupName TestResourceGroup
 
 Name                                : MyPrivateEndpoint1

@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
+<<<<<<< HEAD
+=======
+            this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
+            this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
+            this.Identity = vault.Identity;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         #endregion
@@ -120,6 +126,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public ARSVaultProperties Properties { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets Identity.
+        /// </summary>
+        public IdentityData Identity { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 
@@ -135,6 +149,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string ProvisioningState { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets PrivateEndpointStateForBackup.
+        /// </summary>
+        public string PrivateEndpointStateForBackup { get; set; }
+
+        /// <summary>
+        /// Gets or sets PrivateEndpointStateForSiteRecovery.
+        /// </summary>
+        public string PrivateEndpointStateForSiteRecovery { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 
@@ -147,6 +174,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets CrossRegionRestore Flag.
+        /// </summary>
+        public bool CrossRegionRestore { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 
@@ -182,10 +217,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum AzureRmRecoveryServicesBackupStorageRedundancyType
     {
         GeoRedundant = 1,
+<<<<<<< HEAD
+=======
+        ZoneRedundant,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         LocallyRedundant
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// Class to define the vault BackupStorageRedundancy settings.
+    /// </summary>
+    public enum MSIdentity
+    {
+        SystemAssigned = 1,
+        None
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// Class to define the output object for the vault operations.
     /// </summary>
     public class VaultOperationOutput

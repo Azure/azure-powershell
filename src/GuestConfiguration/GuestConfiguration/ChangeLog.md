@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 0.10.8
+* Support ARC machines
+
+## Version 0.10.7
+* Update references in .psd1 to use relative path
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.10.6
 * Fixed the inconsistency of compliance status reporting when Policy is non-compliant due to parameter updates scenario.
 * Quering data from PolicyInsights RP to get the updated compliance status.  

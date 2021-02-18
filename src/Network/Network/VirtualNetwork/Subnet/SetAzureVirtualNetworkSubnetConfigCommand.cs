@@ -17,7 +17,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -54,26 +57,65 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
+<<<<<<< HEAD
+=======
+                else if (this.MyInvocation.BoundParameters.ContainsKey("NetworkSecurityGroup"))
+                {
+                    this.NetworkSecurityGroupId = null;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (this.RouteTable != null)
                 {
                     this.RouteTableId = this.RouteTable.Id;
                 }
+<<<<<<< HEAD
+=======
+                else if (this.MyInvocation.BoundParameters.ContainsKey("RouteTable"))
+                {
+                    this.RouteTableId = null;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
+<<<<<<< HEAD
+=======
+            if (this.IpAllocation != null)
+            {
+                foreach (var allocation in this.IpAllocation)
+                {
+                    subnet.IpAllocations.Add(allocation);
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
                 subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
+<<<<<<< HEAD
+=======
+            else if (this.MyInvocation.BoundParameters.ContainsKey("NetworkSecurityGroup") || this.MyInvocation.BoundParameters.ContainsKey("NetworkSecurityGroupId"))
+            {
+                subnet.NetworkSecurityGroup = null;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (!string.IsNullOrEmpty(this.RouteTableId))
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
             }
+<<<<<<< HEAD
+=======
+            else if (this.MyInvocation.BoundParameters.ContainsKey("RouteTable") || this.MyInvocation.BoundParameters.ContainsKey("RouteTableId"))
+            {
+                subnet.RouteTable = null;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (this.ServiceEndpoint != null)
             {

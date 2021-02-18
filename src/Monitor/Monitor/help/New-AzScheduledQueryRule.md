@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azscheduledqueryrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,7 +30,11 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> New-AzScheduledQueryRule -Location "West Europe" -Action $alertingAction -Enabled "true" -Description "log alert foo" -Schedule $schedule -Source $source -Name "logalertfoo"
+=======
+PS C:\> New-AzScheduledQueryRule -Location "West Europe" -Action $alertingAction -Enabled $true -Description "log alert foo" -Schedule $schedule -Source $source -Name "LogAlertRule1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## PARAMETERS
@@ -92,7 +100,11 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
+<<<<<<< HEAD
 The azure alert state - valid values - true, false
+=======
+The azure alert state - valid values - $true, $false
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Boolean

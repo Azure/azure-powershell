@@ -15,6 +15,10 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.Azure.Storage;
+<<<<<<< HEAD
+=======
+    using Microsoft.WindowsAzure.Commands.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using System;
     using System.Threading;
     using XTable = Microsoft.Azure.Cosmos.Table;
@@ -148,6 +152,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
             };
 
+<<<<<<< HEAD
+=======
+            context.CustomUserAgent = ApiConstants.UserAgentHeaderValue;
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return context;
         }
 
@@ -207,6 +217,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
             };
 
+<<<<<<< HEAD
+=======
+            context.CustomUserAgent = ApiConstants.UserAgentHeaderValue;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return context;
         }
 

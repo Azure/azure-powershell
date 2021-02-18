@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 6477ADC3-0831-493D-8904-F1D787145DD3
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/start-azcdnendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.cdn/start-azcdnendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

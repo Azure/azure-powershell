@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => engine.GetSubResourceReference(proximityPlacementGroup);
 
         public static SubResource GetReference(
+<<<<<<< HEAD
+=======
+            this IEngine engine, ResourceConfig<DedicatedHostGroup> dedicatedHostGroup)
+            => engine.GetSubResourceReference(dedicatedHostGroup);
+
+        public static SubResource GetReference(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this IEngine engine, ResourceConfig<N.NetworkSecurityGroup> networkSecurityGroup)
             => engine.GetSubResourceReference(networkSecurityGroup);
 

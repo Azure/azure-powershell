@@ -16,6 +16,10 @@ using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Network.Common;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Text.RegularExpressions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -57,7 +61,22 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new NetworkCloudException(ex);
             }
+<<<<<<< HEAD
         }
+=======
+            catch (Microsoft.Azure.Management.Network.Models.ErrorException ex)
+            {
+                Rest.Azure.CloudException rex = NetworkResourceManagerProfile.Mapper.Map<Rest.Azure.CloudException>(ex);
+                throw new NetworkCloudException(rex);
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorResponseException ex)
+            {
+                Rest.Azure.CloudException rex = NetworkResourceManagerProfile.Mapper.Map<Rest.Azure.CloudException>(ex);
+                throw new NetworkCloudException(rex);
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public virtual void Execute()
         {
         }
@@ -71,5 +90,52 @@ namespace Microsoft.Azure.Commands.Network
 
             return resourceId.Substring(startIndex, endIndex - startIndex);
         }
+<<<<<<< HEAD
+=======
+
+        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null, string version = null)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = (instanceName == null && version == null)
+                      ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase)
+                      : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        public static bool IsResourcePresent(Action fn)
+        {
+            try
+            {
+                fn();
+            }
+            catch (Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorResponseException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+
+            return true;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

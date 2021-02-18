@@ -142,7 +142,11 @@
     <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer.</value>
   </data>
   <data name="VirtualMachineReferencesInternalNetworkInterface" xml:space="preserve">
+<<<<<<< HEAD
     <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer.</value>
+=======
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of the load balancer.</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="VirtualMachineRemovalCaption" xml:space="preserve">
     <value>Virtual machine removal operation</value>
@@ -354,7 +358,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Found existing page blob. Resuming upload...</value>
   </data>
   <data name="PSSyncOutputEventsRetryingAfterANetworkDisruption" xml:space="preserve">
+<<<<<<< HEAD
     <value>Network disruption occured, retrying.</value>
+=======
+    <value>Network disruption occurred, retrying.</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="PSSyncOutputEventsUploadFailedWithException" xml:space="preserve">
     <value>Upload failed with exceptions:</value>
@@ -597,4 +605,20 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="NoSubscriptionInContext" xml:space="preserve">
     <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="EnableDiskEncryptionMissingSkipVmBackup" xml:space="preserve">
+    <value>-skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. </value>
+  </data>
+  <data name="LinuxConfigurationSpecified" xml:space="preserve">
+    <value>Linux configuration is already specified.  This cmdlet requires a Windows configuration.</value>
+  </data>
+  <data name="WindowsConfigurationSpecified" xml:space="preserve">
+    <value>Windows configuration is already specified.  This cmdlet requires a Linux configuration.</value>
+  </data>
+  <data name="VirtualMachineTooManyVMsWithStatusParameter" xml:space="preserve">
+    <value>There are more than {0} VMs in the result.  Only the statuses of 100 VMs are shown to avoid throttling.  To get the actual status of each VM, please provide a VM name with -Status parameter.</value>
+    <comment>{0} = the number of VMs in the result</comment>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </root>

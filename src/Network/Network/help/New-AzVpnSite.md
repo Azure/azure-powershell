@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnsite
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnsite
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,7 +17,11 @@ for S2S connectivity with a Cortex virtual hub.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### ByVirtualWanName (Default)
+=======
+### ByVirtualWanNameByVpnSiteIpAddress (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  -VirtualWanResourceGroupName <String> -VirtualWanName <String> -IpAddress <String> [-AddressSpace <String[]>]
@@ -22,7 +30,19 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### ByVirtualWanObject
+=======
+### ByVirtualWanNameByVpnSiteLinkObject
+```
+New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
+ -VirtualWanResourceGroupName <String> -VirtualWanName <String> [-AddressSpace <String[]>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualWanObjectByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
@@ -31,7 +51,19 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### ByVirtualWanResourceId
+=======
+### ByVirtualWanObjectByVpnSiteLinkObject
+```
+New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
+ [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
@@ -40,6 +72,17 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### ByVirtualWanResourceIdByVpnSiteLinkObject
+```
+New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
+ [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
 for S2S connectivity with a Cortex virtual hub.
@@ -49,13 +92,19 @@ for S2S connectivity with a Cortex virtual hub.
 ### Example 1
 
 ```powershell
+<<<<<<< HEAD
 PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+=======
+PS C:\> New-AzResourceGroup -Location "East US" -Name "nonlinkSite"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "nonlinkSite" -Name myVirtualWAN -Location "East US"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
+<<<<<<< HEAD
 PS C:\> New-AzVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
 ResourceGroupName : testRG
@@ -64,18 +113,59 @@ Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/provid
 Location          : eastus2euap
 IpAddress         : 1.2.3.4
 VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+=======
+PS C:\> New-AzVpnSite -ResourceGroupName "nonlinkSite" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+ResourceGroupName : nonlinkSite
+Name              : testVpnSite
+Id                : /subscriptions/{subscriptionId}/resourceGroups/nonlinkSite/providers/Microsoft.Network/vpnSites/testVpnSite
+Location          : eastus2euap
+IpAddress         : 1.2.3.4
+VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/nonlinkSite/providers/Microsoft.Network/virtualWans/myVirtualWAN
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
 BgpSettings       :
 Type              : Microsoft.Network/vpnSites
 ProvisioningState : Succeeded
 ```
 
+<<<<<<< HEAD
 The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
+=======
+The above will create a resource group, Virtual WAN in East US in "nonlinkSite" resource group in Azure. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
 
 An IPSec connection can then be setup with this branch and a VpnGateway using the New-AzVpnConnection command.
 
+<<<<<<< HEAD
+=======
+### Example 2
+```powershell
+PS C:\> New-AzResourceGroup -Location "East US" -Name "multilink"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName multilink -Name myVirtualWAN -Location "East US"
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> $vpnSiteLink = New-AzVpnSiteLink -Name "testVpnSiteLink1" -IpAddress "15.25.35.45" -LinkProviderName "SomeTelecomProvider" -LinkSpeedInMbps "10"
+PS C:\> $vpnSiteLink2 = New-AzVpnSiteLink -Name "testVpnSiteLink2" -IpAddress "15.25.35.55" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "100"
+PS C:\> $vpnSite = New-AzVpnSite -ResourceGroupName "multilink" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
+```
+
+The above will create a resource group, Virtual WAN and a VpnSite with 1 VpnSiteLinks in East US in "multilink" resource group in Azure.
+
+### Example 3
+
+Creates a new Azure VpnSite resource. (autogenerated)
+
+<!-- Aladdin Generated Example -->
+```powershell
+New-AzVpnSite -AddressSpace <String[]> -DeviceModel 'SomeDevice' -DeviceVendor 'SomeDeviceVendor' -IpAddress '1.2.3.4' -LinkSpeedInMbps '10' -Location 'East US' -Name 'testVpnSite' -ResourceGroupName 'multilink' -VirtualWanName <String> -VirtualWanResourceGroupName <String>
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -AddressSpace
@@ -113,7 +203,11 @@ The BGP ASN for this VpnSite.
 
 ```yaml
 Type: System.UInt32
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -128,7 +222,11 @@ The BGP Peering Address for this VpnSite.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -143,7 +241,11 @@ The BGP Peering weight for this VpnSite.
 
 ```yaml
 Type: System.UInt32
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -203,7 +305,11 @@ The IPAddress for this VpnSite.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -218,7 +324,11 @@ The device model of the remote vpn device.
 
 ```yaml
 Type: System.UInt32
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -258,6 +368,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -O365Policy
+The office 365 traffic breakout policy for this VpnSite.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSO365PolicyProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceGroupName
 The resource name.
 
@@ -293,7 +421,11 @@ The VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+<<<<<<< HEAD
 Parameter Sets: ByVirtualWanObject
+=======
+Parameter Sets: ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteLinkObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -308,7 +440,11 @@ The ResourceId VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ByVirtualWanResourceId
+=======
+Parameter Sets: ByVirtualWanResourceIdByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteLinkObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -323,7 +459,11 @@ The name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ByVirtualWanName
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanNameByVpnSiteLinkObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -338,7 +478,26 @@ The resource group name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: ByVirtualWanName
+=======
+Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanNameByVpnSiteLinkObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnSiteLink
+The list of VpnSiteLinks that this VpnSite have.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLink[]
+Parameter Sets: ByVirtualWanNameByVpnSiteLinkObject, ByVirtualWanObjectByVpnSiteLinkObject, ByVirtualWanResourceIdByVpnSiteLinkObject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -380,7 +539,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

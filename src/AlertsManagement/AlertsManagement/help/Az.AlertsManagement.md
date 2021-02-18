@@ -1,7 +1,11 @@
 ---
 Module Name: Az.AlertsManagement
 Module Guid: ab73cb67-5713-4179-b6d7-f76ab3ad148f
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.alertsmanagement
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---

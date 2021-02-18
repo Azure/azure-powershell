@@ -163,6 +163,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = HelpMessages.VMDiskEncryptionSetId)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
@@ -250,7 +259,11 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
+<<<<<<< HEAD
             this.VM.StorageProfile.OsDisk.ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType, this.VM.StorageProfile.OsDisk.ManagedDisk);
+=======
+            this.VM.StorageProfile.OsDisk.ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType, this.VM.StorageProfile.OsDisk.ManagedDisk);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 

@@ -23,6 +23,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Storage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
@@ -36,6 +40,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         public ApplicationInsightsManagementClient ApplicationInsightsClient { get; private set; }
 
+<<<<<<< HEAD
+=======
+        public StorageManagementClient StorageManagementClient { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string UserDomain { get; private set; }
 
         public static TestController NewInstance => new TestController();
@@ -91,6 +100,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"),
+<<<<<<< HEAD
+=======
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -114,10 +127,19 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             ApplicationInsightsClient = GetApplicationInsightsManagementClient(context);
+<<<<<<< HEAD
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
                 ApplicationInsightsClient);
+=======
+            StorageManagementClient = GetStorageManagementClient(context);
+
+            _helper.SetupManagementClients(
+                ResourceManagementClient,
+                ApplicationInsightsClient,
+                StorageManagementClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -129,5 +151,13 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
         {
             return context.GetServiceClient<ApplicationInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+<<<<<<< HEAD
+=======
+
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

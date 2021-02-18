@@ -14,12 +14,19 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.HDInsight.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+<<<<<<< HEAD
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(ClusterGetResponse))]
+=======
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(bool))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -34,6 +41,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         public override void ExecuteCmdlet()
@@ -43,9 +56,18 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
+<<<<<<< HEAD
             var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
             WriteObject(result, true);
+=======
+            HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
+
+            if (this.PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

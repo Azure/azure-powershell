@@ -136,7 +136,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
+<<<<<<< HEAD
                     throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+=======
+                    throw new PSArgumentException(Properties.Resources.NoNetworkWatcherFound);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
@@ -148,7 +152,11 @@ namespace Microsoft.Azure.Commands.Network
                 connectionMonitorName,
                 () =>
                 {
+<<<<<<< HEAD
                     this.ConnectionMonitors.Stop(resourceGroupName, networkWatcherName, connectionMonitorName);
+=======
+                    this.ConnectionMonitors.StopV1(resourceGroupName, networkWatcherName, connectionMonitorName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (PassThru)
                     {

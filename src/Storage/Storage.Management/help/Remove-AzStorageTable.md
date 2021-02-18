@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 1B29AB8C-95DD-4C4F-86E2-2F81E8020CEA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragetable
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
+Module Name: Az.Storage
+ms.assetid: 1B29AB8C-95DD-4C4F-86E2-2F81E8020CEA
+online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragetable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

@@ -44,7 +44,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
             Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
+<<<<<<< HEAD
             Capacity = apiServiceResource.Sku.Capacity ?? 1;
+=======
+            Capacity = apiServiceResource.Sku.Capacity;
+            CreatedTimeUtc = apiServiceResource.CreatedAtUtc;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             PublisherEmail = apiServiceResource.PublisherEmail;
             OrganizationName = apiServiceResource.PublisherName;
             NotificationSenderEmail = apiServiceResource.NotificationSenderEmail;
@@ -52,6 +57,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             RuntimeUrl = apiServiceResource.GatewayUrl;
             RuntimeRegionalUrl = apiServiceResource.GatewayRegionalUrl;
             PortalUrl = apiServiceResource.PortalUrl;
+<<<<<<< HEAD
+=======
+            DeveloperPortalUrl = apiServiceResource.DeveloperPortalUrl;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ManagementApiUrl = apiServiceResource.ManagementApiUrl;
             ScmUrl = apiServiceResource.ScmUrl;
             PublicIPAddresses = apiServiceResource.PublicIPAddresses != null ? apiServiceResource.PublicIPAddresses.ToArray() : null;
@@ -105,6 +114,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 {
                     ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
+<<<<<<< HEAD
+=======
+
+                var developerPortalResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.DeveloperPortal);
+                if (developerPortalResource != null)
+                {
+                    DeveloperPortalHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(developerPortalResource);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (apiServiceResource.Certificates != null && apiServiceResource.Certificates.Any())
@@ -148,6 +166,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public int Capacity { get; set; }
 
+<<<<<<< HEAD
+=======
+        public DateTime? CreatedTimeUtc { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ProvisioningState { get; private set; }
 
         public string RuntimeUrl { get; private set; }
@@ -156,6 +179,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string PortalUrl { get; private set; }
 
+<<<<<<< HEAD
+=======
+        public string DeveloperPortalUrl { get; private set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ManagementApiUrl { get; private set; }
 
         public string ScmUrl { get; private set; }

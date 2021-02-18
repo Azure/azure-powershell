@@ -15,6 +15,10 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+<<<<<<< HEAD
+=======
+    using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     public class PSHubVirtualNetworkConnection : PSChildResource
     {
@@ -23,5 +27,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+<<<<<<< HEAD
+=======
+
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
+
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

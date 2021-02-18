@@ -14,6 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
+<<<<<<< HEAD
+=======
+    using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -70,5 +74,28 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPipeTwoConnections");
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// The test new direct peering pipe two connections and sku premium direct free.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectPeeringPremiumDirectFree()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPremiumDirectFree");
+        }
+
+        /// <summary>
+        /// The test new direct peering pipe two connections and sku premium direct unlimited.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectPeeringPremiumDirectUnlimited()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPremiumDirectUnlimited");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -74,7 +74,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             else
             {
+<<<<<<< HEAD
                 Logger.LogError("ADLS exception occured: {0}, with message: {1}, invocationId={2}", adlException.Body.RemoteException, adlException.Body.RemoteException.Message, invocationId);
+=======
+                Logger.LogError("ADLS exception occurred: {0}, with message: {1}, invocationId={2}", adlException.Body.RemoteException, adlException.Body.RemoteException.Message, invocationId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

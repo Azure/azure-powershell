@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/remove-azsignalr
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/powershell/module/az.signalr/remove-azsignalr
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,14 +43,22 @@ Remove a SignalR service.
 ## EXAMPLES
 
 ### Remove a SignalR service
+<<<<<<< HEAD
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
 True
 ```
 
 ### Remove all SignalR service from pipe
+<<<<<<< HEAD
 ```powershell
+=======
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
 ```
 
@@ -59,7 +74,11 @@ Aliases:
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -119,7 +138,11 @@ Aliases:
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -164,7 +187,11 @@ Aliases: cf
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -180,17 +207,26 @@ Aliases: wi
 
 Required: False
 Position: Named
+<<<<<<< HEAD
 Default value: None
+=======
+Default value: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
 ### System.String
+<<<<<<< HEAD
 
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 
@@ -198,6 +234,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
+=======
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+## OUTPUTS
+
+### System.Boolean
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

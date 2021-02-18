@@ -18,11 +18,18 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.StorageSync;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.StorageSync.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.StorageSync.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 {
@@ -78,6 +85,25 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public string Location { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the IncomingTrafficPolicy.
+        /// </summary>
+        /// <value>The IncomingTrafficPolicy.</value>
+        [Parameter(
+           Position = 3,
+           ParameterSetName = StorageSyncParameterSets.StringParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = HelpMessages.StorageSyncServiceIncomingTrafficPolicyParameter)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(StorageSyncModels.IncomingTrafficPolicy.AllowVirtualNetworksOnly,
+            StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic,
+            IgnoreCase = true)]
+        public string IncomingTrafficPolicy { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the tag.
         /// </summary>
         /// <value>The tag.</value>
@@ -90,6 +116,16 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public Hashtable Tag { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets as job.
+        /// </summary>
+        /// <value>As job.</value>
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJobParameter)]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the target.
         /// </summary>
         /// <value>The target.</value>
@@ -119,10 +155,31 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     throw new PSArgumentException(checkNameAvailabilityResult.Message, nameof(Name));
                 }
 
+<<<<<<< HEAD
+=======
+                string incomingTrafficPolicy;
+                if (this.IsParameterBound(c => c.IncomingTrafficPolicy))
+                {
+                    if(string.IsNullOrEmpty(this.IncomingTrafficPolicy))
+                    {
+                        throw new PSArgumentException(nameof(IncomingTrafficPolicy));
+                    }
+                    incomingTrafficPolicy = this.IncomingTrafficPolicy;
+                }
+                else
+                {
+                    incomingTrafficPolicy = StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic;
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var createParameters = new StorageSyncServiceCreateParameters()
                 {
                     Location = Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
+<<<<<<< HEAD
+=======
+                    IncomingTrafficPolicy = incomingTrafficPolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 Target = string.Join("/", ResourceGroupName, Name);

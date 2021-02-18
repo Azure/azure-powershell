@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlwebservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -18,8 +22,13 @@ Get-AzMlWebService [-ResourceGroupName <String>] [-Name <String>] [-Region <Stri
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Retrieves web service defintion information.
 Depending on the paramenters passed, the cmdlet returns the defintion for a specific web service, a collection of defintions for the web services for a specified resource group within the current subscription, or a collection of defintions for the web services within the current subscription.
+=======
+Retrieves web service definition information.
+Depending on the parameters passed, the cmdlet returns the definition for a specific web service, a collection of definitions for the web services for a specified resource group within the current subscription, or a collection of definitions for the web services within the current subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -71,7 +80,11 @@ Accept wildcard characters: False
 ```
 
 ### -Region
+<<<<<<< HEAD
 The name of regio
+=======
+The name of region
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

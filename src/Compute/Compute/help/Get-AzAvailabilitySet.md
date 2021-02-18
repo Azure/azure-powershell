@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 45D55DC9-0027-4EB9-B2F7-9ABF6685E6B5
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azavailabilityset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azavailabilityset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -45,7 +49,11 @@ Statuses                  : []
 VirtualMachinesReferences : []
 ```
 
+<<<<<<< HEAD
 This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
+=======
+This command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Get all availability sets
 ```

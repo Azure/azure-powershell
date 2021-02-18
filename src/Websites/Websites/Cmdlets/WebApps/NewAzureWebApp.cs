@@ -199,6 +199,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     SourceWebAppId = SourceWebApp.Id,
                     CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
+<<<<<<< HEAD
+=======
+                    SourceWebAppLocation = SourceWebApp.Location,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     CloneSourceControl = !IgnoreSourceControl.IsPresent,
                     TrafficManagerProfileId = trafficManagerProfielId,
                     TrafficManagerProfileName = trafficManagerProfileName,
@@ -230,7 +234,24 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
             }
 
+<<<<<<< HEAD
             WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+=======
+            try
+            {
+                WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+            }
+            catch (Exception e)
+            {
+                if(e.Message.Contains("Operation returned an invalid status code \'BadRequest\'"))
+                {
+                    var message = e.Message + "\nIf AppServicePlan is present in other resourceGroup, please provide AppServicePlan in following format : \" /subscriptions/{subscriptionId}/resourcegroups/{resourcegroupName}/providers/Microsoft.Web/serverfarms/{serverFarmName}\"";
+                    WriteObject(message);
+                    throw new Exception(message, e);
+                }
+                throw e;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (cloneWebAppSlots)
             {
@@ -317,17 +338,29 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
                 if (_cmdlet.ContainerRegistryUrl != null)
                 {
+<<<<<<< HEAD
                     siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
+=======
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUrl, _cmdlet.ContainerRegistryUrl));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryUser != null)
                 {
+<<<<<<< HEAD
                     siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
+=======
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerUserName, _cmdlet.ContainerRegistryUser));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     newConfigAdded = true;
                 }
                 if (_cmdlet.ContainerRegistryPassword != null)
                 {
+<<<<<<< HEAD
                     siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DocerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
+=======
+                    siteConfig.AppSettings.Add(new NameValuePair(CmdletHelpers.DockerRegistryServerPassword, _cmdlet.ContainerRegistryPassword.ConvertToString()));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     newConfigAdded = true;
                 }
                 if (_cmdlet.EnableContainerContinuousDeployment.IsPresent)

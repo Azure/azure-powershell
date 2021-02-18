@@ -23,6 +23,10 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Cdn.Models.OriginGroup;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using SdkProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
@@ -36,6 +40,10 @@ using SdkDeepCreatedOrigin = Microsoft.Azure.Management.Cdn.Models.DeepCreatedOr
 using SdkEndpoint = Microsoft.Azure.Management.Cdn.Models.Endpoint;
 using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
+<<<<<<< HEAD
+=======
+using SdkOriginGroup = Microsoft.Azure.Management.Cdn.Models.OriginGroup;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
@@ -147,7 +155,12 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 OptimizationType = sdkEndpoint.OptimizationType,
                 ProbePath = sdkEndpoint.ProbePath,
                 GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
+<<<<<<< HEAD
                 DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy()
+=======
+                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy(),
+                DefaultOriginGroup = sdkEndpoint.DefaultOriginGroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -181,7 +194,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 return new PSDeliveryRuleHeaderAction
                 {
+<<<<<<< HEAD
                     HeaderActionType = "ModifyRequestHeader",
+=======
+                    HeaderActionType = "ModifyResponseHeader",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     Action = responseHeaderAction.Parameters.HeaderAction,
                     HeaderName = responseHeaderAction.Parameters.HeaderName,
                     Value = responseHeaderAction.Parameters.Value
@@ -202,7 +219,33 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 return new PSDeliveryRuleUrlRedirectAction
                 {
+<<<<<<< HEAD
                     RedirectType = urlRedirectAction.Parameters.RedirectType
+=======
+                    RedirectType = urlRedirectAction.Parameters.RedirectType,
+                    DestinationProtocol = urlRedirectAction.Parameters.DestinationProtocol,
+                    CustomHostname = urlRedirectAction.Parameters.CustomHostname,
+                    CustomPath = urlRedirectAction.Parameters.CustomPath,
+                    CustomFragment = urlRedirectAction.Parameters.CustomFragment,
+                    CustomQueryString = urlRedirectAction.Parameters.CustomQueryString
+                };
+            }
+            else if (deliveryRuleAction is UrlRewriteAction urlRewriteAction)
+            {
+                return new PSDeliveryRuleUrlRewriteAction
+                {
+                    SourcePattern = urlRewriteAction.Parameters.SourcePattern,
+                    Destination = urlRewriteAction.Parameters.Destination,
+                    PreservePath = urlRewriteAction.Parameters.PreserveUnmatchedPath ?? true
+                };
+            }
+            else if (deliveryRuleAction is DeliveryRuleCacheKeyQueryStringAction deliveryRuleCacheKeyQueryStringAction)
+            {
+                return new PSDeliveryRuleCacheKeyQueryStringAction
+                {
+                    QueryStringBehavior = deliveryRuleCacheKeyQueryStringAction.Parameters.QueryStringBehavior,
+                    QueryParameter = deliveryRuleCacheKeyQueryStringAction.Parameters.QueryParameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
             }
             else
@@ -342,6 +385,29 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     MatchValue = deliveryRuleIsDeviceCondition.Parameters.MatchValues
                 };
             }
+<<<<<<< HEAD
+=======
+            else if (deliveryRuleCondition is DeliveryRuleHttpVersionCondition deliveryRuleHttpVersionCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "HttpVersion",
+                    NegateCondition = deliveryRuleHttpVersionCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleHttpVersionCondition.Parameters.MatchValues
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleCookiesCondition deliveryRuleCookiesCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "Cookies",
+                    NegateCondition = deliveryRuleCookiesCondition.Parameters.NegateCondition,
+                    Selector = deliveryRuleCookiesCondition.Parameters.Selector,
+                    MatchValue = deliveryRuleCookiesCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleCookiesCondition.Parameters.Transforms
+                };
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
             {
                 return new PSDeliveryRuleCondition();
@@ -519,6 +585,30 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                             Transforms = psDeliveryRuleCondition.Transfroms
                         }
                     };
+<<<<<<< HEAD
+=======
+                case "HttpVersion":
+                    return new DeliveryRuleHttpVersionCondition
+                    {
+                        Parameters = new HttpVersionMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition
+                        }
+                    };
+                case "Cookies":
+                    return new DeliveryRuleCookiesCondition
+                    {
+                        Parameters = new CookiesMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            Selector = psDeliveryRuleCondition.Selector,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 default:
                     return new DeliveryRuleCondition();
             }
@@ -553,7 +643,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 }
                 else if (psDeliveryRuleHeaderAction.HeaderActionType == "ModifyResponseHeader")
                 {
+<<<<<<< HEAD
                     return new DeliveryRuleRequestHeaderAction
+=======
+                    return new DeliveryRuleResponseHeaderAction
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         Parameters = new HeaderActionParameters
                         {
@@ -579,6 +673,32 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     }
                 };
             }
+<<<<<<< HEAD
+=======
+            else if (psDeliveryRuleAction is PSDeliveryRuleCacheKeyQueryStringAction psDeliveryRuleCacheKeyQueryStringAction)
+            {
+                return new DeliveryRuleCacheKeyQueryStringAction
+                {
+                    Parameters = new CacheKeyQueryStringActionParameters
+                    {
+                        QueryStringBehavior = psDeliveryRuleCacheKeyQueryStringAction.QueryStringBehavior,
+                        QueryParameters = psDeliveryRuleCacheKeyQueryStringAction.QueryParameter
+                    }
+                };
+            }
+            else if (psDeliveryRuleAction is PSDeliveryRuleUrlRewriteAction psDeliveryRuleUrlRewriteAction)
+            {
+                return new UrlRewriteAction
+                {
+                    Parameters = new UrlRewriteActionParameters
+                    {
+                        SourcePattern = psDeliveryRuleUrlRewriteAction.SourcePattern,
+                        Destination = psDeliveryRuleUrlRewriteAction.Destination,
+                        PreserveUnmatchedPath = psDeliveryRuleUrlRewriteAction.PreservePath
+                    }
+                };
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return new DeliveryRuleAction();
         }
 
@@ -589,7 +709,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Name = psDeliveryRule.Name,
                 Order = psDeliveryRule.Order,
                 Actions = psDeliveryRule.Actions.Select(action => action.ToDeliveryRuleAction()).ToList(),
+<<<<<<< HEAD
                 Conditions = psDeliveryRule.Conditions.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
+=======
+                Conditions = psDeliveryRule.Conditions?.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -627,9 +751,69 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Type = origin.Type,
                 ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), origin.ProvisioningState),
                 ResourceState = (PSOriginResourceState)Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
+<<<<<<< HEAD
                 HostName = origin.HostName,
                 HttpPort = origin.HttpPort,
                 HttpsPort = origin.HttpsPort
+=======
+
+                // origin specifc properties
+                HostName = origin.HostName,
+                HttpPort = origin.HttpPort,
+                HttpsPort = origin.HttpsPort,
+                OriginHostHeader = origin.OriginHostHeader,
+                Priority = origin.Priority,
+                PrivateLinkApprovalMessage = origin.PrivateLinkApprovalMessage,
+                PrivateLinkLocation = origin.PrivateLinkLocation,
+                PrivateLinkResourceId = origin.PrivateLinkResourceId,
+                Weight = origin.Weight
+            };
+        }
+
+        public static PSOriginGroup ToPsOriginGroup(this SdkOriginGroup originGroup)
+        {
+            Debug.Assert(originGroup.ProvisioningState != null, "originGroup.ProvisioningState != null");
+            Debug.Assert(originGroup.ResourceState != null, "originGroup.ResourceState != null");
+
+            int? probeIntervalInSeconds = null;
+            string probePath = null;
+            string probeProtocol = null;
+            string probeRequestType = null;
+
+            if (originGroup.HealthProbeSettings != null)
+            {
+                probeIntervalInSeconds = originGroup.HealthProbeSettings.ProbeIntervalInSeconds;
+                probePath = originGroup.HealthProbeSettings.ProbePath;
+                probeProtocol = originGroup.HealthProbeSettings.ProbeProtocol.Value.ToString();
+                probeRequestType = originGroup.HealthProbeSettings.ProbeRequestType.Value.ToString();
+            }
+
+            int probeIntervalInSecondsInteger;
+
+            if (probeIntervalInSeconds == null)
+            {
+                probeIntervalInSecondsInteger = 0;
+            }
+            else
+            {
+                probeIntervalInSecondsInteger = probeIntervalInSeconds.Value;
+            }
+
+            return new PSOriginGroup
+            {
+                Id = originGroup.Id,
+                Name = originGroup.Name,
+                Type = originGroup.Type,
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), originGroup.ProvisioningState),
+                ResourceState = (PSOriginGroupResourceState)Enum.Parse(typeof(PSOriginGroupResourceState), originGroup.ResourceState),
+                
+                // origin group specific properties
+                Origins = originGroup.Origins,
+                ProbeIntervalInSeconds = probeIntervalInSecondsInteger,
+                ProbePath = probePath,
+                ProbeProtocol = probeProtocol,
+                ProbeRequestType = probeRequestType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -758,12 +942,20 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                         condition.Operator != "LessThanOrEqual" && condition.Operator != "GreaterThan" && condition.Operator != "GreaterThanOrEqual")
                     {
                         throw new PSArgumentException(string.Format(
+<<<<<<< HEAD
                                 "Invalid Operator {0} found for {1} match condition. Valid operators are IPMatch, Any, GeoMatch", condition.Operator, condition.MatchVariable
+=======
+                                "Invalid Operator {0} found for {1} match condition. Valid operators are Any, Equal, Contains, BeginsWith, EndsWith, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual.", condition.Operator, condition.MatchVariable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 ));
                     }
                     break;
                 case "RequestHeader":
                 case "PostArgs":
+<<<<<<< HEAD
+=======
+                case "Cookies":
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (condition.Selector == null)
                     {
                         throw new PSArgumentException(string.Format(
@@ -782,6 +974,10 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 case "RequestScheme":
                 case "IsDevice":
                 case "RequestMethod":
+<<<<<<< HEAD
+=======
+                case "HttpVersion":
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (condition.Operator !="Equal")
                     {
                         throw new PSArgumentException(string.Format(

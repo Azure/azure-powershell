@@ -90,22 +90,43 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             public static IList<string> DefaultApiVersions { get; } = new List<string> { "2018-01-01", "2016-01-01" };
             private string Name { get; }
+<<<<<<< HEAD
             private List<AliasPathType> Paths { get; } = new List<AliasPathType>();
+=======
+            private List<AliasPath> Paths { get; } = new List<AliasPath>();
+            private AliasPathMetadata DefaultAliasPathMetadata { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             public AliasBuilder(string name)
             {
                 this.Name = name;
             }
 
+<<<<<<< HEAD
             public AliasType Alias => new AliasType
+=======
+            public Alias Alias => new Alias(defaultMetadata: this.DefaultAliasPathMetadata)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 Name = this.Name,
                 Paths = this.Paths
             };
 
+<<<<<<< HEAD
             public AliasPathType AddAliasPath(string path, IEnumerable<string> apiVersions = null)
             {
                 var rv = new AliasPathType
+=======
+            public AliasPathMetadata AddDefaultAliasPathMetadata(string attributes, string type)
+            {
+                this.DefaultAliasPathMetadata = new AliasPathMetadata(attributes, type);
+                return this.DefaultAliasPathMetadata;
+            }
+
+            public AliasPath AddAliasPath(string path, IEnumerable<string> apiVersions = null, AliasPathMetadata metadata= null)
+            {
+                var rv = new AliasPath(metadata: metadata)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     Path = path,
                     ApiVersions = apiVersions?.ToList() ?? AliasBuilder.DefaultApiVersions

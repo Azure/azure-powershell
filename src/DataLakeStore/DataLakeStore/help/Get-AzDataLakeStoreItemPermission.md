@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 476E889F-C763-4EFA-AFD6-B037BA6BA0A1
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreitempermission
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/get-azdatalakestoreitempermission
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,7 +23,11 @@ Get-AzDataLakeStoreItemPermission [-Account] <String> [-Path] <DataLakeStorePath
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Get-AzDataLakeStoreItemPermission** cmdlet gets the the permission octal of a file or folder in Data Lake Store.
+=======
+The **Get-AzDataLakeStoreItemPermission** cmdlet gets the permission octal of a file or folder in Data Lake Store.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

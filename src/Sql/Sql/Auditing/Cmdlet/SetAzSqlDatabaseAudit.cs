@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Sql.Common;
 using System;
 using System.Management.Automation;
@@ -108,6 +112,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+<<<<<<< HEAD
+=======
+        public Guid RoleAssignmentId { get; set; } = default(Guid);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override DatabaseAuditModel ApplyUserInputToModel(DatabaseAuditModel model)
         {
             base.ApplyUserInputToModel(model);
@@ -124,7 +133,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             if (PredicateExpression != null)
             {
+<<<<<<< HEAD
                 model.PredicateExpression = PredicateExpression = PredicateExpression;
+=======
+                model.PredicateExpression = PredicateExpression;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (BlobStorageTargetState != null)
@@ -183,5 +196,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ModelAdapter.PersistAuditChanges(entity);
             return null;
         }
+<<<<<<< HEAD
+=======
+
+        protected override SqlDatabaseAuditAdapter InitModelAdapter()
+        {
+            return new SqlDatabaseAuditAdapter(DefaultProfile.DefaultContext, DatabaseName, RoleAssignmentId);
+        }
+
+        protected override bool WriteResult() => PassThru;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -34,6 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public ManagedDatabaseCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances",
+                "Microsoft.Sql/managedInstances/databases",
+                "Microsoft.Sql/managedInstances/managedDatabases"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -43,21 +51,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedDatabase");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Skip due to bug in ignore api version plus long setup time for managed instance")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabase()
         {
             RunPowerShellTest("Test-GetManagedDatabase");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedDatabase()
         {
             RunPowerShellTest("Test-RemoveManagedDatabase");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreManagedDatabase()
         {
@@ -66,6 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestRestoreDeletedManagedDatabase()
+        {
+            RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestGetManagedDatabaseGeoBackup()
         {
             RunPowerShellTest("Test-GetManagedDatabaseGeoBackup");

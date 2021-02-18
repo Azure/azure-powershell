@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -23,6 +24,19 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Linq;
 using System.Management.Automation;
+=======
+using System;
+using System.Linq;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -35,7 +49,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the defualt")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the default")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return the removed context")]
@@ -79,11 +97,39 @@ namespace Microsoft.Azure.Commands.Profile.Context
                             if (profile.Contexts.ContainsKey(name))
                             {
                                 var removedContext = profile.Contexts[name];
+<<<<<<< HEAD
                                 if (client.TryRemoveContext(name) && PassThru.IsPresent)
                                 {
                                     var outContext = new PSAzureContext(removedContext);
                                     outContext.Name = name;
                                     WriteObject(outContext);
+=======
+                                if (client.TryRemoveContext(name))
+                                {
+                                    if (removedContext.Account.Type == AzureAccount.AccountType.User &&
+                                        !profile.Contexts.Any(c => c.Value.Account.Id == removedContext.Account.Id))
+                                    {
+                                        PowerShellTokenCacheProvider tokenCacheProvider;
+                                        if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
+                                        {
+                                            WriteWarning(string.Format(Resources.ClientFactoryNotRegisteredRemoval, removedContext.Account.Id));
+                                        }
+                                        else
+                                        {
+                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id))
+                                            {
+                                                WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
+                                            }
+                                        }
+                                    }
+
+                                    if (this.PassThru.IsPresent)
+                                    {
+                                        var outContext = new PSAzureContext(removedContext);
+                                        outContext.Name = name;
+                                        WriteObject(outContext);
+                                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 }
                             }
                         });

@@ -125,6 +125,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void ResolvesDuplicatedDynamicParameterNameSubstring()
         {
             string[] parameters = { "Username", "Location", "Mode" };
@@ -158,6 +159,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void ResolvesDuplicatedDynamicParameterNameCaseInsensitive()
         {
             string[] parameters = { "Name", "Location", "Mode" };

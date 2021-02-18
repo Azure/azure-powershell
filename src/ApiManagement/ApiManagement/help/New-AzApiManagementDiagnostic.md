@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementdiagnostic
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementdiagnostic
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,7 +29,11 @@ The cmdlet **New-AzApiManagementDiagnostic** creates a diagnostic entity either 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 : Create a new Global scope Diagnostic
+=======
+### Example 1: Create a new Global scope Diagnostic
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS D:\github\azure-powershell> $context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS D:\github\azure-powershell> $logger = Get-AzApiManagementLogger -Context $context -LoggerId "backendapisachinc"
@@ -107,7 +115,11 @@ Accept wildcard characters: False
 ```
 
 ### -BackendSetting
+<<<<<<< HEAD
 Diagnostic setting for incoming/outgoing Http Messsages to the Backend. This parameter is optional.
+=======
+Diagnostic setting for incoming/outgoing Http Messages to the Backend. This parameter is optional.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting
@@ -169,7 +181,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontEndSetting
+<<<<<<< HEAD
 Diagnostic setting for incoming/outgoing Http Messsages to the Gateway. This parameter is optional.
+=======
+Diagnostic setting for incoming/outgoing Http Messages to the Gateway. This parameter is optional.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting

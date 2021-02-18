@@ -15,10 +15,20 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Collections;
+<<<<<<< HEAD
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+=======
+    using System.IO;
+    using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.DeploymentManager.Models;
+    using Microsoft.Azure.Commands.DeploymentManager.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     [Cmdlet(
         VerbsCommon.New,
@@ -33,6 +43,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         /// </summary>
         private const string WaitParamSet = "Wait";
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// The parameter set for specifying health check step payload as a file.
+        /// </summary>
+        private const string HealthCheckFileParamSet = "HealthCheckFile";
+
+        /// <summary>
+        /// The parameter set for specifying health check step as an object.
+        /// </summary>
+        private const string HealthCheckObjectParamSet = "HealthCheckObject";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group.")]
@@ -60,6 +83,21 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string Duration { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = true,
+            HelpMessage = "The path to the file where health check properties are defined.", ParameterSetName = NewStep.HealthCheckFileParamSet)]
+        [ValidateNotNullOrEmpty]
+        public string HealthCheckPropertiesFile { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The health check properties.", ParameterSetName = NewStep.HealthCheckObjectParamSet)]
+        [ValidateNotNullOrEmpty]
+        public PSHealthCheckStepProperties HealthCheckProperties { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -97,6 +135,23 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                         Duration = this.Duration
                     };
 
+<<<<<<< HEAD
+=======
+                case HealthCheckObjectParamSet:
+                    return this.HealthCheckProperties;
+
+                case HealthCheckFileParamSet:
+                    var healthCheckFileContent = FileUtilities.GetHealthCheckPropertiesFromFile(
+                        this.SessionState.Path.CurrentFileSystemLocation.Path,
+                        this.HealthCheckPropertiesFile);
+
+                    var psHealthCheckStepProperties = JsonConvert.DeserializeObject<PSHealthCheckStepProperties>(
+                        healthCheckFileContent,
+                        new HealthCheckAttributesConverter(),
+                        new RestRequestAuthenticationConverter());
+
+                    return psHealthCheckStepProperties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 default:
                     return null;
             }

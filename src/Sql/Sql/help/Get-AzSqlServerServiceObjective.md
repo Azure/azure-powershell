@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AC2D64B9-5BCD-45D3-8650-538633F5BBBC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverserviceobjective
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverserviceobjective
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -159,7 +163,11 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### -Confirm

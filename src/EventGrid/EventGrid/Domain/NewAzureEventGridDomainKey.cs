@@ -17,7 +17,10 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -25,7 +28,11 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainKey",
         DefaultParameterSetName = DomainNameParameterSet,
+<<<<<<< HEAD
         SupportsShouldProcess = true), 
+=======
+        SupportsShouldProcess = true),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     OutputType(typeof(PsDomainSharedAccessKeys))]
 
     public class NewAzureEventGridDomainKey : AzureEventGridCmdletBase
@@ -93,6 +100,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (!string.IsNullOrEmpty(this.DomainResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.DomainResourceId);
@@ -108,6 +116,29 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
             {
                 DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(this.ResourceGroupName, this.DomainName, this.Name);
+=======
+            if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
+            {
+                string resourceGroupName;
+                string domainName;
+
+                if (!string.IsNullOrEmpty(this.DomainResourceId))
+                {
+                    EventGridUtils.GetResourceGroupNameAndDomainName(this.DomainResourceId, out resourceGroupName, out domainName);
+                }
+                else if (this.DomainInputObject != null)
+                {
+                    resourceGroupName = this.DomainInputObject.ResourceGroupName;
+                    domainName = this.DomainInputObject.DomainName;
+                }
+                else
+                {
+                    resourceGroupName = this.ResourceGroupName;
+                    domainName = this.DomainName;
+                }
+
+                DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(resourceGroupName, domainName, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
                 this.WriteObject(psDomainSharedAccessKeys);
             }

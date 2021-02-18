@@ -12,11 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System;
+using System.Management.Automation;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
 #if NETSTANDARD
@@ -27,6 +34,10 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 using System.Linq;
 using System.Management.Automation;
+=======
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -76,6 +87,7 @@ namespace Microsoft.Azure.Commands.Profile
                 target.TrySetDefaultContext(source.DefaultContextKey);
             }
 
+<<<<<<< HEAD
             AzureRmProfileProvider.Instance.SetTokenCacheForProfile(target.ToProfile());
             EnsureProtectedCache(target, source.DefaultContext?.TokenCache?.CacheData);
         }
@@ -100,6 +112,26 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteWarning(Resources.ImportAuthenticationFailure);
                 }
             }
+=======
+            EnsureProtectedMsalCache();
+        }
+
+        void EnsureProtectedMsalCache()
+        {
+            try
+            {
+                if (AzureSession.Instance.TryGetComponent(
+                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                    out PowerShellTokenCacheProvider tokenCacheProvider))
+                {
+                    tokenCacheProvider.FlushTokenData();
+                }
+            }
+            catch
+            {
+                WriteWarning(Resources.ImportAuthenticationFailure);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public override void ExecuteCmdlet()
@@ -119,7 +151,11 @@ namespace Microsoft.Azure.Commands.Profile
 
                     ModifyProfile((profile) =>
                     {
+<<<<<<< HEAD
                         CopyProfile(new AzureRmProfile(Path), profile);
+=======
+                        CopyProfile(new AzureRmProfile(Path, false), profile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         executionComplete = true;
                     });
                 });
@@ -145,16 +181,28 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 else
                 {
+<<<<<<< HEAD
                     if (profile.DefaultContext != null &&
                         profile.DefaultContext.Subscription != null &&
                         profile.DefaultContext.Subscription.State != null &&
                         !profile.DefaultContext.Subscription.State.Equals(
+=======
+                    var defaultContext = profile.DefaultContext;
+                    if (defaultContext != null &&
+                        defaultContext.Subscription != null &&
+                        defaultContext.Subscription.State != null &&
+                        !defaultContext.Subscription.State.Equals(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         "Enabled",
                         StringComparison.OrdinalIgnoreCase))
                     {
                         WriteWarning(string.Format(
                                        Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+<<<<<<< HEAD
                                        profile.DefaultContext.Subscription.State));
+=======
+                                       defaultContext.Subscription.State));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
 
                     WriteObject((PSAzureProfile)profile);

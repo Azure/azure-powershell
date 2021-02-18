@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -222,8 +226,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key type
         /// </summary>
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
                    HelpMessage = "Specifies the key type of the key backing the certificate.")]
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
+=======
+                   HelpMessage = "Specifies the key type of the key backing the certificate. Default is RSA.")]
+        [ValidateSet(Constants.RSA, Constants.RSAHSM, Constants.EC, Constants.ECHSM)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string KeyType { get; set; }
 
         /// <summary>
@@ -231,9 +240,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
                    HelpMessage = "Specifies the key size of the certificate.")]
         [ValidateSet("2048", "3072", "4096")]
         public int KeySize { get; set; } = 2048;
+=======
+                   HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
+        [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
+        public int KeySize { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// KeyNotExportable
@@ -255,6 +270,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(HelpMessage = "This cmdlet does not return an object by default. If this switch is specified, it returns the policy object.")]
         public SwitchParameter PassThru { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Elliptic Curve Name of the key
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
+        [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
+        public string Curve { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         public override void ExecuteCmdlet()
@@ -267,6 +294,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     case ExpandedRenewNumberParameterSet:
                     case ExpandedRenewPercentageParameterSet:
+<<<<<<< HEAD
 
                         // Validate input parameters
                         ValidateSubjectName();
@@ -312,6 +340,32 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
 
                     case ByValueParameterSet:
+=======
+                        policy = new PSKeyVaultCertificatePolicy(
+                            DnsName,
+                            (KeyUsage == null || !KeyUsage.Any()) ? null : KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList<string>(),
+                            Ekus,
+                            !Disabled.IsPresent,
+                            IssuerName,
+                            CertificateType,
+                            RenewAtNumberOfDaysBeforeExpiry,
+                            RenewAtPercentageLifetime,
+                            EmailAtNumberOfDaysBeforeExpiry,
+                            EmailAtPercentageLifetime,
+                            ReuseKeyOnRenewal,
+                            SecretContentType,
+                            SubjectName,
+                            ValidityInMonths,
+                            KeyType,
+                            KeySize,
+                            Curve,
+                            KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
+                            CertificateTransparency ?? (bool?)null);
+                        break;
+
+                    case ByValueParameterSet:
+                        InputObject.Validate();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         policy = InputObject;
                         break;
                 }
@@ -324,6 +378,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
+<<<<<<< HEAD
 
         private void ValidateEkus()
         {
@@ -367,5 +422,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

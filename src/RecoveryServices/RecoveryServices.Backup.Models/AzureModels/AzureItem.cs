@@ -28,6 +28,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public ItemProtectionStatus ProtectionStatus { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Policy ID Associated with item
+        /// </summary>
+        public string PolicyId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Protection State of the item
         /// </summary>
         public ItemProtectionState ProtectionState { get; set; }
@@ -52,11 +60,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public AzureItemExtendedInfo ExtendedInfo { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Date of purge for the item
+        /// </summary>
+        public DateTime? DateOfPurge { get; set; }
+
+        /// <summary>
+        /// Indicates if the delete state of the item
+        /// </summary>
+        public ItemDeleteState DeleteState { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)
         {
             ProtectionPolicyName = policyName;
+<<<<<<< HEAD
+=======
+            PolicyId = protectedItemResource.Properties.PolicyId;
+            DeleteState = ItemDeleteState.NotDeleted;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
     public class AzureItemExtendedInfo : ItemExtendedInfoBase

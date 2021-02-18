@@ -26,6 +26,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public string RoleDefinitionId { get; set; }
 
         private string scope;
+<<<<<<< HEAD
+=======
+        public string Description { get; set; }
+        public string Condition { get; set; }
+        public string ConditionVersion { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public string Scope
         {
@@ -62,5 +68,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
 
         public bool CanDelegate { get; set; }
+<<<<<<< HEAD
+=======
+
+        public string RoleAssignmentId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

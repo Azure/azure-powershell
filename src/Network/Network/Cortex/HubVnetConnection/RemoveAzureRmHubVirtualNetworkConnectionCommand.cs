@@ -94,7 +94,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+<<<<<<< HEAD
             //// Resolve the paramters
+=======
+            //// Resolve the parameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ParameterSetName.Equals(CortexParameterSetNames.ByHubVirtualNetworkConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.InputObject.Id);
@@ -110,6 +114,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = parsedResourceId.ResourceName;
             }
 
+<<<<<<< HEAD
             //// Get the virtual hub - this will throw not found if the resource is invalid
             PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
 
@@ -121,6 +126,8 @@ namespace Microsoft.Azure.Commands.Network
             var connectionToRemove = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
             if (connectionToRemove != null)
             {
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 base.Execute();
 
                 ConfirmAction(
@@ -130,15 +137,22 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
+<<<<<<< HEAD
                         parentVirtualHub.VirtualNetworkConnections.Remove(connectionToRemove);
                         this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
+=======
+                        this.HubVirtualNetworkConnectionsClient.Delete(this.ResourceGroupName, this.ParentResourceName, this.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         if (PassThru)
                         {
                             WriteObject(true);
                         }
                     });
+<<<<<<< HEAD
             }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

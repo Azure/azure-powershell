@@ -36,13 +36,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         public const int MaxTries = 30;
         static readonly TimeSpan RetryInterval = TimeSpan.FromMilliseconds(500);
         protected Stream _stream;
+<<<<<<< HEAD
         object _initializationLock = new object();
+=======
+
+        /// <summary>
+        /// Use a Mutex to prevent cross-process file I/O
+        /// </summary>
+        /// <returns></returns>
+        private static readonly Mutex _initializationLock = new Mutex(false, @"Local\AzurePowerShellProtectedFileProviderInit");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string FilePath { get; set; }
 
         protected IDataStore DataStore { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// 
+=======
+        ///
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public Stream Stream
         {
@@ -87,7 +100,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 
         protected virtual void InitializeStream()
         {
+<<<<<<< HEAD
             lock (_initializationLock)
+=======
+            _initializationLock.WaitOne();
+            try
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 if (_stream == null)
                 {
@@ -96,10 +114,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                     {
                         throw new UnauthorizedAccessException(string.Format(Resources.FileLockFailure, FilePath));
                     }
+<<<<<<< HEAD
 
                     _stream = stream;
                 }
             }
+=======
+                    _stream = stream;
+                }
+            }
+            finally
+            {
+                _initializationLock.ReleaseMutex();
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected abstract Stream AcquireLock(string filePath);

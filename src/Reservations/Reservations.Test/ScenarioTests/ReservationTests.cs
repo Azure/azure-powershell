@@ -92,5 +92,22 @@ namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCalculatePrice()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CalculatePrice");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPurchase()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-Purchase");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

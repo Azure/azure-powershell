@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 1.5.0
+* Fixed issue that `Get-AzLogicAppTriggerHistory` and `Get-AzLogicAppRunAction` only retrieving the first page of results [#9141]
+
+## Version 1.4.0
+* Fixed issue that `Get-AzLogicAppRunHistory` only retrieving the first page of results [#9141]
+
+## Version 1.3.2
+* Update references in .psd1 to use relative path
+
+## Version 1.3.1
+* Fixed miscellaneous typos across module
+
+## Version 1.3.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Fix for Get-AzIntegrationAccountMap to list all map types
 	- Added new MapType parameter for filtering
 

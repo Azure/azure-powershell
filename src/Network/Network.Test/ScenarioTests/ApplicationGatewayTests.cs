@@ -14,6 +14,11 @@
 
 using System;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -69,6 +74,33 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+<<<<<<< HEAD
+=======
+        public void TestKeyVaultIntegrationTest()
+        {
+            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+            string servicePrincipal = "fakefakefake";
+            if (!string.IsNullOrEmpty(environmentConnectionString))
+            {
+                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
+                var mode = connectionInfo.GetValue<string>(ConnectionStringKeys.HttpRecorderModeKey);
+                if (mode == HttpRecorderMode.Playback.ToString())
+                {
+                    servicePrincipal = HttpMockServer.GetVariable("spn", "fake");
+                }
+                else
+                {
+                    servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
+                    HttpMockServer.Variables["spn"] = servicePrincipal;
+                }
+            }
+            TestRunner.RunTestScript(string.Format("Test-KeyVaultIntegrationTest -baseDir '{0}' -spn '{1}'", AppDomain.CurrentDomain.BaseDirectory, servicePrincipal));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestApplicationGatewayCRUDSubItems()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDSubItems -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -85,13 +117,20 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+<<<<<<< HEAD
         public void TestApplicationGatewayCRUDRewriteRuleSet()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+=======
+        public void TestAvailableServerVariableAndHeader()
+        {
+            TestRunner.RunTestScript("Test-AvailableServerVariableAndHeader");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestAvailableServerVariableAndHeader()
         {
@@ -101,9 +140,79 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayCRUDRewriteRuleSet()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestApplicationGatewayCRUDRewriteRuleSetWithConditions()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestTopLevelWafResourceWithApplicationGateway()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayTopLevelFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithFirewallPolicy()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayCRUDRewriteRuleSetUrlConfiguration()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithListenerHostNames()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithListenerHostNames -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithPrivateLinkConfiguration()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithPrivateLinkConfiguration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayPrivateEndpointConnectionsWorkFlows()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayPrivateEndpointWorkFlows -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayCRUDWithMutualAuthentication()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDWithMutualAuthentication -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

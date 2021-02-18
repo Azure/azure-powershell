@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
+=======
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,6 +34,11 @@ The **Invoke-AzOperationalInsightsQuery** cmdlet returns the search results base
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
 You can retrieve the results of the search from the Value property of the returned object.
+<<<<<<< HEAD
+=======
+Please check detail of general query limits here: 
+https://docs.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-language.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -42,7 +51,11 @@ PS C:\> $queryResults.Results
 
 Once invoked, $queryResults.Results will contain all of the resulting rows from your query.
 
+<<<<<<< HEAD
 ### Example 2: Convert $results.Result IEnumberable to an array
+=======
+### Example 2: Convert $results.Result IEnumerable to an array
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
 PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)

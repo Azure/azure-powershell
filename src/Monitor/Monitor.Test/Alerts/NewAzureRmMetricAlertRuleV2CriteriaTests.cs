@@ -45,18 +45,112 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.Operator = "GreaterThan";
             cmdlet.Threshold = 2;
             cmdlet.TimeAggregation = "Total";
+<<<<<<< HEAD
             cmdlet.ExecuteCmdlet();
 
             Func<PSMetricCriteria, bool> verify = r =>
             {
+=======
+            cmdlet.SkipMetricValidation = true;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSMetricCriteria;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Assert.Equal("PacketsInDDoS", r.MetricName);
                 Assert.Equal("GreaterThan", r.OperatorProperty);
                 Assert.Equal(2, r.Threshold);
                 Assert.Equal("Total", r.TimeAggregation);
+<<<<<<< HEAD
                 return true;
             };
 
             this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSMetricCriteria>(r => verify(r))), Times.Once);
+=======
+                Assert.Equal(true, r.SkipMetricValidation);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewDynamicMetricAlertRuleV2CriteriaParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.MetricName = "PacketsInDDoS";
+            cmdlet.Operator = "GreaterOrLessThan";
+            cmdlet.TimeAggregation = "Total";
+            cmdlet.ThresholdSensitivity = "High";
+            cmdlet.ViolationCount= 2;
+            cmdlet.ExaminedAggregatedPointCount= 4;
+            cmdlet.IgnoreDataBefore = new DateTime(1,1,1);
+            cmdlet.DynamicThreshold = new SwitchParameter(true);
+            cmdlet.SkipMetricValidation = true;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSDynamicMetricCriteria;
+                Assert.Equal("PacketsInDDoS", r.MetricName);
+                Assert.Equal("GreaterOrLessThan", r.OperatorProperty);
+                Assert.Equal("Total", r.TimeAggregation);
+                Assert.Equal("High", r.AlertSensitivity);
+                Assert.Equal(2, r.FailingPeriods.MinFailingPeriodsToAlert);
+                Assert.Equal(4, r.FailingPeriods.NumberOfEvaluationPeriods);
+                Assert.Equal(true, r.SkipMetricValidation);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewWebtestAlertRuleV2CriteriaParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.WebTest = new SwitchParameter(true);
+            cmdlet.ApplicationInsightsId = "ApplicationInsightsId";
+            cmdlet.WebTestId = "WebTestId";
+            cmdlet.FailedLocationCount = 4;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSWebtestLocationAvailabilityCriteria;
+                Assert.Equal("WebTestId", r.WebTestId);
+                Assert.Equal("ApplicationInsightsId", r.ComponentId);
+                Assert.Equal(4, r.FailedLocationCount);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewWebtestAlertRuleV2CriteriaWithoutWebtestSwitchParameterParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.ApplicationInsightsId = "ApplicationInsightsId";
+            cmdlet.WebTestId = "WebTestId";
+            cmdlet.FailedLocationCount = 4;
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSWebtestLocationAvailabilityCriteria;
+                Assert.Equal("WebTestId", r.WebTestId);
+                Assert.Equal("ApplicationInsightsId", r.ComponentId);
+                Assert.Equal(4, r.FailedLocationCount);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

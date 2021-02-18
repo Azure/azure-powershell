@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 8679240C-EA47-41C5-B8C1-A3C99547F42B
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azlogicapp
+=======
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/new-azlogicapp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -172,7 +176,11 @@ Accept wildcard characters: False
 ```
 
 ### -Definition
+<<<<<<< HEAD
 Specifies the definition for your logic app as an object or a string in JavaScript Object Notataion (JSON) format.
+=======
+Specifies the definition for your logic app as an object or a string in JavaScript Object Notation (JSON) format.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Object

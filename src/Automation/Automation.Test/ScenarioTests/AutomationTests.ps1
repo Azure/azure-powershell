@@ -17,8 +17,14 @@
 Checks whether the first string contains the second one
 #>
 
+<<<<<<< HEAD
 $accountName='account'
 $location = "East US"
+=======
+$accountName='fbs-aa-01'
+$location = "East US"
+$resourceGroupName = "to-delete-01"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 function AssertContains
 {
@@ -46,7 +52,11 @@ function CreateRunbook
     param([string] $runbookPath, [boolean] $byName=$false, [string[]] $tag, [string] $description, [string] $type = "PowerShell")
 
     $runbookName = gci $runbookPath | %{$_.BaseName}
+<<<<<<< HEAD
     $runbook = Get-AzAutomationRunbook $accountName | where {$_.Name -eq $runbookName -and $_.RunbookType -eq $type} 
+=======
+    $runbook = Get-AzAutomationRunbook -AutomationAccountName $accountName -ResourceGroupName $resourceGroupName | where {$_.Name -eq $runbookName -and $_.RunbookType -eq $type} 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     if ($runbook.Count -eq 1)
     {
         $runbook | Remove-AzAutomationRunbook -Force
@@ -54,11 +64,19 @@ function CreateRunbook
 
     if(!$byName)
     {
+<<<<<<< HEAD
         return New-AzAutomationRunbook $accountName -Path $runbookPath -Tag $tag -Description $description -Type $type
     }
     else 
     {
         return New-AzAutomationRunbook $accountName -Name $runbookName -Tag $tag -Description $description -Type $type
+=======
+        return Import-AzAutomationRunbook -AutomationAccountName $accountName -ResourceGroupName $resourceGroupName -Path $runbookPath -Tag $tag -Description $description -Type $type
+    }
+    else 
+    {
+        return New-AzAutomationRunbook -AutomationAccountName $accountName -ResourceGroupName $resourceGroupName -Name $runbookName -Tag $tag -Description $description -Type $type
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }
 
@@ -81,7 +99,11 @@ function WaitForJobStatus
     {
         Wait-Seconds $interval
         $timeElapse = $timeElapse + $interval
+<<<<<<< HEAD
         $job = Get-AzAutomationJob -AutomationAccount $accountName -Id $Id
+=======
+        $job = Get-AzAutomationJob -AutomationAccountName $accountName -ResourceGroupName $resourceGroupName -Id $Id
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         if($job.Status -eq $Status)
         {
             break
@@ -104,7 +126,11 @@ function Test-RunbookWithParameter
     param([string] $runbookPath, [string] $type, [HashTable] $parameters, [int]$expectedResult)
 
     #Setup
+<<<<<<< HEAD
     $automationAccount = Get-AzAutomationAccount -Name $accountName
+=======
+    $automationAccount = Get-AzAutomationAccount -Name $accountName -ResourceGroupName $resourceGroupName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
 
     $runbook = CreateRunbook  $runbookPath -type $type
@@ -372,3 +398,33 @@ function Test-AutomationStartUnpublishedRunbook
     Remove-AzAutomationRunbook $accountName -Name $runbook.Name -Force 
     Assert-Throws {Get-AzAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop}
 }
+<<<<<<< HEAD
+=======
+
+
+<#
+.SYNOPSIS
+Tests Runbook with Parameters and Wait
+#>
+function Test-RunbookWithParameterAndWait
+{
+    param([string] $runbookPath, [string] $type, [HashTable] $parameters, [int]$expectedResult)
+
+    #Setup
+    $automationAccount = Get-AzAutomationAccount -Name $accountName -ResourceGroupName $resourceGroupName
+    Assert-NotNull $automationAccount "Automation account $accountName does not exist."
+
+    $runbook = CreateRunbook  $runbookPath -type $type
+    Assert-NotNull $runbook  "runBook $runbookPath does not import successfully."
+    $automationAccount | Publish-AzAutomationRunbook -Name $runbook.Name
+
+    #Test
+    $job = $automationAccount | Start-AzAutomationRunbook -Name $runbook.Name -Parameters $parameters  -Wait
+	Assert-NotNull  $job
+    [int]$Result = $job[$job.Length-1]
+    Assert-AreEqual $expectedResult $Result
+    
+    $automationAccount | Remove-AzAutomationRunbook -Name $runbook.Name -Force
+    Assert-Throws { $automationAccount | Get-AzAutomationRunbook -Name $runbook.Name}
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

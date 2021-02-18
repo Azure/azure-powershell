@@ -492,7 +492,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Original WL Restore, Alternate WL restore, Alternate WL restore to diff item.
         /// </summary>
+<<<<<<< HEAD
         public string RestoreRequestType { get; }
+=======
+        public string RestoreRequestType { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Recovery point for full/differential backup.
@@ -504,6 +508,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public DateTime PointInTime { get; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Recovery Mode
+        /// </summary>
+        public string RecoveryMode { get; set; }
+
+        /// <summary>
+        /// File path for Restore as Files
+        /// </summary>
+        public string FilePath { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public RecoveryConfigBase(string restoreRequestType, RecoveryPointBase recoveryPoint, DateTime pointInTime)
         {
             RestoreRequestType = restoreRequestType;

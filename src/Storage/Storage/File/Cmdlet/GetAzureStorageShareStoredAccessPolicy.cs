@@ -70,7 +70,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         internal async Task<SharedAccessFilePolicies> GetPoliciesAsync(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             CloudFileShare share = localChannel.GetShareReference(shareName);
+<<<<<<< HEAD
             FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, null, CmdletCancellationToken).ConfigureAwait(false);
+=======
+            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return permissions.SharedAccessPolicies;
         }
 

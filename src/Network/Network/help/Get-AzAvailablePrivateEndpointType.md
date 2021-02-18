@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableprivateendpointtype
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azavailableprivateendpointtype
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Get-AzAvailablePrivateEndpointType
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Return available private end point types in the location
+=======
+Return available private end point types in the location.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -22,25 +30,42 @@ The **Get-AzAvailablePrivateEndpointType** cmdlet returns all available private 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example
 ```
+=======
+### Example 1
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get-AzAvailablePrivateEndpointType -Location eastus
 
 [
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename1",
     "type": "Microsoft.Network/availablePrivateEndpointType",
+<<<<<<< HEAD
     "resourceName": "Microsot.Sql/servers"
+=======
+    "resourceName": "Microsoft.Sql/servers"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename2",
     "type": "Microsoft.Network/availablePrivateEndpointType",
+<<<<<<< HEAD
     "resourceName": "Microsot.Storage/accounts"
+=======
+    "resourceName": "Microsoft.Storage/accounts"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename3",
     "type": "Microsoft.Network/availablePrivateEndpointType",
+<<<<<<< HEAD
     "resourceName": "Microsot.Cosmos/cosmosDbAccounts"
+=======
+    "resourceName": "Microsoft.Cosmos/cosmosDbAccounts"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   }
 ]
 ```

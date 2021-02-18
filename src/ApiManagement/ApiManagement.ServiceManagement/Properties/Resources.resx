@@ -232,6 +232,13 @@
     <value>Creating Diagnostic</value>
     <comment>Process workflow</comment>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="CreateNamedValue" xml:space="preserve">
+    <value>Creating Named Value</value>
+    <comment>Process workflow</comment>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="DiagnosticRemoveDescription" xml:space="preserve">
     <value>Removing Diagnostic "{0}".</value>
     <comment>Process workflow</comment>
@@ -248,6 +255,25 @@
     <value>Are you sure you want to remove Group "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="GatewayRemoveDescription" xml:space="preserve">
+    <value>Removing Gateway "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Gateway "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayHostnameConfigurationRemoveDescription" xml:space="preserve">
+    <value>Removing Gateway Hostname Configuration "{0}" for Gateway "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GatewayHostnameConfigurationRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Gateway Hostname Configuration "{0}" for Gateway "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="IdentityProviderRemoveDescription" xml:space="preserve">
     <value>Removing Identity Provider configuration for "{0}".</value>
     <comment>Process workflow</comment>
@@ -296,12 +322,21 @@
     <value>Are you sure you want to remove Product "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+<<<<<<< HEAD
   <data name="PropertyRemoveDescription" xml:space="preserve">
     <value>Removing Property "{0}"</value>
     <comment>Process workflow</comment>
   </data>
   <data name="PropertyRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove Property "{0}"?</value>
+=======
+  <data name="NamedValueRemoveDescription" xml:space="preserve">
+    <value>Removing Named Value "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NamedValueRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Named Value "{0}"?</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <comment>Process workflow</comment>
   </data>
   <data name="PublishTenantConfigurationDescription" xml:space="preserve">
@@ -354,6 +389,13 @@
     <value>Set Group</value>
     <comment>Process workflow</comment>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="SetGateway" xml:space="preserve">
+    <value>Set Gateway</value>
+    <comment>Process workflow</comment>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="SetLogger" xml:space="preserve">
     <value>Set Logger</value>
     <comment>Process workflow</comment>
@@ -370,8 +412,13 @@
     <value>Set Product</value>
     <comment>Process workflow</comment>
   </data>
+<<<<<<< HEAD
   <data name="SetProperty" xml:space="preserve">
     <value>Set Property</value>
+=======
+  <data name="SetNamedValue" xml:space="preserve">
+    <value>Set Named Value</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <comment>Process workflow</comment>
   </data>
   <data name="SetSubscription" xml:space="preserve">

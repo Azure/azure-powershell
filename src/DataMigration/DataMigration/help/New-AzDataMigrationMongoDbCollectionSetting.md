@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationMongoDbCollectionSetting
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationMongoDbCollectionSetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -59,7 +63,11 @@ Accept wildcard characters: False
 ```
 
 ### -ShardKey
+<<<<<<< HEAD
 The comma seperated list of the shard keys. For mongoDb target,
+=======
+The comma separated list of the shard keys. For mongoDb target,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 you can specify shard key order of "ShardKeyName:Order",
 where order is 1, -1 or empty for hashed, for example "_id,email:-1".
 

@@ -14,7 +14,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Context": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
               "Environments": "System.Collections.Hashtable"
@@ -803,7 +807,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.ScaleOutServerDatabaseSyncDetails, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "SyncState": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
               "UpdatedAt": "System.DateTime",
@@ -1140,7 +1148,11 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Account": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
         "Environment": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
@@ -1186,7 +1198,11 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Id": "System.String",
         "UniqueId": "System.String",
@@ -1244,7 +1260,11 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Endpoints": "System.Collections.Hashtable",
         "Name": "System.String"
@@ -1309,7 +1329,11 @@
     "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models",
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models.DatabaseSyncState, Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane, Version=1.1.4.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

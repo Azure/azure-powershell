@@ -19,6 +19,10 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+<<<<<<< HEAD
+=======
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections.Generic;
 using System.Linq;
 
@@ -76,6 +80,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Lists managed instances in an instance pool
+        /// </summary>
+        public IList<Management.Sql.Models.ManagedInstance> ListByInstancePool(string resourceGroupName, string instancePoolName)
+        {
+            return GetCurrentSqlClient().ManagedInstances.ListByInstancePool(resourceGroupName, instancePoolName).ToList();
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Lists Managed instances
         /// </summary>
         public IList<Management.Sql.Models.ManagedInstance> List()
@@ -108,6 +123,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Failovers a Managed instance
+        /// </summary>
+        public void Failover(string resourceGroupName, string name, string replicaType)
+        {
+            GetCurrentSqlClient().ManagedInstances.Failover(resourceGroupName, name, replicaType);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>

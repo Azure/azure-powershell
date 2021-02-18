@@ -20,6 +20,18 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.1.1
+* Update references in .psd1 to use relative path
+
+## Version 1.1.0
+* Added new category "Operational Excellence" to Get-AzAdvisorRecommendation cmdlet.
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.0.0
 * GA release of Az.Advisor
 

@@ -20,8 +20,16 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string DatabaseObjectParameterSet = "DatabaseObjectParameterSet";
         internal const string ClassificationObjectParameterSet = "ClassificationObjectParameterSet";
         internal const string DatabaseParameterSet = "DatabaseParameterSet";
+<<<<<<< HEAD
         internal const string SqlDatabaseSensitivityClassification = "SqlDatabaseSensitivityClassification";
         internal const string SqlInstanceDatabaseSensitivityClassification = "SqlInstanceDatabaseSensitivityClassification";
+=======
+        internal const string InputObjectParameterSet = "InputObjectParameterSet";
+        internal const string SqlDatabaseSensitivityRecommendation = "SqlDatabaseSensitivityRecommendation";
+        internal const string SqlDatabaseSensitivityClassification = "SqlDatabaseSensitivityClassification";
+        internal const string SqlInstanceDatabaseSensitivityClassification = "SqlInstanceDatabaseSensitivityClassification";
+        internal const string SqlInstanceDatabaseSensitivityRecommendation = "SqlInstanceDatabaseSensitivityRecommendation";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string ResourceGroupNameHelpMessage = "The name of the resource group.";
         internal const string ServerNameHelpMessage = "SQL server name.";
         internal const string InstanceNameHelpMessage = "Azure SQL managed instance name.";
@@ -38,5 +46,9 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string SchemaNameHelpMessage = "Name of schema.";
         internal const string TableNameHelpMessage = "Name of table.";
         internal const string ColumnNameHelpMessage = "Name of column.";
+<<<<<<< HEAD
+=======
+        internal const string InputObjectParameterAlias = "ClassificationObject";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

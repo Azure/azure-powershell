@@ -90,6 +90,25 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionCRUD");
         }
 
+<<<<<<< HEAD
+=======
+        [Fact(Skip = "Requires whitelisted feature")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6CRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6CRUD");
+        }
+
+        [Fact(Skip = "Requires pre-created environment")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionIPv6PrecreatedCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitConnectionIPv6PrecreatedCRUD");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
@@ -97,6 +116,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringWithRouteFilter");
         }
+<<<<<<< HEAD
 
 	    [Fact]
 	    [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -105,5 +125,7 @@ namespace Commands.Network.Test.ScenarioTests
 	    {
 		    TestRunner.RunTestScript("Test-ExpressRouteLocalCircuit");
 	    }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 }

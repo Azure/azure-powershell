@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 0.8.0
+* Added support for new networking features
+	- Updated dependency for Microsoft.Azure.Management.Search from 3.0.0 to 4.0.0
+    - Support for adding IP rules to service
+    - Support for disabling public network access to the service (service is only accessible via private endpoints)
+    - Support for managing private endpoint connections
+    - Support for listing resources for which outbound private endpoints can be created
+    - Support for creating outbound private endpoints (shared private link resources) from service to other Azure resources
+* Added support for assigning (or removing) system assigned identity for service
+
+## Version 0.7.4
+* Update references in .psd1 to use relative path
+
+## Version 0.7.3
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.7.2
 * Added 2 new SKUs (Storage_Optimized_L1 and Storage_Optimized_L2) and appropriate tests
     - Updated dependency for Microsoft.Azure.Management.Search from 2.0.1 to 3.0.0

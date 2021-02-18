@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6F9BAB0B-7DC7-4672-B2B5-8B139D652DDD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalancerprobeconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,8 +28,13 @@ The **Add-AzLoadBalancerProbeConfig** cmdlet adds a probe configuration to an Az
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 Add a probe configuration to a load balancer
 ```
+=======
+### Example 1: Add a probe configuration to a load balancer
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzLoadBalancer -Name "myLb" -ResourceGroupName "myRg" | Add-AzLoadBalancerProbeConfig -Name "probeName" -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 | Set-AzLoadBalancer
 ```
 

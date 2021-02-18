@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 350E19F6-5B1C-4D3F-B4CD-7225CDC984C4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlelasticpool
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlelasticpool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -80,7 +84,11 @@ This command gets the elastic pool named ElasticPool0127 on the server named Ser
 
 ### Example 3: Get metrics for a Azure SQL Elastic Database Pool
 ```
+<<<<<<< HEAD
 PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-Metrics -TimeGrain 0:5:0
+=======
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-AzMetric -TimeGrain 0:5:0 -MetricName storage_percent
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 DimensionName  : 
 DimensionValue : 
 Name           : cpu_percent
@@ -202,7 +210,11 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### -ResourceGroupName

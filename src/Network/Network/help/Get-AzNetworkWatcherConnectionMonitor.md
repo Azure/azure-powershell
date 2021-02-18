@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherconnectionmonitor
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherconnectionmonitor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -41,6 +45,7 @@ The Get-AzNetworkWatcherConnectionMonitor cmdlet returns the connection monitor 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: Get connection monitor by name in the specified location
 ```
 PS C:\> Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
@@ -80,6 +85,13 @@ In this example we get connection monitor by name in the specified location.
 PS C:\> Get-AzNetworkWatcherConnectionMonitor -ResourceGroupName NetworkWatcherRG -NetworkWatcherName NetworkWatcher_centraluseuap -Name cm*
 
 
+=======
+### Example 1
+```powershell
+PS C:\> Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Name                        : cm
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
                               ups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -105,9 +117,12 @@ Type                        : Microsoft.Network/networkWatchers/connectionMonito
 Tags                        : {
                                 "key1": "value1"
                               }
+<<<<<<< HEAD
 ```
 
 In this example we get all connection monitors in NetworkWatcher_centraluseuap that start with "cm"
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -153,7 +168,11 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### -NetworkWatcher
@@ -202,7 +221,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 Resource ID of the connection monitor.
+=======
+Resource ID.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -227,6 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 
 ## NOTES
@@ -287,3 +311,12 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 [Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
+=======
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV1
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResultV2
+
+## NOTES
+
+## RELATED LINKS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

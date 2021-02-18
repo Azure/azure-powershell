@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+<<<<<<< HEAD
     using Commands.Common.Authentication.Abstractions;
     using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -23,11 +24,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
+=======
+    using Common.ArgumentCompleters;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
+=======
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentOperation"), OutputType(typeof(PSDeploymentOperation))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -39,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string DeploymentName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the subscription id parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
@@ -46,6 +57,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -58,6 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected override void OnProcessRecord()
         {
+<<<<<<< HEAD
             base.OnProcessRecord();
 
             if (this.SubscriptionId == null)
@@ -120,5 +134,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceType: Constants.MicrosoftResourcesDeploymentOperationsType,
                 resourceName: this.DeploymentName);
         }
+=======
+            var deploymentOperations = ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(
+                ResourceGroupName, DeploymentName);
+            base.OnProcessRecord();
+
+            WriteObject(deploymentOperations, true);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azexpressrouteconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressrouteconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -108,7 +112,11 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+<<<<<<< HEAD
 Do not ask for confirmation if you want to overrite a resource
+=======
+Do not ask for confirmation if you want to overwrite a resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -123,7 +131,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 The ExpressRouteConenction object to update.
+=======
+The ExpressRouteConnection object to update.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection
@@ -184,7 +196,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 The resource id of the ExpressRouteConenction object to delete.
+=======
+The resource id of the ExpressRouteConnection object to delete.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

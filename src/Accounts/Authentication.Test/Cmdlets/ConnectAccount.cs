@@ -15,12 +15,22 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
+=======
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Utilities;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -289,7 +299,11 @@ namespace Common.Authentication.Test.Cmdlets
             {
                 IAzureTenant tempTenant = new AzureTenant()
                 {
+<<<<<<< HEAD
                     Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
+=======
+                    Id = subscription.GetTenant()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 var tempContext = new AzureContext(subscription, account, environment, tempTenant);
@@ -321,7 +335,11 @@ namespace Common.Authentication.Test.Cmdlets
             Action<string> promptAction)
         {
             List<AzureTenant> result = new List<AzureTenant>();
+<<<<<<< HEAD
             var commonTenant = GetCommonTenant(account);
+=======
+            var commonTenant = account.GetCommonTenant();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             try
             {
                 var commonTenantToken = AcquireAccessToken(
@@ -397,7 +415,11 @@ namespace Common.Authentication.Test.Cmdlets
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
+<<<<<<< HEAD
                 tenantId = tenantId ?? GetCommonTenant(account);
+=======
+                tenantId = tenantId ?? account.GetCommonTenant();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 return new SimpleAccessToken(account, tenantId);
             }
 
@@ -458,9 +480,15 @@ namespace Common.Authentication.Test.Cmdlets
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
+<<<<<<< HEAD
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
             return subscriptionClient.ListAllSubscriptions().Select(s => ToAzureSubscription(s, context));
+=======
+                CreateTenantFromString(tenantId, accessToken.TenantId));
+
+            return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context.Account, context.Environment, accessToken.TenantId));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
@@ -509,6 +537,7 @@ namespace Common.Authentication.Test.Cmdlets
             return tenant;
         }
 
+<<<<<<< HEAD
         private string GetCommonTenant(IAzureAccount account)
         {
             string result = AuthenticationFactory.CommonAdTenant;
@@ -524,6 +553,8 @@ namespace Common.Authentication.Test.Cmdlets
             return result;
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private bool TryGetTenantSubscription(IAccessToken accessToken,
             IAzureAccount account,
             IAzureEnvironment environment,
@@ -658,6 +689,13 @@ namespace Common.Authentication.Test.Cmdlets
             public string TenantId { get; private set; }
             public string UserId { get; private set; }
 
+<<<<<<< HEAD
+=======
+            public string HomeAccountId => throw new NotImplementedException();
+
+            public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             public SimpleAccessToken(IAzureAccount account, string tenantId, string tokenType = _defaultTokenType)
             {
                 if (account == null)
@@ -684,6 +722,7 @@ namespace Common.Authentication.Test.Cmdlets
                 authTokenSetter(_tokenType, AccessToken);
             }
         }
+<<<<<<< HEAD
 
         private AzureSubscription ToAzureSubscription(Subscription other, IAzureContext context)
         {
@@ -697,5 +736,7 @@ namespace Common.Authentication.Test.Cmdlets
                 context.Tenant.Id.ToString());
             return subscription;
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

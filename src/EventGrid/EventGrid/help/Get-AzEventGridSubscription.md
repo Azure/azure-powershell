@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgridsubscription
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,28 +18,46 @@ Gets the details of an event subscription, or gets a list of all event subscript
 
 ### EventSubscriptionTopicNameParameterSet (Default)
 ```
+<<<<<<< HEAD
 Get-AzEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
  [[-TopicName] <String>] [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>]
+=======
+Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceGroupName <String>]
+ [-TopicName <String>] [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
+<<<<<<< HEAD
 Get-AzEventGridSubscription [[-EventSubscriptionName] <String>] [-ResourceId] <String>
  [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+=======
+Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceId] <String> [-IncludeFullEndpointUrl]
+ [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### EventSubscriptionDomainNameParameterSet
 ```
+<<<<<<< HEAD
 Get-AzEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
+=======
+Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceGroupName <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DomainName <String>] [-DomainTopicName <String>] [-IncludeFullEndpointUrl] [-ODataQuery <String>]
  [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventSubscriptionTopicTypeNameParameterSet
 ```
+<<<<<<< HEAD
 Get-AzEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeName] <String>] [[-Location] <String>]
+=======
+Get-AzEventGridSubscription [-ResourceGroupName <String>] [-TopicTypeName <String>] [-Location <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -299,7 +321,11 @@ Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscript
 Aliases:
 
 Required: False
+<<<<<<< HEAD
 Position: 0
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -344,7 +370,11 @@ Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 
 Required: False
+<<<<<<< HEAD
 Position: 2
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -389,7 +419,11 @@ Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainN
 Aliases: ResourceGroup
 
 Required: False
+<<<<<<< HEAD
 Position: 0
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -434,7 +468,11 @@ Parameter Sets: EventSubscriptionTopicNameParameterSet
 Aliases:
 
 Required: False
+<<<<<<< HEAD
 Position: 2
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -449,14 +487,22 @@ Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
 Aliases:
 
 Required: False
+<<<<<<< HEAD
 Position: 1
+=======
+Position: Named
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

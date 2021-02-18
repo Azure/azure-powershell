@@ -27,9 +27,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintArtifactsCmdletBase : BlueprintCmdletBase
     {
+<<<<<<< HEAD
         protected Dictionary<string, ParameterValueBase> GetPolicyAssignmentParameters(Hashtable policyParameter)
         {
             var policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
+=======
+        protected Dictionary<string, ParameterValue> GetPolicyAssignmentParameters(Hashtable policyParameter)
+        {
+            var policyAssignmentParameters = new Dictionary<string, ParameterValue>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             foreach (var key in policyParameter.Keys)
             {
@@ -52,9 +58,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             return templatePath;
         }
 
+<<<<<<< HEAD
         protected Dictionary<string, ParameterValueBase> GetTemplateParametersFromFile(string validatedFilePath)
         {
             Dictionary<string, ParameterValueBase> parameters = new Dictionary<string, ParameterValueBase>();
+=======
+        protected Dictionary<string, ParameterValue> GetTemplateParametersFromFile(string validatedFilePath)
+        {
+            Dictionary<string, ParameterValue> parameters = new Dictionary<string, ParameterValue>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             JObject parsedJson = JObject.Parse(AzureSession.Instance.DataStore.ReadFileAsText(validatedFilePath));
 

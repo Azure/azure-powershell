@@ -51,7 +51,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public ProvisioningStateDR? ProvisioningState { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets a value that indicates partner namespace
+=======
+        /// Gets or sets a value that indicates partner namespace ARM ID
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public string PartnerNamespace { get; set; }
 

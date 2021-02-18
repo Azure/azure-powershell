@@ -31,7 +31,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public override string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
+<<<<<<< HEAD
             HelpMessage = Constants.TriggerName)]
+=======
+            HelpMessage = Constants.HelpTriggerObject)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNull]
         public PSTrigger InputObject { get; set; }
 

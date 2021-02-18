@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 44D877F1-D066-4C9C-A797-05EF03785B54
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpool
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 44D877F1-D066-4C9C-A797-05EF03785B54
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,6 +45,7 @@ PS C:\>Get-AzBatchPool -Id "MyPool" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
+<<<<<<< HEAD
 AutoScaleFormula                     : 
 AutoScaleRun                         : 
 CertificateReferences                : 
@@ -44,11 +53,21 @@ CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *
 DisplayName                          : 
+=======
+AutoScaleFormula                     :
+AutoScaleRun                         :
+CertificateReferences                :
+CreationTime                         : 7/25/2015 9:30:28 PM
+CurrentDedicated                     : 0
+CurrentOSVersion                     : *
+DisplayName                          :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ETag                                 : 0x8D29538429CF04C
 Id                                   : MyPool
 InterComputeNodeCommunicationEnabled : False
 LastModified                         : 7/25/2015 9:30:28 PM
 MaxTasksPerComputeNode               : 1
+<<<<<<< HEAD
 Metadata                             : 
 OSFamily                             : 4
 ResizeError                          : 
@@ -62,6 +81,21 @@ TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
 VirtualMachineSize                   : small
+=======
+Metadata                             :
+OSFamily                             : 4
+ResizeError                          :
+ResizeTimeout                        : 00:05:00
+TaskSchedulingPolicy                 : Microsoft.Azure.Commands.Batch.Models.PSTaskSchedulingPolicy
+StartTask                            :
+State                                : Active
+StateTransitionTime                  : 7/25/2015 9:30:28 PM
+Statistics                           :
+TargetDedicated                      : 1
+TargetOSVersion                      : *
+Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
+VirtualMachineSize                   : standard_d1_v2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the pool with ID MyPool.
@@ -72,6 +106,7 @@ PS C:\>Get-AzBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
+<<<<<<< HEAD
 AutoScaleFormula                     : 
 AutoScaleRun                         : 
 CertificateReferences                : 
@@ -79,11 +114,21 @@ CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *
 DisplayName                          : 
+=======
+AutoScaleFormula                     :
+AutoScaleRun                         :
+CertificateReferences                :
+CreationTime                         : 7/25/2015 9:30:28 PM
+CurrentDedicated                     : 0
+CurrentOSVersion                     : *
+DisplayName                          :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ETag                                 : 0x8D29538429CF04C
 Id                                   : MyPool
 InterComputeNodeCommunicationEnabled : False
 LastModified                         : 7/25/2015 9:30:28 PM
 MaxTasksPerComputeNode               : 1
+<<<<<<< HEAD
 Metadata                             : 
 OSFamily                             : 4
 ResizeError                          : 
@@ -97,6 +142,21 @@ TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
 VirtualMachineSize                   : small
+=======
+Metadata                             :
+OSFamily                             : 4
+ResizeError                          :
+ResizeTimeout                        : 00:05:00
+TaskSchedulingPolicy                 : Microsoft.Azure.Commands.Batch.Models.PSTaskSchedulingPolicy
+StartTask                            :
+State                                : Active
+StateTransitionTime                  : 7/25/2015 9:30:28 PM
+Statistics                           :
+TargetDedicated                      : 1
+TargetOSVersion                      : *
+Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
+VirtualMachineSize                   : standard_d1_v2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the pools whose IDs start with My by using the *Filter* parameter.
@@ -105,7 +165,11 @@ This command gets the pools whose IDs start with My by using the *Filter* parame
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -216,7 +280,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -232,12 +300,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [New-AzBatchPool](./New-AzBatchPool.md)
 
 [Remove-AzBatchPool](./Remove-AzBatchPool.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
 
 
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

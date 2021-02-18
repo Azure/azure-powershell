@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchtaskcount
+=======
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchtaskcount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -43,14 +47,22 @@ ValidationStatus    : Validated
 ```
 
 This command gets the task counts for job Job01.
+<<<<<<< HEAD
 Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+=======
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+<<<<<<< HEAD
 To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+=======
+To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
@@ -113,7 +125,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -131,8 +147,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 [Get-AzBatchJob](./Get-AzBatchJob.md)
 
 [Azure Batch Cmdlets](./Az.Batch.md)
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+
+[Get-AzBatchJob](./Get-AzBatchJob.md)
+
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

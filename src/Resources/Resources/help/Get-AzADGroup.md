@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,32 +46,55 @@ Filters active directory groups.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - List all AD groups
 ```
+=======
+### Example 1: List all AD groups
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADGroup
 ```
 
 Lists all AD groups in a tenant.
 
+<<<<<<< HEAD
 ### Example 2 - List all AD groups using paging
 
 ```
+=======
+### Example 2: List all AD groups using paging
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADGroup -First 100
 ```
 
 Lists the first 100 AD groups in a tenant.
 
+<<<<<<< HEAD
 ### Example 3 - Get AD group by object id
 
 ```
+=======
+### Example 3: Get AD group by object id
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 
+<<<<<<< HEAD
 ### Example 4 - List groups by search string
 
 ```
+=======
+### Example 4: List groups by search string
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADGroup -SearchString Joe
 ```
 
@@ -193,7 +220,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

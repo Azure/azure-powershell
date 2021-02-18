@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -19,6 +20,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+=======
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.FrontDoor;
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.FrontDoor.Common
 {
@@ -39,6 +47,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string ObjectWithVaultParameterSet = "ByObjectWithVaultParameterSet";
         public const string FieldsWithForwardingParameterSet = "ByFieldsWithForwardingParameterSet";
         public const string FieldsWithRedirectParameterSet = "ByFieldsWithRedirectParameterSet";
+<<<<<<< HEAD
+=======
+        public const string FieldsWithBackendPoolsSettingParameterSet = "ByFieldsWithBackendPoolsSettingParameterSet";
+        public const string ObjectWithBackendPoolsSettingParameterSet = "ByObjectWithBackendPoolsSettingParameterSet";
+        public const string ResourceIdWithBackendPoolsSettingParameterSet = "ByResourceIdWithBackendPoolsSettingParameterSet";
+        public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
+        public const string ObjectWithCertificateNameCheckParameterSet = "ByObjectWithCertificateNameCheckParameterSet";
+        public const string ResourceIdWithCertificateNameCheckParameterSet = "ByResourceIdWithCertificateNameCheckParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the Front Door management client.

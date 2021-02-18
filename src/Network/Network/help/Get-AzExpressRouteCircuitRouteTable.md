@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: BA7F6BAC-6047-42B0-B8CA-0B36302951B0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitroutetable
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitroutetable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -131,4 +135,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 
+<<<<<<< HEAD
 [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
+=======
+[Get-AzExpressRouteCircuitStat](./Get-AzExpressRouteCircuitStat.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

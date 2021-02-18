@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name);
         }
+<<<<<<< HEAD
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -108,5 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name);
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

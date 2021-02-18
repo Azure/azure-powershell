@@ -2,14 +2,22 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 1EDFCAC4-6A66-4124-8192-B7F0D3C5BCFC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azalerthistory
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azalerthistory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Get-AzAlertHistory
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Gets the history of alerts.
+=======
+Gets the history of classic alert rules.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -19,7 +27,11 @@ Get-AzAlertHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <Dat
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Get-AzAlertHistory** cmdlet gets the history of alerts as they are enabled, disabled, fired, resolved, and so on.
+=======
+The **Get-AzAlertHistory** cmdlet gets the history of classic alert rules as they are enabled, disabled, fired, resolved, and so on.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

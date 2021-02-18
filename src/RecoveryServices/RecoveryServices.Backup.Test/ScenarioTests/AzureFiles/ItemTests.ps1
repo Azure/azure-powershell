@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $location = "southeastasia"
+<<<<<<< HEAD
 $resourceGroupName = "pstestFSRG1bca8f8e"
 $vaultName = "PSTestFSRSV1bca8f8e"
 $fileShareFriendlyName = "pstestfs1bca8f8e"
@@ -26,6 +27,23 @@ $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
+=======
+$resourceGroupName = "pstestrg8895"
+$vaultName = "pstestrsv8895"
+$fileShareFriendlyName = "fs1"
+$fileShareName = "AzureFileShare;fs1"
+$saName = "pstestsa8895"
+$saRgName = "pstestrg8895"
+$targetSaName = "pstesttargetsa8896"
+$targetFileShareName = "fs1"
+$targetFolder = "pstestfolder3rty7d7s"
+$folderPath = "pstestfolder1bca8f8e"
+$filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
+$file1 = "file1.txt"
+$file2 = "file2.txt"
+$skuName="Standard_LRS"
+$policyName = "afspolicy1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $newPolicyName = "NewAFSBackupPolicy"
 
 # Setup Instructions:
@@ -72,7 +90,11 @@ function Test-AzureFSItem
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-2: Get items for container with ProtectionStatus filter
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -80,7 +102,11 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-ProtectionStatus Healthy;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-3: Get items for container with Status filter
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -88,7 +114,11 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-ProtectionState IRPending;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-4: Get items for container with friendly name and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -97,7 +127,11 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
 			-ProtectionStatus Healthy;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-5: Get items for container with friendly name and Status filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -106,7 +140,11 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
 			-ProtectionState IRPending;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-6: Get items for container with Status and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -115,13 +153,21 @@ function Test-AzureFSItem
 			-WorkloadType AzureFiles `
 			-ProtectionState IRPending `
 			-ProtectionStatus Healthy;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-7: Get items for Vault Id and Policy
 		$items = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Policy $policy;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# VARIATION-8: Get items for container with friendly name, Status and ProtectionStatus filters
 		$items = Get-AzRecoveryServicesBackupItem `
@@ -131,7 +177,11 @@ function Test-AzureFSItem
 			-Name $fileShareFriendlyName `
 			-ProtectionState IRPending `
 			-ProtectionStatus Healthy;
+<<<<<<< HEAD
 		Assert-True { $items.Name -contains $fileShareName }
+=======
+		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{
@@ -190,7 +240,11 @@ function Test-AzureFSProtection
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles
+<<<<<<< HEAD
 		Assert-True { $item.Name -contains $fileShareName }
+=======
+		Assert-True { $item.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Assert-True { $item.LastBackupStatus -eq "IRPending" }
 		Assert-True { $item.ProtectionPolicyName -eq $policyName }
 		
@@ -209,7 +263,11 @@ function Test-AzureFSProtection
 		-Container $container `
 		-WorkloadType AzureFiles
 
+<<<<<<< HEAD
 		Assert-True { $item.Name -contains $fileShareName }
+=======
+		Assert-True { $item.FriendlyName -contains $fileShareFriendlyName }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Assert-True { $item.LastBackupStatus -eq "IRPending" }
 		Assert-True { $item.ProtectionPolicyName -eq $newPolicyName }
 	}
@@ -314,6 +372,22 @@ function Test-AzureFSFullRestore
 			-ResolveConflict Overwrite `
 			-SourceFilePath $filePath } `
 			"Provide SourceFileType for File restore or remove SourceFilePath for file share restore"
+<<<<<<< HEAD
+=======
+			
+		# Multiple Files Restore
+		$files = ($file1, $file2)
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-MultipleSourceFilePath $files `
+			-SourceFileType File `
+			-ResolveConflict Overwrite | `
+				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     
 		# Test without storage account dependancy
 		# Item level restore at alternate location

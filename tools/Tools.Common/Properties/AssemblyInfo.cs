@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+<<<<<<< HEAD
 using System.Runtime.CompilerServices;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -8,9 +11,15 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Tools.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
+<<<<<<< HEAD
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Tools.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
+=======
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyProduct("Tools.Common")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdndeliveryruleaction
+=======
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdndeliveryruleaction
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,6 +35,21 @@ New-AzCdnDeliveryRuleAction -RedirectType <String> [-DestinationProtocol <String
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### CacheKeyQueryStringActionParameterSet
+```
+New-AzCdnDeliveryRuleAction -QueryStringBehavior <String> [-QueryParameter <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### UrlRewriteActionParameterSet
+```
+New-AzCdnDeliveryRuleAction -SourcePattern <String> -Destination <String> [-PreservePath]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint creation.
 
@@ -114,7 +133,11 @@ Accept wildcard characters: False
 
 ### -CustomHostname
 Host to redirect.
+<<<<<<< HEAD
 Leave empty to use use the incoming host as the destination host.
+=======
+Leave empty to use the incoming host as the destination host.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -178,6 +201,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Destination
+Define the relative URL to which the above requests will be rewritten by.
+
+```yaml
+Type: System.String
+Parameter Sets: UrlRewriteActionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DestinationProtocol
 Protocol to use for the redirect.
 The default value is MatchRequest.
@@ -224,6 +265,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PreservePath
+Whether to preserve unmatched path.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UrlRewriteActionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueryParameter
+Query parameters to include or exclude (comma separated).
+
+```yaml
+Type: System.String[]
+Parameter Sets: CacheKeyQueryStringActionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueryStringBehavior
+QueryString behavior for the requests
+
+```yaml
+Type: System.String
+Parameter Sets: CacheKeyQueryStringActionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -RedirectType
 The redirect type the rule will use when redirecting traffic
 
@@ -239,6 +328,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -SourcePattern
+Define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
+
+```yaml
+Type: System.String
+Parameter Sets: UrlRewriteActionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Value
 Value for the specified action.
 

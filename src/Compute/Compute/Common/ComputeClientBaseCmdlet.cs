@@ -98,9 +98,15 @@ namespace Microsoft.Azure.Commands.Compute
             return m.Success ? m.Groups["id"].Value : null;
         }
 
+<<<<<<< HEAD
         public static ManagedDiskParameters SetManagedDisk(string managedDiskId, string storageAccountType, ManagedDiskParameters managedDisk = null)
         {
             if (string.IsNullOrWhiteSpace(managedDiskId) && string.IsNullOrWhiteSpace(storageAccountType))
+=======
+        public static ManagedDiskParameters SetManagedDisk(string managedDiskId, string diskEncryptionSetId, string storageAccountType, ManagedDiskParameters managedDisk = null)
+        {
+            if (string.IsNullOrWhiteSpace(managedDiskId) && string.IsNullOrWhiteSpace(diskEncryptionSetId) && string.IsNullOrWhiteSpace(storageAccountType))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return managedDisk;
             }
@@ -112,6 +118,14 @@ namespace Microsoft.Azure.Commands.Compute
                 managedDisk.Id = managedDiskId;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrWhiteSpace(diskEncryptionSetId))
+            {
+                managedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters(diskEncryptionSetId);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrWhiteSpace(storageAccountType))
             {
                 managedDisk.StorageAccountType = storageAccountType;

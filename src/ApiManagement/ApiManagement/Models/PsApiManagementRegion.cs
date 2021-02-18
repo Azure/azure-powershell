@@ -35,7 +35,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
             Location = additionalLocation.Location;
             Sku = Mappers.MapSku(additionalLocation.Sku.Name);
+<<<<<<< HEAD
             Capacity = additionalLocation.Sku.Capacity ?? 1;
+=======
+            Capacity = additionalLocation.Sku.Capacity;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             RuntimeRegionalUrl = additionalLocation.GatewayRegionalUrl;
             PublicIPAddresses = additionalLocation.PublicIPAddresses != null ? additionalLocation.PublicIPAddresses.ToArray() : null;
             PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;

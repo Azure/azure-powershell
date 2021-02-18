@@ -580,7 +580,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
+<<<<<<< HEAD
             AzureStorageContext context = new AzureStorageContext(account, StorageAccountName);
+=======
+            AzureStorageContext context = new AzureStorageContext(account, StorageAccountName, DefaultContext, WriteDebug);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteObject(context);
         }
     }

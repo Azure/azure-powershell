@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+<<<<<<< HEAD
 
   <PropertyGroup>
     <PsModuleName>GuestConfiguration</PsModuleName>
@@ -14,6 +15,18 @@
     <PackageReference Include="Microsoft.Azure.Management.GuestConfiguration" Version="1.1.0" />    
   </ItemGroup>
 
+=======
+  <PropertyGroup>
+    <PsModuleName>GuestConfiguration</PsModuleName>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.GuestConfiguration" Version="1.2.0" />
+  </ItemGroup>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -21,12 +34,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

@@ -43,12 +43,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// peer's end.</param>
         /// <param name="sessionStateV4">The state of the IPv4 session.
         /// Possible values include: 'None', 'Idle', 'Connect', 'Active',
+<<<<<<< HEAD
         /// 'OpenSent', 'OpenConfirm', 'Established', 'PendingAdd',
         /// 'PendingUpdate', 'PendingRemove'</param>
         /// <param name="sessionStateV6">The state of the IPv6 session.
         /// Possible values include: 'None', 'Idle', 'Connect', 'Active',
         /// 'OpenSent', 'OpenConfirm', 'Established', 'PendingAdd',
         /// 'PendingUpdate', 'PendingRemove'</param>
+=======
+        /// 'OpenSent', 'OpenConfirm', 'OpenReceived', 'Established',
+        /// 'PendingAdd', 'PendingUpdate', 'PendingRemove'</param>
+        /// <param name="sessionStateV6">The state of the IPv6 session.
+        /// Possible values include: 'None', 'Idle', 'Connect', 'Active',
+        /// 'OpenSent', 'OpenConfirm', 'OpenReceived', 'Established',
+        /// 'PendingAdd', 'PendingUpdate', 'PendingRemove'</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <param name="maxPrefixesAdvertisedV4">The maximum number of
         /// prefixes advertised over the IPv4 session.</param>
         /// <param name="maxPrefixesAdvertisedV6">The maximum number of
@@ -91,6 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public string SessionPrefixV6 { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets the IPv4 session address on Microsoft's end.
         /// </summary>
         [JsonProperty(PropertyName = "microsoftSessionIPv4Address")]
@@ -101,6 +111,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "microsoftSessionIPv6Address")]
         public string MicrosoftSessionIPv6Address { get; private set; }
+=======
+        /// Gets or sets the IPv4 session address on Microsoft's end.
+        /// </summary>
+        [JsonProperty(PropertyName = "microsoftSessionIPv4Address")]
+        public string MicrosoftSessionIPv4Address { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IPv6 session address on Microsoft's end.
+        /// </summary>
+        [JsonProperty(PropertyName = "microsoftSessionIPv6Address")]
+        public string MicrosoftSessionIPv6Address { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the IPv4 session address on peer's end.
@@ -117,7 +139,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Gets the state of the IPv4 session. Possible values include:
         /// 'None', 'Idle', 'Connect', 'Active', 'OpenSent', 'OpenConfirm',
+<<<<<<< HEAD
         /// 'Established', 'PendingAdd', 'PendingUpdate', 'PendingRemove'
+=======
+        /// 'OpenReceived', 'Established', 'PendingAdd', 'PendingUpdate',
+        /// 'PendingRemove'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [JsonProperty(PropertyName = "sessionStateV4")]
         public string SessionStateV4 { get; private set; }
@@ -125,7 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Gets the state of the IPv6 session. Possible values include:
         /// 'None', 'Idle', 'Connect', 'Active', 'OpenSent', 'OpenConfirm',
+<<<<<<< HEAD
         /// 'Established', 'PendingAdd', 'PendingUpdate', 'PendingRemove'
+=======
+        /// 'OpenReceived', 'Established', 'PendingAdd', 'PendingUpdate',
+        /// 'PendingRemove'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [JsonProperty(PropertyName = "sessionStateV6")]
         public string SessionStateV6 { get; private set; }

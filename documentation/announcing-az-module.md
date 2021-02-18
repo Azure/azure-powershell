@@ -25,11 +25,19 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 | Date | Feature |
 -------|----------
 | **August 2018** | Initial Release |
+<<<<<<< HEAD
 | **November 2018** | Functional arity with AzureRM |
 | **December 2018** | Az 1.0 Release |
 | **January 2019** | New Authentication mechanisms for Windows PowerShell
 |  | - Username + password authentication
 |  | - Web broswer control authentication |
+=======
+| **November 2018** | Functional parity with AzureRM |
+| **December 2018** | Az 1.0 Release |
+| **January 2019** | New Authentication mechanisms for Windows PowerShell
+|  | - Username + password authentication
+|  | - Web browser control authentication |
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
  
 
@@ -139,7 +147,11 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.Media | Az.Media |
 | AzureRM.Network | Az.Network |
 | AzureRM.NotificationHubs | Az.NotificationHubs |
+<<<<<<< HEAD
 | AzureRM.OperationalInsights | Az.OperationalIsights |
+=======
+| AzureRM.OperationalInsights | Az.OperationalInsights |
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 | AzureRM.PolicyInsights | Az.PolicyInsights |
 | AzureRM.PowerBIEmbedded | Az.PowerBIEmbedded* |
 | **AzureRM.Profile** | **Az.Accounts** |
@@ -187,7 +199,11 @@ If you need to have both modules installed:
   ```
 
 ##### Interactive Usage
+<<<<<<< HEAD
 You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
+=======
+You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in separate sessions as follows
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   - In AzureRM session:  ```Import-Module AzureRM```
   - In Az session:  Begin the session with ```Enable-AzureRmAlias```, which will prevent inadvertently loading AzureRM modules.  Alternately, you can use cmdlets with Az noun prefix, and avoid using cmdlets with Azure or AzureRm noun
 

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
+<<<<<<< HEAD
     public abstract class DataFactoryContextActionBaseCmdlet : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -65,5 +66,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 Name = subResource.Name;
             }
         }
+=======
+    public abstract class DataFactoryContextActionBaseCmdlet : DataFactoryContextSubResourceBaseCmdlet
+    {
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string HostName { get; set; }
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<string> HostNames { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSResourceId SslCertificate { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public bool RequireServerNameIndication { get; set; }
@@ -34,6 +39,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
         public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
+<<<<<<< HEAD
+=======
+        public PSResourceId FirewallPolicy { get; set; }
+        public PSResourceId SslProfile { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [JsonIgnore]
         public string FrontendIpConfigurationText
@@ -52,5 +62,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(SslCertificate, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string SslProfileText
+        {
+            get { return JsonConvert.SerializeObject(SslProfile, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FirewallPolicyText
+        {
+            get { return JsonConvert.SerializeObject(FirewallPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

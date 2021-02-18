@@ -22,6 +22,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.Sql.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -116,12 +120,31 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
+<<<<<<< HEAD
         /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
         /// <returns>Restored database object</returns>
         internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(string resourceId, AzureSqlManagedDatabaseModel model)
         {
             Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, resourceId, model);
+=======
+        /// <param name="model">An object modeling the database to create via restore</param>
+        /// <returns>Restored database object</returns>
+        internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(AzureSqlManagedDatabaseModel model)
+        {
+            var dbModel = new Management.Sql.Models.ManagedDatabase()
+            {
+                Location = model.Location,
+                CreateMode = model.CreateMode,
+                RestorePointInTime = model.RestorePointInTime,
+                RecoverableDatabaseId = model.RecoverableDatabaseId,
+                RestorableDroppedDatabaseId = model.RestorableDroppedDatabaseId,
+                SourceDatabaseId = model.SourceDatabaseId,
+                LongTermRetentionBackupResourceId = model.LongTermRetentionBackupResourceId
+            };
+
+            Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, dbModel);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return new AzureSqlManagedDatabaseModel(model.ResourceGroupName, model.ManagedInstanceName, database);
         }
@@ -154,6 +177,88 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets the Resource id of the managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <returns></returns>
+        public string GetDeletedManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
+        {
+            AzureSqlManagedDatabaseBackupAdapter managedInstanceAdapter = new AzureSqlManagedDatabaseBackupAdapter(Context);
+            var managedInstance = managedInstanceAdapter.GetDeletedDatabaseBackup(resourceGroupName, managedInstanceName, managedDatabaseName);
+            return managedInstance.Id;
+        }
+
+        /// <summary>
+        /// Start the managed database log replay
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay</param>
+        public AzureSqlManagedDatabaseModel StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            var model = new Management.Sql.Models.ManagedDatabase()
+            {
+                Location = parameters.Location,
+                Collation = parameters.Collation,
+                AutoCompleteRestore = parameters.AutoCompleteRestore,
+                LastBackupName = parameters.LastBackupName,
+                CreateMode = CreateMode.RestoreExternalBackup,
+                StorageContainerUri = parameters.StorageContainerUri,
+                StorageContainerSasToken = parameters.StorageContainerSasToken
+            };
+            var response = Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+            return CreateManagedDatabaseModelFromResponse(parameters.ResourceGroupName, parameters.ManagedInstanceName, response);
+        }
+
+        /// <summary>
+        /// Get managed database log replay restore status details
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
+        /// <returns></returns>
+        public AzureSqlManagedDatabaseRestoreDetailsResultModel GetManagedDatabaseLogReplay(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
+        {
+            var result = Communicator.GetLogReplayStatus(
+                resourceGroupName,
+                managedInstanceName,
+                managedDatabaseName);
+
+            return CreateManagedDatabaseRestoreStatusModel(
+                resourceGroupName, 
+                managedInstanceName,
+                managedDatabaseName, result);
+        }
+
+        /// <summary>
+        /// Completes managed database log replay restore.
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay complete action</param>
+        public void CompleteManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            Communicator.CompleteLogReplay(
+                parameters.ResourceGroupName,
+                parameters.ManagedInstanceName,
+                parameters.Name,
+                parameters.LastBackupName);
+        }
+
+        /// <summary>
+        /// Removes managed database in order to stop log replay service
+        /// </summary>
+        /// <param name="parameters">The parameters for log replay cancel action</param>
+        public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        {
+            Communicator.Remove(
+                parameters.ResourceGroupName,
+                parameters.ManagedInstanceName,
+                parameters.Name);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Converts the response from the service to a powershell managed database object
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
@@ -164,5 +269,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             return new AzureSqlManagedDatabaseModel(resourceGroup, managedInstanceName, managedDatabase);
         }
+<<<<<<< HEAD
+=======
+
+        private AzureSqlManagedDatabaseRestoreDetailsResultModel CreateManagedDatabaseRestoreStatusModel(string resourceGroupName, string managedInstanceName, string managedDatabaseName, ManagedDatabaseRestoreDetailsResult result)
+        {
+            return new AzureSqlManagedDatabaseRestoreDetailsResultModel(result)
+            {
+                ResourceGroupName = resourceGroupName,
+                ManagedInstanceName = managedInstanceName,
+                Name = managedDatabaseName
+            };
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

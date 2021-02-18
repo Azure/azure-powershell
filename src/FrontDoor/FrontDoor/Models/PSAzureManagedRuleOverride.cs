@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSAzureManagedRuleOverride
@@ -21,5 +26,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public PSEnabledState? EnabledState { get; set; }
 
         public string Action { get; set; }
+<<<<<<< HEAD
+=======
+
+        public List<PSManagedRuleExclusion> Exclusions { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

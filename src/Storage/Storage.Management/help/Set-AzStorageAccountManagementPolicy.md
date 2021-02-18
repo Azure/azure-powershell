@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/set-Azstorageaccountmanagementpolicy
+=======
+online version: https://docs.microsoft.com/powershell/module/Az.storage/set-Azstorageaccountmanagementpolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -141,17 +145,30 @@ This command first create 2 ManagementPolicy rule objects, then creates or updat
 ```
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
     Rules=(@{
+<<<<<<< HEAD
         Enabled="true";
+=======
+        Enabled=$true;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Name="Test";
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
+<<<<<<< HEAD
                     TierToCool=30;
                     TierToArchive=50;
                     Delete=100;
                 });
                 Snapshot=(@{
                     Delete=100
+=======
+                    TierToCool=@{DaysAfterModificationGreaterThan=30};
+                    TierToArchive=@{DaysAfterModificationGreaterThan=50};
+                    Delete=@{DaysAfterModificationGreaterThan=100};
+                });
+                Snapshot=(@{
+                    Delete=@{DaysAfterCreationGreaterThan=100};
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 });
             });
             Filters=(@{
@@ -161,12 +178,20 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         })
     },
     @{
+<<<<<<< HEAD
         Enabled="false";
+=======
+        Enabled=$false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Name="Test2";
         Definition=(@{
             Actions=(@{
                 BaseBlob=(@{
+<<<<<<< HEAD
                     TierToCool=80;
+=======
+                    TierToCool=@{DaysAfterModificationGreaterThan=80};
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 });
             });
             Filters=(@{
@@ -217,7 +242,11 @@ Rules              : [
                                             }
                          },
                          {
+<<<<<<< HEAD
                              "Enabled":  true,
+=======
+                             "Enabled":  false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpngateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpngateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -44,6 +48,10 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+<<<<<<< HEAD
+=======
+IpConfigurations    : {Instance0, Instance1}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 ```
@@ -65,6 +73,10 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+<<<<<<< HEAD
+=======
+IpConfigurations    : {Instance0, Instance1}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 
@@ -75,6 +87,10 @@ Location            : West US
 VpnGatewayScaleUnit : 2
 VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub
 BgpSettings         : {}
+<<<<<<< HEAD
+=======
+IpConfigurations    : {Instance0, Instance1}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
 ```

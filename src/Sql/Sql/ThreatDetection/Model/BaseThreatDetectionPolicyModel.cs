@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
             }
             return excludedDetectionTypes;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Preforms validity checks
@@ -114,5 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
                 throw new Exception(Properties.Resources.NeedToProvideEmail);
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

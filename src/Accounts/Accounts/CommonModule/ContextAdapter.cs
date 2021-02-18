@@ -25,6 +25,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Profile.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -170,6 +174,14 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns></returns>
         internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken)
         {
+<<<<<<< HEAD
+=======
+            if (context == null || context.Account == null || context.Environment == null)
+            {
+                throw new InvalidOperationException(Resources.InvalidAzureContext);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             await Task.Run(() =>
             {
                 resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;

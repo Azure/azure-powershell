@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
     using Microsoft.Azure.Management.DeploymentManager;
     using Microsoft.Azure.Management.DeploymentManager.Models;
     using Microsoft.Rest.Azure;
+<<<<<<< HEAD
+=======
+    using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// The client that handles all the requests from the commands.
@@ -66,6 +70,16 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return new PSRollout(resourceGroupName, rollout);
         }
 
+<<<<<<< HEAD
+=======
+        internal IEnumerable<PSRollout> ListRollouts(string resourceGroupName)
+        {
+
+            var rollouts = _client.Rollouts.List(resourceGroupName);
+            return rollouts.Select(r => new PSRollout(resourceGroupName, r));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal PSRollout RestartRollout(PSRollout psRollout, bool? skipSucceeded = true)
         {
 
@@ -109,6 +123,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             var artifactSource = _client.ArtifactSources.Get(psArtifactSource.ResourceGroupName, psArtifactSource.Name);
             return new PSArtifactSource(psArtifactSource.ResourceGroupName, artifactSource);
         }
+<<<<<<< HEAD
+=======
+        internal IEnumerable<PSArtifactSource> ListArtifactSources(string resourceGroupName)
+        {
+            var artifactSources = _client.ArtifactSources.List(resourceGroupName);
+            return artifactSources.Select(a => new PSArtifactSource(resourceGroupName, a));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         internal bool DeleteArtifactSource(PSArtifactSource psArtifactSource)
         {
@@ -180,6 +203,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return new PSServiceTopologyResource(pSServiceTopologyResource.ResourceGroupName, serviceTopologyResource);
         }
 
+<<<<<<< HEAD
+=======
+        internal IEnumerable<PSServiceTopologyResource> ListServiceTopologies(string resourceGroupName)
+        {
+            var serviceTopologyResources = _client.ServiceTopologies.List(resourceGroupName);
+            return serviceTopologyResources.Select(st => new PSServiceTopologyResource(resourceGroupName, st));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal PSServiceResource GetService(PSServiceResource pSServiceResource)
         {
 
@@ -191,6 +223,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
                 serviceResource);
         }
 
+<<<<<<< HEAD
+=======
+        internal IEnumerable<PSServiceResource> ListServices(string resourceGroupName, string serviceTopologyName)
+        {
+
+            var serviceResources = _client.Services.List(
+                resourceGroupName: resourceGroupName, 
+                serviceTopologyName: serviceTopologyName);
+
+            return serviceResources.Select(sr => new PSServiceResource(
+                resourceGroupName,
+                serviceTopologyName,
+                sr));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal PSServiceUnitResource GetServiceUnit(PSServiceUnitResource psServiceUnit)
         {
 
@@ -203,6 +251,21 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
                 serviceUnit);
         }
 
+<<<<<<< HEAD
+=======
+        internal IEnumerable<PSServiceUnitResource> ListServiceUnits(string resourceGroupName, string serviceTopologyName, string serviceName)
+        {
+
+            var serviceUnits = _client.ServiceUnits.List(resourceGroupName, serviceTopologyName, serviceName);
+
+            return serviceUnits.Select(su => new PSServiceUnitResource(
+                resourceGroupName,
+                serviceTopologyName,
+                serviceName,
+                su));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal bool DeleteServiceTopology(PSServiceTopologyResource psServiceTopologyResource)
         {
 
@@ -251,6 +314,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return new PSStepResource(psStepResource.ResourceGroupName, stepResource);
         }
 
+<<<<<<< HEAD
         internal bool DeleteStep(PSStepResource psStepResource)
         {
 
@@ -262,6 +326,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
 
             return _client.Operations.Get();
+=======
+        internal IEnumerable<PSStepResource> ListSteps(string resourceGroupName)
+        {
+            var stepResources = _client.Steps.List(resourceGroupName);
+            return stepResources.Select(sr => new PSStepResource(resourceGroupName, sr));
+        }
+
+        internal bool DeleteStep(PSStepResource psStepResource)
+        {
+
+            var result = _client.Steps.DeleteWithHttpMessagesAsync(psStepResource.ResourceGroupName, psStepResource.Name).GetAwaiter().GetResult();
+            return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static bool ResourceExists<T>(T resourceObject, Func<T, T> getFunc) where T : PSResource

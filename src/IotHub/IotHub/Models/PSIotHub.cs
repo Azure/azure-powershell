@@ -54,7 +54,18 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// The subscription identifier.
         /// </summary>
         [JsonProperty(PropertyName = "subscriptionid")]
+<<<<<<< HEAD
         public string Subscriptionid { get; set; }
+=======
+        public string Subscriptionid
+        {
+            get
+            {
+                return IotHubUtils.GetSubscriptionId(Id);
+            }
+            set { }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// The resource group name uniquely identifies the resource group

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Security;
@@ -22,6 +23,16 @@ using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Common.Authentication;
+=======
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Security;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.RecoveryServices;
+using Microsoft.Azure.Management.RecoveryServices.Backup;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -48,6 +59,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets the value of recovery services backup client.
+        /// </summary>
+        public RecoveryServicesBackupClient GetRecoveryServicesBackupClient
+        {
+            get
+            {
+                return this.recoveryServicesBackupClient;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public ResourceManagementClient RmClient
         {
             get
@@ -80,6 +105,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         private ResourceManagementClient resourceManagementClient;
 
+<<<<<<< HEAD
+=======
+        private RecoveryServicesBackupClient recoveryServicesBackupClient;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
@@ -100,10 +130,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.recoveryServicesClient =
+<<<<<<< HEAD
             AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
                 defaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             resourceManagementClient = AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+=======
+            AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesClient>(
+                defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
+            this.recoveryServicesBackupClient =
+            AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesBackupClient>(
+                defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
+            resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static bool IgnoreCertificateErrorHandler

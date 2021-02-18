@@ -90,6 +90,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+<<<<<<< HEAD
+=======
+        public IDedicatedHostGroupsOperations DedicatedHostGroupsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DedicatedHostGroups;
+            }
+        }
+
+        public IDedicatedHostsOperations DedicatedHostsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DedicatedHosts;
+            }
+        }
+
+        public IDiskEncryptionSetsOperations DiskEncryptionSetsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DiskEncryptionSets;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IDisksOperations DisksClient
         {
             get
@@ -98,6 +125,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+<<<<<<< HEAD
+=======
+        public IDiskAccessesOperations DiskAccessesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DiskAccesses;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IGalleriesOperations GalleriesClient
         {
             get
@@ -186,6 +224,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+<<<<<<< HEAD
+=======
+        public IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMExtensions;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMsClient
         {
             get

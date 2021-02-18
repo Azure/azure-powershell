@@ -88,6 +88,27 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Add individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string AddEnrollment {
+            get {
+                return ResourceManager.GetString("AddEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string AddEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("AddEnrollmentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string AddLinkedHub {
@@ -133,6 +154,27 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Remove individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string RemoveEnrollment {
+            get {
+                return ResourceManager.GetString("RemoveEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string RemoveEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("RemoveEnrollmentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Delete linked IoT Hub from an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string RemoveLinkedHub {
@@ -142,6 +184,18 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string RemoveRegistration {
+            get {
+                return ResourceManager.GetString("RemoveRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Update an Azure IoT Hub Device Provisioning Service certificate.
         /// </summary>
         internal static string SetCertificate {
@@ -169,6 +223,27 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Update individual device enrollment in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string UpdateEnrollment {
+            get {
+                return ResourceManager.GetString("UpdateEnrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update device enrollment group in Azure IoT Hub Device Provisioning Service.
+        /// </summary>
+        internal static string UpdateEnrollmentGroup {
+            get {
+                return ResourceManager.GetString("UpdateEnrollmentGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Update a linked IoT Hub in an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string UpdateLinkedHub {

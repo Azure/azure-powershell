@@ -118,8 +118,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public PsApiManagementSslSetting SslSetting { get; set; }
 
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this service for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
+=======
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Assign User Identities to this server for use with key management services like Azure KeyVault.")]
+        public string[] UserAssignedIdentity { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = false,
             HelpMessage = "Flag only meant to be used for Consumption SKU ApiManagement Service. " +
@@ -145,7 +156,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     CustomHostnameConfiguration,
                     SystemCertificateConfiguration,
                     SslSetting,
+<<<<<<< HEAD
                     AssignIdentity.IsPresent);
+=======
+                    SystemAssignedIdentity.IsPresent,
+                    UserAssignedIdentity);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             this.WriteObject(apiManagementService);
         }

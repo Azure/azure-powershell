@@ -8,7 +8,12 @@ function Get-CertificateSubjectName([string]$certificateName)
 function Get-X509FromSecretBySubjectDistinguishedName([string]$keyVault, [string]$secretName, [string]$subjectDistinguishedName)
 {
     $secret = Get-AzKeyVaultSecret $keyVault $secretName
+<<<<<<< HEAD
     $secretValueBytes = [System.Convert]::FromBase64String($secret.SecretValueText)
+=======
+    $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($secret.SecretValue))
+    $secretValueBytes = [System.Convert]::FromBase64String($secretValueText)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $x509FromSecretCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $x509FromSecretCollection.Import($secretValueBytes)
     $x509Matches = $x509FromSecretCollection.Find([Security.Cryptography.X509Certificates.X509FindType]::FindBySubjectDistinguishedName, $subjectDistinguishedName, $false)
@@ -359,7 +364,11 @@ function Test_NewCertificatePolicy
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
+<<<<<<< HEAD
     Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+=======
+    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
@@ -399,6 +408,7 @@ Various organization details/admin details settings
 
 function Test_NewOrganizationDetails
 {
+<<<<<<< HEAD
     $admin1Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
     Assert-NotNull $admin1Details
 
@@ -406,6 +416,15 @@ function Test_NewOrganizationDetails
     Assert-NotNull $admin2Details
 
     $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $admin1Details, $admin2Details
+=======
+    $admin1Details = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin1@contoso.com"
+    Assert-NotNull $admin1Details
+
+    $admin2Details = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
+    Assert-NotNull $admin2Details
+
+    $orgDetails = New-AzKeyVaultCertificateOrganizationDetail -Id "MSFT" -AdministratorDetails $admin1Details, $admin2Details
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Assert-NotNull $orgDetails
 }
 
@@ -420,10 +439,17 @@ function Test_CreateSSLAdminIssuer
     $issuerName = "SSLAdminIssuer"
     $issuerProvider = "SSLAdmin"
 
+<<<<<<< HEAD
     $admin1Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
     $admin2Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
     $admin3Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin3@contoso.com" -FirstName "admin" -LastName "3" -PhoneNumber "425-555-5555"
     $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -AdministratorDetails $admin1Details, $admin2Details, $admin3Details
+=======
+    $admin1Details = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin1@contoso.com"
+    $admin2Details = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
+    $admin3Details = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin3@contoso.com" -FirstName "admin" -LastName "3" -PhoneNumber "425-555-5555"
+    $orgDetails = New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $admin1Details, $admin2Details, $admin3Details
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     $issuer1 = Set-AzKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider -OrganizationDetails $orgDetails -PassThru
     Assert-NotNull $issuer1
@@ -448,8 +474,13 @@ function Test_CreateAndGetTestIssuer
     $issuer01Name = "getissuer01"
     $nonExistingIssuerName = "non-existingissuer"
 
+<<<<<<< HEAD
     $adminDetails = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin@contoso.com" -FirstName "admin" -LastName "admin" -PhoneNumber "425-555-5555"
     $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $adminDetails
+=======
+    $adminDetails = New-AzKeyVaultCertificateAdministratorDetail -EmailAddress "admin@contoso.com" -FirstName "admin" -LastName "admin" -PhoneNumber "425-555-5555"
+    $orgDetails = New-AzKeyVaultCertificateOrganizationDetail -Id "MSFT" -AdministratorDetails $adminDetails
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     $issuerAdded = Set-AzKeyVaultCertificateIssuer $keyVault $issuer01Name -IssuerProvider "Test" -OrganizationDetails $orgDetails -PassThru
     $issuerGotten = Get-AzKeyVaultCertificateIssuer $keyVault $issuer01Name

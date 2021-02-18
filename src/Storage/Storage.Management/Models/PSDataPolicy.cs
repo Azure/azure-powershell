@@ -261,7 +261,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// </summary>
     public class PSDateAfterModification
     {
+<<<<<<< HEAD
         public int DaysAfterModificationGreaterThan { get; set; }
+=======
+        public int? DaysAfterModificationGreaterThan { get; set; }
+
+        public PSDateAfterModification()
+        {
+            this.DaysAfterModificationGreaterThan = null;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public PSDateAfterModification(int daysAfterModificationGreaterThan)
         {
@@ -270,11 +279,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSDateAfterModification(DateAfterModification data)
         {
+<<<<<<< HEAD
             this.DaysAfterModificationGreaterThan = data.DaysAfterModificationGreaterThan;
         }
         public DateAfterModification ParseDateAfterModification()
         {
             return new DateAfterModification(this.DaysAfterModificationGreaterThan);
+=======
+            this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
+        }
+        public DateAfterModification ParseDateAfterModification()
+        {
+            return this.DaysAfterModificationGreaterThan is null? new DateAfterModification() : new DateAfterModification(this.DaysAfterModificationGreaterThan.Value);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 
@@ -285,6 +302,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public int DaysAfterCreationGreaterThan { get; set; }
 
+<<<<<<< HEAD
+=======
+        public PSDateAfterCreation()
+        {
+            this.DaysAfterCreationGreaterThan = 0;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSDateAfterCreation(int daysAfterCreationGreaterThan)
         {
             this.DaysAfterCreationGreaterThan = daysAfterCreationGreaterThan;
@@ -292,7 +317,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSDateAfterCreation(DateAfterCreation data)
         {
+<<<<<<< HEAD
             this.DaysAfterCreationGreaterThan = data.DaysAfterCreationGreaterThan;
+=======
+            this.DaysAfterCreationGreaterThan = Convert.ToInt32(data.DaysAfterCreationGreaterThan);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
         public DateAfterCreation ParseDateAfterCreation()
         {

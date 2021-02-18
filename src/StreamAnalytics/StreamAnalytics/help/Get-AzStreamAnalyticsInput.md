@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: F371FD62-D138-4610-84A1-93EDC42D6AAC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsinput
+=======
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsinput
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,15 +27,25 @@ The **Get-AzStreamAnalyticsInput** cmdlet lists all of the inputs that are defin
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### EXAMPLE 1: Get information about the inputs defined on a job
 ```
+=======
+### Example 1: Get information about the inputs defined on a job
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob"
 ```
 
 This command returns information about all the inputs defined on the job StreamingJob.
 
+<<<<<<< HEAD
 ### EXAMPLE 2: Get information about a specific input defined on a job
 ```
+=======
+### Example 2: Get information about a specific input defined on a job
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EntryStream"
 ```
 

@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = WeeklyRetentionRequiredSet,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = MonthlyRetentionRequiredSet,
@@ -75,6 +76,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = YearlyRetentionRequiredSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+=======
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string WeeklyRetention { get; set; }
 
@@ -84,11 +96,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = MonthlyRetentionRequiredSet,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = YearlyRetentionRequiredSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+=======
+            HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string MonthlyRetention { get; set; }
 
@@ -98,7 +118,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = YearlyRetentionRequiredSet,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "The Yearly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
+=======
+            HelpMessage = "The Yearly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string YearlyRetention { get; set; }
 

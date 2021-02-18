@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 Config = config,
+<<<<<<< HEAD
                 Domain = "domain.com",
+=======
+                DomainResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fakerg/providers/Microsoft.AAD/domainServices/domain.com",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 DomainUserCredential = new PSCredential("username","pass".ConvertToSecureString()),
                 OrganizationalUnitDN = "OUDN",
                 LdapsUrls = new[]
@@ -64,14 +68,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&
+<<<<<<< HEAD
                                 string.IsNullOrEmpty(c.DefaultStorageAccountKey) &&
                                 string.IsNullOrEmpty(c.DefaultStorageAccountName) &&
+=======
+                                string.IsNullOrEmpty(c.StorageAccountKey) &&
+                                string.IsNullOrEmpty(c.StorageAccountResourceId) &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 string.IsNullOrEmpty(c.HeadNodeSize) &&
                                 string.IsNullOrEmpty(c.ZookeeperNodeSize) &&
                                 c.HiveMetastore == null &&
                                 c.OozieMetastore == null &&
                                 c.ScriptActions.Count == 0 &&
+<<<<<<< HEAD
                                 c.SecurityProfile.Domain.Equals(newconfigcmdlet.Domain) &&
+=======
+                                c.SecurityProfile.DomainResourceId.Equals(newconfigcmdlet.DomainResourceId) &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 c.SecurityProfile.DomainUserCredential.UserName.Equals(newconfigcmdlet.DomainUserCredential.UserName) &&
                                 c.SecurityProfile.OrganizationalUnitDN.Equals(newconfigcmdlet.OrganizationalUnitDN) &&
                                 c.SecurityProfile.LdapsUrls.ArrayToString("").Equals(newconfigcmdlet.LdapsUrls.ArrayToString("")) &&

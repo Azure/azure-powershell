@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.StackEdge.dll","Microsoft.Azure.PowerShell.Cmdlets.StackEdge.Common.Cmdlets.Shares.StackEdgeShareNewCmdletBase","New-AzStackEdgeShare","1","8700","Parameter set 'CloudShareNfsParameterSet', 'CloudShareSmbParameterSet' of cmdlet 'New-AzStackEdgeShare' have the same mandatory parameters, and both of them are not default parameter set which may cause confusion.","Merge these parameter sets into one parameter set."

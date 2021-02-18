@@ -13,8 +13,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="1.2.1-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="2.1.2-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>
@@ -36,4 +41,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

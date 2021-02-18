@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/Remove-aznetworkinterfacetapconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/Remove-aznetworkinterfacetapconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,7 +52,11 @@ Because the *Force* parameter is not used, the user will be prompted to confirm 
 PS C:\>Get-AzNetworkInterfaceTapConfig -Name "TapConfiguration" -NetworkInterfaceName "NetworkInterface1" -ResourceGroup "ResourceGroup1" | Remove-AzNetworkInterfaceTapConfig -Force
 ```
 
+<<<<<<< HEAD
 This command removes removes the TapConfiguration from NetworkInterface1 in a resource group ResourceGroup1.
+=======
+This command removes the TapConfiguration from NetworkInterface1 in a resource group ResourceGroup1.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Because the *Force* parameter is used, the user is not prompted for confirmation.
 
 ## PARAMETERS

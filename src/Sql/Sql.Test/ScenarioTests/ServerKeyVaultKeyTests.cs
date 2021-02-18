@@ -36,16 +36,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public ServerKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
         }
 
         [Fact] 
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+        }
+
+        [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyAdd()
         {
             RunPowerShellTest("Test-AddServerKeyVaultKey");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Requires hardcoded resource 'akvtdekeyvaultcl'")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyGet()
         {

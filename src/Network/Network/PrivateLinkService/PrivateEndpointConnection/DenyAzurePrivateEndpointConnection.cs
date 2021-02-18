@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -24,24 +25,54 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
+=======
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Linq;
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Deny", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
     public class DenyAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
+<<<<<<< HEAD
+=======
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = "ByResource")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The reason of action.")]
+        public string Description { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void Execute()
         {
             base.Execute();
 
+<<<<<<< HEAD
             string resourceType = string.Empty;
             string parentResource = string.Empty;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
+<<<<<<< HEAD
                 resourceType = resourceIdentifier.ResourceType;
                 parentResource = resourceIdentifier.ParentResource;
                 this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
@@ -71,6 +102,17 @@ namespace Microsoft.Azure.Commands.Network
             var getPrivateLinkService = GetPrivateLinkService(ResourceGroupName, ServiceName);
             var getPrivateEndpointConnection = getPrivateLinkService.PrivateEndpointConnections.Find(x => x.Name == Name);
             WriteObject(getPrivateEndpointConnection);
+=======
+                this.Subscription = resourceIdentifier.Subscription;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
+                this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+
+            IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
+
+            var pec = provider.UpdatePrivateEndpointConnectionStatus(this.ResourceGroupName, this.ServiceName, this.Name, "Rejected", this.Description);
+            WriteObject(pec);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

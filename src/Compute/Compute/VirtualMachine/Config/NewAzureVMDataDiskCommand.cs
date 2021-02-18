@@ -93,6 +93,15 @@ namespace Microsoft.Azure.Commands.Compute
         public string StorageAccountType { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false,
+            HelpMessage = HelpMessages.VMDiskEncryptionSetId)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = ManagedDiskParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
@@ -132,7 +141,11 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun,
                     CreateOption = this.CreateOption,
+<<<<<<< HEAD
                     ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
+=======
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 };
 

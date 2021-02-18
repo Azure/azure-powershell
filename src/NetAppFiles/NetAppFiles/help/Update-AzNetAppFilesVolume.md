@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/update-aznetappfilesvolume
+=======
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesvolume
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,29 +20,54 @@ Updates an Azure NetApp Files (ANF) volume according to the optional modifiers p
 ```
 Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String>
  -PoolName <String> -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+<<<<<<< HEAD
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
+ [-ThroughputMibps <Double>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+<<<<<<< HEAD
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+=======
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
+ [-ThroughputMibps <Double>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
+<<<<<<< HEAD
 Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
+ [-ThroughputMibps <Double>] [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByObjectParameterSet
 ```
+<<<<<<< HEAD
 Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-Tag <Hashtable>] -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
+ [-ThroughputMibps <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesVolume>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -73,7 +102,11 @@ This command updates the ANF volume "MyAnfVolume" with the new UsageThreshold si
 The name of the ANF account
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -84,11 +117,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Backup
+A hashtable array which represents the backup object
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeBackupProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: IAzureContextContainer
+=======
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -103,7 +158,11 @@ Accept wildcard characters: False
 A hashtable array which represents the export policy
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesVolumeExportPolicy
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +177,11 @@ Accept wildcard characters: False
 The volume object to update
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesVolume
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -133,7 +196,11 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -148,7 +215,11 @@ Accept wildcard characters: False
 The name of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
@@ -163,7 +234,11 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -178,7 +253,11 @@ Accept wildcard characters: False
 The pool object containing the volume to update
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesPool
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -193,7 +272,11 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -208,7 +291,11 @@ Accept wildcard characters: False
 The resource id of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -223,7 +310,11 @@ Accept wildcard characters: False
 The service level of the ANF volume
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +329,11 @@ Accept wildcard characters: False
 A hashtable which represents resource tags
 
 ```yaml
+<<<<<<< HEAD
 Type: Hashtable
+=======
+Type: System.Collections.Hashtable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -249,11 +344,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ThroughputMibps
+Maximum throughput in Mibps that can be achieved by this volume
+
+```yaml
+Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -UsageThreshold
 The maximum storage quota allowed for a file system in bytes
 
 ```yaml
+<<<<<<< HEAD
 Type: Int64
+=======
+Type: System.Nullable`1[System.Int64]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -268,7 +385,11 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: cf
 
@@ -284,7 +405,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
+<<<<<<< HEAD
 Type: SwitchParameter
+=======
+Type: System.Management.Automation.SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: wi
 
@@ -296,8 +421,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

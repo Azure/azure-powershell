@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapirelease
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapirelease
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -40,7 +44,11 @@ UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402e
 ResourceGroupName : Api-Default-WestUS
+<<<<<<< HEAD
 ServiceName       : contos
+=======
+ServiceName       : contoso
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets all of the releases of the `echo-api` API for the specified context.
@@ -55,10 +63,17 @@ CreatedDateTime   : 5/17/2018 12:21:12 AM
 UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Mi
+<<<<<<< HEAD
                     crosoft.ApiManagement/service/contos/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
                     e
 ResourceGroupName : Api-Default-WestUS
 ServiceName       : contos
+=======
+                    crosoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
+                    e
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the releases information of a particular API with the specified releaseId.
@@ -163,4 +178,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzApiManagementApiRelease](./Remove-AzApiManagementApiRelease.md)
 
+<<<<<<< HEAD
 [Set-AzApiManagementApiRelease](./Set-AzApiManagementApiRelease.md)
+=======
+[Update-AzApiManagementApiRelease](./Update-AzApiManagementApiRelease.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

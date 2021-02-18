@@ -190,7 +190,11 @@
     <value>Unregister Storage Sync Server for Storage Sync Service '{0}' and all content in it</value>
   </data>
   <data name="ResetCertificateMessageFormat1" xml:space="preserve">
+<<<<<<< HEAD
     <value>Starting rollover certificate for ServerId: {serverId}</value>
+=======
+    <value>Starting rollover certificate for ServerId: {0}</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="ResetCertificateMessageFormat2" xml:space="preserve">
     <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>
@@ -270,4 +274,25 @@
   <data name="InvokeChangeDetectionActionMessage" xml:space="preserve">
     <value>Invoke change detection for Cloud Endpoint</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="NewCloudEndpointCrossSubscriptionWarningFormat" xml:space="preserve">
+    <value>The given storage account subscription {0} is in other subscription than the current azure context subscription {1}. We will try to inform Azure File Sync about the storage account subscription.</value>
+  </data>
+  <data name="NewCloudEndpointCrossTenantErrorFormat" xml:space="preserve">
+    <value>The given storage account tenant {0} does not match with current azure tenant. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant.</value>
+  </data>
+  <data name="NewCloudEndpointUnableToRegisterErrorFormat" xml:space="preserve">
+    <value>The given subscription {0} was unable to registered to Azure File Sync.</value>
+  </data>
+  <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
+    <value>Updating a Storage Sync Service</value>
+  </data>
+  <data name="InvalidInitialDownloadPolicyErrorMessage" xml:space="preserve">
+    <value>InitialDownloadPolicy parameter has invalid value.</value>
+  </data>
+  <data name="InvalidLocalCacheModeErrorMessage" xml:space="preserve">
+    <value>LocalCacheMode parameter has invalid value.</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </root>

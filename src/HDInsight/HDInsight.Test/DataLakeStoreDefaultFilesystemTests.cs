@@ -29,9 +29,16 @@ namespace Commands.HDInsight.Test.UnitTests
     public class DataLakeStoreDefaultFilesystemTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
+<<<<<<< HEAD
         private const string StorageName = "dummystorage.azuredatalakestore.net";
         private const int ClusterSize = 4;
         private Guid ObjectId = new Guid("11111111-1111-1111-1111-111111111111");
+=======
+        private const string StorageAccountResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fakerg/providers/Microsoft.Storage/storageAccounts/dummystorage";
+        private const int ClusterSize = 4;
+        private Guid ObjectId = new Guid("11111111-1111-1111-1111-111111111111");
+        private Guid ApplicationId = new Guid("11111111-1111-1111-1111-111111111111");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private Guid AadTenantId = new Guid("11111111-1111-1111-1111-111111111111");
         private string Certificate = "";
         private string CertificatePassword = "";
@@ -61,10 +68,18 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
                 CertificateFilePath = Certificate,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
                 DefaultStorageAccountName = StorageName
+=======
+                ApplicationId = ApplicationId,
+                CertificateFilePath = Certificate,
+                AadTenantId = AadTenantId,
+                CertificatePassword = CertificatePassword,
+                StorageAccountResourceId = StorageAccountResourceId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             newclusteridentitycmdlet.ExecuteCmdlet();
@@ -76,8 +91,14 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.AADTenantId == AadTenantId &&
                                 c.CertificatePassword == CertificatePassword &&
                                 c.ObjectId == ObjectId &&
+<<<<<<< HEAD
                                 c.CertificateFilePath == Certificate &&
                                 c.DefaultStorageAccountName == StorageName
+=======
+                                c.ApplicationId == ApplicationId &&
+                                c.CertificateFilePath == Certificate &&
+                                c.StorageAccountResourceId == StorageAccountResourceId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 )),
                 Times.Once);
         }
@@ -91,10 +112,18 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
                 CertificateFileContents = CertificateFileContents,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
                 DefaultStorageAccountName = StorageName
+=======
+                ApplicationId = ApplicationId,
+                CertificateFileContents = CertificateFileContents,
+                AadTenantId = AadTenantId,
+                CertificatePassword = CertificatePassword,
+                StorageAccountResourceId = StorageAccountResourceId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             clusterIdentityCmdlet.ExecuteCmdlet();
@@ -106,8 +135,14 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.AADTenantId == AadTenantId &&
                                 c.CertificatePassword == CertificatePassword &&
                                 c.ObjectId == ObjectId &&
+<<<<<<< HEAD
                                 c.CertificateFileContents == CertificateFileContents &&
                                 c.DefaultStorageAccountName == StorageName
+=======
+                                c.ApplicationId == ApplicationId &&
+                                c.CertificateFileContents == CertificateFileContents &&
+                                c.StorageAccountResourceId == StorageAccountResourceId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 )),
                 Times.Once);
         }
@@ -121,6 +156,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword
             };
@@ -137,6 +176,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
                 CertificateFileContents = CertificateFileContents,

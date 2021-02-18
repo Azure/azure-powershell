@@ -65,13 +65,24 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateNotNullOrEmpty]
         public string[] LocationFilter { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceDiscoveryMode)]
+        [ValidateSet("ExistingNonCompliant", "ReEvaluateCompliance")]
+        public string ResourceDiscoveryMode { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Executes the cmdlet to create a remediation resource
         /// </summary>
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        public override void Execute()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ManagementGroupName, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
@@ -81,7 +92,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, managementGroupId: this.ManagementGroupName, resourceGroupName: this.ResourceGroupName);
             var remediationName = this.GetRemediationName(name: this.Name, resourceId: this.ResourceId);
 
+<<<<<<< HEAD
             var remediation = new Remediation(policyAssignmentId: this.PolicyAssignmentId, policyDefinitionReferenceId: this.PolicyDefinitionReferenceId);
+=======
+            var remediation = new Remediation(policyAssignmentId: this.PolicyAssignmentId, policyDefinitionReferenceId: this.PolicyDefinitionReferenceId, resourceDiscoveryMode: this.ResourceDiscoveryMode);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.LocationFilter != null)
             {
                 remediation.Filters = new RemediationFilters(this.LocationFilter);

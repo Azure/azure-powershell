@@ -4,11 +4,19 @@
   "parameters": {
     "StorageAccountName1": {
       "type": "string",
+<<<<<<< HEAD
       "defaultValue": "tianosatest78"
     },
     "StorageAccountName2": {
       "type": "string",
       "defaultValue": "tianosatest79"
+=======
+      "defaultValue": "shenglolsatest78"
+    },
+    "StorageAccountName2": {
+      "type": "string",
+      "defaultValue": "shenglolsatest79"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     },
     "NestedDeploymentResourceGroup": {
       "type": "string"

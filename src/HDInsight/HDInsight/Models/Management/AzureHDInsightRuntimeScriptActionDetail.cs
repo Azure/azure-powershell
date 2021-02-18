@@ -15,6 +15,10 @@
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Globalization;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
@@ -24,9 +28,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public AzureHDInsightRuntimeScriptActionDetail(RuntimeScriptActionDetail runtimeScriptActionDetail)
             : base(runtimeScriptActionDetail)
         {
+<<<<<<< HEAD
             ScriptExecutionId = runtimeScriptActionDetail.ScriptExecutionId;
             StartTime = runtimeScriptActionDetail.StartTime;
             EndTime = runtimeScriptActionDetail.EndTime;
+=======
+            ScriptExecutionId = runtimeScriptActionDetail.ScriptExecutionId ?? 0;
+            StartTime = DateTime.Parse(runtimeScriptActionDetail.StartTime, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+            EndTime = DateTime.Parse(runtimeScriptActionDetail.EndTime, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Status = runtimeScriptActionDetail.Status;
             Operation = runtimeScriptActionDetail.Operation;
 

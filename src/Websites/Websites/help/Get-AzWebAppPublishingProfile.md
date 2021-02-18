@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 38433470-CAFD-4B8F-980C-63D4B264B39F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebapppublishingprofile
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
+Module Name: Az.Websites
+ms.assetid: 38433470-CAFD-4B8F-980C-63D4B264B39F
+online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebapppublishingprofile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,9 +38,15 @@ The **Get-AzWebAppPublishingProfile** cmdlet gets an Azure Web App publishing pr
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:
 ```
 PS C:\> Get-AzWebAppPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile"
+=======
+### Example 1
+```powershell
+PS C:\> Get-AzWebAppPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile.publishsettings"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the publishing profile in Ftp format for Web App ContosoWebApp associated with the resource group Default-Web-WestUS

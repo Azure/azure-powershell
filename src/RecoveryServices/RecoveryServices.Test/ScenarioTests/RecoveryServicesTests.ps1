@@ -95,7 +95,11 @@ Recovery Services Vault CRUD Tests
 #>
 function Test-RecoveryServicesVaultCRUD
 {
+<<<<<<< HEAD
 	$location = Get-ResourceGroupLocation
+=======
+	$location = "southeastasia"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$resourceGroupName = Create-ResourceGroup $location
 	$name = "PSTestRSV" + @(Get-RandomSuffix)
 
@@ -134,7 +138,11 @@ function Test-RecoveryServicesVaultCRUD
 		# 6. Remove-AzRecoveryServicesVault
 		Remove-AzRecoveryServicesVault -Vault $vault1
 
+<<<<<<< HEAD
 		$vaults = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name
+=======
+		$vaults = Get-AzRecoveryServicesVault -Name $name
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Assert-True { $vaults.Count -eq 0 } 
 	}
 	finally

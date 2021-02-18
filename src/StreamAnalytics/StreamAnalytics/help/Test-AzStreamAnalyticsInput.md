@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: DEAC40AB-D90B-41D8-86AB-A66B60A908BD
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+=======
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,8 +27,13 @@ The **Test-AzStreamAnalyticsInput** cmdlet tests the ability of Stream Analytics
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### EXAMPLE 1: Test the connection status of an input stream
 ```
+=======
+### Example 1: Test the connection status of an input stream
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Test-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EntryStream"
 ```
 

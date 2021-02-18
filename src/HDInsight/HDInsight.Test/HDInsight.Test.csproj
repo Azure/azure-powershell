@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+=======
+<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>HDInsight</PsModuleName>
@@ -11,12 +15,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="2.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
+=======
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.11.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HDInsight\HDInsight.csproj" />
   </ItemGroup>
 
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
+  </ItemGroup>
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

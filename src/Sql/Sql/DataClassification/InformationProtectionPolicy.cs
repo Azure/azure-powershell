@@ -11,6 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Sql.DataClassification.Model;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -20,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 {
     internal class InformationProtectionPolicy
     {
+<<<<<<< HEAD
         public IDictionary<string, Guid> SensitivityLabels { get; private set; }
         public IDictionary<string, Guid> InformationTypes { get; private set; }
 
@@ -39,6 +44,38 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                         { "Confidential - GDPR", Guid.Parse("989ADC05-3F3F-0588-A635-F475B994915B") },
                         { "Highly Confidential", Guid.Parse("B82CE05B-60A9-4CF3-8A8A-D6A0BB76E903") },
                         { "Highly Confidential - GDPR", Guid.Parse("3302AE7F-B8AC-46BC-97F8-378828781EFD") }
+=======
+        public IDictionary<string, Tuple<Guid, SensitivityRank>> SensitivityLabels { get; private set; }
+        public IDictionary<string, Guid> InformationTypes { get; private set; }
+
+        public static InformationProtectionPolicy ToInformationProtectionPolicy(JToken policyToken)
+        {
+
+            InformationProtectionPolicy policy = new InformationProtectionPolicy();
+            JToken propertiesToken = policyToken["properties"];
+
+            IDictionary<string, JToken> dictionary = (JObject)propertiesToken["informationTypes"];
+            policy.InformationTypes = dictionary.ToDictionary(pair => pair.Value["displayName"].ToString(), pair => Guid.Parse(pair.Key));
+
+            dictionary = (JObject)propertiesToken["labels"];
+            policy.SensitivityLabels = dictionary.ToDictionary(
+                pair => pair.Value["displayName"].ToString(),
+                pair => Tuple.Create(Guid.Parse(pair.Key), (SensitivityRank)Enum.Parse(typeof(SensitivityRank), pair.Value["rank"]?.ToString())));
+            
+            return policy;
+        }
+
+        public static InformationProtectionPolicy DefaultInformationProtectionPolicy => new InformationProtectionPolicy
+        {
+            SensitivityLabels = new Dictionary<string, Tuple<Guid, SensitivityRank>>()
+                    {
+                        { "Public", Tuple.Create(Guid.Parse("1866CA45-1973-4C28-9D12-04D407F147AD") , SensitivityRank.None) },
+                        { "General", Tuple.Create(Guid.Parse("684A0DB2-D514-49D8-8C0C-DF84A7B083EB"), SensitivityRank.Low) },
+                        { "Confidential", Tuple.Create(Guid.Parse("331F0B13-76B5-2F1B-A77B-DEF5A73C73C2"), SensitivityRank.Medium) },
+                        { "Confidential - GDPR", Tuple.Create(Guid.Parse("989ADC05-3F3F-0588-A635-F475B994915B"), SensitivityRank.Medium) },
+                        { "Highly Confidential", Tuple.Create(Guid.Parse("B82CE05B-60A9-4CF3-8A8A-D6A0BB76E903"),  SensitivityRank.High)},
+                        { "Highly Confidential - GDPR", Tuple.Create(Guid.Parse("3302AE7F-B8AC-46BC-97F8-378828781EFD"), SensitivityRank.High) }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
             InformationTypes = new Dictionary<string, Guid>()
                     {
@@ -56,6 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                         { "Date Of Birth", Guid.Parse("3DE7CC52-710D-4E96-7E20-4D5188D2590C") }
                     }
         };
+<<<<<<< HEAD
 
         private static IDictionary<string, Guid> ToDictionary(JToken policyToken, string policyEntry)
         {
@@ -63,5 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             IDictionary<string, JToken> dictionary = (JObject)propertiesToken[policyEntry];
             return dictionary.ToDictionary(pair => pair.Value["displayName"].ToString(), pair => Guid.Parse(pair.Key));
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

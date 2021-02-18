@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightscontinuousexport
+=======
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscontinuousexport
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Set-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Update a continuous export configuration in an applciation insights resource
+=======
+Update a continuous export configuration in an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -35,7 +43,11 @@ Set-AzApplicationInsightsContinuousExport [-ResourceId] <String> -ExportId <Stri
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Update a continuous export configuration in an applciation insights resource
+=======
+Update a continuous export configuration in an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -59,7 +71,11 @@ ExportStatus                     : Preparing
 LastSuccessTime                  :
 ```
 
+<<<<<<< HEAD
 Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work. If SAS token expired, the continuous export feature will stop working.
+=======
+Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continuous export feature won't work. If SAS token expired, the continuous export feature will stop working.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

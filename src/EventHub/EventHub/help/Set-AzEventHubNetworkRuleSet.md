@@ -1,22 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/set-azeventhubnetworkruleset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Set-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+=======
+Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
 ### NetworkRuleSetPropertiesSet (Default)
 ```
 Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
+<<<<<<< HEAD
  [-IPRule] <PSNWRuleSetIpRulesAttributes[]> [-VirtualNteworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-TrustedServiceAccessEnabled] [-IPRule] <PSNWRuleSetIpRulesAttributes[]>
+ [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### NetwrokruleSetInputObjectSet
@@ -33,7 +47,11 @@ Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-Re
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+=======
+Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -41,7 +59,11 @@ Update the NetwrokruleSet of the given Namepsace in the current Azure subscripti
 ```powershell
 PS C:\> $IpRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
 PS C:\> $VirtualNetworkRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
+<<<<<<< HEAD
 PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace EventHub-Namespace1-1375 -IPRule $IpRules -VirtualNteworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
+=======
+PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace EventHub-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 
@@ -52,7 +74,11 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
+<<<<<<< HEAD
 Update the NetworkRuleSet using -IPRule and -VirtualNteworkRule parameters
+=======
+Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
@@ -86,7 +112,11 @@ Update the NetworkRuleSet using -ResourceId of the other namespace.
 ## PARAMETERS
 
 ### -DefaultAction
+<<<<<<< HEAD
 Default Action for NetwrokeuleSet
+=======
+Default Action for NetworkRuleSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -190,13 +220,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -VirtualNteworkRule
+=======
+### -TrustedServiceAccessEnabled
+Indicates whether TrustedServiceAccessEnabled is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NetworkRuleSetPropertiesSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkRule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 List of VirtualNetworkRules
 
 ```yaml
 Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]
 Parameter Sets: NetworkRuleSetPropertiesSet
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: VirtualNteworkRule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 3

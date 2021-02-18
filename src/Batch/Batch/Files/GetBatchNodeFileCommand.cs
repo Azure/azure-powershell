@@ -95,7 +95,11 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = ParentComputeNodeObjectParameterSet)]
         public SwitchParameter Recursive { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             ListNodeFileOptions options = new ListNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.Task, this.PoolId,
                 this.ComputeNodeId, this.ComputeNode, this.AdditionalBehaviors)

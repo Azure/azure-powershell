@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayidentity
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayidentity
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,7 +34,11 @@ PS C:\>$appgwIdentity = Set-AzApplicationGatewayIdentity -UserAssignedIdentity $
 PS C:\>$updatedAppGw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
+<<<<<<< HEAD
 In this example, we assign a user assigned identity to an existing applicaiton gateway.
+=======
+In this example, we assign a user assigned identity to an existing application gateway.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Note: This identity should have access to the keyvault from which the certificates/secrets will be referenced.
 
 ## PARAMETERS

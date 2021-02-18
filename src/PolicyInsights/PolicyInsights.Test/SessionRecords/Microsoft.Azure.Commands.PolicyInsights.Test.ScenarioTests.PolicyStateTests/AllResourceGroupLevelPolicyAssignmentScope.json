@@ -1,22 +1,38 @@
 {
   "Entries": [
     {
+<<<<<<< HEAD
       "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/default/queryResults?api-version=2018-07-01-preview&$top=10",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Jlc291cmNlZ3JvdXBzL2ppbGltcG9saWN5dGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeUFzc2lnbm1lbnRzL2U5ODYwNjEyZDhlYzRhNDY5ZjU5YWYwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3BvbGljeVN0YXRlcy9kZWZhdWx0L3F1ZXJ5UmVzdWx0cz9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXcmJHRvcD0xMA==",
+=======
+      "RequestUri": "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/Microsoft.Authorization/policyAssignments/8a4555d353ed46bb856e9890/providers/Microsoft.PolicyInsights/policyStates/default/queryResults?api-version=2019-10-01&$top=10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTc4OTYxYmEtMzZmZS00NzM5LTkyMTItZTMwMzFiNGM4ZGI3L3Jlc291cmNlZ3JvdXBzL2NoZWdncG9saWN5L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy84YTQ1NTVkMzUzZWQ0NmJiODU2ZTk4OTAvcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9wb2xpY3lTdGF0ZXMvZGVmYXVsdC9xdWVyeVJlc3VsdHM/YXBpLXZlcnNpb249MjAxOS0xMC0wMSYkdG9wPTEw",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
+<<<<<<< HEAD
           "c9b85956-7c10-44a7-91de-36e6c68ba6ce"
+=======
+          "e06f3ea5-28d2-4f81-b2b9-1f05237f410c"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
+<<<<<<< HEAD
           "FxVersion/4.6.27317.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/2.0.2.0"
+=======
+          "FxVersion/4.6.28516.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.1.0.0"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ]
       },
       "ResponseHeaders": {
@@ -26,6 +42,7 @@
         "Pragma": [
           "no-cache"
         ],
+<<<<<<< HEAD
         "Vary": [
           "Accept-Encoding"
         ],
@@ -46,15 +63,44 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS2:20190416T211732Z:b970eb3d-1a7f-4f7f-aa4a-2d516e6e74e9"
+=======
+        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
+          "598"
+        ],
+        "x-ms-request-id": [
+          ":eaa980e4-e652-4442-9e4d-3c9d10bb245c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "916ffa97-a2af-4bf4-884c-2c0546fecd24"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200331T000645Z:916ffa97-a2af-4bf4-884c-2c0546fecd24"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
+<<<<<<< HEAD
           "Tue, 16 Apr 2019 21:17:32 GMT"
         ],
         "Content-Length": [
           "6927"
+=======
+          "Tue, 31 Mar 2020 00:06:45 GMT"
+        ],
+        "Content-Length": [
+          "6183"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,12 +109,20 @@
           "-1"
         ]
       },
+<<<<<<< HEAD
       "ResponseBody": "{\r\n  \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/$metadata#default\",\r\n  \"@odata.count\": 4,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2019-04-16T20:19:25.4493237Z\",\r\n      \"resourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.authorization/policyassignments/e9860612d8ec4a469f59af06\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": true,\r\n      \"subscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"resourceType\": \"/Microsoft.Resources/subscriptions/resourceGroups\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceGroup\": \"jilimpolicytest2\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"e9860612d8ec4a469f59af06\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourceGroups/jilimpolicytest2\",\r\n      \"policyDefinitionName\": \"e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"policyDefinitionAction\": \"deny\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"ArtTest2,ArtTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NotApplicable\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2019-04-16T20:19:18.1742025Z\",\r\n      \"resourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.storage/storageaccounts/jilim\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.authorization/policyassignments/e9860612d8ec4a469f59af06\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"resourceType\": \"/Microsoft.Storage/storageAccounts\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceGroup\": \"jilimpolicytest2\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"e9860612d8ec4a469f59af06\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourceGroups/jilimpolicytest2\",\r\n      \"policyDefinitionName\": \"e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"policyDefinitionAction\": \"deny\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"ArtTest2,ArtTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NonCompliant\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2019-04-15T22:53:11.104753Z\",\r\n      \"resourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.authorization/policyassignments/e9860612d8ec4a469f59af06\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": true,\r\n      \"subscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"resourceType\": \"/Microsoft.Resources/subscriptions/resourceGroups\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceGroup\": \"jilimpolicytest2\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"e9860612d8ec4a469f59af06\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourceGroups/jilimpolicytest2\",\r\n      \"policyDefinitionName\": \"e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"policyDefinitionAction\": \"deny\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"ArtTest2,ArtTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NotApplicable\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/Microsoft.Authorization/policyAssignments/e9860612d8ec4a469f59af06/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2019-04-15T22:53:06.8229065Z\",\r\n      \"resourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.storage/storageaccounts/jilim\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/jilimpolicytest2/providers/microsoft.authorization/policyassignments/e9860612d8ec4a469f59af06\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"resourceType\": \"/Microsoft.Storage/storageAccounts\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceGroup\": \"jilimpolicytest2\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"e9860612d8ec4a469f59af06\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourceGroups/jilimpolicytest2\",\r\n      \"policyDefinitionName\": \"e56962a6-4747-49cd-b67b-bf8b01975c4c\",\r\n      \"policyDefinitionAction\": \"deny\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"ArtTest2,ArtTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NonCompliant\"\r\n    }\r\n  ]\r\n}",
+=======
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://management.azure.com/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/Microsoft.Authorization/policyAssignments/8a4555d353ed46bb856e9890/providers/Microsoft.PolicyInsights/policyStates/$metadata#default\",\r\n  \"@odata.count\": 3,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/Microsoft.Authorization/policyAssignments/8a4555d353ed46bb856e9890/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2020-03-30T11:34:27.361614Z\",\r\n      \"resourceId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.network/virtualnetworks/cheggvnet\",\r\n      \"policyAssignmentId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.authorization/policyassignments/8a4555d353ed46bb856e9890\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/a7aca53f-2ed4-4466-a25e-0b45ade68efd\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"e78961ba-36fe-4739-9212-e3031b4c8db7\",\r\n      \"resourceType\": \"Microsoft.Network/virtualNetworks\",\r\n      \"resourceLocation\": \"centralus\",\r\n      \"resourceGroup\": \"cheggpolicy\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"8a4555d353ed46bb856e9890\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/cheggpolicy\",\r\n      \"policyDefinitionName\": \"a7aca53f-2ed4-4466-a25e-0b45ade68efd\",\r\n      \"policyDefinitionAction\": \"auditifnotexists\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionName\": \"1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"security center\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"PolicyUIMG,AzGovTest5,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"vnetenableddosprotectionmonitoring\",\r\n      \"complianceState\": \"NonCompliant\",\r\n      \"policyDefinitionGroupNames\": [\r\n        \"\"\r\n      ],\r\n      \"policyDefinitionVersion\": \"\",\r\n      \"policySetDefinitionVersion\": \"\",\r\n      \"policyAssignmentVersion\": \"\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/Microsoft.Authorization/policyAssignments/8a4555d353ed46bb856e9890/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2020-03-30T11:34:27.2571711Z\",\r\n      \"resourceId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.keyvault/vaults/cheggtmpkv\",\r\n      \"policyAssignmentId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.authorization/policyassignments/8a4555d353ed46bb856e9890\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/cf820ca0-f99e-4f3e-84fb-66e913812d21\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"e78961ba-36fe-4739-9212-e3031b4c8db7\",\r\n      \"resourceType\": \"Microsoft.KeyVault/vaults\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceGroup\": \"cheggpolicy\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"8a4555d353ed46bb856e9890\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/cheggpolicy\",\r\n      \"policyDefinitionName\": \"cf820ca0-f99e-4f3e-84fb-66e913812d21\",\r\n      \"policyDefinitionAction\": \"auditifnotexists\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionName\": \"1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"security center\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"PolicyUIMG,AzGovTest5,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"diagnosticslogsinkeyvaultmonitoring\",\r\n      \"complianceState\": \"NonCompliant\",\r\n      \"policyDefinitionGroupNames\": [\r\n        \"\"\r\n      ],\r\n      \"policyDefinitionVersion\": \"\",\r\n      \"policySetDefinitionVersion\": \"\",\r\n      \"policyAssignmentVersion\": \"\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/Microsoft.Authorization/policyAssignments/8a4555d353ed46bb856e9890/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"timestamp\": \"2020-03-30T11:34:27.2289118Z\",\r\n      \"resourceId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.keyvault/vaults/cheggkv\",\r\n      \"policyAssignmentId\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourcegroups/cheggpolicy/providers/microsoft.authorization/policyassignments/8a4555d353ed46bb856e9890\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/cf820ca0-f99e-4f3e-84fb-66e913812d21\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"e78961ba-36fe-4739-9212-e3031b4c8db7\",\r\n      \"resourceType\": \"Microsoft.KeyVault/vaults\",\r\n      \"resourceLocation\": \"northcentralus\",\r\n      \"resourceGroup\": \"cheggpolicy\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"8a4555d353ed46bb856e9890\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/cheggpolicy\",\r\n      \"policyDefinitionName\": \"cf820ca0-f99e-4f3e-84fb-66e913812d21\",\r\n      \"policyDefinitionAction\": \"auditifnotexists\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionName\": \"1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"security center\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"PolicyUIMG,AzGovTest5,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"diagnosticslogsinkeyvaultmonitoring\",\r\n      \"complianceState\": \"NonCompliant\",\r\n      \"policyDefinitionGroupNames\": [\r\n        \"\"\r\n      ],\r\n      \"policyDefinitionVersion\": \"\",\r\n      \"policySetDefinitionVersion\": \"\",\r\n      \"policyAssignmentVersion\": \"\"\r\n    }\r\n  ]\r\n}",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
+<<<<<<< HEAD
     "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5"
+=======
+    "SubscriptionId": "e78961ba-36fe-4739-9212-e3031b4c8db7"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   }
 }

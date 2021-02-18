@@ -91,11 +91,47 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     ResourceGroupName));
             }
 
+<<<<<<< HEAD
             var parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
             {
                 ProtocolType = Management.Cdn.Models.ProtocolType.IPBased,
                 CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
             };
+=======
+            // Get the Profile so we can lookup its Sku.
+            var profile = CdnManagementClient.Profiles.Get(ResourceGroupName, ProfileName);
+
+            // Setup the request parameters according to the profile Sku.
+            Management.Cdn.Models.CdnManagedHttpsParameters parameters;
+            switch (profile.Sku.Name)
+            {
+                case Management.Cdn.Models.SkuName.StandardMicrosoft:
+                    // Microsoft
+                    parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
+                    {
+                        ProtocolType = Management.Cdn.Models.ProtocolType.ServerNameIndication,
+                        CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Dedicated" }
+                    };
+                    break;
+                case Management.Cdn.Models.SkuName.StandardAkamai:
+                    // Akamai
+                    parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
+                    {
+                        ProtocolType = Management.Cdn.Models.ProtocolType.ServerNameIndication,
+                        CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
+                    };
+
+                    break;
+                default:
+                    // Verizon
+                    parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
+                    {
+                        ProtocolType = Management.Cdn.Models.ProtocolType.IPBased,
+                        CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
+                    };
+                    break;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ConfirmAction(MyInvocation.InvocationName,
                 String.Format("{0} ({1})", existingCustomDomain.Name, existingCustomDomain.HostName),

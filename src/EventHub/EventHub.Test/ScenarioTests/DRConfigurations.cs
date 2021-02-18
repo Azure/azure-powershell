@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -27,20 +28,42 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
+=======
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
+{
+   
+    public class DRConfigurationTests : EventHubTestRunner
+    {
+
+        public DRConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DRConfigurationsCURD()
         {
+<<<<<<< HEAD
             EventHubsController.NewInstance.RunPsTest(_logger, "DRConfigurationTests");
+=======
+            TestRunner.RunTestScript("DRConfigurationTests");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DRConfigurationsCURDAlternateName()
         {
+<<<<<<< HEAD
             EventHubsController.NewInstance.RunPsTest(_logger, "DRConfigurationTestsAlternateName");
+=======
+            TestRunner.RunTestScript("DRConfigurationTestsAlternateName");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

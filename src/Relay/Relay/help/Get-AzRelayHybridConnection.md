@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelayhybridconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayhybridconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -110,7 +114,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+=======
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

@@ -12,7 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+=======
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -24,6 +39,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+<<<<<<< HEAD
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +50,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -742,6 +760,20 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static bool IsDiagnosticsExtension(VirtualMachineScaleSetExtension extension)
         {
             return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+<<<<<<< HEAD
+=======
+                extension.Type1.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Check if a VMSS extension is diagnostics extension.
+        /// </summary>
+        /// <param name="extension">VMSS extension</param>
+        /// <returns>Whether the VMSS extension is diagnostics extension</returns>
+        public static bool IsDiagnosticsExtension(PSVirtualMachineScaleSetExtension extension)
+        {
+            return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 extension.Type.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
         }
     }

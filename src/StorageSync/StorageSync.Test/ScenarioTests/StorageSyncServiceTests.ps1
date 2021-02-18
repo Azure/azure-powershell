@@ -34,8 +34,20 @@ function Test-StorageSyncService
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
+<<<<<<< HEAD
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
         
+=======
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName -IncomingTrafficPolicy "AllowVirtualNetworksOnly"
+
+        $storageSyncService = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
+        Write-Verbose "Validating StorageSyncService Properties"
+        Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName
+        Assert-AreEqual "AllowVirtualNetworksOnly" $storageSyncService.IncomingTrafficPolicy
+
+        Set-AzStorageSyncService -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -IncomingTrafficPolicy "AllowAllTraffic"
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Write-Verbose "List StorageSyncServices by ResourceGroup"
         $storageSyncServices = Get-AzStorageSyncService -ResourceGroupName $resourceGroupName
 
@@ -44,13 +56,28 @@ function Test-StorageSyncService
 
         Write-Verbose "Validating StorageSyncService Properties"
         Assert-AreEqual $storageSyncServiceName $storageSyncService.StorageSyncServiceName
+<<<<<<< HEAD
+=======
+        Assert-AreEqual "AllowAllTraffic" $storageSyncService.IncomingTrafficPolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual (Normalize-Location($resourceLocation)) (Normalize-Location($storageSyncService.Location))
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
         Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
+<<<<<<< HEAD
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Get-AzStorageSyncService  | Remove-AzStorageSyncService -Force -AsJob | Wait-Job
 
+=======
+        # TODO : Remove the new generation of sss, it should work
+         $storageSyncServiceName = Get-ResourceName("sss")
+
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Get-AzStorageSyncService  | Remove-AzStorageSyncService -Force -AsJob | Wait-Job
+
+         # TODO : Remove the new generation of sss, it should work
+        $storageSyncServiceName = Get-ResourceName("sss")
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName | Remove-AzStorageSyncService -Force -AsJob | Wait-Job
     }
     finally

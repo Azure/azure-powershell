@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
+<<<<<<< HEAD
+=======
+        public PSResourceId PrivateEndpoint { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
@@ -78,9 +83,31 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+<<<<<<< HEAD
+=======
+        [JsonIgnore]
+        public string PrivateEndpointText
+        {
+            get { return JsonConvert.SerializeObject(PrivateEndpoint, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
+<<<<<<< HEAD
+=======
+
+        public bool ShouldSerializeTapConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeHostedWorkloads()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -118,9 +118,19 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         public PSUserAccount[] UserAccount { get; set; }
 
         public override void ExecuteCmdlet()
+=======
+        public PSMountConfiguration[] MountConfiguration { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSUserAccount[] UserAccount { get; set; }
+
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
@@ -142,7 +152,12 @@ namespace Microsoft.Azure.Commands.Batch
                 CloudServiceConfiguration = this.CloudServiceConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
+<<<<<<< HEAD
                 ApplicationLicenses = this.ApplicationLicenses
+=======
+                ApplicationLicenses = this.ApplicationLicenses,
+                MountConfiguration = this.MountConfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (ShouldProcess("AzureBatchPool"))

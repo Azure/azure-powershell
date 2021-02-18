@@ -19,11 +19,20 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using System;
+<<<<<<< HEAD
+=======
+using System.Linq;
+using System.Text;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+<<<<<<< HEAD
     public class BatchCmdletBase : AzureRMCmdlet
+=======
+    public abstract class BatchCmdletBase : AzureRMCmdlet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         private BatchClient batchClient;
 
@@ -43,16 +52,21 @@ namespace Microsoft.Azure.Commands.Batch
             set { batchClient = value; }
         }
 
+<<<<<<< HEAD
         protected virtual void OnProcessRecord()
         {
             // Intentionally left blank
         }
+=======
+        protected abstract void ExecuteCmdletImpl();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 Validate.ValidateInternetConnection();
+<<<<<<< HEAD
                 ProcessRecord();
                 OnProcessRecord();
             }
@@ -85,11 +99,53 @@ namespace Microsoft.Azure.Commands.Batch
                 var updatedEx = ex;
 
                 if (ex.Response != null && ex.Response.Content != null)
+=======
+                ExecuteCmdletImpl();
+            }
+            catch (BatchException ex)
+            {
+                if (ex?.RequestInformation != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine($"HttpStatusCode: " + ex.RequestInformation.HttpStatusCode);
+                    sb.AppendLine($"StatusMessage: " + ex.RequestInformation.HttpStatusMessage);
+                    sb.AppendLine($"ClientRequestId: {ex.RequestInformation.ClientRequestId}");
+                    sb.AppendLine($"RequestId: {ex.RequestInformation.ServiceRequestId}");
+
+                    if (ex.RequestInformation.BatchError != null)
+                    {
+                        sb.AppendLine();
+                        sb.AppendLine($"Error code: {ex.RequestInformation.BatchError.Code}");
+                        if (ex.RequestInformation.BatchError.Message != null)
+                        {
+                            sb.AppendLine($"Message: {ex.RequestInformation.BatchError.Message.Value}");
+                        }
+
+                        if (ex.RequestInformation.BatchError.Values != null && ex.RequestInformation.BatchError.Values.Any())
+                        {
+                            sb.AppendLine("Error details:");
+                            foreach (var item in ex.RequestInformation.BatchError.Values)
+                            {
+                                sb.AppendLine($"{item.Key}: {item.Value}");
+                            }
+                        }
+                    }
+
+                    throw new BatchException(ex.RequestInformation, sb.ToString(), ex.InnerException);
+                }
+
+                throw;
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response?.Content != null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     var message = FindDetailedMessage(ex.Response.Content);
 
                     if (message != null)
                     {
+<<<<<<< HEAD
                         updatedEx = new CloudException(message, ex);
                     }
                 }
@@ -99,6 +155,14 @@ namespace Microsoft.Azure.Commands.Batch
             catch (Exception ex)
             {
                 WriteExceptionError(ex);
+=======
+                        var updatedEx = new CloudException(message, ex);
+                        throw updatedEx;
+                    }
+                }
+
+                throw;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -110,7 +174,10 @@ namespace Microsoft.Azure.Commands.Batch
         /// <returns></returns>
         internal static string FindDetailedMessage(string content)
         {
+<<<<<<< HEAD
             // TODO: Revise after Task 2362107 is completed on the server side
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string message = null;
 
             if (CloudException.IsJson(content))
@@ -146,6 +213,7 @@ namespace Microsoft.Azure.Commands.Batch
 
             return message;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Extracts failure details from the BatchException object to create a more informative error message for the user.
@@ -165,5 +233,7 @@ namespace Microsoft.Azure.Commands.Batch
                 }
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

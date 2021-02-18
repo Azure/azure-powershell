@@ -23,16 +23,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using System.Xml;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssConfig", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+<<<<<<< HEAD
+=======
+    [GenericBreakingChange("This command will no longer always create the UpgradePolicy property in the PSVirtualMachineScaleSet object" +
+        " after the next major release. Please ensure you pass in the UpgradePolicyMode, RollingUpgradePolicy, or EnableAutomaticOSUpgrade parameter" +
+        " if you require this to be populated.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -101,7 +115,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public VirtualMachineScaleSetExtension[] Extension { get; set; }
+=======
+        public PSVirtualMachineScaleSetExtension[] Extension { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -148,6 +170,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableAutomaticRepair { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string AutomaticRepairGracePeriod { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
@@ -178,6 +213,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+=======
+        [PSArgumentCompleter("Regular", "Spot")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Priority { get; set; }
 
         [Parameter(
@@ -189,9 +228,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+=======
+        public double MaxPrice { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter TerminateScheduledEvents { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int TerminateScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
+        public string[] ScaleInPolicy { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
@@ -203,6 +269,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EncryptionAtHost { get; set; } 
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -222,8 +296,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // UpgradePolicy
             UpgradePolicy vUpgradePolicy = null;
 
+<<<<<<< HEAD
             // VirtualMachineProfile
             VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
+=======
+            // AutomaticRepairsPolicy
+            AutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
+
+            // VirtualMachineProfile
+            PSVirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             // ProximityPlacementGroup
             SubResource vProximityPlacementGroup = null;
@@ -231,6 +313,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // AdditionalCapabilities
             AdditionalCapabilities vAdditionalCapabilities = null;
 
+<<<<<<< HEAD
+=======
+            // ScaleInPolicy
+            ScaleInPolicy vScaleInPolicy = null;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Identity
             VirtualMachineScaleSetIdentity vIdentity = null;
 
@@ -314,6 +402,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
+<<<<<<< HEAD
 
             if (vUpgradePolicy == null)
             {
@@ -324,6 +413,52 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+=======
+            
+            if (this.AutoOSUpgrade.IsPresent)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new UpgradePolicy();
+                }
+                if (vUpgradePolicy.AutomaticOSUpgradePolicy == null)
+                {
+                    vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+                }
+                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+            }
+
+            if (this.EnableAutomaticRepair.IsPresent)
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+            }
+
+            if (this.EncryptionAtHost.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                vVirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (this.IsParameterBound(c => c.DisableAutoRollback))
             {
@@ -342,7 +477,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.OsProfile = this.OsProfile;
             }
@@ -351,7 +490,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.StorageProfile = this.StorageProfile;
             }
@@ -360,7 +503,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 if (vVirtualMachineProfile.NetworkProfile == null)
                 {
@@ -377,7 +524,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 if (vVirtualMachineProfile.NetworkProfile == null)
                 {
@@ -390,7 +541,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 if (vVirtualMachineProfile.DiagnosticsProfile == null)
                 {
@@ -403,11 +558,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
                 }
                 if (vVirtualMachineProfile.ExtensionProfile == null)
                 {
                     vVirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ExtensionProfile == null)
+                {
+                    vVirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.ExtensionProfile.Extensions = this.Extension;
             }
@@ -416,7 +579,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.LicenseType = this.LicenseType;
             }
@@ -425,7 +592,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.Priority = this.Priority;
             }
@@ -434,11 +605,65 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vVirtualMachineProfile == null)
                 {
+<<<<<<< HEAD
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+=======
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
             }
 
+<<<<<<< HEAD
+=======
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.BillingProfile == null)
+                {
+                    vVirtualMachineProfile.BillingProfile = new BillingProfile();
+                }
+                vVirtualMachineProfile.BillingProfile.MaxPrice = this.MaxPrice;
+            }
+
+            if (this.TerminateScheduledEvents.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile = new TerminateNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.Enable = this.TerminateScheduledEvents.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.TerminateScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile = new TerminateNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.NotBeforeTimeout = XmlConvert.ToString(new TimeSpan(0, this.TerminateScheduledEventNotBeforeTimeoutInMinutes, 0));
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
             {
                 if (vProximityPlacementGroup == null)
@@ -456,6 +681,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+<<<<<<< HEAD
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -463,6 +689,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity = new VirtualMachineScaleSetIdentity();
                 }
                 vIdentity.Type = ResourceIdentityType.SystemAssigned;
+=======
+            if (this.IsParameterBound(c => c.ScaleInPolicy))
+            {
+                if (vScaleInPolicy == null)
+                {
+                    vScaleInPolicy = new ScaleInPolicy();
+                }
+                vScaleInPolicy.Rules = this.ScaleInPolicy;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (this.IsParameterBound(c => c.IdentityType))
@@ -492,6 +727,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
+<<<<<<< HEAD
+=======
+                DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs.IsPresent ? true : (bool?)null,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 SinglePlacementGroup = this.IsParameterBound(c => c.SinglePlacementGroup) ? this.SinglePlacementGroup : (bool?)null,
                 ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
                 PlatformFaultDomainCount = this.IsParameterBound(c => c.PlatformFaultDomainCount) ? this.PlatformFaultDomainCount : (int?)null,
@@ -501,9 +740,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
+<<<<<<< HEAD
                 VirtualMachineProfile = vVirtualMachineProfile,
                 ProximityPlacementGroup = vProximityPlacementGroup,
                 AdditionalCapabilities = vAdditionalCapabilities,
+=======
+                AutomaticRepairsPolicy = vAutomaticRepairsPolicy,
+                VirtualMachineProfile = vVirtualMachineProfile,
+                ProximityPlacementGroup = vProximityPlacementGroup,
+                AdditionalCapabilities = vAdditionalCapabilities,
+                ScaleInPolicy = vScaleInPolicy,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Identity = vIdentity,
             };
 

@@ -2,14 +2,22 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 73E6DF02-7171-481B-966F-DECEC122A602
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/register-azautomationdscnode
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Register-AzAutomationDscNode
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Registers an Azure virtual machine as a DSC node for an Automation account.
+=======
+Registers an Azure virtual machine running Windows OS as a DSC node for an Automation account.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -22,19 +30,31 @@ Register-AzAutomationDscNode -AzureVMName <String> [-NodeConfigurationName <Stri
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Register-AzAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account.
+=======
+The **Register-AzAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account. This cmdlet will only register VMs running Windows OS as an Automation DSC Node for an account.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 If you need to register a node to an automation account in a different subscription,
 you will need to use an ARM template rather than cmdlets. 
 See the Azure Automation
+<<<<<<< HEAD
 [documentation](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-onboarding#registering-virtual-machines-across-azure-subscriptions)
+=======
+[documentation](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding#registering-virtual-machines-across-azure-subscriptions)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 for more details.
 
 ## EXAMPLES
 
 ### Example 1: Register an Azure virtual machine as an Azure DSC node
 ```
+<<<<<<< HEAD
 PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+=======
+PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17.

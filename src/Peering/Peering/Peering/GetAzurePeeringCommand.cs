@@ -19,22 +19,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+<<<<<<< HEAD
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     using Newtonsoft.Json;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <inheritdoc />
     /// <summary>
     ///     The Get Az InputObject cmdlet.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Get, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
+=======
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeering,
+        DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringCommand : PeeringBaseCmdlet
     {
@@ -45,22 +57,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
+<<<<<<< HEAD
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+=======
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///     Gets or sets the InputObject name.
+=======
+        ///     Gets or sets the name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
+<<<<<<< HEAD
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the Kind of InputObject
+=======
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Kind
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -69,6 +97,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
         public string Kind { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// The resource  id
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <inheritdoc />
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -80,7 +123,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (string.Equals(
                     this.ParameterSetName,
+<<<<<<< HEAD
                     Constants.ParameterSetNamePeeringByResourceAndName,
+=======
+                    Constants.ParameterSetNameByResourceAndName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Name != null)
@@ -89,15 +136,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         this.WriteObject(item);
                     }
                     else
+<<<<<<< HEAD
                     { 
+=======
+                    {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
                 }
+<<<<<<< HEAD
                 else
                 {
                     var list = this.Kind != null ? this.GetPeeringByKind() : this.GetPeeringBySubscription();
                     this.WriteObject(list, true);
+=======
+                else if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
+                {
+                    var resourceId = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.Name = resourceId.ResourceName;
+                    this.WriteObject(this.GetPeeringByResourceAndName());
+                }
+                else
+                {
+                    var list = this.Kind != null ? this.GetPeeringByKind() : this.GetPeeringBySubscription();
+                    this.WriteObject(list);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
             catch (InvalidOperationException mapException)
@@ -110,7 +175,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         ///     Gets InputObject by its Kind
         /// </summary>

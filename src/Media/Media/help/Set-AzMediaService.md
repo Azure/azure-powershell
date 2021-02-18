@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 0FA49058-F3A7-4ED9-93F2-0C84BC130FB7
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.media/set-azmediaservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.media/set-azmediaservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

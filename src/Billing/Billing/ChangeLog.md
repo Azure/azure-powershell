@@ -19,5 +19,26 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
 ## Version 1.0.0
 * General availability of `Az.Billing` module
+=======
+## Version 2.0.0
+* Added `Get-AzBillingAccount` cmdlet
+* Added `Get-AzBillingProfile` cmdlet
+* Added `Get-AzInvoiceSection` cmdlet
+* Added new parameters in `Get-AzBillingInvoice` cmdlet
+* Removed properties DownloadUrlExpiry, Type, BillingPeriodNames from the response of Get-AzBillingInvoice cmdlet
+
+## Version 1.0.3
+* Updated assembly version of consumption cmdlets
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* General availability of `Az.Billing` module
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

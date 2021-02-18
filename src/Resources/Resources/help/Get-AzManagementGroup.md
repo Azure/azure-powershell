@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroup/
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup/
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -89,7 +93,11 @@ Children    :
 
 With the `Expand` flag, one can navigate through the `Children` array and get details for each child. For example, `Children[0]` will give details for the group with display name `TestGroup1DisplayName`.
 
+<<<<<<< HEAD
 ### Example 4: Get specific Management Group and all levels of hiearchy
+=======
+### Example 4: Get specific Management Group and all levels of hierarchy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
@@ -161,7 +169,11 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: GetOperation
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: GroupId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
@@ -217,7 +229,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

@@ -58,7 +58,17 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        [Parameter(Mandatory = false, HelpMessage = "The public network access type")]
+        public PublicNetworkAccessType PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The identity associated with the BatchAccount")]
+        public ResourceIdentityType IdentityType { get; set; } = ResourceIdentityType.None;
+
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
             {
@@ -66,7 +76,13 @@ namespace Microsoft.Azure.Commands.Batch
                 PoolAllocationMode = this.PoolAllocationMode,
                 KeyVaultId = this.KeyVaultId,
                 KeyVaultUrl = this.KeyVaultUrl,
+<<<<<<< HEAD
                 Tags = this.Tag
+=======
+                Tags = this.Tag,
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                Identity = new BatchAccountIdentity(this.IdentityType)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);

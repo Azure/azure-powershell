@@ -24,6 +24,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
+<<<<<<< HEAD
+=======
+        protected const int size4MB = 4 * 1024 * 1024;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Blob Transfer Manager
         /// </summary>

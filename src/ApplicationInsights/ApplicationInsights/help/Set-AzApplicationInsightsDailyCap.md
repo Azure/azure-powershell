@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
+=======
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,7 +52,11 @@ PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "
 400         0                           True
 ```
 
+<<<<<<< HEAD
 Set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
+=======
+Set the daily data volume cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

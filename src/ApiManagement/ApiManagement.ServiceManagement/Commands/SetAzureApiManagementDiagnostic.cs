@@ -96,13 +96,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Diagnostic setting for incoming/outgoing Http Messsages to the Gateway. This parameter is optional.")]
+=======
+            HelpMessage = "Diagnostic setting for incoming/outgoing Http Messages to the Gateway. This parameter is optional.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PsApiManagementPipelineDiagnosticSetting FrontEndSetting { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Diagnostic setting for incoming/outgoing Http Messsages to the Backend. This parameter is optional.")]
+=======
+            HelpMessage = "Diagnostic setting for incoming/outgoing Http Messages to the Backend. This parameter is optional.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PsApiManagementPipelineDiagnosticSetting BackendSetting { get; set; }
 
         [Parameter(

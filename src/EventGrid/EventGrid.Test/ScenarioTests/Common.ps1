@@ -62,6 +62,18 @@ function Get-EventSubscriptionName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Get EventSubscription Azure Function Endpoint
+#>
+function Get-EventSubscriptionAzureFunctionEndpoint
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Web/sites/eventgridclitestapp/functions/EventGridTrigger1"
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookEndpoint
@@ -80,6 +92,27 @@ function Get-EventSubscriptionWebhookBaseEndpoint
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Get EventSubscription Webhook Endpoint With Cloud Event
+#>
+function Get-EventSubscriptionWebhookEndpointWithCloudEvent
+{
+    return "https://eventgridclitestapp.azurewebsites.net/api/cloudeventfunc?code=<HIDDEN>"
+}
+
+<#
+.SYNOPSIS
+Get EventSubscription Webhook Endpoint With Cloud Event
+#>
+function Get-EventSubscriptionWebhookBaseEndpointWithCloudEvent
+{
+    return "https://eventgridclitestapp.azurewebsites.net/api/cloudeventfunc"
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get location
 #>
 function Get-LocationForEventGrid
@@ -159,11 +192,28 @@ function Get-ServiceBusNameSpaceName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Get ServiceBus Name
 #>
 function Get-ServiceBusName
 {
     return "sbname-" + (getAssetName)
+=======
+Get ServiceBus Queue Name
+#>
+function Get-ServiceBusQueueName
+{
+    return "sbqueuename-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get ServiceBus Topic Name
+#>
+function Get-ServiceBusTopicName
+{
+    return "sbtopicname-" + (getAssetName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -182,8 +232,11 @@ Create new ServiceBus Queue
 #>
 function New-ServiceBusQueue($ResourceGroupName, $NamespaceName, $QueueName, $Location)
 {
+<<<<<<< HEAD
     Write-Debug "Creating ServiceBus namespace $NamespaceName in resource group $ResourceGroupName and location $Location"
     New-AzServiceBusNamespace -ResourceGroupName $ResourceGroupName -Name $NamespaceName -Location $Location
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $DefaultMessageTimeToLiveTimeSpan = New-TimeSpan -Minute 1
     Write-Debug "Creating ServiceBus queue $QueueName in Namespace $NamespaceName in resource group $ResourceGroupName and location $Location"
     New-AzServiceBusQueue -ResourceGroupName $ResourceGroupName -Namespace $NamespaceName -Name $QueueName -RequiresSession $False -EnablePartitioning $True -DefaultMessageTimeToLive $DefaultMessageTimeToLiveTimeSpan
@@ -193,16 +246,74 @@ function New-ServiceBusQueue($ResourceGroupName, $NamespaceName, $QueueName, $Lo
 .SYNOPSIS
 Remove ServiceBus Queue
 #>
+<<<<<<< HEAD
 function Remove-ServiceBusResources($ResourceGroupName, $NamespaceName, $QueueName)
 {
     Write-Debug "Deleting ServiceBus queue $QueueName in Namespace $NamespaceName in resource group $ResourceGroupName"
     Remove-AzServiceBusQueue -ResourceGroupName $ResourceGroupName -Namespace $NamespaceName -Name $QueueName
+=======
+function Remove-ServiceBusQueueResources($ResourceGroupName, $NamespaceName, $QueueName)
+{
+    Write-Debug "Deleting ServiceBus queue $QueueName in Namespace $NamespaceName in resource group $ResourceGroupName"
+    Remove-AzServiceBusQueue -ResourceGroupName $ResourceGroupName -Namespace $NamespaceName -Name $QueueName
+}
+
+<#
+.SYNOPSIS
+Get ServiceBus Topic ResourceId
+#>
+function Get-ServiceBusTopicResourceId($ResourceGroupName, $NamespaceName, $TopicName)
+{
+    $subId = Get-SubscriptionID
+    return "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/$NamespaceName/topics/$TopicName"
+}
+
+<#
+.SYNOPSIS
+Create new ServiceBus Namespace
+#>
+function New-ServiceBusNamespace($ResourceGroupName, $NamespaceName, $Location)
+{
+    Write-Debug "Creating ServiceBus namespace $NamespaceName in resource group $ResourceGroupName and location $Location"
+    New-AzServiceBusNamespace -ResourceGroupName $ResourceGroupName -Name $NamespaceName -Location $Location
+}
+
+<#
+.SYNOPSIS
+Remove ServiceBus Topic
+#>
+function Remove-ServiceBusTopicResources($ResourceGroupName, $NamespaceName, $TopicName)
+{
+    Write-Debug "Deleting ServiceBus topic $TopicName in Namespace $NamespaceName in resource group $ResourceGroupName"
+    Remove-AzServiceBusTopic -ResourceGroupName $ResourceGroupName -NamespaceName $NamespaceName -TopicName $TopicName
+}
+
+<#
+.SYNOPSIS
+Remove ServiceBus Namespace
+#>
+function Remove-ServiceBusNamespaceResources($ResourceGroupName, $NamespaceName)
+{
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug "Deleting ServiceBus namespace $NamespaceName in resource group $ResourceGroupName"
     Remove-AzServiceBusNamespace -ResourceGroupName $ResourceGroupName -Name $NamespaceName
 }
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Create new ServiceBus Topic
+#>
+function New-ServiceBusTopic($ResourceGroupName, $NamespaceName, $TopicName)
+{
+    Write-Debug "Creating ServiceBus topic $TopicName in Namespace $NamespaceName in resource group $ResourceGroupName"
+    New-AzServiceBusTopic -ResourceGroup $ResourceGroupName -NamespaceName $NamespaceName -TopicName $TopicName -EnablePartitioning $True
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get Storage Account Name
 #>
 function Get-StorageAccountName
@@ -240,9 +351,15 @@ function New-StorageQueue($ResourceGroupName, $StorageAccountName, $QueueName, $
     $StorageAccount = New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroupName -SkuName Standard_LRS -Location $Location -Kind StorageV2 -AccessTier Hot
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+<<<<<<< HEAD
     
     # Uncomment when live recording
     # New-AzStorageQueue -Name $StorageQueueName -Context $cxt
+=======
+
+    # NOTE: Uncomment when live recording
+    #### New-AzStorageQueue -Name $StorageQueueName -Context $cxt
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -255,8 +372,15 @@ function Remove-StorageResources($ResourceGroupName, $StorageAccountName, $Queue
     $StorageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $StorageAccountName
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+<<<<<<< HEAD
     # Uncomment when live recording
     # Remove-AzStorageQueue -Name $QueueName -Context $cxt -Force
+=======
+
+    # NOTE: Uncomment when live recording
+    #### Remove-AzStorageQueue -Name $QueueName -Context $cxt -Force
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug "Deleting storage account $StorageAccount in resource group $ResourceGroupName"
     Remove-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Force
 }
@@ -290,8 +414,14 @@ function New-StorageBlob($ResourceGroupName, $StorageAccountName, $ContainerName
     $storageAccount = New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroupName -SkuName Standard_LRS -Location $Location
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKeyValue
+<<<<<<< HEAD
     # Uncomment when live recording
     # New-AzStoragecontainer -Name $ContainerName -Context $cxt
+=======
+
+    # NOTE: Uncomment when live recording
+    #### New-AzStoragecontainer -Name $ContainerName -Context $cxt
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -304,8 +434,13 @@ function Remove-StorageContainerResources($ResourceGroupName, $StorageAccountNam
     $StorageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $StorageAccountName
     $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
     $cxt = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+<<<<<<< HEAD
     # Uncomment when live recording
     # Remove-AzStorageContainer -Name $ContainerName -Context $cxt
+=======
+    # NOTE: Uncomment when live recording
+    #### Remove-AzStorageContainer -Name $ContainerName -Context $cxt
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Write-Debug "Deleting storage account $StorageAccount in resource group $ResourceGroupName"
     Remove-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Force
 }

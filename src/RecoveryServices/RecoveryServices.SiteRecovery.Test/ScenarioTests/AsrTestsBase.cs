@@ -29,6 +29,10 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Diagnostics;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.RecoveryServices.Backup;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -80,6 +84,10 @@ namespace RecoveryServices.SiteRecovery.Test
         public ResourceManagementClient RmRestClient { get; private set; }
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
+<<<<<<< HEAD
+=======
+        public RecoveryServicesBackupClient RecoveryServicesBackupClient { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, string scenario, params string[] scripts)
         {
@@ -159,10 +167,19 @@ namespace RecoveryServices.SiteRecovery.Test
             RmRestClient = GetRmRestClient(context);
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(context);
+<<<<<<< HEAD
             _helper.SetupManagementClients(
                 RmRestClient,
                 RecoveryServicesMgmtClient,
                 SiteRecoveryMgmtClient);
+=======
+            RecoveryServicesBackupClient = GetRecoveryServicesBackupClient(context);
+            _helper.SetupManagementClients(
+                RmRestClient,
+                RecoveryServicesMgmtClient,
+                SiteRecoveryMgmtClient,
+                RecoveryServicesBackupClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static RecoveryServicesClient GetRecoveryServicesManagementClient(MockContext context)
@@ -175,6 +192,14 @@ namespace RecoveryServices.SiteRecovery.Test
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+<<<<<<< HEAD
+=======
+        private static RecoveryServicesBackupClient GetRecoveryServicesBackupClient(MockContext context)
+        {
+            return context.GetServiceClient<RecoveryServicesBackupClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(MockContext context)
         {
             var client = context.GetServiceClient<SiteRecoveryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());

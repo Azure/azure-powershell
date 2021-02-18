@@ -1,0 +1,75 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f782b158-10b8-4a42-b9e4-f7fbaf769f35/providers/Microsoft.Attestation/defaultProviders?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc4MmIxNTgtMTBiOC00YTQyLWI5ZTQtZjdmYmFmNzY5ZjM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vZGVmYXVsdFByb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9d51e31f-392d-40f5-abf9-2cde005d2b0f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "",
+          "",
+          "00-0a928787820779c48a739d337458d296-0000000000000000-00",
+          "00-0fcaeb06f159366fcbccbd05ebe9bfaf-0000000000000000-00",
+          "00-4cfd50dabab56be60b4f053b3233c575-0000000000000000-00"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "8281f0cf-ba77-4b84-b589-958139286d29"
+        ],
+        "x-ms-correlation-request-id": [
+          "8281f0cf-ba77-4b84-b589-958139286d29"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200703T122911Z:8281f0cf-ba77-4b84-b589-958139286d29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 03 Jul 2020 12:29:11 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1440"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus2\",\r\n      \"name\": \"sharedeus2\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"East US 2\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedeus2.eus2.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedcus\",\r\n      \"name\": \"sharedcus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedcus.cus.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedwus\",\r\n      \"name\": \"sharedwus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"West US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedwus.us.test.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n      \"name\": \"sharedeus\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"East US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://sharedeus.eus.test.attest.azure.net\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Attestation/attestationProviders/shareduks\",\r\n      \"name\": \"shareduks\",\r\n      \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n      \"location\": \"UK South\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"trustModel\": \"AAD\",\r\n        \"status\": \"Ready\",\r\n        \"attestUri\": \"https://shareduks.uks.test.attest.azure.net\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f782b158-10b8-4a42-b9e4-f7fbaf769f35"
+  }
+}

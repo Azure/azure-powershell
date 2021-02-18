@@ -12,20 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.ComponentModel;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Text;
+<<<<<<< HEAD
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+=======
+
+using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ContainerService;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -35,11 +48,18 @@ namespace Microsoft.Azure.Commands.Aks
     [OutputType(typeof(KubeTunnelJob))]
     public class StartAzureRmAksDashboard : KubeCmdletBase
     {
+<<<<<<< HEAD
 
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
         private const string ProxyUrl = "http://127.0.0.1:8001";
+=======
+        private const string IdParameterSet = "IdParameterSet";
+        private const string GroupNameParameterSet = "GroupNameParameterSet";
+        private const string InputObjectParameterSet = "InputObjectParameterSet";
+        private const string ListenAddress = "127.0.0.1";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
         [Parameter(Mandatory = true,
@@ -86,9 +106,19 @@ namespace Microsoft.Azure.Commands.Aks
         public string Name { get; set; }
 
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Do not pop open a browser after establising the kubectl port-forward.")]
         public SwitchParameter DisableBrowser { get; set; }
 
+=======
+            HelpMessage = "Do not pop open a browser after establishing the kubectl port-forward.")]
+        public SwitchParameter DisableBrowser { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The listening port for the dashboard. Default value is 8003.")]
+        public int ListenPort { get; set; } = 8003;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -117,6 +147,7 @@ namespace Microsoft.Azure.Commands.Aks
             RunCmdLet(() =>
             {
                 if (!GeneralUtilities.Probe("kubectl"))
+<<<<<<< HEAD
                     throw new CmdletInvocationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
 
                 var tmpFileName = Path.GetTempFileName();
@@ -125,6 +156,16 @@ namespace Microsoft.Azure.Commands.Aks
                 AzureSession.Instance.DataStore.WriteFile(
                     tmpFileName,
                     Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
+=======
+                    throw new AzPSApplicationException(Resources.KubectlIsRequriedToBeInstalledAndOnYourPathToExecute);
+
+                var tmpFileName = Path.GetTempFileName();
+                var credentials = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name).Kubeconfigs;
+                var encoded = credentials.First(credential => credential.Name.Equals("clusterUser")).Value;
+                AzureSession.Instance.DataStore.WriteFile(
+                    tmpFileName,
+                    Encoding.UTF8.GetString(encoded));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 WriteVerbose(string.Format(
                     Resources.RunningKubectlGetPodsKubeconfigNamespaceSelector,
@@ -144,8 +185,37 @@ namespace Microsoft.Azure.Commands.Aks
                 var dashPodName = proc.StandardOutput.ReadToEnd();
                 proc.WaitForExit();
 
+<<<<<<< HEAD
                 // remove "pods/"
                 dashPodName = dashPodName.Substring(5).TrimEnd('\r', '\n');
+=======
+                // remove "pods/" or "pod/"
+                dashPodName = dashPodName.Substring(dashPodName.IndexOf('/') + 1).TrimEnd('\r', '\n');
+
+                var procDashboardPort = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "kubectl",
+                        Arguments =
+                            $"get pods --kubeconfig {tmpFileName} --namespace kube-system --selector k8s-app=kubernetes-dashboard --output jsonpath='{{.items[0].spec.containers[0].ports[0].containerPort}}'",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+                procDashboardPort.Start();
+                var dashboardPortOutput = procDashboardPort.StandardOutput.ReadToEnd();
+                procDashboardPort.WaitForExit();
+
+                dashboardPortOutput = dashboardPortOutput.Replace("'", "");
+                int dashboardPort = int.Parse(dashboardPortOutput);
+                string protocol = dashboardPort == 8443 ? "https" : "http";
+
+                string dashboardUrl = $"{protocol}://{ListenAddress}:{ListenPort}";
+                //TODO: check in cloudshell
+                //TODO: support for --address {ListenAddress}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 WriteVerbose(string.Format(
                     Resources.RunningInBackgroundJobKubectlTunnel,
@@ -159,14 +229,23 @@ namespace Microsoft.Azure.Commands.Aks
                     JobRepository.Remove(exitingJob);
                 }
 
+<<<<<<< HEAD
                 var job = new KubeTunnelJob(tmpFileName, dashPodName);
+=======
+                var job = new KubeTunnelJob(tmpFileName, dashPodName, ListenPort, dashboardPort);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (!DisableBrowser)
                 {
                     WriteVerbose(Resources.SettingUpBrowserPop);
                     job.StartJobCompleted += (sender, evt) =>
                     {
+<<<<<<< HEAD
                         WriteVerbose(string.Format(Resources.StartingBrowser, ProxyUrl));
                         PopBrowser(ProxyUrl);
+=======
+                        WriteVerbose(string.Format(Resources.StartingBrowser, dashboardUrl));
+                        PopBrowser(dashboardUrl);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
                 }
 
@@ -195,6 +274,15 @@ namespace Microsoft.Azure.Commands.Aks
                 verboseMessage = "Starting on Unix with xdg-open";
                 browserProcess.StartInfo.FileName = "xdg-open";
             }
+<<<<<<< HEAD
+=======
+            else
+            {
+                browserProcess.StartInfo.FileName = "cmd";
+                browserProcess.StartInfo.Arguments = $"/c start {uri}";
+                browserProcess.StartInfo.CreateNoWindow = true;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #endif
 
             WriteVerbose(verboseMessage);
@@ -202,6 +290,7 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 
+<<<<<<< HEAD
     public class KubeTunnelJob : Job2
     {
         private readonly string _credFilePath;
@@ -323,4 +412,6 @@ namespace Microsoft.Azure.Commands.Aks
             StopJob();
         }
     }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

@@ -13,16 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+=======
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+<<<<<<< HEAD
     [GenericBreakingChange("Get-AzHDInsightProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(CapabilitiesResponse))]
     [Alias("Get-AzHDInsightProperties")]
+=======
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(AzureHDInsightCapabilities))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -38,9 +47,14 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             var result = HDInsightManagementClient.GetCapabilities(Location);
 
             WriteObject(result);
+=======
+            var result = HDInsightManagementClient.GetProperties(Location);
+            WriteObject(new AzureHDInsightCapabilities(result), true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

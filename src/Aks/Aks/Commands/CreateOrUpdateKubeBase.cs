@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // ----------------------------------------------------------------------------------
+=======
+﻿// ----------------------------------------------------------------------------------
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +24,13 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
+=======
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerService.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -35,13 +44,24 @@ using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.WindowsAzure.Commands.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Aks
 {
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";
+<<<<<<< HEAD
         protected const string SpParamSet = "servicePrincipalParameterSet";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
 
         [Parameter(
@@ -68,7 +88,11 @@ namespace Microsoft.Azure.Commands.Aks
             Mandatory = false,
             ParameterSetName = DefaultParamSet,
             HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+<<<<<<< HEAD
         public PSCredential ClientIdAndSecret { get; set; }
+=======
+        public PSCredential ServicePrincipalIdAndSecret { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = false,
             HelpMessage = "Azure location for the cluster. Defaults to the location of the resource group.")]
@@ -76,6 +100,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "User name for the Linux Virtual Machines.")]
+<<<<<<< HEAD
         public string AdminUserName { get; set; } = "azureuser";
 
         [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster.")]
@@ -85,6 +110,28 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
         [PSArgumentCompleter("1.7.7", "1.8.1")]
         public string KubernetesVersion { get; set; } = "1.8.1";
+=======
+        [Alias("AdminUserName")]
+        public string LinuxProfileAdminUserName { get; set; } = "azureuser";
+
+        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
+        public string DnsNamePrefix { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
+        public string KubernetesVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Unique name of the node pool profile in the context of the subscription and resource group.")]
+        public string NodeName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Minimum number of nodes for auto-scaling.")]
+        public int NodeMinCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Maximum number of nodes for auto-scaling")]
+        public int NodeMaxCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
+        public SwitchParameter EnableNodeAutoScaling { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int NodeCount { get; set; } = 3;
@@ -92,7 +139,11 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int NodeOsDiskSize { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string NodeVmSize { get; set; } = "Standard_D2_v2";
 
         [Parameter(
@@ -107,7 +158,60 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
 
+<<<<<<< HEAD
         protected ManagedCluster BuildNewCluster()
+=======
+        protected virtual ManagedCluster BuildNewCluster()
+        {
+            BeforeBuildNewCluster();
+
+            var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
+                name: NodeName ?? "default",
+                count: NodeCount,
+                vmSize: NodeVmSize,
+                osDiskSizeGB: NodeOsDiskSize);
+
+            if (this.IsParameterBound(c => c.NodeMinCount))
+            {
+                defaultAgentPoolProfile.MinCount = NodeMinCount;
+            }
+            if (this.IsParameterBound(c => c.NodeMaxCount))
+            {
+                defaultAgentPoolProfile.MaxCount = NodeMaxCount;
+            }
+            if (EnableNodeAutoScaling.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
+            }
+
+            var pubKey =
+                new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
+
+            var linuxProfile =
+                new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
+                    new ContainerServiceSshConfiguration(pubKey));
+
+            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+
+            var spProfile = new ManagedClusterServicePrincipalProfile(
+                acsServicePrincipal.SpId,
+                acsServicePrincipal.ClientSecret);
+
+            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
+            var managedCluster = new ManagedCluster(
+                Location,
+                name: Name,
+                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
+                dnsPrefix: DnsNamePrefix,
+                kubernetesVersion: KubernetesVersion,
+                agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
+                linuxProfile: linuxProfile,
+                servicePrincipalProfile: spProfile);
+            return managedCluster;
+        }
+
+        protected void BeforeBuildNewCluster()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
             {
@@ -146,6 +250,7 @@ namespace Microsoft.Azure.Commands.Aks
 
             WriteVerbose(string.Format(Resources.UsingDnsNamePrefix, DnsNamePrefix));
             SshKeyValue = GetSshKey(SshKeyValue);
+<<<<<<< HEAD
 
             var defaultAgentPoolProfile = new ContainerServiceAgentPoolProfile(
                 "default",
@@ -178,6 +283,8 @@ namespace Microsoft.Azure.Commands.Aks
                 linuxProfile: linuxProfile,
                 servicePrincipalProfile: spProfile);
             return managedCluster;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -188,8 +295,11 @@ namespace Microsoft.Azure.Commands.Aks
         /// <exception cref="ArgumentException">The SSH key or file argument was null and there was no default pub key in path.</exception>
         protected string GetSshKey(string sshKeyOrFile)
         {
+<<<<<<< HEAD
             const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // SSH key was specified as either a file or as key data
             if (!string.IsNullOrEmpty(SshKeyValue))
             {
@@ -207,7 +317,12 @@ namespace Microsoft.Azure.Commands.Aks
             var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa.pub");
             if (!AzureSession.Instance.DataStore.FileExists(path))
             {
+<<<<<<< HEAD
                 throw new ArgumentException(string.Format(Resources.CouldNotFindSshPublicKeyInError, path, helpLink));
+=======
+                var errorMessage = string.Format(Resources.CouldNotFindSshPublicKeyInError, path);
+                throw new AzPSArgumentException(errorMessage, nameof(SshKeyValue));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             WriteVerbose(string.Format(Resources.FetchSshPublicKeyFromFile, path));
@@ -218,12 +333,31 @@ namespace Microsoft.Azure.Commands.Aks
 
         protected AcsServicePrincipal EnsureServicePrincipal(string spId = null, string clientSecret = null)
         {
+<<<<<<< HEAD
             var acsServicePrincipal = LoadServicePrincipal();
             if (acsServicePrincipal == null)
             {
                 WriteVerbose(string.Format(
                     Resources.NoServicePrincipalFoundCreatingANewServicePrincipal,
                     AcsSpFilePath));
+=======
+            //If user specifies service principal, just use it directly and no need to save to disk
+            if(!string.IsNullOrEmpty(spId) && !string.IsNullOrEmpty(clientSecret))
+            {
+                return new AcsServicePrincipal()
+                {
+                    SpId = spId,
+                    ClientSecret = clientSecret
+                };
+            }
+
+            var acsServicePrincipal = LoadServicePrincipal();
+            if (acsServicePrincipal == null)
+            {
+                WriteWarning(string.Format(
+                    Resources.NoServicePrincipalFoundCreatingANewServicePrincipal,
+                    AcsSpFilePath, DefaultContext.Subscription.Id));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 // if nothing to load, make one
                 if (clientSecret == null)
@@ -266,11 +400,72 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (!success)
             {
+<<<<<<< HEAD
                 throw new CmdletInvocationException(Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
             AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret };
+=======
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner,
+                    desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
+            }
+
+            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
+        }
+
+        protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
+        {
+            string acrResourceId = null;
+            try
+            {
+                //Find Acr resourceId first
+                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
+                var acrObjects = RmClient.Resources.List(acrQuery);
+                acrResourceId = acrObjects.First().Id;
+            }
+            catch(Exception)
+            {
+                throw new AzPSArgumentException(
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
+                    acrParameterName,
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
+            }
+
+            var roleId = GetRoleId("acrpull", acrResourceId);
+            var spObjectId = acsServicePrincipal.ObjectId;
+            if(spObjectId == null)
+            {
+                try
+                {
+                    //Please note string.Equals doesn't work here, while == works.
+                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
+                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
+                    spObjectId = servicePrincipal.ObjectId;
+                }
+                catch(Exception ex)
+                {
+                    throw new AzPSInvalidOperationException(
+                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, acsServicePrincipal.SpId),
+                        ex,
+                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal,"*"));
+                }
+            }
+            var success = RetryAction(() =>
+                AuthClient.RoleAssignments.Create(acrResourceId, Guid.NewGuid().ToString(), new RoleAssignmentCreateParameters()
+                {
+                    Properties = new RoleAssignmentProperties(roleId, spObjectId)
+                }), Resources.AddRoleAssignment);
+
+            if (!success)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAddAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotAddAcrRoleAssignment);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected bool Exists()
@@ -300,8 +495,14 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (!success)
             {
+<<<<<<< HEAD
                 throw new CmdletInvocationException(
                     Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
+=======
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission,
+                    desensitizedMessage: Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -333,7 +534,15 @@ namespace Microsoft.Azure.Commands.Aks
         protected AcsServicePrincipal LoadServicePrincipal()
         {
             var config = LoadServicePrincipals();
+<<<<<<< HEAD
             return config?[DefaultContext.Subscription.Id];
+=======
+            if(config?.ContainsKey(DefaultContext.Subscription.Id) == true)
+            {
+                return config[DefaultContext.Subscription.Id];
+            }
+            return null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected Dictionary<string, AcsServicePrincipal> LoadServicePrincipals()
@@ -366,15 +575,24 @@ namespace Microsoft.Azure.Commands.Aks
         /// <returns>Default DNS prefix string</returns>
         protected string DefaultDnsPrefix()
         {
+<<<<<<< HEAD
             var namePart = string.Join("", DnsRegex.Replace(Name, "").Take(10));
+=======
+            var namePart = string.Join("", DnsRegex.Replace(Name, "").Take(5));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (char.IsDigit(namePart[0]))
             {
                 namePart = "a" + string.Join("", namePart.Skip(1));
             }
 
+<<<<<<< HEAD
             var rgPart = DnsRegex.Replace(ResourceGroupName, "");
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(6));
             return $"{namePart}-{rgPart}-{subPart}";
+=======
+            var subPart = string.Join("", DefaultContext.Subscription.Id.Take(4));
+            return $"{namePart}{subPart}";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

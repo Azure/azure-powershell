@@ -1,7 +1,11 @@
 ---
 Module Name: Az.HDInsight
 Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.hdinsight
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.1.2.0
 Locale: en-US
 ---
@@ -27,28 +31,54 @@ Adds a SQL Database to serve as a Hive or Oozie metastore to a cluster configura
 Adds a script action to a cluster configuration object.
 
 ### [Add-AzHDInsightSecurityProfile](Add-AzHDInsightSecurityProfile.md)
+<<<<<<< HEAD
 Adds a security profileto a cluster configuration object.
+=======
+Adds a security profile to a cluster configuration object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
+<<<<<<< HEAD
 ### [Disable-AzHDInsightOperationsManagementSuite](Disable-AzHDInsightOperationsManagementSuite.md)
 Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will stop flowing to the OMS workspace specified during enable.
 
 ### [Enable-AzHDInsightOperationsManagementSuite](Enable-AzHDInsightOperationsManagementSuite.md)
 Enables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will be sent to the OMS workspace specified during enable.
+=======
+### [Disable-AzHDInsightMonitoring](Disable-AzHDInsightMonitoring.md)
+Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+
+### [Enable-AzHDInsightMonitoring](Enable-AzHDInsightMonitoring.md)
+Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
 
+<<<<<<< HEAD
+=======
+### [Get-AzHDInsightClusterAutoscaleConfiguration](Get-AzHDInsightClusterAutoscaleConfiguration.md)
+Gets the autoscale configuration of HDInsight cluster.
+
+### [Get-AzHDInsightHost](Get-AzHDInsightHost.md)
+Lists the hosts of the HDInsight cluster.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzHDInsightJob](Get-AzHDInsightJob.md)
 Gets the list of jobs from a cluster and lists them in reverse chronological order, or retrieves a specific job.
 
 ### [Get-AzHDInsightJobOutput](Get-AzHDInsightJobOutput.md)
 Gets the log output for a job from the storage account associated with a specified cluster.
 
+<<<<<<< HEAD
 ### [Get-AzHDInsightOperationsManagementSuite](Get-AzHDInsightOperationsManagementSuite.md)
 Gets the status of Operations Management Suite (OMS) installation on the cluster.
+=======
+### [Get-AzHDInsightMonitoring](Get-AzHDInsightMonitoring.md)
+Gets the status of monitoring installation on the cluster.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
@@ -59,15 +89,27 @@ Gets properties about the HDInsight service, such as available locations and cap
 ### [Get-AzHDInsightScriptActionHistory](Get-AzHDInsightScriptActionHistory.md)
 Gets the script action history for a cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
 
+<<<<<<< HEAD
 ### [Grant-AzHDInsightRdpServicesAccess](Grant-AzHDInsightRdpServicesAccess.md)
 Grants RDP access to the Windows cluster.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Invoke-AzHDInsightHiveJob](Invoke-AzHDInsightHiveJob.md)
 Submits a Hive query to an HDInsight cluster and retrieves query results in one operation.
 
 ### [New-AzHDInsightCluster](New-AzHDInsightCluster.md)
 Creates an Azure HDInsight cluster in the specified resource group for the current subscription.
 
+<<<<<<< HEAD
+=======
+### [New-AzHDInsightClusterAutoscaleConfiguration](New-AzHDInsightClusterAutoscaleConfiguration.md)
+Creates a non-persisted object that describes the autoscale configuration of an Azure HDInsight cluster.
+
+### [New-AzHDInsightClusterAutoscaleScheduleCondition](New-AzHDInsightClusterAutoscaleScheduleCondition.md)
+Creates Schedule-based autoscale condition.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzHDInsightClusterConfig](New-AzHDInsightClusterConfig.md)
 Creates a non-persisted cluster configuration object that describes an Azure HDInsight cluster configuration.
 
@@ -89,11 +131,28 @@ Creates a Streaming MapReduce job object.
 ### [Remove-AzHDInsightCluster](Remove-AzHDInsightCluster.md)
 Removes the specified HDInsight cluster from the current subscription.
 
+<<<<<<< HEAD
 ### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
 
 ### [Revoke-AzHDInsightRdpServicesAccess](Revoke-AzHDInsightRdpServicesAccess.md)
 Disables RDP access to a Windows cluster.
+=======
+### [Remove-AzHDInsightClusterAutoscaleConfiguration](Remove-AzHDInsightClusterAutoscaleConfiguration.md)
+Removes the autoscale configuration of the HDInsight cluster.
+
+### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
+Removes an persisted script action from an HDInsight cluster.
+
+### [Restart-AzHDInsightHost](Restart-AzHDInsightHost.md)
+Restarts the specific hosts of HDInsight cluster.
+
+### [Set-AzHDInsightClusterAutoscaleConfiguration](Set-AzHDInsightClusterAutoscaleConfiguration.md)
+Sets the autoscale configuration of an Azure HDInsight cluster.
+
+### [Set-AzHDInsightClusterDiskEncryptionKey](Set-AzHDInsightClusterDiskEncryptionKey.md)
+Rotates the disk encryption key of the specified HDInsight cluster.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Set-AzHDInsightClusterSize](Set-AzHDInsightClusterSize.md)
 Sets the number of Worker nodes in a specified cluster.

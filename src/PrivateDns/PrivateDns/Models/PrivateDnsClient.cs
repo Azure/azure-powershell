@@ -19,6 +19,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+<<<<<<< HEAD
+=======
+    using System.Threading;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.PrivateDns.Utilities;
@@ -182,9 +186,16 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             string zoneName,
             string virtualNetworkId,
             bool isRegistrationEnabled,
+<<<<<<< HEAD
             Hashtable tags)
         {
             var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
+=======
+            Hashtable tags,
+            Dictionary<string, List<string>> customHeaders = null)
+        {
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdateWithHttpMessagesAsync(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 resourceGroupName,
                 zoneName,
                 name,
@@ -200,9 +211,18 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
                 },
                 ifMatch: null,
+<<<<<<< HEAD
                 ifNoneMatch: "*");
 
             return ToPrivateDnsLink(response);
+=======
+                ifNoneMatch: "*",
+                customHeaders: customHeaders,
+                cancellationToken: new CancellationToken()
+                ).GetAwaiter().GetResult();
+
+            return ToPrivateDnsLink(response.Body);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)

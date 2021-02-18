@@ -35,6 +35,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftManagementNamespace = "Microsoft.Management";
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The string literal <c>ManagementGroups</c>
+        /// </summary>
+        public static readonly string ManagementGroups = "managementGroups";
+
+        /// <summary>
+        /// The management group id prefix.
+        /// </summary>
+        public static readonly string ManagementGroupIdPrefix = $"/providers/{Constants.MicrosoftManagementNamespace}/{Constants.ManagementGroups}/";
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The <c>Microsoft.Solutions</c> namespace.
         /// </summary>
         public static readonly string MicrosoftSolutionNamespace = "Microsoft.Solutions";
@@ -77,17 +90,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
+<<<<<<< HEAD
         public static readonly string PolicyDefinitionApiVersion = "2019-01-01";
+=======
+        public static readonly string PolicyDefinitionApiVersion = "2019-09-01";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
+<<<<<<< HEAD
         public static readonly string PolicySetDefintionApiVersion = "2019-01-01";
+=======
+        public static readonly string PolicySetDefintionApiVersion = "2019-09-01";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
+<<<<<<< HEAD
         public static readonly string PolicyAssignmentApiVersion = "2019-01-01";
+=======
+        public static readonly string PolicyAssignmentApiVersion = "2019-09-01";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// The default providers API version.
@@ -145,11 +170,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
 
         /// <summary>
+<<<<<<< HEAD
         /// The management group resource type.
         /// </summary>
         public static readonly string MicrosoftManagementGroupDefinitionType = Constants.MicrosoftManagementNamespace + "/managementgroups";
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The application definition resource type.
         /// </summary>
         public static readonly string MicrosoftApplicationDefinitionType = Constants.MicrosoftSolutionNamespace + "/applicationdefinitions";

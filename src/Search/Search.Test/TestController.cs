@@ -24,6 +24,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Storage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 {
@@ -35,6 +39,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 
         public SearchManagementClient SearchClient { get; private set; }
 
+<<<<<<< HEAD
+=======
+        public StorageManagementClient StorageManagementClient { get; private set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static TestController NewInstance => new TestController();
 
         public TestController()
@@ -63,17 +72,32 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+<<<<<<< HEAD
             var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null}
             };
+=======
+            var providersToInclude = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Storage", null}
+            };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
+<<<<<<< HEAD
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+=======
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providersToInclude, providersToIgnore);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
@@ -82,12 +106,21 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
+<<<<<<< HEAD
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     "AzureRM.Resources.ps1",
                     _helper.GetRMModulePath("AzureRM.Search.psd1")
                 );
+=======
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath("AzureRM.Search.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Storage.psd1"),
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 try
                 {
@@ -108,8 +141,22 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             SearchClient = GetAzureSearchManagementClient(context);
+<<<<<<< HEAD
 
             _helper.SetupManagementClients(ResourceManagementClient, SearchClient);
+=======
+            StorageManagementClient = GetStorageManagementClient(context);
+
+            _helper.SetupManagementClients(
+                ResourceManagementClient,
+                SearchClient,
+                StorageManagementClient);
+        }
+
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)

@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+<<<<<<< HEAD
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
@@ -77,11 +81,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The address space string for this virtual hub.")]
         public string AddressPrefix { get; set; }
 
+<<<<<<< HEAD
+=======
+        public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
+        [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = false,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
 
+<<<<<<< HEAD
+=======
+        public const String RTv1ChangeDesc = "Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.";
+        [CmdletParameterBreakingChange("RouteTable", ChangeDescription = RTv1ChangeDesc)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = false,
             HelpMessage = "The route table associated with this Virtual Hub.")]
@@ -94,6 +108,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The sku of the Virtual Hub.")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -101,6 +124,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             PSVirtualHub virtualHubToUpdate = null;
+<<<<<<< HEAD
+=======
+            Dictionary<string, List<string>> auxAuthHeader = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
@@ -132,6 +159,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// HubVirtualNetworkConnections
+<<<<<<< HEAD
             if (this.HubVnetConnection != null)
             {
                 virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
@@ -140,10 +168,47 @@ namespace Microsoft.Azure.Commands.Network
 
             //// VirtualHubRouteTable
             if(this.RouteTable != null)
+=======
+            List<PSHubVirtualNetworkConnection> hubVnetConnectionList = null;
+            if (this.HubVnetConnection != null)
+            {
+                // Simulate behavior of old API to clear all existing connections not in new request and then add new ones
+                if (virtualHubToUpdate.VirtualNetworkConnections != null)
+                {
+                    foreach (var connection in virtualHubToUpdate.VirtualNetworkConnections)
+                    {
+                        if (!this.HubVnetConnection.Any(conn => conn.Name == connection.Name))
+                        {
+                            this.HubVnetConnectionCmdlet.HubVirtualNetworkConnectionsClient.Delete(this.ResourceGroupName, this.Name, connection.Name);
+                        }
+                    }
+                }
+
+                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
+            }
+            else
+            {
+                // optimization to avoid unnecessary put on hubvnet connections
+                hubVnetConnectionList = virtualHubToUpdate.VirtualNetworkConnections;
+                virtualHubToUpdate.VirtualNetworkConnections = null;
+            }
+
+            //// VirtualHubRouteTable
+            if (this.RouteTable != null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 virtualHubToUpdate.RouteTable = this.RouteTable;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrWhiteSpace(this.Sku))
+            {
+                virtualHubToUpdate.Sku = this.Sku;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             //// Update the virtual hub
             ConfirmAction(
                     Properties.Resources.SettingResourceMessage,
@@ -151,11 +216,26 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+<<<<<<< HEAD
                         WriteObject(this.CreateOrUpdateVirtualHub(
                             this.ResourceGroupName,
                             this.Name,
                             virtualHubToUpdate,
                             this.Tag));
+=======
+                        var hubToReturn = this.CreateOrUpdateVirtualHub(
+                            this.ResourceGroupName,
+                            this.Name,
+                            virtualHubToUpdate,
+                            this.Tag,
+                            auxAuthHeader);
+                        if (hubVnetConnectionList != null)
+                        {
+                            // patch back the hubvnet connection for backward compatibility
+                            hubToReturn.VirtualNetworkConnections = hubVnetConnectionList;
+                        }
+                        WriteObject(hubToReturn);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     });
         }
     }

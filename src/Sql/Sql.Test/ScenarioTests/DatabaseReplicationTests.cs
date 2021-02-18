@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -32,7 +38,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateDatabaseCopy");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Taking too long - try again before PR merge")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVcoreDatabaseCopy()
         {
@@ -48,6 +58,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestCreateNamedSecondaryDatabase()
+        {
+            RunPowerShellTest("Test-CreateNamedSecondaryDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNamedSecondaryDatabaseNegative()
+        {
+            RunPowerShellTest("Test-CreateNamedSecondaryDatabaseNegative");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestGetReplicationLink()
         {
             RunPowerShellTest("Test-GetReplicationLink");
@@ -66,5 +93,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-FailoverSecondaryDatabase");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDatabaseCopyWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryDatabaseWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -38,4 +38,24 @@
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
 -->
 
+<<<<<<< HEAD
 ## Current Breaking Changes
+=======
+## Current Breaking Changes
+
+The following cmdlets and properties were affected by this release:
+## Current Breaking Changes
+The following properties were affected by this release:
+**AzureStorageAccounts**
+- The AzureStorageAccounts property on the SiteConfig object is deprecated and removed.
+**ReservedInstanceCount**
+- The ReservedInstanceCount property on the SiteConfig object is deprecated and removed.
+**GeoDistributions**
+- The ReservedInstanceCount property on the PSSite object is deprecated and removed.
+**Get-AzWebAppSlotMetric**
+- The Get-AzWebAppSlotMetric cmdlets is deprecated and removed.
+**Get-AzAppServicePlanMetric**
+- The Get-AzAppServicePlanMetric cmdlets is deprecated and removed.
+**Get-AzWebAppMetric**
+- The Get-AzWebAppMetric cmdlets is deprecated and removed.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

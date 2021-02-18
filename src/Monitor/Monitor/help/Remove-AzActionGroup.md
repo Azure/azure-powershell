@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 8D8FE2FE-03E7-453E-B968-E28B07E42EF2
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azactiongroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -62,7 +66,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 The action group resourc
+=======
+The action group resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
@@ -170,4 +178,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzActionGroup](./Set-AzActionGroup.md)
 [Get-AzActionGroup](./Get-AzActionGroup.md)
+<<<<<<< HEAD
 [New-AzActionGroupReceiver](./AzureRmActionGroupReceiver.md)
+=======
+[New-AzActionGroupReceiver](./New-AzActionGroupReceiver.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

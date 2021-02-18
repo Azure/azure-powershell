@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arguments": {
+      "value": "'foo','bar'"
+    },
+    "scriptContent": {
+      "value": "result=$(bad content)"
+    },
+    "scriptKind": {
+      "value": "AzureCLI"
+    }
+  }
+}

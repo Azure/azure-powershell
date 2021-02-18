@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
 Module Name: Az.Billing
 online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azbillinginvoice
+=======
+﻿﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
+Module Name: Az.Billing
+online version: https://docs.microsoft.com/powershell/module/az.billing/get-azbillinginvoice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -9,18 +16,30 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Get billing invoices of the subscription.
+<<<<<<< HEAD
+=======
+Get billing invoices of a billing account and billing profile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
 ### List (Default)
 ```
+<<<<<<< HEAD
 Get-AzBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>]
+=======
+Get-AzBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>] [-BillingAccountName] [-BillingProfileName]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
 ### Latest
 ```
+<<<<<<< HEAD
 Get-AzBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+Get-AzBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>] [-BillingAccountName] [-BillingProfileName]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### Single
@@ -62,6 +81,59 @@ PS C:\> Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 10
 
 Get most recent 10 invoices of the subscription and include the download Url in the result.
 
+<<<<<<< HEAD
+=======
+### Example 5
+```
+PS C:\> Get-AzBillingInvoice -Name 2017-02-18-432543543 -GenerateDownloadUrl
+```
+
+Get the specific invoice by name and include download url in the result.
+
+### Example 6
+```
+PS C:\> Get-AzBillingInvoice -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -GenerateDownloadUrl
+```
+
+Get invoices by billing account name and include download url for each invoice in the result.
+
+### Example 7
+```
+PS C:\> Get-AzBillingInvoice -Name 0000000000 -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -GenerateDownloadUrl
+```
+
+Get specific invoice by invoice name and billing account name and include download url for each invoice in the result.
+
+### Example 8
+```
+PS C:\> Get-AzBillingInvoice -Latest -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -GenerateDownloadUrl
+```
+
+Get latest invoice by billing account name and include download url for invoice in the result.
+
+### Example 9
+```
+PS C:\> Get-AzBillingInvoice -GenerateDownloadUrl -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -BillingProfileName 0000-0000-000-000 -MaxCount 10
+```
+
+Get most recent 10 invoices of the specific billing account and specific billing profile and include the download Url in the result.
+
+### Example 10
+```
+PS C:\> Get-AzBillingInvoice -Latest -GenerateDownloadUrl -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -BillingProfileName 0000-0000-000-000 
+```
+
+Get latest invoice by billing account name and billing profile name and include download url for invoice in the result.
+
+### Example 10
+```
+PS C:\> Get-AzBillingInvoice -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -BillingProfileName 0000-0000-000-000 -PeriodStartDate 0000-00-00 -PeriodEndDate 0000-00-00
+```
+
+Get invoices by billing account name and billing profile name for a billing period specified by perioStart date and periodEnd date.
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -84,7 +156,11 @@ Generate the download url of the invoices.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+<<<<<<< HEAD
 Parameter Sets: List
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -139,6 +215,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -BillingAccountName
+Name of a specific billing account to get invoices for.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BillingProfileName
+Name of a specific billing profile to get invoices for.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeriodStartDate
+Start date for invoice.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeriodEndDate
+End date for invoice.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 

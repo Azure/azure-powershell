@@ -17,4 +17,17 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+<<<<<<< HEAD
 ## Upcoming Release
+=======
+## Upcoming Release
+
+## Version 0.8.0
+* Added new cmdlets `New-AzSubscriptionAlias`,`Get-AzSubscriptionAlias`,`Remove-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`
+
+## Version 0.7.3
+* Added new cmdlet `Update-AzSubscription`
+
+## Version 0.7.2
+* Update references in .psd1 to use relative path
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

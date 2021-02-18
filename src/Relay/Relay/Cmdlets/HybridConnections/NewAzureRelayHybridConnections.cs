@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
     /// <summary>
     /// 'New-AzRelayHybridConnection' Cmdlet creates a new HybridConnections
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(PSHybridConnectionAttibutes))]
+=======
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(PSHybridConnectionAttributes))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class NewAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -52,7 +56,11 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
            ParameterSetName = HybridConnectionInputObjectParameterSet,           
            HelpMessage = "HybridConnections object.")]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         public PSHybridConnectionAttibutes InputObject { get; set; }
+=======
+        public PSHybridConnectionAttributes InputObject { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = false,
           ValueFromPipelineByPropertyName = true,
@@ -70,7 +78,11 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             PSHybridConnectionAttibutes hybridConnections = new PSHybridConnectionAttibutes();
+=======
+            PSHybridConnectionAttributes hybridConnections = new PSHybridConnectionAttributes();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (InputObject != null)
             {

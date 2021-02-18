@@ -63,7 +63,12 @@ function Test-SearchGetSchema
 	$schema = Get-AzOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-NotNull $schema
 	Assert-NotNull $schema.Metadata
+<<<<<<< HEAD
 	Assert-AreEqual $schema.Metadata.ResultType "schema"
+=======
+	#Metadata was removed in SDK
+	#Assert-AreEqual $schema.Metadata.ResultType "schema"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	Assert-NotNull $schema.Value
 }
 
@@ -73,6 +78,7 @@ Get saved searches and search results from a saved search
 #>
 function Test-SearchGetSavedSearchesAndResults
 {
+<<<<<<< HEAD
     $rgname = "mms-eus"
     $wsname = "188087e4-5850-4d8b-9d08-3e5b448eaecd"
 
@@ -97,6 +103,43 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearchResult
 	Assert-NotNull $savedSearchResult.Metadata
 	Assert-NotNull $savedSearchResult.Value
+=======
+    $wsname = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+    $wslocation = Get-ProviderLocation
+
+    New-AzResourceGroup -Name $rgname -Location $wslocation -Force
+
+    try
+	{
+		# Create a workspace to house the data sources
+		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+
+		$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	
+		Assert-NotNull $savedSearches
+		Assert-NotNull $savedSearches.Value
+	
+		$idArray = $savedSearches.Value[0].Id.Split("/")
+		$id = $idArray[$idArray.Length-1]
+
+		$savedSearch = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+
+		Assert-NotNull $savedSearch
+		
+		Assert-NotNull $savedSearch.Id
+		Assert-NotNull $savedSearch.Properties
+		#skip following two checks due to service break
+		#Assert-NotNull $savedSearch.ETag
+		#Assert-NotNull $savedSearch.Properties.Query
+
+		Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Force
+	}
+	finally
+	{
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#

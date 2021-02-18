@@ -6,7 +6,11 @@ The following are naming conventions to keep in mind when coming up with a name 
 
 #### Verb-Noun Format
 
+<<<<<<< HEAD
 Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
+=======
+Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 #### Noun Prefix
 
@@ -14,13 +18,21 @@ For ARM cmdlets, the noun must be prefixed with `Az`.
 
 #### Pascal Case
 
+<<<<<<< HEAD
 From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-pascal-case-for-cmdlet-names-sd02):
+=======
+From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-pascal-case-for-cmdlet-names-sd02):
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 > _Use Pascal case for cmdlet names. In other words, capitalize the first letter of the verb and all terms used in the noun. For example, "Clear-ItemProperty"._
 
 #### Specific Noun and Noun Singularity
 
+<<<<<<< HEAD
 From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):
+=======
+From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 > _Nouns used in cmdlet naming need to be very specific so that the user can discover your cmdlets. Prefix generic nouns such as "server" with a shortened version of the product name. For example, if a noun refers to a server that is running an instance of Microsoft SQL Server, use a noun such as "SQLServer". The combination of specific nouns and the short list of approved verbs enable the user to quickly discover and anticipate functionality while avoiding duplication among cmdlet names._
 >
@@ -30,7 +42,11 @@ From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.c
 
 If your cmdlet is performing a **PATCH** operation (_i.e._, a partial replacement on the server), then the cmdlet should use the verb `Update`.
 
+<<<<<<< HEAD
 If your cmdlet is performing a **PUT** operation (_i.e._, a full replacement on the server), the the cmdlet should use the verb `Set`.
+=======
+If your cmdlet is performing a **PUT** operation (_i.e._, a full replacement on the server), the cmdlet should use the verb `Set`.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 #### Cmdlet Alias
 
@@ -56,7 +72,11 @@ For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the 
 
 In the case where your cmdlet doesn't return any output (_e.g._, deleting, starting, stopping a resource), the cmdlet should implement the `-PassThru` parameter and the `OutputType` should be set to `bool`. The `-PassThru` parameter is a `SwitchParameter` set by the user to signal that they would like to receive output from a cmdlet which does not return anything. If the `-PassThru` parameter is provided, you should return the value `true` so the user is made aware that the operation was successful. If the operation was unsuccessful, then the cmdlet should throw an exception.
 
+<<<<<<< HEAD
 From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#support-the-passthru-parameter):
+=======
+From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#support-the-passthru-parameter):
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 > _By default, many cmdlets that modify the system, such as the `Stop-Process` cmdlet, act as "sinks" for objects and do not return a result. These cmdlet should implement the `-PassThru` parameter to force the cmdlet to return an object._
 
@@ -136,7 +156,11 @@ To ensure that `-AsJob` is not broken in future changes, please add a test for t
 ````powershell
 $job = Get-AzSubscription -AsJob
 $job | Wait-Job
+<<<<<<< HEAD
 $subcriptions = $job | Receive-Job
+=======
+$subscriptions = $job | Receive-Job
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ````
 
 To set a custom job name, please use [`SetBackgroupJobDescription`](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs#L810). The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
@@ -157,4 +181,8 @@ This parameter set should be implemented by _every_ cmdlet - the user is able to
 
 #### InputObject Parameter Set
 
+<<<<<<< HEAD
 This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `-InputObject` parameter for a cmdlet that acts upon the same resource (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--inputobject-parameter) document). The typical `-Name` and `-ResourceGroupName` parameters are retrieved from the `-InputObject` that the user is passing through.
+=======
+This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `-InputObject` parameter for a cmdlet that acts upon the same resource (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--inputobject-parameter) document). The typical `-Name` and `-ResourceGroupName` parameters are retrieved from the `-InputObject` that the user is passing through.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

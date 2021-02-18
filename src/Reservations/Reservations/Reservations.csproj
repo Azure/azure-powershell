@@ -11,7 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Reservations" Version="1.9.1-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Reservations" Version="1.13.0-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

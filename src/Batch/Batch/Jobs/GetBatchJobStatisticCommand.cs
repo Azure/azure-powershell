@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.Batch
     [Alias("Get-AzBatchJobStatistics")]
     public class GetBatchJobStatisticCommand : BatchObjectModelCmdletBase
     {
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             PSJobStatistics jobStatistics = BatchClient.GetAllJobsLifetimeStatistics(this.BatchContext, this.AdditionalBehaviors);
             WriteObject(jobStatistics);

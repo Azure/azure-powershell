@@ -67,7 +67,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 arsVaultCreds.ResourceGroupName,
                 arsVaultCreds.ResourceName,
                 certificateName,
+<<<<<<< HEAD
                 certificateRequest,
+=======
+                certificateRequest.Properties,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 GetRequestHeaders()).Result.Body;
         }
 
@@ -199,7 +203,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 vault.ResourceGroupName,
                 vault.Name,
                 managementCert.FriendlyName,
+<<<<<<< HEAD
                 certificateArgs,
+=======
+                certificateArgs.Properties,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 GetRequestHeaders()).Result.Body;
         }
 

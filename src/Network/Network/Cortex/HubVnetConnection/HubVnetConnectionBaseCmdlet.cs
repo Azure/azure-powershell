@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.Network
     using System.Net;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
+<<<<<<< HEAD
     public class HubVnetConnectionBaseCmdlet : VirtualHubBaseCmdlet
+=======
+    public class HubVnetConnectionBaseCmdlet : NetworkBaseCmdlet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         public IHubVirtualNetworkConnectionsOperations HubVirtualNetworkConnectionsClient
         {
@@ -39,6 +43,29 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualHubVirtualNetworkConnection;
         }
 
+<<<<<<< HEAD
+=======
+        public PSHubVirtualNetworkConnection CreateOrUpdateHubVirtualNetworkConnection(string resourceGroupName, string virtualHubName, string connectionName, MNM.HubVirtualNetworkConnection hubVirtualNetworkConnectionParameters,  Dictionary<string, List<string>> customHeaders = null)
+        {
+            MNM.HubVirtualNetworkConnection hubVnetConnCreated;
+
+            if (customHeaders == null)
+            {
+                hubVnetConnCreated = this.HubVirtualNetworkConnectionsClient.CreateOrUpdate(resourceGroupName, virtualHubName, connectionName, hubVirtualNetworkConnectionParameters);
+            }
+            else
+            {
+                // Execute the create call and pass the custom headers. 
+                using (var _result = this.HubVirtualNetworkConnectionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, hubVirtualNetworkConnectionParameters, customHeaders).GetAwaiter().GetResult())
+                {
+                    hubVnetConnCreated = _result.Body;
+                }
+            }
+
+            return this.ToPsHubVirtualNetworkConnection(hubVnetConnCreated);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSHubVirtualNetworkConnection GetHubVirtualNetworkConnection(string resourceGroupName, string virtualHubName, string name)
         {
             var virtualHubConnection = this.HubVirtualNetworkConnectionsClient.Get(resourceGroupName, virtualHubName, name);
@@ -65,6 +92,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsHubVnetConnectionPresent(string resourceGroupName, string parentHubName, string name)
         {
+<<<<<<< HEAD
             try
             {
                 this.GetHubVirtualNetworkConnection(resourceGroupName, parentHubName, name);
@@ -79,6 +107,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return true;
+=======
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetHubVirtualNetworkConnection(resourceGroupName, parentHubName, name); });
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

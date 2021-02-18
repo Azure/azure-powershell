@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageblobserviceproperty
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobserviceproperty
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -39,9 +43,21 @@ The **Get-AzStorageBlobServiceProperty** cmdlet gets the service properties for 
 ```powershell
 PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 
+<<<<<<< HEAD
 StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days
 ------------------ ----------------- --------------------- ----------------------------- --------------------------
 myresourcegroup    mystorageaccount  2018-03-28            False
+=======
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 
+DeleteRetentionPolicy.Enabled : False
+DeleteRetentionPolicy.Days    : 
+RestorePolicy.Enabled         : 
+RestorePolicy.Days            : 
+ChangeFeed                    : True
+IsVersioningEnabled           : True
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the Blob services property of a specified Storage Account.

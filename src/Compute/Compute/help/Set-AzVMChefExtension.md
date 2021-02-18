@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: CC306D8C-A5EE-4655-B686-E5A77CCE5042
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmchefextension
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmchefextension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -160,7 +164,11 @@ Configures the chef-client service for unattended execution. The node platform s
 Allowed options: 'none','service' and 'task'.
 none - Currently prevents the chef-client service from being configured as a service.
 service - Configures the chef-client to run automatically in the background as a service.
+<<<<<<< HEAD
 task - Configures the chef-client to run automatically in the background as a secheduled task.
+=======
+task - Configures the chef-client to run automatically in the background as a scheduled task.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -251,7 +259,11 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+<<<<<<< HEAD
 Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.
+=======
+Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

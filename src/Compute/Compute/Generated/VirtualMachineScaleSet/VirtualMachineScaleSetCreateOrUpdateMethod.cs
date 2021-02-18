@@ -56,7 +56,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             string vmScaleSetName = this.VMScaleSetName;
                             VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
+<<<<<<< HEAD
 
+=======
+                            if (parameters?.VirtualMachineProfile?.StorageProfile?.ImageReference?.Version?.ToLower() != "latest")
+                            {
+                                WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
+                                    "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);

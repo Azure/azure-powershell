@@ -1,0 +1,517 @@
+{
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "118" ],
+        "x-ms-client-request-id": [ "06fe86bd-b802-477b-97a1-7b5a90d63f6e" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview" ],
+        "x-ms-correlation-request-id": [ "15872968-7a18-4bb2-a7d3-3b039e9503e3" ],
+        "x-ms-request-id": [ "da7ae385-5114-42d5-b8b0-92df46ae100d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T053930Z:15872968-7a18-4bb2-a7d3-3b039e9503e3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:39:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "119" ],
+        "x-ms-client-request-id": [ "06fe86bd-b802-477b-97a1-7b5a90d63f6e" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11859" ],
+        "x-ms-correlation-request-id": [ "071ebddd-1c90-4026-869b-1a5ac6f1d63c" ],
+        "x-ms-request-id": [ "caf5c31e-e2c7-4b9a-950a-a1aa1508db0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054000Z:071ebddd-1c90-4026-869b-1a5ac6f1d63c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:40:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"da7ae385-5114-42d5-b8b0-92df46ae100d\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:39:30.0036323Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "120" ],
+        "x-ms-client-request-id": [ "06fe86bd-b802-477b-97a1-7b5a90d63f6e" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11857" ],
+        "x-ms-correlation-request-id": [ "84908370-0744-4a3f-a6e3-abf4c734c8f4" ],
+        "x-ms-request-id": [ "d0af0da9-a29a-455e-88f4-1d0a23e31f93" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054030Z:84908370-0744-4a3f-a6e3-abf4c734c8f4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:40:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"da7ae385-5114-42d5-b8b0-92df46ae100d\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:39:30.0036323Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2017-11-03-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "06fe86bd-b802-477b-97a1-7b5a90d63f6e" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11849" ],
+        "x-ms-correlation-request-id": [ "1d505365-de65-40a0-86c8-112299428bad" ],
+        "x-ms-request-id": [ "a32f8f95-41fc-4d27-b201-eab35311bc59" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054100Z:1d505365-de65-40a0-86c8-112299428bad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "220" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"da7ae385-5114-42d5-b8b0-92df46ae100d\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2020-11-12T05:39:30.0036323Z\",\n  \"endTime\": \"2020-11-12T05:40:31.2033071Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/da7ae385-5114-42d5-b8b0-92df46ae100d?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "122" ],
+        "x-ms-client-request-id": [ "06fe86bd-b802-477b-97a1-7b5a90d63f6e" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11848" ],
+        "x-ms-correlation-request-id": [ "4d499e07-5053-4712-b208-7243e942141a" ],
+        "x-ms-request-id": [ "6bf83e18-a94f-4cd2-9360-e9ea5ea2bf9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054101Z:4d499e07-5053-4712-b208-7243e942141a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "220" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"da7ae385-5114-42d5-b8b0-92df46ae100d\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2020-11-12T05:39:30.0036323Z\",\n  \"endTime\": \"2020-11-12T05:40:31.2033071Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "123" ],
+        "x-ms-client-request-id": [ "1e3ba5a3-94c4-434f-b8b8-1ae094f2ea7a" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054101Z:2d8a97f1-b15d-414b-8ba8-88fb3d8379c7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11847" ],
+        "x-ms-correlation-request-id": [ "2d8a97f1-b15d-414b-8ba8-88fb3d8379c7" ],
+        "x-ms-request-id": [ "59ca960e-1e9c-4f29-af1a-d3d01a24fcbe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "738" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n   {\n    \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj\",\n    \"location\": \"\",\n    \"name\": \"sapInstance-5xmqvj\",\n    \"tags\": null,\n    \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n    \"properties\": {\n     \"type\": \"SapHana\",\n     \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\",\\\"hanaDbPasswordKeyVaultUrl\\\":\\\"https://kv-eirdm5-test.vault.azure.net/secrets/hanaPassword/e9cc7db9e41e47679a83c289dce0fde9\\\"}\",\n     \"metadata\": \"\",\n     \"provisioningState\": \"Succeeded\"\n    }\n   }\n  ]\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj?api-version=2020-02-07-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "124" ],
+        "x-ms-client-request-id": [ "56640dec-6b41-457b-90ce-1533e1b0945b" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054101Z:90b45763-fba6-4a63-be19-2da96f8eeb3a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11846" ],
+        "x-ms-correlation-request-id": [ "90b45763-fba6-4a63-be19-2da96f8eeb3a" ],
+        "x-ms-request-id": [ "6741d289-d496-4135-a1e9-b7898c8e8f0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj\",\n  \"location\": \"\",\n  \"name\": \"sapInstance-5xmqvj\",\n  \"tags\": null,\n  \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n  \"properties\": {\n   \"type\": \"SapHana\",\n   \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\",\\\"hanaDbPasswordKeyVaultUrl\\\":\\\"https://kv-eirdm5-test.vault.azure.net/secrets/hanaPassword/e9cc7db9e41e47679a83c289dce0fde9\\\"}\",\n   \"metadata\": \"\",\n   \"provisioningState\": \"Succeeded\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj?api-version=2020-02-07-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "125" ],
+        "x-ms-client-request-id": [ "d5b428ea-5504-4bb5-b980-4ea048a21027" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview" ],
+        "x-ms-correlation-request-id": [ "2119b22a-b67e-4ae0-aab1-e9feb47986f2" ],
+        "x-ms-request-id": [ "2b519e56-cc89-447e-82c2-2a4a04ae88a2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054102Z:2119b22a-b67e-4ae0-aab1-e9feb47986f2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "d5b428ea-5504-4bb5-b980-4ea048a21027" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11844" ],
+        "x-ms-correlation-request-id": [ "8ce137bf-0ea1-40da-98b3-70dcec630c46" ],
+        "x-ms-request-id": [ "9341ca35-9347-44e7-94f0-67d2ad2324ab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054132Z:8ce137bf-0ea1-40da-98b3-70dcec630c46" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:41:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"2b519e56-cc89-447e-82c2-2a4a04ae88a2\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:41:01.9886458Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "d5b428ea-5504-4bb5-b980-4ea048a21027" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11843" ],
+        "x-ms-correlation-request-id": [ "24010522-e4e3-4c6a-b2d6-74571f43b0bb" ],
+        "x-ms-request-id": [ "e6b61139-4390-4764-84b5-b552a8c3cfe7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054202Z:24010522-e4e3-4c6a-b2d6-74571f43b0bb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:42:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"2b519e56-cc89-447e-82c2-2a4a04ae88a2\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:41:01.9886458Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2017-11-03-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "128" ],
+        "x-ms-client-request-id": [ "d5b428ea-5504-4bb5-b980-4ea048a21027" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11841" ],
+        "x-ms-correlation-request-id": [ "aae65f40-04ef-4ad4-beb4-b172a6b576f3" ],
+        "x-ms-request-id": [ "4906fe9f-903d-483c-904c-cf33b17f255e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054232Z:aae65f40-04ef-4ad4-beb4-b172a6b576f3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:42:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "220" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"2b519e56-cc89-447e-82c2-2a4a04ae88a2\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2020-11-12T05:41:01.9886458Z\",\n  \"endTime\": \"2020-11-12T05:42:03.2435677Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/2b519e56-cc89-447e-82c2-2a4a04ae88a2?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "129" ],
+        "x-ms-client-request-id": [ "d5b428ea-5504-4bb5-b980-4ea048a21027" ],
+        "CommandName": [ "Remove-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Remove-AzSapMonitorProviderInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11840" ],
+        "x-ms-correlation-request-id": [ "a67295ce-a25c-4691-b70e-ef7835e46f72" ],
+        "x-ms-request-id": [ "f70c5745-42b3-472f-98e1-29b70bedd633" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054233Z:a67295ce-a25c-4691-b70e-ef7835e46f72" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:42:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "220" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"2b519e56-cc89-447e-82c2-2a4a04ae88a2\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2020-11-12T05:41:01.9886458Z\",\n  \"endTime\": \"2020-11-12T05:42:03.2435677Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
+    }
+  },
+  "Remove-AzSapMonitorProviderInstance+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "3d6d3f5d-498e-4ae8-9466-8d3450ac80f5" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11839" ],
+        "x-ms-correlation-request-id": [ "a7d84fd6-8635-43f8-8b1c-4554c7376b85" ],
+        "x-ms-request-id": [ "e9dd2aac-44a8-4ccd-8ceb-411b956ea88c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T054233Z:a7d84fd6-8635-43f8-8b1c-4554c7376b85" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:42:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "18" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": []\n }"
+    }
+  }
+}

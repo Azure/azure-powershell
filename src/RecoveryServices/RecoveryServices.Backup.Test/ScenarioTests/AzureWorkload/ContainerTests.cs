@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureWorkload, "Get-AzureVmWorkloadContainer");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "To be fixed in upcoming release")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void UnregisterAzureWorkloadContainer()

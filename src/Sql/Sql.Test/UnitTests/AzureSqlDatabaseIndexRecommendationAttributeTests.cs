@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "IndexRecommendationName", isMandatory: false, valueFromPipelineByName: true);
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip="TODO: 12276, ConfirmImpact Validation issue")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartAzureSqlDatabaseExecuteIndexRecommendationAttributes()
         {
@@ -53,7 +57,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "IndexRecommendationName", isMandatory: true, valueFromPipelineByName: true);
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip="TODO: 12276, ConfirmImpact Validation issue")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StopAzureSqlDatabaseExecuteIndexRecommendationAttributes()
         {

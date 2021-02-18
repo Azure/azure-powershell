@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebussubscription
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,18 +41,28 @@ The **Remove-AzServiceBusSubscription** cmdlet removes the subscription to a top
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
 Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using Variable:
 ```
+=======
+### Example 2: InputObject - Using Variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $inputobject = Get-AzServiceBusSubscription <params>
 PS C:\> Remove-AzServiceBusSubscription -InputObject $inputobject
 ```
 
+<<<<<<< HEAD
 ### Example 2.2 - InputObject - Using Piping:
 ```
 PS C:\>Get-AzServiceBusSubscription <params> |Remove-AzServiceBusSubscription
@@ -56,12 +70,26 @@ PS C:\>Get-AzServiceBusSubscription <params> |Remove-AzServiceBusSubscription
 
 ### Example 3.1 - ResourceId - Using Variable:
 ```
+=======
+### Example 3: InputObject - Using Piping:
+```powershell
+PS C:\>Get-AzServiceBusSubscription <params> |Remove-AzServiceBusSubscription
+```
+
+### Example 4: ResourceId - Using Variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $resourceid = Get-AzServiceBusSubscription <params>
 PS C:\> Remove-AzServiceBusSubscription -ResourceId $resourceid.Id
 ```
 
+<<<<<<< HEAD
 ### Example 3.2 - ResourceId - Using string value:
 ```
+=======
+### Example 5: ResourceId - Using string value:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusSubscription -ResourceId "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName"
 ```
 

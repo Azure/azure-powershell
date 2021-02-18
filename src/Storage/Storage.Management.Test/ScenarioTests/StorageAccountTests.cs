@@ -95,6 +95,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestRevokeAzStorageAccountUserDelegationKeys()
+        {
+            TestRunner.RunTestScript("Test-RevokeAzStorageAccountUserDelegationKeys");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestSetAzureRmStorageAccountKeySource()
         {
             TestRunner.RunTestScript("Test-SetAzureRmStorageAccountKeySource");
@@ -130,16 +140,42 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestPipingNewUpdateAccount()
         {
             TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
+=======
+        public void TestNewAzureStorageAccountBlockBlobStorage()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountBlockBlobStorage");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestNewAzureStorageAccountBlockBlobStorage()
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountBlockBlobStorage");
+=======
+        public void TestFailoverAzureStorageAccount()
+        {
+            TestRunner.RunTestScript("Test-FailoverAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageAccountGeoReplicationStats()
+        {
+            TestRunner.RunTestScript("Test-GetAzureStorageAccountGeoReplicationStats");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingNewUpdateAccount()
+        {
+            TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -155,5 +191,50 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountManagementPolicy");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccount_LargeFileShare()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountQueueTableEncrytionKeyType()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountQueueTableEncrytionKeyType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountRAGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountTLSveresionBlobPublicAccess()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAStorageAccount_RoutingPreference()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

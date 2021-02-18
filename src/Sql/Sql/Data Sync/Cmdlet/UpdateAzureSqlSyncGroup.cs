@@ -57,6 +57,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SchemaFile { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets if private link should be used
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a private link connection when connecting to the hub of this sync group.")]
+        public bool UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -81,6 +90,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 newModel.IntervalInSeconds = this.IntervalInSeconds;
             }
 
+<<<<<<< HEAD
+=======
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(UsePrivateLinkConnection)))
+            {
+                newModel.UsePrivateLinkConnection = this.UsePrivateLinkConnection;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (MyInvocation.BoundParameters.ContainsKey("DatabaseCredential"))
             {
                 newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;

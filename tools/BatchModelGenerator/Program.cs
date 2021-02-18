@@ -29,6 +29,15 @@ namespace PSModelGenerator
         private const string OmObject = "omObject";
         private static string AssemblyPath;
 
+<<<<<<< HEAD
+=======
+        private static readonly Dictionary<string, Tuple<string, string>> OMToPSDictionaryConversionMappings = new Dictionary<string, Tuple<string, string>>()
+        {
+            {  "Microsoft.Azure.Batch.EnvironmentSetting",  new Tuple<string, string>("Name", "Value") },
+            {  "Microsoft.Azure.Batch.MetadataItem",  new Tuple<string, string>("Name", "Value") },
+        };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
         {
             {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
@@ -38,8 +47,16 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
             {"Microsoft.Azure.Batch.AutoUserSpecification", "PSAutoUserSpecification"},
             {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
+<<<<<<< HEAD
             {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
             {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
+=======
+            {"Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration", "PSAzureBlobFileSystemConfiguration"},
+            {"Microsoft.Azure.Batch.AzureFileShareConfiguration", "PSAzureFileShareConfiguration"},
+            {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
+            {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
+            {"Microsoft.Azure.Batch.CifsMountConfiguration", "PSCifsMountConfiguration"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
             {"Microsoft.Azure.Batch.CloudJobSchedule", "PSCloudJobSchedule"},
             {"Microsoft.Azure.Batch.CloudPool", "PSCloudPool"},
@@ -54,18 +71,30 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.ContainerRegistry", "PSContainerRegistry"},
             {"Microsoft.Azure.Batch.DataDisk", "PSDataDisk"},
             {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
+<<<<<<< HEAD
+=======
+            {"Microsoft.Azure.Batch.DiskEncryptionConfiguration", "PSDiskEncryptionConfiguration"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
             {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
             {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
             {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
             {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
             {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
+<<<<<<< HEAD
+=======
+            {"Microsoft.Azure.Batch.ImageInformation", "PSImageInformation"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
             {"Microsoft.Azure.Batch.InboundEndpoint", "PSInboundEndpoint"},
             {"Microsoft.Azure.Batch.InboundNatPool", "PSInboundNatPool"},
             {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
             {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
             {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
+<<<<<<< HEAD
+=======
+            {"Microsoft.Azure.Batch.JobNetworkConfiguration", "PSJobNetworkConfiguration"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.JobManagerTask", "PSJobManagerTask"},
             {"Microsoft.Azure.Batch.JobPreparationAndReleaseTaskExecutionInformation", "PSJobPreparationAndReleaseTaskExecutionInformation"},
             {"Microsoft.Azure.Batch.JobPreparationTask", "PSJobPreparationTask"},
@@ -79,6 +108,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.JobStatistics", "PSJobStatistics"},
             {"Microsoft.Azure.Batch.LinuxUserConfiguration", "PSLinuxUserConfiguration"},
             {"Microsoft.Azure.Batch.MetadataItem", "PSMetadataItem"},
+<<<<<<< HEAD
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
@@ -88,6 +118,17 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
             {"Microsoft.Azure.Batch.OSDisk", "PSOSDisk"},
+=======
+            {"Microsoft.Azure.Batch.MountConfiguration", "PSMountConfiguration"},
+            {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
+            {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
+            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NfsMountConfiguration", "PSNfsMountConfiguration"},
+            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
+            {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
+            {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
+            {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
             {"Microsoft.Azure.Batch.OutputFileDestination", "PSOutputFileDestination"},
             {"Microsoft.Azure.Batch.OutputFileUploadOptions", "PSOutputFileUploadOptions"},
@@ -98,6 +139,10 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
             {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
             {"Microsoft.Azure.Batch.PoolUsageMetrics", "PSPoolUsageMetrics"},
+<<<<<<< HEAD
+=======
+            {"Microsoft.Azure.Batch.PublicIPAddressConfiguration", "PSPublicIPAddressConfiguration"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.RecentJob", "PSRecentJob"},
             {"Microsoft.Azure.Batch.ResizeError", "PSResizeError"},
             {"Microsoft.Azure.Batch.ResourceFile", "PSResourceFile"},
@@ -123,6 +168,10 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
+<<<<<<< HEAD
+=======
+            {"Microsoft.Azure.Batch.WindowsUserConfiguration", "PSWindowsUserConfiguration"},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         };
 
 
@@ -134,7 +183,11 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.CloudJobSchedule", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.CloudPool", new string[] {"CustomBehaviors"}},
             // Hide file staging for now - users can use storage cmdlets to upload files and generate SAS tokens
+<<<<<<< HEAD
             {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors","FilesToStage"}},
+=======
+            {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors", "FilesToStage"}},
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {"Microsoft.Azure.Batch.ComputeNode", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.ComputeNodeUser", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.NodeFile", new string[] {"CustomBehaviors"}},
@@ -368,8 +421,14 @@ namespace PSModelGenerator
 
                 string propertyType = GetPropertyType(property.PropertyType);
                 bool isGenericCollection = property.PropertyType.IsGenericType &&
+<<<<<<< HEAD
                     (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
                      property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
+=======
+                    (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || 
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 CodeFieldReferenceExpression wrappedObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), OmObject);
                 CodePropertyReferenceExpression wrappedObjectProperty = new CodePropertyReferenceExpression(wrappedObject, property.Name);
@@ -398,6 +457,7 @@ namespace PSModelGenerator
 
                 if (isGenericCollection)
                 {
+<<<<<<< HEAD
                     // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
                     // a request to the server.
                     Type argType = property.PropertyType.GetGenericArguments()[0];
@@ -412,6 +472,21 @@ namespace PSModelGenerator
                         CodeVariableDeclarationStatement listDeclaration = new CodeVariableDeclarationStatement(wrapperListType, listVariableName);
                         CodeVariableReferenceExpression listReference = new CodeVariableReferenceExpression(listVariableName);
                         CodeAssignStatement initializeList = new CodeAssignStatement(listReference, new CodeObjectCreateExpression(wrapperListType));
+=======
+                    // Special handling for dict
+                    Type argType = property.PropertyType.GetGenericArguments()[0];
+                    bool magicalDictConversion = propertyType == "IDictionary";
+                    string wrapperArgType = argType.FullName.StartsWith("System") || argType.FullName.StartsWith("Microsoft.Azure.Batch.Common") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
+                    string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
+                    string variableName = magicalDictConversion ? "dict" : "list";
+                    if (property.GetMethod != null && property.GetMethod.IsPublic)
+                    {
+                        // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
+                        // a request to the server.
+                        CodeVariableDeclarationStatement declaration = new CodeVariableDeclarationStatement(wrapperType, variableName);
+                        CodeVariableReferenceExpression reference = new CodeVariableReferenceExpression(variableName);
+                        CodeAssignStatement initialize = new CodeAssignStatement(reference, new CodeObjectCreateExpression(wrapperType));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         // CodeDom doesn't support foreach loops very well, so instead explicitly get the enumerator and loop on MoveNext() calls
                         const string enumeratorVariableName = "enumerator";
@@ -425,13 +500,22 @@ namespace PSModelGenerator
                         CodePropertyReferenceExpression enumeratorCurrent = new CodePropertyReferenceExpression(enumeratorReference, "Current");
 
                         // Fill the list by individually wrapping each item in the loop
+<<<<<<< HEAD
                         if (wrapperArgType.Contains("System"))
                         {
                             CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", enumeratorCurrent);
+=======
+                        if (magicalDictConversion)
+                        {
+                            var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item1);
+                            var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item2);
+                            CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", keyReference, valueReference);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             loopStatement.Statements.Add(addToList);
                         }
                         else
                         {
+<<<<<<< HEAD
                             CodeObjectCreateExpression createListItem = new CodeObjectCreateExpression(wrapperArgType, enumeratorCurrent);
                             CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", createListItem);
                             loopStatement.Statements.Add(addToList);
@@ -448,14 +532,40 @@ namespace PSModelGenerator
                         {
                             assignStatement = new CodeAssignStatement(fieldReference, listReference);
                         }
+=======
+                            // Fill the list by individually wrapping each item in the loop
+                            if (wrapperArgType.Contains("System") || wrapperArgType.StartsWith("Microsoft.Azure.Batch.Common"))
+                            {
+                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", enumeratorCurrent);
+                                loopStatement.Statements.Add(addToList);
+                            }
+                            else
+                            {
+                                CodeObjectCreateExpression createListItem = new CodeObjectCreateExpression(wrapperArgType, enumeratorCurrent);
+                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", createListItem);
+                                loopStatement.Statements.Add(addToList);
+                            }
+                        }
+                        // Initialize the backing field with the built list on first access of the property
+                        CodeAssignStatement assignStatement = new CodeAssignStatement(fieldReference, reference);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         CodePrimitiveExpression nullExpression = new CodePrimitiveExpression(null);
                         CodeBinaryOperatorExpression fieldNullCheck = new CodeBinaryOperatorExpression(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
                         CodeBinaryOperatorExpression wrappedPropertyNullCheck = new CodeBinaryOperatorExpression(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
                         CodeBinaryOperatorExpression condition = new CodeBinaryOperatorExpression(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
+<<<<<<< HEAD
                         CodeConditionStatement ifBlock = new CodeConditionStatement(condition, listDeclaration, initializeList, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
                         codeProperty.GetStatements.Add(ifBlock);
                         codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
                     }
+=======
+                        CodeConditionStatement ifBlock = new CodeConditionStatement(condition, declaration, initialize, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
+                        codeProperty.GetStatements.Add(ifBlock);
+                        codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (property.SetMethod != null && property.SetMethod.IsPublic)
                     {
                         // Call the "set" on the OM object to ensure that constraints are enforced.
@@ -542,6 +652,14 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
+<<<<<<< HEAD
+=======
+                if(OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 string str = string.Format("IList<{0}>", GetPropertyType(argType));
                 return str;
             }
@@ -549,6 +667,14 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
+<<<<<<< HEAD
+=======
+                if (OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 string str = string.Format("IReadOnlyList<{0}>", GetPropertyType(argType));
                 return str;
             }
@@ -556,6 +682,14 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
+<<<<<<< HEAD
+=======
+                if (OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                {
+                    return "IDictionary";
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 string str = string.Format("IEnumerable<{0}>", GetPropertyType(argType));
                 return str;
             }

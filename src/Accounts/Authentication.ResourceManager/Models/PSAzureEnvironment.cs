@@ -73,6 +73,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureEnvironment(IAzureEnvironment environment)
         {
             this.CopyFrom(environment);
+<<<<<<< HEAD
+=======
+            if(environment is AzureEnvironment source)
+            {
+                this.Type = source.Type;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -108,9 +115,22 @@ namespace Microsoft.Azure.Commands.Profile.Models
             SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
             StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
             TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+<<<<<<< HEAD
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
+=======
+            ContainerRegistryEndpointSuffix = other.GetProperty<string>(nameof(ContainerRegistryEndpointSuffix));
+            AzureOperationalInsightsEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
+            AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
+            AzureAttestationServiceEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureAttestationServiceEndpointResourceId));
+            AzureAttestationServiceEndpointSuffix = other.GetProperty<string>(nameof(AzureAttestationServiceEndpointSuffix));
+            AzureSynapseAnalyticsEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointResourceId));
+            AzureSynapseAnalyticsEndpointSuffix = other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointSuffix));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -122,6 +142,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Name { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Type of environment
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets a value indicating whether ADFS authentication should be allowed . 
         /// Generally, this is only used in Azure Stack environments.
         /// </summary>
@@ -232,6 +260,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The domain name suffix for Azure Container Registry
+        /// </summary>
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment
         /// </summary>
         public string AzureOperationalInsightsEndpointResourceId
@@ -291,6 +327,69 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// The domain name suffix for Azure Attestation Services
+        /// </summary>
+        public string AzureAttestationServiceEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the attestation services endpoint
+        /// </summary>
+        public string AzureAttestationServiceEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, value);
+            }
+        }
+
+        /// <summary>
+        /// The domain name suffix for Azure Synapse Analyticss
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Synapse Analyticss endpoint
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, value);
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -330,7 +429,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
+<<<<<<< HEAD
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
+=======
+                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
+                       && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
+                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix
+                       && ContainerRegistryEndpointSuffix == other.ContainerRegistryEndpointSuffix;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return false;

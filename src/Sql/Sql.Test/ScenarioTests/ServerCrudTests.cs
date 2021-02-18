@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+<<<<<<< HEAD
+=======
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
@@ -73,5 +77,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-UpdateServerWithoutIdentity");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateAndGetWithPublicNetworkAccess()
+        {
+            RunPowerShellTest("Test-CreateAndGetServerWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithPublicNetworkAccess()
+        {
+            RunPowerShellTest("Test-UpdateServerWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateandUpdateServerWithMinimalTlsVersion()
+        {
+            RunPowerShellTest("Test-CreateandUpdateServerWithMinimalTlsVersion");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

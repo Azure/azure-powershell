@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/remove-azprivatednsrecordset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.privatedns/remove-azprivatednsrecordset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -173,7 +177,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 Private DNS RecprdSet ResourceID.
+=======
+Private DNS RecordSet ResourceID.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

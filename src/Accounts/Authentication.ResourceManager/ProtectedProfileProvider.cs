@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
@@ -22,12 +23,25 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
+=======
+using System.IO;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ProtectedProfileProvider : AzureRmProfileProvider
     {
+<<<<<<< HEAD
         AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
+=======
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public ProtectedProfileProvider()
         {
@@ -37,6 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+<<<<<<< HEAD
         public override void ResetDefaultProfile()
         {
             foreach (var context in _profile.Contexts.Values)
@@ -47,11 +62,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             base.ResetDefaultProfile();
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override T GetProfile<T>()
         {
             return Profile as T;
         }
 
+<<<<<<< HEAD
         public override void SetTokenCacheForProfile(IAzureContextContainer profile)
         {
             base.SetTokenCacheForProfile(profile);
@@ -66,6 +84,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             profile.SetTokenCache(cache);
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override IAzureContextContainer Profile
         {
             get

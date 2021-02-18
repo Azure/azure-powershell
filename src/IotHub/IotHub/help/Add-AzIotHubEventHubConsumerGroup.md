@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubeventhubconsumergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubeventhubconsumergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,8 +18,13 @@ Creates an eventhub consumer group.
 
 ```
 Add-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
+<<<<<<< HEAD
  [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-EventHubConsumerGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -25,11 +34,16 @@ Creates a consumer group in the Eventhub associated with the specified IotHub.
 
 ### Example 1: Add a consumer group to the telemetry eventhub
 ```
+<<<<<<< HEAD
 PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName "myconsumergroup"
+=======
+PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName "myconsumergroup"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
 
+<<<<<<< HEAD
 ### Example 2: Add a consumer group to the operations monitoring eventhub
 ```
 PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents" -EventHubConsumerGroupName "myconsumergroup"
@@ -37,6 +51,8 @@ PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -
 
 Adds a new consumergroup named "myconsumergroup" to the eventhub for operations monitoring events in the iothub named "myiothub"
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -63,6 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+<<<<<<< HEAD
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -80,6 +97,8 @@ Aliases:
 Accepted values: events, operationsMonitoringEvents
 
 Required: True
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: 2
 Default value: None
 Accept pipeline input: False

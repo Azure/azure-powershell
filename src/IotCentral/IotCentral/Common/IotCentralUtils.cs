@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             };
             return copiedIotCenralApp;
         }
+<<<<<<< HEAD
 
         public static void EnsureAvailabilityOrThrow(AppAvailabilityInfo availabilityInfo)
         {
@@ -51,5 +52,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
                 throw new PSArgumentException(availabilityInfo.Message);
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -75,6 +75,31 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestVirtualMachineCustomScriptExtensionLinuxVM()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionLinuxVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionSubstatuses()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionSubstatuses");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestVirtualMachineAccessExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineAccessExtension");
@@ -115,6 +140,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestAzureDiskEncryptionExtensionNonDefaultParams()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionNonDefaultParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionLnxManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");
@@ -140,5 +182,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineADDomainExtensionDomainJoin");
         }
+<<<<<<< HEAD
+=======
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineExtensionEnableAutomaticUpgrade()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineExtensionEnableAutomaticUpgrade");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

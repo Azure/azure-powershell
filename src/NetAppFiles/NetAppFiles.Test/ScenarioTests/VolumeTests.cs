@@ -34,6 +34,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeCrud");
         }
 
+<<<<<<< HEAD
+=======
+        //---Note This test will be added to the next (2019-11-01) version ---
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeReplication()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetVolumePool()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetVolumePool");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumePipelines()

@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/add-azeventhubiprule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/add-azeventhubiprule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Add-AzEventHubIPRule
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Add a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Add a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -26,7 +34,11 @@ Add-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Add a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Add a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -41,7 +53,11 @@ Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namesapce.
+=======
+add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
@@ -54,7 +70,11 @@ Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namesapce.
+=======
+add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

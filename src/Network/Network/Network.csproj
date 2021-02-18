@@ -8,15 +8,47 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+<<<<<<< HEAD
+=======
+    <ApplicationIcon />
+    <Win32Resource />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.13.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
   
   <ItemGroup>
     <None Update="AzureRmNetworkStartup.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  
+  <ItemGroup>
+    <Folder Include="Bastion\" />
+    <Folder Include="RouteServerPeer\" />
+  </ItemGroup>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 </Project>

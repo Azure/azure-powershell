@@ -34,9 +34,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject;
         
+<<<<<<< HEAD
         public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix)
         {
             this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix);
+=======
+        private IReadOnlyList<System.String> sourcePortRanges;
+        
+        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix, System.Collections.Generic.IReadOnlyList<string> sourcePortRanges = null)
+        {
+            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix, sourcePortRanges);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
         
         internal PSNetworkSecurityGroupRule(Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject)
@@ -71,5 +79,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.SourceAddressPrefix;
             }
         }
+<<<<<<< HEAD
+=======
+        
+        public IReadOnlyList<System.String> SourcePortRanges
+        {
+            get
+            {
+                if (((this.sourcePortRanges == null) 
+                            && (this.omObject.SourcePortRanges != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.SourcePortRanges.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.sourcePortRanges = list;
+                }
+                return this.sourcePortRanges;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

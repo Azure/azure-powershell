@@ -76,7 +76,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
+=======
+            HelpMessage = "The MicrosoftConfigAdvertisedPublicPrefixes")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string[] MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
 
@@ -88,7 +92,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The MircosoftConfigRoutingRegistryName")]
+=======
+            HelpMessage = "The MicrosoftConfigRoutingRegistryName")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 
@@ -128,7 +136,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (this.MicrosoftConfigAdvertisedPublicPrefixes != null && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
             {
+<<<<<<< HEAD
                 if (PeerAddressType == IPv6)
+=======
+                if (AddressTypeUtils.IsIpv6(this.PeerAddressType))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();

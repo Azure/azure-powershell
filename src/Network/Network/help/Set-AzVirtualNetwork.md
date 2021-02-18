@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 93D8A341-540A-43F1-8C62-28323EAA58E0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetwork
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,6 +28,7 @@ The **Set-AzVirtualNetwork** cmdlet updates a virtual network.
 ## EXAMPLES
 
 ### 1: Creates a virtual network and removes one of its subnets
+<<<<<<< HEAD
 ```
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
     $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create resource group
@@ -31,6 +36,15 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPr
 
 $virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
     TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet ## Create virtual network
+=======
+```powershell
+New-AzResourceGroup -Name TestResourceGroup -Location centralus ## Create resource group 
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create frontend subnet 
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" ## Create backend subnet
+
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet ## Create virtual network
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Remove-AzVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork ## Remove subnet from in memory representation of virtual network
 

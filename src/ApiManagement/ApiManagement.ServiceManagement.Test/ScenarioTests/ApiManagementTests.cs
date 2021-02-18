@@ -47,7 +47,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
                 ResourceGroupName = "powershelltest";
+<<<<<<< HEAD
                 Location = "West US";
+=======
+                Location = "CentralUSEUAP";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
@@ -69,7 +73,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void ApiCloneCrudTest()
+=======
+         public void ApiCloneCrudTest()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             RunPowerShellTest("ApiClone-Test");
         }        
@@ -104,6 +112,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void ApiImportExportOpenApiJsonTest()
+        {
+            RunPowerShellTest("Api-ImportExportOpenApiJsonTest");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void ApiSchemaCrudOnSwaggerApiTest()
         {
             RunPowerShellTest("ApiSchema-SwaggerCRUDTest");
@@ -188,6 +206,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void GatewayCrudTest()
+        {
+            RunPowerShellTest("Gateway-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void PropertiesCrudTest()
         {
             RunPowerShellTest("Properties-CrudTest");
@@ -244,9 +272,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void ApiVersionSetCrudTest()
         {
             RunPowerShellTest("ApiVersionSet-CrudTest");
+=======
+        public void ApiVersionSetImportCrudTest()
+        {
+            RunPowerShellTest("ApiVersionSet-ImportCrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiVersionSetCrudTest()
+        {
+            RunPowerShellTest("ApiVersionSet-SetCrudTest");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]

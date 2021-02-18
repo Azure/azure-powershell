@@ -13,7 +13,14 @@ Param(
 
 $ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
+<<<<<<< HEAD
 $UnfilteredHelpFolders = Get-ChildItem -Include 'help' -Path "$PSScriptRoot\..\artifacts" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
+=======
+
+.($PSScriptRoot + "\PreloadToolDll.ps1")
+$UnfilteredHelpFolders = Get-ChildItem -Include 'help' -Path "$PSScriptRoot\..\artifacts" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $FilteredHelpFolders = $UnfilteredHelpFolders
 if (![string]::IsNullOrEmpty($FilteredModules))
 {
@@ -78,7 +85,35 @@ if ($ValidateMarkdownHelp)
     }
 }
 
+<<<<<<< HEAD
 if ($GenerateMamlHelp)
 {
     $FilteredHelpFolders | foreach { New-AzMamlHelp $_.FullName }
 }
+=======
+# We need to define new version of module instead of hardcode here
+$GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "GeneratedModuleList.txt")
+$NewModules = Get-Content $GeneratedModuleListPath
+if ($GenerateMamlHelp)
+{
+    $FilteredMamlHelpFolders = @()
+    foreach ($HelpFolder in $FilteredHelpFolders)
+    {
+        $ModuleName = "" 
+        if($HelpFolder -match "(?s)artifacts\\$BuildConfig\\(?<module>.+)\\help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($HelpFolder -match "(?s)artifacts/$BuildConfig/(?<module>.+)/help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($NewModules -notcontains $ModuleName)
+        {
+            $FilteredMamlHelpFolders += $HelpFolder
+        }
+
+    }
+    $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

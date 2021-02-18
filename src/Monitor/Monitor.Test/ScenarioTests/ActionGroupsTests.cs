@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "TODO: #7024: Needs to be recorded again")]
+=======
+        [Fact]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddGetListSetRemoveActionGroup()
         {

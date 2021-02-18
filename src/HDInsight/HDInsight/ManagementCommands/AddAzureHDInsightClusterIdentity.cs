@@ -61,6 +61,14 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
             HelpMessage = "The Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Position = 5,
+            Mandatory = false,
+            HelpMessage = "The Service Principal Application Id for accessing Azure Data Lake.")]
+        public Guid ApplicationId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         public override void ExecuteCmdlet()
@@ -82,6 +90,10 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
             }
 
             Config.ObjectId = ObjectId;
+<<<<<<< HEAD
+=======
+            Config.ApplicationId = ApplicationId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Config.AADTenantId = AadTenantId;
             Config.CertificatePassword = CertificatePassword;
 

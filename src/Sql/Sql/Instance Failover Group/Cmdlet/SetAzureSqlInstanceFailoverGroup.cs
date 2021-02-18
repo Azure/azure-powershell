@@ -130,7 +130,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
+=======
+            HelpMessage = "Whether outages on the secondary server should trigger automatic failover of the read-only endpoint.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string AllowReadOnlyFailoverToPrimary { get; set; }
@@ -178,7 +182,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             }
 
             int? gracePeriod = null;
+<<<<<<< HEAD
             if (!effectivePolicy.Equals("Manual"))
+=======
+            if (!effectivePolicy.Equals("Manual", StringComparison.OrdinalIgnoreCase))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 int? setDefault = newModel.FailoverWithDataLossGracePeriodHours;
                 if (setDefault.Equals(null))

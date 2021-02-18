@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -51,7 +55,11 @@ Update-AzIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <Str
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 For an introduction to Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/about-iot-dps.
+=======
+For an introduction to Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/azure/iot-dps/about-iot-dps.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -76,7 +84,13 @@ Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning
 
 ### Example 2
 ```
+<<<<<<< HEAD
 PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
+=======
+PS C:\> $tag = @{}
+PS C:\> $tag.Add("key1","Value1")
+PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tag
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -91,11 +105,21 @@ SkuTier						: Standard
 Etag						: AAAAAAAPoOk=
 ```
 
+<<<<<<< HEAD
 Add "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 3
 ```
 PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag @tags -Reset
+=======
+Add tags to an Azure IoT Hub device provisioning service "myiotdps".
+
+### Example 3
+```
+PS C:\> $tag = @{}
+PS C:\> $tag.Add("key1","Value1")
+PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag $tag -Reset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -110,7 +134,11 @@ SkuTier						: Standard
 Etag						: AAAAAAAS1dY=
 ```
 
+<<<<<<< HEAD
 Delete Tag and add new "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
+=======
+Delete Tag and add new tags to an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

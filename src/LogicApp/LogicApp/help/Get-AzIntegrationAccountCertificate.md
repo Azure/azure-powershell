@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: C0086E73-CCB1-4B75-B367-C79E17738122
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccountcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azintegrationaccountcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,14 +35,22 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ### Example 1: Get an integration account certificate
 ```
 PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
+<<<<<<< HEAD
 Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
+=======
+Id                : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/certificates/IntegrationAccountCertificate01
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
+<<<<<<< HEAD
 KeyVaultId        : /subscriptions/<SusbcriptionId/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+=======
+KeyVaultId        : /subscriptions/<SubscriptionId/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate : 
@@ -50,14 +62,22 @@ This command gets the integration account certificate named IntegrationAccountCe
 ### Example 2: Get integration account certificates by integration account name
 ```
 PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+<<<<<<< HEAD
 Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
+=======
+Id                : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/certificates/IntegrationAccountCertificate01
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
+<<<<<<< HEAD
 KeyVaultId        : /subscriptions/<SusbcriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+=======
+KeyVaultId        : /subscriptions/<SubscriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate : 

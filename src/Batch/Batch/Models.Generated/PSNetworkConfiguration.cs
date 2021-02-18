@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSPoolEndpointConfiguration endpointConfiguration;
         
+<<<<<<< HEAD
+=======
+        private PSPublicIPAddressConfiguration publicIPAddressConfiguration;
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSNetworkConfiguration()
         {
             this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
@@ -50,6 +55,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+<<<<<<< HEAD
+=======
+        public Microsoft.Azure.Batch.Common.DynamicVNetAssignmentScope? DynamicVNetAssignmentScope
+        {
+            get
+            {
+                return this.omObject.DynamicVNetAssignmentScope;
+            }
+            set
+            {
+                this.omObject.DynamicVNetAssignmentScope = value;
+            }
+        }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSPoolEndpointConfiguration EndpointConfiguration
         {
             get
@@ -75,6 +95,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
+=======
+        public PSPublicIPAddressConfiguration PublicIPAddressConfiguration
+        {
+            get
+            {
+                if (((this.publicIPAddressConfiguration == null) 
+                            && (this.omObject.PublicIPAddressConfiguration != null)))
+                {
+                    this.publicIPAddressConfiguration = new PSPublicIPAddressConfiguration(this.omObject.PublicIPAddressConfiguration);
+                }
+                return this.publicIPAddressConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.PublicIPAddressConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.PublicIPAddressConfiguration = value.omObject;
+                }
+                this.publicIPAddressConfiguration = value;
+            }
+        }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string SubnetId
         {
             get

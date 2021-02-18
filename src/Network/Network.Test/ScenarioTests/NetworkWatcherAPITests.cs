@@ -33,7 +33,11 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetTopology");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Skipped due to backend issues")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestGetSecurityGroupView()
@@ -66,7 +70,11 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+<<<<<<< HEAD
         [Trait(Category.RunType, Category.LiveOnly)]
+=======
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
         {
@@ -74,8 +82,13 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+<<<<<<< HEAD
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
+=======
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestFlowLog()
         {
             TestRunner.RunTestScript("Test-FlowLog");
@@ -98,7 +111,11 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ReachabilityReport");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "API is no longer available to customers")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestProvidersList()
@@ -106,7 +123,11 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ProvidersList");
         }
 
+<<<<<<< HEAD
         [Fact]
+=======
+        [Fact(Skip = "Need to rewrite test after introduction of ConnectionMonitor V2")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectionMonitor()
@@ -121,5 +142,16 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkConfigurationDiagnostic");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDFlowLog");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

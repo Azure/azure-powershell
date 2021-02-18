@@ -13,7 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" PrivateAssets="all"/>
+=======
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" PrivateAssets="all" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

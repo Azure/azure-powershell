@@ -36,7 +36,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public string[] Scope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
+<<<<<<< HEAD
         [LocationCompleter("Microsoft.Automation/SoftwareUpdateConfiguration")]
+=======
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias("Locaton")]
         public string[] Location { get; set; }
 

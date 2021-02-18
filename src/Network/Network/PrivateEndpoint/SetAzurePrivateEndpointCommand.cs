@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsPrivateEndpointPresent(this.PrivateEndpoint.ResourceGroupName, this.PrivateEndpoint.Name))
             {
+<<<<<<< HEAD
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+=======
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound,this.PrivateEndpoint.Name));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // Map to the sdk object

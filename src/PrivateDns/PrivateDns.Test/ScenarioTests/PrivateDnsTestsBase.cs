@@ -85,7 +85,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
         {
             var d = new Dictionary<string, string>
             {
+<<<<<<< HEAD
                 {"Microsoft.Resources", null}, {"Microsoft.Features", null}, {"Microsoft.Authorization", null}
+=======
+                {"Microsoft.Resources", null}, {"Microsoft.Features", null}, {"Microsoft.Authorization", null}, {"Microsoft.Network", null}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
             var providersToIgnore = new Dictionary<string, string>
             {

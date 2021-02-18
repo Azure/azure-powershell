@@ -23,10 +23,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         public bool AllowUpdates { get; set; }
 
+<<<<<<< HEAD
         public IList<PSApplicationPackage> ApplicationPackages { get; set; }
 
         public string Id { get; set; }
 
+=======
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string DefaultVersion { get; set; }
 
         public string DisplayName { get; set; }

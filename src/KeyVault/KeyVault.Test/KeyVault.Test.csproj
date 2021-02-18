@@ -13,8 +13,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.13.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.3.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +28,10 @@
 
   <ItemGroup>
     <None Update="Scripts\ControlPlane\KeyVaultManagementTests.ps1" CopyToOutputDirectory="PreserveNewest" />
+<<<<<<< HEAD
     <None Update="Resources\pshtest.pfx" CopyToOutputDirectory="PreserveNewest" />
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

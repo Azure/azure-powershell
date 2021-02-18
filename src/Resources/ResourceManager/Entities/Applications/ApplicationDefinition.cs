@@ -23,7 +23,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
     public class ApplicationDefinition
     {
         /// <summary>
+<<<<<<< HEAD
         /// The application defintion name.
+=======
+        /// The application definition name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string Name { get; set; }

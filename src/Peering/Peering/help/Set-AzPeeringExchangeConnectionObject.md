@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringexchangeconnectionobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.peering/set-azpeeringexchangeconnectionobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,6 +16,7 @@ Sets or updates the Exchange Connection information.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Md5Authentication (Default)
 ```
 Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-MD5AuthenticationKey <String>]
@@ -19,6 +24,9 @@ Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-MD5A
 ```
 
 ### IPv4Address
+=======
+### IPv4Address (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> -PeerSessionIPv4Address <String>
  [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -30,6 +38,15 @@ Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> -PeerS
  [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### Md5Authentication
+```
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> -MD5AuthenticationKey <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 Used in conjunction with Update-AzPeering, this is an in memory operation and will only persist with `Update-AzPeering`. 
 
@@ -119,7 +136,11 @@ Type: System.String
 Parameter Sets: Md5Authentication
 Aliases:
 
+<<<<<<< HEAD
 Required: False
+=======
+Required: True
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,7 +178,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

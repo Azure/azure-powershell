@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -23,6 +24,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public XunitTracingInterceptor _logger;
 
         public HDInsightConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
+=======
+using Commands.HDInsight.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace Commands.HDInsight.Test.ScenarioTests
+{
+    public class HDInsightConfigurationTests
+    {
+        public XunitTracingInterceptor _logger;
+
+        public HDInsightConfigurationTests(ITestOutputHelper output)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -32,7 +48,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationPipelining()
         {
+<<<<<<< HEAD
             NewInstance.RunPsTest(_logger, "Test-ConfigurationPipelining");
+=======
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ConfigurationPipelining");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

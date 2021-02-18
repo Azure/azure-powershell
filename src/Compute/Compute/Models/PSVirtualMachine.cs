@@ -78,9 +78,21 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the network profile.
         public NetworkProfile NetworkProfile { get; set; }
 
+<<<<<<< HEAD
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
 
+=======
+        //Gets or sets the security profile 
+        public SecurityProfile SecurityProfile { get; set; }
+
+        // Gets or sets the OS profile.
+        public OSProfile OSProfile { get; set; }
+
+        // Gets or sets the Billing profile.
+        public BillingProfile BillingProfile { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         // Gets or sets the purchase plan when deploying virtual machine from VM Marketplace images.
         public Plan Plan { get; set; }
 
@@ -106,5 +118,23 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the ProximityPlacementGroup
         public SubResource ProximityPlacementGroup { get; set; }
+<<<<<<< HEAD
+=======
+
+        // Gets or sets the Host
+        public SubResource Host { get; set; }
+
+        // Gets or sets the VirtualMachineScaleSet
+        public SubResource VirtualMachineScaleSet { get; set; }
+
+        // Gets or sets the EvictionPolicy
+        public string EvictionPolicy { get; set; }
+
+        // Gets or sets the Priority
+        public string Priority { get; set; }
+        
+        // Gets or sets the HostGroup
+        public SubResource HostGroup { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

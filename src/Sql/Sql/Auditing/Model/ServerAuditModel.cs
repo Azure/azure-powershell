@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,43 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public string ServerName { get; set; }
 
+=======
+namespace Microsoft.Azure.Commands.Sql.Auditing.Model
+{
+    public enum AuditActionGroups
+    {
+        BATCH_STARTED_GROUP,
+        BATCH_COMPLETED_GROUP,
+        APPLICATION_ROLE_CHANGE_PASSWORD_GROUP,
+        BACKUP_RESTORE_GROUP,
+        DATABASE_LOGOUT_GROUP,
+        DATABASE_OBJECT_CHANGE_GROUP,
+        DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP,
+        DATABASE_OBJECT_PERMISSION_CHANGE_GROUP,
+        DATABASE_OPERATION_GROUP,
+        DATABASE_PERMISSION_CHANGE_GROUP,
+        DATABASE_PRINCIPAL_CHANGE_GROUP,
+        DATABASE_PRINCIPAL_IMPERSONATION_GROUP,
+        DATABASE_ROLE_MEMBER_CHANGE_GROUP,
+        FAILED_DATABASE_AUTHENTICATION_GROUP,
+        SCHEMA_OBJECT_ACCESS_GROUP,
+        SCHEMA_OBJECT_CHANGE_GROUP,
+        SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP,
+        SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP,
+        SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+        USER_CHANGE_PASSWORD_GROUP
+    }
+
+    public enum StorageKeyKind { None, Primary, Secondary };
+
+    public class ServerAuditModel : ServerDevOpsAuditModel
+    {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         public string PredicateExpression { get; set; }
 
+<<<<<<< HEAD
         public AuditStateType BlobStorageTargetState { get; set; }
 
         public string StorageAccountResourceId { get; set; }
@@ -55,5 +89,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         [Hidden]
         internal string NextDiagnosticSettingsName { get; set; }
+=======
+        public StorageKeyKind StorageKeyType { get; set; }
+
+        public uint? RetentionInDays { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

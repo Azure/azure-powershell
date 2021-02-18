@@ -20,11 +20,19 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Security;
+<<<<<<< HEAD
+=======
+using System.Threading;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
     public class MockCommandRuntime : ICommandRuntime
     {
+<<<<<<< HEAD
+=======
+        public int InvocationThreadId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<ErrorRecord> ErrorStream = new List<ErrorRecord>();
         public List<object> OutputPipeline = new List<object>();
         public List<string> WarningStream = new List<string>();
@@ -32,6 +40,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public List<string> DebugStream = new List<string>();
         PSHost _host = new MockPSHost();
 
+<<<<<<< HEAD
+=======
+        public MockCommandRuntime()
+        {
+            InvocationThreadId = Thread.CurrentThread.ManagedThreadId;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override string ToString()
         {
             return "MockCommand";
@@ -102,16 +118,28 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void WriteDebug(string text)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             DebugStream.Add(text);
         }
 
         public void WriteError(ErrorRecord errorRecord)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ErrorStream.Add(errorRecord);
         }
 
         public void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             System.Collections.IEnumerable enumerable = LanguagePrimitives.GetEnumerable(sendToPipeline);
             if (enumerable != null && enumerateCollection)
             {
@@ -128,6 +156,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void WriteObject(object sendToPipeline)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             OutputPipeline.Add(sendToPipeline);
         }
 
@@ -143,11 +175,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void WriteVerbose(string text)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             VerboseStream.Add(text);
         }
 
         public void WriteWarning(string text)
         {
+<<<<<<< HEAD
+=======
+            ThrowIfNotFromInvocationThread();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.WarningStream.Add(text);
         }
 
@@ -162,6 +202,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             VerboseStream.Clear();
         }
 
+<<<<<<< HEAD
+=======
+        private void ThrowIfNotFromInvocationThread()
+        {
+            if (Thread.CurrentThread.ManagedThreadId != InvocationThreadId)
+                throw new InvalidOperationException("Write operation should happen on the same thread of invocation thread.");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         class MockPSHost : PSHost
         {
             PSHostUserInterface _hostUI = new MockPSHostUI();

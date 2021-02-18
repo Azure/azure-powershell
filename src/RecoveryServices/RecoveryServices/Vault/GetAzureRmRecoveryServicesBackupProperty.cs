@@ -20,6 +20,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -49,10 +53,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+<<<<<<< HEAD
                 BackupStorageConfig getStorageResponse = RecoveryServicesClient.GetVaultStorageType(
                                                                         this.Vault.ResourceGroupName, this.Vault.Name);
                 ASRVaultBackupProperties vaultBackupProperties = new ASRVaultBackupProperties();
                 vaultBackupProperties.BackupStorageRedundancy = getStorageResponse.StorageType;
+=======
+                BackupResourceConfigResource getStorageResponse = RecoveryServicesClient.GetVaultStorageConfig(
+                                                                        this.Vault.ResourceGroupName, this.Vault.Name);
+                ASRVaultBackupProperties vaultBackupProperties = new ASRVaultBackupProperties();
+                vaultBackupProperties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
+                vaultBackupProperties.CrossRegionRestore = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 this.WriteObject(vaultBackupProperties);
             }
             catch (Exception exception)

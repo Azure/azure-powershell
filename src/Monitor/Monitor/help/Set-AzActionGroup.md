@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azactiongroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/set-azactiongroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -97,7 +101,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 The action group resourc
+=======
+The action group resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
@@ -199,7 +207,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+<<<<<<< HEAD
 The tags of the action group resourc
+=======
+The tags of the action group resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
@@ -280,4 +292,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzActionGroup](./Get-AzActionGroup.md)
 [Remove-AzActionGroup](./Remove-AzActionGroup.md)
+<<<<<<< HEAD
 [New-AzActionGroupReceiver](./AzureRmActionGroupReceiver.md)
+=======
+[New-AzActionGroupReceiver](./New-AzActionGroupReceiver.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

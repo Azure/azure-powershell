@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,6 +65,45 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Azure Active Directory application with the display name &apos;{0}&apos; was found. Display Name provided does not match with any service principal display name &apos;{1}&apos;. Please provide right display name that names with display name of the application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or Get-AzADServicePrincipal -SearchString &quot;{1}&quot;..
+        /// </summary>
+        internal static string ADApplicationDisplayNameMismatch {
+            get {
+                return ResourceManager.GetString("ADApplicationDisplayNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory application with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the application to select the correct application. To get the application id use Get-AzADApplication -SearchString &quot;{0}&quot; or use use Get-AzADServicePrincipal -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADApplicationMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADApplicationMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden.
+        /// </summary>
+        internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
+            get {
+                return ResourceManager.GetString("AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory application and group with same display name &apos;{0}&apos; was found. Please provide an Azure Active Directory application id of the service principal or object id of the group to select the correct application. To get the application id use Get-AzADServicePrincipal -SearchString &quot;{0}&quot; or to get object id use Get-AzADGroup -SearchString &quot;{0}&quot;..
+        /// </summary>
+        internal static string ADDuplicateGroupAndApplicationFound {
+            get {
+                return ResourceManager.GetString("ADDuplicateGroupAndApplicationFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADGroupMoreThanOneFound {
@@ -70,7 +113,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser..
+=======
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group or application you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser or to get a list of Azure Active Directory applications use Get-AzADApplication..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string ADObjectNotFound {
             get {
@@ -97,6 +144,189 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Elastic Job Agent with name &apos;{0}&apos; already exists in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobAgentExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elastic Job agent &apos;{0}&apos; does not exist in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobAgentNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job execution &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExecutionNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExecutionNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested job time interval is not supported &apos;{0}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobIntervalNotSupported {
+            get {
+                return ResourceManager.GetString("AzureElasticJobIntervalNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; already exists in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with database name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in target group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetDatabaseExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with elastic pool name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetElasticPoolExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetElasticPoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with server name &apos;{0}&apos; already exists in Target Group &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetServerExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetServerExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with shard map name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetShardMapExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetShardMapExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance pool with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string AzureSqlInstancePoolExists {
+            get {
+                return ResourceManager.GetString("AzureSqlInstancePoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance pool with name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string AzureSqlInstancePoolNotExists {
+            get {
+                return ResourceManager.GetString("AzureSqlInstancePoolNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyNotChosenTakeGeoWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyNotChosenTakeGeoWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to the source&apos;s backup storage redundancy. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyNotChosenTakeSourceWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyNotChosenTakeSourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to About to process resource.
         /// </summary>
         internal static string BaseConfirmActionProcessMessage {
@@ -106,6 +336,27 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to You cannot change hardware family..
+        /// </summary>
+        internal static string CannotChangeHardwareFamily {
+            get {
+                return ResourceManager.GetString("CannotChangeHardwareFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For this update operation provided compute generation parameter is &apos;{0}&apos;. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
+        /// </summary>
+        internal static string ChangingHardwareFamilyIsIrreversable {
+            get {
+                return ResourceManager.GetString("ChangingHardwareFamilyIsIrreversable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -160,6 +411,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Do you want to proceed?.
+        /// </summary>
+        internal static string DoYouWantToProceed {
+            get {
+                return ResourceManager.GetString("DoYouWantToProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
         /// </summary>
         internal static string ElasticPoolDatabaseActivityCancelNotSupported {
@@ -205,6 +468,81 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
+        /// </summary>
+        internal static string FailedToAddRoleAssignmentForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToAddRoleAssignmentForStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get Role Assignments for Storage Account &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailedToGetRoleAssignmentsForStorageAccount {
+            get {
+                return ResourceManager.GetString("FailedToGetRoleAssignmentsForStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Managed Instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Managed Instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlInstanceWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlInstanceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Database to be added with id &apos;{0}&apos; already exists in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
         /// </summary>
         internal static string FailoverGroupAddDatabaseAlreadyExists {
@@ -259,6 +597,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string GeoBackupRedundancyChosenWarning {
+            get {
+                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -502,6 +852,27 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlDatabaseLongTermRetentionBackupDescription {
@@ -529,6 +900,45 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Removing Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanantly removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -727,6 +1137,45 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Are you sure you want to remove the agent &apos;{0}&apos; from server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveElasticJobAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobTargetGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobTargetGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the job &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure SQL Instance pool &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveInstancePoolWarning {
+            get {
+                return ResourceManager.GetString("RemoveInstancePoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
         /// </summary>
         internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
@@ -745,6 +1194,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Failed to retrieve properties of storage account &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountPropertiesFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountPropertiesFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
@@ -754,11 +1215,19 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetVulnerabilityAssemenSettings {
             get {
                 return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+=======
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSetting first..
+        /// </summary>
+        internal static string RunSetVulnerabilityAssessmentSettings {
+            get {
+                return ResourceManager.GetString("RunSetVulnerabilityAssessmentSettings", resourceCulture);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
         
@@ -835,6 +1304,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The server name &apos;{0}&apos; cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists..
+        /// </summary>
+        internal static string ServerNameInvalid {
+            get {
+                return ResourceManager.GetString("ServerNameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
         /// </summary>
         internal static string ServerNotApplicableForDataMasking {
@@ -997,6 +1478,54 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to LastBackupName is required parameter when AutoCompleteRestore is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string StartManagedDatabaseLogReplay_LastBackupName_Warning {
+            get {
+                return ResourceManager.GetString("StartManagedDatabaseLogReplay_LastBackupName_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping Azure Sql Managed Database Log Replay by removing &apos;{0}&apos; database..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayDescription {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceDatabaseLogReplayDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop Azure Sql Managed Database Log Replay service? By doing this specified managed database will be removed..
+        /// </summary>
+        internal static string StopAzureSqlInstanceDatabaseLogReplayWarning {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceDatabaseLogReplayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to submit request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopAzureSqlInstanceOperationDescription {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceOperationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submiting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopAzureSqlInstanceOperationWarning {
+            get {
+                return ResourceManager.GetString("StopAzureSqlInstanceOperationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Stopping upgrade for Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
         internal static string StopAzureSqlServerUpgradeDescription {
@@ -1060,6 +1589,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to SyncMemberAzureDatabaseResourceId is a required parameter when UsePrivateLinkConnection is set to true. Please explicitly provide it..
+        /// </summary>
+        internal static string SyncMemberIdRequired {
+            get {
+                return ResourceManager.GetString("SyncMemberIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Sync Member with name: ‘{0}&apos; already exists in Sync Group &apos;{1}&apos;..
         /// </summary>
         internal static string SyncMemberNameExists {
@@ -1069,6 +1610,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Auditing policy cannot be defined for database edition {0}.
+        /// </summary>
+        internal static string UnsupportedDatabaseEditionForAuditingPolicy {
+            get {
+                return ResourceManager.GetString("UnsupportedDatabaseEditionForAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
         /// </summary>
         internal static string UseServerWithoutStorageAccount {
@@ -1078,6 +1631,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on managed instance system database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on master database. Skipping....
         /// </summary>
         internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
@@ -1103,6 +1668,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
+<<<<<<< HEAD
   
 
         /// <summary>
@@ -1126,5 +1692,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
             }
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -84,5 +84,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
             commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
+<<<<<<< HEAD
+=======
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetBatchAccount_IdentityTest()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, identity: new BatchAccountIdentity(ResourceIdentityType.None, string.Empty, string.Empty));
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
+            batchClientMock.Setup(b => b.GetAccount(resourceGroup, accountName)).Returns(expected);
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

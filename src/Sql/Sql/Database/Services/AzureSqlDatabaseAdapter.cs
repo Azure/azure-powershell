@@ -160,6 +160,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 LicenseType = model.Database.LicenseType,
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
+<<<<<<< HEAD
+=======
+                HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
+                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                SecondaryType = model.Database.SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -225,6 +232,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return new AzureSqlDatabaseModelExpanded(resourceGroup, serverName, database);
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Failovers a database
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
+        /// <param name="replicaType">Whether to failover primary replica or readable secondary replica</param>
+        public void FailoverDatabase(string resourceGroupName, string serverName, string databaseName, string replicaType)
+        {
+            Communicator.Failover(resourceGroupName, serverName, databaseName, replicaType);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
         {
             if (!string.IsNullOrEmpty(elasticPoolName))
@@ -376,5 +398,34 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             return sku;
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// </summary>
+        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
+        /// <returns>internal backupStorageRedundancy</returns>
+        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
+        {
+
+            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
+            {
+                return null;
+            }
+
+            switch (backupStorageRedundancy.ToLower())
+            {
+                case "geo":
+                    return "GRS";
+                case "local":
+                    return "LRS";
+                case "zone":
+                    return "ZRS";
+                default:
+                    return null;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

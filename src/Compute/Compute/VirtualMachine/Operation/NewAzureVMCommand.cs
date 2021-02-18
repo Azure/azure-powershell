@@ -12,6 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Reflection;
+using System.Threading.Tasks;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -35,6 +47,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+<<<<<<< HEAD
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,6 +58,9 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -225,9 +241,58 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string ProximityPlacementGroup { get; set; }
+=======
+        [Alias("ProximityPlacementGroup")]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string HostId { get; set; }
+        
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string VmssId { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot")]
+        public string Priority { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
+        public string EvictionPolicy { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The max price of the billing of a low priority virtual machine.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "The max price of the billing of a low priority virtual machine.")]
+        public double MaxPrice { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        public SwitchParameter EncryptionAtHost { get; set; }
+        
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
+            HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
+            ValueFromPipelineByPropertyName = true)]
+        public string HostGroupId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override void ExecuteCmdlet()
         {
@@ -274,7 +339,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 get
                 {
+<<<<<<< HEAD
                     if(_defaultLocation == null)
+=======
+                    if (_defaultLocation == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         var vmResourceType = _resourceClient.Providers.GetAsync("Microsoft.Compute").ConfigureAwait(false).GetAwaiter().GetResult()
                         .ResourceTypes.Where(a => String.Equals(a.ResourceType, "virtualMachines", StringComparison.OrdinalIgnoreCase))
@@ -321,7 +390,11 @@ namespace Microsoft.Azure.Commands.Compute
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
+<<<<<<< HEAD
                     sku: PublicIPAddressStrategy.Sku.Basic,
+=======
+                    sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     zones: _cmdlet.Zone);
 
                 _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
@@ -336,7 +409,11 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
+<<<<<<< HEAD
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+=======
+                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
@@ -359,7 +436,19 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
+<<<<<<< HEAD
                         proximityPlacementGroup: ppgSubResourceFunc);
+=======
+                        proximityPlacementGroup: ppgSubResourceFunc,
+                        hostId: _cmdlet.HostId,
+                        hostGroupId: _cmdlet.HostGroupId,
+                        VmssId: _cmdlet.VmssId,
+                        priority: _cmdlet.Priority,
+                        evictionPolicy: _cmdlet.EvictionPolicy,
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        );
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 else
                 {
@@ -378,7 +467,19 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
+<<<<<<< HEAD
                         proximityPlacementGroup: ppgSubResourceFunc);
+=======
+                        proximityPlacementGroup: ppgSubResourceFunc,
+                        hostId: _cmdlet.HostId,
+                        hostGroupId: _cmdlet.HostGroupId,
+                        VmssId: _cmdlet.VmssId,
+                        priority: _cmdlet.Priority,
+                        evictionPolicy: _cmdlet.EvictionPolicy,
+                        maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                    );
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
@@ -490,7 +591,10 @@ namespace Microsoft.Azure.Commands.Compute
         public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.VM.DiagnosticsProfile == null)
             {
                 var storageUri = GetOrCreateStorageAccountForBootDiagnostics();
@@ -507,8 +611,11 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
             }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -527,7 +634,18 @@ namespace Microsoft.Azure.Commands.Compute
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
+<<<<<<< HEAD
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup
+=======
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
+                        Priority = this.VM.Priority,
+                        EvictionPolicy = this.VM.EvictionPolicy,
+                        BillingProfile = this.VM.BillingProfile,
+                        SecurityProfile = this.VM.SecurityProfile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

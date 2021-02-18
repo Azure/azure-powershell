@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvpnconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/update-azvpnconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,21 +20,40 @@ Updates a VPN connection.
 ```
 Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
+<<<<<<< HEAD
  [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByVpnConnectionResourceId
 ```
 Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
+<<<<<<< HEAD
  [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
+ [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### ByVpnConnectionObject
 ```
 Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
+<<<<<<< HEAD
  [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob]
+=======
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>]
+ [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,6 +93,25 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+<<<<<<< HEAD
+=======
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -109,6 +151,25 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+<<<<<<< HEAD
+=======
+RoutingConfiguration      : {
+                                "AssociatedRouteTable": {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                }
+                                "PropagatedRouteTables": {
+                                    "Labels": [],
+                                    "Ids": [
+                                    {
+                                    "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                                },
+                                "VnetRoutes": {
+                                    "StaticRoutes": []
+                                }
+                            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -124,7 +185,11 @@ The connection is then updated to have a new shared key using the secure string 
 Run cmdlet in the background
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -136,10 +201,17 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionBandwidthInMbps
+<<<<<<< HEAD
 The bandwith that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: System.UInt32
+=======
+The bandwidth that needs to be handled by this connection in mbps.
+
+```yaml
+Type: UInt32
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +226,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+=======
+Type: IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -169,7 +245,26 @@ Accept wildcard characters: False
 Enable BGP for this connection
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Nullable`1[System.Boolean]
+=======
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableInternetSecurity
+Enable internet security for this connection
+
+```yaml
+Type: Boolean
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -181,10 +276,17 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 The VpnConenction object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
+=======
+The VpnConnection object to update.
+
+```yaml
+Type: PSVpnConnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVpnConnectionObject
 Aliases: VpnConnection
 
@@ -196,10 +298,17 @@ Accept wildcard characters: False
 ```
 
 ### -IpSecPolicy
+<<<<<<< HEAD
 The bandwith that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
+=======
+The bandwidth that needs to be handled by this connection in mbps.
+
+```yaml
+Type: PSIpsecPolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +323,11 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVpnConnectionName
 Aliases: ResourceName, VpnConnectionName
 
@@ -229,7 +342,11 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVpnConnectionName
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
@@ -244,7 +361,11 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVpnConnectionName
 Aliases:
 
@@ -256,10 +377,17 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 The resource id of the VpnConenction object to delete.
 
 ```yaml
 Type: System.String
+=======
+The resource id of the VpnConnection object to delete.
+
+```yaml
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVpnConnectionResourceId
 Aliases: VpnConnectionId
 
@@ -270,11 +398,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -RoutingConfiguration
+Routing configuration for this connection
+
+```yaml
+Type: PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -SharedKey
 The shared key required to set this connection up.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Security.SecureString
+=======
+Type: SecureString
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +439,41 @@ Accept wildcard characters: False
 Use local azure ip address as source address while initiating connection.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Nullable`1[System.Boolean]
+=======
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UsePolicyBasedTrafficSelectors
+Use policy based traffic selectors for this connection.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnSiteLinkConnection
+The list of VpnSiteLinkConnections that this VpnConnection needs to have.
+
+```yaml
+Type: PSVpnSiteLinkConnection[]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -304,7 +488,11 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: cf
 
@@ -320,7 +508,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: wi
 
@@ -332,7 +524,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -353,3 +549,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVpnConnection](./New-AzVpnConnection.md)
 
 [Remove-AzVpnConnection](./Remove-AzVpnConnection.md)
+<<<<<<< HEAD
+=======
+
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

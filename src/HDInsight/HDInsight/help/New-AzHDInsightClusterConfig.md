@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 2C06626F-E5A9-48C2-AEA2-B448AD254C2E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightclusterconfig
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
+Module Name: Az.HDInsight
+ms.assetid: 2C06626F-E5A9-48C2-AEA2-B448AD254C2E
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,6 +22,7 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 New-AzHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
  [-DefaultStorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
@@ -21,6 +30,17 @@ New-AzHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStor
  [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+=======
+New-AzHDInsightClusterConfig [-StorageAccountResourceId <String>] [-StorageAccountKey <String>]
+ [-StorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
+ [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
+ [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
+ [-CertificatePassword <String>] [-AadTenantId <Guid>] [-MinSupportedTlsVersion <String>]
+ [-AssignedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
+ [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -32,7 +52,12 @@ The **New-AzHDInsightClusterConfig** cmdlet creates a non-persisted object that 
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
+<<<<<<< HEAD
 PS C:\> $storageAccountName = "yourstorageacct001"
+=======
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
+PS C:\> $storageAccountName = "yourstorageaccountname"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
@@ -60,9 +85,15 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
+<<<<<<< HEAD
                 -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
                 -DefaultStorageAccountKey $storageAccountKey `
                 -DefaultStorageContainer $storageContainer
+=======
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command creates a cluster configuration object.
@@ -84,6 +115,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ApplicationId
+Gets or sets the Service Principal Application Id for accessing Azure Data Lake.
+
+```yaml
+Type: System.Guid
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignedIdentity
+Gets or sets the assigned identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -CertificateFileContents
 Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.
 
@@ -159,6 +223,12 @@ The acceptable values for this parameter are:
 - HBase
 - Storm
 - Spark
+<<<<<<< HEAD
+=======
+- INTERACTIVEHIVE
+- Kafka
+- RServer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -187,8 +257,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -DefaultStorageAccountKey
 Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
+=======
+### -EdgeNodeSize
+Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -202,13 +277,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -DefaultStorageAccountName
 Specifies the name of the default storage account that the HDInsight cluster will use.
+=======
+### -EncryptionAlgorithm
+Gets or sets the encryption algorithm.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
+=======
+Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -217,6 +301,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -DefaultStorageAccountType
 Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.
 
@@ -229,12 +314,75 @@ Accepted values: AzureStorage, AzureDataLakeStore
 Required: False
 Position: Named
 Default value: AzureStorage
+=======
+### -EncryptionAtHost
+Gets or sets the flag which indicates whether enable encryption at host or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionInTransit
+Gets or sets the flag which indicates whether enable encryption in transit or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+<<<<<<< HEAD
 ### -EdgeNodeSize
 Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+=======
+### -EncryptionKeyName
+Gets or sets the encryption key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVersion
+Gets or sets the encryption key version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionVaultUri
+Gets or sets the encryption vault uri.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -280,6 +428,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -MinSupportedTlsVersion
+Gets or sets the minimal supported TLS version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ObjectId
 Specifies the Azure AD object ID (a GUID) of the Azure AD Service Principal that represents the cluster.
 The cluster will use this when accessing Azure Data Lake Store.
@@ -312,6 +478,55 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -StorageAccountKey
+Gets or sets the storage account access key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceId
+Gets or sets the storage account resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+Gets or sets the type of the default storage account.
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureStorage, AzureDataLakeStore, AzureDataLakeStorageGen2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -WorkerNodeSize
 Specifies the size of the virtual machine for the Worker node.
 Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
@@ -346,7 +561,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

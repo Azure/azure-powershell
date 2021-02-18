@@ -11,12 +11,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Attestation" Version="0.9.6-preview" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Attestation">
     </Reference>
+=======
+    <PackageReference Include="Microsoft.Azure.Attestation" Version="0.10.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Attestation" Version="0.12.0-preview" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0">
+      <NoWarn>NU1608</NoWarn>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="SamplePolicyFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+   
+  <ItemGroup>
+    <None Update="SamplePolicySignerFiles\cert1.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SamplePolicySignerFiles\cert2.signed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SamplePolicySignerFiles\cert3.signed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SamplePolicySignerFiles\cert4.signed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SamplePolicySignerFiles\cert5.signed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

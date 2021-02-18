@@ -36,7 +36,11 @@ function Test-NetworkUsage
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
         # Create the Virtual Network
+<<<<<<< HEAD
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8;
+=======
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $usage = Get-AzNetworkUsage -Location $location;
         $vnetCount2 = ($usage | Where-Object { $_.name.Value -eq "VirtualNetworks" }).currentValue;
 

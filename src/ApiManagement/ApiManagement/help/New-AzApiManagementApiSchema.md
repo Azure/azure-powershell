@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementapischema
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementapischema
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,7 +35,11 @@ Creates the new API Schema of the API.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 : Create new Schema for Swagger Petstore Extensive API
+=======
+### Example 1: Create new Schema for Swagger Petstore Extensive API
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS D:\github\azure-powershell> $context = New-AzApiManagementContext -ResourceId /subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.ApiManagement/service/sdktestapim4163
 PS D:\github\azure-powershell> New-AzApiManagementApiSchema -Context $context -ApiId swagger-petstore-extensive -SchemaDocumentContentType swaggerdefinition -SchemaDocumentFilePath C:\Users\sasolank\Downloads\petstoreschema.json

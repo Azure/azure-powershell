@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroledefinition
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azroledefinition
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -49,7 +53,11 @@ The input role definition MAY contain the following properties:
 1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role.
 If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 2) DataActions: the set of data operations to which the custom role grants access.
+<<<<<<< HEAD
 3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective dataactions for the custom role.
+=======
+3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective data actions for the custom role.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 If there is a specific data operation that you do not wish to grant access to in a custom role, it is convenient to use NotDataActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation - the user will be able to perform that operation.
 NotActions is not a deny rule - it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.
@@ -80,6 +88,7 @@ Following is a sample json role definition that can be provided as input
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Create using PSRoleDefinitionObject
 ```
 PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
@@ -106,6 +115,35 @@ PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 
 ### Create using JSON file
 ```
+=======
+### Example 1: Create using PSRoleDefinitionObject
+```powershell
+PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
+
+PS C:\> $role.Id = $null
+PS C:\> $role.Name = "Virtual Machine Operator"
+PS C:\> $role.Description = "Can monitor, start, and restart virtual machines."
+PS C:\> $role.Actions.RemoveRange(0,$role.Actions.Count)
+PS C:\> $role.Actions.Add("Microsoft.Compute/*/read")
+PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
+PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
+PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action")
+PS C:\> $role.Actions.Add("Microsoft.Network/*/read")
+PS C:\> $role.Actions.Add("Microsoft.Storage/*/read")
+PS C:\> $role.Actions.Add("Microsoft.Authorization/*/read")
+PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
+PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
+PS C:\> $role.Actions.Add("Microsoft.Support/*")
+PS C:\> $role.AssignableScopes.Clear()
+PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+
+PS C:\> New-AzRoleDefinition -Role $role
+```
+
+### Example 2: Create using JSON file
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
@@ -157,7 +195,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

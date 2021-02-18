@@ -50,9 +50,29 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestCustomDomainHttpsWithRunningEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainEnableHttpsWithRunningEndpoint");
+=======
+        public void TestVerizonCustomDomainHttpsWithRunningEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAkamaiCustomDomainHttpsWithRunningEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AkamaiCustomDomainEnableHttpsWithRunningEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMicrosoftCustomDomainHttpsWithRunningEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MicrosoftCustomDomainEnableHttpsWithRunningEndpoint");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

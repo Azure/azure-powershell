@@ -40,7 +40,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+=======
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [ValidateNotNull]
         public PSBlueprintBase Blueprint { get; set; }
@@ -64,7 +68,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public Hashtable SecureStringParameter { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+=======
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ResourceGroupParameters)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public Hashtable ResourceGroupParameter { get; set; }
 
@@ -72,10 +80,21 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNull]
         public Hashtable Parameter { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.SecureString)]
         [ValidateNotNullOrEmpty]
         public string AssignmentFile { get; set; }
 
+=======
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.AssignmentFile)]
+        [ValidateNotNullOrEmpty]
+        public string AssignmentFile { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.ManagementGroupIdToAssign)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ManagementGroupIdToAssign)]
+        public string ManagementGroupId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.SubscriptionIdToAssign)]
         [Parameter(ParameterSetName = ParameterSetNames.UpdateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionIdToAssign)]
         [ValidateNotNullOrEmpty]
@@ -85,15 +104,27 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             try
             {
                 var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
+=======
+            Utils.ValidateName(this.Name);
+
+            try
+            {
+                var subscriptionIds = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.UpdateBlueprintAssignment:
 
+<<<<<<< HEAD
                         if (ShouldProcess(string.Join(",", subscriptionsList),
+=======
+                        if (ShouldProcess(string.Join(",", subscriptionIds),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             string.Format(Resources.UpdateAssignmentShouldProcessString, Name)))
                         {
                             var assignment = CreateAssignmentObject(
@@ -110,6 +141,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 ResourceGroupParameter,
                                 SecureStringParameter);
 
+<<<<<<< HEAD
                             foreach (var subscription in subscriptionsList)
                             {
                                 var scope = Utils.GetScopeForSubscription(subscription);
@@ -124,17 +156,46 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 }
 
                                 WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignment));
+=======
+                            foreach (var subscriptionId in subscriptionIds)
+                            {
+                                string targetScope = Utils.GetScopeForSubscription(subscriptionId);
+                                string resourceScope = !string.IsNullOrEmpty(this.ManagementGroupId)
+                                    ? Utils.GetScopeForManagementGroup(this.ManagementGroupId)
+                                    : targetScope;
+
+                                ThrowIfAssignmentNotExist(resourceScope, Name);
+                                // Register Blueprint RP
+                                RegisterBlueprintRp(subscriptionId);
+
+                                if (!this.IsParameterBound(c => c.UserAssignedIdentity))
+                                {
+                                    var spnObjectId = GetBlueprintSpn(resourceScope, Name);
+                                    AssignOwnerPermission(resourceScope, spnObjectId);
+                                }
+
+                                assignment.Scope = targetScope;
+                                WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(resourceScope, Name, assignment));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             }
                         }
 
                         break;
                     case ParameterSetNames.UpdateBlueprintAssignmentByFile:
+<<<<<<< HEAD
                         if (ShouldProcess(string.Join(",", subscriptionsList),
+=======
+                        if (ShouldProcess(string.Join(",", subscriptionIds),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             string.Format(Resources.UpdateAssignmentShouldProcessString, Name)))
                         {
                             var parametersFilePath = GetValidatedFilePath(AssignmentFile);
 
+<<<<<<< HEAD
                             foreach (var subscription in subscriptionsList)
+=======
+                            foreach (var subscriptionId in subscriptionIds)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             {
                                 Assignment assignmentObject;
                                 try
@@ -148,6 +209,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                     throw new Exception("Can't deserialize the JSON file: " + parametersFilePath + ". " + ex.Message);
                                 }
 
+<<<<<<< HEAD
                                 var scope = Utils.GetScopeForSubscription(subscription);
                                 ThrowIfAssignmentNotExist(scope, Name);
                                 // Register Blueprint RP
@@ -160,6 +222,32 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 }
 
                                 WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignmentObject));
+=======
+                                string targetScope = Utils.GetScopeForSubscription(subscriptionId);
+                                string resourceScope = !string.IsNullOrEmpty(this.ManagementGroupId)
+                                    ? Utils.GetScopeForManagementGroup(this.ManagementGroupId)
+                                    : targetScope;
+
+                                ThrowIfAssignmentNotExist(resourceScope, Name);
+                                // Register Blueprint RP
+                                RegisterBlueprintRp(subscriptionId);
+
+                                if (!IsUserAssignedIdentity(assignmentObject.Identity))
+                                {
+                                    // If user assigned identity is defined as the identity in the assignment
+                                    // we consider the user assigned MSI, otherwise system assigned MSI.
+                                    //
+                                    // Assign owner permission to Blueprint SPN only if assignment is being done using
+                                    // System assigned identity.
+                                    // This is a no-op for user assigned identity.
+
+                                    var spnObjectId = GetBlueprintSpn(resourceScope, Name);
+                                    AssignOwnerPermission(resourceScope, spnObjectId);
+                                }
+
+                                assignmentObject.Scope = targetScope;
+                                WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(resourceScope, Name, assignmentObject));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             }
                         }
                         break;

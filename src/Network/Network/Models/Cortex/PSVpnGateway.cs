@@ -20,7 +20,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSVpnGateway : PSTopLevelResource
     {
         public List<PSVpnConnection> Connections { get; set; }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSBgpSettings BgpSettings { get; set; }
 
         [Ps1Xml(Label = "Virtual Hub", Target = ViewControl.Table, ScriptBlock = "$_.VirtualHub.Id")]
@@ -31,5 +35,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+<<<<<<< HEAD
     }
 }
+=======
+
+        public List<PSVpnGatewayIpConfiguration> IpConfigurations { get; set;}
+
+        public List<PSVpnGatewayNatRule> NatRules { get; set; }
+
+        [Ps1Xml(Label = "Enable RoutingPreferenceInternet", Target = ViewControl.Table)]
+        public bool? IsRoutingPreferenceInternet { get; set; }
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

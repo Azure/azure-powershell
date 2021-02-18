@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Get-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+=======
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +39,11 @@ Get-AzEventHubNetworkRuleSet [-ResourceId] <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+=======
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -40,21 +52,33 @@ Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azu
 PS C:\> Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
 ```
 
+<<<<<<< HEAD
 Get the details of Event Hubs NetwrokruleSet of namespace using ResourceGroup and Namesape parameters. 
+=======
+Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzEventHubNetworkRuleSet -Namespace Eventhub-Namespace1-2389
 ```
 
+<<<<<<< HEAD
 Get the details of Event Hubs NetwrokruleSet of namespace using  Namespace which is in the current subscription.
+=======
+Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389
 ```
 
+<<<<<<< HEAD
 Get the details of Event Hubs NetwrokruleSet of namespace using Resource Id of other Namespace 
+=======
+Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

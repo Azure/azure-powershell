@@ -2,14 +2,22 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3CE367B1-7685-4046-8E9C-CE680B5AE03F
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsshpublickey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsshpublickey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Add-AzVMSshPublicKey
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Adds the public keys for SSH for a virtual machine.
+=======
+Adds the public keys for SSH for a virtual machine, when only creating the VM.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -19,7 +27,11 @@ Add-AzVMSshPublicKey [-VM] <PSVirtualMachine> [[-KeyData] <String>] [[-Path] <St
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a virtual machine over Secure Shell (SSH).
+=======
+The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a Linux virtual machine over Secure Shell (SSH). This cannot be used after VM creation, if you try to use this after VM creation without Update-AzVM, there will be no error, if you use the command with Update-AzVM, the command will error.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -52,7 +64,11 @@ Accept wildcard characters: False
 
 ### -KeyData
 Specifies a base 64 encoding of a public key.
+<<<<<<< HEAD
 You can connect to a virtual machine by using SSH or by using the key that this parameter specifies.
+=======
+You can connect to a Linux virtual machine by using SSH or by using the key that this parameter specifies.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

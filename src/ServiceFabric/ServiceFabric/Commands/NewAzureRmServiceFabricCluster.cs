@@ -362,7 +362,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void DeployWithoutDefaultTemplate()
         {
+<<<<<<< HEAD
             var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
+=======
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, this.TemplateFile, this.ParameterFile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ParseTemplate(true);
             TranslateParameters(true);
@@ -460,7 +464,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     Location = this.Location
                 });
 
+<<<<<<< HEAD
             var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
+=======
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, this.TemplateFile, this.ParameterFile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ParseTemplate(false);
             TranslateParameters(false);
@@ -707,6 +715,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+<<<<<<< HEAD
         private Deployment CreateBasicDeployment(DeploymentMode deploymentMode, string debugSetting, JObject parameters = null)
         {
             var deployment = new Deployment
@@ -758,6 +767,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return deployment;
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private JObject SetParameters(
             JObject parameters,
             string keyVault,
@@ -823,6 +834,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.domainNameLabel = TryGetParameter((JObject)parameters, this.domainNameLabelParameter) ?? this.domainNameLabelParameter;
         }
 
+<<<<<<< HEAD
         private void SetParameter(ref JObject parameters, string parameterName, int value)
         {
             var token = parameters.Children().SingleOrDefault(
@@ -848,6 +860,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private string TryGetParameter(JObject parameters, string parameterName)
         {
             var value = parameters.GetValue(parameterName, StringComparison.OrdinalIgnoreCase);
@@ -862,10 +876,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void ParseTemplate(bool customize)
         {
+<<<<<<< HEAD
             var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
 
             JObject jObject;
             if (!TryParse(templateString, out jObject))
+=======
+            JObject jObject;
+            if (!TryParseJson(this.TemplateFile, out jObject))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
             }
@@ -909,14 +928,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         foreach (var secret in vmssProfile.OsProfile.Secrets)
                         {
                             if (
+<<<<<<< HEAD
                                 !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id),
+=======
+                                !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id, this.TemplateFile),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                     StringComparison.OrdinalIgnoreCase))
                             {
                                 this.keyVaultParameter = secret.SourceVault.Id;
                                 foreach (var cert in secret.VaultCertificates)
                                 {
                                     if (
+<<<<<<< HEAD
                                         !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl),
+=======
+                                        !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl, this.TemplateFile),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                             StringComparison.OrdinalIgnoreCase))
                                     {
                                         this.certificateUrlParameter = cert.CertificateUrl;
@@ -980,6 +1007,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void TranslateParameters(bool customize)
         {
+<<<<<<< HEAD
             this.adminUserParameter = TranslateToParameterName(this.adminUserParameter);
             this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
             this.locationParameter = TranslateToParameterName(this.locationParameter);
@@ -1026,6 +1054,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 return parameterArray[1];
+=======
+            this.adminUserParameter = TranslateToParameterName(this.adminUserParameter, this.TemplateFile);
+            this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter, this.TemplateFile);
+            this.locationParameter = TranslateToParameterName(this.locationParameter, this.TemplateFile);
+            this.clusterNameParameter = TranslateToParameterName(this.clusterNameParameter, this.TemplateFile);
+            this.domainNameLabelParameter = TranslateToParameterName(this.domainNameLabelParameter, this.TemplateFile);
+
+            if (!customize)
+            {
+                this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter, this.TemplateFile);
+                this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter, this.TemplateFile);
+                this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter, this.TemplateFile);
+                this.thumbprintParameter = TranslateToParameterName(this.thumbprintParameter, this.TemplateFile);
+                this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter, this.TemplateFile);
+                this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter, this.TemplateFile);
+                this.skuParameter = TranslateToParameterName(this.skuParameter, this.TemplateFile);
+                this.vmImageSkuParameter = TranslateToParameterName(this.vmImageSkuParameter, this.TemplateFile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -1056,6 +1102,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.reliabilityLevel = ReliabilityLevel.Platinum.ToString();
             }
         }
+<<<<<<< HEAD
 
         private bool TryParse(string content, out JObject jObject)
         {
@@ -1136,5 +1183,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
             } 
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

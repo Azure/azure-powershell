@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C2C608E5-3351-4D01-8533-9668B2E9F1D1
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresource
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -101,6 +105,15 @@ ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines
 Location          : westus
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+<<<<<<< HEAD
+=======
+Tags              :
+                    Name    Value
+                    ======  ========
+                    Dept    IT
+                    Year    2002
+                    Status  Approved
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets all of the resources whose resource name is "testVM".
@@ -142,6 +155,15 @@ ResourceGroupName : testRG
 ResourceType      : Microsoft.Compute/virtualMachines
 Location          : westus
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+<<<<<<< HEAD
+=======
+Tags              :
+                    Name    Value
+                    ======  ========
+                    Dept    IT
+                    Year    2002
+                    Status  Approved
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the resource with the provided resource id, which is a virtual machine called "testVM" in the resource group "testRG".
@@ -236,7 +258,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+<<<<<<< HEAD
 The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
+=======
+The resource group the resource(s) that is retrieved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -342,12 +368,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Find-AzResource](./Find-AzResource.md)
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [Move-AzResource](./Move-AzResource.md)
 
 [New-AzResource](./New-AzResource.md)
 
 [Remove-AzResource](./Remove-AzResource.md)
 
+<<<<<<< HEAD
 [Set-AzResource](./Set-AzResource.md)
+=======
+[Set-AzResource](./Set-AzResource.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

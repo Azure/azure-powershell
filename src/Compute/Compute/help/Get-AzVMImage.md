@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D5254218-8B3B-4DE2-9480-D65EE5483018
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimage
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,8 +19,13 @@ Gets all the versions of a VMImage.
 
 ### ListVMImage
 ```
+<<<<<<< HEAD
 Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
  [-FilterExpression <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> [-Top <Int32>]
+ [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### GetVMImageDetail
@@ -34,6 +43,7 @@ The **Get-AzVMImage** cmdlet gets all the versions of a VMImage.
 ```
 PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
 
+<<<<<<< HEAD
 Version        FilterExpression Skus               Offer         PublisherName          Location  Id
 -------        ---------------- ----               -----         -------------          --------  --
 4.127.20180315                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
@@ -46,6 +56,20 @@ Version        FilterExpression Skus               Offer         PublisherName  
 4.127.20190115                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
 4.127.20190204                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
 4.127.20190218                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+=======
+Version        Skus               Offer         PublisherName          Location  Id
+-------        ----               -----         -------------          --------  --
+4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180510 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180815 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180912 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20181010 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20181125 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20190104 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20190115 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20190204 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20190218 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets all the versions of VMImage that match the specified values.
@@ -62,7 +86,10 @@ PublisherName    : MicrosoftWindowsServer
 Offer            : windowsserver
 Skus             : 2012-R2-Datacenter
 Version          : 4.127.20180315
+<<<<<<< HEAD
 FilterExpression :
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Name             : 4.127.20180315
 OSDiskImage      : {
                      "operatingSystem": "Windows"
@@ -77,6 +104,7 @@ This command gets a specific version of VMImage that matches the specified value
 ```
 PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter" -Version 4.127.2018*
 
+<<<<<<< HEAD
 Version        FilterExpression Skus               Offer         PublisherName          Location  Id
 -------        ---------------- ----               -----         -------------          --------  --
 4.127.20180315                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
@@ -85,6 +113,16 @@ Version        FilterExpression Skus               Offer         PublisherName  
 4.127.20180912                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
 4.127.20181010                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
 4.127.20181125                  2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+=======
+Version        Skus               Offer         PublisherName          Location  Id
+-------        ----               -----         -------------          --------  --
+4.127.20180315 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180510 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180815 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20180912 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20181010 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+4.127.20181125 2012-R2-Datacenter windowsserver MicrosoftWindowsServer centralus /Subscriptions/9e2...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets all the versions of VMImage that match the specified values with filtering over version.
@@ -106,6 +144,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -FilterExpression
 Specifies a filter expression.
 
@@ -121,6 +160,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Specifies the location of a VMImage.
+=======
 ### -Location
 Specifies the location of a VMImage.
 
@@ -139,6 +181,7 @@ Accept wildcard characters: False
 ### -Offer
 Specifies the type of VMImage offer.
 To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -146,6 +189,34 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+<<<<<<< HEAD
+### -Offer
+Specifies the type of VMImage offer.
+To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+=======
+### -OrderBy
+Specifies the order of the results returned. Formatted as an OData query.
+
+```yaml
+Type: System.String
+Parameter Sets: ListVMImage
+Aliases:
+
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,6 +255,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -Top
+Specifies the maximum number of virtual machine images returned. 
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ListVMImage
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Version
 Specifies the version of the VMImage.
 
@@ -196,7 +285,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+<<<<<<< HEAD
 Accept wildcard characters: True
+=======
+Accept wildcard characters: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### CommonParameters

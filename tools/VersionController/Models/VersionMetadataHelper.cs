@@ -8,6 +8,10 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Tools.Common.Helpers;
+<<<<<<< HEAD
+=======
+using Tools.Common.Issues;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
@@ -255,6 +259,10 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingSerialized(bool serialize = true)
         {
+<<<<<<< HEAD
+=======
+            Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
@@ -265,7 +273,11 @@ namespace VersionController.Models
             {
                 powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
                 var cmdletResult = powershell.Invoke();
+<<<<<<< HEAD
                 nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
+=======
+                nestedModules = cmdletResult.Select(c => c.ToString());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             Version versionBump = Version.PATCH;
@@ -288,9 +300,23 @@ namespace VersionController.Models
                 }
 
                 requiredModules.Add(outputModuleDirectory);
+<<<<<<< HEAD
                 foreach (var nestedModule in nestedModules)
                 {
                     var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+=======
+                foreach (var nestedModuleName in nestedModules)
+                {
+                    // Handcrafted modules assume its nested module always is DLL file. 
+                    var nestedModule = nestedModuleName + ".dll";
+                    var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+
+                    // However we support PSM1, PSD1 other nested module type. Skip this check and we need to use a different design soon.
+                    if(assemblyPath == null)
+                    {
+                        continue;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
@@ -311,6 +337,17 @@ namespace VersionController.Models
                     CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
                     if (issueLogger.Records.Any())
                     {
+<<<<<<< HEAD
+=======
+                        var currentColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Detected below {issueLogger.Records.Count} breack change(s):");
+                        foreach (IReportRecord record in issueLogger.Records)
+                        {
+                            Console.WriteLine(((BreakingChangeIssue)record).Target + " " + record.ProblemId + " " + record.Description);
+                        }
+                        Console.ForegroundColor = currentColor;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         tempVersionBump = Version.MAJOR;
                     }
                     else if (!oldModuleMetadata.Equals(newModuleMetadata))
@@ -349,6 +386,10 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingGallery()
         {
+<<<<<<< HEAD
+=======
+            Console.WriteLine("Comparing the cmdlet assemblies with assemblies in the saved gallery folder...");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;

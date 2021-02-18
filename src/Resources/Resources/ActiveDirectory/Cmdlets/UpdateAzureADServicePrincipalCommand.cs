@@ -22,7 +22,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
+<<<<<<< HEAD
     /// Updates an exisitng service principal.
+=======
+    /// Updates an existing service principal.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal")]

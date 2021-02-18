@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }
 
+<<<<<<< HEAD
         /// <summary>
         /// Sets or gets the Logs of the Diagnostic Setting.
         /// This property in transitional until the namesace change is taken
@@ -44,6 +45,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         public new IList<Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings> Metrics { get; set; }
 
+=======
+        //public new string Id { get; set; }
+
+        //public new string Name { get; set; } = "service";
+
+        public PSServiceDiagnosticSettings() { }
+
+        public PSServiceDiagnosticSettings(string id = default(string), string name = default(string)) : base(id, name)
+        {
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
@@ -62,6 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 this.EventHubName = serviceDiagnosticSettings.EventHubName;
                 this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
                 this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
+<<<<<<< HEAD
                 this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
                 foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
                 {
@@ -75,6 +88,29 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 }
 
                 this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+=======
+
+                if (serviceDiagnosticSettings.Metrics != null)
+                {
+                    this.Metrics = new List<MetricSettings>();
+                    foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
+                    {
+                        this.Metrics.Add(metricSettings);
+                    }
+                }
+
+                if (serviceDiagnosticSettings.Logs != null)
+                {
+                    this.Logs = new List<LogSettings>();
+                    foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
+                    {
+                        this.Logs.Add(logSettings);
+                    }
+                }
+
+                this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+                this.LogAnalyticsDestinationType = serviceDiagnosticSettings.LogAnalyticsDestinationType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

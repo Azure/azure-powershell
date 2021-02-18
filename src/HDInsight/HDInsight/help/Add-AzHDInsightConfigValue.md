@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 4C3CF283-DD4F-4D2A-ABEC-84AC7B005D6A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightconfigvalue
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
+Module Name: Az.HDInsight
+ms.assetid: 4C3CF283-DD4F-4D2A-ABEC-84AC7B005D6A
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,6 +21,7 @@ Adds a Hadoop configuration value customization and/or a Hive shared library cus
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Spark1
 ```
 Add-AzHDInsightConfigValue [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
@@ -24,13 +33,20 @@ Add-AzHDInsightConfigValue [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] 
 ```
 
 ### Spark2
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Add-AzHDInsightConfigValue [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
  [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
+<<<<<<< HEAD
  [-Spark2Defaults <Hashtable>] [-Spark2ThriftConf <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+=======
+ [-SparkDefaults <Hashtable>] [-SparkThriftConf <Hashtable>] [-Spark2Defaults <Hashtable>]
+ [-Spark2ThriftConf <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -42,6 +58,10 @@ The **Add-AzHDInsightConfigValue** cmdlet adds a Hadoop configuration value cust
 ```
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
+<<<<<<< HEAD
+=======
+PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $storageAccountName = "yourstorageacct001"
 PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
@@ -73,9 +93,15 @@ PS C:\> New-AzHDInsightClusterConfig `
                 -ClusterName $clusterName `
                 -HttpCredential $clusterCreds `
                 -Location $location `
+<<<<<<< HEAD
                 -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
                 -DefaultStorageAccountKey $storageAccountKey `
                 -DefaultStorageContainer $storageAccountContainer
+=======
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageAccountContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command adds a Hadoop configuration value to the cluster named your-hadoop-001.
@@ -268,7 +294,11 @@ Specifies the Spark2 Defaults configurations of this HDInsight cluster.
 
 ```yaml
 Type: System.Collections.Hashtable
+<<<<<<< HEAD
 Parameter Sets: Spark2
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -283,7 +313,11 @@ Specifies the Spark2 Thrift SparkConf configurations of this HDInsight cluster.
 
 ```yaml
 Type: System.Collections.Hashtable
+<<<<<<< HEAD
 Parameter Sets: Spark2
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -298,7 +332,11 @@ Specifies the Spark Defaults configurations of this HDInsight cluster.
 
 ```yaml
 Type: System.Collections.Hashtable
+<<<<<<< HEAD
 Parameter Sets: Spark1
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -313,7 +351,11 @@ Specifies the Spark Thrift SparkConf configurations of this HDInsight cluster.
 
 ```yaml
 Type: System.Collections.Hashtable
+<<<<<<< HEAD
 Parameter Sets: Spark1
+=======
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -384,7 +426,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

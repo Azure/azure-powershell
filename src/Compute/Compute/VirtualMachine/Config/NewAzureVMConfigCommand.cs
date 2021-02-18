@@ -17,12 +17,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+<<<<<<< HEAD
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig",DefaultParameterSetName = "DefaultParameterSet"),OutputType(typeof(PSVirtualMachine))]
+=======
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig", DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSVirtualMachine))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("ResourceName", "Name")]
@@ -70,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] IdentityId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
             ParameterSetName = "AssignIdentityParameterSet",
             ValueFromPipelineByPropertyName = false)]
@@ -77,6 +86,8 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         public string [] Zone { get; set; }
@@ -87,6 +98,36 @@ namespace Microsoft.Azure.Commands.Compute
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of Host")]
+        public string HostId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of virtual machine scale set")]
+        public string VmssId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The max price of the billing of a low priority virtual machine.")]
+        public double MaxPrice { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
+        public string EvictionPolicy { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot")]
+        public string Priority { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -97,6 +138,15 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        public SwitchParameter EncryptionAtHost { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -112,9 +162,17 @@ namespace Microsoft.Azure.Commands.Compute
                     Id = this.AvailabilitySetId
                 },
                 LicenseType = this.LicenseType,
+<<<<<<< HEAD
                 Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
+=======
+                Identity = null,
+                Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
+                Zones = this.Zone,
+                EvictionPolicy = this.EvictionPolicy,
+                Priority = this.Priority
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (this.IsParameterBound(c => c.IdentityType))
@@ -153,6 +211,32 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
             }
 
+<<<<<<< HEAD
+=======
+            if (this.IsParameterBound(c => c.HostId))
+            {
+                vm.Host = new SubResource(this.HostId);
+            }
+
+            if (this.IsParameterBound(c => c.VmssId))
+            {
+                vm.VirtualMachineScaleSet = new SubResource(this.VmssId);
+            }
+
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                vm.BillingProfile = new BillingProfile(this.MaxPrice);
+            }
+            
+            if (this.EncryptionAtHost.IsPresent)
+            {
+                if (vm.SecurityProfile == null)
+                    vm.SecurityProfile = new SecurityProfile();
+
+                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteObject(vm);
         }
     }

@@ -15,7 +15,11 @@ Azure PowerShell Module of Mixed Reality Cloud Service
 Get or list Spatial Anchors Account(s) in certain Subscription and Resource Group.
 
 ### [New-AzSpatialAnchorsAccount](New-AzSpatialAnchorsAccount.md)
+<<<<<<< HEAD
 Create a new Spatial Inelligence Account in certain Subscription, Resource Group and Region.
+=======
+Create a new Spatial Anchors Account in certain Subscription, Resource Group and Region.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzSpatialAnchorsAccount](Remove-AzSpatialAnchorsAccount.md)
 Delete specified Spatial Anchors Account from certain Subscription and Resource Group.
@@ -24,4 +28,23 @@ Delete specified Spatial Anchors Account from certain Subscription and Resource 
 Get developer keys of Spatial Anchors Account.
 
 ### [New-AzSpatialAnchorsAccountKey](New-AzSpatialAnchorsAccountKey.md)
+<<<<<<< HEAD
 Regenerate specified developer key of Spatial Anchors Account.
+=======
+Regenerate specified developer key of Spatial Anchors Account.
+
+### [Get-AzRemoteRenderingAccount](Get-AzRemoteRenderingAccount.md)
+Get or list Remote Rendering Account(s) in certain Subscription and Resource Group.
+
+### [New-AzRemoteRenderingAccount](New-AzRemoteRenderingAccount.md)
+Create a new Remote Rendering Account in certain Subscription, Resource Group and Region.
+
+### [Remove-AzRemoteRenderingAccount](Remove-AzRemoteRenderingAccount.md)
+Delete specified Remote Rendering Account from certain Subscription and Resource Group.
+
+### [Get-AzRemoteRenderingAccountKey](Get-AzRemoteRenderingAccountKey.md)
+Get developer keys of Remote Rendering Account.
+
+### [New-AzRemoteRenderingAccountKey](New-AzRemoteRenderingAccountKey.md)
+Regenerate specified developer key of Remote Rendering Account.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

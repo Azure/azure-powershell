@@ -52,7 +52,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
+<<<<<<< HEAD
         [ValidateSet("Cost", "HighAvailability", "Performance", "Security")]
+=======
+        [ValidateSet("Cost", "HighAvailability", "OperationalExcellence", "Performance", "Security")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Category { get; set; }
 
         /// <summary>
@@ -96,4 +100,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             this.WriteObject(results, true);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

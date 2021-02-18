@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 015C7DB7-2B08-4033-9B6E-1738D4DDACDA
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterfaceipconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkinterfaceipconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,6 +27,7 @@ The **Remove-AzNetworkInterfaceIpConfig** cmdlet removes a network interface IP 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Delete an IP configuration from a network interface
 ```
 $nic = Get-AzNetworkInterface -Name mynic -ResourceGroupName myrg
@@ -32,6 +37,19 @@ Remove-AzNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
 
 The first command gets a network interface called mynic and stores it in the variable $nic. The second command
     removes the IP configuration called IPConfig-1 associated with this network interface.
+=======
+### Example 1: Delete an IP configuration from a network interface
+```powershell
+$nic = Get-AzNetworkInterface -Name mynic -ResourceGroupName myrg
+
+Remove-AzNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
+
+Set-AzNetworkInterface -NetworkInterface $nic
+```
+
+The first command gets a network interface called mynic and stores it in the variable $nic. The second command
+    removes the IP configuration called IPConfig-1 associated with this network interface. The third command sets changes made to the network interface.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

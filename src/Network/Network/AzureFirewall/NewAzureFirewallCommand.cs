@@ -21,15 +21,25 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
+<<<<<<< HEAD
     {
         private const string DefaultParameterSet = "Default";
 
+=======
+
+    {
+        private const string DefaultParameterSet = "Default";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress[] publicIpAddresses;
 
@@ -58,7 +68,11 @@ namespace Microsoft.Azure.Commands.Network
         [CmdletParameterBreakingChange(
             "VirtualNetworkName",
             deprecateByVersion: "2.0.0",
+<<<<<<< HEAD
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.", 
+=======
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
             NewWay = "New-AzFirewall -VirtualNetwork $vnet",
             OldParamaterType = typeof(string),
@@ -108,6 +122,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
+=======
+            ParameterSetName = "IpConfigurationParameterValues",
+            HelpMessage = "One or more Public IP Addresses to use for management traffic. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
+        [ValidateNotNullOrEmpty]
+        public PSPublicIpAddress ManagementPublicIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
         public PSAzureFirewallApplicationRuleCollection[] ApplicationRuleCollection { get; set; }
 
@@ -136,6 +161,32 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The whitelist for Threat Intelligence")]
+        public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
+        public string[] PrivateRange { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable DNS Proxy. By default it is disabled."
+        )]
+        public SwitchParameter EnableDnsProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of DNS Servers"
+        )]
+        public string[] DnsServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -155,6 +206,53 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
         public string[] Zone { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Alias("Sku")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The sku name for firewall")]
+        [ValidateSet(
+                MNM.AzureFirewallSkuName.AZFWHub,
+                MNM.AzureFirewallSkuName.AZFWVNet,
+                IgnoreCase = false)]
+        public string SkuName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The sku tier for firewall")]
+        [ValidateSet(
+                MNM.AzureFirewallSkuTier.Standard,
+                MNM.AzureFirewallSkuTier.Premium,
+                IgnoreCase = false)]
+        public string SkuTier { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
+                HelpMessage = "The virtual hub that a firewall is attached to")]
+        public string VirtualHubId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ip addresses for the firewall attached to a virtual hub")]
+        public PSAzureFirewallHubIpAddresses HubIPAddress { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
+                HelpMessage = "The firewall policy attached to the firewall")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allow Active FTP. By default it is false."
+        )]
+        public SwitchParameter AllowActiveFTP { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -190,6 +288,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewall CreateAzureFirewall()
         {
+<<<<<<< HEAD
             var firewall = new PSAzureFirewall()
             {
                 Name = this.Name,
@@ -209,6 +308,74 @@ namespace Microsoft.Azure.Commands.Network
             if (this.virtualNetwork != null)
             {
                 firewall.Allocate(this.virtualNetwork, this.publicIpAddresses);
+=======
+            var firewall = new PSAzureFirewall();
+            var sku = new PSAzureFirewallSku();
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
+
+            if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
+            {
+
+                if (VirtualHubId != null && this.Location != null)
+                {
+                    var resourceInfo = new ResourceIdentifier(VirtualHubId);
+                    var hub = this.VirtualHubClient.Get(resourceInfo.ResourceGroupName, resourceInfo.ResourceName);
+                    if (hub.Location != this.Location)
+                    {
+                        throw new ArgumentException("VirtualHub and Firewall cannot be in different locations", nameof(VirtualHubId));
+                    }
+
+                }
+
+                if (this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                {
+                    throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
+                firewall = new PSAzureFirewall()
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = this.Location,
+                    Sku = sku,
+                    VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                    HubIPAddresses = this.HubIPAddress
+                };
+            }
+            else
+            {
+                firewall = new PSAzureFirewall()
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = this.Location,
+                    FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
+                    ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
+                    NatRuleCollections = this.NatRuleCollection?.ToList(),
+                    NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
+                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,
+                    PrivateRange = this.PrivateRange,
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
+                    DNSServer = this.DnsServer,
+                    AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
+                    Sku = sku
+                };
+
+                if (this.Zone != null)
+                {
+                    firewall.Zones = this.Zone?.ToList();
+                }
+
+                if (this.virtualNetwork != null)
+                {
+                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                }
+
+                firewall.ValidateDNSProxyRequirements();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // Map to the sdk object

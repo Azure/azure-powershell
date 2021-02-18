@@ -1,16 +1,34 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
+=======
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR", "SignalR\SignalR.csproj", "{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{90CF259C-905B-4B30-AD38-78510A32EC26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Test", "SignalR.Test\SignalR.Test.csproj", "{3BFE35EB-75A6-4370-8E49-4D8C9A359884}"
+<<<<<<< HEAD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+=======
+	ProjectSection(ProjectDependencies) = postProject
+		{7AA1B2C0-72CB-448A-9C12-C45BDF3E088D} = {7AA1B2C0-72CB-448A-9C12-C45BDF3E088D}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
+EndProject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{3E016018-D65D-4336-9F64-17DA97783AD0}"
@@ -19,6 +37,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{E942B772-3BF8-4800-B456-E9DEC951A0BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns", "..\PrivateDns\PrivateDns\PrivateDns.csproj", "{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}"
+EndProject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +78,17 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E942B772-3BF8-4800-B456-E9DEC951A0BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFD9211-526C-4E2C-B73B-FAD139B5FB73}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

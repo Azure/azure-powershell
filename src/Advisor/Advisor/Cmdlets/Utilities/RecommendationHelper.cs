@@ -51,8 +51,13 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
 
             List<PsAzureAdvisorResourceRecommendationBase> filteredList = new List<PsAzureAdvisorResourceRecommendationBase>();
 
+<<<<<<< HEAD
             // Filter by category only if its a valid input
             if (Category.Cost.Equals(category) || Category.HighAvailability.Equals(category) || Category.Performance.Equals(category) || Category.Security.Equals(category))
+=======
+            // Filter by category
+            if (!string.IsNullOrEmpty(category))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 // If resourceGroup filtering is as well specified 
                 if (!string.IsNullOrEmpty(resourceGroup))
@@ -115,7 +120,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// Filter recommendations by given resourceId.
         /// </summary>
         /// <param name="recListTobeFiltered">List to be filtered</param>
+<<<<<<< HEAD
         /// <param name="resourceId">ResoruceId of the recommendation.</param>
+=======
+        /// <param name="resourceId">ResourceId of the recommendation.</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <returns>Recommendation of PsAzureAdvisorResourceRecommendationBase type</returns>
         public static List<PsAzureAdvisorResourceRecommendationBase> RecommendationFilterByResourceId(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string resourceId)
         {

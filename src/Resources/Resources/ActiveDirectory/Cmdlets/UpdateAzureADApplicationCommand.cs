@@ -102,7 +102,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Homepage = HomePage,
                     IdentifierUris = IdentifierUri,
                     ReplyUrls = ReplyUrl,
+<<<<<<< HEAD
                     AvailableToOtherTenants = AvailableToOtherTenants
+=======
+                    AvailableToOtherTenants = this.IsParameterBound(c => c.AvailableToOtherTenants) ? AvailableToOtherTenants : (bool?)null
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 if (ShouldProcess(target: ObjectId, action: string.Format("Updating an application with object id '{0}'", ObjectId)))

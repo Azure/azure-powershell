@@ -27,12 +27,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.ResourceGroupName = ParseResourceGroupFromId(cognitiveServicesAccount.Id);
             this.AccountName = cognitiveServicesAccount.Name;
             this.Id = cognitiveServicesAccount.Id;
+<<<<<<< HEAD
             this.Endpoint = cognitiveServicesAccount.Endpoint;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.Location = cognitiveServicesAccount.Location;
             this.Sku = cognitiveServicesAccount.Sku;
             this.AccountType = cognitiveServicesAccount.Kind;
             this.Etag = cognitiveServicesAccount.Etag;
             this.ResourceType = cognitiveServicesAccount.Type;
+<<<<<<< HEAD
             this.ProvisioningState = cognitiveServicesAccount.ProvisioningState;
             this.Tags = cognitiveServicesAccount.Tags;
             this.CustomSubDomainName = cognitiveServicesAccount.CustomSubDomainName;
@@ -40,6 +44,26 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             if (cognitiveServicesAccount.NetworkAcls != null)
             {
                 this.NetworkRuleSet = PSNetworkRuleSet.Create(cognitiveServicesAccount.NetworkAcls);
+=======
+            this.Tags = cognitiveServicesAccount.Tags;
+
+            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
+            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
+            this.CustomSubDomainName = cognitiveServicesAccount.Properties.CustomSubDomainName;
+
+            this.Identity = cognitiveServicesAccount.Identity;
+            this.UserOwnedStorage = cognitiveServicesAccount.Properties.UserOwnedStorage;
+            this.Encryption = cognitiveServicesAccount.Properties.Encryption;
+            this.ApiProperties = cognitiveServicesAccount.Properties.ApiProperties;
+
+            this.PublicNetworkAccess = cognitiveServicesAccount.Properties.PublicNetworkAccess;
+            this.PrivateEndpointConnections = cognitiveServicesAccount.Properties.PrivateEndpointConnections;
+            this.Capabilities = cognitiveServicesAccount.Properties.Capabilities;
+
+            if (cognitiveServicesAccount.Properties.NetworkAcls != null)
+            {
+                this.NetworkRuleSet = PSNetworkRuleSet.Create(cognitiveServicesAccount.Properties.NetworkAcls);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -65,8 +89,27 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public string CustomSubDomainName { get; private set; }
 
+<<<<<<< HEAD
         public PSNetworkRuleSet NetworkRuleSet { get; private set; }
 
+=======
+        public string PublicNetworkAccess { get; private set; }
+
+        public Identity Identity { get; private set; }
+
+        public Encryption Encryption { get; private set; }
+
+        public IList<UserOwnedStorage> UserOwnedStorage { get; private set; }
+
+        public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
+
+        public CognitiveServicesAccountApiProperties ApiProperties { get; private set; }
+
+        public PSNetworkRuleSet NetworkRuleSet { get; private set; }
+
+        public IList<SkuCapability> Capabilities { get; private set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IDictionary<string, string> Tags { get; private set; }
 
         public static PSCognitiveServicesAccount Create(CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)

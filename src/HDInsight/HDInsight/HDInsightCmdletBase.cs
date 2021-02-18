@@ -15,7 +15,11 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.HDInsight;
+=======
+using Microsoft.Azure.Management.HDInsight.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Linq;
 

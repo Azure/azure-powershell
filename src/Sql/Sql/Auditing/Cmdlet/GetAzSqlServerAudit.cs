@@ -13,6 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -22,7 +27,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName),
         OutputType(typeof(ServerAuditModel))]
+<<<<<<< HEAD
     public class GetAzSqlServerAudit : SqlServerAuditCmdlet
     {
+=======
+    public class GetAzSqlServerAudit : SqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+    {
+        protected override SqlServerAuditAdapter InitModelAdapter()
+        {
+            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

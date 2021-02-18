@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/update-azsqlsyncschema
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -9,7 +13,11 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Update the sync schema for a sync member database or a sync hub database.
+<<<<<<< HEAD
 It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+=======
+It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 
 ## SYNTAX

@@ -41,14 +41,58 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? Nfsv3 { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets allows NFSv4 protocol
         /// </summary>
         public bool? Nfsv4 { get; set; }
+=======
+        /// Gets or sets allows NFSv41 protocol
+        /// </summary>
+        public bool? Nfsv41 { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets client ingress specification as comma separated string
         /// with IPv4 CIDRs, IPv4 host addresses and host names
         /// </summary>
         public string AllowedClients { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets kerberos5 Read only access. 
+        /// </summary>
+        public bool? Kerberos5ReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets kerberos5 Read and write access.
+        /// </summary>
+        public bool? Kerberos5ReadWrite { get; set; }
+
+        /// <summary>
+        /// Gets or sets kerberos5i Readonly access.
+        /// </summary>
+        public bool? Kerberos5iReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets kerberos5i Read and write access.
+        /// </summary>
+        public bool? Kerberos5iReadWrite { get; set; }
+
+        /// <summary>
+        /// Gets or sets kerberos5p Read only access.
+        /// </summary>
+        public bool? Kerberos5pReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets kerberos5p Read and write access.        
+        /// </summary>        
+        public bool? Kerberos5pReadWrite { get; set; }
+
+        /// <summary>
+        /// Gets or sets has root access to volume                
+        /// </summary>        
+        public bool? HasRootAccess { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

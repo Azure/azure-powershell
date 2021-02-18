@@ -183,7 +183,10 @@
           <TableColumnHeader/>
           <TableColumnHeader/>
           <TableColumnHeader/>
+<<<<<<< HEAD
           <TableColumnHeader/>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -192,9 +195,12 @@
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+<<<<<<< HEAD
                 <PropertyName>FilterExpression</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <PropertyName>Skus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -256,6 +262,13 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
+<<<<<<< HEAD
+=======
+                <Label>HyperVGeneration</Label>
+                <PropertyName>HyperVGeneration</PropertyName>
+              </ListItem>
+              <ListItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <Label>OSDiskImage</Label>
                 <PropertyName>OSDiskImageText</PropertyName>
               </ListItem>
@@ -725,7 +738,11 @@
                 <ScriptBlock>$_.Zones</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
+<<<<<<< HEAD
                 <ScriptBlock>$_.PowerState.Replace("VM ", "")</ScriptBlock>
+=======
+                <ScriptBlock>$_.PowerState</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed</ScriptBlock>

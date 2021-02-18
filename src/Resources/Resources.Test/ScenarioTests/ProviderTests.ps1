@@ -109,7 +109,11 @@ function Test-AzureProviderOperation
 	    Assert-NotNull $action.isDataAction
 	}
 
+<<<<<<< HEAD
 	# Case insenstive search
+=======
+	# Case insensitive search
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$insightsCaseActions = Get-AzProviderOperation MicROsoFt.InSIghTs/*
 	Assert-True { $insightsCaseActions.Length -gt 0 }
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }

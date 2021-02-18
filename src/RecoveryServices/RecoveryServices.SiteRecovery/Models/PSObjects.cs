@@ -323,7 +323,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (pcm.Properties.HealthErrorDetails != null)
             {
                 this.HealthErrorDetails = pcm.Properties.HealthErrorDetails.ToList().
+<<<<<<< HEAD
                         ConvertAll(healthError => new ASRHealthError_2016_08_10(healthError));
+=======
+                        ConvertAll(healthError => new ASRHealthError(healthError));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             this.PolicyFriendlyName = pcm.Properties.PolicyFriendlyName;
             this.PolicyId = pcm.Properties.PolicyId;
@@ -335,6 +339,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.TargetProtectionContainerFriendlyName =
                 pcm.Properties.TargetProtectionContainerFriendlyName;
             this.TargetProtectionContainerId = pcm.Properties.TargetProtectionContainerId;
+<<<<<<< HEAD
+=======
+
+            if (pcm.Properties.ProviderSpecificDetails is A2AProtectionContainerMappingDetails)
+            {
+                var details = (A2AProtectionContainerMappingDetails)pcm.Properties.ProviderSpecificDetails;
+                this.ProviderSpecificDetails = new ASRA2AProtectionContainerMappingDetails
+                {
+                    AgentAutoUpdateStatus = details.AgentAutoUpdateStatus,
+                    AutomationAccountArmId = details.AutomationAccountArmId,
+                    JobScheduleName = details.JobScheduleName,
+                    ScheduleName = details.ScheduleName
+                };
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         #region Properties
@@ -357,7 +376,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Health Error Details
         /// </summary>
+<<<<<<< HEAD
         public IList<ASRHealthError_2016_08_10> HealthErrorDetails { get; set; }
+=======
+        public IList<ASRHealthError> HealthErrorDetails { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         ///     Gets or sets Policy Friendly Name
@@ -399,10 +422,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string TargetProtectionContainerId { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        ///     Gets or sets Target Protection Container Id
+        /// </summary>
+        public ASRProtectionContainerMappingProviderSpecificDetails ProviderSpecificDetails { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    ///     ProtectionContainerMapping provider settings
+    /// </summary>
+    public class ASRProtectionContainerMappingProviderSpecificDetails
+    {
+
+    }
+
+    /// <summary>
+    ///     A2A ProtectionContainerMapping provider settings
+    /// </summary>
+    public class ASRA2AProtectionContainerMappingDetails : ASRProtectionContainerMappingProviderSpecificDetails
+    {
+        public string AgentAutoUpdateStatus { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the automation account arm id.
+        public string AutomationAccountArmId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the schedule arm name.
+        public string ScheduleName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the job schedule arm name.
+        public string JobScheduleName { get; set; }
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     ///     Azure Site Recovery Protection Container.
     /// </summary>
     public class ASRProtectionContainer
@@ -889,12 +953,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VMNetworkName = vMNicDetails.VMNetworkName;
             this.VMSubnetName = vMNicDetails.VMSubnetName;
             this.RecoveryVMNetworkId = vMNicDetails.RecoveryVMNetworkId;
+<<<<<<< HEAD
+=======
+            this.RecoveryNicName = vMNicDetails.RecoveryNicName;
+            this.RecoveryNicResourceGroupName = vMNicDetails.RecoveryNicResourceGroupName;
+            this.ReuseExistingNic = vMNicDetails.ReuseExistingNic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.RecoveryVMSubnetName = vMNicDetails.RecoveryVMSubnetName;
             this.ReplicaNicStaticIPAddress = vMNicDetails.ReplicaNicStaticIPAddress;
             this.IpAddressType = vMNicDetails.IpAddressType;
             this.SelectionType = vMNicDetails.SelectionType;
             this.PrimaryNicStaticIPAddress = vMNicDetails.PrimaryNicStaticIPAddress;
             this.RecoveryNicIpAddressType = vMNicDetails.RecoveryNicIpAddressType;
+<<<<<<< HEAD
+=======
+            this.EnableAcceleratedNetworkingOnRecovery = vMNicDetails.EnableAcceleratedNetworkingOnRecovery;
+            this.RecoveryPublicIPAddressId = vMNicDetails.RecoveryPublicIpAddressId;
+            this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
+            this.RecoveryLBBackendAddressPoolId =
+                vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
+            this.TfoVMNetworkId = vMNicDetails.TfoVMNetworkId;
+            this.TfoNicName = vMNicDetails.TfoRecoveryNicName;
+            this.TfoNicResourceGroupName = vMNicDetails.TfoRecoveryNicResourceGroupName;
+            this.TfoReuseExistingNic = vMNicDetails.TfoReuseExistingNic;
+            this.TfoVMSubnetName = vMNicDetails.TfoVMSubnetName;
+            this.TfoNetworkSecurityGroupId = vMNicDetails.TfoNetworkSecurityGroupId;
+            this.TfoIPConfigs = vMNicDetails.TfoIPConfigs?.ToList() ?? new List<IPConfig>();
+            this.EnableAcceleratedNetworkingOnTfo = vMNicDetails.EnableAcceleratedNetworkingOnTfo;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         //
@@ -909,6 +995,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         //
         // Summary:
+<<<<<<< HEAD
+=======
+        //     Gets or sets Enable Accelerated Networking On Recovery.
+        public bool? EnableAcceleratedNetworkingOnRecovery { get; set; }
+
+        //
+        // Summary:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         //     Gets or sets the replica nic Id.
         public string ReplicaNicId { get; set; }
 
@@ -928,6 +1022,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string NicId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///     Gets or sets the name of the recovery NIC.
+        /// </summary>
+        public string RecoveryNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the recovery NIC resource group name.
+        /// </summary>
+        public string RecoveryNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be used during failover.
+        /// </summary>
+        public bool? ReuseExistingNic { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///     Gets or sets recovery VM network Id.
         /// </summary>
         public string RecoveryVMNetworkId { get; set; }
@@ -956,6 +1068,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets VM subnet name.
         /// </summary>
         public string VMSubnetName { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        ///     Gets or sets the id of the public IP address resource associated with the NIC.
+        /// </summary>
+        public string RecoveryPublicIPAddressId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the NIC.
+        /// </summary>
+        public string RecoveryNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target backend address pools for the NIC.
+        /// </summary>
+        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover network Id.
+        /// </summary>
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic.
+        /// </summary>
+        public string TfoNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic resource group name.
+        /// </summary>
+        public string TfoNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be used during TFO .
+        /// </summary>
+        public bool? TfoReuseExistingNic { get; set; }
+
+        /// <summary>
+        ///     Gets or sets test failover subnet name.
+        /// </summary>
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for test failover NIC.
+        /// </summary>
+        public List<IPConfig> TfoIPConfigs { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets whether accelerated networking is enabled on test failover NIC.
+        public bool? EnableAcceleratedNetworkingOnTfo { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -1130,6 +1300,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var hd = new AsrVirtualHardDisk();
                 hd.Id = disk.DiskId;
                 hd.Name = disk.DiskName;
+<<<<<<< HEAD
+=======
+                hd.Capacity = Convert.ToInt64(disk.DiskSizeInMB);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 // Update all the Volumes in this Disk.
                 hd.Volumes = new List<AsrVolume>();
@@ -1214,7 +1388,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (rpi.Properties.HealthErrors != null)
             {
                 this.ReplicationHealthErrors = rpi.Properties.HealthErrors.ToList().ConvertAll(
+<<<<<<< HEAD
                     healthError => new ASRHealthError_2016_08_10(healthError));
+=======
+                    healthError => new ASRHealthError(healthError));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             this.TestFailoverState = rpi.Properties.TestFailoverState;
             this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
@@ -1231,7 +1409,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     providerSpecificDetails.RecoveryAzureStorageAccount;
                 this.SelectedRecoveryAzureNetworkId =
                     providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+<<<<<<< HEAD
 
+=======
+                this.SelectedSourceNicNetworkId =
+                    providerSpecificDetails.SelectedSourceNicId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 this.RecoveryResourceGroupId =
                     providerSpecificDetails.RecoveryAzureResourceGroupId;
 
@@ -1250,10 +1433,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaReplicationDetails)
             {
                 this.ReplicationProvider = Constants.HyperVReplica2012;
+<<<<<<< HEAD
+=======
+                this.ProviderSpecificDetails = new ASRHyperVReplicaRPIDetails((HyperVReplicaReplicationDetails)rpi.Properties.ProviderSpecificDetails);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaBlueReplicationDetails)
             {
                 this.ReplicationProvider = Constants.HyperVReplica2012R2;
+<<<<<<< HEAD
+=======
+                this.ProviderSpecificDetails = new ASRHyperVReplicaBlueRPIDetails((HyperVReplicaBlueReplicationDetails)rpi.Properties.ProviderSpecificDetails);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (rpi.Properties.ProviderSpecificDetails is InMageAzureV2ReplicationDetails)
             {
@@ -1270,7 +1461,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     providerSpecificDetails.RecoveryAzureStorageAccount;
                 this.SelectedRecoveryAzureNetworkId =
                     providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+<<<<<<< HEAD
 
+=======
+                this.SelectedSourceNicNetworkId =
+                   providerSpecificDetails.SelectedSourceNicId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (providerSpecificDetails.VmNics != null)
                 {
                     this.NicDetailsList = new List<ASRVMNicDetails>();
@@ -1281,6 +1477,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 // Set the InMageAzureV2 specific properties.
+<<<<<<< HEAD
                 var inMageAzureV2RPIDetails =
                     new ASRInMageAzureV2SpecificRPIDetails(providerSpecificDetails);
 
@@ -1299,6 +1496,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 this.ProviderSpecificDetails = inMageAzureV2RPIDetails;
+=======
+                this.ProviderSpecificDetails = new ASRInMageAzureV2SpecificRPIDetails(providerSpecificDetails);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (rpi.Properties.ProviderSpecificDetails is InMageReplicationDetails)
             {
@@ -1335,7 +1535,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     AgentVersion = providerSpecificDetails.AgentDetails.AgentVersion,
                     DiscoveryType = providerSpecificDetails.DiscoveryType,
                     LastHeartbeat = providerSpecificDetails.LastHeartbeat,
+<<<<<<< HEAD
                     ProtectionStage = providerSpecificDetails.ProtectionStage
+=======
+                    ProtectionStage = providerSpecificDetails.ProtectionStage,
+                    VmId = providerSpecificDetails.VmId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 if (providerSpecificDetails.ProtectedDisks != null)
@@ -1361,8 +1566,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var a2aProviderSpecificDetails = (A2AReplicationDetails)rpi.Properties.ProviderSpecificDetails;
 
                 this.RecoveryAzureVMName = a2aProviderSpecificDetails.RecoveryAzureVMName;
+<<<<<<< HEAD
                 this.RecoveryAzureVMSize = a2aProviderSpecificDetails.RecoveryAzureVMSize;
                 this.SelectedRecoveryAzureNetworkId = a2aProviderSpecificDetails.SelectedRecoveryAzureNetworkId;
+=======
+                this.TfoAzureVMName = a2aProviderSpecificDetails.TfoAzureVMName;
+                this.RecoveryAzureVMSize = a2aProviderSpecificDetails.RecoveryAzureVMSize;
+                this.SelectedRecoveryAzureNetworkId = a2aProviderSpecificDetails.SelectedRecoveryAzureNetworkId;
+                this.SelectedTfoAzureNetworkId = a2aProviderSpecificDetails.SelectedTfoAzureNetworkId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 this.ProtectionState = a2aProviderSpecificDetails.VmProtectionState;
                 this.ProtectionStateDescription = a2aProviderSpecificDetails.VmProtectionStateDescription;
                 this.ProviderSpecificDetails = new ASRAzureToAzureSpecificRPIDetails(a2aProviderSpecificDetails);
@@ -1506,6 +1718,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryResourceGroupId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///     Gets or sets Recovery Azure Storage Account of the Virtual machine.
+        /// </summary>
+        public string SelectedSourceNicNetworkId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///     Gets or sets Recovery Services Provider Id
         /// </summary>
         public string RecoveryServicesProviderId { get; set; }
@@ -1518,7 +1738,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Replication Health Errors
         /// </summary>
+<<<<<<< HEAD
         public IList<ASRHealthError_2016_08_10> ReplicationHealthErrors { get; set; }
+=======
+        public IList<ASRHealthError> ReplicationHealthErrors { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         ///     Gets or sets Replication provider.
@@ -1544,6 +1768,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets type of the Protection entity.
         /// </summary>
         public string Type { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        ///     Gets or sets name of the test failover virtual machine.
+        /// </summary>
+        public string TfoAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover virtual network.
+        /// </summary>
+        public string SelectedTfoAzureNetworkId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -1553,6 +1790,98 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     {
     }
 
+<<<<<<< HEAD
+=======
+    //
+    // Summary:
+    //     HyperV replica 2012 replication details.
+    public class ASRHyperVReplicaRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the HyperVReplicaReplicationDetails class.
+        public ASRHyperVReplicaRPIDetails(HyperVReplicaReplicationDetails hyperVReplicaReplicationDetails)
+        {
+            this.LastReplicatedTime = hyperVReplicaReplicationDetails.LastReplicatedTime;
+            if (hyperVReplicaReplicationDetails.VmNics != null)
+            {
+                this.VmNics =
+                       hyperVReplicaReplicationDetails.VmNics?.ToList()
+                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+            }
+            this.VmId = hyperVReplicaReplicationDetails.VmId;
+            this.VmProtectionState = hyperVReplicaReplicationDetails.VmProtectionState;
+            this.VmProtectionStateDescription = hyperVReplicaReplicationDetails.VmProtectionStateDescription;
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the Last replication time.
+        public DateTime? LastReplicatedTime { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the PE Network details.
+        public IList<ASRVMNicDetails> VmNics { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VmId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state for the vm.
+        public string VmProtectionState { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state description for the vm.
+        public string VmProtectionStateDescription { get; set; }
+
+    }
+
+    // Summary:
+    //     HyperV replica 2012 R2 (Blue) replication details.
+    public class ASRHyperVReplicaBlueRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the HyperVReplicaBlueReplicationDetails class.
+        public ASRHyperVReplicaBlueRPIDetails(HyperVReplicaBlueReplicationDetails hyperVReplicaBlueReplicationDetails)
+        {
+            this.LastReplicatedTime = hyperVReplicaBlueReplicationDetails.LastReplicatedTime;
+            if (hyperVReplicaBlueReplicationDetails.VmNics != null)
+            {
+                this.VmNics =
+                       hyperVReplicaBlueReplicationDetails.VmNics?.ToList()
+                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+            }
+            this.VmId = hyperVReplicaBlueReplicationDetails.VmId;
+            this.VmProtectionState = hyperVReplicaBlueReplicationDetails.VmProtectionState;
+            this.VmProtectionStateDescription = hyperVReplicaBlueReplicationDetails.VmProtectionStateDescription;
+
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the Last replication time.
+        public DateTime? LastReplicatedTime { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the PE Network details.
+        public IList<ASRVMNicDetails> VmNics { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VmId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state for the vm.
+        public string VmProtectionState { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state description for the vm.
+        public string VmProtectionStateDescription { get; set; }
+    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// <summary>
     ///     PS Recovery Point Class.
     /// </summary>
@@ -2098,6 +2427,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public List<AsrVolume> Volumes { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        ///     Gets or sets the Capacity.
+        /// </summary>
+        [DataMember]
+        public long Capacity { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -2120,10 +2458,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+<<<<<<< HEAD
     ///     Partial details of a NIC of a VM.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class VMNic
+=======
+    ///     Partial ASR details of a NIC.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class ASRVMNicConfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         ///     Gets or sets ID of the NIC.
@@ -2132,6 +2477,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string NicId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///     Gets or sets the static IP address of the replica NIC.
         /// </summary>
         [DataMember]
@@ -2142,6 +2488,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public string RecoveryVMNetworkId { get; set; }
+=======
+        ///     Gets or sets Id of the recovery VM Network.
+        /// </summary>
+        [DataMember]
+        public string RecoveryVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the recovery NIC.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the recovery NIC resource group name.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be used during failover.
+        /// </summary>
+        [DataMember]
+        public bool ReuseExistingNic { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         ///     Gets or sets the name of the recovery VM subnet.
@@ -2150,6 +2520,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMSubnetName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         ///     Gets or sets Name of the VM network.
         /// </summary>
         [DataMember]
@@ -2160,6 +2531,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public string VMSubnetName { get; set; }
+=======
+        ///     Gets or sets the id of the NSG associated with the recovery NIC.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for the recovery NIC.
+        /// </summary>
+        [DataMember]
+        public List<IPConfig> RecoveryIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the recovery NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnRecovery { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Id of the test failover VM Network.
+        /// </summary>
+        [DataMember]
+        public string TfoVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic.
+        /// </summary>
+        [DataMember]
+        public string TfoNicName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets name of the TFO Nic resource group name.
+        /// </summary>
+        [DataMember]
+        public string TfoNicResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether an existing Nic can be used during TFO .
+        /// </summary>
+        [DataMember]
+        public bool TfoReuseExistingNic { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the test failover VM subnet.
+        /// </summary>
+        [DataMember]
+        public string TfoVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public string TfoNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP configuration details for the test failover NIC.
+        /// </summary>
+        [DataMember]
+        public List<IPConfig> TfoIPConfigs { get; set; }
+
+        /// <summary>
+        ///     Gets or sets whether the test failover NIC has accelerated networking enabled.
+        /// </summary>
+        [DataMember]
+        public bool EnableAcceleratedNetworkingOnTfo { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -2189,12 +2626,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// Azure VM disk details required for vMWareToAzure protection.
+    /// </summary>
+    public class AsrInMageAzureV2DiskInput
+    {
+        // Summary:
+        //     Gets or sets the DiskId.
+        public string DiskId { get; set; }
+        // Summary:
+        //     Gets or sets the LogStorageAccountId.
+        public string LogStorageAccountId { get; set; }
+        // Summary:
+        //     Gets or sets the DiskType. Possible values include: 'Standard_LRS', 'Premium_LRS',
+        //     'StandardSSD_LRS'
+        public string DiskType { get; set; }
+        // Summary:
+        //     Gets or sets the DiskEncryptionSet ARM ID.
+        public string DiskEncryptionSetId { get; set; }
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// Azure VM disk details required for AzureToAzure protection.
     /// </summary>
     public class ASRAzuretoAzureDiskReplicationConfig
     {
         /// <summary>
+<<<<<<< HEAD
         ///     Initializes a new instance of the <see cref="ASRAzuretoAzureDiskReplicationConfig" /> class.
+=======
+        /// Initializes a new instance of the <see cref="ASRAzuretoAzureDiskReplicationConfig" /> class.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public ASRAzuretoAzureDiskReplicationConfig()
         {
@@ -2244,6 +2708,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets RecoveryTargetDiskAccountType. 
         /// </summary>
         public string RecoveryTargetDiskAccountType;
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId. 
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId;
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        public string KeyEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover disk name.
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name.
+        /// </summary>
+        public string TfoDiskName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -2278,7 +2780,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.DiskCapacityInBytes = disk.DiskCapacityInBytes;
             this.DiskName = disk.DiskName;
             this.DiskType = disk.DiskType;
+<<<<<<< HEAD
             this.Managed = false;
+=======
+
+            this.Managed = false;
+            this.IsDiskEncrypted = disk.IsDiskEncrypted;
+            this.DekKeyVaultArmId = disk.DekKeyVaultArmId;
+            this.SecretIdentifier = disk.SecretIdentifier;
+            this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
+            this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
+            this.KeyIdentifier = disk.KeyIdentifier;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -2302,9 +2823,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType;
             this.RecoveryTargetDiskId = disk.RecoveryTargetDiskId;
             this.Managed = true;
+<<<<<<< HEAD
         }
 
         /// <summary>
+=======
+            this.IsDiskEncrypted = disk.IsDiskEncrypted;
+            this.DekKeyVaultArmId = disk.DekKeyVaultArmId;
+            this.SecretIdentifier = disk.SecretIdentifier;
+            this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
+            this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
+            this.KeyIdentifier = disk.KeyIdentifier;
+            this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
+            this.AllowedDiskLevelOperations = new List<string>();
+            if (disk.AllowedDiskLevelOperation != null)
+            {
+                foreach (var diskoperation in disk.AllowedDiskLevelOperation)
+                {
+                    this.AllowedDiskLevelOperations.Add(diskoperation);
+                }
+            }
+            this.FailoverDiskName = disk.FailoverDiskName;
+            this.TfoDiskName = disk.TfoDiskName;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether disk key got encrypted or not.
+        /// </summary>
+        public bool? IsDiskKeyEncrypted { get; set; }
+
+        /// <summary>
+        //  Gets or sets the KeyVault resource id for secret (BEK).
+        /// </summary>
+        public string DekKeyVaultArmId { get; set; }
+
+        /// <summary>
+        //  Gets or sets the secret URL / identifier (BEK).
+        /// </summary>
+        public string SecretIdentifier { get; set; }
+
+        /// <summary>
+        //  Gets or sets a value indicating whether vm has encrypted os disk or not.
+        /// </summary>
+        public bool? IsDiskEncrypted { get; set; }
+
+        /// <summary>
+        //  Gets or sets the key URL / identifier (KEK).
+        /// </summary>
+        public string KeyIdentifier { get; set; }
+
+        /// <summary>
+        //  Gets or sets the KeyVault resource id for key (KEK).
+        /// </summary>
+        public string KekKeyVaultArmId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets is azure vm managed disk.
         /// </summary>
         public bool Managed { get; set; }
@@ -2336,6 +2910,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryTargetDiskId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the recovery disk encryption set Id.
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the allowed disk level operations.
+        /// </summary>
+        public List<string> AllowedDiskLevelOperations { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the disk uri.
         /// </summary>
         public string DiskUri { get; set; }
@@ -2402,6 +2989,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the data pending at source virtual machine in MB.
         /// </summary>
         public double? DataPendingAtSourceAgentInMB { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the failover disk name. 
+        /// </summary>
+        public string FailoverDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover disk name. 
+        /// </summary>
+        public string TfoDiskName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -2435,6 +3035,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Tags = new Dictionary<string, string>(details.Tags);
             }
 
+<<<<<<< HEAD
             if (details.RoleAssignments != null)
             {
                 this.RoleAssignments =
@@ -2442,6 +3043,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     .ConvertAll(role => new ASRRoleAssignment(role));
             }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (details.InputEndpoints != null)
             {
                 this.InputEndpoints =

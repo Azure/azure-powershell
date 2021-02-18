@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallmatchvariable
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallmatchvariable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,7 +28,11 @@ The **New-AzApplicationGatewayFirewallMatchVariable** creates a match variable f
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> $variable = New-AzureRmApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+=======
+PS C:\> $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The command creates a new match variable with name of request headers and selector is Content-Length field. The new match variable is saved in $variable.

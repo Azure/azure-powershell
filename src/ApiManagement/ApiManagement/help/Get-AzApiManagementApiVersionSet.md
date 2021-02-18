@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapiversionset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapiversionset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,7 +35,11 @@ The **Get-AzApiManagementApiVersionSet** cmdlet gets the details of the API Vers
 
 ### Example 1
 
+<<<<<<< HEAD
 ### Example 1: Get all API Version Sets
+=======
+### Example 2: Get all API Version Sets
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext
@@ -70,7 +78,11 @@ ServiceName       : contoso
 
 This command gets all of the API Version sets for the specified context.
 
+<<<<<<< HEAD
 ### Example 2: Get a API Version Set by ID
+=======
+### Example 3: Get a API Version Set by ID
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
@@ -173,4 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzApiManagementApiSet](./Remove-AzApiManagementApiVersionSet.md)
 
+<<<<<<< HEAD
 [Set-AzApiManagementApiVersionSet](./Set-AzApiManagementApiSet.md)
+=======
+[Set-AzApiManagementApiVersionSet](./Set-AzApiManagementApiVersionSet.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -14,7 +14,11 @@
 
 using System;
 using System.Security;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+=======
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -69,7 +73,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public SecureString HubDatabasePassword { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the policy of resolving confliction between hub and member database in the sync group
+=======
+        /// Gets or sets the policy of resolving conflicts between hub and member database in the sync group
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         public string ConflictResolutionPolicy { get; set; }
 
@@ -89,6 +97,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public AzureSqlSyncGroupSchemaModel Schema { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets if private link connection should be used
+        /// </summary>
+        public bool? UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Construct AzureSqlSyncGroupModel
         /// </summary>
         public AzureSqlSyncGroupModel()
@@ -110,6 +126,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             DatabaseName = databaseName;
             ResourceId = syncGroup.Id;
             SyncGroupName = syncGroup.Name;
+<<<<<<< HEAD
             IntervalInSeconds = syncGroup.Properties.Interval;
             SyncDatabaseId = syncGroup.Properties.SyncDatabaseId;
             HubDatabaseUserName = syncGroup.Properties.HubDatabaseUserName;
@@ -117,6 +134,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             SyncState = syncGroup.Properties.SyncState;
             LastSyncTime = syncGroup.Properties.LastSyncTime;
             Schema = syncGroup.Properties.Schema == null ? null : new AzureSqlSyncGroupSchemaModel(syncGroup.Properties.Schema);
+=======
+            IntervalInSeconds = syncGroup.Interval;
+            SyncDatabaseId = syncGroup.SyncDatabaseId;
+            HubDatabaseUserName = syncGroup.HubDatabaseUserName;
+            ConflictResolutionPolicy = syncGroup.ConflictResolutionPolicy == null ? null : syncGroup.ConflictResolutionPolicy.ToString();
+            SyncState = syncGroup.SyncState;
+            LastSyncTime = syncGroup.LastSyncTime;
+            Schema = syncGroup.Schema == null ? null : new AzureSqlSyncGroupSchemaModel(syncGroup.Schema);
+            UsePrivateLinkConnection = syncGroup.UsePrivateLinkConnection;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

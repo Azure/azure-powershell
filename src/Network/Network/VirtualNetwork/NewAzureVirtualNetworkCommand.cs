@@ -73,6 +73,15 @@ namespace Microsoft.Azure.Commands.Network
         public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The BGP Community advertised over ExpressRoute.")]
+        public string BgpCommunity { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -91,6 +100,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpAllocation")]
+        public PSIpAllocation[] IpAllocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -137,10 +155,30 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrWhiteSpace(BgpCommunity))
+            {
+                vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Map to the sdk object
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
+<<<<<<< HEAD
+=======
+            if (this.IpAllocation != null)
+            {
+                foreach (var ipAllocation in this.IpAllocation)
+                {
+                    var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
+                    vnetModel.IpAllocations.Add(ipAllocationReference);
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Execute the Create VirtualNetwork call
             VirtualNetworkClient.CreateOrUpdate(ResourceGroupName, Name, vnetModel);
 

@@ -21,6 +21,10 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -106,6 +110,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "A hashtable array which represents the backup object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+        public double? ThroughputMibps { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -137,6 +155,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
@@ -163,13 +196,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
+<<<<<<< HEAD
+=======
+            
+            var dataProtection = new PSNetAppFilesVolumeDataProtection
+            {
+                Backup = Backup
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var volumePatchBody = new VolumePatch()
             {
                 ServiceLevel = ServiceLevel,
                 UsageThreshold = UsageThreshold,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
+<<<<<<< HEAD
                 Tags = Tag
+=======
+                Tags = tagPairs,
+                ThroughputMibps = ThroughputMibps,
+                DataProtection = (dataProtection.Backup != null) ? dataProtection.ConvertToPatchFromPs() : null
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

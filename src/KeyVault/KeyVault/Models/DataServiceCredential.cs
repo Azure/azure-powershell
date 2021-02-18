@@ -18,6 +18,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
+=======
+using Microsoft.Rest;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -69,7 +73,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string GetToken()
         {
+<<<<<<< HEAD
             return GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName).Item1.AccessToken;
+=======
+            return GetAccessToken().AccessToken;
+        }
+
+        public IAccessToken GetAccessToken()
+        {
+            return GetTokenInternal(TenantId, _authenticationFactory, _context, _endpointName).Item1;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static string GetTenantId(IAzureContext context)

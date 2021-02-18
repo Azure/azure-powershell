@@ -427,6 +427,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+<<<<<<< HEAD
+=======
+            environment.AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix;
+            environment.AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
@@ -455,8 +460,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
+<<<<<<< HEAD
                     Guid tenant;
                     if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
+=======
+                    if (Guid.TryParse(currentEnvironment.Tenant, out Guid tenant))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         testTenant.Id = currentEnvironment.Tenant;
                     }
@@ -588,7 +597,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.Streams.Error.Clear();
+<<<<<<< HEAD
                 }
+=======
+                }   
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

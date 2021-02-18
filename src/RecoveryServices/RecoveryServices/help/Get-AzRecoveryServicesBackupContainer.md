@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+=======
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -22,8 +26,14 @@ Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-Backup
 
 ## DESCRIPTION
 
+<<<<<<< HEAD
 The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
 A Backup container encapsulates data sources that are modelled as backup items.
+=======
+The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container. A Backup container encapsulates data sources that are modelled as backup items.
+For Container type "Azure VM" , the output lists all the containers whose name exactly matches to the one passed  as the value for Friendly Name parameter. 
+For other container types,  output gives a list of containers with name similar to the value passed for Friendly name parameter.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
@@ -51,12 +61,20 @@ The **BackupManagementType** parameter is only required for Windows containers.
 
 ### -BackupManagementType
 
+<<<<<<< HEAD
 Specifies the backup management type.
 The acceptable values for this parameter are:
 
 - AzureVM
 - MARS
 - AzureSQL
+=======
+The class of resources being protected. The acceptable values for this parameter are:
+
+- AzureVM
+- MARS
+- AzureWorkload
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - AzureStorage
 
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
@@ -65,7 +83,11 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, MARS, AzureSQL, AzureStorage
+=======
+Accepted values: AzureVM, MARS, AzureWorkload, AzureStorage
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: 2
@@ -81,7 +103,10 @@ The acceptable values for this parameter are:
 
 - AzureVM
 - Windows
+<<<<<<< HEAD
 - AzureSQL
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - AzureStorage
 - AzureVMAppContainer
 
@@ -89,7 +114,11 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureVMAppContainer
+=======
+Accepted values: AzureVM, Windows, AzureStorage, AzureVMAppContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 1
@@ -183,8 +212,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -CommonParameters
 
+=======
+### CommonParameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

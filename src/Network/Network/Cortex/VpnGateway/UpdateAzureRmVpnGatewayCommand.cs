@@ -49,7 +49,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             Mandatory = true,
+<<<<<<< HEAD
             HelpMessage = "The virtual wan name.")]
+=======
+            HelpMessage = "The vpn gateway name.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ResourceNameCompleter("Microsoft.Network/vpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -78,11 +82,27 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "The scale unit for this VpnGateway.")]
         public uint VpnGatewayScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The BGP peering addresses for this VpnGateway bgpsettings.")]
+        public PSIpConfigurationBgpPeeringAddress[] BgpPeeringAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -130,6 +150,55 @@ namespace Microsoft.Azure.Commands.Network
                 existingVpnGateway.Connections.AddRange(this.VpnConnection);
             }
 
+<<<<<<< HEAD
+=======
+            //// Modify the natRules
+            existingVpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                existingVpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
+            }
+
+            //// Modify BgpPeeringAddress
+            if (this.BgpPeeringAddress != null)
+            {
+                if (existingVpnGateway.BgpSettings == null)
+                {
+                    existingVpnGateway.BgpSettings = new PSBgpSettings();
+                }
+
+                if (existingVpnGateway.BgpSettings.BgpPeeringAddresses == null)
+                {
+                    existingVpnGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
+
+                    foreach (var address in this.BgpPeeringAddress)
+                    {
+                        existingVpnGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                    }
+                }
+                else
+                {
+                    foreach (var address in this.BgpPeeringAddress)
+                    {
+                        bool isGatewayIpConfigurationExists = existingVpnGateway.BgpSettings.BgpPeeringAddresses.Any(
+                        ipconfaddress => ipconfaddress.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                        if (isGatewayIpConfigurationExists)
+                        {
+                            var bgpPeeringPropertiesInRequest = existingVpnGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
+                                x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                            bgpPeeringPropertiesInRequest.CustomBgpIpAddresses = address.CustomBgpIpAddresses;
+                        }
+                        else
+                        {
+                            existingVpnGateway.BgpSettings.BgpPeeringAddresses.Add(address);
+                        }
+                    }
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ConfirmAction(
                     Properties.Resources.SettingResourceMessage,
                     this.Name,

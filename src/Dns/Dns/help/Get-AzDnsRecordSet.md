@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 40179CF3-7896-4C45-BC18-4CB653B245B6
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsrecordset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.dns/get-azdnsrecordset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

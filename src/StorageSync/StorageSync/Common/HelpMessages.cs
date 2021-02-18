@@ -51,6 +51,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string StorageSyncServiceLocationParameter = "Storage Sync Service Location.";
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The storage sync service incoming traffic policy parameter
+        /// </summary>
+        public const string StorageSyncServiceIncomingTrafficPolicyParameter = "Storage Sync Service Incoming Traffic Policy.";
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The storage sync service tags parameter
         /// </summary>
         public const string StorageSyncServiceTagsParameter = "Storage Sync Service Tags.";
@@ -171,6 +178,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter.";
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The initial download policy parameter.
+        /// </summary>
+        public const string InitialDownloadPolicyParameter = "Initial Download Policy Parameter.";
+        /// <summary>
+        /// The Local cache mode parameter.
+        /// </summary>
+        public const string LocalCacheModeParameter = "Local Cache Mode Parameter.";
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The tier files older than days parameter
         /// </summary>
         public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter.";

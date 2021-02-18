@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasAuthoRuleParameterSet = "AliasAuthoRuleSet";
         protected const string AliasCheckNameAvailabilityParameterSet = "AliasCheckNameAvailabilitySet";
         protected const string NamespaceCheckNameAvailabilityParameterSet = "NamespaceCheckNameAvailabilitySet";
+<<<<<<< HEAD
+=======
+        protected const string QueueCheckNameAvailabilityParameterSet = "QueueCheckNameAvailabilitySet";
+        protected const string TopicCheckNameAvailabilityParameterSet = "TopicCheckNameAvailabilitySet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         //Parameter sets for InputObjects
         protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
@@ -116,6 +121,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
         protected const string AliasResourceId = "ResourceId";
+<<<<<<< HEAD
+=======
+        protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
@@ -130,6 +139,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string ServicebusStartMigrationConfiguration = "AzureRmServiceBusStartMigration";
         protected const string ServicebusCompleteMigrationConfiguration = "AzureRmServiceBusCompleteMigration";
 
+<<<<<<< HEAD
+=======
+        //Access Rights 
+        protected const string Manage = "Manage";
+        protected const string Send = "Send";
+        protected const string Listen = "Listen";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected struct SKU
         {
             internal const string Basic = "Basic";

@@ -98,9 +98,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     Version = "1.0"
                 }
             };
+<<<<<<< HEAD
             cmdlet.Pool.Metadata = new List<PSMetadataItem>()
             {
                 new PSMetadataItem("meta1", "value1")
+=======
+            cmdlet.Pool.Metadata = new Dictionary<string, string>
+            {
+                { "meta1", "value1" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             PoolUpdatePropertiesParameter requestParameters = null;
@@ -126,8 +132,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationId, requestParameters.ApplicationPackageReferences[0].ApplicationId);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].Version, requestParameters.ApplicationPackageReferences[0].Version);
             Assert.Equal(cmdlet.Pool.Metadata.Count, requestParameters.Metadata.Count);
+<<<<<<< HEAD
             Assert.Equal(cmdlet.Pool.Metadata[0].Name, requestParameters.Metadata[0].Name);
             Assert.Equal(cmdlet.Pool.Metadata[0].Value, requestParameters.Metadata[0].Value);
+=======
+            Assert.Contains(
+                requestParameters.Metadata,
+                metadata => metadata.Name == "meta1" && metadata.Value == cmdlet.Pool.Metadata["meta1"].ToString());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

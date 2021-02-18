@@ -30,6 +30,10 @@ namespace Commands.HDInsight.Test.UnitTests
     {
         private NewAzureHDInsightClusterCommand cmdlet;
         private Guid ObjectId = new Guid("11111111-1111-1111-1111-111111111111");
+<<<<<<< HEAD
+=======
+        private Guid ApplicationId = new Guid("11111111-1111-1111-1111-111111111111");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private Guid AadTenantId = new Guid("11111111-1111-1111-1111-111111111111");
         private string Certificate = "";
         private string CertificatePassword = "";
@@ -59,6 +63,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 CertificateFilePath = Certificate,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword
@@ -73,6 +81,10 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.AADTenantId == AadTenantId &&
                                 c.CertificatePassword == CertificatePassword &&
                                 c.ObjectId == ObjectId &&
+<<<<<<< HEAD
+=======
+                                c.ApplicationId == ApplicationId &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 c.CertificateFilePath == Certificate
                                 )),
                 Times.Once);
@@ -87,6 +99,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 CertificateFileContents = CertificateFileContents,
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword
@@ -101,6 +117,10 @@ namespace Commands.HDInsight.Test.UnitTests
                                 c.AADTenantId == AadTenantId &&
                                 c.CertificatePassword == CertificatePassword &&
                                 c.ObjectId == ObjectId &&
+<<<<<<< HEAD
+=======
+                                c.ApplicationId == ApplicationId &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 c.CertificateFileContents == CertificateFileContents
                                 )),
                 Times.Once);
@@ -115,6 +135,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword
             };
@@ -131,6 +155,10 @@ namespace Commands.HDInsight.Test.UnitTests
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ObjectId = ObjectId,
+<<<<<<< HEAD
+=======
+                ApplicationId = ApplicationId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 AadTenantId = AadTenantId,
                 CertificatePassword = CertificatePassword,
                 CertificateFileContents = CertificateFileContents,

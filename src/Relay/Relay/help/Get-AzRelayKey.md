@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelaykey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelaykey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,8 +39,13 @@ The **Get-AzRelayKey** cmdlet returns the primary and secondary connection strin
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Namespace
 ```
+=======
+### Example 1: Namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
@@ -46,8 +55,13 @@ SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 ```
 
+<<<<<<< HEAD
 ### Example 2 - WcfRelay
 ```
+=======
+### Example 2: WcfRelay
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
@@ -57,8 +71,13 @@ SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 ```
 
+<<<<<<< HEAD
 ### Example 3 - HybridConnection
 ```
+=======
+### Example 3: HybridConnection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection

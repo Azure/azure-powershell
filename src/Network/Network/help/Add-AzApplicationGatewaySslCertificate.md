@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7EC4C642-1D23-4699-AE00-6E180C38271E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewaysslcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaysslcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,7 +31,11 @@ The **Add-AzApplicationGatewaySslCertificate** cmdlet adds an SSL certificate to
 ### Example 1: Add an SSL certificate using pfx to an application gateway.
 ```
 PS C:\> $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+<<<<<<< HEAD
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+=======
+PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
@@ -36,8 +44,13 @@ This command gets an application gateway named ApplicationGateway01 and then add
 ### Example 2: Add an SSL certificate using KeyVault Secret (version-less secretId) to an application gateway.
 ```
 PS C:\> $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+<<<<<<< HEAD
 PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
 PS C:\> $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+=======
+PS C:\> $secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $secretId = $secret.SecretId.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
 
@@ -47,7 +60,11 @@ Note: As version-less secretId is provided here, Application Gateway will sync t
 ### Example 3: Add an SSL certificate using KeyVault Secret (versioned secretId) to an application gateway.
 ```
 PS C:\> $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+<<<<<<< HEAD
 PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+=======
+PS C:\> $secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
 PS C:\> $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```

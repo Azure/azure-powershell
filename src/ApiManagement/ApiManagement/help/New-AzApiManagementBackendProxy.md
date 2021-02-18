@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementbackendproxy
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackendproxy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -22,7 +26,11 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Create a Backend Proxy In-Memory Object
+=======
+### Example 1: Create a Backend Proxy In-Memory Object
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\>$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
@@ -98,7 +106,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzApiManagementBackend](./Get-AzApiManagementBackend)
+=======
+[Get-AzApiManagementBackend](./Get-AzApiManagementBackend.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [New-AzApiManagementBackend](./New-AzApiManagementBackend.md)
 

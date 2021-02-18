@@ -34,10 +34,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Type { get; set; }
         [Ps1Xml(Label = "DefaultServiceVersion", Target = ViewControl.Table, Position = 2)]
         public string DefaultServiceVersion { get; set; }
+<<<<<<< HEAD
         [Ps1Xml(Label = "DeleteRetentionPolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Enabled", Position = 3)]
         [Ps1Xml(Label = "DeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Days", Position = 4)]
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
+=======
+        [Ps1Xml(Label = "ChangeFeed", Target = ViewControl.Table, ScriptBlock = "$_.ChangeFeed.Enabled", Position = 7)]
+        public PSChangeFeed ChangeFeed { get; set; }
+        [Ps1Xml(Label = "DeleteRetentionPolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Enabled", Position = 3)]
+        [Ps1Xml(Label = "DeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Days", Position = 4)]
+        public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
+        [Ps1Xml(Label = "RestorePolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Enabled", Position = 5)]
+        [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
+        [Ps1Xml(Label = "RestorePolicy.MinRestoreTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.MinRestoreTime", Position = 7)]
+        public PSRestorePolicy RestorePolicy { get; set; }
+        public PSCorsRules Cors { get; set; }
+        public bool? IsVersioningEnabled { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public PSBlobServiceProperties()
         { }
@@ -52,6 +66,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
             this.DefaultServiceVersion = policy.DefaultServiceVersion;
             this.DeleteRetentionPolicy = policy.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.DeleteRetentionPolicy);
+<<<<<<< HEAD
+=======
+            this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
+            this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
+            this.IsVersioningEnabled = policy.IsVersioningEnabled;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -59,7 +79,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
                 DefaultServiceVersion = this.DefaultServiceVersion,
+<<<<<<< HEAD
                 DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy()
+=======
+                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
+                RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
+                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
+                IsVersioningEnabled = this.IsVersioningEnabled                
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -79,13 +106,50 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
             else //child resource Id(e.g.BlobServiceProperties ResourceId)
             {
+<<<<<<< HEAD
                 var parentResource = resource.ParentResource.Split(new[] { '/' });
                 return parentResource[parentResource.Length - 1];
+=======
+                // Storage Account name will be the first parent resource, This works for all cmdlets reference this function, e.g.:
+                // Blob Service: "storageAccounts/[AccountName]/blobServices/default"
+                // Blob Container: "storageAccounts/[AccountName]/blobServices/default/containers/[ContainerName]"
+                // File Share: "storageAccounts/[AccountName]/fileServices/default/shares/[ShareName]"
+                var parentResource = resource.ParentResource.Split(new[] { '/' });
+                return parentResource[1];
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// Wrapper of SDK type ChangeFeed
+    /// </summary>
+    public class PSChangeFeed
+    {
+        public bool? Enabled { get; set; }
+
+        public PSChangeFeed()
+        {
+        }
+
+        public PSChangeFeed(ChangeFeed changeFeed)
+        {
+            this.Enabled = changeFeed.Enabled;
+        }
+
+        public ChangeFeed ParseChangeFeed()
+        {
+            return new ChangeFeed
+            {
+                Enabled = this.Enabled
+            };
+        }
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// Wrapper of SDK type DeleteRetentionPolicy
     /// </summary>
     public class PSDeleteRetentionPolicy
@@ -113,6 +177,39 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// Wrapper of SDK type DeleteRetentionPolicy
+    /// </summary>
+    public class PSRestorePolicy
+    {
+        public bool? Enabled { get; set; }
+        public int? Days { get; set; }
+        public DateTime? MinRestoreTime { get; set; }
+
+        public PSRestorePolicy()
+        {
+        }
+
+        public PSRestorePolicy(RestorePolicyProperties policy)
+        {
+            this.Enabled = policy.Enabled;
+            this.Days = policy.Days;
+            this.MinRestoreTime = policy.MinRestoreTime;
+
+        }
+        public RestorePolicyProperties ParseRestorePolicy()
+        {
+            return new RestorePolicyProperties
+            {
+                Enabled = this.Enabled is null ? false : this.Enabled.Value,
+                Days = this.Days
+            };
+        }
+    }
+
+    /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// Wrapper of SDK type CorsRules
     /// </summary>
     public class PSCorsRules

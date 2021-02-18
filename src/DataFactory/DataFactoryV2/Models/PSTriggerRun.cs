@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
@@ -81,5 +85,40 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
                 return this.triggerRun.Status;
             }
         }
+<<<<<<< HEAD
+=======
+
+        public IDictionary<string, string> TriggeredPipelines
+        {
+            get
+            {
+                return this.triggerRun.TriggeredPipelines;
+            }
+        }
+
+        public string Message
+        {
+            get
+            {
+                return this.triggerRun.Message;
+            }
+        }
+
+        public IDictionary<string, string> Properties
+        {
+            get
+            {
+                return this.triggerRun.Properties;
+            }
+        }
+
+        public IDictionary<string, object> AdditionalProperties
+        {
+            get
+            {
+                return this.triggerRun.AdditionalProperties;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

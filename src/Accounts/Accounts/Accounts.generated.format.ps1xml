@@ -20,6 +20,13 @@
             <Alignment>Left</Alignment>
             <Label>ActiveDirectory Authority</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
+=======
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Type</Label>
+          </TableColumnHeader>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -36,6 +43,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ActiveDirectoryAuthority</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
+=======
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -207,7 +221,19 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>Directory</Label>
+=======
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Category</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Domains</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -219,7 +245,19 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <PropertyName>Directory</PropertyName>
+=======
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.TenantCategory</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Domains</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

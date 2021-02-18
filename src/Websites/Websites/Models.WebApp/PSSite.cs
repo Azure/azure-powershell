@@ -15,6 +15,10 @@
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+<<<<<<< HEAD
+=======
+using System.Reflection;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -36,7 +40,11 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   enabled: other.Enabled,
                   enabledHostNames: other.EnabledHostNames,
                   availabilityState: other.AvailabilityState,
+<<<<<<< HEAD
                   hostNameSslStates: other.HostNameSslStates, 
+=======
+                  hostNameSslStates: other.HostNameSslStates,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   serverFarmId: other.ServerFarmId,
                   lastModifiedTimeUtc: other.LastModifiedTimeUtc,
                   siteConfig: other.SiteConfig,
@@ -58,23 +66,40 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   isXenon: other.IsXenon,
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
+<<<<<<< HEAD
                   suspendedTill:other.SuspendedTill,
+=======
+                  suspendedTill: other.SuspendedTill,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
                   identity: other.Identity
                   )
         {
+<<<<<<< HEAD
             if (other.SiteConfig != null)
             {
                 AzureStoragePath = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
+=======
+            PropertyInfo AzureStoragePathProp = other.GetType().GetProperty("AzureStoragePath");
+            if (AzureStoragePathProp != null)
+            {
+                object val = AzureStoragePathProp.GetValue(other, null);
+                AzureStoragePath = (WebAppAzureStoragePath[])val;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
         public string GitRemoteName { get; set; }
         public string GitRemoteUri { get; set; }
         public string GitRemoteUsername { get; set; }
+<<<<<<< HEAD
         public SecureString  GitRemotePassword { get; set; }
 
+=======
+        public SecureString GitRemotePassword { get; set; }
+        public AzureStoragePropertyDictionaryResource AzureStorageAccounts { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
     }
 }

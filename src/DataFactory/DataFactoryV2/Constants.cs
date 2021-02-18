@@ -68,12 +68,48 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpTriggerName = "The trigger name.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpTriggerRunId = "The Run ID of the trigger.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
+        public const string HelpTriggerObject = "The trigger object.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpPipeline = "The pipeline object.";
 
         public const string HelpDatasetName = "The dataset name.";
 
         public const string HelpDataset = "The dataset object.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpDataFlowName = "The data flow name.";
+
+        public const string HelpDataFlow = "The data flow object.";
+
+        public const string HelpDataFlowDebugSessionId = "The data flow debug session ID.";
+
+        public const string HelpDataFlowDebugCommand = "The data flow debug command.";
+
+        public const string HelpDataFlowDebugStreamName = "The stream name of data flow for debugging.";
+
+        public const string HelpDataFlowDebugRowLimits = "The row limit for data flow data preview.";
+
+        public const string HelpDataFlowDebugExpression = "The expression for data flow expression preview.";
+
+        public const string HelpDataFlowDebugColumns = "The columns list for data flow statistics preview.";
+
+        public const string HelpDataFlowCreationContext = "Creating or updating data flow '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpAddDataFlowPackageContext = "Add data flow package to debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpInvokeDebugSessionCommandContext = "Invoke debug command of debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpStartDataFlowDebugSessionContext = "Start a data flow debug session in resource group '{0}' under data factory '{1}'.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpLinkedServiceName = "The linked service name.";
 
         public const string HelpLinkedService = "The linked service object.";
@@ -110,10 +146,32 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpIntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
+
+        public const string HelpIntegrationRuntimeDataFlowCoreCount = "Core count of the data flow cluster which will execute data flow job.";
+
+        public const string HelpIntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
+
+        public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpIntegrationRuntimeExpressCustomSetup = "The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.";
+
+        public const string HelpIntegrationRuntimeDataProxyIntegrationRuntimeName = "The Self-Hosted Integration Runtime name which is used as a proxy.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingLinkedServiceName = "The Azure Blob Storage Linked Service name that references the staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtime.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingPath = "The path in staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes, a default container will be used if unspecified.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
 
         public const string HelpIntegrationRuntimeLicenseType = "The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.";
@@ -146,6 +204,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpParameterFileForRun = "The name of the file with parameters for pipeline run.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpReferencePipelineRunIdForRun = "The pipeline run ID for rerun. If run ID is specified, the parameters of the specified run will be used to create a new run.";
+
+        public const string HelpIsRecoveryForRun = "Recovery mode flag. If recovery mode is set to true, the specified referenced pipeline run and the new run will be grouped under the same groupId.";
+
+        public const string HelpStartActivityNameForRun = "In recovery mode, the rerun will start from this activity. If not specified, all activities will run.";
+
+        public const string HelpStartFromFailureForRun = "Start rerun from failed activities flag. In recovery mode, if specified, the rerun will start from failed activities.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpQueryParametersForRun = "Query parameters for pipeline run.";
 
         public const string HelpRunStartedAfter = "The time at or after which the pipeline run started to execute in ISO8601 format.";
@@ -166,6 +235,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string DatasetName = "DatasetName";
 
+<<<<<<< HEAD
+=======
+        public const string DataFlowName = "DataFlowName";
+
+        public const string DataFlowDebugSessionId = "SessionId";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string DataFactoryName = "DataFactoryName";
 
         public const string PipelineName = "PipelineName";
@@ -200,6 +276,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryLocation = "The geographic region of the data factory.";
 
+<<<<<<< HEAD
+=======
+        public const string HelpGlobalParameter = "The dictionary containing the global parameters of the data factory.";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
 
         public const string HelpRepoConfigurationTenantId = "The tenant id for repo configuration.";
@@ -219,5 +300,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string Id = "Id";
 
         public const string DataFactoryId = "DataFactoryId";
+<<<<<<< HEAD
+=======
+
+        public const string HelpPassThru = "If specified, cmdlet will return return true on successful delete.";
+
+        public const string ActionDescriptionForAddEventSubscription = "Subscribe the event trigger to external service events.";
+
+        public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
+
+        public const string ActionDescriptionForInvokePipeline = "Starts a run for \"{0}\" pipeline in the \"{1}\" factory.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

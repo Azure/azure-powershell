@@ -275,6 +275,15 @@ namespace Tools.Common.Models
         public string DefaultParameterSetName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The default parameter set
+        /// </summary>
+        [JsonIgnore]
+        public ParameterSetMetadata DefaultParameterSet { get { return _parameterSets.Find(p => string.Equals(p.Name, this.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)); } }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The set of output types for the cmdlet
         /// </summary>
         public List<OutputMetadata> OutputTypes { get { return _outputTypes; } }

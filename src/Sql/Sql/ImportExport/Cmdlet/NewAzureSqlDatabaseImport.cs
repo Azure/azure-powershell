@@ -85,8 +85,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
             {
                 throw new ArgumentNullException("importModel");
             }
+<<<<<<< HEAD
             return ModelAdapter.Import(importModel);
 
+=======
+            return ModelAdapter.ImportNewDatabase(importModel);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -95,6 +99,11 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <param name="model">A model object</param>
         protected override AzureSqlDatabaseImportExportBaseModel ApplyUserInputToModel(AzureSqlDatabaseImportExportBaseModel model)
         {
+<<<<<<< HEAD
+=======
+            NetworkIsolationSettings networkIsolationSettings = ValidateAndGetNetworkIsolationSettings();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             AzureSqlDatabaseImportModel exportRequest = new AzureSqlDatabaseImportModel()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -108,7 +117,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
                 StorageUri = StorageUri,
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
+<<<<<<< HEAD
                 DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
+=======
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
+                NetworkIsolationSettings = ValidateAndGetNetworkIsolationSettings()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
             return exportRequest;
         }

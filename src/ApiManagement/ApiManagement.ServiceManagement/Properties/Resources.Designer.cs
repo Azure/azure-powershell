@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -322,6 +326,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Creating Named Value.
+        /// </summary>
+        internal static string CreateNamedValue {
+            get {
+                return ResourceManager.GetString("CreateNamedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Removing Diagnostic &quot;{0}&quot;..
         /// </summary>
         internal static string DiagnosticRemoveDescription {
@@ -340,6 +356,45 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Removing Gateway Hostname Configuration &quot;{0}&quot; for Gateway &quot;{1}&quot;..
+        /// </summary>
+        internal static string GatewayHostnameConfigurationRemoveDescription {
+            get {
+                return ResourceManager.GetString("GatewayHostnameConfigurationRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Gateway Hostname Configuration &quot;{0}&quot; for Gateway &quot;{1}&quot;?.
+        /// </summary>
+        internal static string GatewayHostnameConfigurationRemoveWarning {
+            get {
+                return ResourceManager.GetString("GatewayHostnameConfigurationRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Gateway &quot;{0}&quot;..
+        /// </summary>
+        internal static string GatewayRemoveDescription {
+            get {
+                return ResourceManager.GetString("GatewayRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Gateway &quot;{0}&quot;?.
+        /// </summary>
+        internal static string GatewayRemoveWarning {
+            get {
+                return ResourceManager.GetString("GatewayRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Removing Group &quot;{0}&quot;..
         /// </summary>
         internal static string GroupRemoveDescription {
@@ -394,6 +449,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Removing Named Value &quot;{0}&quot;.
+        /// </summary>
+        internal static string NamedValueRemoveDescription {
+            get {
+                return ResourceManager.GetString("NamedValueRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Named Value &quot;{0}&quot;?.
+        /// </summary>
+        internal static string NamedValueRemoveWarning {
+            get {
+                return ResourceManager.GetString("NamedValueRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Removing OpenID Connect Provider &quot;{0}&quot;..
         /// </summary>
         internal static string OpenIdConnectProviderRemoveDescription {
@@ -466,6 +542,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Removing Property &quot;{0}&quot;.
         /// </summary>
         internal static string PropertyRemoveDescription {
@@ -484,6 +561,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Subscriptions to products which are deleted will be also be deleted..
         /// </summary>
         internal static string PublishTenantConfigurationDescription {
@@ -592,6 +671,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Set Gateway.
+        /// </summary>
+        internal static string SetGateway {
+            get {
+                return ResourceManager.GetString("SetGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Set Group.
         /// </summary>
         internal static string SetGroup {
@@ -610,6 +701,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Set Named Value.
+        /// </summary>
+        internal static string SetNamedValue {
+            get {
+                return ResourceManager.GetString("SetNamedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Set OpenIdConnectProvider.
         /// </summary>
         internal static string SetOpenIdConnectProvider {
@@ -637,6 +740,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Set Property.
         /// </summary>
         internal static string SetProperty {
@@ -646,6 +750,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Set Subscription.
         /// </summary>
         internal static string SetSubscription {

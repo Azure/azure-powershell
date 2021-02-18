@@ -14,6 +14,12 @@
 
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.RecoveryServices.Models;
+using RestAzureNS = Microsoft.Rest.Azure;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -25,5 +31,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: RSAdapter.CmdletCancellationToken).Result;
             return response.Body.Select(vault => vault.Id).ToList();
         }
+<<<<<<< HEAD
+=======
+
+        public BackupResourceVaultConfigResource SetVaultProperty(string vaultName, string resourceGroupName,
+            BackupResourceVaultConfigResource param)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resourceGroupName, param).Result.Body;
+        }
+
+        public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
+                vaultName, resourceGroupName).Result.Body;
+        }
+
+        /// <summary>  
+        /// Method to Get Azure Recovery Services Vault Backup Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <returns>Azure Resource Storage response object.</returns>  
+        public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
+        {
+            return BmsAdapter.Client.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
+                vaultName, resouceGroupName).Result.Body;
+        }
+
+        /// <summary>  
+        /// Method to Get Azure Recovery Services Vault Encryption Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <returns>Azure Resource Encryption response object.</returns>  
+        public BackupResourceEncryptionConfigResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
+        {
+            return BmsAdapter.Client.BackupResourceEncryptionConfigs.GetWithHttpMessagesAsync(
+                vaultName, resouceGroupName).Result.Body;
+        }
+
+        /// <summary>  
+        /// Method to Update Azure Recovery Services Vault Encryption Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="encryptionConfigResource">update encryption config</param>  
+        /// <returns>Azure Resource Encryption response object.</returns>  
+        public RestAzureNS.AzureOperationResponse UpdateVaultEncryptionConfig(string resouceGroupName, string vaultName,
+            BackupResourceEncryptionConfigResource encryptionConfigResource)
+        {
+            return BmsAdapter.Client.BackupResourceEncryptionConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resouceGroupName, encryptionConfigResource).Result;
+        }
+        
+        /// <summary>  
+        /// Method to get Recovery Services Vault.
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <returns>Azure Recovery Services Vault</returns> 
+        public ARSVault GetVault(string resouceGroupName, string vaultName)
+        {
+            Vault response =  RSAdapter.Client.Vaults.GetWithHttpMessagesAsync(resouceGroupName, vaultName,
+                cancellationToken: RSAdapter.CmdletCancellationToken).Result.Body;
+
+            ARSVault vault = new ARSVault(response);
+            return vault;
+        }
+
+        /// <summary>
+        /// Method to get secondary region AAD properties
+        /// </summary>
+        /// <param name="azureRegion">Azure region to fetch AAD properties</param>
+        /// <returns>vault response object.</returns>
+        public AADPropertiesResource GetAADProperties(string azureRegion)
+        {
+            AADPropertiesResource aadProperties =  BmsAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion).Result.Body;
+            return aadProperties;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

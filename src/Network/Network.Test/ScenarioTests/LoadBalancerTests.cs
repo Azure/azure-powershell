@@ -196,6 +196,25 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+<<<<<<< HEAD
+=======
+        public void TestSetLoadBalancerCRUDPublicStandardSkuIpPrefix()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerCRUD-PublicStandardSkuIpPrefix");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestSetLoadBalancerCRUDPublicStandardSkuGlobalTier()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
             TestRunner.RunTestScript("Test-LoadBalancerCRUD-InternalStandardSku");

@@ -34,6 +34,11 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+<<<<<<< HEAD
+=======
+using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
+using LoadBalancingRule = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.LoadBalancingRule;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -122,8 +127,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var cluster = GetCurrentCluster();
                 this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
+<<<<<<< HEAD
                 CreateVmss();
                 var pscluster = AddNodeTypeToSfrp(cluster);
+=======
+                var pscluster = AddNodeTypeToSfrp(cluster);
+                CreateVmss(cluster.ClusterId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(pscluster, true);
             }
         }
@@ -170,14 +180,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             });
         }
 
+<<<<<<< HEAD
         private void CreateVmss()
+=======
+        private void CreateVmss(string clusterId)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             VirtualMachineScaleSetExtensionProfile vmExtProfile;
             VirtualMachineScaleSetOSProfile osProfile;
             VirtualMachineScaleSetStorageProfile storageProfile;
             VirtualMachineScaleSetNetworkProfile networkProfile;
 
+<<<<<<< HEAD
             GetProfiles(out vmExtProfile, out osProfile, out storageProfile, out networkProfile);
+=======
+            GetProfiles(clusterId, out vmExtProfile, out osProfile, out storageProfile, out networkProfile);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var virtualMachineScaleSetProfile = new VirtualMachineScaleSetVMProfile()
             {
@@ -213,7 +231,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).Location;
         }
 
+<<<<<<< HEAD
         private void GetProfiles(
+=======
+        internal void GetProfiles(
+            string clusterId,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             out VirtualMachineScaleSetExtensionProfile vmExtProfile,
             out VirtualMachineScaleSetOSProfile osProfile,
             out VirtualMachineScaleSetStorageProfile storageProfile,
@@ -229,6 +252,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             VirtualMachineScaleSetStorageProfile existingStorageProfile = null;
             VirtualMachineScaleSetNetworkProfile existingNetworkProfile = null;
+<<<<<<< HEAD
             var vmss = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
             if (vmss != null)
             {
@@ -274,6 +298,56 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (existingFabricExtension == null || existingStorageProfile == null || existingNetworkProfile == null)
             {
                 throw new InvalidOperationException(ServiceFabricProperties.Resources.VmExtensionNotFound);
+=======
+            var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+            if (vmssPages == null || !vmssPages.Any())
+            {
+                throw new PSArgumentException(string.Format(
+                    ServiceFabricProperties.Resources.NoVMSSFoundInRG,
+                    this.ResourceGroupName));
+            }
+
+            do
+            {
+                if (!vmssPages.Any())
+                {
+                    break;
+                }
+
+                foreach (var vmss in vmssPages)
+                {
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        if (string.Equals(GetClusterIdFromExtension(sfExtension), clusterId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            WriteVerboseWithTimestamp(string.Format("GetProfiles: Found vmss {0} that corresponds to cluster id {1}", vmss.Id, clusterId));
+                            osProfile = vmss.VirtualMachineProfile.OsProfile;
+                            existingStorageProfile = vmss.VirtualMachineProfile.StorageProfile;
+                            existingNetworkProfile = vmss.VirtualMachineProfile.NetworkProfile;
+
+                            if (existingStorageProfile == null || existingNetworkProfile == null)
+                            {
+                                WriteVerboseWithTimestamp(string.Format("GetProfiles: Unable to get storageProfile and/or NetworkProfile from vmss id: {0}", vmss.Id));
+                                continue;
+                            }
+
+                            existingFabricExtension = sfExtension;
+                            diagnosticsVmExt = vmss.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(
+                                e =>
+                                e.Type.Equals(Constants.IaaSDiagnostics, StringComparison.OrdinalIgnoreCase));
+                            break;
+                        }
+                    }
+                }
+            } while (existingFabricExtension == null && !string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                     (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+            if (existingFabricExtension == null)
+            {
+                throw new InvalidOperationException(string.Format(ServiceFabricProperties.Resources.VmExtensionNotFound, ResourceGroupName, clusterId));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             osProfile = GetOsProfile(osProfile);
@@ -619,7 +693,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var subnetId = ipConfiguration.Subnet.Id;
             var segments = subnetId.Split('/');
             if (!segments[segments.Length - 2].Equals("subnets", StringComparison.OrdinalIgnoreCase) || 
+<<<<<<< HEAD
                 !segments[segments.Length - 4].Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase))
+=======
+                !segments[segments.Length - 4].Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase) ||
+                !segments[segments.Length - 8].Equals("resourceGroups", StringComparison.OrdinalIgnoreCase))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -627,10 +706,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         subnetId));
             }
 
+<<<<<<< HEAD
             var subnetName = segments[segments.Length - 1];
             var virtualNetworkName = segments[segments.Length - 3];
 
             var subnet = NetworkManagementClient.Subnets.Get(this.ResourceGroupName, virtualNetworkName, subnetName);
+=======
+            var subNetRG = segments[segments.Length - 7];
+            var subnetName = segments[segments.Length - 1];
+            var virtualNetworkName = segments[segments.Length - 3];
+
+            var subnet = NetworkManagementClient.Subnets.Get(subNetRG, virtualNetworkName, subnetName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return subnet.AddressPrefix;
         }
     }

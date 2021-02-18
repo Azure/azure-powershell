@@ -15,6 +15,10 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.EventHub.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -98,6 +102,32 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public SwitchParameter EnableKafka { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+
+        /// <summary>
+        /// Cluster ARM ID
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ARM ID of Cluster where namespace is to be created")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ARM ID of Cluster where namespace is to be created")]
+        [ValidateNotNullOrEmpty]
+        public string ClusterARMId { get; set; }
+
+        /// <summary>
+        /// Indicates whether Identity is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
+        public SwitchParameter Identity { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
@@ -109,7 +139,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {
+<<<<<<< HEAD
                     WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent));
+=======
+                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ClusterARMId, ZoneRedundant.IsPresent, Identity.IsPresent));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

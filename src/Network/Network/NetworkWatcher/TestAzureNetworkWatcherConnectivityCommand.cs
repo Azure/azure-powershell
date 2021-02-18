@@ -100,7 +100,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Protocal configuration on which check connectivity will be performed.")]
+=======
+            HelpMessage = "Protocol configuration on which check connectivity will be performed.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherProtocolConfiguration ProtocolConfiguration { get; set; }
 

@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.PowerBIEmbedded
 Module Guid: 868389ce-dd36-4f57-a674-0970db085d9a
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.powerbiembedded
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.1.4.0
 Locale: en-US
 ---

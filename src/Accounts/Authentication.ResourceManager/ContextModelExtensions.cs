@@ -69,7 +69,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             if (tenant != null && !string.IsNullOrWhiteSpace(tenant.Id) && context != null)
             {
                 context.Subscription?.SetTenant(tenant.Id);
+<<<<<<< HEAD
                 context.Account?.SetOrAppendProperty(AzureAccount.Property.Subscriptions, tenant.Id);
+=======
+                context.Account?.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant.Id);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 context.Tenant = tenant;
             }
 
@@ -102,7 +106,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 context.Tenant = new AzureTenant();
                 context.Tenant.CopyFrom(other.Tenant);
                 context.CopyPropertiesFrom(other);
+<<<<<<< HEAD
                 context.TokenCache = AzureSession.Instance.TokenCache;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -138,7 +145,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl,
                 SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix,
                 StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix,
+<<<<<<< HEAD
                 TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix
+=======
+                TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix,
+                ContainerRegistryEndpointSuffix = environment1.ContainerRegistryEndpointSuffix ?? environment2.ContainerRegistryEndpointSuffix
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             foreach (var property in environment1.ExtendedProperties.Keys.Union(environment2.ExtendedProperties.Keys))

@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchaccount
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+Module Name: Az.Batch
+ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchaccount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,7 +39,12 @@ PS C:\>Get-AzBatchAccount -AccountName "pfuller"
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
+<<<<<<< HEAD
 CoreQuota                    : 20
+=======
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :
@@ -46,7 +59,12 @@ PS C:\>Get-AzBatchAccount -ResourceGroupName "CmdletExampleRG"
 AccountName                  : cmdletexample
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
+<<<<<<< HEAD
 CoreQuota                    : 20
+=======
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :
@@ -54,7 +72,12 @@ TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 AccountName                  : cmdletexample2
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
+<<<<<<< HEAD
 CoreQuota                    : 20
+=======
+DedicatedCoreQuota           : 20
+LowPriorityCoreQuota         : 20
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PoolQuota                    : 20
 ActiveJobAndJobScheduleQuota : 20
 Tags                         :
@@ -130,7 +153,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -152,4 +179,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzBatchAccount](./Set-AzBatchAccount.md)
 
+<<<<<<< HEAD
 [Azure Batch Cmdlets](./Az.Batch.md)
+=======
+[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

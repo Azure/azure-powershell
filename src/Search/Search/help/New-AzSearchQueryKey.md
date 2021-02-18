@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchquerykey
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
+Module Name: Az.Search
+online version: https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # New-AzSearchQueryKey
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Create a new query key for the Azure Search service.
+=======
+Create a new query key for the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +42,11 @@ New-AzSearchQueryKey [-ParentResourceId] <String> -Name <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **New-AzSearchQueryKey** cmdlet creates a new query key for the Azure Search Service.
+=======
+The **New-AzSearchQueryKey** cmdlet creates a new query key for the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -44,7 +59,11 @@ Name         Key
 NewQueryKey1 65FBCF561228C5F0E01F8F2114C80459
 ```
 
+<<<<<<< HEAD
 The example creates a new query key for the Azure Search service.
+=======
+The example creates a new query key for the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -64,7 +83,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Search Service query key name.
+=======
+Azure Cognitive Search Service query key name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -79,7 +102,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
+<<<<<<< HEAD
 Search Service Input Object.
+=======
+Azure Cognitive Search Service Input Object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -94,7 +121,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
+<<<<<<< HEAD
 Search Service Resource Id.
+=======
+Azure Cognitive Search Service Resource Id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -124,7 +155,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
+<<<<<<< HEAD
 Search Service name.
+=======
+Azure Cognitive Search Service name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -169,7 +204,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

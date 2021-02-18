@@ -17,6 +17,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
@@ -30,7 +34,10 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -429,6 +436,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     asrVaultCreds.ResourceNamespace;
                 PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
                     asrVaultCreds.ARMResourceType;
+<<<<<<< HEAD
             }
         }
 
@@ -447,6 +455,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return null;
         }
 
+=======
+                PSRecoveryServicesClient.asrVaultCreds.PrivateEndpointStateForSiteRecovery =
+                    asrVaultCreds.PrivateEndpointStateForSiteRecovery;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         ///     Validate the email addresses.
         /// </summary>
@@ -531,6 +546,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return fullFileName;
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Creating DiskEncryptionInfo for A2A encrypted Vm.
+        /// </summary>
+        /// <param name="diskEncryptionSecretUrl">Secret identifier.</param>
+        /// <param name="diskEncryptionVaultId">Secret KeyVault.</param>
+        /// <param name="keyEncryptionKeyUrl">Key identifier.</param>
+        /// <param name="keyEncryptionVaultId">Key KeyVault.</param>
+        /// <returns>DiskEncryptionInfo object.</returns>
+        public static DiskEncryptionInfo A2AEncryptionDetails(
+                    string diskEncryptionSecretUrl,
+                    string diskEncryptionVaultId,
+                    string keyEncryptionKeyUrl,
+                    string keyEncryptionVaultId)
+        {
+            DiskEncryptionInfo diskEncryptionInfo = null;
+            if (!string.IsNullOrEmpty(diskEncryptionSecretUrl) &&
+                !string.IsNullOrEmpty(diskEncryptionVaultId))
+            {
+                diskEncryptionInfo = new DiskEncryptionInfo
+                {
+                    DiskEncryptionKeyInfo =
+                        new DiskEncryptionKeyInfo(diskEncryptionSecretUrl, diskEncryptionVaultId)
+                };
+
+                if (!string.IsNullOrEmpty(keyEncryptionKeyUrl) &&
+                    !string.IsNullOrEmpty(keyEncryptionVaultId))
+                {
+                    diskEncryptionInfo.KeyEncryptionKeyInfo =
+                        new KeyEncryptionKeyInfo(keyEncryptionKeyUrl, keyEncryptionVaultId);
+                }
+                else if (!string.IsNullOrEmpty(keyEncryptionKeyUrl) ||
+                    !string.IsNullOrEmpty(keyEncryptionVaultId))
+                {
+                    throw new Exception("Provide both keyEncryptionKeyUrl and keyEncryptionVaultId.");
+                }
+            }
+            else if (!string.IsNullOrEmpty(diskEncryptionSecretUrl) ||
+                !string.IsNullOrEmpty(diskEncryptionVaultId))
+            {
+                throw new Exception("Provide both diskEncryptionSecretUrl and diskEncryptionVaultId.");
+            }
+
+            return diskEncryptionInfo;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -623,6 +686,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         JsonCreationConverter<RecoveryPlanActionDetails>
     {
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///     Gets a value indicating whether this Newtonsoft.Json.JsonConverter can write JSON
+        /// </summary>
+        public override bool CanWrite => true;
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///     Creates recovery plan action custom details.
         /// </summary>
         /// <param name="objectType">Object type.</param>
@@ -654,8 +725,128 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return outputType;
         }
+<<<<<<< HEAD
     }
 
+=======
+
+        /// <summary>
+        ///     Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        public override void WriteJson(
+            JsonWriter writer,
+            object value,
+            JsonSerializer serializer)
+        {
+            JToken t = JToken.FromObject(value);
+            string instanceType = null;
+            if (value != null)
+            {
+                if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanAutomationRunbookActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.AutomationRunbookActionDetails.ToString();
+                }
+                else if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanManualActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.ManualActionDetails.ToString();
+                }
+                else if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanScriptActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.ScriptActionDetails.ToString();
+                }
+            }
+            if (t.Type != JTokenType.Object)
+            {
+                t.WriteTo(writer);
+            }
+            else
+            {
+                JObject o = (JObject)t;
+                IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
+
+                o.AddFirst(new JProperty(Constants.InstanceType, instanceType));
+
+                o.WriteTo(writer);
+            }
+        }
+
+    }
+
+    /// <summary> 
+    ///     Custom Convertor for deserializing RecoveryPlanProviderSpecificDetails(RecoveryPlan) object 
+    /// </summary> 
+    [JsonConverter(typeof(RecoveryPlanProviderSpecificDetails))]
+    public class RecoveryPlanProviderSpecificDetailsConverter :
+        JsonCreationConverter<RecoveryPlanProviderSpecificDetails>
+    {
+        /// <summary> 
+        ///     Gets a value indicating whether this Newtonsoft.Json.JsonConverter can write JSON 
+        /// </summary> 
+        public override bool CanWrite => true;
+
+        /// <summary> 
+        ///     Creates RecoveryPlanProviderSpecific details. 
+        /// </summary> 
+        /// <param name="objectType">Object type.</param> 
+        /// <param name="jObject">JSON object that will be deserialized.</param> 
+        /// <returns>Returns recovery plan action custom details.</returns> 
+        protected override RecoveryPlanProviderSpecificDetails Create(
+            Type objectType,
+            JObject jObject)
+        {
+            RecoveryPlanProviderSpecificDetails outputType = null;
+            var actionType = (RecoveryPlanProviderType)Enum.Parse(
+                typeof(RecoveryPlanProviderType),
+                jObject.Value<string>(Constants.InstanceType));
+
+            switch (actionType)
+            {
+                case RecoveryPlanProviderType.A2A:
+                    outputType = new RecoveryPlanA2ADetails();
+                    break;
+            }
+
+            return outputType;
+        }
+
+        /// <summary> 
+        ///     Writes the JSON representation of the object. 
+        /// </summary> 
+        /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to.</param> 
+        /// <param name="value">The value.</param> 
+        /// <param name="serializer">The calling serializer.</param> 
+        public override void WriteJson(
+            JsonWriter writer,
+            object value,
+            JsonSerializer serializer)
+        {
+            JToken t = JToken.FromObject(value);
+            string instanceType = null;
+            if (value != null)
+            {
+                if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanA2ADetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanProviderType.A2A.ToString();
+                }
+            }
+
+            if (t.Type != JTokenType.Object)
+            {
+                t.WriteTo(writer);
+            }
+            else
+            {
+                JObject o = (JObject)t;
+                IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
+                o.AddFirst(new JProperty(Constants.InstanceType, instanceType));
+                o.WriteTo(writer);
+            }
+        }
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// <summary>
     ///     Recovery Plan Action Types
     /// </summary>
@@ -665,4 +856,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ManualActionDetails,
         ScriptActionDetails
     }
+<<<<<<< HEAD
+=======
+
+    /// <summary> 
+    ///     Recovery Plan Provider Types 
+    /// </summary> 
+    public enum RecoveryPlanProviderType
+    {
+        A2A
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

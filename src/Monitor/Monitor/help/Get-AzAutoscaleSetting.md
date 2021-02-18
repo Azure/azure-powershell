@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 989CE245-FD1D-4E1D-90A2-2D7DA3975D0B
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azautoscalesetting
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalesetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

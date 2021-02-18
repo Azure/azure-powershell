@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// The test get legacy peering.
         /// </summary>
         [Fact]
@@ -69,15 +70,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
         /// <summary>
         /// The test update exchange i pv 4 on input object.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateExchangeIPv4OnInputObject()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnInputObject");
-        }
-
-        /// <summary>
+=======
         /// The test update exchange md 5 on name and resource group.
         /// </summary>
         [Fact]
@@ -85,6 +78,38 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         public void TestUpdateExchangeMd5OnNameAndResourceGroup()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
+        }   
+        
+        /// <summary>
+        /// The test update exchange md 5 on name and resource group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeIPv4OnInputObject()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnInputObject");
+<<<<<<< HEAD
+        }
+
+=======
+        }      
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+        /// <summary>
+        /// The test update exchange md 5 on name and resource group.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+        public void TestUpdateExchangeMd5OnNameAndResourceGroup()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
+=======
+        public void TestUpdateExchangeIPv6OnResourceId()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv6OnResourceId");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

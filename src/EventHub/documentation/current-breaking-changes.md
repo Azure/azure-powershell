@@ -63,7 +63,11 @@ The following cmdlets were affected this release:
 - The 'Get-AzureRmEventHubNamespaceKey' cmdlet has been removed. Please use the 'Get-AzureRmEventHubKey' cmdlet
 	
 **New-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old
@@ -78,7 +82,11 @@ $namespace = Get-AzureRmEventHubNamespace <parameters>
 ```
 	
 **Get-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old
@@ -93,7 +101,11 @@ $namespace = Get-AzureRmEventHubNamespace <parameters>
 ```
 	
 **Set-AzureRmEventHubNamespace**
+<<<<<<< HEAD
 - The property 'Status' and 'Enabled' from the NamespceAttributes will be removed. 
+=======
+- The property 'Status' and 'Enabled' from the NamespaceAttributes will be removed. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```powershell
 # Old

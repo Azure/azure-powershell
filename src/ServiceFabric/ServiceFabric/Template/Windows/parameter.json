@@ -61,6 +61,15 @@
     },
     "vmNodeType0Size": {
       "value": "Standard_D2_V2"
+<<<<<<< HEAD
+=======
+    },
+    "durabilityLevel": {
+      "value": "Bronze"
+    },
+    "reliabilityLevel": {
+      "value": "Silver"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
   }
 }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssdiskencryptionextension
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmssdiskencryptionextension
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,7 +28,11 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ## DESCRIPTION
 The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
 
+<<<<<<< HEAD
 The *VolumeType* parameter is required when encrypting Linux virtual machines, and must be set to "Data". It can be omitted when encrypting Windows virtual machines.
+=======
+For Linux virtual machines, the *VolumeType* parameter must be present and must be set to "Data"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -274,7 +282,16 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
+<<<<<<< HEAD
 Type of the volume (OS or Data) on which to perform encryption operation. This parameter is required when encrypting Linux virtual machines, and must be set to a vlue supported by the Linux distribution. This parameter can be omitted when encrypting Windows virtual machines.
+=======
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
+
+Linux: The **VolumeType** parameter must be present and must be set to Data. 
+
+Windows: The **VolumeType** parameter, if present, must be set to either All or OS. If the **VolumeType** parameter is omitted it defaults to "All".
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

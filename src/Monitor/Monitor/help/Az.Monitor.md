@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Monitor
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.monitor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.4.0
 Locale: en-US
 ---
@@ -35,6 +39,12 @@ Enables an activity log alert and sets its Tags.
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
 Gets action group(s).
 
+<<<<<<< HEAD
+=======
+### [Get-AzActivityLog](Get-AzActivityLog.md)
+Retrieve Activity Log events.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
 Gets one or more activity log alert resources.
 
@@ -53,8 +63,19 @@ Gets Autoscale settings.
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the logged categories and time grains.
 
+<<<<<<< HEAD
 ### [Get-AzLog](Get-AzLog.md)
 Gets a log of events.
+=======
+### [Get-AzDiagnosticSettingCategory](Get-AzDiagnosticSettingCategory.md)
+Get or list supported diagnostic setting category for Azure resource.
+
+### [Get-AzInsightsPrivateLinkScope](Get-AzInsightsPrivateLinkScope.md)
+Get private link scope
+
+### [Get-AzInsightsPrivateLinkScopedResource](Get-AzInsightsPrivateLinkScopedResource.md)
+Get for private link scoped resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets a log profile.
@@ -98,6 +119,21 @@ Creates an Autoscale rule.
 ### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
 
+<<<<<<< HEAD
+=======
+### [New-AzDiagnosticDetailSetting](New-AzDiagnosticDetailSetting.md)
+Create PSDiagnosticDetailSetting Object, type could be metric or log
+
+### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
+Create PSServiceDiagnosticSettings object.
+
+### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
+create private link scope
+
+### [New-AzInsightsPrivateLinkScopedResource](New-AzInsightsPrivateLinkScopedResource.md)
+create for private link scoped resource
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
 Creates a local criteria object that can be used to create a new metric alert
 
@@ -117,7 +153,11 @@ Creates an object of type Alerting Action
 Creates an object of type Azns Action Group
 
 ### [New-AzScheduledQueryRuleLogMetricTrigger](New-AzScheduledQueryRuleLogMetricTrigger.md)
+<<<<<<< HEAD
 Creates an object of type Log Metric Trigger
+=======
+Creates an object of type Log Metric Trigger.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzScheduledQueryRuleSchedule](New-AzScheduledQueryRuleSchedule.md)
 Creates an object of type Schedule
@@ -143,6 +183,15 @@ Removes an Autoscale setting.
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Remove a diagnostic setting for the a resource.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzInsightsPrivateLinkScope](Remove-AzInsightsPrivateLinkScope.md)
+delete private link scope
+
+### [Remove-AzInsightsPrivateLinkScopedResource](Remove-AzInsightsPrivateLinkScopedResource.md)
+delete for private link scoped resource
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzLogProfile](Remove-AzLogProfile.md)
 Removes a log profile.
 
@@ -164,6 +213,12 @@ Sets the logs and metrics settings for the resource.
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Updates a Log Alert Rule
 
+<<<<<<< HEAD
+=======
+### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
+Update for private link scope
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Updates a Log Alert rule
 

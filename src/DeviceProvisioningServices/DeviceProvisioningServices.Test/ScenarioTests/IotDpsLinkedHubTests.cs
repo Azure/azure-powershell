@@ -30,7 +30,11 @@ namespace Commands.DeviceProvisioningServices.Test
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "Test needs re-recorded")]
+=======
+        [Fact]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsLinkedHubLifeCycle()
         {

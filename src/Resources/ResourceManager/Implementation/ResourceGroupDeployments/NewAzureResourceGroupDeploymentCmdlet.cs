@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -31,6 +32,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
+=======
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
+{
+    using System;
+    using System.Collections;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Attributes;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+    /// <summary>
+    /// Creates a new resource group deployment.
+    /// </summary>
+    [Cmdlet("New", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment",
+        SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    public class NewAzureResourceGroupDeploymentCmdlet : DeploymentCreateCmdlet
+    {
+        [Alias("DeploymentName")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -40,7 +67,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
+<<<<<<< HEAD
         public DeploymentMode Mode { get; set; }
+=======
+        public DeploymentMode Mode { get; set; } = DeploymentMode.Incremental;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment debug log level.")]
         [ValidateSet("RequestContent", "ResponseContent", "All", "None", IgnoreCase = true)]
@@ -52,12 +83,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.")]
         public string RollBackDeploymentName { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The What-If result format. Applicable when the -WhatIf or -Confirm switch is set.")]
+        public WhatIfResultFormat WhatIfResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated resource change types to be excluded from What-If results. Applicable when the -WhatIf or -Confirm switch is set.")]
+        [ChangeTypeCompleter]
+        [ValidateChangeTypes]
+        public string[] WhatIfExcludeChangeType { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+<<<<<<< HEAD
         public NewAzureResourceGroupDeploymentCmdlet()
         {
             this.Mode = DeploymentMode.Incremental;
@@ -104,6 +151,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
                 },
                 () => this.Mode == DeploymentMode.Complete);
+=======
+        protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
+            typeof(NewAzureResourceGroupDeploymentCmdlet),
+            typeof(CmdletAttribute))).ConfirmImpact;
+
+        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters
+        {
+            ScopeType = DeploymentScopeType.ResourceGroup,
+            ResourceGroupName = ResourceGroupName,
+            DeploymentName = Name,
+            DeploymentMode = Mode,
+            TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+            TemplateObject = TemplateObject,
+            TemplateSpecId = TemplateSpecId,
+            QueryString = QueryString,
+            TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+            ParameterUri = TemplateParameterUri,
+            DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+            Tags = TagsHelper.ConvertToTagsDictionary(Tag),
+            OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
+                ? new OnErrorDeployment
+                {
+                    Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                    DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
+                }
+                : null
+        };
+
+        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            DeploymentScopeType.ResourceGroup,
+            deploymentName: this.Name,
+            mode: this.Mode,
+            queryString: this.QueryString,
+            resourceGroupName: this.ResourceGroupName,
+            templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
+            templateObject: this.TemplateObject,
+            templateSpecId: TemplateSpecId,
+            templateParametersUri: this.TemplateParameterUri,
+            templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
+            resultFormat: this.WhatIfResultFormat,
+            excludeChangeTypes: this.WhatIfExcludeChangeType); 
+
+        protected override void OnProcessRecord()
+        {
+            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
+            {
+                this.WriteExceptionError(new ArgumentException(Properties.Resources.InvalidRollbackParameters));
+            }
+
+            if (!this.Force && this.ShouldExecuteWhatIf())
+            {
+                base.OnProcessRecord();
+            }
+            else
+            {
+                this.ConfirmAction(
+                    this.Force,
+                    string.Format(Properties.Resources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
+                    Properties.Resources.CreateDeployment,
+                    this.ResourceGroupName,
+                    this.ExecuteDeployment,
+                    () => this.Mode == DeploymentMode.Complete);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -138,6 +138,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static PolicyBase GetPolicyModelForAzureIaaSVM(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
            PolicyBase policyModel)
         {
+<<<<<<< HEAD
+=======
+            string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
                                                                        typeof(ServiceClientModel.LongTermRetentionPolicy))
             {
@@ -162,12 +166,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
             iaasPolicyModel.SnapshotRetentionInDays = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
                 Properties).InstantRpRetentionRangeInDays;
+<<<<<<< HEAD
             iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
             iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+=======
+            iaasPolicyModel.ProtectedItemsCount = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
+                Properties).ProtectedItemsCount;
+            iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
+                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
+                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone,
+                                              backupManagementType);
+            iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            iaasPolicyModel.AzureBackupRGName = 
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNamePrefix;
+            iaasPolicyModel.AzureBackupRGNameSuffix = 
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNameSuffix;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return policyModel;
         }
 
@@ -207,6 +227,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static PolicyBase GetPolicyModelForAzureFileShare(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
            PolicyBase policyModel)
         {
+<<<<<<< HEAD
+=======
+            string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ServiceClientModel.AzureFileShareProtectionPolicy azureFileSharePolicy =
                     (ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties;
 
@@ -235,7 +259,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             fileSharePolicyModel.BackupManagementType = BackupManagementType.AzureStorage;
             fileSharePolicyModel.RetentionPolicy =
                 PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
+<<<<<<< HEAD
                   ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+=======
+                  ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).TimeZone, backupManagementType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             fileSharePolicyModel.SchedulePolicy =
                 PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                  ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
@@ -436,6 +464,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     itemModel = GetAzureVmWorkloadItemModel(protectedItem);
                 }
+<<<<<<< HEAD
+=======
+
+                if(protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.MabFileFolderProtectedItem))
+                {
+                    itemModel = GetMabItemModel(protectedItem);
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return itemModel;
@@ -483,12 +520,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             itemModel = new AzureFileShareItem(
                 protectedItem,
+<<<<<<< HEAD
                 IdUtils.GetNameFromUri(containerUri),
+=======
+                containerUri,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ContainerType.AzureStorage,
                 policyName);
             return itemModel;
         }
 
+<<<<<<< HEAD
+=======
+        private static ItemBase GetMabItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+
+            string containerUri = (protectedItem.Properties as ServiceClientModel.MabFileFolderProtectedItem).ContainerName;
+
+            itemModel = new MabItem(
+                protectedItem,
+                containerUri,
+                ContainerType.Windows,
+                null);
+            return itemModel;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static ItemBase GetAzureSqlItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
         {
             ItemBase itemModel;

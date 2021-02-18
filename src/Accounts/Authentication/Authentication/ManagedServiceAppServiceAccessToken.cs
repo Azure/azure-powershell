@@ -13,18 +13,32 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+using System;
+using System.Collections.Generic;
+using System.Text;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class ManagedServiceAppServiceAccessToken : ManagedServiceAccessTokenBase<ManagedServiceAppServiceTokenInfo>
     {
+<<<<<<< HEAD
         public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string tenant = "Common")
+=======
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string tenant = "organizations")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             : base(account, environment, @"https://management.azure.com/", tenant)
         {
         }
 
+<<<<<<< HEAD
         public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
+=======
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "organizations")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             : base(account, environment, resourceId, tenant)
         {
         }
@@ -32,7 +46,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected override IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType,
             string resourceId)
         {
+<<<<<<< HEAD
             yield return $"{baseUri}?resource={resourceId}&api-version=2017-09-01";;
+=======
+            StringBuilder query = new StringBuilder($"{baseUri}?resource={resourceId}&api-version=2017-09-01");
+
+            if(identityType == IdentityType.ClientId || identityType == IdentityType.ObjectId)
+            {
+                query.Append($"&clientid={Uri.EscapeDataString(account.Id)}");
+            }
+
+            yield return query.ToString();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected override void SetToken(ManagedServiceAppServiceTokenInfo infoWebApps)

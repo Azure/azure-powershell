@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer
+=======
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
+<<<<<<< HEAD
 This command allows Azure Backup to convert the ‘Resource’ to a ‘Backup Container’ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+=======
+The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -27,21 +35,36 @@ Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+=======
+This command allows Azure Backup to convert the Resource to a Backup Container which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType “MSSQL” -BackupManagementType “AzureWorkload”
 ```
 
 The cmdlet registers an azure VM for the workload MSSQL.
+=======
+PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType ï¿½MSSQLï¿½ -BackupManagementType ï¿½AzureWorkloadï¿½
+```
+
+The cmdlet registers an azure VM as a container for the workload MSSQL.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
 ### -BackupManagementType
+<<<<<<< HEAD
 The backup management type of the Azure Backup container
+=======
+The class of resources being protected. Currently the value supported for this cmdlet is AzureWorkload
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -132,7 +155,11 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
+<<<<<<< HEAD
 Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
+=======
+Workload type of the resource. The current supported value is AzureVM, WindowsServer, AzureFiles, MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -164,7 +191,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
+<<<<<<< HEAD
 The cmdlet is not run.
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -179,7 +209,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -191,4 +225,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+<<<<<<< HEAD
 ## RELATED LINKS
+=======
+## RELATED LINKS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

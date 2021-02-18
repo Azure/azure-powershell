@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.DevTestLabs
 Module Guid: be2ca175-bfb9-4601-b01c-4de13eb2105c
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.devtestlabs
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.devtestlabs
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.4.0
 Locale: en-US
 ---

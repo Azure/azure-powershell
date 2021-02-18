@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
+<<<<<<< HEAD
         protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
         {
             if (runOnSameThread)
@@ -94,6 +95,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 PrintSdkExceptionDetail(e);
                 throw GetInnerException(e);
             }
+=======
+        protected PSCluster SendPatchRequest(ClusterUpdateParameters request)
+        {
+            WriteVerboseWithTimestamp("Begin to update the cluster");
+            Cluster cluster = StartRequestAndWait<Cluster>(
+                        () => this.SFRPClient.Clusters.BeginUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, request),
+                        () => string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, GetCurrentClusterState()));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return new PSCluster(cluster);
         }
@@ -103,6 +112,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return this.SFRPClient.Clusters.UpdateAsync(this.ResourceGroupName, this.Name, request);
         }
 
+<<<<<<< HEAD
+=======
+        protected string GetCurrentClusterState()
+        {
+            var resource = SafeGetResource(() => this.GetCurrentCluster(), true);
+
+            if (resource != null)
+            {
+                return resource.ClusterState;
+            }
+
+            return null;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected Cluster GetCurrentCluster()
         {
             try

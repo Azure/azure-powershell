@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             // Validate that the url is a keyvault url and has a key and version
+<<<<<<< HEAD
             Regex r = new Regex(@"https(.)+\.vault(.)+\/keys\/[^\/]+\/[0-9a-zA-Z]+$", RegexOptions.IgnoreCase);
+=======
+            Regex r = new Regex(@"https://(.)+\.(managedhsm.azure.net|managedhsm-preview.azure.net|vault.azure.net|vault-int.azure-int.net|vault.azure.cn|managedhsm.azure.cn|vault.usgovcloudapi.net|managedhsm.usgovcloudapi.net|vault.microsoftazure.de|managedhsm.microsoftazure.de|vault.cloudapi.eaglex.ic.gov|vault.cloudapi.microsoft.scloud)(:443)?\/keys/[^\/]+\/[0-9a-zA-Z]+$", RegexOptions.IgnoreCase);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!r.IsMatch(keyId))
             {
                 // Throw an error here, since we don't want to use a non keyvault url

@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -86,5 +90,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The User Id associated with this token.
         /// </summary>
         public string UserId { get; private set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Home account id
+        /// </summary>
+        public string HomeAccountId => null;
+
+        /// <summary>
+        /// Extended properties
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

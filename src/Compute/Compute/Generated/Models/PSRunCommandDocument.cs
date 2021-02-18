@@ -27,7 +27,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSRunCommandDocument
     {
+<<<<<<< HEAD
         public System.Collections.Generic.IList<string> Script { get; set; }
+=======
+        public IList<string> Script { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public IList<RunCommandParameterDefinition> Parameters { get; set; }
         public string Schema { get; set; }
         public string Id { get; set; }

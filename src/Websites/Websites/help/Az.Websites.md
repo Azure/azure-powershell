@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.websites
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.websites
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -11,6 +15,15 @@ Locale: en-US
 ARM (Azure Resource Manager) Web App and App Service Plan commands.
 
 ## Az.Websites Cmdlets
+<<<<<<< HEAD
+=======
+### [Add-AzWebAppAccessRestrictionRule](Add-AzWebAppAccessRestrictionRule.md)
+Adds an Access Restiction rule to an Azure Web App.
+
+### [Add-AzWebAppTrafficRouting](Add-AzWebAppTrafficRouting.md)
+Add a routing Rule to the Slot.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Edit-AzWebAppBackupConfiguration](Edit-AzWebAppBackupConfiguration.md)
 
 
@@ -20,15 +33,24 @@ Opens a remote PowerShell session into the windows container specified in a give
 ### [Get-AzAppServicePlan](Get-AzAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
+<<<<<<< HEAD
 ### [Get-AzAppServicePlanMetric](Get-AzAppServicePlanMetric.md)
 
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzDeletedWebApp](Get-AzDeletedWebApp.md)
 Gets deleted web apps in the subscription.
 
 ### [Get-AzWebApp](Get-AzWebApp.md)
 Gets Azure Web Apps in the specified resource group.
 
+<<<<<<< HEAD
+=======
+### [Get-AzWebAppAccessRestrictionConfig](Get-AzWebAppAccessRestrictionConfig.md)
+Gets Access Restiction configuration for an Azure Web App.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 
 
@@ -44,9 +66,12 @@ Gets an Azure Web App certificate.
 ### [Get-AzWebAppContainerContinuousDeploymentUrl](Get-AzWebAppContainerContinuousDeploymentUrl.md)
 Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
+<<<<<<< HEAD
 ### [Get-AzWebAppMetric](Get-AzWebAppMetric.md)
 Gets Azure Web App metrics.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets an Azure Web App publishing profile.
 
@@ -56,9 +81,12 @@ Gets an Azure Web App slot.
 ### [Get-AzWebAppSlotConfigName](Get-AzWebAppSlotConfigName.md)
 Get the list of Web App Slot Config names
 
+<<<<<<< HEAD
 ### [Get-AzWebAppSlotMetric](Get-AzWebAppSlotMetric.md)
 Gets metrics for an Azure Web App slot.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzWebAppSlotPublishingProfile](Get-AzWebAppSlotPublishingProfile.md)
 Gets an Azure Web App slot publishing profile.
 
@@ -68,6 +96,12 @@ Gets the snapshots available for a web app.
 ### [Get-AzWebAppSSLBinding](Get-AzWebAppSSLBinding.md)
 Gets an Azure Web App certificate SSL binding.
 
+<<<<<<< HEAD
+=======
+### [Get-AzWebAppTrafficRouting](Get-AzWebAppTrafficRouting.md)
+Get a routing Rule for the given Slot name.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzAppServicePlan](New-AzAppServicePlan.md)
 Creates an Azure App Service plan in a given Geo location.
 
@@ -93,7 +127,11 @@ Creates an Azure Web App slot.
 Creates an SSL certificate binding for an Azure Web App.
 
 ### [Publish-AzWebApp](Publish-AzWebApp.md)
+<<<<<<< HEAD
 Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
+=======
+Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzAppServicePlan](Remove-AzAppServicePlan.md)
 Removes an Azure App Service plan.
@@ -101,6 +139,12 @@ Removes an Azure App Service plan.
 ### [Remove-AzWebApp](Remove-AzWebApp.md)
 Removes an Azure Web App.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzWebAppAccessRestrictionRule](Remove-AzWebAppAccessRestrictionRule.md)
+Removes an Access Restriction rule from an Azure Web App.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzWebAppBackup](Remove-AzWebAppBackup.md)
 
 
@@ -110,6 +154,12 @@ Removes an Azure Web App.
 ### [Remove-AzWebAppSSLBinding](Remove-AzWebAppSSLBinding.md)
 Removes an SSL binding from an uploaded certificate.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzWebAppTrafficRouting](Remove-AzWebAppTrafficRouting.md)
+Remove a routing Rule from the Slot.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Reset-AzWebAppPublishingProfile](Reset-AzWebAppPublishingProfile.md)
 
 
@@ -158,3 +208,12 @@ Stops an Azure Web App slot.
 ### [Switch-AzWebAppSlot](Switch-AzWebAppSlot.md)
 Swap two slots with a Web App
 
+<<<<<<< HEAD
+=======
+### [Update-AzWebAppAccessRestrictionConfig](Update-AzWebAppAccessRestrictionConfig.md)
+Updates the inheritance of Main site Access Restiction config to SCM Site for an Azure Web App.
+
+### [Update-AzWebAppTrafficRouting](Update-AzWebAppTrafficRouting.md)
+Update a routing Rule to the Slot.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

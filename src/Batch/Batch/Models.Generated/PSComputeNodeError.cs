@@ -70,7 +70,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSNameValuePair(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.errorDetails = list.AsReadOnly();
+=======
+                    this.errorDetails = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.errorDetails;
             }

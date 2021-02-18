@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 427F7300-0FEB-4F28-9C1D-27592AEBF6A0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/invoke-azresourceaction
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,6 +46,48 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
+=======
+### Example 1: Invoke starting a VM with ResourceId
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/testVM -Action start
+
+Confirm
+Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Compute/virtualMachines/testVM
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+```
+
+This command starts the Virtual Machine with {ResourceId}.
+
+### Example 2: Invoke poweroffing a VM with ResourceName
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceGroupName testGroup -ResourceName testVM -ResourceType Microsoft.Compute/virtualMachines/ -Action Poweroff -Force
+```
+
+This command stops the Virtual Machine with {ResourceId}.
+The command specifies the *Force* parameter, therefore, it does not prompt you for confirmation.
+
+### Example 3: Invoke registering a resource provider with ResourceId
+
+```powershell
+PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/providers/Microsoft.Network -action register -Force
+
+id                : /subscriptions/{subId}/providers/Microsoft.Network
+namespace         : Microsoft.Network
+authorizations    : {…}
+resourceTypes     : {@{resourceType=virtualNetworks; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=publicIPAddresses; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=networkInterfaces; locations=System.Object[]; apiVersions=System.Object[]},
+                    @{resourceType=privateEndpoints; locations=System.Object[]; apiVersions=System.Object[]}…}
+registrationState : Registered
+```
+
+This command registers a resource provider "Microsoft.Network".
+The command specifies the *Force* parameter, therefore, it does not prompt you for confirmation.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -Action
@@ -298,7 +344,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

@@ -26,6 +26,10 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.OperationalInsights;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Storage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -42,10 +46,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         {
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient(context);
+<<<<<<< HEAD
 
             _helper.SetupManagementClients(
                 operationalInsightsManagementClient,
                 resourceManagementClient);
+=======
+            var storageManagementClient = GetStorageManagementClient(context);
+
+            _helper.SetupManagementClients(
+                operationalInsightsManagementClient,
+                resourceManagementClient,
+                storageManagementClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected void SetupDataClient(RestTestFramework.MockContext context)
@@ -104,7 +117,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
+<<<<<<< HEAD
                     "AzureRM.Resources.ps1");
+=======
+                    "AzureRM.Resources.ps1",
+                    _helper.GetRMModulePath(@"AzureRM.Storage.psd1"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 _helper.RunPowerShellTest(scripts);
             }
@@ -119,5 +137,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         {
             return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
+<<<<<<< HEAD
+=======
+
+        protected StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

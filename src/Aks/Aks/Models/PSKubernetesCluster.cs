@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
 using Newtonsoft.Json;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Aks.Models
 {
@@ -69,15 +72,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets DNS prefix specified when creating the managed
-        /// cluster.
+<<<<<<< HEAD
+=======
+        /// Gets the max number of agent pools for the managed cluster.
         /// </summary>
-        public string DnsPrefix { get; set; }
-
-        /// <summary>
-        /// Gets FDQN for the master pool.
-        /// </summary>
-        public string Fqdn { get; private set; }
+        public int? MaxAgentPools { get; private set; }
 
         /// <summary>
         /// Gets or sets version of Kubernetes specified when creating the
@@ -86,11 +85,92 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string KubernetesVersion { get; set; }
 
         /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+        /// Gets or sets DNS prefix specified when creating the managed
+        /// cluster.
+        /// </summary>
+        public string DnsPrefix { get; set; }
+
+        /// <summary>
+<<<<<<< HEAD
+        /// Gets FDQN for the master pool.
+=======
+        /// Gets FQDN for the master pool.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+        /// </summary>
+        public string Fqdn { get; private set; }
+
+        /// <summary>
+<<<<<<< HEAD
+        /// Gets or sets version of Kubernetes specified when creating the
+        /// managed cluster.
+        /// </summary>
+        public string KubernetesVersion { get; set; }
+=======
+        /// Gets FQDN of private cluster.
+        /// </summary>
+        public string PrivateFQDN { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        /// <summary>
         /// Gets or sets properties of the agent pool.
         /// </summary>
         public IList<PSContainerServiceAgentPoolProfile> AgentPoolProfiles { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets profile for Windows VMs in the container service
+        /// cluster.
+        /// </summary>
+        public PSManagedClusterWindowsProfile WindowsProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of managed cluster add-on.
+        /// </summary>
+        public IDictionary<string, PSManagedClusterAddonProfile> AddonProfiles { get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the resource group containing agent pool
+        /// nodes.
+        /// </summary>
+        public string NodeResourceGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable Kubernetes Role-Based Access
+        /// Control.
+        /// </summary>
+        public bool? EnableRBAC { get; set; }
+
+        /// <summary>
+        /// Gets or sets (PREVIEW) Whether to enable Kubernetes Pod security
+        /// policy.
+        /// </summary>
+        public bool? EnablePodSecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of network configuration.
+        /// </summary>
+        public PSContainerServiceNetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of Azure Active Directory configuration.
+        /// </summary>
+        public PSManagedClusterAadProfile AadProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets access profile for managed cluster API server.
+        /// </summary>
+        public PSManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the managed cluster, if configured.
+        /// </summary>
+        public PSManagedClusterIdentity Identity { get; set; }
+
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets profile for Linux VMs in the container service
         /// cluster.
         /// </summary>

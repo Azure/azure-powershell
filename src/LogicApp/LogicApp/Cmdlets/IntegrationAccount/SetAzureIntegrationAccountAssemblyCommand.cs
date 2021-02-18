@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [OutputType(typeof(PSIntegrationAccountAssembly))]
     public class SetAzureIntegrationAccountAssemblyCommand : LogicAppBaseCmdlet
     {
+<<<<<<< HEAD
         #region Input Paramters
+=======
+        #region Input Parameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = true, HelpMessage = Constants.ResourceGroupHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndContentLink)]
         [Parameter(Mandatory = true, HelpMessage = Constants.ResourceGroupHelpMessage, ParameterSetName = ParameterSet.ByIntegrationAccountAndFileBytes)]

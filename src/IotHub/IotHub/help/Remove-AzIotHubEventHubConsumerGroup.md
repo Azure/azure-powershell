@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothubeventhubconsumergroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubeventhubconsumergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,8 +18,13 @@ Deletes an eventhub consumergroup.
 
 ```
 Remove-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
+<<<<<<< HEAD
  [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-EventHubConsumerGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -25,7 +34,11 @@ Deletes an eventhub consumergroup.
 
 ### Example 1 Remove eventhub consumergroup from the telemetry eventhub
 ```
+<<<<<<< HEAD
 PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
+=======
+PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName myconsumergroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
@@ -56,6 +69,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+<<<<<<< HEAD
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -76,6 +90,11 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
+=======
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 

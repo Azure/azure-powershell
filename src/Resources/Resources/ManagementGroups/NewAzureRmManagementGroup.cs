@@ -17,6 +17,11 @@ using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -28,6 +33,11 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
+<<<<<<< HEAD
+=======
+        [Alias("GroupId")]
+        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will repleace GroupName with GroupId to make it more clear.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.ParentObject)]

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -40,6 +41,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             HelpMessage = "The full qualified resource id of registration definition.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+=======
+namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
+{
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
+
+    [Cmdlet(
+        VerbsCommon.Get,
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
+        DefaultParameterSetName = ByNameParameterSet), OutputType(typeof(PSRegistrationDefinition))]
+    public class GetAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
+    {
+        protected const string DefaultParameterSet = "Default";
+        protected const string ByNameParameterSet = "ByName";
+
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The scope where the registration definition created.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The scope where the registration definition created.")]
+        [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
+        public string Scope { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The unique name of the Registration Definition.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override void ExecuteCmdlet()
         {
@@ -48,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
             if (this.IsParameterBound(x => x.Name))
             {
+<<<<<<< HEAD
                 definitionId = this.Name;
             }
             else if (this.IsParameterBound(x => x.ResourceId))
@@ -57,6 +88,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             if (string.IsNullOrEmpty(definitionId))
+=======
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
+                definitionId = this.Name;
+            }
+
+            if (this.IsParameterBound(x => x.Scope))
+            {
+                scope = this.Scope;
+            }
+
+            if (string.IsNullOrWhiteSpace(definitionId))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 var results = this.PSManagedServicesClient.ListRegistrationDefinitions(
                     scope: scope);
@@ -64,12 +111,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
             else
             {
+<<<<<<< HEAD
                 // validate definitionId.
                 if (!definitionId.IsGuid())
                 {
                     throw new ApplicationException("RegistrationDefinitionId must be a valid GUID.");
                 }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var result = this.PSManagedServicesClient.GetRegistrationDefinition(
                     scope: scope,
                     registrationDefinitionId: definitionId);
@@ -77,4 +127,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

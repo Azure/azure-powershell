@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>IotHub</PsModuleName>
@@ -11,8 +15,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.5.0" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.8.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Devices" Version="1.22.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.0" />
+    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.10.0-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
 </Project>

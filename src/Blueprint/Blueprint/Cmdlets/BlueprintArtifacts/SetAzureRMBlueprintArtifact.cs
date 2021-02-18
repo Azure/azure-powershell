@@ -69,7 +69,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public string PolicyDefinitionId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactPolicyDefinitionParameter)]
+<<<<<<< HEAD
         [ValidateNotNullOrEmpty]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Hashtable PolicyDefinitionParameter { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactTemplateParameterFile)]
@@ -186,7 +189,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 DependsOn = DependsOn
                             };
 
+<<<<<<< HEAD
                             WriteObject(BlueprintClientWithVersion.CreateArtifact(scope, Blueprint.Name, Name,
+=======
+                            WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 templateArtifact));
                         }
 

@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.Batch
     /// <summary>
     /// Base class for cmdlets that use the Batch OM.
     /// </summary>
+<<<<<<< HEAD
     public class BatchObjectModelCmdletBase : BatchCmdletBase
+=======
+    public abstract class BatchObjectModelCmdletBase : BatchCmdletBase
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Collection of custom behaviors to perform on service calls

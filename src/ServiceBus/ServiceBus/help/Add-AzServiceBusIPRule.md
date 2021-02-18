@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/add-azservicebusiprule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/add-azservicebusiprule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Add-AzServiceBusIPRule
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Add a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Add a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -26,7 +34,11 @@ Add-AzServiceBusIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Add a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Add a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -41,7 +53,11 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+=======
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
@@ -54,7 +70,11 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+=======
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

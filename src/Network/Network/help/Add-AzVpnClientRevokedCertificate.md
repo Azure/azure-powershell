@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 90FB7B88-844E-4783-A10F-04D7BA47C030
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvpnclientrevokedcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azvpnclientrevokedcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,8 +31,13 @@ You need to specify both the certificate name and the certificate thumbprint to 
 ## EXAMPLES
 
 ### Example 1: Add a new client-revocation certificate to a virtual network gateway
+<<<<<<< HEAD
 ```
 PS C:\>Add-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+=======
+```powershell
+PS C:\>Add-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command adds a new client-revocation certificate to the virtual network gateway named ContosoVirtualNetwork.

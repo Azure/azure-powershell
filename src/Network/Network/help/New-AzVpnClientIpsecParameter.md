@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnclientipsecparameter
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnclientipsecparameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -50,7 +54,11 @@ Accept wildcard characters: False
 ```
 
 ### -DhGroup
+<<<<<<< HEAD
 The Vpnclient DH Groups used in IKE Phase 1 for initial SA.
+=======
+The VpnClient DH Groups used in IKE Phase 1 for initial SA.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -66,7 +74,11 @@ Accept wildcard characters: False
 ```
 
 ### -IkeEncryption
+<<<<<<< HEAD
 The Vpnclient IKE encryption algorithm (IKE Phase 2)
+=======
+The VpnClient IKE encryption algorithm (IKE Phase 2)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -82,7 +94,11 @@ Accept wildcard characters: False
 ```
 
 ### -IkeIntegrity
+<<<<<<< HEAD
 The Vpnclient IKE integrity algorithm (IKE Phase 2)
+=======
+The VpnClient IKE integrity algorithm (IKE Phase 2)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -98,7 +114,11 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecEncryption
+<<<<<<< HEAD
 The Vpnclient IPSec encryption algorithm (IKE Phase 1)
+=======
+The VpnClient IPSec encryption algorithm (IKE Phase 1)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -114,7 +134,11 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecIntegrity
+<<<<<<< HEAD
 The Vpnclient IPSec integrity algorithm (IKE Phase 1)
+=======
+The VpnClient IPSec integrity algorithm (IKE Phase 1)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -130,7 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -PfsGroup
+<<<<<<< HEAD
 The Vpnclient PFS Groups used in IKE Phase 2 for new child SA
+=======
+The VpnClient PFS Groups used in IKE Phase 2 for new child SA
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -146,7 +174,11 @@ Accept wildcard characters: False
 ```
 
 ### -SADataSize
+<<<<<<< HEAD
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+=======
+The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32
@@ -161,7 +193,11 @@ Accept wildcard characters: False
 ```
 
 ### -SALifeTime
+<<<<<<< HEAD
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+=======
+The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32

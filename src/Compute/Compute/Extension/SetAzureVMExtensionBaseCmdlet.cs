@@ -70,13 +70,24 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false)]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Force re-run even if extension configuration has not changed")]
         [ValidateNotNullOrEmpty]
         public string ForceRerun { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter NoWait { get; set; }
     }
 }

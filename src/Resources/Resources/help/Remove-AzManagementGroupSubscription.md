@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroupsubscription/
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagementgroupsubscription/
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -22,8 +26,13 @@ The **Remove-AzManagementGroupSubscription** cmdlet removes a Subscription from 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Remove Subscription from a Management Group
 ```
+=======
+### Example 1: Remove Subscription from a Management Group
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 ```
 
@@ -50,7 +59,11 @@ Management Group Id
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: GroupId
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
@@ -75,7 +88,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+<<<<<<< HEAD
 Subscription Id of the subscription associated witht the management
+=======
+Subscription Id of the subscription associated with the management
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Guid
@@ -121,7 +138,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

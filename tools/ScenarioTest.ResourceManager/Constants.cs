@@ -59,6 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string OneSDK = "OneSDK";
 
+<<<<<<< HEAD
         // Below is the list of aliases to contact on test behavior
 
         // Virtual Appliance dev team
@@ -85,6 +86,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         //Azure NRP Firewall dev team
         public const string azurefirewall = "azurefirewall";
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         // Acceptance type
         public const string AcceptanceType = "AcceptanceType";
 

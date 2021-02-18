@@ -38,9 +38,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSDataDisk> dataDisks;
         
+<<<<<<< HEAD
         private PSImageReference imageReference;
         
         private PSOSDisk oSDisk;
+=======
+        private PSDiskEncryptionConfiguration diskEncryptionConfiguration;
+        
+        private PSImageReference imageReference;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         private PSWindowsConfiguration windowsConfiguration;
         
@@ -118,6 +124,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
+=======
+        public PSDiskEncryptionConfiguration DiskEncryptionConfiguration
+        {
+            get
+            {
+                if (((this.diskEncryptionConfiguration == null) 
+                            && (this.omObject.DiskEncryptionConfiguration != null)))
+                {
+                    this.diskEncryptionConfiguration = new PSDiskEncryptionConfiguration(this.omObject.DiskEncryptionConfiguration);
+                }
+                return this.diskEncryptionConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.DiskEncryptionConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.DiskEncryptionConfiguration = value.omObject;
+                }
+                this.diskEncryptionConfiguration = value;
+            }
+        }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSImageReference ImageReference
         {
             get
@@ -167,6 +201,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
         public PSOSDisk OSDisk
         {
             get
@@ -192,6 +227,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSWindowsConfiguration WindowsConfiguration
         {
             get

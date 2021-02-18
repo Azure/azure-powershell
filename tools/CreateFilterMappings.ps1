@@ -148,11 +148,19 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
+<<<<<<< HEAD
     $CommonProjectsToIgnore = @( "Authentication", "Authentication.ResourceManager", "Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
     $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $ProjectDependencies += $_ }
+=======
+    $CommonProjectsToIgnore = @("Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
+
+    $ProjectDependencies = @()
+    $Content = Get-Content -Path $SolutionPath
+    $Content | Select-String -Pattern "`"[a-zA-Z0-9.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $ProjectDependencies += $_ }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $Mappings[$SolutionPath] = $ProjectDependencies
     return $Mappings
 }
@@ -198,7 +206,12 @@ function Add-SolutionReference
         [string]$ServiceFolderPath
     )
 
+<<<<<<< HEAD
     $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | Where-Object { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*.Test*" }
+=======
+    .($PSScriptRoot + "\PreloadToolDll.ps1")
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | Where-Object { (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*.Test*" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     foreach ($CsprojFile in $CsprojFiles)
     {
         $Key = $CsprojFile.BaseName
@@ -219,7 +232,11 @@ function Create-ModuleMappings
     $Script:ModuleMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
+<<<<<<< HEAD
         $Key = "src/$($ServiceFolder.Name)"
+=======
+        $Key = "src/$($ServiceFolder.Name)/"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -notlike "*.Test*" -and `
                                                                                                                       $_.FullName -notlike "*Release*" -and `
                                                                                                                       $_.FullName -notlike "*Debug*" -and `
@@ -266,6 +283,7 @@ function Add-CsprojMappings
         $Values = New-Object System.Collections.Generic.HashSet[string]
         foreach ($CsprojFile in $CsprojFiles)
         {
+<<<<<<< HEAD
             $Project = $CsprojFile.BaseName
             foreach ($Solution in $Script:ProjectToSolutionMappings[$Project])
             {
@@ -275,6 +293,26 @@ function Add-CsprojMappings
                     if (-not [string]::IsNullOrEmpty($TempValue))
                     {
                         $Values.Add($TempValue) | Out-Null
+=======
+            $Fields = $CsprojFile.FullName.Replace('/', '\').Split('\')
+            $Project = $Fields[$Fields.Length - 3]
+            foreach ($ProjectName in $Script:ProjectToSolutionMappings.Keys)
+            {
+                foreach ($Solution in $Script:ProjectToSolutionMappings[$ProjectName])
+                {
+                    $Fields = $Solution.Replace('/', '\').Split('\')
+                    $ProjectNameFromSolution = $Fields[$Fields.Length - 2]
+                    if ($ProjectNameFromSolution -eq $Project)
+                    {
+                        foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
+                        {
+                            $TempValue = $Script:ProjectToFullPathMappings[$ReferencedProject]
+                            if (-not [string]::IsNullOrEmpty($TempValue))
+                            {
+                                $Values.Add($TempValue) | Out-Null
+                            }
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 }
             }
@@ -291,8 +329,15 @@ $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
 
+<<<<<<< HEAD
 Create-ModuleMappings
 Create-CsprojMappings
 
 $Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
+=======
+# Create-ModuleMappings
+Create-CsprojMappings
+
+# $Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojMappings.json")

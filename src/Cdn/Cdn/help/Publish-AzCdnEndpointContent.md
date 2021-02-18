@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: AFDBE48E-63B0-4A9E-9825-5246081AA129
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/publish-azcdnendpointcontent
+=======
+online version: https://docs.microsoft.com/powershell/module/az.cdn/publish-azcdnendpointcontent
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -33,7 +37,11 @@ The **Publish-AzCdnEndpointContent** cmdlet loads content from an origin server 
 ## PARAMETERS
 
 ### -CdnEndpoint
+<<<<<<< HEAD
 Sepcifies the CDN endpoint.
+=======
+Specifies the CDN endpoint.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint

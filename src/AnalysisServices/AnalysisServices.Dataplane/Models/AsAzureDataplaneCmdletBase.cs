@@ -134,7 +134,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         {
             if (context == null)
             {
+<<<<<<< HEAD
                 throw new ArgumentException(Common.Authentication.Properties.Resources.ArmAccountNotFound);
+=======
+                throw new ArgumentException(Resources.ArmAccountNotFound);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (string.IsNullOrEmpty(hostUri))

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,15 +28,25 @@ If an Event Hub name is not provided, a list of all Event Hubs in the specified 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - specified EventHub
 ```
+=======
+### Example 1: specified EventHub
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Returns the details of the Event Hub \`MyEventHubName\`.
 
+<<<<<<< HEAD
 ### Example 2 - List of EventHub in specified Namespace
 ```
+=======
+### Example 2: List of EventHub in specified Namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 

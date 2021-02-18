@@ -18,6 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -27,7 +31,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy set definition.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+=======
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicySetDefinition))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -94,18 +102,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var listFilter = this.GetListFilter(this.Builtin, this.Custom);
             PaginatedResponseHelper.ForEach(
+<<<<<<< HEAD
                 getFirstPage: () => this.GetResources(),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
                 action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputObjects("PolicySetDefinitionId", listFilter, resources), enumerateCollection: true));
+=======
+                getFirstPage: () => this.GetResources(listFilter),
+                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
+                cancellationToken: this.CancellationToken,
+                action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputPolicySetDefinitions(listFilter, resources), enumerateCollection: true));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
         /// Queries the ARM cache and returns the cached resource that match the query specified.
         /// </summary>
+<<<<<<< HEAD
         private async Task<ResponseWithContinuation<JObject[]>> GetResources()
         {
             string resourceId = this.GetResourceId();
+=======
+        /// <param name="policyTypeFilter">The policy type filter.</param>
+        private async Task<ResponseWithContinuation<JObject[]>> GetResources(ListFilter policyTypeFilter)
+        {
+            string resourceId = this.GetResourceId();
+            var odataFilter = policyTypeFilter != ListFilter.None ? string.Format(PolicyCmdletBase.PolicyTypeFilterFormat, policyTypeFilter.ToString()) : null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
@@ -146,12 +169,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             else
             {
                 return await this
+<<<<<<< HEAD
                 .GetResourcesClient()
                 .ListObjectColleciton<JObject>(
                     resourceCollectionId: resourceId,
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value)
                 .ConfigureAwait(continueOnCapturedContext: false);
+=======
+                    .GetResourcesClient()
+                    .ListObjectColleciton<JObject>(
+                        resourceCollectionId: resourceId,
+                        apiVersion: apiVersion,
+                        cancellationToken: this.CancellationToken.Value,
+                        odataQuery: odataFilter)
+                    .ConfigureAwait(continueOnCapturedContext: false);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

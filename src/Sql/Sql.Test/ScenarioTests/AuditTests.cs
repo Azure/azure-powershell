@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public AuditTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -56,6 +62,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditServerUpdatePolicyWithStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyWithStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditDisableDatabaseAudit()
         {
             RunPowerShellTest("Test-BlobAuditDisableDatabaseAudit");
@@ -70,6 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditDisableServerAudit()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditDisableServerAudit");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditFailedDatabaseUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
@@ -84,6 +110,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
@@ -98,6 +134,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditFailWithBadDatabaseIndentity()
         {
             RunPowerShellTest("Test-BlobAuditFailWithBadDatabaseIndentity");
@@ -112,6 +158,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditFailWithBadServerIndentity()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditFailWithBadServerIndentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseStorageKeyRotation");
@@ -154,6 +210,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportBlobAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportBlobAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestBlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
             RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
@@ -198,6 +264,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestMSSupportAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
             RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
@@ -212,6 +289,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
+        {
+            RunPowerShellTest("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestRemoveAuditOnServer()
         {
             RunPowerShellTest("Test-RemoveAuditOnServer");
@@ -219,9 +306,64 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestMSSupportRemoveAuditOnServer()
+        {
+            RunPowerShellTest("Test-MSSupportRemoveAuditOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestRemoveAuditOnDatabase()
         {
             RunPowerShellTest("Test-RemoveAuditOnDatabase");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportServerAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-MSSupportServerAuditingToStorageInVNet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseAuditingToStorageInVNet()
+        {
+            RunPowerShellTest("Test-DatabaseAuditingToStorageInVNet");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

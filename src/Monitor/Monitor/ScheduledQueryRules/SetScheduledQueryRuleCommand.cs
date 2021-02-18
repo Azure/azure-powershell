@@ -60,7 +60,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         //
         // Summary:
+<<<<<<< HEAD
         //     Gets or sets schedule (Frequnecy, Time Window) for rule.
+=======
+        //     Gets or sets schedule (Frequency, Time Window) for rule.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
@@ -187,11 +191,27 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             }
         }
 
+<<<<<<< HEAD
+=======
+        private string NormalizeLocation(string location)
+        {
+            // lowercase and remove whitespace
+            // e.g. "South Central US" => "southcentralus"
+            return location == null
+                ? null
+                : location.Replace(" ", "").ToLower();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private ScheduledQueryRuleResource UpdateScheduledQueryRuleResource(ScheduledQueryRuleResource requestBody)
         {
             if (this.MyInvocation.BoundParameters.ContainsKey("Location") || this.Location != null)
             {
+<<<<<<< HEAD
                 requestBody.Location = this.Location;
+=======
+                requestBody.Location = NormalizeLocation(this.Location);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)

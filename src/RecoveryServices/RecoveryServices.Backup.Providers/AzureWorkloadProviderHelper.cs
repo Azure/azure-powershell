@@ -21,7 +21,13 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+=======
+using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
 
@@ -100,7 +106,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.ContainerBase container,
             CmdletModel.PolicyBase policy,
             string backupManagementType,
+<<<<<<< HEAD
             string dataSourceType)
+=======
+            string dataSourceType, 
+            bool UseSecondaryRegion = false)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
                 new ODataQuery<ProtectedItemQueryObject>(
@@ -111,16 +122,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == backupManagementType &&
+<<<<<<< HEAD
                          q.ItemType == dataSourceType);
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
             var listResponse = ServiceClientAdapter.ListProtectedItem(
+=======
+                         q.ItemType == dataSourceType);            
+
+            List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
+            string skipToken = null;
+
+            // fetching backup items from secondary region
+            if (UseSecondaryRegion)
+            {
+                var listResponse = ServiceClientAdapter.ListCrrProtectedItem(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 queryParams,
                 skipToken,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+<<<<<<< HEAD
             protectedItems.AddRange(listResponse);
+=======
+                protectedItems.AddRange(listResponse);
+            }
+            else
+            {
+                var listResponse = ServiceClientAdapter.ListProtectedItem(
+                queryParams,
+                skipToken,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+                protectedItems.AddRange(listResponse);
+            }            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (container != null)
             {
@@ -152,18 +189,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string itemName,
             string vaultName,
             string resourceGroupName,
+<<<<<<< HEAD
             Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor)
+=======
+            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor, string friendlyName = null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             List<ProtectedItemResource> protectedItemGetResponses =
                 new List<ProtectedItemResource>();
 
+<<<<<<< HEAD
             if (!string.IsNullOrEmpty(itemName))
+=======
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 protectedItems = protectedItems.Where(protectedItem =>
                 {
                     Dictionary<CmdletModel.UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
+<<<<<<< HEAD
                     string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
                     return protectedItemUri.ToLower().Contains(itemName.ToLower());
+=======
+
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(dictionary, protectedItem.Id);
+
+                    bool filteredByUniqueName = itemName != null && (protectedItemUri.ToLower().Contains(itemName.ToLower()) );
+                    bool filteredByFriendlyName = false;
+
+                    if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
+                    {
+
+                        string protectedItemFriendlyName = (protectedItem.Properties as AzureFileshareProtectedItem).FriendlyName;
+                        filteredByUniqueName = filteredByUniqueName || ( itemName != null && protectedItemFriendlyName.ToLower() == itemName.ToLower() );
+                        filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
+                    }
+
+                    return filteredByUniqueName || filteredByFriendlyName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }).ToList();
 
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
@@ -234,7 +297,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return ConversionHelpers.GetContainerModelList(listResponse);
         }
 
+<<<<<<< HEAD
         public void ValidateSimpleSchedulePolicy(CmdletModel.SchedulePolicyBase policy)
+=======
+        public void ValidateSimpleSchedulePolicy(CmdletModel.SchedulePolicyBase policy, string backupManagementType = "")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.SimpleSchedulePolicy))
             {
@@ -242,6 +309,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
             }
 
+<<<<<<< HEAD
+=======
+            if(backupManagementType == BackupManagementType.AzureStorage &&
+                ((CmdletModel.SimpleSchedulePolicy)policy).ScheduleRunFrequency == ScheduleRunType.Weekly)
+            {
+                throw new ArgumentException(Resources.AFSWeeklyScheduleNotAllowed);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // call validation
             policy.Validate();
         }
@@ -258,7 +334,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             policy.Validate();
         }
 
+<<<<<<< HEAD
         public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
+=======
+        public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
             {
@@ -335,6 +415,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = ProviderData.ContainsKey(RecoveryPointParams.RestorePointQueryType) ?
                 (string)ProviderData[RecoveryPointParams.RestorePointQueryType] : "All";
+<<<<<<< HEAD
+=======
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
@@ -372,12 +456,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
 
+<<<<<<< HEAD
             List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+=======
+            List<RecoveryPointResource> rpListResponse; 
+            if (secondaryRegion)
+            {
+                //fetch recovery points from secondary region
+                rpListResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 queryFilter,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+            }
+            else
+            {
+                rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+<<<<<<< HEAD
+=======
+            }
+            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
@@ -536,5 +642,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug(errorMessage);
             }
         }
+<<<<<<< HEAD
+=======
+
+        public List<ItemBase> GetMABProtectedItems(string vaultName, string resourceGroupName)
+        {
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType == BackupManagementType.MAB);
+                            
+
+            List<ProtectedItemResource> protectedItems = ServiceClientAdapter.ListProtectedItem(
+                queryParams,
+                null,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+
+            return ConversionHelpers.GetItemModelList(protectedItems);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

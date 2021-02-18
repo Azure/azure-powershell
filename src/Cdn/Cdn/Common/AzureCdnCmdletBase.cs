@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string CacheExpirationActionParameterSet = "CacheExpirationActionParameterSet";
         public const string HeaderActionParameterSet = "HeaderActionParameterSet";
         public const string UrlRedirectActionParameterSet = "UrlRedirectActionParameterSet";
+<<<<<<< HEAD
+=======
+        public const string CacheKeyQueryStringActionParameterSet = "CacheKeyQueryStringActionParameterSet";
+        public const string UrlRewriteActionParameterSet = "UrlRewriteActionParameterSet";
+        public const string ByFieldsPrivateLinkParameterSet = "ByFieldsPrivateLinkParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
         /// <summary>

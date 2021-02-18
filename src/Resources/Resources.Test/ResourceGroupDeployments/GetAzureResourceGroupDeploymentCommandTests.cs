@@ -12,16 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+=======
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Management.Automation;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Xunit;
 using Xunit.Abstractions;
 
@@ -63,11 +75,19 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName,
                 Mode = DeploymentMode.Incremental
             };
+<<<<<<< HEAD
             FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
                 ResourceGroupName = resourceGroupName
             };
             FilterDeploymentOptions actual = new FilterDeploymentOptions();
+=======
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+            {
+                ResourceGroupName = resourceGroupName
+            };
+            FilterDeploymentOptions actual = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterDeploymentOptions>()))
                 .Returns(result)
@@ -88,12 +108,20 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSepcificResourcesGroupDeployment()
         {
+<<<<<<< HEAD
             FilterDeploymentOptions options = new FilterDeploymentOptions()
+=======
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroupName
             };
+<<<<<<< HEAD
             FilterDeploymentOptions actual = new FilterDeploymentOptions();
+=======
+            FilterDeploymentOptions actual = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             List<PSResourceGroupDeployment> result = new List<PSResourceGroupDeployment>();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {

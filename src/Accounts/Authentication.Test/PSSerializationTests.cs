@@ -23,15 +23,27 @@ using System.Globalization;
 using System.Management.Automation;
 using Xunit;
 using System.Linq;
+<<<<<<< HEAD
 
 namespace Common.Authentication.Test
 {
+=======
+using Microsoft.Azure.Commands.Common.Authentication;
+
+namespace Common.Authentication.Test
+{
+    // TODO: these tests are depending on msal token cache. E.g. they will fail if there are tokens in the cache.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class PSSerializationTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertFullProfilet()
         {
+<<<<<<< HEAD
+=======
+            AzureSessionInitializer.InitializeAzureSession();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var context = GetDefaultContext();
             var prof = new PSAzureProfile();
             prof.Context = new PSAzureContext(context);
@@ -46,6 +58,10 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertProfileNullComponent()
         {
+<<<<<<< HEAD
+=======
+            AzureSessionInitializer.InitializeAzureSession();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var context = GetDefaultContext();
             context.Subscription = null;
             var prof = new PSAzureProfile();
@@ -61,6 +77,10 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertProfieWithCustomEnvironment()
         {
+<<<<<<< HEAD
+=======
+            AzureSessionInitializer.InitializeAzureSession();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IAzureContext context = new AzureContext(new AzureSubscription(), new AzureAccount(), new AzureEnvironment(), new AzureTenant(), new byte[0]);
             var testContext = new PSAzureContext(context);
             var testEnvironment = new PSAzureEnvironment(AzureEnvironment.PublicEnvironments["AzureCloud"]);
@@ -89,6 +109,10 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConConvertEmptyProfile()
         {
+<<<<<<< HEAD
+=======
+            AzureSessionInitializer.InitializeAzureSession();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ConvertAndTestProfile(new PSAzureProfile(), (profile) =>
             {
                 AssertStandardEnvironments(profile);
@@ -138,6 +162,10 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertEmptyContext()
         {
+<<<<<<< HEAD
+=======
+            AzureSessionInitializer.InitializeAzureSession();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ConvertAndTestProfile(new PSAzureContext(), (profile) =>
             {
                 AssertStandardEnvironments(profile);
@@ -225,6 +253,7 @@ namespace Common.Authentication.Test
             return env;
         }
 
+<<<<<<< HEAD
         IAzureTokenCache GetDefaultTokenCache()
         {
             var cache = new AzureTokenCache
@@ -239,6 +268,8 @@ namespace Common.Authentication.Test
             return cache;
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         IAzureContext GetDefaultContext()
         {
             var context = new AzureContext
@@ -247,7 +278,11 @@ namespace Common.Authentication.Test
                 Environment = GetDefaultEnvironment(),
                 Subscription = GetDefaultSubscription(),
                 Tenant = GetDefaultTenant(),
+<<<<<<< HEAD
                 TokenCache = GetDefaultTokenCache(),
+=======
+                TokenCache = null,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 VersionProfile = "2017_09_25"
             };
 

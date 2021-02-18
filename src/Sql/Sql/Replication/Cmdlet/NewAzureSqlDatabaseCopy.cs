@@ -22,6 +22,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using System.Globalization;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -127,15 +131,50 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database.")]
         [PSArgumentCompleter(
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
             Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
+=======
+            "LicenseIncluded",
+            "BasePrice"
+            )]
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo")]
+        public string BackupStorageRedundancy { get; set; }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeSourceWarning));
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             base.ExecuteCmdlet();
         }
 
@@ -199,7 +238,12 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+<<<<<<< HEAD
                 LicenseType = LicenseType // note: default license type is LicenseIncluded
+=======
+                LicenseType = LicenseType, // note: default license type is LicenseIncluded
+                BackupStorageRedundancy = BackupStorageRedundancy,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

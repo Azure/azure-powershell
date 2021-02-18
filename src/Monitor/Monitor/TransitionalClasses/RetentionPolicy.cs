@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
             }
         }
 
+<<<<<<< HEAD
+=======
+        public RetentionPolicy()
+        {
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// A string representation of the PSRetentionPolicy
         /// </summary>

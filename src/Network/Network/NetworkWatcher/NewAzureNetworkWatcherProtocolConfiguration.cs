@@ -29,7 +29,11 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
     {
         [Parameter(
              Mandatory = true,
+<<<<<<< HEAD
              HelpMessage = "Procotol")]
+=======
+             HelpMessage = "Protocol")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Tcp", "Http", "Https", "Icmp")]
         public string Protocol { get; set; }

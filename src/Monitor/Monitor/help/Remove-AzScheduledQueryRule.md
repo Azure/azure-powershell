@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azscheduledqueryrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,19 +39,34 @@ Removes a Log Alert Rule
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Remove by rule name
 ```powershell
 PS C:\> Remove-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
 ```
 
 ### Example 2 - Remove by input object
+=======
+### Example 1: Remove by rule name
+```powershell
+PS C:\> Remove-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1"
+```
+
+### Example 2: Remove by input object
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> Remove-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource
 ```
 
+<<<<<<< HEAD
 ### Example 3 - Remove by resource Id
 ```powershell
 PS C:\> Remove-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
+=======
+### Example 3: Remove by resource Id
+```powershell
+PS C:\> Remove-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledQueryRules/LogAlertRule1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## PARAMETERS

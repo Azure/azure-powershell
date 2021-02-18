@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -27,13 +28,30 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
+=======
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
+{
+    public class NetworkRuleSetTests : EventHubTestRunner
+    {
+
+        public NetworkRuleSetTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NetworkRuleSetCRUD()
         {
+<<<<<<< HEAD
             EventHubsController.NewInstance.RunPsTest(_logger, "NetworkRuleSetTests");
+=======
+            TestRunner.RunTestScript("NetworkRuleSetTests");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -20,16 +20,36 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the LogSettings
     /// </summary>
+<<<<<<< HEAD
     public class PSLogSettings : Microsoft.Azure.Management.Monitor.Management.Models.LogSettings
+=======
+    public class PSLogSettings : PSDiagnosticDetailSettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
         /// </summary>
+<<<<<<< HEAD
         public PSLogSettings(LogSettings logSettings) : base(logSettings)
         {
             this.Enabled = logSettings.Enabled;
             this.Category = logSettings.Category;
             this.RetentionPolicy = new Management.Monitor.Management.Models.RetentionPolicy(logSettings.RetentionPolicy);
+=======
+        public PSLogSettings(LogSettings logSettings)
+        {
+            if (logSettings != null)
+            {
+                this.Enabled = logSettings.Enabled;
+                this.Category = logSettings.Category;
+                this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
+            }
+            this.CategoryType = PSDiagnosticSettingCategoryType.Logs;
+        }
+
+        public PSLogSettings() 
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -45,5 +65,18 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
             return output.ToString();
         }
+<<<<<<< HEAD
+=======
+
+        public LogSettings GetLogSetting()
+        {
+            return new LogSettings()
+            {
+                Enabled = this.Enabled,
+                Category = this.Category,
+                RetentionPolicy = this.RetentionPolicy
+            };
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

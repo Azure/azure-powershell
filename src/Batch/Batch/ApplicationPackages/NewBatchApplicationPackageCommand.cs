@@ -15,7 +15,10 @@
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Batch.Models;
+<<<<<<< HEAD
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -37,10 +40,18 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 2, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [Parameter(Position = 2, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
+=======
+        [Parameter(Position = 2, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
+        [Parameter(Position = 2, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Position = 3, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
         [Parameter(Position = 3, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
@@ -60,12 +71,20 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public SwitchParameter ActivateOnly { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             PSApplicationPackage response = BatchClient.UploadAndActivateApplicationPackage(
                 this.ResourceGroupName,
                 this.AccountName,
+<<<<<<< HEAD
                 this.ApplicationId,
+=======
+                this.ApplicationName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 this.ApplicationVersion,
                 this.FilePath,
                 this.Format,

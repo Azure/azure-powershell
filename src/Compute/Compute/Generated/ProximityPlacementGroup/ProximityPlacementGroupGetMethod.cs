@@ -28,6 +28,10 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -53,10 +57,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         proximityPlacementGroupName = this.Name;
                         break;
                 }
+<<<<<<< HEAD
 
                 if (ShouldGetByName(resourceGroupName, proximityPlacementGroupName))
                 {
                     var result = ProximityPlacementGroupsClient.Get(resourceGroupName, proximityPlacementGroupName);
+=======
+                string includeColocationStatus = this.ColocationStatus.IsPresent.ToString().ToLowerInvariant();
+
+                if (ShouldGetByName(resourceGroupName, proximityPlacementGroupName))
+                {
+                    var result = ProximityPlacementGroupsClient.Get(resourceGroupName, proximityPlacementGroupName, includeColocationStatus);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var psObject = new PSProximityPlacementGroup();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<ProximityPlacementGroup, PSProximityPlacementGroup>(result, psObject);
                     WriteObject(psObject);
@@ -124,6 +136,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ColocationStatus { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = "ResourceIdParameter",
             Position = 0,
             Mandatory = true,

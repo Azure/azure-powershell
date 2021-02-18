@@ -19,5 +19,23 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
 ## Version 0.7.1
 * Added subdomain parameter to Set-AzureRmIoTCentralApp for updating subdomain
+=======
+## Version 0.8.0
+* Allow pricing information to be updated using Set-AzIoTCentralApp command.
+
+## Version 0.7.4
+* Updated SDK version to throw Cloud Exception with error details. Update default SKU to be ST2.
+
+## Version 0.7.3
+* This release adds new skus: ST0, ST1, ST2 for IotCentral.
+
+## Version 0.7.2
+* Update references in .psd1 to use relative path.
+* Remove subdomain and resource name checks for create new IotCentral application, it will be handled by resource provider for idempotent.
+
+## Version 0.7.1
+* Added subdomain parameter to Set-AzureRmIoTCentralApp for updating subdomain.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

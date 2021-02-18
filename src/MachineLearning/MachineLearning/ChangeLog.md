@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.1.3
+* Removed below cmdlets because MachineLearningCompute is not available any longer
+  - Get-AzMlOpCluster
+  - Get-AzMlOpClusterKey
+  - New-AzMlOpCluster
+  - Remove-AzMlOpCluster
+  - Set-AzMlOpCluster
+  - Test-AzMlOpClusterSystemServicesUpdateAvailability
+  - Update-AzMlOpClusterSystemService
+
+
+## Version 1.1.2
+* Update references in .psd1 to use relative path
+
+## Version 1.1.1
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 

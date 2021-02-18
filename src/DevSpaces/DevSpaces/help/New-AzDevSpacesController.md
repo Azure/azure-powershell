@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/new-azdevspacescontroller
+=======
+online version: https://docs.microsoft.com/powershell/module/az.devspaces/new-azdevspacescontroller
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -32,7 +36,11 @@ Name        Resource Group  Location  Provisioning State
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
 ```
 
+<<<<<<< HEAD
 Crreate a DevSpaces controller in resourcegroup devSpaceResourceGroup with a name devSpaceName. Use clusterName cluster as a target for this controller.
+=======
+Create a DevSpaces controller in resourcegroup devSpaceResourceGroup with a name devSpaceName. Use clusterName cluster as a target for this controller.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

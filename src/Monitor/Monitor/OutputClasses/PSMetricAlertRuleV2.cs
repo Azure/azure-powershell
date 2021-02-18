@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSMetricAlertRuleV2(MetricAlertResource metricAlertResource)
             :base(location: metricAlertResource.Location, description: metricAlertResource.Description, severity: metricAlertResource.Severity, enabled: metricAlertResource.Enabled,evaluationFrequency: metricAlertResource.EvaluationFrequency,windowSize: metricAlertResource.WindowSize, criteria: metricAlertResource.Criteria,id: metricAlertResource.Id, name: metricAlertResource.Name, type: metricAlertResource.Type,tags: metricAlertResource.Tags, scopes: metricAlertResource.Scopes, autoMitigate: metricAlertResource.AutoMitigate, actions: metricAlertResource.Actions, lastUpdatedTime: metricAlertResource.LastUpdatedTime, targetResourceRegion: metricAlertResource.TargetResourceRegion, targetResourceType: metricAlertResource.TargetResourceType)
         {
+<<<<<<< HEAD
             Criteria = new List<PSMetricCriteria>();
+=======
+            Criteria = new List<IPSMultiMetricCriteria>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
             {
                 var criteria = metricAlertResource.Criteria as MetricAlertSingleResourceMultipleMetricCriteria;
@@ -39,9 +43,20 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 var criteria = metricAlertResource.Criteria as MetricAlertMultipleResourceMultipleMetricCriteria;
                 foreach(var condition in criteria.AllOf)
                 {
+<<<<<<< HEAD
                     var obj = JsonConvert.SerializeObject(condition.AdditionalProperties, Newtonsoft.Json.Formatting.Indented);
                     MetricCriteria metricCriteria = JsonConvert.DeserializeObject<MetricCriteria>(obj);
                     Criteria.Add(new PSMetricCriteria(metricCriteria));
+=======
+                    if (condition is MetricCriteria)
+                    {
+                        Criteria.Add(new PSMetricCriteria(condition as MetricCriteria));
+                    }
+                    else
+                    {
+                        Criteria.Add(new PSDynamicMetricCriteria(condition as DynamicMetricCriteria));
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
             else
@@ -51,7 +66,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             Actions = new ActivityLogAlertActionGroup[metricAlertResource.Actions.Count];
             for(int i = 0; i < metricAlertResource.Actions.Count;i++)
             {
+<<<<<<< HEAD
                 Actions[i] = new ActivityLogAlertActionGroup(metricAlertResource.Actions[i].ActionGroupId, metricAlertResource.Actions[i].WebhookProperties);
+=======
+                Actions[i] = new ActivityLogAlertActionGroup(metricAlertResource.Actions[i].ActionGroupId, metricAlertResource.Actions[i].WebHookProperties);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var resourceIdentifier = new ResourceIdentifier(metricAlertResource.Id);
@@ -62,7 +81,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets list of criteria.
         /// </summary>
         [JsonProperty(PropertyName = "criteria")]
+<<<<<<< HEAD
         public new IList<PSMetricCriteria> Criteria { get; set; }
+=======
+        public new IList<IPSMultiMetricCriteria> Criteria { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets list of action groups.

@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the StorageType for the default Azure Storage Account.
         /// </summary>
         public StorageType DefaultStorageAccountType { get; set; }
@@ -41,6 +42,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the storage key for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountKey { get; set; }
+=======
+        /// Gets or sets the storage type for the Azure Storage Account.
+        /// </summary>
+        public StorageType StorageAccountType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage resource id for the Azure Storage Account.
+        /// </summary>
+        public string StorageAccountResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage key for the Azure Storage Account.
+        /// </summary>
+        public string StorageAccountKey { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the size of the Head Node.
@@ -88,11 +104,27 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public AzureHDInsightMetastore HiveMetastore { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the database for ambari.
+        /// </summary>
+        public AzureHDInsightMetastore AmbariDatabase { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets Object id of the service principal. 
         /// </summary>
         public Guid ObjectId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets Application id of the service principal. 
+        /// </summary>
+        public Guid ApplicationId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets the file path of the client certificate file contents associated with the service principal.
         /// </summary>
         public byte[] CertificateFileContents { get; set; }
@@ -135,6 +167,49 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public int DisksPerWorkerNode { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets the minimal supported TLS version.
+        /// </summary>
+        public string MinSupportedTlsVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the assigned identity.
+        /// </summary>
+        public string AssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption algorithm.
+        /// </summary>
+        public string EncryptionAlgorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption key name.
+        /// </summary>
+        public string EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption key version.
+        /// </summary>
+        public string EncryptionKeyVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption vault uri.
+        /// </summary>
+        public string EncryptionVaultUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag which indicates whether enable encryption in transit or not.
+        /// </summary>
+        public bool? EncryptionInTransit;
+
+        /// <summary>
+        /// Gets or sets the flag which indicates whether enable encryption at host or not.
+        /// </summary>
+        public bool? EncryptionAtHost;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public AzureHDInsightConfig()
         {
             ClusterType = Constants.Hadoop;

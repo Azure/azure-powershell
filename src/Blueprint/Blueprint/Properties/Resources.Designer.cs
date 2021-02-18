@@ -19,7 +19,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -88,7 +92,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in subscription &apos;{1}&apos; already exists. Please use Set-AzBlueprintAssignment to update an existing assignment..
+=======
+        ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in scope &apos;{1}&apos; already exists. Please use Set-AzBlueprintAssignment to update an existing assignment..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string AssignmentExists {
             get {
@@ -97,7 +105,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in subscription &apos;{1}&apos; does not exist. Please use New-AzBlueprintAssignment to create a new assignment..
+=======
+        ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in scope &apos;{1}&apos; does not exist. Please use New-AzBlueprintAssignment to create a new assignment..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string AssignmentNotExist {
             get {
@@ -187,6 +199,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Can&apos;t determine the identity to be used with the assignment. Make sure the assignment file contains Identity property and identity Type property..
+        /// </summary>
+        internal static string IdentityTypeNotProvided {
+            get {
+                return ResourceManager.GetString("IdentityTypeNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Overwriting the output file..
         /// </summary>
         internal static string OverwriteExistingOutputFileContinueMessage {
@@ -241,7 +265,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to An unexpected error occured while checking if blueprint already exists. Try again in a few minutes. &apos;{0}&apos;.
+=======
+        ///   Looks up a localized string similar to An unexpected error occurred while checking if blueprint already exists. Try again in a few minutes. &apos;{0}&apos;.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string UnexpectedErrorWhileCheckingIfBlueprintExists {
             get {

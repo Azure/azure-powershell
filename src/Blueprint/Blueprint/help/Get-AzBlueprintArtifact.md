@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/get-azblueprintartifact
+=======
+online version: https://docs.microsoft.com/powershell/module/az.blueprint/get-azblueprintartifact
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +18,11 @@ Retrieve artifacts from a blueprint definition.
 
 ```
 Get-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase> [-BlueprintVersion <String>]
+<<<<<<< HEAD
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -47,13 +55,17 @@ ResourceGroup      :
 Id                 : /providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/artifacts/0e1593da-47d5-4b75-800c-9a797dd23192
 Type               : Microsoft.Blueprint/blueprints/artifacts
 Name               : 0e1593da-47d5-4b75-800c-9a797dd23192
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Retrieve artifacts from a blueprint definition.. 
 
 ## PARAMETERS
 
+<<<<<<< HEAD
 ### -ArtifactFile
 Location of the artifact file in JSON format on disk.
 
@@ -69,10 +81,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Blueprint
 Blueprint object.
 
 ```yaml
+<<<<<<< HEAD
 Type: PSBlueprintBase
 Parameter Sets: ArtifactsByBlueprint, UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
@@ -87,6 +102,10 @@ Accept wildcard characters: False
 ```yaml
 Type: PSBlueprintBase
 Parameter Sets: CreateArtifactByInputFile
+=======
+Type: Microsoft.Azure.Commands.Blueprint.Models.PSBlueprintBase
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -100,8 +119,13 @@ Accept wildcard characters: False
 Version of the blueprint to get the artifacts from.
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: ArtifactsByBlueprint
+=======
+Type: System.String
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -115,7 +139,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: IAzureContextContainer
+=======
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,6 +154,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -DependsOn
 List of the names of artifacts that needs to be created before current artifact is created.
 
@@ -156,10 +185,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Name of the artifact
 
 ```yaml
+<<<<<<< HEAD
 Type: String
 Parameter Sets: ArtifactsByBlueprint
 Aliases:
@@ -219,6 +251,10 @@ Name of the resource group the artifact is going to be under.
 ```yaml
 Type: String
 Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+=======
+Type: System.String
+Parameter Sets: (All)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -228,6 +264,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -RoleDefinitionId
 List of role definition
 
@@ -339,6 +376,10 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

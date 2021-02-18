@@ -19,6 +19,38 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.4.1
+* Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
+
+## Version 1.4.0
+* Added support for returning paginated results for Get-AzPolicyState
+
+## Version 1.3.1
+* Corrected example 3 for `Start-AzPolicyComplianceScan`
+
+## Version 1.3.0
+* Added `Start-AzPolicyComplianceScan` cmdlet for triggering policy compliance scans
+* Added policy definition, set definition, and assignment versions to `Get-AzPolicyState` output
+
+## Version 1.2.1
+* Improved error messages
+
+## Version 1.2.0
+* Support evaluating compliance prior to determining what resource to remediate
+    - Add `-ResourceDiscoverMode` parameter to Start-AzPolicyRemediation
+* Add Get-AzPolicyMetadata cmdlet for getting policy metadata resources
+* Updated Get-AzPolicyState and Get-AzPolicyStateSummary for API version 2019-10-01
+
+
+## Version 1.1.4
+* Update references in .psd1 to use relative path
+
+## Version 1.1.3
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.1.2
 * Fix null reference issue in Get-AzPolicyState
     - More information here: https://github.com/Azure/azure-powershell/issues/9446

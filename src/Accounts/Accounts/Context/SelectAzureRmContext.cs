@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
@@ -20,6 +21,13 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System.Management.Automation;
+=======
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -29,10 +37,22 @@ namespace Microsoft.Azure.Commands.Profile.Context
     {
         public const string InputObjectParameterSet = "SelectByInputObject";
         public const string ContextNameParameterSet = "SelectByName";
+<<<<<<< HEAD
         [Parameter(Mandatory =true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline =true, HelpMessage ="A context object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }
 
+=======
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureContext InputObject { get; set; }
+
+        /// <summary>
+        /// This cmdlet should work even if there isn't a default context
+        /// </summary>
+        protected override bool RequireDefaultContext() { return false; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
@@ -50,7 +70,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
             string name = null;
             if (ParameterSetName == InputObjectParameterSet)
             {
+<<<<<<< HEAD
                     name = InputObject?.Name;
+=======
+                name = InputObject?.Name;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {

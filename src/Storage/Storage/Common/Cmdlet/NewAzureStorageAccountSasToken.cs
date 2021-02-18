@@ -19,6 +19,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Sas;
+    using global::Azure.Storage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageAccountSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageAccountSasTokenCommand : StorageCloudBlobCmdletBase
@@ -54,6 +59,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
 
+<<<<<<< HEAD
+=======
+        protected override bool UseTrack2Sdk()
+        {
+            if (SasTokenHelper.IsTrack2Permission(this.Permission))
+            {
+                return true;
+            }
+            return base.UseTrack2Sdk();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageAccountSasTokenCommand class.
         /// </summary>
@@ -78,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             var sharedAccessPolicy = new SharedAccessAccountPolicy()
             {
                 Permissions = SetupAccessPolicyPermission(this.Permission),
@@ -95,6 +113,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             sharedAccessPolicy.SharedAccessExpiryTime = accessEndTime;
 
             this.WriteObject(Channel.GetStorageAccountSASToken(sharedAccessPolicy));
+=======
+            if (!UseTrack2Sdk()) // Track1
+            {
+                var sharedAccessPolicy = new SharedAccessAccountPolicy()
+                {
+                    Permissions = SetupAccessPolicyPermission(this.Permission),
+                    Services = Service,
+                    ResourceTypes = ResourceType,
+                    Protocols = Protocol,
+                    IPAddressOrRange = Util.SetupIPAddressOrRangeForSAS(this.IPAddressOrRange)
+                };
+
+                DateTimeOffset? accessStartTime;
+                DateTimeOffset? accessEndTime;
+                SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
+                    out accessStartTime, out accessEndTime, true);
+                sharedAccessPolicy.SharedAccessStartTime = accessStartTime;
+                sharedAccessPolicy.SharedAccessExpiryTime = accessEndTime;
+
+                this.WriteObject(Channel.GetStorageAccountSASToken(sharedAccessPolicy));
+            }
+            else
+            {
+                AccountSasBuilder sasBuilder = SasTokenHelper.SetAccountSasBuilder(this.Service, this.ResourceType, Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+                string sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(Channel.StorageContext.StorageAccountName, Channel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+                if (sasToken[0] != '?')
+                {
+                    sasToken = "?" + sasToken;
+                }
+                this.WriteObject(sasToken);
+            }
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>

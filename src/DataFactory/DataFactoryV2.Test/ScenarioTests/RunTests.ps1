@@ -52,6 +52,36 @@ function Test-Run
         # Trying get pipeline run.
         Get-AzDataFactoryV2PipelineRun -ResourceGroupName $rgname -DataFactoryName $dfname -PipelineRunId $Run
         Get-AzDataFactoryV2PipelineRun -DataFactory $df -PipelineRunId $Run
+<<<<<<< HEAD
+=======
+
+		# Wait run to finish before rerun
+		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+            Start-Sleep -s 120
+        }
+
+		# Trying rerun the pipeline run
+		$Rerun = Invoke-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -PipelineName $pipelineName -DataFactoryName $dfname -ReferencePipelineRunId $Run -IsRecovery
+		Get-AzDataFactoryV2PipelineRun -DataFactory $df -PipelineRunId $Rerun
+
+		# Wait run to finish before rerun
+		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+            Start-Sleep -s 120
+        }
+
+		# Trying rerun from activity MyCopyActivity_1_0
+		$RerunFromActivity = Invoke-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -PipelineName $pipelineName -DataFactoryName $dfname -ReferencePipelineRunId $Run -IsRecovery -StartActivityName MyCopyActivity_1_0
+		Get-AzDataFactoryV2PipelineRun -DataFactory $df -PipelineRunId $RerunFromActivity
+
+		# Wait run to finish before rerun
+		if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+            Start-Sleep -s 120
+        }
+
+		# Trying rerun from failed activity
+		$RerunFromFailedActivity = Invoke-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -PipelineName $pipelineName -DataFactoryName $dfname -ReferencePipelineRunId $Run -IsRecovery -StartFromFailure
+		Get-AzDataFactoryV2PipelineRun -DataFactory $df -PipelineRunId $RerunFromActivity
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {

@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public ManagedInstanceCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] { "Microsoft.Sql/managedInstances" };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -69,5 +73,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateManagedInstanceWithIdentity");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact(Skip = "Skip due to bug in backend which is currently deploying")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateUpdateManagedInstanceWithMinimalTlsVersion()
+        {
+            RunPowerShellTest("Test-CreateUpdateManagedInstanceWithMinimalTlsVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-CreateManagedInstanceWithMaintenanceConfigurationId");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

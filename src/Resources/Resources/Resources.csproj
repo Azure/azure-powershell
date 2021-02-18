@@ -12,7 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.11.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.12.0-preview" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
   </ItemGroup>
 
@@ -20,4 +24,22 @@
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
   </ItemGroup>
 
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

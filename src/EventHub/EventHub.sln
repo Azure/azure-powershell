@@ -1,6 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
+=======
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "EventHub\EventHub.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
@@ -10,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub.Test", "EventHub.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6BD6B80A-06AF-4B5B-9230-69CCFC6C8D64}"
+EndProject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{3E016018-D65D-4336-9F64-17DA97783AD0}"
@@ -18,6 +28,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}"
+EndProject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,12 +67,23 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+<<<<<<< HEAD
+=======
+		{7A4B0770-E6C4-479F-9EF4-6C549F217B3C} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D727BDCF-9136-40D7-A91E-4A4301A4CC9C}

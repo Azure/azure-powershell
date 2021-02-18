@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.1.4
+* Removed project reference to Authentication
+
+## Version 1.1.3
+* Updated assembly version of data plane cmdlets
+
+## Version 1.1.2
+* Update references in .psd1 to use relative path
+
+## Version 1.1.1
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.1.0
 * Using ServiceClient in dataplane cmdlets and removing the original authentication logic
 * Making Add-AzureASAccount a wrapper of Connect-AzAccount to avoid a breaking change

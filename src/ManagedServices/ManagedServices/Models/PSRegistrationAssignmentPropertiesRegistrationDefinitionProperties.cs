@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ManagedServices.Models;
+<<<<<<< HEAD
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models

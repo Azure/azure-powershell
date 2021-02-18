@@ -25,7 +25,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Threading;
     using System.Threading.Tasks;
 
+<<<<<<< HEAD
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopyState", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
+=======
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopyState", DefaultParameterSetName = NameParameterSet),OutputType(typeof(CopyState))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureStorageBlobCopyState : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -121,6 +125,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     blob = GetCloudBlobObject(CloudBlobContainer, BlobName);
                     break;
                 case BlobPipelineParameterSet:
+<<<<<<< HEAD
+=======
+                    if (CloudBlob is InvalidCloudBlob)
+                    {
+                        throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     blob = GetCloudBlobObject(CloudBlob);
                     break;
             }

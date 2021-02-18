@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: D28EB28D-DBC6-48D5-AB0A-C56F56CD0104
 online version: https://docs.microsoft.com/en-us/powershell/module/az.media/set-azmediaservicekey
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
+Module Name: Az.Media
+ms.assetid: D28EB28D-DBC6-48D5-AB0A-C56F56CD0104
+online version: https://docs.microsoft.com/powershell/module/az.media/set-azmediaservicekey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -147,6 +155,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzMediaServiceKeys](./Get-AzMediaServiceKeys.md)
+=======
+[Get-AzMediaServiceKey](./Get-AzMediaServiceKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 

@@ -37,6 +37,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageContainerLeaseNounStr = StorageContainerNounStr + "Lease";
         protected const string StorageBlobServiceProperty = "StorageBlobServiceProperty";
         protected const string StorageBlobDeleteRetentionPolicy = "StorageBlobDeleteRetentionPolicy";
+<<<<<<< HEAD
+=======
+        protected const string StorageBlobRestorePolicy = "StorageBlobRestorePolicy";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 

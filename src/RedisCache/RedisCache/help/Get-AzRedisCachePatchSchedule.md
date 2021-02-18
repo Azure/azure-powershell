@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: DA180A4A-88B6-4359-94E0-CF72F66D1FE4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachepatchschedule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscachepatchschedule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

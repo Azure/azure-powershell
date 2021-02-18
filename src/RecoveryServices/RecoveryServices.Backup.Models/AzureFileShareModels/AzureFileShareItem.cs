@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using System.Runtime.Versioning;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -28,6 +32,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string ParentContainerFabricId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// FriendlyName of the file share item
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Resource State of the FileShare
+        /// </summary>
+        public string ResourceState { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
         /// </summary>
@@ -45,6 +62,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ProtectionState =
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+<<<<<<< HEAD
+=======
+            FriendlyName = protectedItem.FriendlyName;
+            ResourceState = "";
+            if(protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
+            {
+                ResourceState = protectedItem.ExtendedInfo.ResourceState;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 

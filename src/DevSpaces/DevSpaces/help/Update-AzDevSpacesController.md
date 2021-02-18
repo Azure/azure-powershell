@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/update-azdevspacescontroller
+=======
+online version: https://docs.microsoft.com/powershell/module/az.devspaces/update-azdevspacescontroller
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -44,7 +48,11 @@ Name        Resource Group  Location  Provisioning State
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
 ```
 
+<<<<<<< HEAD
 Tag a DevSpaces contoller.
+=======
+Tag a DevSpaces controller.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: CB621890-EF8A-4F14-8F18-D8806E624DAB
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationschedule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -237,7 +241,11 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
+<<<<<<< HEAD
 Specifies the expiry time of a schedule as a **DateTimeOffest** object.
+=======
+Specifies the expiry time of a schedule as a **DateTimeOffset** object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 You can specify a string that can be converted to a valid **DateTimeOffset**.
 
 ```yaml

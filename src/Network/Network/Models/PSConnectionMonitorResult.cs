@@ -31,6 +31,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Target = ViewControl.Table)]
+        public DateTime? StartTime { get; set; }
+
+        public Dictionary<string, string> Tags { get; set; }
+
+        public string ConnectionMonitorType { get; set; }
+
+        public string TagsText
+        {
+            get { return JsonConvert.SerializeObject(this.Tags, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
+
+    public class PSConnectionMonitorResultV1 : PSConnectionMonitorResult
+    {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonProperty(Order = 1)]
         public PSConnectionMonitorSource Source { get; set; }
 
@@ -44,6 +62,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? MonitoringIntervalInSeconds { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+<<<<<<< HEAD
         public DateTime? StartTime { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -51,6 +70,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public Dictionary<string, string> Tags { get; set; }
 
+=======
+        public string MonitoringStatus { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string SourceText
         {
@@ -62,6 +85,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(this.Destination, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
 
         [JsonIgnore]
         public string TagsText
@@ -69,4 +93,30 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(this.Tags, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
+=======
+    }
+
+    public class PSConnectionMonitorResultV2 : PSConnectionMonitorResult
+    {
+
+        [Ps1Xml(Target = ViewControl.List)]
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroups { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List)]
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Outputs { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Notes { get; set; }
+
+        public string TestGroupsText
+        {
+            get { return JsonConvert.SerializeObject(this.TestGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+        public string OutputsText
+        {
+            get { return JsonConvert.SerializeObject(this.Outputs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

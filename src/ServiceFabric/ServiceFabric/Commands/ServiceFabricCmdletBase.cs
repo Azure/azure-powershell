@@ -20,12 +20,18 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+<<<<<<< HEAD
 using System.Text;
 using System.Threading.Tasks;
 using Action = System.Action;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+=======
+using System.Threading.Tasks;
+using Action = System.Action;
+using Microsoft.Azure.Commands.Common.Authentication;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
@@ -46,6 +52,7 @@ using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Newtonsoft.Json.Linq;
+<<<<<<< HEAD
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -55,6 +62,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         internal static int WriteVerboseIntervalInSec = 20;
 
+=======
+using System.Threading;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json;
+using SFResource = Microsoft.Azure.Management.ServiceFabric.Models.Resource;
+
+namespace Microsoft.Azure.Commands.ServiceFabric.Commands
+{
+    public class ServiceFabricCmdletBase : ServiceFabricCommonCmdletBase
+    {
+        internal static int NewCreatedKeyVaultWaitTimeInSec = 15;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #region TEST
         internal static bool RunningTest = false;
         internal static string TestThumbprint = string.Empty;
@@ -95,6 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         #region RM Client
+<<<<<<< HEAD
         private Lazy<IServiceFabricManagementClient> sfrpClient;
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
@@ -108,6 +129,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { sfrpClient = new Lazy<IServiceFabricManagementClient>(() => value); }
         }
 
+=======
+        private Lazy<IComputeManagementClient> computeClient;
+        private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
+        private Lazy<GraphRbacManagementClient> graphClient;
+        private Lazy<IKeyVaultClient> keyVaultClient;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal IComputeManagementClient ComputeClient
         {
             get { return computeClient.Value; }
@@ -120,12 +148,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() => value); }
         }
 
+<<<<<<< HEAD
         internal IResourceManagementClient ResourcesClient
         {
             get { return resourcesClient.Value; }
             set { resourcesClient = new Lazy<IResourceManagementClient>(() => value); }
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal GraphRbacManagementClient GraphClient
         {
             get { return graphClient.Value; }
@@ -138,13 +169,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { keyVaultClient = new Lazy<IKeyVaultClient>(() => value); }
         }
 
+<<<<<<< HEAD
         public ServiceFabricCmdletBase()
+=======
+        public ServiceFabricCmdletBase() : base()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             InitializeAzureRmClients();
         }
 
         private void InitializeAzureRmClients()
         {
+<<<<<<< HEAD
             sfrpClient = new Lazy<IServiceFabricManagementClient>(() =>
             {
                 var armClient = AzureSession.Instance.ClientFactory.
@@ -154,6 +190,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 return armClient;
             });
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             computeClient = new Lazy<IComputeManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
                 DefaultContext,
@@ -164,11 +202,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
+<<<<<<< HEAD
             resourcesClient = new Lazy<IResourceManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             keyVaultClient = new Lazy<IKeyVaultClient>(() =>
             new KeyVaultClient(AuthenticationCallback));
 
@@ -181,21 +222,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region VMSS 
 
+<<<<<<< HEAD
         protected VirtualMachineScaleSet GetVmss(string name)
+=======
+        protected VirtualMachineScaleSet GetVmss(string name, string clusterId)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new PSArgumentNullException("Invalid vmss name");
             }
 
+<<<<<<< HEAD
             var result = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
             if (result == null || !result.Any())
+=======
+            var vmssPages = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
+            if (vmssPages == null || !vmssPages.Any())
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new PSArgumentException(string.Format(
                     ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                     this.ResourceGroupName));
             }
 
+<<<<<<< HEAD
             var vmss = result.FirstOrDefault(
                 vm => vm.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
@@ -208,10 +259,43 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             return vmss;
+=======
+            do
+            {
+                if (!vmssPages.Any())
+                {
+                    break;
+                }
+
+                foreach (var vmss in vmssPages)
+                {
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        if (string.Equals(GetClusterIdFromExtension(sfExtension), clusterId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            WriteVerboseWithTimestamp(string.Format("GetVmss: Found vmss {0} that corresponds to cluster id {1}", vmss.Id, clusterId));
+                            string nodeTypeRef = GetNodeTypeRefFromExtension(sfExtension);
+                            if (string.Equals(nodeTypeRef, name, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return vmss;
+                            }
+                        }
+                    }
+                }
+            } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                     (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+            throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotFindVMSS,
+                        name));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public bool TryGetFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions, out VirtualMachineScaleSetExtension sfExtension)
         {
+<<<<<<< HEAD
             var extConfigs = extensions.Where(
                     e =>e.Type.Equals(
                        Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase));
@@ -220,22 +304,50 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 extConfigs = extensions.Where(
                    e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
+=======
+            if (extensions == null)
+            {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 sfExtension = null;
                 return false;
             }
 
+<<<<<<< HEAD
             sfExtension = extConfigs.First();
             return true;
+=======
+            sfExtension = extensions.FirstOrDefault(ext => IsSFExtension(ext));
+            return sfExtension != null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public string GetClusterIdFromExtension(VirtualMachineScaleSetExtension sfExtension)
         {
+<<<<<<< HEAD
             JObject extSettings = (JObject)sfExtension.Settings;
             string clusterEndpoint = (string)extSettings.SelectToken("clusterEndpoint");
             string id = clusterEndpoint.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             return id;
         }
 
+=======
+            string clusterEndpoint = GetSettingFromExtension(sfExtension, "clusterEndpoint");
+            string id = clusterEndpoint?.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            return id;
+        }
+
+        public string GetNodeTypeRefFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            return GetSettingFromExtension(sfExtension, "nodeTypeRef");
+        }
+
+        internal string GetSettingFromExtension(VirtualMachineScaleSetExtension sfExtension, string settingName)
+        {
+            JObject extSettings = sfExtension.Settings as JObject;
+            return (string)extSettings.SelectToken(settingName);
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         #region Key Vault 
@@ -521,6 +633,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
+<<<<<<< HEAD
         #region Helper     
 
         protected T SafeGetResource<T>(Func<T> action, bool ingoreAllError)
@@ -621,10 +734,232 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var ex = new Exception(cloudErrorMessage);
                     WriteError(
                         new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+=======
+        #region Helper
+
+        protected void PrintDetailIfThrow(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception exception)
+            {
+                PrintSdkExceptionDetail(exception);
+
+                throw;
+            }
+        }
+
+        protected T StartRequestAndWait<T>(Func<Task<AzureOperationResponse<T>>> requestAction, Func<string> getResourceCurrentStatus) where T : class
+        {
+            var progress = new ProgressRecord(0, string.Format("Request for {0} in progress", typeof(T).Name), "Starting...");
+            WriteProgress(progress);
+            AzureOperationResponse<T> beginRequestResponse = null;
+            AzureOperationResponse<T> result = null;
+            string armCorrelationId = string.Empty;
+            var tokenSource = new CancellationTokenSource();
+            try
+            {
+                var requestTask = Task.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        beginRequestResponse = requestAction().GetAwaiter().GetResult();
+                        result = this.SFRPClient.GetPutOrPatchOperationResultAsync(beginRequestResponse, null, default(CancellationToken)).GetAwaiter().GetResult();
+                    }
+                    finally
+                    {
+                        tokenSource.Cancel();
+                    }
+                });
+
+                bool correlationPrinted = false;
+                while (!tokenSource.IsCancellationRequested)
+                {
+                    tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+
+                    if (!RunningTest)
+                    {
+                        if (!correlationPrinted && beginRequestResponse != null)
+                        {
+                            WriteVerboseWithTimestamp(string.Format(
+                                "Beging request ARM correlationId: '{0}' response: '{1}'",
+                                beginRequestResponse.RequestId,
+                                beginRequestResponse.Response.StatusCode));
+                            correlationPrinted = true;
+                        }
+
+                        string progressMessage = getResourceCurrentStatus();
+                        WriteVerboseWithTimestamp(progressMessage);
+                        progress.StatusDescription = progressMessage;
+                        WriteProgress(progress);
+                    }
+                }
+
+                if (requestTask.IsFaulted)
+                {
+                    string errorMessage = "Begin request operation failed";
+                    if (beginRequestResponse != null)
+                    {
+                        errorMessage = string.Format(
+                            "Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}'",
+                            beginRequestResponse.RequestId,
+                            beginRequestResponse.Response.StatusCode);
+                        
+                    }
+
+                    WriteErrorWithTimestamp(errorMessage);
+                    throw requestTask.Exception;
+                }
+            }
+            catch (Exception e)
+            {
+                PrintSdkExceptionDetail(e);
+                throw;
+            }
+            
+            return result?.Body;
+        }
+
+        private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
+        {
+            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase) ||
+                   vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase);
+        }
+        #endregion
+
+        #region deployment helper
+        private const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+
+        protected void CheckValidationResult(DeploymentValidateResult validateResult)
+        {
+            if (validateResult.Error != null)
+            {
+                if (validateResult.Error.Details != null)
+                {
+                    foreach (var error in validateResult.Error.Details)
+                    {
+                        var ex = new Exception(
+                            string.Format(ErrorFormat, error.Code, error.Message));
+                        WriteError(
+                            new ErrorRecord(
+                                ex,
+                                string.Empty,
+                                ErrorCategory.NotSpecified,
+                                null));
+
+                        if (error.Details != null && error.Details.Count > 0)
+                        {
+                            foreach (var innerError in error.Details)
+                            {
+                                DisplayInnerDetailErrorMessage(innerError);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var ex = new Exception(
+                           string.Format(ErrorFormat, validateResult.Error.Code, validateResult.Error.Message));
+                    WriteError(
+                           new ErrorRecord(
+                               ex,
+                               string.Empty,
+                               ErrorCategory.NotSpecified,
+                               null));
+                }
+
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
+            }
+        }
+
+        protected Deployment CreateBasicDeployment(DeploymentMode deploymentMode, string templateFilePath, string parameterFilePath, string debugSetting = null, JObject parameters = null)
+        {
+            var deployment = new Deployment
+            {
+                Properties = new DeploymentProperties
+                {
+                    Mode = deploymentMode
+                }
+            };
+
+            if (!string.IsNullOrEmpty(debugSetting))
+            {
+                deployment.Properties.DebugSetting = new DebugSetting()
+                {
+                    DetailLevel = debugSetting
+                };
+            }
+
+            JObject templateJObject;
+
+            if (!TryParseJson(templateFilePath, out templateJObject))
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidTemplateFile);
+            }
+
+            deployment.Properties.Template = templateJObject;
+
+            if (parameters == null)
+            {
+                JObject parameterJObject;
+
+                if (!TryParseJson(parameterFilePath, out parameterJObject))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidTemplateParameterFile);
+                }
+
+                if (parameterJObject["parameters"] == null)
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidTemplateParameterFile);
+                }
+
+                deployment.Properties.Parameters = parameterJObject["parameters"];
+            }
+            else
+            {
+                deployment.Properties.Parameters = parameters;
+            }
+
+            return deployment;
+        }
+
+        protected void SetParameter(ref JObject parameters, string parameterName, int value)
+        {
+            var token = parameters.Children().SingleOrDefault(
+                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+            if (token != null)
+            {
+                token.First()["value"] = value;
+            }
+            else
+            {
+                parameters.Add(parameterName, value);
+            }
+        }
+
+        protected void SetParameter(ref JObject parameters, string parameterName, string value)
+        {
+            if (value != null)
+            {
+                var token = parameters.Children().SingleOrDefault(
+                        j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+                if (token != null && token.Any())
+                {
+                    token.First()["value"] = value;
+                }
+                else
+                {
+                    parameters.Add(parameterName, value);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
 
+<<<<<<< HEAD
         private string GetCloudErrorMessage(CloudError error)
         {
             if (error == null)
@@ -665,6 +1000,73 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Environment.NewLine);
 
             return message;
+=======
+        protected string TranslateToParameterName(string parameter, string templateFilePath)
+        {
+            var parameterArray = parameter.Split(
+                new char[] { '[', ']', '(', ')', '\'' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            if (parameterArray.Count() <= 1)
+            {
+                return parameter;
+            }
+
+            if (parameterArray[0].Equals("variables", StringComparison.OrdinalIgnoreCase))
+            {
+                JObject jObject;
+                if (!TryParseJson(templateFilePath, out jObject))
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                }
+
+                var variables = jObject.SelectToken("variables", true);
+                return TranslateToParameterName(variables[parameterArray[1]].ToString(), templateFilePath);
+            }
+            else
+            {
+                return parameterArray[1];
+            }
+        }
+
+        protected bool TryParseJson(string filePath, out JObject jObject)
+        {
+            var content = FileUtilities.DataStore.ReadFileAsText(filePath);
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                throw new PSArgumentException(content);
+            }
+
+            try
+            {
+                jObject = JObject.Parse(content);
+                return true;
+            }
+            catch (JsonReaderException)
+            {
+                jObject = null;
+                return false;
+            }
+        }
+
+        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
+        {
+            var ex = new Exception(string.Format(ErrorFormat, error.Code, error.Message));
+            WriteError(
+               new ErrorRecord(
+                   ex,
+                   string.Empty,
+                   ErrorCategory.NotSpecified,
+                   null));
+
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
         #endregion
     }

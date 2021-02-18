@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Alias { get; set; }
 
+<<<<<<< HEAD
+=======
+        public bool? EnableProxyProtocol { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string LoadBalancerFrontendIpConfigurationsText
         {

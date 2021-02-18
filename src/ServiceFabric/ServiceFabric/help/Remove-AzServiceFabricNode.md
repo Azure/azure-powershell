@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricnode
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,8 +30,13 @@ Use **Remove-AzServiceFabricNode** to remove nodes from a specific node type fro
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
 PS c:> Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
+=======
+```powershell
+PS c:> Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1' -NumberOfNodesToRemove 2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command will remove 2 nodes from the NodeType 'nt1'.
@@ -32,7 +44,11 @@ This command will remove 2 nodes from the NodeType 'nt1'.
 ## PARAMETERS
 
 ### -DefaultProfile
+<<<<<<< HEAD
 The credentials, account, tenant, and subscription used for communication with azure.
+=======
+The credentials, account, tenant, and subscription used for communication with Azure.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -47,7 +63,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Specify the name of the cluster.
+=======
+Specify the name of the cluster
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -62,7 +82,11 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
+<<<<<<< HEAD
 Node type name.
+=======
+Node type name
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -77,7 +101,11 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToRemove
+<<<<<<< HEAD
 Number of nodes to remove.
+=======
+The number of nodes to add
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32
@@ -92,7 +120,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+<<<<<<< HEAD
 Specifies the name of the resource group.
+=======
+Specify the name of the resource group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -122,7 +154,12 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+<<<<<<< HEAD
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
+=======
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -137,7 +174,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -153,4 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Add-AzServiceFabricNode](./Add-AzServiceFabricNode.md) 
+=======
+[Add-AzServiceFabricNode](./Add-AzServiceFabricNode.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

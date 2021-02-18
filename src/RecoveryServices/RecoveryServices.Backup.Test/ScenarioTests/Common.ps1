@@ -90,7 +90,10 @@
 			-Name $name `
 			-Location $location `
 			-Type "Standard_LRS"
+<<<<<<< HEAD
 		$job | Wait-Job
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $name
 	}
  	return $name
@@ -149,7 +152,17 @@
 	else
 	{
 		$queryDateString = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+<<<<<<< HEAD
  		$queryDate = Get-Date $queryDateString
+=======
+ 		$month = $queryDateString.Substring(0, 2)
+		$day = $queryDateString.Substring(3, 2)
+		$year = $queryDateString.Substring(6, 4)
+		$hour = $queryDateString.Substring(11, 2)
+		$minute = $queryDateString.Substring(14, 2)
+		$second = $queryDateString.Substring(17, 2)
+		$queryDate = Get-Date -Day $day -Month $month -Year $year -Hour $hour -Minute $minute -Second $second
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
  	return $queryDate
 }

@@ -77,4 +77,38 @@ function Clean-ResourceGroup($rgname)
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
         Remove-AzResourceGroup -Name $rgname -Force
     }
+<<<<<<< HEAD
+=======
+}
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ((Get-MonitorTestMode) -ne 'Playback')
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
+}
+
+<#
+.SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-MonitorTestMode {
+    try {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $testMode = 'Record';
+        } else {
+            throw;
+        }
+    }
+
+    return $testMode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

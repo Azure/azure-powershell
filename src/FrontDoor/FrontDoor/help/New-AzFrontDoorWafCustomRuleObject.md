@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,7 +19,11 @@ Create CustomRule Object for WAF policy creation
 ```
 New-AzFrontDoorWafCustomRuleObject -Name <String> -RuleType <String> -MatchCondition <PSMatchCondition[]>
  -Action <String> -Priority <Int32> [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>]
+<<<<<<< HEAD
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-EnabledState <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -67,6 +75,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -EnabledState
+Enabled State. Possible values include: 'Enabled', 'Disabled'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -MatchCondition
 List of match conditions.
 
@@ -128,7 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -RateLimitThreshold
+<<<<<<< HEAD
 Rate limit thresold
+=======
+Rate limit threshold
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -174,4 +204,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+<<<<<<< HEAD
 [Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+=======
+[Update-AzFrontDoorWafPolicy](./Update-AzFrontDoorWafPolicy.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,8 +19,13 @@ Deletes a long term retention backup.
 ### RemoveBackupDefault (Default)
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
+<<<<<<< HEAD
  [-DatabaseName] <String> [-BackupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### RemoveBackupByInputObject
@@ -36,9 +45,15 @@ The **Remove-AzSqlDatabaseLongTermRetentionBackup** cmdlet deletes the backup sp
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: Delete a single backup
 ```powershell
 PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
+=======
+### Example 1: Delete a single backup with resource group
+```powershell
+PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGrouName resourcegroup01
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
@@ -47,16 +62,26 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
 ```
 
 Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 
+<<<<<<< HEAD
 ### Example 2: Delete all backups for a location
 ```powershell
 PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+=======
+### Example 2: Delete a single backup without resource group
+```powershell
+PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server02 -DatabaseName database02 -BackupName "55970792-164c-4a4a-88e5-7158d092d503;131656309980000000"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 BackupExpirationTime : 3/22/2018 11:43:18 PM
@@ -68,6 +93,17 @@ Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 ServerName           : server02
 ServerCreateTime     : 2/28/2018 12:12:19 AM
+<<<<<<< HEAD
+=======
+```
+
+Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+
+### Example 3: Delete all backups for a location
+```powershell
+PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
@@ -75,9 +111,25 @@ BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
 Location         : northeurope
+<<<<<<< HEAD
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
+=======
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName           : server01
+ServerCreateTime     : 2/29/2018 12:12:19 AM
+
+BackupExpirationTime : 3/22/2018 11:43:18 PM
+BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+BackupTime           : 3/15/2018 11:43:18 PM
+DatabaseName         : database02
+DatabaseDeletionTime : 3/18/2018 4:36:00 PM
+Location         : northeurope
+ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+ServerName           : server02
+ServerCreateTime     : 2/28/2018 12:12:19 AM
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command deletes all long term retention backups for the northeurope location.
@@ -155,7 +207,11 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -174,6 +230,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveBackupDefault
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ResourceId
 The Resource ID of the Database Long Term Retention Backup to remove.
 

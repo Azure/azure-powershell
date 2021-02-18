@@ -16,6 +16,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+<<<<<<< HEAD
+=======
+using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -86,12 +90,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public YearlyRetentionSchedule YearlySchedule { get; set; }
 
+<<<<<<< HEAD
         public LongTermRetentionPolicy()
+=======
+        /// <summary>
+        /// BackupManagement Type associated with the policy
+        /// </summary>
+        public string BackupManagementType { get; set; }
+
+        public LongTermRetentionPolicy(string backupManagementType = "")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
             IsMonthlyScheduleEnabled = false;
             IsYearlyScheduleEnabled = false;
+<<<<<<< HEAD
+=======
+            this.BackupManagementType = backupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -115,6 +132,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 }
                 else
                 {
+<<<<<<< HEAD
+=======
+                    DailySchedule.BackupManagementType = BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     DailySchedule.Validate();
                 }
             }
@@ -127,6 +148,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 }
                 else
                 {
+<<<<<<< HEAD
+=======
+                    WeeklySchedule.BackupManagementType = BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     WeeklySchedule.Validate();
                 }
             }
@@ -139,6 +164,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 }
                 else
                 {
+<<<<<<< HEAD
+=======
+                    MonthlySchedule.BackupManagementType = BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     MonthlySchedule.Validate();
                 }
             }
@@ -151,6 +180,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 }
                 else
                 {
+<<<<<<< HEAD
+=======
+                    YearlySchedule.BackupManagementType = BackupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     YearlySchedule.Validate();
                 }
             }
@@ -202,6 +235,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public List<DateTime> RetentionTimes { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// BackupManagement Type of the retention policy
+        /// </summary>
+        public string BackupManagementType { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public virtual void Validate()
         {
             if (RetentionTimes == null || RetentionTimes.Count == 0 || RetentionTimes.Count != 1)
@@ -229,7 +270,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         // no extra fields
         public override void Validate()
         {
+<<<<<<< HEAD
             if (DurationCountInDays < 7 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
+=======
+            int MinDurationCountInDays = 7, MaxDurationCountInDays = PolicyConstants.MaxAllowedRetentionDurationCount;
+            if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                MinDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMin;
+                MaxDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMax;
+            }
+            if (DurationCountInDays < MinDurationCountInDays || DurationCountInDays > MaxDurationCountInDays)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
             }
@@ -260,7 +311,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public override void Validate()
         {
+<<<<<<< HEAD
             if (DurationCountInWeeks <= 0 || DurationCountInWeeks > PolicyConstants.MaxAllowedRetentionDurationCount)
+=======
+            int MinDurationCountInWeeks = 1, MaxDurationCountInWeeks = PolicyConstants.MaxAllowedRetentionDurationCountWeekly;
+            if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                MinDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMin;
+                MaxDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMax;
+            }
+            if (DurationCountInWeeks < MinDurationCountInWeeks || DurationCountInWeeks > MaxDurationCountInWeeks)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
@@ -314,7 +375,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
+<<<<<<< HEAD
             if (DurationCountInMonths <= 0 || DurationCountInMonths > PolicyConstants.MaxAllowedRetentionDurationCount)
+=======
+            int MinDurationCountInMonths = 1, MaxDurationCountInMonths = PolicyConstants.MaxAllowedRetentionDurationCountMonthly;
+            if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                MinDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMin;
+                MaxDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMax;
+            }
+
+            if (DurationCountInMonths < MinDurationCountInMonths || DurationCountInMonths > MaxDurationCountInMonths)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }
@@ -391,7 +463,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
+<<<<<<< HEAD
             if (DurationCountInYears <= 0 || DurationCountInYears > PolicyConstants.MaxAllowedRetentionDurationCount)
+=======
+            int MinDurationCountInYears = 1, MaxDurationCountInYears = PolicyConstants.MaxAllowedRetentionDurationCountYearly;
+            if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                MinDurationCountInYears = PolicyConstants.AfsYearlyRetentionMin;
+                MaxDurationCountInYears = PolicyConstants.AfsYearlyRetentionMax;
+            }
+            if (DurationCountInYears < MinDurationCountInYears || DurationCountInYears > MaxDurationCountInYears)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }

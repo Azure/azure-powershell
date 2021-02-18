@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
   <PropertyGroup>
     <PsModuleName>Security</PsModuleName>
@@ -11,7 +15,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="1.0.0" />
   </ItemGroup>
 
+=======
+    <None Include="SqlInformationProtectionPolicies\Empty.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypeAndSensitivityLabelSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InformationTypesSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\InvalidRank.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\MissingRank.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="2.2.0" />
+  </ItemGroup>
+  
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </Project>

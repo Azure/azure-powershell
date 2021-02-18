@@ -23,9 +23,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+<<<<<<< HEAD
     [GenericBreakingChange("New-AzIotHubImportDevices alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubImportDevice", SupportsShouldProcess = true)]
     [Alias("New-AzIotHubImportDevices")]
+=======
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubImportDevice", SupportsShouldProcess = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSIotHubJobResponse))]
     public class NewAzureRmIotHubImportDevices : IotHubBaseCmdlet
     {

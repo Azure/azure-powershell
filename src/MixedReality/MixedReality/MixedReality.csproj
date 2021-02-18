@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.MixedReality" Version="0.9.0-preview" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.MixedReality" Version="1.0.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />

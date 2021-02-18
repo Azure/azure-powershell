@@ -63,10 +63,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 PoolId = "myPool"
             };
             cmdlet.Job.Priority = 2;
+<<<<<<< HEAD
             cmdlet.Job.Metadata = new List<PSMetadataItem>()
             {
                 new PSMetadataItem("meta1", "value1"),
                 new PSMetadataItem("meta2", "value2")
+=======
+            cmdlet.Job.Metadata = new Dictionary<string, string>()
+            {
+                { "meta1", "value1" },
+                { "meta2", "value2" }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             JobUpdateParameter requestParameters = null;
@@ -88,10 +95,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Equal(cmdlet.Job.PoolInformation.PoolId, requestParameters.PoolInfo.PoolId);
             Assert.Equal(cmdlet.Job.Priority, requestParameters.Priority);
             Assert.Equal(cmdlet.Job.Metadata.Count, requestParameters.Metadata.Count);
+<<<<<<< HEAD
             Assert.Equal(cmdlet.Job.Metadata[0].Name, requestParameters.Metadata[0].Name);
             Assert.Equal(cmdlet.Job.Metadata[0].Value, requestParameters.Metadata[0].Value);
             Assert.Equal(cmdlet.Job.Metadata[1].Name, requestParameters.Metadata[1].Name);
             Assert.Equal(cmdlet.Job.Metadata[1].Value, requestParameters.Metadata[1].Value);
+=======
+            Assert.Contains(requestParameters.Metadata, p => p.Name == "meta1" && p.Value == cmdlet.Job.Metadata["meta1"].ToString());
+            Assert.Contains(requestParameters.Metadata, p => p.Name == "meta2" && p.Value == cmdlet.Job.Metadata["meta2"].ToString());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]

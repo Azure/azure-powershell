@@ -1,9 +1,16 @@
 variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
+<<<<<<< HEAD
   TestFramework: net472
   TestTarget: TestNet472
   Configuration: Debug
+=======
+  TestFramework: netcoreapp2.1
+  TestTarget: Test
+  Configuration: Debug
+  DebugLocalBuildTasks: true
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 jobs:
 - job: Build
@@ -13,6 +20,12 @@ jobs:
     vmImage: ${{ variables.WindowsImage }}
 
   steps:
+<<<<<<< HEAD
+=======
+  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    continueOnError: true
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   - template: util/build-steps.yml
     parameters:
       osName: ${{ variables.WindowsName }}
@@ -41,7 +54,11 @@ jobs:
     displayName: 'Download BinSkim'
     inputs:
       command: custom
+<<<<<<< HEAD
       arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools'
+=======
+      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools -Version 1.7.0'
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   - task: PowerShell@2
     displayName: 'Run BinSkim'
     inputs:
@@ -53,7 +70,11 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: succeeded()
+<<<<<<< HEAD
   timeoutInMinutes: 120
+=======
+  timeoutInMinutes: 180
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   pool:
     vmImage: ${{ variables.WindowsImage }}
 
@@ -63,4 +84,8 @@ jobs:
       osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
+<<<<<<< HEAD
       configuration: ${{ variables.Configuration }}
+=======
+      configuration: ${{ variables.Configuration }}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

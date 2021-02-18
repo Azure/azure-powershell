@@ -84,7 +84,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         internal async Task<SharedAccessTablePolicies> GetPoliciesAsync(IStorageTableManagement localChannel, string tableName, string policyName)
         {
             CloudTable table = localChannel.GetTableReference(tableName);
+<<<<<<< HEAD
             TablePermissions tablePermissions = await localChannel.GetTablePermissionsAsync(table).ConfigureAwait(false);
+=======
+            TablePermissions tablePermissions = await localChannel.GetTablePermissionsAsync(table, null, TableOperationContext).ConfigureAwait(false);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return tablePermissions.SharedAccessPolicies;
         }
 

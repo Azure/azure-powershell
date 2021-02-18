@@ -32,7 +32,11 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
 
 ## General breaking changes
 ### Cmdlet Noun Prefix Changes
+<<<<<<< HEAD
 In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmndlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
+=======
+In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 For example:
 ```powershell
 Get-AzureRmVM
@@ -158,7 +162,11 @@ The tooling for these services are no longer actively supported.  Customers are 
   - Set-AzureRmApiManagementHostnames
   - Update-AzureRmApiManagementDeployment
   - Import-AzureRmApiManagementHostnameCertificate
+<<<<<<< HEAD
   - Use **Set-AzApiManagement** cmdlet to set these properites instead
+=======
+  - Use **Set-AzApiManagement** cmdlet to set these properties instead
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Following properties were removed
   - Removed property `PortalHostnameConfiguration`, `ProxyHostnameConfiguration`, `ManagementHostnameConfiguration` and `ScmHostnameConfiguration` of type `PsApiManagementHostnameConfiguration` from `PsApiManagementContext`. Instead use `PortalCustomHostnameConfiguration`, `ProxyCustomHostnameConfiguration`, `ManagementCustomHostnameConfiguration` and `ScmCustomHostnameConfiguration` of type `PsApiManagementCustomHostNameConfiguration`.
   - Removed property `StaticIPs` from PsApiManagementContext. The property has been split into `PublicIPAddresses` and `PrivateIPAddresses`.
@@ -204,7 +212,11 @@ The tooling for these services are no longer actively supported.  Customers are 
   New-AzDataLakeStoreAccount -Tag @{TagName="TagValue"}
   ```
 
+<<<<<<< HEAD
 - Removed deprecated properties ```Identity```, ```EncryptionState```, ```EncrypotionProvisioningState```, ```EncryptionConfig```, ```FirewallState```, ```FirewallRules```, ```VirtualNetworkRules```, ```TrustedIdProviderState```, ```TrustedIdProviders```, ```DefaultGroup```, ```NewTier```, ```CurrentTier```, ```FirewallAllowAzureIps``` from ```PSDataLakeStoreAccountBasic``` object.  Any script that 
+=======
+- Removed deprecated properties ```Identity```, ```EncryptionState```, ```EncryptionProvisioningState```, ```EncryptionConfig```, ```FirewallState```, ```FirewallRules```, ```VirtualNetworkRules```, ```TrustedIdProviderState```, ```TrustedIdProviders```, ```DefaultGroup```, ```NewTier```, ```CurrentTier```, ```FirewallAllowAzureIps``` from ```PSDataLakeStoreAccountBasic``` object.  Any script that 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 uses the ```PSDatalakeStoreAccount``` returned from ```Get-AzDataLakeStoreAccount``` should not reference these properties.
 
 ### Az.KeyVault (previously AzureRM.KeyVault)

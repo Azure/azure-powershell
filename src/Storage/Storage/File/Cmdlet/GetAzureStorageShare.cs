@@ -21,9 +21,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System;
     using System.Globalization;
     using System.Management.Automation;
+<<<<<<< HEAD
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(CloudFileShare))]
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
+    [OutputType(typeof(AzureStorageFileShare))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -70,7 +78,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         NamingUtil.ValidateShareName(this.Name, false);
                         var share = this.Channel.GetShareReference(this.Name, this.SnapshotTime);
                         await this.Channel.FetchShareAttributesAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+<<<<<<< HEAD
                         this.OutputStream.WriteObject(taskId, share);
+=======
+                        WriteCloudShareObject(taskId, this.Channel, share);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                         break;
 
@@ -79,7 +91,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         await this.Channel.EnumerateSharesAsync(
                             this.Prefix,
                             ShareListingDetails.All,
+<<<<<<< HEAD
                             item => this.OutputStream.WriteObject(taskId, item),
+=======
+                            item => WriteCloudShareObject(taskId, this.Channel, item),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             this.RequestOptions,
                             this.OperationContext,
                             this.CmdletCancellationToken).ConfigureAwait(false);

@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,18 +40,28 @@ The Remove-AzEventHub cmdlet removes and deletes the specified Event Hub from th
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 ```
 
 Removes the Event Hub \`MyEventHubName\`.
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using Variable:
 ```
+=======
+### Example 2: InputObject - Using Variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $inputobject = Get-AzEventHub <params>
 PS C:\> Remove-AzEventHub -InputObject $inputobject
 ```
 
+<<<<<<< HEAD
 ### Example 2.2 - InputObject Using Piping:
 ```
 PS C:\> Get-AzEventHub <params> | Remove-AzEventHub
@@ -55,12 +69,26 @@ PS C:\> Get-AzEventHub <params> | Remove-AzEventHub
 
 ### Example 3.1 - ResourceId - Using Variable:
 ```
+=======
+### Example 3: InputObject Using Piping:
+```powershell
+PS C:\> Get-AzEventHub <params> | Remove-AzEventHub
+```
+
+### Example 4: ResourceId - Using Variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $resourceid = Get-AzEventHub <params>
 PS C:\> Remove-AzEventHub -ResourceId $resourceid.Id
 ```
 
+<<<<<<< HEAD
 ### Example 3.1 - ResourceId - Using string:
 ```
+=======
+### Example 5: ResourceId - Using string:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
 ```
 

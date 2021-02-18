@@ -178,6 +178,10 @@ function Test-ListDatabaseAdvisorsExpanded
 			-ExpandRecommendedActions
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
+<<<<<<< HEAD
+=======
+		
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		foreach($advisor in $response)
 		{
 			ValidateDatabase $advisor $db
@@ -345,7 +349,11 @@ function Test-GetElasticPoolAdvisor
 #>
 function SetupServer($resourceGroup)
 {
+<<<<<<< HEAD
 	$location = "Southeast Asia"
+=======
+	$location = "westcentralus"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$server = Create-ServerForTest $resourceGroup $location
 	return $server
 }
@@ -362,7 +370,11 @@ function SetupDatabase($resourceGroup)
 		-ResourceGroupName $server.ResourceGroupName `
 		-ServerName $server.ServerName `
 		-DatabaseName $databaseName `
+<<<<<<< HEAD
 		-Edition Basic
+=======
+		-Edition Basic -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	return $db
 }
 

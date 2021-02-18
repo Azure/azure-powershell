@@ -1,0 +1,993 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f57efde1-e76d-4135-9d73-a2e91fafa922"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1210726d-23a5-486c-b10e-7bbcbc8b7492"
+        ],
+        "x-ms-client-request-id": [
+          "f57efde1-e76d-4135-9d73-a2e91fafa922"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "1210726d-23a5-486c-b10e-7bbcbc8b7492"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044534Z:1210726d-23a5-486c-b10e-7bbcbc8b7492"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:34 GMT"
+        ],
+        "Content-Length": [
+          "355"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"cmkvaultccy\",\r\n      \"etag\": \"W/\\\"datetime'2019-12-17T09%3A57%3A56.882816Z'\\\"\",\r\n      \"properties\": {},\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7101ff7d-8cdb-498d-ba58-c575f9c62dd3-2020-01-09 04:45:34Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541534933)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146334933)\\/\",\"ClientRequestId\":\"7101ff7d-8cdb-498d-ba58-c575f9c62dd3-2020-01-09 04:45:34Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TKHyw+Y2EeZ5fAC3Pqk5B+CXFD5pFRPzO7cGZCuBzjg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "7101ff7d-8cdb-498d-ba58-c575f9c62dd3-2020-01-09 04:45:34Z-Ps 1/9/2020 4:45:35 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7101ff7d-8cdb-498d-ba58-c575f9c62dd3-2020-01-09 04:45:34Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "17bcabbd-8e5a-4b3f-a254-2bd9f33b997c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044535Z:17bcabbd-8e5a-4b3f-a254-2bd9f33b997c"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:34 GMT"
+        ],
+        "Content-Length": [
+          "13459"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"HyperVSite\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"HyperVSite\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"HyperVSite\"\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"ddc719696fc43f73b0c36fe45cb558f76ebe642061f06d5af2c2840367b79509\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/ddc719696fc43f73b0c36fe45cb558f76ebe642061f06d5af2c2840367b79509\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ANUTALLUCS\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"1fd71ff2-12b9-4ca7-b7d5-d36edef5ccc2\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"anutallucs\",\r\n              \"id\": \"5C12EBF4-F86C-4247-BBD948182F762D3B\",\r\n              \"ipAddress\": \"10.150.0.194\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.30.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-07T05:17:06Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.30.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.30.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"5C12EBF4-F86C-4247-BBD948182F762D3B\",\r\n              \"machineCount\": \"0\",\r\n              \"replicationPairCount\": \"0\",\r\n              \"systemLoad\": \"1\",\r\n              \"systemLoadStatus\": \"Green\",\r\n              \"cpuLoad\": \"40%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 9931644928,\r\n              \"availableMemoryInBytes\": 6299642378,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 107004030976,\r\n              \"availableSpaceInBytes\": 88296080042,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2022-09-19T17:42:52Z\",\r\n              \"sslCertExpiryRemainingDays\": 984,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.30.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"None\",\r\n              \"psStatsRefreshTime\": \"2020-01-07T05:17:45Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 0,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": null,\r\n              \"marsRegistrationStatus\": null\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"5C12EBF4-F86C-4247-BBD948182F762D3B\",\r\n              \"ipAddress\": \"10.150.0.194\",\r\n              \"name\": \"anutallucs\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.30.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-07T05:17:48Z\",\r\n              \"versionStatus\": \"Supported\",\r\n              \"retentionVolumes\": [],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2012 R2 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9165.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.30.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9165.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"winvm\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"linvm\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"0\",\r\n          \"processServerCount\": \"1\",\r\n          \"agentCount\": \"4\",\r\n          \"protectedServers\": \"0\",\r\n          \"systemLoad\": \"1\",\r\n          \"systemLoadStatus\": \"Green\",\r\n          \"cpuLoad\": \"40%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 9931644928,\r\n          \"availableMemoryInBytes\": 6299642378,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 107004030976,\r\n          \"availableSpaceInBytes\": 88296080042,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.150.0.194\",\r\n          \"agentVersion\": \"9.30.0.0\",\r\n          \"hostName\": \"anutallucs\",\r\n          \"lastHeartbeat\": \"2020-01-07T05:18:38.1807501Z\",\r\n          \"versionStatus\": \"Supported\",\r\n          \"sslCertExpiryDate\": \"2022-09-19T17:42:51Z\",\r\n          \"sslCertExpiryRemainingDays\": 984,\r\n          \"psTemplateVersion\": \"201910.22.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.30.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [\r\n          {\r\n            \"errorSource\": \"FabricHealthErrorOnPrimary\",\r\n            \"errorType\": null,\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"FabricInfrastructure\",\r\n            \"errorCode\": \"813\",\r\n            \"summaryMessage\": \"Recovery Services Provider heartbeat is missing\",\r\n            \"errorMessage\": \"The Configuration server ANUTALLUCS isn't connected.\",\r\n            \"possibleCauses\": \"Required services may not be running on the Configuration server ANUTALLUCS.\",\r\n            \"recommendedAction\": \"\\n      Ensure that:\\n      1. The Microsoft Azure Site Recovery Provider service is running.\\n      2. The server can connect to the Internet.\\n      3. The proxy settings used to connect to Azure Site Recovery are correct.\\n      4. The Provider version running on the server is up-to-date. Click Download Provider to obtain the latest version\\n      5. The certificate used to connect from Azure to the Configuration server is valid.\\n    \",\r\n            \"creationTimeUtc\": \"2020-01-07T05:45:14.7217539Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"1fd71ff2-12b9-4ca7-b7d5-d36edef5ccc2\"\r\n          }\r\n        ],\r\n        \"health\": \"Normal\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"6082a9599a4d24e0ef253d48821f50eb903836e625ba62cc7409329480800939\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/6082a9599a4d24e0ef253d48821f50eb903836e625ba62cc7409329480800939\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"IDCLAB-A910.ntdev.corp.microsoft.com\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"Enabled\",\r\n          \"kekCertThumbprint\": \"DCF19C8DD4DFC64E4CB49F355612040DEE717AFE\",\r\n          \"kekCertExpiryDate\": \"2022-12-17T17:01:50Z\"\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"Enabled\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"47041ece-9e7c-4386-a12c-a299146398dc\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMM\"\r\n        },\r\n        \"healthErrorDetails\": [\r\n          {\r\n            \"errorSource\": \"FabricHealthErrorOnPrimary\",\r\n            \"errorType\": null,\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"FabricInfrastructure\",\r\n            \"errorCode\": \"604\",\r\n            \"summaryMessage\": \"Recovery Services Provider heartbeat is missing\",\r\n            \"errorMessage\": \"Recovery Services Provider heartbeat missing.\",\r\n            \"possibleCauses\": \"Recovery Services Provider heartbeat is missing.\",\r\n            \"recommendedAction\": \"Ensure that the VMM server is connected to the network and accessible.\",\r\n            \"creationTimeUtc\": \"2020-01-07T06:15:30.1346227Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"47041ece-9e7c-4386-a12c-a299146398dc\"\r\n          }\r\n        ],\r\n        \"health\": \"Normal\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"ce7ec2de8efabdac05a755c3bb472a924e11a5ae890d82058d1bb22d278e601d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/ce7ec2de8efabdac05a755c3bb472a924e11a5ae890d82058d1bb22d278e601d\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"V2A-CS400\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"7c5b1cc2-37e0-48c0-8011-d6fa4513da21\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"VMware\",\r\n          \"processServers\": [\r\n            {\r\n              \"friendlyName\": \"V2A-CS400\",\r\n              \"id\": \"2CF2B06A-896B-6949-9A24BE40F4029779\",\r\n              \"ipAddress\": \"10.169.20.253\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.31.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-09T04:39:54Z\",\r\n              \"versionStatus\": \"NotSupported\",\r\n              \"mobilityServiceUpdates\": [\r\n                {\r\n                  \"version\": \"9.31.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Windows\"\r\n                },\r\n                {\r\n                  \"version\": \"9.31.0.0\",\r\n                  \"rebootStatus\": \"NotRequired\",\r\n                  \"osType\": \"Linux\"\r\n                }\r\n              ],\r\n              \"hostId\": \"2CF2B06A-896B-6949-9A24BE40F4029779\",\r\n              \"machineCount\": \"2\",\r\n              \"replicationPairCount\": \"2\",\r\n              \"systemLoad\": \"8\",\r\n              \"systemLoadStatus\": \"Yellow\",\r\n              \"cpuLoad\": \"50%\",\r\n              \"cpuLoadStatus\": \"Green\",\r\n              \"totalMemoryInBytes\": 19729534976,\r\n              \"availableMemoryInBytes\": 15357470025,\r\n              \"memoryUsageStatus\": \"Green\",\r\n              \"totalSpaceInBytes\": 274874757120,\r\n              \"availableSpaceInBytes\": 270926505301,\r\n              \"spaceUsageStatus\": \"Green\",\r\n              \"psServiceStatus\": \"Running\",\r\n              \"sslCertExpiryDate\": \"2022-12-25T10:40:50Z\",\r\n              \"sslCertExpiryRemainingDays\": 1081,\r\n              \"osVersion\": null,\r\n              \"healthErrors\": [],\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.31.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"health\": \"Normal\",\r\n              \"historicHealth\": \"Normal\",\r\n              \"psStatsRefreshTime\": \"2020-01-09T04:41:24Z\",\r\n              \"throughputUploadPendingDataInBytes\": 0,\r\n              \"throughputInMBps\": 0,\r\n              \"throughputInBytes\": 55781,\r\n              \"throughputStatus\": \"Green\",\r\n              \"marsCommunicationStatus\": null,\r\n              \"marsRegistrationStatus\": null\r\n            }\r\n          ],\r\n          \"masterTargetServers\": [\r\n            {\r\n              \"id\": \"87c4a5f6-3614-48ff-bfed-cf7acf8ef966\",\r\n              \"ipAddress\": \"10.150.11.133\",\r\n              \"name\": \"V2ASO-MT-04\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.31.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-09T04:41:54Z\",\r\n              \"versionStatus\": \"NotSupported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"E\",\r\n                  \"capacityInBytes\": 107371032576,\r\n                  \"freeSpaceInBytes\": 107249786880,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"Local-DS-33\",\r\n                  \"uuid\": \"5a71e407-5ee98db7-4bbd-1866daf486be\",\r\n                  \"capacity\": \"550.75\",\r\n                  \"freeSpace\": \"518.21\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-33-FC-4TB-1\",\r\n                  \"uuid\": \"5a787bee-8e7a1296-cde3-1866daf486be\",\r\n                  \"capacity\": \"4095.75\",\r\n                  \"freeSpace\": \"2887.8\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"8TBDatastore\",\r\n                  \"uuid\": \"5cdda609-7fef7505-58be-1866daf486be\",\r\n                  \"capacity\": \"8191.75\",\r\n                  \"freeSpace\": \"28.99\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"BCDR-EWLAB-34_4TB\",\r\n                  \"uuid\": \"5d032bd0-7d6184f8-822a-1866daf486be\",\r\n                  \"capacity\": \"4095.75\",\r\n                  \"freeSpace\": \"3217.93\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"NFS-2TB\",\r\n                  \"uuid\": \"\",\r\n                  \"capacity\": \"2035.48\",\r\n                  \"freeSpace\": \"994.2\",\r\n                  \"type\": \"NFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 2,\r\n              \"osVersion\": \"Microsoft Windows Server 2012 R2 Standard\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.31.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"bdc00159-d094-4677-bb76-3417075da535\",\r\n              \"ipAddress\": \"10.150.13.84\",\r\n              \"name\": \"V2A-LMT-1\",\r\n              \"osType\": \"Linux\",\r\n              \"agentVersion\": \"9.31.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-09T04:41:31Z\",\r\n              \"versionStatus\": \"NotSupported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"/mnt/retention\",\r\n                  \"capacityInBytes\": 107374182400,\r\n                  \"freeSpaceInBytes\": 100107190272,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [\r\n                {\r\n                  \"symbolicName\": \"Local-DS-33\",\r\n                  \"uuid\": \"5a71e407-5ee98db7-4bbd-1866daf486be\",\r\n                  \"capacity\": \"550.75\",\r\n                  \"freeSpace\": \"518.21\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"DS-33-FC-4TB-1\",\r\n                  \"uuid\": \"5a787bee-8e7a1296-cde3-1866daf486be\",\r\n                  \"capacity\": \"4095.75\",\r\n                  \"freeSpace\": \"2887.8\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"8TBDatastore\",\r\n                  \"uuid\": \"5cdda609-7fef7505-58be-1866daf486be\",\r\n                  \"capacity\": \"8191.75\",\r\n                  \"freeSpace\": \"28.99\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"BCDR-EWLAB-34_4TB\",\r\n                  \"uuid\": \"5d032bd0-7d6184f8-822a-1866daf486be\",\r\n                  \"capacity\": \"4095.75\",\r\n                  \"freeSpace\": \"3217.93\",\r\n                  \"type\": \"VMFS\"\r\n                },\r\n                {\r\n                  \"symbolicName\": \"NFS-2TB\",\r\n                  \"uuid\": \"\",\r\n                  \"capacity\": \"2035.48\",\r\n                  \"freeSpace\": \"994.2\",\r\n                  \"type\": \"NFS\"\r\n                }\r\n              ],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 4,\r\n              \"osVersion\": \"DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=\\\"Ubuntu 16.04 LTS\\\"\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.31.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"\"\r\n              }\r\n            },\r\n            {\r\n              \"id\": \"2CF2B06A-896B-6949-9A24BE40F4029779\",\r\n              \"ipAddress\": \"10.169.20.253\",\r\n              \"name\": \"V2A-CS400\",\r\n              \"osType\": \"Windows\",\r\n              \"agentVersion\": \"9.31.0.0\",\r\n              \"lastHeartbeat\": \"2020-01-09T04:41:44Z\",\r\n              \"versionStatus\": \"NotSupported\",\r\n              \"retentionVolumes\": [\r\n                {\r\n                  \"volumeName\": \"D\",\r\n                  \"capacityInBytes\": 34358620160,\r\n                  \"freeSpaceInBytes\": 31724371968,\r\n                  \"thresholdPercentage\": null\r\n                },\r\n                {\r\n                  \"volumeName\": \"F\",\r\n                  \"capacityInBytes\": 274874757120,\r\n                  \"freeSpaceInBytes\": 274743943168,\r\n                  \"thresholdPercentage\": null\r\n                }\r\n              ],\r\n              \"dataStores\": [],\r\n              \"validationErrors\": [],\r\n              \"healthErrors\": [],\r\n              \"diskCount\": 0,\r\n              \"osVersion\": \"Microsoft Windows Server 2016 Datacenter\",\r\n              \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"marsAgentVersion\": \"2.0.9165.0\",\r\n              \"marsAgentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n              \"agentVersionDetails\": {\r\n                \"version\": \"9.31.0.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              },\r\n              \"marsAgentVersionDetails\": {\r\n                \"version\": \"2.0.9165.0\",\r\n                \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n                \"status\": \"Supported\"\r\n              }\r\n            }\r\n          ],\r\n          \"runAsAccounts\": [\r\n            {\r\n              \"accountId\": \"1\",\r\n              \"accountName\": \"Win\"\r\n            },\r\n            {\r\n              \"accountId\": \"2\",\r\n              \"accountName\": \"Lin\"\r\n            }\r\n          ],\r\n          \"replicationPairCount\": \"2\",\r\n          \"processServerCount\": \"1\",\r\n          \"agentCount\": \"5\",\r\n          \"protectedServers\": \"2\",\r\n          \"systemLoad\": \"8\",\r\n          \"systemLoadStatus\": \"Yellow\",\r\n          \"cpuLoad\": \"50%\",\r\n          \"cpuLoadStatus\": \"Green\",\r\n          \"totalMemoryInBytes\": 19729534976,\r\n          \"availableMemoryInBytes\": 15357470025,\r\n          \"memoryUsageStatus\": \"Green\",\r\n          \"totalSpaceInBytes\": 274874757120,\r\n          \"availableSpaceInBytes\": 270926505301,\r\n          \"spaceUsageStatus\": \"Green\",\r\n          \"webLoad\": \"0\",\r\n          \"webLoadStatus\": \"Green\",\r\n          \"databaseServerLoad\": \"0.25\",\r\n          \"databaseServerLoadStatus\": \"Green\",\r\n          \"csServiceStatus\": \"Running\",\r\n          \"ipAddress\": \"10.169.20.253\",\r\n          \"agentVersion\": \"9.31.0.0\",\r\n          \"hostName\": \"V2A-CS400\",\r\n          \"lastHeartbeat\": \"2020-01-09T04:42:14.6081524Z\",\r\n          \"versionStatus\": \"NotSupported\",\r\n          \"sslCertExpiryDate\": \"2022-12-25T10:40:48Z\",\r\n          \"sslCertExpiryRemainingDays\": 1081,\r\n          \"psTemplateVersion\": \"201910.22.00\",\r\n          \"agentExpiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n          \"agentVersionDetails\": {\r\n            \"version\": \"9.31.0.0\",\r\n            \"expiryDate\": \"9999-12-31T23:59:59.9999999\",\r\n            \"status\": \"Supported\"\r\n          }\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGU/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9e35d69-b2e3-4ee6-8af6-3711bf87fe3b-2020-01-09 04:45:35Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541535454)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146335454)\\/\",\"ClientRequestId\":\"a9e35d69-b2e3-4ee6-8af6-3711bf87fe3b-2020-01-09 04:45:35Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"jfNEN4gBk6ibQMP0FecPJ1Z+qfpP/IYrA4uVI8g0yOU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "a9e35d69-b2e3-4ee6-8af6-3711bf87fe3b-2020-01-09 04:45:35Z-Ps 1/9/2020 4:45:35 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "a9e35d69-b2e3-4ee6-8af6-3711bf87fe3b-2020-01-09 04:45:35Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "080f014e-cce4-48cc-a01e-128363053220"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044535Z:080f014e-cce4-48cc-a01e-128363053220"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:35 GMT"
+        ],
+        "Content-Length": [
+          "601"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"HyperVSite\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"HyperVSite\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"HyperVSite\"\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "17baae19-c4db-4b5a-9187-cd41fb3f57bc-2020-01-09 04:45:35Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541535865)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146335865)\\/\",\"ClientRequestId\":\"17baae19-c4db-4b5a-9187-cd41fb3f57bc-2020-01-09 04:45:35Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"WclswIacEtXCbNq8MURYhmVmChbDYB0jD4A0D6xTXyM=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "17baae19-c4db-4b5a-9187-cd41fb3f57bc-2020-01-09 04:45:35Z-Ps 1/9/2020 4:45:36 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "17baae19-c4db-4b5a-9187-cd41fb3f57bc-2020-01-09 04:45:35Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d342aa1-2ffa-4172-9053-ebb770bedd4b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044536Z:5d342aa1-2ffa-4172-9053-ebb770bedd4b"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:35 GMT"
+        ],
+        "Content-Length": [
+          "616"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n      \"name\": \"cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n      \"properties\": {\r\n        \"fabricFriendlyName\": \"HyperVSite\",\r\n        \"friendlyName\": \"HyperVSite\",\r\n        \"fabricType\": \"HyperVSite\",\r\n        \"protectedItemCount\": 3,\r\n        \"pairingStatus\": \"Paired\",\r\n        \"role\": \"Primary\",\r\n        \"fabricSpecificDetails\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3M/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e848c8d4-bfb7-4cb8-8bf5-75e33d4abfa5-2020-01-09 04:45:36Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541536228)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146336228)\\/\",\"ClientRequestId\":\"e848c8d4-bfb7-4cb8-8bf5-75e33d4abfa5-2020-01-09 04:45:36Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"D2LAELqE2YO6yyIWwhdfnlXefCscVAbARAq4KIFAguc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "e848c8d4-bfb7-4cb8-8bf5-75e33d4abfa5-2020-01-09 04:45:36Z-Ps 1/9/2020 4:45:36 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "e848c8d4-bfb7-4cb8-8bf5-75e33d4abfa5-2020-01-09 04:45:36Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "06e72014-69c7-4c3b-8d7f-1e7867752a49"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044536Z:06e72014-69c7-4c3b-8d7f-1e7867752a49"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:36 GMT"
+        ],
+        "Content-Length": [
+          "1085"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectionContainerMappings/ccc44dbe-e560-468c-aea9-c2761d1e237c\",\r\n      \"name\": \"ccc44dbe-e560-468c-aea9-c2761d1e237c\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"Microsoft Azure\",\r\n        \"targetProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"providerSpecificDetails\": null,\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"sourceFabricFriendlyName\": \"HyperVSite\",\r\n        \"targetFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"policyFriendlyName\": \"b2apolicy\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25Qb2xpY2llcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "020aa7ce-cd51-4d50-bd59-4febc3be6def-2020-01-09 04:45:36Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541536592)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146336592)\\/\",\"ClientRequestId\":\"020aa7ce-cd51-4d50-bd59-4febc3be6def-2020-01-09 04:45:36Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"e2Y8bvgWu5cUJHsbZlICsDhBE/6BsWPXdnRa/+kEDZg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "020aa7ce-cd51-4d50-bd59-4febc3be6def-2020-01-09 04:45:36Z-Ps 1/9/2020 4:45:37 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "020aa7ce-cd51-4d50-bd59-4febc3be6def-2020-01-09 04:45:36Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "d351f3a6-870c-4bf7-8222-2f03e158f22c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044537Z:d351f3a6-870c-4bf7-8222-2f03e158f22c"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:37 GMT"
+        ],
+        "Content-Length": [
+          "3148"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/e2policy\",\r\n      \"name\": \"e2policy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"e2policy\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"recoveryPointHistoryDurationInHours\": 2,\r\n          \"applicationConsistentSnapshotFrequencyInHours\": 1,\r\n          \"replicationInterval\": 300,\r\n          \"encryption\": \"Disabled\",\r\n          \"activeStorageAccountId\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n      \"name\": \"b2apolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2apolicy\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"recoveryPointHistoryDurationInHours\": 2,\r\n          \"applicationConsistentSnapshotFrequencyInHours\": 1,\r\n          \"replicationInterval\": 300,\r\n          \"encryption\": \"Disabled\",\r\n          \"activeStorageAccountId\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/v2apolicy-failback\",\r\n      \"name\": \"v2apolicy-failback\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"v2apolicy-failback\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"InMage\",\r\n          \"recoveryPointThresholdInMinutes\": 60,\r\n          \"recoveryPointHistory\": 1440,\r\n          \"appConsistentFrequencyInMinutes\": 60,\r\n          \"multiVmSyncStatus\": \"Enabled\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/policy1912\",\r\n      \"name\": \"policy1912\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy1912\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"InMageAzureV2\",\r\n          \"crashConsistentFrequencyInMinutes\": 5,\r\n          \"recoveryPointThresholdInMinutes\": 60,\r\n          \"recoveryPointHistory\": 1440,\r\n          \"appConsistentFrequencyInMinutes\": 60,\r\n          \"multiVmSyncStatus\": \"Enabled\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/policy1912-failback\",\r\n      \"name\": \"policy1912-failback\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"policy1912-failback\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"InMage\",\r\n          \"recoveryPointThresholdInMinutes\": 60,\r\n          \"recoveryPointHistory\": 1440,\r\n          \"appConsistentFrequencyInMinutes\": 60,\r\n          \"multiVmSyncStatus\": \"Enabled\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/v2apolicy\",\r\n      \"name\": \"v2apolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"v2apolicy\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"InMageAzureV2\",\r\n          \"crashConsistentFrequencyInMinutes\": 5,\r\n          \"recoveryPointThresholdInMinutes\": 60,\r\n          \"recoveryPointHistory\": 1440,\r\n          \"appConsistentFrequencyInMinutes\": 60,\r\n          \"multiVmSyncStatus\": \"Enabled\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25Qb2xpY2llcy9iMmFwb2xpY3k/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c1b7eb6-3189-4acb-a562-39dd41e1d756-2020-01-09 04:45:37Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541537967)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146337967)\\/\",\"ClientRequestId\":\"7c1b7eb6-3189-4acb-a562-39dd41e1d756-2020-01-09 04:45:37Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"pzCsFe6daN5aRw6NQutnRvxdXBn3o8uOOEvLMQ14Iw0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "7c1b7eb6-3189-4acb-a562-39dd41e1d756-2020-01-09 04:45:37Z-Ps 1/9/2020 4:45:38 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7c1b7eb6-3189-4acb-a562-39dd41e1d756-2020-01-09 04:45:37Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4449112-1097-44de-ae85-ed7f5da429e0"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044538Z:d4449112-1097-44de-ae85-ed7f5da429e0"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:37 GMT"
+        ],
+        "Content-Length": [
+          "528"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n  \"name\": \"b2apolicy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"b2apolicy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryPointHistoryDurationInHours\": 2,\r\n      \"applicationConsistentSnapshotFrequencyInHours\": 1,\r\n      \"replicationInterval\": 300,\r\n      \"encryption\": \"Disabled\",\r\n      \"activeStorageAccountId\": null\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68a6c6ab-caaf-4ade-a289-e717bb6a7474-2020-01-09 04:45:38Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541538271)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146338271)\\/\",\"ClientRequestId\":\"68a6c6ab-caaf-4ade-a289-e717bb6a7474-2020-01-09 04:45:38Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6Oq2dnsMaCvyZ3hcIQRvEdBSqeQVmoGobtFQYoFZTjg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "68a6c6ab-caaf-4ade-a289-e717bb6a7474-2020-01-09 04:45:38Z-Ps 1/9/2020 4:45:38 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "68a6c6ab-caaf-4ade-a289-e717bb6a7474-2020-01-09 04:45:38Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "072f2508-9c88-40f7-ab7d-f17d230a4085"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044538Z:072f2508-9c88-40f7-ab7d-f17d230a4085"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:38 GMT"
+        ],
+        "Content-Length": [
+          "17975"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"name\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Critical\",\r\n        \"healthErrors\": [\r\n          {\r\n            \"innerHealthErrors\": [],\r\n            \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n            \"errorType\": \"8010\",\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"TestFailover\",\r\n            \"errorCode\": \"161011\",\r\n            \"summaryMessage\": \"\",\r\n            \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm1'.\",\r\n            \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n            \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n            \"creationTimeUtc\": \"2020-01-09T04:38:27.8682952Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n            \"errorId\": \"6:8010\",\r\n            \"customerResolvability\": \"NotAllowed\"\r\n          }\r\n        ],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": null,\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"32d53999-5f7b-4eae-b69c-68b7948a04b0\",\r\n              \"diskId\": \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n              \"vhdName\": \"b2a-vm1\",\r\n              \"maxSizeMB\": \"20480\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": null\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm1\",\r\n          \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2020-01-09T04:32:36Z\",\r\n          \"rpoInSeconds\": 7,\r\n          \"lastRpoCalculatedTime\": \"2020-01-09T04:42:44.2656632Z\",\r\n          \"vmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"37\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Windows\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 1024,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"WindowsServer\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"9635d137-374c-4690-870b-35e561f287d5\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n      \"name\": \"b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm-l-1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"UnplannedFailoverCommitPendingStatesBegin\",\r\n        \"protectionStateDescription\": \"Failover completed\",\r\n        \"activeLocation\": \"Recovery\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"CompleteMigration\",\r\n          \"Commit\",\r\n          \"DisableProtection\",\r\n          \"ChangePit\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"lastSuccessfulFailoverTime\": \"2019-12-27T03:39:58.5008286Z\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55/recoveryPoints/1dd132dd-07cc-473b-a20b-18964f6103ca\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"02e4be8e-2ac9-4935-a698-2a0be873c96c\",\r\n              \"diskId\": \"B7098B1C-A8D0-4DC6-B617-907E3294FC55_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n              \"vhdName\": \"b2a-vm-l-1\",\r\n              \"maxSizeMB\": \"16384\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm-l-1\",\r\n          \"recoveryAzureVMSize\": \"Standard_A1\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2019-12-27T02:53:18Z\",\r\n          \"rpoInSeconds\": 1229,\r\n          \"lastRpoCalculatedTime\": \"2019-12-27T03:13:48.2150762Z\",\r\n          \"vmId\": \"b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n          \"vmProtectionState\": \"UnplannedFailoverCommitPendingStatesBegin\",\r\n          \"vmProtectionStateDescription\": \"Failover completed\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"1\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OkI3MDk4QjFDLUE4RDAtNERDNi1CNjE3LTkwN0UzMjk0RkM1NVxEN0NEQzZENS02MTE3LTQ2N0QtQTE0RS0wMTAxRkExNTVDMEE=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OkI3MDk4QjFDLUE4RDAtNERDNi1CNjE3LTkwN0UzMjk0RkM1NVxEN0NEQzZENS02MTE3LTQ2N0QtQTE0RS0wMTAxRkExNTVDMEE=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Linux\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 512,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"NotSpecified\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"25088eee-5671-464b-8fa7-942768beaa50\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n      \"name\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm2\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Critical\",\r\n        \"healthErrors\": [\r\n          {\r\n            \"innerHealthErrors\": [],\r\n            \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n            \"errorType\": \"8010\",\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"TestFailover\",\r\n            \"errorCode\": \"161011\",\r\n            \"summaryMessage\": \"\",\r\n            \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm2'.\",\r\n            \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n            \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n            \"creationTimeUtc\": \"2020-01-09T03:00:08.5092401Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n            \"errorId\": \"6:8010\",\r\n            \"customerResolvability\": \"NotAllowed\"\r\n          }\r\n        ],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": null,\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"e52433f4-4935-4d2a-98e9-3a18b5357c73\",\r\n              \"diskId\": \"FE577CC7-A09C-483D-B7D1-97547E9864A1_396E2DBC-B49A-4696-993C-85AC8FA60AA6_0_0\",\r\n              \"vhdName\": \"b2a-vm2\",\r\n              \"maxSizeMB\": \"20480\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm2\",\r\n          \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2020-01-09T04:35:10Z\",\r\n          \"rpoInSeconds\": 7,\r\n          \"lastRpoCalculatedTime\": \"2020-01-09T04:45:18.0001915Z\",\r\n          \"vmId\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OkZFNTc3Q0M3LUEwOUMtNDgzRC1CN0QxLTk3NTQ3RTk4NjRBMVw4NDU5NUM2Ni1CNDA2LTQxRjMtODJFNy0xN0JFQzg4NjU4MEQ=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OkZFNTc3Q0M3LUEwOUMtNDgzRC1CN0QxLTk3NTQ3RTk4NjRBMVw4NDU5NUM2Ni1CNDA2LTQxRjMtODJFNy0xN0JFQzg4NjU4MEQ=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Windows\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 1024,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"WindowsServer\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"a0e32f95-422d-4da3-ab29-6fe3557b810e\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2cf4abd8-ea68-4d94-867d-a7dd8d2eddab-2020-01-09 04:45:41Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541541011)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146341011)\\/\",\"ClientRequestId\":\"2cf4abd8-ea68-4d94-867d-a7dd8d2eddab-2020-01-09 04:45:41Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"lD2ZwdQ1k3hyqlJ3ZjKGywlSz7Z/fSBArJYrny7rhnc=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "2cf4abd8-ea68-4d94-867d-a7dd8d2eddab-2020-01-09 04:45:41Z-Ps 1/9/2020 4:45:41 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "2cf4abd8-ea68-4d94-867d-a7dd8d2eddab-2020-01-09 04:45:41Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e42b3d9-c78c-4bb7-94b4-6724c0107a89"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044541Z:4e42b3d9-c78c-4bb7-94b4-6724c0107a89"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:41 GMT"
+        ],
+        "Content-Length": [
+          "18105"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"name\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Critical\",\r\n        \"healthErrors\": [\r\n          {\r\n            \"innerHealthErrors\": [],\r\n            \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n            \"errorType\": \"8010\",\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"TestFailover\",\r\n            \"errorCode\": \"161011\",\r\n            \"summaryMessage\": \"\",\r\n            \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm1'.\",\r\n            \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n            \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n            \"creationTimeUtc\": \"2020-01-09T04:45:41.3392399Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n            \"errorId\": \"6:8010\",\r\n            \"customerResolvability\": \"NotAllowed\"\r\n          }\r\n        ],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": null,\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"32d53999-5f7b-4eae-b69c-68b7948a04b0\",\r\n              \"diskId\": \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n              \"vhdName\": \"b2a-vm1\",\r\n              \"maxSizeMB\": \"20480\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm1\",\r\n          \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2020-01-09T04:32:36Z\",\r\n          \"rpoInSeconds\": 7,\r\n          \"lastRpoCalculatedTime\": \"2020-01-09T04:42:44.2656632Z\",\r\n          \"vmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"37\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Windows\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 1024,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"WindowsServer\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"9635d137-374c-4690-870b-35e561f287d5\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n      \"name\": \"b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm-l-1\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"UnplannedFailoverCommitPendingStatesBegin\",\r\n        \"protectionStateDescription\": \"Failover completed\",\r\n        \"activeLocation\": \"Recovery\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"CompleteMigration\",\r\n          \"Commit\",\r\n          \"DisableProtection\",\r\n          \"ChangePit\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Normal\",\r\n        \"healthErrors\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"lastSuccessfulFailoverTime\": \"2019-12-27T03:39:58.5008286Z\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/b7098b1c-a8d0-4dc6-b617-907e3294fc55/recoveryPoints/1dd132dd-07cc-473b-a20b-18964f6103ca\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"02e4be8e-2ac9-4935-a698-2a0be873c96c\",\r\n              \"diskId\": \"B7098B1C-A8D0-4DC6-B617-907E3294FC55_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n              \"vhdName\": \"b2a-vm-l-1\",\r\n              \"maxSizeMB\": \"16384\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm-l-1\",\r\n          \"recoveryAzureVMSize\": \"Standard_A1\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2019-12-27T02:53:18Z\",\r\n          \"rpoInSeconds\": 1229,\r\n          \"lastRpoCalculatedTime\": \"2019-12-27T03:13:48.2150762Z\",\r\n          \"vmId\": \"b7098b1c-a8d0-4dc6-b617-907e3294fc55\",\r\n          \"vmProtectionState\": \"UnplannedFailoverCommitPendingStatesBegin\",\r\n          \"vmProtectionStateDescription\": \"Failover completed\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"1\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OkI3MDk4QjFDLUE4RDAtNERDNi1CNjE3LTkwN0UzMjk0RkM1NVxEN0NEQzZENS02MTE3LTQ2N0QtQTE0RS0wMTAxRkExNTVDMEE=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OkI3MDk4QjFDLUE4RDAtNERDNi1CNjE3LTkwN0UzMjk0RkM1NVxEN0NEQzZENS02MTE3LTQ2N0QtQTE0RS0wMTAxRkExNTVDMEE=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Linux\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 512,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"NotSpecified\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"25088eee-5671-464b-8fa7-942768beaa50\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n      \"name\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"b2a-vm2\",\r\n        \"protectedItemType\": \"HyperVVirtualMachine\",\r\n        \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n        \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n        \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n        \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n        \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n        \"recoveryFabricId\": \"Microsoft Azure\",\r\n        \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n        \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n        \"protectionState\": \"Protected\",\r\n        \"protectionStateDescription\": \"Protected\",\r\n        \"activeLocation\": \"Primary\",\r\n        \"testFailoverState\": \"None\",\r\n        \"testFailoverStateDescription\": \"None\",\r\n        \"allowedOperations\": [\r\n          \"PlannedFailover\",\r\n          \"UnplannedFailover\",\r\n          \"DisableProtection\",\r\n          \"TestFailover\"\r\n        ],\r\n        \"replicationHealth\": \"Normal\",\r\n        \"failoverHealth\": \"Critical\",\r\n        \"healthErrors\": [\r\n          {\r\n            \"innerHealthErrors\": [],\r\n            \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n            \"errorType\": \"8010\",\r\n            \"errorLevel\": \"Error\",\r\n            \"errorCategory\": \"TestFailover\",\r\n            \"errorCode\": \"161011\",\r\n            \"summaryMessage\": \"\",\r\n            \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm2'.\",\r\n            \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n            \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n            \"creationTimeUtc\": \"2020-01-09T03:00:08.5092401Z\",\r\n            \"recoveryProviderErrorMessage\": null,\r\n            \"entityId\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n            \"errorId\": \"6:8010\",\r\n            \"customerResolvability\": \"NotAllowed\"\r\n          }\r\n        ],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n        \"policyFriendlyName\": \"b2apolicy\",\r\n        \"currentScenario\": {\r\n          \"scenarioName\": \"None\",\r\n          \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n          \"startTime\": \"1753-01-01T01:01:01Z\"\r\n        },\r\n        \"failoverRecoveryPointId\": null,\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"HyperVReplicaAzure\",\r\n          \"azureVmDiskDetails\": [\r\n            {\r\n              \"vhdType\": \"OperatingSystem\",\r\n              \"vhdId\": \"e52433f4-4935-4d2a-98e9-3a18b5357c73\",\r\n              \"diskId\": \"FE577CC7-A09C-483D-B7D1-97547E9864A1_396E2DBC-B49A-4696-993C-85AC8FA60AA6_0_0\",\r\n              \"vhdName\": \"b2a-vm2\",\r\n              \"maxSizeMB\": \"20480\",\r\n              \"targetDiskLocation\": null,\r\n              \"targetDiskName\": null,\r\n              \"lunId\": \"0\",\r\n              \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n            }\r\n          ],\r\n          \"recoveryAzureVmName\": \"b2a-vm2\",\r\n          \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n          \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n          \"recoveryAzureLogStorageAccountId\": null,\r\n          \"lastReplicatedTime\": \"2020-01-09T04:35:10Z\",\r\n          \"rpoInSeconds\": 7,\r\n          \"lastRpoCalculatedTime\": \"2020-01-09T04:45:18.0001915Z\",\r\n          \"vmId\": \"fe577cc7-a09c-483d-b7d1-97547e9864a1\",\r\n          \"vmProtectionState\": \"Protected\",\r\n          \"vmProtectionStateDescription\": \"Protected\",\r\n          \"initialReplicationDetails\": {\r\n            \"initialReplicationType\": \"InitialReplication\",\r\n            \"initialReplicationProgressPercentage\": \"0\"\r\n          },\r\n          \"vmNics\": [\r\n            {\r\n              \"nicId\": \"TWljcm9zb2Z0OkZFNTc3Q0M3LUEwOUMtNDgzRC1CN0QxLTk3NTQ3RTk4NjRBMVw4NDU5NUM2Ni1CNDA2LTQxRjMtODJFNy0xN0JFQzg4NjU4MEQ=\",\r\n              \"replicaNicId\": null,\r\n              \"sourceNicArmId\": null,\r\n              \"vMSubnetName\": \"vNet\",\r\n              \"vMNetworkName\": \"vNet\",\r\n              \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n              \"recoveryVMSubnetName\": \"default\",\r\n              \"ipAddressType\": \"Static\",\r\n              \"primaryNicStaticIPAddress\": null,\r\n              \"replicaNicStaticIPAddress\": \"\",\r\n              \"selectionType\": \"SelectedByUser\",\r\n              \"recoveryNicIpAddressType\": \"Dynamic\",\r\n              \"recoveryPublicIpAddressId\": \"\",\r\n              \"recoveryNetworkSecurityGroupId\": \"\",\r\n              \"recoveryLBBackendAddressPoolIds\": [],\r\n              \"enableAcceleratedNetworkingOnRecovery\": null,\r\n              \"tfoVMNetworkId\": null,\r\n              \"tfoVMSubnetName\": \"\",\r\n              \"tfoNetworkSecurityGroupId\": \"\",\r\n              \"enableAcceleratedNetworkingOnTfo\": null,\r\n              \"tfoIPConfigs\": [\r\n                {\r\n                  \"staticIPAddress\": \"\",\r\n                  \"publicIpAddressId\": \"\",\r\n                  \"lBBackendAddressPoolIds\": []\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"selectedSourceNicId\": \"TWljcm9zb2Z0OkZFNTc3Q0M3LUEwOUMtNDgzRC1CN0QxLTk3NTQ3RTk4NjRBMVw4NDU5NUM2Ni1CNDA2LTQxRjMtODJFNy0xN0JFQzg4NjU4MEQ=\",\r\n          \"encryption\": \"Disabled\",\r\n          \"oSDetails\": {\r\n            \"osType\": \"Windows\",\r\n            \"productType\": \"UNKNOWN\",\r\n            \"osEdition\": \"Standard\",\r\n            \"oSVersion\": \"1.1.1.1\",\r\n            \"oSMajorVersion\": \"0\",\r\n            \"oSMinorVersion\": \"0\"\r\n          },\r\n          \"sourceVmRamSizeInMB\": 1024,\r\n          \"sourceVmCpuCount\": 1,\r\n          \"enableRdpOnTargetOption\": \"Never\",\r\n          \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n          \"recoveryAvailabilitySetId\": \"\",\r\n          \"useManagedDisks\": \"true\",\r\n          \"licenseType\": \"WindowsServer\"\r\n        },\r\n        \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"eventCorrelationId\": \"a0e32f95-422d-4da3-ab29-6fe3557b810e\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy8zZjYzNDY1Ni1iZWM1LTRjNDAtOTAzYS1mZGRkMzg3ZDZkYmQ/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5864d54b-7471-48b7-91ec-d4b52051ae38-2020-01-09 04:45:38Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541538707)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146338707)\\/\",\"ClientRequestId\":\"5864d54b-7471-48b7-91ec-d4b52051ae38-2020-01-09 04:45:38Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"9eC8MoTGLm9zF8HJijqiEWJa0svinokRDdEMJqfPEUo=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "5864d54b-7471-48b7-91ec-d4b52051ae38-2020-01-09 04:45:38Z-Ps 1/9/2020 4:45:38 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "5864d54b-7471-48b7-91ec-d4b52051ae38-2020-01-09 04:45:38Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae03e67b-77ae-4c96-a3b2-df37eded3426"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044539Z:ae03e67b-77ae-4c96-a3b2-df37eded3426"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:38 GMT"
+        ],
+        "Content-Length": [
+          "5950"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"name\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"b2a-vm1\",\r\n    \"protectedItemType\": \"HyperVVirtualMachine\",\r\n    \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n    \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n    \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n    \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n    \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n    \"recoveryFabricId\": \"Microsoft Azure\",\r\n    \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n    \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n    \"protectionState\": \"Protected\",\r\n    \"protectionStateDescription\": \"Protected\",\r\n    \"activeLocation\": \"Primary\",\r\n    \"testFailoverState\": \"None\",\r\n    \"testFailoverStateDescription\": \"None\",\r\n    \"allowedOperations\": [\r\n      \"PlannedFailover\",\r\n      \"UnplannedFailover\",\r\n      \"DisableProtection\",\r\n      \"TestFailover\"\r\n    ],\r\n    \"replicationHealth\": \"Normal\",\r\n    \"failoverHealth\": \"Critical\",\r\n    \"healthErrors\": [\r\n      {\r\n        \"innerHealthErrors\": [],\r\n        \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n        \"errorType\": \"8010\",\r\n        \"errorLevel\": \"Error\",\r\n        \"errorCategory\": \"TestFailover\",\r\n        \"errorCode\": \"161011\",\r\n        \"summaryMessage\": \"\",\r\n        \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm1'.\",\r\n        \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n        \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n        \"creationTimeUtc\": \"2020-01-09T04:38:27.8682952Z\",\r\n        \"recoveryProviderErrorMessage\": null,\r\n        \"entityId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"errorId\": \"6:8010\",\r\n        \"customerResolvability\": \"NotAllowed\"\r\n      }\r\n    ],\r\n    \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n    \"policyFriendlyName\": \"b2apolicy\",\r\n    \"currentScenario\": {\r\n      \"scenarioName\": \"None\",\r\n      \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n      \"startTime\": \"1753-01-01T01:01:01Z\"\r\n    },\r\n    \"failoverRecoveryPointId\": null,\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"azureVmDiskDetails\": [\r\n        {\r\n          \"vhdType\": \"OperatingSystem\",\r\n          \"vhdId\": \"32d53999-5f7b-4eae-b69c-68b7948a04b0\",\r\n          \"diskId\": \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n          \"vhdName\": \"b2a-vm1\",\r\n          \"maxSizeMB\": \"20480\",\r\n          \"targetDiskLocation\": null,\r\n          \"targetDiskName\": null,\r\n          \"lunId\": \"0\",\r\n          \"diskEncryptionSetId\": null\r\n        }\r\n      ],\r\n      \"recoveryAzureVmName\": \"b2a-vm1\",\r\n      \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n      \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n      \"recoveryAzureLogStorageAccountId\": null,\r\n      \"lastReplicatedTime\": \"2020-01-09T04:32:36Z\",\r\n      \"rpoInSeconds\": 7,\r\n      \"lastRpoCalculatedTime\": \"2020-01-09T04:42:44.2656632Z\",\r\n      \"vmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"vmProtectionState\": \"Protected\",\r\n      \"vmProtectionStateDescription\": \"Protected\",\r\n      \"initialReplicationDetails\": {\r\n        \"initialReplicationType\": \"InitialReplication\",\r\n        \"initialReplicationProgressPercentage\": \"37\"\r\n      },\r\n      \"vmNics\": [\r\n        {\r\n          \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n          \"replicaNicId\": null,\r\n          \"sourceNicArmId\": null,\r\n          \"vMSubnetName\": \"vNet\",\r\n          \"vMNetworkName\": \"vNet\",\r\n          \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"recoveryVMSubnetName\": \"default\",\r\n          \"ipAddressType\": \"Static\",\r\n          \"primaryNicStaticIPAddress\": null,\r\n          \"replicaNicStaticIPAddress\": \"\",\r\n          \"selectionType\": \"SelectedByUser\",\r\n          \"recoveryNicIpAddressType\": \"Dynamic\",\r\n          \"recoveryPublicIpAddressId\": \"\",\r\n          \"recoveryNetworkSecurityGroupId\": \"\",\r\n          \"recoveryLBBackendAddressPoolIds\": [],\r\n          \"enableAcceleratedNetworkingOnRecovery\": null,\r\n          \"tfoVMNetworkId\": null,\r\n          \"tfoVMSubnetName\": \"\",\r\n          \"tfoNetworkSecurityGroupId\": \"\",\r\n          \"enableAcceleratedNetworkingOnTfo\": null,\r\n          \"tfoIPConfigs\": [\r\n            {\r\n              \"staticIPAddress\": \"\",\r\n              \"publicIpAddressId\": \"\",\r\n              \"lBBackendAddressPoolIds\": []\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n      \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n      \"encryption\": \"Disabled\",\r\n      \"oSDetails\": {\r\n        \"osType\": \"Windows\",\r\n        \"productType\": \"UNKNOWN\",\r\n        \"osEdition\": \"Standard\",\r\n        \"oSVersion\": \"1.1.1.1\",\r\n        \"oSMajorVersion\": \"0\",\r\n        \"oSMinorVersion\": \"0\"\r\n      },\r\n      \"sourceVmRamSizeInMB\": 1024,\r\n      \"sourceVmCpuCount\": 1,\r\n      \"enableRdpOnTargetOption\": \"Never\",\r\n      \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n      \"recoveryAvailabilitySetId\": \"\",\r\n      \"useManagedDisks\": \"true\",\r\n      \"licenseType\": \"WindowsServer\"\r\n    },\r\n    \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n    \"eventCorrelationId\": \"9635d137-374c-4690-870b-35e561f287d5\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy8zZjYzNDY1Ni1iZWM1LTRjNDAtOTAzYS1mZGRkMzg3ZDZkYmQ/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "af486863-ce2e-4ffa-9db0-8ed867a39237-2020-01-09 04:45:39Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541539125)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146339125)\\/\",\"ClientRequestId\":\"af486863-ce2e-4ffa-9db0-8ed867a39237-2020-01-09 04:45:39Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"EG8aUdUf8OM52eHjLPTSaQN6VqneEDKkilOM7ALu2bA=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "af486863-ce2e-4ffa-9db0-8ed867a39237-2020-01-09 04:45:39Z-Ps 1/9/2020 4:45:39 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "af486863-ce2e-4ffa-9db0-8ed867a39237-2020-01-09 04:45:39Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "4892b286-e4f2-4215-8abc-6c3a2796483a"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044539Z:4892b286-e4f2-4215-8abc-6c3a2796483a"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:38 GMT"
+        ],
+        "Content-Length": [
+          "5950"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"name\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"b2a-vm1\",\r\n    \"protectedItemType\": \"HyperVVirtualMachine\",\r\n    \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n    \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n    \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n    \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n    \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n    \"recoveryFabricId\": \"Microsoft Azure\",\r\n    \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n    \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n    \"protectionState\": \"Protected\",\r\n    \"protectionStateDescription\": \"Protected\",\r\n    \"activeLocation\": \"Primary\",\r\n    \"testFailoverState\": \"None\",\r\n    \"testFailoverStateDescription\": \"None\",\r\n    \"allowedOperations\": [\r\n      \"PlannedFailover\",\r\n      \"UnplannedFailover\",\r\n      \"DisableProtection\",\r\n      \"TestFailover\"\r\n    ],\r\n    \"replicationHealth\": \"Normal\",\r\n    \"failoverHealth\": \"Critical\",\r\n    \"healthErrors\": [\r\n      {\r\n        \"innerHealthErrors\": [],\r\n        \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n        \"errorType\": \"8010\",\r\n        \"errorLevel\": \"Error\",\r\n        \"errorCategory\": \"TestFailover\",\r\n        \"errorCode\": \"161011\",\r\n        \"summaryMessage\": \"\",\r\n        \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm1'.\",\r\n        \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n        \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n        \"creationTimeUtc\": \"2020-01-09T04:38:27.8682952Z\",\r\n        \"recoveryProviderErrorMessage\": null,\r\n        \"entityId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"errorId\": \"6:8010\",\r\n        \"customerResolvability\": \"NotAllowed\"\r\n      }\r\n    ],\r\n    \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n    \"policyFriendlyName\": \"b2apolicy\",\r\n    \"currentScenario\": {\r\n      \"scenarioName\": \"None\",\r\n      \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n      \"startTime\": \"1753-01-01T01:01:01Z\"\r\n    },\r\n    \"failoverRecoveryPointId\": null,\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"azureVmDiskDetails\": [\r\n        {\r\n          \"vhdType\": \"OperatingSystem\",\r\n          \"vhdId\": \"32d53999-5f7b-4eae-b69c-68b7948a04b0\",\r\n          \"diskId\": \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n          \"vhdName\": \"b2a-vm1\",\r\n          \"maxSizeMB\": \"20480\",\r\n          \"targetDiskLocation\": null,\r\n          \"targetDiskName\": null,\r\n          \"lunId\": \"0\",\r\n          \"diskEncryptionSetId\": null\r\n        }\r\n      ],\r\n      \"recoveryAzureVmName\": \"b2a-vm1\",\r\n      \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n      \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n      \"recoveryAzureLogStorageAccountId\": null,\r\n      \"lastReplicatedTime\": \"2020-01-09T04:32:36Z\",\r\n      \"rpoInSeconds\": 7,\r\n      \"lastRpoCalculatedTime\": \"2020-01-09T04:42:44.2656632Z\",\r\n      \"vmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"vmProtectionState\": \"Protected\",\r\n      \"vmProtectionStateDescription\": \"Protected\",\r\n      \"initialReplicationDetails\": {\r\n        \"initialReplicationType\": \"InitialReplication\",\r\n        \"initialReplicationProgressPercentage\": \"37\"\r\n      },\r\n      \"vmNics\": [\r\n        {\r\n          \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n          \"replicaNicId\": null,\r\n          \"sourceNicArmId\": null,\r\n          \"vMSubnetName\": \"vNet\",\r\n          \"vMNetworkName\": \"vNet\",\r\n          \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"recoveryVMSubnetName\": \"default\",\r\n          \"ipAddressType\": \"Static\",\r\n          \"primaryNicStaticIPAddress\": null,\r\n          \"replicaNicStaticIPAddress\": \"\",\r\n          \"selectionType\": \"SelectedByUser\",\r\n          \"recoveryNicIpAddressType\": \"Dynamic\",\r\n          \"recoveryPublicIpAddressId\": \"\",\r\n          \"recoveryNetworkSecurityGroupId\": \"\",\r\n          \"recoveryLBBackendAddressPoolIds\": [],\r\n          \"enableAcceleratedNetworkingOnRecovery\": null,\r\n          \"tfoVMNetworkId\": null,\r\n          \"tfoVMSubnetName\": \"\",\r\n          \"tfoNetworkSecurityGroupId\": \"\",\r\n          \"enableAcceleratedNetworkingOnTfo\": null,\r\n          \"tfoIPConfigs\": [\r\n            {\r\n              \"staticIPAddress\": \"\",\r\n              \"publicIpAddressId\": \"\",\r\n              \"lBBackendAddressPoolIds\": []\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n      \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n      \"encryption\": \"Disabled\",\r\n      \"oSDetails\": {\r\n        \"osType\": \"Windows\",\r\n        \"productType\": \"UNKNOWN\",\r\n        \"osEdition\": \"Standard\",\r\n        \"oSVersion\": \"1.1.1.1\",\r\n        \"oSMajorVersion\": \"0\",\r\n        \"oSMinorVersion\": \"0\"\r\n      },\r\n      \"sourceVmRamSizeInMB\": 1024,\r\n      \"sourceVmCpuCount\": 1,\r\n      \"enableRdpOnTargetOption\": \"Never\",\r\n      \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n      \"recoveryAvailabilitySetId\": \"\",\r\n      \"useManagedDisks\": \"true\",\r\n      \"licenseType\": \"WindowsServer\"\r\n    },\r\n    \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n    \"eventCorrelationId\": \"9635d137-374c-4690-870b-35e561f287d5\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy8zZjYzNDY1Ni1iZWM1LTRjNDAtOTAzYS1mZGRkMzg3ZDZkYmQ/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5de4107-d4f2-43c4-9593-900d9978b907-2020-01-09 04:45:41Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541541742)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146341742)\\/\",\"ClientRequestId\":\"c5de4107-d4f2-43c4-9593-900d9978b907-2020-01-09 04:45:41Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"InNteTQe21h2o1ccm9W5EsQBlYmRYDOrX5Q3uSL2wPw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "c5de4107-d4f2-43c4-9593-900d9978b907-2020-01-09 04:45:41Z-Ps 1/9/2020 4:45:42 AM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "c5de4107-d4f2-43c4-9593-900d9978b907-2020-01-09 04:45:41Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "57eca388-1481-40c5-992f-8f60cd055137"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044542Z:57eca388-1481-40c5-992f-8f60cd055137"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:41 GMT"
+        ],
+        "Content-Length": [
+          "6080"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"name\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"b2a-vm1\",\r\n    \"protectedItemType\": \"HyperVVirtualMachine\",\r\n    \"protectableItemId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectableItems/3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n    \"recoveryServicesProviderId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationRecoveryServicesProviders/079bfed2-2a98-493a-b3bf-6f0a869cc21a\",\r\n    \"primaryFabricFriendlyName\": \"HyperVSite\",\r\n    \"primaryFabricProvider\": \"SingleHostHyperVFabric\",\r\n    \"recoveryFabricFriendlyName\": \"Microsoft Azure\",\r\n    \"recoveryFabricId\": \"Microsoft Azure\",\r\n    \"primaryProtectionContainerFriendlyName\": \"HyperVSite\",\r\n    \"recoveryProtectionContainerFriendlyName\": \"Microsoft Azure\",\r\n    \"protectionState\": \"Protected\",\r\n    \"protectionStateDescription\": \"Protected\",\r\n    \"activeLocation\": \"Primary\",\r\n    \"testFailoverState\": \"None\",\r\n    \"testFailoverStateDescription\": \"None\",\r\n    \"allowedOperations\": [\r\n      \"PlannedFailover\",\r\n      \"UnplannedFailover\",\r\n      \"DisableProtection\",\r\n      \"TestFailover\"\r\n    ],\r\n    \"replicationHealth\": \"Normal\",\r\n    \"failoverHealth\": \"Critical\",\r\n    \"healthErrors\": [\r\n      {\r\n        \"innerHealthErrors\": [],\r\n        \"errorSource\": \"ReplicationUnitFailoverValidatorError\",\r\n        \"errorType\": \"8010\",\r\n        \"errorLevel\": \"Error\",\r\n        \"errorCategory\": \"TestFailover\",\r\n        \"errorCode\": \"161011\",\r\n        \"summaryMessage\": \"\",\r\n        \"errorMessage\": \"No successful test failover has been done on the virtual machine 'b2a-vm1'.\",\r\n        \"possibleCauses\": \"No successful test failover has been done on the virtual machine after it was replicated.\",\r\n        \"recommendedAction\": \"Do a test failover on the virtual machine.\",\r\n        \"creationTimeUtc\": \"2020-01-09T04:45:41.3392399Z\",\r\n        \"recoveryProviderErrorMessage\": null,\r\n        \"entityId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"errorId\": \"6:8010\",\r\n        \"customerResolvability\": \"NotAllowed\"\r\n      }\r\n    ],\r\n    \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationPolicies/b2apolicy\",\r\n    \"policyFriendlyName\": \"b2apolicy\",\r\n    \"currentScenario\": {\r\n      \"scenarioName\": \"None\",\r\n      \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/None\",\r\n      \"startTime\": \"1753-01-01T01:01:01Z\"\r\n    },\r\n    \"failoverRecoveryPointId\": null,\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"azureVmDiskDetails\": [\r\n        {\r\n          \"vhdType\": \"OperatingSystem\",\r\n          \"vhdId\": \"32d53999-5f7b-4eae-b69c-68b7948a04b0\",\r\n          \"diskId\": \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\",\r\n          \"vhdName\": \"b2a-vm1\",\r\n          \"maxSizeMB\": \"20480\",\r\n          \"targetDiskLocation\": null,\r\n          \"targetDiskName\": null,\r\n          \"lunId\": \"0\",\r\n          \"diskEncryptionSetId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n        }\r\n      ],\r\n      \"recoveryAzureVmName\": \"b2a-vm1\",\r\n      \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n      \"recoveryAzureStorageAccount\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Storage/storageAccounts/cmkstorageacc\",\r\n      \"recoveryAzureLogStorageAccountId\": null,\r\n      \"lastReplicatedTime\": \"2020-01-09T04:32:36Z\",\r\n      \"rpoInSeconds\": 7,\r\n      \"lastRpoCalculatedTime\": \"2020-01-09T04:42:44.2656632Z\",\r\n      \"vmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n      \"vmProtectionState\": \"Protected\",\r\n      \"vmProtectionStateDescription\": \"Protected\",\r\n      \"initialReplicationDetails\": {\r\n        \"initialReplicationType\": \"InitialReplication\",\r\n        \"initialReplicationProgressPercentage\": \"37\"\r\n      },\r\n      \"vmNics\": [\r\n        {\r\n          \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n          \"replicaNicId\": null,\r\n          \"sourceNicArmId\": null,\r\n          \"vMSubnetName\": \"vNet\",\r\n          \"vMNetworkName\": \"vNet\",\r\n          \"recoveryVMNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n          \"recoveryVMSubnetName\": \"default\",\r\n          \"ipAddressType\": \"Static\",\r\n          \"primaryNicStaticIPAddress\": null,\r\n          \"replicaNicStaticIPAddress\": \"\",\r\n          \"selectionType\": \"SelectedByUser\",\r\n          \"recoveryNicIpAddressType\": \"Dynamic\",\r\n          \"recoveryPublicIpAddressId\": \"\",\r\n          \"recoveryNetworkSecurityGroupId\": \"\",\r\n          \"recoveryLBBackendAddressPoolIds\": [],\r\n          \"enableAcceleratedNetworkingOnRecovery\": null,\r\n          \"tfoVMNetworkId\": null,\r\n          \"tfoVMSubnetName\": \"\",\r\n          \"tfoNetworkSecurityGroupId\": \"\",\r\n          \"enableAcceleratedNetworkingOnTfo\": null,\r\n          \"tfoIPConfigs\": [\r\n            {\r\n              \"staticIPAddress\": \"\",\r\n              \"publicIpAddressId\": \"\",\r\n              \"lBBackendAddressPoolIds\": []\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n      \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n      \"encryption\": \"Disabled\",\r\n      \"oSDetails\": {\r\n        \"osType\": \"Windows\",\r\n        \"productType\": \"UNKNOWN\",\r\n        \"osEdition\": \"Standard\",\r\n        \"oSVersion\": \"1.1.1.1\",\r\n        \"oSMajorVersion\": \"0\",\r\n        \"oSMinorVersion\": \"0\"\r\n      },\r\n      \"sourceVmRamSizeInMB\": 1024,\r\n      \"sourceVmCpuCount\": 1,\r\n      \"enableRdpOnTargetOption\": \"Never\",\r\n      \"recoveryAzureResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n      \"recoveryAvailabilitySetId\": \"\",\r\n      \"useManagedDisks\": \"true\",\r\n      \"licenseType\": \"WindowsServer\"\r\n    },\r\n    \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/d49858f157601230a6ac5862fbbc6e63bf38d23ecd96cf953767945d457fe9d5/replicationProtectionContainers/d38048d4-b460-4791-8ece-108395ee8478\",\r\n    \"eventCorrelationId\": \"9635d137-374c-4690-870b-35e561f287d5\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25GYWJyaWNzL0h5cGVyVlNpdGUvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9jbG91ZF8wZTM4ZGEwZi02MjQ4LTUwZDUtOWZjZC1kMWY3Mzk5NjcwYTIvcmVwbGljYXRpb25Qcm90ZWN0ZWRJdGVtcy8zZjYzNDY1Ni1iZWM1LTRjNDAtOTAzYS1mZGRkMzg3ZDZkYmQ/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"recoveryAzureVMName\": \"b2a-vm1\",\r\n    \"recoveryAzureVMSize\": \"Standard_B1s\",\r\n    \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Network/virtualNetworks/cmkvnetccy\",\r\n    \"selectedSourceNicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n    \"vmNics\": [\r\n      {\r\n        \"nicId\": \"TWljcm9zb2Z0OjNGNjM0NjU2LUJFQzUtNEM0MC05MDNBLUZEREQzODdENkRCRFxFQTJGQzA3MS03OEU4LTQ0RUMtQTBDQy04RkY4QTlEMUM5MTU=\",\r\n        \"recoveryVMSubnetName\": \"default\",\r\n        \"replicaNicStaticIPAddress\": \"\",\r\n        \"selectionType\": \"SelectedByUser\",\r\n        \"recoveryPublicIpAddressId\": \"\",\r\n        \"recoveryNetworkSecurityGroupId\": \"\",\r\n        \"recoveryLBBackendAddressPoolIds\": []\r\n      }\r\n    ],\r\n    \"licenseType\": \"WindowsServer\",\r\n    \"recoveryAvailabilitySetId\": \"\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryAzureV2ResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy\",\r\n      \"useManagedDisks\": \"true\",\r\n      \"diskIdToDiskEncryptionMap\": {\r\n        \"3F634656-BEC5-4C40-903A-FDDD387D6DBD_83F8638B-8DCA-4152-9EDA-2CA8B33039B4_0_0\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.Compute/diskEncryptionSets/cmkdesccy\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "13e1f913-6a6c-49fe-97bf-d80ce565493f-2020-01-09 04:45:39Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541539508)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146339508)\\/\",\"ClientRequestId\":\"13e1f913-6a6c-49fe-97bf-d80ce565493f-2020-01-09 04:45:39Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"5fsUaPKWVZSCTv2rfstf8SkTVQUPCg2e2dCqnoFHPo8=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1458"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationFabrics/HyperVSite/replicationProtectionContainers/cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2/replicationProtectedItems/3f634656-bec5-4c40-903a-fddd387d6dbd/operationresults/78eb0f74-2661-4f08-bf6e-198fc0a51fc6?api-version=2018-07-10"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/78eb0f74-2661-4f08-bf6e-198fc0a51fc6",
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/78eb0f74-2661-4f08-bf6e-198fc0a51fc6"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationOperationStatus/78eb0f74-2661-4f08-bf6e-198fc0a51fc6?api-version=2018-07-10"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "13e1f913-6a6c-49fe-97bf-d80ce565493f-2020-01-09 04:45:39Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "5452b2f0-4c4d-46a7-8458-1ea6fc23f551"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044540Z:5452b2f0-4c4d-46a7-8458-1ea6fc23f551"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/78eb0f74-2661-4f08-bf6e-198fc0a51fc6?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2Nta3JnY2N5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvY21rdmF1bHRjY3kvcmVwbGljYXRpb25Kb2JzLzc4ZWIwZjc0LTI2NjEtNGYwOC1iZjZlLTE5OGZjMGE1MWZjNj9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "48b9697e-fdaf-481f-83dd-75a9507a6db1-2020-01-09 04:45:40Z-Ps"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1578541540643)\\/\",\"NotAfterTimestamp\":\"\\/Date(1579146340643)\\/\",\"ClientRequestId\":\"48b9697e-fdaf-481f-83dd-75a9507a6db1-2020-01-09 04:45:40Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ikW+ZELiisOhxXb9Yb6qGplebTyh9jWRwFSPhIGSHio=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/2.0.4.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/78eb0f74-2661-4f08-bf6e-198fc0a51fc6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "48b9697e-fdaf-481f-83dd-75a9507a6db1-2020-01-09 04:45:40Z-Ps"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "20b0b458-4d68-410f-a100-2cf99a0f14d7"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20200109T044540Z:20b0b458-4d68-410f-a100-2cf99a0f14d7"
+        ],
+        "Date": [
+          "Thu, 09 Jan 2020 04:45:40 GMT"
+        ],
+        "Content-Length": [
+          "1869"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cmkrgccy/providers/Microsoft.RecoveryServices/vaults/cmkvaultccy/replicationJobs/78eb0f74-2661-4f08-bf6e-198fc0a51fc6\",\r\n  \"name\": \"78eb0f74-2661-4f08-bf6e-198fc0a51fc6\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"13e1f913-6a6c-49fe-97bf-d80ce565493f-2020-01-09 04:45:39Z-Ps ActivityId: 5452b2f0-4c4d-46a7-8458-1ea6fc23f551\",\r\n    \"scenarioName\": \"UpdateVmProperties\",\r\n    \"friendlyName\": \"Update the virtual machine\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"7aed9af1-39d2-408e-b344-0ad9969532ab\",\r\n        \"name\": \"UpdateVmPropertiesTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Update the virtual machine properties\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2020-01-09T04:45:39.9478245Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n    \"targetObjectName\": \"b2a-vm1\",\r\n    \"targetInstanceType\": \"ProtectionEntity\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"primaryVmId\": \"3f634656-bec5-4c40-903a-fddd387d6dbd\",\r\n        \"primaryVmName\": \"b2a-vm1\",\r\n        \"recoveryVmId\": \"\",\r\n        \"recoveryVmName\": \"b2a-vm1\",\r\n        \"protectionProfileId\": \"7ac824b1-9557-5efc-a57c-82d33193c807\",\r\n        \"primaryCloudId\": \"cloud_0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n        \"primaryCloudName\": \"HyperVSite\",\r\n        \"recoveryCloudId\": \"d38048d4-b460-4791-8ece-108395ee8478\",\r\n        \"recoveryCloudName\": \"Microsoft Azure\",\r\n        \"primaryVmmId\": \"0e38da0f-6248-50d5-9fcd-d1f7399670a2\",\r\n        \"primaryVmmName\": \"HyperVSite\",\r\n        \"recoveryVmmId\": \"21a9403c-6ec1-44f2-b744-b4e50b792387\",\r\n        \"recoveryVmmName\": \"Microsoft Azure\",\r\n        \"primaryFabricProviderId\": \"HyperVSite\",\r\n        \"recoveryFabricProviderId\": \"Azure\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
+  }
+}

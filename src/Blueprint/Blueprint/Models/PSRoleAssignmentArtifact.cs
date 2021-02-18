@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 ResourceGroup = artifact.ResourceGroup
             };
 
+<<<<<<< HEAD
             psArtifact.DependsOn = artifact.DependsOn.Select(x => x) as List<string>;
+=======
+            psArtifact.DependsOn = artifact.DependsOn?.ToList();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return psArtifact;
         }

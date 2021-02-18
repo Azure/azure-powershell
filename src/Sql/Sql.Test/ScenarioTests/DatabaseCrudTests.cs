@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public DatabaseCrudTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         protected override void SetupManagementClients(Rest.ClientRuntime.Azure.TestFramework.MockContext context)
@@ -77,6 +83,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestDatabaseCreateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-CreateDatabaseWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateDatabase");
@@ -112,6 +128,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestDatabaseUpdateWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-UpdateDatabaseWithMaintenanceConfigurationId");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestUpdateServerlessDatabase()
         {
             RunPowerShellTest("Test-UpdateServerlessDatabase");
@@ -140,6 +167,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestDatabaseGetWithMaintenanceConfigurationId()
+        {
+            RunPowerShellTest("Test-GetDatabaseWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestDatabaseRemove()
         {
             RunPowerShellTest("Test-RemoveDatabase");
@@ -151,5 +188,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CancelDatabaseOperation");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-CreateDatabaseWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithBackupStorageRedundancy()
+        {
+            RunPowerShellTest("Test-GetDatabaseWithBackupStorageRedundancy");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

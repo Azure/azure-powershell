@@ -82,6 +82,19 @@ namespace Microsoft.Azure.Commands.Network
         public PSVpnConnection[] VpnConnection { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+           Mandatory = false,
+           HelpMessage = "Flag to enable Routing Preference Internet on this VpnGateway.")]
+        public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -141,6 +154,16 @@ namespace Microsoft.Azure.Commands.Network
                 vpnGateway.Connections.AddRange(this.VpnConnection);
             }
 
+<<<<<<< HEAD
+=======
+            //// VpnGatewayNatRules, if specified
+            vpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                vpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             //// Scale unit, if specified
             vpnGateway.VpnGatewayScaleUnit = 0;
             if (this.VpnGatewayScaleUnit > 0)
@@ -148,6 +171,12 @@ namespace Microsoft.Azure.Commands.Network
                 vpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
+<<<<<<< HEAD
+=======
+            // Set the Routing Preference Internet, if it is specified by customer.
+            vpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             vpnGateway.BgpSettings = null;
 
             ConfirmAction(

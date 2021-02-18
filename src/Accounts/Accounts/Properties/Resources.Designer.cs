@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -115,6 +119,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Context autosave is not supported in current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
+        /// </summary>
+        internal static string AutosaveNotSupportedWithSuggestion {
+            get {
+                return ResourceManager.GetString("AutosaveNotSupportedWithSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Using Autosave scope &apos;{0}&apos;.
         /// </summary>
         internal static string AutosaveSettingFinalValue {
@@ -160,6 +176,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The Azure PowerShell team is listening, please let us know how we are doing: {0}..
+        /// </summary>
+        internal static string AzurePowerShellFeedback {
+            get {
+                return ResourceManager.GetString("AzurePowerShellFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
         internal static string AzureProfileMustNotBeNull {
@@ -232,6 +260,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Changing public environment is not supported..
+        /// </summary>
+        internal static string ChangingDefaultEnvironmentNotSupported {
+            get {
+                return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Remove all accounts and subscriptions for the current process..
         /// </summary>
         internal static string ClearContextProcessMessage {
@@ -259,7 +299,11 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Remove all accounts and subscriptions for all sessiosn started by the current user.
+=======
+        ///   Looks up a localized string similar to Remove all accounts and subscriptions for all sessions started by the current user.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string ClearContextUserProcessMessage {
             get {
@@ -277,6 +321,27 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to clear the cache..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredClear {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to remove contexts for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredRemoval {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredRemoval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
@@ -367,6 +432,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Could not open the default browser. Use a web browser to open the page {0}..
+        /// </summary>
+        internal static string DefaultBrowserOpenFailure {
+            get {
+                return ResourceManager.GetString("DefaultBrowserOpenFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Changing default resource group to &apos;{0}&apos;.
         /// </summary>
         internal static string DefaultResourceGroupChangeWarning {
@@ -421,6 +498,36 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Environment name needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
+        /// </summary>
+        internal static string EnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos;..
         /// </summary>
         internal static string ErrorRetrievingAutosaveSetting {
@@ -430,6 +537,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to INITIALIZATION: Fallback context save mode to process because of error during checking token cache persistence: {0}..
+        /// </summary>
+        internal static string FallbackContextSaveModeDueCacheCheckError {
+            get {
+                return ResourceManager.GetString("FallbackContextSaveModeDueCacheCheckError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Cannot find file &apos;{0}&apos;.
         /// </summary>
         internal static string FileNotFound {
@@ -484,6 +603,27 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Interactive authentication is not supported in this session, please run cmdlet &apos;Connect-AzAccount -UseDeviceAuthentication&apos;..
+        /// </summary>
+        internal static string InteractiveAuthNotSupported {
+            get {
+                return ResourceManager.GetString("InteractiveAuthNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The context is invalid. Please login using Connect-AzAccount..
+        /// </summary>
+        internal static string InvalidAzureContext {
+            get {
+                return ResourceManager.GetString("InvalidAzureContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
         /// </summary>
         internal static string InvalidEndpointProvided {
@@ -493,6 +633,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The specified ResourceTypeName &quot;{0}&quot; is not supported, please provide a valid value. e.g. Arm, AadGraph, etc..
+        /// </summary>
+        internal static string InvalidResourceTypeName {
+            get {
+                return ResourceManager.GetString("InvalidResourceTypeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
@@ -529,6 +681,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to No contexts remain for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string NoContextsRemain {
+            get {
+                return ResourceManager.GetString("NoContextsRemain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzAccount..
         /// </summary>
         internal static string NoValidTenant {
@@ -538,6 +702,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to The parameters ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete. For ManagedServiceHostName/ManagedServicePort, please set environment variable MSI_ENDPOINT, e.g. &quot;http://localhost:50342/oauth2/token&quot;. For ManagedServiceSecret, please set environment variable MSI_SECRET..
+        /// </summary>
+        internal static string ObsoleteManagedServiceParameters {
+            get {
+                return ResourceManager.GetString("ObsoleteManagedServiceParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Overwrite context &apos;{0}&apos; with context &apos;{1}&apos;.
         /// </summary>
         internal static string OverwriteContextWarning {
@@ -619,6 +795,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to INITIALIZATION: Fail to access profile file and will try to use process ContextAutosaveSetting mode. Detailed error: &apos;{0}&apos;.
+        /// </summary>
+        internal static string ProfileFileNotAccessible {
+            get {
+                return ResourceManager.GetString("ProfileFileNotAccessible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unable to set profile because environment variable &apos;${0}&apos; is null..
         /// </summary>
         internal static string ProfilePathNull {
@@ -700,6 +888,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Removing public environment is not supported..
+        /// </summary>
+        internal static string RemovingDefaultEnvironmentsNotSupported {
+            get {
+                return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -808,6 +1008,27 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Want to provide feedback about Azure PowerShell? Take a quick survey and let us know how we are doing: {0}. Do you want to open the link? (Y/N).
+        /// </summary>
+        internal static string SendFeedbackOpenLinkAutomatically {
+            get {
+                return ResourceManager.GetString("SendFeedbackOpenLinkAutomatically", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a web browser to open the page {0}..
+        /// </summary>
+        internal static string SendFeedbackOpenLinkManually {
+            get {
+                return ResourceManager.GetString("SendFeedbackOpenLinkManually", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to The value entered was either not convertible to an integer or out of range [0, 10]..
         /// </summary>
         internal static string SendFeedbackOutOfRangeMessage {
@@ -871,7 +1092,11 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to A snapshot of the service API versiosn available in Azure Sovereign Clouds and the Azure Global Cloud..
+=======
+        ///   Looks up a localized string similar to A snapshot of the service API versions available in Azure Sovereign Clouds and the Azure Global Cloud..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string SovereignProfileDescription {
             get {
@@ -934,6 +1159,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Please run &apos;Connect-AzAccount -DeviceCode&apos; if browser is not supported in this session..
+        /// </summary>
+        internal static string SuggestToUseDeviceCodeAuth {
+            get {
+                return ResourceManager.GetString("SuggestToUseDeviceCodeAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzAccount.
         /// </summary>
         internal static string TenantAuthFailed {
@@ -970,6 +1207,18 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to INITIALIZATION: Token cache encryption is not supported in current environment and token cache will be fallen back as plain text..
+        /// </summary>
+        internal static string TokenCacheEncryptionNotSupportedWithFallback {
+            get {
+                return ResourceManager.GetString("TokenCacheEncryptionNotSupportedWithFallback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {

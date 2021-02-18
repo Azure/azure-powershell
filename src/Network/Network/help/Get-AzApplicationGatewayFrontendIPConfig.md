@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 364C41D0-A5DB-4AEF-853A-FE5A11AD9155
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayfrontendipconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayfrontendipconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -45,7 +49,11 @@ The first command gets an application gateway named ApplicationGateway01 from th
 Specifies the application gateway object that contains the front-end IP configuration.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+=======
+Type: PSApplicationGateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +68,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+=======
+Type: IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,7 +87,11 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration that this cmdlet gets.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 

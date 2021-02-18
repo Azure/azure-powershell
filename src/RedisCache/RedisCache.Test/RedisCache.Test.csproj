@@ -12,7 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="5.0.0" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ItemGroup>
 
   <ItemGroup>

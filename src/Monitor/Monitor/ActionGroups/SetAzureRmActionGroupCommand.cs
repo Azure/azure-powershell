@@ -114,6 +114,13 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 if (ParameterSetName == ByInputObject)
                 {
                     this.ResourceGroupName = this.InputObject.ResourceGroupName;
+<<<<<<< HEAD
+=======
+                    if (this.Name == null)
+                    {
+                        this.Name = this.InputObject.Name;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.ShortName == null)
                     {
                         this.ShortName = this.InputObject.GroupShortName;
@@ -130,6 +137,16 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                     this.Receiver.AddRange(this.InputObject.EmailReceivers);
                     this.Receiver.AddRange(this.InputObject.SmsReceivers);
                     this.Receiver.AddRange(this.InputObject.WebhookReceivers);
+<<<<<<< HEAD
+=======
+                    this.Receiver.AddRange(this.InputObject.ItsmReceivers);
+                    this.Receiver.AddRange(this.InputObject.VoiceReceivers);
+                    this.Receiver.AddRange(this.InputObject.ArmRoleReceivers);
+                    this.Receiver.AddRange(this.InputObject.AzureFunctionReceivers);
+                    this.Receiver.AddRange(this.InputObject.LogicAppReceivers);
+                    this.Receiver.AddRange(this.InputObject.AutomationRunbookReceivers);
+                    this.Receiver.AddRange(this.InputObject.AzureAppPushReceivers);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 else if (ParameterSetName == ByResourceId)
                 {
@@ -140,6 +157,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
                 IList<EmailReceiver> emailReceivers =
                     this.Receiver.OfType<PSEmailReceiver>().
+<<<<<<< HEAD
                         Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<SmsReceiver> smsReceivers =
                     this.Receiver.OfType<PSSmsReceiver>().
@@ -147,6 +165,74 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                 IList<WebhookReceiver> webhookReceivers =
                     this.Receiver.OfType<PSWebhookReceiver>().
                         Select(o => new WebhookReceiver(name: o.Name, serviceUri: o.ServiceUri)).ToList();
+=======
+                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status),useCommonAlertSchema : o.UseCommonAlertSchema)).ToList();
+
+                IList<SmsReceiver> smsReceivers =
+                    this.Receiver.OfType<PSSmsReceiver>().
+                        Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
+
+                IList<WebhookReceiver> webhookReceivers =
+                    this.Receiver.OfType<PSWebhookReceiver>().
+                        Select(o => new WebhookReceiver(
+                                                name: o.Name, 
+                                                serviceUri: o.ServiceUri, 
+                                                useCommonAlertSchema : o.UseCommonAlertSchema,
+                                                useAadAuth :o.UseAadAuth,
+                                                objectId : o.ObjectId,
+                                                identifierUri: o.IdentifierUri,
+                                                tenantId :o.TenantId)).ToList();
+
+                IList<ItsmReceiver> itsmReceivers =
+                    this.Receiver.OfType<PSItsmReceiver>().
+                    Select(o => new ItsmReceiver(name: o.Name, workspaceId: o.WorkspaceId, connectionId: o.ConnectionId, ticketConfiguration: o.TicketConfiguration, region: o.Region)).ToList();
+
+                IList <VoiceReceiver> voiceReceivers =
+                    this.Receiver.OfType<PSVoiceReceiver>().
+                        Select(o => new VoiceReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber)).ToList();
+
+                IList<ArmRoleReceiver> armRoleReceivers =
+                    this.Receiver.OfType<PSArmRoleReceiver>().
+                        Select(o => new ArmRoleReceiver(name: o.Name, roleId: o.RoleId, useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
+
+                IList<AzureFunctionReceiver> azureFunctionReceivers =
+                    this.Receiver.OfType<PSAzureFunctionReceiver>().
+                        Select(o => new AzureFunctionReceiver(
+                                                        name: o.Name, 
+                                                        functionName: o.FunctionName, 
+                                                        functionAppResourceId: o.FunctionAppResourceId, 
+                                                        httpTriggerUrl: o.HttpTriggerUrl, 
+                                                        useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
+
+                IList<LogicAppReceiver> logicAppReceivers =
+                    this.Receiver.OfType<PSLogicAppReceiver>().
+                        Select(o => new LogicAppReceiver(
+                                                        name: o.Name,
+                                                        resourceId: o.ResourceId,
+                                                        callbackUrl: o.CallbackUrl,
+                                                        useCommonAlertSchema: o.UseCommonAlertSchema
+                                                        )).ToList();
+
+                IList<AutomationRunbookReceiver> automationRunbookReceivers =
+                    this.Receiver.OfType<PSAutomationRunbookReceiver>().
+                        Select(o => new AutomationRunbookReceiver(
+                                                        name: o.Name,
+                                                        runbookName: o.RunbookName,
+                                                        webhookResourceId: o.WebhookResourceId,
+                                                        isGlobalRunbook: o.IsGlobalRunbook,
+                                                        useCommonAlertSchema: o.UseCommonAlertSchema,
+                                                        serviceUri: o.ServiceUri,
+                                                        automationAccountId :o.AutomationAccountId
+                                                        )).ToList();
+
+                IList<AzureAppPushReceiver> azureAppPushReceivers =
+                  this.Receiver.OfType<PSAzureAppPushReceiver>().
+                      Select(o => new AzureAppPushReceiver(
+                                                      name: o.Name,
+                                                      emailAddress: o.EmailAddress
+                                                      )).ToList();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ActionGroupResource actionGroup = new ActionGroupResource
                                                   {
                                                       Location = "Global",
@@ -155,7 +241,18 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                       Tags = this.Tag,
                                                       EmailReceivers = emailReceivers,
                                                       SmsReceivers = smsReceivers,
+<<<<<<< HEAD
                                                       WebhookReceivers = webhookReceivers
+=======
+                                                      WebhookReceivers = webhookReceivers,
+                                                      ItsmReceivers = itsmReceivers,
+                                                      VoiceReceivers = voiceReceivers,
+                                                      ArmRoleReceivers = armRoleReceivers,
+                                                      AzureFunctionReceivers = azureFunctionReceivers,
+                                                      LogicAppReceivers = logicAppReceivers,
+                                                      AutomationRunbookReceivers = automationRunbookReceivers,
+                                                      AzureAppPushReceivers = azureAppPushReceivers
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                                   };
 
                 WriteObject(

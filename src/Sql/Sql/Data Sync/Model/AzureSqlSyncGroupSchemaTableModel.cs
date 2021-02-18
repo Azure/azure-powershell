@@ -14,7 +14,11 @@
 
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+=======
+using Microsoft.Azure.Management.Sql.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -64,10 +68,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// <returns>The result SyncGroupSchemaTable</returns>
         public SyncGroupSchemaTable ToSyncGroupSchemaTable()
         {
+<<<<<<< HEAD
             List<SyncGroupSchemaColumn> syncGroupSchemaColumns = null;
             if (Columns != null)
             {
                 syncGroupSchemaColumns = new List<SyncGroupSchemaColumn>();
+=======
+            List<SyncGroupSchemaTableColumn> syncGroupSchemaColumns = null;
+            if (Columns != null)
+            {
+                syncGroupSchemaColumns = new List<SyncGroupSchemaTableColumn>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 foreach (var column in Columns)
                 {
                     syncGroupSchemaColumns.Add(column.ToSyncGroupSchemaColumn());

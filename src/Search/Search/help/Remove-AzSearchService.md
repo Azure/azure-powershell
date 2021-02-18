@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchservice
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
+Module Name: Az.Search
+online version: https://docs.microsoft.com/powershell/module/az.search/remove-azsearchservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzSearchService
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Remove an Azure Search service.
+=======
+Remove an Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +42,11 @@ Remove-AzSearchService [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProf
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Remove-AzSearchService** cmdlet removes an Azure Search service with specified paramters.
+=======
+The **Remove-AzSearchService** cmdlet removes an Azure Cognitive Search service with specified parameters.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -45,7 +60,11 @@ Are you sure you want to remove Search Service 'pstestazuresearch01'?
 PS C:\>
 ```
 
+<<<<<<< HEAD
 The example removes an Azure Search service.
+=======
+The example removes an Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -80,7 +99,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 Search Service Input Object.
+=======
+Azure Cognitive Search Service Input Object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -95,7 +118,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Search Service name.
+=======
+Azure Cognitive Search Service name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -140,7 +167,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 Search Service Resource Id.
+=======
+Azure Cognitive Search Service Resource Id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -186,7 +217,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -207,4 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzSearchService](./Get-AzSearchService.md)
 
 [Set-AzSearchService](./Set-AzSearchService.md)
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

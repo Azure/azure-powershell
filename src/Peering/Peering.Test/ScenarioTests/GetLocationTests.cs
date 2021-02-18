@@ -79,5 +79,38 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle");
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// The test get location kind direct seattle facility 99999
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetLocationKindDirectSeattle99999WithLocation()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle99999WithLocation");
+        }
+
+        /// <summary>
+        /// The test get location kind direct seattle 
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetLocationKindDirectSeattle99999()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle99999");
+        }
+
+        /// <summary>
+        /// The test get location kind direct ams 
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetLocationKindDirectAmsterdam()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectAmsterdam");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

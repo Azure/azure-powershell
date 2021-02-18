@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
+<<<<<<< HEAD
             var cluster = new Cluster
             {
                 Id = "id",
@@ -56,11 +57,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            var cluster = new Cluster(id: "id", name: ClusterName)
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 }
             };
@@ -68,6 +82,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var getresponse = new ClusterGetResponse { Cluster = cluster };
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
                 .Returns(getresponse)
+=======
+                    OsType = OSType.Linux
+                }
+            };
+
+            hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
+                .Returns(cluster)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .Verifiable();
 
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
@@ -85,6 +107,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanListHDInsightClustersInRG()
         {
             cmdlet.ResourceGroupName = ResourceGroupName;
+<<<<<<< HEAD
             var cluster1 = new Cluster
             {
                 Id = "id",
@@ -97,11 +120,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 }
             };
@@ -118,16 +154,40 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+                    OsType = OSType.Linux
+                }
+            };
+
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 }
             };
 
             var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
+=======
+                    OsType = OSType.Linux
+                }
+            };
+
+            var listresponse = new[] { cluster1, cluster2 };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             hdinsightManagementMock.Setup(c => c.ListClusters(ResourceGroupName))
                 .Returns(listresponse)
                 .Verifiable();
@@ -153,6 +213,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanListHDInsightClusters()
         {
+<<<<<<< HEAD
             var cluster1 = new Cluster
             {
                 Id = "id",
@@ -165,11 +226,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 }
             };
@@ -186,16 +260,40 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+                    OsType = OSType.Linux
+                }
+            };
+
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Windows
                 }
             };
 
             var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
+=======
+                    OsType = OSType.Linux
+                }
+            };
+
+            var listresponse = new[] { cluster1, cluster2 };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             hdinsightManagementMock.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();

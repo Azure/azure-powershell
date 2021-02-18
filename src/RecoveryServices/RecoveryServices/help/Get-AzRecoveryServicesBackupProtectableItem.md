@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem
+=======
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -33,19 +37,33 @@ Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [[-ItemType] <P
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **Get-AzRecoveryServicesBackupProtectableItem** cmdlet gets the protectable items in a container or a value in Azure Backup and the protection status of the items.
+=======
+The **Get-AzRecoveryServicesBackupProtectableItem** cmdlet gets the list of protectable items in a container and the protection status of the items.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 
 ## EXAMPLES
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\>$Container = Get-AzRecoveryServicesBackupContainer -ContainerType MSSQL -Status Registered
 PS C:\> $Item = Get-AzRecoveryServicesProtectableItem -Container $Container -ItemType "SQLDatabase" -VaultId $vault.ID
 ```
 
 The first command gets the container of type MSSQL, and then stores it in the $Container variable.
 The second command gets the Backup item in $Container, and then stores it in the $Item variable.
+=======
+PS C:\> $Vault = Get-AzRecoveryServicesVault -Name "MyRecoveryVault"
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered -VaultId $Vault.Id
+PS C:\> $Item = Get-AzRecoveryServicesBackupProtectableItem -Container $Container -ItemType "SQLInstance" -WorkloadType "MSSQL" -VaultId $Vault.ID
+```
+
+The first command gets the container of type MSSQL, and then stores it in the $Container variable.
+The second command gets the Backup protectable item in $Container, and then stores it in the $Item variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -156,13 +174,21 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
+<<<<<<< HEAD
 Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
+=======
+Workload type of the resource. The current supported values are  AzureVM, WindowsServer, AzureFiles, MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: NoFilterParamSet, FilterParamSet
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+=======
+Accepted values: AzureVM, WindowsServer, AzureFiles, MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 1
@@ -172,7 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -185,4 +215,8 @@ System.String
 
 ## NOTES
 
+<<<<<<< HEAD
 ## RELATED LINKS
+=======
+## RELATED LINKS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

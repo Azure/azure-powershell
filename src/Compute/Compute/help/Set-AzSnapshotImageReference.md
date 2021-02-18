@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azsnapshotimagereference
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azsnapshotimagereference
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,7 +35,11 @@ PS C:\> New-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snaps
 ```
 
 The first command creates a local snapshot object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.
+<<<<<<< HEAD
 The second command sets the image ID and the logical unit number 0 for the snapshot obejct.
+=======
+The second command sets the image ID and the logical unit number 0 for the snapshot object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The last command takes the snapshot object and creates a snapshot with name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS

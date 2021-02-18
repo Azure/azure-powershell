@@ -19,6 +19,10 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
@@ -39,7 +43,11 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
             {
                 try
                 {
+<<<<<<< HEAD
                     WriteObject(BillingManagementClient.EnrollmentAccounts.List().Value.Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
+=======
+                    WriteObject(BillingManagementClient.EnrollmentAccounts.List().Select(x => new PSEnrollmentAccount(x)), enumerateCollection: true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 catch (ErrorResponseException error)
                 {

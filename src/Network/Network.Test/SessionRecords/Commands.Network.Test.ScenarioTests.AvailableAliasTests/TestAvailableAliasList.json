@@ -1,0 +1,75 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableServiceAliases?api-version=2020-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVTZXJ2aWNlQWxpYXNlcz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75a2897f-03c8-45d3-88db-a74b6ade53bb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "86b35662-0a0a-4b6a-9005-8935a89489f9"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a424bfa-e3c3-48a4-9d3f-df68fdd120fd"
+        ],
+        "x-ms-arm-service-request-id": [
+          "ad16cbd2-4d91-49df-93e3-28fa7e254353"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200607T174448Z:3a424bfa-e3c3-48a4-9d3f-df68fdd120fd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 07 Jun 2020 17:44:48 GMT"
+        ],
+        "Content-Length": [
+          "4322"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"servicesAzure\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzure\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureActiveDirectory\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureActiveDirectory\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/ActiveDirectory\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureAKS\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureAKS\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/AKS\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureApiManagement\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureApiManagement\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/ApiManagement\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureBackup\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureBackup\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/Backup\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureBatch\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureBatch\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/Batch\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureDatabricks\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureDatabricks\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/Databricks\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureDataFactory\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureDataFactory\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/DataFactory\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureFirewall\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureFirewall\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/Firewall\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureHDI\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureHDI\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/HDI\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureLogicApps\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureLogicApps\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/LogicApps\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureManagedInstance\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureManagedInstance\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/ManagedInstance\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureRedisCache\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureRedisCache\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/RedisCache\"\r\n    },\r\n    {\r\n      \"name\": \"servicesAzureWebPI\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureWebPI\",\r\n      \"type\": \"Microsoft.Network/AvailableServiceAliases\",\r\n      \"resourceName\": \"/services/Azure/WebPI\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
+  }
+}

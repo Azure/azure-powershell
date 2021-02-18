@@ -17,7 +17,11 @@ using System.Management.Automation;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Management.Sql.Models;
+<<<<<<< HEAD
 using Hyak.Common;
+=======
+using Microsoft.Rest.Azure;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -81,10 +85,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public PSCredential DatabaseCredential { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the policy of resolving confliction between hub and member database in the sync group
         /// </summary>
         [Parameter(Mandatory = false,
            HelpMessage = "The policy of resolving confliction between hub and member database in the sync group.")]
+=======
+        /// Gets or sets the policy of resolving conflicts between hub and member database in the sync group
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "The policy of resolving conflicts between hub and member database in the sync group.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateSet("HubWin", "MemberWin", IgnoreCase = true)]
         public string ConflictResolutionPolicy { get; set; }
 
@@ -96,6 +107,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SchemaFile { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets if private link should be used
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use a private link connection when connecting to the hub of this sync group.")]
+        public SwitchParameter UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The id of database used to store sync related metadata
         /// </summary>
         private string syncDatabaseId = null;
@@ -153,6 +173,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 newModel.IntervalInSeconds = this.IntervalInSeconds;
             }
 
+<<<<<<< HEAD
+=======
+            newModel.UsePrivateLinkConnection = UsePrivateLinkConnection.IsPresent;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseResourceGroupName") 
                 && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseServerName") 
                 && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseName"))

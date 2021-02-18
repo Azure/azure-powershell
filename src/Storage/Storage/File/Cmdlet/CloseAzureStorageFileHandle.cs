@@ -84,33 +84,61 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = ShareCloseAllParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = ShareCloseSingleParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ShareCloseSingleParameterSetName,
+            HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
+        [ValidateNotNull]
+        [Alias ("CloudFileShare")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileShare Share { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = DirectoryCloseAllParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the base folder which contains the files/directories to closed handle.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DirectoryCloseAllParameterSetName,
+            HelpMessage = "CloudFileDirectory object indicated the base folder which contains the files/directories to closed handle.")]
+        [ValidateNotNull]
+        [Alias("CloudFileDirectory")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = FileCloseAllParameterSetName,
             HelpMessage = "CloudFile object indicated the file to close handle.")]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = FileCloseAllParameterSetName,
+            HelpMessage = "CloudFile object indicated the file to close handle.")]
+        [ValidateNotNull]
+        [Alias("CloudFile")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFile File { get; set; }
 
         [Parameter(
@@ -158,7 +186,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Azure Storage Context Object")]
         public override IStorageContext Context { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified blob is successfully removed")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Return the count of closed file handles.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -213,6 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         string[] subfolders = NamingUtil.ValidatePath(this.Path);
                         targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
 
+<<<<<<< HEAD
                         if (!targetDir.Exists())
                         {
                             foundAFolder = false;
@@ -231,6 +264,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                 this.OperationContext,
                                 this.CmdletCancellationToken).ConfigureAwait(false);
                         }
+=======
+                        // Don't need check the path target to File or FileDir since: 
+                        // 1. check File/FileDir exist will fail on File/FileDir with DeletePending status
+                        // 2. The File handle request send with CloudFileDirectory and CloudFile are same with same path, so need to differ it.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                 }
 

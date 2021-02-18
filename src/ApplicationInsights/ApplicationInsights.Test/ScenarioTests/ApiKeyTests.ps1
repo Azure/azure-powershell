@@ -138,7 +138,11 @@ function Test-RemoveApplicationInsightsApiKey
 
         Remove-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id;
 
+<<<<<<< HEAD
 		Assert-ThrowsContains { Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id } "NotFound"
+=======
+		#Assert-ThrowsContains { Get-AzApplicationInsightsApiKey -ResourceGroupName $rgname -Name $appName -ApiKeyId $apiKey.Id } "NotFound"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally
     {

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
@@ -23,21 +24,82 @@ namespace Microsoft.Azure.Commands.Aks
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
+=======
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+namespace Microsoft.Azure.Commands.Aks
+{
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAksCluster")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
+    [OutputType(typeof(PSKubernetesCluster))]
+    public class NewAzureRmAks : NewKubeBase
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
         public SwitchParameter Force { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
+        public SwitchParameter GenerateSshKey { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            PreValidate();
+            PrepareParameter();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             Action action = () =>
             {
                 WriteVerbose(Resources.PreparingForDeploymentOfYourManagedKubernetesCluster);
                 var managedCluster = BuildNewCluster();
+<<<<<<< HEAD
                 var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                 var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
                 WriteObject(psObj);
+=======
+                try
+                {
+                    var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
+                    var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+                    WriteObject(psObj);
+                }
+                catch (ValidationException e)
+                {
+                    var sdkApiParameterMap = new Dictionary<string, CmdletParameterNameValuePair>()
+                    {
+                        { Constants.DotNetApiParameterResourceGroupName, new CmdletParameterNameValuePair(nameof(ResourceGroupName), ResourceGroupName) },
+                        { Constants.DotNetApiParameterResourceName, new CmdletParameterNameValuePair(nameof(Name), Name) },
+                        { "Name", new CmdletParameterNameValuePair(nameof(NodeName), managedCluster.AgentPoolProfiles.FirstOrDefault()?.Name) },
+                    };
+
+                    if (!HandleValidationException(e, sdkApiParameterMap))
+                    {
+                        throw;
+                    }
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             var msg = $"{Name} in {ResourceGroupName}";
@@ -61,5 +123,100 @@ namespace Microsoft.Azure.Commands.Aks
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        private void PreValidate()
+        {
+            if ((this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || this.EnableNodeAutoScaling.IsPresent) &&
+                !(this.IsParameterBound(c => c.NodeMinCount) && this.IsParameterBound(c => c.NodeMaxCount) && this.EnableNodeAutoScaling.IsPresent))
+            {
+                throw new AzPSArgumentException(
+                  Resources.AksNodePoolAutoScalingParametersMustAppearTogether,
+                  nameof(EnableNodeAutoScaling),
+                  desensitizedMessage: Resources.AksNodePoolAutoScalingParametersMustAppearTogether);
+            }
+
+            if (this.IsParameterBound(c => c.GenerateSshKey) && this.IsParameterBound(c => c.SshKeyValue))
+            {
+                throw new AzPSArgumentException(Resources.DonotUseGenerateSshKeyWithSshKeyValue,
+                    nameof(GenerateSshKey),
+                    desensitizedMessage: Resources.DonotUseGenerateSshKeyWithSshKeyValue);
+            }
+
+            if ((this.IsParameterBound(c => c.WindowsProfileAdminUserName) && !this.IsParameterBound(c => c.WindowsProfileAdminUserPassword)) ||
+                (!this.IsParameterBound(c => c.WindowsProfileAdminUserName) && this.IsParameterBound(c => c.WindowsProfileAdminUserPassword)))
+            {
+                throw new AzPSArgumentException(
+                    Resources.WindowsUserNameAndPasswordShouldAppearTogether,
+                    nameof(WindowsProfileAdminUserName),
+                    desensitizedMessage: Resources.WindowsUserNameAndPasswordShouldAppearTogether);
+            }
+
+            if (this.IsParameterBound(c => c.WindowsProfileAdminUserName))
+            {
+                if (!string.Equals(this.NetworkPlugin, "azure"))
+                {
+                    throw new AzPSArgumentException(
+                        Resources.NetworkPluginShouldBeAzure,
+                        nameof(NetworkPlugin),
+                        desensitizedMessage: Resources.NetworkPluginShouldBeAzure);
+                }
+            }
+        }
+
+        private string GenerateSshKeyValue()
+        {
+            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa"); ;
+            if (File.Exists(generateSshKeyPath))
+            {
+                throw new AzPSArgumentException(
+                    string.Format(Resources.DefaultSshKeyAlreadyExist, generateSshKeyPath),
+                    nameof(GenerateSshKey),
+                    desensitizedMessage: string.Format(Resources.DefaultSshKeyAlreadyExist, "*"));
+            }
+            using (Process process = new Process())
+            {
+                try
+                {
+                    process.StartInfo.FileName = "ssh-keygen";
+                    process.StartInfo.Arguments = String.Format("-f \"{0}\"", generateSshKeyPath);
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardInput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    string errorOutput = null;
+                    process.ErrorDataReceived += new DataReceivedEventHandler((sender, e) => errorOutput += e.Data);
+                    process.Start();
+
+                    string standOutput = process.StandardOutput.ReadToEnd();
+                    if (!string.IsNullOrEmpty(standOutput))
+                    {
+                        WriteDebug(standOutput);
+                    }
+                    process.WaitForExit();
+                    if (!string.IsNullOrEmpty(errorOutput))
+                    {
+                        var errorMessage = string.Format(Resources.FailedToGenerateSshKey, errorOutput);
+                        throw new AzPSInvalidOperationException(errorMessage, ErrorKind.InternalError);
+                    }
+                }
+                catch(Win32Exception exception)
+                {
+                    var message = string.Format(Resources.FailedToRunSshKeyGen, exception.Message);
+                    throw new AzPSInvalidOperationException(message, ErrorKind.InternalError);
+                }
+            }
+            return GetSshKey(generateSshKeyPath);
+        }
+
+        protected void PrepareParameter()
+        {
+            if (this.IsParameterBound(c => c.GenerateSshKey))
+            {
+                SshKeyValue = GenerateSshKeyValue();
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

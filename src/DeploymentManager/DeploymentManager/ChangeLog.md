@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.1.0
+* Adds LIST operations for resources
+* Adds capability for performing operations on Health Check steps
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.0.0
 * GA release of Deployment Manager cmdlets
 

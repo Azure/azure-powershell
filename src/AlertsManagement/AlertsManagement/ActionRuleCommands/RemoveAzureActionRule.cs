@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ByResourceIdParameterSet,
+<<<<<<< HEAD
                    HelpMessage = "Get Action rule by resoure id.")]
+=======
+                   HelpMessage = "Get Action rule by resource id.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

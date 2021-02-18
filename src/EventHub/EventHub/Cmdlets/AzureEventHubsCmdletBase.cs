@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
+<<<<<<< HEAD
+=======
+        protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -78,6 +82,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventhubResourceIdParameterSet = "EventhubResourceIdParameterSet";
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+<<<<<<< HEAD
+=======
+        protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -92,8 +100,19 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 
         //Parametersets for Authorizationrules
+<<<<<<< HEAD
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
+=======
+        protected const string ClusterPropertiesParameterSet = "ClusterPropertiesSet";
+        protected const string ClusterGetPropertiesParameterSet = "ClusterGetPropertiesSet";
+        protected const string ClusterListPropertiesParameterSet = "ClusterListPropertiesSet";
+
+        //Parametersets for Authorizationrules
+        protected const string NamespaceParameterSet = "NamespaceParameterSet";
+        protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
+        protected const string IdentityUpdateParameterSet = "IdentityUpdateParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroup = "ResourceGroup";
@@ -104,14 +123,28 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasResourceId = "ResourceId";
+<<<<<<< HEAD
+=======
+        protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
+
+        //Access Rights 
+        protected const string Manage = "Manage";
+        protected const string Send = "Send";
+        protected const string Listen = "Listen";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected struct SKU
         {
             internal const string Basic = "Basic";
             internal const string Standard = "Standard";
             internal const string Premium = "Premium";
+<<<<<<< HEAD
         }
 
+=======
+        }        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected struct RegeneKeys
         {
             internal const string PrimaryKey = "PrimaryKey";
@@ -189,6 +222,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     {
         public LocalResourceIdentifier(string strResourceID) : base(strResourceID)
         {
+<<<<<<< HEAD
             string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
             // for upto 3 Parents 
@@ -206,6 +240,30 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     ParentResource1 = tokens[3];
                     ParentResource2 = tokens[5];
                     break;
+=======
+            if (base.ParentResource != null && !(this.ResourceType.Equals("Microsoft.EventHub/namespaces") || this.ResourceType.Equals("Microsoft.ServiceBus/namespaces") || this.ResourceType.Equals("Microsoft.Relay/namespaces")))
+            {
+                string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // for upto 3 Parents 
+                switch (tokens.Length)
+                {
+                    case 2:
+                        ParentResource = tokens[1];
+                        break;
+                    case 4:
+                        ParentResource = tokens[1];
+                        ParentResource1 = tokens[3];
+                        break;
+                    case 6:
+                        ParentResource = tokens[1];
+                        ParentResource1 = tokens[3];
+                        ParentResource2 = tokens[5];
+                        break;
+                    default:
+                        throw new Exception("Invalid length of tokens");
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 

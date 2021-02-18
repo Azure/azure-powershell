@@ -61,7 +61,12 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
                 StorageUri = StorageUri,
                 Edition = Edition,
                 ServiceObjectiveName = ServiceObjectiveName,
+<<<<<<< HEAD
                 DatabaseMaxSizeBytes = DatabaseMaxSizeBytes
+=======
+                DatabaseMaxSizeBytes = DatabaseMaxSizeBytes,
+                NetworkIsolationSettings = NetworkIsolationSettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
     }

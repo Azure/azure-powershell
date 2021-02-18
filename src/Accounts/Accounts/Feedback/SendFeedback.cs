@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -18,6 +19,15 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
+=======
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using System;
+using System.Diagnostics;
+using System.Management.Automation;
+using System.Runtime.InteropServices;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -37,6 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             this.WriteQuestion(Resources.SendFeedbackRecommendationQuestion);
             int recommendation;
             if (!int.TryParse(this.Host.UI.ReadLine(), out recommendation) || recommendation < 0 || recommendation > 10)
@@ -76,11 +87,60 @@ namespace Microsoft.Azure.Commands.Profile
             // Log the event with force since the user specifically issued this command to provide feedback.
 
             this._metricHelper.LogCustomEvent(_eventName, feedbackPayload, true /* force */);
+=======
+            this.WriteQuestion(AzureProfileConstants.AzurePowerShellFeedbackQuestion);
+            var yesOrNo = this.Host.UI.ReadLine();
+            if(0 == String.Compare(yesOrNo, "yes", true) || 0 == String.Compare(yesOrNo, "y", true))
+            {
+                if (OpenBrowser(AzureProfileConstants.AzureSurveyUrl))
+                {
+                    this.Host.UI.WriteLine();
+                    return;
+                }
+                this.Host.UI.WriteLine();
+                this.WriteWarning($"{AzureProfileConstants.AzurePowerShellFeedbackWarning}{Environment.NewLine}");
+                return;
+            }
+            this.Host.UI.WriteLine(this.Host.UI.RawUI.ForegroundColor, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{AzureProfileConstants.AzurePowerShellFeedbackManually}{Environment.NewLine}");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private void WriteQuestion(string question)
         {
             this.Host.UI.WriteLine(ConsoleColor.Cyan, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{question}{Environment.NewLine}");
         }
+<<<<<<< HEAD
+=======
+
+        private bool OpenBrowser(string url)
+        {
+            try
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

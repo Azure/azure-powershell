@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.dll-Help.xml
 Module Name: Az.ResourceGraph
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcegraph/search-azgraph
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/search-azgraph
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -55,6 +59,30 @@ westus            26
 
 A complex query on resources featuring field selection, filtering and summarizing.
 
+<<<<<<< HEAD
+=======
+### Example 3
+```powershell
+PS C:\> Search-AzGraph -Include DisplayName -Query 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName'
+
+name         resourceGroup      subscriptionDisplayName
+----         -------------      -----------------------
+ContosoVM    RG-Contoso         Contoso Production Subscription                                               
+
+```
+A query featuring all virtual machines which are not using Managed Disks and includes subscription display names.
+
+### Example 4
+```powershell
+PS C:\> Search-AzGraph -Include DisplayName -Query 'summarize count() by tenantDisplayName, subscriptionDisplayName'
+
+tenantDisplayName   subscriptionDisplayName              count_
+-----------------   -----------------------              ------
+ContosoTenant       Contoso Production Subscription      118                                           
+```
+A query displaying the count of resources by tenant and subscription display names.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile

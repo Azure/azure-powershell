@@ -24,7 +24,15 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
+<<<<<<< HEAD
 
+=======
+    using System;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+    [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard PublicIpPrefix is zone-redundant.",
+        NewWay = "Sku = Standard and Zone = {} means the Standard PublicIpPrefix has no zones. If you want to create a zone-redundant PublicIpPrefix, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
@@ -63,11 +71,28 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+    Mandatory = false,
+    ValueFromPipelineByPropertyName = true,
+    HelpMessage = "The public IP Prefix Sku tier.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+    MNM.PublicIPAddressSkuTier.Regional,
+    MNM.PublicIPAddressSkuTier.Global,
+    IgnoreCase = true)]
+        public string Tier { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The PublicIPPrefix length")]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         [ValidateRange((ushort)21, (ushort)31)]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public ushort PrefixLength { get; set; }
 
         [Parameter(
@@ -96,6 +121,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The CustomIpPrefix that this PublicIpPrefix will be associated with")]
+        public PSCustomIpPrefix CustomIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -138,21 +172,52 @@ namespace Microsoft.Azure.Commands.Network
                 publicIpPrefix.PublicIpAddressVersion = this.IpAddressVersion;
             }
 
+<<<<<<< HEAD
             publicIpPrefix.Zones = this.Zone?.ToList();
             publicIpPrefix.PrefixLength = this.PrefixLength;
 
             publicIpPrefix.Sku = new PSPublicIpPrefixSku();
             publicIpPrefix.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
+=======
+            if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv6 && (this.PrefixLength < 117 || this.PrefixLength > 127))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv6IPPrefixLength, this.PrefixLength));
+            }
+            else if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv4 && (this.PrefixLength < 21 || this.PrefixLength > 31))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv4IPPrefixLength, this.PrefixLength));
+            }
+
+            publicIpPrefix.Zones = this.Zone?.ToList();
+            publicIpPrefix.PrefixLength = this.PrefixLength;
+            
+            publicIpPrefix.Sku = new PSPublicIpPrefixSku();
+            publicIpPrefix.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
+            publicIpPrefix.Sku.Tier = MNM.PublicIPAddressSkuTier.Regional;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrEmpty(this.Sku))
             {
                 publicIpPrefix.Sku.Name = this.Sku;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrEmpty(this.Tier))
+            {
+                publicIpPrefix.Sku.Tier = this.Tier;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IpTag != null && this.IpTag.Length > 0)
             {
                 publicIpPrefix.IpTags = this.IpTag?.ToList();
             }
 
+<<<<<<< HEAD
+=======
+            publicIpPrefix.CustomIpPrefix = this.CustomIpPrefix;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 
             theModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arguments": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "managedIdentityId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/resourceGroups/Ds-TestRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/filiz-user-assigned-msi"
+    },
+    "scriptContent": {
+      "type": "string"
+    },
+    "scriptCleanupPreference": {
+      "type": "string",
+      "defaultValue": "OnExpiration"
+    },
+    "retentionInterval": {
+      "type": "string",
+      "defaultValue": "P1D"
+    },
+    "timeout": {
+      "type": "string",
+      "defaultValue": "PT30M"
+    },
+    "scriptKind": {
+      "type": "string"
+    },
+    "azCliVersion": {
+      "type": "string",
+      "defaultValue": "2.0.80"
+    },
+    "scriptSuffix": {
+      "type": "string",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    "scriptName": "[concat('PsTest-DeploymentScripts-', parameters('scriptSuffix'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "name": "[variables('scriptName')]",
+      "apiVersion": "2020-10-01",
+      "location": "[resourceGroup().location]",
+      "kind": "[parameters('scriptKind')]",
+      "identity": {
+        "type": "userAssigned",
+        "userAssignedIdentities": {
+          "[parameters('managedIdentityId')]": {}
+        }
+      },
+      "properties": {
+        "azCliVersion": "[parameters('azCliVersion')]",
+        "scriptContent": "[parameters('scriptContent')]",
+        "Arguments": "[parameters('arguments')]",
+        "timeout": "[parameters('timeout')]",
+        "cleanupPreference": "[parameters('scriptCleanupPreference')]",
+        "retentionInterval": "[parameters('retentionInterval')]"
+      }
+    }
+  ],
+  "outputs": {
+    "result": {
+      "value": "[reference(variables('scriptName')).outputs]",
+      "type": "object"
+    }
+  }
+}

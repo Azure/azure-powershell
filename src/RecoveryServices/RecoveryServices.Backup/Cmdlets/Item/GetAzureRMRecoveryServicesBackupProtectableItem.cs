@@ -31,11 +31,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectableItem",
         DefaultParameterSetName = NoFilterParamSet), OutputType(typeof(ProtectableItemBase))]
     public class GetAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
+<<<<<<< HEAD
     {
+=======
+    {        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string NoFilterParamSet = "NoFilterParamSet";
         internal const string FilterParamSet = "FilterParamSet";
         internal const string IdParamSet = "IdParamSet";
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, WindowsServer, AzureFiles, MSSQL";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, Position = 0, ParameterSetName = NoFilterParamSet,
             HelpMessage = ParamHelpMsgs.Item.Container, ValueFromPipelineByPropertyName = true)]
         [Parameter(Mandatory = false, Position = 0, ParameterSetName = FilterParamSet,
@@ -49,9 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string ParentID { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = NoFilterParamSet,
+<<<<<<< HEAD
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = FilterParamSet,
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+=======
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = FilterParamSet,
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 

@@ -72,7 +72,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Reboot Seeting.")]
+=======
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Reboot Setting.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public RebootSetting RebootSetting { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]

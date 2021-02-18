@@ -184,6 +184,25 @@
                   <ScriptBlock>$_.Locks.Mode.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
+<<<<<<< HEAD
+=======
+                <Label>ExcludedActions</Label>
+                <ScriptBlock>
+                  If (-not ([string]::IsNullOrEmpty($_.Locks.ExcludedActions))){
+                    $_.Locks.ExcludedActions
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ExcludedPrincipals</Label>
+                <ScriptBlock>
+                  If (-not ([string]::IsNullOrEmpty($_.Locks.ExcludedPrincipals))){
+                    $_.Locks.ExcludedPrincipals
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>

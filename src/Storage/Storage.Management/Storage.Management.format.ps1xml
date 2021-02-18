@@ -18,7 +18,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>Location</Label>
+=======
+            <Label>PrimaryLocation</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -44,6 +48,13 @@
             <Alignment>Left</Alignment>
             <Label>EnableHttpsTrafficOnly</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
+=======
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LargeFileShares</Label>
+          </TableColumnHeader>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -58,7 +69,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <PropertyName>Location</PropertyName>
+=======
+                <PropertyName>PrimaryLocation</PropertyName>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -84,6 +99,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableHttpsTrafficOnly</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
+=======
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LargeFileSharesState</PropertyName>
+              </TableColumnItem>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -120,6 +142,65 @@
       </ListControl>
     </View>
     <View>
+<<<<<<< HEAD
+=======
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSContainer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSContainer</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.ResourceGroupName + ", StorageAccountName: " + $_.StorageAccountName</ScriptBlock>
+        <Label>ResourceGroupName</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicAccess</Label>
+            <Alignment>Left</Alignment>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModified</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HasLegalHold</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HasImmutabilityPolicy</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.PublicAccess</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.LastModifiedTime.ToUniversalTime().ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.HasLegalHold</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.HasImmutabilityPolicy</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy</TypeName>
@@ -214,22 +295,163 @@
       </ListControl>
     </View>
     <View>
+<<<<<<< HEAD
     <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties</Name>
     <ViewSelectedBy>
       <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties</TypeName>
     </ViewSelectedBy>
+=======
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>StorageAccountName</PropertyName>
+                <Label>StorageAccountName</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+                <Label>ResourceGroupName</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>DefaultServiceVersion</PropertyName>
+                <Label>DefaultServiceVersion</Label>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.Days</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>RestorePolicy.Enabled</Label>
+                <ScriptBlock>$_.RestorePolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>RestorePolicy.Days</Label>
+                <ScriptBlock>$_.RestorePolicy.Days</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>RestorePolicy.MinRestoreTime</Label>
+                <ScriptBlock>$_.RestorePolicy.MinRestoreTime</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ChangeFeed</Label>
+                <ScriptBlock>$_.ChangeFeed.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsVersioningEnabled</PropertyName>
+                <Label>IsVersioningEnabled</Label>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSShare</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSShare</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.ResourceGroupName + ", StorageAccountName: " + $_.StorageAccountName</ScriptBlock>
+        <Label>ResourceGroupName</Label>
+      </GroupBy>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>StorageAccountName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+=======
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>QuotaGiB</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnabledProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AccessTier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Deleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Version</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ShareUsageBytes</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>QuotaGiB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnabledProtocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AccessTier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Deleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ShareUsageBytes</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSObjectReplicationPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSObjectReplicationPolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+<<<<<<< HEAD
             <Label>DefaultServiceVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -239,6 +461,29 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>DeleteRetentionPolicy.Days</Label>
+=======
+            <Label>StorageAccountName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PolicyId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnabledTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SourceAccount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DestinationAccount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Rules</Label>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -246,10 +491,18 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
+=======
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 <PropertyName>StorageAccountName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+<<<<<<< HEAD
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -263,11 +516,280 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+=======
+                <PropertyName>PolicyId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnabledTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SourceAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DestinationAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if (($_.Rules -ne $null) -and ($_.Rules.Count -ne 0)) { if ($_.Rules.Count -eq 1) {'[' + $_.Rules[0].RuleId + ']'} else {'[' + $_.Rules[0].RuleId + ',...]'}} else {$null}</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
+<<<<<<< HEAD
+=======
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSObjectReplicationPolicyRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSObjectReplicationPolicyRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RuleId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SourceContainer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DestinationContainer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Filters.PrefixMatch</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Filters.MinCreationTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RuleId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SourceContainer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DestinationContainer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>'{' + ($_.Filters.PrefixMatch -join ', ') + '}'</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z"</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobRestoreStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobRestoreStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RestoreId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>FailureReason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Parameters.TimeToRestore</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Parameters.BlobRanges</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RestoreId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>FailureReason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Parameters.TimeToRestore.ToString("o")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.Parameters.BlobRanges[0] -ne $null) {if ($_.Parameters.BlobRanges[1] -ne $null) {'["' + $_.Parameters.BlobRanges[0].StartRange + '" -> "' + $_.Parameters.BlobRanges[0].EndRange  + '",...]'} else {'["' + $_.Parameters.BlobRanges[0].StartRange + '" -> "' + $_.Parameters.BlobRanges[0].EndRange  + '"]'}} else {$null}</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSRestorePolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSRestorePolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Days</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MinRestoreTime</Label>
+          </TableColumnHeader>          
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Days</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>MinRestoreTime</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSEncryptionScope</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSEncryptionScope</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.ResourceGroupName + ", StorageAccountName: " + $_.StorageAccountName</ScriptBlock>
+        <Label>ResourceGroupName</Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+            <Alignment>Left</Alignment>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultKeyUri</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.KeyVaultProperties.keyUri</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Storage.Models.Endpoints</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Storage.Models.Endpoints</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Blob</PropertyName>
+                <Label>Blob</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Queue</PropertyName>
+                <Label>Queue</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Table</PropertyName>
+                <Label>Table</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>File</PropertyName>
+                <Label>File</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Web</PropertyName>
+                <Label>Web</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Dfs</PropertyName>
+                <Label>Dfs</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.MicrosoftEndpoints -Compress</ScriptBlock>
+                <Label>MicrosoftEndpoints</Label>
+              </ListItem> 
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.InternetEndpoints -Compress</ScriptBlock>
+                <Label>InternetEndpoints</Label>
+              </ListItem>   
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ViewDefinitions>
 </Configuration>

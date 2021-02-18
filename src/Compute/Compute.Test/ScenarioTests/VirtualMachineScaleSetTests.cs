@@ -149,5 +149,58 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRollback");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetScaleInPolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetScaleInPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutoRepair()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutoRepair");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetImageVersion()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetNewEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetEncryptionAtHost");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetOrchestrationVM()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetOrchestrationVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAssignedHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAssignedHost");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetExtRollingUpgrade()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetExtRollingUpgrade");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

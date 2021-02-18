@@ -69,7 +69,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSTaskIdRange(enumerator.Current));
                     }
+<<<<<<< HEAD
                     this.taskIdRanges = list.AsReadOnly();
+=======
+                    this.taskIdRanges = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.taskIdRanges;
             }
@@ -92,7 +96,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(enumerator.Current);
                     }
+<<<<<<< HEAD
                     this.taskIds = list.AsReadOnly();
+=======
+                    this.taskIds = list;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.taskIds;
             }

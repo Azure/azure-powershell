@@ -22,12 +22,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+<<<<<<< HEAD
 using System.Net;
+=======
+using System.Management.Automation;
+using System.Net;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
     public partial class OperationalInsightsClient
     {
+<<<<<<< HEAD
         public virtual List<PSAccount> GetLinkTargets()
         {
             List<PSAccount> accounts = new List<PSAccount>();
@@ -44,6 +53,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSWorkspaceKeys GetWorkspaceKeys(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.GetSharedKeys(resourceGroupName, workspaceName);
+=======
+        public virtual PSWorkspaceKeys GetWorkspaceKeys(string resourceGroupName, string workspaceName)
+        {
+            var response = OperationalInsightsManagementClient.SharedKeys.GetSharedKeys(resourceGroupName, workspaceName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return new PSWorkspaceKeys(response);
         }
@@ -52,7 +66,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSManagementGroup> managementGroups = new List<PSManagementGroup>();
 
+<<<<<<< HEAD
             var response = OperationalInsightsManagementClient.Workspaces.ListManagementGroups(resourceGroupName, workspaceName);
+=======
+            var response = OperationalInsightsManagementClient.ManagementGroups.List(resourceGroupName, workspaceName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (response != null)
             {
                 response.ForEach(mg => managementGroups.Add(new PSManagementGroup(mg)));
@@ -65,7 +83,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSUsageMetric> usageMetrics = new List<PSUsageMetric>();
 
+<<<<<<< HEAD
             var response = OperationalInsightsManagementClient.Workspaces.ListUsages(resourceGroupName, workspaceName);
+=======
+            var response = OperationalInsightsManagementClient.Usages.List(resourceGroupName, workspaceName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (response != null)
             {
                 response.ForEach(um => usageMetrics.Add(new PSUsageMetric(um)));
@@ -110,9 +132,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
+<<<<<<< HEAD
         public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
         {
             Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
+=======
+        public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName, bool? ForceDelete)
+        {
+            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ForceDelete).GetAwaiter().GetResult();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return result.Response.StatusCode;
         }
 
@@ -121,6 +149,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string workspaceName,
             string location,
             string sku,
+<<<<<<< HEAD
             Guid? customerId,
             IDictionary<string, string> tags, 
             int? retentionInDays)
@@ -139,6 +168,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             if (customerId.HasValue)
             {
                 properties.CustomerId = customerId.Value.ToString();
+=======
+            IDictionary<string, string> tags, 
+            string publicNetworkAccessForIngestion,
+            string publicNetworkAccessForQuery,
+            int? retentionInDays,
+            Guid? customerId = null)
+        {
+            Workspace properties = new Workspace(location:location, tags:tags, customerId:customerId.HasValue?customerId.Value.ToString():null, publicNetworkAccessForIngestion:publicNetworkAccessForIngestion, publicNetworkAccessForQuery:publicNetworkAccessForQuery);
+
+            if (!string.IsNullOrWhiteSpace(sku))
+            {
+                properties.Sku = new WorkspaceSku(sku);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (retentionInDays.HasValue)
@@ -165,9 +207,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.WorkspaceName,
                 workspace.Location,
                 string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
+<<<<<<< HEAD
                 workspace.CustomerId,
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
                 parameters.RetentionInDays);
+=======
+                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
+                string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
+                string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,
+                parameters.RetentionInDays,
+                workspace.CustomerId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
         }
@@ -190,8 +240,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.WorkspaceName,
                             parameters.Location,
                             parameters.Sku,
+<<<<<<< HEAD
                             parameters.CustomerId,
                             tags,
+=======
+                            tags,
+                            parameters.PublicNetworkAccessForIngestion,
+                            parameters.PublicNetworkAccessForQuery,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                             parameters.RetentionInDays),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
@@ -224,6 +280,31 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspace;
         }
 
+<<<<<<< HEAD
+=======
+        public virtual List<PSWorkspace> GetDeletedWorkspace(string resourceGroupName)
+        {
+            return String.IsNullOrEmpty(resourceGroupName) 
+                ? OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList() 
+                : OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
+        }
+
+        public virtual bool DeletedWorkspace(string resourceGroupName, string name)
+        {
+            List<PSWorkspace> workspaces = GetDeletedWorkspace(resourceGroupName);
+
+            foreach (PSWorkspace workspace in workspaces)
+            {
+                if (workspace.Name.Equals(name))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public virtual List<PSWorkspace> FilterPSWorkspaces(string resourceGroupName, string workspaceName)
         {
             List<PSWorkspace> workspaces = new List<PSWorkspace>();
@@ -245,12 +326,107 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
+<<<<<<< HEAD
+=======
+        public virtual PSLinkedStorageAccountsResource GetLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            LinkedStorageAccountsResource resource = this.OperationalInsightsManagementClient.LinkedStorageAccounts.Get(resourceGroupName, workspaceName,PSLinkedStorageAccountsResource.getDataSourceType(dataSourceType));
+
+            return new PSLinkedStorageAccountsResource(resource);
+        }
+
+        public virtual IList<PSLinkedStorageAccountsResource> ListLinkedStorageAccountsByWorkspace(string resourceGroupName, string workspaceName)
+        {
+            IList<PSLinkedStorageAccountsResource> resources = new List<PSLinkedStorageAccountsResource>();
+
+            IEnumerable<LinkedStorageAccountsResource> response =  this.OperationalInsightsManagementClient.LinkedStorageAccounts.ListByWorkspace(resourceGroupName, workspaceName);
+
+            if (response != null)
+            {
+                resources = response.Select(resource => new PSLinkedStorageAccountsResource(resource)).ToList();
+            }
+
+            return resources;
+        }
+
+        public virtual IList<PSLinkedStorageAccountsResource> FilterPSLinkedStorageAccounts(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            List<PSLinkedStorageAccountsResource> resources = new List<PSLinkedStorageAccountsResource>();
+
+            if (!string.IsNullOrWhiteSpace(dataSourceType))
+            {
+                resources.Add(GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType));
+            }
+            else
+            {
+                resources.AddRange(ListLinkedStorageAccountsByWorkspace(resourceGroupName, workspaceName));
+            }
+
+            return resources;
+        }
+
+        public virtual HttpStatusCode DeleteLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType)
+        {
+            return this.OperationalInsightsManagementClient
+                .LinkedStorageAccounts
+                .DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, PSLinkedStorageAccountsResource.getDataSourceType(dataSourceType))
+                .GetAwaiter()
+                .GetResult()
+                .Response
+                .StatusCode;
+        }
+
+        public virtual LinkedStorageAccountsResource CreateOrUpdateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            return this.OperationalInsightsManagementClient.LinkedStorageAccounts.CreateOrUpdate(resourceGroupName, workspaceName, PSLinkedStorageAccountsResource.getDataSourceType(dataSourceType), storageAccountIds);
+        }
+
+        public virtual PSLinkedStorageAccountsResource CreateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            PSLinkedStorageAccountsResource existingResource;
+            try
+            {
+                existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
+            }
+            catch (CloudException)
+            {
+                existingResource = null;
+            }
+
+            if (existingResource != null)
+            {
+                throw new PSInvalidOperationException(string.Format("Linked Storage Accounts for workpsace: '{0}' under resource group: '{1}' already exists. Please use Update-AzOperationalInsightsLinkedStorageAccount for updating.", workspaceName, resourceGroupName));
+            }
+
+            return new PSLinkedStorageAccountsResource(CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, storageAccountIds));
+        }
+
+        public virtual PSLinkedStorageAccountsResource UpdateLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType, IList<string> storageAccountIds)
+        {
+            PSLinkedStorageAccountsResource existingResource;
+            try
+            {
+                existingResource = GetLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType);
+            }
+            catch (RestException)
+            {
+                throw new System.ArgumentException($"Linked Storage Accounts type {dataSourceType} for workspace {workspaceName} is not existed in Resource Group {resourceGroupName}");
+            }
+
+            LinkedStorageAccountsResource resource = CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, storageAccountIds);
+            return new PSLinkedStorageAccountsResource(resource);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public virtual List<PSIntelligencePack> GetIntelligencePackList(string resourceGroupName, string workspaceName)
         {
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
 
+<<<<<<< HEAD
             var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
+=======
+            var listResponse = OperationalInsightsManagementClient.IntelligencePacks.List(resourceGroupName, workspaceName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (listResponse != null)
             {
                 listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled.Value)));
@@ -263,15 +439,93 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             if (enabled)
             {
+<<<<<<< HEAD
                 OperationalInsightsManagementClient.Workspaces.EnableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
+=======
+                OperationalInsightsManagementClient.IntelligencePacks.Enable(resourceGroupName, workspaceName, intelligencePackName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 return new PSIntelligencePack(intelligencePackName, enabled); 
             }
             else
             {
+<<<<<<< HEAD
                 OperationalInsightsManagementClient.Workspaces.DisableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
                 return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }
+=======
+                OperationalInsightsManagementClient.IntelligencePacks.Disable(resourceGroupName, workspaceName, intelligencePackName);
+                return new PSIntelligencePack(intelligencePackName, enabled);
+            }
+        }
+
+        public virtual PSLinkedService GetPSLinkedService(string resourceGroupName, string workspaceName, string linkedServiceName)
+        {
+            return new PSLinkedService(this.OperationalInsightsManagementClient.LinkedServices.Get(resourceGroupName, workspaceName, linkedServiceName));
+        }
+
+        public virtual IList<PSLinkedService> ListPSLinkedServices(string resourceGroupName, string workspaceName)
+        {
+            return this.OperationalInsightsManagementClient
+                .LinkedServices
+                .ListByWorkspace(resourceGroupName, workspaceName)
+                .Select(item => new PSLinkedService(item))
+                .ToList();
+        }
+
+        public virtual IList<PSLinkedService> FilterLinkedServices(string resourceGroupName, string workspaceName, string linkedServiceName)
+        {
+            List<PSLinkedService> list = new List<PSLinkedService>();
+            if (string.IsNullOrEmpty(linkedServiceName))
+            {
+                list.AddRange(ListPSLinkedServices(resourceGroupName, workspaceName));
+            }
+            else
+            {
+                list.Add(GetPSLinkedService(resourceGroupName, workspaceName, linkedServiceName));
+            }
+
+            return list;
+        }
+
+        public virtual PSLinkedService SetPSLinkedService(string resourceGroupName, string workspaceName, string linkedServiceName, PSLinkedService parameters)
+        {
+            PSLinkedService existingLinkedService;
+            try
+            {
+                existingLinkedService = GetPSLinkedService(resourceGroupName, workspaceName, linkedServiceName);
+            }
+            catch (RestException)
+            {
+                throw new System.ArgumentException($"linked service {linkedServiceName} for {workspaceName} is not existed");
+            }
+
+            parameters.Tags = parameters.Tags == null
+                ? existingLinkedService.Tags
+                : parameters.Tags;
+
+            parameters.ResourceId = string.IsNullOrEmpty(parameters.ResourceId)
+                ? existingLinkedService.ResourceId
+                : parameters.ResourceId;
+
+            parameters.WriteAccessResourceId = string.IsNullOrEmpty(parameters.WriteAccessResourceId)
+                ? existingLinkedService.WriteAccessResourceId
+                : parameters.WriteAccessResourceId;
+
+            return new PSLinkedService(this.OperationalInsightsManagementClient.LinkedServices.CreateOrUpdate(resourceGroupName, workspaceName, linkedServiceName, parameters.getLinkedService()));
+        }
+
+        public virtual HttpStatusCode DeletePSLinkedService(string resourceGroupName, string workspaceName, string linkedServiceName)
+        {
+            return this.OperationalInsightsManagementClient.LinkedServices
+                .DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, linkedServiceName)
+                .GetAwaiter()
+                .GetResult()
+                .Response
+                .StatusCode;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
         {
             try

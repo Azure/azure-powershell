@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/close-azstoragefilehandle
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -80,6 +84,7 @@ PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Rec
 
 This command closes all file handles on a file directory and show the closed file handle count.
 
+<<<<<<< HEAD
 ### Example 3: List first 2 file handles of a file directory, and then close them
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2'  -Recursive -First 2 | Close-AzStorageFileHandle -ShareName "mysharename" 
@@ -90,6 +95,18 @@ This command lists first 2 file handles on a file directory recursively, and the
 ### Example 4: Close all file handles on a file 
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
+=======
+### Example 3: Close all file handles which is opened 1 day ago on a file directory
+```
+PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | ? {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
+```
+
+This command lists all file handles on a file directory recursively, filters out the handles which are opened 1 day ago, and then close them.
+
+### Example 4: Close all file handles on a file
+```
+PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command closes all file handles on a file.
@@ -193,12 +210,20 @@ CloudFileDirectory object indicated the base folder where the files/directories 
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: DirectoryCloseAll
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileDirectory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -208,12 +233,20 @@ CloudFile object indicated the file to close handle.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: FileCloseAll
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -233,7 +266,11 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
+<<<<<<< HEAD
 Return whether the specified blob is successfully removed
+=======
+Return the count of closed file handles.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -299,12 +336,20 @@ CloudFileShare object indicated the share where the files/directories would be l
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: ShareCloseAll, ShareCloseSingle
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFileShare
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 

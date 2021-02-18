@@ -187,7 +187,11 @@
     <value>Updating {0} '{1}' in resource group '{2}'.</value>
   </data>
   <data name="UpdateReceivedControlNumberMessage" xml:space="preserve">
+<<<<<<< HEAD
     <value>Updating the recevied control number '{0}' for '{1}' '{2}'.</value>
+=======
+    <value>Updating the received control number '{0}' for '{1}' '{2}'.</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="UpdateResourceMessage" xml:space="preserve">
     <value>Updating '{0}' '{1}'.</value>

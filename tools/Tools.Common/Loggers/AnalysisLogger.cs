@@ -31,9 +31,12 @@ namespace Tools.Common.Loggers
         private readonly string _exceptionsDirectory;
         private static string _defaultLogName;
         private static Dictionary<string, AnalysisLogger> _logDictionary;
+<<<<<<< HEAD
 
         private log4net.ILog Log4NetLogger { get; set; }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static Dictionary<string, AnalysisLogger> LogDictionary
         {
             get { return _logDictionary ?? (_logDictionary = new Dictionary<string, AnalysisLogger>()); }
@@ -77,12 +80,15 @@ namespace Tools.Common.Loggers
             var assembly = Assembly.GetExecutingAssembly();
             var assemblyType = assembly.GetType();
             _defaultLogName = assembly.GetName().Name;
+<<<<<<< HEAD
 // TODO: Remove IfDef
 #if NETSTANDARD
             Log4NetLogger = log4net.LogManager.GetLogger(assemblyType);
 #else
             Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
 #endif
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -177,6 +183,10 @@ namespace Tools.Common.Loggers
                 WriteError("{0} Errors", logger.FileName);
                 WriteError(errorText.ToString());
                 WriteError("");
+<<<<<<< HEAD
+=======
+                Console.WriteLine("{0}:\n{1}", logger.FileName, errorText);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (hasErrors)
@@ -234,7 +244,11 @@ namespace Tools.Common.Loggers
         #region Info methods
         public void Info(string info)
         {
+<<<<<<< HEAD
             Log4NetLogger.Info(info);
+=======
+            Console.WriteLine(info);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public void Info<T>(string info, IEnumerable<T> infoCollection)
@@ -267,19 +281,44 @@ namespace Tools.Common.Loggers
 
         private void Error(string errorInfo)
         {
+<<<<<<< HEAD
             Log4NetLogger.Error(errorInfo);
+=======
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(errorInfo);
+            Console.ForegroundColor = previousColor;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public void DebugInfo(string debugInfo)
         {
+<<<<<<< HEAD
             Log4NetLogger.Debug(debugInfo);
+=======
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(debugInfo);
+            Console.ForegroundColor = previousColor;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private void Warning(string warningInfo)
         {
+<<<<<<< HEAD
             Log4NetLogger.Warn(warningInfo);
+=======
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(warningInfo);
+            Console.ForegroundColor = previousColor;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         #endregion
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

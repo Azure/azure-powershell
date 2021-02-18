@@ -12,12 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+=======
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Security;
+
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
 using System.Management.Automation;
 using System.Reflection;
 using Xunit;
@@ -31,22 +53,38 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using System.Linq;
+=======
+
+using Moq;
+
+using Xunit;
+using Xunit.Abstractions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class LoginCmdletTests
     {
+<<<<<<< HEAD
         private MemoryDataStore dataStore;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private MockCommandRuntime commandRuntimeMock;
 
         public LoginCmdletTests(ITestOutputHelper output)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+<<<<<<< HEAD
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
+=======
+            commandRuntimeMock = new MockCommandRuntime();
+
+            AzureSessionTestInitializer.Initialize();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -113,10 +151,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
+<<<<<<< HEAD
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
+=======
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Subscription), "2c224e7e-3ef5-431d-a57b-e71f4662e3a5");
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Tenant), "72f988bf-86f1-41af-91ab-2d7cd011db47");
+            cmdlt.SetParameterSet("UserWithSubscriptionId");
+
+            // Act
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.InvokeBeginProcessing();
             Assert.Throws<PSInvalidOperationException>(() => cmdlt.ExecuteCmdlet());
             cmdlt.InvokeEndProcessing();
@@ -129,7 +177,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+<<<<<<< HEAD
             cmdlt.Subscription = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+=======
+            var subscriptionId = "9e223dbe-3399-4e19-88eb-0975f02ac87f";
+            cmdlt.Subscription = subscriptionId;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Subscription), subscriptionId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -141,6 +195,48 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+<<<<<<< HEAD
+=======
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        //Verify https://github.com/Azure/azure-powershell/issues/13340
+        public void LoginUseInteractiveThruNonDesktop()
+        {
+            var cmdlt = new ConnectAzureRmAccountCommand();
+
+            // Setup
+            CommonUtilities commonUtilities;
+            AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out commonUtilities);
+            try
+            {
+                var mockUtilities = new Mock<CommonUtilities>();
+                mockUtilities.Setup(u => u.IsDesktopSession()).Returns(false);
+                AzureSession.Instance.RegisterComponent(nameof(CommonUtilities),
+                    () => mockUtilities.Object, true);
+                cmdlt.CommandRuntime = commandRuntimeMock;
+                cmdlt.SetParameterSet("UserWithSubscriptionId");
+
+                // Act
+                cmdlt.InvokeBeginProcessing();
+                cmdlt.ExecuteCmdlet();
+                cmdlt.InvokeEndProcessing();
+
+                //Verify
+                Assert.Single(commandRuntimeMock.WarningStream);
+                Assert.Equal("Interactive authentication is not supported in this session, please run cmdlet 'Connect-AzAccount -UseDeviceAuthentication'.", commandRuntimeMock.WarningStream[0]);
+                Assert.Null(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            }
+            finally
+            {
+                if(commonUtilities != null)
+                {
+                    AzureSession.Instance.RegisterComponent(nameof(CommonUtilities),
+                        () => commonUtilities, true);
+                }
+            }
+        }
+
+        [Fact]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
@@ -159,12 +255,50 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
+<<<<<<< HEAD
+=======
+        //Verify https://github.com/Azure/azure-powershell/issues/13419
+        public void LoginWithNoSubscriptionAndNoTenantAndFirstPortNotAvailable()
+        {
+            var listener = new TcpListener(IPAddress.Loopback, 8400);
+
+            try
+            {
+                listener.Start();
+
+                var cmdlt = new ConnectAzureRmAccountCommand();
+                // Setup
+                cmdlt.CommandRuntime = commandRuntimeMock;
+                cmdlt.SetParameterSet("UserWithSubscriptionId");
+
+                // Act
+                cmdlt.InvokeBeginProcessing();
+                cmdlt.ExecuteCmdlet();
+                cmdlt.InvokeEndProcessing();
+
+                Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void LoginWithNoSubscriptionAndTenant()
         {
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+<<<<<<< HEAD
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+=======
+            var tenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.Tenant = tenantId;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Tenant), tenantId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -182,7 +316,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+<<<<<<< HEAD
             cmdlt.Tenant = "microsoft.onmicrosoft.com";
+=======
+            var tenantName = "microsoft.onmicrosoft.com";
+            cmdlt.Tenant = tenantName;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Tenant), tenantName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -238,14 +378,25 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithRbacSPNAndCertificateOnly()
         {
+<<<<<<< HEAD
+=======
+            AzureSession.Instance.DataStore = new DiskDataStore();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             // NOTE: Use rbac SPN credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.ServicePrincipal = true;
+<<<<<<< HEAD
             cmdlt.Tenant = "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a";
             cmdlt.ApplicationId = "99edf981-74c0-4284-bddf-3e9d092ba4e2";
             cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
+=======
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.ApplicationId = "343d1f33-e5bc-4857-9216-a50144e7da46";
+            //You must have this cert installed on your machine
+            cmdlt.CertificateThumbprint = "15385B6BF747423330CD8CA5B34022F7AC60B86C";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.SetParameterSet("ServicePrincipalCertificateWithSubscriptionId");
 
             // Act
@@ -282,7 +433,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Account);
             var tenants = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account.GetTenants();
             Assert.NotNull(tenants);
+<<<<<<< HEAD
             Assert.Equal(2, tenants.Length);
+=======
+            Assert.True(tenants.Length >= 2);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -292,7 +447,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+<<<<<<< HEAD
             cmdlt.Environment = "AzureUSGovernment";
+=======
+            var environmentName = "AzureUSGovernment";
+            cmdlt.Environment = environmentName;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Environment), environmentName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlt.SetParameterSet("UserWithSubscriptionId");
 
             // Act
@@ -302,7 +463,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment);
+<<<<<<< HEAD
             Assert.Equal("AzureUSGovernment", AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment.Name);
+=======
+            Assert.Equal(environmentName, AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment.Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
@@ -333,6 +498,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlt.ExecuteCmdlet();
                 cmdlt.InvokeEndProcessing();
             }
+<<<<<<< HEAD
             catch (AadAuthenticationFailedException ex)
             {
                 Assert.NotNull(ex);
@@ -340,6 +506,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
                              "For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&clcid=0x409 " +
                              "for more information about the difference between an organizational account and a Microsoft account.",
                              ex.Message);
+=======
+            catch (AuthenticationFailedException ex)
+            {
+                Assert.NotNull(ex);
+                Assert.Contains("UsernamePasswordCredential authentication failed", ex.Message);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -371,8 +543,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void LoginPopulatesContextList()
         {
             // Before running this test, make sure to clear the contexts on your machine by removing the following two files:
+<<<<<<< HEAD
             // - %APPDATA%/Windows Azure Powershell/AzureRmContext.json
             // - %APPDATA%/Windows Azure Powershell/AzureRmContextSettings.json
+=======
+            // - %USERPROFILE%/.Azure/AzureRmContext.json
+            // - %USERPROFILE%/.Azure/AzureRmContextSettings.json
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // This will clear all existing contexts on your machine so that this test can re-populate the list with a context for each subscription
 
             var cmdlt = new ConnectAzureRmAccountCommand();
@@ -394,7 +571,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             foreach (var sub in profile.Subscriptions)
             {
+<<<<<<< HEAD
                 var contextName = string.Format("{0} - {1}", sub.Name, sub.Id);
+=======
+                var contextName = $"{sub.Name} ({sub.Id}) - {sub.ExtendedProperties["HomeTenant"]} - {sub.ExtendedProperties["Account"]}";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 Assert.True(profile.Contexts.ContainsKey(contextName));
                 var context = profile.Contexts[contextName];
                 Assert.NotNull(context);

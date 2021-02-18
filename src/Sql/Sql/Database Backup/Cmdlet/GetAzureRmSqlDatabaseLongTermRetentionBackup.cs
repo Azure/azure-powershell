@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Gets or sets the Database Resource ID to get backups for.
         /// </summary>
+<<<<<<< HEAD
         [Parameter(ParameterSetName = GetBackupByResourceIdSet,
             Mandatory = true,
             Position = 0,
@@ -113,6 +114,15 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The database Resource ID to get backups for.")]
         [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
             Mandatory = true,
+=======
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupByResourceIdSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The database Resource ID to get backups for.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupsByResourceIdSet,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The database Resource ID to get backups for.")]
@@ -170,6 +180,24 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string BackupName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = LocationSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ServerNameSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = BackupNameSet,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets whether or not to only get the latest backup per database.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -207,7 +235,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         [ValidateSet(Management.Sql.Models.LongTermRetentionDatabaseState.All, Management.Sql.Models.LongTermRetentionDatabaseState.Deleted, Management.Sql.Models.LongTermRetentionDatabaseState.Live,
+=======
+        [ValidateSet("All", 
+            "Deleted", 
+            "Live",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IgnoreCase = true)]
         public string DatabaseState { get; set; }
 
@@ -222,13 +256,22 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 Location = InputObject.Location;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
+<<<<<<< HEAD
+=======
+                ResourceGroupName = InputObject.ResourceGroupName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 DatabaseName = identifier.ResourceName;
+<<<<<<< HEAD
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 ServerName = identifier.ResourceName;
+=======
+                ResourceGroupName = identifier.ResourceGroupName;
+                ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return SubResourceWildcardFilter(BackupName, ModelAdapter.GetDatabaseLongTermRetentionBackups(
@@ -236,6 +279,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                     ServerName,
                     DatabaseName,
                     BackupName,
+<<<<<<< HEAD
+=======
+                    ResourceGroupName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     OnlyLatestPerDatabase.IsPresent,
                     DatabaseState));
         }

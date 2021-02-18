@@ -81,6 +81,14 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
         public PSRemediationDeployment[] Deployments { get; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets a value indicating how the remediation task discovers resources that need to be remediated.
+        /// </summary>
+        public string ResourceDiscoveryMode { get; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Initializes a new instance of the <see cref="PSRemediation" /> class.
         /// </summary>
         /// <param name="remediation">The raw remediation model.</param>
@@ -102,6 +110,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
             this.ProvisioningState = remediation.ProvisioningState;
             this.Filters = remediation.Filters != null ? new PSRemediationFilter(remediation.Filters) : null;
             this.DeploymentSummary = remediation.DeploymentStatus != null ? new PSRemediationDeploymentSummary(remediation.DeploymentStatus) : null;
+<<<<<<< HEAD
+=======
+            this.ResourceDiscoveryMode = remediation.ResourceDiscoveryMode;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (deployments != null)
             {

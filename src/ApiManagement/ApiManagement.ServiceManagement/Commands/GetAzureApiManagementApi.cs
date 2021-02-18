@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementApi))]
     public class GetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
+<<<<<<< HEAD
+=======
+        private const string FindByGatewayId = "GetByGatewayId";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private const string FindByProductId = "GetByProductId";
         private const string FindByName = "GetByName";
         private const string FindById = "GetByApiId";
@@ -65,6 +69,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "If specified will try to get all Product APIs. This parameter is optional.")]
         public String ProductId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            ParameterSetName = FindByGatewayId,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "If specified will try to get all Gateway APIs.")]
+        public String GatewayId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(AllApis))
@@ -88,6 +102,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 WriteObject(Client.ApiByProductId(Context, ProductId), true);
             }
+<<<<<<< HEAD
+=======
+            else if (ParameterSetName.Equals(FindByGatewayId))
+            {
+                WriteObject(Client.ApiByGatewayId(Context, GatewayId), true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

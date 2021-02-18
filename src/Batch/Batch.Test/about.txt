@@ -13,18 +13,30 @@ $env:TEST_CSM_ORGID_AUTHENTICATION="SubscriptionId=<subId>;BaseUri=https://manag
 Finally, set the AZURE_TEST_MODE environment variable to "Record"
 $env:AZURE_TEST_MODE="Record"
 
+<<<<<<< HEAD
 To save time on recording, the scenario tests assume some basic setup.  
+=======
+To save time on recording, the scenario tests assume some basic setup.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 TODO: Tests should automatically run these steps at startup.
 Run the following scripts or equivalent to create a Windows pool and a Linux pool.
   $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
   $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
   $startTask.CommandLine = "cmd /c echo hello"
   $configuration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @("4", "*")
+<<<<<<< HEAD
   New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
 
   $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @("UbuntuServer","Canonical","16.04.0-LTS")
   $virtualMachineConfig = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @("batch.node.ubuntu 16.04", $imageRef)
   New-AzureBatchPool -Id "testIaasPool" -VirtualMachineSize "standard_a1" -TargetDedicated 1 -VirtualMachineConfiguration $virtualMachineConfig -BatchContext $context
+=======
+  New-AzBatchPool -Id "testPool" -VirtualMachineSize "standard_d1_v2" -CloudServiceConfiguration $configuration -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+
+  $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @("UbuntuServer","Canonical","16.04-LTS")
+  $virtualMachineConfig = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, "batch.node.ubuntu 16.04")
+  New-AzBatchPool -Id "testIaasPool" -VirtualMachineSize "standard_a1" -TargetDedicated 1 -VirtualMachineConfiguration $virtualMachineConfig -BatchContext $context
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 To switch back to Playback mode, set the AZURE_TEST_MODE environment variable to "Playback".

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 5490BB24-127E-4C21-B85F-B70D817B659A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/save-azdatafactorylog
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/save-azdatafactorylog
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -107,7 +111,11 @@ Accept wildcard characters: False
 
 ### -DownloadLogs
 Indicates that this cmdlet downloads log files to your local computer.
+<<<<<<< HEAD
 If *Ouptut* folder is not specified, files are saved to Documents folder under a subfolder.
+=======
+If *Output* folder is not specified, files are saved to Documents folder under a subfolder.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

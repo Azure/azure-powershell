@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData();
 
+<<<<<<< HEAD
+=======
+        RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection();
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         RestAzureNS.AzureOperationResponse TriggerBackup();
 
         RestAzureNS.AzureOperationResponse TriggerRestore();

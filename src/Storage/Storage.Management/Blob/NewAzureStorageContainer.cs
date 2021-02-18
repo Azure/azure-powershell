@@ -35,12 +35,34 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// AccountName EncryptionScope Parameter Set
+        /// </summary>
+        private const string AccountNameEncryptionScopeParameterSet = "AccountNameEncryptionScope";
+
+        /// <summary>
+        /// Account object EncryptionScope parameter set 
+        /// </summary>
+        private const string AccountObjectEncryptionScopeParameterSet = "AccountObjectEncryptionScope";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.",
             ParameterSetName = AccountNameParameterSet)]
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Group Name.",
+            ParameterSetName = AccountNameEncryptionScopeParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -50,6 +72,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.",
             ParameterSetName = AccountNameParameterSet)]
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account Name.",
+            ParameterSetName = AccountNameEncryptionScopeParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -59,6 +90,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountObjectParameterSet)]
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = true,
+            HelpMessage = "Storage account object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AccountObjectEncryptionScopeParameterSet)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
@@ -70,6 +109,38 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(HelpMessage = "Default the container to use specified encryption scope for all writes.",
+            Mandatory = true,
+            ParameterSetName = AccountNameEncryptionScopeParameterSet)]
+        [Parameter(HelpMessage = "Default the container to use specified encryption scope for all writes.",
+            Mandatory = true,
+            ParameterSetName = AccountObjectEncryptionScopeParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string DefaultEncryptionScope { get; set; }
+
+        [Parameter(HelpMessage = "Block override of encryption scope from the container default.",
+            Mandatory = true,
+            ParameterSetName = AccountNameEncryptionScopeParameterSet)]
+        [Parameter(HelpMessage = "Block override of encryption scope from the container default.",
+            Mandatory = true,
+            ParameterSetName = AccountObjectEncryptionScopeParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool PreventEncryptionScopeOverride
+        {
+            get
+            {
+                return preventEncryptionScopeOverride is null ? false : preventEncryptionScopeOverride.Value;
+            }
+            set
+            {
+                preventEncryptionScopeOverride = value;
+            }
+        }
+        private bool? preventEncryptionScopeOverride;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(HelpMessage = "Container PublicAccess", Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public PSPublicAccess PublicAccess
@@ -111,8 +182,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             this.ResourceGroupName,
                             this.StorageAccountName,
                             this.Name,
+<<<<<<< HEAD
                             (PublicAccess?)this.publicAccess,
                             MetadataDictionary);
+=======
+                            new BlobContainer(
+                                defaultEncryptionScope: this.DefaultEncryptionScope,
+                                denyEncryptionScopeOverride: this.preventEncryptionScopeOverride,
+                                publicAccess: (PublicAccess?)this.publicAccess,
+                                metadata: MetadataDictionary));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 WriteObject(new PSContainer(contaienr));
             }

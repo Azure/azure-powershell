@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PsModuleName>CosmosDB</PsModuleName>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="1.2.1" />
+</ItemGroup>
+</Project>

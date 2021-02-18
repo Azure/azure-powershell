@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azactionrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/get-azactionrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -49,11 +53,19 @@ Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResource
 PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Severity "Sev2" -MonitorService "Platform"
 ```
 
+<<<<<<< HEAD
 List all action rules configured in resource group test-rg filtered on Sev2 severity and Platform Monitor Service.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Name "Test-Action-Rule"
+=======
+List all action rules configured in resource group test-rg filtered on Sev2 severity and Platform Monitor Service. Use Format-List to get the details of each action rule in list.
+
+### Example 2
+```powershell
+PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Name "Test-Action-Rule" | Format-List
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 Get the action rule with name Test-Action-Rule in test-rg resource group.
@@ -205,7 +217,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+<<<<<<< HEAD
 Get Action rule by resoure id.
+=======
+Get Action rule by resource id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

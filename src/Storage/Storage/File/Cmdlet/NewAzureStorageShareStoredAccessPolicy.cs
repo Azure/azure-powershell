@@ -93,7 +93,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             //Set permissions back to container
             try
             {
+<<<<<<< HEAD
                 Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions)).Wait();
+=======
+                Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions, null, null, OperationContext)).Wait();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             catch (AggregateException e) when (e.InnerException is StorageException)
             {

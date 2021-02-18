@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 3C6DCC81-82F7-4044-AFBC-4EE1BCC306F2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/invoke-azhdinsighthivejob
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
+Module Name: Az.HDInsight
+ms.assetid: 3C6DCC81-82F7-4044-AFBC-4EE1BCC306F2
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/invoke-azhdinsighthivejob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -50,7 +58,11 @@ PS C:\> Use-AzHDInsightCluster `
 
 PS C:\> Invoke-AzHDInsightHiveJob -StatusFolder $statusFolder `
             -Query $query `
+<<<<<<< HEAD
             -DefaultContainer $storageAccountContainer `
+=======
+            -DefaultContainer $storageContainer `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
             -DefaultStorageAccountKey $storageAccountKey
 ```
@@ -245,7 +257,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

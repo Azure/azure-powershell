@@ -14,7 +14,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "SuppressionId": "System.String",
               "Ttl": "System.String",
@@ -116,7 +120,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
               "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -446,7 +454,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
                   "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
                     "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -612,7 +624,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
               "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -696,7 +712,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
               "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -886,7 +906,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
                   "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
                     "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -1120,7 +1144,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
               "Id": "System.String",
@@ -1352,7 +1380,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "ShortDescription": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
               "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -1446,6 +1478,10 @@
           "ValidateSet": [
             "Cost",
             "HighAvailability",
+<<<<<<< HEAD
+=======
+            "OperationalExcellence",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Performance",
             "Security"
           ],
@@ -1550,6 +1586,10 @@
                 "ValidateSet": [
                   "Cost",
                   "HighAvailability",
+<<<<<<< HEAD
+=======
+                  "OperationalExcellence",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Performance",
                   "Security"
                 ],
@@ -1623,6 +1663,10 @@
                 "ValidateSet": [
                   "Cost",
                   "HighAvailability",
+<<<<<<< HEAD
+=======
+                  "OperationalExcellence",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Performance",
                   "Security"
                 ],
@@ -1761,7 +1805,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
               "Id": "System.String",
@@ -1877,7 +1925,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
             "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
               "Id": "System.String",
@@ -2025,7 +2077,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
                   "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
                     "Id": "System.String",
@@ -2178,7 +2234,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
                   "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
                     "Id": "System.String",
@@ -2475,7 +2535,11 @@
     "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription": {
       "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
       "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "Problem": "System.String",
         "Solution": "System.String"
@@ -2789,7 +2853,11 @@
     "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties": {
       "Namespace": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models",
       "Name": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties, Microsoft.Azure.PowerShell.Cmdlets.Advisor, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "Exclude": "System.Nullable`1[System.Boolean]",

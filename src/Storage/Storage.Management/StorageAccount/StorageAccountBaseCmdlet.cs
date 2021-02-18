@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         private StorageManagementClientWrapper storageClientWrapper;
 
+<<<<<<< HEAD
         protected const string StorageAccountNounStr = "AzureRmStorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
         protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
@@ -34,11 +35,26 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
+=======
+        protected const string StorageAccountNounStr = "StorageAccount";
+        protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
+        protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
+        protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
+        protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
+
+        protected const string StorageAccountNameAlias = "StorageAccountName";
+        protected const string AccountNameAlias = "AccountName";
+        protected const string NameAlias = "Name";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected const string StorageAccountKeySourceStr = StorageAccountNounStr + "EncryptionKeySource";
 
         protected const string TagsAlias = "Tags";
@@ -47,6 +63,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageUsageNounStr = "AzureRmStorageUsage";
 
+<<<<<<< HEAD
+=======
+        internal const string StandardGZRS = "Standard_GZRS";
+        internal const string StandardRAGZRS = "Standard_RAGZRS";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";

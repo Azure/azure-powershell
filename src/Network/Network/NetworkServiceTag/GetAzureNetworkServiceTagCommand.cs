@@ -28,7 +28,11 @@ namespace Microsoft.Azure.Commands.Network.Automation
     {
         [Parameter(
             Mandatory = true,
+<<<<<<< HEAD
             HelpMessage = "The location.",
+=======
+            HelpMessage = "The location that will be used as a reference for version (not as a filter based on location, you will get the list of service tags with prefix details across all regions but limited to the cloud that your subscription belongs to).",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Network/locations/serviceTags")]
         [ValidateNotNullOrEmpty]

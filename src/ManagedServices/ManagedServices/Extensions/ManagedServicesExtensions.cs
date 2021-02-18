@@ -13,15 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
 using Microsoft.Azure.Management.ManagedServices.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
 {
     public static class ManagedServicesExtensions
     {
+<<<<<<< HEAD
         public static string GetSubscriptionId(this string resourceId)
         {
             if (string.IsNullOrEmpty(resourceId))
@@ -52,6 +56,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
         public static string ToSubscriptionResourceId(this string subscriptionId)
         {
             return $"/subscriptions/{subscriptionId}";
+=======
+        public static bool IsGuid(this string input)
+        {
+            return Guid.TryParse(input, out _);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementpolicy
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementpolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -142,10 +146,17 @@ Accept wildcard characters: False
 ```
 
 ### -Format
+<<<<<<< HEAD
 Specifies the format of the policy. When using `application/vnd.ms-az-apim.policy+xml`, 
 expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-az-apim.policy.raw+xml` it 
 is **not** necessary for the policy to be XML-escaped.
 The default value is `application/vnd.ms-az-apim.policy+xml`.
+=======
+Specifies the format of the policy. When using `application/vnd.ms-azure-apim.policy+xml`, 
+expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-azure-apim.policy.raw+xml` it 
+is **not** necessary for the policy to be XML-escaped.
+The default value is `application/vnd.ms-azure-apim.policy+xml`.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This parameter is optional.
 
 ```yaml

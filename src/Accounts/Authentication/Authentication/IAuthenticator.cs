@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Security;
+=======
+using System.Threading;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -30,6 +34,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         IAuthenticator Next { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Determine if this authenticator can apply to the given authentication parameters
         /// </summary>
         /// <param name="account">The account to authenticate</param>
@@ -42,10 +47,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="resourceId">The resource that will need proof of authentication</param>
         /// <returns>true if this authenticator can be applied to the given parameters, otherwise false</returns>
         bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
+=======
+        /// Determine if this authenticator can apply to the given authentication parameters.
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <returns></returns>
+        bool CanAuthenticate(AuthenticationParameters parameters);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Apply this authenticator to the given authentication parameters
         /// </summary>
+<<<<<<< HEAD
         /// <param name="account">The account to authenticate</param>
         /// <param name="environment">The environment to authenticate in</param>
         /// <param name="tenant">The tenant</param>
@@ -71,5 +84,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="token">The token based authntication information</param>
         /// <returns>true if the request was authenticated, otherwise false</returns>
         bool TryAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId, out Task<IAccessToken> token);
+=======
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <returns></returns>
+        Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
+
+        /// <summary>
+        /// Apply this authenticator to the given authentication parameters
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="cancellationToken">The cancellation token provided from the cmdlet to halt authentication.</param>
+        /// <returns></returns>
+        Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="token">The token based authentication information</param>
+        /// <returns></returns>
+        bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token);
+
+        /// <summary>
+        /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="cancellationToken">The cancellation token provided from the cmdlet to halt authentication.</param>
+        /// <param name="token">The token based authentication information</param>
+        /// <returns></returns>
+        bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

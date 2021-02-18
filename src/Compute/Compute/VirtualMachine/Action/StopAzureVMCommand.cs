@@ -50,7 +50,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter NoWait { get; set; }
         
         [Parameter(
@@ -113,7 +117,11 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
+<<<<<<< HEAD
                     WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
+=======
+                    WriteDebugWithTimestamp("[Stop-AzVMJob]: ShouldMethod returned false");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             });
         }

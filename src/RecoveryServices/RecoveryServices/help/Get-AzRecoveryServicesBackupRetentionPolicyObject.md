@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 476094CC-A320-4B2D-B53D-6BFFE30C76CC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,17 +46,27 @@ The last command creates a backup protection policy using the retention policy a
 ## PARAMETERS
 
 ### -BackupManagementType
+<<<<<<< HEAD
 Specifies the Backup management type.
 The acceptable values for this parameter are:
 - AzureVM 
 - AzureSQLDatabase
+=======
+The class of resources being protected. The acceptable values for this parameter are:
+- AzureVM 
+- AzureWorkload
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - AzureStorage
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
+=======
+Accepted values: AzureVM, AzureStorage, AzureWorkload
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: 1
@@ -77,17 +91,28 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
+<<<<<<< HEAD
 Specifies the workload type.
 The acceptable values for this parameter are:
 - AzureVM 
 - AzureSQLDatabase
 - AzureFiles
+=======
+Workload type of the resource. The acceptable values for this parameter are:
+- AzureVM 
+- AzureFiles
+- MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+=======
+Accepted values: AzureVM, AzureFiles, MSSQL
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
@@ -97,7 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

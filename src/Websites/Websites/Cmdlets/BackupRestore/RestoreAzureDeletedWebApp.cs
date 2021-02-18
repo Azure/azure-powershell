@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The location of the deleted Azure Web App.")]
         public string Location { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The Resource ID of the deleted web app.")]
+        public string DeletedId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing the new Azure Web App.")]
         public string TargetResourceGroupName { get; set; }
 
@@ -77,7 +83,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         {
             base.ExecuteCmdlet();
 
+<<<<<<< HEAD
             string deletedSiteId = GetDeletedSiteResourceId();
+=======
+            string deletedSiteId = string.IsNullOrEmpty(DeletedId) ? GetDeletedSiteResourceId() : DeletedId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ResolveTargetParameters();
 
             DeletedAppRestoreRequest restoreReq = new DeletedAppRestoreRequest()
@@ -105,6 +115,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 {
                     throw new Exception("Target App Service Plan " + TargetAppServicePlanName + " not found in target Resource Group " + TargetResourceGroupName);
                 }
+<<<<<<< HEAD
                 Action createRestoreAction = () =>
                 {
                     WebsitesClient.CreateWebApp(TargetResourceGroupName, TargetName, TargetSlot, plan.Location, TargetAppServicePlanName,
@@ -117,6 +128,28 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     confirmMsg += ", Slot: " + TargetSlot;
                 }
                 ConfirmAction(this.Force.IsPresent, confirmMsg, "The deleted app has been restored.", TargetName, createRestoreAction);
+=======
+                try
+                {
+                    Action createRestoreAction = () =>
+                    {
+                        WebsitesClient.CreateWebApp(TargetResourceGroupName, TargetName, TargetSlot, plan.Location, TargetAppServicePlanName,
+                            null, string.Empty, string.Empty);
+                        restoreAction();
+                    };
+                    string confirmMsg = string.Format("This web app will be created. App Name: {0}, Resource Group: {1}", TargetName, TargetResourceGroupName);
+                    if (!string.IsNullOrEmpty(TargetSlot))
+                    {
+                        confirmMsg += ", Slot: " + TargetSlot;
+                    }
+                    ConfirmAction(this.Force.IsPresent, confirmMsg, "The deleted app has been restored.", TargetName, createRestoreAction);
+                }
+                catch (Exception e)
+                {
+                    WebsitesClient.RemoveWebApp(TargetResourceGroupName, TargetName, TargetSlot, true, true, false);
+                    throw e;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             PSSite restoredApp = new PSSite(WebsitesClient.GetWebApp(TargetResourceGroupName, TargetName, TargetSlot));

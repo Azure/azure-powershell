@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ServerCommunicationLinkCrudTests(ITestOutputHelper output) : base(output)
         {
+<<<<<<< HEAD
+=======
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/servers"
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]

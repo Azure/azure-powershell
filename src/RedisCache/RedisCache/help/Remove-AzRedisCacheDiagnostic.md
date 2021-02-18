@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: BCF989AE-A718-4AFE-B7C0-8B148468D4EE
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachediagnostic
+=======
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscachediagnostic
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

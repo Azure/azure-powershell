@@ -31,6 +31,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets the receiver's status.
         /// </summary>
         public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
+<<<<<<< HEAD
+=======
+        
+        /// <summary>
+        /// Gets or set a value indicating whether common alert schema is to be used or not
+        /// </summary>
+        public bool UseCommonAlertSchema { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
         public PSEmailReceiver()
@@ -46,6 +54,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = receiver.Name;
             this.EmailAddress = receiver.EmailAddress;
             this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
+<<<<<<< HEAD
+=======
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

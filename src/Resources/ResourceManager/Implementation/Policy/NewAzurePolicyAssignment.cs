@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+<<<<<<< HEAD
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -24,11 +25,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+=======
+    using System;
+    using System.Collections;
+    using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+    using Newtonsoft.Json.Linq;
+    using Policy;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Creates a policy assignment.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
+=======
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyAssignment))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class NewAzurePolicyAssignmentCmdlet : PolicyCmdletBase, IDynamicParameters
     {
         private readonly RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
@@ -43,7 +63,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment scope parameter
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentScopeHelp)]
+=======
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentScopeHelp)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -71,20 +95,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
+<<<<<<< HEAD
+=======
+        [CmdletParameterBreakingChange("PolicyDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicyDefinition")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
+<<<<<<< HEAD
         public PSObject PolicyDefinition { get; set; }
+=======
+        public PsPolicyDefinition PolicyDefinition { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the policy assignment policy set definition parameter.
         /// </summary>
+<<<<<<< HEAD
+=======
+        [CmdletParameterBreakingChange("PolicySetDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicySetDefinition")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicySetParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicySetParameterStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
+<<<<<<< HEAD
         public PSObject PolicySetDefinition { get; set; }
+=======
+        public PsPolicySetDefinition PolicySetDefinition { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the policy assignment policy parameter object.
@@ -109,6 +149,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Metadata { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the policy assignment enforcement mode.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]        
+        [ValidateNotNullOrEmpty]
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
@@ -132,12 +182,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException("Only one of PolicyDefinition or PolicySetDefinition can be specified, not both.");
             }
 
+<<<<<<< HEAD
             if (this.PolicyDefinition != null && this.PolicyDefinition.Properties["policyDefinitionId"] == null)
+=======
+            if (this.PolicyDefinition != null && this.PolicyDefinition.PolicyDefinitionId == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
             }
 
+<<<<<<< HEAD
             if (this.PolicySetDefinition != null && this.PolicySetDefinition.Properties["policySetDefinitionId"] == null)
+=======
+            if (this.PolicySetDefinition != null && this.PolicySetDefinition.PolicySetDefinitionId == null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new PSInvalidOperationException("The supplied PolicySetDefinition object is invalid.");
             }
@@ -165,7 +223,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
+<<<<<<< HEAD
             this.WriteObject(this.GetOutputObjects("PolicyAssignmentId", JObject.Parse(result)), enumerateCollection: true);
+=======
+            this.WriteObject(this.GetOutputPolicyAssignments(JObject.Parse(result)), enumerateCollection: true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -192,18 +254,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
+<<<<<<< HEAD
                     Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+=======
+                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
+                    EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                 }
             };
 
             if (this.PolicyDefinition != null)
             {
+<<<<<<< HEAD
                 policyassignmentObject.Properties.PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString();
             }
             else if (this.PolicySetDefinition != null)
             {
                 policyassignmentObject.Properties.PolicyDefinitionId = this.PolicySetDefinition.Properties["policySetDefinitionId"].Value.ToString();
+=======
+                policyassignmentObject.Properties.PolicyDefinitionId = this.PolicyDefinition.PolicyDefinitionId;
+            }
+            else if (this.PolicySetDefinition != null)
+            {
+                policyassignmentObject.Properties.PolicyDefinitionId = this.PolicySetDefinition.PolicySetDefinitionId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return policyassignmentObject.ToJToken();
@@ -214,11 +289,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             PSObject parameters = null;
             if (this.PolicyDefinition != null)
             {
+<<<<<<< HEAD
                 parameters = this.PolicyDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
             }
             else if (this.PolicySetDefinition != null)
             {
                 parameters = this.PolicySetDefinition.GetPSObjectProperty("Properties.parameters") as PSObject;
+=======
+                parameters = this.PolicyDefinition.Properties.Parameters;
+            }
+            else if (this.PolicySetDefinition != null)
+            {
+                parameters = this.PolicySetDefinition.Properties.Parameters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (parameters != null)

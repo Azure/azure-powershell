@@ -48,6 +48,13 @@ function Test-CrudApiManagement {
         Assert-AreEqual $location $result.Location
         Assert-AreEqual "Developer" $result.Sku
         Assert-AreEqual 1 $result.Capacity
+<<<<<<< HEAD
+=======
+        Assert-NotNull $result.DeveloperPortalUrl
+        Assert-NotNull $result.PortalUrl
+        Assert-NotNull $result.RuntimeUrl
+        Assert-NotNull $result.ManagementApiUrl
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual "None" $result.VpnType
 		Assert-NotNull $result.SslSetting
 		Assert-AreEqual "True" $result.SslSetting.FrontendProtocol["Tls10"]
@@ -183,7 +190,11 @@ Tests ApiManagementVirtualNetworkCRUD
 #>
 function Test-ApiManagementVirtualNetworkCRUD {
     # Setup
+<<<<<<< HEAD
     $primarylocation = "North Central US"
+=======
+    $primarylocation = "East US"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $secondarylocation = "South Central US"
     $resourceGroupName = Get-ResourceGroupName    
     $apiManagementName = Get-ApiManagementServiceName
@@ -191,7 +202,11 @@ function Test-ApiManagementVirtualNetworkCRUD {
     $adminEmail = "apim@powershell.org"
     $sku = "Developer"
     $capacity = 1
+<<<<<<< HEAD
     $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetncu/subnets/default"
+=======
+    $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvneteastus/subnets/default"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $additionalSubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetscu/subnets/default"
     $vpnType = "External" 
  
@@ -286,12 +301,20 @@ Then updates the service by removing all but just one proxy hostname and adding 
 #>
 function Test-ApiManagementHostnamesCRUD {
     # Setup
+<<<<<<< HEAD
     $location = "North Central US"
+=======
+    $location = "East US"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $certFilePath = "$TestOutputRoot/powershelltest.pfx";
     $certPassword = "Password";
     $certSubject = "CN=*.msitesting.net"
     $certThumbprint = "8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2"
     $portalHostName = "portalsdk.msitesting.net"
+<<<<<<< HEAD
+=======
+    $devPortalHostName = "devportalsdk.msitesting.net"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $proxyHostName1 = "gateway1.msitesting.net"
     $proxyHostName2 = "gateway2.msitesting.net"
     $managementHostName = "mgmt.msitesting.net"
@@ -311,8 +334,14 @@ function Test-ApiManagementHostnamesCRUD {
         $customProxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName1 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword -DefaultSslBinding
         $customProxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName2 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostName -HostnameType Portal -PfxPath $certFilePath -PfxPassword $securePfxPassword
+<<<<<<< HEAD
         $customMgmt = New-AzApiManagementCustomHostnameConfiguration -Hostname $managementHostName -HostnameType Management -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customHostnames = @($customProxy1, $customProxy2, $customPortal, $customMgmt)
+=======
+        $customDevPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $devPortalHostName -HostnameType DeveloperPortal -PfxPath $certFilePath -PfxPassword $securePfxPassword
+        $customMgmt = New-AzApiManagementCustomHostnameConfiguration -Hostname $managementHostName -HostnameType Management -PfxPath $certFilePath -PfxPassword $securePfxPassword
+        $customHostnames = @($customProxy1, $customProxy2, $customPortal, $customMgmt, $customDevPortal)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Create API Management service
         $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -CustomHostnameConfiguration $customHostnames
@@ -359,12 +388,25 @@ function Test-ApiManagementHostnamesCRUD {
         Assert-AreEqual Management $result.ManagementCustomHostnameConfiguration.HostnameType
         Assert-AreEqual $certThumbprint $result.ManagementCustomHostnameConfiguration.CertificateInformation.Thumbprint
 
+<<<<<<< HEAD
+=======
+        #validate the DeveloperPortal custom hostname configuration
+        Assert-NotNull $result.DeveloperPortalHostnameConfiguration
+        Assert-AreEqual $devPortalHostName $result.DeveloperPortalHostnameConfiguration.Hostname
+        Assert-AreEqual DeveloperPortal $result.DeveloperPortalHostnameConfiguration.HostnameType
+        Assert-AreEqual $certThumbprint $result.DeveloperPortalHostnameConfiguration.CertificateInformation.Thumbprint
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #scm configuration is null
         Assert-Null $result.ScmCustomHostnameConfiguration
         
         # now delete all but one Proxy Custom Hostname         
         $result.ManagementCustomHostnameConfiguration = $null
         $result.PortalCustomHostnameConfiguration = $null
+<<<<<<< HEAD
+=======
+        $result.DeveloperPortalHostnameConfiguration = $null
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $result.ProxyCustomHostnameConfiguration = @($customProxy1)
 
         # add a system certificate
@@ -398,6 +440,11 @@ function Test-ApiManagementHostnamesCRUD {
 
         #validate the portal custom hostname configuration
         Assert-Null $result.PortalCustomHostnameConfiguration
+<<<<<<< HEAD
+=======
+        #validate the developerPortal custom hostname configuration
+        Assert-Null $result.DeveloperPortalHostnameConfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #validate the management custom hostname configuration
         Assert-Null $result.ManagementCustomHostnameConfiguration
         #scm configuration is null
@@ -430,6 +477,10 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
     $capacity = 1
     $firstAdditionalRegionLocation = "East US"
     $secondAdditionalRegionLocation = "South Central US"
+<<<<<<< HEAD
+=======
+    $userIdentity = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		
     try {
         # Create Resource Group
@@ -439,8 +490,15 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $secondAdditionalRegion = New-AzApiManagementRegion -Location $secondAdditionalRegionLocation
         $regions = @($firstAdditionalRegion, $secondAdditionalRegion)
         
+<<<<<<< HEAD
         # Create API Management service
         $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions
+=======
+        $userIdentities = @($userIdentity)
+
+        # Create API Management service
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions -UserAssignedIdentity $userIdentities 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -466,6 +524,20 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
             }
         }
 
+<<<<<<< HEAD
+=======
+        # validate ApiManagement Identity
+        Assert-AreEqual "UserAssigned" $result.Identity.Type;
+ #       Assert-Null $result.Identity.PrincipalId;
+ #       Assert-Null $result.Identity.TenantId;
+        Assert-NotNull $result.Identity.UserAssignedIdentity;
+        foreach ($key in $result.Identity.UserAssignedIdentity.Keys) { 
+            Assert-AreEqual $userIdentity $key;
+            Assert-NotNull $result.Identity.UserAssignedIdentity[$key].PrincipalId
+            Assert-NotNull $result.Identity.UserAssignedIdentity[$key].ClientId
+        } 
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #remove the first additional region and scale up second additional region
         $newAdditionalRegionCapacity = 2
         $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
@@ -473,7 +545,11 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation -Capacity $newAdditionalRegionCapacity -Sku $sku
 
         # Set the ApiManagement service and Enable Msi idenity on the service
+<<<<<<< HEAD
         $updatedService = Set-AzApiManagement -InputObject $apimService -AssignIdentity -PassThru
+=======
+        $updatedService = Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity -PassThru
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Assert-AreEqual $resourceGroupName $updatedService.ResourceGroupName
         Assert-AreEqual $apiManagementName $updatedService.Name
         Assert-AreEqual $location $updatedService.Location
@@ -494,9 +570,23 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         }
 
         # validate ApiManagement Identity
+<<<<<<< HEAD
         Assert-AreEqual "SystemAssigned" $updatedService.Identity.Type;
         Assert-NotNull $updatedService.Identity.PrincipalId;
         Assert-NotNull $updatedService.Identity.TenantId;
+=======
+        Assert-AreEqual "SystemAssigned, UserAssigned" $updatedService.Identity.Type;
+        Assert-NotNull $updatedService.Identity.PrincipalId;
+        Assert-NotNull $updatedService.Identity.TenantId;
+        Assert-NotNull $updatedService.Identity.UserAssignedIdentity;
+        foreach ($key in $updatedService.Identity.UserAssignedIdentity.Keys) 
+        { 
+            Assert-AreEqual $userIdentity $key;
+            Assert-NotNull $updatedService.Identity.UserAssignedIdentity[$key].PrincipalId
+            Assert-NotNull $updatedService.Identity.UserAssignedIdentity[$key].ClientId
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     finally {
         # Cleanup

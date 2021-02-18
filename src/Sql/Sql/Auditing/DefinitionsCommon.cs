@@ -21,8 +21,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
     {
         internal const string WhatIfParameterName = "WhatIf";
         internal const string ConfirmParameterName = "Confirm";
+<<<<<<< HEAD
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
         internal const string ServerAuditCmdletsSuffix = "SqlServerAudit";
+=======
+        internal const string ServerAuditCmdletsSuffix = "SqlServerAudit";
+        internal const string ServerDevOpsAuditCmdletsSuffix = "SqlServerMSSupportAudit";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
         internal const string DatabaseAuditCmdletsSuffix = "SqlDatabaseAudit";
         internal const string BlobStorageParameterSetName = "DefaultParameterSet";
@@ -37,6 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string DatabaseObjectParameterSetName = "DatabaseObjectParameterSet";
         internal const string ServerParameterSetName = "ServerParameterSet";
         internal const string ServerObjectParameterSetName = "ServerObjectParameterSet";
+<<<<<<< HEAD
         internal const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
         internal const string BlobStorageParameterName = "BlobStorage";
@@ -45,13 +51,28 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal static readonly Exception UpdateDiagnosticSettingsException = new Exception("Updating Diagnostic Settings failed.");
         internal static readonly Exception CreateDiagnosticSettingsException =
             new Exception("Creating Diagnostic Settings failed.");
+=======
+        internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
+        internal const string DevOpsAuditCategory = "DevOpsOperationsAudit";
+        internal const string DiagnosticSettingsNamePrefixSQLSecurityAuditEvents = SQLSecurityAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
+        internal const string DiagnosticSettingsNamePrefixDevOpsOperationsAudit = DevOpsAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
+        internal const string BlobStorageParameterName = "BlobStorage";
+        internal static readonly string AuditLogsDestinationWasNotSpecifiedWarning = $"Audit logs destination was not specified, {BlobStorageParameterName} is the default destination.";
+        internal static readonly Exception SetAuditingSettingsException = new Exception("Setting Auditing Settings failed.");
+        internal static readonly Exception UpdateDiagnosticSettingsException = new Exception("Failed to update Diagnostic Settings.");
+        internal static readonly Exception CreateDiagnosticSettingsException = new Exception("Failed to create Diagnostic Settings.");
+        internal static readonly Exception RemoveDiagnosticSettingsException = new Exception("Failed to remove Diagnostic Settings.");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal static readonly Exception EventHubAuthorizationRuleResourceIdParameterException =
             new PSArgumentException("Event hub authorization rule resource id is not provided", "EventHubAuthorizationRuleResourceId");
         internal static readonly Exception WorkspaceResourceIdParameterException =
             new PSArgumentException("Workspace resource id is not provided", "WorkspaceResourceId");
         internal static readonly Exception StorageAccountNameParameterException =
             new PSArgumentException("Storage acount name is not provided", "StorageAccountName");
+<<<<<<< HEAD
         internal static readonly Exception MultipleDiagnosticsException =
             new Exception($"Operation is not supported when multiple Diagnostic Settings enable {SQLSecurityAuditCategory}");
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

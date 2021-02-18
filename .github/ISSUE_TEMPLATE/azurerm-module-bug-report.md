@@ -2,7 +2,11 @@
 name: AzureRM module bug report
 about: Report errors or unexpected behaviors for the AzureRM module
 title: ''
+<<<<<<< HEAD
 labels: ''
+=======
+labels: needs-triage, AzureRM 6.x
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 assignees: ''
 
 ---
@@ -37,7 +41,12 @@ assignees: ''
 
 ## Debug output
 
+<<<<<<< HEAD
 <!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block -->
+=======
+<!-- Set $DebugPreference='Continue' before running the repro and paste the resulting debug stream in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 
@@ -45,7 +54,12 @@ assignees: ''
 
 ## Error output
 
+<<<<<<< HEAD
 <!-- Please run Resolve-AzureRmError and paste the output in the below code block -->
+=======
+<!-- Please run Resolve-AzureRmError and paste the output in the below code block
+     ATTENTION: Be sure to remove any sensitive information that may be in the logs -->
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```
 

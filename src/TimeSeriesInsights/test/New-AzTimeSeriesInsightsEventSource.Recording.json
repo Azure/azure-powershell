@@ -1,0 +1,148 @@
+{
+  "New-AzTimeSeriesInsightsEventSource+[NoContext]+eventhub+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr?api-version=2020-05-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr?api-version=2020-05-15",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"kind\": \"Microsoft.EventHub\",\n  \"properties\": {\n    \"eventSourceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.EventHub/namespaces/eventhubspace-ye4igl/eventhubs/eventhubname-fhvx1e\",\n    \"consumerGroupName\": \"tsi-test-7tfe3n\",\n    \"eventHubName\": \"eventhubname-fhvx1e\",\n    \"keyName\": \"RootManageSharedAccessKey\",\n    \"serviceBusNamespace\": \"eventhubspace-ye4igl\",\n    \"sharedAccessKey\": \"Laf5fnDNe6c8cs6Y2AWAbhk5r2CLkpl5IdvA2tRNTa8=\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "540" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bd72a985-eb41-4972-a88b-90eaec904597" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "64133942-bfe5-4586-a8e1-bd088da4ba5c" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042343Z:64133942-bfe5-4586-a8e1-bd088da4ba5c" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "777" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"kind\":\"Microsoft.EventHub\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"eventSourceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.EventHub/namespaces/eventhubspace-ye4igl/eventhubs/eventhubname-fhvx1e\",\"consumerGroupName\":\"tsi-test-7tfe3n\",\"eventHubName\":\"eventhubname-fhvx1e\",\"keyName\":\"RootManageSharedAccessKey\",\"serviceBusNamespace\":\"eventhubspace-ye4igl\",\"creationTime\":\"2020-07-29T04:23:42.4552993Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr\",\"name\":\"rstr-e2bwyr\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/EventSources\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsEventSource+[NoContext]+eventhub+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr?api-version=2020-05-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr?api-version=2020-05-15",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "69f4d231-3558-4e5b-be8c-e22ea993e5e2" ],
+        "CommandName": [ "Get-AzTimeSeriesInsightsEventSource" ],
+        "FullCommandName": [ "Get-AzTimeSeriesInsightsEventSource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "96d2bc26-b8a1-46d6-a21c-d5ae6b66f21e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "a27d1535-1fb6-432c-b11a-6eede9656cb2" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042344Z:a27d1535-1fb6-432c-b11a-6eede9656cb2" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "777" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"kind\":\"Microsoft.EventHub\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"eventSourceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.EventHub/namespaces/eventhubspace-ye4igl/eventhubs/eventhubname-fhvx1e\",\"consumerGroupName\":\"tsi-test-7tfe3n\",\"eventHubName\":\"eventhubname-fhvx1e\",\"keyName\":\"RootManageSharedAccessKey\",\"serviceBusNamespace\":\"eventhubspace-ye4igl\",\"creationTime\":\"2020-07-29T04:23:42.4552993Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-hj4qg3/eventsources/rstr-e2bwyr\",\"name\":\"rstr-e2bwyr\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/EventSources\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsEventSource+[NoContext]+iothub+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2?api-version=2020-05-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2?api-version=2020-05-15",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"kind\": \"Microsoft.IoTHub\",\n  \"properties\": {\n    \"eventSourceResourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.Devices/IotHubs/iothubname-7och3e\",\n    \"consumerGroupName\": \"tsi-test-7tfe3n\",\n    \"iotHubName\": \"iothubname-7och3e\",\n    \"keyName\": \"RootManageSharedAccessKey\",\n    \"sharedAccessKey\": \"U7v20VP8e7X4nHYm4nZK2pw1pjfeXAYsk8HVHmydZmE=\"\n  }\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "446" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1181" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "97a1778e-0157-49ef-b5ce-c8cb7b73c85e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "925e989d-9909-40f1-955f-6c5514cfe127" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042347Z:925e989d-9909-40f1-955f-6c5514cfe127" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"kind\":\"Microsoft.IoTHub\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"eventSourceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.Devices/IotHubs/iothubname-7och3e\",\"consumerGroupName\":\"tsi-test-7tfe3n\",\"iotHubName\":\"iothubname-7och3e\",\"keyName\":\"RootManageSharedAccessKey\",\"creationTime\":\"2020-07-29T04:23:46.2782103Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2\",\"name\":\"rstr-xjm3t2\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/EventSources\"}"
+    }
+  },
+  "New-AzTimeSeriesInsightsEventSource+[NoContext]+iothub+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2?api-version=2020-05-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2?api-version=2020-05-15",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "7a9bbc59-106e-40bd-9348-c3fb144f6fa2" ],
+        "CommandName": [ "Get-AzTimeSeriesInsightsEventSource" ],
+        "FullCommandName": [ "Get-AzTimeSeriesInsightsEventSource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4656891e-0ae7-4859-a7d6-03f018a01895" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "9c026cb3-e6af-413a-9eee-4c064cf649df" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20200729T042348Z:9c026cb3-e6af-413a-9eee-4c064cf649df" ],
+        "Date": [ "Wed, 29 Jul 2020 04:23:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"kind\":\"Microsoft.IoTHub\",\"location\":\"eastus2\",\"tags\":null,\"properties\":{\"eventSourceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.Devices/IotHubs/iothubname-7och3e\",\"consumerGroupName\":\"tsi-test-7tfe3n\",\"iotHubName\":\"iothubname-7och3e\",\"keyName\":\"RootManageSharedAccessKey\",\"creationTime\":\"2020-07-29T04:23:46.2782103Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/tsi-test-7tfe3n/providers/Microsoft.TimeSeriesInsights/environments/rstr-lpjzxs/eventsources/rstr-xjm3t2\",\"name\":\"rstr-xjm3t2\",\"type\":\"Microsoft.TimeSeriesInsights/Environments/EventSources\"}"
+    }
+  }
+}

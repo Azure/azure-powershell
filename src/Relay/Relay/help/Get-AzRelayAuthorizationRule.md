@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelayauthorizationrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,8 +39,13 @@ The **Get-AzRelayAuthorizationRule** cmdlet gets the description of the specifie
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - Namespace
 ```
+=======
+### Example 1: Namespace
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 
 Rights : {Listen, Send}
@@ -48,8 +57,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Returns the specified authorization rule description for a specified namespace.
 
+<<<<<<< HEAD
 ### Example 2 - WcfRelay
 ```
+=======
+### Example 2: WcfRelay
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Get-AzWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
 
 Rights : {Listen, Send}
@@ -61,8 +75,13 @@ Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Defa
 
 Returns the specified authorization rule description for a given WcfRelay.
 
+<<<<<<< HEAD
 ### Example 3 - HybridConnection
 ```
+=======
+### Example 3: HybridConnection
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
 
 Rights : {Listen, Send}

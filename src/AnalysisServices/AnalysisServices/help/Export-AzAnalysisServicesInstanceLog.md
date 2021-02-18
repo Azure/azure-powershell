@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane.dll-Help.xml
 Module Name: Az.AnalysisServices
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/export-azanalysisservicesinstancelog
+=======
+online version: https://docs.microsoft.com/powershell/module/az.analysisservices/export-azanalysisservicesinstancelog
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,7 +28,11 @@ The Export-AzAnalysisServicesInstance cmdlet exports log from an instance of Azu
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\>Export-AzAnalysisServicesInstanceLog -Instance testserver -OuptutPath C:\path\to\log\testserver.log
+=======
+PS C:\>Export-AzAnalysisServicesInstanceLog -Instance testserver -OutputPath C:\path\to\log\testserver.log
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command will export log from the server 'testserver' in the environment specified in the Add-AzAnalysisServicesAccount command

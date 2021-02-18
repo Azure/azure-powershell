@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B9153CA9-06D1-4EF3-9863-D649C2EBAEAA
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvpnclientrootcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azvpnclientrootcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -33,7 +37,11 @@ Multiple root certificates are often deployed by organizations that include user
 
 ### Example 1: Add a client root certificate to a virtual gateway
 ```
+<<<<<<< HEAD
 PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+=======
+PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
 PS C:\> Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
 ```
@@ -69,7 +77,11 @@ When you do that, you will see output similar to the following (note that the ac
 MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
+<<<<<<< HEAD
 You can retrieve this data by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"`
+=======
+You can retrieve this data by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"`
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 `$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}`
 
 ```yaml

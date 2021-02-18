@@ -53,7 +53,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
+<<<<<<< HEAD
                     var result = this.AvailabilitySetClient.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult();
+=======
+                    var result = this.AvailabilitySetClient.ListBySubscriptionWithHttpMessagesAsync("virtualMachines/$ref").GetAwaiter().GetResult();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var psResultList = new List<PSAvailabilitySet>();
                     foreach (var item in result.Body)
                     {

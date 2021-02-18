@@ -18,6 +18,45 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 1.8.0
+
+* Updated SDK to 7.4.0-preview.
+
+## Version 1.7.0
+* Added `New-AzCognitiveServicesAccountApiProperty` cmdlet.
+* Supported `ApiProperty` parameter for `New-AzCognitiveServicesAccount` and `Set-AzCognitiveServicesAccount`
+
+## Version 1.6.0
+* Showed additional legal terms for certain APIs.
+
+## Version 1.5.1
+* Used `Deny` specifically as NetworkRules default action.
+
+## Version 1.5.0
+* Supported displaying account capabilities.
+* Supported modifying PublicNetworkAccess.
+
+## Version 1.4.0
+* Support PrivateEndpoint and PublicNetworkAccess control. 
+
+## Version 1.3.0
+* Supported Identity, Encryption, UserOwnedStorage 
+
+## Version 1.2.3
+* Updated SDK to 7.0
+* Improved error message when server responses empty body
+
+## Version 1.2.2
+* Update references in .psd1 to use relative path
+
+## Version 1.2.1
+* Fixed miscellaneous typos across module
+
+## Version 1.2.0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Added NetworkRuleSet support.
 
 ## Version 1.1.1

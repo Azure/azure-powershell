@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebapp
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/new-azwebapp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -54,7 +58,15 @@ The command uses an existing App Service plan named ContosoServicePlan.
 ## PARAMETERS
 
 ### -AppServicePlan
+<<<<<<< HEAD
 App Service Plan Name
+=======
+App Service Plan Name or App Service Plan Id. If a WebApp and App Service Plan are in different Resource Groups, use the ID instead of the name. 
+The App Service Plan Id can be retrieved using:
+$asp = Get-AzAppServicePlan -ResourceGroup  myRG -Name MyWebapp
+$asp.id returns the App Service Plan Id.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

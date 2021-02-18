@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -24,13 +25,20 @@ using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Sku = Microsoft.Azure.Management.KeyVault.Models.Sku;
+=======
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
     public class KeyVaultTestFixture : RMTestBase, IDisposable
     {
+<<<<<<< HEAD
         private readonly HttpRecorderMode _mode;
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string TagName { get; set; } = "testtag";
         public string TagValue { get; set; } = "testvalue";
 
@@ -38,16 +46,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public string Location { get; set; }
         public string PreCreatedVault { get; set; }
 
+<<<<<<< HEAD
         private bool _initialized;
         public KeyVaultTestFixture()
         {
             // Initialize has bug which causes null reference exception
             HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();            
             _mode = HttpMockServer.GetCurrentMode();
+=======
+        public KeyVaultTestFixture()
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public void Initialize(string className)
         {
+<<<<<<< HEAD
             if (_initialized)
                 return;
 
@@ -151,5 +165,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 }
             }
         }
+=======
+            // no op
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

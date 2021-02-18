@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyvault_name": {
+      "value": "keyvalult-0lne43"
+    },
+    "storageaccount_principalid": {
+      "value": "98c2db69-2b00-4753-b652-04462667980e"
+    }
+  }
+}

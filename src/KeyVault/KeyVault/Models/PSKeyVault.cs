@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
+<<<<<<< HEAD
+=======
+            EnableRbacAuthorization = vault.Properties.EnableRbacAuthorization;
+            SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
@@ -71,6 +76,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnableSoftDelete { get; private set; }
 
         public bool? EnablePurgeProtection { get; private set; }
+<<<<<<< HEAD
+=======
+        
+        public bool? EnableRbacAuthorization { get; private set; }
+
+        public int? SoftDeleteRetentionInDays { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
 
@@ -80,13 +92,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string NetworkAclsText { get { return ModelExtensions.ConstructNetworkRuleSet(NetworkAcls); } }
 
+<<<<<<< HEAD
         //If we got this vault from the server, save the over-the-wire version, to 
+=======
+        //If we got this vault from the server, save the over-the-wire version, to
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         //allow easy updates
         public Vault OriginalVault { get; private set; }
 
         private static PSKeyVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
         {
+<<<<<<< HEAD
             // The service will return NULL when NetworkAcls is never set before or set with default property values
+=======
+            // The service will return NULL when NetworkAcls is never set before or set with default values
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // The default constructor will set default property values in SDK's NetworkRuleSet class
             if (properties?.NetworkAcls == null)
             {
@@ -107,7 +127,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 bypass = PSKeyVaultNetworkRuleBypassEnum.AzureServices;
             }
 
+<<<<<<< HEAD
             IList <string> allowedIpAddresses = null;
+=======
+            IList<string> allowedIpAddresses = null;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (networkAcls.IpRules != null && networkAcls.IpRules.Count > 0)
             {
                 allowedIpAddresses = networkAcls.IpRules.Select(item => item.Value).ToList();

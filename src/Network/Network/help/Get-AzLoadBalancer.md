@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 78F356F6-A621-4C27-B9CC-D103E74B3A33
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azloadbalancer
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -50,7 +54,12 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
+<<<<<<< HEAD
                              "Name": "Basic"
+=======
+                             "Name": "Basic",
+                             "Tier": "Regional"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                            }
 ```
 
@@ -77,7 +86,12 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
+<<<<<<< HEAD
                              "Name": "Basic"
+=======
+                             "Name": "Basic",
+                             "Tier": "Regional"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                            }
 
 Name                     : MyLoadBalancer2
@@ -96,7 +110,12 @@ Probes                   : []
 InboundNatRules          : []
 InboundNatPools          : []
 Sku                      : {
+<<<<<<< HEAD
                              "Name": "Basic"
+=======
+                             "Name": "Basic",
+                             "Tier": "Regional"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                            }
 ```
 

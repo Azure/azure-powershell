@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 ﻿using Microsoft.Azure.Commands.WebApps.Models;
+=======
+﻿using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -6,12 +15,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using System.Reflection;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public static class CmdletHelpers
     {
+<<<<<<< HEAD
+=======
+        public static NetworkManagementClient networkClient
+        {
+            get;
+            private set;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static HashSet<string> SiteConfigParameters = new HashSet<string>
             {
                 "DefaultDocuments",
@@ -25,7 +46,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "WebSocketsEnabled",
                 "Use32BitWorkerProcess",
                 "AutoSwapSlotName",
+<<<<<<< HEAD
                 "NumberOfWorkers"
+=======
+                "NumberOfWorkers",
+                "AlwaysOn",
+                "MinTlsVersion",
+                "FtpsState"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
         public static HashSet<string> SiteParameters = new HashSet<string>
@@ -54,9 +82,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private const string ApplicationServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
+<<<<<<< HEAD
         public const string DocerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
         public const string DocerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
         public const string DocerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
+=======
+        public const string DockerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
+        public const string DockerRegistryServerUserName = "DOCKER_REGISTRY_SERVER_USERNAME";
+        public const string DockerRegistryServerPassword = "DOCKER_REGISTRY_SERVER_PASSWORD";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string DockerEnableCI = "DOCKER_ENABLE_CI";
         public const string DockerImagePrefix = "DOCKER|";
 
@@ -115,7 +149,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 result.Properties.Add(
                     new KeyValuePair<string, AzureStorageInfoValue>(
+<<<<<<< HEAD
                         item.Name, 
+=======
+                        item.Name,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         new AzureStorageInfoValue(
                             item.Type,
                             item.AccountName,
@@ -155,7 +193,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var result = false;
             qualifiedSiteName = webSiteName;
+<<<<<<< HEAD
 // TODO: Remove IfDef
+=======
+            // TODO: Remove IfDef
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #if NETSTANDARD
             const string siteNamePattern = "{0}/{1}";
 #else
@@ -274,6 +316,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "V2";
                 return sku;
             }
+<<<<<<< HEAD
+=======
+            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "V3";
+                return sku;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "PC" + (workerSize + 1);
@@ -300,6 +350,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + WorkerSizes[workerSize] + "V2";
                 return sku;
             }
+<<<<<<< HEAD
+=======
+            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + WorkerSizes[workerSize] + "V3";
+                return sku;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "PC" + (WorkerSizes[workerSize] + 1);
@@ -411,6 +469,31 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return certificates.ToArray();
         }
 
+<<<<<<< HEAD
+=======
+        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault)
+        {
+            var perm1 = " ";
+            var kv2 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
+            foreach (var policy in kv2.Properties.AccessPolicies)
+            {
+                if (policy.ObjectId == ("f8daea97-62e7-4026-becf-13c2ea98e8b4"))
+                {
+                    foreach (var perm in policy.Permissions.Secrets)
+                    {
+                        if ((perm == "Get") || (perm == "get"))
+                        {
+                            perm1 = perm;
+                            Console.WriteLine("Success");
+                            break;
+                        }
+                    }
+                }
+            }
+            return perm1.ToString();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
         {
             return new SiteConfigResource
@@ -431,7 +514,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 HandlerMappings = config.HandlerMappings,
                 HttpLoggingEnabled = config.HttpLoggingEnabled,
                 IpSecurityRestrictions = config.IpSecurityRestrictions,
+<<<<<<< HEAD
                 ScmIpSecurityRestrictions= config.ScmIpSecurityRestrictions,
+=======
+                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
                 Http20Enabled = config.Http20Enabled,
                 JavaContainer = config.JavaContainer,
@@ -463,8 +550,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
+<<<<<<< HEAD
                 FtpsState = config.FtpsState,
                 ReservedInstanceCount = config.ReservedInstanceCount
+=======
+                FtpsState = config.FtpsState
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -515,7 +606,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
+<<<<<<< HEAD
                 ReservedInstanceCount= config.ReservedInstanceCount,
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
                 FtpsState = config.FtpsState,
@@ -524,5 +618,118 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 Http20Enabled = config.Http20Enabled
             };
         }
+<<<<<<< HEAD
+=======
+
+        internal static string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)
+        {
+            //Resource Id Format: "subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}"
+            ResourceIdentifier subnetResourceId = null;
+            if (subnet.ToLowerInvariant().Contains("/subnets/"))
+            {
+                try
+                {
+                    subnetResourceId = new ResourceIdentifier(subnet);
+                }
+                catch (ArgumentException ae)
+                {
+                    throw new ArgumentException("Subnet ResourceId is invalid.", ae);
+                }
+            }
+            else
+            {
+                subnetResourceId = new ResourceIdentifier();
+                subnetResourceId.Subscription = subscriptionId;
+                subnetResourceId.ResourceGroupName = resourceGroupName;
+                subnetResourceId.ResourceType = "Microsoft.Network/virtualNetworks/subnets";
+                subnetResourceId.ParentResource = $"virtualNetworks/{virtualNetworkName}";
+                subnetResourceId.ResourceName = subnet;
+            }
+            return subnetResourceId.ToString();
+        }
+
+        internal static void VerifySubnetDelegation(string subnet)
+        {
+            var subnetResourceId = new ResourceIdentifier(subnet);
+            var resourceGroupName = subnetResourceId.ResourceGroupName;
+            var virtualNetworkName = subnetResourceId.ParentResource.Substring(subnetResourceId.ParentResource.IndexOf('/') + 1);
+            var subnetName = subnetResourceId.ResourceName;
+
+            Subnet subnetObj = networkClient.Subnets.Get(resourceGroupName, virtualNetworkName, subnetName);
+            var serviceEndpointServiceName = "Microsoft.Web";
+            var serviceEndpointLocations = new List<string>() { "*" };
+            if (subnetObj.ServiceEndpoints == null)
+            {
+                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();                
+                subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
+                networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
+            }
+            else
+            {
+                bool serviceEndpointExists = false;
+                foreach (var serviceEndpoint in subnetObj.ServiceEndpoints)
+                {
+                    if (serviceEndpoint.Service == serviceEndpointServiceName)
+                    {
+                        serviceEndpointExists = true;
+                        break;
+                    }
+                }
+                if (!serviceEndpointExists)
+                {
+                    subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
+                    networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
+                }
+            }            
+        }
+
+        internal static string GetSubnetResourceGroupName(IAzureContext context, string Subnet, string VirtualNetworkName)
+        {
+            networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            var matchedVNetwork = networkClient.VirtualNetworks.ListAll().FirstOrDefault(item => item.Name == VirtualNetworkName);
+            if (matchedVNetwork != null)
+            {
+                var subNets = matchedVNetwork.Subnets.ToList();
+                Subnet matchedSubnet = matchedVNetwork.Subnets.FirstOrDefault(sItem => sItem.Name == Subnet || sItem.Id == Subnet);
+                if (matchedSubnet != null)
+                {
+                    var subnetResourceId = new ResourceIdentifier(matchedSubnet.Id);
+                    return subnetResourceId.ResourceGroupName;
+                }
+            }
+            return null;
+        }
+
+        //To set a Value to Property of a Generic Type object
+        internal static void SetObjectProperty(object inputObject, string propertyName, object propertyVal)
+        {
+            //find out the type
+            Type type = inputObject.GetType();
+
+            //get the property information based on the type
+            PropertyInfo propertyInfo = type.GetProperty(propertyName);
+
+            //find the property type
+            Type propertyType = propertyInfo.PropertyType;
+
+            //Convert.ChangeType does not handle conversion to nullable types
+            //if the property type is nullable, we need to get the underlying type of the property
+            var targetType = IsNullableType(propertyType) ? Nullable.GetUnderlyingType(propertyType) : propertyType;
+
+            //Returns an System.Object with the specified System.Type and whose value is
+            //equivalent to the specified object.
+            propertyVal = Convert.ChangeType(propertyVal, targetType);
+
+            //Set the value of the property
+            propertyInfo.SetValue(inputObject, propertyVal, null);
+        }
+
+        //To check the property IsNullableType
+        private static bool IsNullableType(Type type)
+        {
+            return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

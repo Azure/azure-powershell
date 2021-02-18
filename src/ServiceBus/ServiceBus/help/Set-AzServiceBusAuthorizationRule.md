@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusauthorizationrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusauthorizationrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -46,7 +50,11 @@ The **Set-AzServiceBusAuthorizationRule** cmdlet updates the description for the
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $authRuleObj = Get-AzServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1
 
 PS C:\> $authRuleObj.Rights.Remove("Manage")
@@ -57,7 +65,11 @@ PS C:\> Set-AzServiceBusNamespaceAuthorizationRule -ResourceGroup Default-Servic
 Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in namespace `SB-Example1`.
 
 ### Example 2
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $authRuleObj = Get-AzServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1
 
 PS C:\> $authRuleObj.Rights.Remove("Manage")
@@ -67,8 +79,13 @@ PS C:\> Set-AzServiceBusNamespaceAuthorizationRule -ResourceGroup Default-Servic
 
 Removes **Manage** from the access rights of the authorization rule `AuthoRule1` in queue `SBQueue`.
 
+<<<<<<< HEAD
 ### Example 2
 ```
+=======
+### Example 3
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $authRuleObj = Get-AzServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1
 
 PS C:\> $authRuleObj.Rights.Remove("Manage")

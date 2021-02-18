@@ -42,11 +42,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// The Sql Auditing Adapter
         /// </summary>
         private SqlAuditAdapter AuditingAdapter { get; set; }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the Azure profile
         /// </summary>
         public IAzureContext Context { get; set; }
@@ -56,7 +59,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             Context = context;
             ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
+<<<<<<< HEAD
             AuditingAdapter = new SqlAuditAdapter(context);
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -267,12 +273,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 RetentionDays = Convert.ToInt32(model.RetentionInDays),
             };
 
+<<<<<<< HEAD
             if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
             {
                 // For new TD policy, make sure EmailAccountAdmins is true
                 policy.EmailAccountAdmins = true;
             }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (string.IsNullOrEmpty(model.StorageAccountName))
             {
                 policy.StorageEndpoint = null;

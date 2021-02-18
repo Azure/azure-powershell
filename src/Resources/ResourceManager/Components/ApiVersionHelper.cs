@@ -26,7 +26,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+<<<<<<< HEAD
 // TODO: Remove IfDef
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    // TODO: Remove IfDef
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #if NETSTANDARD
     using Microsoft.Extensions.Caching.Memory;
 #else
@@ -127,13 +132,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     cancellationToken: cancellationToken),
                 cancellationToken: cancellationToken);
 
+<<<<<<< HEAD
             return providers
+=======
+            string[] apiVersions = providers
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .CoalesceEnumerable()
                 .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
                 .SelectMany(provider => provider.ResourceTypes)
                 .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
+<<<<<<< HEAD
+=======
+            if (apiVersions == null)
+            {
+                string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
+                return providers
+                    .CoalesceEnumerable()
+                    .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
+                    .SelectMany(provider => provider.ResourceTypes)
+                    .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
+                    .Select(type => type.ApiVersions)
+                    .FirstOrDefault();
+            }
+            else
+            {
+                return apiVersions;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>

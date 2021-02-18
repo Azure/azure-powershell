@@ -23,6 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Blobs;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Blob management interface
@@ -77,6 +81,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         CloudBlobContainer GetContainerReference(String name);
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Get an BlobContainerClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobContainerClient in local memory</returns>
+        BlobContainerClient GetBlobContainerClient(string name, BlobClientOptions options = null);
+
+        /// <summary>
+        /// Get an BlobServiceClient instance in local
+        /// </summary>
+        /// <param name="name">Container name</param>
+        /// <returns>A BlobServiceClient in local memory</returns>
+        BlobServiceClient GetBlobServiceClient(BlobClientOptions options = null);
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Get blob reference with properties and meta data from server
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
@@ -258,7 +279,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
+<<<<<<< HEAD
         Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+=======
+        Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, DateTimeOffset? snapshotTime, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Return a task that asynchronously fetch blob attributes
@@ -331,7 +356,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
         Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+<<<<<<< HEAD
         
+=======
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Return a task that asynchronously start Incremental copy operation to a page blob.
         /// </summary>
@@ -406,6 +449,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Return a task that asynchronously set block blob Tier
+        /// </summary>
+        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="tier">block blob Tier</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// List the blobs segmented in specified containers
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
@@ -436,5 +492,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         /// <returns>the sku name and account kind</returns>
         AccountProperties GetAccountProperties();
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Get UserDelegationKey, this key will be used to get  UserDelegation SAS token
+        /// </summary>
+        /// <param name="keyStart">The key valid start time</param>
+        /// <param name="keyEnd">The key valid end time</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The UserDelegationKey</returns>
+        UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, OperationContext operationContext = null);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.deploymentmanager/get-azdeploymentmanagerservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,20 +18,32 @@ Gets the service.
 
 ### Interactive (Default)
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServiceTopologyObject
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerService [-ResourceGroupName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByServiceTopologyResourceId
 ```
+<<<<<<< HEAD
 Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-Name] <String>
+=======
+Get-AzDeploymentManagerService [-ResourceGroupName] <String> [[-Name] <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-ServiceTopologyResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -113,7 +129,11 @@ Type: System.String
 Parameter Sets: Interactive, ByServiceTopologyObject, ByServiceTopologyResourceId
 Aliases:
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -196,7 +216,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

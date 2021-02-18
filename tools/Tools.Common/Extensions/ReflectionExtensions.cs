@@ -28,9 +28,15 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttribute(typeof(T), true) as T;
         }
 
+<<<<<<< HEAD
         public static T GetAttribute<T>(this PropertyInfo decoratedProperty) where T : Attribute
         {
             return decoratedProperty.GetCustomAttribute(typeof(T), true) as T;
+=======
+        public static T GetAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
+        {
+            return decoratedParameter.MemberInfo.GetCustomAttribute(typeof(T), true) as T;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public static IEnumerable<T> GetAttributes<T>(this Type decoratedType) where T : Attribute
@@ -38,13 +44,20 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttributes(typeof(T), false).Select(a => a as T);
         }
 
+<<<<<<< HEAD
         public static IEnumerable<T> GetAttributes<T>(this PropertyInfo decoratedProeprty) where T : Attribute
         {
             return decoratedProeprty.GetCustomAttributes(typeof(T), false).Select(a => a as T);
+=======
+        public static IEnumerable<T> GetAttributes<T>(this ParameterInfo decoratedParameter) where T : Attribute
+        {
+            return decoratedParameter.MemberInfo.GetCustomAttributes(typeof(T), false).Select(a => a as T);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public static bool HasAttribute<T>(this Type decoratedType) where T : Attribute
         {
+<<<<<<< HEAD
             return decoratedType.GetTypeInfo().CustomAttributes.Any(d => d.AttributeType == typeof (T));
 
         }
@@ -58,6 +71,34 @@ namespace Tools.Common.Extensions
         public static IEnumerable<PropertyInfo> GetParameters(this Type cmdletType)
         {
             return cmdletType.GetProperties().Where(p => p.HasAttribute<ParameterAttribute>());
+=======
+            return decoratedType.GetTypeInfo().CustomAttributes.Any(d => d.AttributeType == typeof(T));
+
+        }
+
+        public static bool HasAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
+        {
+            return decoratedParameter.MemberInfo.CustomAttributes.Any(d => d.AttributeType == typeof(T));
+
+        }
+
+        public class ParameterInfo
+        {
+            public ParameterInfo(MemberInfo memberInfo, Type parameterType)
+            {
+                MemberInfo = memberInfo;
+                ParameterType = parameterType;
+            }
+            public MemberInfo MemberInfo;
+            public Type ParameterType;
+        }
+
+        public static IEnumerable<ParameterInfo> GetParameters(this Type cmdletType)
+        {
+            var properties = cmdletType.GetProperties().Select(p => new ParameterInfo((MemberInfo)p, p.PropertyType)).Where(p => p.HasAttribute<ParameterAttribute>());
+            var fields = cmdletType.GetFields().Select(f => new ParameterInfo((MemberInfo)f, f.FieldType)).Where(f => f.HasAttribute<ParameterAttribute>());
+            return properties.Concat(fields);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public static IEnumerable<Type> GetCmdletTypes(this Assembly assembly)

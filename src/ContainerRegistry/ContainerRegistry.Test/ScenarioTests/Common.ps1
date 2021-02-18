@@ -23,6 +23,18 @@ function Get-RandomRegistryName
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Gets resource name
+#>
+function Get-RandomResourceName
+{
+    return 'Resource' + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets resource group name
 #>
 function Get-RandomResourceGroupName

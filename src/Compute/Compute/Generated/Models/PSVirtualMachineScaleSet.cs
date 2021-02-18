@@ -43,7 +43,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Sku Sku { get; set; }
         public Plan Plan { get; set; }
         public UpgradePolicy UpgradePolicy { get; set; }
+<<<<<<< HEAD
         public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
+=======
+        public AutomaticRepairsPolicy AutomaticRepairsPolicy { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ProvisioningState { get; set; }
         public bool? Overprovision { get; set; }
         public bool? DoNotRunExtensionsOnOverprovisionedVMs { get; set; }
@@ -52,14 +56,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public bool? ZoneBalance { get; set; }
         public int? PlatformFaultDomainCount { get; set; }
         public SubResource ProximityPlacementGroup { get; set; }
+<<<<<<< HEAD
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
         public VirtualMachineScaleSetIdentity Identity { get; set; }
         public System.Collections.Generic.IList<string> Zones { get; set; }
+=======
+        public SubResource HostGroup { get; set; }
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
+        public ScaleInPolicy ScaleInPolicy { get; set; }
+        public VirtualMachineScaleSetIdentity Identity { get; set; }
+        public IList<string> Zones { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+<<<<<<< HEAD
+=======
+        public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     }
 }

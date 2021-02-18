@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Type { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets resource tags
         /// </summary>
         public object Tags { get; set; }
@@ -58,6 +59,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string FileSystemId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets snapshotId
         /// </summary>
         /// <remarks>
@@ -71,7 +74,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// The creation date of the snapshot
         /// </remarks>
+<<<<<<< HEAD
         public System.DateTime? CreationDate { get; set; }
+=======
+        public System.DateTime? Created { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets azure lifecycle management

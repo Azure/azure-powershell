@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: BF6AA8D4-D624-4BE1-A393-1A43909450C4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azavailabilityset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,7 +34,11 @@ The **New-AzAvailabilitySet** cmdlet creates an Azure availability set.
 PS C:\> New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 
+<<<<<<< HEAD
 This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
+=======
+This command creates an availability set named AvailabilitySet03 in the resource group named ResourceGroup11.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -125,7 +133,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroupId
+<<<<<<< HEAD
 The Id of ProximityPlacementGroup
+=======
+The resource id of the Proximity Placement Group to use with this availability set.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

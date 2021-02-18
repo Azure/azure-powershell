@@ -37,7 +37,11 @@ The following properties were affected by this release:
 - The AppServicePlanName property on the AppServicePlan object is deprecated and will be removed.
 
 **GeoRegion**
+<<<<<<< HEAD
 - The GeoRegion property on the Certificate object is deprecared and wil be removed.
+=======
+- The GeoRegion property on the Certificate object is deprecated and wil be removed.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 **IgnoreQuotas**
 - The IgnoreQuotas property on the CloningInfo object is deprecated and will be removed.

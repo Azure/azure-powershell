@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
@@ -31,7 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Base class for policy cmdlets.
     /// </summary>
+<<<<<<< HEAD
     public abstract class PolicyCmdletBase : ResourceManagerCmdletBase
+=======
+    public abstract class PolicyCmdletBase : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         public enum ListFilter
         {
@@ -46,6 +54,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string IdParameterSet = "IdParameterSet";
         protected const string NameParameterSet = "NameParameterSet";
         protected const string SubscriptionIdParameterSet = "SubscriptionIdParameterSet";
+<<<<<<< HEAD
+=======
+        protected const string InputObjectParameterSet = "InputObjectParameterSet";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected const string ManagementGroupNameParameterSet = "ManagementGroupNameParameterSet";
         protected const string IncludeDescendentParameterSet = "IncludeDescendentParameterSet";
         protected const string BuiltinFilterParameterSet = "BuiltinFilterParameterSet";
@@ -61,15 +73,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string PolicyParameterIdStringParameterSet = "PolicyParameterIdStringParameterSet";
 
         /// <summary>
+<<<<<<< HEAD
         /// Converts the resource object to specified resource type object.
         /// </summary>
         /// <param name="resourceType">The resource type of the objects to create</param>
         /// <param name="resources">The policy definition resource object.</param>
         protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
+=======
+        /// The policy type OData filter format
+        /// </summary>
+        protected const string PolicyTypeFilterFormat = "$filter=PolicyType eq '{0}'";
+
+        /// <summary>
+        /// Converts the resource object collection to a PsPolicyAssignment collection.
+        /// </summary>
+        /// <param name="resourceType">The resource type of the objects to create</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicyAssignment[] GetOutputPolicyAssignments(params JToken[] resources)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
+<<<<<<< HEAD
                 .SelectArray(resource =>
                 {
                     var psobject = resource.ToResource().ToPsObject();
@@ -87,25 +113,96 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected PSObject[] GetFilteredOutputObjects(string resourceType, ListFilter filter, params JObject[] resources)
         {
             Func<PSObject, bool> filterLambda = (result) =>
+=======
+                .SelectArray(resource => new PsPolicyAssignment(resource));
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a PsPolicyDefinition collection.
+        /// </summary>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicyDefinition[] GetOutputPolicyDefinitions(params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicyDefinition(resource));
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a PsPolicySetDefinition collection.
+        /// </summary>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicySetDefinition[] GetOutputPolicySetDefinitions(params JToken[] resources)
+        {
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicySetDefinition(resource));
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a filtered PsPolicyDefinition array.
+        /// </summary>
+        /// <param name="filter">the filter</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicyDefinition[] GetFilteredOutputPolicyDefinitions(ListFilter filter, params JToken[] resources)
+        {
+            Func<PsPolicyDefinition, bool> filterLambda = (result) =>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 if (filter == ListFilter.None)
                 {
                     return true;
                 }
 
+<<<<<<< HEAD
                 var policyType = ((PSObject)result.Properties["Properties"].Value).Properties["policyType"].Value;
                 return policyType == null || string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+=======
+                var policyType = result.Properties.PolicyType;
+                return string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
+<<<<<<< HEAD
                 .SelectArray(resource =>
                 {
                     var psobject = resource.ToResource().ToPsObject();
                     psobject.Properties.Add(new PSNoteProperty(resourceType, psobject.Properties["ResourceId"].Value));
                     return psobject;
                 })
+=======
+                .SelectArray(resource => new PsPolicyDefinition(resource))
+                .Where(filterLambda).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the resource object collection to a filtered PsPolicySetDefinition array.
+        /// </summary>
+        /// <param name="filter">the filter</param>
+        /// <param name="resources">The policy definition resource object.</param>
+        protected PsPolicySetDefinition[] GetFilteredOutputPolicySetDefinitions(ListFilter filter, params JObject[] resources)
+        {
+            Func<PsPolicySetDefinition, bool> filterLambda = (result) =>
+            {
+                if (filter == ListFilter.None)
+                {
+                    return true;
+                }
+
+                var policyType = result.Properties.PolicyType;
+                return string.Equals(policyType.ToString(), filter.ToString(), StringComparison.OrdinalIgnoreCase);
+            };
+
+            return resources
+                .CoalesceEnumerable()
+                .Where(resource => resource != null)
+                .SelectArray(resource => new PsPolicySetDefinition(resource))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 .Where(filterLambda).ToArray();
         }
 
@@ -121,6 +218,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets the JToken object from parameter
         /// </summary>
         protected JToken GetObjectFromParameter(string parameter)
@@ -134,6 +232,68 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     if(File.Exists(filePath))
                     {
                         return JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(filePath));
+=======
+        /// Gets a JObject from a parameter value
+        /// </summary>
+        /// <param name="parameter">The parameter value.</param>
+        /// <param name="parameterName">The name of the parameter.</param>
+        /// <returns></returns>
+        protected JObject GetObjectFromParameter(string parameter, string parameterName)
+        {
+            var result = this.GetTokenFromParameter(parameter) as JObject;
+            if (result == null)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.JsonObjectExpected, parameterName), parameterName);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a JArray from a parameter value
+        /// </summary>
+        /// <param name="parameter">The parameter value.</param>
+        /// <param name="parameterName">The name of the parameter.</param>
+        /// <returns></returns>
+        protected JArray GetArrayFromParameter(string parameter, string parameterName)
+        {
+            var result = this.GetTokenFromParameter(parameter) as JArray;
+            if (result == null)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.JsonArrayExpected, parameterName), parameterName);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the resource Id from the supplied PowerShell parameters.
+        /// </summary>
+        protected string MakePolicyAssignmentId(string scope, string resourceName)
+        {
+            return ResourceIdUtility.GetResourceId(
+                resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
+                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
+                extensionResourceName: resourceName);
+        }
+
+        /// <summary>
+        /// Gets the JToken from parameter
+        /// </summary>
+        /// <param name="parameter">The parameter to be parsed.</param>
+        private JToken GetTokenFromParameter(string parameter)
+        {
+            Uri outUri = null;
+
+            if (Uri.TryCreate(parameter, UriKind.Absolute, out outUri))
+            {
+                if (outUri.Scheme == Uri.UriSchemeFile)
+                {
+                    string filePath = this.TryResolvePath(parameter);
+                    if (File.Exists(filePath))
+                    {
+                        return JToken.Parse(FileUtilities.DataStore.ReadFileAsText(filePath));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                     else
                     {
@@ -151,11 +311,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 else
                 {
                     string contents = GeneralUtilities.DownloadFile(outUri.AbsoluteUri);
+<<<<<<< HEAD
                     if(string.IsNullOrEmpty(contents))
                     {
                         throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriContent, parameter));
                     }
                     return JToken.FromObject(contents);
+=======
+                    if (string.IsNullOrEmpty(contents))
+                    {
+                        throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidUriContent, parameter));
+                    }
+
+                    return JToken.Parse(contents);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 
@@ -163,6 +332,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             string path = this.TryResolvePath(parameter);
 
             return File.Exists(path)
+<<<<<<< HEAD
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
                 : JToken.FromObject(parameter);
         }
@@ -176,6 +346,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId: scope,
                 extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
                 extensionResourceName: resourceName);
+=======
+                ? JToken.Parse(FileUtilities.DataStore.ReadFileAsText(path))
+                : JToken.Parse(parameter);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -199,7 +373,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             // generate resource Id based on management group
             if (!string.IsNullOrEmpty(managementGroupName))
             {
+<<<<<<< HEAD
                 return $"/providers/{Constants.MicrosoftManagementGroupDefinitionType}/{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
+=======
+                return $"{Constants.ManagementGroupIdPrefix}{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // generate resource Id based on given subscription

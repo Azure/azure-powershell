@@ -19,7 +19,10 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -40,11 +43,19 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = DomainNameParameterSet)]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
@@ -54,6 +65,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainNameParameterSet)]
@@ -73,14 +88,26 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = DomainNameParameterSet)]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -88,14 +115,26 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = DomainNameParameterSet)]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateRange(1, 100)]
@@ -103,6 +142,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = EventGridConstants.NextLinkHelp,
             ParameterSetName = NextLinkParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -110,6 +153,11 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            string resourceGroupName = string.Empty;
+            string domainName = string.Empty;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IEnumerable<Domain> domainsList;
             string newNextLink = null;
             int? providedTop = null;
@@ -121,9 +169,23 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
+<<<<<<< HEAD
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
+=======
+                EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
+            }
+            else if (!string.IsNullOrEmpty(this.Name))
+            {
+                // If Name is provided, ResourceGroup should be non-empty as well
+                resourceGroupName = this.ResourceGroupName;
+                domainName = this.Name;
+            }
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                resourceGroupName = this.ResourceGroupName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             // Other parameters should be null or ignored if this.NextLink is specified.
@@ -145,6 +207,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
                 this.WriteObject(pSDomainListPagedInstance, true);
             }
+<<<<<<< HEAD
             else if (!string.IsNullOrEmpty(this.ResourceGroupName) && !string.IsNullOrEmpty(this.Name))
             {
                 // Get details of the Event Grid domain
@@ -160,6 +223,23 @@ namespace Microsoft.Azure.Commands.EventGrid
                 this.WriteObject(pSDomainListPagedInstance, true);
             }
             else if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+=======
+            else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(domainName))
+            {
+                // Get details of the Event Grid domain
+                Domain domain = this.Client.GetDomain(resourceGroupName, domainName);
+                PSDomain psDomain = new PSDomain(domain);
+                this.WriteObject(psDomain);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
+            {
+                // List all Event Grid domains in the given resource group
+                (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroup(resourceGroupName, this.ODataQuery, providedTop);
+                PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
+                this.WriteObject(pSDomainListPagedInstance, true);
+            }
+            else if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 // List all Event Grid domains in the given subscription
                 (domainsList, newNextLink) = this.Client.ListDomainsBySubscription(this.ODataQuery, providedTop);

@@ -78,7 +78,11 @@ Function Check-LoggedInContext()
 {
     if($gLoggedInCtx -eq $null)
     {
+<<<<<<< HEAD
         Write-Error "'$global:gPsAutoTestSubscriptionName' subcription does not exist in the list of available subscriptions. Make sure to have it to run the tests"
+=======
+        Write-Error "'$global:gPsAutoTestSubscriptionName' subscription does not exist in the list of available subscriptions. Make sure to have it to run the tests"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Exit
     }
 }
@@ -127,7 +131,12 @@ Function Download-PublishSettingsFileFromKv([string] $localFilePathToDownload)
     
     if([System.IO.Directory]::Exists($dirPath) -eq $true)
     {
+<<<<<<< HEAD
         [System.IO.File]::WriteAllText($localFilePathToDownload, $pubFileSecContents.SecretValueText)
+=======
+        $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($pubFileSecContents.SecretValue))	
+        [System.IO.File]::WriteAllText($localFilePathToDownload, $secretValueText)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
     else
     {
@@ -178,7 +187,12 @@ Function Download-TestCertificateFromKeyVault()
     #Once we create certificate and get it, we store it locally
     if($kvCertSecret -ne $null)
     {
+<<<<<<< HEAD
         $kvSecretBytes = [System.Convert]::FromBase64String($kvCertSecret.SecretValueText)
+=======
+        $kvSecretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($kvCertSecret.SecretValue))		
+        $kvSecretBytes = [System.Convert]::FromBase64String($kvSecretValueText)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $certCollection2 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
         $certCollection2.Import($kvSecretBytes, $null, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
         

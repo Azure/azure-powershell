@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F20A5FD3-6EC3-4EFE-988C-75F8583961A4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageblobcontent
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageblobcontent
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,8 +20,14 @@ Uploads a local file to an Azure Storage blob.
 ### SendManual (Default)
 ```
 Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
+<<<<<<< HEAD
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
  [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+=======
+ [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>]
+ [-StandardBlobTier <String>] [-EncryptionScope <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,8 +36,13 @@ Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>]
 ```
 Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
  [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
+<<<<<<< HEAD
  [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+=======
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>] [-EncryptionScope <String>] [-Force]
+ [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -35,10 +50,17 @@ Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <
 ### BlobPipeline
 ```
 Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>] [-Properties <Hashtable>]
+<<<<<<< HEAD
  [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>]
+ [-EncryptionScope <String>] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -90,12 +112,39 @@ The first command creates a hash table that contains metadata for a blob, and st
 The second command uploads the file that is named ContosoPlanning to the container named ContosoUploads.
 The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
+<<<<<<< HEAD
 ### Example 6: Upload a file to blob with specified blob properties
 ```
 PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="}
 ```
 
 This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties.
+=======
+### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
+```
+PS C:\> $filepath = "c:\temp\index.html"
+PS C:\> Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
+
+   AccountName: storageaccountname, ContainerName: contosouploads
+
+Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
+----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
+index.html           BlockBlob 403116          text/html                      2020-09-22 08:06:53Z Cool                                    False
+```
+
+This command uploads the file c:\temp\index.html to the container named contosouploads with specified blob properties, and set StandardBlobTier as Cool.
+This command gets ContentType value set to blob properties by [System.Web.MimeMapping]::GetMimeMapping() API.
+
+### Example 7: Upload a file to a blob with Encryption Scope
+```
+PS C:\> $blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
+
+PS C:\> $blob.BlobProperties.EncryptionScope
+myencryptscope
+```
+
+This command  uploads a file to a blob with Encryption Scope.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -135,6 +184,10 @@ Specifies the type for the blob that this cmdlet uploads.
 The acceptable values for this parameter are:
 - Block
 - Page
+<<<<<<< HEAD
+=======
+- Append
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The default value is Block.
 
 ```yaml
@@ -238,7 +291,11 @@ Accept wildcard characters: False
 ### -Context
 Specifies an Azure storage context.
 To obtain a storage context, use the New-AzStorageContext cmdlet.
+<<<<<<< HEAD
 To use a storage context created from a SAS Token without read permission, need add -Force parameter to skip check blob existance.
+=======
+To use a storage context created from a SAS Token without read permission, need add -Force parameter to skip check blob existence.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -267,6 +324,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -EncryptionScope
+Encryption scope to be used when making requests to the blob.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -File
 Specifies a local file path for a file to upload as blob content.
 
@@ -331,7 +406,11 @@ Page Blob Tier
 Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
+=======
+Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60, P70, P80
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -372,6 +451,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -StandardBlobTier
+Block Blob Tier, valid values are Hot/Cool/Archive.
+See detail in https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Hot, Cool, Archive
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 

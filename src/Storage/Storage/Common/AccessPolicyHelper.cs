@@ -23,6 +23,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
+<<<<<<< HEAD
+=======
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage.Queues.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     internal class AccessPolicyHelper
     {
@@ -186,5 +192,57 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessExpiryTime").GetValue(sharedAccessPolicies[policyName]));
         }
 
+<<<<<<< HEAD
+=======
+        internal static PSObject ConstructPolicyOutputPSObject<T>(T identifier)
+        {
+            if (!(typeof(T) == typeof(BlobSignedIdentifier) ||
+               typeof(T) == typeof(ShareSignedIdentifier) ||
+               (typeof(T) == typeof(QueueSignedIdentifier))))
+            {
+                throw new ArgumentException("Access policy type is invalid, only BlobSignedIdentifier, ShareSignedIdentifier, and QueueSignedIdentifier are supported.");
+            }
+
+            var accessPolicy = (identifier).GetType().GetProperty("AccessPolicy").GetValue(identifier);
+
+            return PowerShellUtilities.ConstructPSObject(
+                typeof(PSObject).FullName,
+                "Policy",
+                (identifier).GetType().GetProperty("Id").GetValue(identifier),
+                "Permissions",
+                (accessPolicy).GetType().GetProperty("Permissions").GetValue(accessPolicy).ToString(),
+                "StartTime",
+                (accessPolicy).GetType().GetProperty("PolicyStartsOn").GetValue(accessPolicy),
+                "ExpiryTime",
+                (accessPolicy).GetType().GetProperty("PolicyExpiresOn").GetValue(accessPolicy));
+        }
+
+        /// <summary>
+        /// Order Blob permission
+        /// </summary>
+        public static string OrderBlobPermission(string rawPermission)
+        {
+            string fullBlobPermission = "racwdxlt";
+            string OrderedPermission = "";
+            int rawLength = rawPermission.Length;
+            foreach (char c in fullBlobPermission)
+            {
+                if (rawPermission.Contains(c.ToString()))
+                {
+                    OrderedPermission = OrderedPermission + c.ToString();
+                    rawLength--;
+                }
+            }
+            if (rawLength == 0)
+            {
+                return OrderedPermission;
+            }
+            else // some permission in rawstringLength not in current full permission list, so can't order. will use the raw permission string to try best to set permission.
+            {
+                return rawPermission;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

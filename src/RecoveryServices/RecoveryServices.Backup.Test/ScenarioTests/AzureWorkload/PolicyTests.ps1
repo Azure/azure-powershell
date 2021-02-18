@@ -12,7 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 $location = "westus"
+=======
+$location = "southeastasia"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $newPolicyName = "testSqlPolicy"
@@ -70,6 +74,15 @@ function Test-AzureVmWorkloadPolicy
 	Assert-AreEqual $schedulePolicy.IsDifferentialBackupEnabled $true
 	Assert-AreEqual $schedulePolicy.IsLogBackupEnabled $true
 
+<<<<<<< HEAD
+=======
+	# Fix Policy Update for failed items
+	Set-AzRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-FixForInconsistentItems `
+		-Policy $policy
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	# Delete policy
 	Remove-AzRecoveryServicesBackupProtectionPolicy `
 		-VaultId $vault.ID `

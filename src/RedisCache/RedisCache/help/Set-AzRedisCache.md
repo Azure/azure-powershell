@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 6234F211-6ED4-443F-9B83-DEB9AC51B763
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/set-azrediscache
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
+Module Name: Az.RedisCache
+ms.assetid: 6234F211-6ED4-443F-9B83-DEB9AC51B763
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,8 +24,13 @@ Modifies a Redis Cache.
 ```
 Set-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
+<<<<<<< HEAD
  [-ShardCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -84,6 +97,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -MinimumTlsVersion
+Specify the TLS version required by clients to connect to cache.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Specifies the name of the Redis Cache to update.
 
@@ -190,6 +221,10 @@ Valid values are:
 - P2
 - P3
 - P4
+<<<<<<< HEAD
+=======
+- P5
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - C0
 - C1
 - C2
@@ -204,6 +239,10 @@ Valid values are:
 - 13GB
 - 26GB
 - 53GB
+<<<<<<< HEAD
+=======
+- 120GB
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The default value is 1GB or C1.
 
 ```yaml
@@ -300,7 +339,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

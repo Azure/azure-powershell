@@ -22,14 +22,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+<<<<<<< HEAD
     public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.SyncActivityStatus>
+=======
+    public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.ServerEndpointSyncActivityStatus>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
+<<<<<<< HEAD
         protected override StorageSyncModels.SyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.SyncActivityStatus(
+=======
+        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.ServerEndpointSyncActivityStatus(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             source.Timestamp,
             source.PerItemErrorCount,
             source.AppliedItemCount,
@@ -41,7 +49,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSSyncProgressStatus.</returns>
+<<<<<<< HEAD
         protected override PSSyncActivityStatus Transform(StorageSyncModels.SyncActivityStatus source)
+=======
+        protected override PSSyncActivityStatus Transform(StorageSyncModels.ServerEndpointSyncActivityStatus source)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return new PSSyncActivityStatus()
             {

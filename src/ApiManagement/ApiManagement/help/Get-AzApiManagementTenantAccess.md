@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 236B4436-E8AD-42B4-922C-E2E1406CAFC2
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementtenantaccess
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementtenantaccess
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -20,6 +24,10 @@ Get-AzApiManagementTenantAccess -Context <PsApiManagementContext> [-DefaultProfi
 
 ## DESCRIPTION
 The **Get-AzApiManagementTenantAccess** cmdlet gets the tenant access configuration for a tenant.
+<<<<<<< HEAD
+=======
+Keys will not be included into result details. To get client secret, use **Get-AzApiManagementTenantAccessSecret**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

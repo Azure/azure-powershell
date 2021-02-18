@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -64,6 +68,10 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	CatalogPricingTier           : S1
 	VNetId                       : 
 	Subnet                       : 
+<<<<<<< HEAD
+=======
+	PublicIPs                    : 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	State                        : Starting
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2
@@ -92,6 +100,10 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	CatalogPricingTier           : S1
 	VNetId                       : 
 	Subnet                       : 
+<<<<<<< HEAD
+=======
+	PublicIPs                    : 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2
 	Name                         : test-dedicated-ir
@@ -111,6 +123,38 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 
 This command displays information about the integration runtime named 'test-dedicated-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
 
+<<<<<<< HEAD
+=======
+### Example 5: Get self-hosted integration runtime with detail status
+```
+PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir -Status
+
+	State                     : Online
+	Version                   : 4.2.7233.1
+	CreateTime                : 9/26/2019 6:00:08 AM
+	AutoUpdate                : Off
+	ScheduledUpdateDate       :
+	UpdateDelayOffset         : 03:00:00
+	LocalTimeZoneOffset       : 08:00:00
+	InternalChannelEncryption :
+	Capabilities              : {[serviceBusConnected, True], [httpsPortEnabled, True], [credentialInSync, True], [connectedToResourceManager, True]...}
+	ServiceUrls               : {}
+	Nodes                     : {}
+	Links                     : {}
+	AutoUpdateETA             :
+	LatestVersion             : 4.3.7265.1
+	PushedVersion             : 4.3.7265.1
+	TaskQueueId               : fe2d60b5-86f5-58bf-bdae-7ef698284088
+	VersionStatus             : UpdateAvailable
+	Name                      : test-selfhost-ir
+	Type                      : SelfHosted
+	ResourceGroupName         : rg-test-dfv2
+	DataFactoryName           : test-df-eu2
+	Description               :
+	Id                        : /subscriptions/41fcbc45-c594-4152-a8f1-fcbcd6452aea/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DataFactoryName

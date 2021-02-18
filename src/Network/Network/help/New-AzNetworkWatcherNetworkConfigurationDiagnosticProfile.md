@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatchernetworkconfigurationdiagnosticprofile
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatchernetworkconfigurationdiagnosticprofile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -9,7 +13,11 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a new network configuration diagnostic profile object. 
+<<<<<<< HEAD
 This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
+=======
+This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -21,7 +29,11 @@ New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction <String> -P
 
 ## DESCRIPTION
 The New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile cmdlet creates a new diagnostic profile object. 
+<<<<<<< HEAD
 This object is used to restrict the network confiuration during a network configuration diagnostic session using the specified criteria.
+=======
+This object is used to restrict the network configuration during a network configuration diagnostic session using the specified criteria.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -223,6 +235,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
 
+<<<<<<< HEAD
 [Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport)
+=======
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor)

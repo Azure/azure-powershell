@@ -65,6 +65,21 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The list of CustomRules")]
         public PSApplicationGatewayFirewallCustomRule[] CustomRule { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Policysettings of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicySettings PolicySetting { get; set; }
+        
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "ManagedRules of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRule { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -92,6 +107,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 var firewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
+<<<<<<< HEAD
                 if (this.CustomRule != null)
                 {
                     firewallPolicy.CustomRules = this.CustomRule.ToList();
@@ -99,6 +115,28 @@ namespace Microsoft.Azure.Commands.Network
                 else if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
                 {
                     firewallPolicy = InputObject;
+=======
+                if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+                {
+                    firewallPolicy = InputObject;
+                }
+                else
+                {
+                    if (this.CustomRule != null)
+                    {
+                        firewallPolicy.CustomRules = this.CustomRule.ToList();
+                    }
+
+                    if (this.PolicySetting != null)
+                    {
+                        firewallPolicy.PolicySettings = this.PolicySetting;
+                    }
+
+                    if (this.ManagedRule != null)
+                    {
+                        firewallPolicy.ManagedRules = this.ManagedRule;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 // Map to the sdk object

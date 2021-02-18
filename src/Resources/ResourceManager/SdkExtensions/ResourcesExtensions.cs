@@ -12,16 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+<<<<<<< HEAD
+=======
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 {
@@ -48,19 +60,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             if (result != null)
             {
+<<<<<<< HEAD
                 deployment = CreatePSResourceGroupDeployment(result.Name, resourceGroup, result.Properties);
+=======
+                deployment = CreatePSResourceGroupDeployment(result, resourceGroup);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return deployment;
         }
 
+<<<<<<< HEAD
         public static PSDeployment ToPSDeployment(this DeploymentExtended result)
+=======
+        public static PSDeployment ToPSDeployment(this DeploymentExtended result, string managementGroupId = null, string resourceGroupName = null)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             PSDeployment deployment = new PSDeployment();
 
             if (result != null)
             {
+<<<<<<< HEAD
                 deployment = CreatePSDeployment(result.Name, result.Location, result.Properties);
+=======
+                deployment = CreatePSDeployment(result, managementGroupId, resourceGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return deployment;
@@ -76,7 +100,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     OperationId = result.OperationId,
                     ProvisioningState = result.Properties.ProvisioningState,
                     StatusCode = result.Properties.StatusCode,
+<<<<<<< HEAD
                     StatusMessage = result.Properties.StatusMessage,
+=======
+                    StatusMessage = result.Properties.StatusMessage?.Error?.ToFormattedString(),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     TargetResource = result.Properties.TargetResource?.Id
                 };
             }
@@ -84,8 +112,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return null;
         }
 
+<<<<<<< HEAD
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
+=======
+        public static PSResourceManagerError ToPSResourceManagerError(this ErrorResponse error)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             PSResourceManagerError rmError = new PSResourceManagerError
             {
@@ -104,6 +136,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return rmError;
         }
 
+<<<<<<< HEAD
+=======
+        public static string ToFormattedString(this ErrorResponse error, int level = 0)
+        {
+            if (error.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorResponse detail in error.Details)
+            {
+                errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Message, error.Code, errorDetail);
+        }
+
+        private static string GetIndentation(int l)
+        {
+            return new StringBuilder().Append(' ', l * 2).Append(" - ").ToString();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
         {
             return new PSResourceProvider
@@ -169,6 +226,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return result.ToString();
         }
 
+<<<<<<< HEAD
+=======
+        public static string ConstructOutputTable(IDictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var maxNameLength = 18;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            StringBuilder output = new StringBuilder();
+                
+                if (dictionary.Count > 0)
+                {
+                    string rowFormat = "{0, -" + maxNameLength + "}  {1}\r\n";
+                    output.AppendLine();
+                    output.AppendFormat(rowFormat, "Key", "Value");
+                    output.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxNameLength, "="));
+
+                    foreach (KeyValuePair<string, object> pair in dictionary)
+                    {
+                        String val = pair.Value.ToString().Replace("\n", "\n" + GeneralUtilities.GenerateSeparator(maxNameLength, " ") + "  ");
+                        output.AppendFormat(rowFormat, pair.Key, val);
+                    }
+                }
+
+            return output.ToString();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
         {
             if (dictionary == null)
@@ -201,6 +290,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
         private static PSDeployment CreatePSDeployment(
+<<<<<<< HEAD
             string name,
             string location,
             DeploymentPropertiesExtended properties)
@@ -211,11 +301,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             deploymentObject.Location = location;
 
             SetDeploymentProperties(deploymentObject, properties);
+=======
+            DeploymentExtended deployment,
+            string managementGroupId,
+            string resourceGroup)
+        {
+            PSDeployment deploymentObject = new PSDeployment
+            {
+                Id = deployment.Id,
+                DeploymentName = deployment.Name,
+                Location = deployment.Location,
+                ManagementGroupId = managementGroupId,
+                ResourceGroupName = resourceGroup,
+                Tags = deployment.Tags == null ? new Dictionary<string, string>() : new Dictionary<string, string>(deployment.Tags)
+            };
+
+            SetDeploymentProperties(deploymentObject, deployment.Properties);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return deploymentObject;
         }
 
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
+<<<<<<< HEAD
             string name,
             string resourceGroup,
             DeploymentPropertiesExtended properties)
@@ -226,6 +334,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             deploymentObject.ResourceGroupName = resourceGroup;
 
             SetDeploymentProperties(deploymentObject, properties);
+=======
+            DeploymentExtended deployment,
+            string resourceGroup)
+        {
+            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment
+            {
+                DeploymentName = deployment.Name,
+                ResourceGroupName = resourceGroup,
+                Tags = deployment.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
+            };
+
+            SetDeploymentProperties(deploymentObject, deployment.Properties);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             return deploymentObject;
         }
@@ -277,8 +398,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         public static Hashtable ToHashtable(this object obj)
         {
             return new Hashtable(obj.GetType()
+<<<<<<< HEAD
                                     .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
                                     .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+=======
+                .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         }
     }

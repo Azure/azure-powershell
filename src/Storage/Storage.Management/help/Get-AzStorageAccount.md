@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccount
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,14 +19,29 @@ Gets a Storage account.
 
 ### ResourceGroupParameterSet
 ```
+<<<<<<< HEAD
 Get-AzStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+=======
+Get-AzStorageAccount [[-ResourceGroupName] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
+<<<<<<< HEAD
 Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+=======
+Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeGeoReplicationStats] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### BlobRestoreStatusParameterSet
+```
+Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-IncludeBlobRestoreStatus] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -51,8 +70,41 @@ PS C:\>Get-AzStorageAccount
 
 This command gets all of the Storage accounts in the subscription.
 
+<<<<<<< HEAD
 ## PARAMETERS
 
+=======
+### Example 4:  Get a Storage accounts with its blob restore status
+```
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -IncludeBlobRestoreStatus
+
+PS C:\> $account.BlobRestoreStatus
+
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges                 
+------     ---------                            ------------- ------------------------     ---------------------                 
+InProgress a70cd4a1-f223-4c86-959f-cc13eb4795a8               2020-02-10T13:45:04.7155962Z [container1/blob1 -> container2/blob2]
+```
+
+This command gets a Storage accounts with its blob restore status, and show the blob restore status.
+
+## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -68,12 +120,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -IncludeBlobRestoreStatus
+Get the BlobRestoreStatus of the Storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: BlobRestoreStatusParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeGeoReplicationStats
+Get the GeoReplicationStats of the Storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AccountNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Specifies the name of the Storage account to get.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: AccountNameParameterSet
+=======
+Parameter Sets: AccountNameParameterSet, BlobRestoreStatusParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: StorageAccountName, AccountName
 
 Required: True
@@ -100,7 +189,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: AccountNameParameterSet
+=======
+Parameter Sets: AccountNameParameterSet, BlobRestoreStatusParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True

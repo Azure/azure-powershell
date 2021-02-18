@@ -65,6 +65,45 @@ function Clean-ResourceGroup($rgname)
     }
 }
 
+<<<<<<< HEAD
+=======
+<#
+.SYNOPSIS
+Cleans the deployment
+#>
+function Clean-DeploymentAtSubscription($deploymentName)
+{
+	$assemblies = [AppDomain]::Currentdomain.GetAssemblies() | Select-Object FullName | ForEach-Object { $_.FullName.Substring(0, $_.FullName.IndexOf(',')) }
+    if ($assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpMockServer' `
+		-or $assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode' `
+		-or [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+        try {
+		    Remove-AzDeployment -ScopeType Subscription -Name $deploymentName
+		} 
+		catch {
+		}
+    }
+}
+
+<#
+.SYNOPSIS
+Cleans the deployment
+#>
+function Clean-DeploymentAtTenant($deploymentName)
+{
+	$assemblies = [AppDomain]::Currentdomain.GetAssemblies() | Select-Object FullName | ForEach-Object { $_.FullName.Substring(0, $_.FullName.IndexOf(',')) }
+    if ($assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpMockServer' `
+		-or $assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode' `
+		-or [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+        try {
+		    Remove-AzDeployment -ScopeType Tenant -Name $deploymentName
+		} 
+		catch {
+		}
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 function New-AzRoleAssignmentWithId
 {
     [CmdletBinding()]
@@ -80,6 +119,12 @@ function New-AzRoleAssignmentWithId
         [string] [Parameter()] $RoleDefinitionName,
         [Guid]   [Parameter()] $RoleDefinitionId,
         [switch] [Parameter()] $AllowDelegation,
+<<<<<<< HEAD
+=======
+        [string] [Parameter()] $Description,
+        [string] [Parameter()] $Condition,
+        [string] [Parameter()] $ConditionVersion,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Guid]   [Parameter()] $RoleAssignmentId
     )
 
@@ -148,6 +193,24 @@ function New-AzRoleAssignmentWithId
         $cmdlet.RoleAssignmentId = $RoleAssignmentId
     }
 
+<<<<<<< HEAD
+=======
+    if (-not ([string]::IsNullOrEmpty($Description)))
+    {
+        $cmdlet.Description = $Description
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Condition)))
+    {
+        $cmdlet.Condition = $Condition
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ConditionVersion)))
+    {
+        $cmdlet.ConditionVersion = $ConditionVersion
+    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $cmdlet.ExecuteCmdlet()
 }
 
@@ -396,4 +459,36 @@ function Test-AzResourceGroupDeploymentWithName
     }
 
     $cmdlet.ExecuteCmdlet()
+<<<<<<< HEAD
 }
+=======
+}
+
+<#
+.SYNOPSIS
+Simple utility function to see if two simple hashtables equal (key is case insensitive; value is case sensitive)
+#>
+function AreHashtableEqual($hash1, $hash2)
+{
+    if($hash1 -eq $null -and $hash2 -eq $null)
+    {
+        return $true; 
+    }
+    if($hash1 -eq $null -or $hash2 -eq $null -or $hash1.Count -ne $hash2.Count)
+    {
+        return $false;
+    }
+    foreach($key in $hash1.Keys) 
+    {
+        if(!$hash2.ContainsKey($key))  # case insensitive
+        {
+            return $false;
+	    }
+        if($hash1.$key -cne $hash2.$key)  # case sensitive
+        {
+            return $false;
+	    }
+    }
+    return $true;
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

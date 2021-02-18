@@ -63,6 +63,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Eula = this.Eula;
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.IsParameterBound(c => c.HyperVGeneration))
+                    {
+                        galleryImage.HyperVGeneration = this.HyperVGeneration;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.IsParameterBound(c => c.PrivacyStatementUri))
                     {
                         galleryImage.PrivacyStatementUri = this.PrivacyStatementUri;
@@ -245,27 +253,48 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string Eula { get; set; }
+=======
+        public string[] DisallowedDiskType { get; set; } 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string PrivacyStatementUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string ReleaseNoteUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+=======
         public DateTime EndOfLifeDate { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string ReleaseNoteUri { get; set; }
+=======
+        public string Eula { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public DateTime EndOfLifeDate { get; set; }
+=======
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public Hashtable Tag { get; set; }
+=======
+        public int MinimumMemory { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -275,27 +304,47 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public int MaximumVCPU { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public int MinimumMemory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+=======
         public int MaximumMemory { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public int MinimumMemory { get; set; }
+=======
+        public int MaximumVCPU { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public int MaximumMemory { get; set; }
+=======
+        public string PrivacyStatementUri { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string[] DisallowedDiskType { get; set; }
+=======
+        public string PurchasePlanName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string PurchasePlanName { get; set; }
+=======
+        public string PurchasePlanProduct { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -305,7 +354,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string PurchasePlanProduct { get; set; }
+=======
+        public string ReleaseNoteUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -527,32 +585,56 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string Eula { get; set; }
+=======
+        public string[] DisallowedDiskType { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public string PrivacyStatementUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string ReleaseNoteUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+=======
         public DateTime EndOfLifeDate { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string ReleaseNoteUri { get; set; }
+=======
+        public string Eula { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public DateTime EndOfLifeDate { get; set; }
+=======
+        public int MinimumMemory { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public Hashtable Tag { get; set; }
+=======
+        public int MinimumVCPU { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public int MinimumVCPU { get; set; }
+=======
+        public int MaximumMemory { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
@@ -562,31 +644,55 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public int MinimumMemory { get; set; }
+=======
+        public string PrivacyStatementUri { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
         public int MaximumMemory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string[] DisallowedDiskType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+=======
         public string PurchasePlanName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string PurchasePlanPublisher { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string[] DisallowedDiskType { get; set; }
+=======
         public string PurchasePlanProduct { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string PurchasePlanName { get; set; }
+=======
+        public string PurchasePlanPublisher { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string PurchasePlanPublisher { get; set; }
+=======
+        public string ReleaseNoteUri { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+<<<<<<< HEAD
+        public string PurchasePlanProduct { get; set; }
+=======
+        public Hashtable Tag { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

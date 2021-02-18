@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
 
+<<<<<<< HEAD
+=======
+        [JsonProperty(Order = 1)]
+        public PSExpressRouteCircuitConnectionIPv6ConnectionConfig IPv6CircuitConnectionConfig { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string ExpressRouteCircuitPeeringText
         {
@@ -59,5 +65,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(PeerExpressRouteCircuitPeering, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string IPv6CircuitConnectionConfigText
+        {
+            get { return JsonConvert.SerializeObject(IPv6CircuitConnectionConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

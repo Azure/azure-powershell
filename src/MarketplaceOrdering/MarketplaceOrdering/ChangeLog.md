@@ -19,5 +19,17 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
 ## Version 1.0.0
 * General availability of `Az.MarketplaceOrdering` module
+=======
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed documentation typo where "Azure" was all lowercase letters
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* General availability of `Az.MarketplaceOrdering` module
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

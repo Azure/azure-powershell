@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
@@ -23,6 +24,21 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+=======
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+
+using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -38,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override bool CanRead => true;
         public override bool CanConvert(Type objectType)
         {
+<<<<<<< HEAD
             return objectType == typeof(IAzureContext) 
                 || objectType == typeof(IAzureAccount) 
                 || objectType == typeof(IAzureSubscription)
@@ -47,6 +64,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 || objectType == typeof(AzureTokenCache) 
                 || objectType == typeof(ProtectedFileTokenCache)
                 || objectType == typeof(AuthenticationStoreTokenCache)
+=======
+            return objectType == typeof(IAzureContext)
+                || objectType == typeof(IAzureAccount)
+                || objectType == typeof(IAzureSubscription)
+                || objectType == typeof(IAzureEnvironment)
+                || objectType == typeof(IAzureTenant)
+                || objectType == typeof(IAzureTokenCache)
+                || objectType == typeof(AzureTokenCache)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 || objectType == typeof(IAzureContextContainer);
         }
 
@@ -68,7 +94,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 return serializer.Deserialize<AzureSubscription>(reader);
             }
+<<<<<<< HEAD
             else if (objectType == typeof(IAzureTenant))
+=======
+            else if (objectType == typeof(IAzureTenant) )
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return serializer.Deserialize<AzureTenant>(reader);
             }
@@ -76,6 +106,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 return serializer.Deserialize<AzureEnvironment>(reader);
             }
+<<<<<<< HEAD
             else if (objectType == typeof(IAzureTokenCache))
             {
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
@@ -86,6 +117,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
                 return cache;
+=======
+            else if (objectType == typeof(IAzureTokenCache) || objectType == typeof(AzureTokenCache))
+            {
+                var tempResult = serializer.Deserialize<CacheBuffer>(reader);
+                if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
+                {
+                    if(AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache oldTokenCache))
+                    {
+                        if(!oldTokenCache.IsPersistentCache)
+                        {
+                            var stream = new MemoryStream(tempResult.CacheData);
+                            var tokenCache = new PowerShellTokenCache(stream);
+                            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
+                        }
+                        else
+                        {
+                            if (AzureSession.Instance.TryGetComponent(
+                                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                                out PowerShellTokenCacheProvider tokenCacheProvider))
+                            {
+                                tokenCacheProvider.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                            }
+                        }
+                    }
+                }
+                // cache data is not for direct use, so we do not return anything
+                return new AzureTokenCache();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else if (objectType == typeof(Dictionary<string, IAzureEnvironment>))
             {
@@ -120,7 +179,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (_serializeCache)
                 {
+<<<<<<< HEAD
                     value = new CacheBuffer { CacheData = cache.CacheData };
+=======
+                    byte[] cacheData = null;
+
+
+                    if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
+                    {
+                        if (tokenCache.IsPersistentCache)
+                        {
+                            if (AzureSession.Instance.TryGetComponent(
+                                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                                out PowerShellTokenCacheProvider tokenCacheProvider))
+                            {
+                                cacheData = tokenCacheProvider.ReadTokenData();
+                            }
+                        }
+                        else
+                        {
+                            using (var stream = new MemoryStream())
+                            {
+                                tokenCache.Serialize(stream);
+                                cacheData = stream.ToArray();
+                            }
+                        }
+                    }
+
+                    value = new CacheBuffer { CacheData = cacheData };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 else
                 {

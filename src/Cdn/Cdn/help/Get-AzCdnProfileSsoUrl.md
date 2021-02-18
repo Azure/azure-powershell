@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 93D5E2D9-FB89-4311-8E8E-44CBFAFC98A9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofilessourl
+=======
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofilessourl
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,7 +30,11 @@ Get-AzCdnProfileSsoUrl -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextCo
 
 ## DESCRIPTION
 The **Get-AzCdnProfileSsoUrl** cmdlet gets the single sign-on URL of the Azure Content Delivery Network (CDN) profile.
+<<<<<<< HEAD
 This URL lets users conntect to a supplementary portal and use additional features of  CDN.
+=======
+This URL lets users connect to a supplementary portal and use additional features of  CDN.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

@@ -54,6 +54,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void EventGrid_DomainsInputMappingCreateGetAndDelete()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "DomainInputMappingTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void EventGrid_DomainTopics()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "DomainTopicTests");

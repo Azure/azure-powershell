@@ -61,17 +61,29 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 2,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service.")]
         [Parameter(
             Position = 2,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The name of the service.")]
         [Parameter(
             Position = 2,
+<<<<<<< HEAD
             Mandatory = true, 
+=======
+            Mandatory = false, 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
@@ -115,6 +127,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public override void ExecuteCmdlet()
         {
             this.ResolveParams();
+<<<<<<< HEAD
             var psServiceResource = new PSServiceResource()
             {
                 ResourceGroupName = this.ResourceGroupName,
@@ -124,6 +137,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
             psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
             this.WriteObject(psServiceResource);
+=======
+
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var psServiceResource = new PSServiceResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServiceTopologyName = this.ServiceTopologyName,
+                    Name = this.Name
+                };
+
+                psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
+                this.WriteObject(psServiceResource);
+            }
+            else
+            {
+                var psServiceResources = this.DeploymentManagerClient.ListServices(this.ResourceGroupName, this.ServiceTopologyName);
+                this.WriteObject(psServiceResources, enumerateCollection: true);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private void ResolveParams()

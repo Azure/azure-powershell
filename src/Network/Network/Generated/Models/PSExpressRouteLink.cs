@@ -53,5 +53,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+<<<<<<< HEAD
+=======
+        [JsonProperty(Order = 1)]
+        public PSExpressRouteLinkMacSecConfig MacSecConfig { get; set; }
+
+        [JsonIgnore]
+        public string MacSecConfigText
+        {
+            get { return JsonConvert.SerializeObject(MacSecConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerruleconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,6 +40,7 @@ The **New-AzLoadBalancerRuleConfig** cmdlet creates a rule configuration for an 
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Creating a rule configuration for an Azure Load Balancer
 ```
 PS C:\>  $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" 
@@ -47,6 +52,19 @@ PS C:\>  $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Po
 PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration 
     $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp 
     -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP 
+=======
+### Example 1: Creating a rule configuration for an Azure Load Balancer
+```powershell
+PS C:\>  $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
+    -name MyPublicIP -location 'West US' -AllocationMethod Dynamic
+PS C:\>  $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
+    -PublicIpAddress $publicip
+PS C:\>  $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
+    80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
+PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
+    $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp `
+    -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     -LoadDistribution SourceIP
 ```
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 66D543C0-34F0-47B1-943A-415DECF2155C
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementgroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementgroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,7 +31,11 @@ The **Set-AzApiManagementGroup** cmdlet configures an API management group.
 ### Example 1: Configure a management group
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+<<<<<<< HEAD
 PS C:\>Set-AzApiManagementGroup -Context $apimContext -Description "Updated Management Group" -Name "Group0001"
+=======
+PS C:\>Set-AzApiManagementGroup -Context $apimContext -GroupId "0001" -Description "Updated Management Group" -Name "Group0001"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command configures a management group named Group0001.

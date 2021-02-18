@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecuritygroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworksecuritygroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,19 +34,29 @@ The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Retrieve an existing network security group
 ```
+=======
+### Example 1: Retrieve an existing network security group
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName "rg1"
 
 Name                        : nsg1
 ResourceGroupName           : rg1
 Location                    : eastus
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provider
+<<<<<<< HEAD
                               s/Microsoft.Network/networkInterfaces/nsg1
+=======
+                              s/Microsoft.Network/networkSecurityGroups/nsg1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Etag                        : W/"00000000-0000-0000-0000-000000000000"
 ResourceGuid                : 00000000-0000-0000-0000-000000000000
 ProvisioningState           : Succeeded
 Tags                        :
+<<<<<<< HEAD
 VirtualMachine              : null
 IpConfigurations            : [
                                 {
@@ -85,23 +99,197 @@ EnableAcceleratedNetworking : False
 NetworkSecurityGroup        : null
 Primary                     :
 MacAddress                  :
+=======
+SecurityRules               : []
+DefaultSecurityRules        : [
+                                {
+                                  "Name": "AllowVnetInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetInBound",
+                                  "Description": "Allow inbound traffic from all VMs in VNET",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65000,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowAzureLoadBalancerInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowAzureLoadBalancerInBou
+                              nd",
+                                  "Description": "Allow inbound traffic from azure load balancer",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "AzureLoadBalancer"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65001,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "DenyAllInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllInBound",
+                                  "Description": "Deny all inbound traffic",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Deny",
+                                  "Priority": 65500,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowVnetOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetOutBound",
+                                  "Description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65000,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowInternetOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowInternetOutBound",
+                                  "Description": "Allow outbound traffic from all VMs to Internet",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "Internet"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65001,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "DenyAllOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllOutBound",
+                                  "Description": "Deny all outbound traffic",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Deny",
+                                  "Priority": 65500,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                }
+                              ]
+NetworkInterfaces           : []
+Subnets                     : []
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
 
+<<<<<<< HEAD
 ### 2: List existing network security groups using filtering
 ```
+=======
+### Example 2: List existing network security groups using filtering
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Get-AzNetworkSecurityGroup -Name nsg*
 
 Name                        : nsg1
 ResourceGroupName           : rg1
 Location                    : eastus
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provider
+<<<<<<< HEAD
                               s/Microsoft.Network/networkInterfaces/nsg1
+=======
+                              s/Microsoft.Network/networkSecurityGroups/nsg1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Etag                        : W/"00000000-0000-0000-0000-000000000000"
 ResourceGuid                : 00000000-0000-0000-0000-000000000000
 ProvisioningState           : Succeeded
 Tags                        :
+<<<<<<< HEAD
 VirtualMachine              : null
 IpConfigurations            : [
                                 {
@@ -144,6 +332,170 @@ EnableAcceleratedNetworking : False
 NetworkSecurityGroup        : null
 Primary                     :
 MacAddress                  :
+=======
+SecurityRules               : []
+DefaultSecurityRules        : [
+                                {
+                                  "Name": "AllowVnetInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetInBound",
+                                  "Description": "Allow inbound traffic from all VMs in VNET",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65000,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowAzureLoadBalancerInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowAzureLoadBalancerInBou
+                              nd",
+                                  "Description": "Allow inbound traffic from azure load balancer",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "AzureLoadBalancer"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65001,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "DenyAllInBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllInBound",
+                                  "Description": "Deny all inbound traffic",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Deny",
+                                  "Priority": 65500,
+                                  "Direction": "Inbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowVnetOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetOutBound",
+                                  "Description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "VirtualNetwork"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65000,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "AllowInternetOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowInternetOutBound",
+                                  "Description": "Allow outbound traffic from all VMs to Internet",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "Internet"
+                                  ],
+                                  "Access": "Allow",
+                                  "Priority": 65001,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                },
+                                {
+                                  "Name": "DenyAllOutBound",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provide
+                              rs/Microsoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllOutBound",
+                                  "Description": "Deny all outbound traffic",
+                                  "Protocol": "*",
+                                  "SourcePortRange": [
+                                    "*"
+                                  ],
+                                  "DestinationPortRange": [
+                                    "*"
+                                  ],
+                                  "SourceAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "DestinationAddressPrefix": [
+                                    "*"
+                                  ],
+                                  "Access": "Deny",
+                                  "Priority": 65500,
+                                  "Direction": "Outbound",
+                                  "ProvisioningState": "Succeeded",
+                                  "SourceApplicationSecurityGroups": [],
+                                  "DestinationApplicationSecurityGroups": []
+                                }
+                              ]
+NetworkInterfaces           : []
+Subnets                     : []
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command returns contents of Azure network security groups that start with "nsg"

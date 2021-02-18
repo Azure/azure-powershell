@@ -489,7 +489,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             if (TargetResourceTypeCondition != null)
             {
+<<<<<<< HEAD
                 conditions.MonitorCondition = new Condition(
+=======
+                conditions.TargetResourceType = new Condition(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         operatorProperty: TargetResourceTypeCondition.Split(':')[0],
                         values: TargetResourceTypeCondition.Split(':')[1].Split(','));
             }
@@ -554,14 +558,26 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private string DetermineScopeType(string value)
         {
             string[] tokens = value.Split('/');
+<<<<<<< HEAD
 
             if (tokens.Length == 5)
+=======
+            if (tokens.Length == 3)
+            {
+                return ScopeType.Subscription;
+            }
+            else if (tokens.Length == 5)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 return ScopeType.ResourceGroup;
             }
             else if (tokens.Length >= 9)
             {
+<<<<<<< HEAD
                 return ScopeType.ResourceGroup;
+=======
+                return ScopeType.Resource;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else
             {

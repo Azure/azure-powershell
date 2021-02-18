@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (ShouldProcess(DeploymentName, VerbsData.Save))
             {
+<<<<<<< HEAD
                 var resourceId = this.GetResourceId();
 
                 var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
@@ -90,6 +91,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     .WaitOnOperation(operationResult: operationResult);
 
                 var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+=======
+                var template = ResourceManagerSdkClient.GetDeploymentTemplateAtResourceGroup(ResourceGroupName, DeploymentName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: this.DeploymentName,
@@ -104,6 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
@@ -116,5 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceType: Constants.MicrosoftResourcesDeploymentType,
                 resourceName: this.DeploymentName);
         }
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

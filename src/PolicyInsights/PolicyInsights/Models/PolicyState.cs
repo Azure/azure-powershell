@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
 {
     using System;
     using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+    using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Policy state record.
@@ -149,7 +153,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public string PolicySetDefinitionParameters { get; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets comma seperated list of management group IDs, which
+=======
+        /// Gets comma separated list of management group IDs, which
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// represent the hierarchy of the management groups the resource is
         /// under.
         /// </summary>
@@ -172,6 +180,29 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public PolicyEvaluationDetails PolicyEvaluationDetails { get; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets policy definition group names.
+        /// </summary>
+        public IList<string> PolicyDefinitionGroupNames { get; }
+
+        /// <summary>
+        /// Gets the version of the policy definition.
+        /// </summary>
+        public string PolicyDefinitionVersion { get; }
+
+        /// <summary>
+        /// Gets the version of the policy set definition.
+        /// </summary>
+        public string PolicySetDefinitionVersion { get; }
+
+        /// <summary>
+        /// Gets the version of the policy assignment.
+        /// </summary>
+        public string PolicyAssignmentVersion { get; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Initializes a new instance of the <see cref="PolicyState" /> class.
         /// </summary>
         /// <param name="policyState">Policy state.</param>
@@ -211,11 +242,22 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
             this.ManagementGroupIds = policyState.ManagementGroupIds;
             this.PolicyDefinitionReferenceId = policyState.PolicyDefinitionReferenceId;
             this.ComplianceState = policyState.ComplianceState;
+<<<<<<< HEAD
+=======
+            this.PolicyDefinitionVersion = policyState.PolicyDefinitionVersion;
+            this.PolicySetDefinitionVersion = policyState.PolicySetDefinitionVersion;
+            this.PolicyAssignmentVersion = policyState.PolicyAssignmentVersion;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (policyState.PolicyEvaluationDetails != null)
             {
                 this.PolicyEvaluationDetails = new PolicyEvaluationDetails(policyState.PolicyEvaluationDetails);
             }
+<<<<<<< HEAD
+=======
+            
+            this.PolicyDefinitionGroupNames = policyState.PolicyDefinitionGroupNames?.ToList();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

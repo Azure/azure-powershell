@@ -69,6 +69,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string ShowReplicationByRegistryObjectParameterSet = "ShowReplicationByRegistryObjectParameterSet";
         protected const string ListReplicationByNameResourceGroupParameterSet = "ListReplicationByNameResourceGroupParameterSet";
         protected const string ListReplicationByRegistryObjectParameterSet = "ListReplicationByRegistryObjectParameterSet";
+<<<<<<< HEAD
+=======
+        protected const string ImportImageByResourceId = "ImportImageByResourceId";
+        protected const string ImportImageByResourceIdWithCredential = "ImportImageByResourceIdWithCredential";
+        protected const string ImportImageByRegistryUri = "ImportImageByRegistryUri";
+        protected const string ImportImageByRegistryUriWithCredential = "ImportImageByRegistryUriWithCredential";
+        protected const string AddNetworkRuleWithInputObject = "AddNetworkRuleWithInputObject";
+        protected const string AddNetworkRuleWithoutInputObject = "AddAddNetworkRuleWithoutInputObject";
+        protected const string ByVirtualNetworkRule = "ByVirtualNetworkRule";
+        protected const string ByIPRule = "ByIPRule";
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         protected const string InvalidRegistryResourceIdErrorMessage = "This is an invalid container registry resource id";
         protected const string InvalidRegistryOrWebhookResourceIdErrorMessage = "This is an invalid container registry resource id or webhook resource id";
@@ -130,6 +142,33 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
         }
 
+<<<<<<< HEAD
+=======
+        private const string _acrTokenCacheKey = "AcrTokenCacheKey";
+        private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
+        public ContainerRegistryDataPlaneClient RegistryDataPlaneClient
+        {
+            get
+            {
+                if (_RegistryDataPlaneClient == null)
+                {
+                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext, _acrTokenCacheKey)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _RegistryDataPlaneClient;
+            }
+
+            set
+            {
+                _RegistryDataPlaneClient = value;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected void WriteInvalidResourceIdError(string msg)
         {
             WriteError(new ErrorRecord(new PSArgumentException(msg, "ResourceId"), string.Empty, ErrorCategory.InvalidArgument, null));

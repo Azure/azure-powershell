@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 0.7.4
+* Update references in .psd1 to use relative path
+
+## Version 0.7.3
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.7.2
 * Added `New-AzDataMigrationAzureActiveDirectoryApp` cmdlet
     - Used as input for MI online sync migration

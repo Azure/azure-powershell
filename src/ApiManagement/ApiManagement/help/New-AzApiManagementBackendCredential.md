@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementbackendcredential
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackendcredential
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,7 +27,11 @@ Creates a new Backend Credential contract.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Create a Backend Credentials In-Memory Object
+=======
+### Example 1: Create a Backend Credentials In-Memory Object
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$credential = New-AzApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
@@ -145,7 +153,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzApiManagementBackend](./Get-AzApiManagementBackend)
+=======
+[Get-AzApiManagementBackend](./Get-AzApiManagementBackend.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [New-AzApiManagementBackend](./New-AzApiManagementBackend.md)
 

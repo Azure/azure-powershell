@@ -101,6 +101,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Password Reset Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
         public String PasswordResetPolicyName { get; set; }
+<<<<<<< HEAD
+=======
+        
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Signin Tenant to use for AAD Authentication. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
+        public String SigninTenant { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -143,6 +152,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     SignupPolicyName,
                     PasswordResetPolicyName,
                     ProfileEditingPolicyName,
+<<<<<<< HEAD
+=======
+                    SigninTenant,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     InputObject);
 
                 if (PassThru)

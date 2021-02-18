@@ -69,7 +69,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+=======
+            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter Force { get; set; }
 
         [Parameter(

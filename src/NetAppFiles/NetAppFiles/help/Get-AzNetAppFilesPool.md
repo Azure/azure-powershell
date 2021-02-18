@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilespool
+=======
+online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilespool
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -47,7 +51,14 @@ Type              : Microsoft.NetApp/netAppAccounts/capacityPools
 Tags              :
 PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
 Size              : 4398046511104
+<<<<<<< HEAD
 ServiceLevel      : Premium
+=======
+ServiceLevel	  : Premium
+TotalThroughputMibps: 262.144
+UtilizedThroughputMibps: 164.221
+QosType			  : Auto
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ProvisioningState : Succeeded
 ```
 
@@ -59,7 +70,11 @@ This command gets the account named MyAnfPool from the account "MyAnfAccount".
 The name of the ANF account
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -74,7 +89,11 @@ Accept wildcard characters: False
 The account object containing the pool to return
 
 ```yaml
+<<<<<<< HEAD
 Type: PSNetAppFilesAccount
+=======
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -89,7 +108,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: IAzureContextContainer
+=======
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -104,7 +127,11 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases: PoolName
 
@@ -119,7 +146,11 @@ Accept wildcard characters: False
 The resource group of the ANF pool
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -134,7 +165,11 @@ Accept wildcard characters: False
 The resource id of the ANF pool
 
 ```yaml
+<<<<<<< HEAD
 Type: String
+=======
+Type: System.String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -146,8 +181,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

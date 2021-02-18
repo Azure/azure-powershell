@@ -108,6 +108,23 @@ function Get-NrpResourceGroupName
 	Get-ResourceGroupName "psnrp";
 }
 
+<<<<<<< HEAD
+=======
+function Wait-Vm($vm)
+{
+    # Don't wait more than N minutes to avoid getting stuck in a loop if VM can't recover
+    $minutes = 30;
+    while((Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name).ProvisioningState -ne "Succeeded")
+    {
+        Start-TestSleep 60;
+        if(--$minutes -eq 0)
+        {
+            break;
+        }
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Get existing Network Watcher.
@@ -561,8 +578,13 @@ function Test-Troubleshoot
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+<<<<<<< HEAD
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+=======
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
  
         # Create the publicip
@@ -704,6 +726,91 @@ function Test-FlowLog
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Test Flow log CRUD API.
+#>
+function Test-CRUDFlowLog
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $flowLogName = Get-NrpResourceName
+    $domainNameLabel = Get-NrpResourceName
+    $nsgName = Get-NrpResourceName
+    $stoname =  Get-NrpResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US"
+
+    try 
+    {
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Create NetworkSecurityGroup
+        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName -Location $location
+
+        # Get NetworkSecurityGroup
+        $getNsg = Get-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName
+        
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+ 
+        # Create storage
+        $stoname = 'sto' + $stoname
+        $stotype = 'Standard_GRS'
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+
+        # Create flow log
+        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw Name $flowLogName -TargetResourceId $getNsg.Id -StorageAccountId $sto.Id -Enabled $true
+        $job | Wait-Job
+        $config = $job | Receive-Job
+
+        # Validation set operation
+        Assert-AreEqual $config.TargetResourceId $getNsg.Id
+        Assert-AreEqual $config.StorageId $sto.Id
+        Assert-AreEqual $config.Enabled $true
+        Assert-AreEqual $config.Format.Type "JSON"
+        Assert-AreEqual $config.Format.Version 1
+
+        # Get flow log
+        $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+
+        # Validation get operation
+        Assert-AreEqual $flowLog.TargetResourceId $getNsg.Id
+        Assert-AreEqual $flowLog.StorageId $sto.Id
+        Assert-AreEqual $flowLog.Enabled $true
+        Assert-AreEqual $flowLog.Format.Type "JSON"
+        Assert-AreEqual $flowLog.Format.Version 1
+
+        # Set flow log
+        $flowLog.Format.Version = 2
+        $flowLog | Set-AzNetworkWatcherFlowLog -Force
+
+        # Get updated flowLog
+        $updatedFlowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+        Assert-AreEqual $updatedFlowLog.Format.Version 2
+
+        # Delete flow log
+        Remove-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Test ConnectivityCheck NetworkWatcher API.
 #>
 function Test-ConnectivityCheck
@@ -1006,20 +1113,39 @@ function Test-ConnectionMonitor
 
         #Remove connection monitor
         Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+<<<<<<< HEAD
+=======
+        Wait-Vm $vm
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
+<<<<<<< HEAD
         ###
         $cm1 = $job1 | Receive-Job
         Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
 
+=======
+        $cm1 = $job1 | Receive-Job
+
+        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
+        Wait-Vm $vm
+
+        #Create connection monitor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
 
         Remove-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
+<<<<<<< HEAD
 
+=======
+        Wait-Vm $vm
+
+        #Create connection monitor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
@@ -1027,6 +1153,10 @@ function Test-ConnectionMonitor
         $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
         $rmJob | Wait-Job
         $result = $rmJob | Receive-Job
+<<<<<<< HEAD
+=======
+        Wait-Vm $vm
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
 
@@ -1047,4 +1177,8 @@ function Test-ConnectionMonitor
         Clean-ResourceGroup $resourceGroupName
         Clean-ResourceGroup $nwRgName
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

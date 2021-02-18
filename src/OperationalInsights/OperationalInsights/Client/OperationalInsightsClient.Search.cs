@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponses;
         }
 
+<<<<<<< HEAD
         public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string resourceGroupName, string workspaceName, string savedSearchId)
         {
             SearchResultsResponse responses = OperationalInsightsManagementClient.SavedSearches.GetResults(resourceGroupName, workspaceName, savedSearchId);
@@ -54,10 +55,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSSearchGetSchemaResponse GetSchema(string resourceGroupName, string workspaceName)
         {
             SearchGetSchemaResponse response = OperationalInsightsManagementClient.Workspaces.GetSchema(resourceGroupName, workspaceName);
+=======
+        public virtual PSSearchGetSchemaResponse GetSchema(string resourceGroupName, string workspaceName)
+        {
+            SearchGetSchemaResponse response = OperationalInsightsManagementClient.Schema.Get(resourceGroupName, workspaceName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             PSSearchGetSchemaResponse schemaResponse = new PSSearchGetSchemaResponse(response);
             return schemaResponse;
         }
 
+<<<<<<< HEAD
         public virtual PSSearchGetSearchResultsResponse GetSearchResults(string resourceGroupName, string workspaceName, PSSearchGetSearchResultsParameters psParameters)
         {
             SearchParameters parameters = new SearchParameters();
@@ -98,6 +105,45 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
                     status = result.Response.StatusCode;
                 };
+=======
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, SavedSearch properties, bool patch, bool force, Action<bool, string, string, string, Action, Func<bool>> ConfirmAction, string ETag = null)
+        {
+            PSSearchGetSavedSearchResponse ExistingSearch;
+            bool existed;
+
+            try
+            {
+                ExistingSearch = GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);
+            }
+            catch (Rest.Azure.CloudException)
+            {
+                ExistingSearch = null;
+            }
+
+            existed = ExistingSearch == null ? false : true;
+
+            HttpStatusCode status = HttpStatusCode.Ambiguous;
+            Action createSavedSearch = () =>
+            {
+                if (ETag != null && ETag != "")
+                {
+                    properties.ETag = ETag;
+                }
+                Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
+                status = result.Response.StatusCode;
+            };
+
+            Action updateSavedSearch = () =>
+            {
+                if (ETag != null && ETag != "")
+                {
+                    properties.ETag = ETag;
+                }
+                properties.FunctionParameters = ExistingSearch.Properties.FunctionParameters;
+                Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
+                status = result.Response.StatusCode;
+            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             ConfirmAction(
                 force,    // prompt only if the saved search exists
@@ -112,8 +158,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     savedSearchId,
                     workspaceName),
                 savedSearchId,
+<<<<<<< HEAD
                 createSavedSearch,
                 () => CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId));
+=======
+                (patch && existed) ? updateSavedSearch : createSavedSearch ,
+                () => existed);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return status;
         }
 

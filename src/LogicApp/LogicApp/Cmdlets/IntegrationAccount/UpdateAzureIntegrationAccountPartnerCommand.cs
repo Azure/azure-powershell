@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         #endregion Defaults
 
+<<<<<<< HEAD
         #region Input Paramters
+=======
+        #region Input Parameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]

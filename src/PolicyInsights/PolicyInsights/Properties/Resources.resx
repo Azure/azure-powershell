@@ -123,6 +123,12 @@
   <data name="CreatingRemediation" xml:space="preserve">
     <value>Creating a new remediation at scope '{0}' with name '{1}'.</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="StartComplianceScan" xml:space="preserve">
+    <value>Triggering a policy compliance scan at scope '{0}'.</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   <data name="DeletingRemediation" xml:space="preserve">
     <value>Deleting remediation '{0}' from scope '{1}'.</value>
   </data>

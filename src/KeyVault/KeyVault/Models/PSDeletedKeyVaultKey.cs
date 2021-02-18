@@ -16,6 +16,11 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using Azure.Security.KeyVault.Keys;
+using JsonWebKey = Microsoft.Azure.KeyVault.WebKey.JsonWebKey;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -24,7 +29,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSDeletedKeyVaultKey()
         { }
 
+<<<<<<< HEAD
         internal PSDeletedKeyVaultKey(Azure.KeyVault.Models.DeletedKeyBundle deletedKeyBundle, VaultUriHelper vaultUriHelper)
+=======
+        internal PSDeletedKeyVaultKey(Azure.KeyVault.Models.DeletedKeyBundle deletedKeyBundle, VaultUriHelper vaultUriHelper, bool isHsm = false)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (deletedKeyBundle == null)
                 throw new ArgumentNullException("keyItem");
@@ -57,6 +66,45 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             ScheduledPurgeDate = deletedKeyBundle.ScheduledPurgeDate;
             DeletedDate = deletedKeyBundle.DeletedDate;
+<<<<<<< HEAD
+=======
+            IsHsm = isHsm;
+        }
+
+        internal PSDeletedKeyVaultKey(DeletedKey deletedKey, VaultUriHelper vaultUriHelper, bool isHsm = false)
+        {
+            if (deletedKey == null)
+                throw new ArgumentNullException("deletedKey");
+            if (deletedKey.Key == null || deletedKey.Properties == null)
+                throw new ArgumentException(Resources.InvalidKeyBundle);
+
+            SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(deletedKey.Id.ToString()));
+
+            Key = deletedKey.Key.ToTrack1JsonWebKey();
+            Attributes = new PSKeyVaultKeyAttributes(
+                deletedKey.Properties.Enabled,
+                /// see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
+                deletedKey.Properties.ExpiresOn?.UtcDateTime, // time returned by key vault are UTC
+                deletedKey.Properties.NotBefore?.UtcDateTime,
+                deletedKey.KeyType.ToString(),
+                deletedKey.KeyOperations.Select(op => op.ToString()).ToArray(),
+                deletedKey.Properties.CreatedOn?.UtcDateTime,
+                deletedKey.Properties.UpdatedOn?.UtcDateTime,
+                deletedKey.Properties.RecoveryLevel,
+                deletedKey.Properties.Tags
+            );
+
+            Enabled = deletedKey.Properties.Enabled;
+            Expires = deletedKey.Properties.ExpiresOn?.UtcDateTime;
+            NotBefore = deletedKey.Properties.NotBefore?.UtcDateTime;
+            Created = deletedKey.Properties.CreatedOn?.UtcDateTime;
+            Updated = deletedKey.Properties.UpdatedOn?.UtcDateTime;
+            RecoveryLevel = deletedKey.Properties.RecoveryLevel;
+            Tags = deletedKey.Properties.Tags.ConvertToHashtable();
+            ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
+            DeletedDate = deletedKey.DeletedOn?.UtcDateTime;
+            IsHsm = isHsm;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public PSKeyVaultKeyAttributes Attributes { get; set; }

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallapplicationrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,14 +20,24 @@ Creates a Firewall Application Rule.
 ### TargetFqdn (Default)
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+<<<<<<< HEAD
  -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-SourceIpGroup <String[]>] -TargetFqdn <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### FqdnTag
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+<<<<<<< HEAD
  -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-SourceIpGroup <String[]>] -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -31,15 +45,25 @@ The **New-AzFirewallApplicationRule** cmdlet creates an application rule for Azu
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:  Create a rule to allow all HTTPS traffic from 10.0.0.0
 ```
+=======
+### Example 1: Create a rule to allow all HTTPS traffic from 10.0.0.0
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzFirewallApplicationRule -Name "https-rule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
 ```
 
 This example creates a rule which will allow all HTTPS traffic on port 443 from 10.0.0.0.
 
+<<<<<<< HEAD
 ### 2:  Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
 ```
+=======
+### Example 2: Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzFirewallApplicationRule -Name "windows-update-rule" -FqdnTag WindowsUpdate -SourceAddress "10.0.0.0/24"
 ```
 
@@ -139,9 +163,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -TargetFqdn
 Specifies a list of domain names filtered by this rule.
 The asterik character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterik matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
+=======
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetFqdn
+Specifies a list of domain names filtered by this rule.
+The asterisk character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterisk matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String[]

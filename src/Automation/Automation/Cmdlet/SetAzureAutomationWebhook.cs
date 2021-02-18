@@ -50,6 +50,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary Parameters { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the optional hybrid agent friendly name upon which the runbook should be executed.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Optional name of the hybrid agent which should execute the runbook")]
+        [Alias("HybridWorker")]
+        public string RunOn { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -60,7 +71,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.AutomationAccountName,
                 this.Name,
                 this.Parameters,
+<<<<<<< HEAD
                 this.IsEnabled);
+=======
+                this.IsEnabled,
+                this.RunOn);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.WriteObject(updatedWebhook);
         }
     }

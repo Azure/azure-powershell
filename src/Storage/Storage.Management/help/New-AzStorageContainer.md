@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontainer
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,12 +17,27 @@ Creates an Azure storage container.
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### ContainerName (Default)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### EncryptionScope
+```
+New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
+ -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **New-AzStorageContainer** cmdlet creates an Azure storage container.
 
@@ -39,6 +58,22 @@ PS C:\>"container1 container2 container3".split() | New-AzStorageContainer -Perm
 This example creates multiple storage containers.
 It uses the **Split** method of the .NET **String** class and then passes the names on the pipeline.
 
+<<<<<<< HEAD
+=======
+### Example 3: Create an Azure storage container with Encryption Scope
+```
+PS C:\> $container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
+
+PS C:\> $container.BlobContainerProperties.DefaultEncryptionScope
+myencryptscope
+
+PS C:\> $container.BlobContainerProperties.PreventEncryptionScopeOverride
+True
+```
+
+This command creates a storage container, with default Encryption Scope as myencryptscope, and prevert blob upload with different Encryption Scope to this container.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
@@ -92,6 +127,24 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -DefaultEncryptionScope
+Default the container to use specified encryption scope for all writes.
+
+```yaml
+Type: System.String
+Parameter Sets: EncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -150,6 +203,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PreventEncryptionScopeOverride
+Block override of encryption scope from the container default.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: EncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -ServerTimeoutPerRequest
 Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.

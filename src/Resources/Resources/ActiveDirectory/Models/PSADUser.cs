@@ -19,5 +19,20 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string UserPrincipalName { get; set; }
 
         public string ObjectType => "User";
+<<<<<<< HEAD
+=======
+
+        public string UsageLocation { get; set; }
+
+        public string GivenName { get; set; }
+
+        public string Surname { get; set; }
+
+        public bool? AccountEnabled { get; set; }
+
+        public string MailNickname { get; set; }
+
+        public string Mail { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

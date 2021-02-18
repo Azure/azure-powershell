@@ -36,7 +36,11 @@ Function Get-ADAppForAutoTest()
   
         if($psAutoADApp -eq $null)
         {
+<<<<<<< HEAD
             throw [System.ApplicationException] "Unable to create new Azure AD Applicaiton using 'New-AzureRmADApplication'. Exiting......"
+=======
+            throw [System.ApplicationException] "Unable to create new Azure AD Application using 'New-AzureRmADApplication'. Exiting......"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
     

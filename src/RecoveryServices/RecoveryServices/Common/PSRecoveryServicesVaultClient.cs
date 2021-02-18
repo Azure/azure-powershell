@@ -16,6 +16,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Rest.Azure;
 
@@ -62,6 +66,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 resouceGroupName, vaultName, vault, GetRequestHeaders()).Result.Body;
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>  
+        /// Method to create or update Recovery Services Vault.
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="vault">patch vault object to patch the recovery services Vault</param>
+        /// <returns>Azure Recovery Services Vault.</returns> 
+        public Vault UpdateRSVault(string resouceGroupName, string vaultName, PatchVault vault)
+        {
+            var response = GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(resouceGroupName, vaultName, vault).Result;
+            return response.Body;
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Method to delete Azure Recovery Services Vault
         /// </summary>
@@ -99,10 +119,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
         /// <returns>Azure Operation response object.</returns>  
         public void UpdateVaultStorageType(string resouceGroupName, string vaultName,
+<<<<<<< HEAD
             BackupStorageConfig backupStorageConfig)
         {
             GetRecoveryServicesClient.BackupStorageConfigs.UpdateWithHttpMessagesAsync(
                 resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
+=======
+            BackupResourceConfigResource backupStorageConfig)
+        {
+            GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+        }
+
+        /// <summary>  
+        /// Method to Patch Azure Recovery Services Vault Backup Properties  
+        /// </summary>  
+        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="vaultName">Name of the vault</param>  
+        /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
+        /// <returns>Azure Operation response object.</returns>  
+        public void PatchVaultStorageConfigProperties(string resouceGroupName, string vaultName,
+            BackupResourceConfigResource backupStorageConfig)
+        {
+            GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.PatchWithHttpMessagesAsync(
+                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>  
@@ -111,10 +152,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="resouceGroupName">Name of the resouce group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Storage response object.</returns>  
+<<<<<<< HEAD
         public BackupStorageConfig GetVaultStorageType(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesClient.BackupStorageConfigs.GetWithHttpMessagesAsync(
                 resouceGroupName, vaultName, GetRequestHeaders()).Result.Body;
+=======
+        public BackupResourceConfigResource GetVaultStorageConfig(string resouceGroupName, string vaultName)
+        {
+            return GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
+                vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

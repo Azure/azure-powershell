@@ -22,7 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+<<<<<<< HEAD
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
+=======
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByUserPrincipalName)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -343,13 +347,22 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update the vault
                 var updatedVault = KeyVaultManagementClient.UpdateVault(
+<<<<<<< HEAD
                     existingVault, 
+=======
+                    existingVault,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     updatedPolicies,
                     EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
                     EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
                     existingVault.EnableSoftDelete,
                     existingVault.EnablePurgeProtection,
+<<<<<<< HEAD
+=======
+                    existingVault.EnableRbacAuthorization,
+                    existingVault.SoftDeleteRetentionInDays,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     existingVault.NetworkAcls,
                     ActiveDirectoryClient);
 

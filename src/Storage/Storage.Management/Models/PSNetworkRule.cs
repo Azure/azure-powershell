@@ -32,8 +32,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     //Wrapper of NetworkRuleSet property DefaultAction 
     public enum PSNetWorkRuleDefaultActionEnum
     {
+<<<<<<< HEAD
         Deny = 0,
         Allow = 1
+=======
+        Allow = 0,
+        Deny = 1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     //Wrapper of NetworkRule property Action 

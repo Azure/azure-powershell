@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Storage;
+<<<<<<< HEAD
 using Microsoft.Azure.Storage.Blob;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using XFile = Microsoft.Azure.Storage.File;
 using Microsoft.Azure.Storage.File;
 using System;
@@ -22,11 +25,19 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
+<<<<<<< HEAD
     [OutputType(typeof(CloudFile))]
+=======
+    [OutputType(typeof(CopyState))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -49,8 +60,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             HelpMessage = "Target file instance", Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             ParameterSetName = Constants.FileParameterSetName)]
         [ValidateNotNull]
+=======
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.FileParameterSetName)]
+        [ValidateNotNull]
+        [Alias("CloudFile")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public CloudFile File { get; set; }
 
         [Parameter(HelpMessage = "Indicates whether or not to wait util the copying finished.")]

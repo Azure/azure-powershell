@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,7 +52,11 @@ The New-AzServiceBusRule cmdlet creates a new rule for the specified Subscriptio
 ## PARAMETERS
 
 ### -ActionSqlExpression
+<<<<<<< HEAD
 Action SqlFillter Expression
+=======
+Action SqlFilter Expression
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -138,7 +146,11 @@ Accept wildcard characters: False
 ```
 
 ### -SqlExpression
+<<<<<<< HEAD
 Sql Fillter Expression
+=======
+Sql Filter Expression
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

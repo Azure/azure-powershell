@@ -24,14 +24,22 @@ function Test-CreateNewAppServicePlan
 	$location = Get-Location
 	$capacity = 2
 	$skuName = "S2"
+<<<<<<< HEAD
 
+=======
+	$tag= @{"TagKey" = "TagValue"}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	try
 	{
 		#Setup
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
+<<<<<<< HEAD
 		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
+=======
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -Tag $tag -AsJob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$job | Wait-Job
 		$createResult = $job | Receive-Job
 
@@ -40,7 +48,12 @@ function Test-CreateNewAppServicePlan
 		Assert-AreEqual "Standard" $createResult.Sku.Tier
 		Assert-AreEqual $skuName $createResult.Sku.Name
 		Assert-AreEqual $capacity $createResult.Sku.Capacity
+<<<<<<< HEAD
 
+=======
+		Assert-AreEqual $tag.Keys $createResult.Tags.Keys
+        Assert-AreEqual $tag.Values $createResult.Tags.Values
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		# Assert
 
 		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
@@ -109,6 +122,58 @@ function Test-CreateNewAppServicePlanHyperV
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Tests creating a new Web Hosting Plan with Linux
+#>
+function Test-CreateNewAppServicePlanLinux
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = Get-Location
+    $capacity = 1
+	$skuName = "B1"
+    $tier = "Basic"
+
+	try
+	{
+		#Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -Linux  -AsJob
+		$job | Wait-Job
+		$createResult = $job | Receive-Job
+
+		# Assert
+		Assert-AreEqual $whpName $createResult.Name
+		Assert-AreEqual $tier $createResult.Sku.Tier
+		Assert-AreEqual $skuName $createResult.Sku.Name
+		Assert-AreEqual $capacity $createResult.Sku.Capacity
+
+		# Assert
+
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		Assert-AreEqual $whpName $getResult.Name
+		Assert-AreEqual $tier $getResult.Sku.Tier
+		Assert-AreEqual $skuName $getResult.Sku.Name
+		Assert-AreEqual $capacity $getResult.Sku.Capacity
+        Assert-AreEqual $true $getResult.Reserved
+        Assert-AreEqual "Linux" $getResult.Kind
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests creating a new Web Hosting Plan.
 #>
 function Test-SetAppServicePlan
@@ -127,7 +192,11 @@ function Test-SetAppServicePlan
 	$newWorkerSize = "Medium"
 	$newCapacity = 2
 	$newPerSiteScaling = $true;
+<<<<<<< HEAD
 
+=======
+	$tag= @{"TagKey" = "TagValue"}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
@@ -173,6 +242,14 @@ function Test-SetAppServicePlan
 		Assert-AreEqual $skuName $newresult.Sku.Name
 		Assert-AreEqual $perSiteScaling $newresult.PerSiteScaling
 
+<<<<<<< HEAD
+=======
+		#Set Tags
+		$tagsResult= Set-AzAppServicePlan  -ResourceGroupName $rgname -Name $whpName -Tag $tag
+		# Assert
+		Assert-AreEqual $tag.Keys $tagsResult.Tags.Keys
+		Assert-AreEqual $tag.Values $tagsResult.Tags.Values
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{

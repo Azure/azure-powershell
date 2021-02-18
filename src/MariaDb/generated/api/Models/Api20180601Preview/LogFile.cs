@@ -1,0 +1,160 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Extensions;
+
+    /// <summary>Represents a log file.</summary>
+    public partial class LogFile :
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile,
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IValidates
+    {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResource"
+        /// />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ProxyResource();
+
+        /// <summary>Creation timestamp of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
+        public global::System.DateTime? CreatedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).CreatedTime; }
+
+        /// <summary>Resource ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Last modified timestamp of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
+        public global::System.DateTime? LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).LastModifiedTime; }
+
+        /// <summary>Internal Acessors for CreatedTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileInternal.CreatedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).CreatedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).CreatedTime = value; }
+
+        /// <summary>Internal Acessors for LastModifiedTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).LastModifiedTime = value; }
+
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileProperties Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.LogFileProperties()); set { {_property = value;} } }
+
+        /// <summary>Internal Acessors for Url</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileInternal.Url { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).Url; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).Url = value; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Id = value; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Type = value; }
+
+        /// <summary>Resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Name; }
+
+        /// <summary>Type of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
+        public string PropertiesType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).Type = value; }
+
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileProperties _property;
+
+        /// <summary>The properties of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.LogFileProperties()); set => this._property = value; }
+
+        /// <summary>Size of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
+        public long? SizeInKb { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).SizeInKb; set => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).SizeInKb = value; }
+
+        /// <summary>Resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal)__proxyResource).Type; }
+
+        /// <summary>The url to download the log file from.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Origin(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.PropertyOrigin.Inlined)]
+        public string Url { get => ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFilePropertiesInternal)Property).Url; }
+
+        /// <summary>Creates an new <see cref="LogFile" /> instance.</summary>
+        public LogFile()
+        {
+
+        }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
+    }
+    /// Represents a log file.
+    public partial interface ILogFile :
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResource
+    {
+        /// <summary>Creation timestamp of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Creation timestamp of the log file.",
+        SerializedName = @"createdTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? CreatedTime { get;  }
+        /// <summary>Last modified timestamp of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Last modified timestamp of the log file.",
+        SerializedName = @"lastModifiedTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? LastModifiedTime { get;  }
+        /// <summary>Type of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of the log file.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        string PropertiesType { get; set; }
+        /// <summary>Size of the log file.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Size of the log file.",
+        SerializedName = @"sizeInKB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? SizeInKb { get; set; }
+        /// <summary>The url to download the log file from.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"The url to download the log file from.",
+        SerializedName = @"url",
+        PossibleTypes = new [] { typeof(string) })]
+        string Url { get;  }
+
+    }
+    /// Represents a log file.
+    internal partial interface ILogFileInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IProxyResourceInternal
+    {
+        /// <summary>Creation timestamp of the log file.</summary>
+        global::System.DateTime? CreatedTime { get; set; }
+        /// <summary>Last modified timestamp of the log file.</summary>
+        global::System.DateTime? LastModifiedTime { get; set; }
+        /// <summary>Type of the log file.</summary>
+        string PropertiesType { get; set; }
+        /// <summary>The properties of the log file.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFileProperties Property { get; set; }
+        /// <summary>Size of the log file.</summary>
+        long? SizeInKb { get; set; }
+        /// <summary>The url to download the log file from.</summary>
+        string Url { get; set; }
+
+    }
+}

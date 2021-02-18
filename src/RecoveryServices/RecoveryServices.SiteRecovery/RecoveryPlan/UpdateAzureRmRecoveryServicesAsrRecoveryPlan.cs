@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 .ReplicationProtectedItems.Select(
                                     item =>
                                     {
+<<<<<<< HEAD
                                         var newItem = new RecoveryPlanProtectedItem(item.Id);
 
                                         string VmId = null;
@@ -155,6 +156,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         {
                                             VmId = ((InMageReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
+=======
+                                        var newItem = new RecoveryPlanProtectedItem(item.ID);
+
+                                        string VmId = null;
+
+                                        if (item.ProviderSpecificDetails.GetType() ==
+                                            typeof(ASRHyperVReplicaAzureSpecificRPIDetails))
+                                        {
+                                            VmId = ((ASRHyperVReplicaAzureSpecificRPIDetails)item.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRHyperVReplicaRPIDetails))
+                                        {
+                                            VmId = ((ASRHyperVReplicaRPIDetails)item.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRHyperVReplicaBlueRPIDetails))
+                                        {
+                                            VmId = ((ASRHyperVReplicaBlueRPIDetails)item.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRInMageSpecificRPIDetails))
+                                        {
+                                            VmId = ((ASRInMageSpecificRPIDetails)item.ProviderSpecificDetails).VmId;
+                                        }
+                                        else if (item.ProviderSpecificDetails.GetType() == typeof(ASRInMageSpecificRPIDetails))
+                                        {
+                                            VmId = ((ASRInMageSpecificRPIDetails)item.ProviderSpecificDetails).VmId;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                         }
 
                                         newItem.VirtualMachineId = VmId;
@@ -164,10 +191,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 .ToList(),
                     StartGroupActions = asrRecoveryPlanGroup.StartGroupActions == null ?
                     null : asrRecoveryPlanGroup.StartGroupActions.ToList().ConvertAll(
+<<<<<<< HEAD
                         action => RecoveryPlanAction_2016_08_10.GetSrsRecoveryPlanAction(action)),
                     EndGroupActions = asrRecoveryPlanGroup.EndGroupActions == null ?
                     null : asrRecoveryPlanGroup.EndGroupActions.ToList().ConvertAll(
                         action => RecoveryPlanAction_2016_08_10.GetSrsRecoveryPlanAction(action)),
+=======
+                        action => ASRRecoveryPlanAction.GetSrsRecoveryPlanAction(action)),
+                    EndGroupActions = asrRecoveryPlanGroup.EndGroupActions == null ?
+                    null : asrRecoveryPlanGroup.EndGroupActions.ToList().ConvertAll(
+                        action => ASRRecoveryPlanAction.GetSrsRecoveryPlanAction(action)),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 };
 
                 updateRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);

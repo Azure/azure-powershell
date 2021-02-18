@@ -62,7 +62,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 Location = bpLocation,
                 BlueprintId = blueprintId,
                 Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
+<<<<<<< HEAD
                 Parameters = new Dictionary<string, ParameterValueBase>(),
+=======
+                Parameters = new Dictionary<string, ParameterValue>(),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ResourceGroups = new Dictionary<string, ResourceGroupValue>()
             };
 
@@ -102,7 +106,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
                     }
 
+<<<<<<< HEAD
                     var secretValue = new SecretReferenceParameterValue(new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
+=======
+                    var secretValue = new ParameterValue(reference: new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     localAssignment.Parameters.Add(key.ToString(), secretValue);
                 }
             }
@@ -161,10 +169,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="spnObjectId"></param>
+<<<<<<< HEAD
         protected void AssignOwnerPermission(string subscriptionId, string spnObjectId)
         {
             string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
 
+=======
+        protected void AssignOwnerPermission(string scope, string spnObjectId)
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
             filter.SetFilter(a => a.AssignedTo(spnObjectId));
 
@@ -240,5 +253,24 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
             }
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Checks if an assignment uses user assigned identity.
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        protected bool IsUserAssignedIdentity(ManagedServiceIdentity identity)
+        {
+            if (String.IsNullOrEmpty(identity?.Type))
+            {
+                throw new Exception(Resources.IdentityTypeNotProvided);
+            }
+
+            return identity.Type.Equals(ManagedServiceIdentityType.UserAssigned, StringComparison.OrdinalIgnoreCase);
+
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

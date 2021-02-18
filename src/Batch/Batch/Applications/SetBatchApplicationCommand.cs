@@ -33,9 +33,16 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
+=======
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -49,10 +56,17 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public bool? AllowUpdates { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
             BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
+=======
+        protected override void ExecuteCmdletImpl()
+        {
+            WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
+            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

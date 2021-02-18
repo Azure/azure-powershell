@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.0.3
+* Update references in .psd1 to use relative path
+
+## Version 1.0.2
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.0.1
 * Fix typos in customer-facing messages
 

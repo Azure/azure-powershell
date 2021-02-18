@@ -29,7 +29,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// List azure storage container
     /// </summary>
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageContainer))]
+<<<<<<< HEAD
     [Alias("Get-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl")]
+=======
+    [Alias("Get-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl", "Get-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DatalakeGen2FileSystem")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -237,6 +241,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
             BlobContainerPermissions permissions = null;
+<<<<<<< HEAD
+=======
+            bool needUseTrack2 = false;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             try
             {
                 permissions = await localChannel.GetContainerPermissionsAsync(container, accessCondition,
@@ -247,7 +256,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 // 404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
                 // Just skip return container permission in this case.
             }
+<<<<<<< HEAD
             WriteCloudContainerObject(taskId, localChannel, container, permissions, continuationToken);
+=======
+            catch (StorageException e) when (e.IsConflictException())
+            {
+                // 409 Conflict, might caused by the container has an Stored access policy contains a permission that is not supported by Track1 SDK API veresion, so switch to Track2 SDK
+                needUseTrack2 = true;
+            }
+
+            if (!needUseTrack2) // Track1
+            {
+                WriteCloudContainerObject(taskId, localChannel, container, permissions, continuationToken);
+            }
+            else //Track2
+            {
+                AzureStorageContainer azureContainer = new AzureStorageContainer(container, null);
+                azureContainer.Context = localChannel.StorageContext;
+                azureContainer.ContinuationToken = continuationToken;
+                azureContainer.SetTrack2Permission();
+                OutputStream.WriteObject(taskId, azureContainer);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>

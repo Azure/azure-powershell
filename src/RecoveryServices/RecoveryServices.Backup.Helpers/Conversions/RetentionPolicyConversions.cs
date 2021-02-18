@@ -34,7 +34,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps long term retention policy from service response.
         /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
+<<<<<<< HEAD
             ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy, string timeZone)
+=======
+            ServiceClientModel.LongTermRetentionPolicy serviceClientRetPolicy, string timeZone, string backupManagementType="")
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (serviceClientRetPolicy == null)
             {
@@ -47,26 +51,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ltrPolicy.IsDailyScheduleEnabled = true;
                 ltrPolicy.DailySchedule = GetPSLTRDailySchedule(serviceClientRetPolicy.DailySchedule, timeZone);
+<<<<<<< HEAD
+=======
+                ltrPolicy.DailySchedule.BackupManagementType = backupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (serviceClientRetPolicy.WeeklySchedule != null)
             {
                 ltrPolicy.IsWeeklyScheduleEnabled = true;
                 ltrPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(serviceClientRetPolicy.WeeklySchedule, timeZone);
+<<<<<<< HEAD
+=======
+                ltrPolicy.WeeklySchedule.BackupManagementType = backupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (serviceClientRetPolicy.MonthlySchedule != null)
             {
                 ltrPolicy.IsMonthlyScheduleEnabled = true;
                 ltrPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(serviceClientRetPolicy.MonthlySchedule, timeZone);
+<<<<<<< HEAD
+=======
+                ltrPolicy.MonthlySchedule.BackupManagementType = backupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (serviceClientRetPolicy.YearlySchedule != null)
             {
                 ltrPolicy.IsYearlyScheduleEnabled = true;
                 ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule, timeZone);
+<<<<<<< HEAD
             }
 
+=======
+                ltrPolicy.YearlySchedule.BackupManagementType = backupManagementType;
+            }
+
+            ltrPolicy.BackupManagementType = backupManagementType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return ltrPolicy;
         }
 

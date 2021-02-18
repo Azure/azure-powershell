@@ -96,6 +96,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             throw new System.NotImplementedException();
         }
 
+<<<<<<< HEAD
+=======
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            throw new System.NotImplementedException();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
             throw new NotImplementedException();

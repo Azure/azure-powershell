@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 59BE802E-C061-4E25-A446-B00B0BA36019
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azlocalnetworkgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azlocalnetworkgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,6 +17,10 @@ Creates a Local Network Gateway
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### ByLocalNetworkGatewayIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-GatewayIpAddress <String>] [-AddressPrefix <String[]>] [-Asn <UInt32>] [-BgpPeeringAddress <String>]
@@ -20,6 +28,17 @@ New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### ByLocalNetworkGatewayFqdn
+```
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String> [-Fqdn <String>]
+ [-AddressPrefix <String[]>] [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
 The **New-AzLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway
@@ -28,8 +47,13 @@ Address Prefix of the On-Premises network which will be connecting to Azure.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Create a Local Network Gateway
 ```
+=======
+### Example 1: Create a Local Network Gateway
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 New-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
 ```
 
@@ -123,10 +147,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -GatewayIpAddress
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+=======
+### -Fqdn
+FQDN of local network gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: ByLocalNetworkGatewayFqdn
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GatewayIpAddress
+```yaml
+Type: System.String
+Parameter Sets: ByLocalNetworkGatewayIpAddress
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -238,7 +284,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

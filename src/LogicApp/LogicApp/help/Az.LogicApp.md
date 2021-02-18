@@ -1,7 +1,11 @@
 ---
 Module Name: Az.LogicApp
 Module Guid: 8a7d44bb-e747-4265-8f22-b3937961d709
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.logicapp
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.logicapp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.3.0
 Locale: en-US
 ---

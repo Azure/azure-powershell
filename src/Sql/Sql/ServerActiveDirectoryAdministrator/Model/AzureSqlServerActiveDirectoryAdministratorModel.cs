@@ -40,5 +40,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model
         /// Gets or sets the unique ID of the Azure SQL Server Active administrator admin object id
         /// </summary>
         public Guid ObjectId { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Gets or sets the value to indicate if only Azure AD Only authentication is allowed
+        /// </summary>
+        public bool? IsAzureADOnlyAuthentication { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

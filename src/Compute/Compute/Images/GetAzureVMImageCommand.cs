@@ -12,13 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Linq;
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
+<<<<<<< HEAD
 using System.Linq;
 using System.Management.Automation;
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -69,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = ListVMImageParamSetName,
             ValueFromPipelineByPropertyName = false),
         ValidateNotNullOrEmpty]
@@ -81,6 +91,27 @@ namespace Microsoft.Azure.Commands.Compute
         [SupportsWildcards]
         public string Version { get; set; }
 
+=======
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public string Version { get; set; }
+
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = false,
+            HelpMessage = "Specifies the maximum number of virtual machine images returned.",
+            ValueFromPipelineByPropertyName = true)]
+        public int? Top { get; set; }
+
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = false,
+            HelpMessage = "Specifies the order of the results returned. Formatted as an OData query.",
+            ValueFromPipelineByPropertyName = true)]
+        public string OrderBy { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -89,14 +120,23 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
+<<<<<<< HEAD
                     var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
+<<<<<<< HEAD
                         odataQuery: filter).GetAwaiter().GetResult();
+=======
+                        top: this.Top,
+                        orderby: this.OrderBy
+                        ).GetAwaiter().GetResult();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineImage
@@ -108,8 +148,12 @@ namespace Microsoft.Azure.Commands.Compute
                                      Version = r.Name,
                                      PublisherName = this.PublisherName,
                                      Offer = this.Offer,
+<<<<<<< HEAD
                                      Skus = this.Skus,
                                      FilterExpression = this.FilterExpression
+=======
+                                     Skus = this.Skus
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                  };
 
                     WriteObject(SubResourceWildcardFilter(Version, images), true);
@@ -138,6 +182,10 @@ namespace Microsoft.Azure.Commands.Compute
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
                         AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
+<<<<<<< HEAD
+=======
+                        HyperVGeneration = response.Body.HyperVGeneration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
 
                     WriteObject(image);

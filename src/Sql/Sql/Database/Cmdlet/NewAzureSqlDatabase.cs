@@ -17,10 +17,19 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Collections;
+<<<<<<< HEAD
+=======
+using System.Globalization;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -72,6 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("None",
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseEdition.Basic,
             Management.Sql.Models.DatabaseEdition.Standard,
             Management.Sql.Models.DatabaseEdition.Premium,
@@ -79,6 +89,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             Management.Sql.Models.DatabaseEdition.Free,
             Management.Sql.Models.DatabaseEdition.Stretch,
             "GeneralPurpose", "BusinessCritical")]
+=======
+            "Basic",
+            "Standard",
+            "Premium",
+            "DataWarehouse",
+            "Free",
+            "Stretch",
+            "GeneralPurpose",
+            "BusinessCritical")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Edition { get; set; }
 
         /// <summary>
@@ -102,7 +122,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the read scale option to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
+=======
+            HelpMessage = "If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public DatabaseReadScale ReadScale { get; set; }
 
@@ -116,7 +140,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the sample schema to apply when creating this database.")]
+<<<<<<< HEAD
         [ValidateSet(Management.Sql.Models.SampleName.AdventureWorksLT)]
+=======
+        [ValidateSet("AdventureWorksLT")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string SampleName { get; set; }
 
         /// <summary>
@@ -133,6 +161,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the Vcore number for the Azure Sql database
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
@@ -155,8 +192,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(
+<<<<<<< HEAD
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
             Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+=======
+            "LicenseIncluded",
+            "BasePrice")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -185,10 +227,65 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public double MinimumCapacity { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the number of readonly replicas for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
+        [Alias("ReadReplicaCount")]
+        public int HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database backup storage redundancy.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
+        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+        public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Database.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            ModelAdapter = InitModelAdapter();
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (this.BackupStorageRedundancy == null)
+                {
+                    if (!Force.IsPresent && !ShouldContinue(
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.DatabaseName),
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeGeoWarning)))
+                    {
+                        return;
+                    }
+                }
+                else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             base.ExecuteCmdlet();
         }
 
@@ -241,6 +338,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaxSizeBytes = MaxSizeBytes,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
+<<<<<<< HEAD
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
@@ -249,6 +347,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
+=======
+                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (DatabaseReadScale?)null,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
+                LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
+                AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                BackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
+            };
+
+            if (ParameterSetName == DtuDatabaseParameterSet)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
                 newDbModel.Edition = Edition;

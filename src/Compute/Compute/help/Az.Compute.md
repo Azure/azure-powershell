@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -15,7 +19,11 @@ This topic displays the help topics for the Azure Compute Cmdlets.
 Adds a container service agent pool profile.
 
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
+<<<<<<< HEAD
 Adds a data disk to an image obejct.
+=======
+Adds a data disk to an image object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Add-AzVhd](Add-AzVhd.md)
 Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
@@ -45,7 +53,11 @@ Adds a diagnostics extension to the VMSS.
 Adds an extension to the VMSS.
 
 ### [Add-AzVMSshPublicKey](Add-AzVMSshPublicKey.md)
+<<<<<<< HEAD
 Adds the public keys for SSH for a virtual machine.
+=======
+Adds the public keys for SSH for a virtual machine, when only creating the VM.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Add-AzVmssNetworkInterfaceConfiguration](Add-AzVmssNetworkInterfaceConfiguration.md)
 Adds a network interface configuration to the VMSS.
@@ -89,6 +101,15 @@ Gets a container service.
 ### [Get-AzDisk](Get-AzDisk.md)
 Gets the properties of a Managed disk.
 
+<<<<<<< HEAD
+=======
+### [Get-AzDiskAccess](Get-AzDiskAccess.md)
+Gets the properties of Disk Accesses
+
+### [Get-AzDiskEncryptionSet](Get-AzDiskEncryptionSet.md)
+Get or list disk encryption sets.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzGallery](Get-AzGallery.md)
 Get or list galleries.
 
@@ -98,6 +119,15 @@ Get or list gallery image definitions.
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
 
+<<<<<<< HEAD
+=======
+### [Get-AzHost](Get-AzHost.md)
+Get or list hosts.
+
+### [Get-AzHostGroup](Get-AzHostGroup.md)
+Get or list hosts.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
 
@@ -200,6 +230,12 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+<<<<<<< HEAD
+=======
+### [Invoke-AzVMPatchAssessment](Invoke-AzVMPatchAssessment.md)
+Assess patch state of a virtual machine.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
 Reimage an Azure virtual machine.
 
@@ -221,9 +257,24 @@ Creates a local configuration object for a container service.
 ### [New-AzDisk](New-AzDisk.md)
 Creates a managed disk.
 
+<<<<<<< HEAD
 ### [New-AzDiskConfig](New-AzDiskConfig.md)
 Creates a configurable disk object.
 
+=======
+### [New-AzDiskAccess](New-AzDiskAccess.md)
+Creates a Disk Access resource
+
+### [New-AzDiskConfig](New-AzDiskConfig.md)
+Creates a configurable disk object.
+
+### [New-AzDiskEncryptionSet](New-AzDiskEncryptionSet.md)
+Creates a disk encryption set.
+
+### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
+Creates a configurable disk encryption set object.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzDiskUpdateConfig](New-AzDiskUpdateConfig.md)
 Creates a configurable disk update object.
 
@@ -236,8 +287,19 @@ Create a gallery image definition.
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
 
+<<<<<<< HEAD
 ### [New-AzImage](New-AzImage.md)
 Creats an image.
+=======
+### [New-AzHost](New-AzHost.md)
+Creates a  host.
+
+### [New-AzHostGroup](New-AzHostGroup.md)
+Creates a host group.
+
+### [New-AzImage](New-AzImage.md)
+Creates an image.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
@@ -302,6 +364,15 @@ Removes an agent pool profile from a container service.
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzDiskAccess](Remove-AzDiskAccess.md)
+Removes a disk access resource.
+
+### [Remove-AzDiskEncryptionSet](Remove-AzDiskEncryptionSet.md)
+Removes a disk encryption set.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzGallery](Remove-AzGallery.md)
 Delete a gallery.
 
@@ -311,6 +382,15 @@ Delete a gallery image definition.
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzHost](Remove-AzHost.md)
+Removes a host.
+
+### [Remove-AzHostGroup](Remove-AzHostGroup.md)
+Removes a host group.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzImage](Remove-AzImage.md)
 Removes an image.
 
@@ -414,7 +494,11 @@ Sets the image reference properties on a disk object.
 Sets the key encryption key properties on a disk object.
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
+<<<<<<< HEAD
 Sets the disk encryption key properties on on a disk update object.
+=======
+Sets the disk encryption key properties on a disk update object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Set-AzDiskUpdateKeyEncryptionKey](Set-AzDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.
@@ -503,6 +587,12 @@ Sets the virtual machine scale set boot diagnostics profile.
 ### [Set-AzVmssDiskEncryptionExtension](Set-AzVmssDiskEncryptionExtension.md)
 Enables disk encryption on a VM scale set.
 
+<<<<<<< HEAD
+=======
+### [Set-AzVmssOrchestrationServiceState](Set-AzVmssOrchestrationServiceState.md)
+Sets the orchestration service state for the VMSS.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 
@@ -545,6 +635,12 @@ Updates the state of a container service.
 ### [Update-AzDisk](Update-AzDisk.md)
 Updates a disk.
 
+<<<<<<< HEAD
+=======
+### [Update-AzDiskEncryptionSet](Update-AzDiskEncryptionSet.md)
+Updates a disk encryption set.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Update-AzGallery](Update-AzGallery.md)
 Update a gallery.
 

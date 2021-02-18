@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
 Module Name: Az.ApplicationInsights
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/remove-azapplicationinsightscontinuousexport
+=======
+online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightscontinuousexport
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Remove a cotinuous export configuration in an application insights resource
+=======
+Remove a continuous export configuration in an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -33,11 +41,19 @@ Remove-AzApplicationInsightsContinuousExport [-ResourceId] <String> [-ExportId] 
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Remove a cotinuous export configuration in an application insights resource
 
 ## EXAMPLES
 
 ### Example 1 Remove a cotinuous export configuration in an application insights resource
+=======
+Remove a continuous export configuration in an application insights resource
+
+## EXAMPLES
+
+### Example 1 Remove a continuous export configuration in an application insights resource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> Remove-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4=" -PassThru
 True

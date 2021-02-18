@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
+=======
+using Track2Sdk = Azure.Security.KeyVault.Keys;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -21,11 +25,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSDeletedKeyVaultKeyIdentityItem()
         { }
 
+<<<<<<< HEAD
         internal PSDeletedKeyVaultKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper) : base(keyItem, vaultUriHelper)
+=======
+        internal PSDeletedKeyVaultKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm = false) : base(keyItem, vaultUriHelper, isHsm)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
             DeletedDate = keyItem.DeletedDate;
         }
+<<<<<<< HEAD
+=======
+        internal PSDeletedKeyVaultKeyIdentityItem(Track2Sdk.DeletedKey deletedKey, VaultUriHelper vaultUriHelper, bool isHsm = false) : base(deletedKey.Properties, vaultUriHelper, isHsm)
+        {
+            ScheduledPurgeDate = deletedKey.ScheduledPurgeDate?.UtcDateTime;
+            DeletedDate = deletedKey.DeletedOn?.UtcDateTime;
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public DateTime? ScheduledPurgeDate { get; set; }
 

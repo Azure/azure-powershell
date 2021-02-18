@@ -62,7 +62,11 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 		Assert-True { $policy.IsEnabled }
 
 		# Validate the VA policy
+<<<<<<< HEAD
 		$settings = Get-AzSqlInstanceVulnerabilityAssessmentSettings -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+=======
+		$settings = Get-AzSqlInstanceVulnerabilityAssessmentSetting -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Assert-AreEqual $params.rgname $settings.ResourceGroupName
 		Assert-AreEqual $params.serverName $settings.InstanceName
 		Assert-AreEqual "vulnerability-assessment" $settings.ScanResultsContainerName

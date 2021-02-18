@@ -19,5 +19,15 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 0.7.3
+* Update the privacy notice text displayed during account creation
+    - Per CELA guidance we have updated the privacy notice text shown while you create an account.
+
+## Version 0.7.2
+* Update references in .psd1 to use relative path
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.7.1
 * Added support for `S1` SKU

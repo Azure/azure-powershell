@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationsourcecontrol
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -34,14 +38,22 @@ PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force
 PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSNative" `
+<<<<<<< HEAD
                                            -RepoUrl "https://contoso.visualstudio.com/ContosoProduction/_versionControl" `
+=======
+                                           -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                            -SourceType "VsoTfvc" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
 
 Name        SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----        ---------- ------ ---------- -------- -------------- -------
+<<<<<<< HEAD
 VSTSNative  VsoTfvc            /Runbooks True     True           https://contoso.visualstudio.com/ContosoProduc...
+=======
+VSTSNative  VsoTfvc            /Runbooks True     True           https://dev.azure.com/<accountname>/<adopro...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### Example 2
@@ -55,7 +67,11 @@ PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force
 PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSGit" `
+<<<<<<< HEAD
                                            -RepoUrl "https://contoso.visualstudio.com/_git/Finance" `
+=======
+                                           -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                            -SourceType "VsoGit" `
                                            -Branch "Development" `
                                            -FolderPath "/" `
@@ -63,7 +79,11 @@ PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
 
 Name    SourceType Branch      FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------      ---------- -------- -------------- -------
+<<<<<<< HEAD
 VSTSGit VsoGit     Development /          True     True           https://contoso.visualstudio.com/_git/Finan...
+=======
+VSTSGit VsoGit     Development /          True     True           https://dev.azure.com/<accountname>/<adopro...
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### Example 3

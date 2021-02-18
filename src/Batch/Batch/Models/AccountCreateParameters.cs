@@ -81,5 +81,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The user specified tags associated with the account.
         /// </summary>
         public Hashtable Tags { get; set; }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// The public network access type
+        /// </summary>
+        public PublicNetworkAccessType PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// The identity of the Batch account, if configured. This is only used when the
+        /// user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
+        /// </summary>
+        public BatchAccountIdentity Identity { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication;
 // TODO: Remove IfDef
 #if NETSTANDARD
@@ -24,6 +25,18 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation;
+=======
+using System.IO;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+
+using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -31,8 +44,20 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(ContextAutosaveSettings))]
     public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
+=======
+        protected override bool RequireDefaultContext() { return false; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
+            {
+                WriteWarning(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
             {
                 ConfirmAction("Autosave the context in the current session", "Current session", () =>
@@ -82,6 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
+<<<<<<< HEAD
             var diskCache = session.TokenCache as ProtectedFileTokenCache;
             try
             {
@@ -125,6 +151,39 @@ namespace Microsoft.Azure.Commands.Profile.Context
             {
                 // do not throw if there are file system error
             }
+=======
+
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache originalTokenCache);
+            var stream = new MemoryStream();
+            originalTokenCache.Serialize(stream);
+            var tokenData = stream.ToArray();
+            //must use explicit interface type PowerShellTokenCacheProvider below instead of var, otherwise could not retrieve registered component
+            PowerShellTokenCacheProvider cacheProvider = new SharedTokenCacheProvider();
+            if (tokenData != null && tokenData.Length > 0)
+            {
+                cacheProvider.UpdateTokenDataWithoutFlush(tokenData);
+                cacheProvider.FlushTokenData();
+            }
+            var tokenCache = cacheProvider.GetTokenCache();
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
+            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
+
+
+            if (writeAutoSaveFile)
+            {
+                try
+                {
+                    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                }
+                catch
+                {
+                    // do not fail for file system errors in writing the autosave setting
+                    // it may impact automation environment and module import.
+                }
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         bool IsValidPath(string path)

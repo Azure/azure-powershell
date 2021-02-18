@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnetworkrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,7 +19,12 @@ Creates a Firewall Network Rule.
 
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+<<<<<<< HEAD
  -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+=======
+ [-SourceIpGroup <String[]>] [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,26 +33,45 @@ The **New-AzFirewallNetworkRule** cmdlet creates an network rule for Azure Firew
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:  Create a rule for all TCP traffic
 ```
+=======
+### Example 1: Create a rule for all TCP traffic
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule = New-AzFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 ```
 
 This example creates a rule for all TCP traffic. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
+<<<<<<< HEAD
 ### 2:  Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
 ```
+=======
+### Example 2: Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rule = New-AzFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
+<<<<<<< HEAD
 ### 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
 ```
 $rule = New-AzFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
+=======
+### Example 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
+```powershell
+$rule = New-AzFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
+```
+
+This example creates a rule for all TCP traffic from any source to 10.0.0.0/16. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -85,7 +113,41 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationFqdn
+The destination FQDN of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationIpGroup
+The destination ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +208,26 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
+<<<<<<< HEAD
 Required: True
+=======
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Position: Named
 Default value: None
 Accept pipeline input: False

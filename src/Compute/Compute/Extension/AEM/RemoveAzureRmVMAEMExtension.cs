@@ -71,7 +71,11 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
@@ -105,7 +109,11 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     }
+<<<<<<< HEAD
                     var aemExtension = this._Helper.GetExtension(virtualMachine, AEMExtensionConstants.AEMExtensionType[this.OSType], AEMExtensionConstants.AEMExtensionPublisher[this.OSType]);
+=======
+                    var aemExtension = AEMHelper.GetAEMExtension(virtualMachine, this.OSType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (aemExtension == null)
                     {

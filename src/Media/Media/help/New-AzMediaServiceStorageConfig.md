@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.media/new-azmediaservicestorageconfig
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
+Module Name: Az.Media
+ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
+online version: https://docs.microsoft.com/powershell/module/az.media/new-azmediaservicestorageconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -128,6 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Sync-AzMediaServiceStorageKeys](./Sync-AzMediaServiceStorageKeys.md)
+=======
+[Sync-AzMediaServiceStorageKey](./Sync-AzMediaServiceStorageKey.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 

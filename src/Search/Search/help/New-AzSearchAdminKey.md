@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchadminkey
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
+Module Name: Az.Search
+online version: https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # New-AzSearchAdminKey
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Regenerates an admin key of the Azure Search service.
+=======
+Regenerates an admin key of the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +42,11 @@ New-AzSearchAdminKey [-ParentResourceId] <String> -KeyKind <PSSearchAdminKeyKind
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Search service.
+=======
+The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -48,7 +63,11 @@ Primary                          Secondary
 85B3813D11904B591BE8A196C2C743A1 CEF791D5BAC2E6C0B232C56702F21E87
 ```
 
+<<<<<<< HEAD
 The example regenerates Primary key of the Azure Search Service.
+=======
+The example regenerates Primary key of the Azure Cognitive Search service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -83,7 +102,11 @@ Accept wildcard characters: False
 ```
 
 ### -KeyKind
+<<<<<<< HEAD
 Search Service admin key kind (Primary/Secondary).
+=======
+Azure Cognitive Search Service admin key kind (Primary/Secondary).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind
@@ -99,7 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
+<<<<<<< HEAD
 Search Service Input Object.
+=======
+Azure Cognitive Search Service Input Object.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -114,7 +141,11 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
+<<<<<<< HEAD
 Search Service Resource Id.
+=======
+Azure Cognitive Search Service Resource Id.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -144,7 +175,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
+<<<<<<< HEAD
 Search Service name.
+=======
+Azure Cognitive Search Service name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -190,7 +225,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

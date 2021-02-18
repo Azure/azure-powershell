@@ -19,6 +19,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 {
+<<<<<<< HEAD
+=======
+    /// <summary>
+    /// Remediation scenario tests.
+    /// </summary>
+    /// <remarks>
+    /// Recorded with the following details:
+    /// TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId=f67cc918-f64f-4c3f-aa24-a855465f9d41;ServicePrincipal=20f84e2b-2ca6-4035-a118-6105027fce93;ServicePrincipalSecret=****;AADTenant=72f988bf-86f1-41af-91ab-2d7cd011db47;Environment=Prod;
+    /// See ../EnvSetup/RemediationSetup.ps1 for a helper script to get the appropriate policies and resources created in your subscription
+    /// </remarks>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class RemediationTests
     {
         private readonly XunitTracingInterceptor _logger;
@@ -64,5 +75,22 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-BackgroundJobs");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReEvaluateCompliance()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ReEvaluateCompliance");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ErrorHandling()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Remediation-ErrorHandling");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

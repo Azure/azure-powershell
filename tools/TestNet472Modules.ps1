@@ -20,6 +20,11 @@ if ($ModuleFilter)
     $rmItems = $rmItems | Where {$_.FullName.Contains($ModuleFilter)}
 }
 
+<<<<<<< HEAD
+=======
+$success = $true
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 $rmItems | %{`
   Write-Host ("Testing " + $_.FullName)
   $testDir = $_.Directory.FullName
@@ -32,14 +37,33 @@ $rmItems | %{`
   $copiedItems = (Get-ChildItem $testExecDir | Where-Object {$_.Name.StartsWith("xunit")})
   $copiedItems | Copy-Item -Destination $testDir
   try {
+<<<<<<< HEAD
   Start-Process -FilePath $newExecPath `
     -Wait `
     -WorkingDirectory $testDir `
     -NoNewWindow `
     -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "RunType=DesktopOnly"', '-notrait "RunType=CoreOnly"', "-xml $logPath" `
+=======
+	  # xunit.console will not throw an exception when the tests failed. So we should handle the exitcode by adding option PassThru
+	  $process = Start-Process -FilePath $newExecPath `
+		-Wait `
+		-WorkingDirectory $testDir `
+		-NoNewWindow `
+		-ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "RunType=DesktopOnly"', '-notrait "RunType=CoreOnly"', "-xml $logPath"  -PassThru 
+	  if ($process.ExitCode -ne 0) {
+		$success = $false
+	  }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   }
   finally {
     $copiedItems | %{Remove-Item -Force (Join-Path $testDir $_.Name)}
   }
 }
 
+<<<<<<< HEAD
+=======
+if(-not $success) {
+    Write-Warning 'Failure: One or more test case failed.'
+    exit 1
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

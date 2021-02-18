@@ -11,7 +11,11 @@
 
   <!-- Build -->
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;netstandard2.0</TargetFrameworks>
+=======
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
     <IsPackable>false</IsPackable>
@@ -40,4 +44,8 @@
     <None Update="ScenarioTests\*.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

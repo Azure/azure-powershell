@@ -117,4 +117,54 @@ function Test-OriginGetSetWhenEndpointDoesnotExist
     Assert-ThrowsContains { Set-AzCdnOrigin -CdnOrigin $createdOrigin } "NotFound"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+<<<<<<< HEAD
+=======
+}
+
+function Test-SetOriginProperties
+{
+     # Set up required fields
+    $subId = (Get-AzContext).Subscription.id
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+	$profileName = getAssetName
+
+    # Profile specific properties
+    $resourceLocation = "Global"
+    $profileSku = "Standard_Microsoft"
+   
+    # Create a Microsoft CDN Profile
+    $createdProfile = New-AzCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Location $resourceLocation -Sku $profileSku
+    
+    # Endpoint specific properties
+    $endpointName = getAssetName
+    $originName = getAssetName 
+    $originHostName = "www.microsoft.com"
+
+    # Create CDN endpoint
+    $createdEndpoint = New-AzCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName 
+
+    # Generate the origin resource id
+    $originResourceId = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Cdn/profiles/$profileName/endpoints/$endpointName/origins/$originName"
+
+    # Origin specific properties
+    $origin = Get-AzCdnOrigin -ResourceId $originResourceId
+    $origin.Priority = 5
+    $origin.Weight = 500
+    $origin.HttpPort = 80
+    $origin.HttpsPort = 443
+    $origin.HostName = "contoso.com"
+
+    # Set the origin
+    $updatedOrigin = Set-AzCdnOrigin -CdnOrigin $origin
+
+    # Test origin properties were set correctly
+    Assert-AreEqual 5 $updatedOrigin.Priority
+    Assert-AreEqual 500 $updatedOrigin.Weight
+    Assert-AreEqual 80 $updatedOrigin.HttpPort
+    Assert-AreEqual 443 $updatedOrigin.HttpsPort
+    Assert-AreEqual "contoso.com" $updatedOrigin.HostName
+
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

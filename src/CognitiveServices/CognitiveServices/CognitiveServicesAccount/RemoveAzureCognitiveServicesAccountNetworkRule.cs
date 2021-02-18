@@ -102,11 +102,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 var account = this.CognitiveServicesClient.Accounts.GetProperties(
                                         this.ResourceGroupName,
                                         this.Name);
+<<<<<<< HEAD
                 NetworkRuleSet accountACL = account.NetworkAcls;
+=======
+                NetworkRuleSet accountACL = account.Properties.NetworkAcls;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (accountACL == null)
                 {
                     accountACL = new NetworkRuleSet();
+<<<<<<< HEAD
+=======
+                    accountACL.DefaultAction = NetworkRuleAction.Deny;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 switch (ParameterSetName)
@@ -152,9 +160,22 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
 
 
+<<<<<<< HEAD
                 var properties = new JObject();
                 properties["networkAcls"] = JToken.FromObject(accountACL);
                 this.CognitiveServicesClient.Accounts.Update(this.ResourceGroupName, this.Name, null, null, properties);
+=======
+                var properties = new CognitiveServicesAccountProperties();
+                properties.NetworkAcls = accountACL;
+                this.CognitiveServicesClient.Accounts.Update(
+                    this.ResourceGroupName,
+                    this.Name,
+                    new CognitiveServicesAccount()
+                    {
+                        Properties = properties
+                    }
+                    );
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
 
@@ -162,11 +183,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 {
                     case NetWorkRuleStringParameterSet:
                     case NetworkRuleObjectParameterSet:
+<<<<<<< HEAD
                         WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls).VirtualNetworkRules);
                         break;
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.Create(account.NetworkAcls).IpRules);
+=======
+                        WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls).VirtualNetworkRules);
+                        break;
+                    case IpRuleStringParameterSet:
+                    case IpRuleObjectParameterSet:
+                        WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls).IpRules);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         break;
                 }
             }

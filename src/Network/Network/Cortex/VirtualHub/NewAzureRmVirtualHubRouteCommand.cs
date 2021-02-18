@@ -19,7 +19,13 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+<<<<<<< HEAD
     
+=======
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzVHubRoute")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
@@ -42,14 +48,28 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+<<<<<<< HEAD
             
             var virtualHubRoute = new PSVirtualHubRoute
             {
                 AddressPrefixes = this.AddressPrefix?.ToList(),
                 NextHopIpAddress = this.NextHopIpAddress
+=======
+
+            var virtualHubRoute = new PSVirtualHubRoute
+            {
+                AddressPrefixes = this.AddressPrefix?.ToList(),
+                NextHopIpAddress = this.NextHopIpAddress,
+                DestinationType = "CIDR",
+                NextHopType = "IPAddress"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             WriteObject(virtualHubRoute);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

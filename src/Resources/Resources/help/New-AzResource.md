@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D6FF6BDD-4515-438D-B39D-C0BFC3342F4E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresource
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -54,11 +58,19 @@ This command creates a resource that is a website in ResourceGroup11.
 ### Example 2: Create a resource using splatting
 ```
 PS> $prop = @{
+<<<<<<< HEAD
     Location          = "West US" 
     Properties        = @{test = "test"} 
     ResourceName      = "TestSite06" 
     ResourceType      = "microsoft.web/sites" 
     ResourceGroupName = "ResourceGroup11" 
+=======
+    Location          = "West US"
+    Properties        = @{test = "test"}
+    ResourceName      = "TestSite06"
+    ResourceType      = "microsoft.web/sites"
+    ResourceGroupName = "ResourceGroup11"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     Force             = $true
 }
 
@@ -415,7 +427,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -431,8 +447,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Find-AzResource](./Find-AzResource.md)
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 [Get-AzResource](./Get-AzResource.md)
 
 [Move-AzResource](./Move-AzResource.md)

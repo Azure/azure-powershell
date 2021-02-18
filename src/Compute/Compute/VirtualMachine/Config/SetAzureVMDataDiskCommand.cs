@@ -20,6 +20,10 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -82,6 +86,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = HelpMessages.VMDiskEncryptionSetId)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
@@ -128,6 +141,25 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType;
                     }
                 }
+<<<<<<< HEAD
+=======
+                if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+                {
+                    if (dataDisk.ManagedDisk == null)
+                    {
+                        ThrowTerminatingError
+                            (new ErrorRecord(
+                                new InvalidOperationException(Properties.Resources.NotManagedDisk),
+                                string.Empty,
+                                ErrorCategory.InvalidData,
+                                null));
+                    }
+                    else
+                    {
+                        dataDisk.ManagedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters(this.DiskEncryptionSetId);
+                    }
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 dataDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
             }

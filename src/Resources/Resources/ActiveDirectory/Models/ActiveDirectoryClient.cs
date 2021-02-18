@@ -18,8 +18,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Rest.Azure;
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -196,7 +203,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 try
                 {
                     string upnOrMail = Normalize(options.UPN) ?? Normalize(options.Mail);
+<<<<<<< HEAD
                     var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.UserPrincipalName == upnOrMail);
+=======
+                    var odataQuery = new Rest.Azure.OData.ODataQuery<User>();
+                    if (!string.IsNullOrEmpty(options.UPN))
+                    {
+                        odataQuery.SetFilter(u => u.UserPrincipalName == upnOrMail);
+                    }
+                    else
+                    {
+                        odataQuery.SetFilter(u => u.Mail == upnOrMail);
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     result = GraphClient.Users.List(odataQuery);
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
@@ -264,8 +283,25 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     objectIdBatchCount = 1000;
                 }
+<<<<<<< HEAD
                 adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds.GetRange(i, objectIdBatchCount), IncludeDirectoryObjectReferences = true });
                 result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+=======
+                List<string> objectIdBatch = objectIds.GetRange(i, objectIdBatchCount);
+                try
+                {
+                    adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIdBatch, IncludeDirectoryObjectReferences = true });
+                    result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+                }
+                catch (CloudException ce) when (objectIds.Count == 1 && ce.Request.RequestUri.AbsolutePath.StartsWith("//"))
+                {
+                    // absorb malformed string
+                    // this is a quirk from how strings are formed when requesting an RA from an SP
+                    var errorGeneratedUser = new PSErrorHelperObject(ErrorTypeEnum.MalformedQuery);
+                    result.Add(errorGeneratedUser);
+
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             return result;
         }

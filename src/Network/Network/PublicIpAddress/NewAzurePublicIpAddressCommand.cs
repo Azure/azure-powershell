@@ -19,6 +19,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +31,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+<<<<<<< HEAD
+=======
+    [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard Public IP is zone-redundant.",
+        NewWay = "Sku = Standard and Zone = {} means the Standard Public IP has no zones. If you want to create a zone-redundant Public IP address, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
@@ -66,6 +75,20 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+    Mandatory = false,
+    ValueFromPipelineByPropertyName = true,
+    HelpMessage = "The public IP Sku tier.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+    MNM.PublicIPAddressSkuTier.Regional,
+    MNM.PublicIPAddressSkuTier.Global,
+    IgnoreCase = true)]
+        public string Tier { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
@@ -170,6 +193,19 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.Sku.Name = this.Sku;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrEmpty(this.Tier))
+            {
+                if(publicIp.Sku == null)
+                {
+                    publicIp.Sku = new PSPublicIpAddressSku();
+                }
+
+                publicIp.Sku.Tier = this.Tier;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IdleTimeoutInMinutes > 0)
             {
                 publicIp.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;

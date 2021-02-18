@@ -23,6 +23,7 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
+<<<<<<< HEAD
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -ReadScale Enabled
 	Assert-AreEqual $db.DatabaseName $databaseName
@@ -32,6 +33,17 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 		# Alter all properties
 		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -ReadScale Disabled
 		Assert-AreEqual $db1.ReadScale Disabled
+=======
+	$databaseName1 = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Edition Premium -Force
+	Assert-AreEqual $db1.DatabaseName $databaseName1
+	
+	try
+	{
+		# Alter all properties
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db1.ResourceGroupName -ServerName $db1.ServerName -DatabaseName $db1.DatabaseName -ReadScale Disabled
+		Assert-AreEqual Disabled $db1.ReadScale
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{
@@ -52,18 +64,72 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
+<<<<<<< HEAD
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium
+=======
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Premium -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
 	{
 		$db1 = Get-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual Enabled $db1.ReadScale
+
+		# Alter read scale properties, Premium ignores HighAvailabilityReplicaCount
+		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-ReadScale Disabled -HighAvailabilityReplicaCount -1
+		Assert-AreEqual Disabled $db2.ReadScale
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests database HighAvailabilityReplicaCount option
+#>
+function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "Southeast Asia")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	
+	# Create with default values
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Hyperscale `
+		-VCore 4 -ComputeGeneration Gen5 -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		$db1 = Get-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+<<<<<<< HEAD
 		Assert-AreEqual $db1.ReadScale Disabled
 
 		# Alter read scale properties
 		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 			-ReadScale Enabled
 		Assert-AreEqual $db2.ReadScale Enabled
+=======
+		Assert-AreEqual Enabled $db1.ReadScale
+		Assert-AreEqual 1 $db1.HighAvailabilityReplicaCount
+
+		# Alter read scale properties, Hyperscale ignores ReadScale
+		$db2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-ReadScale Enabled -HighAvailabilityReplicaCount 0
+		Assert-AreEqual Disabled $db2.ReadScale
+		Assert-AreEqual 0 $db2.HighAvailabilityReplicaCount
+
+		# Alter read scale properties using alias
+		$db3 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-ReadScale Enabled -ReadReplicaCount 1
+		Assert-AreEqual Enabled $db3.ReadScale
+		Assert-AreEqual 1 $db3.HighAvailabilityReplicaCount
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{

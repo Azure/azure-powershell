@@ -38,6 +38,23 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         {
             AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestation");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAttestationWithPolicySigningCertificate()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestationWithPolicySigningCertificate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAttestationWithTags()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAttestationWithTags");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         #region Get-AzureRmAttestation
@@ -47,6 +64,23 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         {
             AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetAttestation");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviders()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviders");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDefaultProviderByLocation()
+        {
+            AttestationController.NewInstance.RunPowerShellTest(_logger, "Test-GetDefaultProviderByLocation");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         #region Remove-AzureRmAttestation

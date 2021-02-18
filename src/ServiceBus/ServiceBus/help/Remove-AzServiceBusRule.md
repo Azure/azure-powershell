@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusrule
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzServiceBusRule
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Removes the speficied rule of a given subscription .
+=======
+Removes the specified rule of a given subscription .
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,20 +39,30 @@ The **Remove-AzServiceBusRule** cmdlet removes the rule of a subscription of giv
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
 ```
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using Variable:
 ```
+=======
+### Example 2: InputObject - Using Variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $inputobject = Get-AzServiceBusRule <params>
 PS C:\> Remove-AzServiceBusRule -InputObject $inputobject
 ```
 
 Removes the rule provided through $inputobject for -InputObject parameter
 
+<<<<<<< HEAD
 ### Example 2.2 - InputObject - Using Piping:
 ```
 PS C:\> Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
@@ -52,12 +70,26 @@ PS C:\> Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
 
 ### Example 3.1 - ResourceId - Using Variable
 ```
+=======
+### Example 3: InputObject - Using Piping:
+```powershell
+PS C:\> Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
+```
+
+### Example 4: ResourceId - Using Variable
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $resourceid = Get-AzServiceBusRule <params>
 PS C:\> Remove-AzServiceBusRule -ResourceId $resourceid.Id
 ```
 
+<<<<<<< HEAD
 ### Example 3.1 - ResourceId - Using string value
 ```
+=======
+### Example 5: ResourceId - Using string value
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
 ```
 

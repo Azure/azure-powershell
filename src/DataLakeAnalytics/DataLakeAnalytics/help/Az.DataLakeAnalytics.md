@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.DataLakeAnalytics
 Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.datalakeanalytics
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0.0
 Locale: en-US
 ---

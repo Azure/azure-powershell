@@ -38,8 +38,13 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </param>
         public CreateNewDirectConnectionTests(ITestOutputHelper output)
         {
+<<<<<<< HEAD
             this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
+=======
+            this.logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this.logger);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -121,5 +126,78 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftSession()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSession");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftSessionWithPeeringService()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionWithPeeringService");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftSessionInvalidV4()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionInvalidV4");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftSessionInvalidV6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionInvalidV6");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithNoPeeringFacility()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithNoPeeringFacility");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithNoBgpSession()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithNoBgpSession");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftIpProvidedAddress()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftIpProvidedAddress");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

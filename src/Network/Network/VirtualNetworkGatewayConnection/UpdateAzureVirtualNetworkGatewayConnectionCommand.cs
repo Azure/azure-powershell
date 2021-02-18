@@ -24,6 +24,10 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using System.Collections;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -43,17 +47,49 @@ namespace Microsoft.Azure.Commands.Network
         public bool? EnableBgp { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
+        public int? DpdTimeoutInSeconds { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false,
+            HelpMessage = "Whether to use PrivateIP for a S2S connection")]
+        public bool? UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -88,16 +124,45 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.EnableBgp = this.EnableBgp.Value;
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.DpdTimeoutInSeconds.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
+                    }
+
+                    if (!String.IsNullOrEmpty(this.ConnectionMode))
+                    {
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.UseLocalAzureIpAddress.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.Value;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     if (this.IpsecPolicies != null)
                     {
                         this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
                     }
 
+<<<<<<< HEAD
+=======
+                    if (this.TrafficSelectorPolicy != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     
                     vnetGatewayConnectionModel.Tags =

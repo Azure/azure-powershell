@@ -268,7 +268,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Updating the recevied control number &apos;{0}&apos; for &apos;{1}&apos; &apos;{2}&apos;..
+=======
+        ///   Looks up a localized string similar to Updating the received control number &apos;{0}&apos; for &apos;{1}&apos; &apos;{2}&apos;..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string UpdateReceivedControlNumberMessage {
             get {

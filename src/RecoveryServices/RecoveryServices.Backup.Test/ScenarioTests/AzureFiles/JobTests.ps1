@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $location = "southeastasia"
+<<<<<<< HEAD
 $resourceGroupName = "pstestFSRG1bca8f8e"
 $vaultName = "PSTestFSRSV1bca8f8e"
 $fileShareFriendlyName = "pstestfs1bca8f8e"
@@ -20,6 +21,15 @@ $fileShareName = "AzureFileShare;pstestfs1bca8f8e"
 $saName = "pstestsa1bca8f8e"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
+=======
+$resourceGroupName = "pstestrg8895"
+$vaultName = "pstestrsv8895"
+$fileShareFriendlyName = "fs1"
+$fileShareName = "AzureFileShare;fs1"
+$saName = "pstestsa8895"
+$skuName="Standard_LRS"
+$policyName = "afspolicy1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -116,9 +126,13 @@ function Test-AzureFSCancelJob
  		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		# Trigger backup and wait for completion
+<<<<<<< HEAD
 		$backupJob = Backup-AzRecoveryServicesBackupItem ` -VaultId $vault.ID -Item $item
 		
 		Assert-True { $backupJob.Status -eq "InProgress" }
+=======
+		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$cancelledJob = Stop-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
 

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 32263236-C207-4FE0-AB8A-018118FC7729
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/enable-aztrafficmanagerendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.trafficmanager/enable-aztrafficmanagerendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -39,7 +43,11 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 PS C:\>Enable-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName ResourceGroup11 -Type ExternalEndpoints
 ```
 
+<<<<<<< HEAD
 This command enables the external endpoint named contoso in the profile named ContosoProfile in resource group ResouceGroup11.
+=======
+This command enables the external endpoint named contoso in the profile named ContosoProfile in resource group ResourceGroup11.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Enable an endpoint by using the pipeline
 ```

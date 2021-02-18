@@ -10,7 +10,11 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>HostName</Label>
+<<<<<<< HEAD
             <Width>50</Width>
+=======
+            <Width>40</Width>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -19,6 +23,7 @@
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
+<<<<<<< HEAD
             <Label>ServerPort</Label>
             <Width>10</Width>
             <Alignment>Left</Alignment>
@@ -26,6 +31,20 @@
           <TableColumnHeader>
             <Label>PublicPort</Label>
             <Width>10</Width>
+=======
+            <Label>ExternalIp</Label>
+            <Width>15</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+            <Width>11</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UnitCount</Label>
+            <Width>9</Width>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -49,10 +68,20 @@
                 <ScriptBlock>$_.Location</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
+<<<<<<< HEAD
                 <ScriptBlock>$_.ServerPort</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.PublicPort</ScriptBlock>
+=======
+                <ScriptBlock>$_.ExternalIp</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Sku.Capacity</ScriptBlock>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.ProvisioningState</ScriptBlock>
@@ -65,5 +94,49 @@
         </TableRowEntries>
       </TableControl>
     </View>
+<<<<<<< HEAD
+=======
+
+    <View>
+      <Name>PSSignalRUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>20</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentValue</Label>
+            <Width>12</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Limit</Label>
+            <Width>5</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.CurrentValue</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Limit</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </ViewDefinitions>
 </Configuration>

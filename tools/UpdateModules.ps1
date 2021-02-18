@@ -33,6 +33,7 @@ param(
     [string] $Scope
 )
 
+<<<<<<< HEAD
 <#
 .SYNOPSIS
     Creates a new psm1 root module if one does not exist.
@@ -408,11 +409,15 @@ function Update-Netcore {
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
     Write-Host "Updated Netcore module"
 }
+=======
+Import-Module "$PSScriptRoot\UpdateModules.psm1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 <################################################
 #  Main
 #################################################>
 
+<<<<<<< HEAD
 <#
     Constants
 #>
@@ -437,6 +442,13 @@ $script:StackProjects = "$PSScriptRoot\..\src\StackAdmin"
 $script:AzureRMRoot = "$script:AzurePackages\$buildConfig"
 $script:StackRMRoot = "$script:StackPackages\$buildConfig"
 
+=======
+
+# Constants (Scopes)
+$NetCoreScopes = @('NetCore')
+$AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
+$StackScopes = @('All', 'Stack')
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 # Begin
 Write-Host "Updating $Scope package (and its dependencies)"

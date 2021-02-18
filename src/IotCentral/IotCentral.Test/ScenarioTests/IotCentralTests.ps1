@@ -29,7 +29,12 @@ function Test-IotCentralAppLifecycleManagement{
 	$rname = Get-ResourceName
 	$subdomain = ($rname) + "subdomain"
 	$location = Get-Location "Microsoft.IoTCentral" "IotApps"
+<<<<<<< HEAD
 	$sku = "S1"
+=======
+	$st2Sku = "ST2"
+	$st1Sku = "ST1"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$displayName = "Custom IoT Central App DisplayName"
 	$tagKey = "key1"
 	$tagValue = "value1"
@@ -43,7 +48,11 @@ function Test-IotCentralAppLifecycleManagement{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
+<<<<<<< HEAD
 		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $sku -DisplayName $displayName -Tag $tags
+=======
+		$created = New-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Subdomain $subdomain -Sku $st2Sku -DisplayName $displayName -Tag $tags
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$actual = Get-AzIotCentralApp -ResourceGroupName $rgname -Name $rname
 
 		$list = Get-AzIotCentralApp -ResourceGroupName $rgname
@@ -55,6 +64,10 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.Tag.Item($tagkey) $tagvalue
 		Assert-AreEqual 1 @($list).Count
 		Assert-AreEqual $actual.Name $list[0].Name
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $actual.Sku.Name $st2Sku
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Get App
 		$rname1 = $rname
@@ -92,7 +105,11 @@ function Test-IotCentralAppLifecycleManagement{
 		$tags = $actual.Tag
 		$tags.add($tt2, $tv2)
 		# Set resource
+<<<<<<< HEAD
 		$job = Set-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -Subdomain $newSubdomain -AsJob
+=======
+		$job = Set-AzIotCentralApp -ResourceGroupName $rgname -Name $rname -Tag $tags -DisplayName $displayName -Subdomain $newSubdomain -Sku $st1Sku -AsJob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$job | Wait-Job
 		$result = $job | Receive-Job
 
@@ -105,6 +122,10 @@ function Test-IotCentralAppLifecycleManagement{
 		Assert-AreEqual $actual.DisplayName $displayName
 		Assert-AreEqual $actual.Subdomain $newSubdomain
 		Assert-AreEqual $actual.Name $rname
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $actual.Sku.Name $st1Sku
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Delete
 		# $job = Find-AzResource -ResourceType $resourceType -ResourceGroupNameEquals $rgname | Get-AzIotCentralApp | Remove-AzIotCentralApp -AsJob

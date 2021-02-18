@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 77CDEE77-FD5D-4C2D-B027-FF1F6FF6618E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgateway
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgateway
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -48,6 +52,10 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+<<<<<<< HEAD
+=======
+ForceFirewallPolicyAssociation      :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -105,6 +113,10 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+<<<<<<< HEAD
+=======
+ForceFirewallPolicyAssociation      :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -162,6 +174,10 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+<<<<<<< HEAD
+=======
+ForceFirewallPolicyAssociation      :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
@@ -219,6 +235,10 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+<<<<<<< HEAD
+=======
+ForceFirewallPolicyAssociation      :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded

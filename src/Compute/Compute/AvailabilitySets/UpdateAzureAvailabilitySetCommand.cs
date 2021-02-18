@@ -18,6 +18,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+<<<<<<< HEAD
+=======
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -37,7 +41,11 @@ namespace Microsoft.Azure.Commands.Compute
         public PSAvailabilitySet AvailabilitySet { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
+=======
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Position = 1,
             ParameterSetName = SkuParameterSetName,
             ValueFromPipelineByPropertyName = false,
@@ -45,6 +53,14 @@ namespace Microsoft.Azure.Commands.Compute
         public string Sku { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Mandatory = false)]
+        [AllowEmptyString]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "Key-value pairs in the form of a hash table."
             )]
@@ -67,9 +83,23 @@ namespace Microsoft.Azure.Commands.Compute
                         PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
                         PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount,
                         Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value),
+<<<<<<< HEAD
                         Sku = new Sku(this.Sku, null, null)
                     };
 
+=======
+                        Sku = new Sku(this.IsParameterBound(c => c.Sku) ? this.Sku : this.AvailabilitySet.Sku, null, null),
+                        ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId) 
+                                                ? new SubResource(this.ProximityPlacementGroupId)
+                                                : this.AvailabilitySet.ProximityPlacementGroup
+                    };
+
+                    if (avSetParams.ProximityPlacementGroup != null && string.IsNullOrEmpty(avSetParams.ProximityPlacementGroup.Id))
+                    {
+                        avSetParams.ProximityPlacementGroup.Id = null;
+                    }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.AvailabilitySet.ResourceGroupName,
                         this.AvailabilitySet.Name,

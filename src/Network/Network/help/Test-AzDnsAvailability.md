@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -23,7 +27,11 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: Check if contoso.cloudapp.azure.com is available for use.
+=======
+### Example 1: Check if contoso.westus.cloudapp.azure.com is available for use.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 Test-AzDnsAvailability -DomainNameLabel contoso -Location westus
 ```

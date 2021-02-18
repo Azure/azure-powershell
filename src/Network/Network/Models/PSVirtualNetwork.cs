@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSSubnet> Subnets { get; set; }
 
+<<<<<<< HEAD
+=======
+        public PSVirtualNetworkBgpCommunities BgpCommunities { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -38,6 +43,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId DdosProtectionPlan { get; set; }
 
+<<<<<<< HEAD
+=======
+        public List<PSResourceId> IpAllocations { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string AddressSpaceText
         {
@@ -57,6 +67,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+<<<<<<< HEAD
+=======
+        public string BgpCommunitiesText
+        {
+            get { return JsonConvert.SerializeObject(BgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string VirtualNetworkPeeringsText
         {
             get { return JsonConvert.SerializeObject(VirtualNetworkPeerings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -73,5 +92,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(DdosProtectionPlan, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+<<<<<<< HEAD
+=======
+
+        [JsonIgnore]
+        public string IpAllocationsText
+        {
+            get { return JsonConvert.SerializeObject(IpAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

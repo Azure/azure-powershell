@@ -1,7 +1,11 @@
 ---
 Module Name: Az.PrivateDns
 Module Guid: f9850afe-b631-4369-ab61-eca7023f2f53
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.privatedns
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.privatedns
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 1.0.0
 Locale: 
 ---

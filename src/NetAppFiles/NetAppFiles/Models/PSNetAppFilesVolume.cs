@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     /// <summary>
@@ -98,6 +103,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the protocol types
+        /// </summary>
+        /// <remarks>
+        /// Protocol types usable by the volume
+        /// </remarks>
+        public IList<string> ProtocolTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mount targets
+        /// </summary>
+        /// <remarks>
+        /// Mount targets associated with the volume
+        /// </remarks>
+        public object MountTargets { get; set;  }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets snapshot ID
         /// </summary>
         /// <remarks>
@@ -106,7 +130,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string SnapshotId { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or setsbaremetal Tenant ID
+=======
+        /// Gets or sets baremetal Tenant ID
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <remarks>
         /// Unique Baremetal Tenant Identifier.
@@ -119,5 +147,63 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public string SubnetId { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets the type of the volume
+        /// </summary>
+        public string VolumeType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DataProtection properties
+        /// </summary>
+        /// <remarks>
+        /// DataProtection type volumes include an object containing details of the replication
+        /// </remarks>
+        public PSNetAppFilesVolumeDataProtection DataProtection { get; set; }
+
+        /// <summary>
+        /// Gets or sets restoring
+        /// </summary>
+        public bool? IsRestoring { get; set; }
+
+        /// <summary>
+        /// If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+        /// </summary>
+        public bool? SnapshotDirectoryVisible { get; set; }
+
+        /// <summary>
+        /// Gets or sets backup ID
+        /// </summary>
+        /// <remarks>
+        /// UUID v4 or resource identifier used to identify the Backup.
+        /// </remarks>
+        public string BackupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets SecurityStyle
+        /// </summary>
+        /// <remarks>
+        /// The security style of volume. Possible values include: 'ntfs', 'unix'        
+        /// </remarks>
+        public string SecurityStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets ThroughputMibps
+        /// </summary>
+        /// <remarks>
+        ///  Maximum throughput in Mibps that can be achieved by this volume
+        /// </remarks>
+        public double? ThroughputMibps { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets KerberosEnabled
+        /// </summary>
+        /// <remarks>
+        ///  describe if a volume is KerberosEnabled.
+        /// </remarks>
+        public bool? KerberosEnabled { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

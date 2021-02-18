@@ -14,7 +14,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -296,7 +300,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -631,7 +639,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -903,7 +915,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1231,7 +1247,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1349,7 +1369,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1695,7 +1719,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1931,7 +1959,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -2210,7 +2242,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -2360,6 +2396,27 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+<<<<<<< HEAD
+=======
+          "Name": "RemoteVirtualNetworkId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
           "Name": "EnableRegistration",
           "AliasList": [],
           "Type": {
@@ -2971,6 +3028,197 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+<<<<<<< HEAD
+=======
+        },
+        {
+          "Name": "RemoteVirtualNetworkId",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "RemoteVirtualNetworkId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ZoneName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableRegistration",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
       ],
       "AliasList": []
@@ -3062,7 +3310,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -3357,7 +3609,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RegistrationEnabled": "System.Boolean",
                     "Tags": "System.Collections.Hashtable",
@@ -3684,7 +3940,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -3801,7 +4061,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -4142,7 +4406,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RegistrationEnabled": "System.Boolean",
                     "Tags": "System.Collections.Hashtable",
@@ -4547,7 +4815,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -4614,7 +4886,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -4917,7 +5193,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5057,7 +5337,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5197,7 +5481,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5361,7 +5649,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5501,7 +5793,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5641,7 +5937,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5853,7 +6153,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5993,7 +6297,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6116,7 +6424,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6219,7 +6531,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -6318,7 +6634,11 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -6449,7 +6769,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6567,7 +6891,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6637,7 +6965,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -6730,7 +7062,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6800,7 +7136,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -6869,7 +7209,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -6987,7 +7331,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7081,7 +7429,11 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.PrivateDns.Models.RecordType]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7202,7 +7554,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -7305,7 +7661,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -7404,7 +7764,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
             "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7545,7 +7909,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
             "GenericTypeArguments": [],
@@ -7692,7 +8060,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7851,7 +8223,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -7943,7 +8319,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -8036,7 +8416,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8195,7 +8579,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8335,7 +8723,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8494,7 +8886,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8610,7 +9006,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8769,7 +9169,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8868,7 +9272,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -9795,7 +10203,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -9862,7 +10274,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10165,7 +10581,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10305,7 +10725,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10445,7 +10869,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10609,7 +11037,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10749,7 +11181,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10889,7 +11325,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11101,7 +11541,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11241,7 +11685,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11419,7 +11867,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -11482,7 +11934,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11584,7 +12040,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
             "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11834,7 +12294,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12011,7 +12475,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -12104,7 +12572,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12281,7 +12753,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12612,7 +13088,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12679,7 +13159,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12802,7 +13286,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
+<<<<<<< HEAD
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -13302,7 +13790,11 @@
     "Microsoft.Azure.Management.PrivateDns.Models.RecordType": {
       "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
       "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.PrivateDns.Models.RecordType, Microsoft.Azure.Management.PrivateDns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13407,7 +13899,11 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+=======
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13419,7 +13915,11 @@
     "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
       "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
+<<<<<<< HEAD
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+=======
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

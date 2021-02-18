@@ -88,6 +88,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "The type of the Virtual Wan.")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string VirtualWANType
+        { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "Do not ask for confirmation if you want to update a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -143,7 +153,16 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.AllowVnetToVnetTraffic.HasValue)
             {
+<<<<<<< HEAD
                 virtualWanToUpdate.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.Value;
+=======
+                virtualWanToUpdate.AllowVnetToVnetTraffic = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.VirtualWANType))
+            {
+                virtualWanToUpdate.VirtualWANType = this.VirtualWANType;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWanToUpdate);

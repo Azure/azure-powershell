@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6FFE1B64-C80B-423D-A043-55C90A224752
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaysslcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysslcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -25,7 +29,11 @@ The **New-AzApplicationGatewaySslCertificate** cmdlet creates an SSL certificate
 
 ### Example 1: Create an SSL certificate for an Azure application gateway.
 ```
+<<<<<<< HEAD
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+=======
+PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 

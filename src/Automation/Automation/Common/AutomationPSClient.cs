@@ -21,6 +21,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Newtonsoft.Json;
+<<<<<<< HEAD
+=======
+using Newtonsoft.Json.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -856,10 +860,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string password,
             string description)
         {
+<<<<<<< HEAD
             var exisitngCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
             var credentialUpdateParams = new CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
             credentialUpdateParams.Description = description ?? exisitngCredential.Description;
+=======
+            var existingCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
+            var credentialUpdateParams = new CredentialUpdateParameters();
+            credentialUpdateParams.Name = name;
+            credentialUpdateParams.Description = description ?? existingCredential.Description;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             if (!string.IsNullOrWhiteSpace(userName))
             {
@@ -972,7 +983,25 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 object paramValue;
                 try
                 {
+<<<<<<< HEAD
                     paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+=======
+                    if (kvp.Value != null)
+                    {
+                        if (IsValidJson(kvp.Value.ToString()))
+                        {
+                            paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                        }
+                        else
+                        {
+                            paramValue = kvp.Value;
+                        }
+                    }
+                    else
+                    {
+                        paramValue = null;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 catch (CmdletInvocationException exception)
                 {
@@ -1955,6 +1984,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
+<<<<<<< HEAD
+=======
+        public static bool IsValidJson(string value)
+        {
+            try
+            {
+                var json = JContainer.Parse(value);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 }

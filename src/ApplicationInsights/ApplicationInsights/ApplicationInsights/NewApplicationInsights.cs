@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
+<<<<<<< HEAD
+=======
+        #region Cmdlet parameters
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -50,6 +55,28 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         public string Location { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            Position = 3,
+            Mandatory = false,
+            HelpMessage = "Retention In Days, 90 by default.")]
+        [ValidateNotNull]
+        public int? RetentionInDays;
+
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing Application Insights query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "Application kind.")]
         [Alias(ApplicationKindAlias)]
@@ -79,6 +106,11 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
+<<<<<<< HEAD
+=======
+        #endregion
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -110,6 +142,12 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
                 ApplicationType = Kind,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                 RequestSource = "AzurePowerShell",
+<<<<<<< HEAD
+=======
+                RetentionInDays = this.RetentionInDays == null ? null : this.RetentionInDays,
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (this.ShouldProcess(this.ResourceGroupName, $"Create Application Insights Component {this.Name}"))

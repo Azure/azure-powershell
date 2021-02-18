@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipal
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -60,41 +64,71 @@ Filters active directory service principals.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 - List AD service principals
 
 ```
+=======
+### Example 1: List AD service principals
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADServicePrincipal
 ```
 
 Lists all AD service principals in a tenant.
 
+<<<<<<< HEAD
 ### Example 2 - List AD service principals using paging
 
 ```
+=======
+### Example 2: List AD service principals using paging
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADServicePrincipal -First 100
 ```
 
 Lists the first 100 AD service principals in a tenant.
 
+<<<<<<< HEAD
 ### Example 3 - List service principals by SPN
 
 ```
+=======
+### Example 3: List service principals by SPN
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADServicePrincipal -ServicePrincipalName 36f81fc3-b00f-48cd-8218-3879f51ff39f
 ```
 
 Lists service principals with the SPN '36f81fc3-b00f-48cd-8218-3879f51ff39f'.
 
+<<<<<<< HEAD
 ### Example 4 - List service principals by search string
 
 ```
+=======
+### Example 4: List service principals by search string
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADServicePrincipal -SearchString "Web"
 ```
 
 Lists all AD service principals whose display name start with "Web".
 
+<<<<<<< HEAD
 ### Example 5 - List service principals by piping
 
 ```
+=======
+### Example 5: List service principals by piping
+
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69 | Get-AzADServicePrincipal
 ```
 
@@ -253,7 +287,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -273,7 +311,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
+<<<<<<< HEAD
 [Set-AzADServicePrincipal](./Set-AzADServicePrincipal.md)
+=======
+[Update-AzADServicePrincipal](./Update-AzADServicePrincipal.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Remove-AzADServicePrincipal](./Remove-AzADServicePrincipal.md)
 

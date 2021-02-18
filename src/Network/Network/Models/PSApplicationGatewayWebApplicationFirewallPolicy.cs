@@ -22,5 +22,12 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSApplicationGatewayWebApplicationFirewallPolicy : PSTopLevelResource
     {
         public List<PSApplicationGatewayFirewallCustomRule> CustomRules { get; set; }
+<<<<<<< HEAD
+=======
+
+        public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
+
+        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

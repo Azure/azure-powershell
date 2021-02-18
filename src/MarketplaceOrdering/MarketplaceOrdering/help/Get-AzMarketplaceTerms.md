@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.dll-Help.xml
 Module Name: Az.MarketplaceOrdering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+=======
+online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -38,7 +42,11 @@ RetrieveDatetime  : <RetrieveDatetime>
 ## PARAMETERS
 
 ### -DefaultProfile
+<<<<<<< HEAD
 The credentials, account, tenant, and subscription used for communication with azure.
+=======
+The credentials, account, tenant, and subscription used for communication with Azure.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer

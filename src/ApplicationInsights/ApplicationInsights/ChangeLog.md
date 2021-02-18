@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+<<<<<<< HEAD
+=======
+
+## Version 1.1.0
+* Added Parameters: `RetentionInDays` `PublicNetworkAccessForIngestion` `PublicNetworkAccessForQuery` for `New-AzApplicationInsights`
+* Created cmdlet `Update-AzApplicationInsights`
+* Created cmdlets for Linked Storage Account
+
+## Version 1.0.3
+* Update references in .psd1 to use relative path
+
+## Version 1.0.2
+* Fixed miscellaneous typos across module
+
+## Version 1.0.1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 * Fix example typo in `Remove-AzApplicationInsightsApiKey` documentation 
 
 ## Version 1.0.0

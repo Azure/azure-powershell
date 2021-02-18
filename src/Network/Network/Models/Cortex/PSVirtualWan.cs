@@ -27,5 +27,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "AllowBranchToBranchTraffic", Target = ViewControl.Table)]
         public bool AllowBranchToBranchTraffic { get; set; }
+<<<<<<< HEAD
+=======
+        
+        [Ps1Xml(Label = "VirtualWANType", Target = ViewControl.Table)]
+        public string VirtualWANType { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -32,6 +32,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class InitializeAzureRmRecoveryServicesBackupProtectableItem : RSBackupVaultCmdletBase
     {
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
+        /// </summary>
+        private const string validWorkloadTypes = "AzureVM, WindowsServer, AzureFiles, MSSQL";
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Container base
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Item.Container,
@@ -43,14 +51,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Workload type of the item to be returned.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1,
+<<<<<<< HEAD
             HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+=======
+            HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes )]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public Models.WorkloadType WorkloadType { get; set; }
 
         /// <summary>
         /// Return the container to be deleted
         /// </summary>
+<<<<<<< HEAD
         [Parameter(Mandatory = false, HelpMessage = "Return the container to be deleted.")]
+=======
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ProtectableItem.ItemContainer)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

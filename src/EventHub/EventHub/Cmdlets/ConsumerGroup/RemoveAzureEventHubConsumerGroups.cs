@@ -19,7 +19,11 @@ using Microsoft.Azure.Commands.EventHub.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
     /// <summary>
+<<<<<<< HEAD
     /// 'Remove-AzEventHubConsumerGroup' deletes the specifed Consumer Group
+=======
+    /// 'Remove-AzEventHubConsumerGroup' deletes the specified Consumer Group
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", DefaultParameterSetName = ConsumergroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmEventHubConsumerGroupp : AzureEventHubsCmdletBase

@@ -132,7 +132,11 @@
     <value>Resource Group is not associated with the selected Subscription</value>
   </data>
   <data name="InvalidResource" xml:space="preserve">
+<<<<<<< HEAD
     <value>Resource is not associted with the selected Resource group</value>
+=======
+    <value>Resource is not associated with the selected Resource group</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="InvalidXml" xml:space="preserve">
     <value>XML is malformed or file is empty, exception details: {0}</value>
@@ -222,7 +226,11 @@
     <value>Please provide both Source Nic and Recovery Target to update</value>
   </data>
   <data name="MandatoryParamFromNextRelease" xml:space="preserve">
+<<<<<<< HEAD
     <value>{0} will be a mandatory paramter from next release.</value>
+=======
+    <value>{0} will be a mandatory parameter from next release.</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="IDBasedParamUsageNotSupportedFromNextRelease" xml:space="preserve">
     <value>Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead.</value>

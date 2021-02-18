@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 7BCEB0EF-1A09-4CED-9F34-CE3AB03181A7
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementpolicy
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementpolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -80,7 +84,11 @@ This command gets the operation-scope policy.
 ### Example 5: Get the Tenant scope policy in RawXml format
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+<<<<<<< HEAD
 PS c:\> Get-AzApiManagementPolicy -Context $context -Format rawxml
+=======
+PS c:\> Get-AzApiManagementPolicy -Context $apimContext -Format rawxml
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 <policies>
         <inbound>

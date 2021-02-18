@@ -16,18 +16,47 @@ This means there are issues with your help files.
 
 ### Reasons:
 
+<<<<<<< HEAD
 - Cmdlet was changed while .md help files were not regenerated [this way](documentation/development-docs/help-generation.md) or there is no help files at all.
+=======
+- Cmdlet was changed while .md help files were not regenerated [this way](development-docs/help-generation.md) or there is no help files at all.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Help files were re-generated, however they weren't filled with real data. I.e. help generator leaves templates like this `"{{Description there}}"` and they need to be manually filled by developer with descriptions, examples, etc.
 
 ### Solution
 
+<<<<<<< HEAD
 Regenerate MD help files [this way](documentation/development-docs/help-generation.md) and update "{{\*}}" placeholders
+=======
+Regenerate MD help files [this way](development-docs/help-generation.md) and update "{{\*}}" placeholders
+
+## Help generation failure (online version url)
+
+### Message
+
+> Online version in the header of the file is incorrect.
+
+### Reasons
+
+This means the online version url in the header of the help document is either incorrect or missing.
+
+### Solution
+
+The url should exactly match the schema `https://docs.microsoft.com/en-us/powershell/module/az.{modulename}/{cmdlet-name}`, all in lower case.
+
+### Example
+> https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## Code analysis failures
 
 ### Message
 
+<<<<<<< HEAD
 > c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\artifacts\\**StaticAnalysis.exe** -p c:\workspace\powershell\artifacts\Debug -r c:\workspace\powershell\artifacts -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md](documentation/Debugging-StaticAnalysis-Errors.md)
+=======
+> c:\workspace\powershell\build.proj(597,5): error MSB3073: The command "c:\workspace\powershell\artifacts\\**StaticAnalysis.exe** -p c:\workspace\powershell\artifacts\Debug -r c:\workspace\powershell\artifacts -m Az.Network" exited with code 255.c:\workspace\powershell\build.proj(609,5): error : StaticAnalysis has failed. Please follow the instructions on this doc: [https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md](Debugging-StaticAnalysis-Errors.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Reasons
 
@@ -35,7 +64,11 @@ Something that is considered as unacceptable was added with your PR e.g. breakin
 
 ### Solution
 
+<<<<<<< HEAD
 According to the [link above](documentation/Debugging-StaticAnalysis-Errors.md) you would need to investigate .csv files in the build artifacts.
+=======
+According to the [link above](Debugging-StaticAnalysis-Errors.md) you would need to investigate .csv files in the build artifacts.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 There are several ways to act:
 
@@ -43,19 +76,31 @@ There are several ways to act:
 
 2. In case changes could be improved without affecting functionality (e.g. signature is incorrect, but you could adjust it to suit requirements), try to fix.
 
+<<<<<<< HEAD
 3. In case messages in csv files describe expected changes, add them to [exclusions](documentation/Debugging-StaticAnalysis-Errors.md#breaking-changes).
+=======
+3. In case messages in csv files describe expected changes, add them to [exclusions](Debugging-StaticAnalysis-Errors.md#breaking-changes).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example:
 
 One of the often reasons are BreakingChangesIssues.
 
+<<<<<<< HEAD
 If collected Breaking Changes issues are expected (e.g. cmdlet was really changed), you would need to update Exclusions file [like this](documentation/Debugging-StaticAnalysis-Errors.md#breaking-changes) to bypass CI build.
+=======
+If collected Breaking Changes issues are expected (e.g. cmdlet was really changed), you would need to update Exclusions file [like this](Debugging-StaticAnalysis-Errors.md#breaking-changes) to bypass CI build.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## Test failures
 
 ### Message
 
+<<<<<<< HEAD
 > **Test failures occured, check the files in artifacts/Test**
+=======
+> **Test failures occurred, check the files in artifacts/Test**
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Reasons
 
@@ -66,3 +111,22 @@ One or more tests failed
 See test reports in artifacts/Test and fix failures related to your changes.
 
 In case you see more failures, please contact test owning team. Common way is to find a person who edited the cmdlet or test last. Networking tests are also marked with header like this to simplify team search: `[Trait(Category.Owner, Category.TeamAlias)]`
+<<<<<<< HEAD
+=======
+
+## Test failures (.psd1 of other modules not found)
+
+### Message
+
+> Exception:System.IO.FileNotFoundException: The specified module 'D:\a\1\s\artifacts\Debug\Az.Network\Az.Network.psd1' was not loaded because no valid module file was found in any module directory.
+
+### Reasons
+
+This is because your test cases are using cmdlets from other module, but it was not built by CI.
+
+### Solution
+
+Add the missing module's csproj to your module's .sln file. For example this is how `Compute.sln` references `Network.csproj`:
+https://github.com/Azure/azure-powershell/blob/58ded2ba3e0a5f7da0d1ffed9e0adb986986ab6f/src/Compute/Compute.sln#L11
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

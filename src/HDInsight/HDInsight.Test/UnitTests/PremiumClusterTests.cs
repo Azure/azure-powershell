@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private NewAzureHDInsightClusterCommand cmdlet;
         private const string StorageName = "PlaceStorageName.blob.core.windows.net";
+<<<<<<< HEAD
+=======
+        private const string StorageAccountResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fakerg/providers/Microsoft.Storage/storageAccounts/PlaceStorageName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private const string StorageKey = "PlaceStorageKey";
         private const int ClusterSize = 4;
 
@@ -54,6 +58,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterSizeInNodes = ClusterSize;
             cmdlet.Location = Location;
             cmdlet.HttpCredential = _httpCred;
+<<<<<<< HEAD
             cmdlet.DefaultStorageAccountName = StorageName;
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
@@ -72,13 +77,35 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterDefinition = new ClusterDefinition
                     {
                         ClusterType = ClusterType
+=======
+            cmdlet.StorageAccountResourceId = StorageAccountResourceId;
+            cmdlet.StorageAccountKey = StorageKey;
+            cmdlet.ClusterType = ClusterType;
+            cmdlet.ClusterTier = Tier.Premium;
+            cmdlet.SshCredential = _httpCred;
+            var cluster = new Cluster(id: "id", name: ClusterName)
+            {
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.6",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        Kind = ClusterType
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
+<<<<<<< HEAD
                     OperatingSystemType = OSType.Linux,
                     ClusterTier = Tier.Premium
+=======
+                    OsType = OSType.Linux,
+                    Tier = Tier.Premium
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -104,6 +131,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
+<<<<<<< HEAD
             var getresponse = new ClusterGetResponse { Cluster = cluster };
 
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
@@ -121,6 +149,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.OSType == OSType.Linux &&
                     parameters.ClusterTier == Tier.Premium)))
             .Returns(getresponse)
+=======
+            hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
+                             parameters => parameters.Location == Location &&
+                             parameters.Properties.ClusterDefinition.Kind == ClusterType &&
+                             parameters.Properties.OsType == OSType.Linux
+                             )))
+            .Returns(cluster)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             .Verifiable();
 
             cmdlet.ExecuteCmdlet();
@@ -130,7 +166,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
+<<<<<<< HEAD
                     clusterout.ClusterVersion == "3.2" &&
+=======
+                    clusterout.ClusterVersion == "3.6" &&
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&

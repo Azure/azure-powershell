@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
         [Ps1Xml(Target = ViewControl.List)]
         public string InformationType { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Ps1Xml(Target = ViewControl.List)]
+        public SensitivityRank? Rank { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Hidden]
         public string SensitivityLabelId { get; set; }
 
@@ -46,8 +52,12 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 
         public override string ToString()
         {
+<<<<<<< HEAD
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("{");
+=======
+            List<string> valuesPerPropertyName = new List<string>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             foreach (var property in this.GetType().GetProperties())
             {
                 string name = property.Name;
@@ -59,10 +69,20 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 object value = property.GetValue(this);
                 if (value != null)
                 {
+<<<<<<< HEAD
                     builder.AppendLine($"\t{name}: {value},");
                 }
             }
 
+=======
+                    valuesPerPropertyName.Add($"\t{name}: {value}");
+                }
+            }
+
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("{");
+            builder.AppendLine(string.Join($",{Environment.NewLine}", valuesPerPropertyName));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             builder.Append("}");
 
             return builder.ToString();
@@ -96,6 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 }
                 else
                 {
+<<<<<<< HEAD
                     throw new Exception($"Information Type '{newInformationType}' is not part of Information Protection Policy. Please add '{newInformationType}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.SensitivityLabels.Keys)}");
                 }
             }
@@ -114,13 +135,56 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
                 else
                 {
                     throw new Exception($"Sensitivity Label '{newSensitivityLabel}' is not part of Information Protection Policy. Please add '{newSensitivityLabel}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.InformationTypes.Keys)}");
+=======
+                    throw new Exception($"Information Type '{newInformationType}' is not part of Information Protection Policy. Please add '{newInformationType}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.InformationTypes.Keys)}");
+                }
+            }
+        }
+        private void ApplySensitivityLabel(string newSensitivityLabel, InformationProtectionPolicy informationProtectionPolicy)
+        {
+            if (!string.IsNullOrEmpty(newSensitivityLabel) &&
+                !string.Equals(SensitivityLabel, newSensitivityLabel))
+            {
+                if (informationProtectionPolicy.SensitivityLabels.TryGetValue(newSensitivityLabel, out Tuple<Guid, SensitivityRank> idRankTuple))
+                {
+                    SensitivityLabel = newSensitivityLabel;
+                    SensitivityLabelId = idRankTuple.Item1.ToString();
+                    Rank = idRankTuple.Item2;
+                }
+                else
+                {
+                    throw new Exception($"Sensitivity Label '{newSensitivityLabel}' is not part of Information Protection Policy. Please add '{newSensitivityLabel}' to the Information Protection Policy, or use one of the following: {ToString(informationProtectionPolicy.SensitivityLabels.Keys)}");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
         }
 
+<<<<<<< HEAD
+=======
+        private void ApplySensitivityRank(SensitivityRank? newSensitivityRank)
+        {
+            if (newSensitivityRank != null && newSensitivityRank != Rank)
+            {
+                Rank = newSensitivityRank;
+            }
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static string ToString(ICollection<string> collection)
         {
             return string.Join(", ", collection.Select(s => $"'{s}'"));
         }
     }
+<<<<<<< HEAD
+=======
+
+    public enum SensitivityRank
+    {
+        None,
+        Low,
+        Medium,
+        High,
+        Critical
+    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

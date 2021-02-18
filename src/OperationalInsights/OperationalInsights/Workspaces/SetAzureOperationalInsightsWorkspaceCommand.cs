@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
+<<<<<<< HEAD
         [ValidateSet("free", "standard", "premium", "pernode", "standalone", IgnoreCase = true)]
+=======
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", IgnoreCase = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -53,6 +57,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForIngestion;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
+        public string PublicNetworkAccessForQuery;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByObject)
@@ -67,6 +84,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 WorkspaceName = Name,
                 Sku = Sku,
                 Tags = Tag,
+<<<<<<< HEAD
+=======
+                PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
+                PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 RetentionInDays = RetentionInDays
             };
 

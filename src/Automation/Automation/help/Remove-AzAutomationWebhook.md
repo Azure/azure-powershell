@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 71043093-DEE5-4395-B67A-2F104CF67893
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationwebhook
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationwebhook
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

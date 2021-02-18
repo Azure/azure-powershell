@@ -60,7 +60,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     SecurityEnabled = obj.SecurityEnabled,
+<<<<<<< HEAD
                     MailNickname = !string.IsNullOrEmpty(obj.Mail) ? obj.Mail : obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
+=======
+                    MailNickname = !string.IsNullOrEmpty(obj.Mail) ? obj.Mail :
+                        !string.IsNullOrEmpty(obj.MailNickname) ? obj.MailNickname :
+                        obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     Description = obj.AdditionalProperties.ContainsKey("description") ? obj.AdditionalProperties["description"]?.ToString() : null
                 };
             }
@@ -100,7 +106,18 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = user.DisplayName,
                 Id = user.ObjectId,
+<<<<<<< HEAD
                 UserPrincipalName = user.UserPrincipalName
+=======
+                UserPrincipalName = user.UserPrincipalName,
+                Type = user.UserType,
+                UsageLocation = user.UsageLocation,
+                GivenName = user.GivenName,
+                Surname = user.Surname,
+                AccountEnabled = user.AccountEnabled,
+                MailNickname = user.MailNickname,
+                Mail = user.Mail
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 

@@ -272,6 +272,7 @@ namespace Microsoft.Azure.Commands.Relay
         #endregion
 
         #region HybridConnections
+<<<<<<< HEAD
         public PSHybridConnectionAttibutes GetHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
         {
             var response = Client.HybridConnections.Get(resourceGroupName, namespaceName, hybridConnectionsName);
@@ -286,6 +287,22 @@ namespace Microsoft.Azure.Commands.Relay
         }
 
         public PSHybridConnectionAttibutes CreateOrUpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttibutes parameter)
+=======
+        public PSHybridConnectionAttributes GetHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
+        {
+            var response = Client.HybridConnections.Get(resourceGroupName, namespaceName, hybridConnectionsName);
+            return new PSHybridConnectionAttributes(response);
+        }
+
+        public IEnumerable<PSHybridConnectionAttributes> ListAllHybridConnections(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.HybridConnections.ListByNamespace(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new PSHybridConnectionAttributes(resource));
+            return resourceList;
+        }
+
+        public PSHybridConnectionAttributes CreateOrUpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttributes parameter)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             var Parameter1 = new HybridConnection();
             
@@ -298,10 +315,17 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.HybridConnections.CreateOrUpdate(resourceGroupName, namespaceName, hybridConnectionsName, Parameter1);
+<<<<<<< HEAD
             return new PSHybridConnectionAttibutes(response);
         }
 
         public PSHybridConnectionAttibutes UpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttibutes parameter)
+=======
+            return new PSHybridConnectionAttributes(response);
+        }
+
+        public PSHybridConnectionAttributes UpdateHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName, PSHybridConnectionAttributes parameter)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             //var Parameter1 = Client.HybridConnections.Get(resourceGroupName, namespaceName, hybridConnectionsName);
             var Parameter1 = new HybridConnection();
@@ -309,7 +333,11 @@ namespace Microsoft.Azure.Commands.Relay
                 Parameter1.UserMetadata = parameter.UserMetadata;
 
             var response = Client.HybridConnections.CreateOrUpdate(resourceGroupName, namespaceName, hybridConnectionsName, Parameter1);
+<<<<<<< HEAD
             return new PSHybridConnectionAttibutes(response);
+=======
+            return new PSHybridConnectionAttributes(response);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public void DeleteHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)

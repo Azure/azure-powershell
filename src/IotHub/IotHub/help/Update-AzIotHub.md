@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/update-aziothub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.iothub/update-aziothub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -24,6 +28,7 @@ You can update the tags properties of an IotHub.
 
 ### Example 1
 ```
+<<<<<<< HEAD
 PS C:\> Update-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
 
 Id             : /subscriptions/91d1xxxx-xxxx-xxxx-xxxx-xxxxxxxxddc0/resourceGroups/myresourcegroup/providers/Microsoft.De
@@ -32,11 +37,27 @@ Name           : myiotdps
 Type           : Microsoft.Devices/IotHubs
 Location       : East US
 Tags           : {[k1, v1]}
+=======
+PS C:\> $updatedTag = @{}
+PS C:\> $updatedTag.add("key0","value0")
+PS C:\> Update-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -Tag $updatedTag
+
+Id             : /subscriptions/91d1xxxx-xxxx-xxxx-xxxx-xxxxxxxxddc0/resourceGroups/myresourcegroup/providers/Microsoft.De
+                 vices/IotHubs/myiothub
+Name           : myiothub
+Type           : Microsoft.Devices/IotHubs
+Location       : East US
+Tags           : {[key0, value0]}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Properties     : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties
 Sku            : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo
 ```
 
+<<<<<<< HEAD
 Add "@tags" to the Tag of an Azure IoT Hub "myiotdps".
+=======
+Update tags of an IoT Hub.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

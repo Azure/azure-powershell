@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public Dictionary<string, DeploymentVariable> Parameters { get; set; }
 
+<<<<<<< HEAD
+=======
+        public IDictionary<string, string> Tags { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string ParametersString
         {
             get { return ResourcesExtensions.ConstructDeploymentVariableTable(Parameters); }

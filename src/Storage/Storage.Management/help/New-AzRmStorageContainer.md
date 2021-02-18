@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azrmstoragecontainer
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -19,12 +26,32 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
  [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### AccountNameEncryptionScope
+```
+New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
+ -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
+ [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
  [-Metadata <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### AccountObjectEncryptionScope
+```
+New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
+ -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **New-AzRmStorageContainer** cmdlet creates a Storage blob container
 
@@ -45,8 +72,50 @@ PS C:\>New-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 
 This command creates a Storage blob container with Storage account object and container name, with public access as Blob.
 
+<<<<<<< HEAD
 ## PARAMETERS
 
+=======
+### Example 3: Create a storage container with EncryptionScope setting
+```
+PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
+
+PS C:\> $c
+
+   ResourceGroupName: myResourceGroup, StorageAccountName: myStorageAccount
+
+Name          PublicAccess LastModified HasLegalHold HasImmutabilityPolicy
+----          ------------ ------------ ------------ ---------------------
+testcontainer                           False        False                
+
+PS C:\> $c.DefaultEncryptionScope
+testscope
+
+PS C:\> $c.DenyEncryptionScopeOverride
+True
+```
+
+This command creates a storage container with a defalt encryptionScope, and blocks override of encryption scope from the container default.
+Then show the related container properties.
+
+## PARAMETERS
+
+### -DefaultEncryptionScope
+Default the container to use specified encryption scope for all writes.
+
+```yaml
+Type: System.String
+Parameter Sets: AccountNameEncryptionScope, AccountObjectEncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -92,6 +161,24 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -PreventEncryptionScopeOverride
+Block override of encryption scope from the container default.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AccountNameEncryptionScope, AccountObjectEncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -PublicAccess
 Container PublicAccess
 
@@ -113,7 +200,11 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: AccountName
+=======
+Parameter Sets: AccountName, AccountNameEncryptionScope
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -128,7 +219,11 @@ Storage account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+<<<<<<< HEAD
 Parameter Sets: AccountObject
+=======
+Parameter Sets: AccountObject, AccountObjectEncryptionScope
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: True
@@ -143,7 +238,11 @@ Storage Account Name.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: AccountName
+=======
+Parameter Sets: AccountName, AccountNameEncryptionScope
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases: AccountName
 
 Required: True

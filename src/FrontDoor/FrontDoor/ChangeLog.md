@@ -19,6 +19,44 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.7.0
+* Added FrontDoorId to properties
+* Added JSON Exclusions and RequestBodyCheck support to managed rules
+
+## Version 1.6.1
+* Fixed an issue where an exception is being thrown when Enum.Parse tries to coerce a null value to an Enabled or Disabled enum values [#12344]
+
+## Version 1.6.0
+* Updated module to use API 2020-05-01
+* Added Private link support for Storage, Keyvault and Web App Service resources
+
+## Version 1.5.0
+* Added new cmdlets for creation, update, retreival, and deletion of Front Door Rules Engine object
+* Added helper cmdlets for construction of Front Door Rules Engine object
+* Added Rules Engine reference to Front Door Routing Rule object.
+* Added Private Link parameters to Front Door Backend object
+
+## Version 1.4.0
+* Added cmdlet to get managed rule definitions that can be used in WAF
+
+## Version 1.3.0
+* Update references in .psd1 to use relative path
+* Added WAF managed rules exclusion support
+* Add SocketAddr to auto-complete
+
+## Version 1.2.0
+* Add MinimumTlsVersion parameter to Enable-AzFrontDoorCustomDomainHttps and New-AzFrontDoorFrontendEndpointObject
+* Add HealthProbeMethod and EnabledState parameters to New-AzFrontDoorHealthProbeSettingObject
+* Add new cmdlet to create BackendPoolsSettings objec to pass into creation/update of Front Door
+    - New-AzFrontDoorBackendPoolsSettingObject
+
+## Version 1.1.2
+* Fixed miscellaneous typos across module
+* Added EnabledState parameter to New-AzFrontDoorWafCustomRuleObject
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.1.0
 * New-AzFrontDoorWafMatchConditionObject
     - Add transforms support and new operator auto-complete value (RegEx)

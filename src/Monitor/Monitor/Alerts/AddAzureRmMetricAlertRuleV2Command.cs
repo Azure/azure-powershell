@@ -18,6 +18,10 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -25,7 +29,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add a GenV2 Metric Alert rule
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = "CreateAlertByResourceId", SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+=======
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = CreateAlertByResourceId, SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class AddAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string CreateAlertByResourceId = "CreateAlertByResourceId";
@@ -78,7 +86,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
+<<<<<<< HEAD
         [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]
+=======
+        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string TargetResourceType { get; set; }
 
@@ -95,6 +107,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = true, ValueFromPipeline = true,ValueFromPipelineByPropertyName = true, HelpMessage = "The condition for rule")]
         [ValidateNotNullOrEmpty]
         [Alias("Criteria")]
+<<<<<<< HEAD
         public List<PSMetricCriteria> Condition { get; set; }
 
         /// <summary>
@@ -106,6 +119,26 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
 
         /// <summary>
+=======
+        public List<IPSMultiMetricCriteria> Condition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ActionGroup parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [Alias("Actions")]
+        [AllowEmptyCollection]
+        public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ActionGroupId parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
+        [AllowEmptyCollection]
+        public string[] ActionGroupId { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Gets or sets the DisableRule flag.
         /// <para>Using DisableRule to make false the default, i.e. if the user does not include it in the call, the rule will be enabled.</para>
         /// </summary>
@@ -126,6 +159,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override void ProcessRecordInternal()
         {
+<<<<<<< HEAD
             if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
             {
                 var scopes = new List<string>();
@@ -143,6 +177,63 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 {
                     actions.Add(new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties));
                 }
+=======
+            var actions = new List<MetricAlertAction>();
+            if (this.ActionGroup != null && this.ActionGroup.Length > 0)
+            {
+                actions.AddRange(this.ActionGroup.Select(actionGroup => new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webHookProperties: actionGroup.WebhookProperties)));
+            }
+
+            if (this.ActionGroupId != null && this.ActionGroupId.Length > 0)
+            {
+                var newActionGroupIds = this.ActionGroupId.Where(id => ! actions.Exists(action => action.ActionGroupId == id));
+                actions.AddRange(newActionGroupIds.Select(actionGroupId => new MetricAlertAction(actionGroupId: actionGroupId)));
+            }
+
+            if (this.Condition.Any(c => c.CriterionType == CriterionType.DynamicThresholdCriterion))
+            {
+                this.TargetResourceScope = this.TargetResourceScope ?? new string[] { this.TargetResourceId };
+            }
+
+            IDictionary<string, string> tags = null;
+            if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
+            {
+                var scopes = new List<string> {this.TargetResourceId};
+
+                MetricAlertCriteria criteria;
+
+                if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+                {
+                    if (this.Condition.Count > 1)
+                    {
+                        throw new ArgumentException("Only single Webtest location availability criterion is supported");
+                    }
+
+                    var psWebtestCriteria = this.Condition.First() as PSWebtestLocationAvailabilityCriteria ;
+
+                    criteria = new WebtestLocationAvailabilityCriteria(psWebtestCriteria.WebTestId, psWebtestCriteria.ComponentId, psWebtestCriteria.FailedLocationCount);
+                    scopes.Add(psWebtestCriteria.ComponentId);
+
+                    tags = new Dictionary<string, string>()
+                    {
+                        {$"hidden-link:{psWebtestCriteria.WebTestId}", "Resource" },
+                        {$"hidden-link:{psWebtestCriteria.ComponentId}", "Resource" }
+                    };
+                }
+                else
+                {
+                    var metricCriteria = new List<MetricCriteria>();
+                    foreach (var metricCondition in this.Condition)
+                    {
+                        var condition = metricCondition as PSMetricCriteria;
+                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
+                    }
+                    criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
+                        allOf: metricCriteria
+                    );
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var metricAlertResource = new MetricAlertResource(
                         description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),
                         severity: this.Severity,
@@ -152,10 +243,18 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                         evaluationFrequency: this.Frequency,
                         windowSize: this.WindowSize,
                         criteria: criteria,
+<<<<<<< HEAD
                         actions: actions
                     );
                 if (ShouldProcess(
                     target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
+=======
+                        actions: actions,
+                        tags: tags
+                    );
+                if (ShouldProcess(
+                    target: $"Create/update an alert rule: {this.Name} from resource group: {this.ResourceGroupName}",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     action: "Create/update an alert rule"))
                 {
                     var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
@@ -164,6 +263,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
             else// Multi Resource Metric Alert Rule
             {
+<<<<<<< HEAD
                 List<MultiMetricCriteria> multiMetricCriterias = new List<MultiMetricCriteria>();
                 foreach (var condition in this.Condition)
                 {
@@ -177,6 +277,26 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 {
                     actions.Add(new MetricAlertAction(actionGroupId: actionGroup.ActionGroupId, webhookProperties: actionGroup.WebhookProperties));
                 }
+=======
+                List<MultiMetricCriteria> multiMetricCriteria = new List<MultiMetricCriteria>();
+                foreach (var condition in this.Condition)
+                {
+                    if (condition is PSMetricCriteria)
+                    {
+                        var psStaticMetricCriteria = condition as PSMetricCriteria;
+                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions, skipMetricValidation: psStaticMetricCriteria.SkipMetricValidation));
+                    }
+                    else
+                    {
+                        var psDynamicMetricCriteria = condition as PSDynamicMetricCriteria;
+                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore, skipMetricValidation: psDynamicMetricCriteria.SkipMetricValidation));
+                    }
+                }
+
+                MetricAlertMultipleResourceMultipleMetricCriteria metricCriteria = new MetricAlertMultipleResourceMultipleMetricCriteria(
+                    allOf: multiMetricCriteria
+                );
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var metricAlertResource = new MetricAlertResource(
                     description: this.Description ?? Utilities.GetDefaultDescription("New multi resource Metric alert rule"),
                     severity: this.Severity,
@@ -197,7 +317,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
                     WriteObject(result);
                 }
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

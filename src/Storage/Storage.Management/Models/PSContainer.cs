@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+<<<<<<< HEAD
+=======
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         public PSContainer(BlobContainer container)
@@ -65,6 +70,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+<<<<<<< HEAD
+=======
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -106,6 +116,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "HasImmutabilityPolicy", Target = ViewControl.List, Position = 6)]
         public bool? HasImmutabilityPolicy { get; set; }
 
+<<<<<<< HEAD
+=======
+        public string DefaultEncryptionScope { get; set; }
+        
+        public bool? DenyEncryptionScopeOverride { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public static string ParseResourceGroupFromId(string idFromServer)
         {
@@ -216,29 +233,51 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSImmutabilityPolicy(StorageModels.ImmutabilityPolicy policy)
         {
+<<<<<<< HEAD
             this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
+=======
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.Name = policy.Name;
             this.Type = policy.Type;
             this.Id = policy.Id;
+<<<<<<< HEAD
         }
 
         public int ImmutabilityPeriodSinceCreationInDays { get; set; }
+=======
+            this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+        }
+
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string State { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Etag { get; set; }
+<<<<<<< HEAD
+=======
+        public bool? AllowProtectedAppendWrites { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public class PSImmutabilityPolicyProperties
     {
         public PSImmutabilityPolicyProperties(StorageModels.ImmutabilityPolicyProperties policy)
         {
+<<<<<<< HEAD
             this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays;
             this.State = policy.State;
             this.Etag = policy.Etag;
+=======
+            this.ImmutabilityPeriodSinceCreationInDays = policy.ImmutabilityPeriodSinceCreationInDays.Value;
+            this.State = policy.State;
+            this.Etag = policy.Etag;
+            this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             List<PSUpdateHistoryProperty> updateHistoryList = new List<PSUpdateHistoryProperty>();
             if (policy.UpdateHistory != null && policy.UpdateHistory.Count != 0)
@@ -251,10 +290,18 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.UpdateHistory = updateHistoryList.ToArray();
         }
 
+<<<<<<< HEAD
         public int ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
         public string Etag { get; set; }
         public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
+=======
+        public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
+        public string State { get; set; }
+        public string Etag { get; set; }
+        public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public enum PSPublicAccess

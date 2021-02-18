@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvirtualhub
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/update-azvirtualhub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -16,7 +20,11 @@ Updates a virtual hub.
 ```
 Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
+<<<<<<< HEAD
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+=======
+ [-Tag <Hashtable>] [-Sku <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
@@ -24,7 +32,11 @@ Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <
 ```
 Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
+<<<<<<< HEAD
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+=======
+ [-Tag <Hashtable>] [-Sku <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
@@ -32,7 +44,11 @@ Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
 ```
 Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
+<<<<<<< HEAD
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+=======
+ [-Tag <Hashtable>] [-Sku <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
@@ -57,6 +73,10 @@ AddressPrefix             : 10.0.2.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
 Location                  : West US
+<<<<<<< HEAD
+=======
+Sku                  : Standard
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -82,6 +102,10 @@ AddressPrefix             : 192.168.2.0/24
 RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 VirtualNetworkConnections : {}
 Location                  : West US
+<<<<<<< HEAD
+=======
+Sku                  : Standard
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -95,7 +119,11 @@ This example is similar to Example 1, but also attaches a route table to the vir
 The address space string for this virtual hub.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +138,11 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +157,11 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+=======
+Type: IAzureContextContainer
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -140,7 +176,11 @@ Accept wildcard characters: False
 The hub virtual network connections associated with this Virtual Hub.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection[]
+=======
+Type: PSHubVirtualNetworkConnection[]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +195,11 @@ Accept wildcard characters: False
 The Virtual hub object to be modified.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+=======
+Type: PSVirtualHub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVirtualHubObject
 Aliases: VirtualHub
 
@@ -170,7 +214,11 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVirtualHubName
 Aliases: ResourceName, VirtualHubName
 
@@ -185,7 +233,11 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -200,7 +252,11 @@ Accept wildcard characters: False
 The resource id of the Virtual hub to be modified.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId
 
@@ -215,7 +271,26 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+=======
+Type: PSVirtualHubRouteTable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sku
+The sku of the Virtual Hub.
+
+```yaml
+Type: String
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +305,11 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Collections.Hashtable
+=======
+Type: Hashtable
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +324,11 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: cf
 
@@ -261,7 +344,11 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.Management.Automation.SwitchParameter
+=======
+Type: SwitchParameter
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Parameter Sets: (All)
 Aliases: wi
 
@@ -273,7 +360,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Commands.Network
         public string ProcessorArchitecture { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
+=======
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
@@ -79,7 +83,11 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+<<<<<<< HEAD
             string shouldProcessMessage = string.Format("Execute AzureRmVpnClientConfiguration for ResourceGroupName {0} VirtualNetworkGateway {1}", Name, ResourceGroupName);
+=======
+            string shouldProcessMessage = string.Format("Execute AzureRmVpnClientConfiguration for ResourceGroupName {0} VirtualNetworkGateway {1}", ResourceGroupName, Name);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.New))
             {
                 PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();

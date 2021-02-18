@@ -1,0 +1,162 @@
+{
+  "Get-AzSapMonitorProviderInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "458b6371-183d-44e1-bded-5d21199c6054" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T051252Z:67320cd8-7d5b-4be6-8f33-688f36820ac0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "x-ms-correlation-request-id": [ "67320cd8-7d5b-4be6-8f33-688f36820ac0" ],
+        "x-ms-request-id": [ "de36656d-cdf8-4377-b2b3-5af542a3418b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:12:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1329" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n   {\n    \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4\",\n    \"location\": \"\",\n    \"name\": \"sapInstance-53qxg4\",\n    \"tags\": null,\n    \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n    \"properties\": {\n     \"type\": \"SapHana\",\n     \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\"}\",\n     \"metadata\": \"\",\n     \"provisioningState\": \"Succeeded\"\n    }\n   },\n   {\n    \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-5xmqvj\",\n    \"location\": \"\",\n    \"name\": \"sapInstance-5xmqvj\",\n    \"tags\": null,\n    \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n    \"properties\": {\n     \"type\": \"SapHana\",\n     \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\",\\\"hanaDbPasswordKeyVaultUrl\\\":\\\"https://kv-eirdm5-test.vault.azure.net/secrets/hanaPassword/e9cc7db9e41e47679a83c289dce0fde9\\\"}\",\n     \"metadata\": \"\",\n     \"provisioningState\": \"Succeeded\"\n    }\n   }\n  ]\n }"
+    }
+  },
+  "Get-AzSapMonitorProviderInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "352b026d-3677-49de-a35a-7ed0bdcc92a7" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T051252Z:47178c79-03b5-45d4-b0d5-66de48483591" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "x-ms-correlation-request-id": [ "47178c79-03b5-45d4-b0d5-66de48483591" ],
+        "x-ms-request-id": [ "9af02c0f-733a-4345-a140-3faeaee92a26" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:12:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "562" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4\",\n  \"location\": \"\",\n  \"name\": \"sapInstance-53qxg4\",\n  \"tags\": null,\n  \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n  \"properties\": {\n   \"type\": \"SapHana\",\n   \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\"}\",\n   \"metadata\": \"\",\n   \"provisioningState\": \"Succeeded\"\n  }\n }"
+    }
+  },
+  "Get-AzSapMonitorProviderInstance+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "23538741-02b6-47dd-b9aa-bffb5219104e" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T051253Z:382ff8fc-b1ba-4fbd-acda-c9705a4f6177" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-correlation-request-id": [ "382ff8fc-b1ba-4fbd-acda-c9705a4f6177" ],
+        "x-ms-request-id": [ "6d99bfd9-a122-43ce-a4a9-c5b0c02b1524" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:12:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "562" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4\",\n  \"location\": \"\",\n  \"name\": \"sapInstance-53qxg4\",\n  \"tags\": null,\n  \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n  \"properties\": {\n   \"type\": \"SapHana\",\n   \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\"}\",\n   \"metadata\": \"\",\n   \"provisioningState\": \"Succeeded\"\n  }\n }"
+    }
+  },
+  "Get-AzSapMonitorProviderInstance+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4?api-version=2020-02-07-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "e424966e-5197-44a7-8046-166fdb030200" ],
+        "CommandName": [ "Get-AzSapMonitorProviderInstance" ],
+        "FullCommandName": [ "Get-AzSapMonitorProviderInstance_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201112T051253Z:63d07de0-9f38-4e33-957e-3e72135db297" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
+        "x-ms-correlation-request-id": [ "63d07de0-9f38-4e33-957e-3e72135db297" ],
+        "x-ms-request-id": [ "71667857-925e-4994-b40a-30785efb9bec" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx/1.19.1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Nov 2020 05:12:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "562" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/donaliu-HN1/providers/Microsoft.HanaOnAzure/sapMonitors/sapMonitor-x68hik-test/providerInstances/sapInstance-53qxg4\",\n  \"location\": \"\",\n  \"name\": \"sapInstance-53qxg4\",\n  \"tags\": null,\n  \"type\": \"Microsoft.HanaOnAzure/sapMonitors/providerInstances\",\n  \"properties\": {\n   \"type\": \"SapHana\",\n   \"properties\": \"{\\\"hanaHostname\\\":\\\"10.1.2.6\\\",\\\"hanaDbName\\\":\\\"SYSTEMDB\\\",\\\"hanaDbSqlPort\\\":30113,\\\"hanaDbUsername\\\":\\\"SYSTEM\\\"}\",\n   \"metadata\": \"\",\n   \"provisioningState\": \"Succeeded\"\n  }\n }"
+    }
+  }
+}

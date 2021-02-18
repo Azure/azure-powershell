@@ -81,6 +81,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(ParameterSetName = RemoveBackupByInputObjectSet,
             Mandatory = true,
             Position = 0,
+<<<<<<< HEAD
+=======
+            ValueFromPipeline = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "The Database Long Term Retention Backup object to remove.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
@@ -108,6 +112,18 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string BackupName { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = RemoveBackupDefaultSet,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -134,6 +150,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName,
                 DatabaseName,
                 BackupName,
+<<<<<<< HEAD
+=======
+                ResourceGroupName,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 null,
                 null);
         }
@@ -157,7 +177,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
+<<<<<<< HEAD
             ModelAdapter.RemoveDatabaseLongTermRetentionBackup(Location, ServerName, DatabaseName, BackupName);
+=======
+            ModelAdapter.RemoveDatabaseLongTermRetentionBackup(Location, ServerName, DatabaseName, BackupName, ResourceGroupName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return entity;
         }
 
@@ -172,6 +196,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
+<<<<<<< HEAD
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
@@ -183,6 +208,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 Location = identifier.ResourceName;
+=======
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (!string.IsNullOrWhiteSpace(ResourceId))
+            {
+                ParseLongTermRentionBackupResourceId(ResourceId);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (ShouldProcess(this.BackupName))
@@ -195,5 +227,40 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Parse the longTermRetentionBackup resource Id
+        /// </summary>
+        /// <param name="resourceId"></param>
+        private void ParseLongTermRentionBackupResourceId(string resourceId)
+        {
+            int offset = 0;
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 14 || tokens.Length == 12)
+            {
+                if(tokens.Length==14)
+                {
+                    ResourceGroupName = tokens[3];
+                    offset = 2;
+                }
+                else
+                {
+                    ResourceGroupName = null;
+                }
+
+                Location = tokens[5 + offset];
+                ServerName = tokens[7 + offset];
+                DatabaseName = tokens[9 + offset];
+                BackupName = tokens[11 + offset];
+            }
+            else
+            {
+                throw new ArgumentException("Invalid parameter", "ResourceId");
+
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailability class.
         /// </summary>
+<<<<<<< HEAD
         /// <param name="name">The Name to check the namespce name availability
+=======
+        /// <param name="name">The Name to check the namespace name availability
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// and The namespace name can contain only letters, numbers, and
         /// hyphens. The namespace must start with a letter, and it must end
         /// with a letter or number.</param>
@@ -32,7 +36,11 @@ namespace Microsoft.Azure.Commands.Relay.Models
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the Name to check the namespce name availability and
+=======
+        /// Gets or sets the Name to check the namespace name availability and
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// The namespace name can contain only letters, numbers, and hyphens.
         /// The namespace must start with a letter, and it must end with a
         /// letter or number.

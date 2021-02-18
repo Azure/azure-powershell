@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 636FAD5B-8C39-4E5C-8978-6845C6B89BC0
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+Module Name: Az.KeyVault
+ms.assetid: 636FAD5B-8C39-4E5C-8978-6845C6B89BC0
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -131,17 +139,32 @@ Set-AzKeyVaultAccessPolicy [-ResourceId] <String> [-EnabledForDeployment] [-Enab
 ## DESCRIPTION
 The **Set-AzKeyVaultAccessPolicy** cmdlet grants or modifies existing permissions for a user, application, or security group to perform the specified operations with a key vault. It does not modify the permissions that other users, applications, or security groups have on the key vault.
 If you are setting permissions for a security group, this operation affects only users in that security group.
+<<<<<<< HEAD
 The following directories must all be the same Azure directory: 
 - The default directory of the Azure subscription in which the key vault resides.
 - The Azure directory that contains the user or application group that you are granting permissions to.
 Examples of scenarios when these conditions are not met and this cmdlet will not work are: 
 - Authorizing a user from a different organization to manage your key vault.
 Each organization has its own directory. 
+=======
+The following directories must all be the same Azure directory:
+- The default directory of the Azure subscription in which the key vault resides.
+- The Azure directory that contains the user or application group that you are granting permissions to.
+Examples of scenarios when these conditions are not met and this cmdlet will not work are:
+- Authorizing a user from a different organization to manage your key vault.
+Each organization has its own directory.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Your Azure account has multiple directories.
 If you register an application in a directory other than the default directory, you cannot authorize that application to use your key vault.
 The application must be in the default directory.
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
+<<<<<<< HEAD
+=======
+> [!NOTE]
+> When using a service principal to grant access policy permissions, you must use the `-BypassObjectIdValidation` parameter.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
@@ -227,16 +250,26 @@ Tags                             :
 
 The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault. The *PassThru* parameter results in the updated object being returned by the cmdlet.
 The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command.
+<<<<<<< HEAD
 The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. 
+=======
+The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
 ```powershell
 PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
+<<<<<<< HEAD
 This command grants permissions for an application for a key vault named Contoso03Vault. 
 The *ServicePrincipalName* parameter specifies the application. The application must be registered in your Azure Active Directory. The value of the *ServicePrincipalName* parameter must be either the service principal name of the application or the application ID GUID.
 This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
+=======
+This command grants permissions for an application for a key vault named Contoso03Vault.
+The *ServicePrincipalName* parameter specifies the application. The application must be registered in your Azure Active Directory. The value of the *ServicePrincipalName* parameter must be either the service principal name of the application or the application ID GUID.
+This example specifies the service principal name `http://payroll.contoso.com`, and the command grants the application permissions to read and write secrets.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3: Grant permissions for an application using its object ID
 ```powershell
@@ -253,7 +286,11 @@ PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalNam
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
+<<<<<<< HEAD
 ### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource provider
+=======
+### Example 5: Enable secrets to be retrieved from a key vault by the Microsoft.Compute resource provider
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
@@ -437,6 +474,10 @@ Accept wildcard characters: False
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+<<<<<<< HEAD
+=======
+- All
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Get
 - List
 - Delete
@@ -458,7 +499,11 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
+<<<<<<< HEAD
 Accepted values: get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
+=======
+Accepted values: all, get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -470,6 +515,10 @@ Accept wildcard characters: False
 ### -PermissionsToKeys
 Specifies an array of key operation permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+<<<<<<< HEAD
+=======
+- All
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Decrypt
 - Encrypt
 - UnwrapKey
@@ -491,7 +540,11 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
+<<<<<<< HEAD
 Accepted values: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
+=======
+Accepted values: all, decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -503,6 +556,10 @@ Accept wildcard characters: False
 ### -PermissionsToSecrets
 Specifies an array of secret operation permissions to grant to a user or service principal.
 The acceptable values for this parameter:
+<<<<<<< HEAD
+=======
+- All
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Get
 - List
 - Set
@@ -516,7 +573,11 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
+<<<<<<< HEAD
 Accepted values: get, list, set, delete, backup, restore, recover, purge
+=======
+Accepted values: all, get, list, set, delete, backup, restore, recover, purge
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -527,12 +588,35 @@ Accept wildcard characters: False
 
 ### -PermissionsToStorage
 Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
+<<<<<<< HEAD
+=======
+The acceptable values for this parameter:
+- all
+- get
+- list
+- delete
+- set
+- update
+- regeneratekey
+- getsas
+- listsas
+- deletesas
+- setsas
+- recover
+- backup
+- restore
+- purge
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
+<<<<<<< HEAD
 Accepted values: get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
+=======
+Accepted values: all, get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named
@@ -650,7 +734,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

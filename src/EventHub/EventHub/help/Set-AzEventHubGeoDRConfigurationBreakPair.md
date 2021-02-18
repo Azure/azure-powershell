@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationbreakpair
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationbreakpair
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,9 +39,15 @@ The **Set-AzEventHubGeoDRConfigurationBreakPair** cmdlet disables the Disaster R
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example
 ```
 PS C:\> Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+=======
+### Example 1
+```powershell
+PS C:\> Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRConfigName"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces

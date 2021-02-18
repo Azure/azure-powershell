@@ -159,6 +159,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (parameters.VirtualMachineConfiguration != null)
             {
+<<<<<<< HEAD
+=======
+                Utils.Utils.VirtualMachineConfigurationSyncCollections(parameters.VirtualMachineConfiguration);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
             }
 
@@ -167,6 +171,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
             }
 
+<<<<<<< HEAD
+=======
+            if (parameters.MountConfiguration != null)
+            {
+                pool.MountConfiguration = new List<MountConfiguration>();
+                foreach (PSMountConfiguration m in parameters.MountConfiguration)
+                {
+                    pool.MountConfiguration.Add(m.omObject);
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (parameters.UserAccounts != null)
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
@@ -316,6 +332,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Changes the operating system version of the specified pool.
         /// </summary>
         /// <param name="parameters">The parameters specifying the pool and target OS version.</param>
@@ -334,6 +351,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
         /// </summary>
         /// <param name="options">The options to use when aggregating usage for pools.</param>

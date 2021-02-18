@@ -19,11 +19,20 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
+<<<<<<< HEAD
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 {
+=======
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
+{
+    [CmdletOutputBreakingChange(typeof(PSSecurityAlert), ReplacementCmdletOutputTypeName = "PSSecurityAlertV3")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlert))]
     public class GetAlerts : SecurityCenterCmdletBase
     {

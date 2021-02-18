@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2AE5E9B8-7344-407B-9317-47709F10FCD8
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalancerruleconfig
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -291,7 +295,11 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
+<<<<<<< HEAD
 Specfies the protocol that is matched by a load balancer rule.
+=======
+Specifies the protocol that is matched by a load balancer rule.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The acceptable values for this parameter are: Tcp or Udp.
 
 ```yaml

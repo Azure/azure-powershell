@@ -5,7 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+<<<<<<< HEAD
 using VersionController.Models;
+=======
+using Tools.Common.Models;
+using VersionController.Models;
+using Tools.Common.Utilities;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace VersionController
 {
@@ -14,6 +20,10 @@ namespace VersionController
         private static VersionBumper _versionBumper;
         private static VersionValidator _versionValidator;
 
+<<<<<<< HEAD
+=======
+        private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static List<string> _projectDirectories, _outputDirectories;
         private static string _rootDirectory, _moduleNameFilter;
 
@@ -35,7 +45,11 @@ namespace VersionController
 
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
+<<<<<<< HEAD
             _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Debug\") }.Where((d) => Directory.Exists(d)).ToList();
+=======
+            _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
             if (args != null && args.Length > 0)
@@ -55,10 +69,51 @@ namespace VersionController
             }
 
             ConsolidateExceptionFiles(exceptionsDirectory);
+<<<<<<< HEAD
+=======
+            ValidateManifest();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             BumpVersions();
             ValidateVersionBump();
         }
 
+<<<<<<< HEAD
+=======
+        private static void ValidateManifest()
+        {
+            foreach (var directory in _projectDirectories)
+            {
+                var children = Directory.GetDirectories(directory);
+                foreach (var childDir in children)
+                {
+                    if(GetModuleReadMe(childDir))
+                    {
+                        ValidateManifestPerModule(childDir);
+                    }
+                }
+            }
+        }
+
+        private static void ValidateManifestPerModule(string directory)
+        {
+            var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories);
+            if(changeLogs.Length != 1)
+            {
+                Console.Error.WriteLine($"no ChangeLog.md under {directory}");
+            } else
+            {
+                //Check psd1 file
+                GetModuleManifestPath(Directory.GetParent(changeLogs.FirstOrDefault()).FullName);
+            }
+        }
+
+        // For long term, all modules should contain readme.md to describe module
+        // It returns true/false for short term.
+        private static bool GetModuleReadMe(string directory)
+        {
+            return File.Exists(Path.Combine(directory, "readme.md"));
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <summary>
         /// Bump the version of changed modules or a specified module.
         /// </summary>
@@ -68,13 +123,38 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
+<<<<<<< HEAD
                                             .Where(f => !f.Contains("Stack") && IsChangeLogUpdated(f))
+=======
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f) && IsChangeLogUpdated(f))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => m.Contains(_moduleNameFilter))
                                             .ToList();
                 changedModules.AddRange(changeLogs);
             }
 
+<<<<<<< HEAD
+=======
+            var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
+            var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
+            var miniVersionFile = Path.Combine(versionControllerDirectory, "MinimalVersion.csv");
+            if (File.Exists(miniVersionFile))
+            {
+                var lines = File.ReadAllLines(miniVersionFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                foreach (var line in lines)
+                {
+                    var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
+                                              .Select(c => c.EndsWith("\"") ? c.Substring(0, c.Length - 1) : c)
+                                              .Select(c => c.Trim()).ToArray();
+                    if (cols.Length >= 2)
+                    {
+                        _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
+                    }
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             foreach (var projectModuleManifestPath in changedModules)
             {
                 var moduleFileName = Path.GetFileName(projectModuleManifestPath);
@@ -97,6 +177,14 @@ namespace VersionController
 
                 _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath));
 
+<<<<<<< HEAD
+=======
+                if(_minimalVersion.ContainsKey(moduleName))
+                {
+                    _versionBumper.MinimalVersion = _minimalVersion[moduleName];
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 _versionBumper.BumpAllVersions();
             }
         }
@@ -110,7 +198,11 @@ namespace VersionController
             foreach (var directory in _projectDirectories)
             {
                 var changeLogs = Directory.GetFiles(directory, "ChangeLog.md", SearchOption.AllDirectories)
+<<<<<<< HEAD
                                             .Where(f => !f.Contains("Stack"))
+=======
+                                            .Where(f => !ModuleFilter.IsAzureStackModule(f))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                             .Select(f => GetModuleManifestPath(Directory.GetParent(f).FullName))
                                             .Where(m => !string.IsNullOrEmpty(m) && m.Contains(_moduleNameFilter))
                                             .ToList();

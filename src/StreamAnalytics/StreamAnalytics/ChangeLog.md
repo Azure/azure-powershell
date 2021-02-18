@@ -19,5 +19,13 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
 ## Version 1.0.0
 * General availability of `Az.StreamAnalytics` module
+=======
+## Version 1.0.1
+* Update references in .psd1 to use relative path
+
+## Version 1.0.0
+* General availability of `Az.StreamAnalytics` module
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

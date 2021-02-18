@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageaccountnetworkruleset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageaccountnetworkruleset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -94,7 +98,11 @@ The allowed Options:
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
 Aliases:
+<<<<<<< HEAD
 Accepted values: Deny, Allow
+=======
+Accepted values: Allow, Deny
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: False
 Position: Named

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsoftwareupdaterun
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationsoftwareupdaterun
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -42,7 +46,11 @@ Get-AzAutomationSoftwareUpdateRun [-SoftwareUpdateConfiguration <SoftwareUpdateC
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 The Get-AzAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operatins system, or runs started after specific time by passing the appropriate parameter.
+=======
+The Get-AzAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operating system, or runs started after specific time by passing the appropriate parameter.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 

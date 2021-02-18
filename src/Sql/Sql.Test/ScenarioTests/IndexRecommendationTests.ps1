@@ -19,17 +19,29 @@
 function Test-GetIndexRecommendations
 {
     # Get all recommended indexes for server
+<<<<<<< HEAD
     $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus
+=======
+    $response = Get-AzSqlDatabaseIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 
     # Get all recommended indexes for database
+<<<<<<< HEAD
     $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus
+=======
+    $response = Get-AzSqlDatabaseIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 
     # Get recommended indexes by name
+<<<<<<< HEAD
     $response = Get-AzSqlDatabaseIndexRecommendations -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
+=======
+    $response = Get-AzSqlDatabaseIndexRecommendation -ResourceGroup Group-6 -ServerName witest-eus -DatabaseName witestdb-eus -IndexRecommendationName nci_wi_Clusters_034590D0-0378-4AB9-96D5-C144B14F6A9B
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     ValidateResponse($response)
     Assert-AreEqual "Active" $response[0].State
 }

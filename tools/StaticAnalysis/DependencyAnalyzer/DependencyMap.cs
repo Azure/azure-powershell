@@ -77,6 +77,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public IReportRecord Parse(string line)
         {
+<<<<<<< HEAD
             var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
             if (!match.Success || match.Groups.Count < 7)
@@ -90,6 +91,20 @@ namespace StaticAnalysis.DependencyAnalyzer
             ProblemId = int.Parse(match.Groups[4].Value);
             Description = match.Groups[5].Value;
             Remediation = match.Groups[6].Value;
+=======
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var match = Regex.Match(line, matcher);
+            if (!match.Success || match.Groups.Count < 6)
+            {
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as DependencyMap record", line));
+            }
+
+            AssemblyName = match.Groups[1].Value;
+            AssemblyVersion = match.Groups[2].Value;
+            ReferencingAssembly = match.Groups[3].Value;
+            ReferencingAssemblyVersion = match.Groups[4].Value;
+            Directory = match.Groups[5].Value;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             return this;
         }
     }

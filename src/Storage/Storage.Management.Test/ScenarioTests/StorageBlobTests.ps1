@@ -12,6 +12,54 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+
+<#
+.SYNOPSIS
+Test StorageAccount blob IsVersioningEnabled
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobIsVersioningEnabled
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+		
+		# Enable Blob  versioning
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -IsVersioningEnabled $true
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.IsVersioningEnabled 
+		
+		# Disable Blob  versioning
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -IsVersioningEnabled $false
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $false $property.IsVersioningEnabled 
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 <#
 .SYNOPSIS
 Test StorageAccount
@@ -73,7 +121,13 @@ function Test-StorageBlobContainer
 		Assert-AreEqual $publicAccess $container.PublicAccess
 		Assert-AreEqual $metadata.Count $container.Metadata.Count
 
+<<<<<<< HEAD
 		$containers = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
+=======
+		$job = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -AsJob
+		$job | Wait-Job
+		$containers = $job.Output
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		Assert-AreEqual 2 $containers.Count
 		Assert-AreEqual $containerName  $containers[1].Name
 		Assert-AreEqual $containerName2  $containers[0].Name
@@ -96,6 +150,81 @@ function Test-StorageBlobContainer
     }
 }
 
+<<<<<<< HEAD
+=======
+<#
+.SYNOPSIS
+Test StorageAccount container with Encryption Scope
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobContainerEncryptionScope
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+		$containerName = "container"+ $rgname
+		$containerName2 = "container2"+ $rgname
+		$scopeName = "testscope"
+		$scopeName2 = "testscope2"
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# create Scope
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption
+		$scope = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName
+		Assert-AreEqual $rgname $scope.ResourceGroupName
+		Assert-AreEqual $stoname $scope.StorageAccountName
+		Assert-AreEqual $scopeName $scope.Name
+		Assert-AreEqual "Microsoft.Storage" $scope.Source
+		Assert-AreEqual "Enabled" $scope.State
+		
+		# update Scope
+		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Disabled 
+		Assert-AreEqual "Disabled" $scope.State
+		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Enabled
+		Assert-AreEqual "Enabled" $scope.State
+		
+		#List Scope
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName2 -StorageEncryption
+		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 2 $scopes.Count
+
+		#create container
+		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -DefaultEncryptionScope $scopename -PreventEncryptionScopeOverride $true 
+		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
+		Assert-AreEqual $rgname $container.ResourceGroupName
+		Assert-AreEqual $stoname $container.StorageAccountName
+		Assert-AreEqual $containerName $container.Name
+		Assert-AreEqual $scopename $container.DefaultEncryptionScope
+		Assert-AreEqual $true $container.DenyEncryptionScopeOverride
+		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2 -DefaultEncryptionScope $scopename2 -PreventEncryptionScopeOverride $false 
+		$container2 = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName2
+		Assert-AreEqual $rgname $container2.ResourceGroupName
+		Assert-AreEqual $stoname $container2.StorageAccountName
+		Assert-AreEqual $containerName2 $container2.Name
+		Assert-AreEqual $scopename2 $container2.DefaultEncryptionScope
+		Assert-AreEqual false $container2.DenyEncryptionScopeOverride
+		
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 function Test-StorageBlobContainerLegalHold
 {
@@ -214,11 +343,19 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual "" $policy.Etag
 
 		$immutabilityPeriod =3
+<<<<<<< HEAD
         Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName -ImmutabilityPeriod $immutabilityPeriod
+=======
+        Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName -ImmutabilityPeriod $immutabilityPeriod -AllowProtectedAppendWrite $true
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $true $policy.AllowProtectedAppendWrites
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
@@ -228,13 +365,24 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.UpdateHistory[0].ImmutabilityPeriodSinceCreationInDays
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
+<<<<<<< HEAD
 		
 		$immutabilityPeriod =2
         Set-AzRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod		
+=======
+		Assert-AreEqual $true $container.ImmutabilityPolicy.AllowProtectedAppendWrites
+		
+		$immutabilityPeriod =2
+        Set-AzRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod -AllowProtectedAppendWrite $false
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $false $policy.AllowProtectedAppendWrites
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
@@ -244,6 +392,10 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.UpdateHistory[0].ImmutabilityPeriodSinceCreationInDays
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $false $container.ImmutabilityPolicy.AllowProtectedAppendWrites
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         Remove-AzRmStorageContainerImmutabilityPolicy -inputObject $policy 
 		$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
@@ -350,13 +502,22 @@ function Test-StorageBlobServiceProperties
 
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+<<<<<<< HEAD
 
 		# Update and Get Blob Service Properties
+=======
+		
+		# Update and Get Blob Service Properties: DefaultServiceVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -DefaultServiceVersion 2018-03-28 
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		# Enable and Disable Blob Delete Retention Policy
 		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
 		Assert-AreEqual $true $policy.Enabled
@@ -383,4 +544,172 @@ function Test-StorageBlobServiceProperties
     }
 }
 
+<<<<<<< HEAD
+=======
+<#
+.SYNOPSIS
+Test StorageAccount Blob Restore
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobRestore
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+        # Enable Blob Delete Retension Policy, Enable Changefeed, then enabled blob restore policy, then get blob service proeprties and check the setting
+        Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RetentionDays 5
+        Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true -IsVersioningEnabled $true
+        # If record, need sleep before enable the blob restore policy, or will get server error
+        #sleep 100 
+        Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RestoreDays 4
+        $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+        #Assert-AreEqual $true $property.ChangeFeed.Enabled
+        Assert-AreEqual $true $property.DeleteRetentionPolicy.Enabled
+        Assert-AreEqual 5 $property.DeleteRetentionPolicy.Days
+        Assert-AreEqual $true $property.RestorePolicy.Enabled
+        Assert-AreEqual 4 $property.RestorePolicy.Days
+
+        # restore blobs by -asjob
+        $range1 = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
+        $range2 = New-AzStorageBlobRangeToRestore -StartRange container3/blob3 -EndRange ""
+        sleep 2
+        $job = Restore-AzStorageBlobRange -ResourceGroupName $rgname -StorageAccountName $stoname -TimeToRestore (Get-Date).AddSeconds(-1) -BlobRestoreRange $range1,$range2 -WaitForComplete -asjob
+
+        # Get  Storage Account with Blob Restore Status
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
+
+        # wait for restore job finish, and check Blob Restore Status in Storage Account	
+        $job | Wait-Job
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
+        Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccount Object Replication
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobORS
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname1 = 'sto' + $rgname + 'src';
+        $stoname2 = 'sto' + $rgname + 'dest';
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname1 -Location $loc -Type $stotype -Kind $kind 
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -Type $stotype -Kind $kind 
+		
+		# Enable Blob Enable Changefeed and versioning
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname1 -EnableChangeFeed $true -IsVersioningEnabled $true
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -EnableChangeFeed $true -IsVersioningEnabled $true
+		$property1 = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname1
+		Assert-AreEqual $true $property1.ChangeFeed.Enabled
+		Assert-AreEqual $true $property1.IsVersioningEnabled 
+		$property2 = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
+		Assert-AreEqual $true $property2.ChangeFeed.Enabled
+		Assert-AreEqual $true $property2.IsVersioningEnabled 
+
+		# create containers		
+		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname1  | New-AzRmStorageContainer -name src
+		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 | New-AzRmStorageContainer -name dest
+		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname1  | New-AzRmStorageContainer -name src1
+		Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 | New-AzRmStorageContainer -name dest1
+
+		# create rules
+		$minCreationTime = "2019-01-01T16:00:00Z"
+		$rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
+		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
+
+		# set policy to dest account
+		$destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $stoname1  -Rule $rule1,$rule2
+		$policyID = $destPolicy.PolicyId
+		Assert-AreEqual $stoname1 $destPolicy.SourceAccount
+		Assert-AreEqual $stoname2 $destPolicy.DestinationAccount
+		Assert-AreEqual 2 $destPolicy.Rules.Count
+		Assert-AreEqual src1 $destPolicy.Rules[0].SourceContainer
+		Assert-AreEqual dest1 $destPolicy.Rules[0].DestinationContainer
+		Assert-AreEqual $null $destPolicy.Rules[0].Filters
+		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
+		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
+		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
+		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
+		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
+		Assert-AreEqual $policyID $destPolicy.PolicyId
+		Assert-AreEqual $stoname1 $destPolicy.SourceAccount
+		Assert-AreEqual $stoname2 $destPolicy.DestinationAccount
+		Assert-AreEqual 2 $destPolicy.Rules.Count
+		Assert-AreEqual src1 $destPolicy.Rules[0].SourceContainer
+		Assert-AreEqual dest1 $destPolicy.Rules[0].DestinationContainer
+		Assert-AreEqual $null $destPolicy.Rules[0].Filters
+		Assert-AreEqual src $destPolicy.Rules[1].SourceContainer
+		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
+		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
+		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
+
+		#Set policy to source account
+		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -InputObject $destPolicy
+		$srcPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1
+		Assert-AreEqual $policyID $srcPolicy.PolicyId
+		Assert-AreEqual $stoname1 $srcPolicy.SourceAccount
+		Assert-AreEqual $stoname2 $srcPolicy.DestinationAccount
+		Assert-AreEqual 2 $srcPolicy.Rules.Count
+		Assert-AreEqual src1 $srcPolicy.Rules[0].SourceContainer
+		Assert-AreEqual dest1 $srcPolicy.Rules[0].DestinationContainer
+		Assert-AreEqual $null $srcPolicy.Rules[0].Filters
+		Assert-AreEqual src $srcPolicy.Rules[1].SourceContainer
+		Assert-AreEqual dest $srcPolicy.Rules[1].DestinationContainer
+		Assert-AreEqual 3 $srcPolicy.Rules[1].Filters.PrefixMatch.Count
+		Assert-AreEqual $minCreationTime ($srcPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
+
+		#remove policies		
+		Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
+		Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -PolicyId $srcPolicy.PolicyId
+		
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname1;
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 

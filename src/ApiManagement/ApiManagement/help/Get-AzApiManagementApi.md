@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapi
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapi
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,6 +41,15 @@ Get-AzApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
+=======
+### GetByGatewayId
+```
+Get-AzApiManagementApi -Context <PsApiManagementContext> -GatewayId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## DESCRIPTION
 The **Get-AzApiManagementApi** cmdlet gets one or more Azure API Management APIs.
 
@@ -66,6 +79,17 @@ PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 
 This command gets the API with the specified name.
 
+<<<<<<< HEAD
+=======
+### Example 4: Get a management API by GatewayId
+```
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -GatewayId "g01"
+```
+
+This command gets the API for the specified GatewayId.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiId
@@ -128,6 +152,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -GatewayId
+If specified will try to get all Gateway APIs.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByGatewayId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Specifies the name of the API to get.
 

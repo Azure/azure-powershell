@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 36B3B1AC-6E7F-4607-A024-91583D952B62
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightswindowseventdatasource
+=======
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightswindowseventdatasource
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -32,6 +36,37 @@ The **New-AzOperationalInsightsWindowsEventDataSource** cmdlet adds a data sourc
 
 ## EXAMPLES
 
+<<<<<<< HEAD
+=======
+### Example 1: Create system Windows event data source
+```
+$EventLogNames       = @()
+$EventLogNames      += 'Directory Service'
+$EventLogNames      += 'Microsoft-Windows-EventCollector/Operational'
+$EventLogNames      += 'System'
+$ResourceGroupName   = 'MyResourceGroup'
+$WorkspaceName       = 'MyWorkspaceName'
+
+$Count = 0
+foreach ($EventLogName in $EventLogNames) {
+    $Count++
+    $null = New-AzOperationalInsightsWindowsEventDataSource `
+    -ResourceGroupName $ResourceGroupName `
+    -WorkspaceName $WorkspaceName `
+    -Name "Windows-event-$($Count)" `
+    -EventLogName $EventLogName `
+    -CollectErrors `
+    -CollectWarnings `
+    -CollectInformation
+}
+
+Get-AzOperationalInsightsDataSource `
+   -ResourceGroupName $ResourceGroupName `
+   -WorkspaceName $WorkspaceName `
+   -Kind 'WindowsEvent'
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -CollectErrors
@@ -125,7 +160,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 Specifies a name for the data source.
+=======
+Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used as long as it is unique.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

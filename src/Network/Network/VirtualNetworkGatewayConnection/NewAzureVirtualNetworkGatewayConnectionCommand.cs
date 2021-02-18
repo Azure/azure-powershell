@@ -95,6 +95,21 @@ namespace Microsoft.Azure.Commands.Network
         ValueFromPipelineByPropertyName = true,
         HelpMessage = "RoutingWeight.")]
         public int RoutingWeight { get; set; }
+<<<<<<< HEAD
+=======
+        
+        [Parameter(
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Dead Peer Detection Timeout of the connection in seconds.")]
+        public int DpdTimeoutInSeconds { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
         Mandatory = false,
@@ -125,6 +140,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
+=======
+            HelpMessage = "Whether to use PrivateIP for this S2S VPN tunnel")]
+        public SwitchParameter UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -145,6 +169,15 @@ namespace Microsoft.Azure.Commands.Network
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         Mandatory = false,
         HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
         [ValidateSet(
@@ -190,8 +223,16 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
+<<<<<<< HEAD
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
+=======
+            vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
+            vnetGatewayConnection.ConnectionMode = this.ConnectionMode;
+            vnetGatewayConnection.SharedKey = this.SharedKey;
+            vnetGatewayConnection.EnableBgp = this.EnableBgp;
+            vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
             vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
 
@@ -218,12 +259,24 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.IpsecPolicies != null)
             {
                 vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
             }
 
+<<<<<<< HEAD
+=======
+            if (this.TrafficSelectorPolicy != null)
+            {
+                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             // Map to the sdk object
             var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(vnetGatewayConnection);
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

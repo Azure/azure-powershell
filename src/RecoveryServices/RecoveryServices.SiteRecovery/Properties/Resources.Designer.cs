@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+<<<<<<< HEAD
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -70,6 +74,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to ASRVMNics and UpdateNic cannot be used together. Use UpdateNic to update a single NIC or ASRVMNics to update multiple Nics together..
+        /// </summary>
+        internal static string ASRVMNicsAndUpdateNicNotAllowed {
+            get {
+                return ResourceManager.GetString("ASRVMNicsAndUpdateNicNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
         /// </summary>
         internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
@@ -107,7 +123,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use use cmdlet(s) &quot;{1}&quot; instead..
+=======
+        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use cmdlet(s) &quot;{1}&quot; instead..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string CmdletWillBeDeprecatedSoon {
             get {
@@ -378,7 +398,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Resource is not associted with the selected Resource group.
+=======
+        ///   Looks up a localized string similar to Resource is not associated with the selected Resource group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string InvalidResource {
             get {
@@ -414,7 +438,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+=======
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Classic or ARM vault object..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string InvalidVaultObject {
             get {
@@ -441,7 +469,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+=======
+        ///   Looks up a localized string similar to {0} will be a mandatory parameter from next release..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -477,6 +509,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Classic virtual machines are not supported for network security group, public IP address and load balancer related enhancements..
+        /// </summary>
+        internal static string NetworkingResourcesInDRNotSupportedForClassicVms {
+            get {
+                return ResourceManager.GetString("NetworkingResourcesInDRNotSupportedForClassicVms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Network mapping details not found..
         /// </summary>
         internal static string NetworkMappingNotFound {
@@ -495,6 +539,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Nic &quot;{0}&quot; not found in VM..
+        /// </summary>
+        internal static string NicNotFoundInVM {
+            get {
+                return ResourceManager.GetString("NicNotFoundInVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Nic not found in VM.
         /// </summary>
         internal static string NicNotFoundInVMForUpdateVmProperties {
@@ -531,7 +587,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use use parameter(s) &quot;{1}&quot; instead..
+=======
+        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use parameter(s) &quot;{1}&quot; instead..
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         internal static string ParameterWillBeDeprecatedSoon {
             get {
@@ -657,6 +717,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Recovery manged disk type &quot;Standard_SSD&quot; is not supported. Converting it to &quot;StandardSSD_LRS&quot;..
+        /// </summary>
+        internal static string RecoveryDiskTypeUnSupported {
+            get {
+                return ResourceManager.GetString("RecoveryDiskTypeUnSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Different recovery virtual network Ids present in ASRVMNics..
+        /// </summary>
+        internal static string RecoveryNetworkIdConflictInASRVMNics {
+            get {
+                return ResourceManager.GetString("RecoveryNetworkIdConflictInASRVMNics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The recovery virtual network information in ASRVMNics and RecoveryNetworkId parameters do not match..
+        /// </summary>
+        internal static string RecoveryNetworkInformationMismatch {
+            get {
+                return ResourceManager.GetString("RecoveryNetworkInformationMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recovery virtual network Id missing..
+        /// </summary>
+        internal static string RecoveryNetworkInformationMissing {
+            get {
+                return ResourceManager.GetString("RecoveryNetworkInformationMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to RecoveryPlan  {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string RecoveryPlanNotFound {
@@ -675,6 +774,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Recovery subnet name missing..
+        /// </summary>
+        internal static string RecoverySubnetInformationMissing {
+            get {
+                return ResourceManager.GetString("RecoverySubnetInformationMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Are you sure want to remove Recovery Plan {0}.
         /// </summary>
         internal static string RemoveRPWarning {
@@ -876,6 +987,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Different test failover virtual network Ids present in ASRVMNics..
+        /// </summary>
+        internal static string TfoNetworkIdConflictInASRVMNics {
+            get {
+                return ResourceManager.GetString("TfoNetworkIdConflictInASRVMNics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test failover virtual network Id missing..
+        /// </summary>
+        internal static string TfoNetworkInformationMissing {
+            get {
+                return ResourceManager.GetString("TfoNetworkInformationMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test failover subnet name missing..
+        /// </summary>
+        internal static string TfoSubnetInformationMissing {
+            get {
+                return ResourceManager.GetString("TfoSubnetInformationMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Download vault credential file using cmdlet Get-AzRecoveryServicesVaultSettingsFile and Import-AzRecoveryServicesAsrVaultSettingsFile.
         /// </summary>
         internal static string TryDownloadingVaultFile {
@@ -930,6 +1071,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Looks up a localized string similar to Unsupported replication provider for ASR VM Nic Config..
+        /// </summary>
+        internal static string UnsupportedReplicationProvidedForASRVMNicConfig {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProvidedForASRVMNicConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication provider for network security group, public IP address, and/or backend address pool related updates..
+        /// </summary>
+        internal static string UnsupportedReplicationProvidedForNetworkingResources {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProvidedForNetworkingResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ///   Looks up a localized string similar to Unsupported replication provider for set VM properties.
         /// </summary>
         internal static string UnsupportedReplicationProvidedForUpdateVmProperties {

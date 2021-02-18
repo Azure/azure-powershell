@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagement
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -13,8 +17,13 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 Set-AzApiManagement -InputObject <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Set-AzApiManagement -InputObject <PsApiManagement> [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -23,7 +32,11 @@ The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1 Get an API Management service and scale it to Premium and Add a region
+=======
+### Example 1: Get an API Management service and scale it to Premium and Add a region
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```powershell
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.Sku = "Premium"
@@ -54,7 +67,11 @@ PS C:\>$proxyCustomConfig = @($proxy1,$proxy2)
 PS C:\>$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
 PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
+<<<<<<< HEAD
 PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
+=======
+PS C:\>Set-AzApiManagement -InputObject $apim -SystemAssignedIdentity
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
@@ -83,6 +100,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -AssignIdentity
 Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
@@ -98,6 +116,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -143,6 +163,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -SystemAssignedIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+Assign User Identities to this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 

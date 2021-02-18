@@ -11,8 +11,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+=======
+using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
+using Microsoft.Azure.Management.Sql.Models;
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
@@ -22,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
+<<<<<<< HEAD
     public class RemoveAzSqlServerAudit : SqlServerAuditCmdlet
     {
         protected override ServerAuditModel PersistChanges(ServerAuditModel entity)
@@ -31,6 +39,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             entity.LogAnalyticsTargetState = AuditStateType.Disabled;
             ModelAdapter.PersistAuditChanges(entity);
             return null;
+=======
+    public class RemoveAzSqlServerAudit : RemoveSqlServerAuditCmdlet<ExtendedServerBlobAuditingPolicy, ServerAuditModel, SqlServerAuditAdapter>
+    {
+        protected override SqlServerAuditAdapter InitModelAdapter()
+        {
+            return new SqlServerAuditAdapter(DefaultProfile.DefaultContext);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

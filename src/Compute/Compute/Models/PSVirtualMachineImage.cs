@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public OSDiskImage OSDiskImage { get; set; }
 
+<<<<<<< HEAD
+=======
+        public string HyperVGeneration { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [JsonIgnore]
         public string OSDiskImageText
         {

@@ -26,6 +26,12 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
+<<<<<<< HEAD
+=======
+    [CmdletOutputBreakingChange(typeof(PSPrivateLinkServiceIpConfiguration),
+        DeprecatedOutputProperties = new string[] { "PublicIPAddress" },
+        NewOutputProperties = new string[] { "Primary" })]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceIpConfig"), OutputType(typeof(PSPrivateLinkServiceIpConfiguration))]
     public class NewAzurePrivateLinkServiceIpConfiguration : NetworkBaseCmdlet
     {
@@ -51,6 +57,10 @@ namespace Microsoft.Azure.Commands.Network
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
 
+<<<<<<< HEAD
+=======
+        [CmdletParameterBreakingChange("PublicIpAddress", ChangeDescription = "Parameter is being deprecated without being replaced")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = false,
             HelpMessage = "PublicIpAddress")]
@@ -61,6 +71,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicate the ip configuration is primary.")]
+        public SwitchParameter Primary { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public override void Execute()
         {
@@ -75,12 +93,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ipconfig.Subnet = this.Subnet;
             }
+<<<<<<< HEAD
 
             if(PublicIpAddress != null)
             {
                 ipconfig.PublicIPAddress = this.PublicIpAddress;
             }
 
+=======
+            
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 ipconfig.PrivateIPAddress = this.PrivateIpAddress;
@@ -96,6 +118,11 @@ namespace Microsoft.Azure.Commands.Network
                 ipconfig.PrivateIPAddressVersion = this.PrivateIpAddressVersion;
             }
 
+<<<<<<< HEAD
+=======
+            ipconfig.Primary = this.Primary.IsPresent;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             WriteObject(ipconfig);
         }
     }

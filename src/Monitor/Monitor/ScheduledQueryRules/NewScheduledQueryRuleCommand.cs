@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         //
         // Summary:
+<<<<<<< HEAD
         //     Gets or sets schedule (Frequnecy, Time Window) for rule.
+=======
+        //     Gets or sets schedule (Frequency, Time Window) for rule.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = true, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
@@ -97,6 +101,10 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
         #endregion
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override void ProcessRecordInternal()
         {
             try
@@ -104,28 +112,61 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 // Convert Tag parameter from Hashtable to Dictionary<string, string>
                 Dictionary<string, string> tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
 
+<<<<<<< HEAD
                 var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
                 var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
                     action:alertingAction, tags: tags, description: Description, enabled: Enabled? "true" : "false");
+=======
+                var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction,
+                    trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
+
+                var parameters = new LogSearchRuleResource(location: NormalizeLocation(Location), source: Source,
+                    schedule: Schedule,
+                    action: alertingAction, tags: tags, description: Description, enabled: Enabled ? "true" : "false");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 parameters.Validate();
                 if (this.ShouldProcess(this.Name,
                     string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.Name,
+<<<<<<< HEAD
                     this.ResourceGroupName)))
                 {
 
                     var result = this.MonitorManagementClient.ScheduledQueryRules
                     .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name,
                         parameters: parameters).Result;
+=======
+                        this.ResourceGroupName)))
+                {
+
+                    var result = this.MonitorManagementClient.ScheduledQueryRules
+                        .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name,
+                            parameters: parameters).Result;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     WriteObject(new PSScheduledQueryRuleResource(result.Body));
                 }
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 throw new Exception("Error occured while creating Log Alert rule", ex);
             }    
+=======
+                throw new Exception("Error occurred while creating Log Alert rule", ex);
+            }
+
+        }
+
+        private string NormalizeLocation(string location)
+        {
+            // lowercase and remove whitespace
+            // e.g. "South Central US" => "southcentralus"
+            return location == null
+                ? null
+                : location.Replace(" ", "").ToLower();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

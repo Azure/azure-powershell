@@ -77,7 +77,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             if (!string.IsNullOrEmpty(resourceGroupId))
             {
                 string[] tokens = resourceGroupId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+<<<<<<< HEAD
                 if (tokens.Length < 4)
+=======
+                if (tokens.Length != 4)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     throw new ArgumentException(ProjectResources.InvalidFormatOfResourceGroupId, "resourceGroupId");
                 }

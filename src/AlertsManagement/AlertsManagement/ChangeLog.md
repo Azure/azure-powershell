@@ -17,6 +17,24 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+<<<<<<< HEAD
+=======
+## Upcoming Release
+
+## Version 0.2.0
+* Fixed bug for `Set-AzActionRule` incorrectly parsed `TargetResourceTypeCondition` to `MonitorCondition` [#12258]
+
+## Version 0.1.3
+* Updated AlertsManagement SDK version to 0.9.2-preview.
+* Added Subscription Scope Type for Set-AzActionRule.
+* Updated Examples for Set-AzActionRule, to show scope types as well.
+
+## Version 0.1.2
+* Updated help messages and document for `Get-AzActionRule`
+
+## Version 0.1.1
+* Update references in .psd1 to use relative path
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## Version 0.1.0
 * Preview of `Az.AlertsManagement` module

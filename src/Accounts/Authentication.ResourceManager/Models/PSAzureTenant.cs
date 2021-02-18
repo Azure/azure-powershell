@@ -105,5 +105,32 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             return this.Id;
         }
+<<<<<<< HEAD
+=======
+
+        public string[] Domains
+        {
+            get
+            {
+                return this.GetPropertyAsArray(AzureTenant.Property.Domains);
+            }
+        }
+
+        public string TenantCategory
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.TenantCategory);
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.DisplayName);
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

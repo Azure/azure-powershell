@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,32 +39,54 @@ For more information about Azure resources and Azure resource groups, see the Ne
 
 ### Example 1: Get a resource group by name
 ```
+<<<<<<< HEAD
 PS C:\>Get-AzResourceGroup -Name "EngineerBlog"
+=======
+PS C:\> Get-AzResourceGroup -Name "EngineerBlog"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the Azure resource group in your subscription named EngineerBlog.
 
 ### Example 2: Get all tags of a resource group
 ```
+<<<<<<< HEAD
 PS C:\>(Get-AzResourceGroup -Name "ContosoRG").Tags
+=======
+PS C:\> (Get-AzResourceGroup -Name "ContosoRG").Tags
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
+<<<<<<< HEAD
 ### Example 3: Show the Resource groups by location
+=======
+### Example 3: Get resource groups based on tag
+```
+PS C:\> Get-AzResourceGroup -Tag @{'environment'='prod'}
+```
+
+### Example 4: Show the Resource groups by location
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> Get-AzResourceGroup |
   Sort Location,ResourceGroupName |
   Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
 ```
 
+<<<<<<< HEAD
 ### Example 4: Show the names of all the Resource groups in a particular location
+=======
+### Example 5: Show the names of all the Resource groups in a particular location
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\> Get-AzResourceGroup -Location westus2 |
    Sort ResourceGroupName | 
    Format-Wide ResourceGroupName -Column 4
 ```
 
+<<<<<<< HEAD
 ### Example 5: Show the Resource groups whose names begin with WebServer
 ```
 PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
@@ -73,6 +99,13 @@ PS C:\> Get-AzResourceGroup -Name "EngineerBlog*"
 
 This command gets the Azure resource group in your subscription that start with "EngineerBlog".
 
+=======
+### Example 6: Show the Resource groups whose names begin with WebServer
+```
+PS C:\> Get-AzResourceGroup -Name WebServer*
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ApiVersion
@@ -205,4 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzResourceGroup](./Set-AzResourceGroup.md)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

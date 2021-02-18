@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 48C33FAF-83C1-4725-AD2A-CF48D0718182
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaysku
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysku
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -70,6 +74,11 @@ The acceptable values for this parameter are:
 - Standard_Large
 - WAF_Medium
 - WAF_Large
+<<<<<<< HEAD
+=======
+- Standard_v2
+- WAF_v2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -89,6 +98,11 @@ Specifies the tier of the SKU.
 The acceptable values for this parameter are:
 - Standard
 - WAF
+<<<<<<< HEAD
+=======
+- Standard_v2
+- WAF_v2
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

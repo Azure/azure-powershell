@@ -33,6 +33,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// connection.</param>
         /// <param name="provisionedBandwidthInMbps">The bandwidth that is
         /// actually provisioned.</param>
+<<<<<<< HEAD
+=======
+        /// <param name="sessionAddressProvider">The field indicating if
+        /// Microsoft provides session ip addresses. Possible values include:
+        /// 'Microsoft', 'Peer'</param>
+        /// <param name="useForPeeringService">The flag that indicates whether
+        /// or not the connection is used for peering service.</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// <param name="peeringDBFacilityId">The PeeringDB.com ID of the
         /// facility at which the connection has to be set up.</param>
         /// <param name="connectionState">The state of the connection. Possible
@@ -41,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// 'ProvisioningCompleted', 'Validating', 'Active'</param>
         /// <param name="bgpSession">The BGP session associated with the
         /// connection.</param>
+<<<<<<< HEAD
         public PSDirectConnection(int? bandwidthInMbps = default(int?), int? provisionedBandwidthInMbps = default(int?), int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession))
         {
             BandwidthInMbps = bandwidthInMbps;
@@ -48,6 +57,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             PeeringDBFacilityId = peeringDBFacilityId;
             ConnectionState = connectionState;
             BgpSession = bgpSession;
+=======
+        /// <param name="connectionIdentifier">The unique identifier (GUID) for
+        /// the connection.</param>
+        /// <param name="errorMessage">The error message related to the
+        /// connection state, if any.</param>
+        public PSDirectConnection(int? bandwidthInMbps = default(int?), int? provisionedBandwidthInMbps = default(int?), string sessionAddressProvider = default(string), bool? useForPeeringService = default(bool?), int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession), string connectionIdentifier = default(string), string errorMessage = default(string))
+        {
+            BandwidthInMbps = bandwidthInMbps;
+            ProvisionedBandwidthInMbps = provisionedBandwidthInMbps;
+            SessionAddressProvider = sessionAddressProvider;
+            UseForPeeringService = useForPeeringService;
+            PeeringDBFacilityId = peeringDBFacilityId;
+            ConnectionState = connectionState;
+            BgpSession = bgpSession;
+            ConnectionIdentifier = connectionIdentifier;
+            ErrorMessage = errorMessage;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             CustomInit();
         }
 
@@ -63,10 +89,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public int? BandwidthInMbps { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets the bandwidth that is actually provisioned.
         /// </summary>
         [JsonProperty(PropertyName = "provisionedBandwidthInMbps")]
         public int? ProvisionedBandwidthInMbps { get; set; }
+=======
+        /// Gets the bandwidth that is actually provisioned.
+        /// </summary>
+        [JsonProperty(PropertyName = "provisionedBandwidthInMbps")]
+        public int? ProvisionedBandwidthInMbps { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the field indicating if Microsoft provides session ip
+        /// addresses. Possible values include: 'Microsoft', 'Peer'
+        /// </summary>
+        [JsonProperty(PropertyName = "sessionAddressProvider")]
+        public string SessionAddressProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag that indicates whether or not the connection
+        /// is used for peering service.
+        /// </summary>
+        [JsonProperty(PropertyName = "useForPeeringService")]
+        public bool? UseForPeeringService { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the PeeringDB.com ID of the facility at which the
@@ -90,5 +137,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         [JsonProperty(PropertyName = "bgpSession")]
         public PSBgpSession BgpSession { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets the unique identifier (GUID) for the connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "connectionIdentifier")]
+        public string ConnectionIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets the error message related to the connection state, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "errorMessage")]
+        public string ErrorMessage { get; private set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

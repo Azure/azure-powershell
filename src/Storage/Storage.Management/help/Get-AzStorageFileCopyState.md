@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: C1648DC3-8CFD-4487-A080-D9BE25DAD258
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragefilecopystate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilecopystate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,6 +33,10 @@ Get-AzStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTimeou
 
 ## DESCRIPTION
 The **Get-AzStorageFileCopyState** cmdlet gets the state of an Azure Storage file copy operation.
+<<<<<<< HEAD
+=======
+It should run on the copy destination file.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -39,6 +47,19 @@ PS C:\>Get-AzStorageFileCopyState -ShareName "ContosoShare" -FilePath "ContosoFi
 
 This command gets the state of the copy operation for a file that has the specified name.
 
+<<<<<<< HEAD
+=======
+### Example 2: Start Copy and pipeline to get the copy status
+```
+C:\PS> $destfile = Start-AzStorageFileCopy -SrcShareName "contososhare" -SrcFilePath "contosofile" -DestShareName "contososhare2" -destfilepath "contosofile_copy"  
+
+C:\PS> $destfile | Get-AzStorageFileCopyState
+```
+
+The first command starts copy file "contosofile" to "contosofile_copy", and output the destiantion file object. 
+The second command pipeline the destiantion file object to Get-AzStorageFileCopyState, to get file copy state.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
@@ -115,12 +136,20 @@ You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 ```yaml
 Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
+<<<<<<< HEAD
 Aliases:
+=======
+Aliases: CloudFile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 0
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
+=======
+Accept pipeline input: True (ByPropertyName, ByValue)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -196,7 +225,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Storage.File.CloudFile
+=======
+### Microsoft.Azure.Storage.File.CopyState
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

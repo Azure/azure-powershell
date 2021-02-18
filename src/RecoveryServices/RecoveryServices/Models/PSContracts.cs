@@ -462,6 +462,15 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 7)]
         public string Location { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Gets or sets PrivateEndpointStateForSiteRecovery.
+        /// </summary>
+        [DataMember(Order = 8)]
+        public string PrivateEndpointStateForSiteRecovery { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
     }
 

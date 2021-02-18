@@ -110,7 +110,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        public override void Execute()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             var queryOptions = new RestApiModels.QueryOptions
             {
@@ -122,6 +126,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 
             RestApiModels.SummarizeResults summarizeResults;
 
+<<<<<<< HEAD
             try
             {
                 switch (ParameterSetName)
@@ -182,6 +187,58 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                     ? new Exception($"{e.Message} ({e.Body.Error.Code}: {e.Body.Error.Message})")
                     : e);
                 return;
+=======
+            switch (ParameterSetName)
+            {
+                case ParameterSetNames.ManagementGroupScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForManagementGroup(
+                        ManagementGroupName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.SubscriptionScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForSubscription(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceGroupScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForResourceGroup(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        ResourceGroupName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForResource(
+                        ResourceId,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.PolicySetDefinitionScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForPolicySetDefinition(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicySetDefinitionName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.PolicyDefinitionScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForPolicyDefinition(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicyDefinitionName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.SubscriptionLevelPolicyAssignmentScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForSubscriptionLevelPolicyAssignment(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        PolicyAssignmentName,
+                        queryOptions);
+                    break;
+                case ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope:
+                    summarizeResults = PolicyInsightsClient.PolicyStates.SummarizeForResourceGroupLevelPolicyAssignment(
+                        SubscriptionId ?? DefaultContext.Subscription.Id,
+                        ResourceGroupName,
+                        PolicyAssignmentName,
+                        queryOptions);
+                    break;
+                default:
+                    throw new PSInvalidOperationException();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var summary = summarizeResults.Value.First();

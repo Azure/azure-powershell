@@ -67,7 +67,11 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
@@ -75,10 +79,41 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
+=======
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact(Skip = "Skipped due to intermittent backend failures")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionWithTrafficSelectorCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithTrafficSelector");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayConnectionGetIkeSa()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionGetIkeSa");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayautoscaleconfiguration
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayautoscaleconfiguration
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -30,7 +34,11 @@ PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
+<<<<<<< HEAD
 The second command updates the autoscale configuration from the applicationg gateway.
+=======
+The second command updates the autoscale configuration from the application gateway.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The third command updates the application gateway on Azure.
 
 ## PARAMETERS
@@ -66,7 +74,11 @@ Accept wildcard characters: False
 ```
 
 ### -MaxCapacity
+<<<<<<< HEAD
 Maximum capcity for application gateway.
+=======
+Maximum capacity for application gateway.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -81,7 +93,11 @@ Accept wildcard characters: False
 ```
 
 ### -MinCapacity
+<<<<<<< HEAD
 Minimum capcity for application gateway.
+=======
+Minimum capacity for application gateway.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Int32

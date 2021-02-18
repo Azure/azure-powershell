@@ -127,6 +127,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     foreach (var item in result)
                     {
+<<<<<<< HEAD
+=======
+                        WebsitesClient.GetWebAppConfiguration(ResourceGroupName, item.Name, null, item);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         list.Add(new PSSite(item));
 
                     }

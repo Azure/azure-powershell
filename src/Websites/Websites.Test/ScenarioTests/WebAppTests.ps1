@@ -124,7 +124,11 @@ function Test-StartStopRestartWebApp
 		$webApp = $webApp | Stop-AzWebApp
 
 		Assert-AreEqual "Stopped" $webApp.State
+<<<<<<< HEAD
 		$ping = PingWebApp $webApp
+=======
+		# $ping = PingWebApp $webApp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Start web app
 		$webApp = $webApp | Start-AzWebApp
@@ -136,7 +140,11 @@ function Test-StartStopRestartWebApp
 		$webApp = Stop-AzWebApp -ResourceGroupName $rgname -Name $wname
 
 		Assert-AreEqual "Stopped" $webApp.State
+<<<<<<< HEAD
 		$ping = PingWebApp $webApp
+=======
+		# $ping = PingWebApp $webApp
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Start web app
 		$webApp = Start-AzWebApp -ResourceGroupName $rgname -Name $wname
@@ -469,10 +477,17 @@ function Test-CreateNewWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+<<<<<<< HEAD
     $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
     $containerRegistryUrl = "https://pstestacr.azurecr.io"
     $containerRegistryUser = "pstestacr"
     $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+=======
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -506,6 +521,7 @@ function Test-CreateNewWebAppHyperV
         "DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
         "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;}
 
+<<<<<<< HEAD
         foreach($nvp in $webApp.SiteConfig.AppSettings)
 		{
 			Assert-True { $appSettings.Keys -contains $nvp.Name }
@@ -513,6 +529,14 @@ function Test-CreateNewWebAppHyperV
 		}
 
 
+=======
+        foreach($nvp in $result.SiteConfig.AppSettings)
+		{
+			Assert-True { $appSettings.Keys -contains $nvp.Name }
+			Assert-AreEqual $appSettings[$nvp.Name] $nvp.Value
+		}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{
@@ -525,6 +549,134 @@ function Test-CreateNewWebAppHyperV
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
+=======
+Tests changing registry credentials for a Windows Container app
+.DESCRIPTION
+SmokeTest
+#>
+function Test-SetWebAppHyperVCredentials
+{
+		# Setup
+		$rgname = Get-ResourceGroupName
+		$wname = Get-WebsiteName
+		$location = Get-WebLocation
+		$whpName = Get-WebHostPlanName
+		$tier = "PremiumContainer"
+		$apiversion = "2015-08-01"
+		$resourceType = "Microsoft.Web/sites"
+		$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+		$containerRegistryUrl = "https://pstestacr.azurecr.io"
+		$containerRegistryUser = "pstestacr"
+		$pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+		$containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
+		$dockerPrefix = "DOCKER|" 
+	
+	
+		try
+		{
+			#Setup
+			New-AzResourceGroup -Name $rgname -Location $location
+			$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
+			
+			# Create new web app
+			$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+			$job | Wait-Job
+			$actual = $job | Receive-Job
+			
+			# Assert
+			Assert-AreEqual $wname $actual.Name
+			Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+	
+			# Get new web app
+			$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
+			
+			# Assert
+			Assert-AreEqual $wname $result.Name
+			Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+			Assert-AreEqual $true $result.IsXenon
+			Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion			
+
+			$appSettings = @{
+			"DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
+			"DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
+			"DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;}
+	
+			foreach($nvp in $result.SiteConfig.AppSettings)
+			{
+				Assert-True { $appSettings.Keys -contains $nvp.Name }
+				Assert-AreEqual $appSettings[$nvp.Name] $nvp.Value
+			}
+
+			$updatedContainerImageName = "microsoft/iis:latest"
+
+			# Change the webapp's container image to a public image and remove the credentials
+			$updateJob = Set-AzWebApp -ResourceGroupName $rgname -Name $wname -ContainerImageName $updatedContainerImageName -ContainerRegistryUrl '' -ContainerRegistryUser '' -ContainerRegistryPassword $null -AsJob
+			$updateJob | Wait-Job
+			$updated = $updateJob | Receive-Job
+
+			# Get updated web app
+			$updatedWebApp = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
+
+			# Assert that container image has been updated
+			Assert-AreEqual ($dockerPrefix + $updatedContainerImageName)  $updatedWebApp.SiteConfig.WindowsFxVersion
+
+			# Assert that registry credentials have been removed
+			foreach($nvp in $updatedWebApp.SiteConfig.AppSettings)
+			{
+				Assert-False { $appSettings.Keys -contains $nvp.Name}
+			}
+
+			# Create a slot
+			$slotName = "stagingslot"
+			$slotJob = New-AzWebAppSlot -ResourceGroupName $rgname -AppServicePlan $whpName -Name $wname -slot $slotName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+			$slotJob | Wait-Job
+			$actualSlot = $slotJob | Receive-Job
+
+			# Assert
+			$appWithSlotName = "$wname/$slotName"
+			Assert-AreEqual $appWithSlotName $actualSlot.Name
+
+			# Get deployment slot
+			$slot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
+
+			# Assert app settings in slot
+			foreach($nvp in $slot.SiteConfig.AppSettings)
+			{
+				Assert-True { $appSettings.Keys -contains $nvp.Name }
+				Assert-AreEqual $appSettings[$nvp.Name] $nvp.Value
+			}
+
+			# Change the slot's  container image to a public image and remove the credentials
+			$updateSlotJob = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -ContainerImageName $updatedContainerImageName -ContainerRegistryUrl '' -ContainerRegistryUser '' -ContainerRegistryPassword $null -AsJob
+			$updateSlotJob | Wait-Job
+			$updatedSlot = $updateSlotJob | Receive-Job
+
+			# Get updated slot
+			$updatedWebAppSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
+
+			# Assert that container image has been updated
+			Assert-AreEqual ($dockerPrefix + $updatedContainerImageName)  $updatedWebAppSlot.SiteConfig.WindowsFxVersion
+
+			# Assert that registry credentials have been removed from the slot
+			foreach($nvp in $updatedWebAppSlot.SiteConfig.AppSettings)
+			{
+				Assert-False { $appSettings.Keys -contains $nvp.Name}
+			}
+
+		}
+		finally
+		{
+			# Cleanup
+			Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
+			Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+			Remove-AzResourceGroup -Name $rgname -Force
+		}
+}
+
+<#
+.SYNOPSIS
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Tests enagbling continuous deployment for container and getting continuous deployment url.
 .DESCRIPTION
 SmokeTest
@@ -612,10 +764,17 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+<<<<<<< HEAD
     $containerImageName = "mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest"
     $containerRegistryUrl = "https://mcr.microsoft.com"
 	$containerRegistryUser = "testregistry"
     $pass = "7Dxo9p79Ins2K3ZU"
+=======
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
 	$dockerPrefix = "DOCKER|"
 
@@ -710,6 +869,11 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+<<<<<<< HEAD
+=======
+			$messageMIResulFailed = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : MI_RESULT_FAILED";
+			$messageWSManNotInstalled = "This parameter set requires WSMan, and no supported WSMan client library was found. WSMan is either not installed or unavailable for this system";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 			# One possible warning message in Playback mode.
 			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
@@ -717,14 +881,27 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
 				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
+<<<<<<< HEAD
 				($Error[0] -like "*$($messagePsVersionNotSupported)*")
 			
+=======
+				($Error[0] -like "*$($messagePsVersionNotSupported)*") -or
+				($Error[0] -like "*$($messageMIResulFailed)*") -or
+				($Error[0] -like "*$($messageWSManNotInstalled)*")
+				
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
 
 			Write-Debug "Expected error message 1: $messageDNS"
 			Write-Debug "Expected error message 2: $messageUnavailable"
 			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
+<<<<<<< HEAD
 			
+=======
+			Write-Debug "Expected error message 4: $messageMIResulFailed"
+			Write-Debug "Expected error message 5: $messageWSManNotInstalled"
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
 
 
@@ -897,10 +1074,17 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+<<<<<<< HEAD
     $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
     $containerRegistryUrl = "https://pstestacr.azurecr.io"
     $containerRegistryUser = "pstestacr"
     $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
+=======
+    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
+    $containerRegistryUser ="DotNetSDKTesting"
+    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -908,13 +1092,21 @@ function Test-SetAzureStorageWebAppHyperV
 	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
 	$azureStorageAccountShareName1 = "myremoteshare"
 	$azureStorageAccountAccessKey1 = "AnAccessKey"
+<<<<<<< HEAD
 	$azureStorageAccountMountPath1 = "C:\mymountpath"
+=======
+	$azureStorageAccountMountPath1 = "/mymountpath"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$azureStorageAccountCustomId2 = "mystorageaccount2"
 	$azureStorageAccountType2 = "AzureFiles"
 	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
 	$azureStorageAccountShareName2 = "myremoteshare2"
 	$azureStorageAccountAccessKey2 = "AnAccessKey2"
+<<<<<<< HEAD
 	$azureStorageAccountMountPath2 = "C:\mymountpath2"
+=======
+	$azureStorageAccountMountPath2 = "/mymountpath2"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
@@ -1014,11 +1206,19 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
+<<<<<<< HEAD
 	$rgname = "mnresourcegroup"
 	$wname = Get-WebsiteName
 	$location = "South Central US"
 	$whpName = "powershellasp"
 	$aseName = "mnASE"
+=======
+	$rgname = "11698RG1"
+	$wname = Get-WebsiteName
+	$location = "East US"
+	$whpName = "powershellasp"
+	$aseName = "11698ASP-PS"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
@@ -1058,15 +1258,27 @@ function Test-SetWebApp
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
+<<<<<<< HEAD
+=======
+	$rgname1 = Get-ResourceGroupName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$webAppName = Get-WebsiteName
 	$location = Get-WebLocation
 	$appServicePlanName1 = Get-WebHostPlanName
 	$appServicePlanName2 = Get-WebHostPlanName
+<<<<<<< HEAD
+=======
+	$appServicePlanName3 = Get-WebHostPlanName
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	$tier1 = "Shared"
 	$tier2 = "Standard"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$capacity = 2
+<<<<<<< HEAD
+=======
+	$HN="custom.domain.com"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	try
 	{
@@ -1084,9 +1296,17 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 		Assert-Null $webApp.Identity
 		Assert-NotNull $webApp.SiteConfig.phpVersion
+<<<<<<< HEAD
 		
 		# Change service plan & set site properties
 		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
+=======
+		Assert-AreEqual $false $webApp.HttpsOnly
+		Assert-AreEqual "AllAllowed" $webApp.SiteConfig.FtpsState
+		
+		# Change service plan & set site properties
+		$job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AlwaysOn $false -AsJob
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -1096,10 +1316,19 @@ function Test-SetWebApp
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.HttpsOnly
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $false $webapp.SiteConfig.AlwaysOn
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Set config properties
 		$webapp.SiteConfig.HttpLoggingEnabled = $true
 		$webapp.SiteConfig.RequestTracingEnabled = $true
+<<<<<<< HEAD
+=======
+		$webapp.SiteConfig.FtpsState = "FtpsOnly"
+		$webApp.SiteConfig.MinTlsVersion = "1.0"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Set site properties
 		$webApp = $webApp | Set-AzWebApp
@@ -1111,18 +1340,33 @@ function Test-SetWebApp
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $webApp.SiteConfig.RequestTracingEnabled
+<<<<<<< HEAD
 
+=======
+		Assert-AreEqual $false $webApp.SiteConfig.AlwaysOn
+		Assert-AreEqual "FtpsOnly" $webApp.SiteConfig.FtpsState
+		Assert-AreEqual "1.0" $webApp.SiteConfig.MinTlsVersion
+		 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
         # set app settings and assign Identity
+<<<<<<< HEAD
         $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -AssignIdentity $true
+=======
+        $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -AssignIdentity $true -MinTlsVersion "1.2"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # Assert
         Assert-NotNull  $webApp.Identity
         # AssignIdentity adds an appsetting to handle enabling / disabling AssignIdentity
         Assert-AreEqual ($appSettings.Keys.Count) $webApp.SiteConfig.AppSettings.Count
         Assert-NotNull  $webApp.Identity
+<<<<<<< HEAD
+=======
+		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         # set app settings and connection strings
 		$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity -PhpVersion "off"
@@ -1142,7 +1386,55 @@ function Test-SetWebApp
 
 		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
 		Assert-AreEqual "" $webApp.SiteConfig.PhpVersion
+<<<<<<< HEAD
 
+=======
+		Assert-AreEqual "1.2" $webApp.SiteConfig.MinTlsVersion
+
+		# set Custom Host Name(s)- Failed Scenario
+		$oldWebApp= Get-AzWebApp -ResourceGroupName $rgname -Name $webAppName
+		$CurrentWebApp = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -HostNames $HN
+		#Assert
+		$status
+		foreach($oldHN in $oldWebApp.HostNames)
+		{
+		Assert-True { $CurrentWebApp.HostNames -contains $oldHN }
+		}
+
+		#Set-AzWebApp errors on operations for App Services not in the same resource group as the App Service Plan
+		#setup
+		## Create a Resource Group.
+		New-AzResourceGroup -Name $rgname1 -Location $location
+
+		## Create the App Service Plan in $rgname.
+		$asp = New-AzAppServicePlan -Location $location -Tier Standard -NumberofWorkers 1 -WorkerSize Small -ResourceGroupName $rgname -Name $appServicePlanName3
+
+		## Create a Web App in each Resource Group.
+		$app1 = Get-WebsiteName
+		$app2 = Get-WebsiteName
+
+		New-AzWebApp -ResourceGroupName $rgname -Name $app1 -Location $location -AppServicePlan $asp.Id
+		New-AzWebApp -ResourceGroupName $rgname1 -Name $app2 -Location $location -AppServicePlan $asp.Id
+
+		## Get the two Web Apps.
+		$wa1 = Get-AzWebApp -ResourceGroupName $rgname -Name $app1
+		$wa2 = Get-AzWebApp -ResourceGroupName $rgname1 -Name $app2
+
+		## Change a setting on the first Web App (which is in the same Resource Group as the App Service Plan).
+		$currentWa1ClientAffinityEnabled=$wa1.ClientAffinityEnabled
+		$wa1.ClientAffinityEnabled = !$wa1.ClientAffinityEnabled
+		$wa1 | Set-AzWebApp
+
+		#Assert
+		Assert-AreNotEqual $currentWa1ClientAffinityEnabled $wa1.ClientAffinityEnabled
+		## Change a setting on the first Web App (which is in the same Resource Group as the App Service Plan).
+		$currentWa2ClientAffinityEnabled=$wa2.ClientAffinityEnabled
+		$wa2.ClientAffinityEnabled = !$wa2.ClientAffinityEnabled
+		$wa2 | Set-AzWebApp
+
+		#Assert
+		Assert-AreNotEqual $currentWa2ClientAffinityEnabled $wa2.ClientAffinityEnabled
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 	finally
 	{
@@ -1151,6 +1443,10 @@ function Test-SetWebApp
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName1 -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName2 -Force
 		Remove-AzResourceGroup -Name $rgname -Force
+<<<<<<< HEAD
+=======
+		Remove-AzResourceGroup -Name $rgname1 -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 	}
 }
 
@@ -1355,8 +1651,15 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 function Test-TagsNotRemovedBySetWebApp
 {
 	$rgname = "lketmtestantps10"
+<<<<<<< HEAD
 	$appname = "lketmtestantps10"
 	$slot = "testslot"
+=======
+	$appname = "tagstestantps10" # this is an existing app with existing tags
+	$slot = "testslot"
+	$aspName = "tagstestAspantps10"
+	$aspToMove = "tagstestAsp2antps10"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
 	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
@@ -1376,4 +1679,20 @@ function Test-TagsNotRemovedBySetWebApp
 	# Test - tags not removed after using Set-AzWebApp with WebApp parameter
 	$webapp =  Set-AzWebApp  -WebApp $getApp
 	Assert-notNull $webApp.Tags
+<<<<<<< HEAD
+=======
+
+	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspToMove
+	# verify that App has been successfully moved to the new ASP
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspToMove
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
+	# verify tags are not removed after ASP move
+	Assert-notNull $webApp.Tags
+
+	# Move it back to the original ASP
+	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspName
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspName
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
+	Assert-notNull $webApp.Tags
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

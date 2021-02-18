@@ -33,49 +33,96 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToCustomTopics()
+=======
+        public void EventGrid_EventSubscription_CustomTopics()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToCustomTopics2()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic2");
+=======
+        public void EventGrid_EventSubscription_CustomTopics_InputMapping()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_InputMapping");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToAzureSubscription()
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
+=======
+        public void EventGrid_EventSubscription_CustomTopics_WebhookBatching()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_Batching");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToAzureSubscription2()
+=======
+        public void EventGrid_EventSubscription_CustomTopics_WebhookAad()
+        {
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic_Webhook_AAD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_AzureSubscription()
+        {
+            // NOTE: Uncomment when testing in live mode.
+            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_AzureSubscription2()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToResourceGroup()
+=======
+        public void EventGrid_EventSubscription_ResourceGroup()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToResourceGroup2()
+=======
+        public void EventGrid_EventSubscription_ResourceGroup2()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToResourceCRUD()
+=======
+        public void EventGrid_EventSubscription_ResourceCRUD()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Resource");
         }
@@ -84,23 +131,39 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_Deadletter()
         {
+<<<<<<< HEAD
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
+=======
+            // NOTE: Uncomment when testing in live mode.
+            // EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Deadletter");
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToDomains()
+=======
+        public void EventGrid_EventSubscription_Domains()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Domains");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void EventGrid_EventSubscriptionToDomainTopics()
+=======
+        public void EventGrid_EventSubscription_DomainTopics()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_DomainTopics");
         }
     }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

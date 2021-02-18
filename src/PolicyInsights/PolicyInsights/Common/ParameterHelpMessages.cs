@@ -29,7 +29,12 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string PolicyDefinitionName = "Policy definition name.";
         public const string PolicyAssignmentName = "Policy assignment name.";
         public const string PolicyAssignmentId = "Policy assignment ID. E.g. '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{assignmentName}'.";
+<<<<<<< HEAD
         public const string PolicyDefinitionReferenceId = "Gets the policy definition reference ID of the individual definition that is being remediated. Required when the policy assignment assigns a policy set definition.";
+=======
+        public const string PolicyDefinitionReferenceId = "The policy definition reference ID of the individual definition that is being remediated. Required when the policy assignment assigns a policy set definition.";
+        public const string ResourceDiscoveryMode = "Describes how the remediation task will discover resources that need to be remediated. ReEvaluateCompliance is not supported when remediating management group scopes.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public const string Top = "Maximum number of records to return. If not provided, the maximum number of records returned is determined by the Azure Policy service (currently 1000).";
         public const string OrderBy = "Ordering expression using OData notation. One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.";
         public const string Select = "Select expression using OData notation. One or more comma-separated column names. Limits the columns on each record to just those requested.";
@@ -46,5 +51,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string AsJob = "Run cmdlet in the background.";
         public const string AllowRemediationStop = "Allow the remediation to be canceled if it is in-progress.";
         public const string PassThru = "Return True if the command completes successfully.";
+<<<<<<< HEAD
+=======
+        public const string TopPolicyMetadata = "Maximum number of policy metadata resources to return.";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

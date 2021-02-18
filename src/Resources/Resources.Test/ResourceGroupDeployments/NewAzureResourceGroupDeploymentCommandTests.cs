@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -27,6 +30,19 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+<<<<<<< HEAD
+=======
+using System.Linq;
+using System.Collections;
+using FluentAssertions;
+using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
+using Microsoft.Azure.Management.ResourceManager;
+using Newtonsoft.Json.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -36,6 +52,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
+<<<<<<< HEAD
+=======
+        private Mock<ITemplateSpecsClient> templateSpecsClientMock;
+
+        private Mock<ITemplateSpecVersionsOperations> templateSpecsVersionOperationsMock;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
@@ -44,18 +67,37 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string lastDeploymentName = "oldfooDeployment";
 
+<<<<<<< HEAD
+=======
+        private Dictionary<string, string> deploymentTags = Enumerable.Range(0, 2).ToDictionary(i => $"tagname{i}", i => $"tagvalue{i}");
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+<<<<<<< HEAD
+=======
+
+            templateSpecsClientMock = new Mock<ITemplateSpecsClient>();
+            templateSpecsClientMock.SetupAllProperties();
+            templateSpecsVersionOperationsMock = new Mock<ITemplateSpecVersionsOperations>();
+            templateSpecsClientMock.Setup(m => m.TemplateSpecVersions).Returns(templateSpecsVersionOperationsMock.Object);
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             SetupConfirmation(commandRuntimeMock);
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
+<<<<<<< HEAD
                 ResourceManagerSdkClient = resourcesClientMock.Object
+=======
+                ResourceManagerSdkClient = resourcesClientMock.Object,
+                TemplateSpecsClient = templateSpecsClientMock.Object
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -67,6 +109,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
+<<<<<<< HEAD
+=======
+                Tags = new Dictionary<string, string>(this.deploymentTags)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
             PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
@@ -95,7 +141,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };
+<<<<<<< HEAD
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
+=======
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -103,6 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
+<<<<<<< HEAD
 
             cmdlet.ExecuteCmdlet();
 
@@ -110,6 +161,21 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
             Assert.Null(actualParameters.OnErrorDeployment);
+=======
+            cmdlet.Tag = new Hashtable(this.deploymentTags);
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+            actualParameters.TemplateParameterObject.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Should().BeNull();
+            actualParameters.Tags.Should().NotBeNull();
+
+            var differenceTags = actualParameters.Tags
+                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
+            differenceTags.Should().BeEmpty();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
@@ -122,6 +188,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
+<<<<<<< HEAD
+=======
+                Tags = new Dictionary<string, string>(this.deploymentTags),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 OnErrorDeployment = new OnErrorDeployment
                 {
                     Type = OnErrorDeploymentType.SpecificDeployment,
@@ -160,7 +230,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     DeploymentName = lastDeploymentName
                 }
             };
+<<<<<<< HEAD
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
+=======
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -169,6 +243,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
             cmdlet.RollBackDeploymentName = lastDeploymentName;
+<<<<<<< HEAD
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
@@ -177,6 +252,22 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.NotNull(actualParameters.OnErrorDeployment);
             Assert.Equal(expectedParameters.OnErrorDeployment.Type, actualParameters.OnErrorDeployment.Type);
             Assert.Equal(expectedParameters.OnErrorDeployment.DeploymentName, actualParameters.OnErrorDeployment.DeploymentName);
+=======
+            cmdlet.Tag = new Hashtable(this.deploymentTags);
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+            actualParameters.TemplateParameterObject.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Type.Should().Equals(expectedParameters.OnErrorDeployment.Type);
+            actualParameters.OnErrorDeployment.DeploymentName.Should().Equals(expectedParameters.OnErrorDeployment.DeploymentName);
+            actualParameters.Tags.Should().NotBeNull();
+
+            var differenceTags = actualParameters.Tags
+                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
+            differenceTags.Should().BeEmpty();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
@@ -189,6 +280,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
+<<<<<<< HEAD
+=======
+                Tags = new Dictionary<string, string>(this.deploymentTags),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 OnErrorDeployment = new OnErrorDeployment
                 {
                     Type = OnErrorDeploymentType.LastSuccessful,
@@ -225,7 +320,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Type = OnErrorDeploymentType.LastSuccessful,
                 }
             };
+<<<<<<< HEAD
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
+=======
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -234,6 +333,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
             cmdlet.RollbackToLastDeployment = true;
+<<<<<<< HEAD
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
@@ -245,5 +345,92 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
+=======
+            cmdlet.Tag = new Hashtable(this.deploymentTags);
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+            actualParameters.TemplateParameterObject.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Type.Should().Equals(expectedParameters.OnErrorDeployment.Type);
+            actualParameters.OnErrorDeployment.DeploymentName.Should().Equals(expectedParameters.OnErrorDeployment.DeploymentName);
+            actualParameters.Tags.Should().NotBeNull();
+
+            var differenceTags = actualParameters.Tags
+                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
+            differenceTags.Should().BeEmpty();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
+
+        /// <summary>
+        /// When deployments are created using a template spec, the dynamic parameters are
+        /// resolved by reading the parameters from the template spec version's template body. 
+        /// Previously a bug was present that prevented successful dynamic parameter resolution
+        /// if the template spec existed in a subscription outside the current subscription 
+        /// context. This test validates dynamic parameter resolution works for deployments using
+        /// cross-subscription template specs.
+        /// </summary>
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResolvesDynamicParametersWithCrossSubTemplateSpec()
+        {
+            const string templateSpecSubscriptionId = "10000000-0000-0000-0000-000000000000";
+            const string templateSpecRGName = "someRG";
+            const string templateSpecName = "myTemplateSpec";
+            const string templateSpecVersion = "v1";
+
+            string templateSpecId = $"/subscriptions/{templateSpecSubscriptionId}/" +
+                $"resourceGroups/{templateSpecRGName}/providers/Microsoft.Resources/" +
+                $"templateSpecs/{templateSpecName }/versions/{templateSpecVersion}";
+
+            // Ensure our template file path is normalized for the current system:
+            var normalizedTemplateFilePath = (Path.DirectorySeparatorChar != '\\')
+                ? templateFile.Replace('\\', Path.DirectorySeparatorChar) // Other/Unix based
+                : templateFile; // Windows based (already valid)
+
+            var templateContentForTest = File.ReadAllText(normalizedTemplateFilePath);
+            var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
+
+            templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
+                    templateSpecRGName,
+                    templateSpecName,
+                    templateSpecVersion,
+                    null,
+                    new CancellationToken()))
+                .Returns(() => {
+
+                    // We should only be getting this template spec from the expected subscription:
+                    Assert.Equal(templateSpecSubscriptionId, templateSpecsClientMock.Object.SubscriptionId);
+
+                    var versionToReturn = new TemplateSpecVersion(
+                        location: "westus2",
+                        id: templateSpecId,
+                        name: templateSpecVersion,
+                        type: "Microsoft.Resources/templateSpecs/versions",
+                        template: JObject.Parse(templateContentForTest)
+                    );
+
+                    return Task.Factory.StartNew(() =>
+                        new AzureOperationResponse<TemplateSpecVersion>()
+                        {
+                            Body = versionToReturn
+                        }
+                    );
+                });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = deploymentName;
+            cmdlet.TemplateSpecId = templateSpecId;
+
+            var dynamicParams = cmdlet.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
+            dynamicParams.Should().NotBeNull();
+            dynamicParams.Count().Should().Be(template.Parameters.Count);
+            dynamicParams.Keys.Should().Contain(template.Parameters.Keys);
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

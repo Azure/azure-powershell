@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +18,12 @@ Create a PSHealthProbeSetting object for Front Door creation
 
 ```
 New-AzFrontDoorHealthProbeSettingObject -Name <String> [-Path <String>] [-Protocol <PSProtocol>]
+<<<<<<< HEAD
  [-IntervalInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-IntervalInSeconds <Int32>] [-HealthProbeMethod <String>] [-EnabledState <PSEnabledState>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -31,11 +40,21 @@ Path              : /
 Protocol          : Http
 IntervalInSeconds : 30
 ResourceState     :
+<<<<<<< HEAD
+=======
+HealthProbeMethod : Head
+EnabledState      : Enabled
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Id                :
 Name              : healthProbeSetting1
 Type              :
 ```
 
+<<<<<<< HEAD
+=======
+Note: HealthProbeMethod setting is not case sensitive.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Create a PSHealthProbeSetting object for Front Door creation
 
 ## PARAMETERS
@@ -55,6 +74,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -EnabledState
+Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HealthProbeMethod
+Configures which HTTP method to use to probe the backends defined under backendPools.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -IntervalInSeconds
 The number of seconds between health probes.
 Default value is 30
@@ -72,7 +125,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 health probe setting name.
+=======
+Health probe setting name.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -125,11 +182,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+<<<<<<< HEAD
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting
 
+=======
+## OUTPUTS
+
+### Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

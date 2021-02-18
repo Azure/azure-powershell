@@ -19,6 +19,27 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 1.0.3
+* Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
+
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Updated PrivateDns .net sdk to version 1.0.0
+
+## Version 1.0.0
+* 1.0.0 version released
+
+## Version 0.1.3
+* Added support for linking cross-tenant Vnets to Private DNS Zones
+
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 0.1.1
 * Rename Update- cmdlets to Set-
 	- Changed Update-AzPrivateDnsZone, Update-AzDrivateDnsVirtualNetworkLink, Update-AzPrivateDnsRecordSet cmdlets to Set-AzPrivateDnsZone, Set-AzDrivateDnsVirtualNetworkLink, Set-AzPrivateDnsRecordSet.

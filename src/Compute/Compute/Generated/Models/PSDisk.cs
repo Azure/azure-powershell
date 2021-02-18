@@ -41,23 +41,54 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         }
 
         public string ManagedBy { get; set; }
+<<<<<<< HEAD
         public DiskSku Sku { get; set; }
         public System.Collections.Generic.IList<string> Zones { get; set; }
+=======
+        public IList<string> ManagedByExtended { get; set; }
+        public DiskSku Sku { get; set; }
+        public IList<string> Zones { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public DateTime? TimeCreated { get; set; }
         public OperatingSystemTypes? OsType { get; set; }
         public string HyperVGeneration { get; set; }
         public CreationData CreationData { get; set; }
         public int? DiskSizeGB { get; set; }
+<<<<<<< HEAD
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
         public string ProvisioningState { get; set; }
         public long? DiskIOPSReadWrite { get; set; }
         public int? DiskMBpsReadWrite { get; set; }
         public string DiskState { get; set; }
+=======
+        public long? DiskSizeBytes { get; set; }
+        public string UniqueId { get; set; }
+        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
+        public string ProvisioningState { get; set; }
+        public long? DiskIOPSReadWrite { get; set; }
+        public long? DiskMBpsReadWrite { get; set; }
+        public long? DiskIOPSReadOnly { get; set; }
+        public long? DiskMBpsReadOnly { get; set; }
+        public string DiskState { get; set; }
+        public Encryption Encryption { get; set; }
+        public int? MaxShares { get; set; }
+        public IList<ShareInfoElement> ShareInfo { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+<<<<<<< HEAD
+=======
+        //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
+        public string NetworkAccessPolicy { get; set; }
+        public string DiskAccessId { get; set; }
+
+        public string Tier { get; set; }
+
+        public bool? BurstingEnabled { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     }
 }

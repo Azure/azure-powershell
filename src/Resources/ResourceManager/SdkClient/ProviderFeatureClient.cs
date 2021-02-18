@@ -146,6 +146,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Unregisters a feature on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public PSProviderFeature UnregisterProviderFeature(string providerName, string featureName)
+        {
+            return this.FeaturesManagementClient.Features.Unregister(providerName, featureName).ToPSProviderFeature();
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Checks if a feature is registered with the current subscription
         /// </summary>
         /// <param name="feature">The feature</param>

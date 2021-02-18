@@ -25,7 +25,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+<<<<<<< HEAD
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+=======
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitor", DefaultParameterSetName = "SetByName"),OutputType(typeof(PSConnectionMonitorResultV1), typeof(PSConnectionMonitorResultV2))]
+    
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     public class GetAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -114,7 +119,11 @@ namespace Microsoft.Azure.Commands.Network
                 
                 if (networkWatcher == null)
                 {
+<<<<<<< HEAD
                     throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+=======
+                    throw new PSArgumentException(Properties.Resources.NoNetworkWatcherFound);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
@@ -123,13 +132,18 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
+<<<<<<< HEAD
                 PSConnectionMonitorResult connectionMonitor = new PSConnectionMonitorResult();
                 connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName);
 
+=======
+                var connectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorName, true);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(connectionMonitor);
             }
             else
             {
+<<<<<<< HEAD
                 List<PSConnectionMonitorResult> psConnectionMonitorList = new List<PSConnectionMonitorResult>();
                 var connectionMonitorList = this.ConnectionMonitors.List(resourceGroupName, networkWatcherName);
 
@@ -138,6 +152,16 @@ namespace Microsoft.Azure.Commands.Network
                     PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }
+=======
+                var connectionMonitorList = this.ConnectionMonitors.List(resourceGroupName, networkWatcherName);
+
+                List<PSConnectionMonitorResult> psConnectionMonitorList = new List<PSConnectionMonitorResult>();
+                foreach (var connectionMonitor in connectionMonitorList)
+                {
+                    psConnectionMonitorList.Add(ConvertConnectionMonitorResultV2ToPSFormat(connectionMonitor));
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);
             }
         }

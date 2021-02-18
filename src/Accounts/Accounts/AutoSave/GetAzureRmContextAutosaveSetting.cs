@@ -15,17 +15,39 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Profile.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosaveSetting")]
     [OutputType(typeof(ContextAutosaveSettings))]
     public class GetzureRmContextAutosaveSetting : AzureContextModificationCmdlet
     {
         const string NoDirectory = "None";
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
         {
+=======
+
+        protected override bool RequireDefaultContext() { return false; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
+            {
+                WriteDebug(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+                WriteDebug(message);
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var session = AzureSession.Instance;
             ContextModificationScope scope;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.CurrentUser)

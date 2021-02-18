@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 84C861B2-DCB3-47F0-8589-BB3172C6E1EC
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/reset-azwebapppublishingprofile
+=======
+online version: https://docs.microsoft.com/powershell/module/az.websites/reset-azwebapppublishingprofile
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -29,12 +33,22 @@ The **Reset-AzWebAppPublishingProfile** cmdlet resets the publishing profile for
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1:
 ```
 PS C:\> Reset-AzWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command resets the publishing profile for the Web App ContosoWebApp associated with the resource group Default-Web-WestUS.
+=======
+### Example 1
+
+The following example resets the publishing profile for the Web App IpRule associated with the resource group MyResourceGroup.
+
+```powershell <!-- Aladdin Generated Example --> 
+Reset-AzWebAppPublishingProfile -Name IpRule -ResourceGroupName MyResourceGroup
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

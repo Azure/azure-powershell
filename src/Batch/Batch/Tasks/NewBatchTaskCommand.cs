@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+<<<<<<< HEAD
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Collections;
@@ -20,6 +21,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+=======
+using System.Collections;
+using System.Management.Automation;
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -53,16 +60,25 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
+<<<<<<< HEAD
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
+=======
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string CommandLine { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceFile")]
+<<<<<<< HEAD
         public IDictionary ResourceFiles { get; set; }
+=======
+        public PSResourceFile[] ResourceFiles { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
@@ -126,7 +142,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskContainerSettings ContainerSettings { get; set; }
 
+<<<<<<< HEAD
         public override void ExecuteCmdlet()
+=======
+        protected override void ExecuteCmdletImpl()
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             if (Tasks != null)
             {

@@ -12,11 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.Aks
 {
     public static class Constants
     {
         public const string AksHelpUri = "https://docs.microsoft.com/en-us/powershell/module/?view=azurermps-5.0.0";
         public const string Name = "Name";
+<<<<<<< HEAD
+=======
+        public const string DefaultParameterSet = "defaultParameterSet";
+        public const string IdParameterSet = "IdParameterSet";
+        public const string GroupNameParameterSet = "GroupNameParameterSet";
+        public const string InputObjectParameterSet = "InputObjectParameterSet";
+        public const string NameParameterSet = "NameParameterSet";
+        public const string ParentNameParameterSet = "ParentNameParameterSet";
+        public const string ParentObjectParameterSet = "ParentObjectParameterSet";
+
+        public const string NodePool = "AksNodePool";
+
+
+        public readonly static IDictionary<string, string> AddOnUserReadNameToServiceNameMapper = new Dictionary<string, string>
+        {
+            { "HttpApplicationRouting", "httpapplicationrouting" },
+            { "Monitoring", "omsagent" },
+            { "VirtualNode", "aciConnector" },
+            { "AzurePolicy", "azurepolicy " },
+            { "KubeDashboard", "kubeDashboard" },
+        };
+        public const string AddOnNameMonitoring = "Monitoring";
+        public const string AddOnNameVirtualNode = "VirtualNode";
+
+        internal const string DotNetApiParameterResourceGroupName = "resourceGroupName";
+        internal const string DotNetApiParameterResourceName = "resourceName";
+        internal const string DotNetApiParameterAgentPoolName = "agentPoolName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -57,8 +57,13 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Pricing tier for IoT Central applications. Default value is S1.")]
         [PSArgumentCompleter("S1")]
+=======
+            HelpMessage = "Pricing tier for IoT Central applications. Default value is ST2.")]
+        [PSArgumentCompleter("ST2")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
@@ -84,9 +89,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
+<<<<<<< HEAD
                 this.EnsureNameAvailabilityOrThrow();
                 this.EnsureSubdomainAvailabilityOrThrow();
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var iotCentralApp = new App()
                 {
                     DisplayName = this.GetDisplayName(),
@@ -104,6 +112,7 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         }
 
+<<<<<<< HEAD
         private void EnsureNameAvailabilityOrThrow()
         {
             var checkNameInputs = new OperationInputs(this.Name, resourceType);
@@ -118,6 +127,8 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
             IotCentralUtils.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private IDictionary<string, string> GetTags()
         {
             if (this.Tag != null)
@@ -129,7 +140,11 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private string GetAppSkuName()
         {
+<<<<<<< HEAD
             return this.Sku ?? PSIotCentralAppSku.S1.ToString();
+=======
+            return this.Sku ?? PSIotCentralAppSku.ST2.ToString();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private string GetDisplayName()

@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 4B373447-3078-4C1F-932E-8337AB170DEB
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolusagemetric
+=======
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpoolusagemetric
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -26,7 +30,11 @@ You can get the statistics for a specific pool and for a time range.
 
 ### Example 1: Get pool usage metrics for a time range
 ```
+<<<<<<< HEAD
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+=======
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
 PS C:\> $EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
 PS C:\> Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
@@ -63,7 +71,11 @@ TotalCoreHours     : 11.9999999993333
 VirtualMachineSize : standard_d4
 ```
 
+<<<<<<< HEAD
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+=======
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The command stores this object reference in the $Context variable.
 The next two commands create **DateTime** objects by using the Get-Date cmdlet.
 The commands store these values in the $StartTime and $EndTime variables for use with the final command.
@@ -88,7 +100,11 @@ The command specifies a filter string to specify that pool, and uses the same $C
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
+<<<<<<< HEAD
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+=======
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -135,7 +151,11 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
+<<<<<<< HEAD
 Specifies an OData filter clause to use to filter the metrics that this cmdlet retruns.
+=======
+Specifies an OData filter clause to use to filter the metrics that this cmdlet returns.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The only valid property is **poolId** with a string value.
 Possible operations are the following: eq, ge, gt, le, lt, startswith.
 
@@ -169,7 +189,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -183,6 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 [Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistics.md)
@@ -190,3 +215,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzBatchJobStatistics](./Get-AzBatchJobStatistics.md)
 
 
+=======
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
+
+[Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistic.md)
+
+[Get-AzBatchJobStatistics](./Get-AzBatchJobStatistic.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

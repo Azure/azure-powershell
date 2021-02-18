@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoor
+=======
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoor
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,6 +31,10 @@ The **Get-AzFrontDoor** cmdletGet gets all existing Front Doors in the current s
 PS C:\> Get-AzFrontDoor
 
 FriendlyName          : frontdoor1
+<<<<<<< HEAD
+=======
+FrontDoorId           : {guid}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -43,6 +51,10 @@ Name                  : frontdoor1
 Type                  : Microsoft.Network/frontdoor1
 
 FriendlyName          : frontdoor1
+<<<<<<< HEAD
+=======
+FrontDoorId           : {guid}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -66,6 +78,10 @@ Get all FrontDoors in the current subscription.
 PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1"
 
 FriendlyName          : frontdoor1
+<<<<<<< HEAD
+=======
+FrontDoorId           : {guid}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -82,6 +98,10 @@ Name                  : frontdoor1
 Type                  : Microsoft.Network/frontdoor1
 
 FriendlyName          : frontdoor2
+<<<<<<< HEAD
+=======
+FrontDoorId           : {guid}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}
@@ -105,6 +125,10 @@ Get all FrontDoors in resource group "rg1" in the current subscription.
 PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1" -Name "frontDoor1"
 
 FriendlyName          : frontdoor1
+<<<<<<< HEAD
+=======
+FrontDoorId           : {guid}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 RoutingRules          : {routingrule1}
 BackendPools          : {backendpool1}
 HealthProbeSettings   : {healthProbeSetting1}

@@ -33,6 +33,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestStorageBlobIsVersioningEnabled()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobIsVersioningEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestStorageBlobContainer()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainer");
@@ -40,6 +50,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestStorageBlobContainerEncryptionScope()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerEncryptionScope");
+        }        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestStorageBlobContainerLegalHold()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerLegalHold");
@@ -57,6 +77,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobServiceProperties()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobServiceProperties");
+<<<<<<< HEAD
         }        
+=======
+        }    
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobORS()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobORS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobRestore()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobRestore");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -84,6 +84,17 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureCognitiveServiceAccount");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAsyncAccountOperations()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-AsyncAccountOperations");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccount()
@@ -112,6 +123,17 @@ namespace CognitiveServices.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSet");
         }
 
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkRuleSetDefaultActions()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSetDefaultActions");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
@@ -168,5 +190,57 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetUsages");
         }
+<<<<<<< HEAD
+=======
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedIdentity()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryption()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Encryption");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUserOwnedStorage()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserOwnedStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpoint()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PrivateEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicNetworkAccess()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapabilities()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApiProperties()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ApiProperties");
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

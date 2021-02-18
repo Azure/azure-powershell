@@ -56,7 +56,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
 
+<<<<<<< HEAD
         #region New-AzureRmKeyVault        
+=======
+        #region New-AzureRmKeyVault
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -91,6 +95,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
+<<<<<<< HEAD
+=======
+        #region Update-AzKeyVault
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateVault()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+               _logger,
+               () => { return new[] { "Test-UpdateKeyVault" }; },
+               null,
+               MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+               MethodBase.GetCurrentMethod().Name
+               );
+        }
+        #endregion
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #region Get-AzureRmKeyVault (list)
 
         [Fact]
@@ -108,7 +130,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
+<<<<<<< HEAD
         #region Remove-AzureRmKeyVault 
+=======
+        #region Remove-AzureRmKeyVault
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -132,7 +158,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestSetRemoveAccessPolicyByObjectId()
         {
             string upn = "";
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -153,7 +182,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestSetRemoveAccessPolicyByUPN()
         {
             string upn = "";
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () =>
@@ -172,7 +204,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
             Guid? appId = null;
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -196,7 +231,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
             Guid? appId1 = null;
             Guid? appId2 = null;
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -218,7 +256,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
             Guid? appId = null;
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -242,7 +283,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             ServicePrincipal principal = null;
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             controller.RunPsTestWorkflow(
                 _logger,
             //script builder
@@ -273,7 +317,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             string upn = "";
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             controller.RunPsTestWorkflow(
                 _logger,
@@ -295,7 +342,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
 
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () =>
@@ -315,7 +365,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
 
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () =>
@@ -334,7 +387,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
 
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () =>
@@ -352,14 +408,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyNegativeCases()
         {
+<<<<<<< HEAD
             string upn = "";
 
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 _logger,
                 () =>
                 {
+<<<<<<< HEAD
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyNegativeCases", _data.PreCreatedVault, _data.ResourceGroupName, upn) };
+=======
+                    return new[] { "Test-ModifyAccessPolicyNegativeCases" };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
@@ -372,7 +435,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
             string upn = "";
+<<<<<<< HEAD
             _data.ResetPreCreatedVault();
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             controller.RunPsTestWorkflow(
@@ -406,6 +472,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
+<<<<<<< HEAD
         [Fact(Skip = "Fails in playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkSet()
@@ -419,6 +486,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #region Helper Methods
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
         {

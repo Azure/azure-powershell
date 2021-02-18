@@ -1,14 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusnetworkruleset
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnetworkruleset
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Remove-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Removes the NetwrokRuleSet for the Given Namespace
+=======
+Removes the NetworkRuleSet for the Given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -31,7 +39,11 @@ Remove-AzServiceBusNetworkRuleSet [-ResourceId] <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
 Removes the NetwrokRuleSet for the Given Namespace
+=======
+Removes the NetworkRuleSet for the Given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -47,7 +59,11 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet for the Given "ServiceBus-Namespace1-1375" namesapce 
+=======
+Deletes the NetworkRuleSet for the Given "ServiceBus-Namespace1-1375" namespace 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 2
 ```powershell
@@ -60,7 +76,11 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet using InputObject 
+=======
+Deletes the NetworkRuleSet using InputObject 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3
 ```powershell
@@ -73,7 +93,11 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
+<<<<<<< HEAD
 Deletes the NetwrokRuleSet using ResourceId of the Namepsace
+=======
+Deletes the NetworkRuleSet using ResourceId of the Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 
 ## PARAMETERS

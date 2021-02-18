@@ -307,7 +307,11 @@
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VmExtensionNotFound" xml:space="preserve">
+<<<<<<< HEAD
     <value>The resource group should have a valid VM extension for Service Fabric.</value>
+=======
+    <value>No valid Service Fabric extension found in resource group '{0}' that corresponds to cluster id '{1}'. The resource group should have a valid VM extension for Service Fabric.</value>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </data>
   <data name="VmssVerbose" xml:space="preserve">
     <value>Virtual machine scale set {0} state is {1}.</value>
@@ -318,4 +322,13 @@
   <data name="SFExtensionNotFoundInVMSS" xml:space="preserve">
     <value>Service Fabric Extension no found in vmss name: {0} id: {1}.</value>
   </data>
+<<<<<<< HEAD
+=======
+  <data name="CerObjectNotInBundle" xml:space="preserve">
+    <value>Unable to retrieve the certificate object form keyvault {0}, with name {1} and version {2}. This might mean the certificate is not managed, please use -Thumbprint parameter to specify the thumbprint corresponding to the secret identifier.</value>
+  </data>
+  <data name="CertificateThumbprintMismatch" xml:space="preserve">
+    <value>The thumprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
+  </data>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 </root>

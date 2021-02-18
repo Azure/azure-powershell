@@ -19,6 +19,10 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -83,7 +87,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The maximum storage quota allowed for a file system in bytes")]
         [ValidateNotNullOrEmpty]
+<<<<<<< HEAD
         public long? UsageThreshold { get; set; }
+=======
+        public long UsageThreshold { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(
             Mandatory = true,
@@ -99,6 +107,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             ParameterSetName = FieldsParameterSet,
+<<<<<<< HEAD
+=======
+            Mandatory = false,
+            HelpMessage = "The type of the ANF volume")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("DataProtection")]
+        public string VolumeType { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [Parameter(
@@ -110,6 +129,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string ServiceLevel { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Create volume from a snapshot. UUID v4 or resource identifier used to identify the Snapshot")]
+        [ValidateNotNullOrEmpty]        
+        public string SnapshotId { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the export policy")]
         [ValidateNotNullOrEmpty]
@@ -117,6 +146,61 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
+=======
+            HelpMessage = "A hashtable array which represents the replication object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesReplicationObject ReplicationObject { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the snapshot object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the backup object")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the protocol types. You need to create Active Directory connections before creating an SMB/CIFS volume")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("NFSv3", "NFSv4.1", "CIFS")]
+        public string[] ProtocolType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
+        public SwitchParameter SnapshotDirectoryVisible { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Backup ID. UUID v4 or resource identifier used to identify the Backup.")]        
+        public string BackupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The security style of volume. Possible values include: 'ntfs', 'unix'")]
+        [PSArgumentCompleter("ntfs", "unix")]
+        public string SecurityStyle { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume")]
+        public double? ThroughputMibps { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describe if a volume is Kerberos Enabled.")]
+        public SwitchParameter KerberosEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -132,6 +216,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
+=======
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
@@ -141,6 +240,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
+<<<<<<< HEAD
+=======
+            var dataProtection = new PSNetAppFilesVolumeDataProtection
+            {
+                Replication = ReplicationObject,
+                Snapshot = Snapshot,
+                Backup = Backup
+            };
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var volumeBody = new Management.NetApp.Models.Volume()
             {
                 ServiceLevel = ServiceLevel,
@@ -149,7 +258,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
+<<<<<<< HEAD
                 Tags = Tag
+=======
+                DataProtection = (dataProtection.Replication != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
+                VolumeType = VolumeType,
+                ProtocolTypes = ProtocolType,
+                Tags = tagPairs,
+                SnapshotId = SnapshotId,
+                SnapshotDirectoryVisible = SnapshotDirectoryVisible,
+                SecurityStyle = SecurityStyle,
+                BackupId = BackupId,
+                ThroughputMibps = ThroughputMibps,
+                KerberosEnabled = KerberosEnabled
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

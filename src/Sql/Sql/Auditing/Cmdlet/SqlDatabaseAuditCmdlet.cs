@@ -17,12 +17,19 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+<<<<<<< HEAD
 using System;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+<<<<<<< HEAD
     public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlAuditAdapter>
+=======
+    public class SqlDatabaseAuditCmdlet : AzureSqlDatabaseCmdletBase<DatabaseAuditModel, SqlDatabaseAuditAdapter>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.DatabaseParameterSetName,
@@ -75,6 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 DatabaseName = DatabaseName
             };
 
+<<<<<<< HEAD
             ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, DatabaseName, model);
             return model;
         }
@@ -82,6 +90,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override SqlAuditAdapter InitModelAdapter()
         {
             return new SqlAuditAdapter(DefaultProfile.DefaultContext);
+=======
+            ModelAdapter.DatabaseName = DatabaseName;
+            ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
+
+            return model;
+        }
+
+        protected override SqlDatabaseAuditAdapter InitModelAdapter()
+        {
+            return new SqlDatabaseAuditAdapter(DefaultProfile.DefaultContext, DatabaseName);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

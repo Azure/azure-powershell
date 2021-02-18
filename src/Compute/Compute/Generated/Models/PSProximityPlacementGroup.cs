@@ -41,9 +41,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         }
 
         public string ProximityPlacementGroupType { get; set; }
+<<<<<<< HEAD
         public IList<SubResource> VirtualMachines { get; set; }
         public IList<SubResource> VirtualMachineScaleSets { get; set; }
         public IList<SubResource> AvailabilitySets { get; set; }
+=======
+        public IList<SubResourceWithColocationStatus> VirtualMachines { get; set; }
+        public IList<SubResourceWithColocationStatus> VirtualMachineScaleSets { get; set; }
+        public IList<SubResourceWithColocationStatus> AvailabilitySets { get; set; }
+        public InstanceViewStatus ColocationStatus { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }

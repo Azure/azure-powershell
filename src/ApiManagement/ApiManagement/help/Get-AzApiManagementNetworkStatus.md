@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementnetworkstatus
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementnetworkstatus
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -91,7 +95,11 @@ LastUpdated      : 5/2/2019 5:04:27 PM
 LastStatusChange : 4/30/2019 11:16:20 PM
 ```
 
+<<<<<<< HEAD
 Gets the connectivity status of the different resources on which ApiMAnagement service depends upon.
+=======
+Gets the connectivity status of the different resources on which ApiManagement service depends upon.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

@@ -102,7 +102,12 @@ namespace Microsoft.Azure.Commands.Compute
                         Settings = this.Settings,
                         ProtectedSettings = this.ProtectedSettings,
                         AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+<<<<<<< HEAD
                         ForceUpdateTag = this.ForceRerun
+=======
+                        ForceUpdateTag = this.ForceRerun,
+                        EnableAutomaticUpgrade = this.EnableAutomaticUpgrade
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     };
 
                     if (NoWait.IsPresent)

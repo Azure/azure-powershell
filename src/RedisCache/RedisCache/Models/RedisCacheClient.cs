@@ -46,9 +46,21 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
+<<<<<<< HEAD
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
+=======
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
+        {
+            try
+            {
+                _resourceManagementClient.Providers.Register("Microsoft.Cache");
+            }
+            catch
+            {
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var parameters = new RedisCreateParameters
             {
                 Location = location,
@@ -102,6 +114,14 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
+<<<<<<< HEAD
+=======
+            if(!string.IsNullOrEmpty(minimumTlsVersion))
+            {
+                parameters.MinimumTlsVersion = minimumTlsVersion;
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!string.IsNullOrWhiteSpace(subnetId))
             {
                 parameters.SubnetId = subnetId;
@@ -117,9 +137,21 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
+<<<<<<< HEAD
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, Hashtable tags)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
+=======
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, Hashtable tags)
+        {
+            try
+            {
+                _resourceManagementClient.Providers.Register("Microsoft.Cache");
+            }
+            catch
+            {
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var parameters = new RedisUpdateParameters
             {
                 Sku = new Microsoft.Azure.Management.Redis.Models.Sku
@@ -166,6 +198,14 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             
             parameters.ShardCount = shardCount;
+<<<<<<< HEAD
+=======
+
+            if(!string.IsNullOrEmpty(MinimumTlsVersion))
+            {
+                parameters.MinimumTlsVersion = MinimumTlsVersion;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             
             RedisResource response = _client.Redis.Update(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;

@@ -224,7 +224,11 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
                     this.Position += offset;
                     break;
                 case SeekOrigin.End:
+<<<<<<< HEAD
                     this.Position -= offset;
+=======
+                    this.Position = this.Length + offset;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     break;
                 default:
                     throw new NotSupportedException();

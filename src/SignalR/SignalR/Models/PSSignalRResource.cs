@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
@@ -32,6 +36,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public PSResourceSku Sku { get; }
 
+<<<<<<< HEAD
         public string Version { get; }
 
         public PSSignalRResource(SignalRResource signalRResource)
@@ -45,6 +50,37 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             ServerPort = signalRResource.ServerPort;
             Sku = new PSResourceSku(signalRResource.Sku);
             Version = signalRResource.Version;
+=======
+        public IList<PSSignalRFeature> Features { get; }
+
+        public PSSignalRCorsSettings Cors { get; }
+
+        public string Version { get; }
+
+        public PSSignalRNetworkAcls NetworkAcls { get; }
+
+        public PSServerlessUpstreamSettings Upstream { get; }
+
+        public PSSignalRResource(SignalRResource signalR)
+            : base(signalR)
+        {
+            ExternalIp = signalR.ExternalIP;
+            HostName = signalR.HostName;
+            HostNamePrefix = signalR.HostNamePrefix;
+            ProvisioningState = signalR.ProvisioningState;
+            PublicPort = signalR.PublicPort;
+            ServerPort = signalR.ServerPort;
+            Sku = new PSResourceSku(signalR.Sku);
+            Features = new List<PSSignalRFeature>();
+            foreach (var feature in signalR.Features)
+            {
+                Features.Add(new PSSignalRFeature(feature));
+            }
+            Cors = new PSSignalRCorsSettings(signalR.Cors);
+            Version = signalR.Version;
+            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkACLs);
+            Upstream = new PSServerlessUpstreamSettings(signalR.Upstream);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

@@ -13,7 +13,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.3" />
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.11.6898.1" />
+=======
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>

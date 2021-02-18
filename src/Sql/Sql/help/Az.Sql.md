@@ -1,7 +1,11 @@
 ---
 Module Name: Az.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.sql
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.sql
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.4.0.0
 Locale: en-US
 ---
@@ -14,6 +18,15 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
+=======
+### [Add-AzSqlElasticJobStep](Add-AzSqlElasticJobStep.md)
+Adds a job step to a job
+
+### [Add-AzSqlElasticJobTarget](Add-AzSqlElasticJobTarget.md)
+Adds a target to a target group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
 Adds a key vault key to the provided Managed Instance. 
 
@@ -26,7 +39,11 @@ Adds a Key Vault key to a SQL server.
 ### [Add-AzSqlServerTransparentDataEncryptionCertificate](Add-AzSqlServerTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
+<<<<<<< HEAD
 ### [Clear-AzSqlDatabaseAdvancedThreatProtectionSettings](Clear-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
+=======
+### [Clear-AzSqlDatabaseAdvancedThreatProtectionSetting](Clear-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Removes the advanced threat protection settings from a database.
 
 ### [Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
@@ -44,30 +61,76 @@ Clears the vulnerability assessment settings of a managed database.
 ### [Clear-AzSqlInstanceVulnerabilityAssessmentSetting](Clear-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a managed instance.
 
+<<<<<<< HEAD
 ### [Clear-AzSqlServerAdvancedThreatProtectionSettings](Clear-AzSqlServerAdvancedThreatProtectionSettings.md)
+=======
+### [Clear-AzSqlServerAdvancedThreatProtectionSetting](Clear-AzSqlServerAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Removes the advanced threat protection settings from a server.
 
 ### [Clear-AzSqlServerVulnerabilityAssessmentSetting](Clear-AzSqlServerVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a server.
 
+<<<<<<< HEAD
+=======
+### [Complete-AzSqlInstanceDatabaseLogReplay](Complete-AzSqlInstanceDatabaseLogReplay.md)
+Completes Log Replay service for the given database.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+<<<<<<< HEAD
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
+=======
+### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the database.
+
+### [Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Disables Azure AD only authentication for a specific SQL Managed Instance.
+
+### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
+Disables Advanced Data Security on a managed instance.
+
+### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
+
+### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Disables Azure AD only authentication for a specific SQL Server.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
 
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
+<<<<<<< HEAD
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
 
+=======
+### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
+
+### [Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication](Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Managed Instance.
+
+### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
+Enables Advanced Data Security on a managed instance.
+
+### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL managed instance database.
+
+### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Enables Azure AD only authentication for a specific SQL Server.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
 
@@ -83,15 +146,22 @@ Gets one or more databases.
 ### [Get-AzSqlDatabaseActivity](Get-AzSqlDatabaseActivity.md)
 Gets the status of database operations.
 
+<<<<<<< HEAD
 ### [Get-AzSqlDatabaseAdvancedThreatProtectionSettings](Get-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
+=======
+### [Get-AzSqlDatabaseAdvancedThreatProtectionSetting](Get-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets the advanced threat protection settings for a database.
 
 ### [Get-AzSqlDatabaseAdvisor](Get-AzSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
 
+<<<<<<< HEAD
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
 Gets the auditing settings of an Azure SQL database.
 
@@ -119,15 +189,24 @@ Gets a geo-redundant backup of a database.
 ### [Get-AzSqlDatabaseGeoBackupPolicy](Get-AzSqlDatabaseGeoBackupPolicy.md)
 Gets a database geo backup policy.
 
+<<<<<<< HEAD
 ### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
 Gets or lists Azure SQL Database Instance Failover Groups.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
 
 ### [Get-AzSqlDatabaseIndexRecommendation](Get-AzSqlDatabaseIndexRecommendation.md)
 Gets the recommended index operations for a server or database.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
+Gets or lists Instance Failover Groups.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
 
@@ -140,10 +219,13 @@ Gets the geo-replication links between an Azure SQL Database and a resource grou
 ### [Get-AzSqlDatabaseRestorePoint](Get-AzSqlDatabaseRestorePoint.md)
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
 
+<<<<<<< HEAD
 ### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
 Gets the secure connection policy for a database. 
 Secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the database.
 
@@ -174,6 +256,33 @@ Gets a deleted database that you can restore.
 ### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlElasticJob](Get-AzSqlElasticJob.md)
+Gets one or more jobs
+
+### [Get-AzSqlElasticJobAgent](Get-AzSqlElasticJobAgent.md)
+Gets a Azure SQL Elastic Job agent
+
+### [Get-AzSqlElasticJobCredential](Get-AzSqlElasticJobCredential.md)
+Gets one or more credentials
+
+### [Get-AzSqlElasticJobExecution](Get-AzSqlElasticJobExecution.md)
+Gets one or more job executions
+
+### [Get-AzSqlElasticJobStep](Get-AzSqlElasticJobStep.md)
+Gets one or more job steps
+
+### [Get-AzSqlElasticJobStepExecution](Get-AzSqlElasticJobStepExecution.md)
+Gets one or more job step executions
+
+### [Get-AzSqlElasticJobTargetExecution](Get-AzSqlElasticJobTargetExecution.md)
+Gets one or more job target executions
+
+### [Get-AzSqlElasticJobTargetGroup](Get-AzSqlElasticJobTargetGroup.md)
+Gets one or more job target groups
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
@@ -195,18 +304,42 @@ Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 ### [Get-AzSqlInstance](Get-AzSqlInstance.md)
 Returns information about Azure SQL Managed Database Instance.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlInstanceActiveDirectoryAdministrator](Get-AzSqlInstanceActiveDirectoryAdministrator.md)
+Gets information about an Azure AD administrator for SQL Managed Instance.
+
+### [Get-AzSqlInstanceActiveDirectoryOnlyAuthentication](Get-AzSqlInstanceActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Managed Instance.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a managed instance.
 
 ### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+Gets a managed database's long term retention policy
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Gets a backup short term retention policy.
 
 ### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
 Returns information about Azure SQL Managed Instance database redundant backup.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlInstanceDatabaseLogReplay](Get-AzSqlInstanceDatabaseLogReplay.md)
+Gets the Log Replay service status.
+
+### [Get-AzSqlInstanceDatabaseLongTermRetentionBackup](Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+Gets long term retention backup(s).
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
@@ -225,6 +358,18 @@ Gets the vulnerability assessment settings of a managed database.
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlInstanceOperation](Get-AzSqlInstanceOperation.md)
+Gets a SQL managed instance's operations.
+
+### [Get-AzSqlInstancePool](Get-AzSqlInstancePool.md)
+Returns information about the Azure SQL Instance pool.
+
+### [Get-AzSqlInstancePoolUsage](Get-AzSqlInstancePoolUsage.md)
+Returns information about an Azure SQL Instance pool's usage.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
@@ -237,6 +382,7 @@ Returns information about SQL Database servers.
 ### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
 
+<<<<<<< HEAD
 ### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a server.
 
@@ -244,20 +390,38 @@ Gets Advanced Data Security policy of a server.
 Gets Advanced Threat Protection policy of a server.
 
 ### [Get-AzSqlServerAdvancedThreatProtectionSettings](Get-AzSqlServerAdvancedThreatProtectionSettings.md)
+=======
+### [Get-AzSqlServerActiveDirectoryOnlyAuthentication](Get-AzSqlServerActiveDirectoryOnlyAuthentication.md)
+Gets Azure AD only authentication for a specific SQL Server.
+
+### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
+Gets Advanced Data Security policy of a server.
+
+### [Get-AzSqlServerAdvancedThreatProtectionSetting](Get-AzSqlServerAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets the advanced threat protection settings for a server.
 
 ### [Get-AzSqlServerAdvisor](Get-AzSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
 
+<<<<<<< HEAD
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
+<<<<<<< HEAD
+=======
+### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
+Gets the Microsoft support operations auditing settings of an Azure SQL server.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
@@ -312,6 +476,18 @@ Returns information about the sync schema of a member database or a hub database
 ### [Get-AzSqlVirtualCluster](Get-AzSqlVirtualCluster.md)
 Returns information about Azure SQL Virtual Cluster.
 
+<<<<<<< HEAD
+=======
+### [Invoke-AzSqlDatabaseFailover](Invoke-AzSqlDatabaseFailover.md)
+Failovers a database.
+
+### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
+Failovers an elastic pool.
+
+### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
+Failovers an Azure SQL Managed Instance.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -327,18 +503,42 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ### [New-AzSqlDatabaseFailoverGroup](New-AzSqlDatabaseFailoverGroup.md)
 This command creates a new Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
 This command creates a new Azure SQL Database Instance Failover Group.
 
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
+=======
+### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
+Imports a .bacpac file and create a new database on the server.
+
+### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
+This command creates a new Azure SQL Database Instance Failover Group.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzSqlDatabaseRestorePoint](New-AzSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
 
 ### [New-AzSqlDatabaseSecondary](New-AzSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
+<<<<<<< HEAD
+=======
+### [New-AzSqlElasticJob](New-AzSqlElasticJob.md)
+Creates a new job
+
+### [New-AzSqlElasticJobAgent](New-AzSqlElasticJobAgent.md)
+Creates a new elastic job agent
+
+### [New-AzSqlElasticJobCredential](New-AzSqlElasticJobCredential.md)
+Creates a new job credential
+
+### [New-AzSqlElasticJobTargetGroup](New-AzSqlElasticJobTargetGroup.md)
+Creates a new target group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzSqlElasticPool](New-AzSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
@@ -348,6 +548,12 @@ Creates an Azure SQL Database Managed Instance.
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
 
+<<<<<<< HEAD
+=======
+### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
+Creates an Azure SQL Instance pool.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
 
@@ -382,7 +588,11 @@ Creates an Azure SQL Database Sync Member.
 Removes an Azure SQL database.
 
 ### [Remove-AzSqlDatabaseAudit](Remove-AzSqlDatabaseAudit.md)
+<<<<<<< HEAD
 Removes the audit policy of a SQL Database.
+=======
+Removes the auditing settings of an Azure SQL database.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
@@ -390,12 +600,21 @@ Removes a data masking rule from a database.
 ### [Remove-AzSqlDatabaseFailoverGroup](Remove-AzSqlDatabaseFailoverGroup.md)
 Removes an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
 Removes an Azure SQL Database Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
 
+=======
+### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
+Removes one or more databases from an Azure SQL Database Failover Group.
+
+### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
+Removes an Instance Failover Group.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
 
@@ -408,21 +627,60 @@ Terminates data replication between a SQL Database and the specified secondary d
 ### [Remove-AzSqlDatabaseSensitivityClassification](Remove-AzSqlDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the database.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzSqlElasticJob](Remove-AzSqlElasticJob.md)
+Removes a job
+
+### [Remove-AzSqlElasticJobAgent](Remove-AzSqlElasticJobAgent.md)
+Removes the elastic job agent
+
+### [Remove-AzSqlElasticJobCredential](Remove-AzSqlElasticJobCredential.md)
+Removes the elastic job credential
+
+### [Remove-AzSqlElasticJobStep](Remove-AzSqlElasticJobStep.md)
+Removes the job step
+
+### [Remove-AzSqlElasticJobTarget](Remove-AzSqlElasticJobTarget.md)
+Removes the target from the target group
+
+### [Remove-AzSqlElasticJobTargetGroup](Remove-AzSqlElasticJobTargetGroup.md)
+Removes the target group
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzSqlElasticPool](Remove-AzSqlElasticPool.md)
 Deletes an elastic database pool.
 
 ### [Remove-AzSqlInstance](Remove-AzSqlInstance.md)
 Removes an Azure SQL Managed Database Instance.
 
+<<<<<<< HEAD
 ### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
 
+=======
+### [Remove-AzSqlInstanceActiveDirectoryAdministrator](Remove-AzSqlInstanceActiveDirectoryAdministrator.md)
+Removes an Azure AD administrator for SQL Managed Instance.
+
+### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
+Removes an Azure SQL Managed Instance database.
+
+### [Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
+Deletes a long term retention backup.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
 
+<<<<<<< HEAD
+=======
+### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
+Removes an Azure SQL Instance pool.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -430,7 +688,11 @@ Removes an Azure SQL Database server.
 Removes an Azure AD administrator for SQL Server.
 
 ### [Remove-AzSqlServerAudit](Remove-AzSqlServerAudit.md)
+<<<<<<< HEAD
 Removes the audit policy of a SQL Server.
+=======
+Removes the auditing settings of an Azure SQL server.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
@@ -447,6 +709,12 @@ Deletes a firewall rule from a SQL Database server.
 ### [Remove-AzSqlServerKeyVaultKey](Remove-AzSqlServerKeyVaultKey.md)
 Removes a Key Vault key from a SQL server.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
+Removes the Microsoft support operations auditing settings of an Azure SQL server.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
 
@@ -477,9 +745,12 @@ Sets properties for a database, or moves an existing database into an elastic po
 ### [Set-AzSqlDatabaseAdvisorAutoExecuteStatus](Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 Modifies auto execute status of an Azure SQL Database Advisor.
 
+<<<<<<< HEAD
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
 Changes the auditing settings for an Azure SQL database.
 
@@ -498,12 +769,21 @@ Sets the properties of a data masking rule for a database.
 ### [Set-AzSqlDatabaseFailoverGroup](Set-AzSqlDatabaseFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Instance Failover Group.
 
 ### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
 
+=======
+### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
+Sets a database geo backup policy.
+
+### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
+Modifies the configuration of an Instance Failover Group.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
 
@@ -519,6 +799,21 @@ Modifies TDE property for a database.
 ### [Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+<<<<<<< HEAD
+=======
+### [Set-AzSqlElasticJob](Set-AzSqlElasticJob.md)
+Updates a job
+
+### [Set-AzSqlElasticJobAgent](Set-AzSqlElasticJobAgent.md)
+Updates an elastic job agent
+
+### [Set-AzSqlElasticJobCredential](Set-AzSqlElasticJobCredential.md)
+Updates a job credential
+
+### [Set-AzSqlElasticJobStep](Set-AzSqlElasticJobStep.md)
+Updates a job step
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlElasticPool](Set-AzSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -531,6 +826,15 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
 
+<<<<<<< HEAD
+=======
+### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
+Provisions an Azure AD administrator for SQL Managed Instance.
+
+### [Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
+The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed database's long term retention policy.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Sets a backup short term retention policy.
 
@@ -540,6 +844,12 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+<<<<<<< HEAD
+=======
+### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
+Sets properties for an Azure SQL Instance pool.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlInstanceTransparentDataEncryptionProtector](Set-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
@@ -552,9 +862,12 @@ Provisions an Azure AD administrator for SQL Server.
 ### [Set-AzSqlServerAdvisorAutoExecuteStatus](Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 Updates the auto execute status of an Azure SQL Server Advisor.
 
+<<<<<<< HEAD
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
@@ -567,6 +880,12 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 ### [Set-AzSqlServerFirewallRule](Set-AzSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
 
+<<<<<<< HEAD
+=======
+### [Set-AzSqlServerMSSupportAudit](Set-AzSqlServerMSSupportAudit.md)
+Changes the Microsoft support operations auditing settings for an Azure SQL database.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.
 
@@ -582,6 +901,15 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
+<<<<<<< HEAD
+=======
+### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
+Starts a job, returning a job execution id that can be polled to view it's status
+
+### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
+Starts a Log Replay service with the given parameters.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
@@ -594,9 +922,24 @@ Cancels the asynchronous updates operation on the database.
 ### [Stop-AzSqlDatabaseExecuteIndexRecommendation](Stop-AzSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
+<<<<<<< HEAD
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
 
+=======
+### [Stop-AzSqlElasticJob](Stop-AzSqlElasticJob.md)
+Stops a job given it's job execution id
+
+### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
+Cancels the asynchronous update operation on an elastic pool.
+
+### [Stop-AzSqlInstanceDatabaseLogReplay](Stop-AzSqlInstanceDatabaseLogReplay.md)
+Cancels the Log Replay service by dropping the database.
+
+### [Stop-AzSqlInstanceOperation](Stop-AzSqlInstanceOperation.md)
+Stops a SQL managed instance's operations.
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Stop-AzSqlSyncGroupSync](Stop-AzSqlSyncGroupSync.md)
 Stops a sync group synchronization.
 
@@ -607,9 +950,15 @@ Suspends a SQL Data Warehouse database.
 Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
+<<<<<<< HEAD
 Executes a failover of an Azure SQL Database Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSettings](Update-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
+=======
+Executes a failover of an Instance Failover Group.
+
+### [Update-AzSqlDatabaseAdvancedThreatProtectionSetting](Update-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Sets a advanced threat protection settings on a database.
 
 ### [Update-AzSqlDatabaseVulnerabilityAssessmentSetting](Update-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
@@ -621,7 +970,11 @@ Updates the vulnerability assessment settings of a managed database.
 ### [Update-AzSqlInstanceVulnerabilityAssessmentSetting](Update-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed instance.
 
+<<<<<<< HEAD
 ### [Update-AzSqlServerAdvancedThreatProtectionSettings](Update-AzSqlServerAdvancedThreatProtectionSettings.md)
+=======
+### [Update-AzSqlServerAdvancedThreatProtectionSetting](Update-AzSqlServerAdvancedThreatProtectionSetting.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Sets a advanced threat protection settings on a server.
 
 ### [Update-AzSqlServerVulnerabilityAssessmentSetting](Update-AzSqlServerVulnerabilityAssessmentSetting.md)
@@ -635,6 +988,10 @@ Updates an Azure SQL Database Sync Member.
 
 ### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
 Update the sync schema for a sync member database or a sync hub database.
+<<<<<<< HEAD
 It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+=======
+It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 

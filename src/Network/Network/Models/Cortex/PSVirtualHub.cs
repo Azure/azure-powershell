@@ -15,6 +15,10 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+    using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualHub : PSTopLevelResource
@@ -24,16 +28,52 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId VpnGateway { get; set; }
 
+<<<<<<< HEAD
         public PSResourceId ExpressRouteGateway { get; set; }
 
         public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
 
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
+=======
+        public PSResourceId P2SVpnGateway { get; set; }
+
+        public PSResourceId ExpressRouteGateway { get; set; }
+
+        public PSResourceId SecurityPartnerProvider { get; set; }
+
+        public PSResourceId AzureFirewall { get; set; }
+
+        public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
+
+        public List<PSVirtualHubRouteTable> RouteTables { get; set; }
+
+        public PSVirtualHubRouteTable RouteTable { get; set; }
+
+        public List<PSHubIpConfiguration> IpConfigurations { get; set; }
+
+        public List<PSBgpConnection> BgpConnections { get; set; }
+
+        public uint VirtualRouterAsn { get; set; }
+
+        public List<string> VirtualRouterIps { get; set; }
+
+        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+<<<<<<< HEAD
+=======
+        
+        [Ps1Xml(Label = "Sku", Target = ViewControl.Table)]
+        public string Sku { get; set; }
+
+        [Ps1Xml(Label = "RoutingState", Target = ViewControl.Table)]
+        public string RoutingState { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

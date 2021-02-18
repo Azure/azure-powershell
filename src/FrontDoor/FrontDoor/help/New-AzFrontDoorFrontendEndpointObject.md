@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
+=======
+online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,9 +19,15 @@ Create a PSFrontendEndpoint Object for Front Door creation
 ```
 New-AzFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
  [-SessionAffinityEnabledState <PSEnabledState>] [-SessionAffinityTtlInSeconds <Int32>]
+<<<<<<< HEAD
  [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <String>] [-ProtocolType <String>]
  [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+=======
+ [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <String>] [-MinimumTlsVersion <String>]
+ [-ProtocolType <String>] [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>]
+ [-CertificateType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -27,29 +37,52 @@ Create a PSFrontendEndpoint Object for Front Door creation
 
 ### Example 1
 ```powershell
+<<<<<<< HEAD
 PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
 
 
 HostName                         : frontdoor5.azurefd.net
+=======
+PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
+
+
+HostName                         : frontendendpoint1
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
 CustomHttpsProvisioningState     :
 CustomHttpsProvisioningSubstate  :
+<<<<<<< HEAD
 CertificateSource                : AzureKeyVault
 ProtocolType                     : ServerNameIndication
 Vault                            :
 SecretName                       :
 SecretVersion                    :
 CertificateType                  : Shared
+=======
+CertificateSource                :
+MinimumTlsVersion                : 1.2
+Vault                            :
+SecretName                       :
+SecretVersion                    :
+CertificateType                  :
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ResourceState                    :
 Id                               :
 Name                             : frontendendpoint1
 Type                             :
+<<<<<<< HEAD
 ```
 
 Create a PSFrontendEndpoint Object for Front Door creation
+=======
+ProtocolType                     : ServerNameIndication
+```
+
+Create a PSFrontendEndpoint Object for Front Door creation.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -114,6 +147,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -MinimumTlsVersion
+The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Name
 Frontend endpoint name.
 
@@ -243,11 +294,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+<<<<<<< HEAD
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
 
+=======
+## OUTPUTS
+
+### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## NOTES
 
 ## RELATED LINKS

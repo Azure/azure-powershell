@@ -126,7 +126,11 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAutoscaleProfileNoScheduleParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileFixDateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
+<<<<<<< HEAD
         [ValidateNotNullOrEmpty]
+=======
+        [ValidateNotNull]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<Management.Monitor.Management.Models.ScaleRule> Rule { get; set; }
 
         #endregion

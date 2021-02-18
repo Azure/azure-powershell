@@ -13,11 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+<<<<<<< HEAD
+=======
+using Newtonsoft.Json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -36,19 +44,37 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
 
         /// <summary>
+<<<<<<< HEAD
         /// Modify the context according to the appropriate scope for this cmdlet invociation
         /// </summary>
         /// <param name="contextAction">The action that modifes the context given a profile and profile client</param>
+=======
+        /// Modify the context according to the appropriate scope for this cmdlet invocation
+        /// </summary>
+        /// <param name="contextAction">The action that modifies the context given a profile and profile client</param>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected virtual void ModifyContext(Action<AzureRmProfile, RMProfileClient> contextAction)
         {
             using (var profile = GetDefaultProfile())
             {
+<<<<<<< HEAD
                 contextAction(profile.ToProfile(), new RMProfileClient(profile));
+=======
+                var client = new RMProfileClient(profile)
+                {
+                    WarningLog = (s) => WriteWarning(s)
+                };
+                contextAction(profile.ToProfile(), client);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Modify the Profile according to the selected scope for thsi invocation
+=======
+        /// Modify the Profile according to the selected scope for this invocation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <param name="profileAction">The action to take over the given profile</param>
         protected virtual void ModifyProfile(Action<IProfileOperations> profileAction)
@@ -81,7 +107,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Get the context modification scope for the current cmdlet invoication
+=======
+        /// Get the context modification scope for the current cmdlet invocation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <returns>Process if the cmdlet should only change the current process, CurrentUser 
         /// if any changes should occur globally.</returns>
@@ -89,7 +119,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             ContextModificationScope scope = ScopeHelpers.GetContextModificationScopeForProcess(WriteDebugWithTimestamp);
 
+<<<<<<< HEAD
             // override default scope with appropriate scope for thsi cmdlet invocation
+=======
+            // override default scope with appropriate scope for this cmdlet invocation
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (MyInvocation != null && MyInvocation.BoundParameters != null && MyInvocation.BoundParameters.ContainsKey(nameof(DefaultProfile)))
             {
                 // never autosave with a passed-in profile
@@ -109,7 +143,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <summary>
         /// Initialize the profile provider based on the autosave setting
         /// </summary>
+<<<<<<< HEAD
         internal void InitializeProfileProvider(bool useAutoSaveProfile = false)
+=======
+        internal bool InitializeProfileProvider(bool useAutoSaveProfile = false)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
@@ -117,9 +155,25 @@ namespace Microsoft.Azure.Commands.Profile.Common
 #endif
                 if (useAutoSaveProfile)
                 {
+<<<<<<< HEAD
                     ProtectedProfileProvider.InitializeResourceManagerProfile();
                 }
                 else
+=======
+                    try
+                    {
+                        ProtectedProfileProvider.InitializeResourceManagerProfile();
+                    }
+                    catch (Exception e)
+                    {
+                        //Likely the exception is related to IO or permission, fallback to Process save mode
+                        WriteInitializationWarnings(string.Format(Resources.ProfileFileNotAccessible, e.Message));
+                        ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
+                    }
+                }
+
+                if (null == AzureRmProfileProvider.Instance)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     switch (GetContextModificationScope())
                     {
@@ -138,6 +192,10 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             }
 #endif
+<<<<<<< HEAD
+=======
+            return AzureRmProfileProvider.Instance is ProtectedProfileProvider;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -193,6 +251,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
             return result;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

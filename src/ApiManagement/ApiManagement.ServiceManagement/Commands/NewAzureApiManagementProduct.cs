@@ -74,7 +74,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Maximum number of simultaneous subscriptions. This parameter is optional." +
+<<<<<<< HEAD
                           " Default value is 1.")]
+=======
+                          " Default value is None.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Int32? SubscriptionsLimit { get; set; }
 
         [Parameter(
@@ -89,11 +93,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             string productId = ProductId ?? Guid.NewGuid().ToString("N");
 
             bool? approvalRequired = null;
+<<<<<<< HEAD
             Int32? subscriptionsLimit = null;
             if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
             {
                 approvalRequired = ApprovalRequired ?? false;
                 subscriptionsLimit = SubscriptionsLimit ?? 1;
+=======
+            if (SubscriptionRequired.HasValue && SubscriptionRequired.Value)
+            {
+                approvalRequired = ApprovalRequired ?? false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             var product = Client.ProductCreate(
@@ -104,7 +114,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 LegalTerms,
                 SubscriptionRequired ?? true,
                 approvalRequired,
+<<<<<<< HEAD
                 subscriptionsLimit,
+=======
+                SubscriptionsLimit,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 State);
 
             WriteObject(product);

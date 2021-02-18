@@ -70,9 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         EndTime = DateTime.Now
                     };
 
+<<<<<<< HEAD
                     if (result != null)
                     {
                         output.Name = result.RequestId;
+=======
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
 
                     WriteObject(output);
@@ -98,7 +104,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             ParameterSetName = "DefaultParameter",
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 

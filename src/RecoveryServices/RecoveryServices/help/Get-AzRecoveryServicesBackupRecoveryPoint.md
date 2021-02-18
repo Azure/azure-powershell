@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 838026E4-F001-434C-86F0-B2A838E93A9C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+Module Name: Az.RecoveryServices
+ms.assetid: 838026E4-F001-434C-86F0-B2A838E93A9C
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,13 +23,19 @@ Gets the recovery points for a backed up item.
 ## SYNTAX
 
 ### NoFilterParameterSet (Default)
+<<<<<<< HEAD
 
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-VaultId <String>]
+=======
+```
+Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-VaultId <String>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
+<<<<<<< HEAD
 
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
@@ -33,6 +47,17 @@ Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] 
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
  [[-KeyFileDownloadLocation] <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+=======
+```
+Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
+ [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### RecoveryPointId
+```
+Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
+ [[-KeyFileDownloadLocation] <String>] [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [<CommonParameters>]
 ```
 
@@ -55,10 +80,18 @@ PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -W
 PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID
 ```
 
+<<<<<<< HEAD
 The first command gets the date from seven days ago, and then stores it in the $StartDate variable.
 The second command gets today's date, and then stores it in the $EndDate variable.
 The third command gets AzureVM backup containers, and stores them in the $Containers variable.
 The fourth command gets the backup item named V2VM, and then stores it in the $BackupItem variable.
+=======
+The first command gets vault object based on vaultName. 
+The second command gets the date from seven days ago, and then stores it in the $StartDate variable.
+The third command gets today's date, and then stores it in the $EndDate variable.
+The fourth command gets AzureVM backup containers, and stores them in the $Container variable. 
+The fifth command gets the backup item based on workloadType, vaultId and then stores it in the $BackupItem variable.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The last command gets an array of recovery points for the item in $BackupItem, and then stores them in the $RP variable.
 
 ## PARAMETERS
@@ -176,8 +209,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -CommonParameters
 
+=======
+### CommonParameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

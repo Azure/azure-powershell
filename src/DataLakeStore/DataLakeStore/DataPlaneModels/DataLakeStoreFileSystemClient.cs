@@ -777,6 +777,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="filter">Query to match items in trash</param>
         /// <param name="count">Minimum number of entries to search for</param>
         /// <param name="cmdletCancellationToken">CancellationToken</param>
+<<<<<<< HEAD
         public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, CancellationToken cmdletCancellationToken = default(CancellationToken))
         {
             IEnumerable<TrashEntry> result = null;
@@ -820,6 +821,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             WaitForTask(enumerateTask, cmdletCancellationToken);
 
             return result;
+=======
+        public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
+        {
+            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            if (_isDebugEnabled)
+            {
+                IEnumerable<TrashEntry> result = null;
+                // Api call below consists of multiple rest calls so multiple debug statements will be posted
+                // so since we want to the debug lines to be updated while the command runs, we have to flush the debug statements in queue and thats why we want to do it this way
+                var enumerateTask = Task.Run(() => {
+                result = client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                }, cmdletCancellationToken);
+                TrackTaskProgress(enumerateTask, cmdlet, null, cmdletCancellationToken);
+                return result;
+            }
+            else
+            {
+                return client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -874,7 +895,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     }
                 }
 
+<<<<<<< HEAD
                 // If debug is enabled then flush debug messsages 
+=======
+                // If debug is enabled then flush debug messages 
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (_isDebugEnabled)
                 {
                     if (!token.IsCancellationRequested &&

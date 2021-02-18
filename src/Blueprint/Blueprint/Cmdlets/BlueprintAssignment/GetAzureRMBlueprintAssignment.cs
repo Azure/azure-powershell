@@ -20,6 +20,7 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
+<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", DefaultParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription), OutputType(typeof(PSBlueprintAssignment))]
     public class GetAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
@@ -32,6 +33,26 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
+=======
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSBlueprintAssignment))]
+    public class GetAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
+    {
+        #region Parameters
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentManagementGroupId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         #region Cmdlet Overrides
@@ -42,11 +63,26 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             try
             {
                 switch (ParameterSetName) {
+<<<<<<< HEAD
                     case ParameterSetNames.BlueprintAssignmentsBySubscription:
                         foreach (var assignment in BlueprintClient.ListBlueprintAssignments(Utils.GetScopeForSubscription(subscription)))
                             WriteObject(assignment, true);
                         break;
                     case ParameterSetNames.BlueprintAssignmentByName:
+=======
+                    case ParameterSetNames.ManagementGroupScope:
+                        foreach (var assignment in BlueprintClient.ListBlueprintAssignments(Utils.GetScopeForManagementGroup(ManagementGroupId)))
+                            WriteObject(assignment, true);
+                        break;
+                    case ParameterSetNames.SubscriptionScope:
+                        foreach (var assignment in BlueprintClient.ListBlueprintAssignments(Utils.GetScopeForSubscription(subscription)))
+                            WriteObject(assignment, true);
+                        break;
+                    case ParameterSetNames.ByManagementGroupAndName:
+                        WriteObject(BlueprintClient.GetBlueprintAssignment(Utils.GetScopeForManagementGroup(ManagementGroupId), Name));
+                        break;
+                    case ParameterSetNames.BySubscriptionAndName:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         WriteObject(BlueprintClient.GetBlueprintAssignment(Utils.GetScopeForSubscription(subscription), Name));
                         break;
                     default:

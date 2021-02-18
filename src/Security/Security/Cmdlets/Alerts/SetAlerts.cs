@@ -17,7 +17,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
+<<<<<<< HEAD
 using Microsoft.Rest.Azure;
+=======
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
@@ -51,10 +56,21 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSecurityAlert), NewParameterTypeName = "PSSecurityAlertV3")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(ParameterSetName = ParameterSetNames.InputObjectV3, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObjectV3)]
+        [ValidateNotNullOrEmpty]
+        public PSSecurityAlertV3 InputObjectV3 { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
@@ -64,6 +80,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             var name = Name;
             var actionType = ActionType;
             var location = Location;
+<<<<<<< HEAD
+=======
+            var status = "";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             switch (ParameterSetName)
             {
@@ -75,6 +95,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     name = AzureIdUtilities.GetResourceName(ResourceId);
                     break;
                 case ParameterSetNames.InputObject:
+<<<<<<< HEAD
                     switch (InputObject.State.ToLower())
                     {
                         case "dismissed":
@@ -87,28 +108,91 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                             break;
                     }
 
+=======
+                    status = InputObject.State;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     name = InputObject.Name;
                     rg = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     location = AzureIdUtilities.GetResourceLocation(InputObject.Id);
                     break;
+<<<<<<< HEAD
+=======
+                case ParameterSetNames.InputObjectV3:
+                    status = InputObjectV3.Status;
+                    name = InputObjectV3.Name;
+                    rg = AzureIdUtilities.GetResourceGroup(InputObjectV3.Id);
+                    location = AzureIdUtilities.GetResourceLocation(InputObjectV3.Id);
+                    break;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 default:
                     throw new PSInvalidOperationException();
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrEmpty(status))
+            {
+                switch (status.ToLower())
+                {
+                    case "dismissed":
+                        actionType = "Dismiss";
+                        break;
+                    case "active":
+                        actionType = "Activate";
+                        break;
+                    case "resolved":
+                        actionType = "Resolve";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             SecurityCenterClient.AscLocation = location;
 
             if (string.IsNullOrEmpty(rg))
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
+<<<<<<< HEAD
                     SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateWithHttpMessagesAsync(name, actionType).GetAwaiter().GetResult();
+=======
+                    if (actionType == "Dismiss")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToDismissWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelAlertStateToReactivateWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Resolve")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToResolveWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
             else
             {
                 if (ShouldProcess(name, VerbsCommon.Set))
                 {
+<<<<<<< HEAD
                     SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateWithHttpMessagesAsync(name, actionType, rg).GetAwaiter().GetResult();
+=======
+                    if (actionType == "Dismiss")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Activate")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelAlertStateToReactivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "Resolve")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToResolveWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
             }
 
@@ -118,4 +202,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

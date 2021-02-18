@@ -36,7 +36,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskContainerSettings containerSettings;
         
+<<<<<<< HEAD
         private IList<PSEnvironmentSetting> environmentSettings;
+=======
+        private IDictionary environmentSettings;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         private IList<PSResourceFile> resourceFiles;
         
@@ -98,24 +102,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+<<<<<<< HEAD
         public IList<PSEnvironmentSetting> EnvironmentSettings
+=======
+        public IDictionary EnvironmentSettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             get
             {
                 if (((this.environmentSettings == null) 
                             && (this.omObject.EnvironmentSettings != null)))
                 {
+<<<<<<< HEAD
                     List<PSEnvironmentSetting> list;
                     list = new List<PSEnvironmentSetting>();
+=======
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     IEnumerator<Microsoft.Azure.Batch.EnvironmentSetting> enumerator;
                     enumerator = this.omObject.EnvironmentSettings.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
+<<<<<<< HEAD
                         list.Add(new PSEnvironmentSetting(enumerator.Current));
                     }
                     this.environmentSettings = list;
+=======
+                        dict.Add(enumerator.Current.Name, enumerator.Current.Value);
+                    }
+                    this.environmentSettings = dict;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
                 return this.environmentSettings;
             }

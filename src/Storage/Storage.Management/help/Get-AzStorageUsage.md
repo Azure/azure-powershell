@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageusage
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
+Module Name: Az.Storage
+ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageusage
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -33,7 +41,11 @@ CurrentValue  : 18
 Limit         : 250
 ```
 
+<<<<<<< HEAD
 This command gets the Storage resources usage of of specified location under the current subscription.
+=======
+This command gets the Storage resources usage of specified location under the current subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

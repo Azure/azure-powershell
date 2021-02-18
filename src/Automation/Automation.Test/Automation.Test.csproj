@@ -9,7 +9,11 @@
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+<<<<<<< HEAD
     <TargetFrameworks>netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
+=======
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,4 +31,8 @@
     <None Update="ScenarioTests\Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

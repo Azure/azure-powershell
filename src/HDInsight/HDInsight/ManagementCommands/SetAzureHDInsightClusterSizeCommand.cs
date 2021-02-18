@@ -39,7 +39,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the name of the cluster.")]
         public int TargetInstanceCount
         {
+<<<<<<< HEAD
             get { return resizeParams.TargetInstanceCount; }
+=======
+            get { return resizeParams.TargetInstanceCount ?? default(int); }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             set { resizeParams.TargetInstanceCount = value; }
         }
 

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworktap
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworktap
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -35,7 +39,11 @@ The **Remove-AzVirtualNetworkTap** cmdlet removes an Azure virtual network tap.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1: Remove a virtuak network tap
+=======
+### Example 1: Remove a virtual network tap
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 PS C:\>Remove-AzNetworkInterface -Name "VirtualNetworkTap1" -ResourceGroup "ResourceGroup1"
 ```

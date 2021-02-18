@@ -49,9 +49,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+<<<<<<< HEAD
         public FeatureClient FeatureClient { get; private set; }
 
         public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
+=======
+        public DeploymentScriptsClient DeploymentScriptsClient { get; private set; }
+
+        public FeatureClient FeatureClient { get; private set; }
+
+        public Management.ResourceManager.Version2019_06_01.SubscriptionClient SubscriptionClient { get; private set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -143,6 +151,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient(context);
             ManagementGroupsApiClient = GetManagementGroupsApiClient(context);
             FeatureClient = GetFeatureClient(context);
+<<<<<<< HEAD
+=======
+            DeploymentScriptsClient = GetDeploymentScriptsClient(context);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             var credentials = testEnvironment.TokenInfo[TokenAudience.Management];
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
@@ -152,7 +164,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AuthorizationManagementClient,
                 GraphClient,
                 FeatureClient,
+<<<<<<< HEAD
                 ManagementGroupsApiClient);
+=======
+                ManagementGroupsApiClient,
+                DeploymentScriptsClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private GraphRbacManagementClient GetGraphClient(MockContext context)
@@ -211,9 +228,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+<<<<<<< HEAD
         private static Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+=======
+        private static DeploymentScriptsClient GetDeploymentScriptsClient(MockContext context)
+        {
+            return context.GetServiceClient<DeploymentScriptsClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static Management.ResourceManager.Version2019_06_01.SubscriptionClient GetSubscriptionClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.ResourceManager.Version2019_06_01.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         private static ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)

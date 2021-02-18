@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewaytrustedrootcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaytrustedrootcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,9 +35,15 @@ PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
+<<<<<<< HEAD
 The second command addes a new trusted root certificate to Application Gateway taking path of the root certificate as input.
 The third command creates new backend http setting using trusted root certificate for validating the backend server certificate against.
 The fouth command updates the Application Gateway.
+=======
+The second command adds a new trusted root certificate to Application Gateway taking path of the root certificate as input.
+The third command creates new backend http setting using trusted root certificate for validating the backend server certificate against.
+The fourth command updates the Application Gateway.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 

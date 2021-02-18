@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates Azure Site Recovery Network mapping.
     /// </summary>
+<<<<<<< HEAD
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.ByNetworkObject,SupportsShouldProcess = true)]
+=======
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrNetworkMapping", DefaultParameterSetName = ASRParameterSets.ByNetworkObject, SupportsShouldProcess = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
@@ -102,7 +106,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 Properties = new UpdateNetworkMappingInputProperties
                 {
+<<<<<<< HEAD
                     RecoveryFabricName = this.InputObject.RecoveryFabricFriendlyName,
+=======
+                    RecoveryFabricName = this.GetFabricNameByFriendlyName(this.InputObject.RecoveryFabricFriendlyName),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     RecoveryNetworkId = this.RecoveryAzureNetworkId,
                     FabricSpecificDetails = new AzureToAzureUpdateNetworkMappingInput
                     {

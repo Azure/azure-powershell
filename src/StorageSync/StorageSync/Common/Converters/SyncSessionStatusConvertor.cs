@@ -23,14 +23,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+<<<<<<< HEAD
     public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus>
+=======
+    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.SyncSessionStatus.</returns>
+<<<<<<< HEAD
         protected override StorageSyncModels.SyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.SyncSessionStatus(
+=======
+        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.ServerEndpointSyncSessionStatus(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             source.LastSyncResult, source.LastSyncTimestamp, source.LastSyncSuccessTimestamp, source.LastSyncPerItemErrorCount);
 
         /// <summary>
@@ -38,7 +46,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSSyncSessionStatus.</returns>
+<<<<<<< HEAD
         protected override PSSyncSessionStatus Transform(StorageSyncModels.SyncSessionStatus source)
+=======
+        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return new PSSyncSessionStatus()
             {

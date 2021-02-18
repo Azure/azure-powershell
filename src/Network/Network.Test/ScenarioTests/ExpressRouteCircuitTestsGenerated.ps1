@@ -395,7 +395,10 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = "AzurePrivatePeering";
+<<<<<<< HEAD
     $rnameAdd = "AzurePublicPeering";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South";
     # Resource's parameters
     $PeeringType = "AzurePrivatePeering";
@@ -409,12 +412,15 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
     $PrimaryPeerAddressPrefixSet = "11.0.0.0/30";
     $SecondaryPeerAddressPrefixSet = "14.0.0.0/30";
     $VlanIdSet = 2;
+<<<<<<< HEAD
     # Resource's parameters for Add test
     $PeeringTypeAdd = "AzurePublicPeering";
     $PeerASNAdd = 3;
     $PrimaryPeerAddressPrefixAdd = "12.0.0.0/30";
     $SecondaryPeerAddressPrefixAdd = "16.0.0.0/30";
     $VlanIdAdd = 3;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Dependency parameters
     $ExpressRouteCircuitSkuTier = "Standard";
     $ExpressRouteCircuitSkuFamily = "MeteredData";
@@ -475,6 +481,7 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
+<<<<<<< HEAD
         # Add ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd;
         Assert-NotNull $vExpressRouteCircuit;
@@ -501,6 +508,9 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
 
         # Remove ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+=======
+        # Remove ExpressRouteCircuitPeering
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Additional call to test handling of already deleted child resource
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
@@ -531,7 +541,10 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = "AzurePrivatePeering";
+<<<<<<< HEAD
     $rnameAdd = "AzurePublicPeering";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South";
     # Resource's parameters
     $PeeringType = "AzurePrivatePeering";
@@ -549,6 +562,7 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
     $VlanIdSet = 2;
     $SharedKeySet = "testkey2";
     $PeerAddressTypeSet = "IPv4";
+<<<<<<< HEAD
     # Resource's parameters for Add test
     $PeeringTypeAdd = "AzurePublicPeering";
     $PeerASNAdd = 3;
@@ -557,6 +571,8 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
     $VlanIdAdd = 3;
     $SharedKeyAdd = "testkey3";
     $PeerAddressTypeAdd = "IPv4";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     # Dependency parameters
     $ExpressRouteCircuitSkuTier = "Standard";
     $ExpressRouteCircuitSkuFamily = "MeteredData";
@@ -617,6 +633,7 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         $listExpressRouteCircuitPeering = Get-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuitPeering | Where-Object { $_.Name -eq $rname });
 
+<<<<<<< HEAD
         # Add ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Add-AzExpressRouteCircuitPeeringConfig -Name $rnameAdd -ExpressRouteCircuit $vExpressRouteCircuit -PeeringType $PeeringTypeAdd -PeerASN $PeerASNAdd -PrimaryPeerAddressPrefix $PrimaryPeerAddressPrefixAdd -SecondaryPeerAddressPrefix $SecondaryPeerAddressPrefixAdd -VlanId $VlanIdAdd -SharedKey $SharedKeyAdd -PeerAddressType $PeerAddressTypeAdd;
         Assert-NotNull $vExpressRouteCircuit;
@@ -643,6 +660,9 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
 
         # Remove ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
+=======
+        # Remove ExpressRouteCircuitPeering
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Additional call to test handling of already deleted child resource
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;

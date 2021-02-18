@@ -14,6 +14,10 @@
 
 using System;
 using System.Security;
+<<<<<<< HEAD
+=======
+using System.Threading;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -24,12 +28,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public class PassThroughAuthenticator : DelegatingAuthenticator
     {
+<<<<<<< HEAD
         public override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+=======
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return null;
         }
 
+<<<<<<< HEAD
         public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+=======
+        public override bool CanAuthenticate(AuthenticationParameters parameters)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             return false;
         }

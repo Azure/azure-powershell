@@ -15,7 +15,10 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.WebApps.Models;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
@@ -57,5 +60,27 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             }
             set { _websitesClient = value; }
         }
+<<<<<<< HEAD
+=======
+
+        private KeyVaultClient _keyVaultClient { get; set; }
+        public KeyVaultClient KeyvaultClient
+        {
+            get
+            {
+                if (_keyVaultClient == null)
+                {
+                    _keyVaultClient = new KeyVaultClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _keyVaultClient;
+            }
+            set { _keyVaultClient = value; }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

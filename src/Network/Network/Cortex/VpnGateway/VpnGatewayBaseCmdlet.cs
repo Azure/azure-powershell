@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVpnGatewayPresent(string resourceGroupName, string name)
         {
+<<<<<<< HEAD
             try
             {
                 GetVpnGateway(resourceGroupName, name);
@@ -100,6 +101,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return true;
+=======
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetVpnGateway(resourceGroupName, name); });
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
     }
 }

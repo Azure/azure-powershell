@@ -36,6 +36,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
 
         public string Address { get; set; }
 
+<<<<<<< HEAD
+=======
+        public string Region { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSPeeringLocationObject(PSPeeringLocation location, int i = 0)
         {
             if (location.Direct != null && location.Kind == "Direct")
@@ -46,6 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
                 this.Country = location.Country;
                 this.PeeringLocation = location.Name;
                 this.Address = location.Direct.PeeringFacilities[i].Address;
+<<<<<<< HEAD
+=======
+                this.Region = location.AzureRegion;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             if (location.Exchange != null && location.Kind == "Exchange")
@@ -59,6 +68,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
                 this.FacilityIPv6Prefix = location.Exchange.PeeringFacilities[i].FacilityIPv6Prefix;
                 this.Country = location.Country;
                 this.PeeringLocation = location.Name;
+<<<<<<< HEAD
+=======
+                this.Region = location.AzureRegion;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

@@ -38,7 +38,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         #endregion private Variables
 
+<<<<<<< HEAD
         #region Input Paramters
+=======
+        #region Input Parameters
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]

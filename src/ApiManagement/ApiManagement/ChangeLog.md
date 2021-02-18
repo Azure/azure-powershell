@@ -19,6 +19,83 @@
 -->
 ## Upcoming Release
 
+<<<<<<< HEAD
+=======
+## Version 2.2.0
+* [Breaking change] `New-AzApiManagementProduct` by default has no subscription limit.
+
+## Version 2.1.0
+* Added new `Add-AzApiManagementApiToGateway` cmdlet.
+* Added new `Get-AzApiManagementGateway` cmdlet.
+* Added new `Get-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `Get-AzApiManagementGatewayKey` cmdlet.
+* Added new `New-AzApiManagementGateway` cmdlet.
+* Added new `New-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `New-AzApiManagementResourceLocationObject` cmdlet.
+* Added new `Remove-AzApiManagementApiFromGateway` cmdlet.
+* Added new `Remove-AzApiManagementGateway` cmdlet.
+* Added new `Remove-AzApiManagementGatewayHostnameConfiguration` cmdlet.
+* Added new `Update-AzApiManagementGateway` cmdlet.
+* Added new optional [-GatewayId] parameter to the `Get-AzApiManagementApi` cmdlet.
+
+## Version 2.0.1
+* Updated assembly version of service management cmdlets
+
+## Version 2.0.0
+* `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
+* `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]
+* `Get-AzApiManagementProperty`: renamed as `Get-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
+* `New-AzApiManagementProperty`: renamed as `New-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId. 
+* `Set-AzApiManagementProperty`: renamed as `Set-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
+* `Remove-AzApiManagementProperty`: renamed as `Remove-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
+* Added new `Get-AzApiManagementAuthorizationServerClientSecret` cmdlet and `Get-AzApiManagementAuthorizationServer` will not return client secret anymore.
+* Added new `Get-AzApiManagementNamedValueSecretValue` cmdlet and `Get-AzApiManagementNamedValue` will not return secret value.
+* Added new `Get-AzApiManagementOpenIdConnectProviderClientSecret` cmdlet and `Get-AzApiManagementOpenIdConnectProvider` will not return client secret anymore.
+* Added new `Get-AzApiManagementSubscriptionKey` cmdlet and `Get-AzApiManagementSubscription` will not return subscription keys anymore.
+* Added new `Get-AzApiManagementTenantAccessSecret` cmdlet and `Get-AzApiManagementTenantAccess` will not return keys anymore.
+* Added new `Get-AzApiManagementTenantGitAccessSecret` cmdlet and `Get-AzApiManagementTenantGitAccess` will not return keys anymore.
+
+## Version 1.4.1
+* Added breaking change notice for Azure File cmdlets output change in a future release
+* `Set-AzApiManagementGroup` Updated documentation to specify the GroupId parameter
+
+## Version 1.4.0
+* Added support for retrieving and configuring Custom Domain on the DeveloperPortal Endpoint [#11007]
+* `Export-AzApiManagementApi` Added support for downloading Api Definition in Json format [#9987]
+* `Import-AzApiManagementApi` Added support for importing OpenApi 3.0 definition from Json document
+* `New-AzApiManagementIdentityProvider` and `Set-AzApiManagementIdentityProvider` Added support for configuring `Signin Tenant` for AAD B2C Provider [#9784]
+
+## Version 1.3.4
+* `Get-AzApiManagementApiSchema` Fixed getting Open-Api Schema associated with an API [#10626]
+* `New-AzApiManagementProduct` and `Set-AzApiManagementProduct` Fixed documentation for [#10472]
+* `Set-AzApiManagementApi` Added example to show how to update the ServiceUrl using the cmdlet
+
+## Version 1.3.3
+* Update references in .psd1 to use relative path
+
+## Version 1.3.2
+* **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
+    
+## Version 1.3.1
+* Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
+* Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
+
+## Version 1.3.0
+* Fixed miscellaneous typos across module
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9351
+	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
+
+* **Get-AzApiManagementProduct** - Added support for querying products using Api. 
+  https://github.com/Azure/azure-powershell/issues/9482
+
+* **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
+https://github.com/Azure/azure-powershell/issues/9752
+
+* Fixed typo in model `PsApiManagementOAuth2AuthrozationServer` to `PsApiManagementOAuth2AuthorizationServer`
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## Version 1.2.0
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8671

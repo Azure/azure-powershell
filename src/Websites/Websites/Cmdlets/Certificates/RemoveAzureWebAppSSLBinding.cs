@@ -62,12 +62,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                 {
                                     WebsitesClient.RemoveCertificate(certificateResourceGroup, certificates[0].Name);
                                 }
+<<<<<<< HEAD
                                 catch (CloudException e)
+=======
+                                catch (DefaultErrorResponseException e)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 {
                                     // This exception is thrown when there are other Ssl bindings using this certificate. Let's swallow it and continue.
                                     if (e.Response.StatusCode != HttpStatusCode.Conflict)
                                     {
+<<<<<<< HEAD
                                         throw;
+=======
+                                        throw e;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                     }
                                 }
                             }

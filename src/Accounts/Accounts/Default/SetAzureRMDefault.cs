@@ -50,7 +50,11 @@ namespace Microsoft.Azure.Commands.Profile.Default
                 throw new Exception("Default Resource Group cannot be set on CloudShell");
             }
 
+<<<<<<< HEAD
             IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+=======
+            IAzureContext context = DefaultContext;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IResourceManagementClient resourceManagementclient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                                 AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),

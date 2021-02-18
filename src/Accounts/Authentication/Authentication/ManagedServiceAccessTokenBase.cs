@@ -12,15 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Rest.Azure;
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.Azure;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public abstract class ManagedServiceAccessTokenBase<TManagedServiceTokenInfo> : IRenewableToken where TManagedServiceTokenInfo : class, ICacheable
@@ -32,9 +42,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected DateTimeOffset Expiration = DateTimeOffset.Now;
         protected string accessToken;
 
+<<<<<<< HEAD
         protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
         {
             if (string.IsNullOrEmpty(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+=======
+        protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "organizations")
+        {
+            if (string.IsNullOrWhiteSpace(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 throw new ArgumentNullException(nameof(account));
             }
@@ -105,6 +121,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public DateTimeOffset ExpiresOn => Expiration;
 
+<<<<<<< HEAD
+=======
+        public string HomeAccountId { get; } = null;
+
+        public IDictionary<string, string> ExtendedProperties { get; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             authTokenSetter("Bearer", AccessToken);

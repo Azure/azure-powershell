@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueue
+=======
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusqueue
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -36,20 +40,30 @@ The **Remove-AzServiceBusQueue** cmdlet removes the queue from the specified Ser
 ## EXAMPLES
 
 ### Example 1
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
 Removes the Service Bus queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using variable:
 ```
+=======
+### Example 2: InputObject - Using variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $inputobject = Get-AzServiceBusQueue <params>
 PS C:\> Remove-AzServiceBusQueue -InputObject $inputobject
 ```
 
 Removes the Service Bus queue provided in the $inputobject for -InputObject parameter
 
+<<<<<<< HEAD
 ### Example 2.1 - InputObject - Using Piping:
 ```
 PS C:\>  Get-AzServiceBusQueue <params> | Remove-AzServiceBusQueue
@@ -57,14 +71,28 @@ PS C:\>  Get-AzServiceBusQueue <params> | Remove-AzServiceBusQueue
 
 ### Example 3.1 - ResourceId - Using variable:
 ```
+=======
+### Example 3: InputObject - Using Piping:
+```powershell
+PS C:\>  Get-AzServiceBusQueue <params> | Remove-AzServiceBusQueue
+```
+
+### Example 4: ResourceId - Using variable:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS c:\> $resourceid = Get-AzServiceBusQueue <params>
 PS C:\> Remove-AzServiceBusQueue -ResourceId $resourceid.Id
 ```
 
 Removes the Service Bus queue provided in the ARM id in $resourceid/string for -ResourceId parameter
 
+<<<<<<< HEAD
 ### Example 3.2 - ResourceId - passign as string:
 ```
+=======
+### Example 5: ResourceId - passing as string:
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> Remove-AzServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
 ```
 

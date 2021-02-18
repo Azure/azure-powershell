@@ -64,8 +64,13 @@
       "StatusCode": 200
     },
     {
+<<<<<<< HEAD
       "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96?api-version=2018-01-10",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblJlY292ZXJ5UGxhbnMvUlBTd2FnOTY/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+=======
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblJlY292ZXJ5UGxhbnMvUlBTd2FnOTY/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -137,8 +142,13 @@
       "StatusCode": 200
     },
     {
+<<<<<<< HEAD
       "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20'RPSwag96'&api-version=2018-01-10",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zPyRmaWx0ZXI9UmVjb3ZlcnlQbGFuTmFtZSUyMGVxJTIwJ1JQU3dhZzk2JyZhcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+=======
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20'RPSwag96'&api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zPyRmaWx0ZXI9UmVjb3ZlcnlQbGFuTmFtZSUyMGVxJTIwJ1JQU3dhZzk2JyZhcGktdmVyc2lvbj0yMDE4LTA3LTEw",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -210,8 +220,13 @@
       "StatusCode": 200
     },
     {
+<<<<<<< HEAD
       "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96?api-version=2018-01-10",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblJlY292ZXJ5UGxhbnMvUlBTd2FnOTY/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+=======
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblJlY292ZXJ5UGxhbnMvUlBTd2FnOTY/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -250,7 +265,11 @@
           "4f14c32d-0a33-4949-8fee-aa96f8b3d4f7-2017-09-19 05:37:34Z-P 9/19/2017 5:37:35 AM"
         ],
         "Azure-AsyncOperation": [
+<<<<<<< HEAD
           "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-01-10"
+=======
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-07-10"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -274,7 +293,11 @@
           "Tue, 19 Sep 2017 05:37:34 GMT"
         ],
         "Location": [
+<<<<<<< HEAD
           "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96/operationresults/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-01-10"
+=======
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationRecoveryPlans/RPSwag96/operationresults/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-07-10"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -283,8 +306,13 @@
       "StatusCode": 202
     },
     {
+<<<<<<< HEAD
       "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-01-10",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvYzNhYWIxODgtODgwOC00ZjdhLTkxYTctODk5ZmJmZjg4MGNiP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+=======
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c3aab188-8808-4f7a-91a7-899fbff880cb?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvYzNhYWIxODgtODgwOC00ZjdhLTkxYTctODk5ZmJmZjg4MGNiP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

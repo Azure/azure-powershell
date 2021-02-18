@@ -1,8 +1,17 @@
 $mapping = [ordered]@{}
 
+<<<<<<< HEAD
 $psd1s = Get-ChildItem -Path $PSScriptRoot/../src -Recurse | `
     Where-Object {($_.Name -like "*AzureRM*psd1"  -or $_.Name -eq "Azure.AnalysisServices.psd1" -or $_.Name -eq "Azure.Storage.psd1") `
     -and $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*`\Package`\*" -and $_.FullName -notlike "*Test*" -and $_.FullName -notlike "*`\bin`\*" -and $_.FullName -notlike "*`\obj`\*"}
+=======
+
+.($PSScriptRoot + "\PreloadToolDll.ps1")
+$psd1s = Get-ChildItem -Path $PSScriptRoot/../src -Recurse | `
+    Where-Object {($_.Name -like "*AzureRM*psd1"  -or $_.Name -eq "Azure.AnalysisServices.psd1" -or $_.Name -eq "Azure.Storage.psd1") `
+    -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*`\Package`\*" -and $_.FullName -notlike "*Test*" -and $_.FullName -notlike "*`\bin`\*" -and $_.FullName -notlike "*`\obj`\*"}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 $psd1s | ForEach-Object {
     $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", "" -replace "RecoveryServices.SiteRecovery", "RecoveryServices" -replace "RecoveryServices.Backup", "RecoveryServices"

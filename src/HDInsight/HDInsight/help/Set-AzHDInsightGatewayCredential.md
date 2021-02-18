@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential
+=======
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,20 +18,34 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 
 ### SetByNameParameterSet (Default)
 ```
+<<<<<<< HEAD
 Set-AzHDInsightGatewayCredential -Name <String> [-HttpCredential] <PSCredential> [-ResourceGroupName <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+Set-AzHDInsightGatewayCredential [-Name] <String> [-HttpCredential] <PSCredential>
+ [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### SetByInputObjectParameterSet
 ```
+<<<<<<< HEAD
 Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-AsJob]
+=======
+Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] -InputObject <AzureHDInsightCluster> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
+<<<<<<< HEAD
 Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-AsJob]
+=======
+Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] -ResourceId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -141,7 +159,11 @@ Parameter Sets: SetByNameParameterSet
 Aliases: ClusterName
 
 Required: True
+<<<<<<< HEAD
 Position: Named
+=======
+Position: 0
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -152,7 +174,11 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: (All)
+=======
+Parameter Sets: SetByNameParameterSet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Aliases:
 
 Required: False
@@ -216,7 +242,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings
+=======
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightGatewaySettings
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## NOTES
 

@@ -44,16 +44,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
+=======
+            string applicationName = "applicationName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string displayName = "displayName";
 
             PSApplication expected = new PSApplication();
 
+<<<<<<< HEAD
             batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationId, true, displayName)).Returns(expected);
 
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.AccountName = accountName;
             cmdlet.ApplicationId = applicationId;
+=======
+            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationName, true, displayName)).Returns(expected);
+
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.AccountName = accountName;
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             cmdlet.AllowUpdates = true;
             cmdlet.DisplayName = displayName;
 
@@ -68,16 +80,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
+<<<<<<< HEAD
             string applicationId = "applicationId";
+=======
+            string applicationName = "applicationName";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             string displayName = "displayName";
 
             PSApplication expected = new PSApplication();
 
+<<<<<<< HEAD
             batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationId, null, displayName)).Returns(expected);
 
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.AccountName = accountName;
             cmdlet.ApplicationId = applicationId;
+=======
+            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationName, null, displayName)).Returns(expected);
+
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.AccountName = accountName;
+            cmdlet.ApplicationName = applicationName;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             cmdlet.DisplayName = displayName;
 

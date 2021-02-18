@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -22,16 +23,37 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         public string FriendlyName { get; set; }
 
+=======
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.FrontDoor.Models
+{
+    public class PSFrontDoor : PSTrackedResource
+    {
+        public string FriendlyName { get; set; }
+
+        public string FrontDoorId { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<PSRoutingRule> RoutingRules { get; set; }
 
         public List<PSBackendPool> BackendPools { get; set; }
 
+<<<<<<< HEAD
+=======
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public PSEnforceCertificateNameCheck? EnforceCertificateNameCheck { get; set; }
 
         public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
 
         public List<PSLoadBalancingSetting> LoadBalancingSettings { get; set; }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public List<PSFrontendEndpoint> FrontendEndpoints { get; set; }
 
         public PSEnabledState? EnabledState { get; set; }
@@ -41,5 +63,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string ProvisioningState { get; set; }
 
         public string Cname { get; set; }
+<<<<<<< HEAD
+=======
+
+        public List<PSRulesEngine> RulesEngine { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

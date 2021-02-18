@@ -17,6 +17,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string StorageAccountName = "StorageAccountName";
         public const string StorageAccountResourceId = "StorageAccountResourceId";
         public const string TagsAlias = "Tags";
+<<<<<<< HEAD
+=======
+        public const string EC = "EC";
+        public const string ECHSM = "EC-HSM";
+        public const string P256 = "P-256";
+        public const string P384 = "P-384";
+        public const string P521 = "P-521";
+        public const string P256K = "P-256K";
+        public const string SECP256K1 = "SECP256K1";
+
+        public const int MinSoftDeleteRetentionDays = 7;
+        public const int MaxSoftDeleteRetentionDays = 90;
+        public const int DefaultSoftDeleteRetentionDays = 90;
+        public const string DefaultSoftDeleteRetentionDaysString = "90";
+
+        public const string KeyOpsImport = "import";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     public static class CmdletNoun
@@ -41,5 +58,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string AzureKeyVaultManagedStorageQueueSasParameters = "AzureKeyVaultManagedStorageQueueSasParameters";
         public const string AzureKeyVaultManagedStorageShareSasParameters = "AzureKeyVaultManagedStorageShareSasParameters";
         public const string AzureKeyVaultManagedStorageTableSasParameters = "AzureKeyVaultManagedStorageTableSasParameters";
+<<<<<<< HEAD
+=======
+        public const string KeyVault = "KeyVault";
+        public const string KeyVaultHsmRoleDefinition = KeyVault + "RoleDefinition";
+        public const string KeyVaultRoleAssignment = KeyVault + "RoleAssignment";
+    }
+
+    public static class ResourceType
+    {
+        public const string ManagedHsm = "Microsoft.KeyVault/managedHSMs";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/new-azcontainerregistry
+=======
+online version: https://docs.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistry
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -14,7 +18,11 @@ Creates a container registry.
 
 ```
 New-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String> [-Location <String>]
+<<<<<<< HEAD
  [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+=======
+ [-EnableAdminUser] [-Tag <Hashtable>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,6 +59,7 @@ myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM    
 
 This command creates a container registry with admin user enabled.
 
+<<<<<<< HEAD
 ### Example 3: Create a container registry with an existing storage account.
 ```powershell
 PS C:\>New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
@@ -65,6 +74,8 @@ myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM    
 
 This command creates a container registry with an existing storage account \`mystorageaccount\` in the same subscription.
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -151,7 +162,11 @@ Allowed values: Basic.
 Type: System.String
 Parameter Sets: (All)
 Aliases: ContainerRegistrySku, RegistrySku
+<<<<<<< HEAD
 Accepted values: Classic, Basic, Premium, Standard
+=======
+Accepted values: Basic, Premium, Standard
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Required: True
 Position: 2
@@ -160,6 +175,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -StorageAccountName
 The name of an existing storage account.
 
@@ -175,6 +191,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Tag
 Container Registry Tags.Key-value pairs in the form of a hash table.
 For example:

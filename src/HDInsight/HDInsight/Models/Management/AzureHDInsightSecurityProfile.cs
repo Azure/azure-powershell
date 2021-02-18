@@ -26,12 +26,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     public class AzureHDInsightSecurityProfile
     {
         /// <summary>
+<<<<<<< HEAD
         /// Gets or sets Active Directory domain for the cluster.
+=======
+        /// Gets or sets Active Directory Domain Service resource id for the cluster.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// </summary>
         /// <value>
         /// The domain.
         /// </value>
+<<<<<<< HEAD
         public string Domain { get; set; }
+=======
+        public string DomainResourceId { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         
         /// <summary>
         /// Gets or sets the domain user account credential with sufficient permissions for 

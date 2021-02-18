@@ -17,6 +17,7 @@ using Common.Authentication.Test.Cmdlets;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
@@ -25,16 +26,24 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Rest;
+=======
+using Microsoft.Azure.Commands.ResourceManager.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+=======
+using System.IO;
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Xunit;
 
 namespace Common.Authentication.Test
@@ -141,6 +150,7 @@ namespace Common.Authentication.Test
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
+<<<<<<< HEAD
             var diskCache = session.TokenCache as ProtectedFileTokenCache;
             try
             {
@@ -165,6 +175,10 @@ namespace Common.Authentication.Test
                     }
                 }
 
+=======
+            try
+            {
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (writeAutoSaveFile)
                 {
                     try

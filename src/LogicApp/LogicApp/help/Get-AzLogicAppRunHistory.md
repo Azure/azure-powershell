@@ -1,24 +1,46 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapprunhistory
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
+Module Name: Az.LogicApp
+ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapprunhistory
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Get-AzLogicAppRunHistory
 
 ## SYNOPSIS
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Gets the run history of a logic app.
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ```
 Get-AzLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+=======
+```powershell
+Get-AzLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>] [-FollowNextPageLink]
+ [-MaximumFollowNextPageLink <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The **Get-AzLogicAppRunHistory** cmdlet gets the run history of a logic app.
 This cmdlet returns a collection of **WorkflowRun** objects.
 Specify the logic app and resource group.
@@ -30,8 +52,14 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get the run history of a logic app
+<<<<<<< HEAD
 ```
 PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
+=======
+
+```powershell
+PS C:\>Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
@@ -58,8 +86,14 @@ LogicAppVersion  : 08587489107859952120
 This command gets the run history of a logic app named LogicApp03.
 
 ### Example 2: Get a logic app run
+<<<<<<< HEAD
 ```
 PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
+=======
+
+```powershell
+PS C:\>Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
@@ -74,9 +108,33 @@ LogicAppVersion  : 08587489107859952120
 
 This command gets a specific logic app run for the logic app named LogicApp03.
 
+<<<<<<< HEAD
 ## PARAMETERS
 
 ### -DefaultProfile
+=======
+### Example 3
+
+```powershell
+Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowNextPageLink
+```
+
+This command gets the entire run history of a logic app named LogicApp03 by following the NextPageLink.
+
+### Example 4
+
+```powershell
+Get-AzLogicAppRunHistory -Name 'LogicApp03' -ResourceGroupName MyResourceGroup -FollowNextPageLink -MaximumFollowNextPageLink 1
+```
+
+This command gets the first two pages of run history of a logic app named LogicApp03 by following the NextPageLink and limiting the result size to two pages.
+Each page contains thirty results.
+
+## PARAMETERS
+
+### -DefaultProfile
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
@@ -91,7 +149,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -Name
+=======
+### -FollowNextPageLink
+
+Indicates the cmdlet should follow next page links.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: FL
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaximumFollowNextPageLink
+
+Specifies how many times to follow next page links if FollowNextPageLink is used.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: ML
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Specifies the name of the logic app for which this cmdlet gets run history.
 
 ```yaml
@@ -107,6 +202,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Specifies the name of a resource group that contains the logic app.
 
 ```yaml
@@ -122,6 +221,10 @@ Accept wildcard characters: False
 ```
 
 ### -RunName
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Specifies the run name of a logic app.
 This cmdlet gets the workflow run that this cmdlet specifies.
 
@@ -138,7 +241,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -157,5 +265,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzLogicApp](./Start-AzLogicApp.md)
 
 [Stop-AzLogicAppRun](./Stop-AzLogicAppRun.md)
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

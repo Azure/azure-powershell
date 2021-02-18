@@ -48,7 +48,11 @@ function Assert-Throws
     }
   }
 
+<<<<<<< HEAD
   throw "No exception occured";
+=======
+  throw "No exception occurred";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 ######################
@@ -86,7 +90,11 @@ function Assert-ThrowsContains
     }
   }
 
+<<<<<<< HEAD
   throw "No exception occured";
+=======
+  throw "No exception occurred";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 ######################
@@ -124,7 +132,11 @@ function Assert-ThrowsLike
     }
   }
 
+<<<<<<< HEAD
   throw "No exception occured";
+=======
+  throw "No exception occurred";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 <#
@@ -137,7 +149,11 @@ function Assert-Env
    $tmp = Get-Item env:
    $env = @{}
    $tmp | % { $env.Add($_.Key, $_.Value)}
+<<<<<<< HEAD
    $vars | % { Assert-True {$env.ContainsKey($_)} "Environment Variable $_ Is Required.  Please set the value before runnign the test"}
+=======
+   $vars | % { Assert-True {$env.ContainsKey($_)} "Environment Variable $_ Is Required.  Please set the value before running the test"}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }
 
 ###################
@@ -434,7 +450,11 @@ function Assert-Match
 
 ###################
 #
+<<<<<<< HEAD
 # Verify that the actual string does not matche the regular expression
+=======
+# Verify that the actual string does not match the regular expression
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #
 #    param [string] $regex	 : The regular expression
 #    param [string] $actual	 : The actual string

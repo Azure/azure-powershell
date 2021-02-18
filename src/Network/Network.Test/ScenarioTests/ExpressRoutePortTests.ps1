@@ -105,3 +105,129 @@ function Test-ExpressRoutePortCRUD
         Clean-ResourceGroup $rgname
     }
 }
+<<<<<<< HEAD
+=======
+
+<#
+.SYNOPSIS
+Test creating new ExpressRoutePortIdentityCRUD
+#>
+function Test-ExpressRoutePortIdentityCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+    $identityName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $peeringLocation = "Cheyenne-ERDirect"
+    $encapsulation = "QinQ"
+    $bandwidthInGbps = 100.0
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create Managed Identity
+        $identity = New-AzUserAssignedIdentity -Name $identityName -Location $rglocation -ResourceGroup $rgname
+        
+        # ExpressRoutePort identity
+        $expressRoutePortIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentity $identity.Id
+		
+        # Create ExpressRoutePort
+        $vExpressRoutePort = New-AzExpressRoutePort -Identity $expressRoutePortIdentity -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        Assert-NotNull $vExpressRoutePort
+        Assert-NotNull $(Get-AzExpressRoutePortIdentity -ExpressRoutePort $vExpressRoutePort)
+        Assert-True { Check-CmdletReturnType "New-AzExpressRoutePort" $vExpressRoutePort }
+        Assert-NotNull $vExpressRoutePort.Links
+        Assert-True { $vExpressRoutePort.Links.Count -eq 2 }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        # Get ExpressRoutePort
+        $vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname
+        Assert-NotNull $vExpressRoutePort
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRoutePort" $vExpressRoutePort }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        $vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName "*"
+        Assert-NotNull $vExpressRoutePort
+        Assert-True {$vExpressRoutePort.Count -ge 0}
+
+        $vExpressRoutePort = Get-AzExpressRoutePort -Name "*"
+        Assert-NotNull $vExpressRoutePort
+        Assert-True {$vExpressRoutePort.Count -ge 0}
+
+        $vExpressRoutePort = Get-AzExpressRoutePort -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $vExpressRoutePort
+        Assert-True {$vExpressRoutePort.Count -ge 0}
+
+        # Get ExpressRoutePort
+        $vExpressRoutePort = Get-AzureRmExpressRoutePort -ResourceId $vExpressRoutePort.Id
+        Assert-NotNull $vExpressRoutePort
+        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRoutePort" $vExpressRoutePort }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        $vExpressRoutePorts = Get-AzureRmExpressRoutePort -ResourceGroupName $rgname
+        Assert-NotNull $vExpressRoutePorts
+
+        $vExpressRoutePortsAll = Get-AzureRmExpressRoutePort
+        Assert-NotNull $vExpressRoutePortsAll
+
+        # Remove Identity from ExpressRoutePort
+        Remove-AzExpressRoutePortIdentity -ExpressRoutePort $vExpressRoutePort
+        Assert-Null $(Get-AzExpressRoutePortIdentity -ExpressRoutePort $vExpressRoutePort)
+		
+        # Remove ExpressRoutePort
+        $removeExpressRoutePort = Remove-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removeExpressRoutePort
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating new ExpressRoutePort
+#>
+function Test-ExpressRoutePortGenerateLOA
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+
+    # Only available peering location and location for now.
+    $rglocation = "eastus2euap"
+    $location = "eastus2euap"
+	$peeringLocation = "Good Grief"
+	$encapsulation = "QinQ"
+	$bandwidthInGbps = 25
+    $customerName = "contoso"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ExpressRoutePort
+        $vExpressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+        Assert-NotNull $vExpressRoutePort
+        Assert-True { Check-CmdletReturnType "New-AzExpressRoutePort" $vExpressRoutePort }
+        Assert-NotNull $vExpressRoutePort.Links
+        Assert-True { $vExpressRoutePort.Links.Count -eq 2 }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        $loa = New-AzExpressRoutePortLOA -ResourceGroupName $rgname -PortName $rname -CustomerName $customerName -PassThru
+        Assert-True { $loa -eq $true }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

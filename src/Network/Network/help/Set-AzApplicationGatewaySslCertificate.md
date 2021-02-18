@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D7C275E5-BC43-454B-BF1E-48D639C4B4F0
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewaysslcertificate
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -27,7 +31,11 @@ The **Set-AzApplicationGatewaySslCertificate** cmdlet updates an SSL certificate
 ### Example 1: Update an existing SSL certificate on Application Gateway
 ```
 PS C:\> $appGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+<<<<<<< HEAD
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+=======
+PS C:\> $password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 

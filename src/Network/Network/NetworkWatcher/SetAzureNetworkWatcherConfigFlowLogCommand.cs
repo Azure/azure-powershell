@@ -174,6 +174,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("EnableTA")]
         [Parameter(
             Mandatory = false,
+<<<<<<< HEAD
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetFlowlogByResourceWithTAByResource)]
         [Parameter(
@@ -195,6 +196,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
+=======
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable traffic analytics.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNull]
         public SwitchParameter EnableTrafficAnalytics { get; set; }
@@ -202,12 +226,20 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Resource Id of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Resource Id of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
         [Parameter(
             Mandatory = true,
@@ -220,17 +252,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "GUID of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "GUID of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Subscription of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceGUID { get; set; }
@@ -238,17 +282,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Azure Region of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Azure Region of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "Subscription of the attached workspace which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceLocation { get; set; }
@@ -256,17 +312,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+<<<<<<< HEAD
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "The workspace object which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByResourceWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "The workspace object which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByNameWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
+<<<<<<< HEAD
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
+=======
+            HelpMessage = "The workspace object which is used to store the traffic analytics data.",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = SetFlowlogByLocationWithTAByResource)]
         [ValidateNotNull]
         public IOperationalInsightWorkspace Workspace { get; set; }

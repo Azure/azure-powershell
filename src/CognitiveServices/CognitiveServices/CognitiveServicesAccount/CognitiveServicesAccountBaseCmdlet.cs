@@ -84,6 +84,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
             catch (ErrorException ex)
             {
+<<<<<<< HEAD
+=======
+                if (ex.Body == null)
+                {
+                    throw new PSInvalidOperationException(ex.Message, ex);
+                }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 throw new PSInvalidOperationException(ex.Body.ErrorProperty.Message, ex);
             }
         }

@@ -11,15 +11,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+=======
+using Microsoft.Azure.Commands.Sql.DataClassification.Model;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
+<<<<<<< HEAD
     public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
@@ -97,12 +102,18 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         public string ColumnName { get; set; }
 
         [Parameter(
+=======
+    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : ModifyAzSqlInstanceDatabaseSensitivityCmdlet
+    {
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = DataClassificationCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
         [ValidateNotNull]
         public ManagedDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
+<<<<<<< HEAD
 
         [Parameter(
             Mandatory = false,
@@ -121,3 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         protected override object TransformModelToOutputObject(ManagedDatabaseSensitivityClassificationModel model) => true;
     }
 }
+=======
+    }
+}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

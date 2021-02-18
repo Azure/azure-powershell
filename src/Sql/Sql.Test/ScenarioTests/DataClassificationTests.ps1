@@ -238,12 +238,20 @@ function Test-DataClassificationOnSqlDatabase
 		$firstColumnName = $firstRecommendation.ColumnName
 		$firstInformationType = $firstRecommendation.InformationType
 		$firstSensitivityLabel = $firstRecommendation.SensitivityLabel
+<<<<<<< HEAD
+=======
+		$firstRank = $firstRecommendation.Rank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		Assert-AreEqual "dbo" $firstSchemaName
 		Assert-AreEqual "Persons" $firstTableName
 		Assert-NotNullOrEmpty $firstColumnName
 		Assert-NotNullOrEmpty $firstInformationType
 		Assert-NotNullOrEmpty $firstSensitivityLabel
+<<<<<<< HEAD
+=======
+		Assert-NotNullOrEmpty $firstRank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$secondRecommendation = ($recommendations.SensitivityLabels)[1]
 		$secondSchemaName = $secondRecommendation.SchemaName
@@ -251,12 +259,20 @@ function Test-DataClassificationOnSqlDatabase
 		$secondColumnName = $secondRecommendation.ColumnName
 		$secondInformationType = $secondRecommendation.InformationType
 		$secondSensitivityLabel = $secondRecommendation.SensitivityLabel
+<<<<<<< HEAD
+=======
+		$secondRank = $secondRecommendation.Rank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		Assert-AreEqual "dbo" $secondSchemaName
 		Assert-AreEqual "Persons" $secondTableName
 		Assert-NotNullOrEmpty $secondColumnName
 		Assert-NotNullOrEmpty $secondInformationType
 		Assert-NotNullOrEmpty $secondSensitivityLabel
+<<<<<<< HEAD
+=======
+		Assert-NotNullOrEmpty $secondRank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Set first two sensitivity labels as recommended and verify.
 		# Second label is set using pipeline.
@@ -278,6 +294,10 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $firstColumnName $classification.ColumnName
 		Assert-AreEqual $firstInformationType $classification.InformationType
 		Assert-AreEqual $firstSensitivityLabel $classification.SensitivityLabel
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $firstRank $classification.Rank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		$secondClassification = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityClassification -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 		Assert-AreEqual 1 ($secondClassification.SensitivityLabels).count
@@ -287,6 +307,10 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $secondColumnName $classification.ColumnName
 		Assert-AreEqual $secondInformationType $classification.InformationType
 		Assert-AreEqual $secondSensitivityLabel $classification.SensitivityLabel
+<<<<<<< HEAD
+=======
+		Assert-AreEqual $secondRank $classification.Rank
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
 		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
@@ -503,6 +527,11 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
     New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion $serverVersion -Location $location -SqlAdministratorCredentials $credentials
 	New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "dcRule"
 
+<<<<<<< HEAD
+=======
+	# Enable Advanced Data Security
+	Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
@@ -527,4 +556,121 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
 			$connection.Close()
 		}
 	}
+<<<<<<< HEAD
+=======
+}
+
+<#
+.SYNOPSIS
+Tests enable and disable recommdations on columns in a SQL database.
+#>
+function Test-EnableDisableRecommendationsOnSqlDatabase
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlDataClassificationTestEnvironment $testSuffix
+	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Get recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.serverName $recommendations.ServerName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+
+		$recommendationsCount = ($recommendations.SensitivityLabels).count
+		Assert-AreEqual 4 $recommendationsCount
+
+		$firstRecommendation = ($recommendations.SensitivityLabels)[0]
+		$firstSchemaName = $firstRecommendation.SchemaName
+		$firstTableName = $firstRecommendation.TableName
+		$firstColumnName = $firstRecommendation.ColumnName
+		$firstInformationType = $firstRecommendation.InformationType
+		$firstSensitivityLabel = $firstRecommendation.SensitivityLabel
+
+		Assert-AreEqual "dbo" $firstSchemaName
+		Assert-AreEqual "Persons" $firstTableName
+		Assert-NotNullOrEmpty $firstColumnName
+		Assert-NotNullOrEmpty $firstInformationType
+		Assert-NotNullOrEmpty $firstSensitivityLabel
+
+		$secondRecommendation = ($recommendations.SensitivityLabels)[1]
+		$secondSchemaName = $secondRecommendation.SchemaName
+		$secondTableName = $secondRecommendation.TableName
+		$secondColumnName = $secondRecommendation.ColumnName
+		$secondInformationType = $secondRecommendation.InformationType
+		$secondSensitivityLabel = $secondRecommendation.SensitivityLabel
+
+		Assert-AreEqual "dbo" $secondSchemaName
+		Assert-AreEqual "Persons" $secondTableName
+		Assert-NotNullOrEmpty $secondColumnName
+		Assert-NotNullOrEmpty $secondInformationType
+		Assert-NotNullOrEmpty $secondSensitivityLabel
+
+		# Disable first two recommdations, second recommdation is disabled using pipeline.
+		Disable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Disable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+
+		# Get, using pipeline, recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.serverName $recommendations.ServerName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		Assert-AreEqual 2 ($recommendations.SensitivityLabels).count
+
+		# Verify disabled recommdations are not part of the new recommdations.
+		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
+		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
+		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[0].ColumnName
+		Assert-AreNotEqual $secondColumnName ($recommendations.SensitivityLabels)[1].ColumnName
+
+		# Enable second disabled recommdation.
+		Enable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+
+		# Get, using pipeline, recommended sensitivity labels, and verify.
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
+		Assert-AreEqual 3 ($recommendations.SensitivityLabels).count
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.serverName $recommendations.ServerName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+
+		# Verify disabled recommdation is not part of the new recommdations.
+		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[0].ColumnName
+		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[1].ColumnName
+		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[2].ColumnName
+
+		# Disable, using pipeline, all recommended columns.
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation | Disable-AzSqlDatabaseSensitivityRecommendation
+
+		# Verify no recommdations are retrieved since all are disabled.
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.serverName $recommendations.ServerName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		Assert-AreEqual 0 ($recommendations.SensitivityLabels).count
+
+		# Enable, using pipeline, second disabled recommdation and verify
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Enable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
+
+		# Verify enabled recommdation is now part of the recommendations.
+		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation
+		Assert-AreEqual $params.rgname $recommendations.ResourceGroupName
+		Assert-AreEqual $params.serverName $recommendations.ServerName
+		Assert-AreEqual $params.databaseName $recommendations.DatabaseName
+		Assert-AreEqual 1 ($recommendations.SensitivityLabels).count
+
+		$recommendation = ($recommendations.SensitivityLabels)[0]
+		Assert-AreEqual $secondSchemaName $recommendation.SchemaName
+		Assert-AreEqual $secondTableName $recommendation.TableName
+		Assert-AreEqual $secondColumnName $recommendation.ColumnName
+		Assert-NotNullOrEmpty $recommendation.InformationType
+		Assert-NotNullOrEmpty $recommendation.SensitivityLabel
+	}
+	finally
+	{
+		# Cleanup
+		Remove-DataClassificationTestEnvironment $testSuffix
+	}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

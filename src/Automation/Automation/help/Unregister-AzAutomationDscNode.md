@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: E4FC60AE-16B4-4E62-874F-49B9285CFF7A
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode
+=======
+online version: https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 

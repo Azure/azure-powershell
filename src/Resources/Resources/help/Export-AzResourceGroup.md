@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 63BBDF98-75FC-4A44-9FD0-95AD21ED93A6
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/export-azresourcegroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,9 +19,15 @@ Captures a resource group as a template and saves it to a file.
 
 ```
 Export-AzResourceGroup -ResourceGroupName <String> [-Path <String>] [-IncludeParameterDefaultValue]
+<<<<<<< HEAD
  [-IncludeComments] [-SkipResourceNameParameterization] [-SkipAllParameterization]
  [-Resource <String[]>] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+ [-IncludeComments] [-SkipResourceNameParameterization] [-SkipAllParameterization] [-Resource <String[]>]
+ [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -161,6 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -ResourceGroupName
 Specifies the name of the resource group to export.
 
@@ -188,6 +199,35 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+=======
+### -Resource
+A list of resourceIds to filter the results by.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group to export.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Accept wildcard characters: False
 ```
 
@@ -267,6 +307,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Find-AzResourceGroup](./Find-AzResourceGroup.md)
+=======
+[Get-AzResourceGroup](./Get-AzResourceGroup.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 

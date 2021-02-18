@@ -59,17 +59,51 @@ namespace Microsoft.Azure.Commands.Network
         public string SslCertificateId { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 ParameterSetName = "SetByResource",
                 HelpMessage = "Application gateway SslCertificate")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewaySslCertificate SslCertificate { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "SslProfileId")]
+        public string SslProfileId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "SslProfile")]
+        public PSApplicationGatewaySslProfile SslProfile { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                HelpMessage = "Host name")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
+=======
+            HelpMessage = "Host names")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
+
+        [Parameter(
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                HelpMessage = "RequireServerNameIndication")]
         [ValidateSet("true", "false", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -97,14 +131,35 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FrontendIPConfigurationId = this.FrontendIPConfiguration.Id;
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (FrontendPort != null)
                 {
                     this.FrontendPortId = this.FrontendPort.Id;
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 if (SslCertificate != null)
                 {
                     this.SslCertificateId = this.SslCertificate.Id;
                 }
+<<<<<<< HEAD
+=======
+
+                if (FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
+                }
+
+                if (SslProfile != null)
+                {
+                    this.SslProfileId = this.SslProfile.Id;
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -147,6 +202,26 @@ namespace Microsoft.Azure.Commands.Network
                 httpListener.SslCertificate.Id = this.SslCertificateId;
             }
 
+<<<<<<< HEAD
+=======
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
+            {
+                httpListener.FirewallPolicy = new PSResourceId();
+                httpListener.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+
+            if (!string.IsNullOrEmpty(this.SslProfileId))
+            {
+                httpListener.SslProfile = new PSResourceId();
+                httpListener.SslProfile.Id = this.SslProfileId;
+            }
+
+            if (this.HostNames != null)
+            {
+                httpListener.HostNames = this.HostNames?.ToList();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (this.CustomErrorConfiguration != null)
             {
                 httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration?.ToList();

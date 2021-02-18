@@ -50,6 +50,17 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-subnetCRUD");
         }
 
+<<<<<<< HEAD
+=======
+        [Fact(Skip = "Authentication failed for auxiliary token: The '1' auxiliary tokens contains duplicates which are from the same tenant.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkBgpCommunitiesCRUD()
+        {
+            TestRunner.RunTestScript("Test-bgpCommunitiesCRUD");
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
@@ -61,6 +72,25 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+<<<<<<< HEAD
+=======
+        public void TestVirtualNetworkSubnetNetworkSecurityGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-subnetNetworkSecurityGroupCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkSubnetRouteTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-subnetRouteTableCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void TestVirtualNetworkMultiPrefixSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-multiPrefixSubnetCRUD");
@@ -75,7 +105,11 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
+<<<<<<< HEAD
         [Trait(Category.RunType, Category.LiveOnly)]
+=======
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestMultiTenantVNetPCRUD()
         {

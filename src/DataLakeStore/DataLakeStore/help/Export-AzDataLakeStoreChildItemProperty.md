@@ -1,14 +1,22 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/export-azdatalakestorechilditemproperty
+=======
+online version: https://docs.microsoft.com/powershell/module/az.datalakestore/export-azdatalakestorechilditemproperty
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
 # Export-AzDataLakeStoreChildItemProperty
 
 ## SYNOPSIS
+<<<<<<< HEAD
 Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+=======
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a output path
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## SYNTAX
 
@@ -57,7 +65,11 @@ PS C:\> Set-AzDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl
 PS C:\> Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
 
+<<<<<<< HEAD
 Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl ouput of subtree if all it's acls are same as the root.
+=======
+Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl output of subtree if all it's acls are same as the root.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -183,7 +195,11 @@ Accept wildcard characters: False
 ```
 
 ### -OutputPath
+<<<<<<< HEAD
 Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is pecified then it is an ADL path in the same account
+=======
+Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is specified then it is an ADL path in the same account
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

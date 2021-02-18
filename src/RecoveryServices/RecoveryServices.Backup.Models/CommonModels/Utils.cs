@@ -29,6 +29,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Maximum allowed duration length of retention.
         /// </summary>
         public const int MaxAllowedRetentionDurationCount = 9999;
+<<<<<<< HEAD
+=======
+        public const int MaxAllowedRetentionDurationCountWeekly = 5163;
+        public const int MaxAllowedRetentionDurationCountMonthly = 1188;
+        public const int MaxAllowedRetentionDurationCountYearly = 99;
+
+        public const int AfsDailyRetentionDaysMax = 200;
+        public const int AfsDailyRetentionDaysMin = 1;
+        public const int AfsWeeklyRetentionMax = 200;
+        public const int AfsWeeklyRetentionMin = 1;
+        public const int AfsMonthlyRetentionMax = 120;
+        public const int AfsMonthlyRetentionMin = 1;
+        public const int AfsYearlyRetentionMax = 10;
+        public const int AfsYearlyRetentionMin = 1;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Maximum number of days in a month.
@@ -48,9 +63,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int NumOfMonthsInYear = 12;
 
         // SQL constants
+<<<<<<< HEAD
         public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
         public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
         public const int MaxAllowedRetentionDurationCountYearlySql = 10;
+=======
+        public const int MaxAllowedRetentionDurationCountWeeklySql = 5163;
+        public const int MaxAllowedRetentionDurationCountMonthlySql = 1188;
+        public const int MaxAllowedRetentionDurationCountYearlySql = 99;
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 
     /// <summary>
@@ -75,7 +97,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class IdUtils
     {
+<<<<<<< HEAD
         static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" +
+=======
+        static readonly string UriFormat = @"/(Subscriptions|subscriptions)/(?<subscriptionsId>.+)"+
+            "/(resourceGroups|resourcegroups)" +
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             @"/(?<resourceGroupName>.+)/providers/(?<providersName>.+)" +
             "/vaults/(?<BackupVaultName>.+)/backupFabrics/(?<BackupFabricName>.+)" +
             "/protectionContainers/(?<containersName>.+)";
@@ -220,8 +247,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureStorage;
                 case ServiceClientModel.BackupManagementType.AzureWorkload:
                     return BackupManagementType.AzureWorkload;
+<<<<<<< HEAD
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
+=======
+                case "":
+                    return BackupManagementType.NA;
+                default:
+                    throw new Exception("Unsupported BackupManagementType: " + backupManagementType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
 
@@ -288,6 +322,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return WorkloadType.MSSQL;
             }
+<<<<<<< HEAD
+=======
+            else if (workloadType == ServiceClientModel.WorkloadType.FileFolder)
+            {
+                return WorkloadType.FileFolder;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             else
             {
                 throw new Exception("Unsupported WorkloadType: " + workloadType);

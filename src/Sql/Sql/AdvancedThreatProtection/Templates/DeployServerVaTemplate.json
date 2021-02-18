@@ -21,6 +21,7 @@
         "storageName": "[tolower(concat('sqlva', variables('uniqueStorage')))]",
     },
     "resources": [
+<<<<<<< HEAD
         {
             "condition": "[parameters('enableVa')]",
             "type": "Microsoft.Storage/storageAccounts",
@@ -33,6 +34,22 @@
             "kind": "Storage",
             "properties": {},
         },
+=======
+      {
+        "condition": "[parameters('enableVa')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageName')]",
+        "apiVersion": "2019-04-01",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard_LRS",
+        },
+        "kind": "StorageV2",
+        "properties": {
+          "supportsHttpsTrafficOnly": true
+        }
+      },
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         {
             "condition": "[parameters('enableVa')]",
             "type": "Microsoft.Sql/servers/vulnerabilityAssessments",

@@ -24,14 +24,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         public PackageState State { get; set; }
 
+<<<<<<< HEAD
         public string Version { get; set; }
+=======
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public DateTime? LastActivationTime { get; set; }
 
         public string StorageUrl { get; set; }
 
+<<<<<<< HEAD
         public DateTime StorageUrlExpiry { get; set; }
 
         public string Id { get; set; }
+=======
+        public DateTime? StorageUrlExpiry { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

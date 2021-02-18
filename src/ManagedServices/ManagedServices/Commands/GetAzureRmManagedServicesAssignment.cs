@@ -14,6 +14,10 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 {
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -22,11 +26,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
     [Cmdlet(
         VerbsCommon.Get,
+<<<<<<< HEAD
         Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
+=======
+        AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSRegistrationAssignment))]
     public class GetAzureRmManagedServicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
+<<<<<<< HEAD
         protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByIdParameterSet = "ById";
 
@@ -50,10 +59,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Whether to include registration definition details.")]
         [Parameter(ParameterSetName = ByResourceIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
         [Parameter(ParameterSetName = ByIdParameterSet, HelpMessage = "Whether to include registration definition details.")]
+=======
+        protected const string ByNameParameterSet = "ByName";
+
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The scope where the registration assignment created.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The scope where the registration assignment created.")]
+        [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
+        public string Scope { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "The unique name of the Registration Assignment.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Whether to include registration definition details.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByNameParameterSet, HelpMessage = "Whether to include registration definition details.")]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public SwitchParameter ExpandRegistrationDefinition { get; set; }
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             string scope = null;
             string assignmentId = null;
 
@@ -77,6 +103,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             if (string.IsNullOrEmpty(assignmentId))
+=======
+            string scope = this.GetDefaultScope();
+            string assignmentId = null;
+
+            if (this.IsParameterBound(x => x.Name))
+            {
+                if (!this.Name.IsGuid())
+                {
+                    throw new ApplicationException("Name must be a valid GUID.");
+                }
+
+                assignmentId = this.Name;
+            }
+
+            if (this.IsParameterBound(x => x.Scope))
+            {
+                scope = this.Scope;
+            }
+
+            if (string.IsNullOrWhiteSpace(assignmentId))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             {
                 var results = this.PSManagedServicesClient.ListRegistrationAssignments(
                     scope: scope,
@@ -85,12 +132,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
             else
             {
+<<<<<<< HEAD
                 // validate assignmentId.
                 if (!assignmentId.IsGuid())
                 {
                     throw new ApplicationException("RegistrationAssignment must be a valid GUID.");
                 }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 var result = this.PSManagedServicesClient.GetRegistrationAssignment(
                     scope: scope,
                     registrationAssignmentId: assignmentId,

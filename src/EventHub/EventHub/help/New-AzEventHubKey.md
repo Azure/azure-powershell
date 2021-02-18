@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/new-azeventhubkey
+=======
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -31,20 +35,31 @@ The New-AzEventHubKey cmdlet regenerates the primary or secondary SAS key for th
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### Example 1.1 - Namespace - AuthorizationRule PrimaryKey
 ```
+=======
+### Example 1: Namespace - AuthorizationRule PrimaryKey
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
 
+<<<<<<< HEAD
 ### Example 1.2 - EventHub - AuthorizationRule PrimaryKey
 ```
+=======
+### Example 2: EventHub - AuthorizationRule PrimaryKey
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
 
+<<<<<<< HEAD
 ### Example 2.1  - Namespace - AuthorizationRule SecondaryKey
 ```
 PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey SecondaryKey
@@ -52,6 +67,15 @@ PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamesp
 
 ### Example 2.2 - EventHub - AuthorizationRule SecondaryKey
 ```
+=======
+### Example 3: - Namespace - AuthorizationRule SecondaryKey
+```powershell
+PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey SecondaryKey
+```
+
+### Example 4: EventHub - AuthorizationRule SecondaryKey
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\> New-AzEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey SecondaryKey
 ```
 

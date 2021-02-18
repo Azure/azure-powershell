@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Query = properties.Query;
                 this.Version = properties.Version;
                 this.Tags = new Hashtable();
+<<<<<<< HEAD
+=======
+                this.FunctionAlias = properties.FunctionAlias;
+                this.FunctionParameters = properties.FunctionParameters;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 if (properties.Tags != null)
                 {
@@ -42,10 +47,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Category { get; set; }
         public string DisplayName { get; set; }
         public string Query { get; set; }
         public long? Version { get; set; }
         public Hashtable Tags { get; set; }
+<<<<<<< HEAD
+=======
+        public string FunctionAlias { get; set; }
+        public string FunctionParameters { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

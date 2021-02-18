@@ -1,7 +1,11 @@
 ﻿---
 Module Name: Az.EventHub
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
+<<<<<<< HEAD
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.eventhub
+=======
+Download Help Link: https://docs.microsoft.com/powershell/module/az.eventhub
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -12,7 +16,11 @@ This topic displays help for the Azure Event Hub PowerShell resource manager cmd
 
 ## Az.EventHub Cmdlets
 ### [Add-AzEventHubIPRule](Add-AzEventHubIPRule.md)
+<<<<<<< HEAD
 Add a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Add a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Add-AzEventHubVirtualNetworkRule](Add-AzEventHubVirtualNetworkRule.md)
 Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
@@ -23,6 +31,15 @@ Gets the details of a single Event Hub, or gets a list of Event Hubs.
 ### [Get-AzEventHubAuthorizationRule](Get-AzEventHubAuthorizationRule.md)
 Gets the details of an authorization rule, or gets a list of authorization rules.
 
+<<<<<<< HEAD
+=======
+### [Get-AzEventHubCluster](Get-AzEventHubCluster.md)
+Gets the details of a single Dedicated Event Hub Cluster, or gets a list of Dedicated Event Hub Clusters in given Resourcegroup.
+
+### [Get-AzEventHubClustersAvailableRegion](Get-AzEventHubClustersAvailableRegion.md)
+Gets the list of regions where Dedicated Event Hub Clusters are available
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Get-AzEventHubConsumerGroup](Get-AzEventHubConsumerGroup.md)
 Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
 
@@ -36,7 +53,11 @@ Gets the primary key details of the specified Event Hubs authorization rule.
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
 
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
+<<<<<<< HEAD
 Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+=======
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Creates a new Event Hub.
@@ -45,7 +66,14 @@ Creates a new Event Hub.
 Creates a new Event Hubs authorization rule for namespace or eventhub.
 
 ### [New-AzEventHubAuthorizationRuleSASToken](New-AzEventHubAuthorizationRuleSASToken.md)
+<<<<<<< HEAD
 Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhub. 
+=======
+Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhub.
+
+### [New-AzEventHubCluster](New-AzEventHubCluster.md)
+Creates a new Dedicated Eventhub cluster in the given Resource Group and location
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
 Creates a new consumer group for the specified Event Hub.
@@ -60,7 +88,11 @@ Creates a new primary or secondary key for the specified Event Hubs authorizatio
 Creates an Event Hubs namespace.
 
 ### [Remove-AzEventHubIPRule](Remove-AzEventHubIPRule.md)
+<<<<<<< HEAD
 Remove a single IPrule to the NetworkRuleSet of the given Namespace
+=======
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzEventHub](Remove-AzEventHub.md)
 Removes the specified Event Hub.
@@ -69,11 +101,21 @@ Removes the specified Event Hub.
 Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
 
 ### [Remove-AzEventHubNetworkRuleSet](Remove-AzEventHubNetworkRuleSet.md)
+<<<<<<< HEAD
 Removes the NetwrokRuleSet for the Given Namespace
+=======
+Removes the NetworkRuleSet for the Given Namespace
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Remove-AzEventHubAuthorizationRule](Remove-AzEventHubAuthorizationRule.md)
 Removes the specified Event Hub authorization rule.
 
+<<<<<<< HEAD
+=======
+### [Remove-AzEventHubCluster](Remove-AzEventHubCluster.md)
+Deletes the specified Dedicated Eventhub Cluster from the ResourceGroup
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Remove-AzEventHubConsumerGroup](Remove-AzEventHubConsumerGroup.md)
 Deletes the specified Event Hubs consumer group.
 
@@ -89,6 +131,12 @@ Updates the specified Event Hub.
 ### [Set-AzEventHubAuthorizationRule](Set-AzEventHubAuthorizationRule.md)
 Updates the specified authorization rule on an Event Hub.
 
+<<<<<<< HEAD
+=======
+### [Set-AzEventHubCluster](Set-AzEventHubCluster.md)
+Updates the Tags for the given Cluster
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### [Set-AzEventHubConsumerGroup](Set-AzEventHubConsumerGroup.md)
 Updates the specified Event Hubs consumer group.
 
@@ -102,7 +150,11 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 Updates the specified Event Hubs namespace.
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
+<<<<<<< HEAD
 Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+=======
+Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)

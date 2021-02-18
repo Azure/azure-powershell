@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualhubvnetconnection
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualhubvnetconnection
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -52,6 +56,25 @@ Name                 : testvnetconnection
 Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection
 RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 ProvisioningState    : Succeeded
+<<<<<<< HEAD
+=======
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
@@ -74,6 +97,25 @@ Name                 : testvnetconnection
 Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection
 RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 ProvisioningState    : Succeeded
+<<<<<<< HEAD
+=======
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
@@ -89,11 +131,49 @@ Name                 : testvnetconnection1
 Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection1
 RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 ProvisioningState    : Succeeded
+<<<<<<< HEAD
+=======
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 Name                 : testvnetconnection2
 Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection2
 RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
 ProvisioningState    : Succeeded
+<<<<<<< HEAD
+=======
+RoutingConfiguration : {
+                            "AssociatedRouteTable": {
+                                "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                            },
+                            "PropagatedRouteTables": {
+                                "Labels": [],
+                                "Ids": [
+                                    {
+                                        "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubRouteTables/defaultRouteTable"
+                                    }
+                                ]
+                            },
+                            "VnetRoutes": {
+                                "StaticRoutes": []
+                            }
+                        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 This cmdlet lists all the hub virtual network connections starting with "test" using its resource group name and the hub name.

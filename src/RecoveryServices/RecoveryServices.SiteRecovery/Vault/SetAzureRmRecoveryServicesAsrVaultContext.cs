@@ -91,6 +91,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     .RecoveryServicesResourceProviderNameSpace;
 
                 asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
+<<<<<<< HEAD
+=======
+                asrVaultCreds.PrivateEndpointStateForSiteRecovery = this.Vault.Properties.PrivateEndpointStateForSiteRecovery;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                 Utilities.UpdateCurrentVaultContext(asrVaultCreds);
 

@@ -28,11 +28,19 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName,
                     p.Name,
+<<<<<<< HEAD
                     new SignalRCreateParameters(
                         p.Model.Location,
                         p.Model.Tags,
                         p.Model.Sku,
                         new SignalRCreateOrUpdateProperties(p.Model.HostNamePrefix)),
+=======
+                    new SignalRResource(
+                        location: p.Model.Location,
+                        tags: p.Model.Tags,
+                        sku: p.Model.Sku,
+                        hostNamePrefix: p.Model.HostNamePrefix),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     p.CancellationToken),
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,

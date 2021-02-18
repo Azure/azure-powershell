@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
 using System.Reflection;
 using System.Text.RegularExpressions;
+=======
+using System.Management.Automation.Language;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using Tools.Common.Models;
+using Tools.Common.Utilities;
+using Microsoft.Extensions.Logging;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace VersionController.Models
 {
@@ -12,14 +21,29 @@ namespace VersionController.Models
     {
         private VersionFileHelper _fileHelper;
         private VersionMetadataHelper _metadataHelper;
+<<<<<<< HEAD
+=======
+        private ILoggerFactory _loggerFactory;
+        private ILogger _logger;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
 
+<<<<<<< HEAD
+=======
+        public AzurePSVersion MinimalVersion { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public VersionBumper(VersionFileHelper fileHelper)
         {
             _fileHelper = fileHelper;
             _metadataHelper = new VersionMetadataHelper(_fileHelper);
+<<<<<<< HEAD
+=======
+            _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
+            _logger = _loggerFactory.CreateLogger<VersionBumper>();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -29,6 +53,7 @@ namespace VersionController.Models
         {
             var moduleName = _fileHelper.ModuleName;
             Console.WriteLine("Bumping version for " + moduleName + "...");
+<<<<<<< HEAD
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
@@ -44,12 +69,32 @@ namespace VersionController.Models
             }
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+=======
+
+            (_oldVersion, _isPreview) = GetOldVersion();
+
+            _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+            if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
+            {
+                Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
+                _newVersion = MinimalVersion.ToString();
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (_oldVersion == _newVersion)
             {
                 Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
 
+<<<<<<< HEAD
                 // Generate the serialized module metadata file
                 _metadataHelper.SerializeModule();
+=======
+                if (!_newVersion.StartsWith("0"))
+                {
+                    // Generate the serialized module metadata file
+                    _metadataHelper.SerializeModule();
+                }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
             else
             {
@@ -67,6 +112,41 @@ namespace VersionController.Models
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Get the local version of the module.
+        /// </summary>
+        /// <returns>The old version and is or not preview before the bump.</returns>
+        public Tuple<string, bool> GetOldVersion()
+        {
+            string version;
+            string localVersion = null;
+            // string localVersion = null, psVersion = null, testVersion = null;
+            bool isPreview;
+            bool localPreview = false;
+            // bool localPreview = false, psPreview = false, testPreview = false;
+            var moduleName = _fileHelper.ModuleName;
+            
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + _fileHelper.OutputModuleManifestPath + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
+                var cmdletResult = powershell.Invoke();
+                localVersion = cmdletResult[0]?.ToString();
+                localPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
+            }
+            if (localVersion == null)
+            {
+                throw new Exception("Unable to obtain old version of " + moduleName + " using the built module manifest.");
+            }
+            version = localVersion;
+            isPreview = localPreview;
+
+            return Tuple.Create(version, isPreview);
+        }
+
+        /// <summary>
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// Apply a version bump to a given version.
         /// </summary>
         /// <returns>The updated version after the bump has been applied.</returns>
@@ -86,6 +166,7 @@ namespace VersionController.Models
                 {
                     versionBump = Version.MINOR;
                 }
+<<<<<<< HEAD
             }
 
             // PATCH update for preview modules (0.x.x or x.x.x-preview)
@@ -111,6 +192,126 @@ namespace VersionController.Models
             }
 
             return string.Join(".", splitVersion);
+=======
+                // for https://github.com/Azure/azure-powershell/pull/12356
+                // Because of the wrong compare script in the link above, we need to avoid the minor bump when the version of Az.Accounts is 1.9.x
+                // So we add a special judge for it when the version is 1.9.x and the expect bump type is minor, 
+                // we will change the type to patch so that it can work until 1.9.9.Once the version is greater or equal than 2.0.0
+                // this special judge will not works anymore.
+                if (splitVersion[0] == 1 && splitVersion[1] == 9 && versionBump == Version.MINOR)
+                {
+                    versionBump = Version.PATCH;
+                }
+            }
+
+            // PATCH update for preview modules (x.x.x-preview)
+            if (_isPreview)
+            {
+                versionBump = Version.PATCH;
+            }
+            // MINOR update for modules with version 0.x.x. Otherwise, it is always 0.1.x which gives user perception that module is far from GA.
+            if (splitVersion[0] == 0)
+            {
+                versionBump = Version.MINOR;
+            }
+
+            var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
+
+            List<AzurePSVersion> galleryVersion = GetGalleryVersion();
+
+            AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
+            foreach(var version in galleryVersion)
+            {
+                if (version.Major == bumpedVersion.Major && !version.IsPreview && version > maxGalleryGAVersion)
+                {
+                    maxGalleryGAVersion = version;
+                }
+            }
+
+            if (galleryVersion.Count == 0)
+            {
+                bumpedVersion = new AzurePSVersion(0, 1, 0);
+            }
+            else if (maxGalleryGAVersion >= bumpedVersion)
+            {
+                _logger.LogError("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+                throw new Exception("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+            }
+            else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
+            {
+                while(HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
+                {
+                    bumpedVersion = GetBumpedVersionByType(bumpedVersion, Version.MINOR);
+                }
+                _logger.LogWarning("There existed greater preview version in the gallery.");
+            }
+
+            return bumpedVersion.ToString();
+        }
+
+        /// <summary>
+        /// Get bumped version by type.
+        /// </summary>
+        /// <param name="version">The version before bump.</param>
+        /// <param name="type">The bump type.</param>
+        /// <returns>The version after bump.</returns>
+        private AzurePSVersion GetBumpedVersionByType(AzurePSVersion version, Version type)
+        {
+            AzurePSVersion bumpedVersion;
+            if (type == Version.MAJOR)
+            {
+                bumpedVersion = new AzurePSVersion(version.Major + 1, 0, 0, version.Label);
+            }
+            else if (type == Version.MINOR)
+            {
+                bumpedVersion = new AzurePSVersion(version.Major, version.Minor + 1, 0, version.Label);
+            }
+            else
+            {
+                bumpedVersion = new AzurePSVersion(version.Major, version.Minor, version.Patch + 1, version.Label);
+            }
+            return bumpedVersion;
+        }
+
+        /// <summary>
+        /// Get version from PSGallery and TestGallery and merge into one list.
+        /// </summary>
+        /// <returns>A list of version</returns>
+        private List<AzurePSVersion> GetGalleryVersion()
+        {
+            var moduleName = _fileHelper.ModuleName;
+            HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Register-PackageSource -Name TestGallery -Location https://www.poshtestgallery.com/api/v2 -ProviderName PowerShellGet");
+                powershell.AddScript("Find-Module -Name " + moduleName + " -Repository PSGallery, TestGallery -AllowPrerelease -AllVersions");
+                var cmdletResult = powershell.Invoke();
+                foreach (var versionImformation in cmdletResult)
+                {
+                    Regex reg = new Regex("Version=(.*?);");
+                    Match match = reg.Match(versionImformation.ToString());
+                    galleryVersion.Add(new AzurePSVersion(match.Groups[1].Value));
+                }
+            }
+            return galleryVersion.ToList();
+        }
+
+        /// <summary>
+        /// Under the same Major version, check if there exist preview version in gallery that has greater version.
+        /// </summary>
+        /// <returns>True if exist a version, false otherwise.</returns>
+        private bool HasGreaterPreviewVersion(AzurePSVersion version, List<AzurePSVersion> galleryVersion)
+        {
+            foreach (var gaVersion in galleryVersion)
+            {
+                if (gaVersion.Major == version.Major && gaVersion >= version)
+                {
+                    return true;
+                }
+            }
+            return false;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -138,8 +339,13 @@ namespace VersionController.Models
                     continue;
                 }
                 var file = File.ReadAllLines(serializedCmdletFile);
+<<<<<<< HEAD
                 var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));
+=======
+                var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)(\s*)(\d*).(\d*).(\d*).(\d*)(\s*)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion + ".0"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 File.WriteAllLines(serializedCmdletFile, updatedFile);
             }
         }
@@ -177,10 +383,17 @@ namespace VersionController.Models
             foreach (var assemblyInfoPath in assemblyInfoPaths)
             {
                 var file = File.ReadAllLines(assemblyInfoPath);
+<<<<<<< HEAD
                 var pattern = @"AssemblyVersion\(([\""])" + _oldVersion + @"([\""])\)";
                 file = file.Select(l => Regex.Replace(l, pattern, "AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
                 pattern = @"AssemblyFileVersion\(([\""])" + _oldVersion + @"([\""])\)";
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, "AssemblyFileVersion(\"" + _newVersion + "\")"));
+=======
+                var pattern = @"^(\s*)\[assembly:(\s*)AssemblyVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                file = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyVersion(\"" + _newVersion + "\")")).ToArray();
+                pattern = @"^(\s*)\[assembly:(\s*)AssemblyFileVersion\(([\""])(\d*).(\d*).(\d*)([\""])\)";
+                var updatedFile = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyFileVersion(\"" + _newVersion + "\")"));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 File.WriteAllLines(assemblyInfoPath, updatedFile);
             }
         }
@@ -285,7 +498,11 @@ namespace VersionController.Models
                                                    .Where(f => !f.Contains("Netcore") &&
                                                                !f.Contains("bin") &&
                                                                !f.Contains("dll-Help") &&
+<<<<<<< HEAD
                                                                !f.Contains("Stack"))
+=======
+                                                               !ModuleFilter.IsAzureStackModule(f))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                                    .ToList();
                 foreach (var moduleManifestPath in moduleManifestPaths)
                 {

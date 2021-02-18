@@ -537,7 +537,11 @@ function Test-NewADServicePrincipal
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Tests Creating and deleting service principal without an exisitng application.
+=======
+Tests Creating and deleting service principal without an existing application.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #>
 function Test-NewADServicePrincipalWithoutApp
 {	
@@ -587,7 +591,11 @@ function Test-NewADServicePrincipalWithoutApp
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Tests Creating and deleting service principal without an exisitng application.
+=======
+Tests Creating and deleting service principal without an existing application.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #>
 function Test-CreateDeleteAppPasswordCredentials
 {	
@@ -643,7 +651,11 @@ function Test-CreateDeleteAppPasswordCredentials
 
 <#
 .SYNOPSIS
+<<<<<<< HEAD
 Tests Creating and deleting service principal without an exisitng application.
+=======
+Tests Creating and deleting service principal without an existing application.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 #>
 function Test-CreateDeleteSpPasswordCredentials
 {	

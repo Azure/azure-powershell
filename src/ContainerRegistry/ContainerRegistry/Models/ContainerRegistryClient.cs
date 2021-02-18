@@ -14,11 +14,19 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -35,6 +43,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             _client = AzureSession.Instance.ClientFactory.CreateArmClient<ContainerRegistryManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
+<<<<<<< HEAD
+=======
+        public List<PSRegistryUsage> ListUsage(string resourceGroupName, string registryName)
+        {
+            return _client.Registries.ListUsages(resourceGroupName, registryName).Value.Select(x => new PSRegistryUsage(x)).ToList();
+        }
+
+        public void ImportImage(string resourceGroupName, string registryName, PSImportImageParameters parameter)
+        {
+             _client.Registries.ImportImage(resourceGroupName, registryName, parameter.GetImportImageParameters());
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public Registry CreateRegistry(string resourceGroupName, string registryName, Registry registry)
         {
             return _client.Registries.Create(resourceGroupName, registryName, registry);
@@ -51,6 +72,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             bool? adminUserEnabled,
             string sku = null,
             string storageAccountId = null,
+<<<<<<< HEAD
+=======
+            PSNetworkRuleSet networkRuleSet = null,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             IDictionary<string, string> tags = null)
         {
             var parameters = new RegistryUpdateParameters()
@@ -63,6 +88,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 parameters.Sku = new Management.ContainerRegistry.Models.Sku(sku);
             }
 
+<<<<<<< HEAD
             if (storageAccountId != null)
             {
                 parameters.StorageAccount = new StorageAccountProperties()
@@ -74,6 +100,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (tags != null)
             {
                 parameters.Tags = tags;
+=======
+            if (tags != null)
+            {
+                parameters.Tags = tags;
+            }
+
+            if (networkRuleSet != null)
+            {
+                parameters.NetworkRuleSet = networkRuleSet.GetNetworkRuleSet();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
 
             return _client.Registries.Update(resourceGroupName, registryName, parameters);

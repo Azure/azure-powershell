@@ -130,7 +130,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     try
                     {
+<<<<<<< HEAD
                         WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
+=======
+                       Certificate cert= WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
                     catch (CloudException e)
                     {

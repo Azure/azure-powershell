@@ -19,4 +19,16 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
 	Remove-AzResourceGroup -Name $rgname -Force
+<<<<<<< HEAD
+=======
+}
+
+<#
+.SYNOPSIS
+Gets the default location for creating storage accounts
+#>
+function Get-StorageLocation()
+{
+    "centraluseuap"
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 }

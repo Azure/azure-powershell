@@ -38,11 +38,14 @@ namespace Microsoft.Azure.Management.WebSites
             return backupItems;
         }
 
+<<<<<<< HEAD
         public static IEnumerable<ResourceMetric> Value(this IEnumerable<ResourceMetric> resources)
         {
             return resources;
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static IEnumerable<Site> Value(this IEnumerable<Site> sites)
         {
             return sites;
@@ -212,6 +215,7 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.ListPublishingProfileXmlWithSecrets(resourceGroupName, name, publishingProfileOptions);
         }
 
+<<<<<<< HEAD
         public static IEnumerable<ResourceMetric> GetSiteMetrics(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
@@ -231,6 +235,8 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.ListMetricsSlot(resourceGroupName, name, slot, details, filter);
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public static SiteConfigResource UpdateSiteConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
@@ -466,12 +472,15 @@ namespace Microsoft.Azure.Management.WebSites
             return serverFarm.ListByResourceGroup(resourceGroupName);
         }
 
+<<<<<<< HEAD
         public static IEnumerable<ResourceMetric> GetServerFarmMetrics(this IAppServicePlansOperations serverFarm,
             string resourceGroupName, string name, bool? details = default(bool?), string filter = null)
         {
             return serverFarm.ListMetrics(resourceGroupName, name, details, filter);
         }
 
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         private static bool? ToNullableBool(this string val)
         {
             if(string.IsNullOrWhiteSpace(val))

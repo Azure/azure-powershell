@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
 
             AddAzureRmServiceFabricNodeType.dontRandom = true;
+<<<<<<< HEAD
             ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
@@ -44,6 +45,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
             ServiceFabricCmdletBase.TestThumbprintAppCert = "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC";
+=======
+            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
+            ServiceFabricCmdletBase.RunningTest = true;
+            ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
+            //change the thumbprint in the common.ps1 file as well
+            ServiceFabricCmdletBase.TestThumbprint = "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC";
+            ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
+            ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "3B892D25432FDA538F54B1EADD0B28BA82C488CC";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
@@ -169,6 +180,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
         public void TestAddAzureRmServiceFabricApplicationCertificate()
         {
             ServiceFabricCmdletBase.TestAppCert = true;
@@ -185,6 +197,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void DefaultTemplateFilesAvailable()
         {
             var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;

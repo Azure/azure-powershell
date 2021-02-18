@@ -19,9 +19,17 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+<<<<<<< HEAD
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
 {
+=======
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
+namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
+{
+    [CmdletDeprecation()]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
     public class GetAzureRmBillingPeriod : AzureBillingCmdletBase
     {

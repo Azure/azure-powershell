@@ -22,11 +22,19 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Management.Compute;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnosticsData", DefaultParameterSetName = WindowsParamSet)]
@@ -107,7 +115,11 @@ namespace Microsoft.Azure.Commands.Compute
                     || result.Body.DiagnosticsProfile.BootDiagnostics == null
                     || result.Body.DiagnosticsProfile.BootDiagnostics.Enabled == null
                     || !result.Body.DiagnosticsProfile.BootDiagnostics.Enabled.Value
+<<<<<<< HEAD
                     || result.Body.DiagnosticsProfile.BootDiagnostics.StorageUri == null)
+=======
+                    )
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 {
                     ThrowTerminatingError
                         (new ErrorRecord(
@@ -130,6 +142,7 @@ namespace Microsoft.Azure.Commands.Compute
                             null));
                 }
 
+<<<<<<< HEAD
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
@@ -149,6 +162,28 @@ namespace Microsoft.Azure.Commands.Compute
 
                     var sb = new StringBuilder();
                     using (var reader = new StreamReader(localFile))
+=======
+                //console log
+                if (this.Windows.IsPresent
+                    || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
+                {
+                    var bootDiagnostics = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                    var localPathTest = this.LocalPath;
+                    var localFile = this.LocalPath + new Uri(bootDiagnostics.ConsoleScreenshotBlobUri).Segments[2];
+
+                    DownloadFromBlobUri(new Uri(bootDiagnostics.ConsoleScreenshotBlobUri), localFile);
+                }
+
+                //serial log
+                var bootDiagnosticsSerial = this.VirtualMachineClient.RetrieveBootDiagnosticsData(this.ResourceGroupName, this.Name);
+                var logUri = new Uri(bootDiagnosticsSerial.SerialConsoleLogBlobUri);
+                var localFileSerial = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
+                DownloadFromBlobUri(logUri, localFileSerial);
+                if (this.Linux.IsPresent)
+                {
+                    var sb = new StringBuilder();
+                    using (var reader = new StreamReader(localFileSerial))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)
@@ -165,12 +200,16 @@ namespace Microsoft.Azure.Commands.Compute
         private void DownloadFromBlobUri(Uri sourceUri, string localFileInfo)
         {
             BlobUri blobUri;
+<<<<<<< HEAD
             string storagekey = "";
+=======
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             if (!BlobUri.TryParseUri(sourceUri, out blobUri))
             {
                 throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
             }
 
+<<<<<<< HEAD
             var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
@@ -184,6 +223,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);
             var blob = new CloudBlob(sourceUri, storagecred);
+=======
+            var blob = new CloudBlob(sourceUri);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
             blob.DownloadToFileAsync(localFileInfo, FileMode.Create).ConfigureAwait(false).GetAwaiter().GetResult();
         }

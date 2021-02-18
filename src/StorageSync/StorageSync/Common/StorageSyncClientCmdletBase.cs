@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
@@ -20,6 +24,10 @@ using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using System.Management.Automation;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
@@ -74,7 +82,31 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
+<<<<<<< HEAD
             DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
+=======
+            AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+        }
+
+        /// <summary>
+        /// Gets the current default context.
+        /// </summary>
+        protected virtual IAzureContext AzureContext
+        {
+            get
+            {
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
+                {
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
+                }
+                if (DefaultProfile.DefaultContext.Subscription == null)
+                {
+                    throw new PSInvalidOperationException(string.Format(Resources.NoSubscriptionFound, DefaultProfile.DefaultContext.Tenant.Id));
+                }
+
+                return DefaultProfile.DefaultContext;
+            }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         }
 
         /// <summary>
@@ -93,7 +125,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets the subscription identifier.
         /// </summary>
         /// <value>The subscription identifier.</value>
+<<<<<<< HEAD
         public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
+=======
+        public Guid SubscriptionId => AzureContext.Subscription.GetId();
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         /// <summary>
         /// Gets or sets the storage sync client wrapper.
@@ -105,7 +141,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (storageSyncClientWrapper == null)
                 {
+<<<<<<< HEAD
                     storageSyncClientWrapper = new StorageSyncClientWrapper(DefaultProfile.DefaultContext, ActiveDirectoryClient);
+=======
+                    storageSyncClientWrapper = new StorageSyncClientWrapper(AzureContext, ActiveDirectoryClient);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 }
 
                 storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;

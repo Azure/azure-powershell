@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlsyncgroup
+=======
+online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlsyncgroup
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -15,9 +19,15 @@ Creates an Azure SQL Database Sync Group.
 ```
 New-AzSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
  -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
+<<<<<<< HEAD
  [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+=======
+ [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-UsePrivateLinkConnection] [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ## DESCRIPTION
@@ -46,7 +56,11 @@ LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :
 ```
 
+<<<<<<< HEAD
 This command creates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
+=======
+This command creates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the schema payload in json format. An example of the schema json is:
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 {"Tables":  [{"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable1"},
 {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}],
 "MasterSyncMemberName":  null
@@ -55,7 +69,11 @@ This command creates a sync group for an Azure SQL Database. "schema.json" is a 
 ## PARAMETERS
 
 ### -ConflictResolutionPolicy
+<<<<<<< HEAD
 The policy of resolving confliction between hub and member database in the sync group.
+=======
+The policy of resolving conflicts between hub and member database in the sync group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -236,6 +254,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -UsePrivateLinkConnection
+Use a private link connection when connecting to the hub of this sync group.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -282,7 +318,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+<<<<<<< HEAD
 [Set-AzSqlSyncGroup](./Set-AzSqlSyncGroup.md)
+=======
+[Update-AzSqlSyncGroup](./Update-AzSqlSyncGroup.md)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 [Remove-AzSqlSyncGroup](./Remove-AzSqlSyncGroup.md)
 

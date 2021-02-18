@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.dll-Help.xml
 Module Name: Az.MarketplaceOrdering
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.marketplaceordering/set-azmarketplaceterms
+=======
+online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -92,7 +96,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+<<<<<<< HEAD
 Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+=======
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted parameter is true.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
@@ -167,7 +175,11 @@ Accept wildcard characters: False
 ```
 
 ### -Terms
+<<<<<<< HEAD
 Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+=======
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted parameter is true.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms

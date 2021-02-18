@@ -12,15 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+=======
+using Microsoft.Azure.Management.ResourceManager.Models;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeployment: PSDeploymentObject
     {
+<<<<<<< HEAD
         public string Location { get; set; }
+=======
+        public string Id { get; set; }
+
+        public string Location { get; set; }
+
+        public string ManagementGroupId { get; set; }
+
+        public string ResourceGroupName { get; set; }
+
+        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

@@ -17,6 +17,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+using System.Collections;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -51,6 +56,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Parameter(Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         #endregion
 
         /// <summary>
@@ -63,6 +75,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 try
                 {
                     Vault vaultCreateArgs = new Vault();
+<<<<<<< HEAD
+=======
+
+                    if (Tag != null)
+                    {
+                        IDictionary<string, string> vaultTags = new Dictionary<string, string>();
+                        foreach (string key in Tag.Keys)
+                        {
+                            vaultTags.Add(key, Tag[key].ToString());
+                        }
+
+                        vaultCreateArgs.Tags = vaultTags;
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     vaultCreateArgs.Location = this.Location;
                     vaultCreateArgs.Properties = new VaultProperties();
                     vaultCreateArgs.Sku = new Sku();

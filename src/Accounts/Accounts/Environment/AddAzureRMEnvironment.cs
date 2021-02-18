@@ -13,12 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+=======
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Utilities;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Globalization;
@@ -41,6 +47,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         private const string MetadataParameterSet = "ARMEndpoint";
         private const string EnvironmentPropertiesParameterSet = "Name";
+<<<<<<< HEAD
+=======
+        private const string DiscoveryParameterSet = "Discovery";
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
         public EnvironmentHelper EnvHelper
         {
@@ -48,7 +58,12 @@ namespace Microsoft.Azure.Commands.Profile
             set { this.envHelper = value != null ? value : new EnvironmentHelper(); }
         }
 
+<<<<<<< HEAD
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+=======
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
@@ -131,7 +146,13 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("GraphEndpointResourceId", "GraphResourceId")]
         public string GraphAudience { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 19, Mandatory = false, ValueFromPipelineByPropertyName = true,
+=======
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 19, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the AD Data Lake services Endpoint.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 19, Mandatory = false, ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
            HelpMessage = "The audience for tokens authenticating with the AD Data Lake services Endpoint.")]
         [Alias("DataLakeEndpointResourceId", "DataLakeResourceId")]
         public string DataLakeAudience
@@ -146,11 +167,18 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+<<<<<<< HEAD
         [Parameter(Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
+=======
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Batch service that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 20, Mandatory = false, ValueFromPipelineByPropertyName = true,
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             HelpMessage = "The resource identifier of the Azure Batch service that is the recipient of the requested token.")]
         [Alias("BatchResourceId", "BatchAudience")]
         public string BatchEndpointResourceId { get; set; }
 
+<<<<<<< HEAD
         [Parameter(Position = 21, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "The audience for tokens authenticating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpointResourceId { get; set; }
@@ -167,6 +195,71 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The resource identifier of the Azure Analysis Services resource.")]
         public string AzureAnalysisServicesEndpointResourceId { get; set; }
 
+=======
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 21, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the Azure Log Analytics API.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 21, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the Azure Log Analytics API.")]
+        public string AzureOperationalInsightsEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 22, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 22, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
+        public string AzureOperationalInsightsEndpoint { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false,
+           HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false,
+           HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
+        public string AzureAnalysisServicesEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false,
+           HelpMessage = "The resource identifier of the Azure Analysis Services resource.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false,
+           HelpMessage = "The resource identifier of the Azure Analysis Services resource.")]
+        public string AzureAnalysisServicesEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Attestation service.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Attestation service.")]
+        public string AzureAttestationServiceEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Attestation service that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Attestation service that is the recipient of the requested token.")]
+        public string AzureAttestationServiceEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Synapse Analytics.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure Synapse Analytics.")]
+        public string AzureSynapseAnalyticsEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
+        public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = DiscoveryParameterSet, Mandatory = true, 
+            HelpMessage = "Discovers environments via default or configured endpoint.")]
+        public SwitchParameter AutoDiscover  { get; set; }
+
+        [Parameter(ParameterSetName = DiscoveryParameterSet, Mandatory = false, 
+            HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
+        public Uri Uri { get; set; }
+
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -180,7 +273,11 @@ namespace Microsoft.Azure.Commands.Profile
                     if (AzureEnvironment.PublicEnvironments.Keys.Any((k) => string.Equals(k, Name, StringComparison.CurrentCultureIgnoreCase)))
                     {
                         throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+<<<<<<< HEAD
                             "Cannot add built-in environment {0}.", Name));
+=======
+                            "Cannot add built-in or discovered environment {0}.", Name));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     }
 
                     if (this.ParameterSetName.Equals(MetadataParameterSet, StringComparison.Ordinal))
@@ -196,7 +293,14 @@ namespace Microsoft.Azure.Commands.Profile
                         IAzureEnvironment newEnvironment;
                         if (!defProfile.TryGetEnvironment(this.Name, out newEnvironment))
                         {
+<<<<<<< HEAD
                             newEnvironment = new AzureEnvironment { Name = this.Name };
+=======
+                            newEnvironment = new AzureEnvironment { 
+                                Name = this.Name,
+                                Type = AzureEnvironment.TypeUserDefined
+                            };
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                         }
 
                         if (publicEnvironment.Key == null)
@@ -251,7 +355,11 @@ namespace Microsoft.Azure.Commands.Profile
                             WriteObject(new PSAzureEnvironment(client.AddOrSetEnvironment(newEnvironment)));
                         });
                     }
+<<<<<<< HEAD
                     else
+=======
+                    else if (this.ParameterSetName.Equals(EnvironmentPropertiesParameterSet, StringComparison.Ordinal))
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                     {
                         ModifyContext((profile, profileClient) =>
                         {
@@ -280,7 +388,12 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(StorageEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
                                     nameof(ActiveDirectoryEndpoint), true);
+<<<<<<< HEAD
 
+=======
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix,
+                                    nameof(ContainerRegistryEndpointSuffix));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
                                     nameof(ActiveDirectoryServiceEndpointResourceId));
@@ -316,10 +429,40 @@ namespace Microsoft.Azure.Commands.Profile
                                    nameof(AzureAnalysisServicesEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
                                    nameof(AzureAnalysisServicesEndpointResourceId));
+<<<<<<< HEAD
+=======
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix,
+                                    nameof(AzureAttestationServiceEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
+                                    nameof(AzureAttestationServiceEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix,
+                                    nameof(AzureSynapseAnalyticsEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
+                                    nameof(AzureSynapseAnalyticsEndpointResourceId));
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
                     }
+<<<<<<< HEAD
+=======
+                    else
+                    {
+                        AzureEnvironment.DiscoverEnvironments(Uri?.ToString(), this.WriteDebug, this.WriteWarning);
+                        ModifyContext((profile, profileClient) =>
+                        {
+                            foreach (var env in profile.EnvironmentTable.Where(i => (i.Value is AzureEnvironment environment) && AzureEnvironment.TypeDiscovered.Equals(environment.Type)).ToList())
+                            {
+                                profile.EnvironmentTable.Remove(env.Key);
+                            }
+                            foreach (var env in AzureEnvironment.PublicEnvironments.Values)
+                            {
+                                profile.EnvironmentTable[env.Name] = env;
+                                WriteObject(new PSAzureEnvironment(env));
+                            }
+                        });
+                    }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 });
 
         }

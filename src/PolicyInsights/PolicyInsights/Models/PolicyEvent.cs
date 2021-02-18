@@ -149,7 +149,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public string PolicySetDefinitionParameters { get; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Gets comma seperated list of management group IDs, which
+=======
+        /// Gets comma separated list of management group IDs, which
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         /// represent the hierarchy of the management groups the resource is
         /// under.
         /// </summary>

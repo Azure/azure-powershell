@@ -17,12 +17,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+<<<<<<< HEAD
+=======
+using System.Text.RegularExpressions;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
+<<<<<<< HEAD
     public class NewAzureFirewallNetworkRuleCommand : NetworkBaseCmdlet
+=======
+    public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         [Parameter(
             Mandatory = true,
@@ -37,6 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
+<<<<<<< HEAD
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
@@ -48,6 +57,34 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
 
+=======
+            Mandatory = false,
+            HelpMessage = "The source addresses of the rule")]
+        public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination addresses of the rule")]
+        public string[] DestinationAddress { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination ipgroup of the rule")]
+        public string[] DestinationIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination FQDN of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationFqdn { get; set; }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
@@ -68,17 +105,67 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+<<<<<<< HEAD
             
+=======
+
+            // One of SourceAddress or SourceIpGroup must be present
+            if ((SourceAddress == null) && (SourceIpGroup == null))
+            {
+                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
+            }
+
+            if (DestinationFqdn != null)
+            {
+                foreach (string fqdn in DestinationFqdn)
+                {
+                    ValidateIsFqdn(fqdn);
+                }
+            }
+
+            // Only one of DestinationAddress or DestinationFqdns is allowed
+            if ((DestinationAddress != null) && (DestinationFqdn != null))
+            {
+                throw new ArgumentException("Both DestinationAddress and DestinationFqdns not allowed.");
+            }
+
+            // One of DestinationAddress or DestinationFqdns must be present
+            if ((DestinationAddress == null) && (DestinationFqdn == null) && (DestinationIpGroup == null))
+            {
+                throw new ArgumentException("DestinationAddress,DestinationIpGroup or DestinationFqdns is required.");
+            }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
                 Description = this.Description,
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+<<<<<<< HEAD
                 DestinationAddresses = this.DestinationAddress?.ToList(),
+=======
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
+                DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationIpGroups = this.DestinationIpGroup?.ToList(),
+                DestinationFqdns = this.DestinationFqdn?.ToList(),
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
                 DestinationPorts = this.DestinationPort?.ToList()
             };
             WriteObject(networkRule);
         }
+<<<<<<< HEAD
+=======
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^\\*$|^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

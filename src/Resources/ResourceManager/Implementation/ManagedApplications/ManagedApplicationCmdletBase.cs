@@ -28,11 +28,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
     using Commands.Common.Authentication.Abstractions;
+<<<<<<< HEAD
+=======
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
     /// <summary>
     /// Base class for policy assignment cmdlets.
     /// </summary>
+<<<<<<< HEAD
     public abstract class ManagedApplicationCmdletBase : ResourceManagerCmdletBase
+=======
+    public abstract class ManagedApplicationCmdletBase : ResourceManagerCmdletBaseWithApiVersion
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     {
         /// <summary>
         /// Gets the next set of resources using the <paramref name="nextLink"/>
@@ -146,5 +154,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
                 : JToken.FromObject(parameter);
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Processes and outputs the result of the operation.
+        /// </summary>
+        protected void ProcessResult(string result, string resourceId, string apiVersion)
+        {
+            if (result.TryConvertTo<AzureAsyncOperationResource>(out var operationResource) && operationResource != null)
+            {
+                if (String.Equals(operationResource.Status, "Succeeded", StringComparison.OrdinalIgnoreCase))
+                {
+                    var getResult = this.GetResourcesClient()
+                        .GetResource<JObject>(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            cancellationToken: this.CancellationToken.Value)
+                        .Result;
+                    this.WriteObject(this.GetOutputObjects("ManagedApplicationId", getResult), enumerateCollection: true);
+                }
+                else
+                {
+                    this.WriteObject(operationResource.Error.ToJToken());
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("The operation failed because the operation status could not be de-serialized.");
+            }
+        }
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
     }
 }

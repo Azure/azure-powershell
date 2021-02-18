@@ -1,7 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint
+=======
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azprivateendpoint
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -12,6 +16,11 @@ Creates a private endpoint.
 
 ## SYNTAX
 
+<<<<<<< HEAD
+=======
+### All
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
  -PrivateLinkServiceConnection <PSPrivateLinkServiceConnection[]> [-ByManualRequest] [-Tag <Hashtable>]
@@ -19,10 +28,15 @@ New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <Stri
 ```
 
 ## DESCRIPTION
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The **New-AzPrivateEndpoint** cmdlet creates a private endpoint.
 
 ## EXAMPLES
 
+<<<<<<< HEAD
 ### 1: Create a private endpoint
 ```
 $virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
@@ -31,11 +45,29 @@ New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -
 ```
 
 This example creates a private endpoint with specific private link service id in a specific subnet in a virtual network.
+=======
+### Example 1: Create a private endpoint
+
+The following example creates a private endpoint with a specific private link service ID in the
+specified subnet in a virtual network.
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -ResourceName 'myVirtualNetwork' -ResourceGroupName 'myResourceGroup'
+$subnet = $virtualNetwork | Select-Object -ExpandProperty subnets | Where-Object Name -eq 'mySubnet'
+$plsConnection= New-AzPrivateLinkServiceConnection -Name 'MyPLSConnections' -PrivateLinkServiceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService' -RequestMessage 'Please Approve my request'
+New-AzPrivateEndpoint -Name 'MyPrivateEndpoint' -ResourceGroup 'myResourceGroup' -Location 'centralus' -PrivateLinkServiceConnection $plsConnection -Subnet $subnet
+```
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
 ### -AsJob
+<<<<<<< HEAD
 Run cmdlet in the background
+=======
+
+Run cmdlet as a job in the background.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -50,7 +82,12 @@ Accept wildcard characters: False
 ```
 
 ### -ByManualRequest
+<<<<<<< HEAD
 Using manual request.
+=======
+
+Use manual request to establish the connection.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -65,6 +102,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -80,7 +121,12 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+<<<<<<< HEAD
 Do not ask for confirmation if you want to overwrite a resource
+=======
+
+Do not ask for confirmation to overwrite a resource.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -95,7 +141,13 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+<<<<<<< HEAD
 location.
+=======
+
+Specifies a location for the private endpoint. Use [Get-AzLocation](/powershell/module/az.resources/get-azlocation)
+to determine valid values for this parameter.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -110,7 +162,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+<<<<<<< HEAD
 The resource name.
+=======
+
+Name of the private endpoint.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -125,7 +182,12 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateLinkServiceConnection
+<<<<<<< HEAD
 The private link service connection.
+=======
+
+The resource ID to connect the private endpoint.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPrivateLinkServiceConnection[]
@@ -140,7 +202,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+<<<<<<< HEAD
 The resource group name.
+=======
+
+Specifies the name of the resource group.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String
@@ -155,7 +222,12 @@ Accept wildcard characters: False
 ```
 
 ### -Subnet
+<<<<<<< HEAD
 The subnet of the private endpoint
+=======
+
+The subnet of the private endpoint.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
@@ -170,8 +242,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+<<<<<<< HEAD
 Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
+=======
+
+Key-value pairs in the form of a hash table. For example:
+@{key0='value0';key1=$null;key2='value2'}
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -186,6 +264,10 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -201,6 +283,10 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -217,7 +303,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 

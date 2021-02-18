@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/import-azkeyvaultcertificate
+=======
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+Module Name: Az.KeyVault
+ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -37,7 +45,11 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 ## DESCRIPTION
 The **Import-AzKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 You can create the certificate to import by using one of the following methods:
+<<<<<<< HEAD
 - Use the New-AzKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
+=======
+- Use `Add-AzKeyVaultCertificate` to create a certificate signing request and submit it to a certificate authority. See https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
 ## EXAMPLES
@@ -234,7 +246,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+<<<<<<< HEAD
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+=======
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## INPUTS
 
@@ -253,3 +269,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
+<<<<<<< HEAD
+=======
+
+[Creating and merging CSR in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a

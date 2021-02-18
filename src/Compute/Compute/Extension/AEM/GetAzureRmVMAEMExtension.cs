@@ -13,6 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+<<<<<<< HEAD
+=======
+using Microsoft.Azure.Commands.Compute.Extension.AEM;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
@@ -91,11 +95,15 @@ namespace Microsoft.Azure.Commands.Compute
                         return;
                     }
 
+<<<<<<< HEAD
                     var aemExtension = virtualMachine.Resources != null
                             ? virtualMachine.Resources.FirstOrDefault(extension =>
                                 extension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisher[OSType], StringComparison.InvariantCultureIgnoreCase) &&
                                 extension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionType[OSType], StringComparison.InvariantCultureIgnoreCase))
                             : null;
+=======
+                    var aemExtension = AEMHelper.GetAEMExtension(virtualMachine, this.OSType);
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
                     if (aemExtension == null)
                     {

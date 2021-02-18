@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting
+=======
+online version: https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -20,8 +24,14 @@ Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId
  [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
+<<<<<<< HEAD
  [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+=======
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-ExportToResourceSpecific] [-EnableLog <Boolean>]
+ [-EnableMetrics <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ```
 
 ### NewSetDiagnosticSetting
@@ -38,21 +48,33 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Enable all metrics and logs for a resource
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True
 ```
 
 This command enables all available metrics and logs for Resource01.
 
 ### Example 2: Disable all metrics and logs
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $False
 ```
 
 This command disables all available metrics and logs for the resource Resource01.
 
 ### Example 3: Enable/disable multiple metrics categories
+<<<<<<< HEAD
 ```
+=======
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $False -MetricCategory MetricCategory1,MetricCategory2
 StorageAccountId   : <storageAccountId>
 StorageAccountName : <storageAccountName>
@@ -77,11 +99,19 @@ Logs
    Category : Category4
 ```
 
+<<<<<<< HEAD
 This command disables the metrics cateories called Category1 and Category2.
 All the other categories remain the same.
 
 ### Example 4: Enable/disable multiple log categories
 ```
+=======
+This command disables the metrics categories called Category1 and Category2.
+All the other categories remain the same.
+
+### Example 4: Enable/disable multiple log categories
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2
 StorageAccountId   : <storageAccountId>
 StorageAccountName : <storageAccountName>
@@ -109,20 +139,34 @@ Logs
 This command enables Category1 and Category2.
 All the other metrics and logs categories remain the same.
 
+<<<<<<< HEAD
 ### Example 4: Enable a time grain and multiple categories
 ```
+=======
+### Example 5: Enable a time grain and multiple categories
+```powershell
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2 -Timegrain PT1M
 ```
 
 This command enables only Category1, Category2, and time grain PT1M.
 All other time grains and categories are unchanged.
 
+<<<<<<< HEAD
 ### Example 5: Using pipeline
 ```
 PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting
 ```
 
 This command uses the PowerShell pipeline to set (not change made) a diagnostic setting.
+=======
+### Example 6: Using pipeline
+```powershell
+PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting -Enabled $True -Category Category1,Category2
+```
+
+This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## PARAMETERS
 
@@ -173,6 +217,39 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -EnableLog
+The value indicating whether the diagnostic logs should be enabled or disabled
+
+```yaml
+Type: System.Boolean
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableMetrics
+The value indicating whether the diagnostic metrics should be enabled or disabled
+
+```yaml
+Type: System.Boolean
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -EventHubAuthorizationRuleId
 The event hub authorization rule id
 
@@ -203,6 +280,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -ExportToResourceSpecific
+Flag indicating that the export to LA must be done to a resource specific table, a.k.a. dedicated or fixed schema table, as opposed to the **default** dynamic schema table called **AzureDiagnostics**.
+
+This argument is effective only when the argument **-workspaceId** is also given.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 ### -InputObject
 The input object (possible from the pipeline.) The name and resourceId will be extracted from this object.
 
@@ -341,7 +438,11 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceId
+<<<<<<< HEAD
 The Id of the workspace
+=======
+The resource Id of the Log Analytics workspace to send logs/metrics to
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ```yaml
 Type: System.String

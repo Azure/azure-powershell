@@ -2,7 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementopenidconnectprovider
+=======
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementopenidconnectprovider
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -33,6 +37,10 @@ Get-AzApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Nam
 
 ## DESCRIPTION
 The **Get-AzApiManagementOpenIdConnectProvider** cmdlet gets OpenID Connect providers in Azure API Management.
+<<<<<<< HEAD
+=======
+ClientSecret will not be included into result details. To get client secret, use **Get-AzApiManagementOpenIdConnectProviderClientSecret**.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ## EXAMPLES
 
@@ -47,10 +55,17 @@ This command gets all OpenID Connect providers for the specified context.
 ### Example 2: Get a provider by using an ID
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+<<<<<<< HEAD
 PS C:\>Get-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01"
 ```
 
 This command gets the provider that has the ID OICProvicer01.
+=======
+PS C:\>Get-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvider01"
+```
+
+This command gets the provider that has the ID OICProvider01.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 ### Example 3: Get a provider by using a name
 ```

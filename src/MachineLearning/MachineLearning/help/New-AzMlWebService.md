@@ -1,7 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/new-azmlwebservice
+=======
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 schema: 2.0.0
 ---
 
@@ -63,7 +67,11 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionFile
+<<<<<<< HEAD
 Specifes the path to the file containing the JSON format definition of the web service.
+=======
+Specifies the path to the file containing the JSON format definition of the web service.
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/tree/master/arm-machinelearning.
 
 ```yaml

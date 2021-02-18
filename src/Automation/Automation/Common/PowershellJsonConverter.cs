@@ -19,6 +19,13 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
+<<<<<<< HEAD
+=======
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System.Collections.Generic;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -30,6 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 return null;
             }
+<<<<<<< HEAD
 
             Hashtable parameters = new Hashtable();
             parameters.Add(Constants.PsCommandParamInputObject, inputObject);
@@ -97,6 +105,54 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
 
                 return result;
+=======
+            if (inputObject is string @str)
+            {
+                return str.Trim();
+            }
+            else if (inputObject is object[] @objectArray)
+            {
+                return SerializeArray(objectArray);
+            }
+            else if (inputObject is PSObject @psObject)
+            {
+                return SerializePsObject(psObject);
+            }
+            return JsonConvert.SerializeObject(inputObject);
+        }
+
+        private static string SerializePsObject(PSObject @psObject)
+        {
+            Dictionary<string, string> hashTable = new Dictionary<string, string>();
+            foreach (var item in @psObject.Properties)
+            {
+                hashTable.Add(item.Name, Serialize(item.Value));
+            }
+
+            return JsonConvert.SerializeObject(hashTable);
+        }
+
+        private static string SerializeArray(object[] objectArray)
+        {
+            List<object> objectList = objectArray.ToList();
+            return string.Format("[{0}]", string.Join(",", objectList.Select(Serialize).ToList()));
+        }
+
+        public static PSObject Deserialize(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+            {
+                return null;
+            }
+
+            try
+            {
+                object result = JsonConvert.DeserializeObject(json);
+                return new PSObject(result);
+            } catch
+            {
+                return json;
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             }
         }
     }

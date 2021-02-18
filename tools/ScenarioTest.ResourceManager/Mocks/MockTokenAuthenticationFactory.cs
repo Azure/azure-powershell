@@ -41,7 +41,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             {
                 UserId = account.Id,
                 LoginType = LoginType.OrgId,
+<<<<<<< HEAD
                 AccessToken = Token.AccessToken
+=======
+                AccessToken = Token.AccessToken,
+                TenantId = tenant
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
             };
         }
 
@@ -135,6 +140,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
 
+<<<<<<< HEAD
+=======
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            throw new System.NotImplementedException();
+        }
+
+>>>>>>> d78b04a5306127f583235b13752c48d4f7d1289a
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
             throw new NotImplementedException();
