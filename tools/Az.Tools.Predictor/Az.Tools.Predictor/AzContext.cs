@@ -108,7 +108,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// The survey session id appended to the survey.
         /// </summary>
         /// <remarks>
-        /// We only collect this information in the preview. So make it internal and not to make it to the interface.
+        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
+        /// interface IAzContext and it's internal.
         /// </remarks>
         internal string SurveyId { get; set; }
 
