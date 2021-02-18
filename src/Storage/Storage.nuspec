@@ -22,6 +22,8 @@
     <file src="Adapters\ARM.Storage.5\ARMStorageService.cs"  target="tools\Adapters\ARM.Storage.5" />
     <file src="Adapters\ARM.Storage.6\ARMStorageProvider.cs" target="tools\Adapters\ARM.Storage.6" />
     <file src="Adapters\ARM.Storage.6\ARMStorageService.cs"  target="tools\Adapters\ARM.Storage.6" />
+    <file src="Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs"  target="tools\Adapters\ARM.Storage.Common.2017_10_01" />
+    <file src="Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs"  target="tools\Adapters\ARM.Storage.Common.2017_10_01" />
     <file src="Adapters\RDFE.Storage\CloudStorageService.cs" target="tools\Adapters\RDFE.Storage" />
     <file src="Adapters\RDFE.Storage\RDFEStorageProvider.cs" target="tools\Adapters\RDFE.Storage" />
     <file src="Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs"       target="tools\Adapters\WindowsAzure.Storage.6" />

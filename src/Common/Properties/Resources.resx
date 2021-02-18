@@ -1725,4 +1725,7 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   <data name="BreakingChangeAttributeParameterTypeChange" xml:space="preserve">
     <value>	The type of the parameter is changing from '{0}' to '{1}'.</value>
   </data>
+  <data name="AzureRmWillRetire" xml:space="preserve">
+    <value>Because the Az modules have all the capabilities of AzureRM modules and more, we will retire the AzureRM modules on 29 February 2024. Learn more about the migration to Az: http://aka.ms/azpsmigrate.</value>
+  </data>
 </root>

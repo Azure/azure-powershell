@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -287,6 +287,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string AzureProfileMustNotBeNull {
             get {
                 return ResourceManager.GetString("AzureProfileMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Because the Az modules have all the capabilities of AzureRM modules and more, we will retire the AzureRM modules on 29 February 2024. Learn more about the migration to Az: http://aka.ms/azpsmigrate..
+        /// </summary>
+        public static string AzureRmWillRetire {
+            get {
+                return ResourceManager.GetString("AzureRmWillRetire", resourceCulture);
             }
         }
         

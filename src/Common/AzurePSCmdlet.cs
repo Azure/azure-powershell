@@ -27,6 +27,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -365,6 +366,32 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
             //This will print any breaking change attribute messages that are applied to the cmdlet
             BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
+
+            DisplayAzureRmRetiringMessage();
+        }
+
+        /// <summary>
+        /// Display warning message that AzureRM will retire unless customers set environment variable 'SuppressAzureRmModulesRetiringWarning' as true.
+        /// </summary>
+        private void DisplayAzureRmRetiringMessage()
+        {
+            bool supressRetireWarningMessage = false;
+
+            try
+            {
+                supressRetireWarningMessage = bool.Parse(Environment.GetEnvironmentVariable("SuppressAzureRmModulesRetiringWarning"));
+            }
+            catch (Exception)
+            {
+                //no action
+            }
+
+            if (supressRetireWarningMessage)
+            {
+                return;
+            }
+
+            WriteWarning(Resources.AzureRmWillRetire);
         }
 
         /// <summary>
