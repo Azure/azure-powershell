@@ -177,8 +177,6 @@ try
 
 $mutex.ReleaseMutex()
 
-Write-Host "To enable suggestions from Az predictor, run: Set-PSReadLineOption -PredictionSource HistoryAndPlugin"
-
 if ($shouldIntercept) {
     $userId = (Get-AzContext).Account.Id
     $surveyId = "000000"
