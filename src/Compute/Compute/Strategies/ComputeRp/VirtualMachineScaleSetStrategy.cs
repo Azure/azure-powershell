@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = (encryptionAtHost == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHost) : null,
+                        SecurityProfile = (encryptionAtHost == true) ? new SecurityProfile(encryptionAtHost) : null,
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
