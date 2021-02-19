@@ -357,23 +357,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable NFS 3.0 protocol support  if sets to true")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableNfsV3
-        {
-            get
-            {
-                return enableNfsV3.Value;
-            }
-            set
-            {
-                enableNfsV3 = value;
-            }
-        }
-        private bool? enableNfsV3 = null;
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " + 
             "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
             "The default value is null, which is equivalent to true.")]
@@ -524,10 +507,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
             {
                 createParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
-            }
-            if (enableNfsV3 != null)
-            {
-                createParameters.EnableNfsV3 = enableNfsV3;
             }
             if (allowSharedKeyAccess != null)
             {

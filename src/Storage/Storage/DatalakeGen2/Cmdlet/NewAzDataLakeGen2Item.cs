@@ -176,10 +176,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 DataLakeDirectoryClient dirClient = fileSystem.GetDirectoryClient(this.Path);
                 if (ShouldProcess(GetDataLakeItemUriWithoutSas(dirClient), "Create Directory: "))
                 {
-                    //if (dirClient.Exists())
-                    //{
-                    //    throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", GetDataLakeItemUriWithoutSas(dirClient)));
-                    //}
+                    if (dirClient.Exists())
+                    {
+                        throw new ResourceAlreadyExistException(String.Format("Folder '{0}' already exists.", GetDataLakeItemUriWithoutSas(dirClient)));
+                    }
                     DataLakeModels.PathPermissions pathPermissions = null;
                     if (this.Permission != null)
                     {

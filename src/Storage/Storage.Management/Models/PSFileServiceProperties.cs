@@ -74,18 +74,18 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSSmbSetting
     {
         public PSMultichannel Multichannel { get; set; }
-        public string Versions { get; set; }
-        public string AuthenticationMethods { get; set; }
-        public string KerberosTicketEncryption { get; set; }
-        public string ChannelEncryption { get; set; }
+        public string[] Versions { get; set; }
+        public string[] AuthenticationMethods { get; set; }
+        public string[] KerberosTicketEncryption { get; set; }
+        public string[] ChannelEncryption { get; set; }
 
         public PSSmbSetting(SmbSetting smbSetting)
         {
             this.Multichannel = smbSetting.Multichannel is null ? null : new PSMultichannel(smbSetting.Multichannel);
-            this.Versions = smbSetting.Versions;
-            this.AuthenticationMethods = smbSetting.AuthenticationMethods;
-            this.KerberosTicketEncryption = smbSetting.KerberosTicketEncryption;
-            this.ChannelEncryption = smbSetting.ChannelEncryption;
+            this.Versions = smbSetting.Versions is null ? null : smbSetting.Versions.Split(new char[] { ';'});
+            this.AuthenticationMethods = smbSetting.AuthenticationMethods is null ? null : smbSetting.AuthenticationMethods.Split(new char[] { ';' });
+            this.KerberosTicketEncryption = smbSetting.KerberosTicketEncryption is null ? null : smbSetting.KerberosTicketEncryption.Split(new char[] { ';' });
+            this.ChannelEncryption = smbSetting.ChannelEncryption is null ? null : smbSetting.ChannelEncryption.Split(new char[] { ';' });
         }
     }
 

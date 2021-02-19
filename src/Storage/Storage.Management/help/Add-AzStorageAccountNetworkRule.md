@@ -94,7 +94,6 @@ PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Nam
 
 This command adds a resource access rule with TenantId and ResourceId.
 
-
 ### Example 6: Add all resource access rules of one storage account to another storage account
 ```
 PS C:\> (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount1").ResourceAccessRules | Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount2"
@@ -220,7 +219,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

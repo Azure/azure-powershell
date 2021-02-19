@@ -173,13 +173,14 @@ function Test-StorageBlobContainerEncryptionScope
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
 		# create Scope
-		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption -RequireInfrastructureEncryption 
 		$scope = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName
 		Assert-AreEqual $rgname $scope.ResourceGroupName
 		Assert-AreEqual $stoname $scope.StorageAccountName
 		Assert-AreEqual $scopeName $scope.Name
 		Assert-AreEqual "Microsoft.Storage" $scope.Source
 		Assert-AreEqual "Enabled" $scope.State
+		Assert-AreEqual $true $scope.RequireInfrastructureEncryption
 		
 		# update Scope
 		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Disabled 
