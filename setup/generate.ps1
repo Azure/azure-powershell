@@ -37,7 +37,7 @@ if( (-not (get-command -ea 0 light)) -or (-not (get-command -ea 0 heat)) -or (-n
 $outputName ="Az-Cmdlets"
 
 # generate the product name from the current month/year.
-$productName = "Microsoft Azure PowerShell - January 2021"
+$productName = "Microsoft Azure PowerShell - February 2021"
 
 # where to put temp files
 $tmp = Join-Path $env:temp azure-cmdlets-tmp

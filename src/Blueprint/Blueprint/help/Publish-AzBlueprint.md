@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/publish-azblueprint
+online version: https://docs.microsoft.com/powershell/module/az.blueprint/publish-azblueprint
 schema: 2.0.0
 ---
 

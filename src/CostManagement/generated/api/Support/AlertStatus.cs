@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>alert status</summary>
     public partial struct AlertStatus :
         System.IEquatable<AlertStatus>
     {
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="AlertStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AlertStatus(System.Convert.ToString(value));
+            return new AlertStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AlertStatus</summary>

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CostManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/new-azcostmanagementexport
+online version: https://docs.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
 schema: 2.0.0
 ---
 

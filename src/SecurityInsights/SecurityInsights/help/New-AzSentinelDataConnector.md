@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/new-azsentineldataconnector
+online version: https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 schema: 2.0.0
 ---
 

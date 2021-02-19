@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="39.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="43.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.1" />

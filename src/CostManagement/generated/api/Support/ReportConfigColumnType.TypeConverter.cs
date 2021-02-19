@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for ReportConfigColumnType.</summary>
+    /// <summary>The type of the column in the report.</summary>
     public partial class ReportConfigColumnTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

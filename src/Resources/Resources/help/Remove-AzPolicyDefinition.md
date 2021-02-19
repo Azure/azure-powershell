@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: DEC01722-EB1A-45CE-BD30-9DB861718573
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azpolicydefinition
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azpolicydefinition
 schema: 2.0.0
 ---
 

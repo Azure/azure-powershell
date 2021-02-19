@@ -606,6 +606,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithComputeIsolation.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\KeyVault\\KeyVault.Test\\Scripts\\VaultCertificateTests.ps1",
       "_justification": "Resource creation is mocked"
     },
@@ -1284,6 +1288,14 @@
     {
       "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.DataClassificationTests\\TestEnableDisableRecommendationsOnSqlPool.json",
       "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanConvertTest.json",
+      "_justification": "Vulnerability Assessment Scan Convert Tests"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanRecordGetListTest.json",
+      "_justification": "Vulnerability Assessment Record Get List Tests"
     },
     {
       "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
