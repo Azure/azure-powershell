@@ -1304,6 +1304,10 @@
     {
       "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnGatewayPacketCapture.json",
       "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\ScenarioTests\\CortexTests.ps1",
+      "_justification": "Generated test resource groups are deleted after test execution"
     }
   ]
 }
