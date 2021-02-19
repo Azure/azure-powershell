@@ -199,14 +199,14 @@ function Test-NewFailedSubscriptionDeploymentFromTemplateSpec
         $sampleTemplateJson = Get-Content -Raw -Path "subscription_level_template.json"
         $basicCreatedTemplateSpec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rgLocation -Version "v1" -TemplateJson $sampleTemplateJson
 
-		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v1"
+		$resourceId = $basicCreatedTemplateSpec.Id + "/versions/v2"
 
 		#Create deployment
 		try {
 			$deployment = New-AzSubscriptionDeployment -Name $rname -TemplateSpecId $resourceId -TemplateParameterFile "subscription_level_parameters.json" -Location $rglocation
 		}
 		Catch {
-			Assert-True { $Error[0].Contains("ResourceNotFound")}
+			 Assert-true { $Error[0].exception.message.Contains("InvalidTemplateSpec") }
 		}
 
 	}
