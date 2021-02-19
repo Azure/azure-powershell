@@ -43,7 +43,7 @@ steps:
     arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build" /p:Configuration=Release'
 
 - task: UseDotNet@2
-  displayName: 'Install DotNet 2.1 runtime for Signing'
+  displayName: 'Install DotNet 2.1 Runtime for Signing'
   inputs:
     packageType: 'runtime'
     version: '2.1.x'
