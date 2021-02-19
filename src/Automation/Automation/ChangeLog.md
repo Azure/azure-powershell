@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add Support for Python3 Runbook Type
+* Added Support for Python3 Runbook Type
 
 ## Version 1.4.3
 * Fixed the issue of processing `PSCustomObject` and `Array`.
