@@ -70,13 +70,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleAssignmentIdAndObjectIdParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleAssignmentIdAndObjectIdParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
-        [ValidateNotNullOrEmpty]
-        public string RoleAssignmentId { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
@@ -136,9 +129,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleAssignmentId, this.ObjectId)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
             {
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(this.RoleAssignmentId, this.RoleDefinitionId, this.ObjectId,  this.Scope));
+                string RoleAssignmentId = this.RoleDefinitionId + "-" + this.ObjectId;
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(RoleAssignmentId, this.RoleDefinitionId, this.ObjectId,  this.Scope));
                 WriteObject(roleAssignmentDetails);
             }
         }

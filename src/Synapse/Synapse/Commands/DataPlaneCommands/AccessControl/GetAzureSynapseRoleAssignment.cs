@@ -138,8 +138,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
-                var roleAssignment = SynapseAnalyticsClient.ListRoleAssignments(this.RoleDefinitionId, this.ObjectId)
-                .Select(element => new PSRoleAssignmentDetails(element));
+                var roleAssignment = SynapseAnalyticsClient.ListRoleAssignments(this.RoleDefinitionId, this.ObjectId).Value.Select(element => new PSRoleAssignmentDetails(element));
 
                 // TODO: Currently, when only `ObjectId` is specified, the cmdlet returns incorrect result. Filter from client side as a workaround
                 if (!string.IsNullOrEmpty(this.ObjectId))

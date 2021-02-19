@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _activeDirectoryClient = new ActiveDirectoryClient(context);
         }
 
-        public IReadOnlyList<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string continuationToken = null)
+        public RoleAssignmentDetailsList ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string continuationToken = null)
         {
-            return (IReadOnlyList<RoleAssignmentDetails>)_roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, continuationToken).Value;
+            return _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, continuationToken).Value;
         }
 
         public RoleAssignmentDetails GetRoleAssignmentById(string roleAssignmentId)
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public IReadOnlyList<SynapseRoleDefinition> GetRoleDefinitions()
         {
-            return (IReadOnlyList<SynapseRoleDefinition>)_roleDefinitionsClient.ListRoleDefinitions();
+            return _roleDefinitionsClient.ListRoleDefinitions().Value;
         }
 
         public SynapseRoleDefinition GetRoleDefinitionById(string roleId)
