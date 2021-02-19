@@ -73,6 +73,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.NetworkAclBypassHelpMessage)]
+        [PSArgumentCompleter("None", "AzureServices")]
+        public string NetworkAclBypass { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.NetworkAclBypassResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string[] NetworkAclBypassResourceId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
         [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
         public string ServerVersion { get; set; }

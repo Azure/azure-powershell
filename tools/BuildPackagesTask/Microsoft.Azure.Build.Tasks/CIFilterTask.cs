@@ -414,7 +414,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
-            if (FilesChanged != null)
+            if (!string.IsNullOrWhiteSpace(TargetModule))
+            {
+                return ProcessTargetModule(csprojMap);
+            }
+            else if (FilesChanged != null)
             {
                 if (FilesChanged.Length > 0)
                 {
@@ -434,10 +438,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
                     return true;
                 }
-            }
-            else if (!string.IsNullOrWhiteSpace(TargetModule))
-            {
-                return ProcessTargetModule(csprojMap);
             }
             return true;
         }
