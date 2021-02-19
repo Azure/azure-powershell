@@ -12,6 +12,7 @@ Create a virtual machine image template
 
 ## SYNTAX
 
+### FlattenParameterSet (Default)
 ```
 New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
  -Distribute <IImageTemplateDistributor[]> -Source <IImageTemplateSource> -UserAssignedIdentityId <String>
@@ -21,6 +22,13 @@ New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <Strin
  [-ProvisioningErrorCode <ProvisioningErrorCode>] [-ProvisioningErrorMessage <String>] [-Tag <Hashtable>]
  [-VMProfileOsdiskSizeInGb <Int32>] [-VMProfileVmSize <String>] [-VnetConfigSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### JsonTemplate
+```
+New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-JsonTemplatePath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +78,7 @@ Omit or specify 0 to use the default (4 hours).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -86,7 +94,7 @@ To construct, see NOTES section for CUSTOMIZE properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -118,7 +126,7 @@ To construct, see NOTES section for DISTRIBUTE properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: True
@@ -143,12 +151,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonTemplatePath
+Path of json formated image template file.
+
+```yaml
+Type: System.String
+Parameter Sets: JsonTemplate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LastRunStatusEndTime
 End time of the last run (UTC).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -163,7 +186,7 @@ Verbose information about the last run state.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -178,7 +201,7 @@ State of the last run.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -193,7 +216,7 @@ Sub-state of the last run.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -208,7 +231,7 @@ Start time of the last run (UTC).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -223,7 +246,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -253,7 +276,7 @@ Error code of the provisioning failure.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -268,7 +291,7 @@ Verbose error message about the provisioning failure.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -299,7 +322,7 @@ To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: True
@@ -329,7 +352,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -344,7 +367,7 @@ The id of user assigned identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: True
@@ -360,7 +383,7 @@ Omit or specify 0 to use Azure's default OS disk size.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -376,7 +399,7 @@ Omit or specify empty string to use the default (Standard_D1_v2).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
@@ -391,7 +414,7 @@ Resource id of a pre-existing subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False
