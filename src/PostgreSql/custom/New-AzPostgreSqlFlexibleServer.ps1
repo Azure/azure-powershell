@@ -47,7 +47,7 @@ function New-AzPostgreSqlFlexibleServer {
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory, HelpMessage = 'Availability zone into which to provision the resource.')]
+        [Parameter(HelpMessage = 'Availability zone into which to provision the resource.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${Zone},
