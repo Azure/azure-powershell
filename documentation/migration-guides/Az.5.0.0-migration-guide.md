@@ -250,8 +250,7 @@ $secretInPlainText = $secret.SecretValueText
 #### After
 
 ```powershell
-$secret = Get-AzKeyVaultSecret -VaultName myVault -Name mySecret
-$secretInPlainText = ConvertFrom-SecureString -SecureString $secret.SecretValue -AsPlainText
+$secretInPlainText = Get-AzKeyVaultSecret -VaultName myVault -Name mySecret -AsPlainText
 ```
 
 ## Az.ManagedServices
