@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported resource access rule in NetworkRuleSet
+    - `Update-AzStorageAccountNetworkRuleSet`
+    - `Add-AzStorageAccountNetworkRule`
+    - `Remove-AzStorageAccountNetworkRule`
 
 ## Version 3.3.0
 * Supported RoutingPreference settings in create/update Storage account

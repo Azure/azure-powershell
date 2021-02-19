@@ -122,6 +122,10 @@
                 <ScriptBlock>if ($_.virtualNetworkRules[0] -ne $null) {"[" + $_.virtualNetworkRules[0].VirtualNetworkResourceId + ",...]"} else {$null}</ScriptBlock>
                 <Label>VirtualNetworkRules</Label>
               </ListItem>
+              <ListItem>
+                <ScriptBlock>if ($_.ResourceAccessRules[0] -ne $null) {"[(" + $_.ResourceAccessRules[0].TenantId + "," + $_.ResourceAccessRules[0].ResourceId + "),...]"} else {$null}</ScriptBlock>
+                <Label>ResourceAccessRules</Label>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
