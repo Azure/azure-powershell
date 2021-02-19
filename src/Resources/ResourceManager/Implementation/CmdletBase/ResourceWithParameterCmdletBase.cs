@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using Newtonsoft.Json.Linq;
@@ -26,6 +27,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string TemplateSpecResourceIdParameterSetName = "ByTemplateSpecResourceId";
         protected const string TemplateSpecResourceIdParameterFileParameterSetName = "ByTemplateSpecResourceIdAndParams";
         protected const string TemplateSpecResourceIdParameterUriParameterSetName = "ByTemplateSpecResourceIdAndParamsUri";
+        protected const string TemplateSpecResourceIdParameterObjectParameterSetName = "ByTemplateSpecResourceIdAndParamsObject";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
@@ -75,6 +78,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         public Hashtable TemplateParameterObject { get; set; }
 
@@ -138,6 +143,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
+        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
         [ValidateNotNullOrEmpty]
         public string TemplateSpecId { get; set; }
@@ -266,18 +273,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         // context. Force the client to use that subscription:
                         TemplateSpecsClient.SubscriptionId = resourceIdentifier.Subscription;
                     }
-
-                    var templateSpecVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
-                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
-                        resourceIdentifier.ResourceName);
-
-                    if (!(templateSpecVersion.Template is JObject))
+                    JObject templateObj = (JObject)null;
+                    try
                     {
-                        throw new InvalidOperationException("Unexpected type."); // Sanity check
-                    }
+                        var templateSpecVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
+                            ResourceIdUtility.GetResourceGroupName(templateSpecId),
+                            ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
+                            resourceIdentifier.ResourceName);
 
-                    JObject templateObj = (JObject)templateSpecVersion.Template;
+                        if (!(templateSpecVersion.Template is JObject))
+                        {
+                            throw new InvalidOperationException("Unexpected type."); // Sanity check
+                        }
+                        templateObj = (JObject)templateSpecVersion.Template;
+                    }
+                    catch (TemplateSpecsErrorException e)
+                    {
+                        //If the templateSpec resourceID is pointing to a non existant resource
+                        if(e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                        {
+                            //By returning null, we are introducing parity in the way templateURI and templateSpecId are validated. Gives a cleaner error message in line with the error message for invalid templateURI
+                            return null;
+                        }
+                        //Throw for any other error that is not due to a 404 for the template resource.
+                        throw;
+                    }
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
