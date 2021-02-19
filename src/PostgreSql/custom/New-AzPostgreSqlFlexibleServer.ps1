@@ -46,6 +46,11 @@ function New-AzPostgreSqlFlexibleServer {
         [System.String]
         ${SubscriptionId},
 
+        [Parameter(Mandatory, HelpMessage = 'Availability zone into which to provision the resource.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+        [System.String]
+        ${Zone},
+
         [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
@@ -186,6 +191,11 @@ function New-AzPostgreSqlFlexibleServer {
 
             if (!$PSBoundParameters.ContainsKey('Location')) {
                 $PSBoundParameters.Location = 'eastus'
+            }
+
+            if ($PSBoundParameters.ContainsKey('Zone')) {
+                $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
+                $null = $PSBoundParameters.Remove('Zone')
             }
 
             if (!$PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
