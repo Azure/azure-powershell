@@ -12,7 +12,7 @@
 RootModule = './Az.Migrate.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.1'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -45,7 +45,7 @@ PowerShellVersion = '5.1'
 DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# ClrVersion = ''
+# CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
@@ -124,7 +124,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Az.Migrate GA
+* Incorporated Initialize-AzMigrateReplicationInfrastructure as a cmdlet in the Az.Migrate module, from the external script that is run currently today.
+* Made some parameters of New-AzMigrateServerReplication, New-AzMigrateDiskMapping case insensitive.
+* Added support for scale appliance change, to handle new V3 keys.'
 
         # Prerelease string of this module
         # Prerelease = ''
