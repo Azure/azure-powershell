@@ -516,6 +516,7 @@ function CreateFirewallRule($FirewallRuleParameters) {
             }
             elseif ($StartIP -eq $EndIP) {
                 $Msg = 'Configuring server firewall rule to accept connections from ' + $StartIP 
+                $RuleName = "FirewallIPAddress_" + $Date
             } 
             else {
                 $Msg = 'Configuring server firewall rule to accept connections from {0} to {1}' -f $StartIP, $EndIp
