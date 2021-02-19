@@ -1125,7 +1125,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemoveVirtualRouterWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a RouteServer will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveRouteServerWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveRouteServerWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>

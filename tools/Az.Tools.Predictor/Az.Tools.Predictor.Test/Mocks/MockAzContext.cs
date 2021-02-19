@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public Version AzVersion => Version.Parse("0.0.0.0");
 
+        public bool IsInternal => true;
+
         public void UpdateContext()
         {
         }

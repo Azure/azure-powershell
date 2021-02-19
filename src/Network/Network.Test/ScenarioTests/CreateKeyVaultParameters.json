@@ -1,0 +1,29 @@
+{
+  "vaultName": {
+    "value": "ps109"
+  },
+  "location": {
+    "value": "East US"
+  },
+  "tenantId": {
+    "value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  },
+  "objectId": {
+    "value": "bc93052d-397e-4fba-b486-f5915bfd2a53"
+  },
+  "skuName": {
+    "value": "Standard"
+  },
+  "secretName": {
+    "value": "CAK"
+  },
+  "secretValue": {
+    "value": "b4355b9ccaf727d2ba7744ee991ce00e"
+  },
+  "secretName2": {
+    "value": "CKN"
+  },
+  "secretValue2": {
+    "value": "93e9ce8469eff0536784fc4ad253b5a6"
+  }
+}

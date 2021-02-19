@@ -19,9 +19,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation.Language;
+using System.Threading.Tasks;
+using System.Threading;
 using System.Text.Json;
-
-
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -32,7 +32,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private readonly ConcurrentDictionary<string, string> _localParameterValues = new ConcurrentDictionary<string, string>();
 
-        private readonly Dictionary<string, Dictionary<string, string>> _command_param_to_resource_map;
+        private System.Threading.Mutex _mutex = new System.Threading.Mutex(false, "paramValueHistoryFile_update");
+
+        private readonly Dictionary<string, Dictionary<string, string>> _commandParamToResourceMap;
+
+        private string _paramValueHistoryFilePath = "";
+        private CancellationTokenSource _cancellationTokenSource;
+
 
         private ITelemetryClient _telemetryClient;
 
@@ -49,16 +55,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                _command_param_to_resource_map = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
+                _commandParamToResourceMap = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(mappingFilePath), JsonUtilities.DefaultSerializerOptions);
             }
             catch (Exception e)
             {
                 // We don't want it to crash the module when the file doesn't exist or when it's mal-formatted.
                 exception = e;
             }
-
             _telemetryClient.OnLoadParameterMap(new ParameterMapTelemetryData(exception));
+
+            String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string[] paths = new string[] { path, "Microsoft", "Windows", "PowerShell", "AzPredictor", "paramValueHistory.json" };
+            _paramValueHistoryFilePath = System.IO.Path.Combine(paths);
+            Directory.CreateDirectory(Path.GetDirectoryName(_paramValueHistoryFilePath));
+
+            Task.Run(() =>
+            {
+                if (System.IO.File.Exists(_paramValueHistoryFilePath))
+                {
+                    _mutex.WaitOne();
+                    try
+                    {
+                        var localParameterValues = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(File.ReadAllText(_paramValueHistoryFilePath), JsonUtilities.DefaultSerializerOptions);
+                        foreach (var v in localParameterValues)
+                        {
+                            _localParameterValues.AddOrUpdate(v.Key, key => v.Value, (key, oldValue) => oldValue);
+                        }
+                    }
+                    finally
+                    {
+                        _mutex.ReleaseMutex();
+                    }
+                }
+
+                
+            });
+
         }
+
+        
 
         /// <summary>
         /// Process the command from history
@@ -89,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var key = parameterName;
             Dictionary<string, string> commandNounMap = null;
 
-            if (_command_param_to_resource_map?.TryGetValue(commandNoun, out commandNounMap) == true)
+            if (_commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap) == true)
             {
                 if (commandNounMap.TryGetValue(parameterName, out var parameterNameMappedValue))
                 {
@@ -146,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             Dictionary<string, string> commandNounMap = null;
-            _command_param_to_resource_map?.TryGetValue(commandNoun, out commandNounMap);
+            _commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap);
 
             // Don't need to check the last command element. If it's a switch parameter, we don't have a value to store.
             // If it's a value, it should be counted in the previous command element (at Count - 2).
@@ -191,8 +226,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             parameterKey = mappedValue;
                         }
                     }
-
-                    _localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
+                    _cancellationTokenSource?.Cancel();
+                    _cancellationTokenSource = new CancellationTokenSource();
+                    Task.Run(() =>
+                    {
+                        this._localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
+                        if (_cancellationTokenSource.IsCancellationRequested)
+                        {
+                            throw new OperationCanceledException();
+                        }
+                        String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
+                        _mutex.WaitOne();
+                        try
+                        {
+                            System.IO.File.WriteAllText(_paramValueHistoryFilePath, localParameterValuesJson);
+                        }
+                        finally
+                        {
+                            _mutex.ReleaseMutex();
+                        }
+                    });
                 }
             }
         }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceGraph
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcegraph/get-azresourcegraphquery
+online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/get-azresourcegraphquery
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Get a single graph query by its resourceName.
 
 ## EXAMPLES
 
-### Example 1: Get all resource graph query under a resource group
+### Example 1: Get all resource graph queries under a resource group
 ```powershell
 PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
 
@@ -57,7 +57,7 @@ Location Name            Type
 
 This command gets a resource graph query by name.
 
-### Example 2: Get a resource graph query by objecy
+### Example 2: Get a resource graph query by object
 ```powershell
 PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
 PS C:\> Get-AzResourceGraphQuery -InputObject $query
@@ -88,6 +88,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
