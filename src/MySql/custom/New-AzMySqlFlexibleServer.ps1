@@ -53,6 +53,11 @@ param(
     [System.String]
     ${Location},
 
+    [Parameter(HelpMessage = 'Availability zone into which to provision the resource.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    ${Zone},
+
     [Parameter(HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
@@ -185,6 +190,11 @@ process {
     try {
         if (!$PSBoundParameters.ContainsKey('Location')) {
             $PSBoundParameters.Location = 'westus2'
+        }
+
+        if ($PSBoundParameters.ContainsKey('Zone')) {
+            $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
+            $null = $PSBoundParameters.Remove('Zone')
         }
 
         if (!$PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
