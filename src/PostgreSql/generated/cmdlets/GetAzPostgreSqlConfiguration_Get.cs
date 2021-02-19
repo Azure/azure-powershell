@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
     /// <summary>Gets information about a configuration of server.</summary>
     /// <remarks>
-    /// [OpenAPI] Configurations_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/configurations/{configurationName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/configurations/{configurationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlConfiguration_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration))]

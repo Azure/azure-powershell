@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsighthost
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost
 schema: 2.0.0
 ---
 
@@ -15,17 +15,17 @@ Lists the hosts of the HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Get-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Get-AzHDInsightHost [-ResourceId] <String> [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+Get-AzHDInsightHost [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Get-AzHDInsightHost [-InputObject] <AzureHDInsightCluster> [[-DefaultProfile] <IAzureContextContainer>]
+Get-AzHDInsightHost [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 

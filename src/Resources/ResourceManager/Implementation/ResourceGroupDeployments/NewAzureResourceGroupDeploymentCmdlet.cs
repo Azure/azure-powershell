@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
             TemplateObject = TemplateObject,
             TemplateSpecId = TemplateSpecId,
+            QueryString = QueryString,
             TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
             ParameterUri = TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             DeploymentScopeType.ResourceGroup,
             deploymentName: this.Name,
             mode: this.Mode,
+            queryString: this.QueryString,
             resourceGroupName: this.ResourceGroupName,
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
@@ -112,7 +114,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType);
+            excludeChangeTypes: this.WhatIfExcludeChangeType); 
 
         protected override void OnProcessRecord()
         {

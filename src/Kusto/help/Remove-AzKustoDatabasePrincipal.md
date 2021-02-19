@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/remove-azkustodatabaseprincipal
+online version: https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipal
 schema: 2.0.0
 ---
 
@@ -140,7 +140,7 @@ The list of Kusto database principals.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabasePrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabasePrincipal
 
 ## NOTES
 

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
         ReadOnly = false,
         Description = @"Provider specific input for pairing.",
         SerializedName = @"providerSpecificInput",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput),typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AContainerMappingInput) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput) })]
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IReplicationProviderSpecificContainerMappingInput ProviderSpecificInput { get; set; }
         /// <summary>The target unique protection container name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(

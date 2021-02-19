@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.dll-Help.xml
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainerinstancelog
+online version: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
 schema: 2.0.0
 ---
 

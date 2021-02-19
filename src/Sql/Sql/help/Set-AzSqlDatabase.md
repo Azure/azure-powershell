@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabase
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase
 schema: 2.0.0
 ---
 
@@ -19,9 +19,9 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
  [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
- [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -30,16 +30,17 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
  [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
  [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
- [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupStorageRedundancy <String>]
- [-SecondaryType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +122,43 @@ Tags                          :
 ```
 
 This command updates a database named Database01 to set its max size to 1 TB.
+
+### Example 4: Update a existing General Purpose database to Hyperscale service tier
+```
+PS C:\>Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "Hyperscale" -RequestedServiceObjectiveName "HS_Gen5_2"
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : 56246136-839f-4171-80af-4c28142463b1
+Edition                       : Hyperscale
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : -1
+Status                        : Online
+CreationDate                  : 12/6/2020 5:34:16 PM
+CurrentServiceObjectiveId     : 00000000-0000-0000-0000-000000000000
+CurrentServiceObjectiveName   : HS_Gen5_2
+RequestedServiceObjectiveName : HS_Gen5_2
+RequestedServiceObjectiveId   :
+ElasticPoolName               :
+EarliestRestoreDate           : 12/6/2020 5:34:16 PM
+Tags                          : {}
+ResourceId                    : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/servers/Server01/databases/Database01
+CreateMode                    :
+ReadScale                     : Enabled
+ZoneRedundant                 :
+Capacity                      : 2
+Family                        : Gen5
+SkuName                       : HS_Gen5
+LicenseType                   : LicenseIncluded
+AutoPauseDelayInMinutes       :
+MinimumCapacity               :
+ReadReplicaCount              : 1
+BackupStorageRedundancy       : Geo
+```
+
+This command updates a database named Database01 from General Purpose to Hyperscale service tier.
 
 ## PARAMETERS
 
@@ -241,6 +279,7 @@ The acceptable values for this parameter are:
 - Free
 - Stretch
 - GeneralPurpose
+- Hyperscale
 - BusinessCritical
 
 ```yaml
@@ -293,6 +332,21 @@ The license type for the Azure Sql database. Possible values are:
 ```yaml
 Type: System.String
 Parameter Sets: Update, VcoreBasedDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceConfigurationId
+The Maintenance configuration id for the SQL Database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -366,7 +420,7 @@ Accept wildcard characters: False
 
 ### -RequestedServiceObjectiveName
 Specifies the name of the service objective to assign to the database. For information about
-service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
+service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
 in the Microsoft Developer Network Library.
 
 ```yaml

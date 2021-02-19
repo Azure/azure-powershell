@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/remove-azkustoclusterlanguageextension
+online version: https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterlanguageextension
 schema: 2.0.0
 ---
 
@@ -166,7 +166,7 @@ The list of language extensions.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 

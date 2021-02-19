@@ -1,0 +1,234 @@
+{
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"10240\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "82" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/4f49a233-b3c9-4f43-859e-1260748f24ca?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/4f49a233-b3c9-4f43-859e-1260748f24ca?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4f49a233-b3c9-4f43-859e-1260748f24ca" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "92ab334d-6910-419d-8a43-a57f5c0c05f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231243Z:92ab334d-6910-419d-8a43-a57f5c0c05f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:12:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpdateConfigurationManagementOperation\",\"startTime\":\"2020-11-12T23:12:43.627Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/4f49a233-b3c9-4f43-859e-1260748f24ca?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/4f49a233-b3c9-4f43-859e-1260748f24ca?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "1a0b9b8b-d1c9-4c1d-8185-b40d24551769" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5e06dda6-88b1-48f3-9998-06d47e10f79e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "ac1e4b9e-932f-42c9-8459-a833f95a2797" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231254Z:ac1e4b9e-932f-42c9-8459-a833f95a2797" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:12:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"4f49a233-b3c9-4f43-859e-1260748f24ca\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-12T23:12:43.627Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "1a0b9b8b-d1c9-4c1d-8185-b40d24551769" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b3860315-5650-4cd3-8594-75c9e50b8660" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "1d2b4602-7d31-4cea-b013-65d85d1252dc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231254Z:1d2b4602-7d31-4cea-b013-65d85d1252dc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:12:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"value\":\"10240\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"user-override\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresql-flexible-test-100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"value\": \"4096\",\r\n    \"source\": \"user-override\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "81" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/45063307-4cbb-49c5-875b-ac9b1be719da?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/45063307-4cbb-49c5-875b-ac9b1be719da?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "45063307-4cbb-49c5-875b-ac9b1be719da" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "8d316f4e-43ea-42be-86cd-9f0fe5361cca" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231350Z:8d316f4e-43ea-42be-86cd-9f0fe5361cca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:13:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpdateConfigurationManagementOperation\",\"startTime\":\"2020-11-12T23:13:50.087Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/45063307-4cbb-49c5-875b-ac9b1be719da?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/45063307-4cbb-49c5-875b-ac9b1be719da?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "0d2522dd-c339-4bb3-bec1-5358822630ae" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e0eaecb6-295b-4ac4-97cc-2f574eb66a7d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "7470c303-7a7d-46c7-806b-50707464fae2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231400Z:7470c303-7a7d-46c7-806b-50707464fae2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:13:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"45063307-4cbb-49c5-875b-ac9b1be719da\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-12T23:13:50.087Z\"}"
+    }
+  },
+  "Update-AzPostgreSqlFlexibleServerConfiguration+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-flexible-test-100/configurations/work_mem?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "0d2522dd-c339-4bb3-bec1-5358822630ae" ],
+        "CommandName": [ "Az.PostgreSql.internal\\Update-AzPostgreSqlFlexibleServerConfiguration" ],
+        "FullCommandName": [ "Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "ae44c7a3-26ef-4e0e-b726-8b8c1c1c2e00" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "a6044050-eb0a-487b-956d-364531d90c10" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201112T231400Z:a6044050-eb0a-487b-956d-364531d90c10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 12 Nov 2020 23:14:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"value\":\"4096\",\"description\":\"Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files.\",\"defaultValue\":\"4096\",\"dataType\":\"Integer\",\"allowedValues\":\"4096-2097151\",\"source\":\"system-default\"},\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/serversv2/postgresql-flexible-test-100/configurations/work_mem\",\"name\":\"work_mem\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/configurations\"}"
+    }
+  }
+}

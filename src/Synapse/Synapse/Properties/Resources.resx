@@ -600,4 +600,37 @@ Are you sure you want to continue?</value>
   <data name="RemoveSynapseSqlPoolRestorePoint" xml:space="preserve">
     <value>Are you sure you want to remove Synapse Sql Pool Restore Point '{0}'?</value>
   </data>
+  <data name="UpdatingSqlPoolThreatProtectionSetting" xml:space="preserve">
+    <value>Updating threat protection settings in SQL pool '{0}' under worksapce '{1}'.</value>
+  </data>
+  <data name="RemovingSqlPoolThreatProtectionSetting" xml:space="preserve">
+    <value>Removing threat protection settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="UpdatingSqlPoolVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Updating vulnerability assessment settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="RemovingSqlPoolVulnerabilityAssessmentSetting" xml:space="preserve">
+    <value>Removing vulnerability assessment settings in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="EnablingAdvancedDataSecurity" xml:space="preserve">
+    <value>Enabling Advanced Data Security on workspace '{0}'.</value>
+  </data>
+  <data name="DisablingAdvancedDataSecurity" xml:space="preserve">
+    <value>Disabling Advanced Data Security on workspace '{0}'.</value>
+  </data>
+  <data name="SettingSqlPoolTransparentDataEncryption" xml:space="preserve">
+    <value>Setting transparent data encryption protector in SQL pool '{0}' under workspace '{1}'.</value>
+  </data>
+  <data name="BaseConfirmActionProcessMessage" xml:space="preserve">
+    <value>About to process resource</value>
+  </data>
+  <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
+    <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  </data>
+  <data name="VulnerabilityAssessmentTypeNotSupported" xml:space="preserve">
+    <value>Requested type is not supported by Vulnerability Assessment.</value>
+  </data>
+  <data name="VulnerabilityAssessmentWrongParameterType" xml:space="preserve">
+    <value>Wrong parameter type</value>
+  </data>
 </root>

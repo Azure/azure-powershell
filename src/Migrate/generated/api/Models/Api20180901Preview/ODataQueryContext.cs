@@ -14,22 +14,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettings DefaultQuerySetting { get => (this._defaultQuerySetting = this._defaultQuerySetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.DefaultQuerySettings()); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public bool? DefaultQuerySettingEnableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableCount = value; }
+        public bool? DefaultQuerySettingEnableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableCount = value ?? default(bool); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public bool? DefaultQuerySettingEnableExpand { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableExpand; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableExpand = value; }
+        public bool? DefaultQuerySettingEnableExpand { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableExpand; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableExpand = value ?? default(bool); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public bool? DefaultQuerySettingEnableFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableFilter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableFilter = value; }
+        public bool? DefaultQuerySettingEnableFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableFilter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableFilter = value ?? default(bool); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public bool? DefaultQuerySettingEnableOrderBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableOrderBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableOrderBy = value; }
+        public bool? DefaultQuerySettingEnableOrderBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableOrderBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableOrderBy = value ?? default(bool); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public bool? DefaultQuerySettingEnableSelect { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableSelect; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableSelect = value; }
+        public bool? DefaultQuerySettingEnableSelect { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableSelect; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).EnableSelect = value ?? default(bool); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public int? DefaultQuerySettingMaxTop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).MaxTop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).MaxTop = value; }
+        public int? DefaultQuerySettingMaxTop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).MaxTop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)DefaultQuerySetting).MaxTop = value ?? default(int); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string EdmTypeKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).EdmTypeKind; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.ModelDeclaredNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DeclaredNamespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DeclaredNamespace = value; }
 
         /// <summary>Internal Acessors for ModelDirectValueAnnotationsManager</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.ModelDirectValueAnnotationsManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.ModelDirectValueAnnotationsManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager = value; }
 
         /// <summary>Internal Acessors for ModelEntityContainer</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmEntityContainer Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.ModelEntityContainer { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).EntityContainer; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).EntityContainer = value; }
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSource Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSource { get => (this._navigationSource = this._navigationSource ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmNavigationSource()); set { {_navigationSource = value;} } }
 
         /// <summary>Internal Acessors for NavigationSourcePath1</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).Path = value; }
 
         /// <summary>Internal Acessors for NavigationSourcePath2</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSourcePath2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).Path = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSourcePath2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath = value; }
 
         /// <summary>Internal Acessors for NavigationSourcePathExpressionKind</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.NavigationSourcePathExpressionKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).PathExpressionKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).PathExpressionKind = value; }
@@ -152,10 +152,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationPropertyBinding[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourceNavigationPropertyBinding { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourceNavigationPropertyBinding; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourceNavigationPropertyBinding = value; }
 
         /// <summary>Internal Acessors for PathNavigationSourcePath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourcePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourcePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourcePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourcePath = value; }
 
         /// <summary>Internal Acessors for PathNavigationSourcePath1</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourcePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourcePath = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath = value; }
 
         /// <summary>Internal Acessors for PathNavigationSourcePathExpressionKind</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathNavigationSourcePathExpressionKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathExpressionKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathExpressionKind = value; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.PathTemplate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathTemplate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathTemplate = value; }
 
         /// <summary>Internal Acessors for RequestContainer</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.RequestContainer { get => (this._requestContainer = this._requestContainer ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IserviceProvider()); set { {_requestContainer = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.RequestContainer { get => (this._requestContainer = this._requestContainer ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); set { {_requestContainer = value;} } }
 
         /// <summary>Internal Acessors for Segment</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataQueryContextInternal.Segment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).Segment; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).Segment = value; }
@@ -190,8 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string[] ModelDeclaredNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DeclaredNamespace; }
 
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager ModelDirectValueAnnotationsManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny ModelDirectValueAnnotationsManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).DirectValueAnnotationsManager; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel[] ModelReferencedModel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModelInternal)Model).ReferencedModel; }
@@ -215,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSource NavigationSource { get => (this._navigationSource = this._navigationSource ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmNavigationSource()); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string NavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath; }
+        public string NavigationSourcePath2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).IedmPathExpressionPath; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string NavigationSourcePathExpressionKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSourceInternal)NavigationSource).PathExpressionKind; }
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationPropertyBinding[] PathNavigationSourceNavigationPropertyBinding { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).NavigationSourceNavigationPropertyBinding; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string PathNavigationSourcePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath; }
+        public string PathNavigationSourcePath1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).IedmPathExpressionPath; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string PathNavigationSourcePathExpressionKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathExpressionKind; }
@@ -257,10 +258,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         public string PathTemplate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).PathTemplate; }
 
         /// <summary>Backing field for <see cref="RequestContainer" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider _requestContainer;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny _requestContainer;
 
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider RequestContainer { get => (this._requestContainer = this._requestContainer ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IserviceProvider()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny RequestContainer { get => (this._requestContainer = this._requestContainer ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any()); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[] Segment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathInternal)Path).Segment; }
@@ -385,14 +387,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         SerializedName = @"declaredNamespaces",
         PossibleTypes = new [] { typeof(string) })]
         string[] ModelDeclaredNamespace { get;  }
-
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"",
+        Description = @"Any object",
         SerializedName = @"directValueAnnotationsManager",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager ModelDirectValueAnnotationsManager { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny ModelDirectValueAnnotationsManager { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -440,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Description = @"",
         SerializedName = @"path",
         PossibleTypes = new [] { typeof(string) })]
-        string NavigationSourcePath1 { get;  }
+        string NavigationSourcePath2 { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -496,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Description = @"",
         SerializedName = @"path",
         PossibleTypes = new [] { typeof(string) })]
-        string PathNavigationSourcePath { get;  }
+        string PathNavigationSourcePath1 { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -529,14 +531,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         SerializedName = @"pathTemplate",
         PossibleTypes = new [] { typeof(string) })]
         string PathTemplate { get;  }
-
+        /// <summary>Any object</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"",
+        Description = @"Any object",
         SerializedName = @"requestContainer",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider RequestContainer { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny RequestContainer { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -583,8 +585,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel Model { get; set; }
 
         string[] ModelDeclaredNamespace { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmDirectValueAnnotationsManager ModelDirectValueAnnotationsManager { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny ModelDirectValueAnnotationsManager { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmEntityContainer ModelEntityContainer { get; set; }
 
@@ -600,9 +602,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationSource NavigationSource { get; set; }
 
-        string NavigationSourcePath1 { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression NavigationSourcePath1 { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression NavigationSourcePath2 { get; set; }
+        string NavigationSourcePath2 { get; set; }
 
         string NavigationSourcePathExpressionKind { get; set; }
 
@@ -622,9 +624,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmNavigationPropertyBinding[] PathNavigationSourceNavigationPropertyBinding { get; set; }
 
-        string PathNavigationSourcePath { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression PathNavigationSourcePath { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmPathExpression PathNavigationSourcePath1 { get; set; }
+        string PathNavigationSourcePath1 { get; set; }
 
         string PathNavigationSourcePathExpressionKind { get; set; }
 
@@ -635,8 +637,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string PathNavigationSourceTypeKind { get; set; }
 
         string PathTemplate { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIserviceProvider RequestContainer { get; set; }
+        /// <summary>Any object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny RequestContainer { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IODataPathSegment[] Segment { get; set; }
 

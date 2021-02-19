@@ -59,12 +59,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __reverseReplicationProviderSpecificInput = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ReverseReplicationProviderSpecificInput(json);
-            {_policyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("policyId"), out var __jsonPolicyId) ? (string)__jsonPolicyId : (string)PolicyId;}
-            {_recoveryAvailabilitySetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryAvailabilitySetId"), out var __jsonRecoveryAvailabilitySetId) ? (string)__jsonRecoveryAvailabilitySetId : (string)RecoveryAvailabilitySetId;}
-            {_recoveryCloudServiceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryCloudServiceId"), out var __jsonRecoveryCloudServiceId) ? (string)__jsonRecoveryCloudServiceId : (string)RecoveryCloudServiceId;}
             {_recoveryContainerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryContainerId"), out var __jsonRecoveryContainerId) ? (string)__jsonRecoveryContainerId : (string)RecoveryContainerId;}
-            {_recoveryResourceGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryResourceGroupId"), out var __jsonRecoveryResourceGroupId) ? (string)__jsonRecoveryResourceGroupId : (string)RecoveryResourceGroupId;}
             {_vMDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("vmDisks"), out var __jsonVMDisks) ? If( __jsonVMDisks as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IA2AvmDiskInputDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.A2AvmDiskInputDetails.FromJson(__u) )) ))() : null : VMDisk;}
+            {_recoveryResourceGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryResourceGroupId"), out var __jsonRecoveryResourceGroupId) ? (string)__jsonRecoveryResourceGroupId : (string)RecoveryResourceGroupId;}
+            {_recoveryCloudServiceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryCloudServiceId"), out var __jsonRecoveryCloudServiceId) ? (string)__jsonRecoveryCloudServiceId : (string)RecoveryCloudServiceId;}
+            {_recoveryAvailabilitySetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("recoveryAvailabilitySetId"), out var __jsonRecoveryAvailabilitySetId) ? (string)__jsonRecoveryAvailabilitySetId : (string)RecoveryAvailabilitySetId;}
+            {_policyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("policyId"), out var __jsonPolicyId) ? (string)__jsonPolicyId : (string)PolicyId;}
             AfterFromJson(json);
         }
 
@@ -100,11 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __reverseReplicationProviderSpecificInput?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._policyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._policyId.ToString()) : null, "policyId" ,container.Add );
-            AddIf( null != (((object)this._recoveryAvailabilitySetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryAvailabilitySetId.ToString()) : null, "recoveryAvailabilitySetId" ,container.Add );
-            AddIf( null != (((object)this._recoveryCloudServiceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryCloudServiceId.ToString()) : null, "recoveryCloudServiceId" ,container.Add );
             AddIf( null != (((object)this._recoveryContainerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryContainerId.ToString()) : null, "recoveryContainerId" ,container.Add );
-            AddIf( null != (((object)this._recoveryResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryResourceGroupId.ToString()) : null, "recoveryResourceGroupId" ,container.Add );
             if (null != this._vMDisk)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -114,6 +110,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("vmDisks",__w);
             }
+            AddIf( null != (((object)this._recoveryResourceGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryResourceGroupId.ToString()) : null, "recoveryResourceGroupId" ,container.Add );
+            AddIf( null != (((object)this._recoveryCloudServiceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryCloudServiceId.ToString()) : null, "recoveryCloudServiceId" ,container.Add );
+            AddIf( null != (((object)this._recoveryAvailabilitySetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._recoveryAvailabilitySetId.ToString()) : null, "recoveryAvailabilitySetId" ,container.Add );
+            AddIf( null != (((object)this._policyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._policyId.ToString()) : null, "policyId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -72,11 +72,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             {_storageProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject>("storageProfile"), out var __jsonStorageProfile) ? Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.StorageProfile.FromJson(__jsonStorageProfile) : StorageProfile;}
             {_administratorLoginPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("administratorLoginPassword"), out var __jsonAdministratorLoginPassword) ? (string)__jsonAdministratorLoginPassword : (string)AdministratorLoginPassword;}
+            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)Version;}
+            {_sslEnforcement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("sslEnforcement"), out var __jsonSslEnforcement) ? (string)__jsonSslEnforcement : (string)SslEnforcement;}
             {_minimalTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("minimalTlsVersion"), out var __jsonMinimalTlsVersion) ? (string)__jsonMinimalTlsVersion : (string)MinimalTlsVersion;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)PublicNetworkAccess;}
             {_replicationRole = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("replicationRole"), out var __jsonReplicationRole) ? (string)__jsonReplicationRole : (string)ReplicationRole;}
-            {_sslEnforcement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("sslEnforcement"), out var __jsonSslEnforcement) ? (string)__jsonSslEnforcement : (string)SslEnforcement;}
-            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)Version;}
             AfterFromJson(json);
         }
 
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             }
             AddIf( null != this._storageProfile ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) this._storageProfile.ToJson(null,serializationMode) : null, "storageProfile" ,container.Add );
             AddIf( null != (((object)this._administratorLoginPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._administratorLoginPassword.ToString()) : null, "administratorLoginPassword" ,container.Add );
+            AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
+            AddIf( null != (((object)this._sslEnforcement)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._sslEnforcement.ToString()) : null, "sslEnforcement" ,container.Add );
             AddIf( null != (((object)this._minimalTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._minimalTlsVersion.ToString()) : null, "minimalTlsVersion" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             AddIf( null != (((object)this._replicationRole)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._replicationRole.ToString()) : null, "replicationRole" ,container.Add );
-            AddIf( null != (((object)this._sslEnforcement)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._sslEnforcement.ToString()) : null, "sslEnforcement" ,container.Add );
-            AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

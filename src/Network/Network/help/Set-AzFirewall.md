@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 40E56EC1-3327-4DFF-8262-E2EEBB5E4447
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azfirewall
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azfirewall
 schema: 2.0.0
 ---
 
@@ -69,7 +69,7 @@ $firewall.Deallocate()
 $firewall | Set-AzFirewall
 
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
-$pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
@@ -82,8 +82,8 @@ Set-AzFirewall must be called.
 ### 5: Allocate with a management public IP address for forced tunneling scenarios
 ```
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
-$pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
-$mgmtPip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name MgmtPublicIpName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
+$mgmtPip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name MgmtPublicIpName
 $firewall.Allocate($vnet, $pip, $mgmtPip)
 $firewall | Set-AzFirewall
 ```
@@ -139,7 +139,7 @@ In this example, DNS Proxy and DNS Server configuration is attached to the Firew
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
 $rule=$ruleCollection.GetRuleByName("ruleName")
-$rule.DestinationAddresses="10.10.10.10"
+$rule.DestinationAddresses = "10.10.10.10"
 Set-AzFirewall -AzureFirewall $azFw
 ```
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, AzureRMConstants.AzureRMPrefix + "TenantDeployment",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
-    public class TestAzureTenantDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class TestAzureTenantDeploymentCmdlet : TestDeploymentCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Location = this.Location,
                 TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                 TemplateObject = this.TemplateObject,
+                QueryString = QueryString,
                 TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
                 ParameterUri = this.TemplateParameterUri
             };

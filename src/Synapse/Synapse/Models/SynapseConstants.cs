@@ -32,6 +32,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlPoolGeoBackup = nameof(SqlPoolGeoBackup);
+
+        public const string DroppedSqlPool = nameof(DroppedSqlPool);
+
+        public const string VulnerabilityAssessmentScanRecord = nameof(VulnerabilityAssessmentScanRecord);
+
+        public const string VulnerabilityAssessmentScan = nameof(VulnerabilityAssessmentScan);
+
+        public const string SqlPoolName = nameof(SqlPoolName);
+
         public const string RestorePoint = nameof(RestorePoint);
 
         public const string Sql = nameof(Sql);
@@ -43,6 +53,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string AdvancedThreatProtectionSetting = nameof(AdvancedThreatProtectionSetting);
 
         public const string VulnerabilityAssessmentSetting = nameof(VulnerabilityAssessmentSetting);
+
+        public const string TransparentDataEncryption = nameof(TransparentDataEncryption);
+
+        public const string AdvancedDataSecurity = nameof(AdvancedDataSecurity);
+
+        public const string AdvancedDataSecurityPolicy = nameof(AdvancedDataSecurityPolicy);
 
         public const string SqlDatabase = nameof(SqlDatabase);
 
@@ -124,6 +140,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string Dataset = nameof(Dataset);
 
         public const string DataFlow = nameof(DataFlow);
+
+        public const string SensitivityRecommendation = nameof(SensitivityRecommendation);
+
+        public const string PointInTime = nameof(PointInTime);
+
+        public const string TargetSqlPoolName = nameof(TargetSqlPoolName);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {

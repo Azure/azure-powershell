@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for ServerSecurityAlertPolicyState.</summary>
+    /// <summary>Specifies the state of the policy, whether it is enabled or disabled.</summary>
     public partial class ServerSecurityAlertPolicyStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

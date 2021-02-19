@@ -47,6 +47,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version ModuleVersion { get; }
 
         /// <summary>
+        /// Gets the current Az module version.
+        /// </summary>
+        public Version AzVersion { get; }
+
+        /// <summary>
+        /// Gets whether the user is an internal user.
+        /// </summary>
+        public bool IsInternal { get; }
+
+        /// <summary>
         /// Updates the Az context.
         /// </summary>
         public void UpdateContext();

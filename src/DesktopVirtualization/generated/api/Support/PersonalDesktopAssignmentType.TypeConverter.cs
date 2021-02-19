@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 {
 
-    /// <summary>TypeConverter implementation for PersonalDesktopAssignmentType.</summary>
+    /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
     public partial class PersonalDesktopAssignmentTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

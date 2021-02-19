@@ -9,14 +9,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
     {
 
         /// <summary>Backing field for <see cref="Info" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1 _info;
+        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny _info;
 
         /// <summary>The additional info.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1 Info { get => (this._info = this._info ?? new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorAdditionalInfo1()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny Info { get => (this._info = this._info ?? new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Any()); }
 
         /// <summary>Internal Acessors for Info</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfoInternal.Info { get => (this._info = this._info ?? new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ErrorAdditionalInfo1()); set { {_info = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfoInternal.Info { get => (this._info = this._info ?? new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Any()); set { {_info = value;} } }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfoInternal.Type { get => this._type; set { {_type = value;} } }
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
         ReadOnly = true,
         Description = @"The additional info.",
         SerializedName = @"info",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1) })]
-        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1 Info { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny Info { get;  }
         /// <summary>The additional info type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(
         Required = false,
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
 
     {
         /// <summary>The additional info.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorAdditionalInfo1 Info { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IAny Info { get; set; }
         /// <summary>The additional info type.</summary>
         string Type { get; set; }
 

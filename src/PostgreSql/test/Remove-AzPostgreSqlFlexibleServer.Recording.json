@@ -1,0 +1,298 @@
+{
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_D2s_v3\",\r\n    \"tier\": \"GeneralPurpose\"\r\n  },\r\n  \"properties\": {\r\n    \"storageProfile\": {\r\n      \"backupRetentionDays\": 7,\r\n      \"storageMB\": 131072\r\n    },\r\n    \"administratorLogin\": \"mysql_test\",\r\n    \"administratorLoginPassword\": \"Pasword01!!2020\",\r\n    \"version\": \"12\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "372" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/operationResults/f78a219c-4acf-4eae-b935-9a788f5e6b77?api-version=2020-02-14-preview" ],
+        "Retry-After": [ "60" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/f78a219c-4acf-4eae-b935-9a788f5e6b77?api-version=2020-02-14-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e894d32d-0c8d-4a88-8362-79cd2e98b7fc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "0a05d391-712b-4286-8205-a3cfa9f21606" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065052Z:0a05d391-712b-4286-8205-a3cfa9f21606" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:50:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "88" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operation\":\"UpsertServerManagementOperationV2\",\"startTime\":\"2020-11-11T06:50:52.347Z\"}"
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/f78a219c-4acf-4eae-b935-9a788f5e6b77?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforPostgreSQL/locations/eastus2euap/azureAsyncOperation/f78a219c-4acf-4eae-b935-9a788f5e6b77?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "059d1de3-b74e-4def-84b4-2a8c7ad8cb2c" ],
+        "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "New-AzPostgreSqlFlexibleServer_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "28f809a0-04fe-4f01-90ab-07289cf7d027" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "d9a8abe8-15e0-4e17-b7a0-d5dd8ff3e114" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065152Z:d9a8abe8-15e0-4e17-b7a0-d5dd8ff3e114" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"f78a219c-4acf-4eae-b935-9a788f5e6b77\",\"status\":\"Succeeded\",\"startTime\":\"2020-11-11T06:50:52.347Z\"}"
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-100?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "059d1de3-b74e-4def-84b4-2a8c7ad8cb2c" ],
+        "CommandName": [ "Az.PostgreSql.internal\\New-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "New-AzPostgreSqlFlexibleServer_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "aa6ef87e-34db-4226-aead-21a26123781e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "54f071d3-bb29-4c49-a350-bd2dc0561f87" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:54f071d3-bb29-4c49-a350-bd2dc0561f87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1113" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard_D2s_v3\",\"tier\":\"GeneralPurpose\",\"capacity\":2},\"properties\":{\"fullyQualifiedDomainName\":\"postgresql-test-200.postgres.database.azure.com\",\"version\":\"12\",\"standbyCount\":0,\"haEnabled\":\"Disabled\",\"administratorLogin\":\"shyHamster5\",\"publicNetworkAccess\":\"Disabled\",\"delegatedSubnetArguments\":{\"subnetArmResourceId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.Network/virtualNetworks/VNETesql-test-100/subnets/Subnetesql-test-100\"},\"logBackupStorageSku\":\"Standard_ZRS\",\"haState\":\"NotEnabled\",\"state\":\"Ready\",\"availabilityZone\":\"3\",\"storageProfile\":{\"storageMB\":131072,\"backupRetentionDays\":7},\"earliestRestoreDate\":\"2020-11-11T06:48:31.9060234+00:00\",\"byokEnforcement\":\"Disabled\",\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0}},\"location\":\"East US\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test-200\",\"name\":\"postgresql-test-200\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\"}"
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200-2?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "be7212b4-206c-490e-a780-0d1fef28210c" ],
+        "CommandName": [ "Remove-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServer_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-correlation-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200-2?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "be7212b4-206c-490e-a780-0d1fef28210c" ],
+        "CommandName": [ "Remove-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServer_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-correlation-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200-2?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "be7212b4-206c-490e-a780-0d1fef28210c" ],
+        "CommandName": [ "Remove-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServer_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-correlation-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200-2?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "be7212b4-206c-490e-a780-0d1fef28210c" ],
+        "CommandName": [ "Remove-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServer_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-correlation-request-id": [ "c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:c0cb51fc-6168-41ed-b15b-cbf837f25727" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzPostgreSqlFlexibleServer+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test-200?api-version=2020-02-14-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "ef660717-cab6-4349-b74a-3bd4559346d3" ],
+        "CommandName": [ "Remove-AzPostgreSqlFlexibleServer" ],
+        "FullCommandName": [ "Remove-AzPostgreSqlFlexibleServer_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-request-id": [ "ee0dde3c-208f-4b7a-ae35-ea91778ac851" ],
+        "x-ms-correlation-request-id": [ "ee0dde3c-208f-4b7a-ae35-ea91778ac851" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20201111T065153Z:ee0dde3c-208f-4b7a-ae35-ea91778ac851" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 11 Nov 2020 06:51:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  }
+}

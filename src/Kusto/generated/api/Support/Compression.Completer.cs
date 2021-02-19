@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for Compression.</summary>
+    /// <summary>The compression type</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CompressionTypeConverter))]
     public partial struct Compression :
         System.Management.Automation.IArgumentCompleter

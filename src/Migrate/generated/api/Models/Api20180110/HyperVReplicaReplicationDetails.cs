@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The initial replication progress percentage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string InitialReplicationDetailInitialReplicationProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationProgressPercentage = value; }
+        public string InitialReplicationDetailInitialReplicationProgressPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationProgressPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationProgressPercentage = value ?? null; }
 
         /// <summary>Initial replication type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string InitialReplicationDetailInitialReplicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationType = value; }
+        public string InitialReplicationDetailInitialReplicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInitialReplicationDetailsInternal)InitialReplicationDetail).InitialReplicationType = value ?? null; }
 
         /// <summary>Gets the Instance type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]

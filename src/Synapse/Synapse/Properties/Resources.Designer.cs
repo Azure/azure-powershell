@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to process resource.
+        /// </summary>
+        internal static string BaseConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("BaseConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
@@ -260,6 +269,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve information protection policy of tenant {0}..
+        /// </summary>
+        internal static string DataClassificationFailedToRetrieveInformationProtectionPolicy {
+            get {
+                return ResourceManager.GetString("DataClassificationFailedToRetrieveInformationProtectionPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling Advanced Data Security on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string DisablingAdvancedDataSecurity {
+            get {
+                return ResourceManager.GetString("DisablingAdvancedDataSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling Auto-pause for spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under parent workspace &apos;{2}&apos;..
         /// </summary>
         internal static string DisablingSynapseSparkPoolAutoPause {
@@ -283,6 +310,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string EmailsAreNotValid {
             get {
                 return ResourceManager.GetString("EmailsAreNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling Advanced Data Security on workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string EnablingAdvancedDataSecurity {
+            get {
+                return ResourceManager.GetString("EnablingAdvancedDataSecurity", resourceCulture);
             }
         }
         
@@ -892,6 +928,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing threat protection settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing vulnerability assessment settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSqlPoolVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("RemovingSqlPoolVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting data flow &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseDataFlow {
@@ -1106,7 +1160,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
             }
         }
-        
+
+        internal static string ScanIdParameterIsRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Service principal with Name &apos;{0}&apos; does not exist..
         /// </summary>
@@ -1140,6 +1202,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSqlPoolAudit {
             get {
                 return ResourceManager.GetString("SettingSqlPoolAudit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting transparent data encryption protector in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSqlPoolTransparentDataEncryption {
+            get {
+                return ResourceManager.GetString("SettingSqlPoolTransparentDataEncryption", resourceCulture);
             }
         }
         
@@ -1405,6 +1476,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating threat protection settings in SQL pool &apos;{0}&apos; under worksapce &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingSqlPoolThreatProtectionSetting {
+            get {
+                return ResourceManager.GetString("UpdatingSqlPoolThreatProtectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating vulnerability assessment settings in SQL pool &apos;{0}&apos; under workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingSqlPoolVulnerabilityAssessmentSetting {
+            get {
+                return ResourceManager.GetString("UpdatingSqlPoolVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating Spark pool &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos;..
         /// </summary>
         internal static string UpdatingSynapseSparkPool {
@@ -1473,6 +1562,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UserNameDoesNotExist {
             get {
                 return ResourceManager.GetString("UserNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested type is not supported by Vulnerability Assessment..
+        /// </summary>
+        internal static string VulnerabilityAssessmentTypeNotSupported {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentTypeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong parameter type.
+        /// </summary>
+        internal static string VulnerabilityAssessmentWrongParameterType {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
         

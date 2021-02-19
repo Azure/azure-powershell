@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6C40A7BA-6BE2-464A-84E4-9021935A5BF6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmextension
+online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmextension
 schema: 2.0.0
 ---
 

@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+    using System.IO;
     using System.Linq;
 
     /// <summary>
@@ -75,6 +76,13 @@ namespace Microsoft.Azure.Commands.Insights
                     records.Add(fullDetails ? new PSEventData(current) : new PSEventDataNoDetails(current));
                 }
             }
+        }
+
+        public static string ReadFileContent(string path)
+        {
+            if (!File.Exists(path)) throw new FileNotFoundException(path);
+            using (TextReader reader = new StreamReader(path))
+                return reader.ReadToEnd();
         }
     }
 }

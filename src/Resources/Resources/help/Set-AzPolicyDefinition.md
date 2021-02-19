@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: E1AC7139-786C-4DD6-A898-242723E0D159
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicydefinition
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicydefinition
 schema: 2.0.0
 ---
 

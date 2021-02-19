@@ -69,10 +69,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return;
             }
+            {_physicalMemory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("physicalMemory"), out var __jsonPhysicalMemory) ? (int?)__jsonPhysicalMemory : PhysicalMemory;}
+            {_cpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("cpus"), out var __jsonCpus) ? (int?)__jsonCpus : Cpu;}
             {_cpuSpeed = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("cpuSpeed"), out var __jsonCpuSpeed) ? (int?)__jsonCpuSpeed : CpuSpeed;}
             {_cpuSpeedAccuracy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("cpuSpeedAccuracy"), out var __jsonCpuSpeedAccuracy) ? (string)__jsonCpuSpeedAccuracy : (string)CpuSpeedAccuracy;}
-            {_cpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("cpus"), out var __jsonCpus) ? (int?)__jsonCpus : Cpu;}
-            {_physicalMemory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("physicalMemory"), out var __jsonPhysicalMemory) ? (int?)__jsonPhysicalMemory : PhysicalMemory;}
             AfterFromJson(json);
         }
 
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 return container;
             }
+            AddIf( null != this._physicalMemory ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._physicalMemory) : null, "physicalMemory" ,container.Add );
+            AddIf( null != this._cpu ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._cpu) : null, "cpus" ,container.Add );
             AddIf( null != this._cpuSpeed ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._cpuSpeed) : null, "cpuSpeed" ,container.Add );
             AddIf( null != (((object)this._cpuSpeedAccuracy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._cpuSpeedAccuracy.ToString()) : null, "cpuSpeedAccuracy" ,container.Add );
-            AddIf( null != this._cpu ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._cpu) : null, "cpus" ,container.Add );
-            AddIf( null != this._physicalMemory ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._physicalMemory) : null, "physicalMemory" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

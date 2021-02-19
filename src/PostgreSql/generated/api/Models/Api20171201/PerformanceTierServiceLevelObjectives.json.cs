@@ -70,14 +70,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return;
             }
-            {_edition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("edition"), out var __jsonEdition) ? (string)__jsonEdition : (string)Edition;}
-            {_hardwareGeneration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("hardwareGeneration"), out var __jsonHardwareGeneration) ? (string)__jsonHardwareGeneration : (string)HardwareGeneration;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
-            {_maxBackupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("maxBackupRetentionDays"), out var __jsonMaxBackupRetentionDays) ? (int?)__jsonMaxBackupRetentionDays : MaxBackupRetentionDay;}
-            {_maxStorageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("maxStorageMB"), out var __jsonMaxStorageMb) ? (int?)__jsonMaxStorageMb : MaxStorageMb;}
-            {_minBackupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("minBackupRetentionDays"), out var __jsonMinBackupRetentionDays) ? (int?)__jsonMinBackupRetentionDays : MinBackupRetentionDay;}
-            {_minStorageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("minStorageMB"), out var __jsonMinStorageMb) ? (int?)__jsonMinStorageMb : MinStorageMb;}
+            {_edition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("edition"), out var __jsonEdition) ? (string)__jsonEdition : (string)Edition;}
             {_vCore = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("vCore"), out var __jsonVCore) ? (int?)__jsonVCore : VCore;}
+            {_hardwareGeneration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("hardwareGeneration"), out var __jsonHardwareGeneration) ? (string)__jsonHardwareGeneration : (string)HardwareGeneration;}
+            {_maxBackupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("maxBackupRetentionDays"), out var __jsonMaxBackupRetentionDays) ? (int?)__jsonMaxBackupRetentionDays : MaxBackupRetentionDay;}
+            {_minBackupRetentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("minBackupRetentionDays"), out var __jsonMinBackupRetentionDays) ? (int?)__jsonMinBackupRetentionDays : MinBackupRetentionDay;}
+            {_maxStorageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("maxStorageMB"), out var __jsonMaxStorageMb) ? (int?)__jsonMaxStorageMb : MaxStorageMb;}
+            {_minStorageMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("minStorageMB"), out var __jsonMinStorageMb) ? (int?)__jsonMinStorageMb : MinStorageMb;}
             AfterFromJson(json);
         }
 
@@ -101,14 +101,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return container;
             }
-            AddIf( null != (((object)this._edition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._edition.ToString()) : null, "edition" ,container.Add );
-            AddIf( null != (((object)this._hardwareGeneration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._hardwareGeneration.ToString()) : null, "hardwareGeneration" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
-            AddIf( null != this._maxBackupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._maxBackupRetentionDay) : null, "maxBackupRetentionDays" ,container.Add );
-            AddIf( null != this._maxStorageMb ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._maxStorageMb) : null, "maxStorageMB" ,container.Add );
-            AddIf( null != this._minBackupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._minBackupRetentionDay) : null, "minBackupRetentionDays" ,container.Add );
-            AddIf( null != this._minStorageMb ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._minStorageMb) : null, "minStorageMB" ,container.Add );
+            AddIf( null != (((object)this._edition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._edition.ToString()) : null, "edition" ,container.Add );
             AddIf( null != this._vCore ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._vCore) : null, "vCore" ,container.Add );
+            AddIf( null != (((object)this._hardwareGeneration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._hardwareGeneration.ToString()) : null, "hardwareGeneration" ,container.Add );
+            AddIf( null != this._maxBackupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._maxBackupRetentionDay) : null, "maxBackupRetentionDays" ,container.Add );
+            AddIf( null != this._minBackupRetentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._minBackupRetentionDay) : null, "minBackupRetentionDays" ,container.Add );
+            AddIf( null != this._maxStorageMb ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._maxStorageMb) : null, "maxStorageMB" ,container.Add );
+            AddIf( null != this._minStorageMb ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._minStorageMb) : null, "minStorageMB" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

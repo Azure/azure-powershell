@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsesqlpool
+online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -87,7 +87,7 @@ Name of Synapse SQL pool.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
-Aliases:
+Aliases: SqlPoolName
 
 Required: False
 Position: Named

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F7EF35E3-BC53-43D9-A71E-0B4316260A08
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Set-AzSqlDatabaseAudit
+online version: https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
 schema: 2.0.0
 ---
 
@@ -50,12 +50,12 @@ PS C:\>Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "
 PS C:\>Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Disabled
 ```
 
-### Example 3: Enable the blob storage auditing policy of an Azure SQL database with advanced filtering using a T-SQL predicate
+### Example 3: Enable the blob storage auditing policy of an Azure SQL database with filtering using a T-SQL predicate
 ```powershell
-PS C:\>Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage"
+PS C:\>Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "schema_name <> 'sys''" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage"
 ```
 
-### Example 4: Remove the advanced filtering setting from the auditing policy of an Azure SQL database
+### Example 4: Remove the filtering from the auditing policy of an Azure SQL database
 ```powershell
 PS C:\>Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression ""
 ```
@@ -114,7 +114,7 @@ For example:
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
+For more information, see https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
 
 ```yaml
 Type: System.String[]
@@ -135,7 +135,7 @@ The recommended set of action groups to use is the following combination - this 
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
 "FAILED_DATABASE_AUTHENTICATION_GROUP"  
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+For more information, see https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]

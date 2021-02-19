@@ -2,11 +2,12 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Synapse.Common;
+using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -23,13 +24,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TriggerType = Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model.TriggerType;
 using Action = System.Action;
 using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
 
@@ -1252,6 +1256,49 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public SqlPoolSecurityAlertPolicy GetSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolSecurityAlertPolicies.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public SqlPoolSecurityAlertPolicy SetSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolSecurityAlertPolicy policy)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveSqlPoolThreatDetectionPolicy(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var policy = GetSqlPoolThreatDetectionPolicy(resourceGroupName, workspaceName, sqlPoolName);
+                policy.State = SecurityAlertPolicyState.Disabled;
+                _synapseManagementClient.SqlPoolSecurityAlertPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         #endregion
 
         #region Vulnerability Assessment
@@ -1322,6 +1369,137 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public SqlPoolVulnerabilityAssessment GetSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolVulnerabilityAssessments.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public SqlPoolVulnerabilityAssessment CreateOrUpdateSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolVulnerabilityAssessment parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolVulnerabilityAssessments.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public void RemoveSqlPoolVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                _synapseManagementClient.SqlPoolVulnerabilityAssessments.Delete(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        #endregion
+
+        #region Advanced Threat Protection
+
+        public void EnableWorkspaceVa(string resourceGroupName, string workspaceName, string workspaceLocation, string deploymentName)
+        {
+            AutoEnableVa(resourceGroupName, workspaceName, workspaceLocation, "DeployWorkspaceVaTemplate.json", deploymentName);
+        }
+
+        private void AutoEnableVa(string resourceGroupName, string workspaceName, string workspaceLocation, string templateName, string deploymentName)
+        {
+            // Generate deployment name if it was not provided
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = "EnableVA_" + workspaceName + "_" + Guid.NewGuid().ToString("N");
+            }
+
+            // Trim deployment name as it has a maximum of 64 chars
+            if (deploymentName.Length > 64)
+            {
+                deploymentName = deploymentName.Substring(0, 64);
+            }
+
+            Dictionary<string, object> parametersDictionary = new Dictionary<string, object>
+            {
+                {"workspaceName", new Dictionary<string, object> { {"value", workspaceName } }},
+                {"location", new Dictionary<string, object> { {"value", workspaceLocation } }},
+            };
+            string parameters = Newtonsoft.Json.JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.None,
+                Formatting = Formatting.Indented
+            });
+
+            var properties = new DeploymentProperties
+            {
+                Mode = DeploymentMode.Incremental,
+                Parameters = JObject.Parse(parameters),
+                Template = JObject.Parse(GetArmTemplateContent(templateName)),
+            };
+
+            Deployment deployment = new Deployment(properties);
+
+            ResourceManagementClient.Deployments.CreateOrUpdate(resourceGroupName, deploymentName, deployment);
+        }
+
+        private string GetArmTemplateContent(string templateName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames().FirstOrDefault(str => str.EndsWith(templateName));
+            string template;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    template = reader.ReadToEnd();
+                }
+            }
+
+            return template;
+        }
+
+        #endregion
+
+        #region Transparent Data Encryption
+
+        public TransparentDataEncryption GetSqlPoolTransparentDataEncryption(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolTransparentDataEncryptions.Get(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public TransparentDataEncryption SetSqlPoolTransparentDataEncryption(string resourceGroupName, string workspaceName, string sqlPoolName, TransparentDataEncryption parameters)
+        {
+            try
+            {
+                return _synapseManagementClient.SqlPoolTransparentDataEncryptions.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, parameters);
+            }
+            catch (CloudException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
         #endregion
 
         #region SQL pool operations
@@ -1353,6 +1531,77 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 throw GetSynapseException(ex);
             }
+        }
+
+        public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
+        {
+            try
+            {
+                _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+          
+        }
+        internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
+        {
+            try
+            {
+                var result = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Get(resourceGroupName, workspaceName, sqlPoolName, scanId);
+                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, result);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        internal List<PSVulnerabilityAssessmentScanRecordModel> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                var firstPage = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.List(resourceGroupName, workspaceName, sqlPoolName);
+                return ListResources(firstPage, _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListNext).Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, scanRecord)).ToList();
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public PSVulnerabilityAssessmentScanExportModel ConvertSqlPoolVulnerabilityAssessmentScan(string resourceGroupName, string workSpaceName,
+           string sqlPoolName, string scanId)
+        {
+            var response = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Export(resourceGroupName, workSpaceName, sqlPoolName, scanId);
+            return new PSVulnerabilityAssessmentScanExportModel(resourceGroupName, workSpaceName, sqlPoolName, scanId, response.ExportedReportLocation);
+        }
+
+        private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, string workSpace, string sqlPool, VulnerabilityAssessmentScanRecord scanRecord)
+        {
+            TriggerType scanTriggerType;
+            Enum.TryParse(scanRecord.TriggerType, true, out scanTriggerType);
+
+            return new PSVulnerabilityAssessmentScanRecordModel()
+            {
+                ResourceGroupName = resourceGroup,
+                workspaceName = workSpace,
+                sqlPoolName = sqlPool,
+                ScanId = scanRecord.ScanId,
+                TriggerType = scanTriggerType,
+                State = scanRecord.State,
+                StartTime = scanRecord.StartTime,
+                EndTime = scanRecord.EndTime,
+                Errors = scanRecord.Errors?.Select(scanError =>
+                  new PSVulnerabilityAssessmentScanErrorModel()
+                  {
+                      Code = scanError.Code,
+                      Message = scanError.Message
+                  }).ToList(),
+                ScanResultsLocationPath = scanRecord.StorageContainerPath,
+                NumberOfFailedSecurityChecks = scanRecord.NumberOfFailedSecurityChecks
+            };
         }
 
         internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
@@ -1706,6 +1955,60 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             try
             {
                 return _synapseSqlV3ManagementClient.SqlDatabases.CreateOrUpdate(resourceGroupName, workspaceName, sqlDatabaseName, createOrUpdateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public PSRecoverableSqlPool GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.Get(resourceGroupName, workspaceName, sqlPoolName);
+
+                return new PSRecoverableSqlPool(recoverableSqlPool);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public List<RecoverableSqlPool> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListNext);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public PSRestorableDroppedSqlPool GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
+        {
+            try
+            {
+                var restorableDroppedSqlPool = this._synapseManagementClient.RestorableDroppedSqlPools.Get(resourceGroupName, workspaceName, sqlPoolAndTimeName);
+
+                return new PSRestorableDroppedSqlPool(restorableDroppedSqlPool);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetSynapseException(ex);
+            }
+        }
+
+        public List<RestorableDroppedSqlPool> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
+                return restorableDroppedSqlPoolList.ToList();
             }
             catch (ErrorContractException ex)
             {
@@ -2527,11 +2830,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private static SynapseException GetSynapseException(CloudException ex)
         {
             return ex.CreateSynapseException();
-        }
-
-        private string GetResourceUri(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            return $"/subscriptions/{_subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}";
         }
 
         #endregion

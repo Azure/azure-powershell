@@ -6,6 +6,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
     {
         public const string ResourceGroupName = "Resource group name.";
 
+        public const string ScanId = "Scan Id.";
+
         public const string Location = "Azure region where the resource should be created.";
 
         public const string WorkspaceName = "Name of Synapse workspace.";
@@ -17,6 +19,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
+
+        public const string DeletionDate = "The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)";
 
         public const string ManagedVirtualNetwork = "Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.";
 
@@ -116,6 +120,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string ApplicationId = "The Application identifier of the session.";
 
+        public const string scanRecordObject = "The scan record object to use in order to convert a Vulnerability Assessment scan.";
+
         public const string SqlDatabaseName = "Name of Synapse SQL Database.";
 
         public const string SqlDatabaseResourceId = "Resource identifier of Synapse SQL Database.";
@@ -164,7 +170,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SourceSqlPoolName = "The name of source SQL pool object to create from.";
 
-        public const string SourceSqlPoolId = "The resource identifier of source SQL pool object to create from.";
+        public const string SourceDatabaseId = "The resource ID of the database to restore.";
 
         public const string FromBackup = "Indicates to restore from the most recent backup of any SQL pool in this subscription.";
 
@@ -238,6 +244,12 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ScanEmailAdmins = "A value indicating whether to email service and co-administrators on recurring scan completion.";
 
         public const string NotificationEmail = "A list of mail addresses to send on recurring scan completion.";
+
+        public const string DoNotConfigureVulnerabilityAssessment = "Do not auto enable Vulnerability Assessment (This will not create a storage account).";
+
+        public const string DeploymentName = "Supply a custom name for Advanced Data Security deployment.";
+
+        public const string TransparentDataEncryptionState = "The Azure Synapse Analytics Sql Pool Transparent Data Encryption state.";
 
         public const string FirewallRuleName = "The firerwall rule name for the workspace.";
 

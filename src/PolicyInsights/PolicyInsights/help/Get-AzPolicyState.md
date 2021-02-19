@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/get-azpolicystate
+online version: https://docs.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
 schema: 2.0.0
 ---
 

@@ -19,12 +19,35 @@
 -->
 ## Upcoming Release
 
+## Version 3.3.0
+* Supported RoutingPreference settings in create/update Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Upgraded Azure.Storage.Blobs to 12.8.0
+* Upgraded Azure.Storage.Files.Shares to 12.6.0
+* Upgraded Azure.Storage.Files.DataLake to 12.6.0
+
+## Version 3.2.1
+* Fix ContinuationToken never null when list blob with -IncludeVersion
+    - `Get-AzStorageBlob`
+
+## Version 3.2.0
+* Supported create/update/get/list EncryptionScope of a Storage account
+    - `New-AzStorageEncryptionScope`
+    - `Update-AzStorageEncryptionScope`
+    - `Get-AzStorageEncryptionScope`
+* Supported create container and upload blob with Encryption Scope setting
+    - `New-AzRmStorageContainer`
+    - `New-AzStorageContainer`
+    - `Set-AzStorageBlobContent`
+
 ## Version 3.1.0
 * Supported upload Azure File size up to 4 TiB
     - `Set-AzStorageFileContent`
 * Upgraded Azure.Storage.Blobs to 12.7.0
 * Upgraded Azure.Storage.Files.Shares to 12.5.0
 * Upgraded Azure.Storage.Files.DataLake to 12.5.0
+* Upgraded Azure.Storage.Queues to 12.5.0
 
 ## Version 3.0.0
 * Removed obsolete property RestorePolicy.LastEnabledTime

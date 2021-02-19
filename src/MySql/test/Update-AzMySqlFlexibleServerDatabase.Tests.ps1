@@ -14,8 +14,8 @@ while(-not $mockingPath) {
 Describe 'Update-AzMySqlFlexibleServerDatabase' {
     It 'UpdateExpanded' {
         { 
-            New-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -Charset latin1
-            $database = Update-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -Charset latin1
+            New-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Charset latin1
+            $database = Update-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Charset latin1
             $database.Collation | Should -Be "latin1_swedish_ci"
             $database.Charset | Should -Be "latin1"
         } | Should -Not -Throw
@@ -23,11 +23,11 @@ Describe 'Update-AzMySqlFlexibleServerDatabase' {
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName)/databases/$($env.databaseName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/databases/$($env.databaseName)"
             $database = Update-AzMySqlFlexibleServerDatabase -InputObject $ID -Charset latin1
             $database.Collation | Should -Be "latin1_swedish_ci"
             $database.Charset | Should -Be "latin1"
-            Remove-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName 
+            Remove-AzMySqlFlexibleServerDatabase -Name $env.databaseName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
         } | Should -Not -Throw
     }
 }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.7.2
+* Fixed a regression regarding SAS token generation
+
 ## Version 2.7.1
 * Fixed an issue of SAS token.
 

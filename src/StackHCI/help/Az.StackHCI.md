@@ -1,14 +1,14 @@
 ---
 Module Name: Az.StackHCI
 Module Guid: 8ff047e4-15bb-4b53-a728-75641c49958b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.StackHCI
+Download Help Link: https://docs.microsoft.com/powershell/module/az.StackHCI
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.StackHCI Module
 ## Description
-Microsoft Azure PowerShell: StackHCI cmdlets
+Microsoft Azure PowerShell: Azure Stack HCI registration cmdlets
 
 ## Az.StackHCI Cmdlets
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
