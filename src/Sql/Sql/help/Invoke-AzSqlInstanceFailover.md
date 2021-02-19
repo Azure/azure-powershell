@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/invoke-AzSqlInstanceFailover
+online version: https://docs.microsoft.com/powershell/module/az.sql/invoke-AzSqlInstanceFailover
 schema: 2.0.0
 ---
 

@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
             ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
+            NetworkAclBypass = databaseAccountGetResults.NetworkAclBypass;
+            NetworkAclBypassResourceIds = databaseAccountGetResults.NetworkAclBypassResourceIds;
         }
 
         //
@@ -180,5 +182,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether to enable storage analytics.
         public bool? EnableAnalyticalStorage { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate to allow Network Acl Bypass.
+        public NetworkAclBypass? NetworkAclBypass { get; set; }
+        //
+        // Summary:
+        //     Gets or sets list of Network Acl Bypass Resource Ids.
+        public IList<string> NetworkAclBypassResourceIds { get; set; }
     }
 }

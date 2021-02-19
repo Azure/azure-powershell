@@ -127,7 +127,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+
         public string EncryptionType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? BurstingEnabled { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -245,6 +251,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 Sku = vSku,
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
+                BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
             };
 
             WriteObject(vDiskUpdate);

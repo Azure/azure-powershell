@@ -1,0 +1,269 @@
+{
+  "rules": [
+    {
+      "patterns": [
+        ".azure-pipeline/*",
+        "NugGet.Config",
+        "Repo.props"
+      ],
+      "phases": [
+        "build:all",
+        "breaking-change:all",
+        "dependence:all",
+        "help:all",
+        "signature:all",
+        "test:all",
+        "sub-task:all"
+      ]
+    },
+    {
+      "patterns": [
+        "src/*.props"
+      ],
+      "phases": [
+        "build:all",
+        "dependence:all",
+        "test:all"
+      ]
+    },
+    {
+      "patterns": [
+        "src/lib/*"
+      ],
+      "phases": [
+        "build:all",
+        "dependence:all"
+      ]
+    },
+    {
+      "patterns": [
+        "docker/*",
+        "documentation/*",
+        ".github/*",
+        "setup/*",
+        ".dockerignore",
+        ".git*",
+        "appveyor.yml",
+        "CONTRIBUTION.md",
+        "LICENSE.txt",
+        "README.md",
+        "**/ChangeLog.md",
+        "**/readme.md",
+        "src/**/document/*"
+      ],
+      "phases": []
+    },
+    {
+      "patterns": [
+        "src/{ModuleName}/test/*",
+        "src/{ModuleName}/*.Test/*"
+      ],
+      "phases": [
+        "build:dependent-module",
+        "test:module"
+      ]
+    },
+    {
+      "patterns": [
+        "src/{ModuleName}/**/*.md"
+      ],
+      "phases": [
+        "build:module",
+        "help:module"
+      ]
+    },
+    {
+      "patterns": [
+        "src/{ModuleName}/**/*.csproj"
+      ],
+      "phases": [
+        "build:related-module",
+        "dependence:dependence-module",
+        "test:dependence-module"
+      ]
+    },
+    {
+      "patterns": [
+        "src/{ModuleName}/*"
+      ],
+      "phases": [
+        "build:related-module",
+        "breaking-change:module",
+        "help:module",
+        "signature:module",
+        "test:dependence-module"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/MissingAssemblies.csv",
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/AssemblyVersionConflict.csv",
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/ExtraAssemblies.csv",
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/SharedAssemblyConflict.csv"
+      ],
+      "phases": [
+        "build:module",
+        "dependence:module"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/BreakingChangeIssues.csv"
+      ],
+      "phases": [
+        "build:module",
+        "breaking-change:module"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/HelpIssues.csv"
+      ],
+      "phases": [
+        "build:module",
+        "help:module"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/SignatureIssues.csv"
+      ],
+      "phases": [
+        "build:module",
+        "signature:module"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/*",
+        "tools/Tools.Common/*"
+      ],
+      "phases": [
+        "build:all",
+        "breaking-change:all",
+        "dependence:all",
+        "help:all",
+        "signature:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/Az.Tools.Predictor/*"
+      ],
+      "phases": [
+        "sub-task:Predictor"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/Az.Tools.Installer/*"
+      ],
+      "phases": [
+        "sub-task:Installer"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/AddModulePsm1Dependency.ps1",
+        "tools/Common.Netcore.Dependencies.targets",
+        "tools/AzureRM.Example.psm1"
+      ],
+      "phases": [
+        "build:all",
+        "breaking-change:all",
+        "dependence:all",
+        "help:all",
+        "signature:all",
+        "test:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/GenerateHelp.ps1",
+        "tools/HelpGeneration/*"
+      ],
+      "phases": [
+        "build:all",
+        "help:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/CheckAssemblies.ps1"
+      ],
+      "phases": [
+        "build:all",
+        "dependence:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/CheckSignature.ps1"
+      ],
+      "phases": [
+        "build:all",
+        "signature:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/Common.Netcore.Dependencies.Test.targets"
+      ],
+      "phases": [
+        "build:all",
+        "test:all"
+      ]
+    },
+    {
+      "patterns": [
+        "tools/ARMIncrementVersion.ps1",
+        "tools/ARMSyncVersion.ps1",
+        "tools/ASMIncrementVersion.ps1",
+        "tools/AzureRM.Example.psm1",
+        "tools/BuildInstaller.ps1",
+        "tools/CheckChangeLog.ps1",
+        "tools/CheckIgnoredFile.ps1",
+        "tools/CleanupBuild.ps1",
+        "tools/CommonIncrementVersion.ps1",
+        "tools/CreateMappings_rules.json",
+        "tools/CreateMappings.ps1",
+        "tools/CreateRegistryEntry.ps1"
+      ],
+      "phases": []
+    },
+    {
+      "patterns": [
+        "tools/Az/*",
+        "tools/BatchModelGenerator/*",
+        "tools/BreakingChanges/*",
+        "tools/Docker/*",
+        "tools/FormatPs1XmlGenerator/*",
+        "tools/Gen2Master/*",
+        "tools/InstallationTests/*",
+        "tools/Installer/*",
+        "tools/NetCoreCsProjSync/*",
+        "tools/NetCorePsd1Sync/*",
+        "tools/ProjectTemplates/*",
+        "tools/RepoTasks/*",
+        "tools/SecurityTools/*",
+        "tools/Test/*",
+        "tools/Tools.Common.Test/*",
+        "tools/VersionController/*"
+      ],
+      "phases": []
+    },
+    {
+      "patterns": [
+        "others"
+      ],
+      "phases": [
+        "build:all",
+        "breaking-change:all",
+        "dependence:all",
+        "help:all",
+        "signature:all",
+        "test:all"
+      ]
+    }
+  ]
+}

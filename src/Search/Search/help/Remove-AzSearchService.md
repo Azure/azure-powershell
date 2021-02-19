@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchservice
+online version: https://docs.microsoft.com/powershell/module/az.search/remove-azsearchservice
 schema: 2.0.0
 ---
 

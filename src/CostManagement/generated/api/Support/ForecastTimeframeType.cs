@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
+    /// <summary>
+    /// The time frame for pulling data for the forecast. If custom, then a specific time period must be provided.
+    /// </summary>
     public partial struct ForecastTimeframeType :
         System.IEquatable<ForecastTimeframeType>
     {
@@ -28,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ForecastTimeframeType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ForecastTimeframeType(System.Convert.ToString(value));
+            return new ForecastTimeframeType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ForecastTimeframeType</summary>

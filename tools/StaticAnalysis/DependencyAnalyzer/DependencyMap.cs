@@ -77,19 +77,18 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 7)
+            if (!match.Success || match.Groups.Count < 6)
             {
-                throw new InvalidOperationException(string.Format("Could not parse '{0}' as ExtraAssembly record", line));
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as DependencyMap record", line));
             }
 
-            Directory = match.Groups[1].Value;
-            AssemblyName = match.Groups[2].Value;
-            Severity = int.Parse(match.Groups[3].Value);
-            ProblemId = int.Parse(match.Groups[4].Value);
-            Description = match.Groups[5].Value;
-            Remediation = match.Groups[6].Value;
+            AssemblyName = match.Groups[1].Value;
+            AssemblyVersion = match.Groups[2].Value;
+            ReferencingAssembly = match.Groups[3].Value;
+            ReferencingAssemblyVersion = match.Groups[4].Value;
+            Directory = match.Groups[5].Value;
             return this;
         }
     }
