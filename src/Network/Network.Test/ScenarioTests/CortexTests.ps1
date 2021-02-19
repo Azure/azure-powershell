@@ -241,7 +241,7 @@ function Test-CortexCRUD
 		# Create the VpnConnection with site with links
 		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
 		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100 -EgressNatRule $natRule2
-		$vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[1] -ConnectionBandwidth 10
+		$vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[1] -ConnectionBandwidth 10 -VpnLinkConnectionMode "Default"
 
 		$createdVpnConnection2 = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSite $vpnSite2 -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
 		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
@@ -249,6 +249,7 @@ function Test-CortexCRUD
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
 		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections[0].EgressNatRules.Count
 		Assert-AreEqual 0 $vpnConnection2.VpnLinkConnections[0].IngressNatRules.Count
+		Assert-AreEqual "Default" $vpnConnection2.VpnLinkConnections[1].VpnLinkConnectionMode
 		
 		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
 		Assert-AreEqual 0 $natRule2.IngressVpnSiteLinkConnections.count
