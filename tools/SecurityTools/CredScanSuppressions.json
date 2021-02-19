@@ -1297,5 +1297,13 @@
       "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnSiteLinkConnectionGetIkeSa.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnConnectionPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnGatewayPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    }
   ]
 }
