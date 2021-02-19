@@ -30,10 +30,10 @@ steps:
       Invoke-Command -ScriptBlock { param ($pwshPath, $command) & $pwshPath -Command $command } -ArgumentList $pwshPath, $command 
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Install DotNet 5.0 SDK'
   inputs:
     packageType: sdk
-    version: 5.0.102
+    version: 5.0.x
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
@@ -41,6 +41,12 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build" /p:Configuration=Release'
+
+- task: UseDotNet@2
+  displayName: 'Install DotNet 2.1 runtime for Signing'
+  inputs:
+    packageType: 'runtime'
+    version: '2.1.x'
 
 - task: EsrpCodeSigning@1
   displayName: 'Signing'
