@@ -33,7 +33,7 @@ steps:
   displayName: 'Install DotNet 6.0 SDK'
   inputs:
     packageType: sdk
-    version: 6.0.0-preview.1.21102.12
+    version: 6.0.x
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
