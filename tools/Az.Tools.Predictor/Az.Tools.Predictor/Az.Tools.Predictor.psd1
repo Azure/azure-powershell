@@ -69,7 +69,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* first preview release'
+        ReleaseNotes = '* second preview release
+* Add *AzPredictor cmdlet to simplify configuration
+* Use PSReadline new API'
 
         # Prerelease string of this module
         # Prerelease = ''
