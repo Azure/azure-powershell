@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperationstatus
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperationstatus
 schema: 2.0.0
 ---
 

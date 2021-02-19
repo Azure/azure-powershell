@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcemove
+online version: https://docs.microsoft.com/powershell/module/az.resources/test-azresourcemove
 schema: 2.0.0
 ---
 

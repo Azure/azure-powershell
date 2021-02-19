@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 schema: 2.0.0
 ---
 

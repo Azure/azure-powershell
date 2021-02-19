@@ -46,7 +46,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud])]
@@ -125,17 +125,17 @@ function New-AzVMwarePrivateCloud {
         ${VcenterPassword},
     
         [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Accept EULA of AVS, legal term will pop up without this parameter provided
+        ${AcceptEULA},
+        
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        ${AcceptEULA},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
@@ -190,24 +190,22 @@ function New-AzVMwarePrivateCloud {
     )
     
     process {
-
-        if(!$PSBoundParameters.ContainsKey('AcceptEULA')){
+        if(!$AcceptEULA){
+            $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
             try {
-                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
                 $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
-
-                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-                switch ($confirmation) {
-                    'Y' {
-                        Break
-                    }
-    
-                    Default {
-                        Return
-                    }
-                }
             } catch {
-                throw
+                throw 
+            }
+            $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+            switch ($confirmation) {
+                'Y' {
+                    Break
+                }
+
+                Default {
+                    Return
+                }
             }
         }else {
             $null = $PSBoundParameters.Remove('AcceptEULA')

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroupdescendant
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroupdescendant
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/disable-azservicebusdisasterrecoverypairing
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/disable-azservicebusdisasterrecoverypairing
 schema: 2.0.0
 ---
 

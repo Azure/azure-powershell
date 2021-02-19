@@ -4,7 +4,7 @@ Gets the backend health for given combination of backend pool and http setting o
 .Description
 Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaybackendhealth
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 .Inputs
@@ -12,7 +12,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendHealthPool
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaybackendhealth
+https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth
 #>
 function Get-AzApplicationGatewayBackendHealth {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendHealthPool')]

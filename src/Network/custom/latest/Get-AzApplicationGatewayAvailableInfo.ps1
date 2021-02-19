@@ -4,11 +4,11 @@ Lists all available request headers, response headers, or server variables.
 .Description
 Lists all available request headers, response headers, or server variables.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableinfo
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayavailableinfo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Network.Models.ApplicationGatewayAvailableInfo
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableinfo
+https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayavailableinfo
 #>
 function Get-AzApplicationGatewayAvailableInfo {
 [Alias('Get-AzApplicationGatewayAvailableServerVariableAndHeader')]

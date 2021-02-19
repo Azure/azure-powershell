@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azroutetable
 schema: 2.0.0
 ---
 

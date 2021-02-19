@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: cff3f125-febd-4c4c-4ad4-b3e52903a71f
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
+Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -62,7 +62,7 @@ Gets specific run command for a subscription in a location.
 
 ### [Get-AzVMSize](Get-AzVMSize.md)
 This API is deprecated.
-Use [Resources Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+Use [Resources Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
 
 ### [Get-AzVmss](Get-AzVmss.md)
 Display information about a virtual machine scale set.

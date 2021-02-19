@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+online version: https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create or update a private cloud
 
 ```
 New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
- -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>]
+ -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>] [-AcceptEULA]
  [-Internet <InternetEnum>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,6 +36,21 @@ australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 Create private cloud
 
 ## PARAMETERS
+
+### -AcceptEULA
+Accept EULA of AVS, legal term will pop up without this parameter provided
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

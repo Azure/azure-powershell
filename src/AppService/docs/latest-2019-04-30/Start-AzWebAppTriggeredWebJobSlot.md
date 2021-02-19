@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/start-azwebapptriggeredwebjobslot
+online version: https://docs.microsoft.com/powershell/module/az.appservice/start-azwebapptriggeredwebjobslot
 schema: 2.0.0
 ---
 
