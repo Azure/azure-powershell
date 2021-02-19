@@ -129,7 +129,6 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
                 $null = $PSBoundParameters.Remove('Zone')
             }
 
-
             Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServer @PSBoundParameters
         } catch {
             throw
