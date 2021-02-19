@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHostPresent) : null
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HostGroup = string.IsNullOrEmpty(hostGroupId) ? null : new SubResource(hostGroupId),
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
-                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHostPresent) : null
                     SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
                 });
     }
