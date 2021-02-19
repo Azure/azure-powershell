@@ -14,7 +14,7 @@ Restore a PostgreSQL flexible server from an existing backup
 
 ```
 Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -SourceServerName <String>
- -Location <String> -RestorePointInTime <DateTime> -Zone <String> [-SubscriptionId <String>]
+ -Location <String> -RestorePointInTime <DateTime> [-SubscriptionId <String>] [-Zone <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
