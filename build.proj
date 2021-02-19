@@ -141,10 +141,10 @@
             PropertyName="SubTasks" />
     </CreateProperty>
     <CreateProperty
-        Value="@(BuildCsprojList->Split(`;`)->Count())">
+        Value="@(TestCsprojList->Split(`;`)->Count())">
         <Output
             TaskParameter="Value"
-            PropertyName="IsBuildListEmpty" />
+            PropertyName="IsTestListEmpty" />
     </CreateProperty>
   </Target>
 
@@ -311,13 +311,13 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
-  <Target Name="Test">
+  <Target Name="Test" DependsOnTargets="FilterBuild">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot; --verbosity d" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="'$(IsTestListEmpty)' == 'false'" />
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
