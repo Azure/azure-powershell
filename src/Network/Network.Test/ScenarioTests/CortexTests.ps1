@@ -1043,6 +1043,8 @@ function Test-VpnConnectionPacketCapture
 
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $createdVpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
 
+		Reset-AzVpnSiteLinkConnection -InputObject $vpnSiteLinkConnection1
+
 		#create SAS URL
 		if ((Get-NetworkTestMode) -ne 'Playback')
 		{
