@@ -1292,6 +1292,10 @@
     {
       "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
       "_justification": "Legitimate session record. Test resource is deleted."
-    }
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnSiteLinkConnectionGetIkeSa.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
   ]
 }
