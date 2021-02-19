@@ -8,6 +8,7 @@
     <Tools>$(Root)tools\</Tools>
     <Net452PackDir>$(Artifacts)Package\$(Configuration)\net452\</Net452PackDir>
     <PackageVersion Condition="'$(PackageVersion)' == ''">1.0.0</PackageVersion>
+    <PackageVersionSuffix Condition="'$(PackageVersionSuffix)' == ''">preview</PackageVersionSuffix>
   </PropertyGroup>
 
   <Target Name="net452">
@@ -19,7 +20,7 @@
     <ItemGroup>
       <Net452Projects Include="$(Src)**\*.csproj" Exclude="$(Src)**\*.Netcore.csproj;$(Src)**\*.Tests.csproj;$(Src)**\*.Test.csproj;$(Src)**\*.UnitTest.csproj" />
     </ItemGroup>
-    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-preview -IncludeReferencedProjects" />
+    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-$(PackageVersionSuffix) -IncludeReferencedProjects" />
   </Target>
 
   <Target Name="netstandard20">
@@ -27,7 +28,7 @@
     <ItemGroup>
       <NetStandard20Projects Include="$(Src)**\*.Netcore.csproj" Exclude="$(Src)**\*.Tests.Netcore.csproj;$(Src)**\*.Test.Netcore.csproj;$(Src)**\*.UnitTest.Netcore.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) /p:PackageVersion=$(PackageVersion)-preview --no-build" />
+    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) /p:PackageVersion=$(PackageVersion)-$(PackageVersionSuffix) --no-build" />
   </Target>
 
   <Target Name="All" DependsOnTargets="net452;netstandard20">
