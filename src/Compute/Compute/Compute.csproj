@@ -30,8 +30,4 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Generated\ContainerService\Config\" />
-  </ItemGroup>
-
 </Project>
