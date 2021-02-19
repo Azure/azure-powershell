@@ -235,7 +235,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the sku, typically, tier + family + cores, e.g.
-B_Gen4_1, GP_Gen5_8.
+Burstable_B1ms, Standard_D2ds_v4
 
 ```yaml
 Type: System.String
@@ -250,8 +250,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of the particular SKU, e.g.
-Basic.
+The tier of the particular SKU.
+Accepted values: Burstable, GeneralPurpose, Memory Optimized.
+Default: Burstable.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
