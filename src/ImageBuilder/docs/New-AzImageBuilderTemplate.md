@@ -17,11 +17,9 @@ Create a virtual machine image template
 New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
  -Distribute <IImageTemplateDistributor[]> -Source <IImageTemplateSource> -UserAssignedIdentityId <String>
  [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-Customize <IImageTemplateCustomizer[]>]
- [-LastRunStatusEndTime <DateTime>] [-LastRunStatusMessage <String>] [-LastRunStatusRunState <RunState>]
- [-LastRunStatusRunSubState <RunSubState>] [-LastRunStatusStartTime <DateTime>] [-Location <String>]
- [-ProvisioningErrorCode <ProvisioningErrorCode>] [-ProvisioningErrorMessage <String>] [-Tag <Hashtable>]
- [-VMProfileOsdiskSizeInGb <Int32>] [-VMProfileVmSize <String>] [-VnetConfigSubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-VMProfileOsdiskSizeInGb <Int32>] [-VMProfileVmSize <String>]
+ [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### JsonTemplate
@@ -166,81 +164,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LastRunStatusEndTime
-End time of the last run (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastRunStatusMessage
-Verbose information about the last run state.
-
-```yaml
-Type: System.String
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastRunStatusRunState
-State of the last run.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastRunStatusRunSubState
-Sub-state of the last run.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastRunStatusStartTime
-Start time of the last run (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 Resource location.
 
@@ -262,36 +185,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningErrorCode
-Error code of the provisioning failure.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode
-Parameter Sets: FlattenParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningErrorMessage
-Verbose error message about the provisioning failure.
-
-```yaml
-Type: System.String
-Parameter Sets: FlattenParameterSet
 Aliases:
 
 Required: False

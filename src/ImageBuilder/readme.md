@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
-
+branch: 94ec975d860d4f62525c2381d1cbf7de3e24df2b
 title: ImageBuilder
 module-version: 0.1.0
 subject-prefix: ''

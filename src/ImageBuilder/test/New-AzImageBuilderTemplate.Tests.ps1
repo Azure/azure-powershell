@@ -16,6 +16,10 @@ while(-not $mockingPath) {
 # See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'New-AzImageBuilderTemplate' {
     #1 Source: PlatformImage Distributor: ManagedImage
+    It 'Linux-FromJson' -skip {
+        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -JsonTemplatePath [System.IO.Path]::Combine($PSScriptRoot, 'deployment-templates\Linux-image\linux.json')
+        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+    }
     It 'platformimg-managedimg' -Skip {
         #region OS:Linux
         $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version

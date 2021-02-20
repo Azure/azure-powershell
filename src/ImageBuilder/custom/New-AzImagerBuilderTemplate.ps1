@@ -92,51 +92,6 @@ function New-AzImageBuilderTemplate {
         # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         ${UserAssignedIdentityId},
     
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="End time of the last run (UTC).")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [System.DateTime]
-        # End time of the last run (UTC)
-        ${LastRunStatusEndTime},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Verbose information about the last run state.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [System.String]
-        # Verbose information about the last run state
-        ${LastRunStatusMessage},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="State of the last run.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState]
-        # State of the last run
-        ${LastRunStatusRunState},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Sub-state of the last run.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState]
-        # Sub-state of the last run
-        ${LastRunStatusRunSubState},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Start time of the last run (UTC).")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [System.DateTime]
-        # Start time of the last run (UTC)
-        ${LastRunStatusStartTime},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Error code of the provisioning failure.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode]
-        # Error code of the provisioning failure
-        ${ProvisioningErrorCode},
-    
-        [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Verbose error message about the provisioning failure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-        [System.String]
-        # Verbose error message about the provisioning failure
-        ${ProvisioningErrorMessage},
-    
         [Parameter(ParameterSetName='FlattenParameterSet', HelpMessage="Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IResourceTags]))]
@@ -239,8 +194,18 @@ function New-AzImageBuilderTemplate {
                 }
                 $TemplateContent = Get-Content $JsonTemplatePath | ConvertFrom-Json
                 $Parameter.Location = $TemplateContent.Location
-                $Parameter.Source = NewSourceObjectFromJsonObject $TemplateContent.properties.source
+                $Parameter.BuildTimeoutInMinute = $TemplateContent.properties.buildTimeoutInMinutes
+                $Parameter.Source = New-SourceObjectFromJson $TemplateContent.properties.source
+                $Parameter.Customize = New-CustomizeArrayFromJson $TemplateContent.properties.customize
+                $Parameter.Distribute = New-DistributeArrayFromJson $TemplateContent.properties.distribute
+                $Parameter.Identity = New-IdentityObjectFromJson $TemplateContent.identity
+                $Parameter.VMProfile = New-VMProfileObjectFromJson $TemplateContent.properties.vmProfile
                 $Null = $PSBoundParameters.Remove('JsonTemplatePath')
+                $Tag = @{}
+                foreach ($property in $TemplateContent.tags.PSObject.Properties) {
+                    $Tag[$property.Name] = $property.Value
+                }
+                $Parameter.Tag = $Tag
             }
             else
             {
@@ -273,39 +238,7 @@ function New-AzImageBuilderTemplate {
                 $UserAssignedIdentities.Add($UserAssignedIdentityId, $UserassignedidentitiesAdditionalproperties)
                 $Parameter.IdentityUserAssignedIdentity = $UserAssignedIdentities
                 $Null = $PSBoundParameters.Remove('UserAssignedIdentityId')
-                
-                if ($PSBoundParameters.ContainsKey('LastRunStatus')) {
-                    $Parameter.LastRunStatus = $LastRunStatus
-                    $Null = $PSBoundParameters.Remove('LastRunStatus')
-                }
-                if ($PSBoundParameters.ContainsKey('LastRunStatusEndTime')) {
-                    $Parameter.LastRunStatusEndTime = $LastRunStatusEndTime
-                    $Null = $PSBoundParameters.Remove('LastRunStatusEndTime')
-                }
-                if ($PSBoundParameters.ContainsKey('LastRunStatusMessage')) {
-                    $Parameter.LastRunStatusMessage = $LastRunStatusMessage
-                    $Null = $PSBoundParameters.Remove('LastRunStatusMessage')
-                }
-                if ($PSBoundParameters.ContainsKey('LastRunStatusRunState')) {
-                    $Parameter.LastRunStatusRunState = $LastRunStatusRunState
-                    $Null = $PSBoundParameters.Remove('LastRunStatusRunState')
-                }
-                if ($PSBoundParameters.ContainsKey('LastRunStatusRunSubState')) {
-                    $Parameter.LastRunStatusRunSubState = $LastRunStatusRunSubState
-                    $Null = $PSBoundParameters.Remove('LastRunStatusRunSubState')
-                }
-                if ($PSBoundParameters.ContainsKey('LastRunStatusStartTime')) {
-                    $Parameter.LastRunStatusStartTime = $LastRunStatusStartTime
-                    $Null = $PSBoundParameters.Remove('LastRunStatusStartTime')
-                }
-                if ($PSBoundParameters.ContainsKey('ProvisioningErrorCode')) {
-                    $Parameter.ProvisioningErrorCode = $ProvisioningErrorCode
-                    $Null = $PSBoundParameters.Remove('ProvisioningErrorCode')
-                }
-                if ($PSBoundParameters.ContainsKey('ProvisioningState')) {
-                    $Parameter.ProvisioningState = $ProvisioningState
-                    $Null = $PSBoundParameters.Remove('ProvisioningState')
-                }
+
                 if ($PSBoundParameters.ContainsKey('VMProfileOsdiskSizeInGb')) {
                     $Parameter.VMProfileOsdiskSizeGb = $VMProfileOsdiskSizeInGb
                     $null = $PSBoundParameters.Remove('VMProfileOsdiskSizeInGb')
@@ -321,36 +254,150 @@ function New-AzImageBuilderTemplate {
             }
 
             $PSBoundParameters.Add("Parameter", $Parameter)
-                
             Az.ImageBuilder.internal\New-AzImageBuilderTemplate @PSBoundParameters
-            return $source
         } catch {
             throw
         }
     }
 }
 
-function NewSourceObjectFromJsonObject
+function New-SourceObjectFromJson
 {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.DoNotExportAttribute()]
     param(
         [Parameter()]
         [object]
         ${Source}
     )
-    Write-Host $Source.type
     if ($Source.type -eq 'PlatformImage')
     {
         return [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplatePlatformImageSource]::DeserializeFromPSObject($Source)
     }
-    if ($Source.type -eq 'ManagedImage')
+    elseif ($Source.type -eq 'ManagedImage')
     {
         return [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateManagedImageSource]::DeserializeFromPSObject($Source)
     }
-    if ($Source.type -eq 'SharedImageVersion')
+    elseif ($Source.type -eq 'SharedImageVersion')
     {
         return [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateSharedImageVersionSource]::DeserializeFromPSObject($Source)
     }
-    $ErrorMessage = "Unkown type " + $Source.type + " of source!"
+    $ErrorMessage = "Unkown type: " + $Source.type + " for source!"
     Write-Error $ErrorMessage
+}
+
+function New-CustomizeArrayFromJson
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.DoNotExportAttribute()]
+    param(
+        [Parameter()]
+        [object]
+        ${Customize}
+    )
+    $result = @()
+
+    foreach ($item in $Customize)
+    {
+        if ($item.type -eq 'PowerShell')
+        {
+            $result += [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplatePowerShellCustomizer]::DeserializeFromPSObject($item)
+        }
+        elseif ($item.type -eq 'WindowsRestart')
+        {
+            $result += [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateRestartCustomizer]::DeserializeFromPSObject($item)
+        }
+        elseif ($item.type -eq 'WindowsUpdate')
+        {
+            $result += [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateWindowsUpdateCustomizer]::DeserializeFromPSObject($item)
+        }
+        elseif ($item.type -eq 'Shell')
+        {
+            $result += [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateShellCustomizer]::DeserializeFromPSObject($item)
+        }
+        elseif ($item.type -eq 'File')
+        {
+            $result += [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateFileCustomizer]::DeserializeFromPSObject($item)
+        }
+        else
+        {
+            $ErrorMessage = "Unkown type: " + $item.type + " for customizer!"
+            Write-Error $ErrorMessage
+        }
+    }
+
+    return $result
+}
+
+function New-DistributeArrayFromJson
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.DoNotExportAttribute()]
+    param(
+        [Parameter()]
+        [object]
+        ${DistributerList}
+    )
+    $result = @()
+
+    foreach ($Distributer in $DistributerList)
+    {
+        if ($Distributer.type -eq 'VHD')
+        {
+            $item = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateVhdDistributor]::DeserializeFromPSObject($Distributer)
+        }
+        elseif ($Distributer.type -eq 'ManagedImage')
+        {
+            $item = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateManagedImageDistributor]::DeserializeFromPSObject($Distributer)
+        }
+        elseif ($Distributer.type -eq 'SharedImage')
+        {
+            $item = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateSharedImageDistributor]::DeserializeFromPSObject($Distributer)
+        }
+        else
+        {
+            $ErrorMessage = "Unkown type: " + $item.type + " for distributer!"
+            Write-Error $ErrorMessage
+        }
+        $item.ArtifactTag = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateDistributorArtifactTags]::new()
+        $item.ArtifactTag.CopyFrom($Distributer.artifactTags)
+        $result += $item
+    }
+
+    return $result
+}
+
+function New-IdentityObjectFromJson
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateIdentity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.DoNotExportAttribute()]
+    param(
+        [Parameter()]
+        [object]
+        ${Identity}
+    )
+    $Result = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateIdentity]::DeserializeFromPSObject($Identity)
+    
+    foreach ($property in $Identity.userAssignedIdentities.PSObject.Properties) {
+        $obj = @{
+            ClientId = $property.Value.ClientId;
+            PrincipalId = $property.Value.PrincipalId
+        }
+        $Result.UserAssignedIdentity.Add($property.Name, $obj)
+    }
+    return $Result
+}
+
+function New-VMProfileObjectFromJson
+{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfile])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.DoNotExportAttribute()]
+    param(
+        [Parameter()]
+        [object]
+        ${VMProfile}
+    )
+    $Result = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateVMProfile]::DeserializeFromPSObject($VMProfile)
+    
+    return $Result
 }

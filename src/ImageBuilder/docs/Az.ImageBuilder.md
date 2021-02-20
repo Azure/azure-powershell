@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ImageBuilder
-Module Guid: dc2e0323-b465-4384-af65-5328a0a0aa38
+Module Guid: 3c1721fe-5c8f-4a7f-b3fc-d8ef960fbce1
 Download Help Link: https://docs.microsoft.com/powershell/module/az.imagebuilder
 Help Version: 1.0.0.0
 Locale: en-US
@@ -28,9 +28,6 @@ Describes a virtual machine image source for building, customizing and distribut
 
 ### [New-AzImageBuilderTemplate](New-AzImageBuilderTemplate.md)
 Create a virtual machine image template
-
-### [NewSourceObjectFromJsonObject](NewSourceObjectFromJsonObject.md)
-
 
 ### [Remove-AzImageBuilderTemplate](Remove-AzImageBuilderTemplate.md)
 Delete a virtual machine image template
