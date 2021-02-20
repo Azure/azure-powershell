@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolnodecount
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchpoolnodecount
 schema: 2.0.0
 ---
 

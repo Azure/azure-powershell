@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(false)]
 
 [assembly: Guid("2994548F-69B9-4DC2-8D19-52CC0C0C85BC")]
-[assembly: AssemblyVersion("3.3.1")]
-[assembly: AssemblyFileVersion("3.3.1")]
+[assembly: AssemblyVersion("3.4.0")]
+[assembly: AssemblyFileVersion("3.4.0")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Test")]
 [assembly: InternalsVisibleTo("SecurityDomain.Test")]

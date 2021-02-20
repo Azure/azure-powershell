@@ -57,6 +57,38 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewFailedSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewFailedSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewMGDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewMGDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewTenantDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewTenantDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTestResourceGroupDeploymentErrors()
         {
             TestRunner.RunTestScript("Test-TestResourceGroupDeploymentErrors");

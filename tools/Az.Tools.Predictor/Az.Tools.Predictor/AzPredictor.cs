@@ -16,6 +16,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
@@ -23,7 +24,7 @@ using System.Management.Automation.Subsystem;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-[assembly:InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -83,11 +84,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             if (history.Count > 0)
             {
-                if (_lastTwoMaskedCommands.Any())
-                {
-                    _lastTwoMaskedCommands.Dequeue();
-                }
-                else
+                // We try to find the commands to request predictions for.
+                // We should only have "start_of_snippet" when there are no enough Az commands for prediction.
+                // We then ignore that when there are new "start_of_snippet".
+                // This is the scenario.
+                // 1. New-AzResourceGroup -Name ****
+                // 2. $resourceName="Test"
+                // 3. $resourceLocation="westus2"
+                // 4. New-AzVM -Name $resourceName -Location $resourceLocation
+                //
+                // We'll replace 2 and 3 with "start_of_snippet" but if we request prediction using 2 and 3, that'll reset the
+                // workflow. We want to predict only by Az commands. That's to use commands 1 and 4.
+
+                bool isLastTwoCommandsChanged = false;
+
+                if (_lastTwoMaskedCommands.Count == 0)
                 {
                     // This is the first time we populate our record. Push the second to last command in history to the
                     // queue. If there is only one command in history, push the command placeholder.
@@ -97,7 +108,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
                         var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
                         _lastTwoMaskedCommands.Enqueue(secondToLastCommand.Item2);
-                        _service.RecordHistory(secondToLastCommand.Item1);
+
+                        if (!string.Equals(AzPredictorConstants.CommandPlaceholder, secondToLastCommand.Item2, StringComparison.Ordinal))
+                        {
+                            _service.RecordHistory(secondToLastCommand.Item1);
+                        }
                     }
                     else
                     {
@@ -105,20 +120,41 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // We only extract parameter values from the command line in _service.RecordHistory.
                         // So we don't need to do that for a placeholder.
                     }
+
+                    isLastTwoCommandsChanged = true;
                 }
 
                 string lastLine = history.Last();
                 var lastCommand = GetAstAndMaskedCommandLine(lastLine);
+                bool isLastCommandSupported = !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal);
 
-                _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
-
-                if ((lastCommand.Item2 != null) && !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal))
+                if (isLastCommandSupported)
                 {
+                    if (_lastTwoMaskedCommands.Count == 2)
+                    {
+                        // There are already two commands, dequeue the oldest one.
+                        _lastTwoMaskedCommands.Dequeue();
+                    }
+
+                    _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
+                    isLastTwoCommandsChanged = true;
+
                     _service.RecordHistory(lastCommand.Item1);
+                }
+                else if (_lastTwoMaskedCommands.Count == 1)
+                {
+                    isLastTwoCommandsChanged = true;
+                    var existingInQueue = _lastTwoMaskedCommands.Dequeue();
+                    _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
+                    _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
                 _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
-                _service.RequestPredictions(_lastTwoMaskedCommands);
+
+                if (isLastTwoCommandsChanged)
+                {
+                    _service.RequestPredictions(_lastTwoMaskedCommands);
+                }
             }
 
             ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)
@@ -126,17 +162,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var asts = Parser.ParseInput(commandLine, out _, out _);
                 var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
                 var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
-                string maskedCommandLine = null;
+                string maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
 
                 var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
 
                 if (_service.IsSupportedCommand(commandName))
                 {
                     maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
-                }
-                else
-                {
-                    maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
                 }
 
                 return ValueTuple.Create(commandAst, maskedCommandLine);
@@ -164,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
 
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
+                suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
                 return returnedValue ?? new List<PredictiveSuggestion>();
@@ -194,7 +226,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnImport()
         {
             var settings = Settings.GetSettings();
-            var azContext = new AzContext();
+            var azContext = new AzContext()
+            {
+                IsInternal = (settings.SetAsInternal == true) ? true : false,
+                SurveyId = settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
+            };
+
             azContext.UpdateContext();
             var telemetryClient = new AzPredictorTelemetryClient(azContext);
             var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for operation of getting droppedsqlpool and geobackup
+    - Add `Get-AzSynapseDroppedSqlPool` cmdlet
+    - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
 
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet

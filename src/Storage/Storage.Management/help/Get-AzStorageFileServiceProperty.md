@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragefileserviceproperty
+online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefileserviceproperty
 schema: 2.0.0
 ---
 
@@ -39,9 +39,14 @@ The **Get-AzStorageFileServiceProperty** cmdlet gets the service properties for 
 ```powershell
 PS C:\> Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 
-StorageAccountName ResourceGroupName ShareDeleteRetentionPolicy.Enabled ShareDeleteRetentionPolicy.Days
------------------- ----------------- ---------------------------------- -------------------------------
-mystorageaccount   myresourcegroup   True                               5
+StorageAccountName                            : mystorageaccount
+ResourceGroupName                             : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled            : True
+ShareDeleteRetentionPolicy.Days               : 3
+ProtocolSettings.Smb.Versions                 : {SMB2.1, SMB3.0, SMB3.1.1}
+ProtocolSettings.Smb.AuthenticationMethods    : {Kerberos, NTLMv2}
+ProtocolSettings.Smb.KerberosTicketEncryption : {RC4-HMAC, AES-256}
+ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-256-GCM}
 ```
 
 This command gets the File services property of a specified Storage Account.

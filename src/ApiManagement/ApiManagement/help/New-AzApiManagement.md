@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 164C5205-01BA-47BB-B780-D0B9AE614A4B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagement
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagement
 schema: 2.0.0
 ---
 

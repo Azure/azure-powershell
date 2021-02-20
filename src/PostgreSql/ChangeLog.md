@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`
+
 ## Version 0.3.0
 * Add parameter MinimalTlsVersion
 * First version of flexible server

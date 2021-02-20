@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7EFFFF43-501E-4955-A4EE-2C09B8863B30
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworksecurityruleconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -47,7 +47,7 @@ PS C:\> Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $
 
 The first command gets the network security group named NSG-FrontEnd, and then stores it in the variable $nsg.
 The second command uses the pipeline operator to pass the security group in $nsg to Get-AzNetworkSecurityRuleConfig, which gets the security rule configuration named rdp-rule.
-The third command changes the access configuration of rdp-rule to Deny.
+The third command changes the access configuration of rdp-rule to Deny. However, this overwrites the rule and only sets the parameters that are passed to the Set-AzNetworkSecurityRuleConfig function.   NOTE: There is no way to change a single attribute
 
 ### Example 2
 

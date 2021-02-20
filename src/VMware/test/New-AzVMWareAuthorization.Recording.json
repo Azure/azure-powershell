@@ -1,0 +1,1033 @@
+{
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20",
+      "Content": "{\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "197" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20" ],
+        "x-ms-request-id": [ "1a8a8a0c-1657-479f-9caa-9c60335d4c1c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "d7e5791d-3be3-4c3f-b8ee-f22771c257fd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035857Z:d7e5791d-3be3-4c3f-b8ee-f22771c257fd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:58:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "835" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt\",\"location\":\"australiaeast\",\"name\":\"ujapnt\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.6/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"esx22-r09.p01.australiaeast.avs.azure.com\",\"esx21-r09.p01.australiaeast.avs.azure.com\",\"esx21-r08.p01.australiaeast.avs.azure.com\"],\"provisioningState\":\"Building\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Building\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "c04bdb17-6e53-4cfd-b644-1b03783220ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "892c6173-96d1-4087-9033-2708328e3186" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035907Z:892c6173-96d1-4087-9033-2708328e3186" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":0,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "816c3fc2-2965-4608-ad01-ad1eba2bcd46" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "2c13bf93-b6a3-46c9-bc61-b47ea7c03bee" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035918Z:2c13bf93-b6a3-46c9-bc61-b47ea7c03bee" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":0,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "96873369-3eec-479e-925d-8476c214437d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "7b2c48b9-b508-4e7a-ade3-03144a152a13" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035928Z:7b2c48b9-b508-4e7a-ade3-03144a152a13" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":0,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "f79d78d7-4430-4097-9347-d914e3745966" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "6bca2e3b-aa0d-4739-bcc1-28397c38a61a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035938Z:6bca2e3b-aa0d-4739-bcc1-28397c38a61a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "cd839335-8b89-4f0d-a8b0-7ad4f36719b7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "f4d59e74-dacd-415e-a815-20905b89a1ff" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035949Z:f4d59e74-dacd-415e-a815-20905b89a1ff" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "95ee6315-084c-4277-9813-c6aabfa0a160" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "4faaf653-792d-4e06-9500-3c26e8af3c11" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T035959Z:4faaf653-792d-4e06-9500-3c26e8af3c11" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 03:59:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "d2775c5b-d418-48ad-bc49-a1fef49820c3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "4bf19ec8-ecaf-46c9-ba3b-971bf0ec3187" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040009Z:4bf19ec8-ecaf-46c9-ba3b-971bf0ec3187" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:00:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "1b57d850-6279-4787-9035-1fb928e31757" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "874756d6-5bd1-428c-ad8a-c51b17862959" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040019Z:874756d6-5bd1-428c-ad8a-c51b17862959" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:00:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "6d27bef4-b561-4203-8c41-c0cb89397ef4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "bfa6c94a-6b14-485c-b40e-dc8d4a385d47" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040030Z:bfa6c94a-6b14-485c-b40e-dc8d4a385d47" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:00:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "b3ebcf00-b9f2-454b-979b-f466c5a71c49" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "970064c2-9db9-4067-a200-f896634e3052" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040040Z:970064c2-9db9-4067-a200-f896634e3052" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:00:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "836ac8b1-24dd-4193-9e72-9e43d73c2cb8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "ccc6af65-340d-479f-81da-785c3b920604" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040050Z:ccc6af65-340d-479f-81da-785c3b920604" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:00:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "8d8b99c7-fcf1-496f-b314-ff76aaf5c6c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "40300cac-d639-415f-bf0e-22abe80790d3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040100Z:40300cac-d639-415f-bf0e-22abe80790d3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":2.5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "93b2ad34-f933-4a79-815a-7afc2c898243" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "db0f5d1b-4ef9-4efa-a7c8-1611c6239e84" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040111Z:db0f5d1b-4ef9-4efa-a7c8-1611c6239e84" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "49abbbbe-5b25-4930-88e6-072d300d129b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "ab8b33b6-2df7-4f36-9c26-55b695e2d1e3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040121Z:ab8b33b6-2df7-4f36-9c26-55b695e2d1e3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "633e08eb-868c-4137-967c-f3ec04599c80" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "e9b07c4d-c0f6-4e39-9f58-1669d63eb98d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040131Z:e9b07c4d-c0f6-4e39-9f58-1669d63eb98d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-request-id": [ "2b56c090-5e23-4cb8-907d-73c2f65de5e7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "1354d58d-b615-4fa9-b5a9-d382ed8ab29e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040142Z:1354d58d-b615-4fa9-b5a9-d382ed8ab29e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "325" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":5,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-request-id": [ "6aade805-96d6-4e62-b819-90aa2a38344a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "d6569fee-542e-4b48-8a02-f0dfe1907bb0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040152Z:d6569fee-542e-4b48-8a02-f0dfe1907bb0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:01:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-request-id": [ "ca978ce0-0f7c-4deb-9958-57f8f72731f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "638191e7-8fc1-47a7-9cd8-eaae15e0cb12" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040202Z:638191e7-8fc1-47a7-9cd8-eaae15e0cb12" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-request-id": [ "bc581eb6-479c-4360-8090-8ca3775a924c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "b7cbb64e-7cad-4afb-9cb3-1907a5c58958" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040212Z:b7cbb64e-7cad-4afb-9cb3-1907a5c58958" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-request-id": [ "73490fb9-1d76-4ba8-a215-a139bd29d495" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "b910321a-7438-4914-a3c5-141f377cdb61" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040223Z:b910321a-7438-4914-a3c5-141f377cdb61" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-request-id": [ "e3316001-b178-4a36-b458-6a27e6c5a567" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "7e81bad9-efdd-49a8-9a27-d17ad67962a3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040233Z:7e81bad9-efdd-49a8-9a27-d17ad67962a3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-request-id": [ "9bf0d59d-9340-48bf-b708-f2b6027a79f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "6904244c-2906-4c8f-ab6a-92669b619e37" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040243Z:6904244c-2906-4c8f-ab6a-92669b619e37" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":88.75,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Building\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-request-id": [ "bf4e5673-037a-4331-8b3f-22c948695e3e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "32444b48-1e63-43e2-8aab-facb6106bdda" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040254Z:32444b48-1e63-43e2-8aab-facb6106bdda" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"error\":{\"code\":\"400\",\"message\":\"Unable to connect to ESXi service on hosts [|ConnectionFailed { FQDN = \\\"esx22-r09.p01.australiaeast.avs.azure.com\\\"\\n                     Tenant = Some TenantID 54\\n                     Type = HighEndHost\\n                     Cluster = Some 1\\n                     ESXVersion = None\\n                     Flags = [] }|]\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/operationstatuses/74aa20a4-1ba5-418c-9f75-319fc8891336\",\"name\":\"74aa20a4-1ba5-418c-9f75-319fc8891336\",\"percentComplete\":100,\"startTime\":\"2020-09-13T03:58:56.2665964+00:00\",\"status\":\"Failed\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "45970436-9d5a-4c4b-97c7-39cff46d72c6" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-request-id": [ "0fdb8da5-32d1-4bf3-a61b-4583516ec66f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "bd111c9f-a99f-4156-88e6-4dbfe47f6896" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040254Z:bd111c9f-a99f-4156-88e6-4dbfe47f6896" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "700" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt\",\"location\":\"australiaeast\",\"name\":\"ujapnt\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.6/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":0,\"hosts\":[],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}"
+    }
+  },
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/authorizations/upo9re?api-version=2020-03-20+26": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup5097kq/providers/Microsoft.AVS/privateClouds/ujapnt/authorizations/upo9re?api-version=2020-03-20",
+      "Content": "{\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "34ae1e01-e95e-416b-8970-8dd42869d16b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "812493f5-a251-40f9-a25b-8890be30ac5c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040255Z:812493f5-a251-40f9-a25b-8890be30ac5c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:55 GMT" ],
+        "Connection": [ "close" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "96" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InternalError\",\"message\":\"Problem fetching express route for private cloud.\"}}"
+    }
+  }
+}
