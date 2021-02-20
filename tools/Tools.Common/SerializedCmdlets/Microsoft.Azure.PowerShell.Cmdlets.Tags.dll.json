@@ -426,7 +426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -881,7 +881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -1332,7 +1332,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
               "Id": "System.String",
@@ -1425,7 +1425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Tags.Model",
             "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1615,7 +1615,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Tags.Model",
                   "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2208,7 +2208,7 @@
     "Microsoft.Azure.Commands.Tags.Model.PSTagsObject": {
       "Namespace": "Microsoft.Azure.Commands.Tags.Model",
       "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TagsProperty": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },

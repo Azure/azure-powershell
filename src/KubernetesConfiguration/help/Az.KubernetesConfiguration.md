@@ -1,7 +1,7 @@
 ---
 Module Name: Az.KubernetesConfiguration
 Module Guid: 372af220-241d-455f-a85f-8be57ce75bb7
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration
+Download Help Link: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration
 Help Version: 1.0.0.0
 Locale: en-US
 ---

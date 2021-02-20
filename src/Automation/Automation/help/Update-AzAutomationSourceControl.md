@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/update-azautomationsourcecontrol
+online version: https://docs.microsoft.com/powershell/module/az.automation/update-azautomationsourcecontrol
 schema: 2.0.0
 ---
 

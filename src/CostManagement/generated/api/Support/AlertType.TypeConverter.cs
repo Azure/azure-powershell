@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for AlertType.</summary>
+    /// <summary>type of alert</summary>
     public partial class AlertTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

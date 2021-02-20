@@ -80,15 +80,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public void OnHistory(HistoryTelemetryData telemetryData)
         {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
-
-            _telemetryDispatcher.Post(telemetryData);
+            PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
@@ -98,17 +90,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            CorrelationId = Guid.NewGuid().ToString();
-
-            telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
-
-            _telemetryDispatcher.Post(telemetryData);
+            PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording RequestPrediction");
@@ -118,15 +100,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
         {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
-
-            _telemetryDispatcher.Post(telemetryData);
+            PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording AcceptSuggestion");
@@ -136,18 +110,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
         {
-            if (!IsDataCollectionAllowed())
-            {
-                return;
-            }
-
-            telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
-
-            _telemetryDispatcher.Post(telemetryData);
+            PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
+#endif
+        }
+
+        /// <inheritdoc/>
+        public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData)
+        {
+            PostTelemetryData(telemetryData);
+
+#if TELEMETRY_TRACE && DEBUG
+            System.Diagnostics.Trace.WriteLine("Recording LoadParameterMap");
 #endif
         }
 
@@ -163,6 +139,38 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Construct a string from an exception and the string is sent to telemetry.
+        /// The string should have minimum data that can help us to diagnose the exception
+        /// but not too excessive that may have PII.
+        /// </summary>
+        /// <param name="exception">The exception to construct the string from.</param>
+        /// <returns>A string to send to telemetry.</returns>
+        private static string FormatException(Exception exception)
+        {
+            if (exception == null)
+            {
+                return string.Empty;
+            }
+
+            // The exception message may contain data such as file path if it is IO related exception.
+            // It's this solution to throw the exception, the type and the stack trace only contain information related to the solution.
+            return string.Format($"Type: {exception.GetType().ToString()}\nStack Trace: {exception.StackTrace?.ToString()}");
+;        }
+
+        private void PostTelemetryData(ITelemetryData telemetryData)
+        {
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            telemetryData.SessionId = SessionId;
+            telemetryData.CorrelationId = CorrelationId;
+
+            _telemetryDispatcher.Post(telemetryData);
         }
 
         /// <summary>
@@ -183,6 +191,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     break;
                 case SuggestionAcceptedTelemetryData suggestionAccepted:
                     SendTelemetry(suggestionAccepted);
+                    break;
+                case ParameterMapTelemetryData parameterMap:
+                    SendTelemetry(parameterMap);
                     break;
                 default:
                     throw new NotImplementedException();
@@ -210,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             var properties = CreateProperties(telemetryData);
             properties.Add("Command", telemetryData.Commands ?? string.Empty);
             properties.Add("HttpRequestSent", telemetryData.HasSentHttpRequest.ToString(CultureInfo.InvariantCulture));
-            properties.Add("Exception", telemetryData.Exception?.ToString() ?? string.Empty);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
         }
@@ -237,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             properties.Add("UserInput", maskedUserInput ?? string.Empty);
             properties.Add("Suggestion", sourceTexts != null ? JsonSerializer.Serialize(sourceTexts.Zip(suggestionSource).Select((s) => Tuple.Create(s.First, s.Second)), JsonUtilities.TelemetrySerializerOptions) : string.Empty);
             properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
-            properties.Add("Exception", telemetryData.Exception?.ToString() ?? string.Empty);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
             _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
         }
@@ -259,6 +270,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <summary>
+        /// Sends the telemetry with the parameter map file loading information.
+        /// </summary>
+        private void SendTelemetry(ParameterMapTelemetryData telemetryData)
+        {
+            var properties = CreateProperties(telemetryData);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
+
+            _telemetryClient.TrackEvent($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/LoadParameterMap", properties);
+        }
+
+        /// <summary>
         /// Add the common properties to the telemetry event.
         /// </summary>
         private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData)
@@ -268,6 +290,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 { "SessionId", telemetryData.SessionId },
                 { "CorrelationId", telemetryData.CorrelationId },
                 { "UserId", _azContext.UserId },
+                { "IsInternal", _azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
+                { "SurveyId", (_azContext as AzContext)?.SurveyId },
                 { "HashMacAddress", _azContext.MacAddress },
                 { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", _azContext.ModuleVersion.ToString() },

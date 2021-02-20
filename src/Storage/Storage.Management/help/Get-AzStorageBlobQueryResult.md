@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/get-azstorageblobqueryresult
+online version: https://docs.microsoft.com/powershell/module/Az.storage/get-azstorageblobqueryresult
 schema: 2.0.0
 ---
 
@@ -281,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-Query string, see more details in: https://docs.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference
+Query string, see more details in: https://docs.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
 
 ```yaml
 Type: System.String
