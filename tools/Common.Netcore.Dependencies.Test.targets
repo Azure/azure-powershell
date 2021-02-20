@@ -19,7 +19,7 @@
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.8-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.8-build202102" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -57,7 +57,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.8-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.8-build202102\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
 
   <ItemGroup>
