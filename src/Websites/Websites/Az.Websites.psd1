@@ -56,7 +56,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll',
+               'Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -102,7 +103,9 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
                'Add-AzWebAppTrafficRouting', 'Remove-AzWebAppTrafficRouting', 
                'Get-AzWebAppTrafficRouting', 'Update-AzWebAppTrafficRouting', 
                'New-AzWebAppCertificate', 'Remove-AzWebAppCertificate', 
-               'Import-AzWebAppKeyVaultCertificate'
+               'Import-AzWebAppKeyVaultCertificate',
+               'Get-AzAppServiceEnvironment', 'New-AzAppServiceEnvironment',
+               'Remove-AzAppServiceEnvironment', 'New-AzAppServiceEnvironmentInboundServices'
 
 # Variables to export from this module
 # VariablesToExport = @()
