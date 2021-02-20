@@ -112,23 +112,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private int? shareRetentionDays = null;
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableSmbMultichannel
-        {
-            get
-            {
-                return enableSmbMultichannel is null ? false : enableSmbMultichannel.Value;
-            }
-            set
-            {
-                enableSmbMultichannel = value;
-            }
-        }
-        private bool? enableSmbMultichannel = null;
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "Gets or sets SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1.")]
         [ValidateSet(SmbProtocolVersions.SMB21,
@@ -212,19 +195,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 ProtocolSettings protocolSettings = null;
-                if(this.enableSmbMultichannel != null ||
-                    this.SmbProtocolVersion != null ||
+                if(this.SmbProtocolVersion != null ||
                     this.SmbAuthenticationMethod != null ||
                     this.SmbKerberosTicketEncryption != null ||
                     this.SmbChannelEncryption != null)
                 {
                     protocolSettings = new ProtocolSettings();
                     protocolSettings.Smb = new SmbSetting();
-                    if (this.enableSmbMultichannel != null)
-                    {
-                        protocolSettings.Smb.Multichannel = new Multichannel();
-                        protocolSettings.Smb.Multichannel.Enabled = this.enableSmbMultichannel;
-                    }
                     if (this.SmbProtocolVersion != null)
                     {
                         protocolSettings.Smb.Versions = ConnectStringArray(this.SmbProtocolVersion);

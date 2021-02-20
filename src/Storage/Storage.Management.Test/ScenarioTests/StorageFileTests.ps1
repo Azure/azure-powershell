@@ -280,7 +280,7 @@ function Test-FileServiceProperties
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
 		# Enable MC, and set smb setting
-		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true `
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `
 					-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos,NTLMv2 `
 					-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
@@ -292,13 +292,12 @@ function Test-FileServiceProperties
 		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.ChannelEncryption.Count
 
 		# Disable MC, update smb setting
-		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false `
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `
 					-SMBProtocolVersion SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos `
 					-SMBKerberosTicketEncryption AES-256 `
 					-SMBChannelEncryption AES-128-CCM
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
-		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
 		Assert-AreEqual "SMB3.1.1" $servicePropertie.ProtocolSettings.Smb.Versions[0]
 		Assert-AreEqual "Kerberos" $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods[0]
 		Assert-AreEqual "AES-256" $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption[0]
@@ -311,7 +310,6 @@ function Test-FileServiceProperties
 					-SMBKerberosTicketEncryption @() `
 					-SMBChannelEncryption @()
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
-		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
 		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.Versions
 		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods
 		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption
