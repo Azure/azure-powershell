@@ -21,7 +21,7 @@
 
 ## Version 0.2.0
 * Second preview release
-* Add *AzPredictor cmdlet to simplify configuration
+* Add Enable-AzPredictor and Disable-AzPredictor cmdlets to simplify configuration
 * Use PSReadline new API
 
 ## Version 0.1.0
