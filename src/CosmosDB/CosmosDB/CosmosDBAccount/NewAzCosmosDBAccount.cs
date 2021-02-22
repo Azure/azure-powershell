@@ -211,6 +211,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             databaseAccountCreateUpdateParameters.Kind = ApiKind;
 
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            {
+                PSBackupPolicy backupPolicy = new PSBackupPolicy()
+                {
+                    BackupType = PSBackupPolicy.PeriodicModeBackupType,
+                    BackupIntervalInMin = BackupIntervalInMinutes,
+                    BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                };
+
+                databaseAccountCreateUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
+            }
+
             if (ShouldProcess(Name, "Creating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;

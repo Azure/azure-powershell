@@ -85,6 +85,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix, SDKModel.ServerVersion.FourFullStopZero)]
         public string ServerVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]
+        public int? BackupIntervalInMinutes { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupRetentionInHoursHelpMessage)]
+        public int? BackupRetentionIntervalInHours { get; set; }
+
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
             ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();

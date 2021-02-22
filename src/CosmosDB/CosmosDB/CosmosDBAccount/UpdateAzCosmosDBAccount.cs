@@ -156,6 +156,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             }
 
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            {
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    PSBackupPolicy backupPolicy = new PSBackupPolicy()
+                    {
+                        BackupType = PSBackupPolicy.PeriodicModeBackupType,
+                        BackupIntervalInMin = BackupIntervalInMinutes,
+                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                    };
+
+                    databaseAccountUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
+                }
+                else
+                {
+                    WriteWarning("Can accept BackupInterval or BackupRetention parameters only for accounts with PeriodicMode backup policy");
+                    return;
+                }
+            }
+
             if (ShouldProcess(Name, "Updating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
