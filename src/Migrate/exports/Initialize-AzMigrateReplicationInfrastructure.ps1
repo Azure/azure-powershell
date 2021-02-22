@@ -15,83 +15,57 @@
 
 <#
 .Synopsis
-The operation to create an ASR migration item (enable migration).
+Initialises the infrastructure for the migrate project.
 .Description
-The operation to create an ASR migration item (enable migration).
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Initialize-AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName TestRG  -ProjectName TestProject -Vmwareagentless -TargetRegion centralus
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+True
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PROVIDERSPECIFICDETAIL <IEnableMigrationProviderSpecificInput>: The provider specific details.
-  InstanceType <String>: The class type.
+System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
+https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
-function New-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Initialize-AzMigrateReplicationInfrastructure {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='agentlessVMware', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
+    [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Fabric name.
-    ${FabricName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Migration item name.
-    ${MigrationItemName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Protection container name.
-    ${ProtectionContainerName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
+    [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
+    # Specifies the name of the Azure Migrate project to be used for server migration.
+    ${ProjectName},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter({"agentlessVMware"})]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
+    ${Scenario},
+
+    [Parameter(Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target Azure region for server migrations.
+    ${TargetRegion},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription Id in which migrate project was created.
+    # Azure Subscription ID.
     ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [System.String]
-    # The policy Id.
-    ${PolicyId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IEnableMigrationProviderSpecificInput]
-    # The provider specific details.
-    # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
-    ${ProviderSpecificDetail},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -100,12 +74,6 @@ param(
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -126,12 +94,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -161,9 +123,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationMigrationItem_CreateExpanded';
+            agentlessVMware = 'Az.Migrate.custom\Initialize-AzMigrateReplicationInfrastructure';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('agentlessVMware') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
