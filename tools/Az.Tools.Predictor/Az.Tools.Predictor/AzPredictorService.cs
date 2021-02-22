@@ -39,8 +39,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public sealed class RequestContext
             {
-                public string CorrelationId { get; set; } = Guid.Empty.ToString();
-                public string SessionId { get; set; } = Guid.Empty.ToString();
                 public string SubscriptionId { get; set; } = Guid.Empty.ToString();
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
@@ -56,6 +54,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public Version VersionNumber{ get; set; } = new Version(0, 0);
         }
+
+        /// <summary>
+        /// The name of the header value that contains the platform correlation id.
+        /// </summary>
+        private const string CorrelationIdHeader = "Sml-CorrelationId";
 
         private const string ThrottleByIdHeader = "X-UserId";
         private readonly HttpClient _client;
@@ -248,14 +251,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId);
+                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.UserId, _telemetryClient.CorrelationId);
 
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
-                        SessionId = _telemetryClient.SessionId,
-                        CorrelationId = _telemetryClient.CorrelationId,
                         VersionNumber = this._azContext.AzVersion
                     };
+
 
                     var requestBody = new PredictionRequestBody(commands)
                     {
@@ -312,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         try
                         {
-                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.HashUserId);
+                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.CorrelationId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
                             hasSentHttpRequest = true;
@@ -406,7 +408,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return commandLine.Split(AzPredictorConstants.CommandParameterSeperator).First();
         }
 
-        private static void ReplaceThrottleUserIdToHeader(HttpRequestHeaders header, string value)
+        private static void SetHttpRequestHeader(HttpRequestHeaders header, string idToThrottle, string correlationId)
         {
             if (header != null)
             {
@@ -414,13 +416,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     header.Remove(AzPredictorService.ThrottleByIdHeader);
 
-                    if (!string.IsNullOrWhiteSpace(value))
+                    if (!string.IsNullOrWhiteSpace(idToThrottle))
                     {
-                        header.Add(AzPredictorService.ThrottleByIdHeader, value);
+                        header.Add(AzPredictorService.ThrottleByIdHeader, idToThrottle);
+                    }
+
+                    header.Remove(AzPredictorService.CorrelationIdHeader);
+
+                    if (!string.IsNullOrWhiteSpace(correlationId))
+                    {
+                        header.Add(AzPredictorService.CorrelationIdHeader, correlationId);
                     }
                 }
             }
-
         }
     }
 }
