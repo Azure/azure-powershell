@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PSBackupPolicy backupPolicy = new PSBackupPolicy()
                 {
                     BackupType = PSBackupPolicy.PeriodicModeBackupType,
-                    BackupIntervalInMin = BackupIntervalInMinutes,
+                    BackupIntervalInMinutes = BackupIntervalInMinutes,
                     BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
                 };
 
