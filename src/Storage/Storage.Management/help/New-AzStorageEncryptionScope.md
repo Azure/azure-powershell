@@ -15,28 +15,29 @@ Creates an encryption scope for a Storage account.
 ### AccountName (Default)
 ```
 New-AzStorageEncryptionScope [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -EncryptionScopeName <String> [-StorageEncryption] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -EncryptionScopeName <String> [-StorageEncryption] [-RequireInfrastructureEncryption]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountNameKeyVault
 ```
 New-AzStorageEncryptionScope [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -EncryptionScopeName <String> [-KeyvaultEncryption] -KeyUri <String>
+ -EncryptionScopeName <String> [-KeyvaultEncryption] -KeyUri <String> [-RequireInfrastructureEncryption]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzStorageEncryptionScope -StorageAccount <PSStorageAccount> -EncryptionScopeName <String>
- [-StorageEncryption] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageEncryption] [-RequireInfrastructureEncryption] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObjectKeyVault
 ```
 New-AzStorageEncryptionScope -StorageAccount <PSStorageAccount> -EncryptionScopeName <String>
- [-KeyvaultEncryption] -KeyUri <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyvaultEncryption] -KeyUri <String> [-RequireInfrastructureEncryption]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,25 +51,27 @@ PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Accou
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source            KeyVaultKeyUri                                         
-----      -----    ------            --------------                                         
+Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                         
+----      -----    ------            -------------- -------------------------------                                         
 testscope Enabled  Microsoft.Storage
 ```
 
 This command creates an encryption scope with Storage Encryption.
 
-### Example 2: Create an encryption scope with Keyvault Encryption
+### Example 2: Create an encryption scope with Keyvault Encryption, and RequireInfrastructureEncryption
 ```
-PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57"
+PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+	-EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57" `
+	-RequireInfrastructureEncryption 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source             KeyVaultKeyUri                                         
-----      -----    ------             --------------                                         
-testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57
+Name         State   Source           KeyVaultKeyUri                                                                          RequireInfrastructureEncryption                                       
+----         -----   ------             --------------                                                                        -------------------------------                                     
+testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57  True 
 ```
 
-This command creates an encryption scope with Keyvault Encryption.
+This command creates an encryption scope with Keyvault Encryption and RequireInfrastructureEncryption.
 The Storage account Identity need have get,wrapkey,unwrapkey permissions to the keyvault key.
 
 ## PARAMETERS
@@ -127,6 +130,21 @@ Parameter Sets: AccountNameKeyVault, AccountObjectKeyVault
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireInfrastructureEncryption
+The encryption scope will apply a secondary layer of encryption with platform managed keys for data at rest.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

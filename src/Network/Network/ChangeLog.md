@@ -19,16 +19,6 @@
 --->
 
 ## Upcoming Release
-* Registered 8 new privatelink configurations
-    - `Microsoft.Automation/automationAccounts`
-    - `Microsoft.Compute/diskAccesses`
-    - `Microsoft.EventHub/namespaces`
-    - `Microsoft.Media/mediaservices`
-    - `Microsoft.Search/searchServices`
-    - `Microsoft.ServiceBus/namespaces`
-    - `Microsoft.Synapse/workspaces`
-    - `Microsoft.Purview/accounts`
-* Updated the privatelink configurations of 'Microsoft.Keyvault/vaults' and 'Microsoft.Web/sites' to higher quality ones
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
