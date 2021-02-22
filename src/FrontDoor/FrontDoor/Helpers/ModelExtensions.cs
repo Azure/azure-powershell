@@ -570,7 +570,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ProvisioningState = sdkPolicy.ProvisioningState,
                 CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
                 CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
-                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl
+                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl,
+                RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck)
             };
         }
 

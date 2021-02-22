@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 39AADD19-2EDD-4C1F-BC9E-22186DD9A085
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem
 schema: 2.0.0
 ---
 
@@ -121,13 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -CustomData
-Specifies a base-64 encoded string of custom data.
-This is decoded to a binary array that is saved as a file on the virtual machine.
-The maximum length of the binary array is 65535 bytes.<br>
-**Note: Do not pass any secrets or passwords in customData property**<br>
-This property cannot be updated after the VM is created. <br>
-customData is passed to the VM to be saved as a file, for more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br>
-For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init)
+Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/custom-data).
+**Note: It is not recommended to store sensitive information in custom data.**
+
 
 ```yaml
 Type: System.String
@@ -252,7 +248,7 @@ Accept wildcard characters: False
 
 ### -TimeZone
 Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
-Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
+Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String

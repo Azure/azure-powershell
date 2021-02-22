@@ -354,3 +354,38 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
+
+<#
+.SYNOPSIS
+Test Create Azure HDInsight Cluster with compute isolation
+#>
+function Test-CreateClusterWithComputeIsolation{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$encryptionAtHost=$true
+		$workerNodeSize="Standard_E8S_v3"
+		$headNodeSize="Standard_E16S_v3"
+		$zookeeperNodeSize="Standard_E2S_v3"
+
+		# create cluster
+		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableComputeIsolation
+
+		Assert-AreEqual $cluster.ComputeIsolationProperties.EnableComputeIsolation $true
+		
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}

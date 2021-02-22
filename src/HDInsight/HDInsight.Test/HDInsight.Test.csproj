@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
-    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="6.2.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.1.0-preview.2" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.11.0" />

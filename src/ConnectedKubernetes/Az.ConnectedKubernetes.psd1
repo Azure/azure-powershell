@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedKubernetes.private.dll'
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.5'; })
   FormatsToProcess = './Az.ConnectedKubernetes.format.ps1xml'
   FunctionsToExport = 'Get-AzConnectedKubernetes', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Update-AzConnectedKubernetes'
   AliasesToExport = '*'

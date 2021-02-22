@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem;
 using System.Threading;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gest the suggestions for the user input.
         /// </summary>
-        /// <param name="input">User input from PSReadLine.</param>
+        /// <param name="context">User input context from PSReadLine.</param>
         /// <param name="suggestionCount">The number of suggestion to return.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="maxAllowedCommandDuplicate">The maximum amount of the same commnds in the list of predictions.</param>
-        /// <returns>The suggestions for <paramref name="input"/>. The maximum number of suggestions is <paramref name="suggestionCount"/>.</returns>
-        public CommandLineSuggestion GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
+        /// <returns>The suggestions for <paramref name="context"/>. The maximum number of suggestions is <paramref name="suggestionCount"/>. A null will be returned if there the user input context isn't valid/supported at all.</returns>
+        public CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests predictions, given a command string.

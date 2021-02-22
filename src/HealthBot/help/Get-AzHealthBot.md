@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthBot
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthbot/get-azhealthbot
+online version: https://docs.microsoft.com/powershell/module/az.healthbot/get-azhealthbot
 schema: 2.0.0
 ---
 

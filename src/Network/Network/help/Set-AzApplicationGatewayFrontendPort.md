@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 85C0A1C3-FC6D-496A-B6B5-8DC2A73B8032
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayfrontendport
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayfrontendport
 schema: 2.0.0
 ---
 
