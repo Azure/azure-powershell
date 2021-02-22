@@ -148,7 +148,7 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @("Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
@@ -251,6 +251,17 @@ function Create-CsprojMappings
 <#
 Maps a normalized path to the projects to be built based on the service folder provided.
 #>
+
+function Get-ModuleFromPath
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath
+    )
+
+    return $FilePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+}
 function Add-CsprojMappings
 {
     param
@@ -267,14 +278,12 @@ function Add-CsprojMappings
         $Values = New-Object System.Collections.Generic.HashSet[string]
         foreach ($CsprojFile in $CsprojFiles)
         {
-            $Fields = $CsprojFile.FullName.Replace('/', '\').Split('\')
-            $Project = $Fields[$Fields.Length - 3]
+            $Project = Get-ModuleFromPath $CsprojFile.FullName
             foreach ($ProjectName in $Script:ProjectToSolutionMappings.Keys)
             {
                 foreach ($Solution in $Script:ProjectToSolutionMappings[$ProjectName])
                 {
-                    $Fields = $Solution.Replace('/', '\').Split('\')
-                    $ProjectNameFromSolution = $Fields[$Fields.Length - 2]
+                    $ProjectNameFromSolution = Get-ModuleFromPath $Solution
                     if ($ProjectNameFromSolution -eq $Project)
                     {
                         foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])

@@ -30,6 +30,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class AzContext : IAzContext
     {
+        private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
@@ -101,11 +102,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
+        public bool IsInternal { get; internal set; }
+
+        /// <summary>
+        /// The survey session id appended to the survey.
+        /// </summary>
+        /// <remarks>
+        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
+        /// interface IAzContext and it's internal.
+        /// </remarks>
+        internal string SurveyId { get; set; }
+
+        /// <inheritdoc/>
         public void UpdateContext()
         {
             AzVersion = GetAzVersion();
-            UserId = GenerateSha256HashString(GetUserAccountId());
+            RawUserId = GetUserAccountId();
+            UserId = GenerateSha256HashString(RawUserId);
+
+            if (!IsInternal)
+            {
+                IsInternal = RawUserId.EndsWith(AzContext.InternalUserSuffix, StringComparison.OrdinalIgnoreCase);
+            }
         }
+
+        internal string RawUserId { get; set; }
 
         /// <summary>
         /// Gets the user account id if the user logs in, otherwise empty string.

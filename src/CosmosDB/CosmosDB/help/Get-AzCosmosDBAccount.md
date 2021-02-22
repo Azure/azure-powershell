@@ -49,6 +49,8 @@ ProvisioningState             : Succeeded
 Kind                          : GlobalDocumentDB
 VirtualNetworkRules           : {}
 EnableMultipleWriteLocations  : False
+NetworkAclBypass              : None
+NetworkAclBypassResourceIds   : {}
 ```
 
 Get CosmosDB database account with name databaseAccountName in ResourceGroup resourceGroupName.

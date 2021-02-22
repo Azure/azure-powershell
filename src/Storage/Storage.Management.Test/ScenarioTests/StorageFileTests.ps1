@@ -187,6 +187,12 @@ function Test-ShareSoftDelete
 		Assert-AreEqual $shareName1 $share.Name
 		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
 		
+		# Get share usage
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -GetShareUsage
+		Assert-AreEqual $shareName1 $share.Name
+		Assert-AreEqual 0 $share.ShareUsageBytes
+		Assert-AreEqual $null $share.Deleted
+		
 		#delete share
 		Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Force
 
