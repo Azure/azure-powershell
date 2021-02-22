@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
+* Introduced ServerVersion option to Update-AzCosmosDBAccount.
 
 ## Version 1.0.0
 * General availability of 'Az.CosmosDB' module
