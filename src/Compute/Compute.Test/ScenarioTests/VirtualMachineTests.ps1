@@ -4597,7 +4597,18 @@ function Test-VirtualMachinePatchAPI
         $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
         $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode "AutomaticByPlatform";
 
-        
+        # Test Linux VM PatchMode scenario. 
+        # This currently requires creating a Linux (Ubuntu) VM manually in the Azure Portal as the DefaultCRPLinuxImageOffline cmd uses a 
+        # storage account that Compute does not currently support. 
+        $rgname2 = "adamddeast";
+        $vmname = "linuxtest";
+        $linuxvm = Get-AzVM -ResourceGroupName $rgname2 -Name $vmname;
+        $password = "Testing1234567";
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $user = "usertest";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vmset = Set-AzVMOperatingSystem -VM $linuxvm -Linux -ComputerName "compname" -Credential $cred -PatchMode "AutomaticByPlatform";
+
     }
     finally
     {
