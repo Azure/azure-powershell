@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The operator to use for comparison.</summary>
+    /// <summary>TypeConverter implementation for OperatorType.</summary>
     public partial class OperatorTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

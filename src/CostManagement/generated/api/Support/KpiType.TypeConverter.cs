@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>KPI type (Forecast, Budget).</summary>
+    /// <summary>TypeConverter implementation for KpiType.</summary>
     public partial class KpiTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

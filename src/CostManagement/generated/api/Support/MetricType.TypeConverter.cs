@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Metric to use when displaying costs.</summary>
+    /// <summary>TypeConverter implementation for MetricType.</summary>
     public partial class MetricTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

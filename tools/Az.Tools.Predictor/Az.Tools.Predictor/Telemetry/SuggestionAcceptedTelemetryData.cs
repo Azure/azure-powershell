@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        public string SessionId { get; internal set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        public string CorrelationId { get; internal set; }
 
         /// <summary>
         /// Gets the suggestion that's accepted by the user.

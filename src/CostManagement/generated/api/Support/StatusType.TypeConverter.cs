@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>
-    /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-    /// </summary>
+    /// <summary>TypeConverter implementation for StatusType.</summary>
     public partial class StatusTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

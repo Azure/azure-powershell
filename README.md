@@ -182,7 +182,7 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
 [PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest
 
-[ContributionGuidelines]: https://opensource.microsoft.com/collaborate/
+[ContributionGuidelines]: https://azure.github.io/guidelines/
 [CodeOfConduct]: https://opensource.microsoft.com/codeofconduct/
 [CodeOfConductFaq]: https://opensource.microsoft.com/codeofconduct/faq/
 [OpenCodeEmail]: mailto:opencode@microsoft.com

@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Gets the session id.
         /// </summary>
-        string SessionId { get; internal set; }
+        string SessionId { get; }
 
         /// <summary>
         /// Gets the correlation id.
         /// </summary>
-        string CorrelationId { get; internal set; }
+        string CorrelationId { get; }
     }
 }

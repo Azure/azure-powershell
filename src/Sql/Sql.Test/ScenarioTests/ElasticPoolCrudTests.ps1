@@ -201,10 +201,9 @@ function Test-CreateElasticPoolWithMaintenanceConfigurationId
 
 		# Create pool with non-default maintenance
 		$poolName = Get-ElasticPoolName
-		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
 		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
 		$ep = New-AzSqlElasticPool -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-ElasticPoolName $poolName -Edition Premium -MaintenanceConfigurationId $mName
+			-ElasticPoolName $poolName -Edition Premium -MaintenanceConfigurationId $mId
 		Assert-AreEqual $ep.ElasticPoolName $poolName
 		Assert-NotNull $ep.Edition
 		Assert-NotNull $ep.MaintenanceConfigurationId

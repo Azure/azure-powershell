@@ -336,9 +336,8 @@ function Test-CreateDatabaseWithMaintenanceConfigurationId
 		# Create database with non-default maintenance
 		$databaseName = Get-DatabaseName
 		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
-		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mName -Force
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mId -Force
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.MaintenanceConfigurationId
@@ -649,9 +648,8 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 
 		# Alter database maintenance
 		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
-		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
 		$sdb1 = Set-AzSqlDatabase -ResourceGroupName $db1.ResourceGroupName -ServerName $db1.ServerName -DatabaseName $db1.DatabaseName `
-			-MaintenanceConfigurationId $mName
+			-MaintenanceConfigurationId $mId
 
 		Assert-AreEqual $sdb1.DatabaseName $databaseName
 		Assert-NotNull $sdb1.MaintenanceConfigurationId

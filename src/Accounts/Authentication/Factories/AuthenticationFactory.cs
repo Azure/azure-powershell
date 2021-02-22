@@ -22,7 +22,6 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 
@@ -286,7 +285,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context.Account == null)
             {
-                throw new AzPSArgumentException(Resources.ArmAccountNotFound, "context.Account", ErrorKind.UserError);
+                throw new ArgumentException(Resources.ArmAccountNotFound);
             }
             switch (context.Account.Type)
             {
@@ -348,11 +347,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
                 throw new ArgumentException(Resources.InvalidArmContext, ex);
             }
-        }
-
-        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
-        {
-            return new RenewingTokenCredential(new ExternalAccessToken(accessToken, renew));
         }
 
         /// <summary>

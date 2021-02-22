@@ -192,6 +192,7 @@ function New-AzPostgreSqlFlexibleServer {
                 $Password = Get-GeneratePassword
                 $PSBoundParameters.AdministratorLoginPassword = $Password | ConvertTo-SecureString -AsPlainText -Force
             }
+            $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
             Import-Module -Name Az.Resources
             
@@ -303,7 +304,7 @@ function New-AzPostgreSqlFlexibleServer {
             if (![string]::IsNullOrEmpty($FirewallRuleName)) {
                 $Server.FirewallRuleName = $FirewallRuleName
             }
-            $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword
+            $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
 
             return $Server
         } catch {
@@ -526,7 +527,7 @@ function CreateFirewallRule($FirewallRuleParameters) {
         }
         return $FirewallRule.Name
     }
-    elseif ($FirewallRuleParameters.ContainsKey('PublicAccess') -And $FirewallRuleParameters.PublicAccess.ToLower() -eq 'none') {
+    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
         Write-Host "No firewall rule was set"
     }
     

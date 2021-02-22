@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using System;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -55,11 +55,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         /// <inheritdoc/>
         public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
-        {
-        }
-
-        /// <inheritdoc/>
-        public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData)
         {
         }
 

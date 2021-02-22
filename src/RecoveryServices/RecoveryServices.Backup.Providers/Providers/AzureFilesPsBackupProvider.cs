@@ -199,14 +199,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
             if (targetStorageAccountName != null)
-            {                
+            {
                 targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName);
-                
-                if(targetStorageAccountResource == null)
-                {
-                    throw new ArgumentException(string.Format(Resources.InvalidTargetStorageAccount));
-                }
-
                 targetStorageAccountLocation = targetStorageAccountResource.Location;
             }
 
@@ -215,7 +209,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             RestoreFileSpecs restoreFileSpec = new RestoreFileSpecs();
             AzureFileShareRestoreRequest restoreRequest = new AzureFileShareRestoreRequest();
             restoreRequest.CopyOptions = copyOptions;
-
             restoreRequest.SourceResourceId = storageAccountResource.Id;
             if (sourceFilePath != null)
             {

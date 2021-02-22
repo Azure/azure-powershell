@@ -23,7 +23,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
-using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -98,11 +97,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
-            if (NetworkAclBypass != null)
-            {
-                databaseAccountUpdateParameters.NetworkAclBypass = 
-                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
-            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
@@ -138,12 +132,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
                 databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
-            }
-
-            if (NetworkAclBypassResourceId != null)
-            {
-                Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
-                databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

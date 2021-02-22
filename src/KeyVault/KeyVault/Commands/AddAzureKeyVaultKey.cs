@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -273,17 +271,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = true,
             ParameterSetName = HsmInteractiveCreateParameterSet,
-            HelpMessage = "Specifies the key type of this key. When importing BYOK keys, it defaults to 'RSA'.")]
+            HelpMessage = "Specifies the key type of this key.")]
         [Parameter(Mandatory = true,
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = true,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InteractiveImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdImportParameterSet)]
         [PSArgumentCompleter("RSA", "EC", "oct")]
         public string KeyType { get; set; }
 
@@ -294,12 +286,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InteractiveImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdImportParameterSet)]
         [PSArgumentCompleter("P-256", "P-256K", "P-384", "P-521")]
         public string CurveName { get; set; }
         #endregion
@@ -419,8 +405,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         internal JsonWebKey CreateWebKeyFromFile()
         {
-            ValidateEcParameters();
-
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
@@ -428,26 +412,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();
-            var converterExtraInfo = new WebKeyConverterExtraInfo()
-            {
-                KeyType = KeyType,
-                CurveName = CurveName
-            };
-
-            return converterChain.ConvertKeyFromFile(keyFile, KeyFilePassword, converterExtraInfo);
-        }
-
-        private void ValidateEcParameters()
-        {
-            if (JwkHelper.IsEC(KeyType) && string.IsNullOrEmpty(CurveName))
-            {
-                throw new AzPSArgumentException(Resources.EcButNoCurveName, nameof(CurveName));
-            }
-
-            if (!string.IsNullOrEmpty(CurveName) && !JwkHelper.IsEC(KeyType))
-            {
-                throw new AzPSArgumentException(Resources.CurveNameButNotEc, nameof(KeyType));
-            }
+            return converterChain.ConvertKeyFromFile(keyFile, KeyFilePassword);
         }
 
         internal Track2Sdk.JsonWebKey CreateTrack2WebKeyFromFile()

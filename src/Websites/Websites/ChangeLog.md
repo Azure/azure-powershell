@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 2.3.0
-* Added support for Importing a key vault certificate to WebApp.
-
 ## Version 2.2.0
 * Added support for App Service Managed certificates
     - `New-AzWebAppCertificate`

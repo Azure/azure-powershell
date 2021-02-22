@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzCostManagementExport' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $export = Update-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01 -ScheduleRecurrence 'Weekly'
         $export.property.ScheduleRecurrence | Should -Be 'Weekly'
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $oldExport = Get-AzCostManagementExport -Scope "subscriptions/$($env.SubscriptionId)" -Name $env.exportName01
         $export = Update-AzCostManagementExport -InputObject $oldExport -ScheduleRecurrence 'Weekly'
         $export.property.ScheduleRecurrence | Should -Be 'Weekly'

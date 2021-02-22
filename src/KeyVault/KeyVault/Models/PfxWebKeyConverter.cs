@@ -20,6 +20,7 @@ using System.Security.Cryptography.X509Certificates;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -30,12 +31,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.next = next;
         }
 
-        public Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null)
+        public Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
         {
             if (CanProcess(fileInfo))
                 return Convert(fileInfo.FullName, password);
             if (next != null)
-                return next.ConvertKeyFromFile(fileInfo, password, extraInfo);
+                return next.ConvertKeyFromFile(fileInfo, password);
             throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return CreateJWK(key);
         }
-
+         
         private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string pfxFileName, SecureString pfxPassword)
         {
             X509Certificate2 certificate;
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             // to do: support converting oct to jsonwebKey
 
             throw new ArgumentException(string.Format(KeyVaultProperties.Resources.ImportNotSupported, "oct-HSM"));
-
+            
         }
 
         private static Track1Sdk.JsonWebKey CreateJWK(RSA rsa)
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(ECDsa ecdSa)
         {
-            if (ecdSa == null)
+            if (ecdSa == null) 
             {
                 throw new ArgumentNullException("ecdSa");
             }

@@ -124,7 +124,7 @@ Support                               | `Az.Support`                            
 Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery]
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
-Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
+VMWare Virtual Stream                 | `Az.VMWare`                             | [![VMWare]][VMWareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
@@ -246,7 +246,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Synapse]:                    https://img.shields.io/powershellgallery/v/Az.Synapse.svg?style=flat-square&label=Az.Synapse
 [TimeSeriesInsights]:         https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
-[VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
+[VMWare]:                     https://img.shields.io/powershellgallery/v/Az.VMWare.svg?style=flat-square&label=Az.VMWare
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
 
@@ -366,6 +366,6 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SynapseGallery]:                    https://www.powershellgallery.com/packages/Az.Synapse/
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
-[VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
+[VMWareGallery]:                     https://www.powershellgallery.com/packages/Az.VMWare/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/

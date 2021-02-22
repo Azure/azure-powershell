@@ -91,13 +91,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
         public string CustomBlockResponseBody { get; set; }
 
-        /// <summary>
-        /// Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'")]
-        [PSArgumentCompleter("Enabled", "Disabled")]
-        public string RequestBodyCheck { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var existingPolicy = FrontDoorManagementClient.Policies.List(ResourceGroupName)
@@ -126,8 +119,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     Mode = this.IsParameterBound(c => c.Mode) ? Mode : PSMode.Prevention.ToString(),
                     CustomBlockResponseBody = CustomBlockResponseBody == null ? CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody)),
                     CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
-                    RedirectUrl = RedirectUrl,
-                    RequestBodyCheck = this.IsParameterBound(c => c.RequestBodyCheck) ? RequestBodyCheck : PSEnabledState.Enabled.ToString()
+                    RedirectUrl = RedirectUrl
                 }
             };
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.CreateWebApplicationFirewallPolicy, Name)))

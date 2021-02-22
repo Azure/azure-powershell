@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Data type to show in view.</summary>
+    /// <summary>TypeConverter implementation for PivotType.</summary>
     public partial class PivotTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

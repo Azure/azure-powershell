@@ -27,5 +27,4 @@ Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud
 Az.TimeSeriesInsights
-Az.VMware
 Az.WindowsIotServices

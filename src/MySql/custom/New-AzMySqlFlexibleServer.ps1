@@ -191,6 +191,7 @@ process {
             $Password = Get-GeneratePassword
             $PSBoundParameters.AdministratorLoginPassword = $Password | ConvertTo-SecureString -AsPlainText -Force
         }
+        $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
         Import-Module -Name Az.Resources
         if(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
@@ -307,7 +308,7 @@ process {
             $Server.FirewallRuleName = $FirewallRuleName
         }
         $Server.DatabaseName = $DEFAULT_DB_NAME
-        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword
+        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
 
         return $Server
 
@@ -525,7 +526,7 @@ function CreateFirewallRule($Parameters) {
         }
         return $FirewallRule.Name
     }
-    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -eq 'none') {
+    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
         Write-Host "No firewall rule was set"
     }
 }

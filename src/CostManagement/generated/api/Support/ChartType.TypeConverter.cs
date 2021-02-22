@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Chart type of the main view in Cost Analysis. Required.</summary>
+    /// <summary>TypeConverter implementation for ChartType.</summary>
     public partial class ChartTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -18,10 +18,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
-
 using Microsoft.Azure.Commands.Aks.Properties;
-using Microsoft.Azure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
@@ -94,20 +91,14 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             {
                 if(fromMirror)
                 {
-                    throw new AzPSArgumentException(
-                        Resources.NoKubectlForOsxOnMirror,
-                        nameof(DownloadFromMirror),
-                        desensitizedMessage: Resources.NoKubectlForOsxOnMirror);
+                    throw new PSInvalidOperationException(Resources.NoKubectlForOsxOnMirror);
                 }
                 destFilePath = Path.Combine(Destination, KubecliString);
                 sourceUrlBuilder.AppendFormat(KubecliPathFormat, Version, "darwin", KubecliString);
             }
             else
             {
-                var ex = new PlatformNotSupportedException(Resources.NotSupportOnThisOs);
-                ex.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
-                ex.Data[AzurePSErrorDataKeys.DesensitizedErrorMessageKey] = Resources.NotSupportOnThisOs;
-                throw ex;
+                throw new PSInvalidOperationException(Resources.NotSupportOnThisOs);
             }
 
             bool fileExists = File.Exists(destFilePath);

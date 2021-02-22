@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the column in the export.</summary>
+    /// <summary>TypeConverter implementation for QueryColumnType.</summary>
     public partial class QueryColumnTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

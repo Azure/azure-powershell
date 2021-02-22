@@ -107,10 +107,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 WriteExceptionError(ex);
             }
-            finally
-            {
-                UnregisterDelegatingHandlerIfRegistered();
-            }
         }
         #endregion Cmdlet Overrides
 

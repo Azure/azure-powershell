@@ -24,9 +24,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// does not matter to resulting prediction - the prediction should adapt to the
     /// order of the parameters typed by the user.
     /// </summary>
-    /// <remarks>
-    /// This doesn't handle the positional parameters yet.
-    /// </remarks>
     sealed class ParameterSet
     {
         /// <summary>
@@ -39,14 +36,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(commandAst, $"{nameof(commandAst)} cannot be null.");
 
             var parameters = new List<Parameter>();
+            var elements = commandAst.CommandElements.Skip(1);
             CommandParameterAst param = null;
             Ast arg = null;
-
-            // Loop through all the parameters. The first element of CommandElements is the command name, so skip it.
-            for (var i = 1; i < commandAst.CommandElements.Count(); ++i)
+            foreach (Ast elem in elements)
             {
-                var elem = commandAst.CommandElements[i];
-
                 if (elem is CommandParameterAst p)
                 {
                     AddParameter(param, arg);
@@ -74,22 +68,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             Parameters = parameters;
 
-            void AddParameter(CommandParameterAst parameter, Ast parameterValue)
+            void AddParameter(CommandParameterAst parameterName, Ast parameterValue)
             {
-                if (parameter != null)
+                if (parameterName != null)
                 {
-                    var value = parameterValue?.ToString();
-                    if (value == null)
-                    {
-                        value = parameter.Argument?.ToString();
-                    }
-
-                    if (value != null)
-                    {
-                        value = CommandLineUtilities.UnescapePredictionText(value);
-                    }
-
-                    parameters.Add(new Parameter(parameter.ParameterName, value));
+                    parameters.Add(new Parameter(parameterName.ParameterName, (parameterValue == null) ? null : CommandLineUtilities.UnescapePredictionText(parameterValue.ToString())));
                 }
             }
         }

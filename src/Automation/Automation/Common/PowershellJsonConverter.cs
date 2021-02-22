@@ -20,9 +20,6 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Text;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -34,41 +31,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 return null;
             }
-            if (inputObject is string @str)
+            while(inputObject is PSObject && ((PSObject)inputObject).BaseObject != null)
             {
-                return str.Trim();
+                inputObject = ((PSObject)inputObject).BaseObject;
             }
-            else if (inputObject is object[] @objectArray)
+            if(inputObject is string)
             {
-                return SerializeArray(objectArray);
-            }
-            else if (inputObject is PSObject @psObject)
-            {
-                return SerializePsObject(psObject);
+                inputObject = ((string)inputObject).Trim();
             }
             return JsonConvert.SerializeObject(inputObject);
         }
 
-        private static string SerializePsObject(PSObject @psObject)
-        {
-            Dictionary<string, string> hashTable = new Dictionary<string, string>();
-            foreach (var item in @psObject.Properties)
-            {
-                hashTable.Add(item.Name, Serialize(item.Value));
-            }
-
-            return JsonConvert.SerializeObject(hashTable);
-        }
-
-        private static string SerializeArray(object[] objectArray)
-        {
-            List<object> objectList = objectArray.ToList();
-            return string.Format("[{0}]", string.Join(",", objectList.Select(Serialize).ToList()));
-        }
-
         public static PSObject Deserialize(string json)
         {
-            if (string.IsNullOrEmpty(json))
+            if (String.IsNullOrEmpty(json))
             {
                 return null;
             }

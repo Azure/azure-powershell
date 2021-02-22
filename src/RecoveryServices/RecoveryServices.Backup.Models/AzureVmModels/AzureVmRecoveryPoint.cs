@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>

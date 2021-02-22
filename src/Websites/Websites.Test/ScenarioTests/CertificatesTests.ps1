@@ -140,24 +140,3 @@ function Test-RemoveAzWebAppCertificate
 	
 	}
 }
-
-<#
-.SYNOPSIS
-Tests for importing a keyvaultcertificate to appservice
-#>
-function Test-ImportAzWebAppKeyVaultCertificate
-{
-	$rgname = "testkv1611"
-	$wname = "testasewebapp"
-	$keyvaultname =	"testkv1611"
-	$keyvaultcertname =	"testcertname1611"
-	try
-	{		
-		#Setup
-		$kvcert = Import-AzWebAppKeyVaultCertificate -ResourceGroupName $rgname -WebAppName $wname -KeyVaultName $keyvaultname -CertName $keyvaultcertname
-	
-	}
-	finally{
-
-	}
-}

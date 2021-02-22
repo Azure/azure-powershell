@@ -19,8 +19,6 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
 using System.Security.Cryptography;
-using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.Commands.KeyVault.Helpers;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -34,22 +32,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.next = next;
         }
 
-        public Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null)
+        public Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
         {
             if (CanProcess(fileInfo))
-            {
-                var jwk = Convert(fileInfo.FullName);
-
-                if (JwkHelper.IsEC(extraInfo?.KeyType))
-                {
-                    jwk.Kty = JsonWebKeyType.EllipticCurveHsm; // byok -> hsm
-                    jwk.CurveName = extraInfo.CurveName;
-                }
-
-                return jwk;
-            }
+                return Convert(fileInfo.FullName);
             else if (next != null)
-                return next.ConvertKeyFromFile(fileInfo, password, extraInfo);
+                return next.ConvertKeyFromFile(fileInfo, password);
             else
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
@@ -84,19 +72,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 T = byokBlob,
             };
         }
-
+        
         private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string byokFileName)
         {
             byte[] byokBlob = File.ReadAllBytes(byokFileName);
 
-            if (byokBlob == null || byokBlob.Length == 0)
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "BYOK"));
+             if (byokBlob == null || byokBlob.Length == 0)
+                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "BYOK"));
 
-            return new Track2Sdk.JsonWebKey(new RSACryptoServiceProvider())
-            {
-                KeyType = Track2Sdk.KeyType.RsaHsm,
-                T = byokBlob,
-            };
+             return new Track2Sdk.JsonWebKey(new RSACryptoServiceProvider())
+             {
+                 KeyType = Track2Sdk.KeyType.RsaHsm,
+                 T = byokBlob,
+             };
         }
 
         private IWebKeyConverter next;

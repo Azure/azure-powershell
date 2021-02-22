@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The format of the export being delivered. Currently only 'Csv' is supported.</summary>
+    /// <summary>TypeConverter implementation for FormatType.</summary>
     public partial class FormatTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

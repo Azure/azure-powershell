@@ -21,11 +21,9 @@ using System;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Update-AzRouteServer")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
     public partial class UpdateAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {

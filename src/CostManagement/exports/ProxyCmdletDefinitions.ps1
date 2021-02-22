@@ -685,7 +685,7 @@ Column                Row
 ------                ---
 {UsageDate, Currency} {20201101 USD, 20201102 USD, 20201103 USD, 20201104 USD…}
 .Example
-PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Value 'API'
+PS C:\> $dimensions = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceGroup' -Operator 'In' -Value 'API'
 $filter = New-AzCostManagementQueryFilterObject -Dimensions $dimensions
 Invoke-AzCostManagementQuery -Type Usage -Scope "subscriptions/***********" -DatasetGranularity 'Monthly' -DatasetFilter $filter -Timeframe MonthToDate -Debug
 
@@ -705,6 +705,7 @@ DATASETFILTER <IQueryFilter>: Has filter expression to use in the query.
   [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
     Name <String>: The name of the column to use in comparison.
+    Operator <OperatorType>: The operator to use for comparison.
     Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
   [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
@@ -992,6 +993,12 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    # [Parameter()]
+    # [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    # [System.String]
+    # # eTag of the resource.
+    # # To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+    # ${ETag},
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
@@ -1139,7 +1146,7 @@ Create a in-memory object for QueryComparisonExpression
 .Description
 Create a in-memory object for QueryComparisonExpression
 .Example
-PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
+PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')
 
 Name             Operator Value
 ----             -------- -----
@@ -1229,8 +1236,8 @@ Create a in-memory object for QueryFilter
 .Description
 Create a in-memory object for QueryFilter
 .Example
-PS C:\> $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
-PS C:\> $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Value @('UAT', 'Prod')
+PS C:\> $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Operator In -Value @('East US', 'West Europe')
+PS C:\> $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Operator In -Value @('UAT', 'Prod')
 PS C:\> New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimension $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
 
 And       :
@@ -1250,6 +1257,7 @@ AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
   [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
     Name <String>: The name of the column to use in comparison.
+    Operator <OperatorType>: The operator to use for comparison.
     Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
   [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
@@ -1257,12 +1265,14 @@ AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
 
 DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
   Name <String>: The name of the column to use in comparison.
+  Operator <OperatorType>: The operator to use for comparison.
   Value <String[]>: Array of values to use for comparison
 
 NOT <IQueryFilter>: The logical "NOT" expression.
   [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
     Name <String>: The name of the column to use in comparison.
+    Operator <OperatorType>: The operator to use for comparison.
     Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
   [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
@@ -1272,6 +1282,7 @@ OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
   [And <IQueryFilter[]>]: The logical "AND" expression. Must have at least 2 items.
   [Dimensions <IQueryComparisonExpression>]: Has comparison expression for a dimension
     Name <String>: The name of the column to use in comparison.
+    Operator <OperatorType>: The operator to use for comparison.
     Value <String[]>: Array of values to use for comparison
   [Not <IQueryFilter>]: The logical "NOT" expression.
   [Or <IQueryFilter[]>]: The logical "OR" expression. Must have at least 2 items.
@@ -1279,6 +1290,7 @@ OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
 
 TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
   Name <String>: The name of the column to use in comparison.
+  Operator <OperatorType>: The operator to use for comparison.
   Value <String[]>: Array of values to use for comparison
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
