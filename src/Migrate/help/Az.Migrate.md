@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Migrate
 Module Guid: c638312b-9fd1-4611-a5cc-11a8caa5b698
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.migrate
+Download Help Link: https://docs.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -46,6 +46,9 @@ Method to get a site.
 
 ### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
 Gets a solution in the migrate project.
+
+### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated

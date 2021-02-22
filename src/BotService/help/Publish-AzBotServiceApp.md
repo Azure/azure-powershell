@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BotService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.botservice/publish-azbotserviceapp
+online version: https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 schema: 2.0.0
 ---
 

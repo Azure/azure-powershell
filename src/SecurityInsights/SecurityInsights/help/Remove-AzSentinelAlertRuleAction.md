@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.dll-Help.xml
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.securityinsights/remove-azsentinelalertruleaction
+online version: https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertruleaction
 schema: 2.0.0
 ---
 

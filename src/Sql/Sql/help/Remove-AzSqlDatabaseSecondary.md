@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 54E01B3B-FFA5-4E3C-BA5A-A281FF5C9F8B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabasesecondary
+online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary
 schema: 2.0.0
 ---
 

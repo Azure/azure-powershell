@@ -122,6 +122,10 @@
                 <ScriptBlock>if ($_.virtualNetworkRules[0] -ne $null) {"[" + $_.virtualNetworkRules[0].VirtualNetworkResourceId + ",...]"} else {$null}</ScriptBlock>
                 <Label>VirtualNetworkRules</Label>
               </ListItem>
+              <ListItem>
+                <ScriptBlock>if ($_.ResourceAccessRules[0] -ne $null) {"[(" + $_.ResourceAccessRules[0].TenantId + "," + $_.ResourceAccessRules[0].ResourceId + "),...]"} else {$null}</ScriptBlock>
+                <Label>ResourceAccessRules</Label>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -243,9 +247,29 @@
                 <Label>BaseBlob.Delete.DaysAfterModificationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.Snapshot.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Snapshot.TierToCool.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Snapshot.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Snapshot.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.Snapshot.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Snapshot.Delete.DaysAfterCreationGreaterThan</Label>
-              </ListItem>    
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.TierToCool.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.Delete.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -272,6 +296,36 @@
                 <ScriptBlock>ConvertTo-Json $_.Definition -Depth 10</ScriptBlock>
                 <Label>Definition</Label>
               </ListItem>    
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSFileServiceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSFileServiceProperties</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>StorageAccountName</PropertyName>
+                <Label>StorageAccountName</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+                <Label>ResourceGroupName</Label>
+              </ListItem>
+              <ListItem>
+                <Label>ShareDeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.ShareDeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ShareDeleteRetentionPolicy.Days</Label>
+                <ScriptBlock>$_.ShareDeleteRetentionPolicy.Days</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -659,6 +713,10 @@
             <Label>KeyVaultKeyUri</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RequireInfrastructureEncryption</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -674,6 +732,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.KeyVaultProperties.keyUri</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RequireInfrastructureEncryption</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

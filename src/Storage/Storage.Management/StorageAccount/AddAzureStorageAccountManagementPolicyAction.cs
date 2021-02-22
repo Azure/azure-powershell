@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         protected const string BaseBlobParameterSet = "BaseBlob";
         protected const string SnapshotParameterSet = "Snapshot";
+        protected const string BlobVersionParameterSet = "BlobVersion";
 
         [Parameter(Mandatory = true,
             HelpMessage = "The management policy action for baseblob.",
@@ -41,12 +42,26 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "The management policy action for snapshot.",
             ParameterSetName = SnapshotParameterSet)]
         [ValidateSet(ManagementPolicyAction.Delete,
+            ManagementPolicyAction.TierToArchive,
+            ManagementPolicyAction.TierToCool,
             IgnoreCase = true)]
         public string SnapshotAction { get; set; }
 
         [Parameter(Mandatory = true,
+            HelpMessage = "The management policy action for blob version.",
+            ParameterSetName = BlobVersionParameterSet)]
+        [ValidateSet(ManagementPolicyAction.Delete,
+            ManagementPolicyAction.TierToArchive,
+            ManagementPolicyAction.TierToCool,
+            IgnoreCase = true)]
+        public string BlobVersionAction { get; set; }
+
+        [Parameter(Mandatory = true,
             HelpMessage = "Integer value indicating the age in days after creation.",
             ParameterSetName = SnapshotParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Integer value indicating the age in days after creation.",
+            ParameterSetName = BlobVersionParameterSet)]
         [ValidateNotNullOrEmpty]
         public int DaysAfterCreationGreaterThan { get; set; }
 
@@ -98,7 +113,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         action.Snapshot = new PSManagementPolicySnapShot();
                     }
-                    action.Snapshot.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                    switch (SnapshotAction)
+                    {
+                        case ManagementPolicyAction.Delete:
+                            action.Snapshot.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        case ManagementPolicyAction.TierToCool:
+                            action.Snapshot.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        case ManagementPolicyAction.TierToArchive:
+                            action.Snapshot.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        default:
+                            throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid SnapshotAction: {0}", this.SnapshotAction));
+                    }
+                    break;
+                case BlobVersionParameterSet:
+                    if (action.Version is null)
+                    {
+                        action.Version = new PSManagementPolicyVersion();
+                    }
+                    switch (BlobVersionAction)
+                    {
+                        case ManagementPolicyAction.Delete:
+                            action.Version.Delete = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        case ManagementPolicyAction.TierToCool:
+                            action.Version.TierToCool = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        case ManagementPolicyAction.TierToArchive:
+                            action.Version.TierToArchive = new PSDateAfterCreation(this.DaysAfterCreationGreaterThan);
+                            break;
+                        default:
+                            throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid BlobVersionAction: {0}", this.BlobVersionAction));
+                    }
                     break;
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid ParameterSet: {0}", this.ParameterSetName));

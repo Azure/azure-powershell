@@ -38,7 +38,7 @@ PROPERTY <IMigrateProjectProperties>: Gets or sets the nested properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateproject
+https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateproject
 #>
 function Set-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]

@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 * #13763- Introduced an option to give custom timeout for `Publish-AzWebApp` 
+* Added support for App Service Environment
+    - `New-AzAppServiceEnvironment`
+    - `Remove-AzAppServiceEnvironment`
+    - `Get-AzAppServiceEnvironment`
+    - `New-AzAppServiceEnvironmentInboundServices`
 
 ## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.
