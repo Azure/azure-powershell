@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
+* Supported resource access rule in NetworkRuleSet
+    - `Update-AzStorageAccountNetworkRuleSet`
+    - `Add-AzStorageAccountNetworkRule`
+    - `Remove-AzStorageAccountNetworkRule`
+* Supported Blob version and Append Blob type in Management Policy
+    - `Add-AzStorageAccountManagementPolicyAction`
+    - `New-AzStorageAccountManagementPolicyFilter`
+    - `Set-AzStorageAccountManagementPolicy`
+* Supported create/update account with AllowSharedKeyAccess
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create Encryption Scope with RequireInfrastructureEncryption
+    - `New-AzStorageEncryptionScope`
 
 ## Version 3.3.0
 * Supported RoutingPreference settings in create/update Storage account

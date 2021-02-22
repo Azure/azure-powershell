@@ -36,6 +36,51 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 
+        protected struct SmbProtocolVersions
+        {
+            internal const string SMB21 = "SMB2.1";
+            internal const string SMB30 = "SMB3.0";
+            internal const string SMB311 = "SMB3.1.1";
+        }
+
+        protected struct SmbAuthenticationMethods
+        {
+            internal const string NTLMv2 = "NTLMv2";
+            internal const string Kerberos = "Kerberos";
+        }
+
+        protected struct ChannelEncryption
+        {
+            internal const string AES128CCM = "AES-128-CCM";
+            internal const string AES128GCM = "AES-128-GCM"; 
+            internal const string AES256GCM = "AES-256-GCM";
+        }
+
+        protected struct KerberosTicketEncryption
+        {
+            internal const string RC4HMAC = "RC4-HMAC";
+            internal const string AES256 = "AES-256";
+        }
+
+        public string ConnectStringArray(string[] stringArray, string seperator = ";")
+        {
+            if (stringArray == null)
+            {
+                return null;
+            }
+            string returnValue = string.Empty;
+
+            foreach( string s in stringArray)
+            {
+                returnValue += s + seperator;
+            }
+            if (!String.IsNullOrEmpty(returnValue))
+            {
+                returnValue = returnValue.Substring(0, returnValue.Length - seperator.Length);
+            }
+            return returnValue;
+        }
+
         public IStorageManagementClient StorageClient
         {
             get
