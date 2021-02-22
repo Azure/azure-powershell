@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
 
 ## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
