@@ -251,13 +251,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.UserId, _telemetryClient.CorrelationId);
+                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.CorrelationId);
 
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
                         VersionNumber = this._azContext.AzVersion
                     };
-
 
                     var requestBody = new PredictionRequestBody(commands)
                     {
