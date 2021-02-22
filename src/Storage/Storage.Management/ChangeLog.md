@@ -32,6 +32,8 @@
     - `Set-AzStorageAccount`
 * Supported create Encryption Scope with RequireInfrastructureEncryption
     - `New-AzStorageEncryptionScope`
+* Supported copy block blob synchronously, with encryption scope
+    - `Copy-AzStorageBlob`
 
 ## Version 3.3.0
 * Supported RoutingPreference settings in create/update Storage account

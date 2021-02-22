@@ -23,6 +23,9 @@ Adds an action to the input ManagementPolicy Action Group object, or creates a M
 ### [Close-AzStorageFileHandle](Close-AzStorageFileHandle.md)
 Closes file handles of a file share, a file directory or a file.
 
+### [Copy-AzStorageBlob](Copy-AzStorageBlob.md)
+Copy a blob synchronously.
+
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.
 
