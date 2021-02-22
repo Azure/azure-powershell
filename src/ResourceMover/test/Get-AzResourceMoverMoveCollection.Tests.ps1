@@ -12,9 +12,9 @@ while (-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzResourceMoverMoveCollection' {
-    It 'List' -Skip {
+    It 'List' {
         $tempSubscriptionId = "d43336d5-9b49-4b53-a3e5-1b07465f4bd6"
-        $moveCollection = Get-AzResourceMoverMoveCollection  -SubscriptionId $env.SubscriptionId
+        $moveCollection = Get-AzResourceMoverMoveCollection  -SubscriptionId $tempSubscriptionId
         $moveCollection.Count | Should -BeGreaterOrEqual 2
     }
 
