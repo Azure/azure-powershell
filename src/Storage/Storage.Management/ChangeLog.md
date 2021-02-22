@@ -27,8 +27,6 @@
     - `Add-AzStorageAccountManagementPolicyAction`
     - `New-AzStorageAccountManagementPolicyFilter`
     - `Set-AzStorageAccountManagementPolicy`
-* Supported secure SMB setting in File service properties
-    - `Update-AzStorageFileServiceProperty`
 * Supported create/update account with AllowSharedKeyAccess
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
