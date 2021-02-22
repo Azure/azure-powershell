@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <PackageId>Az.Tools.Predictor</PackageId>
-    <Version>0.2.0-mahuang</Version>
+    <Version>0.2.0</Version>
     <Authors>Microsoft Corporation</Authors>
     <Company>Microsoft Corporation</Company>
     <Copyright>Microsoft Corporation. All rights reserved.</Copyright>
