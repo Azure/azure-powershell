@@ -23,6 +23,8 @@
 * Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
     - `New-AzVpnSiteLinkConnection`
     - `Update-AzVpnConnection`
+* Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
+    - `Get-VpnSiteLinkConnectionIkeSa`
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
