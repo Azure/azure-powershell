@@ -19,8 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed issues with TemplateSpec deployments in New-AzTenantDeployment and New-AzManagementGroupDeployment
 * Added support for -QueryString parameter in Test-Az*Deployments cmdlets
 * Fixed issue with dynamic parameters when New-Az*Deployments is used with -QueryString
+* Added support for `-TemplateParameterObject` parameter while using `-TemplateSpecId` parameter in New-Az*Deployments cmdlets.
+* Fixed the inaccurate error message received on trying to deploy a non existant template spec.
 * Added support for policy export format to New-AzPolicyDefinition -Policy
 
 ## Version 3.2.1

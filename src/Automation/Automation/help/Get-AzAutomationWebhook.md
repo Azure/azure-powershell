@@ -33,7 +33,8 @@ Get-AzAutomationWebhook -RunbookName <String> [-ResourceGroupName] <String> [-Au
 
 ## DESCRIPTION
 The **Get-AzAutomationWebhook** cmdlet gets webhooks.
-To get specific webhooks, specify a webhook name or specify the name of an Azure Automation runbook to get the webhooks connected to it.
+To get specific webhooks, specify a webhook name or specify the name of an Azure Automation runbook to get the webhooks connected to it.<br>
+**Note:** The WebhookUri is returned as empty string due to security concerns. Please make sure to save the webhook URL that **New-AzAutomationWebhook** cmdlet returns, because it cannot be retrieved by using **Get-AzAutomationWebhook**.
 
 ## EXAMPLES
 

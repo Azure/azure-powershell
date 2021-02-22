@@ -613,4 +613,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetResourcegroupNotSupported" xml:space="preserve">
     <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
+  <data name="InvalidTargetStorageAccount" xml:space="preserve">
+    <value>Please provide a vaild target storage account</value>
+  </data>
 </root>

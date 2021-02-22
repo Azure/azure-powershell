@@ -42,9 +42,10 @@ The **Update-AzStorageFileServiceProperty** cmdlet modifies the service properti
 ```powershell
 PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
 
-StorageAccountName ResourceGroupName ShareDeleteRetentionPolicy.Enabled ShareDeleteRetentionPolicy.Days
------------------- ----------------- ---------------------------------- -------------------------------
-mystorageaccount   myresourcegroup   True                               5
+StorageAccountName                            : mystorageaccount
+ResourceGroupName                             : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled            : True
+ShareDeleteRetentionPolicy.Days               : 5
 ```
 
 This command enables File share softdelete delete with retention days as 5

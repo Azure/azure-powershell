@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allowed update of attestation information (e.g. keys, certificates) for exsting device enrollments and enrollment groups
 
 ## Version 0.9.0
 * Allow tags in IoT Device Provisioning Service create cmdlet.
