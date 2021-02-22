@@ -317,7 +317,7 @@
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="$(TestCsprojListCount) == 0" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="$(TestCsprojListCount) != 0" />
     <Message Importance="high" Text="Finish running tests..." />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
