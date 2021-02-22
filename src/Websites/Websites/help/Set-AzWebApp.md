@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 4166119F-D26A-45A1-B040-D7B2459833D6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebapp
+online version: https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ PS C:\> Set-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebAp
 ```
 
 This command changes the appservice plan associated with the Web App ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learn more about changing the appservice plan and constraints associated with it.
-https://docs.microsoft.com/en-us/azure/app-service/app-service-plan-manage#move-an-app-to-another-app-service-plan
+https://docs.microsoft.com/azure/app-service/app-service-plan-manage#move-an-app-to-another-app-service-plan
 
 ### Example 2
 ```powershell

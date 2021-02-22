@@ -12,7 +12,7 @@
   RootModule = './Az.Migrate.psm1'
   
   # Version number of this module.
-  ModuleVersion = '0.1.1'
+  ModuleVersion = '0.2.0'
   
   # Supported PSEditions
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@
   # ProcessorArchitecture = ''
   
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.5'; })
   
   # Assemblies that must be loaded prior to importing this module
   RequiredAssemblies = './bin/Az.Migrate.private.dll'
@@ -107,7 +107,12 @@
           # IconUri = ''
   
           # ReleaseNotes of this module
-          ReleaseNotes = 'First preview release for module Az.Migrate'
+          ReleaseNotes = '* Bug fixed in update replication migration item to pass all properties (changed/unchanged) to service, and not just the changed ones.
+* Bug fixed in enable migrate to pick correct run as account id for VMware Cbt provider.
+* Added new parameter (MachineName) in get replication migration item, to get replication migration item by friendly name.
+* Bug fixed in enable migrate to stop passing Target Boot Diagnostic Storage Account if it is in a different subscription id than the target VM.
+* Fix to in online URLs of existing code doc.'
+
   
           # Prerelease string of this module
           # Prerelease = ''

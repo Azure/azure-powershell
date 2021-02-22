@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added null check for target storage account in FileShare restore.
+
+## Version 3.4.0
+* modified policy validation limits as per backup service.
+* Added Zone Redundancy for Recovery Service Vaults. 
+* Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability zone for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for UseManagedDisk for HyperV to Azure provider
 
 ## Version 3.3.0
 * Added Cross Region Restore feature.  

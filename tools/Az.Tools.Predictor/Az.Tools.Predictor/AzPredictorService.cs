@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -38,8 +39,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public sealed class RequestContext
             {
-                public string CorrelationId { get; set; } = Guid.Empty.ToString();
-                public string SessionId { get; set; } = Guid.Empty.ToString();
                 public string SubscriptionId { get; set; } = Guid.Empty.ToString();
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
@@ -55,6 +54,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public Version VersionNumber{ get; set; } = new Version(0, 0);
         }
+
+        /// <summary>
+        /// The name of the header value that contains the platform correlation id.
+        /// </summary>
+        private const string CorrelationIdHeader = "Sml-CorrelationId";
 
         private const string ThrottleByIdHeader = "X-UserId";
         private readonly HttpClient _client;
@@ -81,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private HashSet<string> _allPredictiveCommands;
         private CancellationTokenSource _predictionRequestCancellationSource;
-        private readonly ParameterValuePredictor _parameterValuePredictor = new ParameterValuePredictor();
+        private readonly ParameterValuePredictor _parameterValuePredictor;
 
         private readonly ITelemetryClient _telemetryClient;
         private readonly IAzContext _azContext;
@@ -97,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(serviceUri), $"{nameof(serviceUri)} cannot be null or whitespace.");
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
+
+            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient);
 
             _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
@@ -143,22 +149,46 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Tries to get the suggestions for the user input from the command history. If that doesn't find
         /// <paramref name="suggestionCount"/> suggestions, it'll fallback to find the suggestion regardless of command history.
         /// </remarks>
-        public CommandLineSuggestion GetSuggestion(Ast input, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
+        public CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
         {
-            Validation.CheckArgument(input, $"{nameof(input)} cannot be null");
+            Validation.CheckArgument(context, $"{nameof(context)} cannot be null");
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
             Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
-            var commandAst = input.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
-            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var relatedAsts = context.RelatedAsts;
+            CommandAst commandAst = null;
+
+            for (var i = relatedAsts.Count - 1; i >= 0; --i)
+            {
+                if (relatedAsts[i] is CommandAst c)
+                {
+                    commandAst = c;
+                    break;
+                }
+            }
+
+            var commandName = commandAst?.GetCommandName();
 
             if (string.IsNullOrWhiteSpace(commandName))
             {
                 return null;
             }
 
-            var inputParameterSet = new ParameterSet(commandAst);
-            var rawUserInput = input.Extent.Text;
+            ParameterSet inputParameterSet = null;
+
+            try
+            {
+                inputParameterSet = new ParameterSet(commandAst);
+            }
+            catch when (!IsSupportedCommand(commandName))
+            {
+                // We only ignore the exception when the command name is not supported.
+                // For the supported ones, this most likely happens when positional parameters are used.
+                // We want to collect the telemetry about the exception how common a positional parameter is used.
+                return null;
+            }
+
+            var rawUserInput = context.InputAst.ToString();
             var presentCommands = new Dictionary<string, int>();
             var commandBasedPredictor = _commandBasedPredictor;
             var commandToRequestPrediction = _commandToRequestPrediction;
@@ -258,12 +288,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     Task.Run(async () => {
                         try
                         {
-                            AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
+                            AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.UserId, _telemetryClient.CorrelationId);
 
                             var requestContext = new PredictionRequestBody.RequestContext()
                             {
-                                SessionId = _telemetryClient.SessionId,
-                                CorrelationId = _telemetryClient.CorrelationId,
                                 VersionNumber = this._azContext.AzVersion
                             };
 
@@ -331,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         try
                         {
-                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
+                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.UserId, _telemetryClient.CorrelationId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
 
@@ -400,7 +428,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return commandLine.Split(AzPredictorConstants.CommandParameterSeperator).First();
         }
 
-        private static void ReplaceThrottleUserIdToHeader(HttpRequestHeaders header, string value)
+        private static void SetHttpRequestHeader(HttpRequestHeaders header, string idToThrottle, string correlationId)
         {
             if (header != null)
             {
@@ -408,13 +436,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     header.Remove(AzPredictorService.ThrottleByIdHeader);
 
-                    if (!string.IsNullOrWhiteSpace(value))
+                    if (!string.IsNullOrWhiteSpace(idToThrottle))
                     {
-                        header.Add(AzPredictorService.ThrottleByIdHeader, value);
+                        header.Add(AzPredictorService.ThrottleByIdHeader, idToThrottle);
+                    }
+
+                    header.Remove(AzPredictorService.CorrelationIdHeader);
+
+                    if (!string.IsNullOrWhiteSpace(correlationId))
+                    {
+                        header.Add(AzPredictorService.CorrelationIdHeader, correlationId);
                     }
                 }
             }
-
         }
     }
 }

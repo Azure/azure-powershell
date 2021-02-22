@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 656BE930-E778-40B0-8A75-BFE52DE386CE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsssecret
+online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsssecret
 schema: 2.0.0
 ---
 

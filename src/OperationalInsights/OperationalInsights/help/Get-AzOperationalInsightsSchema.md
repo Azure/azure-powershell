@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 6A834F26-C3D1-46DA-A4A6-1BB5B69291D0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsschema
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsschema
 schema: 2.0.0
 ---
 

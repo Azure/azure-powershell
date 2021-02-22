@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvault
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault
 schema: 2.0.0
 ---
 

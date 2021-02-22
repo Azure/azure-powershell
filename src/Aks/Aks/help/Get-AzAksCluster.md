@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azakscluster
+online version: https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: EC8C915A-A0BC-41DE-9DBF-3617536E3D1A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azcontainerserviceconfig
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azcontainerserviceconfig
 schema: 2.0.0
 ---
 

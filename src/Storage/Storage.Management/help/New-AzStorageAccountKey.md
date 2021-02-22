@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccountkey
+online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountkey
 schema: 2.0.0
 ---
 

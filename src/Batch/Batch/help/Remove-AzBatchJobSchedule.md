@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 97FA5983-0D73-4336-99DA-46E5992F06DC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchjobschedule
+online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchjobschedule
 schema: 2.0.0
 ---
 

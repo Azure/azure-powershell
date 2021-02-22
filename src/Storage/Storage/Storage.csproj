@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.7.0" />
-    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.5.0" />
-    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.5.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.8.0" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.6.0" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.6.0" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.5.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/invoke-azrestmethod
+online version: https://docs.microsoft.com/powershell/module/az.accounts/invoke-azrestmethod
 schema: 2.0.0
 ---
 
@@ -81,7 +81,7 @@ Get log analytics workspace by path
 Api Version
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Http Method
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GET, POST, PUT, PATCH, DELETE
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 list of Target Resource Name
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Target Path
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByPath
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 JSON format payload
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Target Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 Target Resource Provider Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 List of Target Resource Type
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByParameters
 Aliases:
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 Target Subscription Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParameters
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -263,7 +263,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
