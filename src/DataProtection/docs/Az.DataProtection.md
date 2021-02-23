@@ -64,6 +64,9 @@ Returns ResourceOperationGateKeepers collection belonging to a subscription.
 ### [Get-AzDataProtectionResourceOperationResultPatch](Get-AzDataProtectionResourceOperationResultPatch.md)
 
 
+### [GetBackupFrequenceFromTimeInterval](GetBackupFrequenceFromTimeInterval.md)
+
+
 ### [GetBackupFrequencyString](GetBackupFrequencyString.md)
 
 

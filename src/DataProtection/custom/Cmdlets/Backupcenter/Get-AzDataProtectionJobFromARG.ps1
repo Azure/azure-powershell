@@ -17,17 +17,21 @@
         [System.String[]]
         ${Vault},
 
-        [Parameter(Mandatory=$false, HelpMessage='Name of the vault')]
+        [Parameter(Mandatory=$false, HelpMessage='Start Time of the backup Job')]
         [System.DateTime]
         ${StartTime},
 
-        [Parameter(Mandatory=$false, HelpMessage='Name of the vault')]
+        [Parameter(Mandatory=$false, HelpMessage='End Time of the Backup Job')]
         [System.DateTime]
         ${EndTime},
 
         [Parameter(Mandatory=$false, HelpMessage='Operation of the Job Filter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
         ${Operation},
+
+        [Parameter(Mandatory=$false, HelpMessage='Status of the Job Filter')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+        ${Status},
 
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
@@ -45,6 +49,7 @@
         if($PSBoundParameters.ContainsKey("ResourceGroup")) { $query = AddFilterToQuery -Query $query -FilterKey "resourceGroup" -FilterValues  $resourceGroup }
         if($PSBoundParameters.ContainsKey("Vault")) { $query = AddFilterToQuery -Query $query -FilterKey "vaultName" -FilterValues  $Vault }
         if($PSBoundParameters.ContainsKey("Operation")) { $query = AddFilterToQuery -Query $query -FilterKey "operation" -FilterValues $Operation }
+        if($PSBoundParameters.ContainsKey("Status")) { $query = AddFilterToQuery -Query $query -FilterKey "status" -FilterValues $Status }
 
         if($StartTime -ne $null)
         {   
@@ -60,7 +65,7 @@
             $query += "| where properties.endTime < datetime(" + $endTimeFilter + ")"
         }
 
-        foreach($param in @("Subscription", "ResourceGroup", "Vault", "StartTime", "EndTime", "Operation", "DatasourceType"))
+        foreach($param in @("Subscription", "ResourceGroup", "Vault", "StartTime", "EndTime", "Operation", "DatasourceType", "Status"))
         {
             if($PSBoundParameters.ContainsKey($param))
             {

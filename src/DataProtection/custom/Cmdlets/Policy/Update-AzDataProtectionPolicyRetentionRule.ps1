@@ -13,7 +13,7 @@ function Update-AzDataProtectionPolicyRetentionRule {
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name')]
         [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
         ${Name},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='is default')]
@@ -33,6 +33,10 @@ function Update-AzDataProtectionPolicyRetentionRule {
         $parameterSetName = $PsCmdlet.ParameterSetName
         
         if($parameterSetName -eq "RemoveRetention"){
+            if($Name -eq "Default")
+            {
+                throw  "Removing Default Retention Rule is not allowed. Please try again with different rule name."
+            }
             $filteredRules = $Policy.PolicyRule | Where-Object { $_.Name –ne $Name }
             $Policy.PolicyRule = $filteredRules
             return $Policy
@@ -53,6 +57,11 @@ function Update-AzDataProtectionPolicyRetentionRule {
                 {
                     $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource Type."
                     throw $message
+                }
+
+                if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
+                {
+                    throw "Selected Retention Rule " + $Name  + " is not applicable for Datasource Type " + $clientDatasourceType
                 }
 
                 $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureRetentionRule]::new()

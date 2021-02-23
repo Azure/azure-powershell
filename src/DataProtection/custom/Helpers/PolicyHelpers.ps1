@@ -172,17 +172,33 @@ function ValidateBackupSchedule
 	process
 	{
 		$manifest = LoadManifest -DatasourceType $DatasourceType
-		if($manifest.policySetting.backupScheduleSupported -eq $false)
+		if($manifest.policySettings.backupScheduleSupported -eq $false)
 		{
 			$message = "Adding Backup Schedule is not supported for Datasource Type " + $DatasourceType
 			throw $message
 		}
 
 		$backupFrequencyMap = @{"D"="Daily";"H"="Hourly";"W"="Weekly"}
-		if($manifest.policySetting.supportedBackupFrequency.Contains($backupFrequencyMap[$Schedule[0][-1]]) -eq $false)
+		if($manifest.policySettings.supportedBackupFrequency.Contains($backupFrequencyMap[$Schedule[0][-1].ToString()]) -eq $false)
 		{
-			$message = $backupFrequencyMap[$Schedule[0][-1]] + " Backup Schedule is not supported for Datasource Type " + $DatasourceType
+			$message = $backupFrequencyMap[$Schedule[0][-1].ToString()] + " Backup Schedule is not supported for Datasource Type " + $DatasourceType
 			throw $message
 		}
+	}
+}
+
+function GetBackupFrequenceFromTimeInterval
+{
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String[]]
+		$RepeatingTimeInterval
+	)
+
+	process
+	{
+		$backupFrequencyMap = @{"D"="Daily";"H"="Hourly";"W"="Weekly"}
+		return "Backup" + $backupFrequencyMap[$RepeatingTimeInterval[0][-1].ToString()]
 	}
 }

@@ -13,9 +13,9 @@ Prepares Restore Request object for backup
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
- -RestoreMode <RestoreMode> -RestoreTargetType <RestoreTargetType> -SourceDataStore <DataStoreType>
- [-RecoveryPoint <String>] [-TargetResourceId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RecoveryPoint <String>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
+ [-TargetResourceId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,22 +88,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestoreMode
-Restore Mode
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreMode
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RestoreTargetType
+### -RestoreType
 Restore Target Type
 
 ```yaml
