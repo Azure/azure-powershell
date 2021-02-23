@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum AzureRmRecoveryServicesBackupStorageRedundancyType
     {
         GeoRedundant = 1,
+        ZoneRedundant,
         LocallyRedundant
     }
 

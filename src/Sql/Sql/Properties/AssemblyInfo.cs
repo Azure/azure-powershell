@@ -44,8 +44,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("2.15.0")]
-[assembly: AssemblyFileVersion("2.15.0")]
+[assembly: AssemblyVersion("2.16.0")]
+[assembly: AssemblyFileVersion("2.16.0")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Resources.Test")]
 #endif

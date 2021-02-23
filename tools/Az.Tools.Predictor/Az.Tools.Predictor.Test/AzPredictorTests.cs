@@ -37,12 +37,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         public AzPredictorTests(ModelFixture modelFixture)
         {
-            this._fixture = modelFixture;
+            _fixture = modelFixture;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
-            this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
-            this._telemetryClient = new MockAzPredictorTelemetryClient();
-            this._azPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
+            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection);
+            _telemetryClient = new MockAzPredictorTelemetryClient();
+            _azPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
                 SuggestionCount = 1,
                 MaxAllowedCommandDuplicate = 1,
@@ -51,84 +51,250 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
-        /// Verifies when the last command in history are not supported.
-        /// We don't collect the telemetry and only request prediction while StartEarlyProcess is called.
-        /// </summary>
-        [Theory]
-        [InlineData("start_of_snippet\nstart_of_snippet\nstart_of_snippet")]
-        [InlineData("start_of_snippet")]
-        [InlineData("")]
-        [InlineData("git status")]
-        [InlineData("git status\nGet-ChildItem")]
-        [InlineData("^29a9l2")]
-        [InlineData("'Get-AzResource'")]
-        [InlineData("Get-AzResource\ngit log")]
-        [InlineData("Get-ChildItem")]
-        public void VerifyWithNonSupportedCommand(string historyLine)
-        {
-            IReadOnlyList<string> history = historyLine.Split('\n');
-
-            this._telemetryClient.RecordedSuggestion = null;
-            this._service.IsPredictionRequested = false;
-
-            this._azPredictor.StartEarlyProcessing(history);
-
-            Assert.True(this._service.IsPredictionRequested);
-            Assert.NotNull(this._telemetryClient.RecordedSuggestion);
-        }
-
-        /// <summary>
-        /// Verifies when the last command in history are not supported.
-        /// We don't collect the telemetry and only request prediction while StartEarlyProcess is called.
-        /// </summary>
-        [Theory]
-        [InlineData("start_of_snippet\nConnect-AzAccount")]
-        [InlineData("Get-AzResource")]
-        [InlineData("git status\nGet-AzContext")]
-        [InlineData("Get-AzContext\nGet-AzLog")]
-        public void VerifyWithOneSupportedCommand(string historyLine)
-        {
-            IReadOnlyList<string> history = historyLine.Split('\n');
-
-            this._telemetryClient.RecordedSuggestion = null;
-            this._service.IsPredictionRequested = false;
-
-            this._azPredictor.StartEarlyProcessing(history);
-
-            Assert.True(this._service.IsPredictionRequested);
-            Assert.NotNull(this._telemetryClient.RecordedSuggestion);
-        }
-
-        /// <summary>
-        /// Verify that the supported commands parameter values are masked.
+        /// Verify we replace unsupported command with <see cref="AzPredictorConstants.CommandPlaceholder"/>.
         /// </summary>
         [Fact]
-        public void VerifySupportedCommandMasked()
+        public void VerifyRequestPredictionForOneUnsupportedCommandInHistory()
         {
-            var input = "Get-AzVMExtension -ResourceGroupName 'ResourceGroup11' -VMName 'VirtualMachine22'";
-            var expected = "Get-AzVMExtension -ResourceGroupName *** -VMName ***";
+            IReadOnlyList<string> history = new List<string>()
+            {
+                "git status"
+            };
 
-            this._telemetryClient.RecordedSuggestion = null;
-            this._service.IsPredictionRequested = false;
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
 
-            this._azPredictor.StartEarlyProcessing(new List<string> { input } );
+            _azPredictor.StartEarlyProcessing(history);
 
-            Assert.True(this._service.IsPredictionRequested);
-            Assert.NotNull(this._telemetryClient.RecordedSuggestion);
-            Assert.Equal(expected, this._telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(new List<string>() { AzPredictorConstants.CommandPlaceholder, AzPredictorConstants.CommandPlaceholder }, _service.Commands);
+            Assert.Equal(AzPredictorConstants.CommandPlaceholder, _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Null(_service.History);
+        }
 
-            input = "Get-AzStorageAccountKey -Name:'ContosoStorage' -ResourceGroupName:'ContosoGroup02'";
-            expected = "Get-AzStorageAccountKey -Name:*** -ResourceGroupName:***";
+        /// <summary>
+        /// Verify that we masked the supported command in requesting prediction and telemetry.
+        /// </summary>
+        [Fact]
+        public void VerifyRequestPredictionForOneSupportedCommandInHistory()
+        {
+            IReadOnlyList<string> history = new List<string>()
+            {
+                "New-AzVM -Name hello -Location WestUS"
+            };
 
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
 
-            this._telemetryClient.RecordedSuggestion = null;
-            this._service.IsPredictionRequested = false;
+            _azPredictor.StartEarlyProcessing(history);
 
-            this._azPredictor.StartEarlyProcessing(new List<string> { input } );
+            string maskedCommand = "New-AzVM -Location *** -Name ***";
 
-            Assert.True(this._service.IsPredictionRequested);
-            Assert.NotNull(this._telemetryClient.RecordedSuggestion);
-            Assert.Equal(expected, this._telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(new List<string>() { AzPredictorConstants.CommandPlaceholder, maskedCommand }, _service.Commands);
+            Assert.Equal(maskedCommand, _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history[0], _service.History.ToString());
+        }
+
+        /// <summary>
+        ///  Verify that we can handle the two supported command in sequences.
+        /// </summary>
+        [Fact]
+        public void VerifyRequestPredictionForTwoSupportedCommandInHistory()
+        {
+            IReadOnlyList<string> history = new List<string>()
+            {
+                "New-AzResourceGroup -Name 'resourceGroup01'",
+                "New-AzVM -Name:hello -Location:WestUS"
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            var maskedCommands = new List<string>()
+            {
+                "New-AzResourceGroup -Name ***",
+                "New-AzVM -Location:*** -Name:***"
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(maskedCommands[1], _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history[1], _service.History.ToString());
+        }
+
+        /// <summary>
+        ///  Verify that we can handle the two unsupported command in sequences.
+        /// </summary>
+        [Fact]
+        public void VerifyRequestPredictionForTwoUnsupportedCommandInHistory()
+        {
+            IReadOnlyList<string> history = new List<string>()
+            {
+                "git status",
+                @"$a='ResourceGroup01'",
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            var maskedCommands = new List<string>()
+            {
+                AzPredictorConstants.CommandPlaceholder,
+                AzPredictorConstants.CommandPlaceholder,
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(maskedCommands[1], _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Null(_service.History);
+        }
+
+        /// <summary>
+        /// Verify that we skip the unsupported commands.
+        /// </summary>
+        [Fact]
+        public void VerifyNotTakeUnsupportedCommands()
+        {
+            var history = new List<string>()
+            {
+                "New-AzResourceGroup -Name:resourceGroup01",
+                "New-AzVM -Name hello -Location WestUS"
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            history.Add("git status");
+            _azPredictor.StartEarlyProcessing(history);
+
+            history.Add(@"$a='NewResourceName'");
+            _azPredictor.StartEarlyProcessing(history);
+
+            // We don't take the last two unsupported command to request predictions.
+            // But we send the masked one in telemetry.
+
+            var maskedCommands = new List<string>()
+            {
+                "New-AzResourceGroup -Name:***",
+                "New-AzVM -Location *** -Name ***"
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(AzPredictorConstants.CommandPlaceholder, _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history[1], _service.History.ToString());
+
+            // When there is a new supported command, we'll use that for prediction.
+
+            history.Add("Get-AzResourceGroup -Name ResourceGroup01");
+            _azPredictor.StartEarlyProcessing(history);
+
+            maskedCommands = new List<string>()
+            {
+                "New-AzVM -Location *** -Name ***",
+                "Get-AzResourceGroup -Name ***",
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(maskedCommands[1], _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history.Last(), _service.History.ToString());
+        }
+
+        /// <summary>
+        /// Verify that we handle the three supported command in the same order.
+        /// </summary>
+        [Fact]
+        public void VerifyThreeSupportedCommands()
+        {
+            var history = new List<string>()
+            {
+                "New-AzResourceGroup -Name resourceGroup01",
+                "New-AzVM -Name:hello -Location:WestUS"
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            history.Add("Get-AzResourceGroup -Name resourceGroup01");
+            _azPredictor.StartEarlyProcessing(history);
+
+            var maskedCommands = new List<string>()
+            {
+                "New-AzVM -Location:*** -Name:***",
+                "Get-AzResourceGroup -Name ***",
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(maskedCommands[1], _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history.Last(), _service.History.ToString());
+        }
+
+        /// <summary>
+        /// Verify that we handle the sequence of one unsupported command and one supported command.
+        /// </summary>
+        [Fact]
+        public void VerifyUnsupportedAndSupportedCommands()
+        {
+            var history = new List<string>()
+            {
+                "git status",
+                "New-AzVM -Name:hello -Location:WestUS"
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            var maskedCommands = new List<string>()
+            {
+                AzPredictorConstants.CommandPlaceholder,
+                "New-AzVM -Location:*** -Name:***"
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(maskedCommands[1], _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history.Last(), _service.History.ToString());
+        }
+
+        /// <summary>
+        /// Verify that we handle the sequence of one supported command and one unsupported command.
+        /// </summary>
+        [Fact]
+        public void VerifySupportedAndUnsupportedCommands()
+        {
+            var history = new List<string>()
+            {
+                "New-AzVM -Name hello -Location WestUS",
+                "git status",
+            };
+
+            _telemetryClient.RecordedSuggestion = null;
+            _service.Commands = null;
+            _service.History = null;
+
+            _azPredictor.StartEarlyProcessing(history);
+
+            var maskedCommands = new List<string>()
+            {
+                AzPredictorConstants.CommandPlaceholder,
+                "New-AzVM -Location *** -Name ***",
+            };
+
+            Assert.Equal(maskedCommands, _service.Commands);
+            Assert.Equal(AzPredictorConstants.CommandPlaceholder, _telemetryClient.RecordedSuggestion.HistoryLine);
+            Assert.Equal(history.First(), _service.History.ToString());
         }
 
         /// <summary>
@@ -140,7 +306,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var expected = this._service.GetSuggestion(predictionContext.InputAst, 1, 1, CancellationToken.None);
+            var expected = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
             var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
 
             Assert.Equal(expected.Count, actual.Count);
@@ -154,7 +320,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestionOnIncompleteCommand()
         {
             // We need to get the suggestions for more than one. So we create a local version az predictor.
-            var localAzPredictor = new AzPredictor(this._service, this._telemetryClient, new Settings()
+            var localAzPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
                 MaxAllowedCommandDuplicate = 1,
@@ -170,7 +336,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(expected, actual.First().SuggestionText);
         }
 
-
         /// <summary>
         /// Verify when we cannot parse the user input correctly.
         /// </summary>
@@ -183,7 +348,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyMalFormattedCommandLine(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = this._azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
+            var actual = _azPredictor.GetSuggestion(predictionContext, CancellationToken.None);
 
             Assert.Empty(actual);
         }

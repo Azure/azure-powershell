@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 760C03A0-12DB-43C4-A180-B013FA77A513
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationvariable
+online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable
 schema: 2.0.0
 ---
 

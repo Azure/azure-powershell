@@ -334,6 +334,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When &apos;-CurveName&apos; is specified, &apos;-KeyType&apos; must be &apos;EC&apos;..
+        /// </summary>
+        internal static string CurveNameButNotEc {
+            get {
+                return ResourceManager.GetString("CurveNameButNotEc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
         /// </summary>
         internal static string DecryptSecurityDomainFailure {
@@ -402,6 +411,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string DownloadSecurityDomainKeyFail {
             get {
                 return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please input a valid &apos;CurveName&apos; when KeyType is &apos;EC&apos;..
+        /// </summary>
+        internal static string EcButNoCurveName {
+            get {
+                return ResourceManager.GetString("EcButNoCurveName", resourceCulture);
             }
         }
         

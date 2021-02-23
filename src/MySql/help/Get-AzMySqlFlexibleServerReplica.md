@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverreplica
+online version: https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverreplica
 schema: 2.0.0
 ---
 

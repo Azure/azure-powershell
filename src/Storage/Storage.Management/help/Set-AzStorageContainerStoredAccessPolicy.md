@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 730ECC60-72DE-46DA-A177-D5749F540710
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationaccount
+online version: https://docs.microsoft.com/powershell/module/az.automation/set-azautomationaccount
 schema: 2.0.0
 ---
 

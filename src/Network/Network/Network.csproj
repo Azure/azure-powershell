@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="212.2116.33552" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="201.359.57612" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +38,7 @@
   
   <ItemGroup>
     <Folder Include="Bastion\" />
+    <Folder Include="RouteServerPeer\" />
   </ItemGroup>
 
 </Project>

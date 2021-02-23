@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
+online version: https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 schema: 2.0.0
 ---
 

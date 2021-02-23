@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageencryptionscope
+online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageencryptionscope
 schema: 2.0.0
 ---
 
@@ -63,8 +63,8 @@ PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Ac
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source            KeyVaultKeyUri                                                                          
-----      -----    ------            --------------                                                                          
+Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                         
+----      -----    ------            -------------- -------------------------------                                         
 testscope Disabled Microsoft.Storage
 ```
 
@@ -76,8 +76,8 @@ PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Ac
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source            KeyVaultKeyUri                                                                          
-----      -----    ------            --------------                                                                          
+Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                                                           
+----      -----    ------            -------------- -------------------------------                                                                          
 testscope Enabled  Microsoft.Storage
 ```
 
@@ -89,8 +89,8 @@ PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Ac
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source            KeyVaultKeyUri                                         
-----      -----    ------            --------------                                         
+Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                          
+----      -----    ------            -------------- -------------------------------                                         
 testscope Enabled  Microsoft.Storage
 ```
 
@@ -102,9 +102,9 @@ PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Ac
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      State    Source             KeyVaultKeyUri                                         
-----      -----    ------             --------------                                         
-testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57
+Name      State    Source             KeyVaultKeyUri                                                                          RequireInfrastructureEncryption 
+----      -----    ------             --------------                                                                          -------------------------------
+testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57   
 ```
 
 This command updtaes an encryption scope to use Keyvault Encryption.
