@@ -14,46 +14,84 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
+using Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations;
 using Microsoft.Azure.ContainerRegistry;
 using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Rest;
 using System;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
-        private AzureContainerRegistryClient _client;
-        private ServiceClientCredentials _clientCredential;
-        private IAccessToken _accessToken;
-        private string _endPoint;
-        private const string _grantType = "access_token";
-        private const string _scope = "registry:catalog:*";
+        private const string _defaultGrantType = "access_token";
+        private const string _defaultScope = "registry:catalog:*";
         private const string _https = "https://";
+        private const string _refreshTokenKey = "AcrRefreshToken";
+
+        private AzureContainerRegistryClient _client;
+        private string _accessToken = default(string);
+        private string _endPoint;
         private readonly string _suffix;
+        private IAzureContext _context;
+
+        private readonly string _acrTokenCacheKey;
+
+        private const int _minutesBeforeExpiration = 5;
+
 
         public Action<string> VerboseLogger { get; set; }
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
 
-        public ContainerRegistryDataPlaneClient(IAzureContext context)
+        public ContainerRegistryDataPlaneClient(IAzureContext context, string acrTokenCacheKey)
         {
-            _clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager);
-            _accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
-            _suffix = context.Environment.ContainerRegistryEndpointSuffix;
-            _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(_clientCredential);
+            _context = context;
+            _suffix = _context.Environment.ContainerRegistryEndpointSuffix;
+            ServiceClientCredentials clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(_accessToken, () => _accessToken);
+            _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(clientCredential);
+            _acrTokenCacheKey = acrTokenCacheKey;
         }
 
-        public string GetRefreshToken()
+        public AzureContainerRegistryClient GetClient()
         {
-            var response = _client.RefreshTokens.GetFromExchangeAsync(grantType: _grantType, service: _endPoint, accessToken: _accessToken.AccessToken);
-            return response.GetAwaiter().GetResult().RefreshTokenProperty;
+            return _client;
         }
 
-        public string GetAccessToken()
+        public string Authenticate(string scope = _defaultScope)
         {
-            var response = _client.AccessTokens.GetAsync(service: _endPoint, scope: _scope, refreshToken: GetRefreshToken());
-            return response.GetAwaiter().GetResult().AccessTokenProperty;
+            _accessToken = GetToken(scope);
+            return _accessToken;
+        }
+
+        private string GetToken(string key)
+        {
+            AcrTokenCache cache;
+            if (!AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache))
+            {
+                AzureSession.Instance.RegisterComponent<AcrTokenCache>(_acrTokenCacheKey, () => new AcrTokenCache());
+                AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache);
+            }
+
+            AcrToken value;
+            if (!cache.TryGetToken(key, out value) || value.IsExpired(_minutesBeforeExpiration))
+            {
+                string token = key.Equals(_refreshTokenKey) ? GetRefreshToken() : GetAccessToken(key);
+                try
+                {
+                    value = new AcrToken(token);
+                }
+                catch
+                {
+                    throw new InvalidOperationException(string.Format("Invalud token for {0}", key));
+                }
+
+                cache.Set(key, value);
+            }
+            return value.GetToken();
         }
 
         public void SetEndPoint(string RegistryName)
@@ -66,10 +104,108 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             return _endPoint;
         }
-
-        public Rest.Azure.AzureOperationResponse CheckRegistry()
+        
+        private string GetArmAccessToken()
         {
-            return _client.V2Support.CheckWithHttpMessagesAsync().GetAwaiter().GetResult();
+            return AzureSession
+                   .Instance.AuthenticationFactory
+                   .Authenticate(_context.Account, _context.Environment, _context.Tenant.Id, null, ShowDialog.Never, null, _context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager))
+                   .AccessToken;
+        }
+
+        public string GetRefreshToken()
+        {
+            return GetClient()
+                    .RefreshTokens
+                    .GetFromExchangeAsync(grantType: _defaultGrantType, service: _endPoint, accessToken: GetArmAccessToken())
+                    .GetAwaiter()
+                    .GetResult()
+                    .RefreshTokenProperty;
+        }
+
+        private string GetAccessToken(string scope)
+        {
+            return GetClient()
+                    .AccessTokens
+                    .GetAsync(service: _endPoint, scope: scope, refreshToken: GetToken(_refreshTokenKey))
+                    .GetAwaiter()
+                    .GetResult()
+                    .AccessTokenProperty;
+        }
+
+        public PSRepositoryAttribute GetRepository(string repository)
+        {
+            return new ContainerRegistryRepositoryGetOperation(this, repository).ProcessRequest();
+        }
+
+        public IList<string> ListRepository(int? first)
+        {
+            return new ContainerRegistryRepositoryListOperation(this, first).ProcessRequest();
+        }
+
+        public PSDeletedRepository RemoveRepository(string repository)
+        {
+            return new ContainerRegistryRepositoryRemoveOperation(this, repository).ProcessRequest();
+        }
+
+        public PSRepositoryAttribute UpdateRepository(string repository, PSChangeableAttribute attribute)
+        {
+            new ContainerRegistryRepositoryUpdateOperation(this, repository, attribute).ProcessRequest();
+            return GetRepository(repository);
+        }
+
+        public PSAcrManifest ListManifest(string repository)
+        {
+            return new ContainerRegistryManifestListOperation(this, repository).ProcessRequest();
+        }
+
+        public PSManifestAttribute GetManifest(string repository, string manifest)
+        {
+            return new ContainerRegistryManifestGetOperation(this, repository, manifest).ProcessRequest();
+        }
+
+        public PSManifestAttribute UpdateManifest(string repository, string manifest, PSChangeableAttribute attribute)
+        {
+            new ContainerRegistryManifestUpdateOperation(this, repository, manifest, attribute).ProcessRequest();
+            return GetManifest(repository, manifest);
+        }
+
+        public PSManifestAttribute UpdateManifestByTag(string repository, string tag, PSChangeableAttribute attribute)
+        {
+            PSTagAttribute tagAttribute = GetTag(repository, tag);
+            return UpdateManifest(repository, tagAttribute.Attributes.Digest, attribute);
+        }
+
+        public bool RemoveManifest(string repository, string manifest)
+        {
+            return new ContainerRegistryManifestRemoveOperation(this, repository, manifest).ProcessRequest();
+        }
+
+        public bool RemoveManifestByTag(string repository, string tag)
+        {
+            PSTagAttribute tagAttribute = GetTag(repository, tag);
+            return RemoveManifest(repository, tagAttribute.Attributes.Digest);
+        }
+
+        public PSTagAttribute GetTag(string repository, string tag)
+        {
+            return new ContainerRegistryTagGetOperation(this, repository, tag).ProcessRequest();
+        }
+
+        public PSTagList ListTag(string repository)
+        {
+            return new ContainerRegistryTagListOperation(this, repository).ProcessRequest();
+        }
+
+        public bool RemoveTag(string repository, string tag)
+        {
+            return new ContainerRegistryTagRemoveOperation(this, repository, tag).ProcessRequest();
+        }
+
+        public PSTagAttribute UpdateTag(string repository, string tag, PSChangeableAttribute attribute)
+        {
+            new ContainerRegistryTagUpdateOperation(this, repository, tag, attribute).ProcessRequest();
+            return GetTag(repository, tag);
         }
     }
 }

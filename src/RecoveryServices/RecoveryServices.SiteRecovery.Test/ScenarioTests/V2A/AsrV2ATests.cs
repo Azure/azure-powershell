@@ -276,5 +276,73 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.VaultSettingsFilePath +
                 "\"");
         }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithPPG()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithPPG()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithPPG -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2ACreateRPIWithAvZone()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2ACreateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
+
+        [Fact]
+        [Trait(
+           Category.AcceptanceType,
+           Category.CheckIn)]
+        public void V2AUpdateRPIWithAvZone()
+        {
+            this.VaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests", "V2A", "V2AInput", "V2AInput.VaultCredentials");
+            this.RunPowerShellTest(
+                _logger,
+                Constants.NewModel,
+                "V2AUpdateRPIWithAvZone -vaultSettingsFilePath \"" +
+                this.VaultSettingsFilePath +
+                "\"");
+        }
     }
 }

@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_inputEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("inputEndpoints"), out var __jsonInputEndpoints) ? If( __jsonInputEndpoints as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InputEndpoint.FromJson(__u) )) ))() : null : InputEndpoint;}
-            {_roleAssignment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("roleAssignments"), out var __jsonRoleAssignments) ? If( __jsonRoleAssignments as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RoleAssignment.FromJson(__p) )) ))() : null : RoleAssignment;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.AzureToAzureVMSyncedConfigDetailsTags.FromJson(__jsonTags) : Tag;}
+            {_roleAssignment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("roleAssignments"), out var __jsonRoleAssignments) ? If( __jsonRoleAssignments as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRoleAssignment) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RoleAssignment.FromJson(__u) )) ))() : null : RoleAssignment;}
+            {_inputEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("inputEndpoints"), out var __jsonInputEndpoints) ? If( __jsonInputEndpoints as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IInputEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.InputEndpoint.FromJson(__p) )) ))() : null : InputEndpoint;}
             AfterFromJson(json);
         }
 
@@ -95,25 +95,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            if (null != this._inputEndpoint)
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            if (null != this._roleAssignment)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __x in this._inputEndpoint )
+                foreach( var __x in this._roleAssignment )
                 {
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
-                container.Add("inputEndpoints",__w);
+                container.Add("roleAssignments",__w);
             }
-            if (null != this._roleAssignment)
+            if (null != this._inputEndpoint)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __s in this._roleAssignment )
+                foreach( var __s in this._inputEndpoint )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("roleAssignments",__r);
+                container.Add("inputEndpoints",__r);
             }
-            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

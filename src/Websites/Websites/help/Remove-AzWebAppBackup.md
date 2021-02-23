@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 65A78654-A490-4B60-8C16-B0CC597EE995
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappbackup
+online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappbackup
 schema: 2.0.0
 ---
 

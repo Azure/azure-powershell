@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ConnectedKubernetes
 Module Guid: 59df8ab1-442a-41ae-9b55-60b505bae789
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes
+Download Help Link: https://docs.microsoft.com/powershell/module/az.connectedkubernetes
 Help Version: 1.0.0.0
 Locale: en-US
 ---

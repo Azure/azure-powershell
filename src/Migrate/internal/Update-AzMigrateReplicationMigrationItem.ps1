@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider specific input to update migration item.
   [InstanceType <String>]: The class type.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
+https://docs.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -77,7 +77,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]

@@ -24,35 +24,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The base authority for Azure Active Directory authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).AadAuthority = value; }
+        public string AuthenticationIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).AadAuthority = value ?? null; }
 
         /// <summary>
         /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ApplicationId = value; }
+        public string AuthenticationIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ApplicationId = value ?? null; }
 
         /// <summary>
         /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).Audience = value; }
+        public string AuthenticationIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).Audience = value ?? null; }
 
         /// <summary>
         /// The object Id of the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ObjectId = value; }
+        public string AuthenticationIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).ObjectId = value ?? null; }
 
         /// <summary>
         /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).TenantId = value; }
+        public string AuthenticationIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)AuthenticationIdentityDetail).TenantId = value ?? null; }
 
         /// <summary>Backing field for <see cref="ConnectionStatus" /> property.</summary>
         private string _connectionStatus;
@@ -135,15 +135,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Version expiry date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ProviderVersionDetailExpiryDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).ExpiryDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).ExpiryDate = value; }
+        public global::System.DateTime? ProviderVersionDetailExpiryDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).ExpiryDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).ExpiryDate = value ?? default(global::System.DateTime); }
 
         /// <summary>A value indicating whether security update required.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus? ProviderVersionDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Status = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus? ProviderVersionDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Status = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus)""); }
 
         /// <summary>The agent version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ProviderVersionDetailVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Version = value; }
+        public string ProviderVersionDetailVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVersionDetailsInternal)ProviderVersionDetail).Version = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProviderVersionExpiryDate" /> property.</summary>
         private global::System.DateTime? _providerVersionExpiryDate;
@@ -168,35 +168,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The base authority for Azure Active Directory authentication.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).AadAuthority = value; }
+        public string ResourceAccessIdentityDetailAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).AadAuthority = value ?? null; }
 
         /// <summary>
         /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ApplicationId = value; }
+        public string ResourceAccessIdentityDetailApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ApplicationId = value ?? null; }
 
         /// <summary>
         /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate
         /// with our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).Audience = value; }
+        public string ResourceAccessIdentityDetailAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).Audience = value ?? null; }
 
         /// <summary>
         /// The object Id of the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ObjectId = value; }
+        public string ResourceAccessIdentityDetailObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).ObjectId = value ?? null; }
 
         /// <summary>
         /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with
         /// our Azure services.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).TenantId = value; }
+        public string ResourceAccessIdentityDetailTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IIdentityProviderDetailsInternal)ResourceAccessIdentityDetail).TenantId = value ?? null; }
 
         /// <summary>Backing field for <see cref="ServerVersion" /> property.</summary>
         private string _serverVersion;

@@ -63,7 +63,7 @@ NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be creat
   [TargetStaticIPAddress <String>]: The static IP address.
   [TargetSubnetName <String>]: Target subnet name.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -119,6 +119,12 @@ param(
     [System.String]
     # Specifies the Availability Zone to be used for VM creation.
     ${TargetAvailabilityZone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the storage account to be used for boot diagnostics.
+    ${TargetBootDiagnosticsStorageAccount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

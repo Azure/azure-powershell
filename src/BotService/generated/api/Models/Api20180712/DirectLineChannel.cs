@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineChannelProperties _property;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The list of Direct Line sites</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineSite[] Site { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineChannelPropertiesInternal)Property).Site; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineChannelPropertiesInternal)Property).Site = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineSite[] Site { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineChannelPropertiesInternal)Property).Site; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IDirectLineChannelPropertiesInternal)Property).Site = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="DirectLineChannel" /> instance.</summary>
         public DirectLineChannel()

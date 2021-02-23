@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when explict ADFS credential is used [#13560]
+
+## Version 2.2.5
+* Tracked CloudError code in exception
+* Raised 'ContextCleared' event when `Clear-AzContext` was executed
+
+## Version 2.2.4
+* Shown correct client request id on debug message [#13745]
+* Added common Azure PowerShell exception type
+* Supported storage API 2019-06-01
 
 ## Version 2.2.3
 * Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]

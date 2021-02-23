@@ -12,22 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateDiscoveredServer' {
-    It 'List' -skip {
+    It 'List' -Skip {
         $machines = Get-AzMigrateDiscoveredServer -ResourceGroupName $env.migResourceGroup -ProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
         $machines.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ListInSite' -skip {
+    It 'ListInSite' -Skip {
         $machines = Get-AzMigrateDiscoveredServer -ApplianceName $env.migApplianceName -ResourceGroupName $env.migResourceGroup -ProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
         $machines.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'Get' -skip {
+    It 'Get' -Skip {
         $machines = Get-AzMigrateDiscoveredServer -Name $env.migVMwareMachineName -ResourceGroupName $env.migResourceGroup -ProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
         $machines.Name | Should -Be $env.migVMwareMachineName
     }
 
-    It 'GetInSite' -skip {
+    It 'GetInSite' -Skip {
         $machines = Get-AzMigrateDiscoveredServer -Name $env.migVMwareMachineName -ApplianceName $env.migApplianceName -ResourceGroupName $env.migResourceGroup -ProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
         $machines.Name | Should -Be $env.migVMwareMachineName
     }

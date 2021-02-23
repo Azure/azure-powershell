@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CosmosDB
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: {{ https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb }}
+Download Help Link: {{ https://docs.microsoft.com/powershell/module/az.cosmosdb }}
 Help Version: {{ 1.0.0.1 }}
 Locale: en-US
 ---

@@ -71,12 +71,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __jobDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetails(json);
+            {_testFailoverStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("testFailoverStatus"), out var __jsonTestFailoverStatus) ? (string)__jsonTestFailoverStatus : (string)TestFailoverStatus;}
             {_comment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("comments"), out var __jsonComments) ? (string)__jsonComments : (string)Comment;}
-            {_networkFriendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkFriendlyName"), out var __jsonNetworkFriendlyName) ? (string)__jsonNetworkFriendlyName : (string)NetworkFriendlyName;}
             {_networkName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkName"), out var __jsonNetworkName) ? (string)__jsonNetworkName : (string)NetworkName;}
+            {_networkFriendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkFriendlyName"), out var __jsonNetworkFriendlyName) ? (string)__jsonNetworkFriendlyName : (string)NetworkFriendlyName;}
             {_networkType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("networkType"), out var __jsonNetworkType) ? (string)__jsonNetworkType : (string)NetworkType;}
             {_protectedItemDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("protectedItemDetails"), out var __jsonProtectedItemDetails) ? If( __jsonProtectedItemDetails as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverReplicationProtectedItemDetails[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFailoverReplicationProtectedItemDetails) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.FailoverReplicationProtectedItemDetails.FromJson(__u) )) ))() : null : ProtectedItemDetail;}
-            {_testFailoverStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("testFailoverStatus"), out var __jsonTestFailoverStatus) ? (string)__jsonTestFailoverStatus : (string)TestFailoverStatus;}
             AfterFromJson(json);
         }
 
@@ -100,9 +100,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __jobDetails?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._testFailoverStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._testFailoverStatus.ToString()) : null, "testFailoverStatus" ,container.Add );
             AddIf( null != (((object)this._comment)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._comment.ToString()) : null, "comments" ,container.Add );
-            AddIf( null != (((object)this._networkFriendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkFriendlyName.ToString()) : null, "networkFriendlyName" ,container.Add );
             AddIf( null != (((object)this._networkName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkName.ToString()) : null, "networkName" ,container.Add );
+            AddIf( null != (((object)this._networkFriendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkFriendlyName.ToString()) : null, "networkFriendlyName" ,container.Add );
             AddIf( null != (((object)this._networkType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._networkType.ToString()) : null, "networkType" ,container.Add );
             if (null != this._protectedItemDetail)
             {
@@ -113,7 +114,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("protectedItemDetails",__w);
             }
-            AddIf( null != (((object)this._testFailoverStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._testFailoverStatus.ToString()) : null, "testFailoverStatus" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

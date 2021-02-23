@@ -450,7 +450,4 @@
   <data name="UpdatingRoleAssignment" xml:space="preserve">
     <value>Updating role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
   </data>
-  <data name="NoADObjectFound" xml:space="preserve">
-    <value>No AD object could be found with current parameters, please confirm the information provided is correct and try again</value>
-  </data>
 </root>

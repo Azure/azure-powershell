@@ -64,7 +64,7 @@ Type                                      : Microsoft.RecoveryServices/vaults/re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationfabric
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric])]
@@ -92,7 +92,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]

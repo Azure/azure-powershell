@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult
 schema: 2.0.0
 ---
 
 # Get-AzResourceGroupDeploymentWhatIfResult
 
 ## SYNOPSIS
-Gets an ARM template What-If result for a deployment at resource group scope. 
+Gets a template What-If result for a deployment at resource group scope. 
 
 ## SYNTAX
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Local path to the template file.
+Local path to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String
