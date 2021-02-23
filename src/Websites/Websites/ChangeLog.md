@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* #13763- Introduced an option to give custom timeout for `Publish-AzWebApp` 
+* Introduced an option to give custom timeout for `Publish-AzWebApp` 
 * Added support for App Service Environment
     - `New-AzAppServiceEnvironment`
     - `Remove-AzAppServiceEnvironment`
