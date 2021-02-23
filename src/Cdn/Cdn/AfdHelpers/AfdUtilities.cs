@@ -13,6 +13,7 @@
 
 using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 
@@ -40,11 +41,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
             return string.Empty;
         }
  
-        public static Microsoft.Azure.Management.Cdn.Models.Sku GenerateAfdProfileSku(string sku)
+        public static Sku GenerateAfdProfileSku(string sku)
         {
             string lowercaseSku = sku.ToLower();
 
-            Microsoft.Azure.Management.Cdn.Models.Sku afdSku = new Microsoft.Azure.Management.Cdn.Models.Sku();
+            Sku afdSku = new Sku();
 
             switch(lowercaseSku)
             {

@@ -13,6 +13,7 @@
 
 using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Newtonsoft.Json.Linq;
 
 using SdkAfdCustomDomain = Microsoft.Azure.Management.Cdn.Models.AFDDomain;
 using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
@@ -58,13 +59,37 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 EnabledState = sdkAfdEndpoint.EnabledState
             };
         }
+        public class SharedPrivateLinkResource
+        {
+            public PrivateLinkId PrivateLink { get; set;}
+
+            public string GroupId { get; set; }
+
+            public string PrivateLinkLocation { get; set;}
+
+            public string Status { get; set; }
+
+            public string RequestMessage { get; set; }
+        }
+
+        public class PrivateLinkId
+        {
+            public string Id { get; set; }
+        }
 
         public static PSAfdOrigin ToPSAfdOrigin(this SdkAfdOrigin sdkOrigin)
         {
-            var sharedPrivateLinkResource = sdkOrigin.SharedPrivateLinkResource; //??
+            JObject sharedPrivateLinkResourceJObject = (JObject)sdkOrigin.SharedPrivateLinkResource;
 
-            // origin group name is omitted since it is not provided by the SDK
-            // we extract the origin group name via the input and utility methods
+            SharedPrivateLinkResource sharedPrivateLinkResource = null;
+
+            if (sharedPrivateLinkResourceJObject != null)
+            {
+                sharedPrivateLinkResource = sharedPrivateLinkResourceJObject.ToObject<SharedPrivateLinkResource>();
+            }
+
+            // origin group name is not present here since it is not provided by the SDK
+            // we extract the origin group name via the input and utility methods and then add it to the PSAfdOrigin
             return new PSAfdOrigin
             {
                 Id = sdkOrigin.Id,
@@ -78,12 +103,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Priority = sdkOrigin.Priority,
                 Weight = sdkOrigin.Weight,
                 EnabledState = sdkOrigin.EnabledState,
-                //PrivateLinkId = ??,
-                //PrivateLinkGroupId = ??,
-                //PrivateLinkLocation = ??,
-                //PrivateLinkStatus = ??,
-                //PrivateLinkRequestMessage = ?? 
-                //AzureOrigin = ??
+                PrivateLinkId = sharedPrivateLinkResource?.PrivateLink?.Id,
+                PrivateLinkGroupId = sharedPrivateLinkResource?.GroupId,
+                PrivateLinkLocation = sharedPrivateLinkResource?.PrivateLinkLocation,
+                PrivateLinkStatus = sharedPrivateLinkResource?.Status,
+                PrivateLinkRequestMessage = sharedPrivateLinkResource?.RequestMessage
             };
         }
 

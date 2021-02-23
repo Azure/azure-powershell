@@ -11,8 +11,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
     public class SetAzAfdProfile : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSAfdProfile Profile { get; set; }
 
@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
         public override void ExecuteCmdlet()
         {
+            // when using FieldsParameterSet, this.ProfileName and this.ResourceGroupName are provided
+            // Hence no need for a FieldsParamterSet case
             switch (ParameterSetName)
             {
                 case ObjectParameterSet:
@@ -63,17 +65,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
                 throw new PSArgumentException($"You are attempting to update a {profile.Sku} profile. Please use Set-AzCdnProfile instead.");
             }
 
-            Dictionary<string, string> afdProfileTags = new Dictionary<string, string>();
-            
-            if (ParameterSetName == ObjectParameterSet)
-            {
-                afdProfileTags = TagsConversionHelper.CreateTagDictionary(this.Profile.Tags, true);
-            }
-            else
-            {
-                afdProfileTags = TagsConversionHelper.CreateTagDictionary(this.Tags, true);
-            }
-           
+            Dictionary<string, string> afdProfileTags = TagsConversionHelper.CreateTagDictionary(this.Tags, true);
+
             PSAfdProfile psAfdProfile = this.CdnManagementClient.Profiles.Update(this.ResourceGroupName, this.ProfileName, afdProfileTags).ToPSAfdProfile();
 
             WriteObject(psAfdProfile);
@@ -85,6 +78,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
+            this.Tags = this.Profile.Tags;
         }
     }
 }

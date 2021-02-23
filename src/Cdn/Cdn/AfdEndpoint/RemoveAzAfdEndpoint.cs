@@ -19,33 +19,36 @@ using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdProfile
+namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdProfile", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzAfdProfile : AzureCdnCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzAfdEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNull]
-        public PSAfdProfile Profile { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdEndpointObject, ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSAfdEndpoint Endpoint { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string EndpointName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         public string ProfileName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceId, ParameterSetName = ResourceIdParameterSet)]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceId, ParameterSetName = ResourceIdParameterSet)]
-        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // when using FieldsParameterSet, this.ProfileName and this.ResourceGroupName are provided
-            // Hence no need for a FieldsParamterSet case
-            switch(ParameterSetName)
+            // no case for FieldsParameterSet since required parameters will be present
+            switch (ParameterSetName)
             {
                 case ObjectParameterSet:
                     this.ObjectParameterSetCmdlet();
@@ -55,28 +58,21 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
                     break;
             }
 
-            ConfirmAction(AfdResourceProcessMessage.AfdProfileDeleteMessage, this.ProfileName, this.DeleteAfdProfile);
+            ConfirmAction(AfdResourceProcessMessage.AfdEndpointDeleteMessage, this.EndpointName, this.DeleteAfdEndpoint);    
         }
 
-        private void DeleteAfdProfile()
+        private void DeleteAfdEndpoint()
         {
             try
             {
-                PSAfdProfile profile = this.CdnManagementClient.Profiles.Get(this.ResourceGroupName, this.ProfileName).ToPSAfdProfile();
-
-                if (!AfdUtilities.IsAfdProfile(profile))
-                {
-                    throw new PSArgumentException($"You are attempting to delete a {profile.Sku} profile. Please use Remove-AzCdnProfile instead.");
-                }
-
-                this.CdnManagementClient.Profiles.Delete(this.ResourceGroupName, this.ProfileName);
+                this.CdnManagementClient.AFDEndpoints.Delete(this.ResourceGroupName, this.ProfileName, this.EndpointName);
             }
             catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponseException)
             {
                 throw new PSArgumentException(errorResponseException.Response.Content);
             }
 
-            if(this.PassThru.IsPresent)
+            if (this.PassThru.IsPresent)
             {
                 WriteObject(true);
             }
@@ -84,18 +80,20 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
         private void ObjectParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdProfileResourceId = new ResourceIdentifier(this.Profile.Id);
+            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.Endpoint.Id);
 
-            this.ProfileName = parsedAfdProfileResourceId.ResourceName;
-            this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
+            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
+            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
         }
 
         private void ResourceIdParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdProfileResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.ProfileName = parsedAfdProfileResourceId.ResourceName;
-            this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
+            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
+            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
         }
     }
 }

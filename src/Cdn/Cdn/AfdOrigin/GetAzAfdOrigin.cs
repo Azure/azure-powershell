@@ -11,11 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdOrigin", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdOrigin))]
     public  class GetAzAfdOrigin : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdOriginGroupObjectDescription, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdOriginGroupObject, ParameterSetName = ObjectParameterSet)]
         public PSAfdOriginGroup OriginGroup { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdOriginGroupName, ParameterSetName = FieldsParameterSet)]
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
                         break;
                 }
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponse)
+            catch (AfdErrorResponseException errorResponse)
             {
                 throw new PSArgumentException(errorResponse.Response.Content);
             }

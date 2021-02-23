@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [ValidateNotNullOrEmpty]
         public string CustomDomainName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
         public PSAfdProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]

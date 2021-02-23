@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
                 // both resource group and profile name are null
                 // show all profiles in the subscription
                 // not all profiles are delivered by the payload, limitation somewhere in the RP?
-
+               
                 List<PSAfdProfile> psAfdProfiles = CdnManagementClient.Profiles.List()
                                                    .Where(afdProfile => (afdProfile.Sku.Name == AfdSkuConstants.PremiumAzureFrontDoor || afdProfile.Sku.Name == AfdSkuConstants.StandardAzureFrontDoor))
                                                    .Select(afdProfile => afdProfile.ToPSAfdProfile())

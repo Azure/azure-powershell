@@ -11,8 +11,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSAfdProfile Profile { get; set; }
 

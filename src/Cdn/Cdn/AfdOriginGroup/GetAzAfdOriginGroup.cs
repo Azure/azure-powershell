@@ -11,11 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
         [ValidateNotNullOrEmpty]
         public string OriginGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObjectDescription, ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
         public PSAfdProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
                         break;
                 }
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponse)
+            catch (AfdErrorResponseException errorResponse)
             {
                 throw new PSArgumentException(errorResponse.Response.Content);
             }
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
             {
                 // all fields are present (mandatory + optional)
 
-                PSAfdOriginGroup psAfdOriginGroup = CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
+                PSAfdOriginGroup psAfdOriginGroup = this.CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
 
                 WriteObject(psAfdOriginGroup);
             }
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
             {
                 // only the mandatory fields are present 
 
-                List<PSAfdOriginGroup> pSAfdOriginGroups = CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                List<PSAfdOriginGroup> pSAfdOriginGroups = this.CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
                                                            .Select(afdOriginGroup => afdOriginGroup.ToPSAfdOriginGroup())
                                                            .ToList();
 
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
 
-            List<PSAfdOriginGroup> psAfdOriginGroups = CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
+            List<PSAfdOriginGroup> psAfdOriginGroups = this.CdnManagementClient.AFDOriginGroups.ListByProfile(this.ResourceGroupName, this.ProfileName)
                                                        .Select(afdOriginGroup => afdOriginGroup.ToPSAfdOriginGroup())
                                                        .ToList();
 
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
             this.ProfileName = parsedAfdOriginGroupResourceId.GetResourceName("profiles");
             this.ResourceGroupName = parsedAfdOriginGroupResourceId.ResourceGroupName;
 
-            PSAfdOriginGroup psAfdOriginGroup = CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
+            PSAfdOriginGroup psAfdOriginGroup = this.CdnManagementClient.AFDOriginGroups.Get(this.ResourceGroupName, this.ProfileName, this.OriginGroupName).ToPSAfdOriginGroup();
 
             WriteObject(psAfdOriginGroup);
         }
