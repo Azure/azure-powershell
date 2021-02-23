@@ -411,6 +411,9 @@ function Test-CortexDownloadConfig
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
 
+		# Test Reset VpnSiteLinkConnection
+		Reset-AzVpnSiteLinkConnection -InputObject $vpnConnection2.VpnLinkConnections[0]
+
 		# Download config
 		$storetype = 'Standard_GRS'
 		$containerName = "cont$($rgName)"
@@ -1042,8 +1045,6 @@ function Test-VpnConnectionPacketCapture
 	    $vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $createdVpnSite.VpnSiteLinks[1] -ConnectionBandwidth 10
 
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $createdVpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
-
-		Reset-AzVpnSiteLinkConnection -InputObject $vpnSiteLinkConnection1
 
 		#create SAS URL
 		if ((Get-NetworkTestMode) -ne 'Playback')
