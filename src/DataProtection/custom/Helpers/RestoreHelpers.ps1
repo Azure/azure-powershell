@@ -39,7 +39,7 @@ function ValidateRestoreOptions {
 		if($manifest.allowedRestoreModes.Contains($RestoreMode) -eq $false)
 		{
 			$allowedValues = [System.String]::Join(', ', $manifest.allowedRestoreModes)
-			$errormsg = "Specified Restore Mode is not supported for DatasourceType " + $DatasourceType + ". Allowed Values are " + $allowedValues
+			$errormsg = "Specified Restore Mode is not supported for DatasourceType " + $DatasourceType
 			throw $errormsg
 		}
 

@@ -66,6 +66,7 @@ function GetBackupJobARGQuery
 	{
 		$query = "RecoveryServicesResources | where type =~ 'microsoft.dataprotection/backupvaults/backupjobs'"
 		$query += "| extend vaultName = properties.vaultName"
+		$query += "| extend status = properties.status"
 		$query += "| extend operation = case( tolower(properties.operationCategory) startswith 'backup' and properties.isUserTriggered == 'true', strcat('OnDemand',properties.operationCategory)"
 		$query += ", tolower(properties.operationCategory) startswith 'backup' and properties.isUserTriggered == 'false', strcat('Scheduled', properties.operationCategory)"
 		$query += ", type =~ 'microsoft.dataprotection/backupVaults/backupJobs', properties.operationCategory, 'Invalid')"

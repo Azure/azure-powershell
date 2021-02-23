@@ -5,31 +5,27 @@
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Restore Request object for backup')]
 
     param(
-        [Parameter( Mandatory, HelpMessage='Datasource Type')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
         ${DatasourceType},
 
-        [Parameter(Mandatory, HelpMessage='DataStore Type of the RP')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='DataStore Type of the RP')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
         ${SourceDataStore},
 
-        [Parameter(Mandatory, HelpMessage='Target Restore Location')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Target Restore Location')]
         [System.String]
         ${RestoreLocation},
 
-        [Parameter(Mandatory, HelpMessage='Restore Mode')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreMode]
-        ${RestoreMode},
-
-        [Parameter(Mandatory, HelpMessage='Restore Target Type')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Restore Target Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType]
-        ${RestoreTargetType},
+        ${RestoreType},
 
-        [Parameter(Mandatory=$false, HelpMessage='Target Restore Location')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory=$false, HelpMessage='Target Restore Location')]
         [System.String]
         ${TargetResourceId},
 
-        [Parameter(Mandatory=$false, HelpMessage='Recovery Point Name')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Recovery Point Name')]
         [System.String]
         ${RecoveryPoint}
     )
@@ -37,12 +33,12 @@
     process
     {
         # Validations
-        ValidateRestoreOptions -DatasourceType $DatasourceType -RestoreMode $RestoreMode -RestoreTargetType $RestoreTargetType
-
+        $parameterSetName = $PsCmdlet.ParameterSetName
+        ValidateRestoreOptions -DatasourceType $DatasourceType -RestoreMode $parameterSetName -RestoreTargetType $RestoreType
 
         $restoreRequest = $null
         # Choose Restore Request Type Based on Mode
-        if($RestoreMode -eq "RecoveryPointBased")
+        if($parameterSetName -eq "RecoveryPointBased")
         {
             $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPointBasedRestoreRequest]::new()
             $restoreRequest.ObjectType = "AzureBackupRecoveryPointBasedRestoreRequest"
@@ -50,12 +46,12 @@
         }
 
         # Initialize Restore Target Info based on Type provided
-        if($RestoreTargetType -eq "AlternateLocation")
+        if($RestoreType -eq "AlternateLocation")
         {
             $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreTargetInfo]::new()
             $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreTargetInfo"
         }
-        if($RestoreTargetType -eq "RestoreAsFiles")
+        if($RestoreType -eq "RestoreAsFiles")
         {
             $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreFilesTargetInfo]::new()
             $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreFilesTargetInfo"
@@ -67,7 +63,7 @@
 
         if( ($TargetResourceId -ne $null) -and ($TargetResourceId -ne "") )
         {
-            if($RestoreTargetType -eq "AlternateLocation")
+            if($RestoreType -eq "AlternateLocation")
             {
                 $restoreRequest.RestoreTargetInfo.DatasourceInfo = GetDatasourceInfo -ResourceId $TargetResourceId -ResourceLocation $RestoreLocation -DatasourceType $DatasourceType
                 $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()

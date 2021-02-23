@@ -5884,20 +5884,26 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # Name of the vault
+    # Start Time of the backup Job
     ${StartTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # Name of the vault
+    # End Time of the Backup Job
     ${EndTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
     # Operation of the Job Filter
-    ${Operation}
+    ${Operation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+    # Status of the Job Filter
+    ${Status}
 )
 
 begin {
@@ -5989,6 +5995,84 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             __AllParameterSets = 'Az.DataProtection.custom\Get-AzDataProtectionPolicyTemplate';
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+
+.Description
+
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Outputs
+System.Object
+.Link
+https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/getbackupfrequencefromtimeinterval
+#>
+function GetBackupFrequenceFromTimeInterval {
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Position=0, Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    ${RepeatingTimeInterval}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            __AllParameterSets = 'Az.DataProtection.custom\GetBackupFrequenceFromTimeInterval';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
@@ -6720,7 +6804,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/initialize-
 #>
 function Initialize-AzDataProtectionRestoreRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRestoreRequest])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='RecoveryPointBased', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -6742,27 +6826,21 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreMode]
-    # Restore Mode
-    ${RestoreMode},
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType]
+    # Restore Target Type
+    ${RestoreType},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType]
-    # Restore Target Type
-    ${RestoreTargetType},
+    [System.String]
+    # Recovery Point Name
+    ${RecoveryPoint},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Target Restore Location
-    ${TargetResourceId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Recovery Point Name
-    ${RecoveryPoint}
+    ${TargetResourceId}
 )
 
 begin {
@@ -6773,7 +6851,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
+            RecoveryPointBased = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
@@ -7961,7 +8039,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
     # Retention Rule Name
     ${Name},
 
@@ -8104,7 +8182,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName]
     # Datasource Type
     ${Name},
 

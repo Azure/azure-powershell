@@ -15,7 +15,8 @@ function Get-AzDataProtectionPolicyTemplate {
         $manifest = LoadManifest -DatasourceType $DatasourceType
         $manifestPolicyObject = $manifest.policySettings.defaultPolicy
 
-        $defaultPolicy = TranslateBackupPolicy -Policy $manifestPolicyObject
+        $jsonPolicyString = $manifestPolicyObject | ConvertTo-Json -Depth 100
+        $defaultPolicy = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupPolicy]::FromJsonString($jsonPolicyString)
 
         return $defaultPolicy
     }

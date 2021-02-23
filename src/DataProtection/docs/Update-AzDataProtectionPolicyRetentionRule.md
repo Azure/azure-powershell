@@ -14,14 +14,14 @@ Adds or removes Retention Rule to existing Policy
 
 ### RemoveRetention (Default)
 ```
-Update-AzDataProtectionPolicyRetentionRule -Name <String> -Policy <IBackupPolicy> -RemoveRule [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzDataProtectionPolicyRetentionRule -Name <RetentionRuleName> -Policy <IBackupPolicy> -RemoveRule
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
 Update-AzDataProtectionPolicyRetentionRule -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
- -Name <String> -Policy <IBackupPolicy> [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Name <RetentionRuleName> -Policy <IBackupPolicy> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Retention Rule Name
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
 Parameter Sets: (All)
 Aliases:
 
