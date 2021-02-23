@@ -20,7 +20,15 @@
 
 -->
 ## Upcoming Release
-* Updated Tools binaries to have Get-AzVm support `Standard_GZRS` and `RAGZRS` storage accounts.
+* Updated Tools binaries to have Compute cmdlets support `Standard_GZRS` and `RAGZRS` storage accounts.
+* [Breaking Change] Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
+    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+    - `Get-AzContainerService`
+    - `New-AzContainerService`
+    - `New-AzContainerServiceConfig`
+    - `Remove-AzContainerService`
+    - `Remove-AzContainerServiceAgentPoolProfile`
+    - `Update-AzContainerService`
 
 ## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
