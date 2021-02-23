@@ -52,6 +52,10 @@ Supported -EnableNoPublicIP when creating a Databricks workspace
 #### Az.KeyVault
 * Supported specifying key type and curve name when importing keys via a BYOK file
 
+#### Az.MySql
+* Added maintenance windows parameter to Update-AzMySqlFlexibleServer cmdlet
+* Added zone parameter to server New-AzMySqlFlexibleServer cmdlet.
+
 #### Az.Network
 * Added new cmdlets to replace old product name 'virtual router' with new name 'route server' in the future.
     - 'New-AzRouteServer'
