@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-//using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;

@@ -39,8 +39,6 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-//using Microsoft.Azure.Management.Storage.Version2017_10_01;
-//using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;

@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute.Models;
-//using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
