@@ -12,11 +12,29 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzWvdHostPoolRegistrationToken' {
-    It 'Retrieve' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RetrieveViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Retrieve' {
+        New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                        -ResourceGroupName $env.ResourceGroup `
+                        -Name 'HostPoolPowershellContained1' `
+                        -Location $env.Location `
+                        -HostPoolType 'Shared' `
+                        -LoadBalancerType 'DepthFirst' `
+                        -RegistrationTokenOperation 'Update' `
+                        -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                        -Description 'des' `
+                        -FriendlyName 'fri' `
+                        -MaxSessionLimit 5 `
+                        -VMTemplate $null `
+                        -SsoContext $null `
+                        -CustomRdpProperty $null `
+                        -Ring $null `
+                        -ValidationEnvironment:$false `
+                        -PreferredAppGroupType 'Desktop'
+        
+        $regToken = Get-AzWvdHostPoolRegistrationToken -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -HostPoolName 'HostPoolPowershellContained1' `
+        
+        $regToken.Token | Should -Be 'token'
     }
 }
