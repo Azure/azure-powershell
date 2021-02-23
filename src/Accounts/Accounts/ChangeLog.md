@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when explict ADFS credential is used [#13560]
+* Fallback to first valid context if current default context key is "Default" which is invalid
 
 ## Version 2.2.5
 * Tracked CloudError code in exception
