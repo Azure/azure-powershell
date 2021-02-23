@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for App Service Environment
+    - `New-AzAppServiceEnvironment`
+    - `Remove-AzAppServiceEnvironment`
+    - `Get-AzAppServiceEnvironment`
+    - `New-AzAppServiceEnvironmentInboundServices`
 
 ## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.

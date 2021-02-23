@@ -437,7 +437,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Specifies the full path of a JSON template file.
+Specifies the full path of a template file. Supported template file type: json and bicep.
 This can be a custom template or a gallery template that is saved as a JSON file, such as one created by using the **Save-AzResourceGroupGalleryTemplate** cmdlet.
 
 ```yaml
@@ -534,7 +534,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Specifies the URI of a JSON template file.
+Specifies the URI of a template file.
 This file can be a custom template or a gallery template that is saved as a JSON file, such as by using **Save-AzResourceGroupGalleryTemplate**.
 
 ```yaml

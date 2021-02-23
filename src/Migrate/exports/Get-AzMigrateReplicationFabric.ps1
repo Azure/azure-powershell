@@ -64,7 +64,7 @@ Type                                      : Microsoft.RecoveryServices/vaults/re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationfabric
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric])]

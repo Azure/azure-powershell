@@ -187,5 +187,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithQueryString");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestNewDeploymentFromBicepFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestTestDeploymentFromBicepFile()
+        {
+            TestRunner.RunTestScript("Test-TestDeploymentFromBicepFile");
+        }
     }
 }

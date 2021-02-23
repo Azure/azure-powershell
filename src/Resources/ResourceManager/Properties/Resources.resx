@@ -494,4 +494,10 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   <data name="InvalidChangeType" xml:space="preserve">
     <value>Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}.</value>
   </data>
+  <data name="BicepNotFound" xml:space="preserve">
+    <value>Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/releases to install Bicep.</value>
+  </data>
+  <data name="InvalidBicepFilePathOrUri" xml:space="preserve">
+    <value>Invalid Bicep file path or URI.</value>
+  </data>
 </root>
