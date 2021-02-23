@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/en-us/powershell/module/az.confluent/new-azconfluentmarketplaceagreement
+online version: https://docs.microsoft.com/powershell/module/az.confluent/new-azconfluentmarketplaceagreement
 schema: 2.0.0
 ---
 
