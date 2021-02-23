@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for Azure resources deployment in Bicep language
 * Fixed issues with TemplateSpec deployments in New-AzTenantDeployment and New-AzManagementGroupDeployment
 * Added support for -QueryString parameter in Test-Az*Deployments cmdlets
 * Fixed issue with dynamic parameters when New-Az*Deployments is used with -QueryString
