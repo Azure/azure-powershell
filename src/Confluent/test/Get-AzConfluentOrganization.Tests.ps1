@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzConfluentOrganization' {
     It 'List' {
       $confluentOrgList = Get-AzConfluentOrganization
-      $confluentOrgList.Count | Should -BeGreaterOrEqual 2
+      $confluentOrgList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
@@ -22,9 +22,9 @@ Describe 'Get-AzConfluentOrganization' {
       $confluentOrg.Name | Should -Be $env.confluentOrgName00
     }
 
-    # Issue: Cannot list confluent organization under a resource group. The result is empty.
-    It 'List1' -Skip {
-        { Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup } | Should -Not -Throw
+    It 'List1' {
+      $confluentOrgList = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup
+      $confluentOrgList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetViaIdentity' {

@@ -13,15 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzConfluentOrganization' {
     It 'Delete' {
-      Remove-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName01
+      Remove-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00
       $confluentOrgList = Get-AzConfluentOrganization 
-      $confluentOrgList.Name | Should -Not -Contain $env.confluentOrgName01
+      $confluentOrgList.Name | Should -Not -Contain $env.confluentOrgName00
     }
 
     It 'DeleteViaIdentity' {
-      $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName02 
+      $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName01 
       Remove-AzConfluentOrganization -InputObject $confluentOrg
       $confluentOrgList = Get-AzConfluentOrganization 
-      $confluentOrgList.Name | Should -Not -Contain $env.confluentOrgName02
+      $confluentOrgList.Name | Should -Not -Contain $env.confluentOrgName01
     }
 }

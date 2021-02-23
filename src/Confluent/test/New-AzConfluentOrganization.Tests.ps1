@@ -12,18 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzConfluentOrganization' {
-    # Issue: Throw exception There's a problem in creating Confluent Organization. Error: Cannot complete signup. Reason: Email already exists
-    It 'CreateExpanded' -Skip {
-      # For hide exception: There's a problem in creating Confluent Organization. Reason: Email already exists. 
-      # Because the confluent organization created complete. But the status is failed.
-      try {
-        New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName02 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
-      }
-      catch {
-        Write-Warning "the confluent organization created complete. But the status is failed."
-        Write-Warning "$_"
-      }
-      $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup -Name $env.confluentOrgName02
-      $confluentOrg.Name | Should -Be $env.confluentOrgName02
+    It 'CreateExpanded' {
+      New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
+      $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup -Name $env.confluentOrgName00
+      $confluentOrg.ProvisioningState | Should -Be 'Succeeded'
     }
 }

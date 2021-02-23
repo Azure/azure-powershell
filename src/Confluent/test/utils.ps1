@@ -9,9 +9,10 @@ $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+    Write-Warning "Because one account only create one confluent organization. So need single invoke per test in sequence."
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.location = 'eastus'
+    $env.location = 'eastus2euap'
     $env.userEmail = (Get-AzContext).Account.Id
     # Generate some random strings for use in the test.
     $env.rstr1 = RandomString -allChars $false -len 6
@@ -27,27 +28,6 @@ function setupEnv() {
     Write-Host -ForegroundColor Green "Start to creating test group"
     $env.resourceGroup = 'confluentorg-rg-' + $env.rstr1
     New-AzResourceGroup -Name $env.resourceGroup -Location eastus
-    Write-Host -ForegroundColor Green "----------------------------"
-
-    # Create confluent organiztion for test
-    Write-Host -ForegroundColor Green "Start to creating two confluent organiztion for test"
-    # For hide exception: There's a problem in creating Confluent Organization. Error: Cannot complete signup. Reason: Email already exists. 
-    # Because the confluent organization created complete. But the status is failed.
-    try {
-      New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
-    }
-    catch {
-      Write-Warning "the confluent organization created complete. But the status is failed."
-      Write-Warning "$_"
-    }
-    try {
-      New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName01 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
-    }
-    catch {
-      Write-Warning "the confluent organization created complete. But the status is failed."
-      Write-Warning "$_"
-    }
-
     Write-Host -ForegroundColor Green "----------------------------"
 
     $envFile = 'env.json'

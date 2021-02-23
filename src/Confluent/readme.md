@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: c35467e04efa830ca3a15c8cafcd2db5e10d55fe # python c70bdec18e53055fba3c22e1846b44e6bfc1d8eb
+Branch: c35467e04efa830ca3a15c8cafcd2db5e10d55fe
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
