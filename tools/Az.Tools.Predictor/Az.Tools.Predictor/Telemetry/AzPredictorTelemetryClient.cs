@@ -47,6 +47,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         private readonly IAzContext _azContext;
 
         /// <summary>
+        /// The id to identify the events proceeding to a CommandHistory
+        /// </summary>
+        private string _commandId = Guid.NewGuid().ToString();
+
+        /// <summary>
         /// The action to handle the <see cref="ITelemetryData"/> in a thread pool.
         /// </summary>
         private readonly ActionBlock<ITelemetryData> _telemetryDispatcher;
@@ -76,6 +81,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public virtual void OnHistory(HistoryTelemetryData telemetryData)
         {
             PostTelemetryData(telemetryData);
+
+            _commandId = Guid.NewGuid().ToString();
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
@@ -356,6 +363,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             {
                 { "SessionId", telemetryData.SessionId },
                 { "CorrelationId", telemetryData.CorrelationId },
+                { "CommandId", _commandId },
                 { "UserId", _azContext.HashUserId },
                 { "IsInternal", _azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
                 { "SurveyId", (_azContext as AzContext)?.SurveyId },
