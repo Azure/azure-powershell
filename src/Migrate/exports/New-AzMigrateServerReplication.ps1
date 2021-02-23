@@ -87,15 +87,16 @@ DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server 
 INPUTOBJECT <IVMwareMachine>: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
   [GuestOSDetailOstype <String>]: Type of the operating system.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
+    [ArgumentCompleter({ "NoLicenseType" , "WindowsServer" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.LicenseType]
+    [System.String]
     # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
     ${LicenseType},
 
@@ -132,8 +133,9 @@ param(
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
+    [ArgumentCompleter({ "Standard_LRS" , "Premium_LRS", "StandardSSD_LRS" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
+    [System.String]
     # Specifies the type of disks to be used for the Azure VM.
     ${DiskType},
 
@@ -163,6 +165,7 @@ param(
     ${TargetVMSize},
 
     [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added null check for target storage account in FileShare restore.
 
 ## Version 3.4.0
 * modified policy validation limits as per backup service.

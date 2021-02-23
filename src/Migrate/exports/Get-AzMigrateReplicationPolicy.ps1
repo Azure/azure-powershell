@@ -37,7 +37,7 @@ Location Name                                Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationpolicy
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]

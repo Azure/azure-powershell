@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                    .AccessToken;
         }
 
-        private string GetRefreshToken()
+        public string GetRefreshToken()
         {
             return GetClient()
                     .RefreshTokens

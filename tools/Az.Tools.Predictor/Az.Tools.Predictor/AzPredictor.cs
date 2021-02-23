@@ -16,6 +16,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
@@ -225,7 +226,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnImport()
         {
             var settings = Settings.GetSettings();
-            var azContext = new AzContext();
+            var azContext = new AzContext()
+            {
+                IsInternal = (settings.SetAsInternal == true) ? true : false,
+                SurveyId = settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
+            };
+
             azContext.UpdateContext();
             var telemetryClient = new AzPredictorTelemetryClient(azContext);
             var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);

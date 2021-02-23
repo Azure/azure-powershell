@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.1
+* Fixed authentication for `Connect-AzContainerRegistry`
+
 ## Version 2.2.0
 * Added cmdlets to supported repository, manifest, and tag operations:
     - `Get-AzContainerRegistryRepository`
