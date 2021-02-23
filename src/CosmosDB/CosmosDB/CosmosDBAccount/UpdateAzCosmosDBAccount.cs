@@ -160,14 +160,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
                 {
-                    PSBackupPolicy backupPolicy = new PSBackupPolicy()
+                    databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
                     {
-                        BackupType = PSBackupPolicy.PeriodicModeBackupType,
-                        BackupIntervalInMinutes = BackupIntervalInMinutes,
-                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        PeriodicModeProperties = new PeriodicModeProperties()
+                        {
+                            BackupIntervalInMinutes = BackupIntervalInMinutes,
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        }
                     };
-
-                    databaseAccountUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
                 }
                 else
                 {
