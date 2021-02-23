@@ -29,23 +29,16 @@ Registration token of the host pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Windows Virtual Desktop registration token information by HostPoolName
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
-{{ Add output here }}
+ExpirationTime       RegistrationTokenOperation Token
+--------------       -------------------------- -----
+4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets Windows Virtual Desktop registration token information from a HostPool.
 
 ## PARAMETERS
 
