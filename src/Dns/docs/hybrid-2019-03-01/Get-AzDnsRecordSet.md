@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Dns
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsrecordset
+online version: https://docs.microsoft.com/powershell/module/az.dns/get-azdnsrecordset
 schema: 2.0.0
 ---
 

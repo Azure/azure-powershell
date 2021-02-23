@@ -4,7 +4,7 @@ Regenerates primary or secondary connection strings for the topic.
 .Description
 Regenerates primary or secondary connection strings for the topic.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebustopickey
+https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopickey
 #>
 function New-AzServiceBusKey_Topic {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

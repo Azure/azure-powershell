@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvnetgatewayvpnprofile
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azvnetgatewayvpnprofile
 schema: 2.0.0
 ---
 

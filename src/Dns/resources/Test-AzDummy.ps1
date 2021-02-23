@@ -4,7 +4,7 @@ Dummy alias cmdlet
 .Description
 Dummy alias cmdlet
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dns/test-azdummy
+https://docs.microsoft.com/powershell/module/az.dns/test-azdummy
 #>
 function Test-AzDummy {
 [OutputType('Boolean')]

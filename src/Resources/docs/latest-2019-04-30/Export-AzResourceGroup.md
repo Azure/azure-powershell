@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/export-azresourcegroup
+online version: https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup
 schema: 2.0.0
 ---
 

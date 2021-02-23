@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
             {
                 string copyId;
 
-                //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/rest/api/storageservices/copy-blob
                 destBlob.Metadata.Clear();
 
                 if (pageBlobTier == null)

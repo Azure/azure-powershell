@@ -25,7 +25,7 @@
       },
       "subnet1Name": {
         "type": "string",
-        "defaultValue": "MysqlSubnet1",
+        "defaultValue": "PostgresqlSubnet1",
         "metadata": {
           "description": "Subnet 1 Name"
         }
@@ -39,7 +39,7 @@
       },
       "subnet2Name": {
         "type": "string",
-        "defaultValue": "MysqlSubnet2",
+        "defaultValue": "PostgresqlSubnet2",
         "metadata": {
           "description": "Subnet 2 Name"
         }
