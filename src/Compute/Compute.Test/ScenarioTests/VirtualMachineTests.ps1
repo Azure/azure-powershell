@@ -4591,11 +4591,13 @@ function Test-VirtualMachinePatchAPI
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
         [string]$domainNameLabel = "d"+ $rgname;
         $computerName = 'test';
+        $patchMode = "AutomaticByPlatform";
 
-        
         # EnableHotPatching for Windows machine. 
         $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
-        $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode "AutomaticByPlatform";
+        $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode $patchMode;
+        Assert-True {$vm0.OSProfile.WindowsConfiguration.PatchSettings.EnableHotpatching};
+        Assert-AreEqual $vm0.OSProfile.WindowsConfiguration.PatchSettings.PatchMode $patchMode;
 
         # Test Linux VM PatchMode scenario. 
         # This currently requires creating a Linux (Ubuntu) VM manually in the Azure Portal as the DefaultCRPLinuxImageOffline cmd uses a 
@@ -4603,12 +4605,12 @@ function Test-VirtualMachinePatchAPI
         $rgname2 = "adamddeast";
         $vmname = "linuxtest";
         $linuxvm = Get-AzVM -ResourceGroupName $rgname2 -Name $vmname;
-        $password = "Testing1234567";
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $user = "usertest";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-        $vmset = Set-AzVMOperatingSystem -VM $linuxvm -Linux -ComputerName "compname" -Credential $cred -PatchMode "AutomaticByPlatform";
+        $vmset = Set-AzVMOperatingSystem -VM $linuxvm -Linux -ComputerName $computerName -Credential $cred -PatchMode $patchMode;
 
+        Assert-AreEqual $linuxvm.OSProfile.LinuxConfiguration.PatchSettings.PatchMode $patchMode;
     }
     finally
     {
