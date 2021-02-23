@@ -4,11 +4,11 @@ Creates or updates a DNS zone. Does not modify DNS records within the zone.
 .Description
 Creates or updates a DNS zone. Does not modify DNS records within the zone.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnszone
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.dns/set-azdnszone
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnszone
+https://docs.microsoft.com/powershell/module/az.dns/set-azdnszone
 #>
 function Set-AzDnsZone {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone')]

@@ -4,7 +4,7 @@ Creates an authorization rule for the specified topic.
 .Description
 Creates an authorization rule for the specified topic.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusauthorizationrule
+https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusauthorizationrule
 #>
 function Set-AzServiceBusAuthorizationRule_Topic {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]

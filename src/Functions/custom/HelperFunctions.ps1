@@ -727,7 +727,7 @@ function GetSkuName
         return "Isolated"
     }
 
-    $guidanceUrl = 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
+    $guidanceUrl = 'https://docs.microsoft.com/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
 
     $errorMessage = "Invalid sku (pricing tier), please refer to '$guidanceUrl' for valid values."
     $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -1023,7 +1023,7 @@ function ThrowRuntimeNotSupportedException
     )
 
     $Message += [System.Environment]::NewLine
-    $Message += "For supported languages, please visit 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'."
+    $Message += "For supported languages, please visit 'https://docs.microsoft.com/azure/azure-functions/functions-versions#languages'."
 
     $exception = [System.InvalidOperationException]::New($Message)
     ThrowTerminatingError -ErrorId $ErrorId `

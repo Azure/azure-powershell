@@ -4,7 +4,7 @@ Creates an authorization rule for a queue.
 .Description
 Creates an authorization rule for a queue.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
 #>
 function New-AzServiceBusAuthorizationRule_Queue {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]

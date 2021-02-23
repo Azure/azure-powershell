@@ -30,7 +30,7 @@ Describe 'Get-AzMySqlFlexibleServerFirewallRule' {
 
     It 'GetViaIdentity' {
         { 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
             $rule = Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 0.0.0.1

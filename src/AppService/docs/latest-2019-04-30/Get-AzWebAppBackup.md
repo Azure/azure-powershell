@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappbackup
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azwebappbackup
 schema: 2.0.0
 ---
 

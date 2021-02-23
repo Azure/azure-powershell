@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappserviceenvironmentworkerpoolinstancemetricdefinition
+online version: https://docs.microsoft.com/powershell/module/az.appservice/get-azappserviceenvironmentworkerpoolinstancemetricdefinition
 schema: 2.0.0
 ---
 
