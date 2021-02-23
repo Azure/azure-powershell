@@ -15,7 +15,7 @@ Get Backup Vault storage setting object
 ```
 Get-AzDataProtectionJobFromARG -DatasourceType <DatasourceTypes> -Subscription <String[]>
  [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>] [-StartTime <DateTime>]
- [-Vault <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Status <JobStatus[]>] [-Vault <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
-Name of the vault
+End Time of the Backup Job
 
 ```yaml
 Type: System.DateTime
@@ -104,10 +104,25 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Name of the vault
+Start Time of the backup Job
 
 ```yaml
 Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Status
+Status of the Job Filter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]
 Parameter Sets: (All)
 Aliases:
 

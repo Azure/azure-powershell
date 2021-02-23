@@ -81,7 +81,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName]
     # Datasource Type
     ${Name},
 

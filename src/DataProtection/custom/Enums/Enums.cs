@@ -44,6 +44,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         Hourly
     }
 
+    public enum RetentionRuleName
+    {
+        Default = 0,
+        Daily,
+        Weekly,
+        Monthly,
+        Yearly
+    }
+
+    public enum TagName
+    {
+        Daily = 0,
+        Weekly,
+        Monthly,
+        Yearly
+    }
+
     public enum AbsoluteTagCriteria
     {
         AllBackup = 0,
@@ -119,5 +136,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         OnDemandBackup = 0,
         ScheduledBackup,
         Restore
+    }
+
+    public enum JobStatus
+    {
+        InProgress = 0,
+        Completed,
+        Failed
     }
 }

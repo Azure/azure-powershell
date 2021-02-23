@@ -11,7 +11,7 @@
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Datasource Type')]
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Datasource Type')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName]
         ${Name},
 
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Datasource Type')]
@@ -29,7 +29,7 @@
         $clientDatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
         $manifest = LoadManifest -DatasourceType $clientDatasourceType
 
-        if($manifest.policySettings.supportedRetentionTags.Contains($Name) -eq $false)
+        if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
         {
             throw "Selected Retention Tag " + $Name  + " is not applicable for Datasource Type " + $clientDatasourceType
         }

@@ -80,7 +80,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
     # Retention Rule Name
     ${Name},
 

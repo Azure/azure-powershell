@@ -14,13 +14,13 @@ Prepares Datasource object for backup
 
 ### RemoveTag (Default)
 ```
-Update-AzDataProtectionPolicyTag -Name <String> -Policy <IBackupPolicy> -RemoveRule [-Confirm] [-WhatIf]
+Update-AzDataProtectionPolicyTag -Name <TagName> -Policy <IBackupPolicy> -RemoveRule [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### updateTag
 ```
-Update-AzDataProtectionPolicyTag -Criteria <IScheduleBasedBackupCriteria[]> -Name <String>
+Update-AzDataProtectionPolicyTag -Criteria <IScheduleBasedBackupCriteria[]> -Name <TagName>
  -Policy <IBackupPolicy> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Datasource Type
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName
 Parameter Sets: (All)
 Aliases:
 

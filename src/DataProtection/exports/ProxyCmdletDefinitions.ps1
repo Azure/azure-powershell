@@ -5884,20 +5884,26 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # Name of the vault
+    # Start Time of the backup Job
     ${StartTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # Name of the vault
+    # End Time of the Backup Job
     ${EndTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
     # Operation of the Job Filter
-    ${Operation}
+    ${Operation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+    # Status of the Job Filter
+    ${Status}
 )
 
 begin {
@@ -8033,7 +8039,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
     # Retention Rule Name
     ${Name},
 
@@ -8176,7 +8182,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName]
     # Datasource Type
     ${Name},
 
