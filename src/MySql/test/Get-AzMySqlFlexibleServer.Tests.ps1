@@ -35,7 +35,7 @@ Describe 'Get-AzMySqlFlexibleServer' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             $servers = Get-AzMySqlFlexibleServer -InputObject $ID
             $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw
