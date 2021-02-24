@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
             return CreateServerTrustGroupModelFromResponse(res);
 		}
 
-        public List<AzureSqlServerTrustGroupModel> ListServerTrustGrousByInstance(string resourceGroupName, string serverTrustGroupName)
+        public List<AzureSqlServerTrustGroupModel> ListServerTrustGroupsByInstance(string resourceGroupName, string serverTrustGroupName)
 		{
             IPage<Management.Sql.Models.ServerTrustGroup> entities = Communicator.ListGroupsByInstance(resourceGroupName, serverTrustGroupName);
             List<AzureSqlServerTrustGroupModel> models = new List<AzureSqlServerTrustGroupModel>();
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
             return models;
 		}
 
-        public List<AzureSqlServerTrustGroupModel> ListServerTrustGrousByLocation(string resourceGroupName, string location)
+        public List<AzureSqlServerTrustGroupModel> ListServerTrustGroupsByLocation(string resourceGroupName, string location)
 		{
             IPage<Management.Sql.Models.ServerTrustGroup> entities = Communicator.ListGroupsByLocation(resourceGroupName, location);
             List<AzureSqlServerTrustGroupModel> models = new List<AzureSqlServerTrustGroupModel>();

@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 			}
 			else if (MyInvocation.BoundParameters.ContainsKey("InstanceName"))
 			{
-				entities = ModelAdapter.ListServerTrustGrousByInstance(this.ResourceGroupName, this.InstanceName);
+				entities = ModelAdapter.ListServerTrustGroupsByInstance(this.ResourceGroupName, this.InstanceName);
 			}
 			else if(!MyInvocation.BoundParameters.ContainsKey("Name") && MyInvocation.BoundParameters.ContainsKey("Location"))
 			{
-				entities = ModelAdapter.ListServerTrustGrousByLocation(this.ResourceGroupName, this.Location);
+				entities = ModelAdapter.ListServerTrustGroupsByLocation(this.ResourceGroupName, this.Location);
 			}
 			else
 			{
