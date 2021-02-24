@@ -67,6 +67,15 @@ Location Name                Type                     Zone
 East US  testnewkustocluster Microsoft.Kusto/Clusters
 ```
 
+### Example 3: Update Cluster with TrustedExternalTenant
+```powershell
+PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -TrustedExternalTenant @(@{value="12345678-1234-1234-1234-123456789012"})
+
+Location Name                Type                     Zone
+-------- ----                ----                     ----
+East US  testnewkustocluster Microsoft.Kusto/Clusters
+```
+
 The above command updates the cluster "testnewkustocluster" found in the resource group "testrg" with a customer managed key.
 
 ## PARAMETERS
