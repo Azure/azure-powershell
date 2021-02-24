@@ -20,8 +20,8 @@
 
 -->
 ## Upcoming Release
-* Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
-    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+* [Breaking Change] Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
+    - `Add-AzContainerServiceAgentPoolProfile`
     - `Get-AzContainerService`
     - `New-AzContainerService`
     - `New-AzContainerServiceConfig`

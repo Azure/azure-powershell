@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
     /// <summary>List all the firewall rules in a given server.</summary>
     /// <remarks>
-    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules"
+    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlFlexibleServerFirewallRule_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule))]

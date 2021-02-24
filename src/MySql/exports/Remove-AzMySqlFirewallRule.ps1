@@ -48,7 +48,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/remove-azmysqlfirewallrule
+https://docs.microsoft.com/powershell/module/az.mysql/remove-azmysqlfirewallrule
 #>
 function Remove-AzMySqlFirewallRule {
 [OutputType([System.Boolean])]

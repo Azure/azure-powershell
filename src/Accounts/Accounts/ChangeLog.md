@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when explict ADFS credential is used [#13560]
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
 
 ## Version 2.2.5
 * Tracked CloudError code in exception
