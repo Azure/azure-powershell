@@ -28,7 +28,7 @@ postgresqltestserverreplica eastus   pwsh               9.6     5120            
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.postgresql/get-azpostgresqlreplica
+https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlreplica
 #>
 function Get-AzPostgreSqlReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
