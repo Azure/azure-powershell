@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWebAppCertificate
 
 ## SYNOPSIS
-Creates an App service managed certificate for an Azure Web App. 
+Removes an App service managed certificate for an Azure Web App. 
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-ThumbPrint] <String> 
 ```
 
 ## DESCRIPTION
-The **Remove-AzWebAppCertificate** cmdlet creates an Azure App Service Managed Certificate
+The **Remove-AzWebAppCertificate** cmdlet Removes an Azure App Service Managed Certificate
 
 ## EXAMPLES
 
