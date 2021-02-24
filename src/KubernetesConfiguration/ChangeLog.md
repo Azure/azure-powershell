@@ -18,10 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2021-03-01.
 
 ## Version 0.2.0
-* Upgrade API version from 2019-11-01-preview to 2020-10-01-preview.
+* Upgraded API version from 2019-11-01-preview to 2020-10-01-preview.
 
 ## Version 0.1.0
-* the first preview release
+* The first preview release
 
