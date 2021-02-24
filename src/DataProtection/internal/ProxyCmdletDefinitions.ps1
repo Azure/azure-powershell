@@ -502,12 +502,6 @@ To create the parameters described below, construct a hash table containing the 
 PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
   DatasourceType <String[]>: Type of datasource for the backup management
   ObjectType <String>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackuppolicy
 #>
@@ -559,44 +553,6 @@ param(
     [System.String]
     # .
     ${ObjectType},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.DateTime]
-    # The timestamp of resource creation (UTC).
-    ${SystemDataCreatedAt},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # The identity that created the resource.
-    ${SystemDataCreatedBy},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CreatedByType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CreatedByType]
-    # The type of identity that created the resource.
-    ${SystemDataCreatedByType},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.DateTime]
-    # The type of identity that last modified the resource.
-    ${SystemDataLastModifiedAt},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # The identity that last modified the resource.
-    ${SystemDataLastModifiedBy},
-
-    [Parameter(ParameterSetName='PutExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CreatedByType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CreatedByType]
-    # The type of identity that last modified the resource.
-    ${SystemDataLastModifiedByType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

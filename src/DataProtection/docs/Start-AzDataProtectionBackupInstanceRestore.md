@@ -441,12 +441,6 @@ PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
 
 RECOVERYPOINT <IAzureBackupRecoveryPointResource>: Storage Type of the vault
   - `ObjectType <String>`: 
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The type of identity that last modified the resource.
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 TARGETINFO <IRestoreTargetInfoBase>: DataStore Type of the vault
   - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
