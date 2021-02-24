@@ -25,7 +25,7 @@ Describe 'Test-AzMySqlFlexibleServerConnect' {
 
         It 'TestViaIdentity' {
             {
-                $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)"
+                $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
                 Get-AzMySqlFlexibleServerConnect -InputObject $ID -AdministratorLoginPassword $password
             } | Should -Not -Throw
         }
@@ -38,7 +38,7 @@ Describe 'Test-AzMySqlFlexibleServerConnect' {
 
         It 'TestViaIdentityAndQuery' {
             {
-                $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)"
+                $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
                 Get-AzMySqlFlexibleServerConnect -InputObject $ID -AdministratorLoginPassword $password -Query "CREATE TABLE dbtest2 (col1 INT)"
             } | Should -Not -Throw
         }
