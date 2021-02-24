@@ -1,8 +1,6 @@
 bin
 obj
 .vs
-internal
-exports
 tools
 custom/*.psm1
 test/*-TestResults.xml

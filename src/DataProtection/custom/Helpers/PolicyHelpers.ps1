@@ -8,7 +8,7 @@ function TranslateBackupPolicy {
 	)
 	
 	process{
-		$translatedPolicy = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupPolicy]::DeserializeFromPSObject($policy)
+		$translatedPolicy = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupPolicy]::DeserializeFromPSObject($policy)
 		$translatedPolicy.PolicyRule = @()
 		Foreach ($policyRule in $policy.PolicyRule){
 			$translatedPolicyRule = TranslateBackupPolicyRule -PolicyRule $policyRule
@@ -28,14 +28,14 @@ function TranslateBackupPolicyRule {
 
 	process {
 		if($PolicyRule.ObjectType -eq "AzureBackupRule"){
-			$translatedPolicyRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRule]::DeserializeFromPSObject($PolicyRule)
+			$translatedPolicyRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureBackupRule]::DeserializeFromPSObject($PolicyRule)
 			$translatedPolicyRule.BackupParameter = TranslateBackupParam -BackupParam $PolicyRule.BackupParameter
 			$translatedPolicyRule.Trigger = TranslateBackupPolicyTrigger -Trigger $PolicyRule.Trigger
 			return $translatedPolicyRule
 		}
 
 		if($PolicyRule.ObjectType -eq "AzureRetentionRule"){
-			$translatedPolicyRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureRetentionRule]::DeserializeFromPSObject($PolicyRule)
+			$translatedPolicyRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureRetentionRule]::DeserializeFromPSObject($PolicyRule)
 			$translatedPolicyRule.Lifecycle = @()
 			Foreach($lifecycle in $PolicyRule.Lifecycle){
 				$translatedPolicyRule.Lifecycle += TranslatePolicyRetentionLifeCycle -Lifecycle $lifecycle
@@ -55,7 +55,7 @@ function TranslateBackupParam {
 
 	process {
 		if($BackupParam.ObjectType -eq "AzureBackupParams") {
-			$translatedBackupParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupParams]::DeserializeFromPSObject($BackupParam)
+			$translatedBackupParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureBackupParams]::DeserializeFromPSObject($BackupParam)
 			return $translatedBackupParam
 		}
 	}
@@ -71,7 +71,7 @@ function TranslateBackupPolicyTrigger {
 
 	process {
 		if($Trigger.ObjectType -eq "ScheduleBasedTriggerContext"){
-			$translatedTrigger = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ScheduleBasedTriggerContext]::DeserializeFromPSObject($Trigger)
+			$translatedTrigger = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ScheduleBasedTriggerContext]::DeserializeFromPSObject($Trigger)
 			$translatedTrigger.TaggingCriterion = @()
 			Foreach ($triggerCriteria in $Trigger.TaggingCriterion){
 				$translatedTrigger.TaggingCriterion += TranslateBackupPolicyTagCriteria -TagCriteria $triggerCriteria
@@ -90,7 +90,7 @@ function TranslateBackupPolicyTagCriteria {
 	)
 
 	process {
-		$translatedTagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.TaggingCriteria]::DeserializeFromPSObject($TagCriteria)
+		$translatedTagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.TaggingCriteria]::DeserializeFromPSObject($TagCriteria)
 		return $translatedTagCriteria
 	}
 }
@@ -104,7 +104,7 @@ function TranslatePolicyRetentionLifeCycle {
 	)
 
 	process {
-		$translatedLifeCycle = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.SourceLifeCycle]::DeserializeFromPSObject($LifeCycle)
+		$translatedLifeCycle = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.SourceLifeCycle]::DeserializeFromPSObject($LifeCycle)
 		return $translatedLifeCycle
 	}
 }

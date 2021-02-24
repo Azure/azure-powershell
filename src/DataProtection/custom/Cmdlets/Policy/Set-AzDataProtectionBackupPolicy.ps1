@@ -18,14 +18,14 @@
         ${Name},
 
         [Parameter(Mandatory, HelpMessage='Policy Object')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
         ${Policy}
     )
 
     process
     {
         # Do Validation
-        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BaseBackupPolicyResource]::new()
+        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BaseBackupPolicyResource]::new()
         $policyObject.Property = $Policy
 
         $null = $PSBoundParameters.Remove("Policy")

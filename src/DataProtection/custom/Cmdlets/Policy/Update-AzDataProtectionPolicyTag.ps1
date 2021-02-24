@@ -1,12 +1,12 @@
 ﻿function Update-AzDataProtectionPolicyTag{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Datasource object for backup')]
 
     param(
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Datasource Type')]
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Datasource Type')]
@@ -19,7 +19,7 @@
         ${RemoveRule},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IScheduleBasedBackupCriteria[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria[]]
         ${Criteria}
     )
 
@@ -83,7 +83,7 @@
                 
                 if($tagIndex -eq -1)
                 {
-                    $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.TaggingCriteria]::new()
+                    $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.TaggingCriteria]::new()
                     $tagCriteria.TaggingPriority = GetTaggingPriority -Name $Name
                     $tagCriteria.Criterion = $Criteria
                     $tagCriteria.TagInfoTagName = $Name
