@@ -168,7 +168,7 @@ Dynamic: False
 ```
 
 ### -HostPoolType
-HostPool type for scaling plan.
+HostPool type for desktop.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
