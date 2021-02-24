@@ -63,7 +63,7 @@ output-folder: .
 aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-01-01
 input-file:
 	- $(aks)/resourcemovercollection.json
-module-version: 1.0.0
+module-version: 0.8.0
 
 directive:
   # Remove the unexpanded parameter set
