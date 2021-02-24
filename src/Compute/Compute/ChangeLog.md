@@ -30,6 +30,7 @@
     - `Remove-AzContainerService`
     - `Remove-AzContainerServiceAgentPoolProfile`
     - `Update-AzContainerService`
+ * Added parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
 
 ## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.

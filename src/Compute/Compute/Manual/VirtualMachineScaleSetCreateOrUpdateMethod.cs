@@ -184,6 +184,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Fault Domain count for each placement group.")]
         public int PlatformFaultDomainCount { get; set; }
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the orchestration mode for the virtual machine scale set.")]
+        [PSArgumentCompleter("Uniform", "Flexible")]
+        public string OrchestrationMode { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -328,7 +335,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
+                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null
                     );
             }
         }
