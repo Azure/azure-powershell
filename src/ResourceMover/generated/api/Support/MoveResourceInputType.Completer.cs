@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for MoveResourceInputType.</summary>
+    /// <summary>Defines the move resource input type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputTypeTypeConverter))]
     public partial struct MoveResourceInputType :
         System.Management.Automation.IArgumentCompleter

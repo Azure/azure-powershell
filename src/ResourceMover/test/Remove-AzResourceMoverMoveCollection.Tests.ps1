@@ -12,9 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzResourceMoverMoveCollection' {
-    It 'Delete'{
-        $moveCollectionName  = "testMoveCollection"
-        New-AzResourceMoverMoveCollection -Name $moveCollectionName  -ResourceGroupName $env.moveCollectionMetadataRG -SubscriptionId $env.SubscriptionId -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "EastUs2"
-        Remove-AzResourceMoverMoveCollection -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $moveCollectionName
+    It 'Delete' {
+        $moveCollectionName  = "MoveColRemoveTest"
+        $moveCollection = New-AzResourceMoverMoveCollection -Name $moveCollectionName  -ResourceGroupName $env.moveCollectionMetadataRG -SubscriptionId $env.SubscriptionId -SourceRegion "eastus" -TargetRegion "westus2" -Location "eastus2euap" -IdentityType "SystemAssigned"
+        $moveCollection.Name | Should -Be $moveCollectionName
+        $removeResp = Remove-AzResourceMoverMoveCollection -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $moveCollectionName
+        $removeResp.Status | Should -Be "Succeeded"
     }
 }
