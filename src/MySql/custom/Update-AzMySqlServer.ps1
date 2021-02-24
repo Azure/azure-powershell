@@ -165,12 +165,6 @@ function Update-AzMySqlServer {
 
     process {
         try {
-            if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
-                $PSBoundParameters.Add('AdministratorLoginPassword', $password)
-                $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
-            }
-
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
                 $PSBoundParameters.Add('StorageProfileStorageMb', $PSBoundParameters['StorageInMb'])
                 $null = $PSBoundParameters.Remove('StorageInMb')

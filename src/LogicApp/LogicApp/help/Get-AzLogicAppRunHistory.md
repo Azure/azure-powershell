@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapprunhistory
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapprunhistory
 schema: 2.0.0
 ---
 

@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             if (PredicateExpression != null)
             {
-                model.PredicateExpression = PredicateExpression = PredicateExpression;
+                model.PredicateExpression = PredicateExpression;
             }
 
             if (BlobStorageTargetState != null)

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MySql
 Module Guid: 0b8ac9f4-b926-4ac8-b73f-937a0d218521
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.mysql
+Download Help Link: https://docs.microsoft.com/powershell/module/az.mysql
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -109,6 +109,9 @@ Starts a server.
 
 ### [Stop-AzMySqlFlexibleServer](Stop-AzMySqlFlexibleServer.md)
 Stops a server.
+
+### [Test-AzMySqlFlexibleServerConnect](Test-AzMySqlFlexibleServerConnect.md)
+Test out the connection to the database server
 
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)
 Updates a configuration of a server.

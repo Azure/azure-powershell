@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
+online version: https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: DEAC40AB-D90B-41D8-86AB-A66B60A908BD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 schema: 2.0.0
 ---
 

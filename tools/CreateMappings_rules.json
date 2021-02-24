@@ -48,6 +48,10 @@
     "alias": "Container Service"
   },
   {
+    "regex": "VMware",
+    "alias": "VMware"
+  },
+  {
     "regex": "VM.*Extension",
     "group": "Virtual Machines",
     "alias": "VM Extensions"
@@ -584,10 +588,6 @@
   {
     "alias": "ConnectedMachine",
     "regex": "ConnectedMachine"
-  },
-  {
-    "regex": "VMWare",
-    "alias": "VMWare"
   },
   {
     "alias": "Dedicated HSM",

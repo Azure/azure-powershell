@@ -1,0 +1,41 @@
+{
+  "Test-AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkTrialAvailability?api-version=2020-03-20+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkTrialAvailability?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "63c48195-78f4-402e-ae89-8511fd770e85" ],
+        "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
+        "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "366acef8-9882-4745-a5de-fa9745ce9c10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "b2615272-05ee-4af6-8ace-2ef96c2e21bb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040258Z:b2615272-05ee-4af6-8ace-2ef96c2e21bb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "45" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvirtualhubroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azvirtualhubroutetable
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ be attached to and is used to route traffic in a Virtual Hub.
 
 ### Example 1
 ```powershell
-PS C:\> $route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
-PS C:\> Add-AzVirtualHubRouteTable -Route @($route1) -Connection @("All_Vnets") -Name "routeTable1"
+PS C:\> $route1ï¿½=ï¿½Add-AzVirtualHubRouteï¿½-DestinationTypeï¿½"CIDR"ï¿½-Destinationï¿½@("10.4.0.0/16",ï¿½"10.5.0.0/16")ï¿½-NextHopTypeï¿½"IPAddress"ï¿½-NextHopï¿½@("10.0.0.68")
+PS C:\> Add-AzVirtualHubRouteTableï¿½-Routeï¿½@($route1)ï¿½-Connectionï¿½@("All_Vnets")ï¿½-Nameï¿½"routeTable1"
 
 Name                : routeTable1
 Id                  :
