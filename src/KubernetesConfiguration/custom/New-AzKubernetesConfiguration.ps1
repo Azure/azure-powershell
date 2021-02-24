@@ -157,13 +157,6 @@ function New-AzKubernetesConfiguration {
     )
     
     process {
-
-        if ($PSBoundParameters.ContainsKey('EnableHelmOperator')) {
-            $PSBoundParameters.EnableHelmOperator = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType]::True
-        } else {
-            $PSBoundParameters.EnableHelmOperator = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType]::False
-        }
-
         if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
             $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
         } else {
