@@ -811,10 +811,75 @@ function Test-NewDeploymentWithQueryString
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
-
 	}
 
 	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via Bicep file.
+#>
+function Test-NewDeploymentFromBicepFile
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+    $expectedTags = @{"key1"="value1"; "key2"="value2";}
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentBicepFile.bicep -Tag $expectedTags
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+        Assert-True { AreHashtableEqual $expectedTags $deployment.Tags }
+
+        $subId = (Get-AzContext).Subscription.SubscriptionId
+        $deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+        $getById = Get-AzResourceGroupDeployment -Id $deploymentId
+        Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+        [hashtable]$actualTags = $getById.Tags
+        Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment template via bicep file.
+#>
+function Test-TestDeploymentFromBicepFile
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "West US 2"
+
+    # Test
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        $list = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile sampleDeploymentBicepFile.bicep
+
+        # Assert
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
