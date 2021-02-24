@@ -30,7 +30,7 @@ Describe 'Get-AzMySqlFlexibleServerDatabase' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/databases/$($env.databaseName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/databases/$($env.databaseName)"
             $database = Get-AzMySqlFlexibleServerDatabase -InputObject $ID
             $database.Collation | Should -Be "latin1_swedish_ci"
             $database.Charset | Should -Be "latin1"
