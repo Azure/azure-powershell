@@ -64,8 +64,11 @@ function Test-AzureRmIotHubRoutingLifecycle
 
 
 	# Create containers
-	New-AzStorageContainer -Name $containerName1 -Context $context
-	New-AzStorageContainer -Name $containerName2 -Context $context
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+		New-AzStorageContainer -Name $containerName1 -Context $context
+		New-AzStorageContainer -Name $containerName2 -Context $context
+	}
 
 	# Get connection string
 	$ascConnectionString = $context.ConnectionString
