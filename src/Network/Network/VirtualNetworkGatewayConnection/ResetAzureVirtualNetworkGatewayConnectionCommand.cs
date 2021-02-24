@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
 
-    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection", DefaultParameterSetName = "ByName"), OutputType(typeof(void))]
+    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection", DefaultParameterSetName = "ByName", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class ResetAzVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName", "ConnectionName")]

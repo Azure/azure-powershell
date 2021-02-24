@@ -11,7 +11,8 @@
     [Cmdlet(
         VerbsCommon.Reset,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSiteLinkConnection",
-        DefaultParameterSetName = "ByName"),
+        DefaultParameterSetName = "ByName",
+        SupportsShouldProcess = true),
         OutputType(typeof(void))]
 
     public class ResetAzVpnSiteLinkConnectionCommand : VpnLinkConnectionBaseCmdlet
