@@ -19,30 +19,30 @@ Computes, resolves and validate the dependencies of the moveResources in the mov
 .Description
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
 .Example
-PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRM" -MoveCollectionName "PS-centralus-westcentralus-demoRM" 
+PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
 
 AdditionalInfo : 
 Code           : MoveCollectionResolveDependenciesOperationFailed
 Detail         : {}
-EndTime        : 8/16/2020 2:28:18 PM
-Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migrate/MoveCollections/PS-ce
-                 ntralus-westcentralus-demoRM/operations/bce85a10-1ff3-4815-a677-7b188f7b441a
-Message        : The resolve dependencies operation of one ore more resources has failed. Check the move status of the resource for more details. 
-Possible Causes: The resolve dependencies operation of one ore more resources has failed.
-Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
+EndTime        : 2/9/2021 2:05:04 AM
+Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/c2ad006
+                 6-6a69-45fe-aa70-193c240a9bc0
+Message        : The resolve dependencies operation of one or more resources has failed. Check the move status of the resource for more details.
+                     Possible Causes: The resolve dependencies operation of one ore more resources has failed.
+                     Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
                      
-Name           : bce85a10-1ff3-4815-a677-7b188f7b441a
-Property       : Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.OperationStatusProperties
-StartTime      : 8/16/2020 2:28:16 PM
+Name           : c2ad0066-6a69-45fe-aa70-193c240a9bc0
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 2/9/2021 2:05:00 AM
 Status         : Succeeded
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
+https://docs.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
 #>
 function Resolve-AzResourceMoverMoveCollectionDependency {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Resolve', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
