@@ -27,6 +27,7 @@
 * Fixed the inaccurate error message received on trying to deploy a non-existent template spec
 * Added support for policy export format to ```New-AzPolicyDefinition -Policy```
 * Add support for property updates from ```Set-AzPolicyAssignment -InputObject```
+* Fixed what-if functionality when using `-QueryString` parameter.
 
 ## Version 3.2.1
 * Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because current mapping was breaking certain scenarios
