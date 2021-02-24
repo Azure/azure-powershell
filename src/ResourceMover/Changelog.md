@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets `Invoke-AzResourceMoverBulkRemove`, `Get-AzResourceMoverRequiredForResources`
+* Added alias to `Add-AzResourceMoverMoveResource`: `Update-AzResourceMoverMoveResource`
+* Flattened object "ResourceSettings"
 
 ## Version 0.1.0
 * First preview release for module Az.ResourceMover
