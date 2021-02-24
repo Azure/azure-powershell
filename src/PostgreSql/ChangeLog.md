@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added maintenance windows parameter to Update-AzPostgreSqlFlexibleServer cmdlet
+* Added zone parameter to server New/Restore-PostgresSqlFlexibleServer cmdlet.
 
 ## Version 0.4.0
 * Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`

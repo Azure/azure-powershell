@@ -28,7 +28,7 @@ Describe 'Get-AzPostgreSqlFlexibleServerConfiguration' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/configurations/TimeZone"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/configurations/TimeZone"
             $config = Get-AzPostgreSqlFlexibleServerConfiguration -InputObject $ID 
             $config.Name | Should -Be TimeZone
         } | Should -Not -Throw
