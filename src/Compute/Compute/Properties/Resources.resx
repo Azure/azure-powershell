@@ -625,4 +625,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="EnableDiskEncryptionInvalidMigrateParameterSet" xml:space="preserve">
     <value>Invalid parameters for migration. Migration only supports -ResourceGroupName, -VMName and -Migrate parameters.</value>
   </data>
+  <data name="EnableDiskEncryptionInvalidMigrateRecoveryParameter" xml:space="preserve">
+    <value>-Invalid MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery.</value>
+  </data>
 </root>

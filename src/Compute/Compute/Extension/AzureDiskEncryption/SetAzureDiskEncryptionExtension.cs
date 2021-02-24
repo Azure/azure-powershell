@@ -237,6 +237,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Migrate VM to newer version of ADE. Specify this parameter only to migrate from ADE with AAD credentials to ADE without AAD credentials.")]
         public SwitchParameter Migrate { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.migrateAdeVersionRecoveryParameterSet,
+            HelpMessage = "MigrationRecovery flag in case of dual pass to single pass migration failures. Specify this parameter only if the migration to single pass was not successful.")]
+        public SwitchParameter MigrationRecovery { get; set; }
+
         private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
@@ -786,13 +793,29 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(clearEncryptionSettings));
         }
 
+        private Hashtable GetVmPublicSettingsForMigration(VirtualMachine virtualMachineResponse, PSVirtualMachineExtension adeExtensionProperties)
+        {
+            Hashtable vmPublicSettings = JsonConvert.DeserializeObject<Hashtable>(adeExtensionProperties.PublicSettings);
+            VerifyKeyVaultProperties(virtualMachineResponse, vmPublicSettings);
+            vmPublicSettings.Add(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey, AzureDiskEncryptionExtensionConstants.migrateAdeOperationValue);
+
+            string publicSettingsForOutput = "Azure Disk Encryption Extension Public Settings \n";
+            foreach (DictionaryEntry entry in vmPublicSettings)
+            {
+                publicSettingsForOutput += string.Format("\"{0}\": {1} \n", entry.Key, entry.Value);
+            }
+            this.WriteObject(publicSettingsForOutput);
+
+            return vmPublicSettings;
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                var confirmADEOperation = this.Migrate.IsPresent ? this.ShouldContinue(Properties.Resources.MigrateAzureDiskEncryptionConfirmation, Properties.Resources.MigrateAzureDiskEncryptionCaption)
+                var confirmADEOperation = (this.Migrate.IsPresent || this.MigrationRecovery.IsPresent) ? this.ShouldContinue(Properties.Resources.MigrateAzureDiskEncryptionConfirmation, Properties.Resources.MigrateAzureDiskEncryptionCaption)
                                     : this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption);
 
                 if (this.ShouldProcess(VMName, Properties.Resources.EnableDiskEncryptionAction)
@@ -806,20 +829,27 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         // Get ADE extension instance view. ADE public settings are fetched using the extension instance view.
                         var adeExtensionProperties = GetVMExtensionParametersForMigration();
                         ValidateMigrationPrereqs(virtualMachineResponse, adeExtensionProperties);
-
-                        // Prepare public settings for migration
-                        Hashtable vmPublicSettings = JsonConvert.DeserializeObject<Hashtable>(adeExtensionProperties.PublicSettings);
-                        VerifyKeyVaultProperties(virtualMachineResponse, vmPublicSettings);
-                        vmPublicSettings.Add(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey, AzureDiskEncryptionExtensionConstants.migrateAdeOperationValue);
-                        string publicSettingsForOutput = "Azure Disk Encryption Extension Public Settings \n";
-                        foreach (DictionaryEntry entry in vmPublicSettings)
-                        {
-                            publicSettingsForOutput += string.Format("\"{0}\": {1} \n", entry.Key, entry.Value);
-                        }
-                        this.WriteObject(publicSettingsForOutput);
+                        Hashtable vmPublicSettings = GetVmPublicSettingsForMigration(virtualMachineResponse, adeExtensionProperties);
 
                         // Enable 2 pass ADE with -migrate flag
                         EnableDualPassADEForMigration(adeExtensionProperties, vmPublicSettings);
+
+                        // Enable 1 pass ADE with -migrate flag
+                        EnableSinglePassADEForMigration(adeExtensionProperties, vmPublicSettings);
+                    }
+                    else if (this.MigrationRecovery.IsPresent) // migration recovery if migration failed before installing single pass extension on the VM
+                    {
+                        if ((virtualMachineResponse.StorageProfile.OsDisk.EncryptionSettings.Enabled == null) || (virtualMachineResponse.StorageProfile.OsDisk.EncryptionSettings.Enabled != false))
+                        {
+                            // -migrationRecovery is an invalid parameter for this scenario
+                            ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, Resources.EnableDiskEncryptionInvalidMigrateRecoveryParameter)),
+                                                          "InvalidArgument",
+                                                          ErrorCategory.InvalidArgument,
+                                                          null));
+                        }
+
+                        var adeExtensionProperties = GetVMExtensionParametersForMigration();
+                        Hashtable vmPublicSettings = GetVmPublicSettingsForMigration(virtualMachineResponse, adeExtensionProperties);
 
                         // Enable 1 pass ADE with -migrate flag
                         EnableSinglePassADEForMigration(adeExtensionProperties, vmPublicSettings);
