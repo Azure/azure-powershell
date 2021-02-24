@@ -41,7 +41,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build" /p:Configuration=Release'
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release'
 
 - task: UseDotNet@2
   displayName: 'Install DotNet 2.1 Runtime for Signing'
@@ -59,6 +59,7 @@ steps:
      Tools/**/*.psd1
      Tools/**/*.psm1
      Tools/**/*.ps1xml
+     Tools/**/*.xml
     UseMinimatch: true
     signConfigType: inlineSignParams
     inlineOperation: |
