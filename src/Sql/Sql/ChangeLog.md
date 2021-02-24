@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+* Added cmdlet `New-AzSqlServerTrustGroup`
+* Added cmdlet `Remove-AzSqlServerTrustGroup`
+* Added cmdlet `Get-AzSqlServerTrustGroup`
 
 ## Version 2.15.0
 * Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
