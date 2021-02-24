@@ -27,36 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	public abstract class AzureSqlServerTrustGroupCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerTrustGroupModel>, AzureSqlServerTrustGroupAdapter>
 	{
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = "Default",
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = "ListByInstanceSet",
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = "ListByLocationSet",
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        protected string GetResourceGroupName(string ResourceId = null)
-        {
-            if (string.Equals(this.ParameterSetName, "", System.StringComparison.OrdinalIgnoreCase) && ResourceId != null)
-            {
-                var resourceInfo = new ResourceIdentifier(ResourceId);
-                return resourceInfo.ResourceGroupName;
-            }
-
-            return ResourceGroupName;
-        }
-
-        /// <summary>
         /// Initializes the Azure Sql Server Trust Group Adapter.
         /// </summary>
         /// <returns></returns>

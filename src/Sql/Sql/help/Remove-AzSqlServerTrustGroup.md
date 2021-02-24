@@ -13,9 +13,8 @@ Deletes a Server Trust Group.
 ## SYNTAX
 
 ```
-Remove-AzSqlServerTrustGroup [-Location] <String> [-Name] <String> [-Force] [-PassThru]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +66,7 @@ The location of the Server Trust Group to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -82,7 +81,7 @@ The name of Server Trust Group to remove.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Defines whether to return the removed Server Trust Group.
+Defines whether to return the removed Server Trust Group
 
 ```yaml
 Type: SwitchParameter

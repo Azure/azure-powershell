@@ -12,15 +12,21 @@ Gets information about Server Trust Group.
 
 ## SYNTAX
 
-### Default
+### GetByName
 ```
-Get-AzSqlServerTrustGroup [-Location] <String> [-Name] <String> [-ResourceGroupName] <String>
+Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ListByInstanceSet
+```
+Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByLocationSet
 ```
-Get-AzSqlServerTrustGroup [-Location] <String> [-ResourceGroupName] <String>
+Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,12 +34,6 @@ Get-AzSqlServerTrustGroup [-Location] <String> [-ResourceGroupName] <String>
 ```
 Get-AzSqlServerTrustGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### ListByInstanceSet
-```
-Get-AzSqlServerTrustGroup [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Gets information about Server Trust Group specified by its id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -87,10 +87,10 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the managed instance that is a member of Server Trust Group to retrieve.
+The name of the managed instance that is member of Server Trust Groups to retrieve.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListByInstanceSet
 Aliases:
 
@@ -102,11 +102,11 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of Server Trust Group to retrieve.
+The location of the Server Trust Group to retrieve.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default, ListByLocationSet
+Type: String
+Parameter Sets: GetByName, ListByLocationSet
 Aliases:
 
 Required: True
@@ -120,8 +120,8 @@ Accept wildcard characters: False
 The name of the Server Trust Group to retrieve.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default
+Type: String
+Parameter Sets: GetByName
 Aliases:
 
 Required: True
@@ -135,8 +135,8 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default, ListByLocationSet, ListByInstanceSet
+Type: String
+Parameter Sets: GetByName, ListByInstanceSet, ListByLocationSet
 Aliases:
 
 Required: True
@@ -147,10 +147,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of Server Trust Group.
+The resource id of instance to use
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdSet
 Aliases:
 

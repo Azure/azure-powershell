@@ -30,16 +30,35 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	public class GetAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
+		/// Gets or sets the name of the resource group to use.
+		/// </summary>
+		[Parameter(Mandatory = true,
+			Position = 0,
+			ParameterSetName = "GetByName",
+			HelpMessage = "The name of the resource group.")]
+		[Parameter(Mandatory = true,
+			Position = 0,
+			ParameterSetName = "ListByInstanceSet",
+			HelpMessage = "The name of the resource group.")]
+		[Parameter(Mandatory = true,
+			Position = 0,
+			ParameterSetName = "ListByLocationSet",
+			HelpMessage = "The name of the resource group.")]
+		[ResourceGroupCompleter]
+		[ValidateNotNullOrEmpty]
+		public override string ResourceGroupName { get; set; }
+
+		/// <summary>
 		/// Gets or sets the location of the ServerTrustGroup to use.
 		/// </summary>
 		[Parameter(Mandatory = true,
 			Position = 1,
-			ParameterSetName = "Default",
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
+			ParameterSetName = "GetByName",
+			HelpMessage = "The location of the Server Trust Group to retrieve.")]
 		[Parameter(Mandatory = true,
 			Position = 1,
 			ParameterSetName = "ListByLocationSet",
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
+			HelpMessage = "The location of the Server Trust Group to retrieve.")]
 		[LocationCompleter("Microsoft.Sql/locations/serverTrustGroups")]
 		[ValidateNotNullOrEmpty]
 		public string Location { get; set; }
@@ -60,8 +79,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = true,
 			Position = 2,
-			ParameterSetName = "Default",
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
+			ParameterSetName = "GetByName",
+			HelpMessage = "The name of the Server Trust Group to retrieve.")]
 		[ValidateNotNullOrEmpty]
 		public string Name { get; set; }
 
@@ -71,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		[Parameter(Mandatory = true,
 			Position = 3,
 			ParameterSetName = "ListByInstanceSet",
-			HelpMessage = "The name of the Instance Failover Group to retrieve.")]
+			HelpMessage = "The name of the managed instance that is member of Server Trust Groups to retrieve.")]
 		[ValidateNotNullOrEmpty]
 		public string InstanceName { get; set; }
 

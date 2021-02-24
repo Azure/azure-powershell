@@ -30,6 +30,16 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	public class NewAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
+		/// Gets or sets the name of the resource group to use.
+		/// </summary>
+		[Parameter(Mandatory = true,
+			Position = 0,
+			HelpMessage = "The name of the resource group.")]
+		[ResourceGroupCompleter]
+		[ValidateNotNullOrEmpty]
+		public override string ResourceGroupName { get; set; }
+
+		/// <summary>
 		/// Gets or sets the location of the ServerTrustGroup to use.
 		/// </summary>
 		[Parameter(Mandatory = true,

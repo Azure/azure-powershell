@@ -13,14 +13,14 @@ Creates a new Server Trust Group.
 ## SYNTAX
 
 ```
-New-AzSqlServerTrustGroup [-Location] <String> [-Name] <String>
+New-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
  [-GroupMembers] <System.Collections.Generic.List`1[System.String]>
- [[-TrustScope] <System.Collections.Generic.List`1[System.String]>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-TrustScope] <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new Server Trust Group with specified location, members, trust scope, name and resource group.
+Creates a new Server Trust Group with specified location, members, trust scope, name and resource group.}
 
 ## EXAMPLES
 
@@ -53,7 +53,7 @@ Group members of the Server Trust Group to create.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -68,7 +68,7 @@ The location of the Server Trust Group to create.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -83,7 +83,7 @@ The name of the Server Trust Group to create.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,7 +113,7 @@ The trust scope of the Server Trust Group to create.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
