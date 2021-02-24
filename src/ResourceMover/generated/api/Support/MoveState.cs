@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
+    /// <summary>Defines the MoveResource states.</summary>
     public partial struct MoveState :
         System.IEquatable<MoveState>
     {
@@ -18,6 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState CommitPending = @"CommitPending";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState Committed = @"Committed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState DeleteSourcePending = @"DeleteSourcePending";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState DiscardFailed = @"DiscardFailed";
 
@@ -35,6 +38,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState PreparePending = @"PreparePending";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState ResourceMoveCompleted = @"ResourceMoveCompleted";
+
         /// <summary>the value for an instance of the <see cref="MoveState" /> Enum.</summary>
         private string _value { get; set; }
 
@@ -42,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="MoveState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MoveState(System.Convert.ToString(value));
+            return new MoveState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MoveState</summary>
