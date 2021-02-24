@@ -23,7 +23,7 @@
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
 * Added parameter `-PatchMode` to the Linux parameter sets in the cmdlet `Set-AzVMOperatingSystem`. 
 * [Breaking Change] Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
-    - `Add-AzureRmContainerServiceAgentPoolProfileCommand`
+    - `Add-AzContainerServiceAgentPoolProfile`
     - `Get-AzContainerService`
     - `New-AzContainerService`
     - `New-AzContainerServiceConfig`
