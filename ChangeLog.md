@@ -69,10 +69,6 @@ Supported -EnableNoPublicIP when creating a Databricks workspace
 #### Az.PolicyInsights
 * Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
 
-#### Az.PostgreSql
-* Added maintenance windows parameter to Update-AzPostgreSqlFlexibleServer cmdlet
-* Added zone parameter to server New/Restore-PostgresSqlFlexibleServer cmdlet.
-
 #### Az.RecoveryServices
 * modified policy validation limits as per backup service.
 * Added Zone Redundancy for Recovery Service Vaults. 
