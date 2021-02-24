@@ -56,9 +56,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
-                cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
-                cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
                 cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
@@ -109,8 +106,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
                 cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
-                cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
-                cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
                 cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
