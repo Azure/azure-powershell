@@ -28,6 +28,8 @@
     - `Remove-AzContainerService`
     - `Remove-AzContainerServiceAgentPoolProfile`
     - `Update-AzContainerService`
+* Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
+* Added parameter `-PatchMode` to the Linux parameter sets in the cmdlet `Set-AzVMOperatingSystem`. 
 
 ## Version 4.9.0
 * Added parameter `-EnableAutomaticUpgrade` to `Set-AzVmExtension` and `Add-AzVmssExtension`.
