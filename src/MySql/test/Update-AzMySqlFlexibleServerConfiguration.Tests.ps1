@@ -19,7 +19,7 @@ Describe 'Update-AzMySqlFlexibleServerConfiguration' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/configurations/wait_timeout"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/configurations/wait_timeout"
         $config = Update-AzMySqlFlexibleServerConfiguration -InputObject $ID -Value 150 -Source user-override
         $config.Value | Should -Be 150
         $config.DefaultValue | Should -Be 28800
