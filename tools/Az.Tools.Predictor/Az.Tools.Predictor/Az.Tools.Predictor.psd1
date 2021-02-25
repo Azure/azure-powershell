@@ -29,7 +29,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.2 or above.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 preview 3 and PSReadline 2.3. beta 2.
 
 The suggestions must be activated:
 - Enable-AzPredictor:  Activate the suggestions
@@ -70,7 +70,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* second preview release
-* Add *AzPredictor cmdlet to simplify configuration
+* Add Enable-AzPredictor and Disable-AzPredictor cmdlet to simplify configuration
 * Use PSReadline new API'
 
         # Prerelease string of this module
