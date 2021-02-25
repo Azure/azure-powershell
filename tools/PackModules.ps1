@@ -15,10 +15,10 @@
 #This script will pack build artifacts under temporary folder "artifacts/tmp" and output Az.*.nupkg to "artifacts"
 
 param(
-    [Parameter(Mandatory = $false, Position = 1)]
+    [Parameter(Mandatory = $false, Position = 0)]
     [string]$Artifacts,
 
-    [Parameter(Mandatory = $false, Position = 5)]
+    [Parameter(Mandatory = $false, Position = 1)]
     [string]$NugetExe
 )
 
@@ -37,8 +37,8 @@ The new file contents.
 #>
 function Out-FileNoBom {
     param(
-        [System.string]$File,
-        [System.string]$Text
+        [string]$File,
+        [string]$Text
     )
     $encoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($File, $Text, $encoding)
