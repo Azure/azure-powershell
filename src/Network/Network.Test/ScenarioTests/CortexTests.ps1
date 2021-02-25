@@ -412,6 +412,9 @@ function Test-CortexDownloadConfig
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
 
+		# Test Reset VpnSiteLinkConnection
+		Reset-AzVpnSiteLinkConnection -InputObject $vpnConnection2.VpnLinkConnections[0]
+
 		# Download config
 		$storetype = 'Standard_GRS'
 		$containerName = "cont$($rgName)"
