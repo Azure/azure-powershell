@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/get-azoperation
+https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azoperation
 #>
 function Get-AzOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IOperation])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -21,7 +21,7 @@ if(-not $Isolated) {
   return
 }
 
-$ProgressPreference = 'SilentlyContinue'
+$ProgressPreference = 'Continue'
 $baseName = $PSScriptRoot.BaseName
 $requireResourceModule = (($baseName -ne "Resources") -and ($Record.IsPresent -or $Live.IsPresent))
 . (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts:$false -Pester -Resources:$requireResourceModule

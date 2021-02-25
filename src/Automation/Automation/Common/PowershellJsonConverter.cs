@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             if (inputObject is string @str)
             {
-                return str.Trim();
+                return JsonConvert.SerializeObject(str.Trim());
             }
             else if (inputObject is object[] @objectArray)
             {
