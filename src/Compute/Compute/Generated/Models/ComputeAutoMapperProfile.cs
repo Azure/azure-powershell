@@ -160,6 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMInstanceView, FROM.VirtualMachineScaleSetVMInstanceView>();
                 cfg.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
                 cfg.CreateMap<TO.PSRunCommandResult, FROM.RunCommandResult>();
+                cfg.CreateMap<TO.PSVirtualMachineRunCommand, FROM.VirtualMachineRunCommand>();
                 cfg.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
                 cfg.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
                 cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
