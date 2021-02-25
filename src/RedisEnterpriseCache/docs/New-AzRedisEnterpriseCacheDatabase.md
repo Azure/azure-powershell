@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ### -ClusteringPolicy
 Clustering policy - default is OSSCluster
 Specified at create time.
-Valid values: EnterpriseCluster, OSSCluster
+Allowed values: EnterpriseCluster, OSSCluster
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 
 ### -EvictionPolicy
 Redis eviction policy - default is VolatileLRU
-Valid values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
+Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy

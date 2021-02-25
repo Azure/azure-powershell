@@ -95,14 +95,15 @@ function Update-AzRedisEnterpriseCacheDatabase {
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
         # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
-        # Default is TLS-encrypted.
+        # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
-        # Redis eviction policy - default is VolatileLRU
+        # Redis eviction policy.
+        # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
 
         [Parameter()]

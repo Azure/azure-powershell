@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 ### -ClientProtocol
 Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
-Default is TLS-encrypted.
+Allowed values: Encrypted, Plaintext
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
@@ -155,7 +155,8 @@ Accept wildcard characters: False
 ```
 
 ### -EvictionPolicy
-Redis eviction policy - default is VolatileLRU
+Redis eviction policy.
+Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy

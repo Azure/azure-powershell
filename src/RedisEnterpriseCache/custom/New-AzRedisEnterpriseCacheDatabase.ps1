@@ -91,7 +91,7 @@ function New-AzRedisEnterpriseCacheDatabase {
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
         # Redis eviction policy - default is VolatileLRU
-        # Valid values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
+        # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
 
         [Parameter()]
@@ -100,7 +100,7 @@ function New-AzRedisEnterpriseCacheDatabase {
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
         # Clustering policy - default is OSSCluster
         # Specified at create time.
-        # Valid values: EnterpriseCluster, OSSCluster
+        # Allowed values: EnterpriseCluster, OSSCluster
         ${ClusteringPolicy},
 
         [Parameter()]
