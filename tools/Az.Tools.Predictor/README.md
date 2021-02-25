@@ -22,14 +22,14 @@ Required configuration for Az Predictor:
 
     `Install-Module -Name PSReadline -AllowPrerelease`
 
-3. Install the Az.Tools.Predictor module
+4. Install the Az.Tools.Predictor module
 
     `Install-Module -Name Az.Tools.Predictor -AllowPrerelease`
 
 ### Enabling Az Predictor
 
 
-4. Enable the suggestions
+5. Enable the suggestions
 
     `Enable-AzPredictor -AllSession`
 
