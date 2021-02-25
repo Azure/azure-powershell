@@ -8,7 +8,6 @@ Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en
 
 Required configuration for Az Predictor:
 
-- [.NET 6.0 preview 1](https://github.com/dotnet/core/releases/tag/v6.0.0-preview.1)
 - [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
 - [PSReadline 2.2.0-beta2](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta2)
 
@@ -16,24 +15,23 @@ Required configuration for Az Predictor:
 
 ### Installing the module
 
-1. Install [.NET 6.0 preview 1](https://dotnet.microsoft.com/download/dotnet/6.0)
-2. Install [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
-3. Install [PSReadline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2)
+1. Install [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
+2. Install [PSReadline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2)
 
     `Install-Module -Name PSReadline -AllowPrerelease`
 
-4. Install the Az.Tools.Predictor module
+3. Install the Az.Tools.Predictor module
 
     `Install-Module -Name Az.Tools.Predictor -AllowPrerelease`
 
 ### Enabling Az Predictor
 
 
-5. Enable the suggestions
+4. Enable the suggestions
 
     `Enable-AzPredictor -AllSession`
 
-6. Set your preferred view for get the suggestions
+5. Set your preferred view for get the suggestions
 
     - Enable the list view: `Set-PSReadLineOption -PredictionViewStyle ListView`
     - Enable the inline view: `Set-PSReadLineOption -PredictionViewStyle InlineView`
