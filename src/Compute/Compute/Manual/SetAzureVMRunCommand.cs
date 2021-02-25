@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
     [OutputType(typeof(PSVirtualMachine))]//TODO: not sure which output
-    class SetAzureVMRunCommand : VirtualMachineBaseCmdlet
+    public class SetAzureVMRunCommand : VirtualMachineBaseCmdlet
     {
         private const string VMNameParameterSet = "VMNameParamSet";
         private const string ResourceIdParameterSet = "ResourceIdParamSet";
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = VMNameParameterSet,
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -36,151 +36,126 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = VMNameParameterSet,
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine.")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the run command.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the run command.")]
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true)]
+            ParameterSetName = ResourceIdParameterSet)]
         [Parameter(
-            ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true)]
+            ParameterSetName = VMNameParameterSet)]
         public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.")]
         public bool? AsyncExecution { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the script content to be executed on the VM.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the script content to be executed on the VM.")]
         public string Script { get; set; }
 
         [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true)]
+            ParameterSetName = ResourceIdParameterSet)]
         [Parameter(
-            ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true)]
+            ParameterSetName = VMNameParameterSet)]
         public string ScriptPath { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the script download location.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the script download location.")]
         public string ScriptUri { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies a commandId of predefined built-in script.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies a commandId of predefined built-in script.")]
         public bool CommandId { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The parameters used by the script.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The parameters used by the script.")]
         public IList<RunCommandInputParameter> Parameter { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The parameters used by the script.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The parameters used by the script.")]
         public IList<RunCommandInputParameter> ProtectedParameter { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the user account on the VM when executing the run command.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the user account on the VM when executing the run command.")]
         public string RunAsUser { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the user account password on the VM when executing the run command.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the user account password on the VM when executing the run command.")]
         public string RunAsPassword { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The timeout in seconds to execute the run command.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "The timeout in seconds to execute the run command.")]
         public int? TimeOutInSeconds { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the Azure storage blob where script output stream will be uploaded.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the Azure storage blob where script output stream will be uploaded.")]
         public string OutputBlobUri { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the Azure storage blob where script error stream will be uploaded.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
-            ValueFromPipeline = true,
             HelpMessage = "Specifies the Azure storage blob where script error stream will be uploaded.")]
         public string ErrorBlobUri { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource id specifying the virtual machine object the extension is on.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
