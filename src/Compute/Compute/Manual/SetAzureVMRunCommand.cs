@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute.Automation.Models
+namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]//TODO: not sure which output
+    [OutputType(typeof(PSVirtualMachine))]//TODO: not sure which output
     class SetAzureVMRunCommand : VirtualMachineBaseCmdlet
     {
         private const string VMNameParameterSet = "VMNameParamSet";
@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(
+            ParameterSetName = VMNameParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "Resource group name.")]
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = VMNameParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "Name of the virtual machine.")]
