@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecachedatabase
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 schema: 2.0.0
 ---
 
-# Export-AzRedisEnterpriseCacheDatabase
+# Export-AzRedisEnterpriseCache
 
 ## SYNOPSIS
 Exports a database file from target database.
@@ -13,7 +13,7 @@ Exports a database file from target database.
 ## SYNTAX
 
 ```
-Export-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String> -SasUri <String>
+Export-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,11 +23,12 @@ Exports a database file from target database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Export database to file
 ```powershell
-#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Invalid SAS token")]
-Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
+PS C:\> Export-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=signedPermissions&se=signedExpiry&sv=signedVersion&sr=signedResource&sig=signature;mystoragekey"
 ```
+
+This command exports the database of the Redis Enterprise cache named MyCache to a database file.
 
 ## PARAMETERS
 
@@ -47,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -108,6 +109,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -122,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -SasUri
-SAS Uri for the target directory to export to
+SAS URI for the target directory to export to
 
 ```yaml
 Type: System.String
@@ -137,8 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -195,6 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+### Export-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

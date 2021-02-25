@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a Redis Enterprise cluster and its associated databases.
 
 ## SYNTAX
 
@@ -18,13 +18,13 @@ Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-ClusterName <String>] [
 ```
 
 ## DESCRIPTION
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a Redis Enterprise cluster and its associated databases.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Get a Redis Enterprise cache by name
 ```powershell
-Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
+PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -32,9 +32,11 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
+This command gets information about the Redis Enterprise cache named MyCache.
+
+### Example 2: Get every Redis Enterprise cache in a resource group
 ```powershell
-Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
+PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 
 Location Name     Type                            Zone      Database
 -------- ----     ----                            ----      --------
@@ -43,10 +45,12 @@ East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 ```
 
+This command gets information about every Redis Enterprise cache in the specified resource group.
+
 ## PARAMETERS
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -77,6 +81,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -91,8 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -113,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
 
 ## NOTES
 

@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzRedisEnterpriseCacheDatabase.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,15 +11,16 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzRedisEnterpriseCacheDatabaseKey' {
-    It 'List' {
+Describe 'Remove-AzRedisEnterpriseCacheDatabase' {
+    It 'Delete' {
         $splat = @{
-            Name = $env.ClusterName
+            Name = $env.ClusterName2
             ResourceGroupName = $env.ResourceGroupName
         }
-        $databaseKeys = Get-AzRedisEnterpriseCacheDatabaseKey @splat
-        $databaseKeys.PrimaryKey | Should -Not -Be $null
-        # TODO: uncomment the following line when listKeys supports returning the SecondaryKey
-        #$databaseKeys.SecondaryKey | Should -Not -Be $null
+        Remove-AzRedisEnterpriseCache @splat
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -1,0 +1,44 @@
+{
+  "Get-AzRedisEnterpriseCacheKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/listKeys?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/listKeys?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "8eab0c6d-5049-4d5e-86fb-4b7841a9254d" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\Get-AzRedisEnterpriseCacheKey" ],
+        "FullCommandName": [ "Get-AzRedisEnterpriseCacheKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fd46f15b-b71d-4915-a975-a95bbde99cb2" ],
+        "x-rp-server-mvid": [ "b23cd069-38d7-4d13-87a0-e3f31a877503" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "df1f4786-22e9-44d6-91e7-353b9f6a84b8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210225T084225Z:df1f4786-22e9-44d6-91e7-353b9f6a84b8" ],
+        "Date": [ "Thu, 25 Feb 2021 08:42:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "68" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"primary-key\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

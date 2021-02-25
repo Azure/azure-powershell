@@ -1,43 +1,33 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 schema: 2.0.0
 ---
 
-# New-AzRedisEnterpriseCache
+# New-AzRedisEnterpriseCacheDatabase
 
 ## SYNOPSIS
-Creates a Redis Enterprise cache.
+Creates a database for a Redis Enterprise cache.
 
 ## SYNTAX
 
-### CreateClusterWithDatabase (Default)
 ```
-New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
+New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
- [-Capacity <Int32>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
- [-EvictionPolicy <EvictionPolicy>] [-MinimumTlsVersion <TlsVersion>] [-Module <IModule[]>] [-Port <Int32>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
+ [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateClusterOnly
-```
-New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
- -NoDatabase [-SubscriptionId <String>] [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates a database for a Redis Enterprise cache.
 
 ## EXAMPLES
 
-### Example 1: Create a Redis Enterprise cache
+### Example 1: Create a database for a Redis Enterprise cache
 ```powershell
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Port 10000 -AofPersistenceEnabled -AofPersistenceFrequency "always"
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -45,31 +35,7 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command creates a Redis Enterprise cache named MyCache with an associated database named default.
-
-### Example 2: Create a Redis Enterprise cache using some optional parameters
-```powershell
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
-
-Location Name    Type                            Zone      Database
--------- ----    ----                            ----      --------
-East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
-
-```
-
-This command creates a Redis Enterprise cache named MyCache with an associated database named default, using some optional parameters.
-
-### Example 3: Advanced - Create a Redis Enterprise cache cluster without an associated database
-```powershell
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
-
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-East US  MyCache Microsoft.Cache/redisEnterprise      {}
-
-```
-
-Warning: This command creates a Redis Enterprise cache cluster named MyCache without any associated database to hold data.
+This command creates a database named default for a Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -80,7 +46,7 @@ Support for disabling AOF persistence after enabling will be added at a later da
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -96,7 +62,7 @@ Allowed values: 1s, always
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,29 +87,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Capacity
-The size of the Redis Enterprise cluster - defaults to 2 or 3 depending on SKU.
-Allowed values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases: SkuCapacity
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClientProtocol
 Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols - default is Encrypted
 Allowed values: Encrypted, Plaintext
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,11 +106,11 @@ Accept wildcard characters: False
 ### -ClusteringPolicy
 Clustering policy - default is OSSCluster
 Specified at create time.
-Allowed values: EnterpriseCluster, OSSCluster
+Valid values: EnterpriseCluster, OSSCluster
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,41 +152,10 @@ Accept wildcard characters: False
 
 ### -EvictionPolicy
 Redis eviction policy - default is VolatileLRU
-Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
+Valid values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy
-Parameter Sets: CreateClusterWithDatabase
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MinimumTlsVersion
-The minimum TLS version for the cluster to support - default is 1.2
-Allowed values: 1.0, 1.1, 1.2
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -253,26 +172,10 @@ To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoDatabase
-Advanced - Do not automatically create a default database.
-Warning: The cache will not be usable until you create a database.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateClusterOnly
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -300,7 +203,7 @@ Specified at create time.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -317,7 +220,7 @@ Support for disabling RDB persistence after enabling will be added at a later da
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,7 +236,7 @@ Allowed values: 1h, 6h, 12h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency
-Parameter Sets: CreateClusterWithDatabase
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -359,22 +262,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-The type of Redis Enterprise cluster to deploy.
-Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
-Parameter Sets: (All)
-Aliases: SkuName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -386,36 +273,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Cluster resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Zone
-The Availability Zones where this cluster will be deployed.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -458,7 +315,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
 
 ## NOTES
 

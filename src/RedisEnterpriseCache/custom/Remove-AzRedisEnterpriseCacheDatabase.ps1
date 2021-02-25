@@ -15,27 +15,19 @@
 
 <#
 .Synopsis
-Updates an existing Redis Enterprise database
+Deletes a single database in a Redis Enterprise cache.
 .Description
-Updates an existing Redis Enterprise database
+Deletes a single database in a Redis Enterprise cache.
 .Example
-PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
-
-Name    Type
-----    ----
-default Microsoft.Cache/redisEnterprise/databases
-
+PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+True
 .Example
-PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -RdbPersistenceEnabled:$true -RdbPersistenceFrequency "6h"
-
-Name    Type
-----    ----
-default Microsoft.Cache/redisEnterprise/databases
+PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,91 +43,40 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
-  Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
-  [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
-
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
 #>
-function Update-AzRedisEnterpriseCacheDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzRedisEnterpriseCacheDatabase {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the Redis Enterprise cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='Delete')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
-        # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
-        # Default is TLS-encrypted.
-        ${ClientProtocol},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
-        # Redis eviction policy - default is VolatileLRU
-        ${EvictionPolicy},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # [Preview] Sets whether AOF persistence is enabled.
-        # After enabling AOF persistence, you will be unable to disable it.
-        # Support for disabling AOF persistence after enabling will be added at a later date.
-        ${AofPersistenceEnabled},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
-        # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
-        # Allowed values: 1s, always
-        ${AofPersistenceFrequency},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # [Preview] Sets whether RDB persistence is enabled.
-        # After enabling RDB persistence, you will be unable to disable it.
-        # Support for disabling RDB persistence after enabling will be added at a later date.
-        ${RdbPersistenceEnabled},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
-        # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
-        # Allowed values: 1h, 6h, 12h
-        ${RdbPersistenceFrequency},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -177,6 +118,12 @@ function Update-AzRedisEnterpriseCacheDatabase {
         # Run the command asynchronously
         ${NoWait},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
         [System.Uri]
@@ -199,6 +146,6 @@ function Update-AzRedisEnterpriseCacheDatabase {
 
     process {
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\Update-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        Az.RedisEnterpriseCache.internal\Remove-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }
 }

@@ -1,58 +1,60 @@
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
-Regenerates the RedisEnterprise database's access keys.
+Retrieves all access keys for a Redis Enterprise database.
 .Description
-Regenerates the RedisEnterprise database's access keys.
+Retrieves all access keys for a Redis Enterprise database.
 .Example
-PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
+PS C:\> Get-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
-new-primary-key                              secondary-key
-
-.Example
-PS C:\> New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
-
-PrimaryKey                                   SecondaryKey
-----------                                   ------------
-primary-key                                  new-secondary-key
+primary-key                                  secondary-key
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabasekey
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 #>
-function New-AzRedisEnterpriseCacheDatabaseKey {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys])]
-    [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzRedisEnterpriseCacheKey {
+    [Alias('Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys])]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
-        # The name of the RedisEnterprise cluster.
+        # The name of the Redis Enterprise cluster.
         ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-        # The subscription ID forms part of the URI for every service call.
+        [System.String[]]
+        # The ID of the target subscription.
         ${SubscriptionId},
-
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType]
-        # Which access key to regenerate.
-        ${KeyType},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -61,12 +63,6 @@ function New-AzRedisEnterpriseCacheDatabaseKey {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
@@ -87,12 +83,6 @@ function New-AzRedisEnterpriseCacheDatabaseKey {
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
@@ -116,6 +106,6 @@ function New-AzRedisEnterpriseCacheDatabaseKey {
 
     process {
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabaseKey @PSBoundParameters
+        Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCacheKey @PSBoundParameters
     }
 }

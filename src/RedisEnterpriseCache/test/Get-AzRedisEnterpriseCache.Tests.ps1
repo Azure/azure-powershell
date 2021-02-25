@@ -22,6 +22,7 @@ Describe 'Get-AzRedisEnterpriseCache' {
         $cache.Location | Should -Be $env.Location
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $databaseName = "default"
+        $cache.Database.Count | Should -Be 1
         $cache.Database[$databaseName].Name | Should -Be $databaseName
         $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
     }
@@ -30,12 +31,19 @@ Describe 'Get-AzRedisEnterpriseCache' {
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
         }
-        $cache = Get-AzRedisEnterpriseCache @splat
-        $cache.Name | Should -Be $env.ClusterName
-        $cache.Location | Should -Be $env.Location
-        $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $caches = Get-AzRedisEnterpriseCache @splat
         $databaseName = "default"
-        $cache.Database[$databaseName].Name | Should -Be $databaseName
-        $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
+
+        $caches[0].Location | Should -Be $env.Location
+        $caches[0].Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $caches[0].Database.Count | Should -Be 1
+        $caches[0].Database[$databaseName].Name | Should -Be $databaseName
+        $caches[0].Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
+
+        $caches[1].Location | Should -Be $env.Location
+        $caches[1].Type | Should -Be "Microsoft.Cache/redisEnterprise"
+        $caches[1].Database.Count | Should -Be 1
+        $caches[1].Database[$databaseName].Name | Should -Be $databaseName
+        $caches[1].Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
     }
 }

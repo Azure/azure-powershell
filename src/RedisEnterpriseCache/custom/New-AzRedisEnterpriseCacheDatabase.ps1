@@ -15,25 +15,23 @@
 
 <#
 .Synopsis
-Updates an existing Redis Enterprise database
+Creates a database for a Redis Enterprise cache.
 .Description
-Updates an existing Redis Enterprise database
+Creates a database for a Redis Enterprise cache.
 .Example
-PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
 
 .Example
-PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -RdbPersistenceEnabled:$true -RdbPersistenceFrequency "6h"
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Port 10000 -AofPersistenceEnabled -AofPersistenceFrequency "always"
 
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
 .Notes
@@ -41,69 +39,69 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  [ClusterName <String>]: The name of the Redis Enterprise cluster.
-  [DatabaseName <String>]: The name of the database (must be "default").
-  [Id <String>]: Resource identity path
-  [Location <String>]: The region the operation is in.
-  [OperationId <String>]: The operation's unique identifier.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
-function Update-AzRedisEnterpriseCacheDatabase {
+function New-AzRedisEnterpriseCacheDatabase {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the Redis Enterprise cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The ID of the target subscription.
-        ${SubscriptionId},
-
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]]
+        # Optional set of redis modules to enable in this database - modules can only be added at create time.
+        # To construct, see NOTES section for MODULE properties and create a hash table.
+        ${Module},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
-        # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
-        # Default is TLS-encrypted.
+        # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols - default is Encrypted
+        # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.Int32]
+        # TCP port of the database endpoint - defaults to an available port
+        # Specified at create time.
+        ${Port},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
         # Redis eviction policy - default is VolatileLRU
+        # Valid values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
+        # Clustering policy - default is OSSCluster
+        # Specified at create time.
+        # Valid values: EnterpriseCluster, OSSCluster
+        ${ClusteringPolicy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
@@ -136,6 +134,13 @@ function Update-AzRedisEnterpriseCacheDatabase {
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -199,6 +204,6 @@ function Update-AzRedisEnterpriseCacheDatabase {
 
     process {
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\Update-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }
 }

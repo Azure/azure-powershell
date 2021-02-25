@@ -1,46 +1,61 @@
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
-Exports a database file from target database.
+Imports a database file to target database.
 .Description
-Exports a database file from target database.
+Imports a database file to target database.
 .Example
-[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Invalid SAS token")]
-PS C:\> Export-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
+PS C:\> Import-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/myfilename?sp=signedPermissions&se=signedExpiry&sv=signedVersion&sr=signedResource&sig=signature;mystoragekey"
 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecachedatabase
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
 #>
-function Export-AzRedisEnterpriseCacheDatabase {
+function Import-AzRedisEnterpriseCache {
+    [Alias('Import-AzRedisEnterpriseCacheDatabase')]
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ExportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ImportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
-        # The name of the RedisEnterprise cluster.
+        # The name of the Redis Enterprise cluster.
         ${ClusterName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [System.String]
         # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-        # The subscription ID forms part of the URI for every service call.
+        # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
-        # SAS Uri for the target directory to export to
+        # SAS URI for the target blob to import from
         ${SasUri},
 
         [Parameter()]
@@ -111,6 +126,6 @@ function Export-AzRedisEnterpriseCacheDatabase {
 
     process {
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        Az.RedisEnterpriseCache.internal\Export-AzRedisEnterpriseCacheDatabase @PSBoundParameters
+        Az.RedisEnterpriseCache.internal\Import-AzRedisEnterpriseCache @PSBoundParameters
     }
 }
