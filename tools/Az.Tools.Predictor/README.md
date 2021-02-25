@@ -4,10 +4,11 @@
 
 **[Az Predictor](https://www.powershellgallery.com/packages/Az.Tools.Predictor/)** is a PowerShell module that helps you navigate the cmdlets and parameters of the [Az module](https://www.powershellgallery.com/packages/Az) by providing context-aware suggestions in the PowerShell command line.
 
-Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.1#pssubsystempluginmodel) available with PowerShell 7.1. This updated version requires [PS Readline 2.2 beta 2](https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/) to display the suggestions.
+Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.1#pssubsystempluginmodel) available with PowerShell 7.1. This updated version requires [PS Readline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2) to display the suggestions.
 
 Required configuration for Az Predictor:
 
+- [.NET 6.0 preview 1](https://github.com/dotnet/core/releases)
 - [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
 - [PSReadline 2.2.0-beta2](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta2)
 
@@ -15,14 +16,15 @@ Required configuration for Az Predictor:
 
 ### Installing the module
 
-1. Install [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
-2. Install [PSReadline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2)
+1. Install [.NET 6.0 preview 1](https://dotnet.microsoft.com/download/dotnet/6.0)
+2. Install [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
+3. Install [PSReadline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2)
 
     `Install-Module -Name PSReadline -AllowPrerelease`
 
 3. Install the Az.Tools.Predictor module
 
-    `Install-Module -Name Az.Tools.Predictor`
+    `Install-Module -Name Az.Tools.Predictor -AllowPrerelease`
 
 ### Enabling Az Predictor
 
