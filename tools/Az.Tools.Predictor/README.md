@@ -8,7 +8,7 @@ Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en
 
 Required configuration for Az Predictor:
 
-- [.NET 6.0 preview 1](https://github.com/dotnet/core/releases)
+- [.NET 6.0 preview 1](https://github.com/dotnet/core/releases/tag/v6.0.0-preview.1)
 - [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
 - [PSReadline 2.2.0-beta2](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta2)
 
