@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A cmdlet that enables Az Predictor with default settings.
+    /// <para type="description"> Use this cmdlet to enable Az Predictor and start recieving suggestions</para>
     /// </summary>
     [Cmdlet("Enable", "AzPredictor"), OutputType(typeof(bool))]
     public sealed class EnableAzPredictor : PSCmdlet
@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         };
 
         /// <summary>
-        /// Indicates whether it's applied to all sessions.
+        /// <para type="description"> Enable Az Predictor for the current and futrue PowerShell sessions.</para>
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter AllSession { get; set; }
 
         /// <summary>
-        /// Indicates whether the user would like to receive output.
+        /// <para type="description"> Indicates whether the user would like to receive output. </para>
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
