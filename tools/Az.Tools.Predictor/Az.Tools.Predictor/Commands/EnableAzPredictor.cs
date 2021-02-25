@@ -18,6 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
+    /// <para type="synopsis"> Cmdlet to enable Az Predictor and start recieving suggestions</para>
     /// <para type="description"> Use this cmdlet to enable Az Predictor and start recieving suggestions</para>
     /// </summary>
     [Cmdlet("Enable", "AzPredictor"), OutputType(typeof(bool))]

@@ -18,6 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
+    /// <para type="synopsis"> Cmdlet to disable Az Predictor and start recieving suggestions</para>
     /// <para type="description"> Use this cmdlet to disable Az Predictor and stop recieving suggestions</para>
     /// </summary>
     [Cmdlet("Disable", "AzPredictor")]
