@@ -6,7 +6,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    class PSVirtualMachineRunCommandScriptSource: PSOperation
+    public partial class PSVirtualMachineRunCommandScriptSource: PSOperation
     {
         public string Script { get; set; }
         //

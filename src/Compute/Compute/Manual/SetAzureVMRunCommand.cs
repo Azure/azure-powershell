@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute.Automation
+namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = VMNameParameterSet,
             HelpMessage = "Specifies a commandId of predefined built-in script.")]
-        public bool CommandId { get; set; }
+        public string CommandId { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = VMNameParameterSet,
             HelpMessage = "The timeout in seconds to execute the run command.")]
-        public int? TimeOutInSeconds { get; set; }
+        public int? TimeoutInSeconds { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
@@ -188,15 +188,45 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             //TODO: execute cmdlet 
 
-            PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
+            //PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
+
+            VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();
+            if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
+            {
+                
+                if (this.Script != null)
+                {
+                    scriptSource.Script = this.Script;
+                }
+                if (this.ScriptUri != null)
+                {
+                    scriptSource.ScriptUri = this.ScriptUri;
+                }
+                if (this.CommandId != null)
+                {
+                    scriptSource.CommandId = this.CommandId;
+                }
+            }
+
+
 
             var parameters = new PSVirtualMachineRunCommand
             {
-              //  Source = new 
+                Source = scriptSource, //unable to use PS version here for some reason
+                //name ? 
+                // location? 
+                AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
+                Parameters = (this.Parameter != null) ? this.Parameter : null,
+                ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
+                RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
+                RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
+                TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
+                OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
+                ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
             };
 
             //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
-            //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.BeginCreateOrUpdateWithHttpMessagesAsync();
+            this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
 
 
         }
