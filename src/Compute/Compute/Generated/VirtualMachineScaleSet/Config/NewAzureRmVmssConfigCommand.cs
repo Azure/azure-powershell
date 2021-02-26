@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ProximityPlacementGroup = vProximityPlacementGroup,
                 AdditionalCapabilities = vAdditionalCapabilities,
                 ScaleInPolicy = vScaleInPolicy,
-                Identity = vIdentity,
+                Identity = vIdentity
             };
 
             WriteObject(vVirtualMachineScaleSet);
