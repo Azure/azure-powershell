@@ -28,9 +28,9 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -119,7 +119,7 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackupinstance
 #>
 function Set-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Put', Mandatory)]
@@ -154,14 +154,14 @@ param(
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource]
     # BackupInstance Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='PutExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance]
     # BackupInstanceResource properties
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -174,7 +174,7 @@ param(
 
     [Parameter(ParameterSetName='dppplatform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource]
     # Datasource Details
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},

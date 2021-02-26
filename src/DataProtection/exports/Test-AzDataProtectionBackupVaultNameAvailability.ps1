@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ICheckNameAvailabilityRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,11 +43,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupPolicyName <String>]: 
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: 
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
   [ResourceGroupName <String>]: The name of the resource group where the backup vault is present.
-  [ResourceOperationGateKeepersName <String>]: The name of the ResourceOperationGateKeeper
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 
@@ -58,7 +57,7 @@ PARAMETER <ICheckNameAvailabilityRequest>: CheckNameAvailability Request
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/test-azdataprotectionbackupvaultnameavailability
 #>
 function Test-AzDataProtectionBackupVaultNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check', Mandatory)]
@@ -94,7 +93,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ICheckNameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityRequest]
     # CheckNameAvailability Request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IScheduleBasedBackupCriteria
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/new-azdataprotectionpolicytagcriteria
 #>
 function New-AzDataProtectionPolicyTagCriteria {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IScheduleBasedBackupCriteria])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria])]
 [CmdletBinding(DefaultParameterSetName='ScheduleCriteria', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AbsoluteCriteria', Mandatory)]

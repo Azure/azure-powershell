@@ -44,7 +44,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location in which uniqueness will be verified.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -66,13 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>The name of the resource group where the backup vault is present.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="ResourceOperationGateKeepersName" /> property.</summary>
-        private string _resourceOperationGateKeepersName;
-
-        /// <summary>The name of the ResourceOperationGateKeeper</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        public string ResourceOperationGateKeepersName { get => this._resourceOperationGateKeepersName; set => this._resourceOperationGateKeepersName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -131,11 +123,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"jobId",
         PossibleTypes = new [] { typeof(string) })]
         string JobId { get; set; }
-        /// <summary>The location in which uniqueness will be verified.</summary>
+
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The location in which uniqueness will be verified.",
+        Description = @"",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -163,14 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the ResourceOperationGateKeeper</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of the ResourceOperationGateKeeper",
-        SerializedName = @"resourceOperationGateKeepersName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceOperationGateKeepersName { get; set; }
         /// <summary>The subscription Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -202,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
         /// </summary>
         string JobId { get; set; }
-        /// <summary>The location in which uniqueness will be verified.</summary>
+
         string Location { get; set; }
 
         string OperationId { get; set; }
@@ -210,8 +194,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         string RecoveryPointId { get; set; }
         /// <summary>The name of the resource group where the backup vault is present.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the ResourceOperationGateKeeper</summary>
-        string ResourceOperationGateKeepersName { get; set; }
         /// <summary>The subscription Id.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the backup vault.</summary>

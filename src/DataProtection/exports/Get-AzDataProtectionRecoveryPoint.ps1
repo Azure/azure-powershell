@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPointResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource
 .Outputs
 System.Management.Automation.PSObject
 .Notes
@@ -43,18 +43,17 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupPolicyName <String>]: 
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: 
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
   [ResourceGroupName <String>]: The name of the resource group where the backup vault is present.
-  [ResourceOperationGateKeepersName <String>]: The name of the ResourceOperationGateKeeper
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 #>
 function Get-AzDataProtectionRecoveryPoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPointResource], [PSObject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource], [PSObject])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

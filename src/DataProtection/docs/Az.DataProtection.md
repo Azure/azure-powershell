@@ -55,12 +55,6 @@ Prepares Datasource object for backup
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
-### [Get-AzDataProtectionResourceOperationGatekeeper](Get-AzDataProtectionResourceOperationGatekeeper.md)
-Returns a ResourceOperationGateKeeper belonging to a resource group.
-
-### [Get-AzDataProtectionResourceOperationGatekeeperResource](Get-AzDataProtectionResourceOperationGatekeeperResource.md)
-Returns ResourceOperationGateKeepers collection belonging to a subscription.
-
 ### [Get-AzDataProtectionResourceOperationResultPatch](Get-AzDataProtectionResourceOperationResultPatch.md)
 
 
@@ -118,9 +112,6 @@ Deletes a backup policy belonging to a backup vault
 ### [Remove-AzDataProtectionBackupVault](Remove-AzDataProtectionBackupVault.md)
 Deletes a BackupVault resource from the resource group.
 
-### [Remove-AzDataProtectionResourceOperationGatekeeper](Remove-AzDataProtectionResourceOperationGatekeeper.md)
-Deletes a ResourceOperationGateKeeper resource from the resource group.
-
 ### [Set-AzDataProtectionBackupInstance](Set-AzDataProtectionBackupInstance.md)
 
 
@@ -129,9 +120,6 @@ Deletes a ResourceOperationGateKeeper resource from the resource group.
 
 ### [Set-AzDataProtectionBackupVault](Set-AzDataProtectionBackupVault.md)
 Creates or updates a BackupVault resource belonging to a resource group.
-
-### [Set-AzDataProtectionResourceOperationGatekeeper](Set-AzDataProtectionResourceOperationGatekeeper.md)
-Creates or updates a ResourceOperationGatekeeper resource belonging to a resource group.
 
 ### [Start-AzDataProtectionBackupInstanceRehydrate](Start-AzDataProtectionBackupInstanceRehydrate.md)
 rehydrate recovery point for restore for a BackupInstance
@@ -150,6 +138,9 @@ Validates if Restore can be triggered for a DataSource
 
 ### [Test-AzDataProtectionBackupVaultNameAvailability](Test-AzDataProtectionBackupVaultNameAvailability.md)
 API to check for resource name availability
+
+### [Test-AzDataProtectionDppFeatureSupport](Test-AzDataProtectionDppFeatureSupport.md)
+Validates if a feature is supported
 
 ### [TranslateBackupParam](TranslateBackupParam.md)
 
@@ -181,10 +172,6 @@ Prepares Datasource object for backup
 
 ### [Update-AzDataProtectionPolicyTrigger](Update-AzDataProtectionPolicyTrigger.md)
 Creates new Schedule object
-
-### [Update-AzDataProtectionResourceOperationGatekeeper](Update-AzDataProtectionResourceOperationGatekeeper.md)
-Updates a ResourceOperationGatekeeper resource belonging to a resource group.
-For example, updating tags for a resource.
 
 ### [ValidateBackupSchedule](ValidateBackupSchedule.md)
 

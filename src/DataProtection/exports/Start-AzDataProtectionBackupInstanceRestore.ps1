@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -45,11 +45,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupPolicyName <String>]: 
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: 
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
   [ResourceGroupName <String>]: The name of the resource group where the backup vault is present.
-  [ResourceOperationGateKeepersName <String>]: The name of the ResourceOperationGateKeeper
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 
@@ -116,7 +115,7 @@ param(
     [Parameter(ParameterSetName='Trigger', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='TriggerViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest]
     # Azure backup restore request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -164,14 +163,14 @@ param(
 
     [Parameter(ParameterSetName='platform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IRestoreTargetInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRestoreTargetInfoBase]
     # DataStore Type of the vault
     # To construct, see NOTES section for TARGETINFO properties and create a hash table.
     ${TargetInfo},
 
     [Parameter(ParameterSetName='platform')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPointResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource]
     # Storage Type of the vault
     # To construct, see NOTES section for RECOVERYPOINT properties and create a hash table.
     ${RecoveryPoint},

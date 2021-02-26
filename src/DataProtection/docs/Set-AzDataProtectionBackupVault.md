@@ -153,7 +153,7 @@ Backup Vault Resource
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 Parameter Sets: Put
 Aliases:
 
@@ -184,7 +184,7 @@ Storage Settings
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IStorageSetting[]
 Parameter Sets: custom, PutExpanded
 Aliases:
 
@@ -276,11 +276,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 
 ### System.Management.Automation.PSObject
 
@@ -300,11 +300,11 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   - `[Tag <IDppTrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[StorageSetting <IStorageSetting[]>]`: Storage Settings
-    - `[DataStoreType <DataStoreTypes?>]`: Gets or sets the type of the datastore.
+    - `[DataStoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.
     - `[Type <StorageSettingTypes?>]`: Gets or sets the type.
 
 STORAGESETTING <IStorageSetting[]>: Storage Settings
-  - `[DataStoreType <DataStoreTypes?>]`: Gets or sets the type of the datastore.
+  - `[DataStoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.
   - `[Type <StorageSettingTypes?>]`: Gets or sets the type.
 
 ## RELATED LINKS
