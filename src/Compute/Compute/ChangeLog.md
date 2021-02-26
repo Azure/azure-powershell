@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
 * Added parameter `-PatchMode` to the Linux parameter sets in the cmdlet `Set-AzVMOperatingSystem`. 
 * [Breaking Change] Breaking changes for users in the public preview for the VM Guest Patching feature.

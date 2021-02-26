@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.1
 * Added null check for target storage account in FileShare restore.
 
 ## Version 3.4.0

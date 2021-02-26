@@ -1,3 +1,173 @@
+## 5.6.0 - March 2021
+#### Az.Accounts
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
+
+#### Az.Automation
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+#### Az.Compute
+* Added parameter '-EnableHotpatching' to the 'Set-AzVMOperatingSystem' cmdlet for Windows machines. 
+* Added parameter '-PatchMode' to the Linux parameter sets in the cmdlet 'Set-AzVMOperatingSystem'. 
+* [Breaking Change] Breaking changes for users in the public preview for the VM Guest Patching feature.
+    - Removed property 'RebootStatus' from the 'Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary' object. 
+    - Removed property 'StartedBy' from the 'Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary' object.
+    - Renamed property 'Kbid' to 'KbId' in the 'Microsoft.Azure.Management.Compute.Models.VirtualMachineSoftwarePatchProperties' object. 
+    - Renamed property 'patches' to 'availablePatches' in the 'Microsoft.Azure.Management.Compute.Models.VirtualMachineAssessPatchesResult' object. 
+    - Renamed object 'Microsoft.Azure.Management.Compute.Models.SoftwareUpdateRebootBehavior' to 'Microsoft.Azure.Management.Compute.Models.VMGuestPatchRebootBehavior'.
+    - Renamed object 'Microsoft.Azure.Management.Compute.Models.InGuestPatchMode' to 'Microsoft.Azure.Management.Compute.Models.WindowsVMGuestPatchMode'.
+* [Breaking Change] Removed all 'ContainerService' cmdlets. The Container Service API was deprecated in January 2020. 
+    - 'Add-AzContainerServiceAgentPoolProfile'
+    - 'Get-AzContainerService'
+    - 'New-AzContainerService'
+    - 'New-AzContainerServiceConfig'
+    - 'Remove-AzContainerService'
+    - 'Remove-AzContainerServiceAgentPoolProfile'
+    - 'Update-AzContainerService'
+
+#### Az.ContainerRegistry
+* Fixed authentication for `Connect-AzContainerRegistry`
+
+#### Az.CosmosDB
+* Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
+* Introduced ServerVersion parameter to Update-AzCosmosDBAccount.
+* Introduced BackupInterval and BackupRetention for Database Account cmdlets
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.14.0
+
+#### Az.Migrate
+* Az.Migrate GA
+* Incorporated Initialize-AzMigrateReplicationInfrastructure as a cmdlet in the Az.Migrate module, from the external script that is run currently today.
+* Made some parameters of New-AzMigrateServerReplication, New-AzMigrateDiskMapping case insensitive.
+* Added support for scale appliance change, to handle new V3 keys.
+
+#### Az.RecoveryServices
+* Added null check for target storage account in FileShare restore.
+
+#### Az.Resources
+* Added support for Azure resources deployment in Bicep language
+* Fixed issues with TemplateSpec deployments in 'New-AzTenantDeployment' and 'New-AzManagementGroupDeployment'
+* Added support for '-QueryString' parameter in 'Test-Az*Deployments' cmdlets
+* Fixed issue with dynamic parameters when 'New-Az*Deployments' is used with '-QueryString'
+* Added support for '-TemplateParameterObject' parameter while using '-TemplateSpecId' parameter in 'New-Az*Deployments' cmdlets
+* Fixed the inaccurate error message received on trying to deploy a non-existent template spec
+
+#### Az.Storage
+* Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
+* Supported resource access rule in NetworkRuleSet
+    - 'Update-AzStorageAccountNetworkRuleSet'
+    - 'Add-AzStorageAccountNetworkRule'
+    - 'Remove-AzStorageAccountNetworkRule'
+* Supported Blob version and Append Blob type in Management Policy
+    - 'Add-AzStorageAccountManagementPolicyAction'
+    - 'New-AzStorageAccountManagementPolicyFilter'
+    - 'Set-AzStorageAccountManagementPolicy'
+* Supported create/update account with AllowSharedKeyAccess
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported create Encryption Scope with RequireInfrastructureEncryption
+    - 'New-AzStorageEncryptionScope'
+* Supported copy block blob synchronously, with encryption scope
+    - 'Copy-AzStorageBlob'
+* Fixed issue that Get-AzStorageBlobContent use wrong directory separator char on Linux and MacOS [#14234]
+
+#### Az.Websites
+* Introduced an option to give custom timeout for 'Publish-AzWebApp' 
+* Added support for App Service Environment
+    - 'New-AzAppServiceEnvironment'
+    - 'Remove-AzAppServiceEnvironment'
+    - 'Get-AzAppServiceEnvironment'
+    - 'New-AzAppServiceEnvironmentInboundServices'
+
+### Thanks to our community contributors
+* @alunmj, Small spelling, formatting changes (#14155)
+* @chakra146, Update Add-AzLoadBalancerInboundNatPoolConfig.md (#14231)
+* Martin Ehrnst (@ehrnst), Fixed a typo in the cmdlet (#14112)
+* Jan David Narkiewicz (@jdnark)
+  * Examples used New-AzAks which is legacy cmdlet and the alias for New-AzAksCluster. Changed examples to use New-AzAksCluster which is the cmdlet this documentation page targets. (#14088)
+  * Type fox: changed SshKeyVaule to SshKeyValue (#14087)
+* Ivan Kulezic (@kukislav), Add sql mi maintenance configuration examples (#14216)
+* @webguynj, Update Set-AzNetworkSecurityRuleConfig.md (#14176)
+* Yannick Dils (@yannickdils), Added an additional cmdline to the example which applies the changes to the load balancer (#14185)
+
+
+## 5.6.0 - March 2021
+#### Az.Accounts
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
+
+#### Az.Automation
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+#### Az.Compute
+* Added parameter '-EnableHotpatching' to the 'Set-AzVMOperatingSystem' cmdlet for Windows machines. 
+* Added parameter '-PatchMode' to the Linux parameter sets in the cmdlet 'Set-AzVMOperatingSystem'. 
+* [Breaking Change] Breaking changes for users in the public preview for the VM Guest Patching feature.
+    - Removed property 'RebootStatus' from the 'Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary' object. 
+    - Removed property 'StartedBy' from the 'Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary' object.
+    - Renamed property 'Kbid' to 'KbId' in the 'Microsoft.Azure.Management.Compute.Models.VirtualMachineSoftwarePatchProperties' object. 
+    - Renamed property 'patches' to 'availablePatches' in the 'Microsoft.Azure.Management.Compute.Models.VirtualMachineAssessPatchesResult' object. 
+    - Renamed object 'Microsoft.Azure.Management.Compute.Models.SoftwareUpdateRebootBehavior' to 'Microsoft.Azure.Management.Compute.Models.VMGuestPatchRebootBehavior'.
+    - Renamed object 'Microsoft.Azure.Management.Compute.Models.InGuestPatchMode' to 'Microsoft.Azure.Management.Compute.Models.WindowsVMGuestPatchMode'.
+* [Breaking Change] Removed all 'ContainerService' cmdlets. The Container Service API was deprecated in January 2020. 
+    - 'Add-AzContainerServiceAgentPoolProfile'
+    - 'Get-AzContainerService'
+    - 'New-AzContainerService'
+    - 'New-AzContainerServiceConfig'
+    - 'Remove-AzContainerService'
+    - 'Remove-AzContainerServiceAgentPoolProfile'
+    - 'Update-AzContainerService'
+
+#### Az.ContainerRegistry
+Fixed authentication for `Connect-AzContainerRegistry`
+
+#### Az.CosmosDB
+* Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
+* Introduced ServerVersion parameter to Update-AzCosmosDBAccount.
+* Introduced BackupInterval and BackupRetention for Database Account cmdlets
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.14.0
+
+#### Az.RecoveryServices
+* Added null check for target storage account in FileShare restore.
+
+#### Az.Resources
+* Added support for Azure resources deployment in Bicep language
+* Fixed issues with TemplateSpec deployments in 'New-AzTenantDeployment' and 'New-AzManagementGroupDeployment'
+* Added support for '-QueryString' parameter in 'Test-Az*Deployments' cmdlets
+* Fixed issue with dynamic parameters when 'New-Az*Deployments' is used with '-QueryString'
+* Added support for '-TemplateParameterObject' parameter while using '-TemplateSpecId' parameter in 'New-Az*Deployments' cmdlets
+* Fixed the inaccurate error message received on trying to deploy a non-existent template spec
+
+#### Az.Storage
+* Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
+* Supported resource access rule in NetworkRuleSet
+    - 'Update-AzStorageAccountNetworkRuleSet'
+    - 'Add-AzStorageAccountNetworkRule'
+    - 'Remove-AzStorageAccountNetworkRule'
+* Supported Blob version and Append Blob type in Management Policy
+    - 'Add-AzStorageAccountManagementPolicyAction'
+    - 'New-AzStorageAccountManagementPolicyFilter'
+    - 'Set-AzStorageAccountManagementPolicy'
+* Supported create/update account with AllowSharedKeyAccess
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported create Encryption Scope with RequireInfrastructureEncryption
+    - 'New-AzStorageEncryptionScope'
+* Supported copy block blob synchronously, with encryption scope
+    - 'Copy-AzStorageBlob'
+* Fixed issue that Get-AzStorageBlobContent use wrong directory separator char on Linux and MacOS [#14234]
+
+#### Az.Websites
+* Introduced an option to give custom timeout for 'Publish-AzWebApp' 
+* Added support for App Service Environment
+    - 'New-AzAppServiceEnvironment'
+    - 'Remove-AzAppServiceEnvironment'
+    - 'Get-AzAppServiceEnvironment'
+    - 'New-AzAppServiceEnvironmentInboundServices'
+
 ## 5.5.0 - February 2021
 #### Az.Accounts
 * Tracked CloudError code in exception
