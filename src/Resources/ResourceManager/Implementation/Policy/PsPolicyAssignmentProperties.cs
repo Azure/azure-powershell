@@ -20,7 +20,8 @@
             DisplayName = properties.DisplayName;
             Description = properties.Description;
             Metadata = properties.Metadata.ToPsObject();
-            EnforcementMode = (PsPolicyAssignmentEnforcementMode)properties.EnforcementMode;
+            /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
+            /// EnforcementMode = (PsPolicyAssignmentEnforcementMode)properties.EnforcementMode;
             PolicyDefinitionId = properties.PolicyDefinitionId;
             Parameters = properties.Parameters.ToPsObject();
         }
@@ -50,10 +51,11 @@
         /// </summary>
         public PSObject Metadata { get; set; }
 
+        /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
         /// <summary>
         /// The policy assignment enforcement mode.
         /// </summary>
-        public PsPolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+        /// public PsPolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// The policy definition id.
@@ -97,7 +99,8 @@
                 returnValue["metaData"] = this.Metadata.ToJToken();
             }
 
-            returnValue["enforcementMode"] = this.EnforcementMode.ToString();
+            /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
+            /// returnValue["enforcementMode"] = this.EnforcementMode.ToString();
 
             if (this.PolicyDefinitionId != null)
             {

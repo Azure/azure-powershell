@@ -52,11 +52,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         [JsonProperty(Required = Required.Default)]
         public JObject Metadata { get; set; }
 
+        /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
         /// <summary>
         /// The policy assignment enforcement mode.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+        /// [JsonProperty(Required = Required.Default)]
+        /// public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// The policy definition id.
