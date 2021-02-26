@@ -23,7 +23,7 @@
 
         $manifest = LoadManifest -DatasourceType $DatasourceType
 
-        $restoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreTargetInfo]::new()
+        $restoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RestoreTargetInfo]::new()
         $DatasourceInfo = Prepare-AzDataProtectionDatasourceInfo @PSBoundParameters
         $restoreTargetInfo.DatasourceInfo = $DatasourceInfo
         $restoreTargetInfo.RestoreLocation = $Location

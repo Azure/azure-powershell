@@ -1,6 +1,6 @@
 ﻿function Initialize-AzDataProtectionRestoreRequest
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRestoreRequest')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Restore Request object for backup')]
 
@@ -40,7 +40,7 @@
         # Choose Restore Request Type Based on Mode
         if($parameterSetName -eq "RecoveryPointBased")
         {
-            $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPointBasedRestoreRequest]::new()
+            $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureBackupRecoveryPointBasedRestoreRequest]::new()
             $restoreRequest.ObjectType = "AzureBackupRecoveryPointBasedRestoreRequest"
             $restoreRequest.RecoveryPointId = $RecoveryPoint
         }
@@ -48,12 +48,12 @@
         # Initialize Restore Target Info based on Type provided
         if($RestoreType -eq "AlternateLocation")
         {
-            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreTargetInfo]::new()
+            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RestoreTargetInfo]::new()
             $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreTargetInfo"
         }
         if($RestoreType -eq "RestoreAsFiles")
         {
-            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.RestoreFilesTargetInfo]::new()
+            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RestoreFilesTargetInfo]::new()
             $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreFilesTargetInfo"
         }
 

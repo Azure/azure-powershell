@@ -1,5 +1,5 @@
 ﻿function New-AzDataProtectionPolicyTagCriteria{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IScheduleBasedBackupCriteria')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Datasource object for backup')]
 
@@ -32,7 +32,7 @@
     )
 
     process {
-        $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.ScheduleBasedBackupCriteria]::new()
+        $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ScheduleBasedBackupCriteria]::new()
         $criteria.ObjectType = "ScheduleBasedBackupCriteria"
         if($AbsoluteCriteria -ne $null){
             $criteria.AbsoluteCriterion = $AbsoluteCriteria

@@ -26,21 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ArchiveStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OperationalStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ArchiveStore", "ArchiveStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "ArchiveStore");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SnapshotStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("SnapshotStore", "SnapshotStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "SnapshotStore");
+                yield return new global::System.Management.Automation.CompletionResult("OperationalStore", "OperationalStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "OperationalStore");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VaultStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("VaultStore", "VaultStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "VaultStore");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OperationalStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ArchiveStore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OperationalStore", "OperationalStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "OperationalStore");
+                yield return new global::System.Management.Automation.CompletionResult("ArchiveStore", "ArchiveStore", global::System.Management.Automation.CompletionResultType.ParameterValue, "ArchiveStore");
             }
         }
     }

@@ -28,9 +28,9 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 .Outputs
 System.Management.Automation.PSObject
 .Notes
@@ -45,17 +45,17 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   [Tag <IDppTrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [StorageSetting <IStorageSetting[]>]: Storage Settings
-    [DataStoreType <DataStoreTypes?>]: Gets or sets the type of the datastore.
+    [DataStoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
     [Type <StorageSettingTypes?>]: Gets or sets the type.
 
 STORAGESETTING <IStorageSetting[]>: Storage Settings
-  [DataStoreType <DataStoreTypes?>]: Gets or sets the type of the datastore.
+  [DataStoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
   [Type <StorageSettingTypes?>]: Gets or sets the type.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackupvault
 #>
 function Set-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource], [PSObject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource], [PSObject])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -107,7 +107,7 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Parameter(ParameterSetName='custom', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
@@ -115,7 +115,7 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Parameter(ParameterSetName='custom')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IDppTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IDppTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

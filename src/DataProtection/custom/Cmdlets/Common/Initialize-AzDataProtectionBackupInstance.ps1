@@ -2,7 +2,7 @@
 
 
 function Initialize-AzDataProtectionBackupInstance {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupInstanceResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Backup instance object for backup')]
 
@@ -29,7 +29,7 @@ function Initialize-AzDataProtectionBackupInstance {
     process {
 
         $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstance]::new()
+        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstance]::new()
         $backupInstance.ObjectType = "BackupInstance"
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
@@ -49,7 +49,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
 
 
-        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.BackupInstanceResource]::new()
+        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstanceResource]::new()
         $backupInstanceResource.Property = $backupInstance
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
@@ -67,7 +67,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
         if($DatasourceType.ToString() -eq "AzureDisk")
         {
-            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureOperationalStoreParameters]::new()
+            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureOperationalStoreParameters]::new()
             $operationalParam.DataStoreType = "OperationalStore"
             $operationalParam.ObjectType = "AzureOperationalStoreParameters"
             $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"

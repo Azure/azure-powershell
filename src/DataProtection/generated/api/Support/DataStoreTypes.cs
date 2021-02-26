@@ -13,8 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes OperationalStore = @"OperationalStore";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes SnapshotStore = @"SnapshotStore";
-
         public static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreTypes VaultStore = @"VaultStore";
 
         /// <summary>the value for an instance of the <see cref="DataStoreTypes" /> Enum.</summary>

@@ -6,7 +6,7 @@ function Start-AzDataProtectionBackupInstanceRestore_platform{
 
     param(
         [Parameter(Mandatory=$false, HelpMessage='Storage Type of the vault')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IAzureBackupRecoveryPointResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource]
         ${RecoveryPoint},
 
         [Parameter(Mandatory, HelpMessage='DataStore Type of the vault')]
@@ -23,7 +23,7 @@ function Start-AzDataProtectionBackupInstanceRestore_platform{
         ${SourceDataStore},
 
         [Parameter(Mandatory, HelpMessage='DataStore Type of the vault')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IRestoreTargetInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRestoreTargetInfoBase]
         ${TargetInfo},
 
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
@@ -47,7 +47,7 @@ function Start-AzDataProtectionBackupInstanceRestore_platform{
         $restoreRequestObjectType = GetRestoreType -RestoreType $RecoveryRequestType
         if($restoreRequestObjectType -eq "AzureBackupRecoveryPointBasedRestoreRequest")
         {
-            $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.AzureBackupRecoveryPointBasedRestoreRequest]::new()
+            $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureBackupRecoveryPointBasedRestoreRequest]::new()
             $restoreRequest.ObjectType = $restoreRequestObjectType
             $restoreRequest.RecoveryPointId = $RecoveryPoint.Name
             $restoreRequest.SourceDataStoreType = $SourceDataStore

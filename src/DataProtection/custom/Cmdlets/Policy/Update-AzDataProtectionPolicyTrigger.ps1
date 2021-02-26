@@ -1,11 +1,11 @@
 ﻿function Update-AzDataProtectionPolicyTrigger{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new Schedule object')]
 
     param (
         [Parameter(Mandatory, HelpMessage='Source Datastore')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
         ${Policy},
 
         [Parameter(Mandatory, HelpMessage='Source Datastore')]

@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,18 +41,17 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupPolicyName <String>]: 
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: 
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
   [ResourceGroupName <String>]: The name of the resource group where the backup vault is present.
-  [ResourceOperationGateKeepersName <String>]: The name of the ResourceOperationGateKeeper
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionresourceoperationresultpatch
 #>
 function Get-AzDataProtectionResourceOperationResultPatch {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -114,12 +113,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]

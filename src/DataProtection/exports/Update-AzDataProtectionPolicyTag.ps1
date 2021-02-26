@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,38 +43,38 @@ CRITERIA <IScheduleBasedBackupCriteria[]>: Datasource Type
   [DaysOfTheWeek <DayOfWeek[]>]: It should be Sunday/Monday/T..../Saturday
   [MonthsOfYear <Month[]>]: It should be January/February/....../December
   [ScheduleTime <DateTime[]>]: List of schedule times for backup
-  [WeeksOfTheMonth <WeekNumber[]>]: It should be Fisrt/Second/Third/Fourth/Last
+  [WeeksOfTheMonth <WeekNumber[]>]: It should be First/Second/Third/Fourth/Last
 
 POLICY <IBackupPolicy>: Datasource Type
   DatasourceType <String[]>: Type of datasource for the backup management
   ObjectType <String>: 
-  PolicyRule <IBasePolicyRule[]>: Policy rule dictionary that contains rules for each backptype i.e Full/Incremental/Logs etc
+  PolicyRule <IBasePolicyRule[]>: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
     Name <String>: 
     ObjectType <String>: 
     BackupParameterObjectType <String>: Type of the specific object - used for deserializing
     DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-    DataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+    DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
     TriggerObjectType <String>: Type of the specific object - used for deserializing
     Lifecycle <ISourceLifeCycle[]>: 
       DeleteAfterDuration <String>: Duration of deletion after given timespan
       DeleteAfterObjectType <String>: Type of the specific object - used for deserializing
       SourceDataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-      SourceDataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+      SourceDataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
       [TargetDataStoreCopySetting <ITargetCopySetting[]>]: 
         CopyAfterObjectType <String>: Type of the specific object - used for deserializing
         DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-        DataStoreType <DataStoreTypes>: type of datastore; SnapShot/Hot/Archive
+        DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
     [IsDefault <Boolean?>]: 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/update-azdataprotectionpolicytag
 #>
 function Update-AzDataProtectionPolicyTag {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy])]
 [CmdletBinding(DefaultParameterSetName='RemoveTag', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
     # Datasource Type
     # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
@@ -93,7 +93,7 @@ param(
 
     [Parameter(ParameterSetName='updateTag', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202001Alpha.IScheduleBasedBackupCriteria[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria[]]
     # Datasource Type
     # To construct, see NOTES section for CRITERIA properties and create a hash table.
     ${Criteria}
