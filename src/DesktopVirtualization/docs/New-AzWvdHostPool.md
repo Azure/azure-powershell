@@ -51,7 +51,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
@@ -80,7 +79,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
