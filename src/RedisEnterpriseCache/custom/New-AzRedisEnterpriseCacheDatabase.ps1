@@ -15,32 +15,25 @@
 
 <#
 .Synopsis
-Creates a Redis Enterprise cache.
+Creates a database for a Redis Enterprise cache.
 .Description
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates a database for a Redis Enterprise cache.
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
-.Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
-
-Location Name    Type                            Zone      Database
--------- ----    ----                            ----      --------
-East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
 
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Port 10000 -AofPersistenceEnabled -AofPersistenceFrequency "always"
 
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-East US  MyCache Microsoft.Cache/redisEnterprise      {}
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,11 +44,11 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
-function New-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster])]
-    [CmdletBinding(DefaultParameterSetName='CreateClusterWithDatabase', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzRedisEnterpriseCacheDatabase {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase])]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('Name')]
@@ -71,58 +64,14 @@ function New-AzRedisEnterpriseCache {
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.String]
-        # The geo-location where the resource lives.
-        ${Location},
-
-        [Parameter(Mandatory)]
-        [Alias('SkuName')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName]
-        # The type of Redis Enterprise cluster to deploy.
-        # Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
-        ${Sku},
-
         [Parameter()]
-        [Alias('SkuCapacity')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.Int32]
-        # The size of the Redis Enterprise cluster - defaults to 2 or 3 depending on SKU.
-        # Allowed values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
-        ${Capacity},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion]
-        # The minimum TLS version for the cluster to support - default is 1.2
-        # Allowed values: 1.0, 1.1, 1.2
-        ${MinimumTlsVersion},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.String[]]
-        # The Availability Zones where this cluster will be deployed.
-        ${Zone},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.ITrackedResourceTags]))]
-        [System.Collections.Hashtable]
-        # Cluster resource tags.
-        ${Tag},
-
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at create time.
         # To construct, see NOTES section for MODULE properties and create a hash table.
         ${Module},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
@@ -130,14 +79,14 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Int32]
         # TCP port of the database endpoint - defaults to an available port
         # Specified at create time.
         ${Port},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
@@ -145,7 +94,7 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
@@ -154,7 +103,7 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: EnterpriseCluster, OSSCluster
         ${ClusteringPolicy},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # [Preview] Sets whether AOF persistence is enabled.
@@ -162,7 +111,7 @@ function New-AzRedisEnterpriseCache {
         # Support for disabling AOF persistence after enabling will be added at a later date.
         ${AofPersistenceEnabled},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
@@ -170,7 +119,7 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: 1s, always
         ${AofPersistenceFrequency},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # [Preview] Sets whether RDB persistence is enabled.
@@ -178,20 +127,13 @@ function New-AzRedisEnterpriseCache {
         # Support for disabling RDB persistence after enabling will be added at a later date.
         ${RdbPersistenceEnabled},
 
-        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},
-
-        [Parameter(ParameterSetName='CreateClusterOnly', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Advanced - Do not automatically create a default database.
-        # Warning: The cache will not be usable until you create a database.
-        ${NoDatabase},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
@@ -261,36 +203,7 @@ function New-AzRedisEnterpriseCache {
     )
 
     process {
-        $GetPSBoundParameters = @{} + $PSBoundParameters
-        $null = $GetPSBoundParameters.Remove("NoDatabase")
-        $null = $GetPSBoundParameters.Remove("Module")
-        $null = $GetPSBoundParameters.Remove("ClientProtocol")
-        $null = $GetPSBoundParameters.Remove("Port")
-        $null = $GetPSBoundParameters.Remove("EvictionPolicy")
-        $null = $GetPSBoundParameters.Remove("ClusteringPolicy")
-        $null = $GetPSBoundParameters.Remove("AofPersistenceEnabled")
-        $null = $GetPSBoundParameters.Remove("AofPersistenceFrequency")
-        $null = $GetPSBoundParameters.Remove("RdbPersistenceEnabled")
-        $null = $GetPSBoundParameters.Remove("RdbPersistenceFrequency")
-        $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
-
-        if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
-        {
-            $cluster.Database = @{}
-            return $cluster
-        }
-
-        $null = $PSBoundParameters.Remove("NoDatabase")
-        $null = $PSBoundParameters.Remove("Location")
-        $null = $PSBoundParameters.Remove("Sku")
-        $null = $PSBoundParameters.Remove("Capacity")
-        $null = $PSBoundParameters.Remove("MinimumTlsVersion")
-        $null = $PSBoundParameters.Remove("Zone")
-        $null = $PSBoundParameters.Remove("Tag")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
-        $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
-        $cluster.Database = @{$database.Name = $database}
-
-        return $cluster
+        Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
     }
 }

@@ -1,47 +1,50 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
 schema: 2.0.0
 ---
 
-# Update-AzRedisEnterpriseCache
+# Remove-AzRedisEnterpriseCacheDatabase
 
 ## SYNOPSIS
-Updates an existing Redis Enterprise cluster
+Deletes a single database in a Redis Enterprise cache.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
- [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing Redis Enterprise cluster
+Deletes a single database in a Redis Enterprise cache.
 
 ## EXAMPLES
 
-### Example 1: Update Redis Enterprise cache
+### Example 1: Remove a database in a Redis Enterprise cache and return the result
 ```powershell
-PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag1" = "value1"}
-
-Location Name    Type                            Zone Database
--------- ----    ----                            ---- --------
-West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
+PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+True
 ```
 
-This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
+This command removes a database in a Redis Enterprise cache and displays whether the operation is successful.
+
+### Example 2: Remove a database in a Redis Enterprise cache and do not display the result
+```powershell
+PS C:\> Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
+```
+
+This command removes a database in a Redis Enterprise cache.
+Because the PassThru parameter is not specified, the result of the operation is not displayed.
 
 ## PARAMETERS
 
@@ -60,29 +63,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Capacity
-The size of the Redis Enterprise cluster.
-Defaults to 2 or 3 depending on SKU.
-Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases: SkuCapacity
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterName
 The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases: Name
 
 Required: True
@@ -113,7 +99,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -123,12 +109,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MinimumTlsVersion
-The minimum TLS version for the cluster to support, e.g.
-'1.2'
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -139,8 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -160,26 +145,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sku
-The type of Redis Enterprise cluster to deploy.
-Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
-Parameter Sets: (All)
-Aliases: SkuName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,27 +160,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -256,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
+### System.Boolean
 
 ## NOTES
 

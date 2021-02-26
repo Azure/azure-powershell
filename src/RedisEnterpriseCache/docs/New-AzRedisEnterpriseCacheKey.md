@@ -1,39 +1,51 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecachedatabase
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 schema: 2.0.0
 ---
 
-# Import-AzRedisEnterpriseCacheDatabase
+# New-AzRedisEnterpriseCacheKey
 
 ## SYNOPSIS
-Imports a database file to target database.
+Regenerates an access key for a Redis Enterprise database.
 
 ## SYNTAX
 
 ```
-Import-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String> -SasUri <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+New-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> -KeyType <AccessKeyType>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Imports a database file to target database.
+Regenerates an access key for a Redis Enterprise database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Regenerate primary access key
 ```powershell
-#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Invalid SAS token")]
-Import-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/myfilename?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
+PS C:\> New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
+
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+new-primary-key                              secondary-key
+
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
+This command regenerates the primary secret access key used for authenticating connections to the database of the Redis Enterprise cache named MyCache.
+
+### Example 2: Regenerate secondary access key
 ```powershell
-#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Invalid SAS token")]
-Import-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/bk20201130-223654-1-db-1_of_1-2-0-16383.rdb.gz?sp=rwdl&se=2020-09-02T11:17:15Z&sv=2019-12-12&sr=c&sig=Us%2FGshOUTKCSzTOi8dLtt1to2L32rcDr3Nn0WFFMdDM%3D;mystoragekey"
+PS C:\> New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
+
+PrimaryKey                                   SecondaryKey
+----------                                   ------------
+primary-key                                  new-secondary-key
+
 ```
+
+This command regenerates the secondary secret access key used for authenticating connections to the database of the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -53,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -82,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyType
+Which access key to regenerate.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -97,38 +124,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SasUri
-SAS Uri for the target blob to import from
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -143,8 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -196,11 +193,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys
 
 ## NOTES
 
 ALIASES
+
+### New-AzRedisEnterpriseCacheDatabaseKey
+
+### New-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 

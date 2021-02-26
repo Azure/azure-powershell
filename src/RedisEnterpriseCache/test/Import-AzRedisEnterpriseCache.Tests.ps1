@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Export-AzRedisEnterpriseCacheDatabase.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Import-AzRedisEnterpriseCache.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,8 +11,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Export-AzRedisEnterpriseCacheDatabase' {
-    It 'ExportExpanded' -skip {
+Describe 'Import-AzRedisEnterpriseCache' {
+    It 'Import' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

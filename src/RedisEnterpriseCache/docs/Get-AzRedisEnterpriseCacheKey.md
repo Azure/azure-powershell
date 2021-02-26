@@ -1,67 +1,43 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabasekey
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 schema: 2.0.0
 ---
 
-# New-AzRedisEnterpriseCacheDatabaseKey
+# Get-AzRedisEnterpriseCacheKey
 
 ## SYNOPSIS
-Regenerates the RedisEnterprise database's access keys.
+Retrieves all access keys for a Redis Enterprise database.
 
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheDatabaseKey -ClusterName <String> -ResourceGroupName <String>
- -KeyType <AccessKeyType> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates the RedisEnterprise database's access keys.
+Retrieves all access keys for a Redis Enterprise database.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Get database access keys
 ```powershell
-New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
+PS C:\> Get-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup"
 
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
-new-primary-key                              secondary-key
+primary-key                                  secondary-key
 
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-New-AzRedisEnterpriseCacheDatabaseKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
-
-PrimaryKey                                   SecondaryKey
-----------                                   ------------
-primary-key                                  new-secondary-key
-
-```
+This command gets the secret access keys used for authenticating connections to the database of the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -90,38 +66,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyType
-Which access key to regenerate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -136,11 +83,10 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,11 +135,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys
 
 ## NOTES
 
 ALIASES
+
+### Get-AzRedisEnterpriseCacheDatabaseKey
+
+### Get-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 
