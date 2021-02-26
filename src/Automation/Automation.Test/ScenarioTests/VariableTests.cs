@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
 using Xunit;
 
 namespace Commands.Automation.Test
@@ -26,12 +27,38 @@ namespace Commands.Automation.Test
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2EVariableAsset()
         {
             TestRunner.RunTestScript("Test-E2EVariableAsset");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestArrayVariable()
+        {
+            TestRunner.RunTestScript("Test-ArrayVariable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestNormalHashTableVariable()
+        {
+            TestRunner.RunTestScript("Test-NormalHashTableVariable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestJsonInValueVariable()
+        {
+            TestRunner.RunTestScript("Test-JsonInValueVariable");
         }
     }
 }
