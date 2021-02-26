@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             //PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
 
-            VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();
+            VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();//TODO: why can't I use the PSVirtualMachineRunCommandScriptSource object? Error occurs. 
             if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
             {
                 
