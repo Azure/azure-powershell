@@ -168,8 +168,8 @@ function Test-ArrayVariable
     $automationAccountName = "test-automation-0"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "NewArrayVariable"
-    $variableValue = Get-Process | where {$_.ProcessName -like "WmiPrvSE"} | Select-Object ProcessName,CPU,Id
-    $variableValueUpdated = Get-Process | where {$_.ProcessName -like "WmiPrvSE"} | Select-Object ProcessName,Id
+    $variableValue = @(@{"key1" = "value1"}, @{"key2" = "value2"}, @{"key3" = "value3"})
+    $variableValueUpdated = @(@{"key1" = "value1"}, @{"key2" = "value2"})
 
     $variableCreated = New-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                                      -AutomationAccountName $automationAccountName `
