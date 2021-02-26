@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Fixed the issue that string cannot be serialized correctly. [#14215]
 * Added Support for Python3 Runbook Type
 

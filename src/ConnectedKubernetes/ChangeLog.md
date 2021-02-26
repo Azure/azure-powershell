@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Updated api-version of ConnectedKubernetes to 2021-03-01
 
 ## Version 0.1.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Introduced an option to give custom timeout for `Publish-AzWebApp` 
 * Added support for App Service Environment
     - `New-AzAppServiceEnvironment`
