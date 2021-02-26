@@ -48,6 +48,18 @@ namespace Microsoft.Azure.Commands.Profile.Common
         }
 
         /// <summary>
+        /// Modify the Profile according to the selected scope for thsi invocation
+        /// </summary>
+        /// <param name="profileAction">The action to take over the given profile</param>
+        protected virtual void ModifyProfile(Action<IProfileOperations> profileAction)
+        {
+            using (var profile = GetDefaultProfile())
+            {
+                profileAction(profile);
+            }
+        }
+
+        /// <summary>
         /// Get the default profile for the current cmdlet invocation
         /// </summary>
         /// <returns>The default profile, whether it is a process-specific profile, ot a profile for the current user</returns>
