@@ -1,5 +1,7 @@
-﻿using Microsoft.Azure.Commands.Compute.Models;
+﻿using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
@@ -10,7 +12,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
-    [OutputType(typeof(PSVirtualMachine))]//TODO: not sure which output
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMRunCommand : VirtualMachineBaseCmdlet
     {
         private const string VMNameParameterSet = "VMNameParamSet";
@@ -43,10 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the run command.")]
         [Parameter(
             ParameterSetName = VMNameParameterSet,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the run command.")]
         public string Name { get; set; }
@@ -178,9 +182,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     resourceGroup = this.ResourceGroupName;
                     virtualMachineName = this.VMName;
                     break;
+
+                
             }
 
             //TODO: execute cmdlet 
+
+            PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
+
+            var parameters = new PSVirtualMachineRunCommand
+            {
+              //  Source = new 
+            };
+
+            //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
+            //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.BeginCreateOrUpdateWithHttpMessagesAsync();
+
+
         }
     }
 }

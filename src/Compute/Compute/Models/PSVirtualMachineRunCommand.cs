@@ -5,6 +5,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
+//namespace Microsoft.Azure.Commands.Compute.Models
 {
     public partial class PSVirtualMachineRunCommand : PSOperation
     {
