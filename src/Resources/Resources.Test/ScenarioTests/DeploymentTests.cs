@@ -201,5 +201,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-TestDeploymentFromBicepFile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWhatIfWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-WhatIfWithQueryString");
+        }
     }
 }

@@ -797,17 +797,36 @@ function Test-NewDeploymentWithQueryString
 	# Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
+	$saname = "querystringpstests"
     $rglocation = "West US 2"
     $subId = (Get-AzContext).Subscription.SubscriptionId
 
 	try
 	{
-		# Prepare our RG and basic template spec:
-
+		# Prepare our RG
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
+		#Prepare our Storage Account
+		$account = New-AzStorageAccount -ResourceGroupName $rgname -AccountName $saname -Location $rglocation -SkuName "Standard_LRS"
+
+		#Get StorageAccountKey
+		$key = (Get-AzStorageAccountKey -ResourceGroupName $rgname -AccountName $saname)| Where-Object {$_.KeyName -eq "key1"}
+
+		#Get StorageAccount context
+		$context = New-AzStorageContext -StorageAccountName $saname -StorageAccountKey $key.Value
+
+		#Create FileShare
+		New-AzStorageShare -Name "querystringshare" -Context $context
+
+		#Upload files to the StorageAccount
+		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateParent.json" -Path "sampleLinkedTemplateParent.json" -Context $context
+		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateChild.json" -Path "sampleLinkedTemplateChild.json" -Context $context
+
+		#Get SAStoken
+		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context
+
 		#Create deployment
-		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringtesting.blob.core.windows.net/testqsblob/linkedTemplateParent.json" -QueryString "foo"
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringpstests.file.core.windows.net/querystringshare/sampleLinkedTemplateParent.json" -QueryString $token.Substring(1)
 
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -880,6 +899,63 @@ function Test-TestDeploymentFromBicepFile
         Assert-AreEqual 0 @($list).Count
     }
     finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests what-if on a deployment from a template in a storage account using a query string.
+#>
+function Test-WhatIfWithQueryString
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+	$saname = "querystringpstests"
+    $rglocation = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try
+	{
+		# Prepare our RG
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		#Prepare our Storage Account
+		$account = New-AzStorageAccount -ResourceGroupName $rgname -AccountName $saname -Location $rglocation -SkuName "Standard_LRS"
+
+		#Get StorageAccountKey
+		$key = (Get-AzStorageAccountKey -ResourceGroupName $rgname -AccountName $saname)| Where-Object {$_.KeyName -eq "key1"}
+
+		#Get StorageAccount context
+		$context = New-AzStorageContext -StorageAccountName $saname -StorageAccountKey $key.Value
+
+		#Create FileShare
+		New-AzStorageShare -Name "querystringshare" -Context $context
+
+		#Upload files to the StorageAccount
+		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateParent.json" -Path "sampleLinkedTemplateParent.json" -Context $context
+		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateChild.json" -Path "sampleLinkedTemplateChild.json" -Context $context
+
+		#Get SAStoken
+		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context
+
+		#Create deployment
+		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringpstests.file.core.windows.net/querystringshare/sampleLinkedTemplateParent.json" -QueryString $token.Substring(1)
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		#Run What-if
+		$result =  New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringpstests.file.core.windows.net/querystringshare/sampleLinkedTemplateParent.json" -QueryString $token.Substring(1) -WhatIf
+
+		#assert that nothing has changed.
+		Assert-AreEqual 0 ($result).Count
+	}
+
+	finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
