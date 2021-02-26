@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            if (publicIpAddresses != null)
+            if (publicIpAddresses != null && publicIpAddresses.Count() != 0)
             {
                 for (var i = 0; i < publicIpAddresses.Count(); i++)
                 {
@@ -227,24 +227,33 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new InvalidOperationException($"Please invoke {nameof(Allocate)} to attach the firewall to a Virtual Network");
             }
 
-            var i = 0;
-            conflictingIpConfig = null;
-            var newIpConfigName = "";
+            PSAzureFirewallIpConfiguration configWithoutIP = this.IpConfigurations.SingleOrDefault
+                    (ipConfig => (ipConfig.Subnet != null && ipConfig.PublicIpAddress == null));
 
-            do
+            if (configWithoutIP != null)
             {
-                newIpConfigName = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count + i}";
-                conflictingIpConfig = this.IpConfigurations.SingleOrDefault
-                    (ipConfig => string.Equals(ipConfig.Name, newIpConfigName, System.StringComparison.CurrentCultureIgnoreCase));
-                i++;
-            } while (conflictingIpConfig != null);
-
-            this.IpConfigurations.Add(
-                new PSAzureFirewallIpConfiguration
+                configWithoutIP.PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id };
+            }
+            else
+            {
+                var i = 0;
+                conflictingIpConfig = null;
+                var newIpConfigName = "";
+                do
                 {
-                    Name = newIpConfigName,
-                    PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
-                });
+                    newIpConfigName = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count + i}";
+                    conflictingIpConfig = this.IpConfigurations.SingleOrDefault
+                        (ipConfig => string.Equals(ipConfig.Name, newIpConfigName, System.StringComparison.CurrentCultureIgnoreCase));
+                    i++;
+                } while (conflictingIpConfig != null);
+
+                this.IpConfigurations.Add(
+                    new PSAzureFirewallIpConfiguration
+                    {
+                        Name = newIpConfigName,
+                        PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
+                    });
+            }
         }
 
         public void RemovePublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -262,21 +271,37 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is not attached to firewall {this.Name}");
             }
 
-            if (this.IpConfigurations.Count > 1 && ipConfigToRemove.Subnet != null)
-            {
-                throw new InvalidOperationException($"Cannot remove IpConfiguration {ipConfigToRemove.Name} because it references subnet {ipConfigToRemove.Subnet.Id}. Move the subnet reference to another IpConfiguration and try again.");
+            if (this.ManagementIpConfiguration != null) {
+                if (ipConfigToRemove.Subnet != null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"Removing the Public IP Address associated with subnet {ipConfigToRemove.Subnet.Id}.");
+                    Console.ResetColor();
+                    ipConfigToRemove.PublicIpAddress = null;
+                }
+                else
+                {
+                    this.IpConfigurations.Remove(ipConfigToRemove);
+                }
             }
-
-            if (this.IpConfigurations.Count == 1)
+            else
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
-                Console.ResetColor();
+                if (this.IpConfigurations.Count > 1 && ipConfigToRemove.Subnet != null)
+                {
+                    throw new InvalidOperationException($"Cannot remove IpConfiguration {ipConfigToRemove.Name} because it references subnet {ipConfigToRemove.Subnet.Id}. Move the subnet reference to another IpConfiguration and try again.");
+                }
 
-                this.ManagementIpConfiguration = null;
+                if (this.IpConfigurations.Count == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
+                    Console.ResetColor();
+
+                    this.ManagementIpConfiguration = null;
+                }
+
+                this.IpConfigurations.Remove(ipConfigToRemove);
             }
-
-            this.IpConfigurations.Remove(ipConfigToRemove);
         }
 
         #endregion // Ip Configuration Operations
