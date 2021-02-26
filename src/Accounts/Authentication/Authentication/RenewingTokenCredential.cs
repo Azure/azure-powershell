@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             _token = token;
         }
 
-        public ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
+        public ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, string wwwAuthenticateHeader, CancellationToken cancellationToken)
         {
             if(_token is IClaimsChallengeProcessor processor)
             {
-                return processor.OnClaimsChallenageAsync(request, claimsChallenge, cancellationToken);
+                return processor.OnClaimsChallenageAsync(request, claimsChallenge, wwwAuthenticateHeader, cancellationToken);
             }
 
             return new ValueTask<bool>(false);

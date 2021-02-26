@@ -167,8 +167,8 @@ namespace Microsoft.Azure.Commands.Common
                         var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
                         if (!string.IsNullOrEmpty(claimsChallenge))
                         {
-                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken);
-                            response = await next(request, cancelToken, cancelToken, signal);
+                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, ClaimsChallengeUtilities.GetErrorMessage(response), cancelToken);
+                            response = await next(request, cancelToken, cancelAction, signal);
                         }
                     }
                 }

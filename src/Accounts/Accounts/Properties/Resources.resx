@@ -528,4 +528,7 @@
   <data name="InteractiveAuthNotSupported" xml:space="preserve">
     <value>Interactive authentication is not supported in this session, please run cmdlet 'Connect-AzAccount -UseDeviceAuthentication'.</value>
   </data>
+  <data name="UnknowErrorFromBrowserLogin" xml:space="preserve">
+    <value>Please connect admin for the error details.</value>
+  </data>
 </root>

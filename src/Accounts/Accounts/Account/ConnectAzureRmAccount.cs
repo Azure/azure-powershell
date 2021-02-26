@@ -451,6 +451,11 @@ namespace Microsoft.Azure.Commands.Profile
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
                        }
+                       else if (IsUnknowError(ex))
+                       {
+                           WriteWarning(Resources.UnknowErrorFromBrowserLogin);
+                           WriteDebug(ex.ToString());
+                       }
                        else
                        {
                            if (IsUsingInteractiveAuthentication())
@@ -475,6 +480,11 @@ namespace Microsoft.Azure.Commands.Profile
         {
             return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
                             || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
+        }
+
+        private bool IsUnknowError(AuthenticationFailedException exception)
+        {
+            return exception.Message?.ToLower()?.Contains("unknown error") ?? false;
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();

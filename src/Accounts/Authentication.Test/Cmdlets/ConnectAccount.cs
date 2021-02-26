@@ -338,7 +338,7 @@ namespace Common.Authentication.Test.Cmdlets
                 {
                     subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                         environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                        new TokenCredentials(commonTenantToken.AccessToken) as ServiceClientCredentials,
+                        AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(commonTenantToken.AccessToken),
                         AzureSession.Instance.ClientFactory.GetCustomHandlers());
                     //TODO: Fix subscription client to not require subscriptionId
                     result = MergeTenants(account, subscriptionClient.Tenants.List(), commonTenantToken);
@@ -455,7 +455,7 @@ namespace Common.Authentication.Test.Cmdlets
             SubscriptionClient subscriptionClient = null;
             subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                    new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(accessToken.AccessToken),
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
@@ -521,7 +521,7 @@ namespace Common.Authentication.Test.Cmdlets
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                         environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                        new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                        AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(accessToken.AccessToken),
                         AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 Subscription subscriptionFromServer = null;

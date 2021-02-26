@@ -19,7 +19,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
     //The source code is copied from https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/master/src/client/Microsoft.Identity.Client/Utils/Base64UrlHelpers.cs
-    internal static class Base64UrlHelpers
+    public static class Base64UrlHelpers
     {
         private const char Base64PadCharacter = '=';
         private const char Base64Character62 = '+';

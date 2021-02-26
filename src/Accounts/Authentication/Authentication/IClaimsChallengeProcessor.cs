@@ -9,6 +9,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public interface IClaimsChallengeProcessor
     {
-        ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken);
+        ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, string wwwAuthenticateInfo, CancellationToken cancellationToken);
     }
 }
