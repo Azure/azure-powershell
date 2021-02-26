@@ -28,9 +28,27 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestE2EVariableAsset()
+        public void TestStringVariable()
         {
-            TestRunner.RunTestScript("Test-E2EVariableAsset");
+            TestRunner.RunTestScript("Test-StringVariable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestIntVariable()
+        {
+            TestRunner.RunTestScript("Test-IntVariable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestFloatVariable()
+        {
+            TestRunner.RunTestScript("Test-FloatVariable");
         }
 
         [Fact]
@@ -55,9 +73,18 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestJsonInValueVariable()
+        public void TestMultiLevelDictVariable()
         {
-            TestRunner.RunTestScript("Test-JsonInValueVariable");
+            TestRunner.RunTestScript("Test-MultiLevelDictVariable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestJsonInDictValueVariable()
+        {
+            TestRunner.RunTestScript("Test-JsonInDictValueVariable");
         }
     }
 }

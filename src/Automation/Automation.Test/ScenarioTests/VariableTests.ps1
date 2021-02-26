@@ -16,12 +16,12 @@
 .SYNOPSIS
 Tests create new automation variable with string value.
 #>
-function Test-E2EVariableAsset
+function Test-StringVariable
 {
     $resourceGroupName = "wyunchi-automation"
     $automationAccountName = "test-automation-0"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
-    $variableName = "CreateNewVariableWithValue"
+    $variableName = "StringValue"
     $variableValue = "StringValue"
     $variableValueUpdated = "StringValueChanged"
 
@@ -49,6 +49,103 @@ function Test-E2EVariableAsset
                                                  -name $variableName
 
     Assert-AreEqual $variableValueUpdated  $getVariable.value
+
+    Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                     -AutomationAccountName $automationAccountName `
+                                     -Name $variableName 
+
+    $output = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                            -AutomationAccountName $automationAccountName `
+                                            -name $variableName -ErrorAction SilentlyContinue
+
+    Assert-True {$output -eq $null}
+ }
+ 
+<#
+.SYNOPSIS
+Tests create new automation variable with string value.
+#>
+function Test-IntVariable
+{
+    $resourceGroupName = "wyunchi-automation"
+    $automationAccountName = "test-automation-0"
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $variableName = "CreateNewVariableWithValue"
+    $variableValue = 1
+    $variableValueUpdated = 2
+
+    $variableCreated = New-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                     -AutomationAccountName $automationAccountName `
+                                                     -name $variableName `
+                                                     -value $variableValue `
+                                                     -Encrypted:$false `
+                                                     -Description "Hello"
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+
+    Assert-AreEqual "Hello"  $getVariable.Description
+
+    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                  -AutomationAccountName $automationAccountName `
+                                  -Name $variableName `
+                                  -Encrypted:$false `
+                                  -value $variableValueUpdated
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+
+    Assert-AreEqual $variableValueUpdated  $getVariable.value
+
+    Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                     -AutomationAccountName $automationAccountName `
+                                     -Name $variableName 
+
+    $output = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                            -AutomationAccountName $automationAccountName `
+                                            -name $variableName -ErrorAction SilentlyContinue
+
+    Assert-True {$output -eq $null}
+ }
+ 
+<#
+.SYNOPSIS
+Tests create new automation variable with string value.
+#>
+function Test-FloatVariable
+{
+    $resourceGroupName = "wyunchi-automation"
+    $automationAccountName = "test-automation-0"
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $variableName = "NewFloatVariable"
+    $variableValue = 1.1
+    $variableValueUpdated = 2.2
+
+    $variableCreated = New-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                     -AutomationAccountName $automationAccountName `
+                                                     -name $variableName `
+                                                     -value $variableValue `
+                                                     -Encrypted:$false `
+                                                     -Description "float"
+    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+
+    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                  -AutomationAccountName $automationAccountName `
+                                  -Name $variableName `
+                                  -Encrypted:$false `
+                                  -value $variableValueUpdated
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+                                                 
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
 
     Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
@@ -161,12 +258,12 @@ function Test-NormalHashTableVariable
 .SYNOPSIS
 Tests create new automation variable with multi level dict.
 #>
-function Test-JsonInValueVariable
+function Test-MultiLevelDictVariable
 {
     $resourceGroupName = "wyunchi-automation"
     $automationAccountName = "test-automation-0"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
-    $variableName = "JsonInValueVariable"
+    $variableName = "MultiLevelDict"
     $variableValue = @{"key0" = @{"subkey" = "subvalue"}}
     $variableValueUpdated = @{"key0" = @{"subkey" = @{"3rdkey" = "3rd-value"}}}
 
@@ -175,7 +272,55 @@ function Test-JsonInValueVariable
                                                      -name $variableName `
                                                      -value $variableValue `
                                                      -Encrypted:$false `
-                                                     -Description "JsonInValueVariable"
+                                                     -Description "MultiLevelDict"
+    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+
+    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                  -AutomationAccountName $automationAccountName `
+                                  -Name $variableName `
+                                  -Encrypted:$false `
+                                  -value $variableValueUpdated
+
+    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
+                                                 
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
+
+    Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                     -AutomationAccountName $automationAccountName `
+                                     -Name $variableName 
+
+    $output = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                            -AutomationAccountName $automationAccountName `
+                                            -name $variableName -ErrorAction SilentlyContinue
+
+    Assert-True {$output -eq $null}
+ }
+
+<#
+.SYNOPSIS
+Tests create new automation variable with multi level dict.
+#>
+function Test-JsonInDictValueVariable
+{
+    $resourceGroupName = "wyunchi-automation"
+    $automationAccountName = "test-automation-0"
+    $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
+    $variableName = "JsonInDictValue"
+    $variableValue = @{"key0" = "{`"subkey`" = `"sub-value`"}"}
+    $variableValueUpdated = @{"key0" = "{`"subkey`" = `"0`"}"}
+
+    $variableCreated = New-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                     -AutomationAccountName $automationAccountName `
+                                                     -name $variableName `
+                                                     -value $variableValue `
+                                                     -Encrypted:$false `
+                                                     -Description "JsonInDictValue"
     Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
 
     $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
