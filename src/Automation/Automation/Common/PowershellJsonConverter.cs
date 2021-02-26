@@ -30,40 +30,41 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         public static string Serialize(object inputObject)
         {
-            if (inputObject == null)
-            {
-                return null;
-            }
+            return JsonConvert.SerializeObject(ConvertObjectInternal(inputObject));
+        }
+
+        private static object ConvertObjectInternal(object inputObject)
+        {
             if (inputObject is string @str)
             {
                 return JsonConvert.SerializeObject(str.Trim());
             }
             else if (inputObject is object[] @objectArray)
             {
-                return SerializeArray(objectArray);
+                return ConvertArray(objectArray);
             }
             else if (inputObject is PSObject @psObject)
             {
-                return SerializePsObject(psObject);
+                return ConvertPsObject(psObject);
             }
-            return JsonConvert.SerializeObject(inputObject);
+            return inputObject;
         }
 
-        private static string SerializePsObject(PSObject @psObject)
+        private static Dictionary<string, object> ConvertPsObject(PSObject @psObject)
         {
-            Dictionary<string, string> hashTable = new Dictionary<string, string>();
+            Dictionary<string, object> hashTable = new Dictionary<string, object>();
             foreach (var item in @psObject.Properties)
             {
-                hashTable.Add(item.Name, Serialize(item.Value));
+                hashTable.Add(item.Name, ConvertObjectInternal(item.Value));
             }
 
-            return JsonConvert.SerializeObject(hashTable);
+            return hashTable;
         }
 
-        private static string SerializeArray(object[] objectArray)
+        private static List<object> ConvertArray(object[] objectArray)
         {
             List<object> objectList = objectArray.ToList();
-            return string.Format("[{0}]", string.Join(",", objectList.Select(Serialize).ToList()));
+            return objectList.Select(ConvertObjectInternal).ToList();
         }
 
         public static PSObject Deserialize(string json)
