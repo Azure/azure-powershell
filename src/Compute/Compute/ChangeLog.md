@@ -20,6 +20,15 @@
 
 -->
 ## Upcoming Release
+* Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
+* Added parameter `-PatchMode` to the Linux parameter sets in the cmdlet `Set-AzVMOperatingSystem`. 
+* [Breaking Change] Breaking changes for users in the public preview for the VM Guest Patching feature.
+    - Removed property `RebootStatus` from the `Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary` object. 
+    - Removed property `StartedBy` from the `Microsoft.Azure.Management.Compute.Models.LastPatchInstallationSummary` object.
+    - Renamed property `Kbid` to `KbId` in the `Microsoft.Azure.Management.Compute.Models.VirtualMachineSoftwarePatchProperties` object. 
+    - Renamed property `patches` to `availablePatches` in the `Microsoft.Azure.Management.Compute.Models.VirtualMachineAssessPatchesResult` object. 
+    - Renamed object `Microsoft.Azure.Management.Compute.Models.SoftwareUpdateRebootBehavior` to `Microsoft.Azure.Management.Compute.Models.VMGuestPatchRebootBehavior`.
+    - Renamed object `Microsoft.Azure.Management.Compute.Models.InGuestPatchMode` to `Microsoft.Azure.Management.Compute.Models.WindowsVMGuestPatchMode`.
 * [Breaking Change] Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 
     - `Add-AzContainerServiceAgentPoolProfile`
     - `Get-AzContainerService`
