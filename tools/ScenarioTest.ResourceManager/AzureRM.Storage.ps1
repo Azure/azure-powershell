@@ -41,10 +41,10 @@ function New-AzureRmStorageAccount
     $client = Get-StorageClient $context
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters
+    $createParms = New-Object -Type Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.StorageAccountCreateParameters
 	if ([string]::IsNullOrEmpty($typeString))
 	{
-		$Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
+		$Type = [Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName]::StandardLRS
 	}
 	else
 	{
@@ -55,11 +55,11 @@ function New-AzureRmStorageAccount
         $Kind = 'StorageV2'
     }  
     $createParms.Kind = $Kind
-	$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku $Type
+	$createParms.Sku = New-Object -Type Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.Sku $Type
     $createParms.Location = $Location
 	if ($DenyAsNetworkRuleDefaultAction)
 	{
-		$createParms.NetworkRuleSet = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.NetworkRuleSet -Property @{DefaultAction="Deny"}
+		$createParms.NetworkRuleSet = New-Object -Type Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.NetworkRuleSet -Property @{DefaultAction="Deny"}
 	}
 	
     $getTask = $client.StorageAccounts.CreateWithHttpMessagesAsync($ResourceGroupName, $name, $createParms)
@@ -86,11 +86,11 @@ function Set-AzureRmStorageAccount
     $version = $client.GetType().Assembly.GetName().Version
   }
   PROCESS {
-    $createParms = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountUpdateParameters
+    $createParms = New-Object -Type Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.StorageAccountUpdateParameters
     if ([string]::IsNullOrEmpty($Type)) {
-      $Type = [Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::StandardLRS
+      $Type = [Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName]::StandardLRS
     }
-    $sku = New-Object -Type Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku -ArgumentList @([Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName]::$type)
+    $sku = New-Object -Type Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.Sku -ArgumentList @([Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName]::$type)
     $createParms.Sku = $sku
     $getTask = $client.StorageAccounts.UpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $createParms)
     $sa = $getTask.Result.Body
@@ -146,7 +146,7 @@ function Parse-Type
 {
   param([string] $type)
   $type = $type.Replace("_", "")
-  $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName], $type)
+  $returnSkuName = [System.Enum]::Parse([Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName], $type)
   return $returnSkuName;
 }
 
@@ -155,10 +155,10 @@ function Get-StorageClient
   param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
     $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
     [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], [string]
-    $storageClient = [Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient]
+    $storageClient = [Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.StorageManagementClient]
     $storageVersion = [System.Reflection.Assembly]::GetAssembly($storageClient).GetName().Version
     $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
-    $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient])
+    $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.StorageManagementClient])
     $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
     $client = $closedMethod.Invoke($factory, $arguments)
     return $client
