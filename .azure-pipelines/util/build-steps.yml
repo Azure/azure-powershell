@@ -4,6 +4,11 @@ parameters:
   configuration: ''
 
 steps:
+- task: PowerShell@2
+  displayName: 'Check Ingored File'
+  inputs:
+    filePath: tools/CheckIgnoredFile.ps1
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
