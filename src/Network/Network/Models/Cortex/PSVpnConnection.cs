@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSTrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
 
-
         [Ps1Xml(Label = "Connection Bandwidth", Target = ViewControl.Table)]
         public int ConnectionBandwidth { get; set; }
 
