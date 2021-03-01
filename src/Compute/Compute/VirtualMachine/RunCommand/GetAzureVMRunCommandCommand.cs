@@ -19,20 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Compute.Automation;
-using System.Linq.Expressions;
 
-namespace Microsoft.Azure.Commands.Compute.VirtualMachine.RunCommand
+namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMRunCommand")]
     [OutputType(typeof(PSVirtualMachineRunCommand))]
