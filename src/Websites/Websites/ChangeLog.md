@@ -26,6 +26,7 @@
     - `Remove-AzAppServiceEnvironment`
     - `Get-AzAppServiceEnvironment`
     - `New-AzAppServiceEnvironmentInboundServices`
+* Add-AzWebAppAccessRestrictionRule: When using subnet from another subscription, -IgnoreMissingServiceEndpoint must be used. Descriptive error message added.
 
 ## Version 2.3.0
 * Added support for Importing a key vault certificate to WebApp.
