@@ -9,6 +9,6 @@ Param(
 
 $ModuleFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName
 $TempDocFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName'.Doc'
+Copy-Item '.\help\*.md' -Destination $TempDocFolder -Force
 Import-Module $ModuleFolder
-New-MarkdownHelp -Module $ModuleName -OutputFolder $TempDocFolder
-New-ExternalHelp –Path $TempDocFolder -OutputPath $ModuleFolder
+New-ExternalHelp –Path $TempDocFolder -OutputPath $ModuleFolder -Force
