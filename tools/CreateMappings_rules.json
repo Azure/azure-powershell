@@ -632,5 +632,9 @@
   {
     "alias": "HealthBot",
     "regex": "HealthBot"
+  },
+  {
+    "alias": "Confluent",
+    "regex": "Confluent"
   }
 ]

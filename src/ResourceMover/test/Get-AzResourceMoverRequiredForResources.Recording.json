@@ -1,0 +1,42 @@
+{
+  "Get-AzResourceMoverRequiredForResources+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/requiredFor?sourceId=%2Fsubscriptions%2Fe80eb9fa-c996-4435-aa32-5af6f3d3077c%2FresourceGroups%2Frms-sRg\u0026api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/requiredFor?sourceId=%2Fsubscriptions%2Fe80eb9fa-c996-4435-aa32-5af6f3d3077c%2FresourceGroups%2Frms-sRg\u0026api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d9825464-2472-4ff8-a5dd-5b5e6222d751" ],
+        "CommandName": [ "Get-AzResourceMoverRequiredForResources" ],
+        "FullCommandName": [ "Get-AzResourceMoverRequiredForResources_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "280fdfcc-7b8f-4957-9642-506e23cedf4e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "d8c2c33e-24aa-430a-a888-006d8a3de6bd" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T063035Z:d8c2c33e-24aa-430a-a888-006d8a3de6bd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 31 Jan 2021 06:30:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "16" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sourceIds\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
