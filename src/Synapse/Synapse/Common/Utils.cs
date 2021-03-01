@@ -195,7 +195,6 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public static Response<T> Poll<T>(this Operation<T> operation)
         {
-            // dongwwa: TODO: test if this change works.
             return operation.WaitForCompletionAsync().Result;
         }
     }
