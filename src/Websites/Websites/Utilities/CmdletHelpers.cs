@@ -368,6 +368,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return new ResourceIdentifier(resourceId).ResourceGroupName;
         }
 
+        internal static string GetSubscriptionIdFromResourceId(string resourceId)
+        {
+            return new ResourceIdentifier(resourceId).Subscription;
+        }
+
         internal static void ExtractWebAppPropertiesFromWebApp(Site webapp, out string resourceGroupName, out string webAppName, out string slot)
         {
             resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
