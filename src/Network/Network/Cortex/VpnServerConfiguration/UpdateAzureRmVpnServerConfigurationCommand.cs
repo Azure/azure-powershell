@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Network
                         throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
                     }
 
-                    if (RadiusServerList != null && this.RadiusServerList.Count() > 0)
+                    if (this.RadiusServerList != null && this.RadiusServerList.Count() > 0)
                     {
                         vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList.ToList();
                         vpnServerConfigurationToUpdate.RadiusServerAddress = null;
