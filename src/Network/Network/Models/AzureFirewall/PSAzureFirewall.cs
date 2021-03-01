@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
             else
             {
-                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration{Name = "fwdatapipconfig"});
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration{Name = $"{AzureFirewallIpConfigurationName}{0}"});
             }
 
             this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
