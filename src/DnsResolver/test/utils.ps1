@@ -1,4 +1,5 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
+."$PSScriptRoot\virtualNetworkClient.ps1"
 
 $env = @{}
 function setupEnv() {
@@ -17,39 +18,46 @@ function setupEnv() {
     New-AzResourceGroup -Name $resourceGroupName -Location westus2
     $env.Add("ResourceGroupName", $resourceGroupName)
 
-    $dnsResolverNamePrefix = "psdnsresolvername"
-    $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
-    $virtualNetworkNamePrefix = "psvirtualnetworkname"
-    $virtualNetworIdEnvKeyPrefix = "VirtualNetworkId"
+    $null = $env.Add("DnsResolverNamePrefix", "psdnsresolvername");
+    $null = $env.Add("VirtualNetworkNamePrefix", "psvirtualnetworkname");
 
-    For($i=0; $i -le 20; $i++){
-        $dnsResolverName = $dnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
-        $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
-        $virtualNetworkName = $virtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
-        $virtualNetworkIdEnvKey = $virtualNetworIdEnvKeyPrefix + $i
-        $virtualNetworkId = (GetNrpMockVirtualNetwork -subscriptionId  $subscriptionId -resourceGroupName $resourceGroupName -virtualNetworkName $virtualNetworkName -NrpSimulatorRootUri "https://westus2.test.azuremresolver.net:9002").id
-        $null = $env.Add($dnsResolverNameEnvKey, $dnsResolverName);
-        $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId);
-    }
+
     $null = $env.Add("SuccessProvisioningState", "Succeeded");
     $null = $env.Add("ResourceLocation", "westus2");
     $null = $env.Add("MalformedVirtualNetworkErrorMessage", "Resource ID is not a valid virtual network resource ID");
+    $null = $env.Add("AddressPrefix", "40.121.0.0/16");
+    $null = $env.Add("LocationForVirtualNetwork", "westus2");
+    
+    $nrpSimulatorUri = [System.Environment]::GetEnvironmentVariable('NRP_SIMULATOR_URI')
 
-
-    $tag = @{
-        key0 = "value0";
-        key1 = "value1"
+    if($nrpSimulatorUri -ne $null){
+        $null = $env.Add("NRP_SIMULATOR_URI", $nrpSimulatorUri);
     }
 
-    $tagForUpdate=@{
-        CA = "California";
-        NY = "New York";
-       "IL" = "Illinois";
-       "NH" = "New Hampshire"
-     }
+    # Provison of virtual network and generating DNS Resolver name.
+    # New-cmdlet uses 0 - 12
+    # Get-cmdlet uses 13 - 21
+    # Remove-cmdlet uses 30-45
+    # Patch 
+    $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
+    $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId" 
+    For($i=0; $i -le 20; $i++){
+        $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
+        $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
+        $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
+        $null = $env.Add($dnsResolverNameEnvKey, $dnsResolverName);
+        $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId);
+    }
 
-    $null = $env.Add("Tag", $tags);
-    $null = $env.Add("TagForUpdate", $tagForUpdate);
+    $unpairedVirtualNetworkIdEnvKeyPrefix = "UnpairedVirtualNetwork"
+    For($i=0; $i -le 5; $i++){
+        $virtualNetworkName = $env.VirtualNetworkNamePrefix + "unpaired"+ $i + (RandomString -allChars $false -len 6)
+        $virtualNetworkIdEnvKey = $unpairedVirtualNetworkIdEnvKeyPrefix + $i
+        $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
+        $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId)
+    }
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -14,16 +14,14 @@ Updates a DNS resolver.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-Tag <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> -Location <String> [-IfMatch <String>]
- [-Tag <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,21 +112,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the DNS resolver.
 
@@ -191,25 +174,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Tags for DNS Resolver.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkId
-Resource ID.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

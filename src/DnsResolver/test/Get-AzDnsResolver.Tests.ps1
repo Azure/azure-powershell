@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDnsResolver' {
-    It 'List DNS Resolvers in the Subscription' {
+    It 'List DNS Resolvers in the Subscription' -skip {
         $resolvers = Get-AzDnsResolver
         $resolvers.Count | Should -Be 13
     }

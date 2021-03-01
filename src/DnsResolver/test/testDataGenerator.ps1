@@ -7,24 +7,21 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 
 function RandomResolverName([bool]$allChars, [int32]$len) {
-    return "dnsresolver00" + (RandomString -allChars $false -len 6)
+    return "dnsresolver" + (RandomString -allChars $false -len 6)
+}
+function GetRandomHashtable([int32]$size) {
+    $hashtable = @{}
+
+    $keyPrefix = "key"
+    $valuePrefix = "value"
+
+    For($i=0; $i -le $size; $i++){
+        $randomSuffix = (RandomString -allChars $false -len 5)
+        $hashtable.Add($keyPrefix + $randomSuffix, $valuePrefix + $randomSuffix)
+    }
+    return $hashtable
 }
 
-function GetNrpMockVirtualNetwork([String]$subscriptionId, [String]$resourceGroupName, [String]$virtualNetworkName, [String]$NrpSimulatorRootUri) {
-    $contentType3 = "application/json"
-    $relativeRequestUri = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-    $completeVirtualNetworkRequestUri = $NrpSimulatorRootUri + $relativeRequestUri
-
-    $data = [ordered]@{
-        location = "westus2"
-        properties = @{
-          addressSpace = @{
-            addressPrefixes = @({"2.2"}, {"1.1"})
-         }
-        } 
-        tags = @{"tag1" = "value1"}
-    }
-    $json = $data | ConvertTo-Json -Depth 3 -Compress
-    $Result = Invoke-RestMethod -Uri $completeVirtualNetworkRequestUri -Method PUT  -Body $json -ContentType $contentType3
-    return $Result
+function RandomGUID() {
+    return [guid]::NewGuid().toString()
 }
