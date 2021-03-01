@@ -19,7 +19,7 @@
 
   <Target Name="Clean">
     <Message Text="Clean artifacts folder" />
-    <RemoveDir Directories="$(ArtifactFolder)/$(ModuleName)" />
+    <RemoveDir Directories="$(ArtifactFolder)" />
     <RemoveDir Directories="$(TestOutputDirectory)" />
   </Target>
 
@@ -35,7 +35,7 @@
   </Target>
 
   <Target Name="GenerateHelp">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -HelpFolder $(RepoTools)/$(ModuleName)/help -ModuleName $(ModuleName)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
