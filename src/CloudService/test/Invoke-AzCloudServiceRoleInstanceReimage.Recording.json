@@ -1,0 +1,599 @@
+{
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/reimage?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/reimage?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?monitor=true\u0026api-version=2020-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c355cdb5-496d-46ba-94f3-8a5c65eaef14" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "80538388-73f7-4e3b-8671-3e7bcd84f422" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111647Z:80538388-73f7-4e3b-8671-3e7bcd84f422" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:16:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "39da2e7b-22ed-4608-a6cd-1208efeeb2ad" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b6d02a27-ae32-450c-9ed9-b65b013fcd89" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111718Z:b6d02a27-ae32-450c-9ed9-b65b013fcd89" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:17:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "9d72ff2e-37bf-4927-8b5c-641965d0c594" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "67fce7ed-e48b-4774-954f-406eaf9c0b73" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111748Z:67fce7ed-e48b-4774-954f-406eaf9c0b73" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:17:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "f39e4473-5510-4a79-9422-a7f3afb17ed2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "8335b998-2f72-4aa2-971b-c458d3deafad" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111818Z:8335b998-2f72-4aa2-971b-c458d3deafad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:18:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "283e111d-5bc1-43fe-be2f-68ea5a53494c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "fe9bc113-8931-481e-a951-c1bcd62f3a69" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111848Z:fe9bc113-8931-481e-a951-c1bcd62f3a69" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:18:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "cf994b29-abbc-4d18-b6ec-97b86593fc33" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "44c2f0d9-b03b-43e9-b0fa-02ce978b23a0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111919Z:44c2f0d9-b03b-43e9-b0fa-02ce978b23a0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:19:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "1762856b-85b1-45f0-aa77-e6ebbf1f1f2f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "ac27b32b-983c-4ea7-9545-a54f612a4a7d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T111949Z:ac27b32b-983c-4ea7-9545-a54f612a4a7d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:19:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "64e803a3-4471-4b36-b7b4-ee3785d9d911" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "788091e3-3006-4182-b422-6f53e95fb501" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112019Z:788091e3-3006-4182-b422-6f53e95fb501" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:20:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "2aee1156-f560-4828-92e2-61fb7fcaf82a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "1488e48a-9e9a-4b94-a79a-4c68c0d8029d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112050Z:1488e48a-9e9a-4b94-a79a-4c68c0d8029d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:20:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "266f3ec5-fa95-4871-9b5b-8206bcd7e9a4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "a2ae188d-e8c1-4b55-b22a-cb3dc0447608" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112120Z:a2ae188d-e8c1-4b55-b22a-cb3dc0447608" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:16:47.1463518+00:00\",\r\n  \"endTime\": \"2021-01-26T11:21:20.0215742+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"c355cdb5-496d-46ba-94f3-8a5c65eaef14\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?monitor=true\u0026api-version=2020-10-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/c355cdb5-496d-46ba-94f3-8a5c65eaef14?monitor=true\u0026api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "6bf56c9d-7e6c-4d73-a661-7329a9127305" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_Reimage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "385d7038-919c-4217-8214-3537ee6d5d7b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "8464158f-d6d3-479d-8212-f9dfec30e286" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112120Z:8464158f-d6d3-479d-8212-f9dfec30e286" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "0ced7003-7faa-4780-b0da-c444f6a6b045" ],
+        "CommandName": [ "Get-AzCloudServiceRoleInstance" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8fe27d9d-de20-4a47-8b5f-75f229db7a5a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "a7584604-3ed0-4ef3-bf65-ef064c4f4c93" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112121Z:a7584604-3ed0-4ef3-bf65-ef064c4f4c93" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2920" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"WebRole_IN_0\",\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WebRole_IN_1\",\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_1/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_0\",\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WorkerRole_IN_0\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WorkerRole_IN_0/networkInterfaces/nic1\"}]}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WorkerRole_IN_1\",\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WorkerRole_IN_1\",\r\n      \"type\": \"Microsoft.Compute/cloudServices/roleInstances\",\r\n      \"location\": \"eastus2euap\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_D1_v2\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"properties\": {\r\n        \"networkProfile\": {\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WorkerRole_IN_1/networkInterfaces/nic1\"}]}\r\n      }\r\n    }\r\n  ]\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance via identity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/reimage?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/reimage?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "95376e15-a27b-40ab-949f-3814d31f2ba0" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_ReimageViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?monitor=true\u0026api-version=2020-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?api-version=2020-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "bdad4f03-331b-474a-99fa-011e621d36d7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "03f647a7-129d-45ad-a7de-e88478d2a5b9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112121Z:03f647a7-129d-45ad-a7de-e88478d2a5b9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "95376e15-a27b-40ab-949f-3814d31f2ba0" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_ReimageViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "8013c2d8-17ab-43a5-bb74-7ece6ff56be2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "dea7a736-a7a9-4238-b564-6e9510c544bb" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112152Z:dea7a736-a7a9-4238-b564-6e9510c544bb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:21:21.5782042+00:00\",\r\n  \"endTime\": \"2021-01-26T11:21:36.8676947+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"bdad4f03-331b-474a-99fa-011e621d36d7\"\r\n}"
+    }
+  },
+  "Invoke-AzCloudServiceRoleInstanceReimage+[NoContext]+Reimage cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?monitor=true\u0026api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/bdad4f03-331b-474a-99fa-011e621d36d7?monitor=true\u0026api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "95376e15-a27b-40ab-949f-3814d31f2ba0" ],
+        "CommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceRoleInstanceReimage_ReimageViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "0c4a3b37-efa5-48e8-92a1-526f29301918" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "6b7d91b5-18d6-416d-9a7d-d5ccc4fdf29c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112152Z:6b7d91b5-18d6-416d-9a7d-d5ccc4fdf29c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:21:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

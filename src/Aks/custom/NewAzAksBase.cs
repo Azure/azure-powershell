@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
         /// <exception cref="ArgumentException">The SSH key or file argument was null and there was no default pub key in path.</exception>
         protected string GetSshKey(string sshKeyOrFile)
         {
-            const string helpLink = "https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys";
+            const string helpLink = "https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys";
 
             // SSH key was specified as either a file or as key data
             if (!string.IsNullOrEmpty(SshKeyValue))

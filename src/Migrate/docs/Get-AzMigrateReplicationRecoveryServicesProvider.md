@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
+online version: https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 schema: 2.0.0
 ---
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]

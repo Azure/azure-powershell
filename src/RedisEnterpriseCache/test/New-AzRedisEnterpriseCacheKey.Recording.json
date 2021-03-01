@@ -1,0 +1,76 @@
+{
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/regenerateKey?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/regenerateKey?api-version=2021-03-01",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d2646024-91d1-41c1-b918-2cb51b9c4f53" ],
+        "x-rp-server-mvid": [ "b23cd069-38d7-4d13-87a0-e3f31a877503" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "93ad9811-7300-412a-8c7c-bf9bf85196ab" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210225T084221Z:93ad9811-7300-412a-8c7c-bf9bf85196ab" ],
+        "Date": [ "Thu, 25 Feb 2021 08:42:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"new-primary-key\",\r\n  \"secondaryKey\": \"secondary-key\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/regenerateKey?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-bkfqawlx/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-akpdvxto/databases/default/regenerateKey?api-version=2021-03-01",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ad758af2-7fbb-4e86-b74c-161aed257715" ],
+        "x-rp-server-mvid": [ "b23cd069-38d7-4d13-87a0-e3f31a877503" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e92f3694-a072-4d30-a917-673cbb36c914" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210225T084222Z:e92f3694-a072-4d30-a917-673cbb36c914" ],
+        "Date": [ "Thu, 25 Feb 2021 08:42:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"primary-key\",\r\n  \"secondaryKey\": \"new-secondary-key\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

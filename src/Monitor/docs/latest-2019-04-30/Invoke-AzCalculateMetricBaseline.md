@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/invoke-azcalculatemetricbaseline
+online version: https://docs.microsoft.com/powershell/module/az.monitor/invoke-azcalculatemetricbaseline
 schema: 2.0.0
 ---
 

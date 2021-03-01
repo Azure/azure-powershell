@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
 schema: 2.0.0
 ---
 
@@ -214,7 +214,7 @@ List of package applications.
 To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -231,7 +231,7 @@ List of package dependencies.
 To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -372,7 +372,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IMsixPackage
 
 ## NOTES
 

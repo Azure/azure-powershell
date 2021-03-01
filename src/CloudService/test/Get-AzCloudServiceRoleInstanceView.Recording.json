@@ -1,0 +1,41 @@
+{
+  "Get-AzCloudServiceRoleInstanceView+[NoContext]+Get cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "2ea793ce-8958-473d-8226-589462b9d2ea" ],
+        "CommandName": [ "Get-AzCloudServiceRoleInstanceView" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstanceView_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "fe07cc54-f359-4605-a770-f5b7e5231c4f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "f0dc2505-ae61-471a-8d5b-605fa3aee490" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T110137Z:f0dc2505-ae61-471a-8d5b-605fa3aee490" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:01:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "289" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"platformUpdateDomain\": 0,\r\n  \"platformFaultDomain\": 0,\r\n  \"privateId\": \"d1179eb1-2655-4436-984b-8bf7a1d2cc25\",\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"RoleState/RoleStateStarted\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"RoleStateStarted\",\r\n      \"message\": \"\"\r\n    }\r\n  ]\r\n}"
+    }
+  }
+}

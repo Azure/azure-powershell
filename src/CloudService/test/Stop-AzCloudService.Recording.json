@@ -1,0 +1,319 @@
+{
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/poweroff?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/poweroff?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "43c226c1-86c0-42f3-9606-db74af720631" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?monitor=true\u0026api-version=2020-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?api-version=2020-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "42c628a9-c501-42a8-829e-d5df29918da4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "0620f462-853e-475c-9959-5c3dfe4d93ac" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112917Z:0620f462-853e-475c-9959-5c3dfe4d93ac" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:29:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "43c226c1-86c0-42f3-9606-db74af720631" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "ec29d2ae-d75d-484c-af0c-7240204eeca2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "1ace959e-7550-43a1-a229-efe50d4eadaa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T112947Z:1ace959e-7550-43a1-a229-efe50d4eadaa" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:29:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:29:16.9970039+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"42c628a9-c501-42a8-829e-d5df29918da4\"\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "43c226c1-86c0-42f3-9606-db74af720631" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "61cb18c4-cc51-4484-9a66-b0f549af469e" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "bdf32da5-0f89-44ab-9647-b441805845ee" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113018Z:bdf32da5-0f89-44ab-9647-b441805845ee" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:29:16.9970039+00:00\",\r\n  \"endTime\": \"2021-01-26T11:30:17.8646279+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"42c628a9-c501-42a8-829e-d5df29918da4\"\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?monitor=true\u0026api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/42c628a9-c501-42a8-829e-d5df29918da4?monitor=true\u0026api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "43c226c1-86c0-42f3-9606-db74af720631" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "69564e39-cd63-4a31-a71c-1303c8f46f43" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "ba2ba89c-43e5-4e4a-a7e9-6dd82a764307" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113018Z:ba2ba89c-43e5-4e4a-a7e9-6dd82a764307" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "09820a17-78dc-4ff9-8be9-c3af47796807" ],
+        "CommandName": [ "Get-AzCloudService" ],
+        "FullCommandName": [ "Get-AzCloudService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d7eabf33-5e27-4a94-aac2-9dff482e9bc5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "089eb2fe-dc03-426c-83be-f48628062576" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113019Z:089eb2fe-dc03-426c-83be-f48628062576" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3021" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"cscmdlettest1p3wg7ft\",\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft\",\r\n  \"type\": \"Microsoft.Compute/cloudServices\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"configuration\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\u003e\\r\\n\u003c!--\\r\\n  **********************************************************************************************\\r\\n\\r\\n  This file was generated by a tool from the project file: ServiceConfiguration.Cloud.cscfg\\r\\n\\r\\n  Changes to this file may cause incorrect behavior and will be lost if the file is regenerated.\\r\\n\\r\\n  **********************************************************************************************\\r\\n--\u003e\\r\\n\u003cServiceConfiguration serviceName=\\\"AzureCloudServicePowerShellCmdletTest\\\" xmlns=\\\"http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration\\\" osFamily=\\\"6\\\" osVersion=\\\"*\\\" schemaVersion=\\\"2015-04.2.6\\\"\u003e\\r\\n  \u003cRole name=\\\"WebRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cRole name=\\\"WorkerRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cNetworkConfiguration\u003e\\r\\n    \u003cVirtualNetworkSite name=\\\"CsCmdletTestVnet\\\" /\u003e\\r\\n    \u003cAddressAssignments\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WebRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WorkerRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n    \u003c/AddressAssignments\u003e\\r\\n  \u003c/NetworkConfiguration\u003e\\r\\n\u003c/ServiceConfiguration\u003e\",\r\n    \"upgradeMode\": \"Auto\",\r\n    \"roleProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"WebRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"WorkerRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"loadBalancerConfigurations\":[{\"name\":\"cscmdlettestLB\",\"properties\":{\"frontendIpConfigurations\":[{\"name\":\"cscmdlettestLBFE\",\"properties\":{\"publicIPAddress\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Network/publicIPAddresses/cscmdlettestnewcsip\"}}}]}}]},\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueId\": \"00541f30-ad0f-4939-86c9-178056f1b29a\"\r\n  }\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service via identity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/poweroff?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/CSCMDLETTESTT7J29U46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/poweroff?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "225d8f83-336f-403c-a365-6215166d434a" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOffViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?monitor=true\u0026api-version=2020-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?api-version=2020-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1a14cc50-7e35-48c2-aa3f-82f41c406abd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "339d5cf5-2429-4647-8b98-8f21167e7a2f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113019Z:339d5cf5-2429-4647-8b98-8f21167e7a2f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "225d8f83-336f-403c-a365-6215166d434a" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOffViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "7dc8a58b-b4e8-42fa-83f7-d8b4cb3bd543" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "87df12b8-f74f-4f84-8b0e-a80fa5cc15d2" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113049Z:87df12b8-f74f-4f84-8b0e-a80fa5cc15d2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-01-26T11:30:19.3320582+00:00\",\r\n  \"endTime\": \"2021-01-26T11:30:34.7185443+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"1a14cc50-7e35-48c2-aa3f-82f41c406abd\"\r\n}"
+    }
+  },
+  "Stop-AzCloudService+[NoContext]+PowerOff/Stop cloud service via identity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?monitor=true\u0026api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/1a14cc50-7e35-48c2-aa3f-82f41c406abd?monitor=true\u0026api-version=2020-10-01-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "225d8f83-336f-403c-a365-6215166d434a" ],
+        "CommandName": [ "Stop-AzCloudService" ],
+        "FullCommandName": [ "Stop-AzCloudService_PowerOffViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "787e3d21-7034-4972-93ee-88eb5e7f3d12_132556236877268137" ],
+        "x-ms-request-id": [ "2e290221-2176-41ee-8625-16fa83d583a2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "27347900-f635-4f1a-ae6c-933c90c86beb" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210126T113050Z:27347900-f635-4f1a-ae6c-933c90c86beb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Jan 2021 11:30:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/update-azwebapphybridconnectionslot
+online version: https://docs.microsoft.com/powershell/module/az.appservice/update-azwebapphybridconnectionslot
 schema: 2.0.0
 ---
 

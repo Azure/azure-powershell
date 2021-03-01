@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Network
 Module Guid: 4ff17caf-76fc-409a-2e23-b96989751cb1
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.network
+Download Help Link: https://docs.microsoft.com/powershell/module/az.network
 Help Version: 1.0.0.0
 Locale: en-US
 ---

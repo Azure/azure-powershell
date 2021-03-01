@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlserver
+online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
 schema: 2.0.0
 ---
 
@@ -17,19 +17,20 @@ Use Update-AzMySqlConfiguration instead if you want update server parameters suc
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-ReplicationRole <String>]
- [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>]
+ [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-ReplicationRole <String>] [-Sku <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
+ [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
- [-BackupRetentionDay <Int32>] [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-ReplicationRole <String>]
+ [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>]
+ [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +138,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Set the minimal TLS version for connections to server when SSL is enabled.
+Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -394,6 +411,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
   - `[Id <String>]`: Resource identity path
+  - `[KeyName <String>]`: The name of the server key.
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.

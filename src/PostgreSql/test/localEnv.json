@@ -1,15 +1,17 @@
 {
-  "replicaName": "postgresql-test-100-replica",
-  "Sku": "GP_Gen5_4",
-  "firewallRuleName2": "postgresqlrule02",
-  "VNetName": "postgresqlvnet",
+  "SubscriptionId": "7fec3109-5b78-4a24-b834-5d47d63e2596",
+  "resourceGroup": "PostgreSqlTest",
   "serverName": "postgresql-test-100",
+  "flexibleServerName": "postgresql-flexible-test-100",
+  "replicaName": "postgresql-test-100-replica",
   "firewallRuleName": "postgresqlrule01",
-  "location": "eastus",
-  "restoreName2": "postgresql-test-100-restore-2",
-  "serverName2": "postgresql-test-100-2",
+  "FlexibleSku": "Standard_D2s_v3",
   "restoreName": "postgresql-test-100-restore",
-  "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+  "restoreName2": "postgresql-test-100-restore-2",
+  "VNetName": "postgresqlvnet",
+  "location": "eastus2euap",
+  "serverName2": "postgresql-test-200",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "resourceGroup": "PostgreSqlTest"
+  "firewallRuleName2": "postgresqlrule02",
+  "Sku": "GP_Gen5_4"
 }

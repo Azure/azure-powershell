@@ -1094,11 +1094,19 @@
       "_justification": "Generated cs, specified disallowed password values"
     },
     {
+      "file": "src\\CloudService\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\TimeSeriesInsights\\test\\env.json",
       "_justification": "Test resource is deleted"
     },
     {
       "file": "src\\HanaOnAzure\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\DigitalTwins\\test\\env.json",
       "_justification": "Test resource is deleted"
     },
     {
@@ -1144,6 +1152,18 @@
     {
       "file": "src\\DigitalTwins\\test\\New-AzDigitalTwinsEndpoint.Recording.json",
       "_justification": "eventHubConnectionStringPrimaryKey serviceBusPrimaryConnectionString and eventGridAccessKey1 are deleted"
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "src\\CloudService\\test\\New-AzCloudService.Recording.json",
+      "_justification": "app configuration access key is safe; regenerated"
     }
   ]
 }

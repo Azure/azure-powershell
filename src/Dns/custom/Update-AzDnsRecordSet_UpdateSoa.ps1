@@ -4,11 +4,11 @@ Updates a record set within a DNS zone.
 .Description
 Updates a record set within a DNS zone.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.dns/update-azdnsrecordset
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.dns/update-azdnsrecordset
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dns/update-azdnsrecordset
+https://docs.microsoft.com/powershell/module/az.dns/update-azdnsrecordset
 #>
 function Update-AzDnsRecordSet_UpdateSoa {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet')]

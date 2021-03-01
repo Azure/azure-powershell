@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hana/new-azsapproviderinstance
+online version: https://docs.microsoft.com/powershell/module/az.hana/new-azsapproviderinstance
 schema: 2.0.0
 ---
 
@@ -69,9 +69,9 @@ This command creates an instance of SAP monitor by key vault for HANA.
 PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-promclt   -SapMonitorName dolauli-test04 -ProviderType PrometheusHaCluster -InstanceProperty @{prometheusUrl='http://10.4.1.10:9664/metrics'}
 
 
-Name           Type
-----           ----
-sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+Name                     Type
+----                     ----
+dolauli-instance-promclt Microsoft.HanaOnAzure/sapMonitors/providerInstances
 ```
 
 This command creates an instance of SAP monitor by dictionary for PrometheusHaCluster.
@@ -80,9 +80,9 @@ This command creates an instance of SAP monitor by dictionary for PrometheusHaCl
 ```powershell
 PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-prom   -SapMonitorName dolauli-test04 -ProviderType PrometheusOS -InstanceProperty @{prometheusUrl='http://10.3.1.6:9100/metrics'}
 
-Name           Type
-----           ----
-sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+Name                  Type
+----                  ----
+dolauli-instance-prom Microsoft.HanaOnAzure/sapMonitors/providerInstances
 ```
 
 This command creates an instance of SAP monitor by dictionary for PrometheusOS.
@@ -91,9 +91,9 @@ This command creates an instance of SAP monitor by dictionary for PrometheusOS.
 ```powershell
 PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-ms   -SapMonitorName dolauli-test04 -ProviderType MsSqlServer -InstanceProperty @{sqlHostname="10.4.8.90";sqlPort=1433;sqlUsername="AMFSS";sqlPassword="fakepassword"}
 
-Name           Type
-----           ----
-sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+Name                Type
+----                ----
+dolauli-instance-ms Microsoft.HanaOnAzure/sapMonitors/providerInstances
 ```
 
 This command creates an instance of SAP monitor by dictionary for MsSqlServer.
@@ -102,9 +102,9 @@ This command creates an instance of SAP monitor by dictionary for MsSqlServer.
 ```powershell
 PS C:\> New-AzSapMonitorProviderInstance -ResourceGroupName donaliu-HN1 -Name dolauli-instance-hana   -SapMonitorName dolauli-test04 -ProviderType SapHana -InstanceProperty @{hanaHostname="10.1.2.6";hanaDbName="SYSTEMDB";hanaDbSqlPort=30113;hanaDbUsername="SYSTEM"; hanaDbPassword="Manager1"}
 
-Name           Type
-----           ----
-sapins-kv-test Microsoft.HanaOnAzure/sapMonitors/providerInstances
+Name                  Type
+----                  ----
+dolauli-instance-hana Microsoft.HanaOnAzure/sapMonitors/providerInstances
 ```
 
 This command creates an instance of SAP monitor by dictionary for SapHana.

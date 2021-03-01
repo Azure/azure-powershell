@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionapp
+online version: https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 schema: 2.0.0
 ---
 
