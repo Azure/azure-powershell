@@ -41,7 +41,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release'
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell-7.2.0-preview.3\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command"'
 
 - task: UseDotNet@2
   displayName: 'Install DotNet 2.1 Runtime for Signing'
