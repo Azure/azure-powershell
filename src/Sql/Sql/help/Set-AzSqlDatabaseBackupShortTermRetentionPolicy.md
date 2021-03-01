@@ -33,7 +33,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -Resour
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
+The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet sets the short term retention policy for this database.
 The policy is the retention period, in days, for point-in-time restore backups.
 
 ## EXAMPLES

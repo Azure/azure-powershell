@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <PsModuleName>Websites</PsModuleName>
+  </PropertyGroup>
+  
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
