@@ -563,7 +563,7 @@ function Test-CortexExpressRouteCRUD
 <# .SYNOPSIS
  Point to site Cortex feature tests
  #>
-  function Test-P2SCortexCRUD
+ function Test-P2SCortexCRUD
  {
  param 
     ( 
@@ -631,7 +631,7 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
 		$customDnsServers = New-Object string[] 1
 		$customDnsServers[0] = "7.7.7.7"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag
+		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag -EnableRoutingPreferenceInternetFlag
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
@@ -643,6 +643,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
         Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
+		Assert-AreEqual $True $P2SVpnGateway.IsRoutingPreferenceInternet
 
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
         $job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
