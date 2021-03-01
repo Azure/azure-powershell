@@ -579,6 +579,17 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to User input cannot contain both -Migrate and -MigrationRecovery parameters. Specify either -Migrate (or) -MigrationRecovery parameter.
+        /// </summary>
+        internal static string InvalidMigrateAndMigrateRecoveryParameters
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidMigrateAndMigrateRecoveryParameters", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to -skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. .
         /// </summary>
         internal static string EnableDiskEncryptionMissingSkipVmBackup {
