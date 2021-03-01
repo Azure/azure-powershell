@@ -19,20 +19,21 @@ Gets a list of unresolved dependencies.
 .Description
 Gets a list of unresolved dependencies.
 .Example
-PS C:\> Get-AzResourceMoverUnresolvedDependency -MoveCollectionName PS-centralus-westcentralus-demoRM -ResourceGroupName RG-MoveCollection-demoRM
-Count Id
------ --
-1     /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourcegroups/psdemorm/providers/microsoft.network/publicipaddresses/psdemovm-ip
-1     /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourcegroups/psdemorm/providers/microsoft.network/virtualnetworks/psdemorm-vnet
-1     /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
+PS C:\> Get-AzResourceMoverUnresolvedDependency -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -DependencyLevel Descendant
+Count Id                                                                                                                                        
+----- --                                                                                                                                        
+    1 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111   
+    1 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-vnet     
+    1 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
+    3 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
+https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
 #>
 function Get-AzResourceMoverUnresolvedDependency {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -53,6 +54,27 @@ param(
     [System.String[]]
     # The Subscription ID.
     ${SubscriptionId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel]
+    # Defines the dependency level.
+    ${DependencyLevel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Query')]
+    [System.String]
+    # The filter to apply on the operation.
+    # For example, $apply=filter(count eq 2).
+    ${Filter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Query')]
+    [System.String]
+    # OData order by query option.
+    # For example, you can use $orderby=Count desc.
+    ${Orderby},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

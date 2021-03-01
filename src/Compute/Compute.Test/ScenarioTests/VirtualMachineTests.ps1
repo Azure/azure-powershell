@@ -4566,3 +4566,55 @@ function Test-VirtualMachineGetVMExtensionPiping
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Windows machine enable hot patching, linux machines patchmode
+#>
+function Test-VirtualMachinePatchAPI
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_E2s_v3';
+        $vmname0 = 'v' + $rgname;
+
+        # Creating a VM using simple parameter set
+        $username = "admin01";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+        [string]$domainNameLabel = "d"+ $rgname;
+        $computerName = 'test';
+        $patchMode = "AutomaticByPlatform";
+
+        # EnableHotPatching for Windows machine. 
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
+        $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode $patchMode;
+        Assert-True {$vm0.OSProfile.WindowsConfiguration.PatchSettings.EnableHotpatching};
+        Assert-AreEqual $vm0.OSProfile.WindowsConfiguration.PatchSettings.PatchMode $patchMode;
+
+        # Test Linux VM PatchMode scenario. 
+        # This currently requires creating a Linux (Ubuntu) VM manually in the Azure Portal as the DefaultCRPLinuxImageOffline cmd uses a 
+        # storage account that Compute does not currently support. 
+        $rgname2 = "adamddeast";
+        $vmname = "linuxtest";
+        $linuxvm = Get-AzVM -ResourceGroupName $rgname2 -Name $vmname;
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "usertest";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vmset = Set-AzVMOperatingSystem -VM $linuxvm -Linux -ComputerName $computerName -Credential $cred -PatchMode $patchMode;
+
+        Assert-AreEqual $linuxvm.OSProfile.LinuxConfiguration.PatchSettings.PatchMode $patchMode;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}

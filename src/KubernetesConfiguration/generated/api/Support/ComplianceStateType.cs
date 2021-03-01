@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>The compliance state of the configuration.</summary>
     public partial struct ComplianceStateType :
         System.IEquatable<ComplianceStateType>
     {
