@@ -33,6 +33,8 @@
     - Added deprecation attribute warning to the old cmdlets.
 * Bug fix in ExpressRouteLink MacSecConfig. Added new property `SciState` to `PSExpressRouteLinkMacSecConfig`
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Bug fix for update vpnServerConfiguration.
+* Add scenarioTest for p2s multi auth.
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.
