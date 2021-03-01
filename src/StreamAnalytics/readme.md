@@ -47,7 +47,7 @@ module-version: 2.0.1
 subject-prefix: StreamAnalytics
 
 directive:
-# Delete etage of the properties, because the etag exist in the response header.
+# Deleted etag of the properties, because the etag exist in the response header.
   - from: swagger-document
     where: $.definitions.FunctionProperties.properties
     transform: delete $.etag
@@ -63,7 +63,7 @@ directive:
   - from: swagger-document
     where: $.definitions.TransformationProperties.properties
     transform: delete $.etag
-# Modified the name must to readonly.  
+# Modified the property name to readonly.  
   - from: swagger-document
     where: $.definitions.SubResource.properties
     transform: >-
@@ -84,5 +84,14 @@ directive:
           "description": "Resource type"
         }
       }
-
+# Hide cmdlets
+  - where:
+    verb: Set
+    subject: *
+  remove: true
+  - where:
+    verb: Get|New|Remove|Update
+    subject: StreamingJob$
+  set:
+    subject: Job
 ```
