@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsfunctiondefaultdefinition
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunctiondefaultdefinition
 schema: 2.0.0
 ---
 
@@ -14,15 +14,14 @@ Retrieves the default definition of a function based on the parameters specified
 
 ### RetrieveExpanded (Default)
 ```
-Get-AzStreamAnalyticsFunctionDefaultDefinition -FunctionName <String> -JobName <String>
- -ResourceGroupName <String> -BindingType <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStreamAnalyticsFunctionDefaultDefinition -JobName <String> -Name <String> -ResourceGroupName <String>
+ -BindingType <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Retrieve
 ```
-Get-AzStreamAnalyticsFunctionDefaultDefinition -FunctionName <String> -JobName <String>
- -ResourceGroupName <String>
+Get-AzStreamAnalyticsFunctionDefaultDefinition -JobName <String> -Name <String> -ResourceGroupName <String>
  -FunctionRetrieveDefaultDefinitionParameter <IFunctionRetrieveDefaultDefinitionParameters>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -95,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FunctionName
-The name of the function.
-
-```yaml
-Type: System.String
-Parameter Sets: Retrieve, RetrieveExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FunctionRetrieveDefaultDefinitionParameter
 Parameters used to specify the type of function to retrieve the default definition for.
 To construct, see NOTES section for FUNCTIONRETRIEVEDEFAULTDEFINITIONPARAMETER properties and create a hash table.
@@ -144,6 +128,21 @@ Accept wildcard characters: False
 
 ### -JobName
 The name of the streaming job.
+
+```yaml
+Type: System.String
+Parameter Sets: Retrieve, RetrieveExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the function.
 
 ```yaml
 Type: System.String

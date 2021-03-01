@@ -86,12 +86,30 @@ directive:
       }
 # Hide cmdlets
   - where:
-    verb: Set
-    subject: *
-  remove: true
+      verb: Set
+    remove: true
+# Rename cmdlet name
   - where:
-    verb: Get|New|Remove|Update
-    subject: StreamingJob$
-  set:
-    subject: Job
+      verb: Get|New|Remove|Update|Start|Stop
+      subject: ^StreamingJob$
+    set:
+      subject: Job
+# Rename parameter name
+  - where:
+      verb: Get
+      subject: FunctionDefaultDefinition$
+      parameter-name: FunctionName
+    set:
+      parameter-name: Name
+  - where:
+      verb: Get|New|Remove|Update|Start|Stop
+      subject: Job$
+      parameter-name: JobName
+    set:
+      parameter-name: Name
+  - where:
+      verb: Get
+      subject: SubscriptionQuota$
+    set:
+      subject: Quota
 ```

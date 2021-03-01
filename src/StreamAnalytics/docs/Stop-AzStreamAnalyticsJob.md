@@ -1,31 +1,33 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/remove-azstreamanalyticsstreamingjob
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# Remove-AzStreamAnalyticsStreamingJob
+# Stop-AzStreamAnalyticsJob
 
 ## SYNOPSIS
-Deletes a streaming job.
+Stops a running streaming job.
+This will cause a running streaming job to stop processing input events and producing output.
 
 ## SYNTAX
 
-### Delete (Default)
+### Stop (Default)
 ```
-Remove-AzStreamAnalyticsStreamingJob -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### StopViaIdentity
 ```
-Remove-AzStreamAnalyticsStreamingJob -InputObject <IStreamAnalyticsIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a streaming job.
+Stops a running streaming job.
+This will cause a running streaming job to stop processing input events and producing output.
 
 ## EXAMPLES
 
@@ -85,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: StopViaIdentity
 Aliases:
 
 Required: True
@@ -95,12 +97,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JobName
+### -Name
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -146,7 +148,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -161,7 +163,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: False

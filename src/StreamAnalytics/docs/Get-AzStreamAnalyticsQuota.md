@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticssubscriptionquota
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
 schema: 2.0.0
 ---
 
-# Get-AzStreamAnalyticsSubscriptionQuota
+# Get-AzStreamAnalyticsQuota
 
 ## SYNOPSIS
 Retrieves the subscription's current quota information in a particular region.
@@ -13,8 +13,8 @@ Retrieves the subscription's current quota information in a particular region.
 ## SYNTAX
 
 ```
-Get-AzStreamAnalyticsSubscriptionQuota -Location <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStreamAnalyticsQuota -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

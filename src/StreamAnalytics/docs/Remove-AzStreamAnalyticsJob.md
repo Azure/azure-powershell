@@ -1,49 +1,31 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/start-azstreamanalyticsstreamingjob
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# Start-AzStreamAnalyticsStreamingJob
+# Remove-AzStreamAnalyticsJob
 
 ## SYNOPSIS
-Starts a streaming job.
-Once a job is started it will start processing input events and produce output.
+Deletes a streaming job.
 
 ## SYNTAX
 
-### StartExpanded (Default)
+### Delete (Default)
 ```
-Start-AzStreamAnalyticsStreamingJob -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-OutputStartMode <OutputStartMode>] [-OutputStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Start
-```
-Start-AzStreamAnalyticsStreamingJob -JobName <String> -ResourceGroupName <String>
- -StartJobParameter <IStartStreamingJobParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzStreamAnalyticsStreamingJob -InputObject <IStreamAnalyticsIdentity>
- -StartJobParameter <IStartStreamingJobParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StartViaIdentityExpanded
-```
-Start-AzStreamAnalyticsStreamingJob -InputObject <IStreamAnalyticsIdentity>
- [-OutputStartMode <OutputStartMode>] [-OutputStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts a streaming job.
-Once a job is started it will start processing input events and produce output.
+Deletes a streaming job.
 
 ## EXAMPLES
 
@@ -103,7 +85,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: StartViaIdentity, StartViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -113,12 +95,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JobName
+### -Name
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -134,37 +116,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutputStartMode
-Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode
-Parameter Sets: StartExpanded, StartViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutputStartTime
-Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started.
-This property must have a value if outputStartMode is set to CustomTime.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: StartExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +146,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -205,28 +156,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StartJobParameter
-Parameters supplied to the Start Streaming Job operation.
-To construct, see NOTES section for STARTJOBPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStartStreamingJobParameters
-Parameter Sets: Start, StartViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -272,8 +207,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStartStreamingJobParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
@@ -300,10 +233,6 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[TransformationName <String>]`: The name of the transformation.
-
-STARTJOBPARAMETER <IStartStreamingJobParameters>: Parameters supplied to the Start Streaming Job operation.
-  - `[OutputStartMode <OutputStartMode?>]`: Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
-  - `[OutputStartTime <DateTime?>]`: Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
 
 ## RELATED LINKS
 

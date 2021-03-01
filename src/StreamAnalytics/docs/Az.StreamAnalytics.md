@@ -1,7 +1,7 @@
 ---
 Module Name: Az.StreamAnalytics
 Module Guid: f3678192-db41-439b-99e7-6fda95f6c601
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics
+Download Help Link: https://docs.microsoft.com/powershell/module/az.streamanalytics
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -26,13 +26,13 @@ Retrieves the default definition of a function based on the parameters specified
 ### [Get-AzStreamAnalyticsInput](Get-AzStreamAnalyticsInput.md)
 Gets details about the specified input.
 
+### [Get-AzStreamAnalyticsJob](Get-AzStreamAnalyticsJob.md)
+Gets details about the specified streaming job.
+
 ### [Get-AzStreamAnalyticsOutput](Get-AzStreamAnalyticsOutput.md)
 Gets details about the specified output.
 
-### [Get-AzStreamAnalyticsStreamingJob](Get-AzStreamAnalyticsStreamingJob.md)
-Gets details about the specified streaming job.
-
-### [Get-AzStreamAnalyticsSubscriptionQuota](Get-AzStreamAnalyticsSubscriptionQuota.md)
+### [Get-AzStreamAnalyticsQuota](Get-AzStreamAnalyticsQuota.md)
 Retrieves the subscription's current quota information in a particular region.
 
 ### [Get-AzStreamAnalyticsTransformation](Get-AzStreamAnalyticsTransformation.md)
@@ -47,11 +47,11 @@ Creates a function or replaces an already existing function under an existing st
 ### [New-AzStreamAnalyticsInput](New-AzStreamAnalyticsInput.md)
 Creates an input or replaces an already existing input under an existing streaming job.
 
+### [New-AzStreamAnalyticsJob](New-AzStreamAnalyticsJob.md)
+Creates a streaming job or replaces an already existing streaming job.
+
 ### [New-AzStreamAnalyticsOutput](New-AzStreamAnalyticsOutput.md)
 Creates an output or replaces an already existing output under an existing streaming job.
-
-### [New-AzStreamAnalyticsStreamingJob](New-AzStreamAnalyticsStreamingJob.md)
-Creates a streaming job or replaces an already existing streaming job.
 
 ### [New-AzStreamAnalyticsTransformation](New-AzStreamAnalyticsTransformation.md)
 Creates a transformation or replaces an already existing transformation under an existing streaming job.
@@ -65,35 +65,17 @@ Deletes a function from the streaming job.
 ### [Remove-AzStreamAnalyticsInput](Remove-AzStreamAnalyticsInput.md)
 Deletes an input from the streaming job.
 
+### [Remove-AzStreamAnalyticsJob](Remove-AzStreamAnalyticsJob.md)
+Deletes a streaming job.
+
 ### [Remove-AzStreamAnalyticsOutput](Remove-AzStreamAnalyticsOutput.md)
 Deletes an output from the streaming job.
 
-### [Remove-AzStreamAnalyticsStreamingJob](Remove-AzStreamAnalyticsStreamingJob.md)
-Deletes a streaming job.
-
-### [Set-AzStreamAnalyticsCluster](Set-AzStreamAnalyticsCluster.md)
-Creates a Stream Analytics Cluster or replaces an already existing cluster.
-
-### [Set-AzStreamAnalyticsFunction](Set-AzStreamAnalyticsFunction.md)
-Creates a function or replaces an already existing function under an existing streaming job.
-
-### [Set-AzStreamAnalyticsInput](Set-AzStreamAnalyticsInput.md)
-Creates an input or replaces an already existing input under an existing streaming job.
-
-### [Set-AzStreamAnalyticsOutput](Set-AzStreamAnalyticsOutput.md)
-Creates an output or replaces an already existing output under an existing streaming job.
-
-### [Set-AzStreamAnalyticsStreamingJob](Set-AzStreamAnalyticsStreamingJob.md)
-Creates a streaming job or replaces an already existing streaming job.
-
-### [Set-AzStreamAnalyticsTransformation](Set-AzStreamAnalyticsTransformation.md)
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
-
-### [Start-AzStreamAnalyticsStreamingJob](Start-AzStreamAnalyticsStreamingJob.md)
+### [Start-AzStreamAnalyticsJob](Start-AzStreamAnalyticsJob.md)
 Starts a streaming job.
 Once a job is started it will start processing input events and produce output.
 
-### [Stop-AzStreamAnalyticsStreamingJob](Stop-AzStreamAnalyticsStreamingJob.md)
+### [Stop-AzStreamAnalyticsJob](Stop-AzStreamAnalyticsJob.md)
 Stops a running streaming job.
 This will cause a running streaming job to stop processing input events and producing output.
 
@@ -122,15 +104,15 @@ Updates an existing input under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) an input without affecting the rest the job or input definition.
 
+### [Update-AzStreamAnalyticsJob](Update-AzStreamAnalyticsJob.md)
+Updates an existing streaming job.
+This can be used to partially update (ie.
+update one or two properties) a streaming job without affecting the rest the job definition.
+
 ### [Update-AzStreamAnalyticsOutput](Update-AzStreamAnalyticsOutput.md)
 Updates an existing output under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) an output without affecting the rest the job or output definition.
-
-### [Update-AzStreamAnalyticsStreamingJob](Update-AzStreamAnalyticsStreamingJob.md)
-Updates an existing streaming job.
-This can be used to partially update (ie.
-update one or two properties) a streaming job without affecting the rest the job definition.
 
 ### [Update-AzStreamAnalyticsTransformation](Update-AzStreamAnalyticsTransformation.md)
 Updates an existing transformation under an existing streaming job.

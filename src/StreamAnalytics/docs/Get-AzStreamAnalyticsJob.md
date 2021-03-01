@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsstreamingjob
+online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# Get-AzStreamAnalyticsStreamingJob
+# Get-AzStreamAnalyticsJob
 
 ## SYNOPSIS
 Gets details about the specified streaming job.
@@ -14,25 +14,25 @@ Gets details about the specified streaming job.
 
 ### List1 (Default)
 ```
-Get-AzStreamAnalyticsStreamingJob [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzStreamAnalyticsJob [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStreamAnalyticsStreamingJob -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStreamAnalyticsStreamingJob -InputObject <IStreamAnalyticsIdentity> [-Expand <String>]
+Get-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStreamAnalyticsStreamingJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
+Get-AzStreamAnalyticsJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JobName
+### -Name
 The name of the streaming job.
 
 ```yaml
