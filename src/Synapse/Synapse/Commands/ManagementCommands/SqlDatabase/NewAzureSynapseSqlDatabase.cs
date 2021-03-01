@@ -1,8 +1,8 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -10,7 +10,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Sku = Microsoft.Azure.Management.Synapse.Models.Sku;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -76,13 +75,13 @@ namespace Microsoft.Azure.Commands.Synapse
             var existingWorkspace = this.SynapseAnalyticsClient.GetWorkspaceOrDefault(this.ResourceGroupName, this.WorkspaceName);
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
             var existingSqlDatabase = this.SynapseAnalyticsClient.GetSqlDatabaseOrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
             if (existingSqlDatabase != null)
             {
-                throw new SynapseException(string.Format(Resources.SynapseSqlDatabaseExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSqlDatabaseExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
             var createParams = new SqlDatabase
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
                     break;
 
-                default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlDatabase, this.ResourceGroupName, this.WorkspaceName, this.Name)))

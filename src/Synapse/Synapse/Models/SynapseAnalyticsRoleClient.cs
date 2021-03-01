@@ -2,8 +2,8 @@
 using Azure.Analytics.Synapse.AccessControl;
 using Azure.Analytics.Synapse.AccessControl.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Common;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             if (context == null)
             {
-                throw new SynapseException(Resources.InvalidDefaultSubscription);
+                throw new AzPSInvalidOperationException(Resources.InvalidDefaultSubscription);
             }
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
