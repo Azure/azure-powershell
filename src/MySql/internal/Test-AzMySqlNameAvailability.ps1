@@ -55,7 +55,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
   Name <String>: Resource name to verify.
   [Type <String>]: Resource type used for verification.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/test-azmysqlnameavailability
+https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
 #>
 function Test-AzMySqlNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability])]

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.6.0
+* Added maintenance windows parameter to Update-AzMySqlFlexibleServer cmdlet
+* Added zone parameter to server New-AzMySqlFlexibleServer cmdlet.
+
 ## Version 0.5.0
 * Added cmdlet `Test-AzMySqlFlexibleServerConnect`
 

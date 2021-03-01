@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Argument completer implementation for DependencyType.</summary>
+    /// <summary>Defines the dependency type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyTypeTypeConverter))]
     public partial struct DependencyType :
         System.Management.Automation.IArgumentCompleter

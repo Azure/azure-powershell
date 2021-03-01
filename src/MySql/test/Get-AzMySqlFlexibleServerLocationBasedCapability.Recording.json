@@ -2,7 +2,7 @@
   "Get-AzMySqlFlexibleServerLocationBasedCapability+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBForMySql/locations/westus2/capabilities?api-version=2020-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBForMySql/locations/westus2/capabilities?api-version=2020-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/providers/Microsoft.DBforMySQL/locations/westus2/capabilities?api-version=2020-07-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
