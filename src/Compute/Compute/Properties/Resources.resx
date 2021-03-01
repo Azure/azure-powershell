@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -626,6 +626,9 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Invalid parameters for migration. Migration only supports -ResourceGroupName, -VMName and -Migrate parameters.</value>
   </data>
   <data name="EnableDiskEncryptionInvalidMigrateRecoveryParameter" xml:space="preserve">
-    <value>-Invalid MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery.</value>
+    <value>Invalid -MigrationRecovery parameter. VM does not meet the prerequisites for migration recovery.</value>
+  </data>
+  <data name="InvalidMigrateAndMigrateRecoveryParameters" xml:space="preserve">
+    <value>User input cannot contain both -Migrate and -MigrationRecovery parameters. Specify either -Migrate (or) -MigrationRecovery parameter.</value>
   </data>
 </root>
