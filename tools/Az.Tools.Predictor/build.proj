@@ -35,7 +35,7 @@
   </Target>
 
   <Target Name="GenerateHelp">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\GenerateHelp -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
