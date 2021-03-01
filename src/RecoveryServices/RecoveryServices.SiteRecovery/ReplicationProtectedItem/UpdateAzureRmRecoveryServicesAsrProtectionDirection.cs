@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 else
                 {
                     // PrimaryToRecovery Direction is Invalid for InMageAzureV2.
-                    new ArgumentException(Resources.InvalidDirectionForAzureToVMWare);
+                    Console.WriteLine(new ArgumentException(Resources.InvalidDirectionForAzureToVMWare).Message);
                 }
             }
             else if (string.Compare(
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 else
                 {
                     // PrimaryToRecovery Direction is Invalid for InMage.
-                    new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
+                    Console.WriteLine(new ArgumentException(Resources.InvalidDirectionForVMWareToAzure).Message);
                 }
             }
 
