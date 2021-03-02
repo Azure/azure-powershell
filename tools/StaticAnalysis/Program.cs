@@ -110,6 +110,8 @@ namespace StaticAnalysis
                     Console.WriteLine(string.Format("Module: {0}", moduleName));
                 }
 
+                // We want to run analyzers separately and different modules for each analyzer. But we also want previous analyzer will not stop the subsequent ones.
+                // So we make normal analyzer will not throw exception but write them into files and add a new issue checker to check the exceptions in files and throw them together if there is any.
                 bool needToCheckIssue = false;
                 if (args.Any(a => a.Equals("--analyzers")))
                 {
@@ -180,7 +182,6 @@ namespace StaticAnalysis
                     var analyzer = new IssueChecker.IssueChecker();
                     analyzer.Analyze(new[] { reportsDirectory });
                 }
-                //analysisLogger.CheckForIssues(2);
             }
             finally
             {
