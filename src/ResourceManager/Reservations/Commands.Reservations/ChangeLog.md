@@ -1,4 +1,4 @@
-
+﻿
 <!--
     Please leave this section at the top of the change log.
 
@@ -19,6 +19,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* This module is outdated and will go out of support on 29 February 2024.
+* The Az.Reservations module has all the capabilities of AzureRM.Reservations and provides the following improvements:
+    - Greater security with token cache encryption and improved authentication.
+    - Availability in Azure Cloud Shell and on Linux and macOS.
+    - Support for all Azure services.
+    - Allows use of Azure access tokens.
+* We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
+* [Update your scripts](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024.
+* To automatically update your scripts, follow the [quickstart guide](https://docs.microsoft.com/powershell/azure/quickstart-migrate-azurerm-to-az-automatically).
 
 ## Version 0.1.7-preview
 * Update to the latest .NET SDK version 1.9.0-preview.
