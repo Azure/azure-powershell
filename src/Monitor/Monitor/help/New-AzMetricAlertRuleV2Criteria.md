@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azmetricalertrulev2criteria
+online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsig
 ```
 
 ## DESCRIPTION
-The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azmetricalertrulev2) cmdlet which creates a new metric alert rule.
+The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) cmdlet which creates a new metric alert rule.
 
 ## EXAMPLES
 

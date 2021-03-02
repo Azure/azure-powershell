@@ -19,6 +19,14 @@
 --->
 
 ## Upcoming Release
+* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
+* Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
+    - `New-AzVpnSiteLinkConnection`
+    - `Update-AzVpnConnection`
+* Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
+    - `Get-VpnSiteLinkConnectionIkeSa`
+
+## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `New-AzRouteServer`
     - `Get-AzRouteServer`
@@ -29,6 +37,7 @@
     - `Update-AzRouteServerPeer`
     - `Remove-AzRouteServerPeer`
     - Added deprecation attribute warning to the old cmdlets.
+* Bug fix in ExpressRouteLink MacSecConfig. Added new property `SciState` to `PSExpressRouteLinkMacSecConfig`
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
 
 ## Version 4.5.0
@@ -64,6 +73,10 @@
     - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 * Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
     - Added parameter EnableRoutingPreferenceInternetFlag
+* Added new cmdlet to reset a Virtual Network Gateway Connection.
+    - `Reset-AzVirtualNetworkGatewayConnection`
+* Added new cmdlet to reset a Vpn Site Link Connection.
+    - `Reset-VpnSiteLinkConnection`
 
 ## Version 4.4.0
 * Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario

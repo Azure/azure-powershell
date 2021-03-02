@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azscheduledqueryrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule
 schema: 2.0.0
 ---
 

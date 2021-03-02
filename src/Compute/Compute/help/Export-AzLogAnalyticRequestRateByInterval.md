@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
+online version: https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
 schema: 2.0.0
 ---
 
@@ -15,24 +15,63 @@ Export logs that show Api requests made by this subscription in the given time w
 ```
 Export-AzLogAnalyticRequestRateByInterval [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
  [-BlobContainerSasUri] <String> [-IntervalLength] <IntervalInMins> [-GroupByOperationName]
- [-GroupByResourceName] [-GroupByThrottlePolicy] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GroupByResourceName] [-GroupByThrottlePolicy] [-GroupByApplicationId] [-GroupByUserAgent] [-AsJob] [-NoWait]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Exports statistical data about the subscription's calls to the Microsoft.Compute API by Success, Failure, or Throttled status, in predefined time intervals. The logs can be further grouped by three parameters: GroupByOperationName, GroupByThrottlePolicy, or GroupByResourceName.
+Exports statistical data about the subscription's calls to the Microsoft.Compute API by Success, Failure, or Throttled status, in predefined time intervals. The logs can be further grouped by five parameters: GroupByOperationName, GroupByThrottlePolicy, GroupByResourceName, GroupByUserAgent, or GroupByApplicationId.
 Note that this cmdlet collects only Compute Resource Provider logs; moreover, data about the Disk and Snapshot resource types is not yet available.
 
-For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits. 
+For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Export records aggregated by operation name
 ```
 PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByOperationName
+This command downloads a .csv file to the provided container. The format of the file is:
+
+TIMESTAMP             operationName   TotalRequests SuccessfulRequests ThrottledRequests
+---------             -------------   ------------- ------------------ -----------------
+2/21/2018  7:00:00 PM <operationName> 10            10                 0
+2/21/2018  7:30:00 PM <operationName> 8             8                  0
+2/21/2018  9:00:00 PM <operationName> 9             9                  0
+
 ```
 
 This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by operation name.
+
+### Example 2: Export records aggregated by application id
+```
+PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByApplicationId
+
+This command downloads a .csv file to the provided container. The format of the file is:
+
+TIMESTAMP             clientApplicationId   TotalRequests SuccessfulRequests ThrottledRequests
+---------             -------------------   ------------- ------------------ -----------------
+2/21/2018  7:00:00 PM <clientApplicationId> 10            10                 0
+2/21/2018  7:30:00 PM <clientApplicationId> 8             8                  0
+2/21/2018  9:00:00 PM <clientApplicationId> 9             9                  0
+
+```
+
+This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by application id. 
+
+### Example 3: Export records aggregated by user agent
+```
+PS C:\> Export-AzLogAnalyticRequestRateByInterval -Location 'West Central US' -FromTime '2018-02-20T17:54:14.8806951-08:00' -ToTime '2018-02-22T17:54:17.5832413-08:00' -BlobContainerSasUri 'https://wkuotest1.blob.core.windows.net/mylogs?someSasUri' -IntervalLength ThirtyMins -GroupByUserAgent
+This command downloads a .csv file to the provided container. The format of the file is:
+
+TIMESTAMP             userAgent   TotalRequests SuccessfulRequests ThrottledRequests
+---------             ---------   ------------- ------------------ -----------------
+2/21/2018  7:00:00 PM <userAgent> 10            10                 0
+2/21/2018  7:30:00 PM <userAgent> 8             8                  0
+2/21/2018  9:00:00 PM <userAgent> 9             9                  0
+
+```
+
+This command stores the aggregated numbers of Microsoft.Compute API calls separated by Success, Failure, or Throttled between 2018-02-20T17:54:14 and 2018-02-22T17:54:17 in the given SAS URI, aggregated by user agent. 
 
 ## PARAMETERS
 
@@ -96,6 +135,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupByApplicationId
+Group query result by Application Id.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupByOperationName
 Group query result by Operation Name.
 
@@ -134,6 +187,20 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupByUserAgent
+Group query result by UserAgent.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 Required: False
 Position: Named
 Default value: None

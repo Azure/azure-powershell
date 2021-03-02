@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/add-aziotdeviceprovisioningservicecertificate
+online version: https://docs.microsoft.com/powershell/module/az.deviceprovisioningservices/add-aziotdeviceprovisioningservicecertificate
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Add-AzIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-Certifica
 
 ## DESCRIPTION
 Uploads a new certificate or to replace the existing certificate with the same name.
-For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates.
+For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/azure/iot-dps/how-to-verify-certificates.
 
 ## EXAMPLES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/en-us/powershell/module/az.customproviders/remove-azcustomproviderassociation
+online version: https://docs.microsoft.com/powershell/module/az.customproviders/remove-azcustomproviderassociation
 schema: 2.0.0
 ---
 

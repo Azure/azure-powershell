@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return container;
             }
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

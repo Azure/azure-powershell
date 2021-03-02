@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azdeployment
+online version: https://docs.microsoft.com/powershell/module/az.resources/test-azdeployment
 schema: 2.0.0
 ---
 
@@ -14,74 +14,103 @@ Validates a deployment.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Test-AzDeployment -Location <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateFile <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
-Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterObject <Hashtable>
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
-Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterObject <Hashtable>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
-Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterObject <Hashtable>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
 ```
-Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
-Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
-Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateSpecResourceIdAndParams
+```
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
+ -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
 ```
-Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
-Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
+ -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
-Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByTemplateSpecResourceIdAndParamsUri
+```
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
+ -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
-Test-AzDeployment -Location <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateObject <Hashtable>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-Test-AzDeployment -Location <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTemplateSpecResourceId
+```
+Test-AzDeployment -Location <String> [-QueryString <String>] -TemplateSpecId <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,6 +181,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -QueryString
+The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkipTemplateParameterPrompt
 Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and error out immediately if a parameter was found not to be bound in the template. For non-interactive scripts, -SkipTemplateParameterPrompt can be provided to provide a better error message in the case where not all required parameters are satisfied.
 
@@ -202,7 +246,7 @@ A file that has the template parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
 Aliases:
 
 Required: True
@@ -232,7 +276,22 @@ Uri to the template parameter file.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterUri, ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
+Parameter Sets: ByTemplateObjectAndParameterUri, ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri, ByTemplateSpecResourceIdAndParamsUri
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateSpecId
+Resource ID of the templateSpec to be deployed.
+
+```yaml
+Type: System.String
+Parameter Sets: ByTemplateSpecResourceIdAndParams, ByTemplateSpecResourceIdAndParamsUri, ByTemplateSpecResourceId
 Aliases:
 
 Required: True

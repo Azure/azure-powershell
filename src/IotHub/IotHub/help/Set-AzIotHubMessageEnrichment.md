@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubmessageenrichment
+online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubmessageenrichment
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Set-AzIotHubMessageEnrichment [-ResourceId] <String> [-Key] <String> [-Value <St
 ```
 
 ## DESCRIPTION
-For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-message-enrichments-overview
+For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ Endpoint(s) : {endpoint1, endpoint2}
 ```
 
 Updates enrichment's value to "updatedValue" for the key "newKey".
-For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-message-enrichments-overview
+For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ### Example 2
 ```powershell
@@ -57,7 +57,7 @@ Endpoint(s) : {endpoint1, endpoint2, endpoint3}
 ```
 
 Updates enrichment's endpoint to "endpoint1, endpoint2, endpoint3" for the key "newKey".
-For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-message-enrichments-overview
+For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## PARAMETERS
 

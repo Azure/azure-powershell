@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2DF5FB4D-A5CB-439C-AC6F-DF2130AF33EC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchcomputenodescheduling
+online version: https://docs.microsoft.com/powershell/module/az.batch/disable-azbatchcomputenodescheduling
 schema: 2.0.0
 ---
 

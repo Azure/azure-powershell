@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/get-azimagebuilderrunoutput
+online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderrunoutput
 schema: 2.0.0
 ---
 

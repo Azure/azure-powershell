@@ -32,15 +32,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         };
 
         /// <summary>
+        /// The maximum number of suggestions that have the same command name.
+        /// </summary>
+        public int? MaxAllowedCommandDuplicate { get; set; }
+
+        /// <summary>
         /// The service to get the prediction results back.
         /// </summary>
         public string ServiceUri { get; set; }
 
         /// <summary>
+        /// Set the user as an internal user.
+        /// </summary>
+        public bool? SetAsInternal { get; set; }
+
+        /// <summary>
         /// The number of suggestions to return to PSReadLine.
         /// </summary>
         public int? SuggestionCount { get; set; }
-        public int? MaxAllowedCommandDuplicate { get; set; }
+
+        /// <summary>
+        /// The survey id. It should be internal but make it public so that we can read/write to Json.
+        /// </summary>
+        public int? SurveyId { get; set; }
 
         private static bool? _isContinueOnTimeout;
         /// <summary>
@@ -127,6 +141,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
                     }
+
+                    this.SetAsInternal = profileSettings.SetAsInternal;
+                    this.SurveyId = profileSettings.SurveyId;
+
+                    profileSettings.SurveyId = null;
+
+                    fileContent = JsonSerializer.Serialize<Settings>(profileSettings, new JsonSerializerOptions(Settings._jsonSerializerOptions) { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+                    File.WriteAllText(profileSettingFilePath, fileContent, Encoding.UTF8);
                 }
                 catch
                 {

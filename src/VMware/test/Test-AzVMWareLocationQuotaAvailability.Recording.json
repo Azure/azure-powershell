@@ -1,0 +1,41 @@
+{
+  "Test-AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkQuotaAvailability?api-version=2020-03-20+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkQuotaAvailability?api-version=2020-03-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "8d21e059-811a-4dd3-8211-c2274cadcec2" ],
+        "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
+        "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "691ec086-cc3c-4b4f-b1ed-3e6d1f42d75f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-correlation-request-id": [ "75f6755b-5896-4810-9e78-b39ab7291d56" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040258Z:75f6755b-5896-4810-9e78-b39ab7291d56" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 13 Sep 2020 04:02:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "60" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"hostsRemaining\":{\"gp\":0,\"he\":30},\"quotaEnabled\":\"Enabled\"}"
+    }
+  }
+}

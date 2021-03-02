@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CustomProviders.private.dll'
-  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; })
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.5'; })
   FormatsToProcess = './Az.CustomProviders.format.ps1xml'
   FunctionsToExport = 'Get-AzCustomProvider', 'Get-AzCustomProviderAssociation', 'New-AzCustomProvider', 'New-AzCustomProviderAssociation', 'Remove-AzCustomProvider', 'Remove-AzCustomProviderAssociation', 'Update-AzCustomProvider'
   AliasesToExport = '*'
