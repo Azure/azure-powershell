@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             switch (statusCode)
             {
                 case HttpStatusCode.NotFound:
-                    return new AzPSResourceNotFoundCloudException(message, desensitizedMessage:null, ex);
+                    return new AzPSResourceNotFoundCloudException(message, null, ex);
 
                 default:
 
