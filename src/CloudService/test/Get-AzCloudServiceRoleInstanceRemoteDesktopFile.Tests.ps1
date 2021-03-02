@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile' {
 
-    It 'Get remote desktop file' -skip {
+    It 'Get remote desktop file' {
         RemoveFile $env.RDPOutputFile
         $x = Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -OutFile $env.RDPOutputFile
         Test-Path $env.RDPOutputFile | Should be $true
