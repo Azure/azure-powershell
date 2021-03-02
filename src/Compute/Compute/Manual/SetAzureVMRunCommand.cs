@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMRunCommand : VirtualMachineBaseCmdlet
+    public class SetAzureVMRunCommand : ComputeAutomationBaseCmdlet//VirtualMachineBaseCmdlet
     {
         private const string VMNameParameterSet = "VMNameParamSet";
         private const string ResourceIdParameterSet = "ResourceIdParamSet";
@@ -209,8 +209,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
 
-
-            var parameters = new PSVirtualMachineRunCommand
+            
+            PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
             {
                 Source = scriptSource, //unable to use PS version here for some reason
                 //name ? 
@@ -223,6 +223,12 @@ namespace Microsoft.Azure.Commands.Compute
                 TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
                 OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
                 ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
+
+                ,Id = null,
+                Type = null,
+                Name = null,
+                Location = null,
+                Tags = null
             };
 
             //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
