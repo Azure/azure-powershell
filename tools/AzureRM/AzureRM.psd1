@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.13.1'
+ModuleVersion = '6.13.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -161,73 +161,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.13.0 - November 2018
-AzureRM.Profile
-* Update common code to use latest version of ClientRuntime
-
-AzureRM.ApiManagement
-* Update dependencies for type mapping issue
-
-AzureRM.Automation
-* Swagger based Azure Automation cmdlets
-* Added Update Management cmdlets
-* Added Source Control cmdlets
-* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
-* Fixed the DSC Register Node command
-
-AzureRM.Compute
-* Fixed identity issue for SystemAssigned identity
-* Update dependencies for type mapping issue
-
-AzureRM.ContainerInstance
-* Update dependencies for type mapping issue
-
-AzureRM.MarketplaceOrdering
-* update the examples description for marketplace cmdlets
-
-AzureRM.Network
-* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
-* Added ICMP back to supported AzureFirewall Network Protocols
-* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
-* Fix issues with memory usage in VirtualNetwork map
-
-AzureRM.RecoveryServices.Backup
-* Fix for modifying policy for a protected file share.
-* Converted policy timezone to uppercase.
-
-AzureRM.RecoveryServices.SiteRecovery
-* Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
-* Update dependencies for type mapping issue
-
-AzureRM.Relay
-* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
-
-AzureRM.Resources
-* Update help documentation for resource identity related parameters in New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment
-* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
-* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
-
-AzureRM.ServiceFabric
-* Add deprecation messages for upcoming breaking changes
-
-AzureRM.Sql
-* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
-	- Get-AzureRmSqlInstance
-	- New-AzureRmSqlInstance
-	- Set-AzureRmSqlInstance
-	- Remove-AzureRmSqlInstance
-	- Get-AzureRmSqlInstanceDatabase
-	- New-AzureRmSqlInstanceDatabase
-	- Restore-AzureRmSqlInstanceDatabase
-	- Remove-AzureRmSqlInstanceDatabase
-* Enabled Extended Auditing Policy management on a server or a database.
-	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
-	- Cmdlets were modified to use SQL clients instead of Legacy clients.
-	- Set-AzureRmSqlServerAuditing.
-	- Get-AzureRmSqlServerAuditing.
-	- Set-AzureRmSqlDatabaseAuditing.
-	- Get-AzureRmSqlDatabaseAuditing.
-* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+        ReleaseNotes = '6.13.2 - March 2021
+        * Azure Resource Manager Module 
+        * This module is outdated and will go out of support on 29 February 2024.     
+        * The Az PowerShell Module [https://docs.microsoft.com/powershell/azure/new-azureps-module-az] provides the following improvements:  
+            - Greater security with token cache encryption and improved authentication.
+            - Availability in Azure Cloud Shell and on Linux and macOS.
+            - Support for all Azure services.
+            - Allows use of Azure access tokens.
+        * We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
+        * [Update your scripts](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az)?that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024.
+        * To automatically update your scripts, follow the?[quickstart guide](https://docs.microsoft.com/powershell/azure/quickstart-migrate-azurerm-to-az-automatically).
 '
 
         # Prerelease string of this module
