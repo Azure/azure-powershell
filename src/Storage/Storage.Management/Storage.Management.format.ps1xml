@@ -360,6 +360,22 @@
                 <Label>ProtocolSettings.Smb.Multichannel.Enabled</Label>
                 <ScriptBlock>$_.ProtocolSettings.Smb.Multichannel.Enabled</ScriptBlock>
               </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.Versions</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.Versions</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.AuthenticationMethods</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.AuthenticationMethods</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.KerberosTicketEncryption</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.KerberosTicketEncryption</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.ChannelEncryption</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.ChannelEncryption</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
