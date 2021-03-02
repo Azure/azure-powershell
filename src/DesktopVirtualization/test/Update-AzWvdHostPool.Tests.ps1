@@ -25,6 +25,7 @@ Describe 'Update-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate '{option1}' `
+                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -43,6 +44,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
             $hostPool.VMTemplate | Should -Be '{option1}'
+            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
@@ -63,6 +65,7 @@ Describe 'Update-AzWvdHostPool' {
                             -FriendlyName 'fri2' `
                             -MaxSessionLimit 6 `
                             -VMTemplate '{option2}' `
+                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -80,6 +83,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri2'
             $hostPool.MaxSessionLimit | Should -Be 6
             $hostPool.VMTemplate | Should -Be '{option2}'
+            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
@@ -103,6 +107,7 @@ Describe 'Update-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri2'
             $hostPool.MaxSessionLimit | Should -Be 6
             $hostPool.VMTemplate | Should -Be '{option2}'
+            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
