@@ -18,7 +18,7 @@ Subscribe the event trigger to external service events.
 Clears the vulnerability assessment rule baseline.
 
 ### [Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan](Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
-Converts to a Synapse Analytics SQL pool vulnerability assessment scan record.
+Converts a vulnerability assessment scan results to Excel format.
 
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
@@ -45,7 +45,7 @@ Gets information about data flows in workspace.
 Gets information about datasets in workspace.
 
 ### [Get-AzSynapseDroppedSqlPool](Get-AzSynapseDroppedSqlPool.md)
-Gets Synapse Sql dropped Sql Pool Backup.
+Gets a dropped Sql pool backup of a Synapse Sql Pool.
 
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
@@ -117,7 +117,7 @@ Gets the advanced threat protection settings for a SQL pool.
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
-Gets Synapse Sql Pool Geo Backup.
+Gets a geo-redundant backup of a Sql Pool.
 
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
 Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.
@@ -134,11 +134,11 @@ Gets the TDE state for a SQL pool.
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Gets the vulnerability assessment rule baseline.
 
+### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given sql pool.
+
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
-
-### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
-Gets a Synapse Analytics SQL pool vulnerability assessment scan record.
 
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
@@ -312,7 +312,7 @@ Creates a trigger in a workspace.
 Starts a Synapse Analytics Spark session.
 
 ### [Start-AzSynapseSqlPoolVulnerabilityAssessmentScan](Start-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
-Start a Synapse Analytics SQL pool vulnerability assessment scan record.
+Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
