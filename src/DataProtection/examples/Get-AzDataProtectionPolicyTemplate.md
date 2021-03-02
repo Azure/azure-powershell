@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Azure Disk default policy template
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+This command returns a default policy template for a given datasource type. Use this policy template to create a new policy.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
