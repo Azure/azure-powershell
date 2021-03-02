@@ -24,7 +24,7 @@ Function BeSuccessfullyCreated {
         If ( $Negate ) { $Pass = -not($Pass) }
     
         If ( -not($Pass) ) {
-            $FailureMessage = 'The DNS is not created successfully.'
+            $FailureMessage = 'The DNS resolver is not created successfully.'
         }
     
         $ObjProperties = @{
@@ -103,7 +103,7 @@ Function BeSameDnsResolverCollectionAsExpected {
         If ( $Negate ) { $Pass = -not($Pass) }
     
         If ( -not($Pass) ) {
-            $FailureMessage = 'The DNS resolvers are different from the expected.'
+            $FailureMessage = 'The DNS resolver(s) are different from the expected.'
         }
     
         $ObjProperties = @{

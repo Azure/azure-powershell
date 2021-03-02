@@ -20,6 +20,7 @@ function setupEnv() {
 
     $null = $env.Add("DnsResolverNamePrefix", "psdnsresolvername");
     $null = $env.Add("VirtualNetworkNamePrefix", "psvirtualnetworkname");
+    $null = $env.Add("InboundEndpointNamePrefix", "psinboundendpointname");
 
 
     $null = $env.Add("SuccessProvisioningState", "Succeeded");
@@ -38,7 +39,8 @@ function setupEnv() {
     # New-cmdlet uses 0 - 12
     # Get-cmdlet uses 13 - 21
     # Remove-cmdlet uses 22-32
-    # Patch 
+    # Patch 32 - 38
+    # New IE - 38 - 45
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId" 
     For($i=0; $i -le 20; $i++){
