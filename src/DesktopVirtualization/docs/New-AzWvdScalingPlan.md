@@ -86,6 +86,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Description
@@ -101,6 +102,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ExclusionTag
@@ -116,6 +118,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -FriendlyName
@@ -131,6 +134,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -HostPoolReference
@@ -138,7 +142,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -147,10 +151,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -HostPoolType
-HostPool type for scaling plan.
+HostPool type for desktop.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
@@ -162,6 +167,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Location
@@ -177,6 +183,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Name
@@ -192,6 +199,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -208,6 +216,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Schedule
@@ -215,7 +224,7 @@ List of ScalingSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -224,6 +233,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -239,6 +249,7 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Tag
@@ -254,6 +265,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -TimeZone
@@ -269,6 +281,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -284,6 +297,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -300,6 +314,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -309,22 +324,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingPlan
+
+## ALIASES
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
+### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
+#### HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
   - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
-SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
+#### SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
   - `[Name <String>]`: Name of the scaling schedule.
   - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.

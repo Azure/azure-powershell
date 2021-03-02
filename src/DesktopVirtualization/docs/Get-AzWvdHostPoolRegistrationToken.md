@@ -1,41 +1,44 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/disconnect-azwvdusersession
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 schema: 2.0.0
 ---
 
-# Disconnect-AzWvdUserSession
+# Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Disconnect a userSession.
+Registration token of the host pool.
 
 ## SYNTAX
 
-### Disconnect (Default)
+### Retrieve (Default)
 ```
-Disconnect-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DisconnectViaIdentity
+### RetrieveViaIdentity
 ```
-Disconnect-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Disconnect a userSession.
+Registration token of the host pool.
 
 ## EXAMPLES
 
-### Example 1: Disconnect a Windows Virtual Desktop UserSession by name
+### Example 1: Get Windows Virtual Desktop registration token information by HostPoolName
 ```powershell
-PS C:\> Disconnect-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
+PS C:\> Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+
+ExpirationTime       RegistrationTokenOperation Token
+--------------       -------------------------- -----
+4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 ```
 
-This command disconnects a Windows Virtual Desktop UserSession in a Session Host.
+This command gets Windows Virtual Desktop registration token information from a HostPool.
 
 ## PARAMETERS
 
@@ -60,24 +63,8 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Retrieve
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Id
-The name of the user session within the specified session host
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
-Aliases: UserSessionId
 
 Required: True
 Position: Named
@@ -93,7 +80,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DisconnectViaIdentity
+Parameter Sets: RetrieveViaIdentity
 Aliases:
 
 Required: True
@@ -104,45 +91,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SessionHostName
-The name of the session host within the specified host pool
-
-```yaml
-Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Retrieve
 Aliases:
 
 Required: True
@@ -157,8 +112,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Disconnect
+Type: System.String[]
+Parameter Sets: Retrieve
 Aliases:
 
 Required: False
@@ -211,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IRegistrationInfo
 
 ## ALIASES
 
