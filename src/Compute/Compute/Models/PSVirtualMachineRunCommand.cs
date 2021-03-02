@@ -6,7 +6,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineRunCommand : PSOperation
+    public partial class PSVirtualMachineRunCommand
     {
         public VirtualMachineRunCommandScriptSource Source { get; set; }
 
@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public string ErrorBlobUri { get; set; }
 
-        public string ProvisioningState { get; }
+        public string ProvisioningState { get; set; }
 
-        public VirtualMachineRunCommandInstanceView InstanceView { get; }
+        public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
     }
 }
