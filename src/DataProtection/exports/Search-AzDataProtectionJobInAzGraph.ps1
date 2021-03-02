@@ -15,30 +15,74 @@
 
 <#
 .Synopsis
-Prepares Datasource object for backup
+Get Backup Vault storage setting object
 .Description
-Prepares Datasource object for backup
+Get Backup Vault storage setting object
 .Example
-PS C:\> Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
+PS C:\> {{ Add code here }}
 
-DatasourceType            ObjectType
---------------            ----------
-{Microsoft.Compute/disks} BackupPolicy
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
+System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionpolicytemplate
+https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 #>
-function Get-AzDataProtectionPolicyTemplate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy])]
+function Search-AzDataProtectionJobInAzGraph {
+[OutputType([PSObject])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # Subscription of Vault
+    ${Subscription},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
     # Datasource Type
-    ${DatasourceType}
+    ${DatasourceType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # Resource Group of Vault
+    ${ResourceGroup},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # Name of the vault
+    ${Vault},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.DateTime]
+    # Start Time of the backup Job
+    ${StartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.DateTime]
+    # End Time of the Backup Job
+    ${EndTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
+    # Operation of the Job Filter
+    ${Operation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+    # Status of the Job Filter
+    ${Status}
 )
 
 begin {
@@ -49,7 +93,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Get-AzDataProtectionPolicyTemplate';
+            __AllParameterSets = 'Az.DataProtection.custom\Search-AzDataProtectionJobInAzGraph';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
