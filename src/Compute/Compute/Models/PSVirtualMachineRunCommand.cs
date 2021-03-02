@@ -5,6 +5,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
+//namespace Microsoft.Azure.Commands.Compute.Models
 {
     public partial class PSVirtualMachineRunCommand
     {
@@ -29,5 +30,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ProvisioningState { get; set; }
 
         public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
+
+        /*
+        // Gets or sets the property of 'Id'
+        public string Id { get; set; }
+
+        // Gets or sets the property of 'Name'
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public string Location { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
+        */
     }
 }
