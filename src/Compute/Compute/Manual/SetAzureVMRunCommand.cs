@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMRunCommand", DefaultParameterSetName = VMNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMRunCommand : ComputeAutomationBaseCmdlet//VirtualMachineBaseCmdlet
+    public class SetAzureVMRunCommand : ComputeAutomationBaseCmdlet
     {
         private const string VMNameParameterSet = "VMNameParamSet";
         private const string ResourceIdParameterSet = "ResourceIdParamSet";
