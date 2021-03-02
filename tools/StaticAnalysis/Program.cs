@@ -95,13 +95,14 @@ namespace StaticAnalysis
                 if (args.Any(a => a.Equals("--modules-to-analyze") || a.Equals("-m")))
                 {
                     int idx = Array.FindIndex(args, a => a.Equals("--modules-to-analyze") || a.Equals("-m"));
-                    if (idx + 1 == args.Length)
+                    if (args[idx + 1] == null || args[idx + 1].StartsWith("-"))
                     {
                         Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
                     }
                     else
                     {
-                        modulesToAnalyze = args[idx + 1].Split(';').ToList();
+                        var modules = args[idx + 1].Trim(' ', '\'', '"');
+                        modulesToAnalyze = modules.Split(';').ToList();
                     }
                 }
 
