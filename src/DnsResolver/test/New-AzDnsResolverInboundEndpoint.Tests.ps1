@@ -27,6 +27,7 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
         $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 
          New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        {New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName$env.ResourceGroupName -IPConfiguration $ipConfiguration} | Should -BeSuccessfullyCreatedInboundEndpoint
+         $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName$env.ResourceGroupName -IPConfiguration $ipConfiguration
+         $inboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
     }
 }
