@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get Backup Instances from ARG
+Get Backup Vault storage setting object
 .Description
-Get Backup Instances from ARG
+Get Backup Vault storage setting object
 .Example
 PS C:\> {{ Add code here }}
 
@@ -30,9 +30,9 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupinstancefromarg
+https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 #>
-function Get-AzDataProtectionBackupInstanceFromARG {
+function Search-AzDataProtectionJobInAzGraph {
 [OutputType([PSObject])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -62,9 +62,27 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProtectionStatus[]]
-    # Protection Status of the item
-    ${ProtectionStatus}
+    [System.DateTime]
+    # Start Time of the backup Job
+    ${StartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.DateTime]
+    # End Time of the Backup Job
+    ${EndTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
+    # Operation of the Job Filter
+    ${Operation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+    # Status of the Job Filter
+    ${Status}
 )
 
 begin {
@@ -75,7 +93,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Get-AzDataProtectionBackupInstanceFromARG';
+            __AllParameterSets = 'Az.DataProtection.custom\Search-AzDataProtectionJobInAzGraph';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}

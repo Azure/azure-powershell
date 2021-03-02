@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupinstancefromarg
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/search-azdataprotectionbackupinstanceinazgraph
 schema: 2.0.0
 ---
 
-# Get-AzDataProtectionBackupInstanceFromARG
+# Search-AzDataProtectionBackupInstanceInAzGraph
 
 ## SYNOPSIS
 Get Backup Instances from ARG
@@ -13,7 +13,7 @@ Get Backup Instances from ARG
 ## SYNTAX
 
 ```
-Get-AzDataProtectionBackupInstanceFromARG -DatasourceType <DatasourceTypes> -Subscription <String[]>
+Search-AzDataProtectionBackupInstanceInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
  [-ProtectionStatus <ProtectionStatus[]>] [-ResourceGroup <String[]>] [-Vault <String[]>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```

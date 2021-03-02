@@ -19,13 +19,11 @@ Prepares Datasource object for backup
 .Description
 Prepares Datasource object for backup
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy

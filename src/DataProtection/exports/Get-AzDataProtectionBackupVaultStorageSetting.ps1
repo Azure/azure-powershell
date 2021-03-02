@@ -22,10 +22,6 @@ Get Backup Vault storage setting object
 PS C:\> {{ Add code here }}
 
 {{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 System.Management.Automation.PSObject

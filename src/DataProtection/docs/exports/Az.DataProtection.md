@@ -17,9 +17,6 @@ Trigger adhoc backup
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instances belonging to a backup vault
 
-### [Get-AzDataProtectionBackupInstanceFromARG](Get-AzDataProtectionBackupInstanceFromARG.md)
-Get Backup Instances from ARG
-
 ### [Get-AzDataProtectionBackupPolicy](Get-AzDataProtectionBackupPolicy.md)
 Gets a backup policy belonging to a backup vault
 
@@ -36,9 +33,6 @@ The blob contains exported jobs in JSON serialized format.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
-
-### [Get-AzDataProtectionJobFromARG](Get-AzDataProtectionJobFromARG.md)
-Get Backup Vault storage setting object
 
 ### [Get-AzDataProtectionOperationResult](Get-AzDataProtectionOperationResult.md)
 Gets the operation result for a resource
@@ -78,6 +72,12 @@ Deletes a backup policy belonging to a backup vault
 
 ### [Remove-AzDataProtectionBackupVault](Remove-AzDataProtectionBackupVault.md)
 Deletes a BackupVault resource from the resource group.
+
+### [Search-AzDataProtectionBackupInstanceInAzGraph](Search-AzDataProtectionBackupInstanceInAzGraph.md)
+Get Backup Instances from ARG
+
+### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
+Get Backup Vault storage setting object
 
 ### [Set-AzDataProtectionBackupInstance](Set-AzDataProtectionBackupInstance.md)
 

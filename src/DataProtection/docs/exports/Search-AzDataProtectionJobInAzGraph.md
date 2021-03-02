@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionjobfromarg
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 schema: 2.0.0
 ---
 
-# Get-AzDataProtectionJobFromARG
+# Search-AzDataProtectionJobInAzGraph
 
 ## SYNOPSIS
 Get Backup Vault storage setting object
@@ -13,7 +13,7 @@ Get Backup Vault storage setting object
 ## SYNTAX
 
 ```
-Get-AzDataProtectionJobFromARG -DatasourceType <DatasourceTypes> -Subscription <String[]>
+Search-AzDataProtectionJobInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
  [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>] [-StartTime <DateTime>]
  [-Status <JobStatus[]>] [-Vault <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,23 +23,19 @@ Get Backup Vault storage setting object
 
 ## EXAMPLES
 
-### Example 1: Get 
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 

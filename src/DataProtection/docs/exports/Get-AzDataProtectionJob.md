@@ -35,9 +35,10 @@ Gets a job with id in a backup vault
 
 ## EXAMPLES
 
-### Example 1: Get All backup Jobs in a backup vault
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+```
 
 Name                                 Type
 ----                                 ----
@@ -47,20 +48,15 @@ a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backu
 1653a7b4-8ce4-457e-8084-dc1c9d9e4106 Microsoft.DataProtection/backupVaults/backupJobs
 9f21c438-ca0d-45c1-88fe-79f08a8342c7 Microsoft.DataProtection/backupVaults/backupJobs
 736bab4d-480f-49f8-92ea-57c5ff203c33 Microsoft.DataProtection/backupVaults/backupJobs
-```
 
-This command gets all the backup jobs in a given backup vault.
-
-### Example 2: Get a single Job 
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
+Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
+```
 
 Name                                 Type
 ----                                 ----
 4abaea8c-f53a-4bb1-9963-59f96b597165 Microsoft.DataProtection/backupVaults/backupJobs
-```
-
-This command returns a single job entity with given Id.
 
 ## PARAMETERS
 

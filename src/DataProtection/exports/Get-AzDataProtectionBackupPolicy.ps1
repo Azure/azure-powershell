@@ -19,13 +19,18 @@ Gets a backup policy belonging to a backup vault
 .Description
 Gets a backup policy belonging to a backup vault
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
+Name              Type
+----              ----
+DiskPolicy1       Microsoft.DataProtection/backupVaults/backupPolicies
+DiskDailyPolicy   Microsoft.DataProtection/backupVaults/backupPolicies
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name "MyPolicy"
 
-{{ Add output here }}
+Name        Type
+----        ----
+MyPolicy Microsoft.DataProtection/backupVaults/backupPolicies
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
