@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -29,26 +29,25 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.0 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.1 or above.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 preview 3 and PSReadLine 2.2.0-beta2.
 
-The module needs to be imported manually via
-Import-Module Az.Tools.Predictor
-
-Enable plugins via
-Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-
-Switch the output format of suggestions to list view via
-Set-PSReadLineOption -PredictionViewStyle ListView
+The suggestions must be activated:
+- Enable-AzPredictor:  Activate the suggestions
+- Disable-AzPredictor: Disable the suggestions
 
 For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '7.1'
+PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta1"})
+# RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta2"})
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
+
+ScriptsToProcess = @("PromptSurvey.ps1")
+
+CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor")
 
 # Format files (.ps1xml) to be loaded when importing this module
 
@@ -58,7 +57,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','PowerShell','Prediction'
+        Tags = 'Azure', 'PowerShell', 'Prediction', 'Recommendation', 'Az Predictor'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -70,7 +69,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* first preview release'
+        ReleaseNotes = '* second preview release
+* Add Enable-AzPredictor and Disable-AzPredictor cmdlet to simplify configuration
+* Use PSReadline new API'
 
         # Prerelease string of this module
         # Prerelease = ''

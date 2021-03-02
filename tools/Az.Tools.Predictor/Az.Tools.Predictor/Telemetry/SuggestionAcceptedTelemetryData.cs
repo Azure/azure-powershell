@@ -20,10 +20,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        public string SessionId { get; internal set; }
+        string ITelemetryData.SessionId { get; set; }
 
         /// <inheritdoc/>
-        public string CorrelationId { get; internal set; }
+        string ITelemetryData.CorrelationId { get; set; }
+
+        /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public string ClientId { get; init; }
 
         /// <summary>
         /// Gets the suggestion that's accepted by the user.
@@ -31,8 +36,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Suggestion { get; }
 
         /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public uint SuggestionSessionId { get; init; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
         /// </summary>
-        public SuggestionAcceptedTelemetryData(string suggestion) => Suggestion = suggestion;
+        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="suggestionSessionId">The suggestion session id.</param>
+        /// <param name="suggestion">The suggestion that's accepted by the user.</param>
+        public SuggestionAcceptedTelemetryData(string clientId, uint suggestionSessionId, string suggestion)
+        {
+            ClientId = clientId;
+            SuggestionSessionId = suggestionSessionId;
+            Suggestion = suggestion;
+        }
     }
 }

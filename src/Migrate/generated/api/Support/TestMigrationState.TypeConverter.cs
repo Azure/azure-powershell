@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for TestMigrationState.</summary>
+    /// <summary>The test migrate state.</summary>
     public partial class TestMigrationStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

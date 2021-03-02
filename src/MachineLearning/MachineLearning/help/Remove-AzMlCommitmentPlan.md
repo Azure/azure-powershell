@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/remove-azmlcommitmentplan
+online version: https://docs.microsoft.com/powershell/module/az.machinelearning/remove-azmlcommitmentplan
 schema: 2.0.0
 ---
 

@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.0
+* Supported specifying key type and curve name when importing keys via a BYOK file
+
+## Version 3.3.1
+* Fixed an issue in Secret Management module
+
 ## Version 3.3.0
 * Added a new parameter `-AsPlainText` to `Get-AzKeyVaultSecret` to directly return the secret in plain text [#13630]
 * Supported selective restore a key from a managed HSM full backup [#13526]

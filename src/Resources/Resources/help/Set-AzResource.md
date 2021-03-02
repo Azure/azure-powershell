@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresource
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azresource
 schema: 2.0.0
 ---
 

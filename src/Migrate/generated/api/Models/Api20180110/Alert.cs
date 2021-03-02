@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The custom email address for sending emails.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string[] CustomEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).CustomEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).CustomEmailAddress = value; }
+        public string[] CustomEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).CustomEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).CustomEmailAddress = value ?? null /* arrayOf */; }
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The locale for the email notification.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string Locale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).Locale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).Locale = value; }
+        public string Locale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).Locale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).Locale = value ?? null; }
 
         /// <summary>Resource Location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceInternal)__resource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IResourceInternal)__resource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.AlertProperties()); set { {_property = value;} } }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>A value indicating whether to send email to subscription administrator.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string SendToOwner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).SendToOwner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).SendToOwner = value; }
+        public string SendToOwner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).SendToOwner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IAlertPropertiesInternal)Property).SendToOwner = value ?? null; }
 
         /// <summary>Resource Type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]

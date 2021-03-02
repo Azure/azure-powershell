@@ -1,7 +1,7 @@
 ---
 Module Name: Az.AnalysisServices
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa21
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices
+Download Help Link: https://docs.microsoft.com/powershell/module/az.analysisservices
 Help Version: 0.0.1.0
 Locale: en-US
 ---

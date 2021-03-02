@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Storage
 Module Guid: da67eaa7-4cb1-4bfa-a194-8bf3faae8ac5
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.storage
+Download Help Link: https://docs.microsoft.com/powershell/module/az.storage
 Help Version: 4.2.3.0
 Locale: en-US
 ---
@@ -22,6 +22,9 @@ Adds an action to the input ManagementPolicy Action Group object, or creates a M
 
 ### [Close-AzStorageFileHandle](Close-AzStorageFileHandle.md)
 Closes file handles of a file share, a file directory or a file.
+
+### [Copy-AzStorageBlob](Copy-AzStorageBlob.md)
+Copy a blob synchronously.
 
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.

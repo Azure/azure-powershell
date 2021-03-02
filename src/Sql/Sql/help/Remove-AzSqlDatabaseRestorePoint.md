@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 67A9BB67-EF14-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabaserestorepoint
+online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaserestorepoint
 schema: 2.0.0
 ---
 

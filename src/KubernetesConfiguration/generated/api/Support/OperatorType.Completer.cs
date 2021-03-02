@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Type of the operator</summary>
+    /// <summary>Argument completer implementation for OperatorType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorTypeTypeConverter))]
     public partial struct OperatorType :
         System.Management.Automation.IArgumentCompleter

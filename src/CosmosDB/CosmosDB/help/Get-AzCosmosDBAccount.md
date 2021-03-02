@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbaccount
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount
 schema: 2.0.0
 ---
 
@@ -49,6 +49,8 @@ ProvisioningState             : Succeeded
 Kind                          : GlobalDocumentDB
 VirtualNetworkRules           : {}
 EnableMultipleWriteLocations  : False
+NetworkAclBypass              : None
+NetworkAclBypassResourceIds   : {}
 ```
 
 Get CosmosDB database account with name databaseAccountName in ResourceGroup resourceGroupName.

@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 shareRetentionDays = value;
             }
         }
-        private int? shareRetentionDays = null;
+        private int? shareRetentionDays = null;       
 
 
         [Parameter(

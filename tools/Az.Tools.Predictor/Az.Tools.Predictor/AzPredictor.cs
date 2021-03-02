@@ -16,21 +16,23 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
 
-[assembly:InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Tools.AzPredictor.Test")]
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// The implementation of a <see cref="ICommandPredictor"/> to provide suggestions in PSReadLine.
     /// </summary>
-    internal sealed class AzPredictor : ICommandPredictor
+    internal sealed class AzPredictor : ICommandPredictor, IDisposable
     {
         /// <inhericdoc />
         public string Name => "Az Predictor";
@@ -57,8 +59,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly ITelemetryClient _telemetryClient;
         private readonly Settings _settings;
         private readonly IAzContext _azContext;
+        private uint _suggestionSessionId = 0;
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
+        private CancellationTokenSource _predictionRequestCancellationSource;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>.
@@ -75,19 +79,39 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _azContext = azContext;
         }
 
+        /// <inhericdoc/>
+        public void Dispose()
+        {
+            if (_predictionRequestCancellationSource != null)
+            {
+                _predictionRequestCancellationSource.Dispose();
+                _predictionRequestCancellationSource = null;
+            }
+        }
+
         /// <inhericdoc />
-        public void StartEarlyProcessing(IReadOnlyList<string> history)
+        public void StartEarlyProcessing(string clientId, IReadOnlyList<string> history)
         {
             // The context only changes when the user executes the corresponding command.
             _azContext?.UpdateContext();
 
             if (history.Count > 0)
             {
-                if (_lastTwoMaskedCommands.Any())
-                {
-                    _lastTwoMaskedCommands.Dequeue();
-                }
-                else
+                // We try to find the commands to request predictions for.
+                // We should only have "start_of_snippet" when there are no enough Az commands for prediction.
+                // We then ignore that when there are new "start_of_snippet".
+                // This is the scenario.
+                // 1. New-AzResourceGroup -Name ****
+                // 2. $resourceName="Test"
+                // 3. $resourceLocation="westus2"
+                // 4. New-AzVM -Name $resourceName -Location $resourceLocation
+                //
+                // We'll replace 2 and 3 with "start_of_snippet" but if we request prediction using 2 and 3, that'll reset the
+                // workflow. We want to predict only by Az commands. That's to use commands 1 and 4.
+
+                bool isLastTwoCommandsChanged = false;
+
+                if (_lastTwoMaskedCommands.Count == 0)
                 {
                     // This is the first time we populate our record. Push the second to last command in history to the
                     // queue. If there is only one command in history, push the command placeholder.
@@ -97,7 +121,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
                         var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
                         _lastTwoMaskedCommands.Enqueue(secondToLastCommand.Item2);
-                        _service.RecordHistory(secondToLastCommand.Item1);
+
+                        if (!string.Equals(AzPredictorConstants.CommandPlaceholder, secondToLastCommand.Item2, StringComparison.Ordinal))
+                        {
+                            _service.RecordHistory(secondToLastCommand.Item1);
+                        }
                     }
                     else
                     {
@@ -105,20 +133,73 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // We only extract parameter values from the command line in _service.RecordHistory.
                         // So we don't need to do that for a placeholder.
                     }
+
+                    isLastTwoCommandsChanged = true;
                 }
 
                 string lastLine = history.Last();
                 var lastCommand = GetAstAndMaskedCommandLine(lastLine);
+                bool isLastCommandSupported = !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal);
 
-                _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
-
-                if ((lastCommand.Item2 != null) && !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal))
+                if (isLastCommandSupported)
                 {
+                    if (_lastTwoMaskedCommands.Count == 2)
+                    {
+                        // There are already two commands, dequeue the oldest one.
+                        _lastTwoMaskedCommands.Dequeue();
+                    }
+
+                    _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
+                    isLastTwoCommandsChanged = true;
+
                     _service.RecordHistory(lastCommand.Item1);
                 }
+                else if (_lastTwoMaskedCommands.Count == 1)
+                {
+                    isLastTwoCommandsChanged = true;
+                    var existingInQueue = _lastTwoMaskedCommands.Dequeue();
+                    _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
+                    _lastTwoMaskedCommands.Enqueue(existingInQueue);
+                }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(lastCommand.Item2));
-                _service.RequestPredictions(_lastTwoMaskedCommands);
+                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.Item2));
+
+                if (isLastTwoCommandsChanged)
+                {
+                    // When it's called multiple times, we only need to keep the one for the latest command.
+
+                    _predictionRequestCancellationSource?.Cancel();
+                    _predictionRequestCancellationSource = new CancellationTokenSource();
+                    // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
+                    // _lastTwoMaskedCommands may change when the method is called again.
+                    var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
+                    Exception exception = null;
+                    var hasSentHttpRequest = false;
+
+                    // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
+                    Task.Run(async () =>
+                            {
+                                try
+                                {
+                                    await _service.RequestPredictionsAsync(lastTwoMaskedCommands, _predictionRequestCancellationSource.Token);
+                                }
+                                catch (ServiceRequestException e)
+                                {
+                                    hasSentHttpRequest = e.IsRequestSent;
+                                    exception = e.InnerException;
+                                }
+                                catch (Exception e)
+                                {
+                                    exception = e;
+                                }
+                                finally
+                                {
+                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(clientId, lastTwoMaskedCommands,
+                                                hasSentHttpRequest,
+                                                (exception is OperationCanceledException ? null : exception)));
+                                }
+                            }, _predictionRequestCancellationSource.Token);
+                }
             }
 
             ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)
@@ -126,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var asts = Parser.ParseInput(commandLine, out _, out _);
                 var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
                 var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
-                string maskedCommandLine = null;
+                string maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
 
                 var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
 
@@ -134,27 +215,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
                 }
-                else
-                {
-                    maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
-                }
 
                 return ValueTuple.Create(commandAst, maskedCommandLine);
             }
         }
 
         /// <inhericdoc />
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public SuggestionPackage GetSuggestion(string clientId, PredictionContext context, CancellationToken cancellationToken)
         {
-            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(acceptedSuggestion));
-        }
+            var localSuggestionSessionId = _suggestionSessionId++;
 
-        /// <inhericdoc />
-        public List<PredictiveSuggestion> GetSuggestion(PredictionContext context, CancellationToken cancellationToken)
-        {
             if (_settings.SuggestionCount.Value <= 0)
             {
-                return new List<PredictiveSuggestion>();
+                return CreateResult(null);
             }
 
             Exception exception = null;
@@ -164,24 +237,53 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 var localCancellationToken = Settings.ContinueOnTimeout ? CancellationToken.None : cancellationToken;
 
-                suggestions = _service.GetSuggestion(context.InputAst, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
+                suggestions = _service.GetSuggestion(context, _settings.SuggestionCount.Value, _settings.MaxAllowedCommandDuplicate.Value, localCancellationToken);
 
                 var returnedValue = suggestions?.PredictiveSuggestions?.ToList();
-                return returnedValue ?? new List<PredictiveSuggestion>();
+                return CreateResult(returnedValue);
             }
             catch (Exception e) when (!(e is OperationCanceledException))
             {
                 exception = e;
-                return new List<PredictiveSuggestion>();
+                return CreateResult(null);
             }
             finally
             {
 
-                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(context.InputAst,
+                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(clientId, localSuggestionSessionId, context.InputAst,
                         suggestions,
                         cancellationToken.IsCancellationRequested,
                         exception));
             }
+
+            SuggestionPackage CreateResult(List<PredictiveSuggestion> suggestions)
+            {
+                if ((suggestions == null) || (suggestions.Count == 0))
+                {
+                    return default(SuggestionPackage);
+                }
+
+                return new SuggestionPackage(localSuggestionSessionId, suggestions);
+            }
+        }
+
+        /// <inhericdoc />
+        public void OnSuggestionDisplayed(string clientId, uint session, int countOrIndex)
+        {
+            if (countOrIndex > 0)
+            {
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(clientId, session, countOrIndex));
+            }
+            else
+            {
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(clientId, session, -countOrIndex));
+            }
+        }
+
+        /// <inhericdoc />
+        public void OnSuggestionAccepted(string clientId, uint session, string acceptedSuggestion)
+        {
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(clientId, session, acceptedSuggestion));
         }
     }
 
@@ -194,7 +296,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnImport()
         {
             var settings = Settings.GetSettings();
-            var azContext = new AzContext();
+            var azContext = new AzContext()
+            {
+                IsInternal = (settings.SetAsInternal == true) ? true : false,
+                SurveyId = settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
+            };
+
             azContext.UpdateContext();
             var telemetryClient = new AzPredictorTelemetryClient(azContext);
             var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);

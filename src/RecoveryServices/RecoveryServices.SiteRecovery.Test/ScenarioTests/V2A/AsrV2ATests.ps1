@@ -618,3 +618,88 @@ function V2ACreateRPIWithDESEnabledDiskInput
         $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -InMageAzureV2DiskInput $diskInput -ProcessServer $ProcessServers[0] -Account $AccountHandles[0] -RecoveryResourceGroupId $ResourceGroupId -LogStorageAccountId $LogStorageAccountId -RecoveryAzureNetworkId $RecoveryVnetId -RecoveryAzureSubnetName "Subnet-1"
 }
 
+function V2ACreateRPIWithPPG
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "WIN-B6L6OJO1E6Q"
+        $pcName = "WIN-B6L6OJO1E6Q"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "test-policy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f858b936-ee57-44c4-9ff9-2907d418fbd2" 
+        $piName = "vi-win-vm-new"
+        $pi = Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-vm"
+        $AccountHandles = $fabric[0].FabricSpecificDetails.RunAsAccounts
+        $ProcessServers = $fabric[0].FabricSpecificDetails.ProcessServers
+        $ResourceGroupId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg"
+        $RecoveryVnetId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Network/virtualNetworks/vnet1"
+        $LogStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Storage/storageAccounts/logstoracc123"
+        $ppg = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Compute/proximityPlacementGroups/ppgus"
+        $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -ProcessServer $ProcessServers[0] -Account $AccountHandles[0] -RecoveryResourceGroupId $ResourceGroupId -logStorageAccountId $LogStorageAccountId -RecoveryProximityPlacementGroupId $ppg -RecoveryAzureNetworkId $RecoveryVnetId -RecoveryAzureSubnetName "Subnet-1"
+}
+
+function V2AUpdateRPIWithPPG
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "WIN-B6L6OJO1E6Q"
+        $pcName = "WIN-B6L6OJO1E6Q"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "test-policy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f858b936-ee57-44c4-9ff9-2907d418fbd2" 
+        $piName = "vi-win-vm-new"
+        $rpi = Get-ASRReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-vm"
+        $ppgSet = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Compute/proximityPlacementGroups/ppgnew"
+        $UpdateVmjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi -Name $rpiName -RecoveryProximityPlacementGroupId $ppgSet
+        $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $piName
+        Assert-NotNull($rpi.ProviderSpecificDetails.RecoveryProximityPlacementGroupId)
+}
+
+function V2ACreateRPIWithAvZone
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "WIN-B6L6OJO1E6Q"
+        $pcName = "WIN-B6L6OJO1E6Q"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "test-policy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f858b936-ee57-44c4-9ff9-2907d418fbd2" 
+        $piName = "vi-win-vm-new"
+        $pi = Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-vm"
+        $AccountHandles = $fabric[0].FabricSpecificDetails.RunAsAccounts
+        $ProcessServers = $fabric[0].FabricSpecificDetails.ProcessServers
+        $ResourceGroupId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg"
+        $RecoveryVnetId ="/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Network/virtualNetworks/vnet1"
+        $LogStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/vijami-rg/providers/Microsoft.Storage/storageAccounts/logstoracc123"
+        $avZone = "1"
+        $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -ProcessServer $ProcessServers[0] -Account $AccountHandles[0] -RecoveryResourceGroupId $ResourceGroupId -logStorageAccountId $LogStorageAccountId -RecoveryAvailabilityZone $avZone -RecoveryAzureNetworkId $RecoveryVnetId -RecoveryAzureSubnetName "Subnet-1"
+}
+
+function V2AUpdateRPIWithAvZone
+{
+    param([string] $vaultSettingsFilePath)
+        Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+        $PrimaryFabricName = "WIN-B6L6OJO1E6Q"
+        $pcName = "WIN-B6L6OJO1E6Q"
+        $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+        $pc =  Get-ASRProtectionContainer -FriendlyName $pcName -Fabric $fabric
+        $PolicyName1 = "test-policy"
+        $Policy1 = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName1
+        $pcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "f858b936-ee57-44c4-9ff9-2907d418fbd2" 
+        $piName = "vi-win-vm-new"
+        $rpi = Get-ASRReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $piName
+        $rpiName = "vi-win-vm"
+        $avZoneSet = "2"
+        $UpdateVmjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi -Name $rpiName -RecoveryAvailabilityZone $avZoneSet
+        $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $piName
+        Assert-NotNull($rpi.ProviderSpecificDetails.RecoveryAvailabilityZone)
+}

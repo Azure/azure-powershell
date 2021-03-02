@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The migration status.</summary>
     public partial struct MigrationState :
         System.IEquatable<MigrationState>
     {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="MigrationState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MigrationState(System.Convert.ToString(value));
+            return new MigrationState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MigrationState</summary>

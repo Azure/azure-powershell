@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            {_definition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("definition"), out var __jsonDefinition) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportDefinition.FromJson(__jsonDefinition) : Definition;}
             {_deliveryInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("deliveryInfo"), out var __jsonDeliveryInfo) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportDeliveryInfo.FromJson(__jsonDeliveryInfo) : DeliveryInfo;}
+            {_definition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("definition"), out var __jsonDefinition) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportDefinition.FromJson(__jsonDefinition) : Definition;}
             {_runHistory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonObject>("runHistory"), out var __jsonRunHistory) ? Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.ExportExecutionListResult.FromJson(__jsonRunHistory) : RunHistory;}
             {_format = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("format"), out var __jsonFormat) ? (string)__jsonFormat : (string)Format;}
             {_nextRunTimeEstimate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("nextRunTimeEstimate"), out var __jsonNextRunTimeEstimate) ? global::System.DateTime.TryParse((string)__jsonNextRunTimeEstimate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonNextRunTimeEstimateValue) ? __jsonNextRunTimeEstimateValue : NextRunTimeEstimate : NextRunTimeEstimate;}
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return container;
             }
-            AddIf( null != this._definition ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._definition.ToJson(null,serializationMode) : null, "definition" ,container.Add );
             AddIf( null != this._deliveryInfo ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._deliveryInfo.ToJson(null,serializationMode) : null, "deliveryInfo" ,container.Add );
+            AddIf( null != this._definition ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._definition.ToJson(null,serializationMode) : null, "definition" ,container.Add );
             AddIf( null != this._runHistory ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) this._runHistory.ToJson(null,serializationMode) : null, "runHistory" ,container.Add );
             AddIf( null != (((object)this._format)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._format.ToString()) : null, "format" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SerializationMode.IncludeReadOnly))

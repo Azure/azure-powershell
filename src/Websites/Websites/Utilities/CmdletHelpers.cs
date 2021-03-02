@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
@@ -17,11 +18,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public static class CmdletHelpers
     {
-        public static NetworkManagementClient networkClient
-        {
-            get;
-            private set;
-        }
         public static HashSet<string> SiteConfigParameters = new HashSet<string>
             {
                 "DefaultDocuments",
@@ -182,7 +178,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             return result;
         }
-
+                
         internal static HostingEnvironmentProfile CreateHostingEnvironmentProfile(string subscriptionId, string resourceGroupName, string aseResourceGroupName, string aseName)
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
@@ -226,7 +222,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             return filter;
         }
-
+                
         internal static bool TryParseWebAppMetadataFromResourceId(string resourceId, out string resourceGroupName,
             out string webAppName, out string slotName, bool failIfSlot = false)
         {
@@ -294,7 +290,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
             {
-                sku = "PC" + (workerSize + 1);
+                sku = "PC" + workerSize + 1;
+                return sku;
+            }
+            else if (string.Equals("IsolatedV2", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "I" + workerSize + "V2";
                 return sku;
             }
             else
@@ -308,33 +309,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         internal static string GetSkuName(string tier, string workerSize)
         {
-            string sku;
-            if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "D";
-            }
-            else if (string.Equals("PremiumV2", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "P" + WorkerSizes[workerSize] + "V2";
-                return sku;
-            }
-            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "P" + WorkerSizes[workerSize] + "V3";
-                return sku;
-            }
-            else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
-            {
-                sku = "PC" + (WorkerSizes[workerSize] + 1);
-                return sku;
-            }
-            else
-            {
-                sku = string.Empty + tier[0];
-            }
-
-            sku += WorkerSizes[workerSize];
-            return sku;
+            return GetSkuName(tier, WorkerSizes[workerSize]);            
         }
 
         internal static bool IsDeploymentSlot(string name)
@@ -393,6 +368,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return new ResourceIdentifier(resourceId).ResourceGroupName;
         }
 
+        internal static string GetSubscriptionIdFromResourceId(string resourceId)
+        {
+            return new ResourceIdentifier(resourceId).Subscription;
+        }
+
         internal static void ExtractWebAppPropertiesFromWebApp(Site webapp, out string resourceGroupName, out string webAppName, out string slot)
         {
             resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
@@ -432,6 +412,28 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             return certificates.ToArray();
+        }
+
+        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault)
+        {
+            var perm1 = " ";
+            var kv2 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
+            foreach (var policy in kv2.Properties.AccessPolicies)
+            {
+                if (policy.ObjectId == ("f8daea97-62e7-4026-becf-13c2ea98e8b4"))
+                {
+                    foreach (var perm in policy.Permissions.Secrets)
+                    {
+                        if ((perm == "Get") || (perm == "get"))
+                        {
+                            perm1 = perm;
+                            Console.WriteLine("Success");
+                            break;
+                        }
+                    }
+                }
+            }
+            return perm1.ToString();
         }
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)
@@ -544,85 +546,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
                 Http20Enabled = config.Http20Enabled
             };
-        }
-
-        internal static string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)
-        {
-            //Resource Id Format: "subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}"
-            ResourceIdentifier subnetResourceId = null;
-            if (subnet.ToLowerInvariant().Contains("/subnets/"))
-            {
-                try
-                {
-                    subnetResourceId = new ResourceIdentifier(subnet);
-                }
-                catch (ArgumentException ae)
-                {
-                    throw new ArgumentException("Subnet ResourceId is invalid.", ae);
-                }
-            }
-            else
-            {
-                subnetResourceId = new ResourceIdentifier();
-                subnetResourceId.Subscription = subscriptionId;
-                subnetResourceId.ResourceGroupName = resourceGroupName;
-                subnetResourceId.ResourceType = "Microsoft.Network/virtualNetworks/subnets";
-                subnetResourceId.ParentResource = $"virtualNetworks/{virtualNetworkName}";
-                subnetResourceId.ResourceName = subnet;
-            }
-            return subnetResourceId.ToString();
-        }
-
-        internal static void VerifySubnetDelegation(string subnet)
-        {
-            var subnetResourceId = new ResourceIdentifier(subnet);
-            var resourceGroupName = subnetResourceId.ResourceGroupName;
-            var virtualNetworkName = subnetResourceId.ParentResource.Substring(subnetResourceId.ParentResource.IndexOf('/') + 1);
-            var subnetName = subnetResourceId.ResourceName;
-
-            Subnet subnetObj = networkClient.Subnets.Get(resourceGroupName, virtualNetworkName, subnetName);
-            var serviceEndpointServiceName = "Microsoft.Web";
-            var serviceEndpointLocations = new List<string>() { "*" };
-            if (subnetObj.ServiceEndpoints == null)
-            {
-                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();                
-                subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
-                networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
-            }
-            else
-            {
-                bool serviceEndpointExists = false;
-                foreach (var serviceEndpoint in subnetObj.ServiceEndpoints)
-                {
-                    if (serviceEndpoint.Service == serviceEndpointServiceName)
-                    {
-                        serviceEndpointExists = true;
-                        break;
-                    }
-                }
-                if (!serviceEndpointExists)
-                {
-                    subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
-                    networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
-                }
-            }            
-        }
-
-        internal static string GetSubnetResourceGroupName(IAzureContext context, string Subnet, string VirtualNetworkName)
-        {
-            networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            var matchedVNetwork = networkClient.VirtualNetworks.ListAll().FirstOrDefault(item => item.Name == VirtualNetworkName);
-            if (matchedVNetwork != null)
-            {
-                var subNets = matchedVNetwork.Subnets.ToList();
-                Subnet matchedSubnet = matchedVNetwork.Subnets.FirstOrDefault(sItem => sItem.Name == Subnet || sItem.Id == Subnet);
-                if (matchedSubnet != null)
-                {
-                    var subnetResourceId = new ResourceIdentifier(matchedSubnet.Id);
-                    return subnetResourceId.ResourceGroupName;
-                }
-            }
-            return null;
         }
 
         //To set a Value to Property of a Generic Type object

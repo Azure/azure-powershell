@@ -28,7 +28,7 @@ PS C:\> Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName B
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateproject
+https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
 #>
 function Remove-AzMigrateProject {
 [OutputType([System.Boolean])]

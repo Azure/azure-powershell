@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Fixed the issue that didn't pack template files into nupkg.
+
 ## Version 0.1.0
 * First preview release for module Az.BotService
-

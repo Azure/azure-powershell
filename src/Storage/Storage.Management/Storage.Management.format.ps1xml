@@ -277,9 +277,29 @@
                 <Label>BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.Snapshot.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Snapshot.TierToCool.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Snapshot.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Snapshot.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.Snapshot.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Snapshot.Delete.DaysAfterCreationGreaterThan</Label>
-              </ListItem>    
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.TierToCool.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Version.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>Version.Delete.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1024,6 +1044,10 @@
             <Label>KeyVaultKeyUri</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RequireInfrastructureEncryption</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1040,10 +1064,59 @@
               <TableColumnItem>
                 <ScriptBlock>$_.KeyVaultProperties.keyUri</ScriptBlock>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RequireInfrastructureEncryption</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Storage.Models.Endpoints</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Storage.Models.Endpoints</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Blob</PropertyName>
+                <Label>Blob</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Queue</PropertyName>
+                <Label>Queue</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Table</PropertyName>
+                <Label>Table</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>File</PropertyName>
+                <Label>File</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Web</PropertyName>
+                <Label>Web</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Dfs</PropertyName>
+                <Label>Dfs</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.MicrosoftEndpoints -Compress</ScriptBlock>
+                <Label>MicrosoftEndpoints</Label>
+              </ListItem> 
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.InternetEndpoints -Compress</ScriptBlock>
+                <Label>InternetEndpoints</Label>
+              </ListItem>   
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
   </ViewDefinitions>
 </Configuration>

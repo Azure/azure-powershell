@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             {_customDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("customDetails"), out var __jsonCustomDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.RecoveryPlanActionDetails.FromJson(__jsonCustomDetails) : CustomDetail;}
             {_actionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("actionName"), out var __jsonActionName) ? (string)__jsonActionName : (string)ActionName;}
-            {_failoverDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("failoverDirections"), out var __jsonFailoverDirections) ? If( __jsonFailoverDirections as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections)(__t.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections)""))) ))() : null : FailoverDirection;}
-            {_failoverType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("failoverTypes"), out var __jsonFailoverTypes) ? If( __jsonFailoverTypes as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation) (__p is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __o ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation)(__o.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation)""))) ))() : null : FailoverType;}
+            {_failoverType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("failoverTypes"), out var __jsonFailoverTypes) ? If( __jsonFailoverTypes as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation)(__t.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation)""))) ))() : null : FailoverType;}
+            {_failoverDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("failoverDirections"), out var __jsonFailoverDirections) ? If( __jsonFailoverDirections as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) (__p is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __o ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections)(__o.ToString()) : ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections)""))) ))() : null : FailoverDirection;}
             AfterFromJson(json);
         }
 
@@ -98,23 +98,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             }
             AddIf( null != this._customDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._customDetail.ToJson(null,serializationMode) : null, "customDetails" ,container.Add );
             AddIf( null != (((object)this._actionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._actionName.ToString()) : null, "actionName" ,container.Add );
-            if (null != this._failoverDirection)
+            if (null != this._failoverType)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __x in this._failoverDirection )
+                foreach( var __x in this._failoverType )
                 {
                     AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                 }
-                container.Add("failoverDirections",__w);
+                container.Add("failoverTypes",__w);
             }
-            if (null != this._failoverType)
+            if (null != this._failoverDirection)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                foreach( var __s in this._failoverType )
+                foreach( var __s in this._failoverDirection )
                 {
                     AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
                 }
-                container.Add("failoverTypes",__r);
+                container.Add("failoverDirections",__r);
             }
             AfterToJson(ref container);
             return container;

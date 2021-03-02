@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Code = value; }
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Code = value ?? null; }
 
         /// <summary>Backing field for <see cref="Error1" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBody _error1;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Message = value; }
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBodyInternal)Error1).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Error1</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorBody Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IErrorInternal.Error1 { get => (this._error1 = this._error1 ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ErrorBody()); set { {_error1 = value;} } }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
     {
         /// <summary>error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"error code",
         SerializedName = @"code",
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string Code { get; set; }
         /// <summary>error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"error message",
         SerializedName = @"message",

@@ -67,11 +67,24 @@ function Test-PolicyDefinitionCRUD
     $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
     Assert-True { $builtIns.Count -eq 0 }
 
+    # make a policy definition from export format, get it back and validate
+    $expected = New-AzPolicyDefinition -Name test3 -Policy "$TestOutputRoot\SamplePolicyDefinitionFromExport.json" -Description $description
+    $actual = Get-AzPolicyDefinition -Name test3
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+
     # clean up
     $remove = Remove-AzPolicyDefinition -Name $policyName -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyDefinition -Name 'test2' -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name 'test3' -Force
     Assert-AreEqual True $remove
 }
 
@@ -1117,19 +1130,20 @@ function Test-PolicyObjectPiping
     $policySetDefName = Get-ResourceName
     $policyDefName = Get-ResourceName
     $policyAssName = Get-ResourceName
-    $subscriptionId = (Get-AzureRmContext).Subscription.Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $array = @("westus", "eastus")
 
     # make a policy definition and policy set definition that references it
-    $policyDefinition = New-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+    $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinitionObject.json" -Description $description
     $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
-    $expected = New-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
+    $expected = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
 
-    # make a policy assignment by piping the policy definition to New-AzureRmPolicyAssignment
-    $rg = New-AzureRmResourceGroup -Name $rgname -Location "west us"
+    # make a policy assignment by piping the policy definition to New-AzPolicyAssignment
+    $rg = New-AzResourceGroup -Name $rgname -Location "west us"
 
     # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-NotNull $actual.Properties.PolicyDefinitionId
@@ -1137,13 +1151,38 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations
+    Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations.value
+    Assert-NotNull $expected.Properties.Parameters.effectParam
+    Assert-AreEqual 2 $expected.Properties.Parameters.listOfAllowedLocations.value.Length
+    Assert-AreEqual "westus" $expected.Properties.Parameters.listOfAllowedLocations.value[0]
+    Assert-AreEqual "eastus" $expected.Properties.Parameters.listOfAllowedLocations.value[1]
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.value
+
+    # update some properties, including parameters
+    $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId
+    $assignment.Properties.Parameters.effectParam.value = "Disabled"
+    $assignment.Properties.Parameters.listOfAllowedLocations.value = @("eastus")
+    $assignment.Properties.Description = $updatedDescription
+    $assignment | Set-AzPolicyAssignment
+
+    # get it back and validate the new values
+    $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId
+    Assert-NotNull $assignment.Properties.Parameters.listOfAllowedLocations
+    Assert-NotNull $assignment.Properties.Parameters.effectParam
+    Assert-NotNull $assignment.Properties.Parameters.listOfAllowedLocations.value
+    Assert-AreEqual 1 $assignment.Properties.Parameters.listOfAllowedLocations.value.Length
+    Assert-AreEqual "eastus" $assignment.Properties.Parameters.listOfAllowedLocations.value[0]
+    Assert-AreEqual "disabled" $assignment.Properties.Parameters.effectParam.value
+    Assert-AreEqual $updatedDescription $assignment.Properties.Description
+
     # delete the policy assignment
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
+    $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment
     Assert-AreEqual True $remove
 
     # assign the policy set definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-NotNull $actual.Properties.PolicyDefinitionId
@@ -1153,8 +1192,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
 
     # update the policy definition
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName | Set-AzureRmPolicyDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicyDefinition -Name $policyDefName
+    $actual = Get-AzPolicyDefinition -Name $policyDefName | Set-AzPolicyDefinition -Description $updatedDescription
+    $expected = Get-AzPolicyDefinition -Name $policyDefName
     Assert-AreEqual $policyDefName $expected.Name
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.ResourceName $actual.ResourceName
@@ -1166,8 +1205,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # update the policy set definition
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName | Set-AzureRmPolicySetDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicySetDefinition -Name $policySetDefName
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName | Set-AzPolicySetDefinition -Description $updatedDescription
+    $expected = Get-AzPolicySetDefinition -Name $policySetDefName
     Assert-AreEqual $policySetDefName $expected.Name
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.ResourceName $actual.ResourceName
@@ -1179,8 +1218,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # update the policy assignment
-    $actual = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Set-AzureRmPolicyAssignment -Description $updatedDescription
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Set-AzPolicyAssignment -Description $updatedDescription
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-AreEqual $expected.ResourceType $actual.ResourceType
@@ -1193,16 +1232,16 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # clean up
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
+    $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment
     Assert-AreEqual True $remove
 
-    $remove = Remove-AzureRmResourceGroup -Name $rgname -Force
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
     Assert-AreEqual True $remove
 
-    $remove = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicySetDefinition -Force
+    $remove = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzPolicySetDefinition -Force
     Assert-AreEqual True $remove
 
-    $remove = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicyDefinition -Force
+    $remove = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzPolicyDefinition -Force
     Assert-AreEqual True $remove
 }
 

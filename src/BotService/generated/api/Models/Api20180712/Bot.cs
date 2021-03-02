@@ -20,23 +20,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The description of the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Description = value; }
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>The Application Insights key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DeveloperAppInsightKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightKey = value; }
+        public string DeveloperAppInsightKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightKey = value ?? null; }
 
         /// <summary>The Application Insights Api Key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DeveloperAppInsightsApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApiKey = value; }
+        public string DeveloperAppInsightsApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApiKey = value ?? null; }
 
         /// <summary>The Application Insights App Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DeveloperAppInsightsApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApplicationId = value; }
+        public string DeveloperAppInsightsApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DeveloperAppInsightsApplicationId = value ?? null; }
 
         /// <summary>The Name of the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DisplayName = value; }
+        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Collection of channels for which the bot is enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The bot's endpoint</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Endpoint = value; }
+        public string Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).Endpoint = value ?? null; }
 
         /// <summary>The bot's endpoint version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Entity Tag</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Etag = value; }
+        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Etag = value ?? null; }
 
         /// <summary>The Icon Url of the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string IconUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).IconUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).IconUrl = value; }
+        public string IconUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).IconUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).IconUrl = value ?? null; }
 
         /// <summary>Specifies the resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
@@ -64,19 +64,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Required. Gets or sets the Kind of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind? Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Kind = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind? Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Kind = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind)""); }
 
         /// <summary>Specifies the location of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Location = value ?? null; }
 
         /// <summary>Collection of LUIS App Ids</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string[] LuisAppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisAppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisAppId = value; }
+        public string[] LuisAppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisAppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisAppId = value ?? null /* arrayOf */; }
 
         /// <summary>The LUIS Key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string LuisKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisKey = value; }
+        public string LuisKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).LuisKey = value ?? null; }
 
         /// <summary>Internal Acessors for ConfiguredChannel</summary>
         string[] Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotInternal.ConfiguredChannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).ConfiguredChannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).ConfiguredChannel = value; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Microsoft App Id for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public string MsaAppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).MsaAppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).MsaAppId = value; }
+        public string MsaAppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).MsaAppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotPropertiesInternal)Property).MsaAppId = value ?? null; }
 
         /// <summary>Specifies the name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
@@ -119,11 +119,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Gets or sets the SKU of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISku Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Sku = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ISku Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Sku = value ?? null /* model class */; }
 
         /// <summary>The sku name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).SkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName? SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).SkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).SkuName = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName)""); }
 
         /// <summary>Gets the sku tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>Contains resource tags defined as key/value pairs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>Specifies the type of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string DeveloperAppInsightsApplicationId { get; set; }
         /// <summary>The Name of the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The Name of the bot",
         SerializedName = @"displayName",
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string[] EnabledChannel { get;  }
         /// <summary>The bot's endpoint</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The bot's endpoint",
         SerializedName = @"endpoint",
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
         string LuisKey { get; set; }
         /// <summary>Microsoft App Id for the bot</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Microsoft App Id for the bot",
         SerializedName = @"msaAppId",
