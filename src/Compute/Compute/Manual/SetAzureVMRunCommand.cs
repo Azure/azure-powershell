@@ -209,7 +209,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            
+            VirtualMachineRunCommand parameters = new VirtualMachineRunCommand
+            {
+                Source = scriptSource, //unable to use PS version here for some reason
+                //name ? 
+                // location? 
+                AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
+                Parameters = (this.Parameter != null) ? this.Parameter : null,
+                ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
+                RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
+                RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
+                TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
+                OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
+                ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null, 
+            };
+            /*
             PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
             {
                 Source = scriptSource, //unable to use PS version here for some reason
@@ -230,7 +244,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Location = null,
                 Tags = null
                 */
-            };
+            //};*/
 
             //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
             this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
