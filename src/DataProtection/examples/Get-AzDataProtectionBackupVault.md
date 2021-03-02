@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all backup vaults in a given subscription
 ```powershell
 PS C:\> {{ Add code here }}
 
