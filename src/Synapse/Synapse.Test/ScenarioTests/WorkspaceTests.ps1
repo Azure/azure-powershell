@@ -498,7 +498,23 @@ Creates the test environment needed to perform the tests
 function Create-WorkspaceTestEnvironment ($testSuffix)
 {
 	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params $params.location
+	Create-WorkspaceTestEnvironmentWithParams $params $params.location
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests
+#>
+function Create-WorkspaceTestEnvironmentWithParams ($params, $location, $denyAsNetworkRuleDefaultAction = $False)
+{
+	New-AzResourceGroup -Name $params.rgname -Location $location
+    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
+	$workspaceName = $params.workspaceName
+	$workspaceLogin = $params.loginName
+	$workspacePassword = $params.pwd
+	$credentials = new-object System.Management.Automation.PSCredential($workspaceLogin, ($workspacePassword | ConvertTo-SecureString -asPlainText -Force))
+    New-AzSynapseWorkspace -ResourceGroupName  $params.rgname -WorkspaceName $params.workspaceName -Location $location -SqlAdministratorLoginCredential $credentials -DefaultDataLakeStorageAccountName $params.storageAccountName -DefaultDataLakeStorageFilesystem $params.fileSystemName
+	Wait-Seconds 10
 }
 
 <#
