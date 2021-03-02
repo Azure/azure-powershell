@@ -1,7 +1,8 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
+."$PSScriptRoot\dnsResolverAssertions.ps1"
 
-
+Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -16,9 +17,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolver' {
-    It 'Create DNS resolver with new virtual network' -skip{
+    It 'Create DNS resolver with new virtual network' -skip {
         $resolver = New-AzDnsResolver -Name $env.DnsResolverName0 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId0 -Location $env.ResourceLocation
-        $resolver.ProvisioningState | Should -Be $env.SuccessProvisioningState
+        $resolver | Should -BeSuccessfullyCreated
         $resolver.VirtualNetworkId | Should -Be $env.VirtualNetworkId0 
     }
 
@@ -94,7 +95,7 @@ Describe 'New-AzDnsResolver' {
         $resolver.Tag.Count | Should -Be $expectedTagCount
     }
 
-    It 'Create DNS Resolver IfNoneMatch wildcard, expect DNS Resolver created' {
+    It 'Create DNS Resolver IfNoneMatch wildcard, expect DNS Resolver created' -skip{
         $tag = GetRandomHashtable -size 5
         $resolver = New-AzDnsResolver -Name $env.DnsResolverName10 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId10 -Location $env.ResourceLocation -Tag $tag -IfNoneMatch *
         $resolver.ProvisioningState | Should -Be $env.SuccessProvisioningState

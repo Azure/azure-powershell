@@ -14,8 +14,8 @@ function setupEnv() {
     $rstr1 = RandomString -allChars $false -len 6
     write-host "creating test resource group..."
     #$resourceGroupName = "powershelldnsresolvertestrg" + $rstr1
-    $resourceGroupName = "powershelldnsresolvertestrg" + "localtest"
-    New-AzResourceGroup -Name $resourceGroupName -Location westus2
+    $resourceGroupName = "powershelldnsresolvertestrg" + "-guli"
+    New-AzResourceGroup -Name $resourceGroupName -Location eastus
     $env.Add("ResourceGroupName", $resourceGroupName)
 
     $null = $env.Add("DnsResolverNamePrefix", "psdnsresolvername");
@@ -37,7 +37,7 @@ function setupEnv() {
     # Provison of virtual network and generating DNS Resolver name.
     # New-cmdlet uses 0 - 12
     # Get-cmdlet uses 13 - 21
-    # Remove-cmdlet uses 30-45
+    # Remove-cmdlet uses 22-32
     # Patch 
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId" 
@@ -67,6 +67,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.ResourceGroupName
+    #Remove-AzResourceGroup -Name $env.ResourceGroupName
 }
 
