@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Run Command.")]
         [SupportsWildcards]
+        [Alias("RunCommandName")]
         public string Name { get; set; }
 
         [Parameter(
@@ -66,16 +67,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
-            {
+            { 
                 if (this.IsParameterBound(c => c.Name))
                 {
-                    var result = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupName, this.VMName, this.Name);
+                    VirtualMachineRunCommand result;
+                    if (this.Status.IsPresent)
+                    {
+                        result = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupName, this.VMName, this.Name, "instanceView");
+                    }
+                    else
+                    {
+                        result = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupName, this.VMName, this.Name);
+                    }
+
                     var psObject = new PSVirtualMachineRunCommand();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommand>(result, psObject);
                     WriteObject(psObject);
                 }
                 else
                 {
+                    if (this.Status.IsPresent)
+                    {
+                        WriteWarning("To use '-Status' parameter for instanceView, you must provide '-Name' parameter.");
+                    }
                     var result = VirtualMachineRunCommandsClient.ListByVirtualMachine(this.ResourceGroupName, this.VMName);
                     var resultList = result.ToList();
                     var nextPageLink = result.NextPageLink;
