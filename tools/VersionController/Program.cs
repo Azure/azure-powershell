@@ -44,9 +44,9 @@ namespace VersionController
 
             _outputDirectories = new List<string>
             {
-                Path.Combine(srcDirectory, @"Package\Debug\ResourceManager\AzureResourceManager\"),
-                Path.Combine(srcDirectory, @"Package\Debug\ServiceManagement\"),
-                Path.Combine(srcDirectory, @"Package\Debug\Storage\")
+                Path.Combine(srcDirectory, @"Package\Release\ResourceManager\AzureResourceManager\"),
+                Path.Combine(srcDirectory, @"Package\Release\ServiceManagement\"),
+                Path.Combine(srcDirectory, @"Package\Release\Storage\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
