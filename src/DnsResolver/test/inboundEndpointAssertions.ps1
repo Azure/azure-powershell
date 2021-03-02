@@ -8,7 +8,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 
-Function BeSuccessfullyCreated {
+Function BeSuccessfullyCreatedInboundEndpoint {
     <#
     .SYNOPSIS
     Tests whether a DNS Resolver is created successfully
@@ -19,12 +19,12 @@ Function BeSuccessfullyCreated {
             [switch]$Negate
         )
     
-        [bool]$Pass = $ActualValue.ProvisioningState -eq $env.SuccessProvisioningState -and $ActualValue.Name -ne $null -and $ActualValue.Id -ne $null -and $ActualValue.ResourceGuid -ne $null
+        [bool]$Pass = $ActualValue.ProvisioningState -eq $env.SuccessProvisioningState -and  $null -ne $ActualValue.Name -and $null -ne $ActualValue.Id -and $null -ne $ActualValue.ResourceGuid 
 
         If ( $Negate ) { $Pass = -not($Pass) }
     
         If ( -not($Pass) ) {
-            $FailureMessage = 'The DNS resolver is not created successfully.'
+            $FailureMessage = 'The inbound endpoint is not created successfully.'
         }
     
         $ObjProperties = @{

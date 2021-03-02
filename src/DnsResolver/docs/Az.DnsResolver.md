@@ -23,6 +23,9 @@ Creates or updates a DNS resolver.
 ### [New-AzDnsResolverInboundEndpoint](New-AzDnsResolverInboundEndpoint.md)
 Creates or updates an inbound endpoint for a DNS resolver.
 
+### [New-AzDnsResolverIPConfigurationObject](New-AzDnsResolverIPConfigurationObject.md)
+Create a in-memory object for IPConfiguration
+
 ### [Remove-AzDnsResolver](Remove-AzDnsResolver.md)
 Deletes a DNS resolver.
 WARNING: This operation cannot be undone.

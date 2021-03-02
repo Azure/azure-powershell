@@ -2,7 +2,7 @@
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\inboundEndpointAssertions.ps1"
 
-Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
+Add-AssertionOperator -Name 'BeSuccessfullyCreatedInboundEndpoint' -Test $Function:BeSuccessfullyCreatedInboundEndpoint
 
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -18,12 +18,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolverInboundEndpoint' {
-    It 'Create new inbound endpoint with ip configurations only, expect inbound endpoint created' -skip {
+    It 'Create new inbound endpoint with ip configurations only, expect inbound endpoint created' {
         $dnsResolverName = $env.DnsResolverName38
         $virtualNetworkId = $env.VirtualNetworkId38
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
+        $subnetid = $env.SubnetId38
+        $privateIp = RandomIp
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 
-        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        $createdInboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName$env.ResourceGroupName
+         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+        {New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName$env.ResourceGroupName -IPConfiguration $ipConfiguration} | Should -BeSuccessfullyCreatedInboundEndpoint
     }
 }

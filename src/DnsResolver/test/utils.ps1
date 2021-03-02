@@ -21,6 +21,7 @@ function setupEnv() {
     $null = $env.Add("DnsResolverNamePrefix", "psdnsresolvername");
     $null = $env.Add("VirtualNetworkNamePrefix", "psvirtualnetworkname");
     $null = $env.Add("InboundEndpointNamePrefix", "psinboundendpointname");
+    $null = $env.Add("SubnetNamePrefix", "pssubnetname");
 
 
     $null = $env.Add("SuccessProvisioningState", "Succeeded");
@@ -42,15 +43,21 @@ function setupEnv() {
     # Patch 32 - 38
     # New IE - 38 - 45
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
-    $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId" 
-    For($i=0; $i -le 20; $i++){
+    $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
+    $subnetIdEnvKeyPrefix = "SubnetId" 
+    For($i=0; $i -le 50; $i++){
         $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
         $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
         $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
         $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
+        $subnetName = $env.SubnetNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $subnetIdEnvKey = $subnetIdEnvKeyPrefix + $i
+        
         $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
+        $subnetId = (CreateSubnet -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName -SubnetName $subnetName).id
         $null = $env.Add($dnsResolverNameEnvKey, $dnsResolverName);
         $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId);
+        $null = $env.Add($subnetIdEnvKey, $subnetId);
     }
 
     $unpairedVirtualNetworkIdEnvKeyPrefix = "UnpairedVirtualNetwork"
@@ -67,6 +74,7 @@ function setupEnv() {
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
+
 function cleanupEnv() {
     # Clean resources you create for testing
     #Remove-AzResourceGroup -Name $env.ResourceGroupName

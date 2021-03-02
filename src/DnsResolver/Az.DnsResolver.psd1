@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DnsResolver.private.dll'
   FormatsToProcess = './Az.DnsResolver.format.ps1xml'
-  FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverInboundEndpoint', 'New-AzDnsResolver', 'New-AzDnsResolverInboundEndpoint', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverInboundEndpoint', 'Set-AzDnsResolver', 'Set-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolver', 'Update-AzDnsResolverInboundEndpoint', '*'
+  FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverInboundEndpoint', 'New-AzDnsResolver', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverInboundEndpoint', 'Set-AzDnsResolver', 'Set-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolver', 'Update-AzDnsResolverInboundEndpoint', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

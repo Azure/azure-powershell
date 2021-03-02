@@ -56,7 +56,7 @@ Describe 'Get-AzDnsResolver' {
         $resolvers.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'List DNS Resolvers in the Subscription with top parameter, expect specified number of resolvers retrieved.' {
+    It 'List DNS Resolvers in the Subscription with top parameter, expect specified number of resolvers retrieved.' -skip{
         $resolver0 = New-AzDnsResolver -Name $env.DnsResolverName13 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId13 -Location $env.ResourceLocation
         $resolver1 = New-AzDnsResolver -Name $env.DnsResolverName14 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId14 -Location $env.ResourceLocation
         $resolver2 = New-AzDnsResolver -Name $env.DnsResolverName15 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId15 -Location $env.ResourceLocation

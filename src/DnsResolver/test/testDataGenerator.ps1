@@ -22,6 +22,10 @@ function GetRandomHashtable([int32]$size) {
     return $hashtable
 }
 
+function RandomIp() {
+    return (Get-Random -Minimum 0 -Maximum 256), (Get-Random -Minimum 0 -Maximum 256), (Get-Random -Minimum 0 -Maximum 256),(Get-Random -Minimum 0 -Maximum 256) -join "."
+}
+
 function RandomGUID() {
     return [guid]::NewGuid().toString()
 }
