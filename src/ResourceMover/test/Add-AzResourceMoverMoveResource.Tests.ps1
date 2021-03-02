@@ -12,9 +12,12 @@ while (-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Add-AzResourceMoverMoveResource' {
-    It 'AddExpanded'  {
-            Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
-            $moveResource = Add-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/my-sRgVm1" -Name my-sRgVm1 -ResourceSettingResourceType resourceGroups -ResourceSettingTargetResourceName "my-tRgVm1"
-            $moveResource.Name | Should -Be "my-sRgVm1"
+    It 'AddExpanded' {
+        Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "rms-sRg"
+        $trs = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceGroupResourceSettings
+        $trs.ResourceType = "ResourceGroups"
+        $trs.TargetResourceName = "rms-sRg-westus2"
+        $moveResource = Add-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg" -Name "rms-sRg" -ResourceSetting $trs
+        $moveResource.Name | Should -Be "rms-sRg"
     }
 }

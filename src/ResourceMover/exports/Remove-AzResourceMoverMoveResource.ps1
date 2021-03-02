@@ -19,28 +19,28 @@ Deletes a Move Resource from the move collection.
 .Description
 Deletes a Move Resource from the move collection.
 .Example
-PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName PS-centralus-westcentralus-demoRM -Name "psdemorm"
+PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 
-    AdditionalInfo :
-    Code           :
-    Detail         :
-    EndTime        : 8/11/2020 3:27:28 PM
-    Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migrate/MoveColl
-                     ections/PS-centralus-westcentralus-demoRM/operations/3c2aae83-0a05-432c-be8e-a156351866c5
-    Message        :
-    Name           : 3c2aae83-0a05-432c-be8e-a156351866c5
-    Property       : Microsoft.Azure.PowerShell.Cmdlets.RegionMove.Models.Api20191001Preview.OperationStatusProperties
-    StartTime      : 8/11/2020 3:27:27 PM
-    Status         : Succeeded
+AdditionalInfo : 
+Code           : 
+Detail         : 
+EndTime        : 2/10/2021 1:08:49 PM
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralu
+                 s-demoRMS/operations/bee69758-c7cb-4160-b3e0-8e4b69ec3731
+Message        : 
+Name           : bee69758-c7cb-4160-b3e0-8e4b69ec3731
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 2/10/2021 1:08:47 PM
+Status         : Succeeded
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 #>
 function Remove-AzResourceMoverMoveResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

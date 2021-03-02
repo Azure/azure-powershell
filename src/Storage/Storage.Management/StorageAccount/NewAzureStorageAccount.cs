@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (AssignIdentity.IsPresent)
             {
-                createParameters.Identity = new Identity();
+                createParameters.Identity = new Identity() {  Type = IdentityType.SystemAssigned };
             }
             if (NetworkRuleSet != null)
             {

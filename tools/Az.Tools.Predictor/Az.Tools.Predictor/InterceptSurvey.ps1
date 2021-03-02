@@ -111,6 +111,10 @@ function Update-InterceptObject {
         return $false
     }
 
+    if ($interceptObject.interceptTriggered) {
+        return $false
+    }
+
     $recordedLastActiveDate = Get-Date $thisModule.lastActiveDate
     $recordedActiveDays = $thisModule.activeDays
 

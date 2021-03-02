@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
+    /// <summary>The type of identity used for the resource mover service.</summary>
     public partial struct ResourceIdentityType :
         System.IEquatable<ResourceIdentityType>
     {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResourceIdentityType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResourceIdentityType(System.Convert.ToString(value));
+            return new ResourceIdentityType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResourceIdentityType</summary>

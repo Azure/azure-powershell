@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/releases to install Bicep..
+        ///   Looks up a localized string similar to Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/blob/main/docs/installing.md to install Bicep..
         /// </summary>
         internal static string BicepNotFound {
             get {

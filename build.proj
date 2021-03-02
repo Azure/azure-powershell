@@ -141,7 +141,7 @@
             PropertyName="SubTasks" />
     </CreateProperty>
     <CreateProperty
-        Value="@(TestCsprojList->Split(`;`)->Count())">
+        Value="$(TestCsprojList.Split(';').Length)">
         <Output
             TaskParameter="Value"
             PropertyName="TestCsprojListCount" />

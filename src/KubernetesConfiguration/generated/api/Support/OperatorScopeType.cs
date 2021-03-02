@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Scope at which the operator will be installed.</summary>
     public partial struct OperatorScopeType :
         System.IEquatable<OperatorScopeType>
     {
