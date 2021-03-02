@@ -1304,6 +1304,14 @@
     {
       "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
       "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestNewDeploymentWithQueryString.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestWhatIfWithQueryString.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
     }
   ]
 }

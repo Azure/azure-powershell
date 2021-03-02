@@ -823,7 +823,7 @@ function Test-NewDeploymentWithQueryString
 		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateChild.json" -Path "sampleLinkedTemplateChild.json" -Context $context
 
 		#Get SAStoken
-		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context
+		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context -ExpiryTime (Get-Date).AddMinutes(2)
 
 		#Create deployment
 		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringpstests.file.core.windows.net/querystringshare/sampleLinkedTemplateParent.json" -QueryString $token.Substring(1)
@@ -835,6 +835,7 @@ function Test-NewDeploymentWithQueryString
 	finally
     {
         # Cleanup
+		Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $saname;
         Clean-ResourceGroup $rgname
     }
 }
@@ -940,7 +941,7 @@ function Test-WhatIfWithQueryString
 		Set-AzStorageFileContent -ShareName "querystringshare" -Source "sampleLinkedTemplateChild.json" -Path "sampleLinkedTemplateChild.json" -Context $context
 
 		#Get SAStoken
-		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context
+		$token = New-AzStorageAccountSASToken -Service File -ResourceType Service,Container,Object -Permission "r" -Context $context -ExpiryTime (Get-Date).AddMinutes(3)
 
 		#Create deployment
 		$deployment =New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateUri "https://querystringpstests.file.core.windows.net/querystringshare/sampleLinkedTemplateParent.json" -QueryString $token.Substring(1)
@@ -958,6 +959,7 @@ function Test-WhatIfWithQueryString
 	finally
     {
         # Cleanup
+		Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $saname;
         Clean-ResourceGroup $rgname
     }
 }
