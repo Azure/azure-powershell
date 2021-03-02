@@ -223,12 +223,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
                 OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
                 ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
-
+                /*
                 ,Id = null,
                 Type = null,
                 Name = null,
                 Location = null,
                 Tags = null
+                */
             };
 
             //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();

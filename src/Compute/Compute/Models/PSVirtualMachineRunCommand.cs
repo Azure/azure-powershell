@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public string ErrorBlobUri { get; set; }
 
-        public string ProvisioningState { get; }
+        public string ProvisioningState { get; set; }
 
-        public VirtualMachineRunCommandInstanceView InstanceView { get; }
+        public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
 
+        /*
         // Gets or sets the property of 'Id'
         public string Id { get; set; }
 
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
+        */
 
 
     }
