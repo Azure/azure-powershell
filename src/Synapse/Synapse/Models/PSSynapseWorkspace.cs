@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 : null;
             this.WorkspaceUID = workspace?.WorkspaceUID != null ? workspace.WorkspaceUID.Value.ToString() : null;
             this.ExtraProperties = workspace.ExtraProperties;
+            this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
+            this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
         }
 
         /// <summary>
@@ -78,5 +80,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets workspace level configs and feature flags
         /// </summary>
         public IDictionary<string, object> ExtraProperties { get; set; }
+
+        /// Gets or sets managed Virtual Network Settings
+        /// </summary>
+        public PSManagedVirtualNetworkSettings ManagedVirtualNetworkSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption details of the workspace
+        /// </summary>
+        public PSEncryptionDetails Encryption { get; set; }
     }
 }

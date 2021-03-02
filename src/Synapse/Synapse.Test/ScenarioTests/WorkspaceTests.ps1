@@ -263,6 +263,194 @@ function Test-SynapseWorkspaceSecurity
 
 <#
 .SYNOPSIS
+Tests Synapse Workspace managed identity settings.
+#>
+function Test-SynapseManagedIdentitySqlControlSetting
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-WorkspaceTestEnvironment $testSuffix
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+
+	try
+	{
+        # Get Managed Identity SQL control settings
+        $settings = Get-AzSynapseManagedIdentitySqlControlSetting -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Enable managed identity SQL control settings
+        $settings = Set-AzSynapseManagedIdentitySqlControlSetting -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Enabled $True
+
+        # Verify
+        Assert-AreEqual 'Enabled' $settings.DesiredState
+        Assert-AreEqual 'Enabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Enable managed identity SQL control settings again
+        $settings = Set-AzSynapseManagedIdentitySqlControlSetting -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Enabled $True
+
+        # Verify
+        Assert-AreEqual 'Enabled' $settings.DesiredState
+        Assert-AreEqual 'Enabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Disable managed identity SQL control settings
+        $settings = Set-AzSynapseManagedIdentitySqlControlSetting -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Enabled $False
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Disable managed identity SQL control settings again
+        $settings = Set-AzSynapseManagedIdentitySqlControlSetting -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Enabled $False
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # piping scenarios
+        $ws = Get-AzSynapseWorkspace -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
+
+        # Get Managed Identity SQL control settings
+        $settings = $ws | Get-AzSynapseManagedIdentitySqlControlSetting
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Enable managed identity SQL control settings
+        $settings = $ws | Set-AzSynapseManagedIdentitySqlControlSetting -Enabled $True
+
+        # Verify
+        Assert-AreEqual 'Enabled' $settings.DesiredState
+        Assert-AreEqual 'Enabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Enable managed identity SQL control settings again
+        $settings = $ws | Set-AzSynapseManagedIdentitySqlControlSetting -Enabled $True
+
+        # Verify
+        Assert-AreEqual 'Enabled' $settings.DesiredState
+        Assert-AreEqual 'Enabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Disable managed identity SQL control settings
+        $settings = $ws | Set-AzSynapseManagedIdentitySqlControlSetting -Enabled $False
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+
+        # Disable managed identity SQL control settings again
+        $settings = $ws | Set-AzSynapseManagedIdentitySqlControlSetting -Enabled $False
+
+        # Verify
+        Assert-AreEqual 'Disabled' $settings.DesiredState
+        Assert-AreEqual 'Disabled' $settings.ActualState
+        Assert-AreEqual 'default' $settings.Name
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings' $settings.Type
+    }
+	finally
+	{
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Synapse Workspace key.
+#>
+function Test-SynapseWorkspaceKey
+{
+	# Setup
+	$testSuffix = getAssetName
+    Create-WorkspaceEncryptionTestEnvironment $testSuffix
+    $params = Get-WorkspaceEncryptionTestEnvironmentParameters $testSuffix
+
+    try
+    {
+        # Create a key vault and add keys
+        New-AzKeyVault -VaultName $params.vaultName -ResourceGroupName $params.rgname -Location $params.location -EnablePurgeProtection
+        Add-AzKeyVaultKey -VaultName $params.vaultName -Name $params.firstKeyName -Destination 'Software'
+        Add-AzKeyVaultKey -VaultName $params.vaultName -Name $params.secondKeyName -Destination 'Software'
+
+        # Create a workspace with CMK
+        Create-WorkspaceEncryptionTestEnvironment $testSuffix
+
+        # Retrieve workspace object id
+        $workspaceId = (Get-AzADServicePrincipal -DisplayName $params.workspaceName).Id
+
+        # Set Access Policy
+        Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $workspaceId -PermissionsToKeys get,wrapkey,unwrapkey
+
+        # Activate workspace
+        Update-AzSynapseWorkspaceKey -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Activate
+        Wait-Seconds 15
+
+        # Retrieve workspace keys
+        $keys = Get-AzSynapseWorkspaceKey -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
+
+        # Verify
+        Assert-AreEqual 1 $keys.Count
+        Assert-AreEqual 'default' $keys[0].Name
+        Assert-True { $keys[0].IsActiveCustomerManagedKey }
+        Assert-AreEqual $params.encryptionKeyIdentifier $keys[0].KeyVaultUrl
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/keys' $keys[0].Type
+
+        # Create a new workspaceKey
+        $secondKeyName = [guid]::NewGuid()
+        $secondKeyIdentifier = $params.secondEncryptionKeyIdentifier
+        $secondKey = New-AzSynapseWorkspaceKey -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $secondKeyName -EncryptionKeyIdentifier $secondKeyIdentifier
+        Wait-Seconds 15
+
+        # Verify
+        Assert-AreEqual $secondKeyName $secondKey.Name
+        Assert-False { $secondKey.IsActiveCustomerManagedKey }
+        Assert-AreEqual $secondKeyIdentifier $secondKey.KeyVaultUrl
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/keys' $secondKey.Type
+
+        # Switch to the 2nd key as the active key
+        Update-AzSynapseWorkspace -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -EncryptionKeyName $secondKeyName
+        Wait-Seconds 15
+        $updatedWorkspace = Get-AzSynapseWorkspace -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
+
+        # Verify workspace's CMK
+        Assert-AreEqual $secondKeyName $updatedWorkspace.Encryption.CustomerManagedKeyDetails.Key.Name
+        Assert-AreEqual $secondKeyIdentifier $updatedWorkspace.Encryption.CustomerManagedKeyDetails.Key.KeyVaultUrl
+
+        # Verify the IsCMK property of the 2nd key. It should be $true now
+        $secondKey = Get-AzSynapseWorkspaceKey -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $secondKeyName
+        Assert-True { $secondKey.IsActiveCustomerManagedKey }
+        Assert-AreEqual $secondKeyName $secondKey.Name
+        Assert-AreEqual $secondKeyIdentifier $secondKey.KeyVaultUrl
+        Assert-AreEqual 'Microsoft.Synapse/workspaces/keys' $secondKey.Type
+    }
+	finally
+	{
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
+	}
+}
+
+<#
 Gets the values of the parameters used at the tests
 #>
 function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
