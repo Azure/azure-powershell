@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.1.4
 * This module is outdated and will go out of support on 29 February 2024.
 * The Az.StorageSync module has all the capabilities of AzureRM.StorageSync and provides the following improvements:
     - Greater security with token cache encryption and improved authentication.
