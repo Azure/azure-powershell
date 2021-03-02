@@ -349,9 +349,6 @@ namespace Microsoft.Azure.Commands.Compute
                     });
                 }
 
-                // OS Profile
-                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent;
-
                 if (this.ProvisionVMAgent.IsPresent)
                 {
                     this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = true;
