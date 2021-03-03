@@ -22,6 +22,7 @@ function setupEnv() {
     $null = $env.Add("VirtualNetworkNamePrefix", "psvirtualnetworkname");
     $null = $env.Add("InboundEndpointNamePrefix", "psinboundendpointname");
     $null = $env.Add("SubnetNamePrefix", "pssubnetname");
+    $null = $env.Add("InboundEnpointNamePrefix", "psinboundendpointname");
 
 
     $null = $env.Add("SuccessProvisioningState", "Succeeded");
@@ -43,26 +44,33 @@ function setupEnv() {
     # Patch 33 - 38
     # New IE - 38 - 45
     # Patch IE - 46 - 49
+    # Get IE 50 - 60
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
-    $subnetIdEnvKeyPrefix = "SubnetId" 
+    $subnetIdEnvKeyPrefix = "SubnetId"
+    $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName" 
     For($i=0; $i -le 50; $i++){
-        $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
         $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
-        $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
-        $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
-        $subnetName = $env.SubnetNamePrefix + $i + (RandomString -allChars $false -len 6)
-        $subnetIdEnvKey = $subnetIdEnvKeyPrefix + $i
-        
-        $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
-        $subnetId = (CreateSubnet -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName -SubnetName $subnetName).id
+        $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
         $null = $env.Add($dnsResolverNameEnvKey, $dnsResolverName);
+
+        $inboundEndpointNameEnvKey = $inboundEndpointNameEnvKeyPrefix + $i
+        $inboundEndpointName = $env.InboundEnpointNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $null = $env.Add($inboundEndpointNameEnvKey, $inboundEndpointName);
+
+        $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
+        $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
         $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId);
+
+        $subnetIdEnvKey = $subnetIdEnvKeyPrefix + $i
+        $subnetName = $env.SubnetNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $subnetId = (CreateSubnet -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName -SubnetName $subnetName).id
         $null = $env.Add($subnetIdEnvKey, $subnetId);
     }
 
     $unpairedVirtualNetworkIdEnvKeyPrefix = "UnpairedVirtualNetwork"
-    For($i=0; $i -le 5; $i++){
+    For($i=0; $i -le 10; $i++){
         $virtualNetworkName = $env.VirtualNetworkNamePrefix + "unpaired"+ $i + (RandomString -allChars $false -len 6)
         $virtualNetworkIdEnvKey = $unpairedVirtualNetworkIdEnvKeyPrefix + $i
         $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id

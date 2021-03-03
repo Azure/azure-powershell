@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolver' {
-    It 'Delete an existing DNS Resolver by name, expect DNS Resolver deleted'  {
+    It 'Delete an existing DNS Resolver by name, expect DNS Resolver deleted'  -skip{
         $dnsResolverName = $env.DnsResolverName22
         $virtualNetworkId = $env.VirtualNetworkId22
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -20,7 +20,7 @@ Describe 'Remove-AzDnsResolver' {
         {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing DNS Resolver via identity, expect DNS Resolver deleted'  {
+    It 'Delete an existing DNS Resolver via identity, expect DNS Resolver deleted'  -skip{
         $dnsResolverName = $env.DnsResolverName23
         $virtualNetworkId = $env.VirtualNetworkId23
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -29,7 +29,7 @@ Describe 'Remove-AzDnsResolver' {
         {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing DNS Resolver by name and IfMatch success, expect DNS Resolver deleted' {
+    It 'Delete an existing DNS Resolver by name and IfMatch success, expect DNS Resolver deleted' -skip{
         $dnsResolverName = $env.DnsResolverName24
         $virtualNetworkId = $env.VirtualNetworkId24
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -37,7 +37,7 @@ Describe 'Remove-AzDnsResolver' {
         {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing DNS Resolver by name and IfMatch wildcard success, expect DNS Resolver deleted'  {
+    It 'Delete an existing DNS Resolver by name and IfMatch wildcard success, expect DNS Resolver deleted'  -skip{
         $dnsResolverName = $env.DnsResolverName25
         $virtualNetworkId = $env.VirtualNetworkId25
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -45,7 +45,7 @@ Describe 'Remove-AzDnsResolver' {
         {Get-AzDnsResolver -Name $dnsResolverName  -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing DNS Resolver by name and IfMatch failure, expect DNS Resolver not deleted'  {
+    It 'Delete an existing DNS Resolver by name and IfMatch failure, expect DNS Resolver not deleted'  -skip{
         $dnsResolverName = $env.DnsResolverName26
         $virtualNetworkId = $env.VirtualNetworkId26
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId  $virtualNetworkId -Location $env.ResourceLocation

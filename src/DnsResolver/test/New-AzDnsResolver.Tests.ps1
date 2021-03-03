@@ -3,6 +3,7 @@
 ."$PSScriptRoot\dnsResolverAssertions.ps1"
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
+
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -68,7 +69,7 @@ Describe 'New-AzDnsResolver' {
         $tag = GetRandomHashtable -size 2
         Write-Host $resolver.Etag
         $ifMatchString = RandomGUID
-        {$resolver = New-AzDnsResolver -Name $env.DnsResolverName6 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId6 -Location $env.ResourceLocation -Tag $tag -IfMatch $ifMatchString} | Should -Throw "The format of value"
+        {New-AzDnsResolver -Name $env.DnsResolverName6 -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $env.VirtualNetworkId6 -Location $env.ResourceLocation -Tag $tag -IfMatch $ifMatchString} | Should -Throw "The format of value"
     }
 
     It 'Update DNS Resolver with new tags and IfMatch success, expect DNS Resolver updated' -skip{

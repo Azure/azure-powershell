@@ -33,3 +33,30 @@ Function BeSuccessfullyCreatedInboundEndpoint {
         }
         return New-Object PSObject -Property $ObjProperties
 }
+
+Function BeSameInboundEndpointAsExpected {
+    <#
+    .SYNOPSIS
+    Tests whether a DNS Resolver is created successfully
+    #>
+        [CmdletBinding()]
+        Param(
+            $ActualValue,
+            $ExpectedValue,
+            [switch]$Negate
+        )
+    
+        [bool]$Pass = $ActualValue.ProvisioningState -eq $ExpectedValue.ProvisioningState -and $ActualValue.Name -eq $ExpectedValue.Name -and $ActualValue.Id -eq $ExpectedValue.Id -and $ActualValue.ResourceId -eq $ExpectedValue.ResourceId
+
+        If ( $Negate ) { $Pass = -not($Pass) }
+    
+        If ( -not($Pass) ) {
+            $FailureMessage = 'The inbound endpoint is different from the expected.'
+        }
+    
+        $ObjProperties = @{
+            Succeeded      = $Pass
+            FailureMessage = $FailureMessage
+        }
+        return New-Object PSObject -Property $ObjProperties
+}
