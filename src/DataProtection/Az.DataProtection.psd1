@@ -23,7 +23,7 @@
                     'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate',
                     'Get-AzDataProtectionRecoveryPoint',
                     'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest',
-                    'Initialize-AzDataProtectionTargetRestoreInfo', 'New-AzDataProtectionPolicyTagCriteria',
+                    'New-AzDataProtectionPolicyTagCriteria',
                     'New-AzDataProtectionPolicyTriggerSchedule', 'New-AzDataProtectionRetentionLifeCycle',
                     'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy',
                     'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance',
