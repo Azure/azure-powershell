@@ -13,11 +13,7 @@ function Test-NewAzAksSimple
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
-        
-        $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
-        $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
-        $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-        $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
+        $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -51,10 +47,7 @@ function Test-NewAzAksWithAcr
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
         
-        $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
-        $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
-        $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-        $cred = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
+        $cred = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -146,10 +139,7 @@ function Test-NewAzAksByServicePrincipal
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
 
-    $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
-    $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
-    $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-    $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
+    $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
 
     try
     {
