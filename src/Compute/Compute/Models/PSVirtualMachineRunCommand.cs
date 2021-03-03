@@ -9,6 +9,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSVirtualMachineRunCommand
     {
+        // Gets or sets the property of 'Name'
+        public string Name { get; set; }
+        // Gets or sets the property of 'Id'
+        public string Id { get; set; }
+
+        public string Type { get; set; }
+
+        public string Location { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
         public VirtualMachineRunCommandScriptSource Source { get; set; }
 
         public IList<RunCommandInputParameter> Parameters { get; set; }
@@ -30,19 +40,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ProvisioningState { get; set; }
 
         public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
-
-        /*
-        // Gets or sets the property of 'Id'
-        public string Id { get; set; }
-
-        // Gets or sets the property of 'Name'
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string Location { get; set; }
-
-        public IDictionary<string, string> Tags { get; set; }
-        */
     }
 }

@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* New cmdlet `Get-AzVMRunCommand`
+* New cmdlet `Get-AzVMRunCommand`, `Remove-AzVMRunCommand`
 
 ## Version 4.10.0
 * [Breaking Change] Removed all `ContainerService` cmdlets. The Container Service API was deprecated in January 2020. 

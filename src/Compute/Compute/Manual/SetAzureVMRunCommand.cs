@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             };
 
             //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
-            this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
+            //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
 
 
         }

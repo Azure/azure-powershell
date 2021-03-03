@@ -12,4 +12,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         }
     }
 }
-
