@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get Backup Instances from ARG
+Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 .Description
-Get Backup Instances from ARG
+Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 .Example
 PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk
 

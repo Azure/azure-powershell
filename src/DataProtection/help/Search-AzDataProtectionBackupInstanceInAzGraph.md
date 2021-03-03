@@ -8,7 +8,7 @@ schema: 2.0.0
 # Search-AzDataProtectionBackupInstanceInAzGraph
 
 ## SYNOPSIS
-Get Backup Instances from ARG
+Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Search-AzDataProtectionBackupInstanceInAzGraph -DatasourceType <DatasourceTypes>
 ```
 
 ## DESCRIPTION
-Get Backup Instances from ARG
+Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 
 ## EXAMPLES
 

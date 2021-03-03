@@ -2,7 +2,7 @@
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Vault storage setting object')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries')]
     
     param (
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
@@ -17,19 +17,19 @@
         [System.String[]]
         ${Vault},
 
-        [Parameter(Mandatory=$false, HelpMessage='Start Time of the backup Job')]
+        [Parameter(Mandatory=$false, HelpMessage='Start Time filter for the backup Job')]
         [System.DateTime]
         ${StartTime},
 
-        [Parameter(Mandatory=$false, HelpMessage='End Time of the Backup Job')]
+        [Parameter(Mandatory=$false, HelpMessage='End Time filter for the Backup Job')]
         [System.DateTime]
         ${EndTime},
 
-        [Parameter(Mandatory=$false, HelpMessage='Operation of the Job Filter')]
+        [Parameter(Mandatory=$false, HelpMessage='Operation filter for the backup job')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
         ${Operation},
 
-        [Parameter(Mandatory=$false, HelpMessage='Status of the Job Filter')]
+        [Parameter(Mandatory=$false, HelpMessage='Status filter for the backup job')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
         ${Status},
 

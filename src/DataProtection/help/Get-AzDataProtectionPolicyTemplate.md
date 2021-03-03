@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataProtectionPolicyTemplate
 
 ## SYNOPSIS
-Prepares Datasource object for backup
+Gets default policy template for a selected datasource type.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes> [-Confirm] 
 ```
 
 ## DESCRIPTION
-Prepares Datasource object for backup
+Gets default policy template for a selected datasource type.
 
 ## EXAMPLES
 

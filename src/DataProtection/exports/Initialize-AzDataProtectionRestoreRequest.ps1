@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Prepares Restore Request object for backup
+Initializes Restore Request object for triggering restore on a protected backup instance.
 .Description
-Prepares Restore Request object for backup
+Initializes Restore Request object for triggering restore on a protected backup instance.
 .Example
 PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault"
 PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault" -BackupInstanceName $instance.Name
@@ -47,7 +47,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
-    # DataStore Type of the RP
+    # DataStore Type of the Recovery point
     ${SourceDataStore},
 
     [Parameter(Mandatory)]
@@ -65,13 +65,13 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Recovery Point Name
+    # Id of the recovery point to be restored.
     ${RecoveryPoint},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Target Restore Location
+    # Target resource Id to which backup data will be restored.
     ${TargetResourceId}
 )
 

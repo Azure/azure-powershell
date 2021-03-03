@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get Backup Vault storage setting object
+Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 .Description
-Get Backup Vault storage setting object
+Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 .Example
 PS C:\> $endtime = get-date
 PS C:\> $starttime = $endtime.AddHours(-5)
@@ -73,25 +73,25 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # Start Time of the backup Job
+    # Start Time filter for the backup Job
     ${StartTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
-    # End Time of the Backup Job
+    # End Time filter for the Backup Job
     ${EndTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
-    # Operation of the Job Filter
+    # Operation filter for the backup job
     ${Operation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
-    # Status of the Job Filter
+    # Status filter for the backup job
     ${Status}
 )
 

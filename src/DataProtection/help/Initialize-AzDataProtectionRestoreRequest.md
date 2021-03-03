@@ -8,7 +8,7 @@ schema: 2.0.0
 # Initialize-AzDataProtectionRestoreRequest
 
 ## SYNOPSIS
-Prepares Restore Request object for backup
+Initializes Restore Request object for triggering restore on a protected backup instance.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Rec
 ```
 
 ## DESCRIPTION
-Prepares Restore Request object for backup
+Initializes Restore Request object for triggering restore on a protected backup instance.
 
 ## EXAMPLES
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoint
-Recovery Point Name
+Id of the recovery point to be restored.
 
 ```yaml
 Type: System.String
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceDataStore
-DataStore Type of the RP
+DataStore Type of the Recovery point
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-Target Restore Location
+Target resource Id to which backup data will be restored.
 
 ```yaml
 Type: System.String

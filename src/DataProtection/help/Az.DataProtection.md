@@ -14,6 +14,15 @@ Microsoft Azure PowerShell: DataProtection cmdlets
 ### [Backup-AzDataProtectionBackupInstanceAdhoc](Backup-AzDataProtectionBackupInstanceAdhoc.md)
 Trigger adhoc backup
 
+### [Edit-AzDataProtectionPolicyRetentionRuleClientObject](Edit-AzDataProtectionPolicyRetentionRuleClientObject.md)
+Adds or removes Retention Rule to existing Policy
+
+### [Edit-AzDataProtectionPolicyTagClientObject](Edit-AzDataProtectionPolicyTagClientObject.md)
+Adds or removes schedule tag in an existing backup policy.
+
+### [Edit-AzDataProtectionPolicyTriggerClientObject](Edit-AzDataProtectionPolicyTriggerClientObject.md)
+Updates Backup schedule of an existing backup policy.
+
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instances belonging to a backup vault
 
@@ -41,24 +50,24 @@ Gets the operation result for a resource
 Gets the operation status for a resource.
 
 ### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
-Prepares Datasource object for backup
+Gets default policy template for a selected datasource type.
 
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
-Prepares Backup instance object for backup
+Initializes Backup instance Request object for configuring backup
 
 ### [Initialize-AzDataProtectionRestoreRequest](Initialize-AzDataProtectionRestoreRequest.md)
-Prepares Restore Request object for backup
+Initializes Restore Request object for triggering restore on a protected backup instance.
 
-### [New-AzDataProtectionPolicyTagCriteria](New-AzDataProtectionPolicyTagCriteria.md)
-Prepares Datasource object for backup
+### [New-AzDataProtectionPolicyTagCriteriaClientObject](New-AzDataProtectionPolicyTagCriteriaClientObject.md)
+Creates a new criteria object
 
-### [New-AzDataProtectionPolicyTriggerSchedule](New-AzDataProtectionPolicyTriggerSchedule.md)
+### [New-AzDataProtectionPolicyTriggerScheduleClientObject](New-AzDataProtectionPolicyTriggerScheduleClientObject.md)
 Creates new Schedule object
 
-### [New-AzDataProtectionRetentionLifeCycle](New-AzDataProtectionRetentionLifeCycle.md)
+### [New-AzDataProtectionRetentionLifeCycleClientObject](New-AzDataProtectionRetentionLifeCycleClientObject.md)
 Creates new Lifecycle object
 
 ### [Remove-AzDataProtectionBackupInstance](Remove-AzDataProtectionBackupInstance.md)
@@ -71,10 +80,10 @@ Deletes a backup policy belonging to a backup vault
 Deletes a BackupVault resource from the resource group.
 
 ### [Search-AzDataProtectionBackupInstanceInAzGraph](Search-AzDataProtectionBackupInstanceInAzGraph.md)
-Get Backup Instances from ARG
+Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
 
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
-Get Backup Vault storage setting object
+Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
 ### [Set-AzDataProtectionBackupInstance](Set-AzDataProtectionBackupInstance.md)
 
@@ -97,13 +106,4 @@ Triggers export of jobs and returns an OperationID to track.
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.
-
-### [Update-AzDataProtectionPolicyRetentionRule](Update-AzDataProtectionPolicyRetentionRule.md)
-Adds or removes Retention Rule to existing Policy
-
-### [Update-AzDataProtectionPolicyTag](Update-AzDataProtectionPolicyTag.md)
-Prepares Datasource object for backup
-
-### [Update-AzDataProtectionPolicyTrigger](Update-AzDataProtectionPolicyTrigger.md)
-Creates new Schedule object
 

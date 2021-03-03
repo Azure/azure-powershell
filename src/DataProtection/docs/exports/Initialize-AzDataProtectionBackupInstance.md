@@ -8,7 +8,7 @@ schema: 2.0.0
 # Initialize-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Prepares Backup instance object for backup
+Initializes Backup instance Request object for configuring backup
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -Datasour
 ```
 
 ## DESCRIPTION
-Prepares Backup instance object for backup
+Initializes Backup instance Request object for configuring backup
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ Name Type BackupInstanceName
 ## PARAMETERS
 
 ### -DatasourceId
-ARM ID of the datasource to be protected
+ID of the datasource to be protected
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Search-AzDataProtectionJobInAzGraph
 
 ## SYNOPSIS
-Get Backup Vault storage setting object
+Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Search-AzDataProtectionJobInAzGraph -DatasourceType <DatasourceTypes> -Subscript
 ```
 
 ## DESCRIPTION
-Get Backup Vault storage setting object
+Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
 ## EXAMPLES
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
-End Time of the Backup Job
+End Time filter for the Backup Job
 
 ```yaml
 Type: System.DateTime
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -Operation
-Operation of the Job Filter
+Operation filter for the backup job
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start Time of the backup Job
+Start Time filter for the backup Job
 
 ```yaml
 Type: System.DateTime
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Status of the Job Filter
+Status filter for the backup job
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]

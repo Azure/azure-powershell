@@ -23,15 +23,15 @@
                     'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate',
                     'Get-AzDataProtectionRecoveryPoint',
                     'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest',
-                    'New-AzDataProtectionPolicyTagCriteria',
-                    'New-AzDataProtectionPolicyTriggerSchedule', 'New-AzDataProtectionRetentionLifeCycle',
+                    'New-AzDataProtectionPolicyTagCriteriaClientObject',
+                    'New-AzDataProtectionPolicyTriggerScheduleClientObject', 'New-AzDataProtectionRetentionLifeCycleClientObject',
                     'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy',
                     'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance',
                     'Set-AzDataProtectionBackupPolicy', 'Set-AzDataProtectionBackupVault',
                     'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore',
                     'Start-AzDataProtectionExportJob', 'Update-AzDataProtectionBackupVault',
-                    'Update-AzDataProtectionPolicyRetentionRule', 'Update-AzDataProtectionPolicyTag',
-                    'Update-AzDataProtectionPolicyTrigger'
+                    'Edit-AzDataProtectionPolicyRetentionRuleClientObject', 'Edit-AzDataProtectionPolicyTagClientObject',
+                    'Edit-AzDataProtectionPolicyTriggerClientObject'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

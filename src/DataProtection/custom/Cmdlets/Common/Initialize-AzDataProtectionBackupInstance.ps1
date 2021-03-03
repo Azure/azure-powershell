@@ -4,7 +4,7 @@
 function Initialize-AzDataProtectionBackupInstance {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Backup instance object for backup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
 
     param(
         [Parameter(Mandatory=$false, HelpMessage='Policy Id to be assiciated to Datasource')]
@@ -12,7 +12,7 @@ function Initialize-AzDataProtectionBackupInstance {
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/providers/(?<provider>.+)/backupVaults/(?<vault>.+)/backupPolicies/(?<name>.+)")]
         ${PolicyId},
 
-        [Parameter(Mandatory=$false, HelpMessage='ARM ID of the datasource to be protected')]
+        [Parameter(Mandatory=$false, HelpMessage='ID of the datasource to be protected')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/(?<id>.+)")]
         ${DatasourceId},

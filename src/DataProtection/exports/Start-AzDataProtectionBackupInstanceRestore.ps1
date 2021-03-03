@@ -31,8 +31,6 @@ Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupR
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
 System.Boolean
-.Outputs
-System.Management.Automation.PSObject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,23 +53,15 @@ PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
   RestoreTargetInfoObjectType <String>: Type of Datasource object, used to initialize the right inherited type
   SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
   [RestoreTargetInfoRestoreLocation <String>]: Target Restore region
-
-RECOVERYPOINT <IAzureBackupRecoveryPointResource>: Storage Type of the vault
-  ObjectType <String>: 
-
-TARGETINFO <IRestoreTargetInfoBase>: DataStore Type of the vault
-  ObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-  [RestoreLocation <String>]: Target Restore region
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 #>
 function Start-AzDataProtectionBackupInstanceRestore {
-[OutputType([System.Boolean], [PSObject])]
+[OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='TriggerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Trigger', Mandatory)]
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='platform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the backup instance
@@ -79,7 +69,6 @@ param(
 
     [Parameter(ParameterSetName='Trigger', Mandatory)]
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='platform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the resource group where the backup vault is present.
@@ -87,7 +76,6 @@ param(
 
     [Parameter(ParameterSetName='Trigger')]
     [Parameter(ParameterSetName='TriggerExpanded')]
-    [Parameter(ParameterSetName='platform')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -96,7 +84,6 @@ param(
 
     [Parameter(ParameterSetName='Trigger', Mandatory)]
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
-    [Parameter(ParameterSetName='platform', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the backup vault.
@@ -147,42 +134,7 @@ param(
     # Target Restore region
     ${RestoreTargetInfoRestoreLocation},
 
-    [Parameter(ParameterSetName='platform', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # DataStore Type of the vault
-    ${DataSourceType},
-
-    [Parameter(ParameterSetName='platform', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
-    # DataStore Type of the vault
-    ${SourceDataStore},
-
-    [Parameter(ParameterSetName='platform', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRestoreTargetInfoBase]
-    # DataStore Type of the vault
-    # To construct, see NOTES section for TARGETINFO properties and create a hash table.
-    ${TargetInfo},
-
-    [Parameter(ParameterSetName='platform')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource]
-    # Storage Type of the vault
-    # To construct, see NOTES section for RECOVERYPOINT properties and create a hash table.
-    ${RecoveryPoint},
-
-    [Parameter(ParameterSetName='platform')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreRequestType]
-    # DataStore Type of the vault
-    ${RecoveryRequestType},
-
-    [Parameter(ParameterSetName='Trigger')]
-    [Parameter(ParameterSetName='TriggerExpanded')]
-    [Parameter(ParameterSetName='TriggerViaIdentity')]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded')]
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
@@ -190,85 +142,58 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='Trigger')]
-    [Parameter(ParameterSetName='TriggerExpanded')]
-    [Parameter(ParameterSetName='TriggerViaIdentity')]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='Trigger')]
-    [Parameter(ParameterSetName='TriggerExpanded')]
-    [Parameter(ParameterSetName='TriggerViaIdentity')]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter(ParameterSetName='Trigger')]
-    [Parameter(ParameterSetName='TriggerExpanded')]
-    [Parameter(ParameterSetName='TriggerViaIdentity')]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(ParameterSetName='Trigger', DontShow)]
-    [Parameter(ParameterSetName='TriggerExpanded', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentity', DontShow)]
-    [Parameter(ParameterSetName='TriggerViaIdentityExpanded', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -287,9 +212,8 @@ begin {
             TriggerExpanded = 'Az.DataProtection.private\Start-AzDataProtectionBackupInstanceRestore_TriggerExpanded';
             TriggerViaIdentity = 'Az.DataProtection.private\Start-AzDataProtectionBackupInstanceRestore_TriggerViaIdentity';
             TriggerViaIdentityExpanded = 'Az.DataProtection.private\Start-AzDataProtectionBackupInstanceRestore_TriggerViaIdentityExpanded';
-            platform = 'Az.DataProtection.custom\Start-AzDataProtectionBackupInstanceRestore_platform';
         }
-        if (('Trigger', 'TriggerExpanded', 'platform') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Trigger', 'TriggerExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
