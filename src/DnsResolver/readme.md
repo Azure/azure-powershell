@@ -89,4 +89,8 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+    # Remove the set-* cmdlet
+  - where:
+      verb: Set
+    remove: true
 ```

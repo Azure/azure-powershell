@@ -34,12 +34,6 @@ WARNING: This operation cannot be undone.
 Deletes an inbound endpoint for a DNS resolver.
 WARNING: This operation cannot be undone.
 
-### [Set-AzDnsResolver](Set-AzDnsResolver.md)
-Creates or updates a DNS resolver.
-
-### [Set-AzDnsResolverInboundEndpoint](Set-AzDnsResolverInboundEndpoint.md)
-Creates or updates an inbound endpoint for a DNS resolver.
-
 ### [Update-AzDnsResolver](Update-AzDnsResolver.md)
 Updates a DNS resolver.
 
