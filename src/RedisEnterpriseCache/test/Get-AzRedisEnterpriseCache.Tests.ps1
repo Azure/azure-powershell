@@ -27,7 +27,7 @@ Describe 'Get-AzRedisEnterpriseCache' {
         $cache.Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
     }
 
-    It 'List' {
+    It 'ListByResourceGroup' {
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
         }
@@ -45,5 +45,9 @@ Describe 'Get-AzRedisEnterpriseCache' {
         $caches[1].Database.Count | Should -Be 1
         $caches[1].Database[$databaseName].Name | Should -Be $databaseName
         $caches[1].Database[$databaseName].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
+    }
+
+    It 'ListBySubscriptionId' {
+        $null = Get-AzRedisEnterpriseCache
     }
 }
