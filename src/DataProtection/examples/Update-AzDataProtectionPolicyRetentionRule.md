@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add Weekly Retention Rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $pol = Get-AzDataProtectionPolicyTemplate
+PS C:\> $lifecycle = New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 5
+PS C:\> Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -LifeCycles $lifecycle -IsDefault $false
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+The first command gets the default policy template. The second command creates a weekly lifecycle object. The third command adds a weekly retention rule to the default policy.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove Weekly Retention Rule
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+This command removes weekly retention rule if it exists in given backup policy.
 

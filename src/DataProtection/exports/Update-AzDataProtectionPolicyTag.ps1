@@ -19,13 +19,18 @@ Prepares Datasource object for backup
 .Description
 Prepares Datasource object for backup
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $criteria = New-AzDataProtectionPolicyTagCriteria -AbsoluteCriteria FirstOfWeek
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -Criteria $criteria
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy

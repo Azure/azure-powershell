@@ -1,18 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a daily retention lifecycle
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
 
-{{ Add output here }}
+DeleteAfterDuration        : P30D
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 ```
 
-{{ Add description here }}
+This command creates a lifecycle object which stores the backup data in operational store for 30 days.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a weekly retention lifecycle.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 20
 
-{{ Add output here }}
+DeleteAfterDuration        : P20W
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 ```
 
-{{ Add description here }}
+This command creates a lifecycle object which stores the backup data in operational store for 20 weeks.
 

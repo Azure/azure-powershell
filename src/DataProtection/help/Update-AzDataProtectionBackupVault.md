@@ -1,42 +1,64 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 schema: 2.0.0
 ---
 
-# Remove-AzDataProtectionBackupInstance
+# Update-AzDataProtectionBackupVault
 
 ## SYNOPSIS
-
+Updates a BackupVault resource belonging to a resource group.
+For example, updating tags for a resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### PatchExpanded (Default)
 ```
-Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
+ [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Patch
+```
+Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String>
+ -Parameter <IPatchResourceRequestInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentity
+```
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
+ -Parameter <IPatchResourceRequestInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### PatchViaIdentityExpanded
 ```
-Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-IdentityType <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Updates a BackupVault resource belonging to a resource group.
+For example, updating tags for a resource.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
-PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
+{{ Add code here }}
 ```
 
+{{ Add output here }}
 
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
+```
+
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -70,34 +92,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+The identityType which can be either SystemAssigned or None
+
+```yaml
+Type: System.String
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: BackupInstanceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,18 +138,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Parameter
+Patch Request content for Microsoft.DataProtection resources
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IPatchResourceRequestInput
+Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -136,7 +159,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Patch, PatchExpanded
 Aliases:
 
 Required: True
@@ -151,7 +174,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Patch, PatchExpanded
 Aliases:
 
 Required: False
@@ -161,12 +184,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Patch, PatchExpanded
 Aliases:
 
 Required: True
@@ -212,11 +250,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IPatchResourceRequestInput
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 
 ## NOTES
 
@@ -238,6 +278,11 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
+
+PARAMETER <IPatchResourceRequestInput>: Patch Request content for Microsoft.DataProtection resources
+  - `[IdentityType <String>]`: The identityType which can be either SystemAssigned or None
+  - `[Tag <IPatchResourceRequestInputTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

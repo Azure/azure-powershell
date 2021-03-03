@@ -1,18 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a daily schedule object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Daily -IntervalCount 1
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/P1D
 ```
 
-{{ Add description here }}
+This command creates a daily schedule for Azure Backup Rule
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an hourly schedule object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/PT4H
 ```
 
-{{ Add description here }}
+This command creates an hourly scheudle for Azure Backup Rule.
 

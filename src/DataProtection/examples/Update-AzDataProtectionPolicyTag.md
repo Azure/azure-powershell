@@ -1,18 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add Weekly tag to Backup Policy
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $criteria = New-AzDataProtectionPolicyTagCriteria -AbsoluteCriteria FirstOfWeek
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -Criteria $criteria
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+This command adds a weekly tag to given backup policy
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove Weeky tag from Backup Policy
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+This command removes Weekly tag from backup policy.
 

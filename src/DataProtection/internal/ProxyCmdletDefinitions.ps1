@@ -482,13 +482,7 @@ Creates or Updates a backup policy belonging to a backup vault
 .Description
 Creates or Updates a backup policy belonging to a backup vault
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBaseBackupPolicyResource

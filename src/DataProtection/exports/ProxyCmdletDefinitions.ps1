@@ -1913,13 +1913,9 @@ end {
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -2107,13 +2103,9 @@ Deletes a backup policy belonging to a backup vault
 .Description
 Deletes a backup policy belonging to a backup vault
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+PS C:\> Remove-AzDataProtectionBackupPolicy -Name $policy[0].name -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -2289,13 +2281,8 @@ Deletes a BackupVault resource from the resource group.
 .Description
 Deletes a BackupVault resource from the resource group.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -2464,13 +2451,18 @@ end {
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $sub = "xxxx-xxx-xx"
+PS C:\> $DiskId = "/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/disks/{diskname}"
+PS C:\> $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault -Name "MyPolicy"
+PS C:\> $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault
+PS C:\> $instance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation $vault.Location -PolicyId $policy.Id -DatasourceId $DiskId 
+PS C:\> $instance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = "/subscriptions/{subscription}/resourceGroups/{resourceGroup}"
+PS C:\> Set-AzDataProtectionBackupInstance -VaultId $vault.ID -BackupInstance $instance
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
+Name                                                       Type                                                  BackupInstanceName
+----                                                       ----                                                  ------------------
+sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166 Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
@@ -3223,13 +3215,11 @@ Triggers restore for a BackupInstance
 .Description
 Triggers restore for a BackupInstance
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault"
+PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault" -BackupInstanceName $instance.Name
+PS C:\> $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "westus"  -RestoreType AlternateLocation -TargetResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{DiskName}" -RecoveryPoint $rp[0].name
+PS C:\> Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName sarath-rg -VaultName sarath-vault -SubscriptionId "xxx-xxx-xxx" -Parameter $restorerequest
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
@@ -6131,13 +6121,17 @@ Prepares Datasource object for backup
 .Description
 Prepares Datasource object for backup
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteria -AbsoluteCriteria FirstOfDay
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- ------------- ------------ ------------ ---------------
+ScheduleBasedBackupCriteria {FirstOfDay}
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteria -DaysOfWeek @("Sunday", "Monday")
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek    MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- -------------    ------------ ------------ ---------------
+ScheduleBasedBackupCriteria                   {Sunday, Monday}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria
@@ -6245,13 +6239,15 @@ Creates new Schedule object
 .Description
 Creates new Schedule object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Daily -IntervalCount 1
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/P1D
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/PT4H
 
 .Outputs
 System.String[]
@@ -6337,13 +6333,21 @@ Creates new Lifecycle object
 .Description
 Creates new Lifecycle object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
 
-{{ Add output here }}
+DeleteAfterDuration        : P30D
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 20
 
-{{ Add output here }}
+DeleteAfterDuration        : P20W
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ISourceLifeCycle
@@ -6441,13 +6445,34 @@ Get Backup Instances from ARG
 .Description
 Get Backup Instances from ARG
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk
 
-{{ Add output here }}
+Name                                                                                                                   Type
+----                                                                                                                   ----
+ContosoDemoVM_DataDisk_0-ContosoDemoVM_DataDisk_0-5f7b2a1f-f1ab-4abe-aadf-e7dc48238157                                 microsoft.dataprotection/backupvaults/backupinstance
+ContosoDemoVM_OsDisk_1_84b542ec38a447cea-ContosoDemoVM_OsDisk_1_84b542ec38a447cea-9bdcbd90-3555-4651-93b8-8265e1b5c07a microsoft.dataprotection/backupvaults/backupinstance
+DataDisk1-DataDisk1-0c71e6bf-9289-483c-8e27-aa6c0df60078                                                               microsoft.dataprotection/backupvaults/backupinstance
+rraj-StandardHDD-rraj-StandardHDD-85d0a3f4-7fa8-46c7-bf83-0dee27eac08e                                                 microsoft.dataprotection/backupvaults/backupinstance
+sakaarhotfixtest_disk1_86d713f7b80e493b9-sakaarhotfixtest_disk1_86d713f7b80e493b9-be214c89-c07d-41f0-8362-b78d58d5506f microsoft.dataprotection/backupvaults/backupinstance
+pracdisk-pracdisk-643fac7d-0816-4056-8908-d0ef8b63b047                                                                 microsoft.dataprotection/backupvaults/backupinstance
+test1-test1-59f95871-de81-4051-95e7-ee6c4e5b30e0                                                                       microsoft.dataprotection/backupvaults/backupinstance
+anubhwus-test-anubhwus-test-5fe6ce14-fbd2-4641-80d0-f8f8b254601d                                                       microsoft.dataprotection/backupvaults/backupinstance
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2")
 
-{{ Add output here }}
+Name                                                           Type                                                  BackupInstanceName
+----                                                           ----                                                  ------------------
+sarath-disk3-sarath-disk3-dbb8c2d0-bdbf-448c-9664-ea74df26d4a8 microsoft.dataprotection/backupvaults/backupinstances sarath-disk3-sarath-disk3-dbb8c2d0-bdbf-448c-9664-ea7
+sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166     microsoft.dataprotection/backupvaults/backupinstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e59
+sarathdisk2-sarathdisk2-b0bf31ab-c9c5-407f-98a2-3ad6bad4305a   microsoft.dataprotection/backupvaults/backupinstances sarathdisk2-sarathdisk2-b0bf31ab-c9c5-407f-98a2-3ad6b
+.Example
+PS C:\> Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -DatasourceType AzureDisk -ResourceGroup @("sarath-rg", "sarath-rg2") -ProtectionStatus  ProtectionConfigured
+
+Name                                                           Type                                                  BackupInstanceName
+----                                                           ----                                                  ------------------
+sarath-disk3-sarath-disk3-dbb8c2d0-bdbf-448c-9664-ea74df26d4a8 microsoft.dataprotection/backupvaults/backupinstances sarath-disk3-sarath-disk3-dbb8c2d0-bdbf-448c-9664-ea7
+sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166     microsoft.dataprotection/backupvaults/backupinstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e59
+sarathdisk2-sarathdisk2-b0bf31ab-c9c5-407f-98a2-3ad6bad4305a   microsoft.dataprotection/backupvaults/backupinstances sarathdisk2-sarathdisk2-b0bf31ab-c9c5-407f-98a2-3ad6b
 
 .Outputs
 System.Management.Automation.PSObject
@@ -6545,13 +6570,23 @@ Get Backup Vault storage setting object
 .Description
 Get Backup Vault storage setting object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $endtime = get-date
+PS C:\> $starttime = $endtime.AddHours(-5)
+PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -StartTime $starttime -EndTime $endtime
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+1c1d56c2-b21a-4038-ba46-3c1a0089e66a microsoft.dataprotection/backupvaults/backupjobs
+79f2804d-a39d-487e-91b5-f2eceffcbb7a microsoft.dataprotection/backupvaults/backupjobs
+96238abd-6ff3-48e0-8c07-0eabd6928a17 microsoft.dataprotection/backupvaults/backupjobs
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup sarath-rg -Vault sarath-vault -DatasourceType AzureDisk -Operation OnDemandBackup
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+11bc277d-9448-446a-9e79-4721858524d6 microsoft.dataprotection/backupvaults/backupjobs
+16d7b56a-e169-41d1-aa10-cafcc19c8e12 microsoft.dataprotection/backupvaults/backupjobs
+1b0b17e3-398f-4265-9d03-ffc1e21fa73a microsoft.dataprotection/backupvaults/backupjobs
 
 .Outputs
 System.Management.Automation.PSObject
@@ -6667,13 +6702,7 @@ end {
 .Description
 
 .Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 System.Object
@@ -7264,13 +7293,19 @@ Adds or removes Retention Rule to existing Policy
 .Description
 Adds or removes Retention Rule to existing Policy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $pol = Get-AzDataProtectionPolicyTemplate
+PS C:\> $lifecycle = New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 5
+PS C:\> Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -LifeCycles $lifecycle -IsDefault $false
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\>  Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
@@ -7406,13 +7441,18 @@ Prepares Datasource object for backup
 .Description
 Prepares Datasource object for backup
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $criteria = New-AzDataProtectionPolicyTagCriteria -AbsoluteCriteria FirstOfWeek
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -Criteria $criteria
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDataProtectionPolicyTag -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
@@ -7543,13 +7583,12 @@ Creates new Schedule object
 .Description
 Creates new Schedule object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $schedule = New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays (get-date) -IntervalType Daily -IntervalCount 1
+PS C:\> Update-AzDataProtectionPolicyTrigger -Policy $pol -Schedule $schedule
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy

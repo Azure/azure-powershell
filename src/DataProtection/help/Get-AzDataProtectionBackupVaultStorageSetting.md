@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/initialize-azdataprotectiontargetrestoreinfo
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupvaultstoragesetting
 schema: 2.0.0
 ---
 
-# Initialize-AzDataProtectionTargetRestoreInfo
+# Get-AzDataProtectionBackupVaultStorageSetting
 
 ## SYNOPSIS
 Get Backup Vault storage setting object
@@ -13,8 +13,8 @@ Get Backup Vault storage setting object
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionTargetRestoreInfo -DatasourceId <String> -DatasourceType <String>
- -Location <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataProtectionBackupVaultStorageSetting -DataStoreType <DataStoreType> -Type <StorageSettingType>
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,20 +29,13 @@ Get Backup Vault storage setting object
 
 {{ Add output here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
-
 ## PARAMETERS
 
-### -DatasourceId
-Storage Type of the vault
+### -DataStoreType
+DataStore Type of the vault
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
 
@@ -53,26 +46,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatasourceType
-Datasource Type
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
+### -Type
 Storage Type of the vault
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingType
 Parameter Sets: (All)
 Aliases:
 

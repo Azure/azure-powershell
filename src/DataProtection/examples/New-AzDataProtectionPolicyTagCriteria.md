@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a tag with absolute criteria 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteria -AbsoluteCriteria FirstOfDay
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- ------------- ------------ ------------ ---------------
+ScheduleBasedBackupCriteria {FirstOfDay}
 ```
 
-{{ Add description here }}
+This command creates a criteria object with absolute criteria.
 
-### Example 2: {{ Add title here }}
+### Example 2: create a tag with weekly criteria
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteria -DaysOfWeek @("Sunday", "Monday")
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek    MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- -------------    ------------ ------------ ---------------
+ScheduleBasedBackupCriteria                   {Sunday, Monday}
 ```
 
-{{ Add description here }}
+This command creates a critetia object with weekly criteria
 

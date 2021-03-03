@@ -1,39 +1,55 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/backup-azdataprotectionbackupinstanceadhoc
 schema: 2.0.0
 ---
 
-# Remove-AzDataProtectionBackupInstance
+# Backup-AzDataProtectionBackupInstanceAdhoc
 
 ## SYNOPSIS
-
+Trigger adhoc backup
 
 ## SYNTAX
 
-### Delete (Default)
+### BackupExpanded (Default)
 ```
-Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -BackupRuleOptionRuleName <String> [-SubscriptionId <String>]
+ [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Backup
 ```
-Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -Parameter <ITriggerBackupRequest> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaIdentity
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
+ -Parameter <ITriggerBackupRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaIdentityExpanded
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
+ -BackupRuleOptionRuleName <String> [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Trigger adhoc backup
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
-PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
+PS C:\> Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName "MyResourceGroup" -SubscriptionId "xxxx-xxx-xxxx" -VaultName "MyVault" -BackupRuleOptionRuleName "BackupWeekly" -TriggerOptionRetentionTagOverride "Default"
 ```
 
 
@@ -49,6 +65,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupInstanceName
+The name of the backup instance
+
+```yaml
+Type: System.String
+Parameter Sets: Backup, BackupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupRuleOptionRuleName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: BackupExpanded, BackupViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,28 +122,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: BackupViaIdentity, BackupViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: BackupInstanceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -113,6 +144,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Trigger backup request
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest
+Parameter Sets: Backup, BackupViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -136,7 +183,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Backup, BackupExpanded
 Aliases:
 
 Required: True
@@ -151,7 +198,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Backup, BackupExpanded
 Aliases:
 
 Required: False
@@ -161,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TriggerOptionRetentionTagOverride
+.
+
+```yaml
+Type: System.String
+Parameter Sets: BackupExpanded, BackupViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Backup, BackupExpanded
 Aliases:
 
 Required: True
@@ -212,6 +274,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
@@ -238,6 +302,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
+
+PARAMETER <ITriggerBackupRequest>: Trigger backup request
+  - `BackupRuleOptionRuleName <String>`: 
+  - `[TriggerOptionRetentionTagOverride <String>]`: 
 
 ## RELATED LINKS
 

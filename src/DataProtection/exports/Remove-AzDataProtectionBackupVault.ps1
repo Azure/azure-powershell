@@ -19,13 +19,8 @@ Deletes a BackupVault resource from the resource group.
 .Description
 Deletes a BackupVault resource from the resource group.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity

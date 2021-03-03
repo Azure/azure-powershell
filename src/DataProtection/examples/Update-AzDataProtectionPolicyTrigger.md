@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add Daily schedule to Azure Backup rule.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $schedule = New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays (get-date) -IntervalType Daily -IntervalCount 1
+PS C:\> Update-AzDataProtectionPolicyTrigger -Policy $pol -Schedule $schedule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 ```
 
-{{ Add description here }}
+This command updates backup schedule of given policy to daily backup.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

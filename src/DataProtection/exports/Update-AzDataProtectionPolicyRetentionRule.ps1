@@ -19,13 +19,19 @@ Adds or removes Retention Rule to existing Policy
 .Description
 Adds or removes Retention Rule to existing Policy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $pol = Get-AzDataProtectionPolicyTemplate
+PS C:\> $lifecycle = New-AzDataProtectionRetentionLifeCycle -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 5
+PS C:\> Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -LifeCycles $lifecycle -IsDefault $false
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 .Example
-PS C:\> {{ Add code here }}
+PS C:\>  Update-AzDataProtectionPolicyRetentionRule -Policy $pol -Name Weekly -RemoveRule
 
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy

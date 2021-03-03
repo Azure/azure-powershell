@@ -1,80 +1,42 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionpolicytemplate
 schema: 2.0.0
 ---
 
-# New-AzDataProtectionPolicyTriggerSchedule
+# Get-AzDataProtectionPolicyTemplate
 
 ## SYNOPSIS
-Creates new Schedule object
+Prepares Datasource object for backup
 
 ## SYNTAX
 
 ```
-New-AzDataProtectionPolicyTriggerSchedule -IntervalCount <Int32> -IntervalType <BackupFrequency>
- -ScheduleDays <DateTime[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataProtectionPolicyTemplate -DatasourceType <DatasourceTypes> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates new Schedule object
+Prepares Datasource object for backup
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-$date = get-date
-PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Daily -IntervalCount 1
+Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 ```
 
-R/2021-03-03T12:49:55+05:30/P1D
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-$date = get-date
-PS C:\> New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
-```
-
-R/2021-03-03T12:49:55+05:30/PT4H
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 ## PARAMETERS
 
-### -IntervalCount
-interval count
+### -DatasourceType
+Datasource Type
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IntervalType
-Source Datastore
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleDays
-Source Datastore
-
-```yaml
-Type: System.DateTime[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String[]
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
 
 ## NOTES
 

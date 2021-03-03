@@ -1,42 +1,64 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerehydrate
 schema: 2.0.0
 ---
 
-# Remove-AzDataProtectionBackupInstance
+# Start-AzDataProtectionBackupInstanceRehydrate
 
 ## SYNOPSIS
-
+rehydrate recovery point for restore for a BackupInstance
 
 ## SYNTAX
 
-### Delete (Default)
+### TriggerExpanded (Default)
 ```
-Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRehydrate -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -RecoveryPointId <String> -RehydrationRetentionDuration <String>
+ [-SubscriptionId <String>] [-RehydrationPriority <RehydrationPriority>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Trigger
 ```
-Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRehydrate -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -Parameter <IAzureBackupRehydrationRequest> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TriggerViaIdentity
+```
+Start-AzDataProtectionBackupInstanceRehydrate -InputObject <IDataProtectionIdentity>
+ -Parameter <IAzureBackupRehydrationRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TriggerViaIdentityExpanded
+```
+Start-AzDataProtectionBackupInstanceRehydrate -InputObject <IDataProtectionIdentity> -RecoveryPointId <String>
+ -RehydrationRetentionDuration <String> [-RehydrationPriority <RehydrationPriority>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+rehydrate recovery point for restore for a BackupInstance
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
-PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
+{{ Add code here }}
 ```
 
+{{ Add output here }}
 
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
+```
+
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -49,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupInstanceName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: Trigger, TriggerExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,28 +113,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: TriggerViaIdentity, TriggerViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: BackupInstanceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,6 +138,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Azure Backup Rehydrate Request
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRehydrationRequest
+Parameter Sets: Trigger, TriggerViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -131,12 +169,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryPointId
+Id of the recovery point to be recovered
+
+```yaml
+Type: System.String
+Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrationPriority
+Priority to be used for rehydration.
+Values High or Standard
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RehydrationPriority
+Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrationRetentionDuration
+Retention duration in ISO 8601 format i.e P10D .
+
+```yaml
+Type: System.String
+Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
 Required: True
@@ -151,7 +235,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
 Required: False
@@ -166,7 +250,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
 Required: True
@@ -212,6 +296,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRehydrationRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
@@ -238,6 +324,11 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
+
+PARAMETER <IAzureBackupRehydrationRequest>: Azure Backup Rehydrate Request
+  - `RecoveryPointId <String>`: Id of the recovery point to be recovered
+  - `RehydrationRetentionDuration <String>`: Retention duration in ISO 8601 format i.e P10D .
+  - `[RehydrationPriority <RehydrationPriority?>]`: Priority to be used for rehydration. Values High or Standard
 
 ## RELATED LINKS
 

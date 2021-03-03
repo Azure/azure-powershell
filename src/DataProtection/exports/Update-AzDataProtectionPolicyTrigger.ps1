@@ -19,13 +19,12 @@ Creates new Schedule object
 .Description
 Creates new Schedule object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $schedule = New-AzDataProtectionPolicyTriggerSchedule -ScheduleDays (get-date) -IntervalType Daily -IntervalCount 1
+PS C:\> Update-AzDataProtectionPolicyTrigger -Policy $pol -Schedule $schedule
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+DatasourceType            ObjectType
+--------------            ----------
+{Microsoft.Compute/disks} BackupPolicy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
