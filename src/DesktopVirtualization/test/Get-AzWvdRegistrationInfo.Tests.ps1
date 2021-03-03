@@ -13,29 +13,27 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzWvdRegistrationInfo' {	
     It 'Get RegInfo' {	
-        $date = get-date	
-        $expirationTime = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))	
-        $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `	
-                            -ResourceGroupName $env.ResourceGroup `	
-                            -Name 'HostPoolPowershellContained1' `	
-                            -Location $env.Location `	
-                            -HostPoolType 'Shared' `	
-                            -LoadBalancerType 'DepthFirst' `	
-                            -RegistrationTokenOperation 'Update' `	
-                            -ExpirationTime $expirationTime `	
-                            -Description 'des' `	
-                            -FriendlyName 'fri' `	
-                            -MaxSessionLimit 5 `	
-                            -VMTemplate $null `	
-                            -SsoContext $null `	
-                            -CustomRdpProperty $null `	
-                            -Ring $null `	
-                            -ValidationEnvironment:$false `	
-                            -PreferredAppGroupType 'Desktop'	
+        New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+        -ResourceGroupName $env.ResourceGroup `
+        -Name 'HostPoolPowershellContained1' `
+        -Location $env.Location `
+        -HostPoolType 'Shared' `
+        -LoadBalancerType 'DepthFirst' `
+        -RegistrationTokenOperation 'Update' `
+        -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+        -Description 'des' `
+        -FriendlyName 'fri' `
+        -MaxSessionLimit 5 `
+        -VMTemplate $null `
+        -CustomRdpProperty $null `
+        -Ring $null `
+        -ValidationEnvironment:$false `
+        -PreferredAppGroupType 'Desktop'
 
-        $regInfo = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `	
-                                    -ResourceGroupName $env.ResourceGroup `	
-                                    -HostPoolName 'HostPoolPowershellContained1'	
-            $regInfo.Token | Should -Not -BeNullOrEmpty	
+        $regToken = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
+        -ResourceGroupName $env.ResourceGroup `
+        -HostPoolName 'HostPoolPowershellContained1' `
+
+        $regToken.Token | Should -Be 'token'
     }	
 }
