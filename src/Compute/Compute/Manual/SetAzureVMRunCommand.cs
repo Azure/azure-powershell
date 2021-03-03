@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
                     OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
                     ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null,
-                    Location = "eastus"
+                    Location = (this.Location != null) ? this.Location : null
                 };
                 /*
                 PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
