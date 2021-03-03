@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return Convert.FromBase64String(s); // Standard base64 decoder
         }
 
-        internal static string Encode(byte[] arg)
+        public static string Encode(byte[] arg)
         {
             if (arg == null)
             {
