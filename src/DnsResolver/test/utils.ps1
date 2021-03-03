@@ -40,8 +40,9 @@ function setupEnv() {
     # New-cmdlet uses 0 - 12
     # Get-cmdlet uses 13 - 21
     # Remove-cmdlet uses 22-32
-    # Patch 32 - 38
+    # Patch 33 - 38
     # New IE - 38 - 45
+    # Patch IE - 46 - 49
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
     $subnetIdEnvKeyPrefix = "SubnetId" 
