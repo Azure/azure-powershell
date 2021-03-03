@@ -14,16 +14,12 @@ function Test-NewAzAksSimple
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
         
-        if (IsLive) {
-            $ServicePrincipalId = '618a2a3a-9d44-415a-b0ce-9729253a4ba9'
-            $Secret = '5E41A57vC_ODdiFb5ji-a9~C~Mp3gKt7D~'
-            $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-            $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
-            $cred = $(createTestCredential "Unicorns" "Puppies")
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
-        } else {
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize
-        }
+        $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
+        $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
+        $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
+        $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-NotNull $cluster.DnsPrefix
@@ -54,13 +50,13 @@ function Test-NewAzAksWithAcr
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
+        
+        $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
+        $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
+        $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
 
-        if (IsLive) {
-            $cred = $(createTestCredential "Unicorns" "Puppies")
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
-        } else {
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -AcrNameToAttach $acrName
-        }
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-NotNull $cluster.DnsPrefix
@@ -105,11 +101,11 @@ function Test-NewAzAks
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NetworkPlugin $networkPlugin `
             -KubernetesVersion $kubeVersion -EnableRbac -LoadBalancerSku $loadBalancerSku -LinuxProfileAdminUserName $linuxAdminUser -DnsNamePrefix $dnsNamePrefix `
             -NodeName $nodeName -EnableNodeAutoScaling -NodeCount $nodeCount -NodeOsDiskSize $nodeDiskSize -NodeVmSize $nodeVmSize `
             -NodeMaxCount $nodeMaxCount -NodeMinCount $nodeMinCount -NodeMaxPodCount $maxPodCount -NodeSetPriority Regular -NodeScaleSetEvictionPolicy Deallocate -NodeVmSetType VirtualMachineScaleSets
+
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-AreEqual $dnsNamePrefix $cluster.DnsPrefix
@@ -150,8 +146,8 @@ function Test-NewAzAksByServicePrincipal
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
 
-    $ServicePrincipalId = '618a2a3a-9d44-415a-b0ce-9729253a4ba9'
-    $Secret = '5E41A57vC_ODdiFb5ji-a9~C~Mp3gKt7D~'
+    $ServicePrincipalId = 'e65d50b0-0853-48a9-82d3-77d800f4a9bc'
+    $Secret = 'V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb'
     $secStringPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
     $credObject = New-Object System.Management.Automation.PSCredential($ServicePrincipalId,$secStringPassword)
 
