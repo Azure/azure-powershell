@@ -231,12 +231,17 @@ function Test-CortexCRUD
 		# Create the VpnConnection
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20 -UseLocalAzureIpAddress 
 		Assert-AreEqual $true $createdVpnConnection.UseLocalAzureIpAddress
+
+		$trafficSelector = New-AzIpsecTrafficSelectorPolicy -LocalAddressRange ("2.2.2.2/32", "4.4.4.4/32") -RemoteAddressRange ("3.3.3.3/32", "5.5.5.5/32")
 		
-		$createdVpnConnection = Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -ConnectionBandwidth 30 -UseLocalAzureIpAddress $false
+		$createdVpnConnection = Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -ConnectionBandwidth 30 -UseLocalAzureIpAddress $false -TrafficSelectorPolicy ($trafficSelector)
+		
 		$vpnConnection = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName
 		Assert-AreEqual $vpnConnectionName $vpnConnection.Name
 		Assert-AreEqual 30 $vpnConnection.ConnectionBandwidth
 		Assert-AreEqual $false $vpnConnection.UseLocalAzureIpAddress 
+		Assert-AreEqual $trafficSelector.LocalAddressRanges[0] $createdVpnConnection.TrafficSelectorPolicies[0].LocalAddressRanges[0]
+		Assert-AreEqual $trafficSelector.RemoteAddressRanges[0] $createdVpnConnection.TrafficSelectorPolicies[0].RemoteAddressRanges[0]
 
 		# Create the VpnConnection with site with links
 		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
@@ -419,6 +424,12 @@ function Test-CortexDownloadConfig
 
 		# Test Reset VpnSiteLinkConnection
 		Reset-AzVpnSiteLinkConnection -InputObject $vpnConnection2.VpnLinkConnections[0]
+
+		# Update VpnConnection with -TrafficSelectorPolicy
+		Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -TrafficSelectorPolicy ($trafficSelector)
+		$updatedVpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
+		Assert-AreEqual $trafficSelector.LocalAddressRanges[0] $updatedVpnConnection2.TrafficSelectorPolicies[0].LocalAddressRanges[0]
+		Assert-AreEqual $trafficSelector.RemoteAddressRanges[0] $updatedVpnConnection2.TrafficSelectorPolicies[0].RemoteAddressRanges[0]
 
 		# Download config
 		$storetype = 'Standard_GRS'
