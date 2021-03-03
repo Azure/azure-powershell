@@ -374,6 +374,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowSharedKeyAccess = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable NFS 3.0 protocol support if sets to true")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableNfsV3
+        {
+            get
+            {
+                return enableNfsV3.Value;
+            }
+            set
+            {
+                enableNfsV3 = value;
+            }
+        }
+        private bool? enableNfsV3 = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -515,6 +532,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (allowSharedKeyAccess != null)
             {
                 createParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
+            }
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

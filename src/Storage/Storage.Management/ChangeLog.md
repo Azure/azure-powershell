@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported secure SMB setting in File service properties
+    - `Update-AzStorageFileServiceProperty`
+* Supported create account with EnableNfsV3
+    - `New-AzStorageAccount`
 
 ## Version 3.4.0
 * Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
