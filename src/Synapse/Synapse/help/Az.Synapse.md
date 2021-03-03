@@ -66,7 +66,7 @@ Gets an integration runtime node information.
 Gets information about linked services in workspace.
 
 ### [Get-AzSynapseManagedIdentitySqlControlSetting](Get-AzSynapseManagedIdentitySqlControlSetting.md)
-Updates managed identity SQL control settings to workspace.
+Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
