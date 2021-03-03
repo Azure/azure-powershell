@@ -38,6 +38,14 @@ PS C:\> New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -Works
 
 This command creates a workspace key named ContosoWorkspaceKey under workspace ContosoWorkspace.
 
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | New-AzSynapseWorkspaceKey -Name ContosoWorkspaceKey -EncryptionKeyIdentifier https://<key-vault-url>/keys/<key-name>
+```
+
+This command creates a workspace key named ContosoWorkspaceKey under workspace ContosoWorkspace through pipeline.
+
 ## PARAMETERS
 
 ### -Activate

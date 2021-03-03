@@ -2836,7 +2836,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2858,7 +2858,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2874,7 +2874,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2891,7 +2891,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2921,7 +2921,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetSynapseException(ex);
+                throw GetAzurePowerShellException(ex);
             }
         }
 
@@ -2954,7 +2954,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetKey(resourceGroupName, workspaceName, KeyName);
                 return true;
             }
-            catch (NotFoundException)
+            catch (AzPSResourceNotFoundCloudException)
             {
                 return false;
             }
