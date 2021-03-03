@@ -70,10 +70,10 @@ Describe 'Update-AzDnsResolver' {
         $updatedResolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Update DNS Resolver by adding tag IfMatch not match , expect resolver not updated' {
+    It 'Update DNS Resolver by adding tag IfMatch not match, expect resolver not updated' {
         $dnsResolverName = $env.DnsResolverName36
         $virtualNetworkId = $env.VirtualNetworkId36
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+        $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
 
         $tag  = GetRandomHashtable -size 5
         $etag = (RandomString -allChars $false -len 10) 

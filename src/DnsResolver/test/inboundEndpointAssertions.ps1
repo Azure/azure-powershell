@@ -37,7 +37,7 @@ Function BeSuccessfullyCreatedInboundEndpoint {
 Function BeSameInboundEndpointAsExpected {
     <#
     .SYNOPSIS
-    Tests whether a DNS Resolver is created successfully
+    Tests whether an inbound endpoint is created successfully
     #>
         [CmdletBinding()]
         Param(
