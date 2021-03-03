@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name.")]
         [ResourceGroupCompleter]
+        //[ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -226,6 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
                     OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
                     ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null,
+                    Location = "eastus"
                 };
                 /*
                 PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
@@ -251,9 +253,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 //};*/
 
                 //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
-                this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
-
-
+                VirtualMachineRunCommandsClient.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
             });
 
 
