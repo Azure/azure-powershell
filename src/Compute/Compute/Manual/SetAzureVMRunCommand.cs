@@ -170,84 +170,92 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroup;
             string virtualMachineName;
 
-            switch (ParameterSetName)
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
             {
-                case ResourceIdParameterSet:
-                    ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
-                    resourceGroup = identifier.ResourceGroupName;
-                    virtualMachineName = identifier.ResourceName;
-                    break;
-
-                default:
-                    resourceGroup = this.ResourceGroupName;
-                    virtualMachineName = this.VMName;
-                    break;
-
-                
-            }
-
-            //TODO: execute cmdlet 
-
-            //PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
-
-            VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();//TODO: why can't I use the PSVirtualMachineRunCommandScriptSource object? Error occurs. 
-            if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
-            {
-                
-                if (this.Script != null)
+                switch (ParameterSetName)
                 {
-                    scriptSource.Script = this.Script;
-                }
-                if (this.ScriptUri != null)
-                {
-                    scriptSource.ScriptUri = this.ScriptUri;
-                }
-                if (this.CommandId != null)
-                {
-                    scriptSource.CommandId = this.CommandId;
-                }
-            }
+                    case ResourceIdParameterSet:
+                        ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                        resourceGroup = identifier.ResourceGroupName;
+                        virtualMachineName = identifier.ResourceName;
+                        break;
+
+                    default:
+                        resourceGroup = this.ResourceGroupName;
+                        virtualMachineName = this.VMName;
+                        break;
 
 
-            VirtualMachineRunCommand parameters = new VirtualMachineRunCommand
-            {
-                Source = scriptSource, //unable to use PS version here for some reason
-                //name ? 
-                // location? 
-                AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
-                Parameters = (this.Parameter != null) ? this.Parameter : null,
-                ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
-                RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
-                RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
-                TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
-                OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
-                ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null, 
-            };
-            /*
-            PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
-            {
-                Source = scriptSource, //unable to use PS version here for some reason
-                //name ? 
-                // location? 
-                AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
-                Parameters = (this.Parameter != null) ? this.Parameter : null,
-                ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
-                RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
-                RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
-                TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
-                OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
-                ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
+                }
+
+                //TODO: execute cmdlet 
+
+                //PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
+
+                VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();//TODO: why can't I use the PSVirtualMachineRunCommandScriptSource object? Error occurs. 
+                if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
+                {
+
+                    if (this.Script != null)
+                    {
+                        scriptSource.Script = this.Script;
+                    }
+                    if (this.ScriptUri != null)
+                    {
+                        scriptSource.ScriptUri = this.ScriptUri;
+                    }
+                    if (this.CommandId != null)
+                    {
+                        scriptSource.CommandId = this.CommandId;
+                    }
+                }
+
+
+                VirtualMachineRunCommand parameters = new VirtualMachineRunCommand
+                {
+                    Source = scriptSource, //unable to use PS version here for some reason
+                                           //name ? 
+                                           // location? 
+                    AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
+                    Parameters = (this.Parameter != null) ? this.Parameter : null,
+                    ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
+                    RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
+                    RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
+                    TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
+                    OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
+                    ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null,
+                };
                 /*
-                ,Id = null,
-                Type = null,
-                Name = null,
-                Location = null,
-                Tags = null
-                */
-            //};*/
+                PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
+                {
+                    Source = scriptSource, //unable to use PS version here for some reason
+                    //name ? 
+                    // location? 
+                    AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
+                    Parameters = (this.Parameter != null) ? this.Parameter : null,
+                    ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
+                    RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
+                    RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
+                    TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
+                    OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
+                    ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
+                    /*
+                    ,Id = null,
+                    Type = null,
+                    Name = null,
+                    Location = null,
+                    Tags = null
+                    */
+                //};*/
 
-            //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
-            this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
+                //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
+                this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
+
+
+            });
+
 
 
         }
