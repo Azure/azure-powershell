@@ -11,12 +11,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using System.Collections;
 using System.Management.Automation;
 
@@ -47,14 +48,14 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
         {  
             try
             {
-                Microsoft.Azure.Management.Cdn.Models.Sku afdSku = AfdUtilities.GenerateAfdProfileSku(this.Sku);
+                Sku afdSku = AfdUtilities.GenerateAfdProfileSku(this.Sku);
 
                 if (afdSku == null)
                 {
                     throw new PSArgumentException($"{this.Sku} is not a valid SKU. Please use {AfdSkuConstants.PremiumAzureFrontDoor} or {AfdSkuConstants.StandardAzureFrontDoor}.");
                 }
 
-                Microsoft.Azure.Management.Cdn.Models.Profile afdProfile = new Microsoft.Azure.Management.Cdn.Models.Profile
+                Management.Cdn.Models.Profile afdProfile = new Management.Cdn.Models.Profile
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
                     Sku = afdSku,
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
                 WriteObject(psAfdProfile);
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponseException)
+            catch (AfdErrorResponseException errorResponseException)
             {
                 throw new PSArgumentException(errorResponseException.Response.Content);
             }

@@ -74,5 +74,147 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 
             return false;
         }
+
+        public static HealthProbeRequestType CreateProbeRequestType(string probeRequestType)
+        {
+            string lowercaseProbeRequestType = probeRequestType.ToLower();
+
+            HealthProbeRequestType healthProbeRequestType;
+
+            switch (lowercaseProbeRequestType)
+            {
+                case "get":
+                    healthProbeRequestType = HealthProbeRequestType.GET;
+                    break;
+                case "head":
+                    healthProbeRequestType = HealthProbeRequestType.HEAD;
+                    break;
+                case "notset":
+                    healthProbeRequestType = HealthProbeRequestType.NotSet;
+                    break;
+                default:
+                    throw new Exception($"{probeRequestType} is not a valid probe request type. Please use GET, HEAD, or NotSet.");
+            }
+
+            return healthProbeRequestType;
+        }
+
+        public static ProbeProtocol CreateProbeProtocol(string probeProtocol)
+        {
+            string lowercaseProbeProtocol = probeProtocol.ToLower();
+
+            ProbeProtocol probeProtocolEnum;
+
+            switch(lowercaseProbeProtocol)
+            {
+                case "http":
+                    probeProtocolEnum = ProbeProtocol.Http;
+                    break;
+                case "https":
+                    probeProtocolEnum = ProbeProtocol.Https;
+                    break;
+                case "notset":
+                    probeProtocolEnum = ProbeProtocol.NotSet;
+                    break;
+                default:
+                    throw new Exception($"{probeProtocol} is not valid probe protocol. Please use Http, Https, or NotSet.");
+            }
+
+            return probeProtocolEnum;
+        }
+
+        // determine if needed 
+        public static ResponseBasedDetectedErrorTypes CreateResponseBasedDetectedErrorTypes(string responseBasedDetectedErrorTypes)
+        {
+            string lowercaseResponseBasedDetectedErrorTypes = responseBasedDetectedErrorTypes.ToLower();
+
+            ResponseBasedDetectedErrorTypes responseBasedDetectedErrorTypesEnum;
+
+            switch (lowercaseResponseBasedDetectedErrorTypes)
+            {
+                case "tcpandhttperrors":
+                    responseBasedDetectedErrorTypesEnum = ResponseBasedDetectedErrorTypes.TcpAndHttpErrors;
+                    break;
+                case "tcperrorsonly":
+                    responseBasedDetectedErrorTypesEnum = ResponseBasedDetectedErrorTypes.TcpErrorsOnly;
+                    break;
+                case "none":
+                    responseBasedDetectedErrorTypesEnum = ResponseBasedDetectedErrorTypes.None;
+                    break;
+                default:
+                    throw new Exception($"{responseBasedDetectedErrorTypes} is not a valid error type. Please use TcpAndHttpErrors, TcpErrorsOnly, or None.");   
+            }
+
+            return responseBasedDetectedErrorTypesEnum;
+        }
+
+        public static AfdQueryStringCachingBehavior CreateQueryStringCachingBehavior(string queryStringCachingBehavior)
+        {
+            string lowercaseQueryStringCachingBehavior = queryStringCachingBehavior.ToLower();
+
+            AfdQueryStringCachingBehavior queryStringCachingBehaviorEnum;
+
+            switch (lowercaseQueryStringCachingBehavior)
+            {
+                case "ignorequerystring":
+                    queryStringCachingBehaviorEnum = AfdQueryStringCachingBehavior.IgnoreQueryString;
+                    break;
+                case "usequerystring":
+                    queryStringCachingBehaviorEnum = AfdQueryStringCachingBehavior.UseQueryString;
+                    break;
+                case "notset":
+                    queryStringCachingBehaviorEnum = AfdQueryStringCachingBehavior.NotSet;
+                    break;
+                default:
+                    throw new Exception($"{queryStringCachingBehavior} is not a valid query string caching behavior type. Please use NotSet, UseQueryString, or IgnoreQueryString.");
+            }
+
+            return queryStringCachingBehaviorEnum;
+        }
+
+        public static string CreateHttpsRedirect(string httpsRedirect)
+        {
+            string lowercaseHttpsRedirect = httpsRedirect.ToLower();
+
+            string httpsRedirectState = String.Empty;
+
+            switch (lowercaseHttpsRedirect)
+            {
+                case "enabled":
+                    httpsRedirectState = "Enabled";
+                    break;
+                case "disabled":
+                    httpsRedirectState = "Disabled";
+                    break;
+                default:
+                    throw new Exception($"{httpsRedirect} is not valid. Please use Enabled or Disbaled.");
+            }
+
+            return httpsRedirectState;
+        }
+
+        public static string CreateForwardingProtocol(string forwadingProtocol)
+        {
+            string lowercaseForwardingProtocol = forwadingProtocol.ToLower();
+
+            string forwardingProtocolActual = String.Empty;
+
+            switch (lowercaseForwardingProtocol)
+            {
+                case "httponly":
+                    forwardingProtocolActual = "HttpOnly";
+                    break;
+                case "httpsonly":
+                    forwardingProtocolActual = "HttpsOnly";
+                    break;
+                case "matchrequest":
+                    forwardingProtocolActual = "MatchRequest";
+                    break;
+                default:
+                    throw new Exception($"{forwadingProtocol} is not valid. Please use HttpOnly, HttpsOnly, or MatchRequest.");
+            }
+
+            return forwardingProtocolActual;
+        }
     }
 }

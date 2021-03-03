@@ -11,24 +11,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Cdn.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdOriginGroup : PSArmBaseResource
+    public class PSAfdRoute : PSArmBaseResource
     {
-        public int? SampleSize { get; set; }
+        public string OriginGroupId { get; set; }
 
-        public int? SuccessfulSamplesRequired { get; set; }
+        public string OriginPath { get; set; }
 
-        public int? AdditionalLatencyInMilliseconds { get; set; }
+        public List<ResourceReference> CustomDomainIds { get; set; }
 
-        public string ProbePath { get; set; }
+        public List<ResourceReference> RuleSetIds { get; set; }
 
-        public string ProbeRequestType { get; set; }
+        public List<string> SupportedProtocols { get; set; }
 
-        public string ProbeProtocol { get; set; }
+        public List<string> PatternsToMatch { get; set; }
 
-        public int? ProbeIntervalInSeconds { get; set; }
+        public string QueryStringCachingBehavior { get; set; }
 
-        public int? TrafficRestorationTimeToHealedOrNewEndpointsInMinutes { get; set; } // confirm this field
+        public string ForwardingProtocol { get; set; }
+
+        public string HttpsRedirect { get; set; }
+
+        public string LinkToDefaultDomain { get; set; }
+
+        public string EnabledState { get; set; }
     }
 }

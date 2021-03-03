@@ -14,12 +14,15 @@
 using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Management.Cdn.Models;
+using System.Collections.Generic;
 
 using SdkAfdCustomDomain = Microsoft.Azure.Management.Cdn.Models.AFDDomain;
 using SdkAfdEndpoint = Microsoft.Azure.Management.Cdn.Models.AFDEndpoint;
 using SdkAfdOrigin = Microsoft.Azure.Management.Cdn.Models.AFDOrigin;
 using SdkAfdOriginGroup = Microsoft.Azure.Management.Cdn.Models.AFDOriginGroup;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
+using SdkAfdRoute = Microsoft.Azure.Management.Cdn.Models.Route;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
@@ -59,23 +62,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 EnabledState = sdkAfdEndpoint.EnabledState
             };
         }
-        public class SharedPrivateLinkResource
-        {
-            public PrivateLinkId PrivateLink { get; set;}
-
-            public string GroupId { get; set; }
-
-            public string PrivateLinkLocation { get; set;}
-
-            public string Status { get; set; }
-
-            public string RequestMessage { get; set; }
-        }
-
-        public class PrivateLinkId
-        {
-            public string Id { get; set; }
-        }
 
         public static PSAfdOrigin ToPSAfdOrigin(this SdkAfdOrigin sdkOrigin)
         {
@@ -104,9 +90,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Weight = sdkOrigin.Weight,
                 EnabledState = sdkOrigin.EnabledState,
                 PrivateLinkId = sharedPrivateLinkResource?.PrivateLink?.Id,
-                PrivateLinkGroupId = sharedPrivateLinkResource?.GroupId,
+                //PrivateLinkGroupId = sharedPrivateLinkResource?.GroupId, // confirm this field
                 PrivateLinkLocation = sharedPrivateLinkResource?.PrivateLinkLocation,
-                PrivateLinkStatus = sharedPrivateLinkResource?.Status,
+                //PrivateLinkStatus = sharedPrivateLinkResource?.Status, // confirm this field
                 PrivateLinkRequestMessage = sharedPrivateLinkResource?.RequestMessage
             };
         }
@@ -126,11 +112,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 ProbeRequestType = sdkOriginGroup.HealthProbeSettings?.ProbeRequestType.ToString(),
                 ProbeProtocol = sdkOriginGroup.HealthProbeSettings?.ProbeProtocol.ToString(),
                 ProbeIntervalInSeconds = sdkOriginGroup.HealthProbeSettings?.ProbeIntervalInSeconds,
-                ResponseBasedDetectedErrorTypes = sdkOriginGroup.ResponseBasedAfdOriginErrorDetectionSettings?.ResponseBasedDetectedErrorTypes.Value.ToString(), // not showing up, something wrong with sdk?
-                ResponseBasedFailoverThresholdPercentage = sdkOriginGroup.ResponseBasedAfdOriginErrorDetectionSettings?.ResponseBasedFailoverThresholdPercentage, // not showing up, something wrong with sdk?
-                // HttpErrorRanges = Fill in when implementing New / Set
-                TrafficRestorationTimeToHealedOrNewEndpointsInMinutes = sdkOriginGroup.TrafficRestorationTimeToHealedOrNewEndpointsInMinutes,
-                SessionAffinityState = sdkOriginGroup.SessionAffinityState
+                TrafficRestorationTimeToHealedOrNewEndpointsInMinutes = sdkOriginGroup.TrafficRestorationTimeToHealedOrNewEndpointsInMinutes
             };
         }
         
@@ -146,6 +128,28 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Tags = TagsConversionHelper.CreateTagHashtable(sdkAfdProfile.Tags),
                 ResourceState = sdkAfdProfile.ResourceState,
                 Sku = sdkAfdProfile.Sku.Name
+            };
+        }
+
+        public static PSAfdRoute ToPSAfdRoute(this SdkAfdRoute sdkAfdRoute)
+        {
+            return new PSAfdRoute
+            {
+                Id = sdkAfdRoute.Id,
+                Name = sdkAfdRoute.Name,
+                Type = sdkAfdRoute.Type,
+                ProvisioningState = sdkAfdRoute.ProvisioningState,
+                OriginGroupId = sdkAfdRoute.OriginGroup?.Id,
+                OriginPath = sdkAfdRoute.OriginPath,
+                CustomDomainIds = (List<ResourceReference>)sdkAfdRoute.CustomDomains,
+                RuleSetIds = (List<ResourceReference>)sdkAfdRoute.RuleSets,
+                SupportedProtocols = (List<string>)sdkAfdRoute.SupportedProtocols,
+                PatternsToMatch = (List<string>)sdkAfdRoute.PatternsToMatch,
+                QueryStringCachingBehavior = sdkAfdRoute.QueryStringCachingBehavior.Value.ToString(),
+                ForwardingProtocol = sdkAfdRoute.ForwardingProtocol,
+                HttpsRedirect = sdkAfdRoute.HttpsRedirect,
+                LinkToDefaultDomain = sdkAfdRoute.LinkToDefaultDomain,
+                EnabledState = sdkAfdRoute.EnabledState
             };
         }
     }

@@ -93,10 +93,13 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'New-AzCdnOrigin', 'Remove-AzCdnOrigin', 'New-AzCdnOriginGroup', 
                'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 'Set-AzCdnOriginGroup',
                'Get-AzAfdCustomDomain', 'Get-AzAfdEndpoint', 'Get-AzAfdOrigin',
-               'Get-AzAfdOriginGroup', 'Get-AzAfdProfile',
-               'New-AzAfdEndpoint', 'New-AzAfdOriginGroup', 'New-AzAfdProfile',
-               'Remove-AzAfdEndpoint', 'Remove-AzAfdOriginGroup', 'Remove-AzAfdProfile', 
-               'Set-AzAfdEndpoint', 'Set-AzAfdProfile'
+               'Get-AzAfdOriginGroup', 'Get-AzAfdProfile', 'Get-AzAfdRoute',
+               'New-AzAfdCustomDomain', 'New-AzAfdEndpoint', 'New-AzAfdOrigin',
+               'New-AzAfdOriginGroup', 'New-AzAfdProfile', 'New-AzAfdRoute',
+               'Remove-AzAfdEndpoint', 'Remove-AzAfdOriginGroup', 'Remove-AzAfdOrigin',
+               'Remove-AzAfdProfile', 'Remove-AzAfdRoute', 'Set-AzAfdEndpoint',
+               'Set-AzAfdOriginGroup', 'Set-AzAfdOrigin', 'Set-AzAfdProfile',
+               'Set-AzAfdRoute'
               
 # Variables to export from this module
 # VariablesToExport = @()

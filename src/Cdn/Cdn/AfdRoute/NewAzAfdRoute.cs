@@ -15,60 +15,70 @@ using Microsoft.Azure.Commands.Cdn.AfdHelpers;
 using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
-using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdRoute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdEndpoint))]
-    public class NewAzAfdEndpoint : AzureCdnCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRoute", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdRoute))]
+    public class NewAzAfdRoute : AzureCdnCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainIds, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public List<string> CustomDomainId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdOriginGroupId, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSeconds { get; set; }
+        public string OriginGroupId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRouteName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string RouteName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(AfdResourceProcessMessage.AfdEndpointCreateMessage, this.EndpointName, this.CreateAfdEndpoint);
+            ConfirmAction(AfdResourceProcessMessage.AfdRouteCreateMessage, this.RouteName, this.CreateAfdRoute);
         }
 
-        public void CreateAfdEndpoint()
+        private void CreateAfdRoute()
         {
             try
             {
-                AFDEndpoint afdEndpoint = new AFDEndpoint
+                List<ResourceReference> afdCustomDomainIdList = new List<ResourceReference>();
+
+                foreach(string afdCustomDomain in this.CustomDomainId)
                 {
-                    Location = AfdResourceConstants.AfdResourceLocation,
-                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSeconds : 60,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+                    afdCustomDomainIdList.Add(new ResourceReference(afdCustomDomain));
+                }
+                
+                Route afdRoute = new Route
+                {
+                    OriginGroup = new ResourceReference(this.OriginGroupId),
+                    CustomDomains = afdCustomDomainIdList
                 };
+                    
+                PSAfdRoute psAfdRoute = this.CdnManagementClient.Routes.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, this.RouteName, afdRoute).ToPSAfdRoute();
 
-                PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpoint).ToPSAfdEndpoint();
-
-                WriteObject(psAfdEndpoint);
+                WriteObject(psAfdRoute);
             }
             catch (AfdErrorResponseException errorResponse)
             {
-                throw new PSArgumentException(errorResponse.Response.Content);
+                 throw new PSArgumentException(errorResponse.Response.Content);
             }
         }
     }

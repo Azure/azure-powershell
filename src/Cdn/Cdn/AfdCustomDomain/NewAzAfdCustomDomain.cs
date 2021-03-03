@@ -15,56 +15,55 @@ using Microsoft.Azure.Commands.Cdn.AfdHelpers;
 using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
-using System.Collections;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdEndpoint))]
-    public class NewAzAfdEndpoint : AzureCdnCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdCustomDomain))]
+    public class NewAzAfdCustomDomain : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
+        public string CustomDomainName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainHostName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSeconds { get; set; }
+        public string HostName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(AfdResourceProcessMessage.AfdEndpointCreateMessage, this.EndpointName, this.CreateAfdEndpoint);
+            ConfirmAction(AfdResourceProcessMessage.AfdCustomDomainCreateMessage, this.CustomDomainName, this.CreateAfdCustomDomain);
         }
 
-        public void CreateAfdEndpoint()
+        private void CreateAfdCustomDomain()
         {
             try
             {
-                AFDEndpoint afdEndpoint = new AFDEndpoint
+                AFDDomain afdCustomDomain = new AFDDomain
                 {
-                    Location = AfdResourceConstants.AfdResourceLocation,
-                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSeconds : 60,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+                    HostName = this.HostName
                 };
 
-                PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpoint).ToPSAfdEndpoint();
+                //PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Create(this.ResourceGroupName, this.ProfileName, this.CustomDomainName, afdCustomDomain).ToPSAfdCustomDomain();
+                this.CdnManagementClient.AFDCustomDomains.BeginCreateAsync(this.ResourceGroupName, this.ProfileName, this.CustomDomainName, afdCustomDomain);
+                //this.CdnManagementClient.AFDCustomDomains.BeginCreateAsync
+                //and then run some form of get custom domain here 
 
-                WriteObject(psAfdEndpoint);
+                //WriteObject(psAfdCustomDomain);
             }
             catch (AfdErrorResponseException errorResponse)
             {

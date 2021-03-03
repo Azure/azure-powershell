@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         {
             try
             {
-                Microsoft.Azure.Management.Cdn.Models.AFDEndpointUpdateParameters afdEndpointParameters = new Microsoft.Azure.Management.Cdn.Models.AFDEndpointUpdateParameters();
+                AFDEndpointUpdateParameters afdEndpointParameters = new AFDEndpointUpdateParameters();
                
                 if (this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin)
                 {
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
                 WriteObject(psAfdEndpoint);
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponseException)
+            catch (AfdErrorResponseException errorResponseException)
             {
                 throw new PSArgumentException(errorResponseException.Response.Content);
             }

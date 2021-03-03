@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdModels
 
         public string PrivateLinkId { get; set; }
 
-        public string PrivateLinkGroupId { get; set; }
+        // public string PrivateLinkGroupId { get; set; } // confirm this field
 
         public string PrivateLinkLocation { get; set; }
 
-        public string PrivateLinkStatus { get; set; }
+        // public string PrivateLinkStatus { get; set; } // confirm this field
 
         public string PrivateLinkRequestMessage { get; set; }
     }

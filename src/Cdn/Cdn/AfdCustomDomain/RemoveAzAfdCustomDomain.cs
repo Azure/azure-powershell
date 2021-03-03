@@ -11,24 +11,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.AfdModels
+using Microsoft.Azure.Commands.Cdn.AfdHelpers;
+using Microsoft.Azure.Commands.Cdn.AfdModels;
+using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+
+
+namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
 {
-    public class PSAfdOriginGroup : PSArmBaseResource
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    public class RemoveAzAfdCustomDomain : AzureCdnCmdletBase
     {
-        public int? SampleSize { get; set; }
 
-        public int? SuccessfulSamplesRequired { get; set; }
-
-        public int? AdditionalLatencyInMilliseconds { get; set; }
-
-        public string ProbePath { get; set; }
-
-        public string ProbeRequestType { get; set; }
-
-        public string ProbeProtocol { get; set; }
-
-        public int? ProbeIntervalInSeconds { get; set; }
-
-        public int? TrafficRestorationTimeToHealedOrNewEndpointsInMinutes { get; set; } // confirm this field
     }
 }

@@ -13,22 +13,21 @@
 
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdOriginGroup : PSArmBaseResource
+    public class SharedPrivateLinkResource
     {
-        public int? SampleSize { get; set; }
+        public PrivateLinkId PrivateLink { get; set; }
 
-        public int? SuccessfulSamplesRequired { get; set; }
+        // public string GroupId { get; set; } // confirm this field
 
-        public int? AdditionalLatencyInMilliseconds { get; set; }
+        public string PrivateLinkLocation { get; set; }
 
-        public string ProbePath { get; set; }
+        // public string Status { get; set; } // confirm this field
 
-        public string ProbeRequestType { get; set; }
+        public string RequestMessage { get; set; }
+    }
 
-        public string ProbeProtocol { get; set; }
-
-        public int? ProbeIntervalInSeconds { get; set; }
-
-        public int? TrafficRestorationTimeToHealedOrNewEndpointsInMinutes { get; set; } // confirm this field
+    public class PrivateLinkId
+    {
+        public string Id { get; set; }
     }
 }
