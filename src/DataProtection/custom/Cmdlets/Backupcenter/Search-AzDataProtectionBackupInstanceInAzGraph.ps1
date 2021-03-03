@@ -2,7 +2,7 @@
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Instances from ARG')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup instances in Azure Resource Graph and retrieves the expected entries')]
     
     param (
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]

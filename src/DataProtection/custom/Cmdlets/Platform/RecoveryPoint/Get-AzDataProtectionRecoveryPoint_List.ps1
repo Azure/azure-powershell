@@ -2,22 +2,22 @@
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Vault object')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Gets list of recovery point associated with a protected backup instance.')]
 
     param(
         [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
         [System.String[]]
         ${SubscriptionId},
 
-        [Parameter(HelpMessage='Vault Resource Group')]
+        [Parameter(HelpMessage='Resource Group of the backup vault')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(HelpMessage='Vault Name')]
+        [Parameter(HelpMessage='Name of the backup vault')]
         [System.String]
         ${VaultName},
 
-        [Parameter(HelpMessage='Backup Instance Name')]
+        [Parameter(HelpMessage='Unique Name of protected backup instance')]
         [System.String]
         ${BackupInstanceName}
     )

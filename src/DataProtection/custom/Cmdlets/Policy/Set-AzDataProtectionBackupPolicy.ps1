@@ -1,7 +1,7 @@
 ﻿function Set-AzDataProtectionBackupPolicy
 {
 	param(
-        [Parameter(Mandatory=$false, HelpMessage='SubscriptionId Id')]
+        [Parameter(Mandatory=$false, HelpMessage='Subscription Id')]
         [System.String]
         ${SubscriptionId},
 
@@ -17,7 +17,7 @@
         [System.String]
         ${Name},
 
-        [Parameter(Mandatory, HelpMessage='Policy Object')]
+        [Parameter(Mandatory, HelpMessage='Policy Request Object')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
         ${Policy}
     )

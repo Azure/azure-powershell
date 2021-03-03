@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Prepares Backup instance object for backup
+Initializes Backup instance Request object for configuring backup
 .Description
-Prepares Backup instance object for backup
+Initializes Backup instance Request object for configuring backup
 .Example
 PS C:\> $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
 PS C:\> $AzureDiskId = "/subscriptions/{subscription}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{diskname}"
@@ -59,7 +59,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # ARM ID of the datasource to be protected
+    # ID of the datasource to be protected
     ${DatasourceId}
 )
 

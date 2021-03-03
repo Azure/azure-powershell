@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing policy
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+PS C:\> Remove-AzDataProtectionBackupPolicy -Name $policy[0].name -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+this command deletes an existing policy.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

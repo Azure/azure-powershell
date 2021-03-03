@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Prepares Datasource object for backup
+Gets default policy template for a selected datasource type.
 .Description
-Prepares Datasource object for backup
+Gets default policy template for a selected datasource type.
 .Example
 PS C:\> Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 

@@ -2,14 +2,14 @@
 {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Prepares Restore Request object for backup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Restore Request object for triggering restore on a protected backup instance.')]
 
     param(
         [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
         ${DatasourceType},
 
-        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='DataStore Type of the RP')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='DataStore Type of the Recovery point')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
         ${SourceDataStore},
 
@@ -21,11 +21,11 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType]
         ${RestoreType},
 
-        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory=$false, HelpMessage='Target Restore Location')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory=$false, HelpMessage='Target resource Id to which backup data will be restored.')]
         [System.String]
         ${TargetResourceId},
 
-        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Recovery Point Name')]
+        [Parameter(ParameterSetName="RecoveryPointBased", Mandatory, HelpMessage='Id of the recovery point to be restored.')]
         [System.String]
         ${RecoveryPoint}
     )
