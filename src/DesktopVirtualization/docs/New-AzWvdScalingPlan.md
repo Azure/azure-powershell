@@ -15,7 +15,7 @@ Create or update a scaling plan.
 ```
 New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
- [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>] [-Ring <Int32>]
  [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -204,6 +204,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ring
+The ring number of scaling plan.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
