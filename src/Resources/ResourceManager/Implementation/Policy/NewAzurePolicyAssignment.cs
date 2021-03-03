@@ -113,12 +113,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Metadata { get; set; }
 
+        /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
         /// <summary>
         /// Gets or sets the policy assignment enforcement mode.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]        
-        [ValidateNotNullOrEmpty]
-        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+        /// [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]        
+        /// [ValidateNotNullOrEmpty]
+        /// public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
@@ -205,7 +206,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
                     Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
-                    EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
+                    /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
+                    /// EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                 }
             };

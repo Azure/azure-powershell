@@ -117,12 +117,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.ManagedIdentity/userAssignedIdentities")]
         public string Location { get; set; }
 
+        /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
         /// <summary>
         /// Gets or sets the policy assignment enforcement mode.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
-        [ValidateNotNullOrEmpty]
-        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+        /// [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
+        /// [ValidateNotNullOrEmpty]
+        /// public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// Gets or sets the policy assignment input object parameter.
@@ -170,11 +171,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)).ToString();
 
-            PolicyAssignmentEnforcementMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
-            {
-                existingMode = tempMode;
-            }
+            /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
+            /// PolicyAssignmentEnforcementMode? existingMode = null;
+            /// if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            /// {
+            ///    existingMode = tempMode;
+            /// }
 
             var policyAssignmentObject = new PolicyAssignment
             {
@@ -189,7 +191,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
                     Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
-                    EnforcementMode = this.EnforcementMode ?? existingMode,
+                    /// [TODO] removing it for AzureStack, not supported in api-version 2016-12-01
+                    /// EnforcementMode = this.EnforcementMode ?? existingMode,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
                 }
             };
