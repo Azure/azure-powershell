@@ -139,7 +139,8 @@ function Test-NewAzAksByServicePrincipal
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
 
-    $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
+    $ServicePrincipalId = "e65d50b0-0853-48a9-82d3-77d800f4a9bc"
+    $credObject = $(createTestCredential $ServicePrincipalId "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
 
     try
     {
