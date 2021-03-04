@@ -26,7 +26,7 @@ function Set-AzDataProtectionBackupVault_custom {
         ${Tag},
 
         [Parameter(Mandatory, HelpMessage='Storage setting of the vault')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IStorageSetting[]]
         ${StorageSetting},
 
         [Parameter(HelpMessage='Identity type of the vault')]
