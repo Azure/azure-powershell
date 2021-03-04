@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            if (publicIpAddresses != null && publicIpAddresses.Count() != 0)
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
             {
                 for (var i = 0; i < publicIpAddresses.Count(); i++)
                 {
@@ -274,9 +274,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             if (this.ManagementIpConfiguration != null) {
                 if (ipConfigToRemove.Subnet != null)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"Removing the Public IP Address associated with subnet {ipConfigToRemove.Subnet.Id}.");
-                    Console.ResetColor();
                     ipConfigToRemove.PublicIpAddress = null;
                 }
                 else
@@ -296,8 +293,6 @@ namespace Microsoft.Azure.Commands.Network.Models
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
                     Console.ResetColor();
-
-                    this.ManagementIpConfiguration = null;
                 }
 
                 this.IpConfigurations.Remove(ipConfigToRemove);

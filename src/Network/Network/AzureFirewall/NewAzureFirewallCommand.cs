@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "IpConfigurationParameterValues",
-            HelpMessage = "Allowing zero data Public IP for FT. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
+            HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
         [ValidateNotNullOrEmpty]
         public PSPublicIpAddress[] PublicIpAddress { get; set; }
 
