@@ -2,8 +2,6 @@
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\inboundEndpointAssertions.ps1"
 
-Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
-Add-AssertionOperator -Name 'BeSameAsExpected' -Test $Function:BeSameAsExpected
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedInboundEndpoint' -Test $Function:BeSuccessfullyCreatedInboundEndpoint
 
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

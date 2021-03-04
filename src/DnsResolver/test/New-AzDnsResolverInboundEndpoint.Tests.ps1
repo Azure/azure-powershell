@@ -19,16 +19,27 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDnsResolverInboundEndpoint' {
     It 'Create new inbound endpoint with ip configurations only, expect inbound endpoint created' -skip {
-        $dnsResolverName = $env.DnsResolverName38
-        $virtualNetworkId = $env.VirtualNetworkId38
+        $dnsResolverName = $env.DnsResolverName37
+        $virtualNetworkId = $env.VirtualNetworkId37
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId38
+        $subnetid = $env.SubnetId37
         $privateIp = RandomIp
         $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 
          New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
          $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
          $inboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
+    }
+
+    It 'Create an inbound endpoint under an invalid DNS resolver, expect failure' -skip{
+        $dnsResolverName = $env.DnsResolverName38
+        $inboundEndpointName =  $env.InboundEndpointName38
+        $subnetid = $env.SubnetId38
+        $privateIp = RandomIp
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
+
+        {New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration} | Should -Throw "Can not perform requested operation on nested resource"
+
     }
 
     It 'Create new inbound endpoint with ip configurations and metadata, expect inbound endpoint created'-skip{

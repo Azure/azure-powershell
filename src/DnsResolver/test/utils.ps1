@@ -14,7 +14,7 @@ function setupEnv() {
     $rstr1 = RandomString -allChars $false -len 6
     write-host "creating test resource group..."
     #$resourceGroupName = "powershelldnsresolvertestrg" + $rstr1
-    $resourceGroupName = "powershelldnsresolvertestrg" + "-guli"
+    $resourceGroupName = "powershell-test-rg"
     New-AzResourceGroup -Name $resourceGroupName -Location eastus
     $env.Add("ResourceGroupName", $resourceGroupName)
 
