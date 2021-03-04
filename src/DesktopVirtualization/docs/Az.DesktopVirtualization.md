@@ -29,11 +29,11 @@ Get a desktop.
 ### [Get-AzWvdHostPool](Get-AzWvdHostPool.md)
 Get a host pool.
 
-### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
-Registration token of the host pool.
-
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
+
+### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
+Get the Windows virtual desktop registration info.
 
 ### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
 Get a scaling plan.

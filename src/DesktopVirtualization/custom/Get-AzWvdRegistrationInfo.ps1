@@ -15,12 +15,13 @@
 
 <#
 .Synopsis
-Remove the Windows virtual desktop registration info.
+Get the Windows virtual desktop registration info.
 .Description
-Remove the Windows virtual desktop registration info.
+Get the Windows virtual desktop registration info.
 #>
-function Remove-AzWvdRegistrationInfo {
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzWvdRegistrationInfo {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.RegistrationInfo')]
+    [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -69,7 +70,7 @@ function Remove-AzWvdRegistrationInfo {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials},
 
-        [Parameter(Mandatory, HelpMessage='help foo 1')]
+        [Parameter(Mandatory, HelpMessage='Subscription Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -88,19 +89,10 @@ function Remove-AzWvdRegistrationInfo {
 
     process {
         $hostpool = Az.DesktopVirtualization\Get-AzWvdHostPool @PSBoundParameters
-        Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters `
-            -Location $hostpool.Location `
-            -HostPoolType $hostpool.HostPoolType `
-            -LoadBalancerType $hostpool.LoadBalancerType `
-            -RegistrationTokenOperation "Delete" `
-            -Description $hostpool.Description `
-            -FriendlyName $hostpool.FriendlyName `
-            -MaxSessionLimit $hostpool.MaxSessionLimit `
-            -VMTemplate $hostpool.VMTemplate `
-            -SsoContext $hostpool.SsoContext `
-            -CustomRdpProperty $hostpool.CustomRdpProperty `
-            -Ring $hostpool.Ring `
-            -ValidationEnvironment:$hostpool.ValidationEnvironment `
-            -PreferredAppGroupType $hostpool.PreferredAppGroupType
+        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.RegistrationInfo' `
+            -Property @{ `
+                ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `
+                RegistrationTokenOperation = $hostpool.RegistrationInfoRegistrationTokenOperation; `
+                Token = $hostpool.RegistrationInfoToken}
     }
 }

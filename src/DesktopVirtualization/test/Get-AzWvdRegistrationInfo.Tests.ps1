@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzWvdRegistrationInfo.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdRegistrationInfo.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,8 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzWvdRegistrationInfo' {
-    It 'Create new RegistrationInfo' {
+Describe 'Get-AzWvdRegistrationInfo' {
+    It 'Get RegInfo' {
+        $date = get-date
+        $expirationTime = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -Name 'HostPoolPowershellContained1' `
@@ -20,7 +22,7 @@ Describe 'New-AzWvdRegistrationInfo' {
                             -HostPoolType 'Shared' `
                             -LoadBalancerType 'DepthFirst' `
                             -RegistrationTokenOperation 'Update' `
-                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                            -ExpirationTime $expirationTime `
                             -Description 'des' `
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
@@ -30,12 +32,10 @@ Describe 'New-AzWvdRegistrationInfo' {
                             -Ring $null `
                             -ValidationEnvironment:$false `
                             -PreferredAppGroupType 'Desktop'
-        $date = get-date
-        $newDate = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
-        $regInfo = New-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
+
+        $regInfo = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershellContained1' `
-                                    -ExpirationTime $newDate
+                                    -HostPoolName 'HostPoolPowershellContained1'
             $regInfo.Token | Should -Not -BeNullOrEmpty
     }
 }

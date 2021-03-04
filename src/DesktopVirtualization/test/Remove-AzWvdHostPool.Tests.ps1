@@ -25,6 +25,7 @@ Describe 'Remove-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
+                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
@@ -43,6 +44,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
             $hostPool.VMTemplate | Should -Be $null
+            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
@@ -67,6 +69,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
             $hostPool.VMTemplate | Should -Be $null
+            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
