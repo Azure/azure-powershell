@@ -1,5 +1,6 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
+."$PSScriptRoot\stringExtensions.ps1"
 
 $env = @{}
 function setupEnv() {
@@ -45,11 +46,12 @@ function setupEnv() {
     # New IE - 38 - 45
     # Patch IE - 46 - 49
     # Get IE 50 - 60
+    # Remove IE 61 - 62
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
     $subnetIdEnvKeyPrefix = "SubnetId"
     $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName" 
-    For($i=0; $i -le 50; $i++){
+    For($i=0; $i -le 70; $i++){
         $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
         $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
         $null = $env.Add($dnsResolverNameEnvKey, $dnsResolverName);
@@ -75,6 +77,28 @@ function setupEnv() {
         $virtualNetworkIdEnvKey = $unpairedVirtualNetworkIdEnvKeyPrefix + $i
         $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
         $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId)
+    }
+
+    # 
+    $dnsResolverName = $env.DnsResolverName60
+    $virtualNetworkId = $env.VirtualNetworkId60
+    New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+    $virtualNetworkName = ExtractArmResourceName -ResourceId $virtualNetworkId
+    $numberOfInboundEndpointForGet = 3
+    $inboundEndpointNamePrefixForGet = "inboundEndpointNameForGet"
+    $null = $env.Add("NumberOfInboundEndpointForGet", $numberOfInboundEndpointForGet);
+    $null = $env.Add("DnsResolverNameForInboundEndpointGet", $dnsResolverName);
+    $null = $env.Add("InboundEndpointNamePrefixForGet", $inboundEndpointNamePrefixForGet);
+    New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+    For($i=0; $i -lt $numberOfInboundEndpointForGet; $i++){
+        $subnetName = "subnetNameForGet" + (RandomString -allChars $false -len 6)
+        $subnetid = (CreateSubnet -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName -SubnetName $subnetName).id
+        $privateIp = RandomIp
+        $inboundEndpointName = "inboundEndpointNameForGet" + (RandomString -allChars $false -len 6)
+        $null = $env.Add("InboundEndpointNamePrefixForGet" + $i, $inboundEndpointName);
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid
+        write-host "creating test Inbound Endpoint for get ...name = "  + $inboundEndpointName
+        New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
     }
 
     $envFile = 'env.json'

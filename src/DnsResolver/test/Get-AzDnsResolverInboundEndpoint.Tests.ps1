@@ -1,6 +1,7 @@
 ."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\inboundEndpointAssertions.ps1"
+."$PSScriptRoot\stringExtensions.ps1"
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedInboundEndpoint' -Test $Function:BeSuccessfullyCreatedInboundEndpoint
 
@@ -18,28 +19,20 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDnsResolverInboundEndpoint' {
-    It 'Get single inbound endpoint by name, expect inbound endpoint by name retrieved' -skip {
-        $dnsResolverName = $env.DnsResolverName50
-        $virtualNetworkId = $env.VirtualNetworkId50
-        $inboundEndpointName =  $env.InboundEndpointName50
-        $subnetid = $env.SubnetId50
-        $privateIp = RandomIp
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
-
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
-        New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
-        $retrievedInboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
+    It 'Get single inbound endpoint by name, expect inbound endpoint by name retrieved' {
+        $inboundEndpointName = $env.InboundEndpointNamePrefixForGet0
+        $inboundEndpoint =  Get-AzDnsResolverInboundEndpoint -DnsResolverName $env.DnsResolverNameForInboundEndpointGet -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName
+        $inboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get single inbound endpoint that does not exist by name, expect failure' {
+        $inboundEndpointName = (RandomString -allChars $false -len 10)
+        {Get-AzDnsResolverInboundEndpoint -DnsResolverName $env.DnsResolverNameForInboundEndpointGet -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw "not found"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List Inbound Endpoints under a DNS Resolver name, expected exact number of inbound endpoints retrieved' {
+        $dnsResolverName = $env.DnsResolverNameForInboundEndpointGet
+        $inboundEndpoints =  Get-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -ResourceGroupName $env.ResourceGroupName
+        $inboundEndpoints.Count | Should -Be $env.NumberOfInboundEndpointForGet
     }
 }

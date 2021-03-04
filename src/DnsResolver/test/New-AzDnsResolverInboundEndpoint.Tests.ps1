@@ -84,10 +84,10 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
     }
 
     It 'Update an existng inbound endpoint with new metadata and IfNoneMatch wildcard success, expect inbound endpoint updated' -skip{
-        $dnsResolverName = $env.DnsResolverName41
-        $virtualNetworkId = $env.VirtualNetworkId41
+        $dnsResolverName = $env.DnsResolverName42
+        $virtualNetworkId = $env.VirtualNetworkId42
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId41
+        $subnetid = $env.SubnetId42
         $privateIp = RandomIp
         $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 
@@ -100,10 +100,10 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
     }
 
     It 'Update an existng inbound endpoint with new metadata and IfMatch exact etag success, expect inbound endpoint updated' -skip{
-        $dnsResolverName = $env.DnsResolverName41
-        $virtualNetworkId = $env.VirtualNetworkId41
+        $dnsResolverName = $env.DnsResolverName43
+        $virtualNetworkId = $env.VirtualNetworkId43
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId41
+        $subnetid = $env.SubnetId43
         $privateIp = RandomIp
         $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 
@@ -115,10 +115,10 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
     }
 
     It 'Update an existng inbound endpoint with new metadata and IfMatch failure, expect inbound endpoint not updated' -skip{
-        $dnsResolverName = $env.DnsResolverName41
-        $virtualNetworkId = $env.VirtualNetworkId41
+        $dnsResolverName = $env.DnsResolverName44
+        $virtualNetworkId = $env.VirtualNetworkId44
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
-        $subnetid = $env.SubnetId41
+        $subnetid = $env.SubnetId44
         $privateIp = RandomIp
         $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
 

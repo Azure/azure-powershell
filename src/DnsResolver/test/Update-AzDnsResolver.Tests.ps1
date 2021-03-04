@@ -19,7 +19,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolver' {
-    It 'Update DNS Resolver by adding tag, expect resolver updated' {
+    It 'Update DNS Resolver by adding tag, expect resolver updated' -skip{
         $dnsResolverName = $env.DnsResolverName33
         $virtualNetworkId = $env.VirtualNetworkId33
         $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -31,7 +31,7 @@ Describe 'Update-AzDnsResolver' {
         $updatedResolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Update DNS Resolver by adding tag via identity, expect resolver updated' {
+    It 'Update DNS Resolver by adding tag via identity, expect resolver updated' -skip{
         $dnsResolverName = $env.DnsResolverName34
         $virtualNetworkId = $env.VirtualNetworkId34
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -44,7 +44,7 @@ Describe 'Update-AzDnsResolver' {
         $updatedResolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Update DNS Resolver by adding tag via identity IfMatch wildcard success, expect resolver updated' {
+    It 'Update DNS Resolver by adding tag via identity IfMatch wildcard success, expect resolver updated' -skip{
         $dnsResolverName = $env.DnsResolverName35
         $virtualNetworkId = $env.VirtualNetworkId35
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -57,7 +57,7 @@ Describe 'Update-AzDnsResolver' {
         $updatedResolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Update DNS Resolver by adding tag via identity IfMatch matches etag, expect resolver updated' {
+    It 'Update DNS Resolver by adding tag via identity IfMatch matches etag, expect resolver updated' -skip{
         $dnsResolverName = $env.DnsResolverName36
         $virtualNetworkId = $env.VirtualNetworkId36
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -70,7 +70,7 @@ Describe 'Update-AzDnsResolver' {
         $updatedResolver.Tag.Count | Should -Be $tag.Count
     }
 
-    It 'Update DNS Resolver by adding tag IfMatch not match, expect resolver not updated' {
+    It 'Update DNS Resolver by adding tag IfMatch not match, expect resolver not updated' -skip{
         $dnsResolverName = $env.DnsResolverName36
         $virtualNetworkId = $env.VirtualNetworkId36
         $resolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
@@ -84,7 +84,7 @@ Describe 'Update-AzDnsResolver' {
         $retrievedResolver.Tag.Count | Should -Be 0
     }
 
-    It 'Update DNS Resolver by adding tag via identity IfMatch not match , expect resolver not updated' {
+    It 'Update DNS Resolver by adding tag via identity IfMatch not match , expect resolver not updated' -skip{
         $dnsResolverName = $env.DnsResolverName37
         $virtualNetworkId = $env.VirtualNetworkId37
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation

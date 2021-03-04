@@ -31,23 +31,20 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a DNS Resolver by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzDnsResolver -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
 
-{{ Add description here }}
+This command removes a DNS Resolver by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS Resolver by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
+PS C:\> Remove-AzDnsResolver -InputObject $dnsResolverObject 
 ```
 
-{{ Add description here }}
+This command removes a DNS Resolver by identity.
 
 ## PARAMETERS
 
