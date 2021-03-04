@@ -32,6 +32,8 @@
 * Updated cmdlets to enable setting an optional parameter -TrafficSelectorPolicies
     - `New-AzVpnConnection`
     - `Update-AzVpnConnection`
+* Bug fix for update vpnServerConfiguration.
+* Add scenarioTest for p2s multi auth.
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
