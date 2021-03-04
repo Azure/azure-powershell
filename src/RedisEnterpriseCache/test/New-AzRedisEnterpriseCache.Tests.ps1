@@ -25,8 +25,6 @@ Describe 'New-AzRedisEnterpriseCache' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
-            AofPersistenceEnabled = $true
-            AofPersistenceFrequency = "1s"
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name

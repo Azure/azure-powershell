@@ -12,8 +12,20 @@ Gets information about a Redis Enterprise cluster and its associated databases.
 
 ## SYNTAX
 
+### ListBySubscriptionId (Default)
 ```
-Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-ClusterName <String>] [-SubscriptionId <String[]>]
+Get-AzRedisEnterpriseCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByResourceGroup
+```
+Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -34,7 +46,7 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 This command gets information about the Redis Enterprise cache named MyCache.
 
-### Example 2: Get every Redis Enterprise cache in a resource group
+### Example 2: List every Redis Enterprise cache in a resource group
 ```powershell
 PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 
@@ -47,6 +59,21 @@ East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 This command gets information about every Redis Enterprise cache in the specified resource group.
 
+### Example 3: List every Redis Enterprise cache in a subscription
+```powershell
+PS C:\> Get-AzRedisEnterpriseCache
+
+Location    Name     Type                            Zone      Database
+--------    ----     ----                            ----      --------
+East US     MyCache1 Microsoft.Cache/redisEnterprise           {default}
+East US     MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+West US     MyCache3 Microsoft.Cache/redisEnterprise           {default}
+Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+
+```
+
+This command gets information about every Redis Enterprise cache in the current subscription.
+
 ## PARAMETERS
 
 ### -ClusterName
@@ -54,10 +81,10 @@ The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases: Name
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,7 +112,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, ListByResourceGroup
 Aliases:
 
 Required: True
