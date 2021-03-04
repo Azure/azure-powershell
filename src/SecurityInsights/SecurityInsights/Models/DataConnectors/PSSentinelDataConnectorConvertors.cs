@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "AzureActiveDirectory",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "AzureAdvancedThreatProtection",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "AzureSecurityCenter",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 SubscriptionId = value.SubscriptionId
             };
         }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "AmazonWebServicesCloudTrail",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 AwsRoleArn = value.AwsRoleArn
             };
         }
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "MicrosoftCloudAppSecurity",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "MicrosoftDefenderAdvancedThreatProtection",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "Office365",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
                 Type = value.Type,
                 Etag = value.Etag,
                 Kind = "ThreatIntelligence",
-                DataTypes = value.DataTypes.ConvertToPSType(),
+                DataTypes = value.DataTypes?.ConvertToPSType(),
                 TenantId = value.TenantId
             };
         }
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new PSSentinelDataConnectorDataTypeAlert()
             {
-                Alerts = value.Alerts.ConvertToPSType()
+                Alerts = value.Alerts?.ConvertToPSType()
             };
         }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new PSSentinelDataConnectorDataTypeCloudTrail()
             {
-                Logs = value.Logs.ConvertToPSType()
+                Logs = value.Logs?.ConvertToPSType()
             };
         }
 
@@ -224,8 +224,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new PSSentinelDataConnectorDataTypeMCAS()
             {
-                Alerts = value.Alerts.ConvertToPSType(),
-                DiscoveryLogs = value.DiscoveryLogs.ConvertToPSType()
+                Alerts = value.Alerts?.ConvertToPSType(),
+                DiscoveryLogs = value.DiscoveryLogs?.ConvertToPSType()
 
             };
         }
@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new PSSentinelDataConnectorDataTypeOffice()
             {
-                Exchange = value.Exchange.ConvertToPSType(),
-                SharePoint = value.SharePoint.ConvertToPSType(),
-                Teams = value.Teams.ConvertToPSType()
+                Exchange = value.Exchange?.ConvertToPSType(),
+                SharePoint = value.SharePoint?.ConvertToPSType(),
+                Teams = value.Teams?.ConvertToPSType()
 
             };
         }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new PSSentinelDataConnectorDataTypeTI()
             {
-                Indicators = value.Indicators.ConvertToPSType()
+                Indicators = value?.Indicators.ConvertToPSType()
             };
         }
 
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new AADDataConnector()
             {
                 Etag= value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new AATPDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new ASCDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 SubscriptionId = value.SubscriptionId
             };
         }
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new AwsCloudTrailDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 AwsRoleArn = value.AwsRoleArn
             };
         }
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new MCASDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new MDATPDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new OfficeDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
             return new TIDataConnector()
             {
                 Etag = value.Etag,
-                DataTypes = value.DataTypes.CreatePSType(),
+                DataTypes = value.DataTypes?.CreatePSType(),
                 TenantId = value.TenantId
             };
         }
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new AlertsDataTypeOfDataConnector()
             {
-                Alerts = value.Alerts.CreatePSType()
+                Alerts = value.Alerts?.CreatePSType()
             };
         }
 
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new AwsCloudTrailDataConnectorDataTypes()
             {
-                Logs = value.Logs.CreatePSType()
+                Logs = value.Logs?.CreatePSType()
             };
         }
 
@@ -464,8 +464,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new MCASDataConnectorDataTypes()
             {
-                Alerts = value.Alerts.CreatePSType(),
-                DiscoveryLogs = value.DiscoveryLogs.CreatePSType()
+                Alerts = value.Alerts?.CreatePSType(),
+                DiscoveryLogs = value.DiscoveryLogs?.CreatePSType()
 
             };
         }
@@ -474,9 +474,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new OfficeDataConnectorDataTypes()
             {
-                Exchange = value.Exchange.CreatePSType(),
-                SharePoint = value.SharePoint.CreatePSType(),
-                Teams = value.Teams.CreatePSType()
+                Exchange = value.Exchange?.CreatePSType(),
+                SharePoint = value.SharePoint?.CreatePSType(),
+                Teams = value.Teams?.CreatePSType()
 
             };
         }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new TIDataConnectorDataTypes()
             {
-                Indicators = value.Indicators.CreatePSType()
+                Indicators = value.Indicators?.CreatePSType()
             };
         }
 
