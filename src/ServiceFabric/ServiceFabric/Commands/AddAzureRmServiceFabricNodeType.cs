@@ -116,15 +116,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public bool? IsPrimaryNodeType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image publisher")]
+        [ValidateNotNullOrEmpty()]
         public string VMImagePublisher { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image offer")]
+        [ValidateNotNullOrEmpty()]
         public string VMImageOffer { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image sku")]
+        [ValidateNotNullOrEmpty()]
         public string VMImageSku { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image version")]
+        [ValidateNotNullOrEmpty()]
         public string VMImageVersion { get; set; }
 
         public override void ExecuteCmdlet()
