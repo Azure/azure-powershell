@@ -87,6 +87,17 @@ namespace Microsoft.Azure.Commands.Network
         public string[] VpnClientProtocol { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The list of P2S VPN client authentication types.")]
+        [ValidateSet(
+           MNM.VpnAuthenticationType.Certificate,
+           MNM.VpnAuthenticationType.Radius,
+           MNM.VpnAuthenticationType.AAD)]
+        [ValidateNotNullOrEmpty]
+        public string[] VpnAuthenticationTypes { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of VPN client root certificates to use for VPN client authentication. Connecting VPN clients must present certificates generated from one of these root certificates.")]
@@ -291,6 +302,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol?.ToList();
             }
 
+            if (this.VpnAuthenticationTypes != null)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationTypes?.ToList();
+            }
+
             if (this.VpnClientRootCertificates != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates?.ToList();
@@ -350,6 +366,31 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = null;
                 this.VirtualNetworkGateway.VpnClientConfiguration.AadIssuer = null;
                 this.VirtualNetworkGateway.VpnClientConfiguration.AadAudience = null;
+            }
+
+            if (this.VirtualNetworkGateway.VpnClientConfiguration?.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Count() > 0)
+            {
+                
+                if (!this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
+                {
+                    this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = string.Empty;
+                    this.VirtualNetworkGateway.VpnClientConfiguration.AadIssuer = string.Empty;
+                    this.VirtualNetworkGateway.VpnClientConfiguration.AadAudience = string.Empty;
+                }
+
+                if (!this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+                {
+                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers = new List<PSRadiusServer>();
+                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = string.Empty;
+                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = string.Empty;
+                }
+
+                if (!this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Certificate))
+                {
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = new List<PSVpnClientRevokedCertificate>();
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = new List<PSVpnClientRootCertificate>();
+                }
+                
             }
 
             if ((this.Asn > 0 || this.PeerWeight > 0) && this.VirtualNetworkGateway.BgpSettings == null)
