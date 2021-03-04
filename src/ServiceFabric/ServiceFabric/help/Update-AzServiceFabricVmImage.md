@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### ### Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
+### Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 
 ## OUTPUTS
 
