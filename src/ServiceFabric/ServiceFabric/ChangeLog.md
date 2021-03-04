@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix Add-AzServiceFabricNodeType. Add node type to service fabric cluster before creating virtual machine scale set.
-
-## Version 2.2.2
+* Fix `Add-AzServiceFabricNodeType`. Add node type to service fabric cluster before creating virtual machine scale set.
 * Add parameters to `Add-AzServiceFabricNodeType` to facilitate easy alternate OS image creation for new node type.
     Parameters: `VMImagePublisher`, `VMImageOffer`, `VMImageSku`, `VMImageVersion`
     - Example usage: For a Ubuntu 16.04 cluster, add a new Ubuntu 18 node type: <br/>
