@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsDataAction": "System.Boolean",
               "Operation": "System.String",
@@ -26,11 +26,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -50,6 +45,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -208,7 +208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -223,11 +223,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -247,6 +242,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -475,7 +475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -490,11 +490,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -514,6 +509,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -2415,7 +2415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CanDelegate": "System.Boolean",
                     "ObjectId": "System.Guid",
@@ -2430,11 +2430,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -2454,6 +2449,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -2555,7 +2555,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -2570,11 +2570,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -2594,6 +2589,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -5446,7 +5446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -5461,11 +5461,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -5485,6 +5480,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -7604,7 +7604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -7619,11 +7619,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -7643,6 +7638,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -8098,7 +8098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8113,11 +8113,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -8137,6 +8132,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -8177,7 +8177,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8192,11 +8192,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -8216,6 +8211,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -8342,7 +8342,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8357,11 +8357,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -8381,6 +8376,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -8501,7 +8501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8516,11 +8516,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -8540,6 +8535,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -8580,7 +8580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8595,11 +8595,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -8619,6 +8614,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -8745,7 +8745,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8760,11 +8760,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -8784,6 +8779,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -8959,7 +8959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8974,11 +8974,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -8998,6 +8993,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -9389,7 +9389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9404,11 +9404,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -9428,6 +9423,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -9644,7 +9644,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -9655,11 +9655,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -9679,6 +9674,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -9707,7 +9707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -9724,11 +9724,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -9748,6 +9743,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -9957,7 +9957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -9974,11 +9974,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -9998,6 +9993,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -10673,7 +10673,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10690,11 +10690,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -10714,6 +10709,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -10819,7 +10819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10836,11 +10836,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -10860,6 +10855,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -11381,7 +11381,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11398,11 +11398,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -11422,6 +11417,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -11454,7 +11454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11471,11 +11471,6 @@
             "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -11495,6 +11490,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -11618,7 +11618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11635,11 +11635,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -11659,6 +11654,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -11763,7 +11763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11780,11 +11780,6 @@
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
                     {
                       "Name": "Equals",
                       "Parameters": [
@@ -11804,6 +11799,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -12274,11 +12274,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -12297,6 +12292,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -12544,11 +12544,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -12567,6 +12562,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -12928,11 +12928,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -12951,6 +12946,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -13245,11 +13245,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -13268,6 +13263,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -13360,11 +13360,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -13383,6 +13378,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -13659,11 +13659,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -13682,6 +13677,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -13818,11 +13818,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -13841,6 +13836,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -14391,11 +14391,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -14414,6 +14409,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -14488,11 +14488,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -14511,6 +14506,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -14720,11 +14720,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -14743,6 +14738,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -14876,11 +14876,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -14899,6 +14894,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -15348,11 +15348,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -15371,6 +15366,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -15483,11 +15483,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -15506,6 +15501,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -15871,11 +15871,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -15894,6 +15889,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -16098,11 +16098,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -16121,6 +16116,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -16212,11 +16212,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -16235,6 +16230,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -16510,11 +16510,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -16533,6 +16528,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -16667,11 +16667,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -16690,6 +16685,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -17313,11 +17313,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -17336,6 +17331,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -17428,11 +17428,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -17451,6 +17446,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -18432,11 +18432,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -18455,6 +18450,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -18613,11 +18613,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -18636,6 +18631,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -18889,11 +18889,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -18912,6 +18907,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -19117,10 +19117,58 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
-              },
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Secret": "System.Security.SecureString",
+              "StartDate": "System.String",
+              "EndDate": "System.String",
+              "KeyId": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -19140,13 +19188,23 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "cred",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -19215,11 +19273,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -19238,6 +19291,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -19548,7 +19606,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -19830,7 +19888,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -19946,11 +20004,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -19969,6 +20022,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -20124,11 +20182,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -20147,6 +20200,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -20186,7 +20244,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -20401,11 +20459,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -20424,6 +20477,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -20893,11 +20951,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -20916,6 +20969,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -21444,11 +21502,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -21467,6 +21520,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -21772,11 +21830,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -21795,6 +21848,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -22251,11 +22309,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -22274,6 +22327,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -22506,11 +22564,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -22529,6 +22582,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -23912,11 +23970,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -23935,6 +23988,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -24273,11 +24331,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -24296,6 +24349,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -24616,11 +24674,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -24639,6 +24692,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -24868,11 +24926,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -24891,6 +24944,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -25252,11 +25310,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -25275,6 +25328,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -25575,11 +25633,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -25598,6 +25651,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -25710,11 +25768,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -25733,6 +25786,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -25770,11 +25828,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -25793,6 +25846,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -26366,11 +26424,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -26389,6 +26442,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -26523,11 +26581,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -26546,6 +26599,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -26775,10 +26833,60 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
-              },
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ApplicationId": "System.Guid",
+              "Id": "System.Guid",
+              "Secret": "System.Security.SecureString",
+              "DisplayName": "System.String",
+              "AdfsId": "System.String",
+              "Type": "System.String",
+              "ServicePrincipalNames": "System.String[]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
               {
                 "Name": "Equals",
                 "Parameters": [
@@ -26798,13 +26906,23 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "sp",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -26872,11 +26990,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -26895,6 +27008,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -28433,11 +28551,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -28456,6 +28569,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -28542,11 +28660,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -28565,6 +28678,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -28723,11 +28841,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -28746,6 +28859,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -28858,11 +28976,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -28881,6 +28994,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -29039,11 +29157,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -29062,6 +29175,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -29294,11 +29412,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -29317,6 +29430,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -29836,11 +29954,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -29859,6 +29972,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -30206,11 +30324,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -30229,6 +30342,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -30798,11 +30916,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -30821,6 +30934,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -31053,11 +31171,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -31076,6 +31189,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -31150,11 +31268,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -31173,6 +31286,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -31724,11 +31842,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -31747,6 +31860,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -32006,11 +32124,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -32029,6 +32142,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -32122,11 +32240,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -32145,6 +32258,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -32848,11 +32966,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -32871,6 +32984,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -33221,11 +33339,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -33244,6 +33357,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -33334,11 +33452,6 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "Equals",
                 "Parameters": [
                   {
@@ -33357,6 +33470,11 @@
                 "Name": "GetType",
                 "Parameters": [],
                 "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
               }
             ],
             "Constructors": [
@@ -33999,11 +34117,6 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "Equals",
                       "Parameters": [
                         {
@@ -34022,6 +34135,11 @@
                       "Name": "GetType",
                       "Parameters": [],
                       "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
                     }
                   ],
                   "Constructors": [
@@ -34596,7 +34714,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -34608,7 +34726,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
       "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
         "Type": "System.String",
@@ -34619,11 +34737,6 @@
       "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
         {
           "Name": "Equals",
           "Parameters": [
@@ -34643,6 +34756,11 @@
           "Name": "GetType",
           "Parameters": [],
           "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
@@ -34707,6 +34825,16 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Security.SecureString": {
+      "Namespace": "System.Security",
+      "Name": "System.Security.SecureString",
+      "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential": {
       "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
       "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential",
@@ -34720,11 +34848,6 @@
       "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
         {
           "Name": "Equals",
           "Parameters": [
@@ -34744,6 +34867,11 @@
           "Name": "GetType",
           "Parameters": [],
           "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
@@ -34768,11 +34896,6 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
           "Name": "Equals",
           "Parameters": [
             {
@@ -34791,6 +34914,11 @@
           "Name": "GetType",
           "Parameters": [],
           "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
@@ -34817,11 +34945,6 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
           "Name": "Equals",
           "Parameters": [
             {
@@ -34840,6 +34963,11 @@
           "Name": "GetType",
           "Parameters": [],
           "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
@@ -34894,11 +35022,6 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
           "Name": "Equals",
           "Parameters": [
             {
@@ -34917,6 +35040,11 @@
           "Name": "GetType",
           "Parameters": [],
           "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
