@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix `Add-AzServiceFabricNodeType`. Add node type to service fabric cluster before creating virtual machine scale set.
 * Add parameters to `Add-AzServiceFabricNodeType` to facilitate easy alternate OS image creation for new node type.
     Parameters: `VMImagePublisher`, `VMImageOffer`, `VMImageSku`, `VMImageVersion`
     - Example usage: For a Ubuntu 16.04 cluster, add a new Ubuntu 18 node type: <br/>
@@ -40,6 +39,9 @@
 * Added cmdlet `Update-AzServiceFabricVmImage` to update the delivered SF runtime package type. This must be changed when migrating from Ubuntu 16 to 18.
 * `Update-AzServiceFabricReliability` is now able to update reliability level when the cluster has more than one primary node type.
     To do this, the name of the node type is supplied via the new -NodeType parameter.
+
+## Version 2.2.2
+* Fixed `Add-AzServiceFabricNodeType`. Added node type to service fabric cluster before creating virtual machine scale set.
 
 ## Version 2.2.1
 * Added example to `Set-AzServiceFabricSetting` with SettingsSectionDescription param

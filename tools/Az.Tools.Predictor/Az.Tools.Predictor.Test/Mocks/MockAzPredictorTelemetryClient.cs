@@ -12,60 +12,111 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.ApplicationInsights;
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
-    sealed class MockAzPredictorTelemetryClient : ITelemetryClient
+    sealed class MockAzPredictorTelemetryClient : AzPredictorTelemetryClient
     {
-        public class RecordedSuggestionForHistory
+        public record TelemetryRecord(string EventName, IDictionary<string, string> Properties);
+
+        public HistoryTelemetryData HistoryData { get; internal set; }
+        public RequestPredictionTelemetryData RequestPredictionData { get; internal set; }
+        public GetSuggestionTelemetryData GetSuggestionData { get; internal set; }
+        public SuggestionDisplayedTelemetryData SuggestionDisplayedData { get; internal set; }
+        public SuggestionAcceptedTelemetryData SuggestionAcceptedData { get; internal set; }
+        public ParameterMapTelemetryData ParameterMapData { get; internal set; }
+        public IList<TelemetryRecord> RecordedTelemetry { get; internal set; } = new List<TelemetryRecord>();
+
+        private int _expctedTelemetryRecordCount = 1;
+        public int ExceptedTelemetryRecordCount
         {
-            public string HistoryLine { get; set; }
-        }
-
-        /// <inheritdoc/>
-        public string SessionId { get; } = Guid.NewGuid().ToString();
-
-        /// <inheritdoc/>
-        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
-
-        public RecordedSuggestionForHistory RecordedSuggestion { get; set; }
-        public int SuggestionAccepted { get; set; }
-
-        /// <inheritdoc/>
-        public void OnHistory(string historyLine)
-        {
-            this.RecordedSuggestion = new RecordedSuggestionForHistory()
+            get
             {
-                HistoryLine = historyLine,
-            };
+                return _expctedTelemetryRecordCount;
+            }
+            set
+            {
+                RecordedTelemetry.Clear();
+                _expctedTelemetryRecordCount = value;
+            }
         }
 
-        /// <inheritdoc/>
-        public void OnRequestPrediction(string command)
+        public TaskCompletionSource HistoryTaskCompletionSource { get; private set; }
+        public TaskCompletionSource RequestPredictionTaskCompletionSource { get; private set; }
+        public TaskCompletionSource SendTelemetryTaskCompletionSource { get; private set; }
+
+        public MockAzPredictorTelemetryClient() : base(new MockAzContext())
         {
         }
 
         /// <inheritdoc/>
-        public void OnRequestPredictionError(string command, Exception e)
+        public override void OnHistory(HistoryTelemetryData telemetryData)
         {
+            base.OnHistory(telemetryData);
+            HistoryData = telemetryData;
+            HistoryTaskCompletionSource?.TrySetResult();
         }
 
         /// <inheritdoc/>
-        public void OnSuggestionAccepted(string acceptedSuggestion)
+        public override void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
-            ++this.SuggestionAccepted;
+            base.OnRequestPrediction(telemetryData);
+            RequestPredictionData = telemetryData;
+            RequestPredictionTaskCompletionSource?.TrySetResult();
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestion(string maskedUserInput, IEnumerable<ValueTuple<string, PredictionSource>> suggestions, bool isCancelled)
+        public override void OnGetSuggestion(GetSuggestionTelemetryData telemetryData)
         {
+            base.OnGetSuggestion(telemetryData);
+            GetSuggestionData = telemetryData;
         }
 
         /// <inheritdoc/>
-        public void OnGetSuggestionError(Exception e)
+        public override void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData)
         {
+            base.OnSuggestionDisplayed(telemetryData);
+            SuggestionDisplayedData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData)
+        {
+            base.OnSuggestionAccepted(telemetryData);
+            SuggestionAcceptedData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnLoadParameterMap(ParameterMapTelemetryData telemetryData)
+        {
+            base.OnLoadParameterMap(telemetryData);
+            ParameterMapData = telemetryData;
+        }
+
+        public void ResetWaitingTasks()
+        {
+            HistoryTaskCompletionSource = new TaskCompletionSource();
+            RequestPredictionTaskCompletionSource  = new TaskCompletionSource();
+            SendTelemetryTaskCompletionSource = new TaskCompletionSource();
+        }
+
+        protected override TelemetryClient GetApplicationInsightTelemetryClient()
+        {
+            return null;
+        }
+
+        protected override void SendTelemetry(string eventName, IDictionary<string, string> properties)
+        {
+            RecordedTelemetry.Add(new TelemetryRecord(eventName, properties));
+
+            if (RecordedTelemetry.Count == ExceptedTelemetryRecordCount)
+            {
+                SendTelemetryTaskCompletionSource.TrySetResult();
+            }
         }
     }
 }

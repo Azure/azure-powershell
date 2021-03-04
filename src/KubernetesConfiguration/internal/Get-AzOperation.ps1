@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IResourceProviderOperation
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration/get-azoperation
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
 #>
 function Get-AzOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IResourceProviderOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

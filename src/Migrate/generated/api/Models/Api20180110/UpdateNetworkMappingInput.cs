@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The instance type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string FabricSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetailInstanceType = value; }
+        public string FabricSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetailInstanceType = value ?? null; }
 
         /// <summary>Internal Acessors for FabricSpecificDetail</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabricSpecificUpdateNetworkMappingInput Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputInternal.FabricSpecificDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).FabricSpecificDetail = value; }
@@ -27,11 +27,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>Recovery fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RecoveryFabricName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryFabricName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryFabricName = value; }
+        public string RecoveryFabricName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryFabricName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryFabricName = value ?? null; }
 
         /// <summary>Recovery network Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string RecoveryNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryNetworkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryNetworkId = value; }
+        public string RecoveryNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryNetworkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateNetworkMappingInputPropertiesInternal)Property).RecoveryNetworkId = value ?? null; }
 
         /// <summary>Creates an new <see cref="UpdateNetworkMappingInput" /> instance.</summary>
         public UpdateNetworkMappingInput()

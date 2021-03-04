@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MySql service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -59,6 +59,9 @@ title: MySQL
 subject-prefix: 'MySQL'
 
 directive:
+  - from: Microsoft.DBforMySQL/preview/2020-07-01-preview/mysql.json
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForMySql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}")
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
@@ -89,7 +92,7 @@ directive:
     hide: true
   - where:
       verb: Set
-      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase|^flexibleServerFirewallRule$
+      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase$|^flexibleServerFirewallRule$
     set:
       verb: Update
   - where:
@@ -203,6 +206,12 @@ directive:
     set:
       parameter-name: Name
       alias: ConfigurationName
+  - where:
+      subject: ^CapabilityProperty$
+      parameter-name: LocationName
+    set:
+      parameter-name: Location
+      alias: LocationName
   - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server

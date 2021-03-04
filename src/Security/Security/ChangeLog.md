@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.9.0
 * Added breaking change notification in AzSecurityAlert:
                     `Get-AzSecurityAlert`
                     `Set-AzSecurityAlert`

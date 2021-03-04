@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Synapse
             ResourceTypes.SqlPool,
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
+        [Alias(nameof(SynapseConstants.SqlPoolName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -103,13 +104,13 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingSqlPool == null)
             {
-                throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.ResumingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
                 this.SynapseAnalyticsClient.ResumeSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                var result = new PSSynapseSqlPool(this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
                 WriteObject(result);
             }
         }

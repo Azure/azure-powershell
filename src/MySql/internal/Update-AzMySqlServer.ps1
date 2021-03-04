@@ -58,14 +58,14 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
-  SkuName <String>: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  [AdministratorLoginPassword <String>]: The password of the administrator login.
+  [AdministratorLoginPassword <SecureString>]: The password of the administrator login.
   [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [MinimalTlsVersion <MinimalTlsVersionEnum?>]: Enforce a minimal Tls version for the server.
   [PublicNetworkAccess <PublicNetworkAccessEnum?>]: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   [ReplicationRole <String>]: The replication role of the server.
   [SkuCapacity <Int32?>]: The scale up/out capacity, representing server's compute units.
   [SkuFamily <String>]: The family of hardware.
+  [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   [SkuSize <String>]: The size code, to be interpreted by resource as appropriate.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Basic.
   [SslEnforcement <SslEnforcementEnum?>]: Enable ssl enforcement or not when connect to server.
@@ -77,7 +77,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlserver
+https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
 #>
 function Update-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
@@ -126,7 +126,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # The password of the administrator login.
     ${AdministratorLoginPassword},
 

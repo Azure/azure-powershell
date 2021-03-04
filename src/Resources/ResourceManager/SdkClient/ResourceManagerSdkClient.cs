@@ -443,6 +443,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     Uri = parameters.TemplateFile
                 };
+
+                if (!string.IsNullOrEmpty(parameters.QueryString))
+                {
+                    deployment.Properties.TemplateLink.QueryString = parameters.QueryString;
+                }
             }
             else
             {

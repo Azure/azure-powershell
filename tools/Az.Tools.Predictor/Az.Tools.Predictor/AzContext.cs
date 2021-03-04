@@ -30,10 +30,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class AzContext : IAzContext
     {
+        private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
         /// <inheritdoc/>
-        public string UserId { get; private set; } = string.Empty;
+        public Version AzVersion { get; private set; } = DefaultVersion;
+
+        /// <inheritdoc/>
+        public string HashUserId { get; private set; } = string.Empty;
 
         private string _macAddress;
         /// <inheritdoc/>
@@ -98,10 +102,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
+        public bool IsInternal { get; internal set; }
+
+        /// <summary>
+        /// The survey session id appended to the survey.
+        /// </summary>
+        /// <remarks>
+        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
+        /// interface IAzContext and it's internal.
+        /// </remarks>
+        internal string SurveyId { get; set; }
+
+        /// <inheritdoc/>
         public void UpdateContext()
         {
-            UserId = GenerateSha256HashString(GetUserAccountId());
+            AzVersion = GetAzVersion();
+            RawUserId = GetUserAccountId();
+            HashUserId = GenerateSha256HashString(RawUserId);
+
+            if (!IsInternal)
+            {
+                IsInternal = RawUserId.EndsWith(AzContext.InternalUserSuffix, StringComparison.OrdinalIgnoreCase);
+            }
         }
+
+        internal string RawUserId { get; set; }
 
         /// <summary>
         /// Gets the user account id if the user logs in, otherwise empty string.
@@ -118,6 +143,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Gets the latest version from the loaded Az modules.
+        /// </summary>
+        private Version GetAzVersion()
+        {
+            Version latestAz = DefaultVersion;
+
+            try
+            {
+                var outputs = AzContext.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                foreach (PSObject obj in outputs)
+                {
+                    string psVersion = obj.Properties["Version"].Value.ToString();
+                    int pos = psVersion.IndexOf('-');
+                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                    if (currentAz > latestAz)
+                    {
+                        latestAz = currentAz;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return latestAz;
         }
 
         /// <summary>
@@ -171,9 +224,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <summary>
-        /// Get the MAC address of the default NIC, or null if none can be found
+        /// Get the MAC address of the default NIC, or null if none can be found.
         /// </summary>
-        /// <returns>The MAC address of the defautl nic, or null if none is found</returns>
+        /// <returns>The MAC address of the defautl nic, or null if none is found.</returns>
         private static string GetMACAddress()
         {
             return NetworkInterface.GetAllNetworkInterfaces()?

@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 shareRetentionDays = value;
             }
         }
-        private int? shareRetentionDays = null;
+        private int? shareRetentionDays = null;       
 
         public override void ExecuteCmdlet()
         {
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 FileServiceProperties serviceProperties = this.StorageClient.FileServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, 
-                    shareDeleteRetentionPolicy: deleteRetentionPolicy);
+                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy));
 
                 // Get all File service properties from server for output
                 serviceProperties = this.StorageClient.FileServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);

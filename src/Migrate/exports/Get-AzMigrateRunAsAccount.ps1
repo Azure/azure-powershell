@@ -34,7 +34,7 @@ b090bef3-b733-5e34-bc8f-eb6f2701432a Microsoft.OffAzure/VMwareSites/runasaccount
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigraterunasaccount
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]

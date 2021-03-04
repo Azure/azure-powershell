@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             {_entityContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("entityContainer"), out var __jsonEntityContainer) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmEntityContainer.FromJson(__jsonEntityContainer) : EntityContainer;}
-            {_declaredNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("declaredNamespaces"), out var __jsonDeclaredNamespaces) ? If( __jsonDeclaredNamespaces as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : DeclaredNamespace;}
-            {_directValueAnnotationsManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("directValueAnnotationsManager"), out var __jsonDirectValueAnnotationsManager) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmDirectValueAnnotationsManager.FromJson(__jsonDirectValueAnnotationsManager) : DirectValueAnnotationsManager;}
-            {_referencedModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("referencedModels"), out var __jsonReferencedModels) ? If( __jsonReferencedModels as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmModel.FromJson(__p) )) ))() : null : ReferencedModel;}
-            {_schemaElement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("schemaElements"), out var __jsonSchemaElements) ? If( __jsonSchemaElements as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmSchemaElement[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmSchemaElement) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmSchemaElement.FromJson(__k) )) ))() : null : SchemaElement;}
-            {_vocabularyAnnotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("vocabularyAnnotations"), out var __jsonVocabularyAnnotations) ? If( __jsonVocabularyAnnotations as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotation[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotation) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmVocabularyAnnotation.FromJson(__f) )) ))() : null : VocabularyAnnotation;}
+            {_schemaElement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("schemaElements"), out var __jsonSchemaElements) ? If( __jsonSchemaElements as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmSchemaElement[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmSchemaElement) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmSchemaElement.FromJson(__u) )) ))() : null : SchemaElement;}
+            {_vocabularyAnnotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("vocabularyAnnotations"), out var __jsonVocabularyAnnotations) ? If( __jsonVocabularyAnnotations as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotation[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmVocabularyAnnotation) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmVocabularyAnnotation.FromJson(__p) )) ))() : null : VocabularyAnnotation;}
+            {_referencedModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("referencedModels"), out var __jsonReferencedModels) ? If( __jsonReferencedModels as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IIedmModel) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IedmModel.FromJson(__k) )) ))() : null : ReferencedModel;}
+            {_declaredNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("declaredNamespaces"), out var __jsonDeclaredNamespaces) ? If( __jsonDeclaredNamespaces as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : DeclaredNamespace;}
+            {_directValueAnnotationsManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("directValueAnnotationsManager"), out var __jsonDirectValueAnnotationsManager) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Any.FromJson(__jsonDirectValueAnnotationsManager) : DirectValueAnnotationsManager;}
             AfterFromJson(json);
         }
 
@@ -103,55 +103,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
-                if (null != this._declaredNamespace)
-                {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._declaredNamespace )
-                    {
-                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
-                    }
-                    container.Add("declaredNamespaces",__w);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._directValueAnnotationsManager ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._directValueAnnotationsManager.ToJson(null,serializationMode) : null, "directValueAnnotationsManager" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                if (null != this._referencedModel)
-                {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._referencedModel )
-                    {
-                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
-                    }
-                    container.Add("referencedModels",__r);
-                }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 if (null != this._schemaElement)
                 {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._schemaElement )
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._schemaElement )
                     {
-                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                     }
-                    container.Add("schemaElements",__m);
+                    container.Add("schemaElements",__w);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 if (null != this._vocabularyAnnotation)
                 {
-                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
-                    foreach( var __i in this._vocabularyAnnotation )
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._vocabularyAnnotation )
                     {
-                        AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("vocabularyAnnotations",__h);
+                    container.Add("vocabularyAnnotations",__r);
                 }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._referencedModel)
+                {
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._referencedModel )
+                    {
+                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                    }
+                    container.Add("referencedModels",__m);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._declaredNamespace)
+                {
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._declaredNamespace )
+                    {
+                        AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
+                    }
+                    container.Add("declaredNamespaces",__h);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._directValueAnnotationsManager ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._directValueAnnotationsManager.ToJson(null,serializationMode) : null, "directValueAnnotationsManager" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

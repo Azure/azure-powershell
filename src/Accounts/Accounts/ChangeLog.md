@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.6
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
+
+## Version 2.2.5
+* Tracked CloudError code in exception
+* Raised 'ContextCleared' event when `Clear-AzContext` was executed
+
+## Version 2.2.4
+* Shown correct client request id on debug message [#13745]
+* Added common Azure PowerShell exception type
+* Supported storage API 2019-06-01
+
+## Version 2.2.3
+* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
+* Improved debug log of long running operations in generated modules
+
 ## Version 2.2.2
 * Managed to parse ExpiresOn time from raw token if could not get from underlying library
 * Improved warning message if Interactive authentication is unavailable

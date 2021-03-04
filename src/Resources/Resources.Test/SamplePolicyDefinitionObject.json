@@ -24,7 +24,7 @@
   "parameters": {
     "listOfAllowedLocations": {
       "type": "array",
-      "defaultValue": ["somewhere"],
+      "defaultValue": ["westus"],
       "metadata": {
         "description": "An array of permitted locations for resources.",
         "strongType": "location",

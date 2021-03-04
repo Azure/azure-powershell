@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>TypeConverter implementation for AlternateLocationRecoveryOption.</summary>
+    /// <summary>The ALR option.</summary>
     public partial class AlternateLocationRecoveryOptionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -54,9 +54,117 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ComplianceStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ComplianceStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ProxyResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Resource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ComplianceStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ComplianceStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -94,9 +202,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ErrorDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ErrorDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ConfigurationProtectedSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ErrorDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ErrorDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -122,9 +252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.HelmOperatorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.HelmOperatorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.HelmOperatorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.HelmOperatorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -150,68 +280,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>IsDataAction</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -219,6 +296,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -228,9 +308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,9 +348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ResourceProviderOperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -290,9 +370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.Result</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.Result</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.Result</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.Result</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -312,9 +392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -340,9 +420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfigurationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfigurationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfigurationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfigurationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -362,9 +442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.SourceControlConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -394,6 +474,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RepositoryUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SshKnownHostsContent</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -425,6 +508,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RepositoryUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SshKnownHostsContent</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

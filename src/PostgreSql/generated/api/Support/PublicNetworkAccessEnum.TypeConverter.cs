@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>TypeConverter implementation for PublicNetworkAccessEnum.</summary>
+    /// <summary>
+    /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled'
+    /// or 'Disabled'
+    /// </summary>
     public partial class PublicNetworkAccessEnumTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

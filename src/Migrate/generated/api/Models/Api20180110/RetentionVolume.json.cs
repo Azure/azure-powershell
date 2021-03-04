@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
+            {_volumeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("volumeName"), out var __jsonVolumeName) ? (string)__jsonVolumeName : (string)VolumeName;}
             {_capacityInByte = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("capacityInBytes"), out var __jsonCapacityInBytes) ? (long?)__jsonCapacityInBytes : CapacityInByte;}
             {_freeSpaceInByte = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("freeSpaceInBytes"), out var __jsonFreeSpaceInBytes) ? (long?)__jsonFreeSpaceInBytes : FreeSpaceInByte;}
             {_thresholdPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("thresholdPercentage"), out var __jsonThresholdPercentage) ? (int?)__jsonThresholdPercentage : ThresholdPercentage;}
-            {_volumeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("volumeName"), out var __jsonVolumeName) ? (string)__jsonVolumeName : (string)VolumeName;}
             AfterFromJson(json);
         }
 
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
+            AddIf( null != (((object)this._volumeName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._volumeName.ToString()) : null, "volumeName" ,container.Add );
             AddIf( null != this._capacityInByte ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((long)this._capacityInByte) : null, "capacityInBytes" ,container.Add );
             AddIf( null != this._freeSpaceInByte ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((long)this._freeSpaceInByte) : null, "freeSpaceInBytes" ,container.Add );
             AddIf( null != this._thresholdPercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._thresholdPercentage) : null, "thresholdPercentage" ,container.Add );
-            AddIf( null != (((object)this._volumeName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._volumeName.ToString()) : null, "volumeName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustocluster
+online version: https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster
 schema: 2.0.0
 ---
 
@@ -16,10 +16,11 @@ Update a Kusto cluster.
 ```
 Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
- [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-EngineType <EngineType>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
+ [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
  [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
@@ -30,13 +31,14 @@ Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKustoCluster -InputObject <IKustoIdentity> [-EnableDiskEncryption] [-EnableDoubleEncryption]
- [-EnablePurge] [-EnableStreamingIngest] [-IdentityType <IdentityType>]
+ [-EnablePurge] [-EnableStreamingIngest] [-EngineType <EngineType>] [-IdentityType <IdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>]
- [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
+ [-KeyVaultPropertyUserIdentity <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
+ [-Location <String>] [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>]
+ [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>]
+ [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -49,7 +51,7 @@ Update a Kusto cluster.
 
 ### Example 1: Update an existing cluster by name
 ```powershell
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard
+PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -SkuName Standard_D12_v2 -SkuTier Standard -EngineType 'V2'
 
 Location Name                Type                     Zone
 -------- ----                ----                     ----
@@ -66,8 +68,18 @@ Location Name                Type                     Zone
 -------- ----                ----                     ----
 East US  testnewkustocluster Microsoft.Kusto/Clusters
 ```
-
 The above command updates the cluster "testnewkustocluster" found in the resource group "testrg" with a customer managed key.
+
+### Example 3: Update Cluster with TrustedExternalTenant
+```powershell
+PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -TrustedExternalTenant @(@{value="12345678-1234-1234-1234-123456789012"})
+
+Location Name                Type                     Zone
+-------- ----                ----                     ----
+East US  testnewkustocluster Microsoft.Kusto/Clusters
+```
+
+The above command updates the cluster "testnewkustocluster" found in the resource group "testrg" with the provided Trusted External Tenant.
 
 ## PARAMETERS
 
@@ -161,8 +173,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EngineType
+The engine type
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
-The identity type.
+The type of managed identity used.
+The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+The type 'None' will remove all identities.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType
@@ -253,12 +282,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVaultPropertyUserIdentity
+The user assigned identity (ARM resource id) that has access to the key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LanguageExtensionValue
 The list of language extensions.
 To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -470,7 +514,7 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -566,7 +610,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200614.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICluster
 
 ## NOTES
 

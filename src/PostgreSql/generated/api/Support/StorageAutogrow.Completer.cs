@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 {
 
-    /// <summary>Argument completer implementation for StorageAutogrow.</summary>
+    /// <summary>Enable Storage Auto Grow.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrowTypeConverter))]
     public partial struct StorageAutogrow :
         System.Management.Automation.IArgumentCompleter

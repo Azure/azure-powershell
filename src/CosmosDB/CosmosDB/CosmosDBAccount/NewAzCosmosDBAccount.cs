@@ -16,11 +16,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Rest.Azure;
 using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -47,10 +50,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableFreeTierHelpMessage)]
         public bool? EnableFreeTier { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix)]
-        public string ServerVersion { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] Location { get; set; }
@@ -61,6 +60,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            DatabaseAccountGetResults databaseAccountGetResults = null;
+            try
+            {
+                databaseAccountGetResults = CosmosDBManagementClient.DatabaseAccounts.Get(ResourceGroupName, Name);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
+            }
+
+            if (databaseAccountGetResults != null)
+            {
+                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
+            }
+
             ConsistencyPolicy consistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             string writeLocation = null;
             Collection<Location> LocationCollection = new Collection<Location>();
@@ -126,6 +143,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
+            Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
+
             DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations:LocationCollection, location: writeLocation, name:Name, consistencyPolicy:consistencyPolicy, tags:tags);
             databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
@@ -135,6 +154,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
 
             if (IpRule != null && IpRule.Length > 0)
             {
@@ -144,6 +164,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (KeyVaultKeyUri != null)
             {
                 databaseAccountCreateUpdateParameters.KeyVaultKeyUri = KeyVaultKeyUri;
+            }
+
+            if (NetworkAclBypass != null)
+            {
+                databaseAccountCreateUpdateParameters.NetworkAclBypass = 
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
 
             if (!string.IsNullOrEmpty(ApiKind))
@@ -184,6 +210,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             databaseAccountCreateUpdateParameters.Kind = ApiKind;
+
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            {
+                databaseAccountCreateUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
+                {
+                    PeriodicModeProperties = new PeriodicModeProperties()
+                    {
+                        BackupIntervalInMinutes = BackupIntervalInMinutes,
+                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                    }
+                };
+            }
 
             if (ShouldProcess(Name, "Creating Database Account"))
             {

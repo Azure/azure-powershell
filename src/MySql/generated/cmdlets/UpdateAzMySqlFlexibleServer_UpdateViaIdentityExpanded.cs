@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}"
+    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMySqlFlexibleServer_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier; set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); set => ParametersBody.SkuTier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable ssl enforcement or not when connect to server.")]

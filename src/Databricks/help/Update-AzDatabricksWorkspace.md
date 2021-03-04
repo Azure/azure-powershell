@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databricks/update-azdatabricksworkspace
+online version: https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 schema: 2.0.0
 ---
 

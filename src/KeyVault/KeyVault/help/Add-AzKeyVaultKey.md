@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultkey
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [
 ```
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmInteractiveCreate
@@ -53,8 +53,8 @@ Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <Str
 ```
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmInputObjectCreate
@@ -83,8 +83,8 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> 
 ```
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmResourceIdCreate
@@ -285,7 +285,7 @@ PS C:\> $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destinati
 ```
 
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
-For more details please refer to https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
+For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 
@@ -294,7 +294,7 @@ Specifies the curve name of elliptic curve cryptography, this value is valid whe
 
 ```yaml
 Type: System.String
-Parameter Sets: HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Parameter Sets: InteractiveImport, HsmInteractiveCreate, InputObjectImport, HsmInputObjectCreate, ResourceIdImport, HsmResourceIdCreate
 Aliases:
 
 Required: False
@@ -518,7 +518,19 @@ Accept wildcard characters: False
 ```
 
 ### -KeyType
-Specifies the key type of this key.
+Specifies the key type of this key. When importing BYOK keys, it defaults to 'RSA'.
+
+```yaml
+Type: System.String
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String

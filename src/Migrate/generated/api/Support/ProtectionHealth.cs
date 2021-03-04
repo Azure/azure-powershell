@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
+    /// <summary>The consolidated health.</summary>
     public partial struct ProtectionHealth :
         System.IEquatable<ProtectionHealth>
     {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         /// <param name="value">the value to convert to an instance of <see cref="ProtectionHealth" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ProtectionHealth(System.Convert.ToString(value));
+            return new ProtectionHealth(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ProtectionHealth</summary>

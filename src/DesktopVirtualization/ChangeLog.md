@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.1
+* Added StartVMOnConnect property to hostpool.
+
+## Version 2.1.0
+* Added StartVMOnConnect property to hostpool.
+
 ## Version 2.0.1
 * Added new MSIX Package cmdlets and updated Applications cmdlets.
 

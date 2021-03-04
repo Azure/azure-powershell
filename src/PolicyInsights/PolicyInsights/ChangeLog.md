@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
+
+## Version 1.4.0
+* Added support for returning paginated results for Get-AzPolicyState
+
 ## Version 1.3.1
 * Corrected example 3 for `Start-AzPolicyComplianceScan`
 

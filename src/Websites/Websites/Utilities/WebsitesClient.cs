@@ -887,6 +887,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             return WrappedWebsitesClient.Certificates().Get(resourceGroupName, certificateName);
         }
+        public IEnumerable<Certificate> ListCertificates()
+        {
+            return WrappedWebsitesClient.Certificates().List();
+        }
 
         public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
         {
@@ -999,7 +1003,43 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 webSiteName,
                 sourceSlotName);
         }
+        public IAccessToken GetAccessToken(IAzureContext context)
+        {
+            string tenant = null;
 
+            if (context.Subscription != null && context.Account != null)
+            {
+                tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                      .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                      .FirstOrDefault();
+            }
+
+            if (tenant == null && context.Tenant != null && new Guid(context.Tenant.Id) != Guid.Empty)
+            {
+                tenant = context.Tenant.Id.ToString();
+            }
+            return AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        public AppServiceEnvironmentResource GetAppServiceEnvironment(string resourceGroupName, string aseName)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().Get(resourceGroupName, aseName);
+        }
+
+        public AddressResponse GetAppServiceEnvironmentAddresses(string resourceGroupName, string aseName)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().GetVipInfo(resourceGroupName, aseName);
+        }
+
+        public AppServiceEnvironmentResource CreateAppServiceEnvironment(string resourceGroupName, string aseName, AppServiceEnvironmentResource appServiceEnvironment)
+        {
+            return WrappedWebsitesClient.AppServiceEnvironments().CreateOrUpdate(resourceGroupName, aseName, appServiceEnvironment);
+        }
+
+        public void RemoveAppServiceEnvironment(string resourceGroupName, string aseName)
+        {
+            WrappedWebsitesClient.AppServiceEnvironments().Delete(resourceGroupName, aseName);
+        }
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

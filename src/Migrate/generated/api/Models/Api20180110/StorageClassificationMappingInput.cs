@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
 
         /// <summary>The ID of the storage object.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string TargetStorageClassificationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IStorageMappingInputPropertiesInternal)Property).TargetStorageClassificationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IStorageMappingInputPropertiesInternal)Property).TargetStorageClassificationId = value; }
+        public string TargetStorageClassificationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IStorageMappingInputPropertiesInternal)Property).TargetStorageClassificationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IStorageMappingInputPropertiesInternal)Property).TargetStorageClassificationId = value ?? null; }
 
         /// <summary>Creates an new <see cref="StorageClassificationMappingInput" /> instance.</summary>
         public StorageClassificationMappingInput()

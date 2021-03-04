@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
     /// <summary>Get list of operations supported in the API.</summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.OffAzure/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.OffAzure/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMigrateOperation_List")]

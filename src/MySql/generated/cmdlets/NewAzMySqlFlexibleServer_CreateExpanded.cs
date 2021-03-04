@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMySqlFlexibleServer_CreateExpanded", SupportsShouldProcess = true)]
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         ReadOnly = false,
         Description = @"The password of the administrator login (required for server creation).",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier; set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); set => ParametersBody.SkuTier = value; }
 
         /// <summary>The source MySQL server id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The source MySQL server id.")]

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>TypeConverter implementation for Reason.</summary>
+    /// <summary>Message providing the reason why the given name is invalid.</summary>
     public partial class ReasonTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

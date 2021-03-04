@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Type = sdkFrontDoor.Type,
                 Tags = sdkFrontDoor.Tags.ToHashTableTags(),
                 FriendlyName = sdkFrontDoor.FriendlyName,
+                FrontDoorId = sdkFrontDoor.FrontdoorId,
                 RoutingRules = sdkFrontDoor.RoutingRules?.Select(x => x.ToPSRoutingRule()).ToList(),
                 BackendPools = sdkFrontDoor.BackendPools?.Select(x => x.ToPSBackendPool()).ToList(),
                 HealthProbeSettings = sdkFrontDoor.HealthProbeSettings?.Select(x => x.ToPSHealthProbeSetting()).ToList(),
@@ -569,7 +570,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ProvisioningState = sdkPolicy.ProvisioningState,
                 CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
                 CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
-                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl
+                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl,
+                RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck)
             };
         }
 

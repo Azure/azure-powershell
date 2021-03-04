@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.2
+* Refined error messages of cmdlet failure.
+* Upgraded exception handling to use Azure PowerShell related exceptions.
+* Fixed the issue that user could not use provided service principal to create Kubernetes cluster. [#13938]
+
 ## Version 2.0.1
 * Fixed the issue that user cannot use service principal to create a new Kubernetes cluster. [#13012]
 

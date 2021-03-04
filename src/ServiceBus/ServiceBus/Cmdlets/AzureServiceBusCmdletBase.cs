@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public static TimeSpan ParseTimespan(string strTimespan)
         {
             TimeSpan tspan = new TimeSpan();
-            if(strTimespan.Contains("P") || strTimespan.Contains("D") || strTimespan.Contains("T") || strTimespan.Contains("H") || strTimespan.Contains("M") || strTimespan.Contains("M"))
+            if(strTimespan.Contains("P") || strTimespan.Contains("D") || strTimespan.Contains("T") || strTimespan.Contains("H") || strTimespan.Contains("M"))
             {
                 tspan = XmlConvert.ToTimeSpan(strTimespan);
             }

@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to process resource.
+        /// </summary>
+        internal static string BaseConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("BaseConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
@@ -256,6 +265,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string CreatingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("CreatingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve information protection policy of tenant {0}..
+        /// </summary>
+        internal static string DataClassificationFailedToRetrieveInformationProtectionPolicy {
+            get {
+                return ResourceManager.GetString("DataClassificationFailedToRetrieveInformationProtectionPolicy", resourceCulture);
             }
         }
         
@@ -1142,7 +1160,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("RoleDefinitionNameDoesNotExist", resourceCulture);
             }
         }
-        
+
+        internal static string ScanIdParameterIsRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Service principal with Name &apos;{0}&apos; does not exist..
         /// </summary>
@@ -1536,6 +1562,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UserNameDoesNotExist {
             get {
                 return ResourceManager.GetString("UserNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested type is not supported by Vulnerability Assessment..
+        /// </summary>
+        internal static string VulnerabilityAssessmentTypeNotSupported {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentTypeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong parameter type.
+        /// </summary>
+        internal static string VulnerabilityAssessmentWrongParameterType {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
         

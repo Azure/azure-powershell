@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>TypeConverter implementation for ProvisioningState.</summary>
+    /// <summary>Defines the provisioning states.</summary>
     public partial class ProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

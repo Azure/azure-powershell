@@ -186,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState State { get => ParametersBody.State; set => ParametersBody.State = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState State { get => ParametersBody.State ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerSecurityAlertPolicyState)""); set => ParametersBody.State = value; }
 
         /// <summary>Specifies the identifier key of the Threat Detection audit storage account.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the identifier key of the Threat Detection audit storage account.")]

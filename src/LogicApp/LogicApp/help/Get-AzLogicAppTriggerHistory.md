@@ -1,24 +1,27 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: C1F6BBF9-0DB5-46FD-B8A8-9029B0AB6166
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapptriggerhistory
+online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapptriggerhistory
 schema: 2.0.0
 ---
 
 # Get-AzLogicAppTriggerHistory
 
 ## SYNOPSIS
+
 Gets the history of triggers in a logic app.
 
 ## SYNTAX
 
-```
+```powershell
 Get-AzLogicAppTriggerHistory -ResourceGroupName <String> -Name <String> -TriggerName <String>
- [-HistoryName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HistoryName <String>] [-FollowNextPageLink] [-MaximumFollowNextPageLink <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The **Get-AzLogicAppTriggerHistory** cmdlet gets the history of triggers in a logic app in the Logic Apps feature.
 This cmdlet returns a **WorkflowTriggerHistory** object.
 Specify the logic app, resource group, and trigger.
@@ -30,7 +33,8 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get a trigger history of a logic app
-```
+
+```powershell
 PS C:\>Get-AzLogicAppTriggerHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -TriggerName "Trigger01" -HistoryName "08587489107387695768"
 Code        : BadRequest
 EndTime     : 1/13/2016 2:42:26 PM
@@ -50,7 +54,8 @@ Type        : Microsoft.Logic/workflows/triggers/histories
 This command gets a specific logic app trigger history for a trigger in the logic app named LogicApp03.
 
 ### Example 2: Get trigger histories of a logic app
-```
+
+```powershell
 PS C:\>Get-AzLogicAppTriggerHistory -ResourceGroupName "ResourceGroup11" -Name "LogicApp07" -TriggerName "Trigger01"
 Code        : BadRequest
 EndTime     : 1/13/2016 2:43:33 PM
@@ -83,9 +88,27 @@ Type        : Microsoft.Logic/workflows/triggers/histories
 
 This command gets the workflow trigger histories for a trigger in the logic app named LogicApp07.
 
+### Example 3: Get entire trigger history of a logic app
+
+```powershell
+PS C:\>Get-AzLogicAppTriggerHistory -ResourceGroupName "ResourceGroup11" -Name "LogicApp08" -TriggerName "Trigger01" -FollowNextPageLink
+```
+
+This command gets the entire workflow trigger history for a trigger in the logic app named LogicApp08 by following the NextPageLink.
+
+### Example 4
+
+```powershell
+PS C:\>Get-AzLogicAppTriggerHistory -ResourceGroupName "ResourceGroup11" -Name "LogicApp08" -TriggerName "Trigger01" -FollowNextPageLink -MaximumFollowNextPageLink 1
+```
+
+This command gets the first two pages of workflow trigger history for a trigger in the logic app named LogicApp09 by following the NextPageLink and limiting the result size to two pages.
+Each page contains thirty results.
+
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
@@ -100,7 +123,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FollowNextPageLink
+
+Indicates the cmdlet should follow next page links.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: FL
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HistoryName
+
 Specifies the name of the history that this cmdlet gets.
 
 ```yaml
@@ -115,7 +155,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaximumFollowNextPageLink
+
+Specifies how many times to follow next page links if FollowNextPageLink is used.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: ML
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
+
 Specifies the name of the logic app for which this cmdlet gets trigger history.
 
 ```yaml
@@ -131,6 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 Specifies the name of the resource group in which this cmdlet gets history.
 
 ```yaml
@@ -146,6 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -TriggerName
+
 Specifies the name of the trigger for which this cmdlet gets history.
 
 ```yaml
@@ -161,7 +220,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -180,5 +240,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzLogicAppTrigger](./Get-AzLogicAppTrigger.md)
 
 [Start-AzLogicApp](./Start-AzLogicApp.md)
-
-

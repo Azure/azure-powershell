@@ -19,7 +19,7 @@ This will delete the YAML file used to set up the Source control configuration, 
 .Description
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfiguration -ClusterName connaks-d983yc -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test01
+PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name  k8sconfig-t02 -ClusterType ConnectedClusters
 
 .Example
 PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName connaks-dkc29c -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test02 -ClusterRp Microsoft.Kubernetes
@@ -44,7 +44,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
 #>
 function Remove-AzKubernetesConfiguration {
 [OutputType([System.Boolean])]

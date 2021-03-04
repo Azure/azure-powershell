@@ -84,6 +84,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public Object ProtectedSetting { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ForceUpdateTag { get; set; }
@@ -132,6 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.Settings = this.IsParameterBound(c => c.Setting) ? this.Setting : null;
             vExtensions.ProtectedSettings = this.IsParameterBound(c => c.ProtectedSetting) ? this.ProtectedSetting : null;
             vExtensions.ProvisionAfterExtensions = this.IsParameterBound(c => c.ProvisionAfterExtension) ? this.ProvisionAfterExtension : null;
+            vExtensions.EnableAutomaticUpgrade = this.IsParameterBound(c => c.EnableAutomaticUpgrade) ? this.EnableAutomaticUpgrade : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

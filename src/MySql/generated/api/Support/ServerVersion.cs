@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         /// <param name="value">the value to convert to an instance of <see cref="ServerVersion" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ServerVersion(System.Convert.ToString(value));
+            return new ServerVersion(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ServerVersion</summary>

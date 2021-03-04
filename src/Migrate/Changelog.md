@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.0
-* First preview release for module Az.Migrate
+## Version 1.0.0
+* Az.Migrate GA
+* Incorporated Initialize-AzMigrateReplicationInfrastructure as a cmdlet in the Az.Migrate module, from the external script that is run currently today.
+* Made some parameters of New-AzMigrateServerReplication, New-AzMigrateDiskMapping case insensitive.
+* Added support for scale appliance change, to handle new V3 keys.
 
+## Version 0.2.0
+* Bug fixed in update replication migration item to pass all properties (changed/unchanged) to service, and not just the changed ones.
+* Bug fixed in enable migrate to pick correct run as account id for VMware Cbt provider.
+* Added new parameter (MachineName) in get replication migration item, to get replication migration item by friendly name.
+* Bug fixed in enable migrate to stop passing Target Boot Diagnostic Storage Account if it is in a different subscription id than the target VM.
+* Fix to in online URLs of existing code doc.
+
+## Version 0.1.1
+* Bug fixed in enable replication, to make default user scenario migrate all disks by default. Earlier the cmdlet was only migrating the OS disk, which was a bug.
+
+## Version 0.1.0
+* First preview release for module Az.Migrate. The cmdlets to support common scenarios of Migrate like enable replication, update replication item, get migration items, migrate, test migrate and clean up have been exposed.

@@ -2,7 +2,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
 
-    /// <summary>The resource management error response.</summary>
+    /// <summary>
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
+    /// </summary>
     public partial class ErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponse,
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.IErrorResponseInternal
@@ -64,7 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
 
         }
     }
-    /// The resource management error response.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
     public partial interface IErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IJsonSerializable
     {
@@ -110,7 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
         string Target { get;  }
 
     }
-    /// The resource management error response.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.)
     internal partial interface IErrorResponseInternal
 
     {

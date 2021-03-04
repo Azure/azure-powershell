@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
+https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
 #>
 function Remove-AzMigrateReplicationMigrationItem {
 [OutputType([System.Boolean])]
@@ -70,7 +70,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]

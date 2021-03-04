@@ -18,7 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.1
+* Added null check for target storage account in FileShare restore.
+
+## Version 3.4.0
+* modified policy validation limits as per backup service.
+* Added Zone Redundancy for Recovery Service Vaults. 
+* Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability zone for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for UseManagedDisk for HyperV to Azure provider
+
+## Version 3.3.0
+* Added Cross Region Restore feature.  
+* Blocked getting workload config when target item is an availability group.
+
+## Version 3.2.0
 * Enabled softdelete feature for SQL.
+* Fixed SQL AG restore and removed the container name check.
+* Changed container name format for Azure Files backup item.
+* Added CMK feature support for Recovery services vault.
 
 ## Version 3.1.0
 * Made help text and parameter set name changes to `Restore-AzRecoveryServicesBackupItem` cmdlet.

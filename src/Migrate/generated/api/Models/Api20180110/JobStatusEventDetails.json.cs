@@ -71,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return;
             }
             __eventSpecificDetails = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.EventSpecificDetails(json);
-            {_affectedObjectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("affectedObjectType"), out var __jsonAffectedObjectType) ? (string)__jsonAffectedObjectType : (string)AffectedObjectType;}
-            {_jobFriendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobFriendlyName"), out var __jsonJobFriendlyName) ? (string)__jsonJobFriendlyName : (string)JobFriendlyName;}
             {_jobId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobId"), out var __jsonJobId) ? (string)__jsonJobId : (string)JobId;}
+            {_jobFriendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobFriendlyName"), out var __jsonJobFriendlyName) ? (string)__jsonJobFriendlyName : (string)JobFriendlyName;}
             {_jobStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("jobStatus"), out var __jsonJobStatus) ? (string)__jsonJobStatus : (string)JobStatus;}
+            {_affectedObjectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("affectedObjectType"), out var __jsonAffectedObjectType) ? (string)__jsonAffectedObjectType : (string)AffectedObjectType;}
             AfterFromJson(json);
         }
 
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 return container;
             }
             __eventSpecificDetails?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._affectedObjectType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._affectedObjectType.ToString()) : null, "affectedObjectType" ,container.Add );
-            AddIf( null != (((object)this._jobFriendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobFriendlyName.ToString()) : null, "jobFriendlyName" ,container.Add );
             AddIf( null != (((object)this._jobId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobId.ToString()) : null, "jobId" ,container.Add );
+            AddIf( null != (((object)this._jobFriendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobFriendlyName.ToString()) : null, "jobFriendlyName" ,container.Add );
             AddIf( null != (((object)this._jobStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._jobStatus.ToString()) : null, "jobStatus" ,container.Add );
+            AddIf( null != (((object)this._affectedObjectType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._affectedObjectType.ToString()) : null, "affectedObjectType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

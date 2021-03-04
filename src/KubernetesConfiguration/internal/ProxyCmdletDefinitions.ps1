@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IResourceProviderOperation
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration/get-azoperation
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
 #>
 function Get-AzOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.IResourceProviderOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -140,19 +140,25 @@ Create a new Kubernetes Source Control Configuration.
 .Description
 Create a new Kubernetes Source Control Configuration.
 .Example
-PS C:\> New-AzKubernetesConfiguration -Name conf-test01 -ClusterName connaks-d983yc -ResourceGroupName connaks-rg-w9vlnp -RepositoryUrl http://github.com/xxxx
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name k8sconfig-t01 -RepositoryUrl http://github.com/xxxx
 
-Name        Type
-----        ----
-conf-test01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
+----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
+k8sconfig-t01 12/21/2020 5:26:17 AM                                             12/21/2020 5:26:17 AM                                                          Microsoft.KubernetesConfiguration/so…
+.Example
+PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name k8sconfig-t02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+
+Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
+----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
+k8sconfig-t02 12/21/2020 5:26:17 AM                                             12/21/2020 5:26:17 AM                                                          Microsoft.KubernetesConfiguration/so…
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20191101Preview.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -208,16 +214,22 @@ param(
     ${ComplianceStatusMessage},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevel]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType]
     # Level of the message.
     ${ComplianceStatusMessageLevel},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperator]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings]))]
+    [System.Collections.Hashtable]
+    # Name-value pairs of protected configuration settings for the configuration
+    ${ConfigurationProtectedSetting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
     # Option to enable Helm Operator for this git configuration.
     ${EnableHelmOperator},
 
@@ -253,9 +265,9 @@ param(
     ${OperatorParam},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScope]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]
     # Scope at which the operator will be installed.
     ${OperatorScope},
 
@@ -271,6 +283,50 @@ param(
     [System.String]
     # Url of the SourceControl Repository.
     ${RepositoryUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+    ${SshKnownHostsContent},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.DateTime]
+    # The timestamp of resource creation (UTC).
+    ${SystemDataCreatedAt},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The identity that created the resource.
+    ${SystemDataCreatedBy},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType]
+    # The type of identity that created the resource.
+    ${SystemDataCreatedByType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.DateTime]
+    # The type of identity that last modified the resource.
+    ${SystemDataLastModifiedAt},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The identity that last modified the resource.
+    ${SystemDataLastModifiedBy},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType]
+    # The type of identity that last modified the resource.
+    ${SystemDataLastModifiedByType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -379,7 +435,7 @@ This will delete the YAML file used to set up the Source control configuration, 
 .Description
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfiguration -ClusterName connaks-d983yc -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test01
+PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name  k8sconfig-t02 -ClusterType ConnectedClusters
 
 .Example
 PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName connaks-dkc29c -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test02 -ClusterRp Microsoft.Kubernetes
@@ -404,7 +460,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
 #>
 function Remove-AzKubernetesConfiguration {
 [OutputType([System.Boolean])]

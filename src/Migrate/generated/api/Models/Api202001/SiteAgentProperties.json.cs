@@ -71,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
-            {_keyVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultId"), out var __jsonKeyVaultId) ? (string)__jsonKeyVaultId : (string)KeyVaultId;}
-            {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultUri"), out var __jsonKeyVaultUri) ? (string)__jsonKeyVaultUri : (string)KeyVaultUri;}
-            {_lastHeartBeatUtc = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastHeartBeatUtc"), out var __jsonLastHeartBeatUtc) ? global::System.DateTime.TryParse((string)__jsonLastHeartBeatUtc, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastHeartBeatUtcValue) ? __jsonLastHeartBeatUtcValue : LastHeartBeatUtc : LastHeartBeatUtc;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)Version;}
+            {_lastHeartBeatUtc = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastHeartBeatUtc"), out var __jsonLastHeartBeatUtc) ? global::System.DateTime.TryParse((string)__jsonLastHeartBeatUtc, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastHeartBeatUtcValue) ? __jsonLastHeartBeatUtcValue : LastHeartBeatUtc : LastHeartBeatUtc;}
+            {_keyVaultUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultUri"), out var __jsonKeyVaultUri) ? (string)__jsonKeyVaultUri : (string)KeyVaultUri;}
+            {_keyVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("keyVaultId"), out var __jsonKeyVaultId) ? (string)__jsonKeyVaultId : (string)KeyVaultId;}
             AfterFromJson(json);
         }
 
@@ -101,16 +101,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
             {
                 AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             }
-            AddIf( null != (((object)this._keyVaultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultId.ToString()) : null, "keyVaultId" ,container.Add );
-            AddIf( null != (((object)this._keyVaultUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultUri.ToString()) : null, "keyVaultUri" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._lastHeartBeatUtc ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._lastHeartBeatUtc?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastHeartBeatUtc" ,container.Add );
-            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
             }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._lastHeartBeatUtc ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._lastHeartBeatUtc?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastHeartBeatUtc" ,container.Add );
+            }
+            AddIf( null != (((object)this._keyVaultUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultUri.ToString()) : null, "keyVaultUri" ,container.Add );
+            AddIf( null != (((object)this._keyVaultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._keyVaultId.ToString()) : null, "keyVaultId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

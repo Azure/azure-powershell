@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* Introduced an option to give custom timeout for `Publish-AzWebApp` 
+* Added support for App Service Environment
+    - `New-AzAppServiceEnvironment`
+    - `Remove-AzAppServiceEnvironment`
+    - `Get-AzAppServiceEnvironment`
+    - `New-AzAppServiceEnvironmentInboundServices`
+* Add-AzWebAppAccessRestrictionRule: When using subnet from another subscription, -IgnoreMissingServiceEndpoint must be used. Descriptive error message added.
+
+## Version 2.3.0
+* Added support for Importing a key vault certificate to WebApp.
+
+## Version 2.2.0
+* Added support for App Service Managed certificates
+    - `New-AzWebAppCertificate`
+    - `Remove-AzWebAppCertificate`
+* Fixed issue that causes Docker Password to be removed from appsettings in `Set-AzWebApp` and `Set-AzWebAppSlot`
+
 ## Version 2.1.1
 * Prevent duplicate access restriction rules
 

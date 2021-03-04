@@ -13,18 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Used to get RecoveryServices Vault properties
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperty"), OutputType(typeof(BackupResourceVaultConfig))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperty"), OutputType(typeof(VaultProperty))]
     public class GetAzureRmRecoveryServicesVaultProperties : RSBackupVaultCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -35,8 +35,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                BackupResourceVaultConfigResource result = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
-                WriteObject(result.Properties);
+                BackupResourceEncryptionConfigResource vaultEncryptionSetting = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                BackupResourceVaultConfigResource vaultConfigResource = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
+                
+                VaultProperty vaultProperty = new VaultProperty(vaultConfigResource.Properties, vaultEncryptionSetting);
+                
+                WriteObject(vaultProperty);
             }
             catch (Exception exception)
             {

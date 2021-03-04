@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscove
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateoperation
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscovery])]
@@ -48,7 +48,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription Id.
+    # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
     [Parameter()]

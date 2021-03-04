@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>Argument completer implementation for IotHubDataFormat.</summary>
+    /// <summary>
+    /// The data format of the message. Optionally the data format can be added to each message.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IotHubDataFormatTypeConverter))]
     public partial struct IotHubDataFormat :
         System.Management.Automation.IArgumentCompleter

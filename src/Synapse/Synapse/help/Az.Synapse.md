@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Synapse
 Module Guid: 89eceb4f-9916-4ec5-8499-d5cca97a9cae
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.synapse
+Download Help Link: https://docs.microsoft.com/powershell/module/az.synapse
 Help Version: 0.0.1.0
 Locale: en-US
 ---
@@ -14,11 +14,23 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Synap
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
+### [Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
+Clears the vulnerability assessment rule baseline.
+
+### [Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan](Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
+Converts a vulnerability assessment scan results to Excel format.
+
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
 
+### [Disable-AzSynapseSqlPoolSensitivityRecommendation](Disable-AzSynapseSqlPoolSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the SQL pool.
+
 ### [Enable-AzSynapseSqlAdvancedDataSecurity](Enable-AzSynapseSqlAdvancedDataSecurity.md)
 Enables Advanced Data Security on a workspace.
+
+### [Enable-AzSynapseSqlPoolSensitivityRecommendation](Enable-AzSynapseSqlPoolSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the SQL pool.
 
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
@@ -31,6 +43,9 @@ Gets information about data flows in workspace.
 
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
+
+### [Get-AzSynapseDroppedSqlPool](Get-AzSynapseDroppedSqlPool.md)
+Gets a dropped Sql pool backup of a Synapse Sql Pool.
 
 ### [Get-AzSynapseFirewallRule](Get-AzSynapseFirewallRule.md)
 Gets a Synapse Analytics Firewall Rule.
@@ -101,11 +116,26 @@ Gets the advanced threat protection settings for a SQL pool.
 ### [Get-AzSynapseSqlPoolAuditSetting](Get-AzSynapseSqlPoolAuditSetting.md)
 Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
+### [Get-AzSynapseSqlPoolGeoBackup](Get-AzSynapseSqlPoolGeoBackup.md)
+Gets a geo-redundant backup of a Sql Pool.
+
 ### [Get-AzSynapseSqlPoolRestorePoint](Get-AzSynapseSqlPoolRestorePoint.md)
 Retrieves the distinct restore points from which a Synapse Analytics SQL pool can be restored.
 
+### [Get-AzSynapseSqlPoolSensitivityClassification](Get-AzSynapseSqlPoolSensitivityClassification.md)
+Gets the current information types and sensitivity labels of columns in the SQL pool.
+
+### [Get-AzSynapseSqlPoolSensitivityRecommendation](Get-AzSynapseSqlPoolSensitivityRecommendation.md)
+Gets the recommended information types and sensitivity labels of columns in the SQL pool.
+
 ### [Get-AzSynapseSqlPoolTransparentDataEncryption](Get-AzSynapseSqlPoolTransparentDataEncryption.md)
 Gets the TDE state for a SQL pool.
+
+### [Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Get-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
+Gets the vulnerability assessment rule baseline.
+
+### [Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord](Get-AzSynapseSqlPoolVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given sql pool.
 
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
@@ -197,6 +227,12 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### [Remove-AzSynapseSqlPool](Remove-AzSynapseSqlPool.md)
 Deletes a Synapse Analytics SQL pool.
 
+### [Remove-AzSynapseSqlPoolRestorePoint](Remove-AzSynapseSqlPoolRestorePoint.md)
+Deletes a Synapse Analytics SQL pool restore point.
+
+### [Remove-AzSynapseSqlPoolSensitivityClassification](Remove-AzSynapseSqlPoolSensitivityClassification.md)
+Removes the information types and sensitivity labels of columns in the SQL pool.
+
 ### [Remove-AzSynapseTrigger](Remove-AzSynapseTrigger.md)
 Removes a trigger from a workspace.
 
@@ -260,14 +296,23 @@ Changes the auditing settings of an Azure Synapse Analytics Workspace.
 ### [Set-AzSynapseSqlPoolAuditSetting](Set-AzSynapseSqlPoolAuditSetting.md)
 Changes the auditing settings for an Azure Synapse Analytics SQL pool.
 
+### [Set-AzSynapseSqlPoolSensitivityClassification](Set-AzSynapseSqlPoolSensitivityClassification.md)
+Sets the information types and sensitivity labels of columns in the SQL pool.
+
 ### [Set-AzSynapseSqlPoolTransparentDataEncryption](Set-AzSynapseSqlPoolTransparentDataEncryption.md)
 Modifies TDE property for a SQL pool.
+
+### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
 
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
+
+### [Start-AzSynapseSqlPoolVulnerabilityAssessmentScan](Start-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
+Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
