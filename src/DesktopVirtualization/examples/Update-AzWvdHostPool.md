@@ -6,7 +6,6 @@ PS C:\> Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 6 `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false

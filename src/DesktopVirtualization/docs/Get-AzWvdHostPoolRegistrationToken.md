@@ -1,67 +1,46 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvddesktop
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 schema: 2.0.0
 ---
 
-# Update-AzWvdDesktop
+# Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Update a desktop.
+Registration token of the host pool.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Retrieve (Default)
 ```
-Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### RetrieveViaIdentity
 ```
-Update-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
- [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a desktop.
+Registration token of the host pool.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Desktop
+### Example 1: Get Windows Virtual Desktop registration token information by HostPoolName
 ```powershell
-PS C:\> Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
-                             -GroupName ApplicationGroupName `
-                             -Name DesktopName `
-                             -FriendlyName 'Friendly name' `
-                             -Description 'Description' `
+PS C:\> Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
-Name                             Type
-----                             ----
-ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
+ExpirationTime       RegistrationTokenOperation Token
+--------------       -------------------------- -----
+4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 ```
 
-This command updates a Windows Virtual Desktop Desktop in an applicaton Group.
+This command gets Windows Virtual Desktop registration token information from a HostPool.
 
 ## PARAMETERS
-
-### -ApplicationGroupName
-The name of the application group
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -78,30 +57,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description of Desktop.
+### -HostPoolName
+The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Retrieve
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FriendlyName
-Friendly name of Desktop.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +78,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: RetrieveViaIdentity
 Aliases:
 
 Required: True
@@ -124,28 +88,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the desktop within the specified desktop group
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: DesktopName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Retrieve
 Aliases:
 
 Required: True
@@ -159,28 +108,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.String[]
+Parameter Sets: Retrieve
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-tags to be updated
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -225,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IRegistrationInfo
 
 ## NOTES
 
