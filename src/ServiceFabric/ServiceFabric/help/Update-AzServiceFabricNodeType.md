@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzServiceFabricNodeType
 
 ## SYNOPSIS
-Remove a complete node type from a cluster.
+Update a node type within the cluster.
 
 ## SYNTAX
 

@@ -6,6 +6,7 @@ schema: 2.0.0
 ---
 
 # Add-AzServiceFabricNodeType
+
 ## SYNOPSIS
 Add a new node type to the existing cluster.
 
@@ -14,8 +15,8 @@ Add a new node type to the existing cluster.
 ```
 Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capacity <Int32>
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
- [-DurabilityLevel <DurabilityLevel>] -NodeType <String> [-IsPrimaryNodeType <Bool>]
- [-VMImagePublisher <String>] [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>]
+ [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
+ [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] -NodeType <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,6 +38,8 @@ New node type will be a primary node type and will copy the VM image reference o
 discovered preexiting Node Type VMSS, substituting ImageSku with 18.04-LTS.
 - Existing node type image reference: ImagePublisher: Canonical, ImageOffer: UbuntuServer, ImageSku: 16.04-LTS, ImageVersion: latest
 - New node type image reference: ImagePublisher: Canonical, ImageOffer: UbuntuServer, ImageSku: 18.04-LTS, ImageVersion: latest
+
+
 ```powershell
 PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
 PS c:\> $resourceGroup = "Group2"
@@ -99,7 +102,7 @@ Accept wildcard characters: False
 Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.
 
 ```yaml
-Type: System.Nullable<System.Boolean>
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +173,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VmImageOffer
+### -VMImageOffer
 Specify the VM image reference Offer.
 
 ```yaml
@@ -181,11 +184,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VmImagePublisher
+### -VMImagePublisher
 Specify the VM image reference Publisher.
 
 ```yaml
@@ -196,11 +199,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VmImageSku
+### -VMImageSku
 Specify the VM image reference Sku.
 
 ```yaml
@@ -211,11 +214,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VmImageVersion
+### -VMImageVersion
 Specify the VM image reference Version.
 
 ```yaml
@@ -226,7 +229,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
