@@ -147,8 +147,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -226,15 +226,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1589,8 +1592,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1668,15 +1671,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1860,8 +1866,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1939,15 +1945,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2135,8 +2144,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -2214,15 +2223,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
