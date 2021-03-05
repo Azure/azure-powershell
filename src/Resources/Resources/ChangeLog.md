@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Redirected bicep message to verbose stream
-* Removed the logic of coping Bicep template file to temp folder.
+* Removed the logic of copying Bicep template file to temp folder.
 
 ## Version 3.3.0
 * Added support for Azure resources deployment in Bicep language
