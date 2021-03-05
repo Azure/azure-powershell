@@ -23,6 +23,8 @@ using SdkAfdOrigin = Microsoft.Azure.Management.Cdn.Models.AFDOrigin;
 using SdkAfdOriginGroup = Microsoft.Azure.Management.Cdn.Models.AFDOriginGroup;
 using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 using SdkAfdRoute = Microsoft.Azure.Management.Cdn.Models.Route;
+using SdkAfdRule = Microsoft.Azure.Management.Cdn.Models.Rule;
+using SdkAfdRuleSet = Microsoft.Azure.Management.Cdn.Models.RuleSet;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
@@ -150,6 +152,32 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 HttpsRedirect = sdkAfdRoute.HttpsRedirect,
                 LinkToDefaultDomain = sdkAfdRoute.LinkToDefaultDomain,
                 EnabledState = sdkAfdRoute.EnabledState
+            };
+        }
+
+        public static PSAfdRule ToPSAfdRule(this SdkAfdRule sdkAfdRule)
+        {
+            return new PSAfdRule
+            {
+                Id = sdkAfdRule.Id,
+                Name = sdkAfdRule.Name,
+                Type = sdkAfdRule.Type,
+                ProvisioningState = sdkAfdRule.ProvisioningState,
+                Order = sdkAfdRule.Order,
+                Actions = (List<DeliveryRuleAction>)sdkAfdRule.Actions,
+                Conditions = (List<DeliveryRuleCondition>)sdkAfdRule.Conditions,
+                MatchProcessingBehavior = sdkAfdRule.MatchProcessingBehavior
+            };
+        }
+
+        public static PSAfdRuleSet ToPSAfdRuleSet(this SdkAfdRuleSet sdkAfdRuleSet)
+        {
+            return new PSAfdRuleSet
+            {
+                Id = sdkAfdRuleSet.Id,
+                Name = sdkAfdRuleSet.Name,
+                Type = sdkAfdRuleSet.Type,
+                ProvisioningState = sdkAfdRuleSet.ProvisioningState
             };
         }
     }

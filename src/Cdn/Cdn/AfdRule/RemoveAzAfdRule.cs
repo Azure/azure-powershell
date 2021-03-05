@@ -18,21 +18,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
+namespace Microsoft.Azure.Commands.Cdn.AfdRule
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzAfdCustomDomain : AzureCdnCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRule", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzAfdRule : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string CustomDomainName { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdCustomDomainObject, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSAfdCustomDomain CustomDomain { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
@@ -46,6 +40,19 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdRuleObject, ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSAfdRule Rule { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string RuleName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleSetName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string RuleSetName { get; set; }
+
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -60,14 +67,14 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
                     break;
             }
 
-            ConfirmAction(AfdResourceProcessMessage.AfdCustomDomainDeleteMessage, this.CustomDomainName, this.DeleteAfdCustomDomain);
+            ConfirmAction(AfdResourceProcessMessage.AfdRuleDeleteMessage, this.RuleName, this.DeleteAfdRule);
         }
 
-        private void DeleteAfdCustomDomain()
+        private void DeleteAfdRule()
         {
             try
             {
-                this.CdnManagementClient.AFDCustomDomains.Delete(this.ResourceGroupName, this.ProfileName, this.CustomDomainName);
+                this.CdnManagementClient.Rules.Delete(this.ResourceGroupName, this.ProfileName, this.RuleSetName, this.RuleName);
             }
             catch (AfdErrorResponseException errorResponse)
             {
@@ -82,20 +89,22 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
 
         private void ObjectParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdCustomDomainResourceId = new ResourceIdentifier(this.CustomDomain.Id);
+            ResourceIdentifier parsedAfdRuleResourceId = new ResourceIdentifier(this.Rule.Id);
 
-            this.CustomDomainName = parsedAfdCustomDomainResourceId.ResourceName;
-            this.ProfileName = parsedAfdCustomDomainResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdCustomDomainResourceId.ResourceGroupName;
+            this.ProfileName = parsedAfdRuleResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdRuleResourceId.ResourceGroupName;
+            this.RuleName = parsedAfdRuleResourceId.ResourceName;
+            this.RuleSetName = parsedAfdRuleResourceId.GetResourceName("rulesets");
         }
 
         private void ResourceIdParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdCustomDomainResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdRuleResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.CustomDomainName = parsedAfdCustomDomainResourceId.ResourceName;
-            this.ProfileName = parsedAfdCustomDomainResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdCustomDomainResourceId.ResourceGroupName;
+            this.ProfileName = parsedAfdRuleResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdRuleResourceId.ResourceGroupName;
+            this.RuleName = parsedAfdRuleResourceId.ResourceName;
+            this.RuleSetName = parsedAfdRuleResourceId.GetResourceName("rulesets");
         }
     }
 }

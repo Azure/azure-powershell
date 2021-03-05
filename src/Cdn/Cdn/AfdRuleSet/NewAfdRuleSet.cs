@@ -17,24 +17,13 @@ using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
+namespace Microsoft.Azure.Commands.Cdn.AfdRuleSet
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdCustomDomain))]
-    public class NewAzAfdCustomDomain : AzureCdnCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRuleSet", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdRuleSet))]
+    public class NewAfdRuleSet : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string CustomDomainName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainHostName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string HostName { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
@@ -44,23 +33,22 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleSetName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string RuleSetName { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(AfdResourceProcessMessage.AfdCustomDomainCreateMessage, this.CustomDomainName, this.CreateAfdCustomDomain);
+            ConfirmAction(AfdResourceProcessMessage.AfdRuleSetCreateMessage, this.RuleSetName, this.CreateAfdRuleSet);
         }
 
-        private void CreateAfdCustomDomain()
+        private void CreateAfdRuleSet()
         {
             try
             {
-                AFDDomain afdCustomDomain = new AFDDomain
-                {
-                    HostName = this.HostName
-                };
+                PSAfdRuleSet psAfdRuleSet = this.CdnManagementClient.RuleSets.Create(this.ResourceGroupName, this.ProfileName, this.RuleSetName).ToPSAfdRuleSet();
 
-                PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Create(this.ResourceGroupName, this.ProfileName, this.CustomDomainName, afdCustomDomain).ToPSAfdCustomDomain();
-                
-                WriteObject(psAfdCustomDomain);
+                WriteObject(psAfdRuleSet);
             }
             catch (AfdErrorResponseException errorResponse)
             {

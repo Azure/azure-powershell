@@ -22,17 +22,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
+namespace Microsoft.Azure.Commands.Cdn.AfdRuleSet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdCustomDomain))]
-    public class GetAzAfdCustomDomain : AzureCdnCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRuleSet", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSAfdRuleSet))]
+    public class GetAzAfdRuleSet : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdCustomDomainName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string CustomDomainName { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdProfileObject, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public PSAfdProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
@@ -48,11 +44,15 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdRuleSetName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string RuleSetName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-               switch (ParameterSetName)
+                switch (ParameterSetName)
                 {
                     case FieldsParameterSet:
                         this.FieldsParameterSetCmdlet();
@@ -60,37 +60,34 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
                     case ObjectParameterSet:
                         this.ObjectParameterSetCmdlet();
                         break;
-                    case ResourceIdParameterSet: 
-                        this.ResourceIdParameterSetCmdlet();
-                        break;     
+                    case ResourceIdParameterSet:
+                        this.ResourceIdSetCmdlet();
+                        break;
                 }
             }
             catch (AfdErrorResponseException errorResponse)
             {
                 throw new PSArgumentException(errorResponse.Response.Content);
             }
-
         }
 
         private void FieldsParameterSetCmdlet()
         {
-            if (AfdUtilities.IsValuePresent(this.CustomDomainName))
+            bool isRuleSetName = this.MyInvocation.BoundParameters.ContainsKey("RuleSetName");
+
+            if (isRuleSetName)
             {
-                // all fields are present (mandatory + optional)
+                PSAfdRuleSet psAfdRuleSet = this.CdnManagementClient.RuleSets.Get(this.ResourceGroupName, this.ProfileName, this.RuleSetName).ToPSAfdRuleSet();
 
-                PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Get(this.ResourceGroupName, this.ProfileName, this.CustomDomainName).ToPSAfdCustomDomain();
-
-                WriteObject(psAfdCustomDomain);
+                WriteObject(psAfdRuleSet);
             }
             else
             {
-                // only the mandatory fields are present
+                List<PSAfdRuleSet> psAfdRuleSetList = this.CdnManagementClient.RuleSets.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                                                      .Select(afdRuleSet => afdRuleSet.ToPSAfdRuleSet())
+                                                      .ToList();
 
-                List<PSAfdCustomDomain> psAfdCustomDomains = this.CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                                             .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
-                                                             .ToList();
-
-                WriteObject(psAfdCustomDomains);
+                WriteObject(psAfdRuleSetList);
             }
         }
 
@@ -101,24 +98,24 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
 
-            List<PSAfdCustomDomain> psAfdCustomDomains = this.CdnManagementClient.AFDCustomDomains.ListByProfile(this.ResourceGroupName, this.ProfileName)
-                                                         .Select(afdCustomDomain => afdCustomDomain.ToPSAfdCustomDomain())
-                                                         .ToList();
+            List<PSAfdRuleSet> psAfdRuleSetList = this.CdnManagementClient.RuleSets.ListByProfile(this.ResourceGroupName, this.ProfileName)
+                                                  .Select(afdRuleSet => afdRuleSet.ToPSAfdRuleSet())
+                                                  .ToList();
 
-            WriteObject(psAfdCustomDomains);
+            WriteObject(psAfdRuleSetList);
         }
 
-        private void ResourceIdParameterSetCmdlet()
+        private void ResourceIdSetCmdlet()
         {
-            ResourceIdentifier parsedAfdCustomDomainResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdRuleSetResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.CustomDomainName = parsedAfdCustomDomainResourceId.ResourceName;
-            this.ProfileName = parsedAfdCustomDomainResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdCustomDomainResourceId.ResourceGroupName;
+            this.ProfileName = parsedAfdRuleSetResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdRuleSetResourceId.ResourceGroupName;
+            this.RuleSetName = parsedAfdRuleSetResourceId.ResourceName;
 
-            PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Get(this.ResourceGroupName, this.ProfileName, this.CustomDomainName).ToPSAfdCustomDomain();
+            PSAfdRuleSet psAfdRuleSet = this.CdnManagementClient.RuleSets.Get(this.ResourceGroupName, this.ProfileName, this.RuleSetName).ToPSAfdRuleSet();
 
-            WriteObject(psAfdCustomDomain);
+            WriteObject(psAfdRuleSet);
         }
     }
 }

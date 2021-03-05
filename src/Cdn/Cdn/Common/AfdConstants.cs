@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
     public static class AfdResourceProcessMessage
     {
         public const string AfdCustomDomainCreateMessage = "Creating the Azure Front Door custom domain.";
+        public const string AfdCustomDomainDeleteMessage = "Deleting the Azure Front Door custom domain.";
         public const string AfdEndpointCreateMessage = "Creating the Azure Front Door endpoint.";
         public const string AfdEndpointDeleteMessage = "Deleting the Azure Front Door endpoint";
         public const string AfdEndpointUpdateMessage = "Updating the Azure Front Door endpoint.";
@@ -37,6 +38,10 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRouteCreateMessage = "Creating the Azure Front Door route.";
         public const string AfdRouteDeleteMessage = "Deleting the Azure Front Door route.";
         public const string AfdRouteUpdateMessage = "Updating the Azure Front Door route.";
+        public const string AfdRuleCreateMessage = "Creating the Azure Front Door rule.";
+        public const string AfdRuleDeleteMessage = "Deleting the Azure Front Door rule.";
+        public const string AfdRuleSetCreateMessage = "Creating the Azure Front Door rule set.";
+        public const string AfdRuleSetDeleteMessage = "Deleting the Azure Front Door rule set.";
     }
 
     public static class AfdSkuConstants
@@ -50,6 +55,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdCustomDomainHostName = "The host name of the domain. Must be a domain name.";
         public const string AfdCustomDomainIds = "The resource ids of the Azure Front Door custom domains.";
         public const string AfdCustomDomainName = "The Azure Front Door custom domain name.";
+        public const string AfdCustomDomainObject = "The Azure Front Door custom domain object.";
         public const string AfdEndpointObject = "The Azure Front Door endpoint object.";
         public const string AfdEndpointOriginResponseTimeoutSeconds = "The send and receive timeout on forwarding request to origin.";
         public const string AfdEndpointName = "The Azure Front Door endpoint name.";
@@ -82,10 +88,21 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRouteHttpsRedirect = "Whether to automatically redirect HTTP traffic to HTTPS traffic.";
         public const string AfdRouteName = "The Azure Front Door route name.";
         public const string AfdRouteObject = "The Azure Front Door route object.";
-        public const string AfdRouteOriginPath = "A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.";
+        public const string AfdRouteOriginPath = "A directory path on the origin that Azure Front Door can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.";
         public const string AfdRouteQueryStringCachingBehavior = "Defines how Azure Front Door caches requests that include query strings.";
         public const string AfdRouteSupportedProtocols = "List of supported protocols for this route.";
+        public const string AfdRuleBypassCache = "Sets the caching behavior to Bypass caching. This prevents requests that contain query strings from being cached.";
+        public const string AfdRuleCacheDuration = "The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss";
+        public const string AfdRuleCacheExpirationActionObject = "The cache expiration rule action object.";
+        public const string AfdRuleMatchProcessingBehavior = "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.";
+        public const string AfdRuleName = "The Azure Front Door rule name.";
+        public const string AfdRuleObject = "The Azure Front Door rule object.";
+        public const string AfdRuleOverride = "Sets the caching behavior to Override.";
+        public const string AfdRuleOrder = "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order.";
         public const string AfdRuleSetIds = "The resource ids of the Azure Front Door rule sets.";
+        public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
+        public const string AfdRuleSetName = "The Azure Front Door rule set name.";
+        public const string AfdRuleSetObject = "The Azure Front Door rule set object.";
         public const string ResourceId = "The Azure resource id.";
         public const string ResourceGroupName = "The Azure resource group name.";
         public const string TagsDescription = "The tags associated to the Azure resource.";
@@ -93,7 +110,9 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
     public static class AfdParameterSet 
     {
+        public const string AfdRuleBypassCache = "AfdRuleBypassCache";
+        public const string AfdRuleOverride = "AfdRuleOverride";
+        public const string AfdRuleSetIfMissing = "AfdRuleSetIfMissing";
         public const string SharedPrivateLinkResource = "SharedPrivateLinkResource";
     }
-
 }
