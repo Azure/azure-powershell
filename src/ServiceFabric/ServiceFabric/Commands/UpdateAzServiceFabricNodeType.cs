@@ -69,13 +69,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NodeTypesNotDefinedInCluster);
                 }
 
-                if (PatchRequired(existingNodeType))
-                {
-                    if (this.IsPrimaryNodeType.HasValue && this.IsPrimaryNodeType.Value != existingNodeType.IsPrimary)
-                    {
-                        existingNodeType.IsPrimary = this.IsPrimaryNodeType.Value;
-                    }
+                bool isPatchRequired = false;
 
+                if (this.IsPrimaryNodeType.HasValue && this.IsPrimaryNodeType.Value != existingNodeType.IsPrimary)
+                {
+                    existingNodeType.IsPrimary = this.IsPrimaryNodeType.Value;
+                    isPatchRequired = true;
+                }
+
+                if (isPatchRequired)
+                {
                     var patchRequest = new ClusterUpdateParameters
                     {
                         NodeTypes = cluster.NodeTypes
@@ -91,11 +94,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     WriteObject(new PSCluster(cluster), true);
                 }
             }
-        }
-
-        private bool PatchRequired(NodeTypeDescription existingNodeType)
-        {
-            return this.IsPrimaryNodeType.HasValue && this.IsPrimaryNodeType.Value != existingNodeType.IsPrimary;
         }
     }
 }
