@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -191,34 +192,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 }
 
-                //TODO: execute cmdlet 
-
-                //PSVirtualMachineRunCommand to = new PSVirtualMachineRunCommand();
-
-                VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();//TODO: why can't I use the PSVirtualMachineRunCommandScriptSource object? Error occurs. 
+                PSVirtualMachineRunCommandScriptSource scriptSourcePS = new PSVirtualMachineRunCommandScriptSource();
+                VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();
                 if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
                 {
 
                     if (this.Script != null)
                     {
-                        scriptSource.Script = this.Script;
+                        scriptSourcePS.Script = this.Script;
                     }
                     if (this.ScriptUri != null)
                     {
-                        scriptSource.ScriptUri = this.ScriptUri;
+                        scriptSourcePS.ScriptUri = this.ScriptUri;
                     }
                     if (this.CommandId != null)
                     {
-                        scriptSource.CommandId = this.CommandId;
+                        scriptSourcePS.CommandId = this.CommandId;
                     }
+
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineRunCommandScriptSource, VirtualMachineRunCommandScriptSource>(scriptSourcePS, scriptSource);
                 }
-
-
-                VirtualMachineRunCommand parameters = new VirtualMachineRunCommand
+                
+                PSVirtualMachineRunCommand parametersPS = new PSVirtualMachineRunCommand
                 {
-                    Source = scriptSource, //unable to use PS version here for some reason
-                                           //name ? 
-                                           // location? 
+                    Source = scriptSource,
                     AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
                     Parameters = (this.Parameter != null) ? this.Parameter : null,
                     ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
@@ -229,30 +226,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null,
                     Location = (this.Location != null) ? this.Location : null
                 };
-                /*
-                PSVirtualMachineRunCommand parameters = new PSVirtualMachineRunCommand
-                {
-                    Source = scriptSource, //unable to use PS version here for some reason
-                    //name ? 
-                    // location? 
-                    AsyncExecution = (this.AsyncExecution != null) ? this.AsyncExecution : null,
-                    Parameters = (this.Parameter != null) ? this.Parameter : null,
-                    ProtectedParameters = (this.ProtectedParameter != null) ? this.ProtectedParameter : null,
-                    RunAsUser = (this.RunAsUser != null) ? this.RunAsUser : null,
-                    RunAsPassword = (this.RunAsPassword != null) ? this.RunAsPassword : null,
-                    TimeoutInSeconds = (this.TimeoutInSeconds != null) ? this.TimeoutInSeconds : null,
-                    OutputBlobUri = (this.OutputBlobUri != null) ? this.OutputBlobUri : null,
-                    ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null
-                    /*
-                    ,Id = null,
-                    Type = null,
-                    Name = null,
-                    Location = null,
-                    Tags = null
-                    */
-                //};*/
 
-                //this.ComputeClient.ComputeManagementClient.VirtualMachineRunCommands.CreateOrUpdate();
+                VirtualMachineRunCommand parameters = new VirtualMachineRunCommand();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineRunCommand, VirtualMachineRunCommand>(parametersPS, parameters);
                 VirtualMachineRunCommandsClient.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
             });
 
