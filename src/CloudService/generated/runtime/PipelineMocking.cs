@@ -163,7 +163,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
 
         public HttpResponseMessage LoadMessage(string rqKey)
         {
-            Console.WriteLine("=================================================");
             var responses = Load();
             var message = responses.Property(rqKey);
 
@@ -184,8 +183,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
                 StatusCode = (HttpStatusCode)respMessage.NumberProperty("StatusCode", ref sc),
                 Content = new System.Net.Http.ByteArrayContent(DeserializeContent(respMessage.StringProperty("Content"), isBase64Response))
             };
-            Console.WriteLine(isBase64Response);
-            Console.WriteLine(response.Content);
 
             foreach (var each in respMessage.Property("Headers"))
             {
@@ -230,7 +227,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
             counter++;
             var rqkey = $"{Description}+{Context}+{Scenario}+${request.Method.Method}+{request.RequestUri}+{counter}";
 
-            Console.WriteLine("=================================");
             switch (Mode)
             {
                 case MockMode.Record:
