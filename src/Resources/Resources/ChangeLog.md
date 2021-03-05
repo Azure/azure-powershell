@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Redirected bicep message to verbose stream
 * Removed the logic of coping Bicep template file to temp folder.
 
 ## Version 3.3.0
