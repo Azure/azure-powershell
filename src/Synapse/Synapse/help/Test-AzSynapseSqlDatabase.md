@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Checks for the existence of a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Checks for the existence of a Synapse Analytics SQL database.
 
 ## SYNTAX
 
