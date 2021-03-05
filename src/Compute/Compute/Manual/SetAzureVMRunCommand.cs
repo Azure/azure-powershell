@@ -191,9 +191,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
 
                 }
-
+                
                 PSVirtualMachineRunCommandScriptSource scriptSourcePS = new PSVirtualMachineRunCommandScriptSource();
                 VirtualMachineRunCommandScriptSource scriptSource = new VirtualMachineRunCommandScriptSource();
+
                 if (this.Script != null || this.ScriptUri != null || this.CommandId != null)
                 {
 
@@ -226,14 +227,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ErrorBlobUri = (this.ErrorBlobUri != null) ? this.ErrorBlobUri : null,
                     Location = (this.Location != null) ? this.Location : null
                 };
-
+                
                 VirtualMachineRunCommand parameters = new VirtualMachineRunCommand();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineRunCommand, VirtualMachineRunCommand>(parametersPS, parameters);
+
                 VirtualMachineRunCommandsClient.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroup, virtualMachineName, this.Name, parameters);
             });
-
-
-
         }
     }
 }

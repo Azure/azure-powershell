@@ -185,11 +185,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineAssessPatchesResult, TO.PSVirtualMachinePatchAssessmentResult>();
                 cfg.CreateMap<TO.PSVirtualMachinePatchAssessmentResult, FROM.VirtualMachineAssessPatchesResult>();
 
+                cfg.CreateMap<FROM.VirtualMachineRunCommand, TO.PSVirtualMachineRunCommandList>();
+                cfg.CreateMap<TO.PSVirtualMachineRunCommandList, TO.PSVirtualMachineRunCommand>();
+                cfg.CreateMap<TO.PSVirtualMachineRunCommand, TO.PSVirtualMachineRunCommandList>();
                 cfg.CreateMap<FROM.VirtualMachineRunCommand, TO.PSVirtualMachineRunCommand>();
                 cfg.CreateMap<TO.PSVirtualMachineRunCommand, FROM.VirtualMachineRunCommand>();
                 cfg.CreateMap<FROM.VirtualMachineRunCommandScriptSource, TO.PSVirtualMachineRunCommandScriptSource>();
                 cfg.CreateMap<TO.PSVirtualMachineRunCommandScriptSource, FROM.VirtualMachineRunCommandScriptSource>();
-
             });
             _mapper = config.CreateMapper();
         }
