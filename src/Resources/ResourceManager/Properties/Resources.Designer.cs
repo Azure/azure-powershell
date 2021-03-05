@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please use bicep &apos;{0}&apos; or higher verison..
+        /// </summary>
+        internal static string BicepVersionRequirement {
+            get {
+                return ResourceManager.GetString("BicepVersionRequirement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling active deployment ....
         /// </summary>
         internal static string CancelDeploymentMessage {

@@ -500,4 +500,7 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   <data name="InvalidBicepFilePath" xml:space="preserve">
     <value>Invalid Bicep file path.</value>
   </data>
+  <data name="BicepVersionRequirement" xml:space="preserve">
+    <value>Please use bicep '{0}' or higher verison.</value>
+  </data>
 </root>
