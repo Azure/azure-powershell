@@ -53,6 +53,33 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Helper
 
+        protected void GetParametersByResourceId(string resourceId, string resourceType, out string resourceGroup, out string resourceName, out string parentResourceName, out string grandParentResourceName)
+        {
+            ResourceIdentifier rId = new ResourceIdentifier(resourceId);
+            if (!rId.ResourceType.EndsWith(resourceType, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException(string.Format("Invalid resource id {0}", resourceId));
+            }
+
+            resourceGroup = rId.ResourceGroupName;
+            resourceName = rId.ResourceName;
+            parentResourceName = string.Empty;
+            grandParentResourceName = string.Empty;
+            if (!string.IsNullOrEmpty(rId.ParentResource))
+            {
+                var parent = rId.ParentResource.Split('/');
+                if (parent.Length == 4)
+                {
+                    parentResourceName = parent[3];
+                    grandParentResourceName = parent[1];
+                }
+                else if (parent.Length == 2)
+                {
+                    parentResourceName = parent[1];
+                }
+            }
+        }
+
         protected void GetParametersByResourceId(string resourceId, string resourceType, out string resourceGroup, out string resourceName, out string parentResourceName)
         {
             ResourceIdentifier rId = new ResourceIdentifier(resourceId);
@@ -186,7 +213,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
                 }
             }
-            else if (exception is Management.ServiceFabric.Models.ErrorModelException)
+            else if (exception is Management.ServiceFabricManagedClusters.Models.ErrorModelException)
             {
                 var errorModelException = (Management.ServiceFabricManagedClusters.Models.ErrorModelException)exception;
                 if (errorModelException.Body != null)
