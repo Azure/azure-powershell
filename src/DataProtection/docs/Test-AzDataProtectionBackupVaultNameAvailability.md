@@ -130,7 +130,7 @@ CheckNameAvailability Request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ICheckNameAvailabilityRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityRequest
 Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
@@ -222,13 +222,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ICheckNameAvailabilityRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICheckNameAvailabilityResult
 
 ## NOTES
 

@@ -128,7 +128,7 @@ Base class for Backup Feature support
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IFeatureValidationRequestBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IFeatureValidationRequestBase
 Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IFeatureValidationRequestBase
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IFeatureValidationRequestBase
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 

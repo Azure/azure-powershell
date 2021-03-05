@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +51,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionresourceoperationresultpatch
 #>
 function Get-AzDataProtectionResourceOperationResultPatch {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -74,7 +74,7 @@ param(
 
     [Parameter(Position=4, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
     # Policy Request Object
     # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},

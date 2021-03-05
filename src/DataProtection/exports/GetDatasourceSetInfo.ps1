@@ -50,7 +50,7 @@ function GetDatasourceSetInfo {
 param(
     [Parameter(Position=0, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IDatasource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IDatasource]
     # To construct, see NOTES section for DATASOURCEINFO properties and create a hash table.
     ${DatasourceInfo}
 )

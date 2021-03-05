@@ -24,11 +24,11 @@ PS C:\> Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ITriggerBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ PARAMETER <ITriggerBackupRequest>: Trigger backup request
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/backup-azdataprotectionbackupinstanceadhoc
 #>
 function Backup-AzDataProtectionBackupInstanceAdhoc {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='BackupExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Backup', Mandatory)]
@@ -96,7 +96,7 @@ param(
     [Parameter(ParameterSetName='Backup', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='BackupViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ITriggerBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest]
     # Trigger backup request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

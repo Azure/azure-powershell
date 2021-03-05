@@ -30,12 +30,12 @@ Name Type BackupInstanceName
           sarath-disk3-sarath-disk3-af697a80-e2bc-49f1-af6c-22f6c4d68405
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 #>
 function Initialize-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

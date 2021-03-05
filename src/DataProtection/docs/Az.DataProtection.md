@@ -148,24 +148,6 @@ API to check for resource name availability
 ### [Test-AzDataProtectionDppFeatureSupport](Test-AzDataProtectionDppFeatureSupport.md)
 Validates if a feature is supported
 
-### [TranslateBackupParam](TranslateBackupParam.md)
-
-
-### [TranslateBackupPolicy](TranslateBackupPolicy.md)
-
-
-### [TranslateBackupPolicyRule](TranslateBackupPolicyRule.md)
-
-
-### [TranslateBackupPolicyTagCriteria](TranslateBackupPolicyTagCriteria.md)
-
-
-### [TranslateBackupPolicyTrigger](TranslateBackupPolicyTrigger.md)
-
-
-### [TranslatePolicyRetentionLifeCycle](TranslatePolicyRetentionLifeCycle.md)
-
-
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.

@@ -84,7 +84,7 @@ Backup Instance
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -146,7 +146,7 @@ Validate for backup request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IValidateForBackupRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest
 Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
@@ -238,13 +238,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IValidateForBackupRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
 
 ## NOTES
 

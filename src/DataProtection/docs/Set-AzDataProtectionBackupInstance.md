@@ -80,7 +80,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 Parameter Sets: dppplatform
 Aliases:
 
@@ -141,7 +141,7 @@ BackupInstance Resource
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 Parameter Sets: Put
 Aliases:
 
@@ -157,7 +157,7 @@ BackupInstanceResource properties
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -264,11 +264,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
 
 ## NOTES
 

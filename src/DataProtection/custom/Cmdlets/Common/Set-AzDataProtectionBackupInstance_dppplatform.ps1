@@ -12,7 +12,7 @@ function Set-AzDataProtectionBackupInstance_dppplatform {
         ${VaultId},
 
         [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource]
         ${BackupInstance}
 
     )

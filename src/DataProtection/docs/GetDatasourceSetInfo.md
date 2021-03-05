@@ -45,7 +45,7 @@ PS C:\> {{ Add code here }}
 To construct, see NOTES section for DATASOURCEINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IDatasource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IDatasource
 Parameter Sets: (All)
 Aliases:
 

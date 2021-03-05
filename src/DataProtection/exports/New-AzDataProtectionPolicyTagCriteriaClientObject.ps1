@@ -32,12 +32,12 @@ ObjectType                  AbsoluteCriterion DaysOfTheWeek    MonthsOfYear Sche
 ScheduleBasedBackupCriteria                   {Sunday, Monday}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IScheduleBasedBackupCriteria
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/new-azdataprotectionpolicytagcriteriaclientobject
 #>
 function New-AzDataProtectionPolicyTagCriteriaClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IScheduleBasedBackupCriteria])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria])]
 [CmdletBinding(DefaultParameterSetName='ScheduleCriteria', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AbsoluteCriteria', Mandatory)]
@@ -76,6 +76,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Days of the month.
+    # Allowed values are 1 to 28 and Last
     ${DaysOfMonth}
 )
 

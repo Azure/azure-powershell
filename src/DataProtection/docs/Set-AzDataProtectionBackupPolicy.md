@@ -59,7 +59,7 @@ Policy Request Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 

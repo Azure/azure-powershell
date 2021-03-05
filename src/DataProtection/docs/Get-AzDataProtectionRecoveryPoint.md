@@ -15,7 +15,8 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 ### List (Default)
 ```
 Get-AzDataProtectionRecoveryPoint [-BackupInstanceName <String>] [-ResourceGroupName <String>]
- [-SubscriptionId <String[]>] [-VaultName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-VaultName <String>] [-EndTime <DateTime>] [-StartTime <DateTime>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
@@ -96,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndTime
+End Time filter for recovery points
+
+```yaml
+Type: System.DateTime
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 .
 
@@ -136,6 +152,21 @@ Parameter Sets: Get, List
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Start Time filter for recovery points
+
+```yaml
+Type: System.DateTime
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,7 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IAzureBackupRecoveryPointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource
 
 ### System.Management.Automation.PSObject
 

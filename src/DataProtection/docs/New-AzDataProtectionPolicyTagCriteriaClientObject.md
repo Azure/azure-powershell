@@ -77,6 +77,7 @@ Accept wildcard characters: False
 
 ### -DaysOfMonth
 Days of the month.
+Allowed values are 1 to 28 and Last
 
 ```yaml
 Type: System.String[]
@@ -188,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IScheduleBasedBackupCriteria
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria
 
 ## NOTES
 

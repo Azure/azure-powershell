@@ -34,7 +34,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IExportJobsResult
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IExportJobsResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,7 +55,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionexportjobsoperationresult
 #>
 function Get-AzDataProtectionExportJobsOperationResult {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IExportJobsResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IExportJobsResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
