@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile' {
 
     It 'Get remote desktop file' {
-        $RDPOutputFile = [System.IO.Path]::Combine($PSScriptRoot, $env.RDPOutputFile)
+        $RDPOutputFile = [System.IO.Path]::Combine($PSScriptRoot, "test-artifacts", $env.RDPOutputFile)
         RemoveFile $RDPOutputFile
         $x = Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -OutFile $RDPOutputFile
         Test-Path $RDPOutputFile | Should be $true
