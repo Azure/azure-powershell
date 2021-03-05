@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the logic of coping Bicep template file to temp folder.
 
 ## Version 3.3.0
 * Added support for Azure resources deployment in Bicep language
