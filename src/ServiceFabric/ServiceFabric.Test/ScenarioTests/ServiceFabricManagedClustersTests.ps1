@@ -29,7 +29,7 @@ function Test-CreateBasicCluster
 	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary
 	
 	# shouldn't be allowed to remove the only primary node type in the cluster
-	Assert-ThrowsContains { $pnt | Remove-AzServiceFabricManagedNodeType } "BadRequest"
+	Assert-ThrowsContains { $pnt | Remove-AzServiceFabricManagedNodeType } "InvalidParameter"
 
 	$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 	Assert-AreEqual  "Deploying" $cluster.ClusterState
