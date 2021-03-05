@@ -25,6 +25,10 @@
     - `Update-AzVpnConnection`
 * Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
     - `Get-VpnSiteLinkConnectionIkeSa`
+* Added multi auth feature support for VNG
+	- `Get-AzVpnClientConfiguration`
+	- `New-AzVirtualNetworkGateway`
+	- `Set-AzVirtualNetworkGateway`
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.

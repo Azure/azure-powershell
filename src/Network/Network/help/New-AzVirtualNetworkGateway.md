@@ -19,12 +19,14 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationTypes <String[]>]
+ [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
- [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
+ [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MultipleRadiusServersConfiguration
@@ -33,11 +35,13 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationTypes <String[]>]
+ [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
- -RadiusServerList <PSRadiusServer[]> [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
+ -RadiusServerList <PSRadiusServer[]> [-AadTenantUri <String>] [-AadAudienceId <String>]
+ [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,28 +51,14 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationTypes <String[]>]
+ [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
- -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### AadAuthenticationConfiguration
-```
-New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
- [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
- [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
- -AadTenantUri <String> -AadAudienceId <String> -AadIssuerUri <String> [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-AadTenantUri <String>]
+ [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,10 +198,10 @@ P2S AAD authentication option:AadAudienceId.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -223,10 +213,10 @@ P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -238,10 +228,10 @@ P2S AAD authentication option:AadTenantUri.
 
 ```yaml
 Type: System.String
-Parameter Sets: AadAuthenticationConfiguration
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -555,6 +545,21 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VpnAuthenticationTypes
+The list of P2S VPN client authentication types.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
