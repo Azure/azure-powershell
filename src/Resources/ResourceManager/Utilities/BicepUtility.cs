@@ -54,30 +54,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
             }
-            
-            string tempPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(bicepTemplateFilePath));
 
-            try{
-                if (Uri.IsWellFormedUriString(bicepTemplateFilePath, UriKind.Absolute))
-                {
-                    FileUtilities.DataStore.WriteFile(tempPath, GeneralUtilities.DownloadFile(bicepTemplateFilePath));
-                }
-                else if (FileUtilities.DataStore.FileExists(bicepTemplateFilePath))
-                {
-                    File.Copy(bicepTemplateFilePath, tempPath, true);
-                }
-                else
-                {
-                    throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePathOrUri, "TemplateFile");
-                }
-                executeScript($"bicep build '{tempPath}'");
-                return tempPath.Replace(".bicep", ".json");
-            }
-            finally
+            string tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirectory);
+
+            if (FileUtilities.DataStore.FileExists(bicepTemplateFilePath))
             {
-                File.Delete(tempPath);
+                executeScript($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'");
             }
-            
+            else
+            {
+                throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "TemplateFile");
+            }
+
+            return Path.Combine(tempDirectory, Path.GetFileName(bicepTemplateFilePath)).Replace(".bicep", ".json");
         }
     }
 }
