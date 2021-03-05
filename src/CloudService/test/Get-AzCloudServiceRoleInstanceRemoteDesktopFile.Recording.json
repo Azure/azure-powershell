@@ -18,6 +18,7 @@
     },
     "Response": {
       "StatusCode": 200,
+      "isContentBase64": true,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
