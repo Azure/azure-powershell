@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return;
             }
-            {_errordetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("errordetail"), out var __jsonErrordetail) ? (string)__jsonErrordetail : (string)Errordetail;}
             {_exceptiontype = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("exceptiontype"), out var __jsonExceptiontype) ? (string)__jsonExceptiontype : (string)Exceptiontype;}
+            {_errordetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("errordetail"), out var __jsonErrordetail) ? (string)__jsonErrordetail : (string)Errordetail;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return container;
             }
-            AddIf( null != (((object)this._errordetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._errordetail.ToString()) : null, "errordetail" ,container.Add );
             AddIf( null != (((object)this._exceptiontype)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._exceptiontype.ToString()) : null, "exceptiontype" ,container.Add );
+            AddIf( null != (((object)this._errordetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._errordetail.ToString()) : null, "errordetail" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
