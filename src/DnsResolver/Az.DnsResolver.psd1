@@ -9,7 +9,7 @@
   Description = 'Microsoft Azure PowerShell: DnsResolver cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
-  RequiredAssemblies = './bin/Az.DnsResolver.private.dll'
+  RequiredAssemblies = './bin/DnsResolver.private.dll'
   FormatsToProcess = './Az.DnsResolver.format.ps1xml'
   FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverInboundEndpoint', 'New-AzDnsResolver', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolver', 'Update-AzDnsResolverInboundEndpoint', '*'
   AliasesToExport = '*'
