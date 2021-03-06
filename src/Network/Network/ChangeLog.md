@@ -25,6 +25,8 @@
     - `Update-AzVpnConnection`
 * Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
     - `Get-VpnSiteLinkConnectionIkeSa`
+* Bug fix for update vpnServerConfiguration.
+* Add scenarioTest for p2s multi auth VWAN.
 * Added multi auth feature support for VNG
 	- `Get-AzVpnClientConfiguration`
 	- `New-AzVirtualNetworkGateway`
