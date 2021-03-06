@@ -794,6 +794,14 @@ function Test-VirtualNetworkGatewayOpenVPN
         Assert-AreEqual 1 @($authTypes).Count
         Assert-AreEqual "" $actual.VpnClientConfiguration.AadAudience
         Assert-AreEqual "" $actual.VpnClientConfiguration.RadiusServerAddress
+
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationTypes Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd
+		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
+        Assert-AreEqual 3 @($authTypes).Count
+        Assert-AreEqual $aadAudience $actual.VpnClientConfiguration.AadAudience
+        Assert-AreEqual "1.2.3.4" $actual.VpnClientConfiguration.RadiusServerAddress
+        Assert-NotNull $actual.VpnClientRootCertificates
 	}
 	finally
     {
