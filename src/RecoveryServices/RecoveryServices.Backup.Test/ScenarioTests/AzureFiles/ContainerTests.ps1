@@ -18,8 +18,10 @@ $vaultName = "pstestrsv8895"
 $fileShareFriendlyName = "fs1"
 $fileShareName = "AzureFileShare;fs1"
 $saName = "pstestsa8895"
+$saFullName = "Storage;pstestrg8895;pstestsa8895"
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
+
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -48,7 +50,7 @@ function Test-AzureFSContainer
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Enable-Protection $vault $fileShareFriendlyName $saName
+		$item = Enable-ProtectionNew $vault $fileShareFriendlyName $saName
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `
@@ -81,10 +83,11 @@ function Test-AzureFSContainer
 			-FriendlyName $saName `
 			-ResourceGroupName $resourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $saName }
+
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $containers
+		Cleanup-Vault $vault $item $containers[0]
 	}
 }
 

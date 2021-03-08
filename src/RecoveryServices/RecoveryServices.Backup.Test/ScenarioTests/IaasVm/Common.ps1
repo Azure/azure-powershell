@@ -290,3 +290,67 @@ function Enable-Protection(
 
 	return $item
 }
+
+function Enable-ProtectionNew(
+	$vault, 
+	$vm,
+	[string] $resourceGroupName = "")
+{
+    # Sleep to give the service time to add the default policy to the vault
+    Start-TestSleep 5000
+
+	$container = Get-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType AzureVM `
+		-FriendlyName $vm.Name;
+
+	if($resourceGroupName -eq "")
+	{
+		$resourceGroupName = $vm.ResourceGroupName
+	}
+
+	if ($container -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+	
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $resourceGroupName | Out-Null
+
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureVM `
+			-FriendlyName $vm.Name;
+	}
+	
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureVM `
+		-Name $vm.Name
+
+	if ($item -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+	
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $resourceGroupName | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureVM `
+			-Name $vm.Name
+	}
+
+	return $item
+}		

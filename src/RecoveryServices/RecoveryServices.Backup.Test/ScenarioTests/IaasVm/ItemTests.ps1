@@ -109,10 +109,6 @@ function Test-AzureVMGetItems
 		$vm = Create-VM $resourceGroupName $location 1
 		$vm2 = Create-VM $resourceGroupName $location 12
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-
-		# disable soft delete for successful cleanup
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-
 		Enable-Protection $vault $vm
 		Enable-Protection $vault $vm2
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -219,7 +215,7 @@ function Test-AzureVMProtection
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		# Sleep to give the service time to add the default policy to the vault
         Start-TestSleep 5000
 
@@ -282,7 +278,6 @@ function Test-AzureVMGetRPs
   		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 
@@ -350,8 +345,7 @@ function Test-AzureVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		$item = Enable-Protection $vault $vm
+		$item = Enable-ProtectionNew $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
@@ -404,11 +398,7 @@ function Test-AzureUnmanagedVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Disabled" }
-
-		$item = Enable-Protection $vault $vm $resourceGroupName
+		$item = Enable-ProtectionNew $vault $vm $resourceGroupName
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
@@ -421,14 +411,6 @@ function Test-AzureUnmanagedVMFullRestore
 			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob.Status -eq "Completed" }
-
-		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-VaultLocation $vault.Location `
-			-RecoveryPoint $rp `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName `
-			-RestoreAsManagedDisk -TargetResourceGroupName $resourceGroupName
 	}
 	finally
 	{
@@ -446,7 +428,6 @@ function Test-AzureVMRPMountScript
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
@@ -482,7 +463,6 @@ function Test-AzureVMBackup
 	{
 		# Setup
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$vm = Create-VM $resourceGroupName $location
 		$item = Enable-Protection $vault $vm
 		
@@ -511,13 +491,10 @@ function Test-AzureVMSetVaultContext
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 
-		# disable soft delete for successful cleanup
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-
 		# Sleep to give the service time to add the default policy to the vault
         Start-TestSleep 5000
 
-		Set-AzRecoveryServicesVaultContext -Vault $vault | Out-Null
+		Set-AzRecoveryServicesVaultContext -Vault $vault
 
 		# Get default policy
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `

@@ -98,6 +98,63 @@ $policyName = "afspolicy1"
 
  	return $item
 }
+
+ function Enable-ProtectionNew(
+	$vault, 
+	$fileShareName,
+	$saName)
+{
+	$container = Get-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType AzureStorage `
+		-FriendlyName $saName;
+
+ 	if ($container -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+	
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $fileShareName `
+			-storageAccountName $saName | Out-Null
+
+ 		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureStorage `
+			-Name $saFullName;
+	}
+	
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureFiles `
+		-Name $fileShareName
+
+	if ($item -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+	
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $fileShareName `
+			-storageAccountName $saName | Out-Null
+
+ 		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureFiles `
+			-Name $fileShareName
+	}
+
+ 	return $item
+}
+
 function Cleanup-Vault(
 	$vault,
 	$item,
