@@ -1,5 +1,5 @@
 ﻿
-function Get-AzDataProtectionBackupVaultStorageSetting{
+function New-AzDataProtectionBackupVaultStorageSettingObject{
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Vault storage setting object')]
