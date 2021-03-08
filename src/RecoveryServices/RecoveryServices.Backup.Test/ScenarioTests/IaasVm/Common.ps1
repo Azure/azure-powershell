@@ -288,5 +288,24 @@ function Enable-Protection(
 		-WorkloadType AzureVM `
 		-Name $vm.Name
 
+	if ($item -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+	
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $resourceGroupName | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureVM `
+			-Name $vm.Name
+	}
+
 	return $item
-}
+}	

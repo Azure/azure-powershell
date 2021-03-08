@@ -98,6 +98,7 @@ $policyName = "afspolicy1"
 
  	return $item
 }
+
 function Cleanup-Vault(
 	$vault,
 	$item,
