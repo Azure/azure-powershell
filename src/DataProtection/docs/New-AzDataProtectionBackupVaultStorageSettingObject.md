@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupvaultstoragesetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/new-azdataprotectionbackupvaultstoragesettingobject
 schema: 2.0.0
 ---
 
-# Get-AzDataProtectionBackupVaultStorageSetting
+# New-AzDataProtectionBackupVaultStorageSettingObject
 
 ## SYNOPSIS
 Get Backup Vault storage setting object
@@ -13,7 +13,7 @@ Get Backup Vault storage setting object
 ## SYNTAX
 
 ```
-Get-AzDataProtectionBackupVaultStorageSetting -DataStoreType <DataStoreType> -Type <StorageSettingType>
+New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType <DataStoreType> -Type <StorageSettingType>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -22,14 +22,16 @@ Get Backup Vault storage setting object
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new vault storage setting object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionBackupVaultStorageSettingObject -Type GeoRedundant -DataStoreType VaultStore
 
-{{ Add output here }}
+DatastoreType Type
+------------- ----
+VaultStore    GeoRedundant
 ```
 
-{{ Add description here }}
+This command creates a new vault storage setting object which is used to create a backup vault.
 
 ## PARAMETERS
 

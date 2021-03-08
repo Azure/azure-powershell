@@ -19,16 +19,18 @@ Get Backup Vault storage setting object
 .Description
 Get Backup Vault storage setting object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionBackupVaultStorageSettingObject -Type GeoRedundant -DataStoreType VaultStore
 
-{{ Add output here }}
+DatastoreType Type
+------------- ----
+VaultStore    GeoRedundant
 
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupvaultstoragesetting
+https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/new-azdataprotectionbackupvaultstoragesettingobject
 #>
-function Get-AzDataProtectionBackupVaultStorageSetting {
+function New-AzDataProtectionBackupVaultStorageSettingObject {
 [OutputType([PSObject])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -53,7 +55,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Get-AzDataProtectionBackupVaultStorageSetting';
+            __AllParameterSets = 'Az.DataProtection.custom\New-AzDataProtectionBackupVaultStorageSettingObject';
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}

@@ -35,9 +35,6 @@ Gets a backup policy belonging to a backup vault
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
 Returns a resource belonging to a resource group.
 
-### [Get-AzDataProtectionBackupVaultStorageSetting](Get-AzDataProtectionBackupVaultStorageSetting.md)
-Get Backup Vault storage setting object
-
 ### [Get-AzDataProtectionExportJobsOperationResult](Get-AzDataProtectionExportJobsOperationResult.md)
 Gets the operation result of operation triggered by Export Jobs API.
 If the operation is successful, then it also contains URL of a Blob and a SAS key to access the same.
@@ -93,6 +90,9 @@ Initializes Restore Request object for triggering restore on a protected backup 
 
 ### [LoadManifest](LoadManifest.md)
 Prepares Datasource object for backup
+
+### [New-AzDataProtectionBackupVaultStorageSettingObject](New-AzDataProtectionBackupVaultStorageSettingObject.md)
+Get Backup Vault storage setting object
 
 ### [New-AzDataProtectionPolicyTagCriteriaClientObject](New-AzDataProtectionPolicyTagCriteriaClientObject.md)
 Creates a new criteria object
