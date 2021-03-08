@@ -58,17 +58,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return;
             }
-            {_packageUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("packageUrl"), out var __jsonPackageUrl) ? (string)__jsonPackageUrl : (string)PackageUrl;}
             {_configuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("configuration"), out var __jsonConfiguration) ? (string)__jsonConfiguration : (string)Configuration;}
             {_configurationUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("configurationUrl"), out var __jsonConfigurationUrl) ? (string)__jsonConfigurationUrl : (string)ConfigurationUrl;}
-            {_startCloudService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonBoolean>("startCloudService"), out var __jsonStartCloudService) ? (bool?)__jsonStartCloudService : StartCloudService;}
-            {_upgradeMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("upgradeMode"), out var __jsonUpgradeMode) ? (string)__jsonUpgradeMode : (string)UpgradeMode;}
-            {_roleProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("roleProfile"), out var __jsonRoleProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfile.FromJson(__jsonRoleProfile) : RoleProfile;}
-            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceOSProfile.FromJson(__jsonOSProfile) : OSProfile;}
-            {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceNetworkProfile.FromJson(__jsonNetworkProfile) : NetworkProfile;}
             {_extensionProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("extensionProfile"), out var __jsonExtensionProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceExtensionProfile.FromJson(__jsonExtensionProfile) : ExtensionProfile;}
+            {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceNetworkProfile.FromJson(__jsonNetworkProfile) : NetworkProfile;}
+            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceOSProfile.FromJson(__jsonOSProfile) : OSProfile;}
+            {_packageUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("packageUrl"), out var __jsonPackageUrl) ? (string)__jsonPackageUrl : (string)PackageUrl;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_roleProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("roleProfile"), out var __jsonRoleProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfile.FromJson(__jsonRoleProfile) : RoleProfile;}
+            {_startCloudService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonBoolean>("startCloudService"), out var __jsonStartCloudService) ? (bool?)__jsonStartCloudService : StartCloudService;}
             {_uniqueId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("uniqueId"), out var __jsonUniqueId) ? (string)__jsonUniqueId : (string)UniqueId;}
+            {_upgradeMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("upgradeMode"), out var __jsonUpgradeMode) ? (string)__jsonUpgradeMode : (string)UpgradeMode;}
             AfterFromJson(json);
         }
 
@@ -103,23 +103,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return container;
             }
-            AddIf( null != (((object)this._packageUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._packageUrl.ToString()) : null, "packageUrl" ,container.Add );
             AddIf( null != (((object)this._configuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._configuration.ToString()) : null, "configuration" ,container.Add );
             AddIf( null != (((object)this._configurationUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._configurationUrl.ToString()) : null, "configurationUrl" ,container.Add );
-            AddIf( null != this._startCloudService ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonBoolean((bool)this._startCloudService) : null, "startCloudService" ,container.Add );
-            AddIf( null != (((object)this._upgradeMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._upgradeMode.ToString()) : null, "upgradeMode" ,container.Add );
-            AddIf( null != this._roleProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._roleProfile.ToJson(null,serializationMode) : null, "roleProfile" ,container.Add );
-            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
-            AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
             AddIf( null != this._extensionProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._extensionProfile.ToJson(null,serializationMode) : null, "extensionProfile" ,container.Add );
+            AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
+            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
+            AddIf( null != (((object)this._packageUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._packageUrl.ToString()) : null, "packageUrl" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            AddIf( null != this._roleProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._roleProfile.ToJson(null,serializationMode) : null, "roleProfile" ,container.Add );
+            AddIf( null != this._startCloudService ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonBoolean((bool)this._startCloudService) : null, "startCloudService" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._uniqueId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._uniqueId.ToString()) : null, "uniqueId" ,container.Add );
             }
+            AddIf( null != (((object)this._upgradeMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._upgradeMode.ToString()) : null, "upgradeMode" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

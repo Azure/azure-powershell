@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// Represents the suggestions to show to the user and the related information of the suggestions.
     /// </summary>
     /// <remarks>
-    /// Because the performance requirement in <see cref="AzPredictor.GetSuggestion"/>,
+    /// Because the performance requirement in <see cref="AzPredictor.GetSuggestion(PredictionContext,System.Threading.CancellationToken)"/>,
     /// it contains lists of each piece of information, for example, a collection of predictive suggestion and a list of
     /// suggestion sources. Note that the count of each list should be the same. And each element in the list corresonds to
     /// the element in other list at the same index.

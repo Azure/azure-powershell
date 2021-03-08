@@ -1,8 +1,7 @@
 ﻿using Azure;
-using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -11,7 +10,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
@@ -51,14 +49,21 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             }
         }
 
-        internal static string NormalizeUrl(string url)
+        internal static string NormalizeUrl(string url, bool shouldReportError = false)
         {
             if (AbfsUri.IsType(url))
             {
                 return AbfsUri.Parse(url).GetUri().AbsoluteUri;
             }
 
-            return url;
+            if (shouldReportError)
+            {
+                throw new SynapseException(string.Format(Resources.InvalidStorageUri, url));
+            }
+            else
+            {
+                return url;
+            }
         }
 
         internal static string ReadFileAsText(this SynapseCmdletBase cmdlet, string filePath)
@@ -66,47 +71,22 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             var powerShellDestinationPath = cmdlet.SessionState.Path.GetUnresolvedProviderPathFromPSPath(filePath);
             if (!AzureSession.Instance.DataStore.FileExists(powerShellDestinationPath))
             {
-                throw new AzPSFileNotFoundException(string.Format(Resources.FilePathDoesNotExist, powerShellDestinationPath), filePath);
+                throw new SynapseException(string.Format(Resources.FilePathDoesNotExist, powerShellDestinationPath));
             }
 
             return AzureSession.Instance.DataStore.ReadFileAsText(powerShellDestinationPath);
         }
 
-        internal static Exception CreateAzurePowerShellException(ErrorContractException ex)
+        internal static SynapseException CreateSynapseException(this ErrorContractException ex)
         {
             var message = GetAggregatedErrorMessage(ex.Message, ex.Body?.Error?.Message, ex.Body?.Error?.Details?.Select(d => d.Message));
-            return CreateAzurePowerShellException(ex.Response.StatusCode, message, ex);
+            return SynapseException.Create(ex.Response.StatusCode, message, ex);
         }
 
-        internal static Exception CreateAzurePowerShellException(this CloudException ex)
+        internal static SynapseException CreateSynapseException(this CloudException ex)
         {
             var message = GetAggregatedErrorMessage(ex.Message, ex.Body?.Message, ex.Body?.Details?.Select(d => d.Message));
-            return CreateAzurePowerShellException(ex.Response.StatusCode, message, ex);
-        }
-
-        internal static Exception CreateAzurePowerShellException(HttpStatusCode statusCode, string message, Exception ex)
-        {
-            switch (statusCode)
-            {
-                case HttpStatusCode.NotFound:
-                    return new AzPSResourceNotFoundCloudException(message, null, ex);
-
-                default:
-
-                    // Handle client side exceptions
-                    if (((int)statusCode) >= 400 && ((int)statusCode) < 500)
-                    {
-                        return new AzPSException(message, ErrorKind.UserError, ex);
-                    }
-
-                    // Handle server side exceptions
-                    else if (((int)statusCode) >= 500)
-                    {
-                        return new AzPSException(message, ErrorKind.ServiceError, ex);
-                    }
-
-                    return new AzPSException(message, ErrorKind.InternalError, ex);
-            }
+            return SynapseException.Create(ex.Response.StatusCode, message, ex);
         }
 
         internal static string ConstructResourceId(
@@ -193,9 +173,15 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return excludedDetectionTypes;
         }
 
-        public static Response<T> Poll<T>(this Operation<T> operation)
+        public static Operation<T> Poll<T>(this Operation<T> operation)
         {
-            return operation.WaitForCompletionAsync().Result;
+            while (!operation.HasValue)
+            {
+                operation.UpdateStatus();
+                System.Threading.Thread.Sleep(SynapseConstants.DefaultPollingInterval);
+            }
+
+            return operation;
         }
     }
 }

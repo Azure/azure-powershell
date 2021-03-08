@@ -476,7 +476,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    // TODO
                     // PrimaryToRecovery Direction is Invalid for InMageAzureV2.
                     new ArgumentException(Resources.InvalidDirectionForAzureToVMWare);
                 }
@@ -508,7 +507,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    // TODO
                     // PrimaryToRecovery Direction is Invalid for InMage.
                     new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
                 }

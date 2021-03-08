@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
                             if (this.IsParameterBound(c => c.SecondaryCertificate))
                             {
-                                secondaryCer = IotDpsUtils.GetCertificateString(this.SecondaryCertificate);
+                                secondaryCer = IotDpsUtils.GetCertificateString(this.PrimaryCertificate);
 
                                 if (this.IsParameterBound(c => c.RootCertificate))
                                 {

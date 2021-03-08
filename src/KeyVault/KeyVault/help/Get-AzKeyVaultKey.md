@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -308,7 +308,7 @@ PS C:\> Get-AzKeyVaultKey -VaultName $vaultName -KeyName $keyName -OutFile $path
 ```
 
 You can download the public key of a RSA key by specifying the `-OutFile` parameter.
-This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
+This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 

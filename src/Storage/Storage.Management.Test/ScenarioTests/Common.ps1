@@ -170,15 +170,6 @@ function Get-ProviderLocation_Canary($provider)
     "eastus2euap"
 }
 
-<#
-.SYNOPSIS
-Gets the Canary location for a provider
-#>
-function Get-ProviderLocation_Canary2($provider)
-{
-    "centraluseuap"
-}
-
 
 <#
 .SYNOPSIS

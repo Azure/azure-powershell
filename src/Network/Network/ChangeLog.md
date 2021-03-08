@@ -19,19 +19,6 @@
 --->
 
 ## Upcoming Release
-
-## Version 4.6.0
-* Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
-    - `New-AzRouteServer`
-    - `Get-AzRouteServer`
-    - `Remove-AzRouteServer`
-    - `Update-AzRouteServer`
-    - `Get-AzRouteServerPeer`
-    - `Add-AzRouteServerPeer`
-    - `Update-AzRouteServerPeer`
-    - `Remove-AzRouteServerPeer`
-    - Added deprecation attribute warning to the old cmdlets.
-* Bug fix in ExpressRouteLink MacSecConfig. Added new property `SciState` to `PSExpressRouteLinkMacSecConfig`
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
 
 ## Version 4.5.0

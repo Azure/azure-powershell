@@ -355,25 +355,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private string minimumTlsVersion = null;
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " + 
-            "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
-            "The default value is null, which is equivalent to true.")]
-        [ValidateNotNullOrEmpty]
-        public bool AllowSharedKeyAccess
-        {
-            get
-            {
-                return allowSharedKeyAccess.Value;
-            }
-            set
-            {
-                allowSharedKeyAccess = value;
-            }
-        }
-        private bool? allowSharedKeyAccess = null;
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -420,7 +401,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (AssignIdentity.IsPresent)
             {
-                createParameters.Identity = new Identity() {  Type = IdentityType.SystemAssigned };
+                createParameters.Identity = new Identity();
             }
             if (NetworkRuleSet != null)
             {
@@ -466,7 +447,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                 }
             }
-            if (this.EnableLargeFileShare.IsPresent)
+            if(this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }
@@ -507,10 +488,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
             {
                 createParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
-            }
-            if (allowSharedKeyAccess != null)
-            {
-                createParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

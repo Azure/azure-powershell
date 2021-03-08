@@ -178,21 +178,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     case SubnetNameParameterSet:
                     case SubnetIdParameterSet:
-                        var subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
+                        var Subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
                         //Fetch RG of given SubNet
-                        var subNetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
+                        var subNetResourceGroupName = CmdletHelpers.GetSubnetResourceGroupName(DefaultContext, Subnet, VirtualNetworkName);
                         //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
-                        var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
+                        var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
                         CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
                         if (!IgnoreMissingServiceEndpoint)
                         {
-                            var subnetSubcriptionId = CmdletHelpers.GetSubscriptionIdFromResourceId(subnetResourceId);
-                            if (subnetSubcriptionId != DefaultContext.Subscription.Id)
-                                throw new Exception("Service endpoint cannot be validated. Subnet is in another subscription. Use -IgnoreMissingServiceEndpoint and manually verify that 'Microsoft.Web' service endpoint is enabled on the subnet.");
-                            var serviceEndpointServiceName = "Microsoft.Web";
-                            var serviceEndpointLocations = new List<string>() { "*" };
-                            NetworkClient.EnsureSubnetServiceEndpoint(subnetResourceId, serviceEndpointServiceName, serviceEndpointLocations);
+                            CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
                         }
                         
                         ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description, httpHeader);

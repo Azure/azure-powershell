@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// <summary>Specifies the XML service configuration (.cscfg) for the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public string Configuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).Configuration = value ?? null; }
+        public string Configuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).Configuration = value; }
 
         /// <summary>
         /// Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL
@@ -20,12 +20,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public string ConfigurationUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ConfigurationUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ConfigurationUrl = value ?? null; }
+        public string ConfigurationUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ConfigurationUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ConfigurationUrl = value; }
 
         /// <summary>Describes a cloud service extension profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionProfile ExtensionProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ExtensionProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ExtensionProfile = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionProfile ExtensionProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ExtensionProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).ExtensionProfile = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -72,12 +72,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// <summary>Network Profile for the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceNetworkProfile NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).NetworkProfile = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceNetworkProfile NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).NetworkProfile = value; }
 
         /// <summary>Describes the OS profile for the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceOSProfile OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).OSProfile = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceOSProfile OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).OSProfile = value; }
 
         /// <summary>
         /// Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public string PackageUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).PackageUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).PackageUrl = value ?? null; }
+        public string PackageUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).PackageUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).PackageUrl = value; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceProperties _property;
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// <summary>Describes the role profile for the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleProfile RoleProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).RoleProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).RoleProfile = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleProfile RoleProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).RoleProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).RoleProfile = value; }
 
         /// <summary>
         /// (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public bool? StartCloudService { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).StartCloudService; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).StartCloudService = value ?? default(bool); }
+        public bool? StartCloudService { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).StartCloudService; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).StartCloudService = value; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceTags _tag;
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode? UpgradeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).UpgradeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).UpgradeMode = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode)""); }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode? UpgradeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).UpgradeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServicePropertiesInternal)Property).UpgradeMode = value; }
 
         /// <summary>Creates an new <see cref="CloudService" /> instance.</summary>
         public CloudService()

@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.3.0
-* Added a fix to unregister the API delegating handler from blueprint client
-
 ## Version 0.2.13
 * Updated Blueprint .NET SDK version
 

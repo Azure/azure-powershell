@@ -224,7 +224,7 @@ function New-AzMySqlServer {
           $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
           $null = $PSBoundParameters.Remove('AdministratorUserName')
 
-          $Parameter.Property.AdministratorLoginPassword = $PSBoundParameters['AdministratorLoginPassword']
+          $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
           $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
           $PSBoundParameters.Add('Parameter', $Parameter)

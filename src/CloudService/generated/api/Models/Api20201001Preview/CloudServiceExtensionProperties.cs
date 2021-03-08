@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
         public string ProtectedSetting { get => this._protectedSetting; set => this._protectedSetting = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string ProtectedSettingFromKeyVaultSecretUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SecretUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SecretUrl = value ?? null; }
+        public string ProtectedSettingFromKeyVaultSecretUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SecretUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SecretUrl = value; }
 
         /// <summary>Backing field for <see cref="ProtectedSettingsFromKeyVault" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReference _protectedSettingsFromKeyVault;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string SourceVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SourceVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SourceVaultId = value ?? null; }
+        public string SourceVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SourceVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceVaultAndSecretReferenceInternal)ProtectedSettingsFromKeyVault).SourceVaultId = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;

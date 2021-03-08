@@ -25,7 +25,6 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 using System.Linq;
-using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -208,28 +207,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 .FirstOrDefault(name => String.Equals(name, "artifacts", StringComparison.OrdinalIgnoreCase));
 
             return artifactsFolderName == null ? null : Path.Combine(path, artifactsFolderName);
-        }
-
-        /// <summary>
-        /// Unregisters delegating handler if registered.  
-        /// </summary>
-        protected void UnregisterDelegatingHandlerIfRegistered()
-        {
-            var apiExpandHandler = GetExpandHandler();
-
-            if (apiExpandHandler != null)
-            {
-                AzureSession.Instance.ClientFactory.RemoveHandler(apiExpandHandler.GetType());
-            }
-        }
-
-        /// <summary>
-        /// Returns expand handler, if exists.  
-        /// </summary>
-        private DelegatingHandler GetExpandHandler()
-        {
-            return AzureSession.Instance.ClientFactory.GetCustomHandlers()?
-                .Where(handler => handler.GetType().Equals(typeof(ApiExpandHandler))).FirstOrDefault();
         }
     }
 }

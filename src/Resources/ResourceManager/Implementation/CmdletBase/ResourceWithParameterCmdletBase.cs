@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-using Newtonsoft.Json.Linq;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -52,7 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string TemplateSpecResourceIdParameterSetName = "ByTemplateSpecResourceId";
         protected const string TemplateSpecResourceIdParameterFileParameterSetName = "ByTemplateSpecResourceIdAndParams";
         protected const string TemplateSpecResourceIdParameterUriParameterSetName = "ByTemplateSpecResourceIdAndParamsUri";
-        protected const string TemplateSpecResourceIdParameterObjectParameterSetName = "ByTemplateSpecResourceIdAndParamsObject";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
@@ -63,8 +58,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string templateUri;
 
         private string templateSpecId;
-
-        protected string protectedTemplateUri;
 
         private ITemplateSpecsClient templateSpecsClient;
 
@@ -78,8 +71,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         public Hashtable TemplateParameterObject { get; set; }
 
@@ -117,24 +108,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable TemplateObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file. Supported template file type: json and bicep.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
         [Parameter(ParameterSetName = ParameterlessTemplateFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [Parameter(ParameterSetName = ParameterlessTemplateUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true)]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
@@ -143,8 +134,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
-        [Parameter(ParameterSetName = TemplateSpecResourceIdParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of the templateSpec to be deployed.")]
         [ValidateNotNullOrEmpty]
         public string TemplateSpecId { get; set; }
@@ -177,11 +166,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.templateSpecsClient = value; }
         }
 
-        public virtual object GetDynamicParameters()
+        public object GetDynamicParameters()
         {
-            if (BicepUtility.IsBicepFile(TemplateFile))
-                BuildAndUseBicepTemplate();
-                
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
                 // Resolve the static parameter names for this cmdlet:
@@ -231,18 +217,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 else if (!string.IsNullOrEmpty(TemplateUri) &&
                     !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (string.IsNullOrEmpty(protectedTemplateUri))
-                    {
-                        templateUri = TemplateUri;
-                    }
-                    else
-                    {
-                        templateUri = protectedTemplateUri;
-                    }
+                    templateUri = TemplateUri;
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateUri,
+                            TemplateUri,
                             TemplateParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
@@ -250,7 +229,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     else
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateUri,
+                            TemplateUri,
                             TemplateParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
@@ -273,31 +252,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         // context. Force the client to use that subscription:
                         TemplateSpecsClient.SubscriptionId = resourceIdentifier.Subscription;
                     }
-                    JObject templateObj = (JObject)null;
-                    try
-                    {
-                        var templateSpecVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
-                            ResourceIdUtility.GetResourceGroupName(templateSpecId),
-                            ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
-                            resourceIdentifier.ResourceName);
 
-                        if (!(templateSpecVersion.Template is JObject))
-                        {
-                            throw new InvalidOperationException("Unexpected type."); // Sanity check
-                        }
-                        templateObj = (JObject)templateSpecVersion.Template;
-                    }
-                    catch (TemplateSpecsErrorException e)
+                    var templateSpecVersion = TemplateSpecsClient.TemplateSpecVersions.Get(
+                        ResourceIdUtility.GetResourceGroupName(templateSpecId),
+                        ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
+                        resourceIdentifier.ResourceName);
+
+                    if (!(templateSpecVersion.Template is JObject))
                     {
-                        //If the templateSpec resourceID is pointing to a non existant resource
-                        if(e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                        {
-                            //By returning null, we are introducing parity in the way templateURI and templateSpecId are validated. Gives a cleaner error message in line with the error message for invalid templateURI
-                            return null;
-                        }
-                        //Throw for any other error that is not due to a 404 for the template resource.
-                        throw;
+                        throw new InvalidOperationException("Unexpected type."); // Sanity check
                     }
+
+                    JObject templateObj = (JObject)templateSpecVersion.Template;
 
                     if (string.IsNullOrEmpty(TemplateParameterUri))
                     {
@@ -432,11 +398,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             CmdletInfo cmdletInfo = new CmdletInfo(commandName, this.GetType());
             return cmdletInfo.Parameters.Keys.ToArray();
-        }
-
-        protected void BuildAndUseBicepTemplate()
-        {
-            TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose);
         }
     }
 }

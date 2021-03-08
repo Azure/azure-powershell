@@ -72,7 +72,7 @@ function setupEnv() {
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
     $env.RoleInstanceName = "WebRole_IN_0"
     
-    $env.RDPOutputFile = Join-Path $PSScriptRoot "test-artifacts\desktopdowntest.rdp"
+    $env.RDPOutputFile = Join-Path $PSScriptRoot ((RandomString $false 8) + ".rdp")
     
     $cspkgFilePath = Join-Path $PSScriptRoot $env.CspkgFile
     
@@ -111,5 +111,6 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
     Remove-AzResourceGroup -ResourceGroupName $env.ResourceGroupName
+    RemoveFile $env.RDPOutputFile
 }
 

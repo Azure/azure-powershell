@@ -231,26 +231,16 @@ param(
 
     process {
         try {
-            $CommonPSBoundParameters = @{}
-            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
-                $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
-            }
-            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
-                $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
-            }
-            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
-            }
+            $getExport
             if($PSBoundParameters['InputObject'] -ne $null)
             {
                 $InputExportObject = $PSBoundParameters['InputObject']
-                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject @CommonPSBoundParameters
+                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject
             }else{
                 $InputExportScope = $PSBoundParameters['Scope']
                 $InputExportName = $PSBoundParameters['Name']
-                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName @CommonPSBoundParameters
+                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName
             }
-            
             $null = $PSBoundParameters.Add("ETag",$getExport.Etag)
             if($PSBoundParameters['DataSetGranularity'] -eq $null)
             {

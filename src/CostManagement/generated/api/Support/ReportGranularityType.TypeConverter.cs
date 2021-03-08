@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The granularity of rows in the report.</summary>
+    /// <summary>TypeConverter implementation for ReportGranularityType.</summary>
     public partial class ReportGranularityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

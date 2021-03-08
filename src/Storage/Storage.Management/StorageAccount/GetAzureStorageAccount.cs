@@ -99,14 +99,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                IPage<Microsoft.Azure.Management.Storage.Models.StorageAccount> storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-                WriteStorageAccountList(storageAccounts);
+                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
-                while (storageAccounts.NextPageLink != null)
-                {
-                    storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroupNext(storageAccounts.NextPageLink);
-                    WriteStorageAccountList(storageAccounts);
-                }
+                WriteStorageAccountList(storageAccounts);
             }
             else
             {

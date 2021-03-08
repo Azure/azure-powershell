@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
 # Remove-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
+Deletes a Synapse Analytics SQL database.
 
 ## SYNTAX
 

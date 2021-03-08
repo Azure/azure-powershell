@@ -146,8 +146,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     certificateBodyDescription.Certificate = certificate;
 
                     CertificateDescription certificateDescription;
-                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag, certificateBodyDescription.Certificate);
-
+                    if (this.Etag != null)
+                    {
+                        certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
+                    }
+                    else
+                    {
+                        certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
+                    }
 
                     this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription));
                 }

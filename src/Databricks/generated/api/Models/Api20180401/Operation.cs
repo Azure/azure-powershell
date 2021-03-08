@@ -17,15 +17,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401
 
         /// <summary>Operation type: Read, write, delete, etc.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Operation = value ?? null; }
+        public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Operation = value; }
 
         /// <summary>Service provider: Microsoft.ResourceProvider</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Provider = value ?? null; }
+        public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Provider = value; }
 
         /// <summary>Resource on which the operation is performed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Resource = value ?? null; }
+        public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplayInternal)Display).Resource = value; }
 
         /// <summary>Internal Acessors for Display</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.OperationDisplay()); set { {_display = value;} } }

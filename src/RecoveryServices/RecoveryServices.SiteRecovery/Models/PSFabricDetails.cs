@@ -876,6 +876,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public ASRInMageAzureV2SpecificRPIDetails(InMageAzureV2ReplicationDetails details)
         {
+            this.LastHeartbeat = this.LastHeartbeat;
             this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
             this.AgentVersion = details.AgentVersion;
             this.DiscoveryType = details.DiscoveryType;

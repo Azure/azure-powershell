@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The schedule recurrence.</summary>
+    /// <summary>TypeConverter implementation for RecurrenceType.</summary>
     public partial class RecurrenceTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

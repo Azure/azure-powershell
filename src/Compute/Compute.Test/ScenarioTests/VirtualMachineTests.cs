@@ -360,19 +360,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetVMNameAcrossResourceGroups");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineGetVMExtensionPiping()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineGetVMExtensionPiping");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePatchAPI()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachinePatchAPI");
-        }
     }
 }

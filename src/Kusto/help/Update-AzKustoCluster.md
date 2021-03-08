@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster
+online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustocluster
 schema: 2.0.0
 ---
 
@@ -68,18 +68,8 @@ Location Name                Type                     Zone
 -------- ----                ----                     ----
 East US  testnewkustocluster Microsoft.Kusto/Clusters
 ```
+
 The above command updates the cluster "testnewkustocluster" found in the resource group "testrg" with a customer managed key.
-
-### Example 3: Update Cluster with TrustedExternalTenant
-```powershell
-PS C:\> Update-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -TrustedExternalTenant @(@{value="12345678-1234-1234-1234-123456789012"})
-
-Location Name                Type                     Zone
--------- ----                ----                     ----
-East US  testnewkustocluster Microsoft.Kusto/Clusters
-```
-
-The above command updates the cluster "testnewkustocluster" found in the resource group "testrg" with the provided Trusted External Tenant.
 
 ## PARAMETERS
 

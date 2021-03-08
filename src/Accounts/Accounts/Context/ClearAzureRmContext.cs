@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -84,8 +85,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     result = true;
                 }
             }
-
-            AzureSession.Instance.RaiseContextClearedEvent();
 
             if (PassThru.IsPresent)
             {

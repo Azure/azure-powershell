@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the query.</summary>
     public partial struct ExportType :
         System.IEquatable<ExportType>
     {
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         /// <param name="value">the value to convert to an instance of <see cref="ExportType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ExportType(global::System.Convert.ToString(value));
+            return new ExportType(System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ExportType</summary>

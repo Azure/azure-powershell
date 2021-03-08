@@ -78,35 +78,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         {
             get
             {
-                if (clientOptions == null)
-                {
-                    clientOptions = new BlobClientOptions();
-                    clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
-                    return clientOptions;
-                }
-                else
-                {
-                    return clientOptions;
-                }
+                BlobClientOptions options = new BlobClientOptions();
+                options.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                return options;
             }
-        }
-        private BlobClientOptions clientOptions = null;
-
-        public BlobClientOptions SetClientOptionsWithEncryptionScope(string encryptionScope)
-        {
-            if (clientOptions == null)
-            {
-                clientOptions = new BlobClientOptions();
-                clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
-                clientOptions.EncryptionScope = encryptionScope;
-                return clientOptions;
-            }
-            else
-            {
-                clientOptions.EncryptionScope = encryptionScope;
-                return clientOptions;
-            }
-
         }
 
         public global::Azure.Storage.Blobs.Models.BlobRequestConditions BlobRequestConditions

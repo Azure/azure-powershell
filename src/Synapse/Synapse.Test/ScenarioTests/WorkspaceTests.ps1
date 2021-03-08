@@ -4,20 +4,28 @@ Tests Synapse Workspace Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-SynapseWorkspace
 {
-	# Setup
-	$testSuffix = getAssetName
-	Create-WorkspaceTestEnvironment $testSuffix
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-
-    $resourceGroupName = $params.rgname
-    $workspaceName = $params.workspaceName
-    $storageGen2AccountName = $params.storageAccountName
-    $storageFileSystemName = $params.fileSystemName
-    $location = $params.location
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $storageGen2AccountName = (Get-DataLakeStorageAccountName),
+        $storageFileSystemName = (getAssetName),
+        $location = "North Europe"
+    )
 
     try
     {
-        $workspaceCreated = Get-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName
+        # Creating Workspace and initial setup
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # Test to make sure the Workspace doesn't exist
+        Assert-False {Test-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName}
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
+        $password = "Syn" + (getAssetName) + "!"
+        $password = ConvertTo-SecureString $password -AsPlainText -Force
+        $creds = New-Object System.Management.Automation.PSCredential ("psuser", $password)
+        $workspaceCreated = New-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $location -DefaultDataLakeStorageAccountName $storageGen2AccountName -DefaultDataLakeStorageFilesystem $storageFileSystemName -SqlAdministratorLoginCredential $creds
     
         Assert-AreEqual $workspaceName $workspaceCreated.Name
         Assert-AreEqual $location $workspaceCreated.Location
@@ -59,7 +67,7 @@ function Test-SynapseWorkspace
 
         # Reset SQL administrator password
         $newPassword = "Syn" + (getAssetName) + "!"
-        $newPassword = ConvertTo-SecureString $params.pwd -AsPlainText -Force
+        $newPassword = ConvertTo-SecureString $password -AsPlainText -Force
         $workspaceUpdated = Update-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -SqlAdministratorLoginPassword $newPassword
 
         Assert-AreEqual $workspaceName $workspaceUpdated.Name
@@ -113,8 +121,9 @@ function Test-SynapseWorkspace
     }
     finally
     {
-		# Cleanup
-		Remove-WorkspaceTestEnvironment $testSuffix
+        # cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
     }
 }
 
@@ -122,22 +131,23 @@ function Test-SynapseWorkspace
 .SYNOPSIS
 Tests Synapse Workspace SQL Active Directory Administrator
 #>
-function Test-SynapseWorkspaceActiveDirectoryAdministrator
+function Test-SynapseWorkspace-ActiveDirectoryAdministrator
 {
-	# Setup
-	$testSuffix = getAssetName
-	Create-WorkspaceTestEnvironment $testSuffix
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-
-    $resourceGroupName = $params.rgname
-    $workspaceName = $params.workspaceName
-    $activeDirectoryGroup = "testAADaccount"
-    $activeDirectoryGroupObjectId = "41732a4a-e09e-4b18-9624-38e252d68bbf"
-    $activeDirectoryUser = "Test User 2"
-    $activeDirectoryUserObjectId = "e87332b2-e3ed-480a-9723-e9b3611268f8"
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $activeDirectoryGroup = "testAADaccount",
+		$activeDirectoryGroupObjectId = "41732a4a-e09e-4b18-9624-38e252d68bbf",
+		$activeDirectoryUser = "Test User 2",
+		$activeDirectoryUserObjectId = "e87332b2-e3ed-480a-9723-e9b3611268f8"
+    )
 
     try
     {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
+
         # Set SQL Active Directory Administrator Group
         $activeDirectoryAdminGroupSet = Set-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName `
 		-DisplayName $activeDirectoryGroup
@@ -166,8 +176,7 @@ function Test-SynapseWorkspaceActiveDirectoryAdministrator
     }
     finally
     {
-		# Cleanup
-		Remove-WorkspaceTestEnvironment $testSuffix
+        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Force} -IgnoreFailures
     }
 }
 
@@ -176,20 +185,20 @@ function Test-SynapseWorkspaceActiveDirectoryAdministrator
 Tests Synapse Workspace Security settings.
 Including SQL Auditing settings, Advanced threat protection settings and Vulnerability assessment settings.
 #>
-function Test-SynapseWorkspaceSecurity
+function Test-SynapseWorkspace-Security
 {
-	# Setup
-	$testSuffix = getAssetName
-	Create-WorkspaceTestEnvironment $testSuffix
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-
-    $resourceGroupName = $params.rgname
-    $workspaceName = $params.workspaceName
-    $storageGen2AccountName = "sqlauditstorage" + (getAssetName)
-    $location = $params.location
+    param
+    (
+        $resourceGroupName = (Get-ResourceGroupName),
+        $workspaceName = (Get-SynapseWorkspaceName),
+        $storageGen2AccountName = (Get-DataLakeStorageAccountName),
+        $location = "eastus2euap"
+    )
 
     try
     {
+        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
+        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
         $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $location -SkuName Standard_LRS -Kind StorageV2
         
         # Set SQL Auditing
@@ -256,85 +265,6 @@ function Test-SynapseWorkspaceSecurity
     }
     finally
     {
-		# Cleanup
-		Remove-WorkspaceTestEnvironment $testSuffix
+        Invoke-HandledCmdlet -Command {Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName} -IgnoreFailures
     }
-}
-
-<#
-.SYNOPSIS
-Gets the values of the parameters used at the tests
-#>
-function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
-{
-	return @{ rgname = "ws-cmdlet-test-rg" +$testSuffix;
-			  workspaceName = "ws" +$testSuffix;
-			  storageAccountName = "wsstorage" + $testSuffix;
-			  fileSystemName = "wscmdletfs" + $testSuffix;
-			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
-              location = "westcentralus";
-              encryptionKeyIdentifier = "<your-encryptionKeyIdentifier>";
-		}
-}
-
-<#
-.SYNOPSIS
-Creates the basic test environment needed to perform the Sql data security tests - resource group, server and database
-#>
-function Create-WorkspaceEncryptionTestEnvironmentWithParams ($params, $location)
-{
-	New-AzResourceGroup -Name $params.rgname -Location $location
-    New-AzStorageAccount -ResourceGroupName $params.rgname -Name $params.storageAccountName -Location $location -SkuName Standard_GRS -Kind StorageV2 -EnableHierarchicalNamespace $true
-	$workspaceName = $params.workspaceName
-	$workspaceLogin = $params.loginName
-	$workspacePassword = $params.pwd
-	$credentials = new-object System.Management.Automation.PSCredential($workspaceLogin, ($workspacePassword | ConvertTo-SecureString -asPlainText -Force))
-    New-AzSynapseWorkspace -ResourceGroupName  $params.rgname -WorkspaceName $params.workspaceName -Location $location -SqlAdministratorLoginCredential $credentials -DefaultDataLakeStorageAccountName $params.storageAccountName -DefaultDataLakeStorageFilesystem $params.fileSystemName -EncrytionKeyIdentifier $params.encryptionKeyIdentifier
-}
-
-<#
-.SYNOPSIS
-Creates the test environment needed to perform the tests
-#>
-function Create-WorkspaceEncryptionTestEnvironment ($testSuffix)
-{
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-	Create-WorkspaceEncryptionTestEnvironmentWithParams $params $params.location
-}
-
-<#
-.SYNOPSIS
-Creates the test environment needed to perform the tests
-#>
-function Create-WorkspaceTestEnvironment ($testSuffix)
-{
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params $params.location
-}
-
-<#
-.SYNOPSIS
-Gets the values of the parameters used at the tests
-#>
-function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
-{
-	return @{ rgname = "ws-cmdlet-test-rg" +$testSuffix;
-			  workspaceName = "ws" +$testSuffix;
-			  storageAccountName = "wsstorage" + $testSuffix;
-			  fileSystemName = "wscmdletfs" + $testSuffix;
-			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
-              location = "westcentralus";
-		}
-}
-
-<#
-.SYNOPSIS
-Removes the test environment that was needed to perform the tests
-#>
-function Remove-WorkspaceTestEnvironment ($testSuffix)
-{
-	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
-	Remove-AzResourceGroup -Name $params.rgname -Force
 }

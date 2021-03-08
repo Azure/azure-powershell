@@ -32,7 +32,7 @@ Describe 'Remove-AzMySqlFlexibleServer' {
                 $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
                 New-AzMySqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.serverName2 -AdministratorUserName mysql_test -AdministratorLoginPassword $password 
             }
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.serverName2)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.serverName2)"
             Remove-AzMySqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

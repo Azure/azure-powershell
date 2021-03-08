@@ -6,7 +6,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
-using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 
 namespace Microsoft.Azure.Commands.Synaspe
 {
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Commands.Synaspe
             {
                 if (SynapseAnalyticsClient.GetWorkspace(ResourceGroupName, Name) != null)
                 {
-                    throw new AzPSInvalidOperationException(string.Format(Resources.SynapseWorkspaceExists, this.Name, this.ResourceGroupName));
+                    throw new SynapseException(string.Format(Resources.SynapseWorkspaceExists, this.Name, this.ResourceGroupName));
                 }
             }
-            catch (AzPSResourceNotFoundCloudException ex)
+            catch (NotFoundException ex)
             {
                 var innerException = ex.InnerException as ErrorContractException;
                 if (innerException.Body?.Error?.Code == "ResourceNotFound" || innerException.Body?.Error?.Message.Contains("ResourceNotFound") == true)
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Synaspe
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))
             {
-                var workspace = new PSSynapseWorkspace(SynapseAnalyticsClient.CreateWorkspace(
+                var workspace = new PSSynapseWorkspace(SynapseAnalyticsClient.CreateOrUpdateWorkspace(
                     this.ResourceGroupName,
                     this.Name,
                     createParams));

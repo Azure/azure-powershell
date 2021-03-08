@@ -20,7 +20,7 @@ Describe 'Restart-AzPostgreSqlFlexibleServer' {
 
     It 'RestartViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzPostgreSqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

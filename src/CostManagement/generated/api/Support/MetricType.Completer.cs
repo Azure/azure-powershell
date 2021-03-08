@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Metric to use when displaying costs.</summary>
+    /// <summary>Argument completer implementation for MetricType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.MetricTypeTypeConverter))]
     public partial struct MetricType :
         System.Management.Automation.IArgumentCompleter

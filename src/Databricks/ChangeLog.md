@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.1.0
-Supported -EnableNoPublicIP when creating a Databricks workspace
-
 ## Version 1.0.2
 * Fixed an issue that may cause `New-AzDatabricksVNetPeering` to return before it is fully provisioned (https://github.com/Azure/autorest.powershell/issues/610)
 

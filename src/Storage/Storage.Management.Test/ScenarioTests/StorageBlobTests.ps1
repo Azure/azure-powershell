@@ -173,14 +173,13 @@ function Test-StorageBlobContainerEncryptionScope
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 		
 		# create Scope
-		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption -RequireInfrastructureEncryption 
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -StorageEncryption
 		$scope = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName
 		Assert-AreEqual $rgname $scope.ResourceGroupName
 		Assert-AreEqual $stoname $scope.StorageAccountName
 		Assert-AreEqual $scopeName $scope.Name
 		Assert-AreEqual "Microsoft.Storage" $scope.Source
 		Assert-AreEqual "Enabled" $scope.State
-		Assert-AreEqual $true $scope.RequireInfrastructureEncryption
 		
 		# update Scope
 		$scope = Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName -State Disabled 
@@ -537,7 +536,7 @@ function Test-StorageBlobRestore
         Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RetentionDays 5
         Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true -IsVersioningEnabled $true
         # If record, need sleep before enable the blob restore policy, or will get server error
-        # sleep 100 
+        #sleep 100 
         Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgname -StorageAccountName $stoname -RestoreDays 4
         $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
         #Assert-AreEqual $true $property.ChangeFeed.Enabled
@@ -558,7 +557,7 @@ function Test-StorageBlobRestore
         # wait for restore job finish, and check Blob Restore Status in Storage Account	
         $job | Wait-Job
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeBlobRestoreStatus
-        # Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
+        Assert-AreEqual "Complete" $stos.BlobRestoreStatus.Status
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

@@ -35,7 +35,7 @@ Describe 'Get-AzPostgreSqlFlexibleServer' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)"
             $servers = Get-AzPostgreSqlFlexibleServer -InputObject $ID
             $servers.Name | Should -Be $env.flexibleServerName
         } | Should -Not -Throw

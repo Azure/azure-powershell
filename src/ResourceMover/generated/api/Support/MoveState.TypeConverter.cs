@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the MoveResource states.</summary>
+    /// <summary>TypeConverter implementation for MoveState.</summary>
     public partial class MoveStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -49,7 +49,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverkey
+https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverkey
 #>
 function Get-AzMySqlFlexibleServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey])]

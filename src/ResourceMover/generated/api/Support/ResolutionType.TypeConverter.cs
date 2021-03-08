@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the resolution type.</summary>
+    /// <summary>TypeConverter implementation for ResolutionType.</summary>
     public partial class ResolutionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

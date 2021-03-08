@@ -19,13 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.5.0
-* Added maintenance windows parameter to Update-AzPostgreSqlFlexibleServer cmdlet
-* Added zone parameter to server New/Restore-PostgresSqlFlexibleServer cmdlet.
-
-## Version 0.4.0
-* Added cmdlet `Test-AzPostgreSqlFlexibleServerConnect`
-
 ## Version 0.3.0
 * Add parameter MinimalTlsVersion
 * First version of flexible server

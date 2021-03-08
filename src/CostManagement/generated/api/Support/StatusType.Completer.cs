@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>
-    /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-    /// </summary>
+    /// <summary>Argument completer implementation for StatusType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusTypeTypeConverter))]
     public partial struct StatusType :
         System.Management.Automation.IArgumentCompleter

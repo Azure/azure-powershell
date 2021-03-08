@@ -148,7 +148,7 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @("Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
@@ -251,17 +251,6 @@ function Create-CsprojMappings
 <#
 Maps a normalized path to the projects to be built based on the service folder provided.
 #>
-
-function Get-ModuleFromPath
-{
-    param
-    (
-        [Parameter(Mandatory = $true)]
-        [string]$FilePath
-    )
-
-    return $FilePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
-}
 function Add-CsprojMappings
 {
     param
@@ -278,22 +267,15 @@ function Add-CsprojMappings
         $Values = New-Object System.Collections.Generic.HashSet[string]
         foreach ($CsprojFile in $CsprojFiles)
         {
-            $Project = Get-ModuleFromPath $CsprojFile.FullName
-            foreach ($ProjectName in $Script:ProjectToSolutionMappings.Keys)
+            $Project = $CsprojFile.BaseName
+            foreach ($Solution in $Script:ProjectToSolutionMappings[$Project])
             {
-                foreach ($Solution in $Script:ProjectToSolutionMappings[$ProjectName])
+                foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
                 {
-                    $ProjectNameFromSolution = Get-ModuleFromPath $Solution
-                    if ($ProjectNameFromSolution -eq $Project)
+                    $TempValue = $Script:ProjectToFullPathMappings[$ReferencedProject]
+                    if (-not [string]::IsNullOrEmpty($TempValue))
                     {
-                        foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
-                        {
-                            $TempValue = $Script:ProjectToFullPathMappings[$ReferencedProject]
-                            if (-not [string]::IsNullOrEmpty($TempValue))
-                            {
-                                $Values.Add($TempValue) | Out-Null
-                            }
-                        }
+                        $Values.Add($TempValue) | Out-Null
                     }
                 }
             }
@@ -310,8 +292,8 @@ $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
 
-# Create-ModuleMappings
+Create-ModuleMappings
 Create-CsprojMappings
 
-# $Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
+$Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
 $Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojMappings.json")

@@ -14,10 +14,8 @@
 
 using System;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
@@ -109,10 +107,7 @@ namespace Microsoft.Azure.Commands.Aks
             var msg = $"{Name} for {ClusterName} in {ResourceGroupName}";
 
             if (GetAgentPoolObject() != null)
-                throw new AzPSArgumentException(
-                    Resources.AgentPoolAlreadyExistsError,
-                    nameof(Name),
-                    desensitizedMessage: Resources.AgentPoolAlreadyExistsError);
+                throw new PSInvalidOperationException(Resources.AgentPoolAlreadyExistsError);
 
             if (ShouldProcess(msg, Resources.CreatingClusterAgentPool))
             {
@@ -191,28 +186,15 @@ namespace Microsoft.Azure.Commands.Aks
             if (string.Equals(this.OsType, "Windows"))
             {
                 if (VmSetType != "VirtualMachineScaleSets")
-                {
-                    throw new AzPSArgumentException(
-                        Resources.VmSetTypeIsIncorrectForWindowsPool,
-                        nameof(VmSetType),
-                        desensitizedMessage: Resources.VmSetTypeIsIncorrectForWindowsPool);
-                }
+                    throw new PSInvalidOperationException(Resources.VmSetTypeIsIncorrectForWindowsPool);
 
                 if (Name?.Length > 6)
-                {
-                    throw new AzPSArgumentException(
-                        Resources.WindowsNodePoolNameLengthLimitation,
-                        nameof(Name),
-                        desensitizedMessage: Resources.WindowsNodePoolNameLengthLimitation);
-                }
+                    throw new PSInvalidOperationException(Resources.WindowsNodePoolNameLengthLimitation);
             }
 
             if ((this.IsParameterBound(c => c.MinCount) || this.IsParameterBound(c => c.MaxCount) || this.EnableAutoScaling.IsPresent) &&
                 !(this.IsParameterBound(c => c.MinCount) && this.IsParameterBound(c => c.MaxCount) && this.EnableAutoScaling.IsPresent))
-                throw new AzPSArgumentException(
-                    Resources.NodePoolAutoScalingParametersMustAppearTogether,
-                    nameof(EnableAutoScaling),
-                    desensitizedMessage: Resources.NodePoolAutoScalingParametersMustAppearTogether);
+                throw new PSInvalidCastException(Resources.NodePoolAutoScalingParametersMustAppearTogether);
         }
     }
 }

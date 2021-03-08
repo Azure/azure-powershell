@@ -28,7 +28,7 @@ ETag Location      Name             Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
@@ -206,7 +206,7 @@ Type                                      : Microsoft.RecoveryServices/vaults/re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric])]
@@ -363,7 +363,7 @@ Location Name                                Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]
@@ -511,7 +511,7 @@ Location Name             Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainerMapping
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
 #>
 function Get-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainerMapping])]
@@ -680,7 +680,7 @@ Location Name                                   Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 #>
 function Get-AzMigrateReplicationProtectionContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainer])]
@@ -836,7 +836,7 @@ Location Name                  Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryServicesProvider
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryServicesProvider])]
@@ -996,7 +996,7 @@ b090bef3-b733-5e34-bc8f-eb6f2701432a Microsoft.OffAzure/VMwareSites/runasaccount
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]
@@ -1146,7 +1146,7 @@ ETag Location      Name                Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
@@ -1289,7 +1289,7 @@ Etag                                   Name                              Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]
@@ -1450,7 +1450,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
   [InstanceType <String>]: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]
@@ -1632,7 +1632,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provider specific input for pairing.
   [InstanceType <String>]: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IProtectionContainerMapping])]
@@ -1820,7 +1820,7 @@ True
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
 [OutputType([System.Boolean])]
@@ -1974,7 +1974,7 @@ PS C:\> Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName B
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateproject
 #>
 function Remove-AzMigrateProject {
 [OutputType([System.Boolean])]
@@ -2195,7 +2195,7 @@ Contoso-DataTier3             10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 function Get-AzMigrateDiscoveredServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
@@ -2427,7 +2427,7 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
     [TaskId <String>]: The Id.
     [TaskType <String>]: The type of task. Details in CustomDetails property depend on this type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratejob
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -2758,7 +2758,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -2944,161 +2944,6 @@ end {
 
 <#
 .Synopsis
-Initialises the infrastructure for the migrate project.
-.Description
-The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
-.Example
-PS C:\> Initialize-AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName TestRG  -ProjectName TestProject -Vmwareagentless -TargetRegion centralus
-
-True
-
-.Outputs
-System.Boolean
-.Link
-https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
-#>
-function Initialize-AzMigrateReplicationInfrastructure {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='agentlessVMware', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the name of the Azure Migrate project to be used for server migration.
-    ${ProjectName},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter({"agentlessVMware"})]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
-    ${Scenario},
-
-    [Parameter(Mandatory)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the target Azure region for server migrations.
-    ${TargetRegion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            agentlessVMware = 'Az.Migrate.custom\Initialize-AzMigrateReplicationInfrastructure';
-        }
-        if (('agentlessVMware') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
-
-# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
-
-<#
-.Synopsis
 Creates a new disk mapping
 .Description
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
@@ -3112,7 +2957,7 @@ DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput])]
@@ -3125,16 +2970,14 @@ param(
     ${DiskID},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "true" , "false" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies whether the disk contains the Operating System for the source server to be migrated.
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
     # Specifies the type of disks to be used for the Azure VM.
     ${DiskType},
 
@@ -3211,7 +3054,7 @@ false        false                  a2399354-653a-464e-a567-d30ef5467a31
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput])]
@@ -3224,7 +3067,6 @@ param(
     ${NicID},
 
     [Parameter()]
-    [ArgumentCompleter({"primary" , "secondary", "donotcreate"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
@@ -3315,7 +3157,7 @@ PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateproject
 #>
 function New-AzMigrateProject {
 [CmdletBinding(DefaultParameterSetName='PutExpandedCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -3486,16 +3328,15 @@ DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server 
 INPUTOBJECT <IVMwareMachine>: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
   [GuestOSDetailOstype <String>]: Type of the operating system.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "NoLicenseType" , "WindowsServer" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.LicenseType]
     # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
     ${LicenseType},
 
@@ -3532,9 +3373,8 @@ param(
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS" , "Premium_LRS", "StandardSSD_LRS" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
     # Specifies the type of disks to be used for the Azure VM.
     ${DiskType},
 
@@ -3564,7 +3404,6 @@ param(
     ${TargetVMSize},
 
     [Parameter()]
-    [ArgumentCompleter({ "true" , "false" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies if replication be auto-repaired in case change tracking is lost for the source server under replication.
@@ -3792,7 +3631,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -3993,7 +3832,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -4172,7 +4011,7 @@ NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be creat
   [TargetStaticIPAddress <String>]: The static IP address.
   [TargetSubnetName <String>]: Target subnet name.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -4395,7 +4234,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -4602,7 +4441,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -4811,7 +4650,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigrationcleanup
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/start-azmigratetestmigrationcleanup
 #>
 function Start-AzMigrateTestMigrationCleanup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]

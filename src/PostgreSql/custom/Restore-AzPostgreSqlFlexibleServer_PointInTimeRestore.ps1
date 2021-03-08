@@ -46,11 +46,6 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
         [System.DateTime]
         ${RestorePointInTime},
 
-        [Parameter(HelpMessage = 'Availability zone into which to provision the resource.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [System.String]
-        ${Zone},
-
         [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
@@ -124,10 +119,6 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
             $PSBoundParameters.PointInTimeUTC = $PSBoundParameters["RestorePointInTime"]
             $null = $PSBoundParameters.Remove('RestorePointInTime')
 
-            if ($PSBoundParameters.ContainsKey('Zone')) {
-                $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
-                $null = $PSBoundParameters.Remove('Zone')
-            }
 
             Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServer @PSBoundParameters
         } catch {

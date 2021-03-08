@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the export execution.</summary>
+    /// <summary>TypeConverter implementation for ExecutionType.</summary>
     public partial class ExecutionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

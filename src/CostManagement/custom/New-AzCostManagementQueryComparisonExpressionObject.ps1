@@ -44,8 +44,7 @@ function New-AzCostManagementQueryComparisonExpressionObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression]::New()
 
         $Object.Name = $Name
-        # Description: The type of the Operator is enum,but it only contains one value,so the parameter is not exposed now.
-        # $Object.Operator = $Operator
+        $Object.Operator = $Operator
         $Object.Value = $Value
         return $Object
     }

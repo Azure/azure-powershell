@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// A service that connects to Aladdin endpoints to get the model and provides suggestions to PSReadLine.
     /// </summary>
-    internal class AzPredictorService : IAzPredictorService
+    internal class AzPredictorService : IAzPredictorService, IDisposable
     {
         private const string ClientType = "AzurePowerShell";
 
@@ -39,6 +39,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public sealed class RequestContext
             {
+                public string CorrelationId { get; set; } = Guid.Empty.ToString();
+                public string SessionId { get; set; } = Guid.Empty.ToString();
                 public string SubscriptionId { get; set; } = Guid.Empty.ToString();
                 public Version VersionNumber{ get; set; } = new Version(0, 0);
             }
@@ -54,11 +56,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             public Version VersionNumber{ get; set; } = new Version(0, 0);
         }
-
-        /// <summary>
-        /// The name of the header value that contains the platform correlation id.
-        /// </summary>
-        private const string CorrelationIdHeader = "Sml-CorrelationId";
 
         private const string ThrottleByIdHeader = "X-UserId";
         private readonly HttpClient _client;
@@ -84,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// All the command lines we can provide as suggestions.
         /// </summary>
         private HashSet<string> _allPredictiveCommands;
+        private CancellationTokenSource _predictionRequestCancellationSource;
         private readonly ParameterValuePredictor _parameterValuePredictor;
 
         private readonly ITelemetryClient _telemetryClient;
@@ -121,12 +119,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             RequestAllPredictiveCommands();
         }
 
+        /// <inhericdoc/>
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+        }
+
+        /// <summary>
+        /// Dispose the object.
+        /// </summary>
+        /// <param name="disposing">Indicate if this is called from <see cref="Dispose()"/>.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_predictionRequestCancellationSource != null)
+                {
+                    _predictionRequestCancellationSource.Dispose();
+                    _predictionRequestCancellationSource = null;
+                }
+            }
+        }
+
         /// <inheritdoc/>
         /// <remarks>
         /// Tries to get the suggestions for the user input from the command history. If that doesn't find
         /// <paramref name="suggestionCount"/> suggestions, it'll fallback to find the suggestion regardless of command history.
         /// </remarks>
-        public virtual CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
+        public CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(context, $"{nameof(context)} cannot be null");
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
@@ -232,60 +252,86 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, CancellationToken cancellationToken)
+        public virtual void RequestPredictions(IEnumerable<string> commands)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
-            var localCommands = string.Join(AzPredictorConstants.CommandConcatenator, commands);
-            bool isRequestSent = false;
+            var localCommands= string.Join(AzPredictorConstants.CommandConcatenator, commands);
+            bool postSuccess = false;
+            Exception exception = null;
+            bool startRequestTask = false;
 
             try
             {
                 if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
                 {
                     // It's the same history we've already requested the prediction for last time, skip it.
-                    return false;
+                    return;
                 }
 
                 if (commands.Any())
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.CorrelationId);
+                    // When it's called multiple times, we only need to keep the one for the latest command.
 
-                    var requestContext = new PredictionRequestBody.RequestContext()
-                    {
-                        VersionNumber = this._azContext.AzVersion
-                    };
+                    _predictionRequestCancellationSource?.Cancel();
+                    _predictionRequestCancellationSource = new CancellationTokenSource();
 
-                    var requestBody = new PredictionRequestBody(commands)
-                    {
-                        Context = requestContext,
-                    };
+                    var cancellationToken = _predictionRequestCancellationSource.Token;
 
-                    cancellationToken.ThrowIfCancellationRequested();
+                    // We don't need to block on the task. We send the HTTP request and update prediction list at the background.
+                    startRequestTask = true;
+                    Task.Run(async () => {
+                        try
+                        {
+                            AzPredictorService.ReplaceThrottleUserIdToHeader(_client?.DefaultRequestHeaders, _azContext.UserId);
 
-                    var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
-                    var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
-                    isRequestSent = true;
+                            var requestContext = new PredictionRequestBody.RequestContext()
+                            {
+                                SessionId = _telemetryClient.SessionId,
+                                CorrelationId = _telemetryClient.CorrelationId,
+                                VersionNumber = this._azContext.AzVersion
+                            };
 
-                    httpResponseMessage.EnsureSuccessStatusCode();
-                    var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
-                    var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            var requestBody = new PredictionRequestBody(commands)
+                            {
+                                Context = requestContext,
+                            };
 
-                    SetCommandBasedPreditor(localCommands, suggestionsList);
+                            var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
+                            var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
+                            postSuccess = true;
+
+                            httpResponseMessage.EnsureSuccessStatusCode();
+                            var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
+                            var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+
+                            SetCommandBasedPreditor(localCommands, suggestionsList);
+                        }
+                        catch (Exception e) when (!(e is OperationCanceledException))
+                        {
+                            exception = e;
+                        }
+                        finally
+                        {
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, postSuccess, exception));
+                        }
+                    },
+                    cancellationToken);
                 }
-
             }
             catch (Exception e)
             {
-                throw new ServiceRequestException(e.Message, e)
-                        {
-                            IsRequestSent =isRequestSent
-                        };
+                exception = e;
             }
-
-            return isRequestSent;
+            finally
+            {
+                if (!startRequestTask)
+                {
+                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(localCommands, hasSentHttpRequest: false, exception: exception));
+                }
+            }
         }
 
         /// <inheritdoc/>
@@ -308,46 +354,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We don't need to block on the task. We send the HTTP request and update commands and predictions list at the background.
             Task.Run(async () =>
                     {
-                        var hasSentHttpRequest = false;
                         Exception exception = null;
 
                         try
                         {
-                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.CorrelationId);
+                            _client.DefaultRequestHeaders?.Add(AzPredictorService.ThrottleByIdHeader, _azContext.UserId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
-                            hasSentHttpRequest = true;
 
                             httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStringAsync();
                             var commandsReply = JsonSerializer.Deserialize<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
                             SetFallbackPredictor(commandsReply);
-                        }
-                        catch (Exception e) when (!(e is OperationCanceledException))
-                        {
-                            exception = e;
-                        }
-                        finally
-                        {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
-                                        new List<string>(),
-                                        hasSentHttpRequest,
-                                        exception));
-                        }
-
-                        // Initialize predictions
-                        hasSentHttpRequest = false;
-                        var placeholderCommands = new string[] {
-                                    AzPredictorConstants.CommandPlaceholder,
-                                    AzPredictorConstants.CommandPlaceholder};
-                        try
-                        {
-                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, CancellationToken.None);
-                        }
-                        catch (ServiceRequestException e)
-                        {
-                            hasSentHttpRequest = e.IsRequestSent;
-                            exception = e.InnerException;
                         }
                         catch (Exception e)
                         {
@@ -355,11 +373,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
-                                        placeholderCommands,
-                                        hasSentHttpRequest,
-                                        (exception is OperationCanceledException ? null : exception)));
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData("request_commands", hasSentHttpRequest: true, exception: exception));
                         }
+
+                        // Initialize predictions
+                        RequestPredictions(new string[] {
+                                AzPredictorConstants.CommandPlaceholder,
+                                AzPredictorConstants.CommandPlaceholder});
                     });
         }
 
@@ -407,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return commandLine.Split(AzPredictorConstants.CommandParameterSeperator).First();
         }
 
-        private static void SetHttpRequestHeader(HttpRequestHeaders header, string idToThrottle, string correlationId)
+        private static void ReplaceThrottleUserIdToHeader(HttpRequestHeaders header, string value)
         {
             if (header != null)
             {
@@ -415,19 +435,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     header.Remove(AzPredictorService.ThrottleByIdHeader);
 
-                    if (!string.IsNullOrWhiteSpace(idToThrottle))
+                    if (!string.IsNullOrWhiteSpace(value))
                     {
-                        header.Add(AzPredictorService.ThrottleByIdHeader, idToThrottle);
-                    }
-
-                    header.Remove(AzPredictorService.CorrelationIdHeader);
-
-                    if (!string.IsNullOrWhiteSpace(correlationId))
-                    {
-                        header.Add(AzPredictorService.CorrelationIdHeader, correlationId);
+                        header.Add(AzPredictorService.ThrottleByIdHeader, value);
                     }
                 }
             }
+
         }
     }
 }

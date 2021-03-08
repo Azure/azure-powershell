@@ -26,14 +26,14 @@ Describe 'Update-AzMySqlFlexibleServerFirewallRule' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.5 -StartIPAddress 0.0.0.4
         $rule.StartIPAddress | Should -Be 0.0.0.4
         $rule.EndIPAddress | Should -Be 0.0.0.5
     }
 
     It 'ClientIPAddressViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.9
         $rule.StartIPAddress | Should -Be 0.0.0.9
         $rule.EndIPAddress | Should -Be 0.0.0.9

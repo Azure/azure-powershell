@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: cb4659b009275e9024ba89efb581e91dc4ede181
+branch: 3d5b14e7836543e6d9ebec0c653688db8e07e33c
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/preview/2020-10-01-preview/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
