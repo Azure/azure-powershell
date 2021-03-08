@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $managementGroup = 'AzGovPerfTest'
+$managementGroupScope = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
 $description = 'Unit test junk: sorry for littering. Please delete me!'
 $updatedDescription = "Updated $description"
 $metadataName = 'testName'
@@ -1789,4 +1790,220 @@ function Test-SetPolicySetDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Set-AzPolicySetDefinition -SubscriptionId $subscriptionId } $missingParameters
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations at resource group level
+#>
+function Test-PolicyExemptionCRUD
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a new resource group, policy assignment
+    $rgname = Get-ResourceGroupName
+    $rg = New-AzResourceGroup -Name $rgname -Location "westus"
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -DisplayName $description
+
+    # create the policy exemption to the resource group
+    $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $rg.ResourceId -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # get the exemption by name
+    $exemption = Get-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # get the exemption by id
+    $exemption = Get-AzPolicyExemption -Id $exemption.ResourceId
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # update the policy exemption, validate the result
+    $future1 = [DateTime]::Parse('03/08/3021 23:30:10')
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future1 -Metadata '{}'
+    Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
+    Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn
+    Assert-Null $exemption.Properties.Metadata.$metadataName
+
+    # update the exemption to clear the expiration
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -ClearExpiration
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # make another policy exemption, ensure both are present in resource group scope listing
+    $future2 = $future1.AddDays(1)
+    $exemption2 = New-AzPolicyExemption -Name testExemption2 -PolicyAssignment $assignment -Scope $rg.ResourceId -ExemptionCategory Mitigated -ExpiresOn $future2
+    $list = Get-AzPolicyExemption -Scope $rg.ResourceId | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # ensure both are present in full listing
+    $list = Get-AzPolicyExemption -IncludeDescendent | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # ensure both are present when filtering by assignment Id
+    $list = Get-AzPolicyExemption -PolicyAssignmentIdFilter $assignment.ResourceId | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+    $list = Get-AzPolicyExemption -PolicyAssignmentIdFilter "$($assignment.ResourceId)notexist" | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 0 @($list).Count
+
+    # ensure neither are present in default listing (at subscription)
+    $list = Get-AzPolicyExemption | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 0 @($list).Count
+
+    # clean up just in case
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations on a policySet at subscription level
+#>
+function Test-PolicyExemptionCRUDOnPolicySet
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a new policySet, policy assignment
+    $policyRef = "[{""policyDefinitionId"":""" + $policy.PolicyDefinitionId + """}]"
+    $policySet = New-AzPolicySetDefinition -Name testPSD -PolicyDefinition $policyRef -DisplayName $description
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicySetDefinition $policySet -DisplayName $description
+
+    # create the policy exemption to the subscription
+    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
+    $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -ExemptionCategory Waiver -DisplayName $description -ExpiresOn $future1
+    Assert-AreEqual 'testExemption' $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-Null $exemption.Properties.Metadata
+    Assert-Null $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual $future1.ToLocalTime() $exemption.Properties.ExpiresOn
+
+    # update the policy exemption set policy definition reference Id, validate the result
+    $future2 = $future1.AddDays(1)
+    $exemption.Properties.DisplayName = 'testDisplay'
+    $exemption.Properties.ExemptionCategory = 'Mitigated'
+    $exemption.Properties.ExpiresOn = $future2
+    $exemption.Properties.PolicyDefinitionReferenceIds = @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
+    $exemption = $exemption | Set-AzPolicyExemption 
+    Assert-AreEqual 'testDisplay' $exemption.Properties.DisplayName
+    Assert-AreEqual 'Mitigated' $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2.ToLocalTime() $exemption.Properties.ExpiresOn
+    Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
+    Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+
+    # update the exemption to clear the expiration
+    $exemption.Properties.PolicyDefinitionReferenceIds = @()
+    $exemption = $exemption | Set-AzPolicyExemption 
+    Assert-AreEqual 0 @($exemption.Properties.PolicyDefinitionReferenceIds).Count
+
+    # make another policy exemption, ensure both are present
+    $exemption2 = New-AzPolicyExemption -Name testExemption2 -PolicyAssignment $assignment -ExemptionCategory Mitigated -DisplayName $description
+    $list = Get-AzPolicyExemption | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # clean up just in case
+    $remove = $exemption | Remove-AzPolicyExemption
+    Assert-AreEqual True $remove
+
+    $remove = $exemption2 | Remove-AzPolicyExemption
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicySetDefinition -Name testPSD -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations at management group level
+#>
+function Test-PolicyExemptionCRUDAtManagementGroup
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a policy assignment at MG level
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $managementGroupScope -DisplayName $description
+
+    # create the policy exemption to the MG
+    $future1 = [DateTime]::Parse('03/08/3021 23:30:10')
+    $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata -ExpiresOn $future1
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$managementGroupScope/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+
+    # update the policy exemption, validate the result
+    $future2 = $future1.AddDays(1)
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future2 -Metadata '{}'
+    Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
+    Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn
+    Assert-Null $exemption.Properties.Metadata.$metadataName
+
+    # update the exemption to clear the expiration
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -ClearExpiration
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # make another policy exemption, ensure both are present in management group scope listing
+    $exemption2 = New-AzPolicyExemption -Name testExemption2 -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Mitigated -ExpiresOn $future2
+    $list = Get-AzPolicyExemption -Scope $managementGroupScope | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # clean up
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $managementGroupScope
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $managementGroupScope
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $managementGroupScope
+    Assert-AreEqual True $remove
 }

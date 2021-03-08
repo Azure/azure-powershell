@@ -240,5 +240,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SetPolicySetDefinitionParameters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUD()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUDOnPolicySet()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUDOnPolicySet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyExemptionCRUDAtManagementGroup()
+        {
+            TestRunner.RunTestScript("Test-PolicyExemptionCRUDAtManagementGroup");
+        }
     }
 }

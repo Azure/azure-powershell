@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.2.1'
+ModuleVersion = '3.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -113,11 +113,13 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzResourceGroupDeploymentOperation', 'Get-AzResourceLock', 
                'Invoke-AzResourceAction', 'Move-AzResource', 'New-AzResourceLock', 
                'Get-AzPolicyAssignment', 'Get-AzPolicyDefinition', 
-               'Get-AzPolicySetDefinition', 'New-AzPolicyAssignment', 
-               'New-AzPolicyDefinition', 'New-AzPolicySetDefinition', 
+               'Get-AzPolicySetDefinition', 'Get-AzPolicyExemption', 
+               'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 
+               'New-AzPolicySetDefinition', 'New-AzPolicyExemption', 
                'Remove-AzPolicyAssignment', 'Remove-AzPolicyDefinition', 
-               'Remove-AzPolicySetDefinition', 'Set-AzPolicyAssignment', 
-               'Set-AzPolicyDefinition', 'Set-AzPolicySetDefinition', 
+               'Remove-AzPolicySetDefinition', 'Remove-AzPolicyExemption', 
+               'Set-AzPolicyAssignment', 'Set-AzPolicyDefinition', 
+               'Set-AzPolicySetDefinition', 'Set-AzPolicyExemption', 
                'Remove-AzResource', 'Remove-AzResourceLock', 'Set-AzResource', 
                'New-AzResource', 'Set-AzResourceLock', 'Get-AzResource', 
                'Get-AzManagedApplicationDefinition', 

@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string RemovePolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to delete.";
         public const string RemovePolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to delete.";
         public const string SetPolicySetDefinitionNameHelp = "The name of the policy set definition to update.";
-        public const string SetPolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to get, including the subscription or management group. e.g. /providers/Microsoft.Management/managementGroups/{managementGroup}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
+        public const string SetPolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to update, including the subscription or management group. e.g. /providers/Microsoft.Management/managementGroups/{managementGroup}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
         public const string SetPolicySetDefinitionDisplayNameHelp = "The display name of the updated policy set definition.";
         public const string SetPolicySetDefinitionDescriptionHelp = "The description of the updated policy set definition.";
         public const string SetPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions of the updated policy set definition. This can either be a path to a file containing the policy set definitions JSON, or the policy set definitions as a JSON string.";
@@ -124,5 +124,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to update.";
         public const string SetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to update.";
         public const string SetPolicySetDefinitionInputObjectHelp = "The policy set definition object to update that was output from another cmdlet.";
+
+        /// <summary>
+        /// Policy exemption cmdlet parawmeter help strings
+        /// </summary>
+        public const string GetPolicyExemptionNameHelp = "The name of the policy exemption to get.";
+        public const string GetPolicyExemptionScopeHelp = "The scope of the policy exemption to get, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string GetPolicyExemptionIdHelp = "The fully qualified policy exemption ID to get, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string GetPolicyExemptionFilterHelp = "Limits the list of returned policy exemptions to those assigning the policy assignment identified by this fully qualified Id.";
+        public const string GetPolicyExemptionIncludeDescendentsHelp = "Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.";
+        public const string GetPolicyExemptionDoesNothingHelp = "This parameter is ignored if provided with -Name or -Id parameters.";
+        public const string NewPolicyExemptionNameHelp = "The name of the new policy exemption.";
+        public const string NewPolicyExemptionScopeHelp = "The scope of the new policy exemption, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string NewPolicyExemptionCategoryHelp = "The policy exemption category of the new policy exemption. Possible values are Waiver and Mitigated.";
+        public const string NewPolicyExemptionDisplayNameHelp = "The display name for the new policy exemption.";
+        public const string NewPolicyExemptionDescriptionHelp = "The description for the new policy exemption.";
+        public const string NewPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the new policy exemption.";
+        public const string NewPolicyExemptionPolicyAssignmentIdHelp = "The referenced policy assignment Id for the new policy exemption.";
+        public const string NewPolicyExemptionPolicyDefinitionReferenceIdsHelp = "The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.";
+        public const string NewPolicyExemptionMetadataHelp = "The metadata for the new policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string RemovePolicyExemptionNameHelp = "The name of the policy exemption to delete.";
+        public const string RemovePolicyExemptionScopeHelp = "The scope of the policy exemption to delete, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string RemovePolicyExemptionIdHelp = "The fully qualified policy exemption ID to delete, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string RemovePolicyExemptionInputObjectHelp = "The policy exemption object to remove that was output from another cmdlet.";
+        public const string SetPolicyExemptionNameHelp = "The name of the policy exemption to update.";
+        public const string SetPolicyExemptionScopeHelp = "The scope of the updated policy exemption, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string SetPolicyExemptionIdHelp = "The fully qualified policy exemption Id to update, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string SetPolicyExemptionCategoryHelp = "The policy exemption category of the updated policy exemption. Possible values are Waiver and Mitigated.";
+        public const string SetPolicyExemptionDisplayNameHelp = "The display name for the updated policy exemption.";
+        public const string SetPolicyExemptionDescriptionHelp = "The description for the updated policy exemption.";
+        public const string SetPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the updated policy exemption.";
+        public const string SetPolicyExemptionClearExpirationHelp = "whether clear the expiration date and time of the updated policy exemption";
+        public const string SetPolicyExemptionPolicyDefinitionReferenceIdsHelp = "The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.";
+        public const string SetPolicyExemptionMetadataHelp = "The metadata for the updated policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string SetPolicyExemptionInputObjectHelp = "The policy exemption object to update that was output from another cmdlet.";
     }
 }
