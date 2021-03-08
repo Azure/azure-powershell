@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string WorkspaceResourceId = "Workspace resource id - on premise parameter";
         public const string UseLatest = "Use latest results for the operation";
         public const string RuleId = "Vulnerability Assessment rule id";
-        public const string ScanId = "Vulnerability Assessment scan id";
+        public const string ScanId = "Vulnerability Assessment scan id - use scanId = 'latest' to get latest results";
         public const string Baseline = "Vulnerability Assessment baseline object";
 
 

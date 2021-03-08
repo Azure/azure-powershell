@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Security;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -56,15 +57,18 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                var computePath = _helper.GetRMModulePath(@"AzureRM.Compute.psd1");
 
                 var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Security.psd1"),
+                    computePath,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
+                    "Az.Compute.ps1",
                     "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
@@ -76,7 +80,8 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
             var resourcesClient = GetResourcesClient(context);
             var securityCenterClient = GetSecurityCenterClient(context);
             var storageClient = GetStorageManagementClient(context);
-            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient);
+            var computeClient = GetComputeManagementClient(context);
+            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient, computeClient);
         }
 
         private static SecurityCenterClient GetSecurityCenterClient(MockContext context)
@@ -90,6 +95,11 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         private static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ComputeManagementClient GetComputeManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
