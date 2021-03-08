@@ -47,6 +47,18 @@ Get the cluster resource details.
 ### [Get-AzServiceFabricManagedCluster](Get-AzServiceFabricManagedCluster.md)
 Get the managed cluster resource details.
 
+### [Get-AzServiceFabricManagedClusterApplication](Get-AzServiceFabricManagedClusterApplication.md)
+Get Service Fabric managed application details. Only supports ARM deployed applications.
+
+### [Get-AzServiceFabricManagedClusterApplicationType](Get-AzServiceFabricManagedClusterApplicationType.md)
+Get Service Fabric managed application type details. Only supports ARM deployed application types.
+
+### [Get-AzServiceFabricManagedClusterApplicationTypeVersion](Get-AzServiceFabricManagedClusterApplicationTypeVersion.md)
+Get Service Fabric managed application type version details. Only supports ARM deployed application type versions.
+
+### [Get-AzServiceFabricManagedClusterService](Get-AzServiceFabricManagedClusterService.md)
+Get Service Fabric managed service details under the specified application and cluster. Only supports ARM deployed services.
+
 ### [Get-AzServiceFabricManagedNodeType](Get-AzServiceFabricManagedNodeType.md)
 Get the managed node type resource details.
 
@@ -67,6 +79,18 @@ This command uses certificates that you provide or system generated self-signed 
 
 ### [New-AzServiceFabricManagedCluster](New-AzServiceFabricManagedCluster.md)
 Create new managed cluster.
+
+### [New-AzServiceFabricManagedClusterApplication](New-AzServiceFabricManagedClusterApplication.md)
+Create new service fabric managed application under the specified resource group and cluster.
+
+### [New-AzServiceFabricManagedClusterApplicationType](New-AzServiceFabricManagedClusterApplicationType.md)
+Create new service fabric managed application type under the specified resource group and cluster.
+
+### [New-AzServiceFabricManagedClusterApplicationTypeVersion](New-AzServiceFabricManagedClusterApplicationTypeVersion.md)
+Create new managed application type version under the specified resource group and cluster.
+
+### [New-AzServiceFabricManagedClusterService](New-AzServiceFabricManagedClusterService.md)
+Create new service fabric managed service under the specified application and cluster.
 
 ### [New-AzServiceFabricManagedNodeType](New-AzServiceFabricManagedNodeType.md)
 Create new node type resource.
@@ -92,8 +116,20 @@ Remove a cluster certificate from being used for cluster security.
 ### [Remove-AzServiceFabricManagedCluster](Remove-AzServiceFabricManagedCluster.md)
 Remove cluster resource.
 
+### [Remove-AzServiceFabricManagedClusterApplication](Remove-AzServiceFabricManagedClusterApplication.md)
+Remove an managed application from the cluster. This will remove all the managed services under the application. Only supports ARM deployed applications.
+
+### [Remove-AzServiceFabricManagedClusterApplicationType](Remove-AzServiceFabricManagedClusterApplicationType.md)
+Removes a managed application type from the cluster. This will remove all type versions under this resource. Only supports ARM deployed application types.
+
+### [Remove-AzServiceFabricManagedClusterApplicationTypeVersion](Remove-AzServiceFabricManagedClusterApplicationTypeVersion.md)
+Removes a managed application type version from the cluster. Only supports ARM deployed application type versions.
+
 ### [Remove-AzServiceFabricManagedClusterClientCertificate](Remove-AzServiceFabricManagedClusterClientCertificate.md)
 Remvoe client certificate by thumbprint or common name.
+
+### [Remove-AzServiceFabricManagedClusterService](Remove-AzServiceFabricManagedClusterService.md)
+Remove a managed service from the cluster. Only supports ARM deployed services.
 
 ### [Remove-AzServiceFabricManagedNodeType](Remove-AzServiceFabricManagedNodeType.md)
 Remove the node type or specific nodes within the node type.
@@ -118,6 +154,18 @@ Restart specific nodes from the node type.
 
 ### [Set-AzServiceFabricManagedCluster](Set-AzServiceFabricManagedCluster.md)
 Set cluster resource properties.
+
+### [Set-AzServiceFabricManagedClusterApplication](Set-AzServiceFabricManagedClusterApplication.md)
+Update a service fabric managed application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade or other configuration only updates. Only supports ARM deployed applications.
+
+### [Set-AzServiceFabricManagedClusterApplicationType](Set-AzServiceFabricManagedClusterApplicationType.md)
+Update a service fabric managed application type. This allows you to update the tags. Only supports ARM deployed application types.
+
+### [Set-AzServiceFabricManagedClusterApplicationTypeVersion](Set-AzServiceFabricManagedClusterApplicationTypeVersion.md)
+Update a service fabric managed application type version. This allows you to update the tags and package Url. Only supports ARM deployed application type versions.
+
+### [Set-AzServiceFabricManagedClusterService](Set-AzServiceFabricManagedClusterService.md)
+Update a managed service from the cluster. Only supports ARM deployed services.
 
 ### [Set-AzServiceFabricManagedNodeType](Set-AzServiceFabricManagedNodeType.md)
 Sets node type resource properties or run reimage actions on specific ndes of the node type with -Reimage parameter.

@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Node type resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedNodeType
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
 Parameter Sets: ByObj
 Aliases:
 

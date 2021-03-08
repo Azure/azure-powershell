@@ -105,7 +105,7 @@ PS C:\> $serviceName = "testService1"
 PS C:\> $instanceCloseDelayDuration = "00:11:00"
 PS C:\> $minInstancePercentage = 20
 PS C:\> $minInstanceCount = 2
-PS C:\> $statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
+PS C:\> $statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
 PS C:\> $service = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
 PS C:\> $service | Set-AzServiceFabricManagedClusterService -Stateless -Metric @($statelessServiceMetric) -MinInstanceCount $minInstanceCount -InstanceCloseDelayDuration $instanceCloseDelayDuration -MinInstancePercentage $minInstancePercentage -Verbose
 ```
@@ -128,7 +128,7 @@ This example will remove the managed service details with the ARM Resource ID sp
 Specify the name of the managed application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Stateless-ByResourceGroup, Stateful-ByResourceGroup
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Stateless-ByResourceGroup, Stateful-ByResourceGroup
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: PSServiceCorrelation[]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceCorrelation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
 
 ```yaml
-Type: MoveCostEnum
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum
 Parameter Sets: (All)
 Aliases:
 Accepted values: Zero, Low, Medium, High
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 Specify the drop source replica on move property for the managed service
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 Continue without prompts
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 Specify the target replica set size for the managed service
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 The managed service resource.
 
 ```yaml
-Type: PSManagedService
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 Parameter Sets: Stateless-ByInputObject, Stateful-ByInputObject
 Aliases:
 
@@ -281,7 +281,7 @@ Specify the instance close delay duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: Stateless-ByResourceGroup, Stateless-ByResourceId, Stateless-ByInputObject
 Aliases:
 
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 Specify the instance count for the managed service
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Stateless-ByResourceGroup, Stateless-ByResourceId, Stateless-ByInputObject
 Aliases:
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: PSServiceMetric[]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric[]
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 Specify the minimum instance count for the managed service
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Stateless-ByResourceGroup, Stateless-ByResourceId, Stateless-ByInputObject
 Aliases:
 
@@ -341,7 +341,7 @@ Accept wildcard characters: False
 Specify the minimum instance percentage for the managed service
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Stateless-ByResourceGroup, Stateless-ByResourceId, Stateless-ByInputObject
 Aliases:
 
@@ -356,7 +356,7 @@ Accept wildcard characters: False
 Specify the min replica set size for the managed service
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 Specify the name of the managed service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Stateless-ByResourceGroup, Stateful-ByResourceGroup
 Aliases: ServiceName
 
@@ -386,7 +386,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +402,7 @@ Specify the quorum loss wait duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -418,7 +418,7 @@ Specify the replica restart wait duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -433,7 +433,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Stateless-ByResourceGroup, Stateful-ByResourceGroup
 Aliases:
 
@@ -448,7 +448,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Stateless-ByResourceId, Stateful-ByResourceId
 Aliases:
 
@@ -463,7 +463,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -479,7 +479,7 @@ Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
 
 ```yaml
-Type: ServicePackageActivationModeEnum
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.ServicePackageActivationModeEnum
 Parameter Sets: (All)
 Aliases:
 Accepted values: SharedProcess, ExclusiveProcess
@@ -496,7 +496,7 @@ Specify the service placement time limit for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -512,7 +512,7 @@ Specify the stand by replica duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -527,7 +527,7 @@ Accept wildcard characters: False
 Use for stateful service
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -542,7 +542,7 @@ Accept wildcard characters: False
 Use for stateless service
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Stateless-ByResourceGroup, Stateless-ByResourceId, Stateless-ByInputObject
 Aliases:
 
@@ -557,7 +557,7 @@ Accept wildcard characters: False
 Specify the tags as key/value pairs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -572,7 +572,7 @@ Accept wildcard characters: False
 Specify the target replica set size for the managed service
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Stateful-ByResourceGroup, Stateful-ByResourceId, Stateful-ByInputObject
 Aliases:
 
@@ -587,7 +587,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -603,7 +603,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -621,13 +621,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedService
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 
 ### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedService
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 
 ## NOTES
 

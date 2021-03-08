@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters
+namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSManagedNodeType : NodeType
     {

@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.")]
         [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
             HelpMessage = "The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.")]
-        public UpgradeMode UpgradeMode { get; set; }
+        public ApplicationUpgradeMode UpgradeMode { get; set; }
 
         #region RollingUpgradeMonitoringPolicy
 

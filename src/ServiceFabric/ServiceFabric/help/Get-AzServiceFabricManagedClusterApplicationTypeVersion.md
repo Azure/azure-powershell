@@ -64,14 +64,13 @@ PS C:\> Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $res
 
 This example will get the managed application type version details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.
 
-
 ## PARAMETERS
 
 ### -ClusterName
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByVersion
 Aliases:
 
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 Specify the name of the managed application type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByVersion
 Aliases: ApplicationTypeName
 
@@ -116,7 +115,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByVersion
 Aliases:
 
@@ -131,7 +130,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed application type version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -146,7 +145,7 @@ Accept wildcard characters: False
 Specify the version of the managed application type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVersion
 Aliases: ApplicationTypeVersion
 
@@ -166,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedApplicationTypeVersion
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplicationTypeVersion
 
 ## NOTES
 
