@@ -27,38 +27,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     {
         public static bool IsBicepExecutable { get; private set; } = false;
 
-        public static string MinimalVersionRequirement = "0.3.1";
+        public static string MinimalVersionRequirement { get; private set; } = "0.3.1";
 
         public static bool IsBicepFile(string templateFilePath)
         {
             return ".bicep".Equals(Path.GetExtension(templateFilePath), System.StringComparison.OrdinalIgnoreCase);
         }
 
-        public delegate List<T> ScriptExecutor<T>(string script);
-
-        public static bool CheckBicepExecutable<T>(ScriptExecutor<T> executeScript)
+        public static bool CheckBicepExecutable()
         {
-            try
-            {
-                executeScript("get-command bicep");
-            }
-            catch
-            {
-                IsBicepExecutable = false;
-                return IsBicepExecutable;
-            }
-            IsBicepExecutable = true;
+            System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
+            powershell.AddScript("Get-Command bicep");
+            powershell.Invoke();
+            IsBicepExecutable = powershell.HadErrors ? false : true;
             return IsBicepExecutable;
         }
 
-        private static bool CheckMinimalVersionRequirement(string checkMinumVersionRequirement)
+        private static string CheckMinimalVersionRequirement(string minimalVersionRequirement)
         {
-
-            if (Version.Parse(checkMinumVersionRequirement).CompareTo(Version.Parse(GetBicepVesion())) > 0)
+            string currentBicepVersion = GetBicepVesion();
+            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(currentBicepVersion)) > 0)
             {
-                throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, checkMinumVersionRequirement));
+                throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, minimalVersionRequirement));
             };
-            return true;
+            return currentBicepVersion;
         }
 
         public static string GetBicepVesion()
@@ -71,14 +63,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return bicepVersion;
         }
 
-        public static string BuildFile<T>(ScriptExecutor<T> executeScript, string bicepTemplateFilePath)
+        public delegate void OutputMethod(string msg);
+
+        public static string BuildFile(string bicepTemplateFilePath, OutputMethod outputMethod = null)
         {
-            if (!IsBicepExecutable && !CheckBicepExecutable(executeScript))
+            if (!IsBicepExecutable && !CheckBicepExecutable())
             {
                 throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
             }
 
-            CheckMinimalVersionRequirement(MinimalVersionRequirement);
+            string currentBicepVersion = CheckMinimalVersionRequirement(MinimalVersionRequirement);
 
             string tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(tempDirectory);
@@ -87,7 +81,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
                 powershell.AddScript($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'");
-                powershell.Invoke();
+                var result = powershell.Invoke();
+                if (outputMethod != null)
+                {
+                    outputMethod(string.Format("Using Bicep v{0}", currentBicepVersion));
+                    result.ForEach(r => outputMethod(r.ToString()));
+                }
                 if (powershell.HadErrors)
                 {
                     string errorMsg = string.Empty;
