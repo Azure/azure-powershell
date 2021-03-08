@@ -19,7 +19,7 @@ Get All discovered servers in a migrate project.
 .Description
 Get Azure migrate server commandlet fetches all servers in a migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 
 function Get-AzMigrateDiscoveredServer {
@@ -76,29 +76,18 @@ function Get-AzMigrateDiscoveredServer {
             throw "Server Discovery Solution not found."
         }
 
-        $appMapV2 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
-        $appMapV3 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
-        $appMap = @{}
-
-        # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
-        foreach ($item in $appMapV2) {
-            $appMap[$item.ApplianceName] = $item.SiteId
-        }
-
-        foreach ($item in $appMapV3) {
-            $t = $item.psobject.properties
-            $appMap[$t.Name] = $t.Value.SiteId
-        }
+        $extendedDetails = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
 
         # Regex to match site name.
         $r = '(?<=/Microsoft.OffAzure/VMwareSites/).*$'
+
         $siteNameTmp = ""
-        if ($parameterSet -match "Site") {
+        if ($parameterSet.Contains("Site")) {
             #Fetch by site scenario. This is when site name filter is provided.
             $siteFound = 0
-            foreach ($kvp in $appMap.GetEnumerator()) {
-                if ($kvp.Key -eq $ApplianceName) {
-                    $siteArmId = $kvp.Value
+            foreach ($det in $extendedDetails) {
+                if ($det.ApplianceName -eq $ApplianceName) {
+                    $siteArmId = $det.SiteId
                     if ($siteArmId -match $r) {
                         $siteNameTmp = $Matches[0]
                         $siteFound = 1
@@ -109,7 +98,7 @@ function Get-AzMigrateDiscoveredServer {
                             $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
                             
                             if ($DisplayName) {
-                                $filteredMachines = $siteMachines | Where-Object {$_.DisplayName -match $DisplayName}
+                                $filteredMachines = $siteMachines | Where-Object {$_.DisplayName.Contains($DisplayName)}
                                 return $filteredMachines
                             }
                             else {
@@ -129,8 +118,8 @@ function Get-AzMigrateDiscoveredServer {
             $projectSdsMachines = [System.Collections.ArrayList]::new()
 
             if ($parameterSet -eq 'List') {
-                foreach ($kvp in $appMap.GetEnumerator()) {
-                    $siteArmId = $kvp.Value
+                foreach ($det in $extendedDetails) {
+                    $siteArmId = $det.SiteId
         
                     if ($siteArmId -match $r) {
                         $siteNameTmp = $Matches[0]
@@ -142,7 +131,7 @@ function Get-AzMigrateDiscoveredServer {
                 }
 
                 if ($DisplayName) {
-                    $filteredMachines = $projectSdsMachines | Where-Object {$_.DisplayName -match $DisplayName}
+                    $filteredMachines = $projectSdsMachines | Where-Object {$_.DisplayName.Contains($DisplayName)}
                     return $filteredMachines
                 }
                 else {
@@ -150,8 +139,8 @@ function Get-AzMigrateDiscoveredServer {
                 }
             }
             elseif ($parameterSet -eq 'Get') {
-                foreach ($kvp in $appMap.GetEnumerator()) {
-                    $siteArmId = $kvp.Value
+                foreach ($det in $extendedDetails) {
+                    $siteArmId = $det.SiteId
         
                     if ($siteArmId -match $r) {
                         $siteNameTmp = $Matches[0]

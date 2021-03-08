@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 
         /// <summary>The internal error message or exception dump.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string InnererrorErrordetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Errordetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Errordetail = value ?? null; }
+        public string InnererrorErrordetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Errordetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Errordetail = value; }
 
         /// <summary>The exception type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string InnererrorExceptiontype { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Exceptiontype; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Exceptiontype = value ?? null; }
+        public string InnererrorExceptiontype { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Exceptiontype; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)Innererror).Exceptiontype = value; }
 
         /// <summary>Backing field for <see cref="Message" /> property.</summary>
         private string _message;

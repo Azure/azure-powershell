@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -29,14 +28,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
-        /// </summary>
-        public string ClientId { get; init; }
-
-        /// <summary>
         /// Gets the masked command lines that are used to request prediction.
         /// </summary>
-        public IEnumerable<string> Commands { get; } // ["Get-AzContext", "Get-AzVM"]
+        public string Commands { get; } // "Get-AzContext\nGet-AzVM" /predictions
 
         /// <summary>
         /// Gets whether the http request to the service is sent.
@@ -54,13 +48,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates an instance of <see cref="RequestPredictionTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="commands">The commands to request prediction for.</param>
         /// <param name="hasSentHttpRequest">The flag to indicate whether the http request is canceled.</param>
         /// <param name="exception">The exception that may be thrown.</param>
-        public RequestPredictionTelemetryData(string clientId, IEnumerable<string> commands, bool hasSentHttpRequest, Exception exception)
+        public RequestPredictionTelemetryData(string commands, bool hasSentHttpRequest, Exception exception)
         {
-            ClientId = clientId;
             Commands = commands;
             HasSentHttpRequest = hasSentHttpRequest;
             Exception = exception;

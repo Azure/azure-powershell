@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the provisioning states.</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="ProvisioningState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ProvisioningState(global::System.Convert.ToString(value));
+            return new ProvisioningState(System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ProvisioningState</summary>

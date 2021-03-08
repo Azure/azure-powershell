@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The last known status of the export execution.</summary>
+    /// <summary>TypeConverter implementation for ExecutionStatus.</summary>
     public partial class ExecutionStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

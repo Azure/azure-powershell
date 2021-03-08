@@ -53,7 +53,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverdatabase
+https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlflexibleserverdatabase
 #>
 function New-AzMySqlFlexibleServerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]

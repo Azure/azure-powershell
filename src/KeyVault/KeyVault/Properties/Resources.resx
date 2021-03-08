@@ -211,7 +211,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid vault name.</value>
   </data>
   <data name="InvalidManagedStorageAccountName" xml:space="preserve">
-    <value>Invalid key vault managed storage account name.</value>
+    <value>Invalid key vault managed storage acccount name.</value>
   </data>
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
@@ -484,7 +484,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Purge managed storage account</value>
   </data>
   <data name="VaultDoesNotExist" xml:space="preserve">
-    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modify the Access Policies of this vault.</value>
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault.</value>
   </data>
   <data name="ActiveDirectoryClientNull" xml:space="preserve">
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
@@ -577,7 +577,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Remove HSM</value>
   </data>
   <data name="ADGraphPermissionWarning" xml:space="preserve">
-    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`.</value>
+    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>
   </data>
   <data name="UpdateHsmShouldProcessMessage" xml:space="preserve">
     <value>Updating managed HSM '{0}' in resource group '{1}'.</value>

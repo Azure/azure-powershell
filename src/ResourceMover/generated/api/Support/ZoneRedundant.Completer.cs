@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the zone redundant resource setting.</summary>
+    /// <summary>Argument completer implementation for ZoneRedundant.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ZoneRedundantTypeConverter))]
     public partial struct ZoneRedundant :
         System.Management.Automation.IArgumentCompleter

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the move resource input type.</summary>
+    /// <summary>TypeConverter implementation for MoveResourceInputType.</summary>
     public partial class MoveResourceInputTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

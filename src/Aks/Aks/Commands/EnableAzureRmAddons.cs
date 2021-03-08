@@ -13,12 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Collections.Generic;
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
+using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
 using Microsoft.Azure.Management.ContainerService.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
 {
@@ -40,7 +44,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
 
         protected override IDictionary<string, ManagedClusterAddonProfile> UpdateAddonsProfile(IDictionary<string, ManagedClusterAddonProfile> addonProfiles)
         {
-            return AddonUtils.EnableAddonsProfile(addonProfiles, Name, nameof(Name), WorkspaceResourceId, nameof(WorkspaceResourceId), SubnetName, nameof(SubnetName));
+            return AddonUtils.EnableAddonsProfile(addonProfiles, Name, WorkspaceResourceId, SubnetName);
         }
     }
 }

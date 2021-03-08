@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the export execution.</summary>
+    /// <summary>Argument completer implementation for ExecutionType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionTypeTypeConverter))]
     public partial struct ExecutionType :
         System.Management.Automation.IArgumentCompleter

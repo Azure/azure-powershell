@@ -114,20 +114,9 @@ function Invoke-HandledCmdlet
 
 <#
 .SYNOPSIS
-Creates the test environment needed to perform the Synapse SQL related tests
+Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-SqlTestEnvironmentWithParams ($params, $location)
-{
-	Create-BasicTestEnvironmentWithParams $params $location
-	New-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -PerformanceLevel $params.perfLevel
-	Wait-Seconds 10
-}
-
-<#
-.SYNOPSIS
-Creates the test environment needed to perform the Synapse tests
-#>
-function Create-TestEnvironmentWithParams ($params, $location)
+function Create-TestEnvironmentWithParams ($params, $location, $denyAsNetworkRuleDefaultAction = $False)
 {
 	Create-BasicTestEnvironmentWithParams $params $location
 	Wait-Seconds 10
@@ -146,4 +135,5 @@ function Create-BasicTestEnvironmentWithParams ($params, $location)
 	$workspacePassword = $params.pwd
 	$credentials = new-object System.Management.Automation.PSCredential($workspaceLogin, ($workspacePassword | ConvertTo-SecureString -asPlainText -Force))
     New-AzSynapseWorkspace -ResourceGroupName  $params.rgname -WorkspaceName $params.workspaceName -Location $location -SqlAdministratorLoginCredential $credentials -DefaultDataLakeStorageAccountName $params.storageAccountName -DefaultDataLakeStorageFilesystem $params.fileSystemName
+	New-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -PerformanceLevel $params.perfLevel
 }

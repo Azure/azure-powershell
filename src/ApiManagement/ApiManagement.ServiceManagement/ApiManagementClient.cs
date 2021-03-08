@@ -1194,7 +1194,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 }
             }
 
-            return PsApiManagementApiType.Http.ToString("g");
+            return apiType.HasValue ? apiType.Value.ToString("g") : PsApiManagementApiType.Http.ToString("g");
         }
 
         public void ApiAddToProduct(PsApiManagementContext context, string productId, string apiId)

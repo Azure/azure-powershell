@@ -82,6 +82,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
+        public IContainerServicesOperations ContainerServicesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ContainerServices;
+            }
+        }
+
         public IDedicatedHostGroupsOperations DedicatedHostGroupsClient
         {
             get

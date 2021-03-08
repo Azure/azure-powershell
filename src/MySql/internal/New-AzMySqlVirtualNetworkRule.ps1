@@ -54,7 +54,7 @@ PARAMETER <IVirtualNetworkRule>: A virtual network rule.
   VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
+https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 #>
 function New-AzMySqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule])]

@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public virtual void Validate()
         {
-            if (RetentionTimes == null || RetentionTimes.Count != 1)
+            if (RetentionTimes == null || RetentionTimes.Count == 0 || RetentionTimes.Count != 1)
             {
                 throw new ArgumentException(Resources.InvalidRetentionTimesInPolicyException);
             }

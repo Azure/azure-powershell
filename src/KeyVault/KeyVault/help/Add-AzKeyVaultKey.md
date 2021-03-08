@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -285,7 +285,7 @@ PS C:\> $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destinati
 ```
 
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
-For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
+For more details please refer to https://docs.microsoft.com/en-us/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 

@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Commands.Aks
                 case Constants.IdParameterSet:
                     resource = new ResourceIdentifier(Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(Id));
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
                     Name = resource.ResourceName;
                     break;
                 case Constants.InputObjectParameterSet:
                     resource = new ResourceIdentifier(InputObject.Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(InputObject));
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
                     Name = resource.ResourceName;
                     break;
             }

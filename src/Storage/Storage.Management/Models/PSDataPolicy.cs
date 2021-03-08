@@ -185,7 +185,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSManagementPolicyBaseBlob BaseBlob { get; set; }
         public PSManagementPolicySnapShot Snapshot { get; set; }
-        public PSManagementPolicyVersion Version { get; set; }
 
         public PSManagementPolicyActionGroup()
         { }
@@ -194,7 +193,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.BaseBlob = (action is null || action.BaseBlob is null) ? null : new PSManagementPolicyBaseBlob(action.BaseBlob);
             this.Snapshot = (action is null || action.Snapshot is null) ? null : new PSManagementPolicySnapShot(action.Snapshot);
-            this.Version = (action is null || action.Version is null) ? null : new PSManagementPolicyVersion(action.Version);
         }
         public ManagementPolicyAction ParseManagementPolicyAction()
         {
@@ -202,7 +200,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 BaseBlob = this.BaseBlob is null ? null : this.BaseBlob.ParseManagementPolicyBaseBlob(),
                 Snapshot = this.Snapshot is null ? null : this.Snapshot.ParseManagementPolicySnapShot(),
-                Version = this.Version is null ? null : this.Version.ParseManagementPolicyVersion(),
             };
         }
     }
@@ -242,54 +239,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSManagementPolicySnapShot
     {
         public PSDateAfterCreation Delete { get; set; }
-        public PSDateAfterCreation TierToCool { get; set; }
-        public PSDateAfterCreation TierToArchive { get; set; }
-
+        
         public PSManagementPolicySnapShot()
         { }
 
         public PSManagementPolicySnapShot(ManagementPolicySnapShot blobAction)
         {
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
-            this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
-            this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
         }
         public ManagementPolicySnapShot ParseManagementPolicySnapShot()
         {
             return new ManagementPolicySnapShot()
             {
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
-            };
-        }
-    }
-
-    /// <summary>
-    /// Wrapper of SDK type ManagementPolicySnapShot
-    /// </summary>
-    public class PSManagementPolicyVersion
-    {
-        public PSDateAfterCreation Delete { get; set; }
-        public PSDateAfterCreation TierToCool { get; set; }
-        public PSDateAfterCreation TierToArchive { get; set; }
-
-        public PSManagementPolicyVersion()
-        { }
-
-        public PSManagementPolicyVersion(ManagementPolicyVersion blobAction)
-        {
-            this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
-            this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
-            this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
-        }
-        public ManagementPolicyVersion ParseManagementPolicyVersion()
-        {
-            return new ManagementPolicyVersion()
-            {
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
+                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation()
             };
         }
     }

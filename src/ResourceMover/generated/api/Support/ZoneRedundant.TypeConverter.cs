@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the zone redundant resource setting.</summary>
+    /// <summary>TypeConverter implementation for ZoneRedundant.</summary>
     public partial class ZoneRedundantTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -40,7 +40,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string Cipher { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string SciState { get; set; }
     }
 }

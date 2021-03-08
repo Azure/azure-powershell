@@ -20,12 +20,12 @@ API to register a new K8s cluster and thereby create a tracked resource in ARM
 API to register a new K8s cluster and thereby create a tracked resource in ARM
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api202001Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -145,6 +145,12 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
         }
+        $AadProfileClientAppId = ''
+        $PSBoundParameters.Add('AadProfileClientAppId', $AadProfileClientAppId)
+        $AadProfileServerAppId = ''
+        $PSBoundParameters.Add('AadProfileServerAppId', $AadProfileServerAppId)
+        $AadProfileTenantId = ''
+        $PSBoundParameters.Add('AadProfileTenantId', $AadProfileTenantId)
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
@@ -238,12 +244,7 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         #Region export helm chart
-        if (Test-Path Env:Home) {
-            $ChartExportPath = Join-Path -Path (Get-Item Env:HOME).Value -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
-            # $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
-        } else {
-            $ChartExportPath = Join-Path -Path $Home -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
-        }
+        $ChartExportPath = Join-Path -Path (Get-Item Env:HOME).Value -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
         try {
             helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
         } catch {

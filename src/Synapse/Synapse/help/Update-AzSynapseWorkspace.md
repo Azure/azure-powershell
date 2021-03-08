@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapseworkspace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapseworkspace
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Updates a Synapse Analytics workspace.
 
 ### SetByNameParameterSet (Default)
 ```
-Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Hashtable>]
+Update-AzSynapseWorkspace [-ResourceGroupName <String>] [-Name <String>] [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -115,7 +115,7 @@ Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases: WorkspaceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

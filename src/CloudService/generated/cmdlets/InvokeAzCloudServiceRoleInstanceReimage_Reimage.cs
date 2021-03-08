@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Reimage=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage"
+    /// [OpenAPI] CloudServiceRoleInstances_Reimage=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzCloudServiceRoleInstanceReimage_Reimage", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

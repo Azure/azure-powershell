@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
 {
 
-    /// <summary>The level code.</summary>
+    /// <summary>TypeConverter implementation for StatusLevelTypes.</summary>
     public partial class StatusLevelTypesTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

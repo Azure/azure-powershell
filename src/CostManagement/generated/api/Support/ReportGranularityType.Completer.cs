@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The granularity of rows in the report.</summary>
+    /// <summary>Argument completer implementation for ReportGranularityType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ReportGranularityTypeTypeConverter))]
     public partial struct ReportGranularityType :
         System.Management.Automation.IArgumentCompleter

@@ -53,7 +53,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
 PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage parameter
   [VirtualNetworkArmResourceId <String>]: Virtual network resource id.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleservervirtualnetworksubnetusage
+https://docs.microsoft.com/en-us/powershell/module/az.postgresql/get-azpostgresqlflexibleservervirtualnetworksubnetusage
 #>
 function Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage])]

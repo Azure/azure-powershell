@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 
     /// <summary>Gets a remote desktop file for a role instance in a cloud service.</summary>
     /// <remarks>
-    /// [OpenAPI] GetRemoteDesktopFile=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile"
+    /// [OpenAPI] CloudServiceRoleInstances_GetRemoteDesktopFile=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/remoteDesktopFile"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServiceRoleInstanceRemoteDesktopFile_Get")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
@@ -172,10 +172,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudError"
+        /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -358,27 +360,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudError"
+        /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnDefault(responseMessage, ref _returnNow);
+                overrideOnDefault(responseMessage, response, ref _returnNow);
                 // if overrideOnDefault has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
                 // Error Response : default
-                // Unrecognized Response. Create an error record based on what we have.
-                var ex = new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.RestException(responseMessage);
-                WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { RoleInstanceName=RoleInstanceName, ResourceGroupName=ResourceGroupName, CloudServiceName=CloudServiceName, SubscriptionId=SubscriptionId })
+                var code = (await response)?.Code;
+                var message = (await response)?.Message;
+                if ((null == code || null == message))
                 {
-                  ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
-                });
+                    // Unrecognized Response. Create an error record based on what we have.
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { RoleInstanceName=RoleInstanceName, ResourceGroupName=ResourceGroupName, CloudServiceName=CloudServiceName, SubscriptionId=SubscriptionId })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
+                    });
+                }
+                else
+                {
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { RoleInstanceName=RoleInstanceName, ResourceGroupName=ResourceGroupName, CloudServiceName=CloudServiceName, SubscriptionId=SubscriptionId })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
+                    });
+                }
             }
         }
 
@@ -401,23 +417,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 }
                 // onOk - response for 200 / application/x-rdp
                 // (await response) // should be global::System.IO.Stream
-                var paths = new global::System.Collections.ObjectModel.Collection<global::System.String>();
-                try
+                var paths = this.SessionState.Path.GetResolvedProviderPathFromPSPath(OutFile, out var provider);
+                if (provider.Name != "FileSystem" || paths.Count == 0)
                 {
-                    paths = this.SessionState.Path.GetResolvedProviderPathFromPSPath(OutFile, out var provider);
-                    if (provider.Name != "FileSystem" || paths.Count == 0)
-                    {
-                        ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Invalid output path."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
-                    }
-                    if (paths.Count > 1)
-                    {
-                        ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Multiple output paths not allowed."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
-                    }
+                    ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Invalid output path."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
                 }
-                catch (global::System.Management.Automation.ItemNotFoundException)
+                if (paths.Count > 1)
                 {
-                    // If the file does not exist, we will try to create it
-                    paths.Add(OutFile);
+                    ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Multiple output paths not allowed."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
                 }
                 using( var stream = await response )
                 {

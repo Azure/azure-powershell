@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the dependency type.</summary>
+    /// <summary>TypeConverter implementation for DependencyType.</summary>
     public partial class DependencyTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

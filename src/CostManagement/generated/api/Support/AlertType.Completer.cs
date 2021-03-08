@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>type of alert</summary>
+    /// <summary>Argument completer implementation for AlertType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AlertTypeTypeConverter))]
     public partial struct AlertType :
         System.Management.Automation.IArgumentCompleter

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Exclusion match variable
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Match variable")]
-        [PSArgumentCompleter("RequestHeaderNames", "RequestCookieNames", "QueryStringArgNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
+        [PSArgumentCompleter("RequestHeaderNames", "RequestCookieNames", "QueryStringArgNames", "RequestBodyPostArgNames")]
         public string Variable { get; set; }
 
         /// <summary>

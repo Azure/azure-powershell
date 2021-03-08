@@ -1021,25 +1021,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(AzureEnvironment.Endpoint.ResourceManager));
         }
 
-        public AppServiceEnvironmentResource GetAppServiceEnvironment(string resourceGroupName, string aseName)
-        {
-            return WrappedWebsitesClient.AppServiceEnvironments().Get(resourceGroupName, aseName);
-        }
-
-        public AddressResponse GetAppServiceEnvironmentAddresses(string resourceGroupName, string aseName)
-        {
-            return WrappedWebsitesClient.AppServiceEnvironments().GetVipInfo(resourceGroupName, aseName);
-        }
-
-        public AppServiceEnvironmentResource CreateAppServiceEnvironment(string resourceGroupName, string aseName, AppServiceEnvironmentResource appServiceEnvironment)
-        {
-            return WrappedWebsitesClient.AppServiceEnvironments().CreateOrUpdate(resourceGroupName, aseName, appServiceEnvironment);
-        }
-
-        public void RemoveAppServiceEnvironment(string resourceGroupName, string aseName)
-        {
-            WrappedWebsitesClient.AppServiceEnvironments().Delete(resourceGroupName, aseName);
-        }
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

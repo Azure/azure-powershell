@@ -38,7 +38,6 @@
   
   <ItemGroup>
     <Folder Include="Bastion\" />
-    <Folder Include="RouteServerPeer\" />
   </ItemGroup>
 
 </Project>

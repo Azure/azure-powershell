@@ -20,14 +20,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     internal static class AzPredictorConstants
     {
         /// <summary>
-        /// The value to check to determine if it's an Az command.
-        /// </summary>
-        public const string AzCommandMoniker = "-Az";
-
-        /// <summary>
         /// The value to use when the command isn't an Az command.
         /// </summary>
         public const string CommandPlaceholder = "start_of_snippet";
+
+        /// <summary>
+        /// The value to check to determine if it's an Az command.
+        /// </summary>
+        public const string AzCommandMoniker = "-Az";
 
         /// <summary>
         /// The character to use when we join the commands together.
@@ -40,25 +40,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const int CommandHistoryCountToProcess = 2;
 
         /// <summary>
-        /// The character to join the command name and parameter and the value.
-        /// </summary>
-        public const char CommandParameterSeperator = ' ';
-
-        /// <summary>
         /// The service endpoint to get the list of commands.
         /// </summary>
         public const string CommandsEndpoint = "/commands";
 
         /// <summary>
-        /// The default client id. This is used when we don't get the client id from the caller. For example, when the module
-        /// is imported and it hasn't started processing yet.
-        /// </summary>
-        public const string DefaultClientId = "AzPredictor";
-
-        /// <summary>
         /// The service endpoint to get the list of suggestions.
         /// </summary>
         public const string PredictionsEndpoint = "/predictions";
+
+        /// <summary>
+        /// The character to join the command name and parameter and the value.
+        /// </summary>
+        public const char CommandParameterSeperator = ' ';
 
         /// <summary>
         /// The character that begins a parameter.

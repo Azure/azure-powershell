@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the move resource input type.</summary>
     public partial struct MoveResourceInputType :
         System.IEquatable<MoveResourceInputType>
     {
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
         /// <param name="value">the value to convert to an instance of <see cref="MoveResourceInputType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MoveResourceInputType(global::System.Convert.ToString(value));
+            return new MoveResourceInputType(System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MoveResourceInputType</summary>

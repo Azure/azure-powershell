@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMySqlFlexibleServer_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         ReadOnly = false,
         Description = @"The password of the administrator login (required for server creation).",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        public System.Security.SecureString AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

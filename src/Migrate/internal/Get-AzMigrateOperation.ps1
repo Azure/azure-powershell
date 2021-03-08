@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscove
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscovery])]

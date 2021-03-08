@@ -26,11 +26,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.CorrelationId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
-        /// </summary>
-        public string ClientId { get; init; }
-
-        /// <summary>
         /// Gets the history command line.
         /// </summary>
         public string Command { get; }
@@ -38,12 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(string clientId, string command)
-        {
-            ClientId = clientId;
-            Command = command;
-        }
+        public HistoryTelemetryData(string command) => Command = command;
     }
 }

@@ -79,7 +79,13 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionObject, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionName, StringComparison.OrdinalIgnoreCase))
+            {
+                this.ResourceGroupName = this.ResourceGroupName;
+                this.ExpressRouteGatewayName = this.ExpressRouteGatewayName;
+                this.Name = this.Name;
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceId = this.InputObject.Id;
 

@@ -19,9 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.2.0
-* Updated api-version of ConnectedKubernetes to 2021-03-01
-
 ## Version 0.1.0
-* The first preview release
+* the first preview release
 

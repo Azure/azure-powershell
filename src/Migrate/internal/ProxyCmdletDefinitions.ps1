@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratemachine
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratemachine
 #>
 function Get-AzMigrateMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
@@ -208,7 +208,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscove
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IOperationsDiscovery])]
@@ -347,7 +347,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationjob
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationjob
 #>
 function Get-AzMigrateReplicationJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
@@ -503,7 +503,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
 #>
 function Get-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -687,7 +687,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IResyncProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/invoke-azmigrateresyncreplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/invoke-azmigrateresyncreplicationmigrationitem
 #>
 function Invoke-AzMigrateResyncReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -874,7 +874,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IMigrateProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/move-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/move-azmigratereplicationmigrationitem
 #>
 function Move-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -1061,7 +1061,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IEnableMigrationProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
 #>
 function New-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -1247,7 +1247,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
 #>
 function Remove-AzMigrateReplicationMigrationItem {
 [OutputType([System.Boolean])]
@@ -1440,7 +1440,7 @@ PROPERTY <IMigrateProjectProperties>: Gets or sets the nested properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateproject
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigrateproject
 #>
 function Set-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
@@ -1639,7 +1639,7 @@ BODY <IVMwareSite>: Site REST Resource.
   [Tag <IVMwareSiteTags>]: Dictionary of <string>
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratesite
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/set-azmigratesite
 #>
 function Set-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
@@ -1876,7 +1876,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
 #>
 function Test-AzMigrateReplicationMigrationItemMigrateCleanup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -2062,7 +2062,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <ITestMigrateProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigrate
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigrate
 #>
 function Test-AzMigrateReplicationMigrationItemMigrate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
@@ -2249,7 +2249,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider specific input to update migration item.
   [InstanceType <String>]: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]

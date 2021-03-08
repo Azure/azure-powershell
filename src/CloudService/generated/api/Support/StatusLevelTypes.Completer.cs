@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
 {
 
-    /// <summary>The level code.</summary>
+    /// <summary>Argument completer implementation for StatusLevelTypes.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.StatusLevelTypesTypeConverter))]
     public partial struct StatusLevelTypes :
         System.Management.Automation.IArgumentCompleter

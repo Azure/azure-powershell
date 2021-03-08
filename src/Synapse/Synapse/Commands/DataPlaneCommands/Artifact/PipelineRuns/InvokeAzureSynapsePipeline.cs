@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
                 catch (InvalidCastException ex)
                 {
-                    throw new AzPSInvalidOperationException(Resources.InvalidCastParameterKeyExceptionMessage, ex);
+                    throw new InvalidCastException(Resources.InvalidCastParameterKeyExceptionMessage, ex);
                 }
             }
             else

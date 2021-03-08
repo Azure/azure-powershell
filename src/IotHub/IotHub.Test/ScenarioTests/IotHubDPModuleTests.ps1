@@ -132,7 +132,7 @@ function Test-AzureRmIotHubModuleLifecycle
 	Assert-True { $module.Authentication.Type -eq 'SelfSigned' }
 
 	# Invoke direct method on device module
-	$errorMessage = "The operation failed because the requested device isn't online or hasn't registered the direct method callback."
+	$errorMessage = 'Timed out waiting for device to connect.'
 	Assert-ThrowsContains { Invoke-AzIotHubModuleMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -ModuleId $module1 -Name "SetTelemetryInterval" } $errorMessage
 
 	# Update Module

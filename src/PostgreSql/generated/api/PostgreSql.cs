@@ -2442,7 +2442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -2481,10 +2481,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2498,7 +2498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -2619,7 +2619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations"
                         + "?"
@@ -2657,10 +2657,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/configurations'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2673,7 +2673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/configurations"
                         + "?"
@@ -2795,7 +2795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -2839,10 +2839,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2856,7 +2856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -3084,7 +3084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -3128,10 +3128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3145,7 +3145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -3375,7 +3375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -3415,10 +3415,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3432,7 +3432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -3660,7 +3660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -3699,10 +3699,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3716,7 +3716,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -3837,7 +3837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules"
                         + "?"
@@ -3875,10 +3875,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/firewallRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3891,7 +3891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/firewallRules"
                         + "?"
@@ -4351,7 +4351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4393,10 +4393,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4409,7 +4409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4632,7 +4632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4670,10 +4670,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4686,7 +4686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4909,7 +4909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -4946,10 +4946,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4962,7 +4962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -5396,7 +5396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/restart"
                         + "?"
@@ -5434,10 +5434,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/restart'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5450,7 +5450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/restart"
                         + "?"
@@ -5667,7 +5667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/start"
                         + "?"
@@ -5705,10 +5705,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/start$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/start$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/start'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5721,7 +5721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/start"
                         + "?"
@@ -5938,7 +5938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/stop"
                         + "?"
@@ -5976,10 +5976,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/stop$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)/stop$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/stop'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}/stop'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5992,7 +5992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "/stop"
                         + "?"
@@ -6212,7 +6212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -6256,10 +6256,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6272,7 +6272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)

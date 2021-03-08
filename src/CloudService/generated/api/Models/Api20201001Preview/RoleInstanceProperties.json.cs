@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return;
             }
-            {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.RoleInstanceNetworkProfile.FromJson(__jsonNetworkProfile) : NetworkProfile;}
             {_instanceView = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("instanceView"), out var __jsonInstanceView) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.RoleInstanceView.FromJson(__jsonInstanceView) : InstanceView;}
+            {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.RoleInstanceNetworkProfile.FromJson(__jsonNetworkProfile) : NetworkProfile;}
             AfterFromJson(json);
         }
 
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return container;
             }
-            AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
             AddIf( null != this._instanceView ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._instanceView.ToJson(null,serializationMode) : null, "instanceView" ,container.Add );
+            AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

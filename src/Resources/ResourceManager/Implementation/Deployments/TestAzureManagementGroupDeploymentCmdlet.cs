@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, AzureRMConstants.AzureRMPrefix + "ManagementGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
-    public class TestAzureManagementGroupDeploymentCmdlet : TestDeploymentCmdletBase
+    public class TestAzureManagementGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Parameter(Mandatory = true, HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ScopeType = DeploymentScopeType.ManagementGroup,
                 ManagementGroupId = this.ManagementGroupId,
                 Location = this.Location,
-                QueryString = QueryString,
                 TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                 TemplateObject = this.TemplateObject,
                 TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),

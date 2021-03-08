@@ -28,7 +28,7 @@ Describe 'Get-AzMySqlFlexibleServerConfiguration' {
 
     It 'GetViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/configurations/server_id"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/configurations/server_id"
             $config = Get-AzMySqlFlexibleServerConfiguration -InputObject $ID 
             $config.Name | Should -Be server_id
         } | Should -Not -Throw

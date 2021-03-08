@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Gets or sets the target availability zone.</summary>
+    /// <summary>Argument completer implementation for TargetAvailabilityZone.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.TargetAvailabilityZoneTypeConverter))]
     public partial struct TargetAvailabilityZone :
         System.Management.Automation.IArgumentCompleter

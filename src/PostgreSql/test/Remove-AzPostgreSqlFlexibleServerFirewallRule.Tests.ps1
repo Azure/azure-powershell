@@ -19,7 +19,7 @@ Describe 'Remove-AzPostgreSqlFlexibleServerFirewallRule' {
 
     It 'DeleteViaIdentity' {
         New-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID 
     }
 }

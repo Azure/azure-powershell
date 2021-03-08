@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>
-    /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-    /// </summary>
+    /// <summary>Argument completer implementation for ReportTimeframeType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ReportTimeframeTypeTypeConverter))]
     public partial struct ReportTimeframeType :
         System.Management.Automation.IArgumentCompleter

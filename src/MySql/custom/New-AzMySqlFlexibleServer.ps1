@@ -53,11 +53,6 @@ param(
     [System.String]
     ${Location},
 
-    [Parameter(HelpMessage = 'Availability zone into which to provision the resource.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [System.String]
-    ${Zone},
-
     [Parameter(HelpMessage = 'Administrator username for the server. Once set, it cannot be changed.')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
@@ -192,15 +187,11 @@ process {
             $PSBoundParameters.Location = 'westus2'
         }
 
-        if ($PSBoundParameters.ContainsKey('Zone')) {
-            $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
-            $null = $PSBoundParameters.Remove('Zone')
-        }
-
         if (!$PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
             $Password = Get-GeneratePassword
             $PSBoundParameters.AdministratorLoginPassword = $Password | ConvertTo-SecureString -AsPlainText -Force
         }
+        $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
 
         Import-Module -Name Az.Resources
         if(!$PSBoundParameters.ContainsKey('ResourceGroupName')) {
@@ -317,7 +308,7 @@ process {
             $Server.FirewallRuleName = $FirewallRuleName
         }
         $Server.DatabaseName = $DEFAULT_DB_NAME
-        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword
+        $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword | ConvertTo-SecureString -AsPlainText -Force
 
         return $Server
 
@@ -525,7 +516,6 @@ function CreateFirewallRule($Parameters) {
             }
             elseif ($StartIP -eq $EndIP) {
                 $Msg = 'Configuring server firewall rule to accept connections from ' + $StartIP 
-                $RuleName = "FirewallIPAddress_" + $Date
             } 
             else {
                 $Msg = 'Configuring server firewall rule to accept connections from {0} to {1}' -f $StartIP, $EndIp
@@ -536,7 +526,7 @@ function CreateFirewallRule($Parameters) {
         }
         return $FirewallRule.Name
     }
-    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -eq 'none') {
+    elseif ($Parameters.ContainsKey('PublicAccess') -And $Parameters.PublicAccess.ToLower() -ne 'none') {
         Write-Host "No firewall rule was set"
     }
 }

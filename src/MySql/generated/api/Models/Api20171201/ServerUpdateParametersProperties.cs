@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
     {
 
         /// <summary>Backing field for <see cref="AdministratorLoginPassword" /> property.</summary>
-        private System.Security.SecureString _administratorLoginPassword;
+        private string _administratorLoginPassword;
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Owned)]
-        public System.Security.SecureString AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
+        public string AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IStorageProfile Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersPropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.StorageProfile()); set { {_storageProfile = value;} } }
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        System.Security.SecureString AdministratorLoginPassword { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string AdministratorLoginPassword { get; set; }
         /// <summary>Enforce a minimal Tls version for the server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
     {
         /// <summary>The password of the administrator login.</summary>
-        System.Security.SecureString AdministratorLoginPassword { get; set; }
+        string AdministratorLoginPassword { get; set; }
         /// <summary>Enforce a minimal Tls version for the server.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum? MinimalTlsVersion { get; set; }
         /// <summary>

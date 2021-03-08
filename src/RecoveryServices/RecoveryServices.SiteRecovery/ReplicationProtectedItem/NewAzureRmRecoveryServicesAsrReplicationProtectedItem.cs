@@ -307,17 +307,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySetId { get; set; }
 
         /// <summary>
-        ///     Gets or sets if the Azure virtual machine that is created on failover should use managed disks.
-        /// </summary>
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.True,
-            Constants.False)]
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
-        public string UseManagedDisk { get; set; }
-
-        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -603,7 +592,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                     : this.RecoveryVmName;
             providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
             providerSettings.TargetAvailabilityZone = this.RecoveryAvailabilityZone;
-            providerSettings.UseManagedDisks = this.UseManagedDisk;
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
             {

@@ -42,9 +42,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AffectedMoveResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AffectedMoveResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AffectedMoveResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AffectedMoveResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -64,9 +64,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AutomaticResolutionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AutomaticResolutionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AutomaticResolutionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AutomaticResolutionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -86,9 +86,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AvailabilitySetResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AvailabilitySetResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AvailabilitySetResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AvailabilitySetResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -126,9 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AzureResourceReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AzureResourceReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.AzureResourceReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.AzureResourceReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -148,43 +148,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.BulkRemoveRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.BulkRemoveRequest</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MoveResource</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MoveResourceInputType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ValidateOnly</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MoveResource</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MoveResourceInputType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ValidateOnly</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.CloudErrorBody</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -216,9 +182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.CommitRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.CommitRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.CommitRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.CommitRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -250,9 +216,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.DiscardRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.DiscardRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.DiscardRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.DiscardRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -284,37 +250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.DiskEncryptionSetResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.Display</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.DiskEncryptionSetResourceSettings</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TargetResourceName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TargetResourceName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Display</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Display</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.Display</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -352,9 +290,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Identity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Identity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.Identity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -386,9 +324,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.JobStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.JobStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.JobStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.JobStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -414,37 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.KeyVaultResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LbBackendAddressPoolResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.KeyVaultResourceSettings</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TargetResourceName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TargetResourceName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LbBackendAddressPoolResourceSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LbBackendAddressPoolResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LbBackendAddressPoolResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -464,9 +374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LbFrontendIpconfigurationResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LbFrontendIpconfigurationResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LbFrontendIpconfigurationResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LbFrontendIpconfigurationResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -504,9 +414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerBackendAddressPoolReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerBackendAddressPoolReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerBackendAddressPoolReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerBackendAddressPoolReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -532,9 +442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerNatRuleReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerNatRuleReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerNatRuleReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerNatRuleReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -560,9 +470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.LoadBalancerResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.LoadBalancerResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -600,9 +510,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ManualResolutionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ManualResolutionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ManualResolutionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ManualResolutionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -622,15 +532,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Etag</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
@@ -644,9 +551,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
@@ -662,9 +566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -696,43 +600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionPropertiesErrors</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionResultList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionPropertiesErrors</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionResultList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionResultList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionResultList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -752,9 +622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveCollectionTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveCollectionTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -774,17 +644,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NextLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TotalCount</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -793,18 +660,15 @@
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TotalCount</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceDependency</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -842,9 +706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceDependencyOverride</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceDependencyOverride</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceDependencyOverride</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceDependencyOverride</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -864,9 +728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -898,9 +762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceFilterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceFilterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceFilterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceFilterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -920,17 +784,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ExistingTargetId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsResolveRequired</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -949,9 +810,6 @@
                 <PropertyName>ExistingTargetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>IsResolveRequired</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -966,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourcePropertiesErrors</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesErrors</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourcePropertiesErrors</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesErrors</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1000,9 +858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourcePropertiesMoveStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesMoveStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourcePropertiesMoveStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesMoveStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1023,6 +881,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1046,20 +907,54 @@
               <TableColumnItem>
                 <PropertyName>Target</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetId</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesSourceResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResourceStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourcePropertiesSourceResourceSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetResourceName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetResourceName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResourceStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>MoveState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1068,15 +963,18 @@
               <TableColumnItem>
                 <PropertyName>MoveState</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetId</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NetworkInterfaceResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NetworkInterfaceResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NetworkInterfaceResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NetworkInterfaceResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1108,9 +1006,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NetworkSecurityGroupResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NetworkSecurityGroupResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NetworkSecurityGroupResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NetworkSecurityGroupResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1136,9 +1034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NicIPConfigurationResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NicIPConfigurationResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NicIPConfigurationResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NicIPConfigurationResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1176,31 +1074,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NsgReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NsgSecurityRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NsgReference</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SourceArmResourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SourceArmResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NsgSecurityRule</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.NsgSecurityRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.NsgSecurityRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1274,9 +1150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationErrorAdditionalInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationErrorAdditionalInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1296,15 +1172,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationsDiscovery</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationsDiscovery</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationsDiscovery</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationsDiscovery</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -1315,9 +1188,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -1330,9 +1200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationsDiscoveryCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationsDiscoveryCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationsDiscoveryCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationsDiscoveryCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1352,9 +1222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationStatusError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationStatusError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.OperationStatusError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationStatusError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1380,9 +1250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PrepareRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.PrepareRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PrepareRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.PrepareRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1414,9 +1284,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ProxyResourceReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ProxyResourceReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ProxyResourceReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ProxyResourceReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1442,9 +1312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PublicIPAddressResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.PublicIPAddressResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PublicIPAddressResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.PublicIPAddressResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1458,7 +1328,7 @@
             <Label>DomainNameLabel</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Fqdn</Label>
+            <Label>FQdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublicIPAllocationMethod</Label>
@@ -1483,7 +1353,7 @@
                 <PropertyName>DomainNameLabel</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Fqdn</PropertyName>
+                <PropertyName>FQdn</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublicIPAllocationMethod</PropertyName>
@@ -1500,53 +1370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PublicIPReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceGroupResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.PublicIPReference</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SourceArmResourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SourceArmResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.RequiredForResourcesCollection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.RequiredForResourcesCollection</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SourceId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceGroupResourceSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceGroupResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceGroupResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1572,9 +1398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceMoveRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceMoveRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceMoveRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceMoveRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1606,9 +1432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1634,43 +1460,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlDatabaseResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlDatabaseResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlDatabaseResourceSettings</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TargetResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ZoneRedundant</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TargetResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ZoneRedundant</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlElasticPoolResourceSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlElasticPoolResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlDatabaseResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1702,9 +1494,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlServerResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlElasticPoolResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SqlServerResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlElasticPoolResourceSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ZoneRedundant</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ZoneRedundant</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlServerResourceSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SqlServerResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1730,9 +1556,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SubnetReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SubnetReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SubnetReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SubnetReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1758,9 +1584,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SubnetResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SubnetResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SubnetResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.SubnetResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1786,89 +1612,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Summary</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.UnresolvedDependencyCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.Summary</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Count</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Count</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SummaryCollection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.SummaryCollection</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>FieldName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>FieldName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UnresolvedDependenciesFilterProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UnresolvedDependenciesFilterProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Count</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Count</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UnresolvedDependencyCollection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UnresolvedDependencyCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.UnresolvedDependencyCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NextLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TotalCount</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1877,18 +1628,15 @@
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TotalCount</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UpdateMoveCollectionRequestTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.UpdateMoveCollectionRequestTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.UpdateMoveCollectionRequestTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.UpdateMoveCollectionRequestTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1908,9 +1656,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.VirtualMachineResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.VirtualMachineResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1954,9 +1702,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualNetworkResourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.VirtualNetworkResourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualNetworkResourceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.VirtualNetworkResourceSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

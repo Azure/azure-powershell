@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         else if (!string.IsNullOrWhiteSpace(SubnetId) || (!string.IsNullOrWhiteSpace(SubnetName) && !string.IsNullOrWhiteSpace(VirtualNetworkName)))
                         {
                             var subnet = !string.IsNullOrWhiteSpace(SubnetId) ? SubnetId : SubnetName;
-                            var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, ResourceGroupName, DefaultContext.Subscription.Id);
+                            var subnetResourceId = CmdletHelpers.ValidateSubnet(subnet, VirtualNetworkName, ResourceGroupName, DefaultContext.Subscription.Id);
                             if (!string.IsNullOrWhiteSpace(accessRestriction.VnetSubnetResourceId) && accessRestriction.VnetSubnetResourceId.ToLowerInvariant() == subnetResourceId.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))

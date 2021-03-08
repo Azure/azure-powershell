@@ -1,12 +1,12 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Synapse.Common;
+using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
-using Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -32,10 +32,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TriggerType = Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model.TriggerType;
 using Action = System.Action;
 using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
-using Microsoft.Azure.Commands.Synapse.Model;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -54,7 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             if (context == null)
             {
-                throw new AzPSInvalidOperationException(Resources.InvalidDefaultSubscription);
+                throw new SynapseException(Resources.InvalidDefaultSubscription);
             }
 
             Context = context;
@@ -116,27 +114,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Workspace operations
 
-        public Workspace CreateWorkspace(string resourceGroupName, string workspaceName, Workspace createParams)
+        public Workspace CreateOrUpdateWorkspace(string resourceGroupName, string workspaceName, Workspace createOrUpdateParams)
         {
             try
             {
-                return _synapseManagementClient.Workspaces.CreateOrUpdate(resourceGroupName, workspaceName, createParams);
+                return _synapseManagementClient.Workspaces.CreateOrUpdate(resourceGroupName, workspaceName, createOrUpdateParams);
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public Workspace UpdateWorkspace(string resourceGroupName, string workspaceName, WorkspacePatchInfo updateParams)
-        {
-            try
-            {
-                return _synapseManagementClient.Workspaces.Update(resourceGroupName, workspaceName, updateParams);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -153,7 +139,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -181,7 +167,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -211,7 +197,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 }
                 else
                 {
-                    throw GetAzurePowerShellException(ex);
+                    throw GetSynapseException(ex);
                 }
             }
         }
@@ -236,7 +222,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -253,7 +239,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -271,7 +257,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch
             {
-                throw new AzPSResourceNotFoundCloudException(string.Format(Properties.Resources.FailedToDiscoverFirewallRuleByWorkspace, workspaceName));
+                throw new NotFoundException(string.Format(Properties.Resources.FailedToDiscoverFirewallRuleByWorkspace, workspaceName));
             }
         }
 
@@ -300,7 +286,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -311,7 +297,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetWorkspace(resourceGroupName, workspaceName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -324,7 +310,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetFirewallRule(resourceGroupName, workspaceName, ruleName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -332,22 +318,17 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string GetResourceGroupByWorkspaceName(string workspaceName)
         {
-            var workspaceId = ListWorkspaces()
-                    .FirstOrDefault(x => x.Name.Equals(workspaceName, StringComparison.InvariantCultureIgnoreCase))
-                    ?.Id;
-
-            if (workspaceId == null)
-            {
-                throw new AzPSResourceNotFoundCloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, workspaceName, _subscriptionId));
-            }
-
             try
             {
+                var workspaceId = ListWorkspaces()
+                        .Find(x => x.Name.Equals(workspaceName, StringComparison.InvariantCultureIgnoreCase))
+                        .Id;
+
                 return new ResourceIdentifier(workspaceId).ResourceGroupName;
             }
             catch
             {
-                throw new AzPSResourceNotFoundCloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, workspaceName, _subscriptionId));
+                throw new NotFoundException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, workspaceName, _subscriptionId));
             }
         }
 
@@ -363,7 +344,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -375,7 +356,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -544,7 +525,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -581,7 +562,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -738,7 +719,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1022,7 +1003,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1053,7 +1034,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1079,7 +1060,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1098,7 +1079,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1114,7 +1095,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1250,7 +1231,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1269,7 +1250,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1281,7 +1262,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1293,7 +1274,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1312,7 +1293,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1328,7 +1309,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1365,7 +1346,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1382,7 +1363,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1394,7 +1375,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1406,7 +1387,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1423,7 +1404,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1501,7 +1482,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1513,7 +1494,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (CloudException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1529,7 +1510,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1546,79 +1527,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
-        }
-
-        public void StartVulnerabilityAssessmentScan(string resourceGroup, string workspaceName, string sqlPoolName, string scanId)
-        {
-            try
-            {
-                _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-          
-        }
-        internal PSVulnerabilityAssessmentScanRecordModel GetVulnerabilityAssessmentScanRecord(string resourceGroupName, string workspaceName, string sqlPoolName, string scanId)
-        {
-            try
-            {
-                var result = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Get(resourceGroupName, workspaceName, sqlPoolName, scanId);
-                return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, result);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        internal List<PSVulnerabilityAssessmentScanRecordModel> ListVulnerabilityAssessmentScanRecords(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                var firstPage = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.List(resourceGroupName, workspaceName, sqlPoolName);
-                return ListResources(firstPage, _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListNext).Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, scanRecord)).ToList();
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public PSVulnerabilityAssessmentScanExportModel ConvertSqlPoolVulnerabilityAssessmentScan(string resourceGroupName, string workSpaceName,
-           string sqlPoolName, string scanId)
-        {
-            var response = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Export(resourceGroupName, workSpaceName, sqlPoolName, scanId);
-            return new PSVulnerabilityAssessmentScanExportModel(resourceGroupName, workSpaceName, sqlPoolName, scanId, response.ExportedReportLocation);
-        }
-
-        private PSVulnerabilityAssessmentScanRecordModel ConvertVulnerabilityAssessmentScanRecord(string resourceGroup, string workSpace, string sqlPool, VulnerabilityAssessmentScanRecord scanRecord)
-        {
-            TriggerType scanTriggerType;
-            Enum.TryParse(scanRecord.TriggerType, true, out scanTriggerType);
-
-            return new PSVulnerabilityAssessmentScanRecordModel()
-            {
-                ResourceGroupName = resourceGroup,
-                workspaceName = workSpace,
-                sqlPoolName = sqlPool,
-                ScanId = scanRecord.ScanId,
-                TriggerType = scanTriggerType,
-                State = scanRecord.State,
-                StartTime = scanRecord.StartTime,
-                EndTime = scanRecord.EndTime,
-                Errors = scanRecord.Errors?.Select(scanError =>
-                  new PSVulnerabilityAssessmentScanErrorModel()
-                  {
-                      Code = scanError.Code,
-                      Message = scanError.Message
-                  }).ToList(),
-                ScanResultsLocationPath = scanRecord.StorageContainerPath,
-                NumberOfFailedSecurityChecks = scanRecord.NumberOfFailedSecurityChecks
-            };
         }
 
         internal SqlPool GetSqlPoolOrDefault(string resourceGroupName, string workspaceName, string sqlPoolName)
@@ -1647,7 +1557,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1664,7 +1574,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1686,7 +1596,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1697,7 +1607,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetSqlPool(resourceGroupName, workspaceName, sqlPoolName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -1746,7 +1656,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1763,7 +1673,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1788,7 +1698,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1805,7 +1715,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1827,7 +1737,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1842,7 +1752,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return respoint != null;
             }
-            catch (ErrorContractException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -1860,7 +1770,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1877,7 +1787,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1907,7 +1817,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1924,7 +1834,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1946,7 +1856,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -1957,7 +1867,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetSqlPoolV3(resourceGroupName, workspaceName, sqlPoolName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -1975,61 +1885,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public PSRecoverableSqlPool GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.Get(resourceGroupName, workspaceName, sqlPoolName);
-
-                return new PSRecoverableSqlPool(recoverableSqlPool);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public List<RecoverableSqlPool> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.List(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListNext);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public PSRestorableDroppedSqlPool GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
-        {
-            try
-            {
-                var restorableDroppedSqlPool = this._synapseManagementClient.RestorableDroppedSqlPools.Get(resourceGroupName, workspaceName, sqlPoolAndTimeName);
-
-                return new PSRestorableDroppedSqlPool(restorableDroppedSqlPool);
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public List<RestorableDroppedSqlPool> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
-                return restorableDroppedSqlPoolList.ToList();
-            }
-            catch (ErrorContractException ex)
-            {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2046,7 +1902,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2076,7 +1932,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2093,7 +1949,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2115,7 +1971,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2126,7 +1982,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetSqlDatabase(resourceGroupName, workspaceName, sqlDatabaseName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -2144,7 +2000,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2161,7 +2017,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2179,7 +2035,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2201,7 +2057,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2212,7 +2068,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 GetSparkPool(resourceGroupName, workspaceName, sparkPoolName);
                 return true;
             }
-            catch (AzPSResourceNotFoundCloudException)
+            catch (NotFoundException)
             {
                 return false;
             }
@@ -2285,7 +2141,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
 
         }
@@ -2353,7 +2209,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
 
         }
@@ -2379,7 +2235,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
             catch (NullReferenceException)
             {
@@ -2469,7 +2325,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2494,7 +2350,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2519,7 +2375,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2542,7 +2398,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2570,7 +2426,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2595,7 +2451,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
             catch (CloudException e)
             {
@@ -2630,7 +2486,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2657,7 +2513,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2715,7 +2571,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
         }
 
@@ -2746,7 +2602,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
 
             await _synapseManagementClient.IntegrationRuntimeCredentials.SyncWithHttpMessagesAsync(
@@ -2776,7 +2632,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
 
             var response = await _synapseManagementClient.IntegrationRuntimes.UpdateAsync(
@@ -2807,7 +2663,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             catch (ErrorContractException ex)
             {
-                throw GetAzurePowerShellException(ex);
+                throw GetSynapseException(ex);
             }
 
             return await _synapseManagementClient.IntegrationRuntimeNodes.UpdateAsync(
@@ -2839,14 +2695,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return resourceList;
         }
 
-        private static Exception GetAzurePowerShellException(ErrorContractException ex)
+        private static SynapseException GetSynapseException(ErrorContractException ex)
         {
-            return Utils.CreateAzurePowerShellException(ex);
+            return ex.CreateSynapseException();
         }
 
-        private static Exception GetAzurePowerShellException(CloudException ex)
+        private static SynapseException GetSynapseException(CloudException ex)
         {
-            return Utils.CreateAzurePowerShellException(ex);
+            return ex.CreateSynapseException();
         }
 
         #endregion

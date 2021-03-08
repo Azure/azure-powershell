@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
     [Cmdlet("Test", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
-    public class TestAzureResourceGroupDeploymentCmdlet : TestDeploymentCmdletBase
+    public class TestAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentMode = Mode,
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
-                QueryString = QueryString,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)

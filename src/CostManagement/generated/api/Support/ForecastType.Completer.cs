@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the forecast.</summary>
+    /// <summary>Argument completer implementation for ForecastType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ForecastTypeTypeConverter))]
     public partial struct ForecastType :
         System.Management.Automation.IArgumentCompleter

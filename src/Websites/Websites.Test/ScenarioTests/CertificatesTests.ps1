@@ -143,7 +143,7 @@ function Test-RemoveAzWebAppCertificate
 
 <#
 .SYNOPSIS
-Tests for importing a keyvaultcertificate to appservice
+Tests creating a new Web Hosting Plan.
 #>
 function Test-ImportAzWebAppKeyVaultCertificate
 {

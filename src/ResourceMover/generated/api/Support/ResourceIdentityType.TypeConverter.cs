@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>The type of identity used for the resource mover service.</summary>
+    /// <summary>TypeConverter implementation for ResourceIdentityType.</summary>
     public partial class ResourceIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

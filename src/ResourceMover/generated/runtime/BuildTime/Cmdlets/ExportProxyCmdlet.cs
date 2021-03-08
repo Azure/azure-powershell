@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.PowerShell
         [ValidateNotNullOrEmpty]
         public string DocsFolder { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = "Docs")]
         [ValidateNotNullOrEmpty]
         public string ExamplesFolder { get; set; }
 

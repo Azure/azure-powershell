@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>The type of the query.</summary>
+    /// <summary>TypeConverter implementation for ExportType.</summary>
     public partial class ExportTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

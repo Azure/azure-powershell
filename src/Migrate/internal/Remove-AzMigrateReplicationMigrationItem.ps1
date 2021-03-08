@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
+https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
 #>
 function Remove-AzMigrateReplicationMigrationItem {
 [OutputType([System.Boolean])]

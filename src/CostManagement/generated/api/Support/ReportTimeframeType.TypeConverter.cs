@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>
-    /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-    /// </summary>
+    /// <summary>TypeConverter implementation for ReportTimeframeType.</summary>
     public partial class ReportTimeframeTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

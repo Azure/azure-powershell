@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>Type of timegrain cadence</summary>
+    /// <summary>Argument completer implementation for AlertTimeGrainType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.AlertTimeGrainTypeTypeConverter))]
     public partial struct AlertTimeGrainType :
         System.Management.Automation.IArgumentCompleter

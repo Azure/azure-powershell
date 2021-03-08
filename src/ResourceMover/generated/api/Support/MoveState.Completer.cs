@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the MoveResource states.</summary>
+    /// <summary>Argument completer implementation for MoveState.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveStateTypeConverter))]
     public partial struct MoveState :
         System.Management.Automation.IArgumentCompleter
@@ -77,14 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Committed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Committed", "Committed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Committed");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteSourcePending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("DeleteSourcePending", "DeleteSourcePending", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteSourcePending");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceMoveCompleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceMoveCompleted", "ResourceMoveCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceMoveCompleted");
             }
         }
     }

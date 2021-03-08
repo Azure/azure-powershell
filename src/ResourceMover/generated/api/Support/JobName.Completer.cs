@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>Defines the job name.</summary>
+    /// <summary>Argument completer implementation for JobName.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobNameTypeConverter))]
     public partial struct JobName :
         System.Management.Automation.IArgumentCompleter
