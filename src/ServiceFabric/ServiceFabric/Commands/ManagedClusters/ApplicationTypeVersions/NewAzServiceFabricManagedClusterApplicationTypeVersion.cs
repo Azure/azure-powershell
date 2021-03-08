@@ -17,7 +17,7 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string PackageUrl { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             location: cluster.Location,
                             packageUrl: this.PackageUrl,
                             force: this.Force.IsPresent,
-                            tags: this.Tags);
+                            tags: this.Tag);
                         WriteObject(new PSManagedApplicationTypeVersion(managedAppTypeVersion), false);
                     }
                 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters
+namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public enum ServicePackageActivationModeEnum
     {

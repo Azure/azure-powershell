@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
@@ -310,7 +309,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ServicePackageActivationModeEnum ServicePackageActivationMode { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -387,9 +386,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             WriteVerbose($"Updating managed service '{this.Name}.'");
 
-            if (this.IsParameterBound(c => c.Tags))
+            if (this.IsParameterBound(c => c.Tag))
             {
-                currentService.Tags = this.Tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+                currentService.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
             ServiceResourceProperties properties = currentService.Properties;
 

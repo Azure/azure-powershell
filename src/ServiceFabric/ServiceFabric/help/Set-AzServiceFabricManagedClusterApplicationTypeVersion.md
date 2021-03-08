@@ -80,7 +80,7 @@ This example will update the managed application type details with the ARM Resou
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Continue without prompts
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The managed application type version resource.
 
 ```yaml
-Type: PSManagedApplicationTypeVersion
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplicationTypeVersion
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Specify the name of the managed application type
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases: ApplicationTypeName
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Specify the url of the application package sfpkg file
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed application type version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 Specify the tags as key/value pairs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 Specify the managed application type version
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases: ApplicationTypeVersion
 
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -261,7 +261,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -281,11 +281,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedApplicationTypeVersion
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplicationTypeVersion
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedApplicationTypeVersion
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplicationTypeVersion
 
 ## NOTES
 

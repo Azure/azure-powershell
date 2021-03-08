@@ -70,7 +70,7 @@ This example will get the managed service details with the ARM Resource ID speci
 Specify the name of the managed application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByName
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByName
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Specify the name of the managed service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: ServiceName
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndCluster, ByName
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedService
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 
 ## NOTES
 

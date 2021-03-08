@@ -54,7 +54,7 @@ PS C:\> $clusterName = "testCluster"
 PS C:\> $appName = "testApp"
 PS C:\> $serviceName = "testService1"
 PS C:\> $service = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
-PS C:\> $service | Remove-AzServiceFabricManagedClusterService 
+PS C:\> $service | Remove-AzServiceFabricManagedClusterService
 ```
 
 This example will remove the managed service testService1".
@@ -73,7 +73,7 @@ This example will remove the managed service details with the ARM Resource ID sp
 Specify the name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Remove without prompt.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The managed service resource.
 
 ```yaml
-Type: PSManagedService
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Specify the name of the service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases: ServiceName
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Arm ResourceId of the service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -239,7 +239,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -257,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedService
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedService
 
 ## OUTPUTS
 

@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
@@ -345,7 +344,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ServicePackageActivationModeEnum ServicePackageActivationMode { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -407,7 +406,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.")]
         [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
             HelpMessage = "Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.")]
-        public string[] PartitionNames { get; set; }
+        public string[] PartitionName { get; set; }
         #endregion
 
         #endregion
@@ -478,7 +477,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             ServiceResource service = new ServiceResource()
             {
-                Tags = this.Tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
+                Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
                 Location = location,
                 Properties = new ServiceResourceProperties()
             };
@@ -600,7 +599,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     return new UniformInt64RangePartitionScheme(this.PartitionCount, this.LowKey, this.HighKey);
                 case StatelessNamed:
                 case StatefulNamed:
-                    return new NamedPartitionScheme(this.PartitionNames);
+                    return new NamedPartitionScheme(this.PartitionName);
                 default:
                     throw new PSArgumentException("Invalid ParameterSetName");
             }

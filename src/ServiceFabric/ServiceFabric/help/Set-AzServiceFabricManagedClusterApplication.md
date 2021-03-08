@@ -17,7 +17,7 @@ Update a service fabric managed application. This allows to update the applicati
 Set-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> [[-ApplicationTypeVersion] <String>] [-ApplicationParameter <Hashtable>] [-ForceRestart]
  [-RecreateApplication] [-UpgradeReplicaSetCheckTimeoutSec <Int32>] [-InstanceCloseDelayDurationSec <Int32>]
- [-UpgradeMode <UpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
+ [-UpgradeMode <ApplicationUpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
  [-HealthCheckWaitDurationSec <Int32>] [-HealthCheckStableDurationSec <Int32>]
  [-UpgradeDomainTimeoutSec <Int32>] [-UpgradeTimeoutSec <Int32>] [-ConsiderWarningAsError]
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
@@ -32,7 +32,7 @@ Set-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-Clu
 Set-AzServiceFabricManagedClusterApplication [[-ApplicationTypeVersion] <String>]
  [-ApplicationParameter <Hashtable>] [-ForceRestart] [-RecreateApplication]
  [-UpgradeReplicaSetCheckTimeoutSec <Int32>] [-InstanceCloseDelayDurationSec <Int32>]
- [-UpgradeMode <UpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
+ [-UpgradeMode <ApplicationUpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
  [-HealthCheckWaitDurationSec <Int32>] [-HealthCheckStableDurationSec <Int32>]
  [-UpgradeDomainTimeoutSec <Int32>] [-UpgradeTimeoutSec <Int32>] [-ConsiderWarningAsError]
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
@@ -47,7 +47,7 @@ Set-AzServiceFabricManagedClusterApplication [[-ApplicationTypeVersion] <String>
 Set-AzServiceFabricManagedClusterApplication [[-ApplicationTypeVersion] <String>]
  [-ApplicationParameter <Hashtable>] [-ForceRestart] [-RecreateApplication]
  [-UpgradeReplicaSetCheckTimeoutSec <Int32>] [-InstanceCloseDelayDurationSec <Int32>]
- [-UpgradeMode <UpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
+ [-UpgradeMode <ApplicationUpgradeMode>] [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>]
  [-HealthCheckWaitDurationSec <Int32>] [-HealthCheckStableDurationSec <Int32>]
  [-UpgradeDomainTimeoutSec <Int32>] [-UpgradeTimeoutSec <Int32>] [-ConsiderWarningAsError]
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
@@ -105,7 +105,6 @@ PS C:\> Set-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourc
 
 This example updates the application parameters but these changes will only take effect until the next version upgrade to the application.
 
-
 ## PARAMETERS
 
 ### -ApplicationParameter
@@ -113,7 +112,7 @@ Specify the application parameters as key/value pairs.
 These parameters must exist in the application manifest.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Specify the application type version
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +142,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -173,7 +172,7 @@ Accept wildcard characters: False
 Indicates whether to treat a warning health event as an error event during health evaluation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +187,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -203,7 +202,7 @@ Accept wildcard characters: False
 Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +217,7 @@ Accept wildcard characters: False
 Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +232,7 @@ Accept wildcard characters: False
 Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -249,7 +248,7 @@ Specifies the action to take if the monitored upgrade fails.
 The acceptable values for this parameter are Rollback or Manual.
 
 ```yaml
-Type: FailureAction
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction
 Parameter Sets: (All)
 Aliases:
 Accepted values: Rollback, Manual
@@ -265,7 +264,7 @@ Accept wildcard characters: False
 Continue without prompts
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +279,7 @@ Accept wildcard characters: False
 Indicates that the service host restarts even if the upgrade is a configuration-only change.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -295,7 +294,7 @@ Accept wildcard characters: False
 Specifies the duration, in seconds, after which Service Fabric retries the health check if the previous health check fails.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -311,7 +310,7 @@ Specifies the duration, in seconds, that Service Fabric waits in order to verify
 This wait duration prevents undetected changes of health right after the health check is performed.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +325,7 @@ Accept wildcard characters: False
 Specifies the duration, in seconds, that Service Fabric waits before it performs the initial health check after it finishes the upgrade on the upgrade domain.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +340,7 @@ Accept wildcard characters: False
 The managed application resource.
 
 ```yaml
-Type: PSManagedApplication
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplication
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -356,7 +355,7 @@ Accept wildcard characters: False
 Specifies the duration in seconds, to wait before a stateless instance is closed, to allow the active requests to drain gracefully.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +370,7 @@ Accept wildcard characters: False
 Specify the name of the application
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases: ApplicationName
 
@@ -387,7 +386,7 @@ Determines whether the application should be recreated on update.
 If value=true, the rest of the upgrade policy parameters are not allowed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +401,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -417,7 +416,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -433,7 +432,7 @@ Specifies the map of the health policy to use for different service types as a h
 For example: @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -448,7 +447,7 @@ Accept wildcard characters: False
 Specify the tags as key/value pairs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -463,7 +462,7 @@ Accept wildcard characters: False
 Specifies the maximum percentage of the application instances deployed on the nodes in the cluster that have a health state of error before the application health state for the cluster is error.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -479,7 +478,7 @@ Specifies the maximum time, in seconds, that Service Fabric takes to upgrade a s
 After this period, the upgrade fails.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -495,7 +494,7 @@ The mode used to monitor health during a rolling upgrade.
 The values are Monitored, and UnmonitoredAuto.
 
 ```yaml
-Type: UpgradeMode
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.ApplicationUpgradeMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Monitored, UnmonitoredAuto
@@ -511,7 +510,7 @@ Accept wildcard characters: False
 Specifies the maximum time that Service Fabric waits for a service to reconfigure into a safe state, if not already in a safe state, before Service Fabric proceeds with the upgrade.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -527,7 +526,7 @@ Specifies the maximum time, in seconds, that Service Fabric takes for the entire
 After this period, the upgrade fails.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -542,7 +541,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -558,7 +557,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -578,11 +577,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedApplication
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplication
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedApplication
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplication
 
 ## NOTES
 

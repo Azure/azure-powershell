@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion, HelpMessage = "Specify the tags as key/value pairs.")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     version: this.GetAppTypeArmResourceId(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.ClusterName, this.ApplicationTypeName, this.ApplicationTypeVersion),
                     parameters: this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
                     location: location,
-                    tags: this.Tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));
+                    tags: this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));
         }
 
         private string GetAppTypeArmResourceId(string subscriptionId, string resourceGroup, string clusterName, string appTypeName, string appTypeVersion)

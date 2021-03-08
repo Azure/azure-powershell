@@ -308,7 +308,7 @@ Accept wildcard characters: False
 Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.ManagedClusterSku
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusterSku
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard

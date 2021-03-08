@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.")]
         [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
             HelpMessage = "The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.")]
-        public UpgradeMode UpgradeMode { get; set; }
+        public ApplicationUpgradeMode UpgradeMode { get; set; }
 
         #region RollingUpgradeMonitoringPolicy
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Arm ResourceId of the managed application.")]
@@ -332,9 +332,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentApp.Parameters = this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
-            if (this.IsParameterBound(c => c.Tags))
+            if (this.IsParameterBound(c => c.Tag))
             {
-                currentApp.Tags = this.Tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+                currentApp.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
             currentApp.UpgradePolicy = SetUpgradePolicy(currentApp.UpgradePolicy);
