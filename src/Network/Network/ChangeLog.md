@@ -25,6 +25,8 @@
     - `Update-AzVpnConnection`
 * Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
     - `Get-VpnSiteLinkConnectionIkeSa`
+* Bug fix for update vpnServerConfiguration.
+* Add scenarioTest for p2s multi auth.
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
