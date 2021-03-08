@@ -1,7 +1,7 @@
 ---
 external help file: microsoft.azure.powershell.cmdlets.synapse.dll-help.xml
 module name: az.synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapseworkspacekey
+online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseworkspacekey
 schema: 2.0.0
 ---
 
