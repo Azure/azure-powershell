@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Managed cluster resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.ManagedClusters.PSManagedCluster
 Parameter Sets: ClientCertByTpByObj, ClientCertByCnByObj
 Aliases:
 

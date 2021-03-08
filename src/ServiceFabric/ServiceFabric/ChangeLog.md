@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+* Added new cmdlets for managed applications:
+    - `New-AzServiceFabricManagedClusterApplication`
+    - `Get-AzServiceFabricManagedClusterApplication`
+    - `Set-AzServiceFabricManagedClusterApplication`
+    - `Remove-AzServiceFabricManagedClusterApplication`
+    - `New-AzServiceFabricManagedClusterApplicationType`
+    - `Get-AzServiceFabricManagedClusterApplicationType`
+    - `Set-AzServiceFabricManagedClusterApplicationType`
+    - `Remove-AzServiceFabricManagedClusterApplicationType`
+    - `New-AzServiceFabricManagedClusterApplicationTypeVersion`
+    - `Get-AzServiceFabricManagedClusterApplicationTypeVersion`
+    - `Set-AzServiceFabricManagedClusterApplicationTypeVersion`
+    - `Remove-AzServiceFabricManagedClusterApplicationTypeVersion`
+    - `New-AzServiceFabricManagedClusterService`
+    - `Get-AzServiceFabricManagedClusterService`
+    - `Set-AzServiceFabricManagedClusterService`
+    - `Remove-AzServiceFabricManagedClusterService`
+* Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0-beta.1 which uses service fabric resource provider api-version 2021-01-01-preview.
+
 ## Version 2.2.2
 * Fixed `Add-AzServiceFabricNodeType`. Added node type to service fabric cluster before creating virtual machine scale set.
 
