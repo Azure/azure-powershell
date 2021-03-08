@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storagesync/remove-azstoragesyncgroup
+online version: https://docs.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncgroup
 schema: 2.0.0
 ---
 

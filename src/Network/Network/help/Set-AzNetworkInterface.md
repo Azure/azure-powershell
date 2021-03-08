@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DDB38A77-E5C0-47DD-BADD-94488F661CD5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkinterface
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterface
 schema: 2.0.0
 ---
 

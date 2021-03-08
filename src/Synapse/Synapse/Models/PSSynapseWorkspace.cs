@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.PrivateEndpointConnections = workspace?.PrivateEndpointConnections != null
                 ? workspace.PrivateEndpointConnections.Select(e => new PSPrivateEndpointConnection(e)).ToList()
                 : null;
+            this.WorkspaceUID = workspace?.WorkspaceUID != null ? workspace.WorkspaceUID.Value.ToString() : null;
+            this.ExtraProperties = workspace.ExtraProperties;
         }
 
         /// <summary>
@@ -66,5 +68,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets the private endpoint connections to the workspace
         /// </summary>
         public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
+        /// <summary>
+        /// Gets the workspace unique identifier
+        /// </summary>
+        public string WorkspaceUID { get; set; }
+
+        /// <summary>
+        /// Gets workspace level configs and feature flags
+        /// </summary>
+        public IDictionary<string, object> ExtraProperties { get; set; }
     }
 }

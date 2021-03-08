@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskmapping
+online version: https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateDiskMapping -DiskID <String> -DiskType <DiskAccountType> -IsOSDisk <String>
+New-AzMigrateDiskMapping -DiskID <String> -DiskType <String> -IsOSDisk <String>
  [-DiskEncryptionSetID <String>] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies the type of disks to be used for the Azure VM.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

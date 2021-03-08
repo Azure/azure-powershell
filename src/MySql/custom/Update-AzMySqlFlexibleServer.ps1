@@ -56,12 +56,12 @@ function Update-AzMySqlFlexibleServer {
         [System.String]
         ${ReplicationRole},
 
-        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.')]
+        [Parameter(HelpMessage='The name of the sku, typically, tier + family + cores, e.g. Burstable_B1ms, Standard_D2ds_v4')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [System.String]
         ${Sku},
 
-        [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
+        [Parameter(HelpMessage='The tier of the particular SKU. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier])]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier]
@@ -69,6 +69,7 @@ function Update-AzMySqlFlexibleServer {
 
         [Parameter(HelpMessage='Enable or disable high availability feature.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HaEnabledEnum]
         # Enable HA or not for a server.
@@ -76,6 +77,7 @@ function Update-AzMySqlFlexibleServer {
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum])]
+        [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
         ${SslEnforcement},
@@ -102,6 +104,11 @@ function Update-AzMySqlFlexibleServer {
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         ${Tag},
+
+        [Parameter(HelpMessage='Period of time (UTC) designated for maintenance. Examples: "Sun:23:30" to schedule on Sunday, 11:30pm UTC. To set back to default pass in "Disabled"')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [System.String]
+        ${MaintenanceWindow},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,10 +168,6 @@ function Update-AzMySqlFlexibleServer {
 
     process {
         try {
-            if ($PSBoundParameters.ContainsKey('AdministratorLoginPassword')) {
-                $PSBoundParameters.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
-            }
-
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
                 $PSBoundParameters.StorageProfileStorageMb = $PSBoundParameters['StorageInMb']
                 $null = $PSBoundParameters.Remove('StorageInMb')
@@ -183,6 +186,40 @@ function Update-AzMySqlFlexibleServer {
             if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
                 $PSBoundParameters.StorageProfileStorageAutogrow = $PSBoundParameters['StorageAutogrow']
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
+            }
+
+            if ($PSBoundParameters.ContainsKey('MaintenanceWindow')) {
+
+                $PSBoundParameters.MaintenanceWindowDayOfWeek = $null
+                $PSBoundParameters.MaintenanceWindowStartHour = $null
+                $PSBoundParameters.MaintenanceWindowStartMinute = $null
+                
+                if ($PSBoundParameters.MaintenanceWindow.ToLower() -eq "disabled"){
+                    $PSBoundParameters.MaintenanceWindowDayOfWeek = 0
+                    $PSBoundParameters.MaintenanceWindowStartHour = 0
+                    $PSBoundParameters.MaintenanceWindowStartMinute = 0
+                    $PSBoundParameters.MaintenanceWindowCustomWindow = "Disabled"
+                }
+                else {
+                    $ParsedWindow = $PSBoundParameters.MaintenanceWindow -split ":"
+                    $DaytoNumber = @{Mon = 1; Tue = 2; Wed = 3; Thur = 4; Fri = 5; Sat = 6; Sun = 0}
+                    
+                    if ($ParsedWindow.Length -ge 1){
+                        $PSBoundParameters.MaintenanceWindowDayOfWeek =  $DaytoNumber[$ParsedWindow[0]]
+                    }
+                    
+                    if ($ParsedWindow.Length -ge 2){
+                        $PSBoundParameters.MaintenanceWindowStartHour = $ParsedWindow[1]
+                    }
+
+                    if ($ParsedWindow.Length -ge 3){
+                        $PSBoundParameters.MaintenanceWindowStartMinute = $ParsedWindow[2]
+                    }
+                    
+                    $PSBoundParameters.MaintenanceWindowCustomWindow = "Enabled"
+                }
+
+                $null = $PSBoundParameters.Remove('MaintenanceWindow')
             }
 
             Az.MySql.internal\Update-AzMySqlFlexibleServer @PSBoundParameters

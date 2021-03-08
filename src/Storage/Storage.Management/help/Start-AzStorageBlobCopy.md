@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 54585346-04E2-4FB4-B5FD-833A85C46ACB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/start-azstorageblobcopy
+online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy
 schema: 2.0.0
 ---
 
@@ -558,7 +558,7 @@ Accept wildcard characters: False
 
 ### -StandardBlobTier
 Block Blob Tier, valid values are Hot/Cool/Archive.
-See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
+See detail in https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
 Type: System.String

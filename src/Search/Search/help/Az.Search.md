@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Search
 Module Guid: a2bb88dc-abd2-4275-9aae-bd98346f8c8a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.search
+Download Help Link: https://docs.microsoft.com/powershell/module/az.search
 Help Version: 0.1.0.0
 Locale: en-US
 ---

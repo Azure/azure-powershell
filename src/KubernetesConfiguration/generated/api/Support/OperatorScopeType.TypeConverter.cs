@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Scope at which the operator will be installed.</summary>
+    /// <summary>TypeConverter implementation for OperatorScopeType.</summary>
     public partial class OperatorScopeTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
