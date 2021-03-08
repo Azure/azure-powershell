@@ -138,13 +138,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
-        public ServiceClientModel.PrepareDataMoveResponse
+        public PrepareDataMoveResponse
             GetPrepareDataMoveOperationResult(
             string operationId,
             string vaultName = null,
             string resourceGroupName = null)
         {
-            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.BeginGetWithHttpMessagesAsync(
+            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
                                 vaultName,
                                 resourceGroupName,
                                 operationId).Result.Body;

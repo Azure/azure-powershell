@@ -345,7 +345,7 @@ function Test-AzureVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm
+		$item = Enable-ProtectionNew $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
@@ -398,7 +398,7 @@ function Test-AzureUnmanagedVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm $resourceGroupName
+		$item = Enable-ProtectionNew $vault $vm $resourceGroupName
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 

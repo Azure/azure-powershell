@@ -100,6 +100,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SwitchParameter UseSecondaryRegion { get; set; }
 
+        /// <summary>
+        /// Filter Recovery Points based on Tier
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.Tier)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.Tier)]
+        [ValidateNotNullOrEmpty]
+        public RecoveryPointTier Tier { get; set; }
+
+        /// <summary>
+        /// checks whether the RP is Ready to move to target tier
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.IsReadyForMove)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.IsReadyForMove)]
+        [ValidateNotNullOrEmpty]
+        public bool IsReadyForMove { get; set; }
+
+        /// <summary>
+        /// Target tier to check move readiness
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.TargetTier)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.TargetTier)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("VaultArchive")]
+        public RecoveryPointTier TargetTier { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -120,7 +145,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
                 providerParameters.Add(RecoveryPointParams.Item, Item);
                 providerParameters.Add(CRRParams.UseSecondaryRegion, UseSecondaryRegion.IsPresent);
-                
+                providerParameters.Add(RecoveryPointParams.TargetTier, TargetTier);
+                providerParameters.Add(RecoveryPointParams.IsReadyForMove, IsReadyForMove);
+                providerParameters.Add(RecoveryPointParams.Tier, Tier);
 
                 if (ParameterSetName == DateTimeFilterParameterSet ||
                     ParameterSetName == NoFilterParameterSet)

@@ -45,7 +45,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetLocation,
         KeyFileDownloadLocation,
         FileDownloadLocation,
-        RestorePointQueryType
+        RestorePointQueryType,
+        TargetZone,
+        SourceTier,
+        TargetTier,
+        IsReadyForMove,
+        RehydrateDuration,
+        RehydratePriority,
+        Tier
     }
 
     public enum RestoreBackupItemParams

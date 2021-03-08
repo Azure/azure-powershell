@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Archive for V1 vaults.
 
 ## Version 3.4.1
 * Added null check for target storage account in FileShare restore.
