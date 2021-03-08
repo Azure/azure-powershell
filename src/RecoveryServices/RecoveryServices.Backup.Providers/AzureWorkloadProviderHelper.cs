@@ -21,7 +21,6 @@ using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -272,7 +271,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
             }
 
-            if(backupManagementType == BackupManagementType.AzureStorage &&
+            if(backupManagementType == ServiceClientModel.BackupManagementType.AzureStorage &&
                 ((CmdletModel.SimpleSchedulePolicy)policy).ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
                 throw new ArgumentException(Resources.AFSWeeklyScheduleNotAllowed);
@@ -372,6 +371,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string restorePointQueryType = ProviderData.ContainsKey(RecoveryPointParams.RestorePointQueryType) ?
                 (string)ProviderData[RecoveryPointParams.RestorePointQueryType] : "All";
             bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            RecoveryPointTier targetTier = (RecoveryPointTier)ProviderData[RecoveryPointParams.TargetTier];
+            bool isReadyForMove = (bool)ProviderData[RecoveryPointParams.IsReadyForMove];
+            RecoveryPointTier tier = (RecoveryPointTier)ProviderData[RecoveryPointParams.Tier];
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
@@ -430,7 +432,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: resourceGroupName);
             }
             
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
+            var recoveryPointList =  RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
+
+            // filter move readness based on target tier
+            recoveryPointList = RecoveryPointConversions.CheckRPMoveReadiness(recoveryPointList, targetTier, isReadyForMove);
+
+            //filter RPs based on tier
+            return RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, tier);
         }
 
         public List<PointInTimeBase> ListLogChains(Dictionary<Enum, object> ProviderData)
@@ -608,7 +616,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             ODataQuery<ProtectedItemQueryObject> queryParams =
                 new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType == BackupManagementType.MAB);
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
                             
 
             List<ProtectedItemResource> protectedItems = ServiceClientAdapter.ListProtectedItem(
