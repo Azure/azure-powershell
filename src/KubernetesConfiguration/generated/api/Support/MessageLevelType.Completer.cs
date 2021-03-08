@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Level of the message.</summary>
+    /// <summary>Argument completer implementation for MessageLevelType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelTypeTypeConverter))]
     public partial struct MessageLevelType :
         System.Management.Automation.IArgumentCompleter

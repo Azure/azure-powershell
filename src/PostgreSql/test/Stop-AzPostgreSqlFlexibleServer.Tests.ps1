@@ -21,7 +21,7 @@ Describe 'Stop-AzPostgreSqlFlexibleServer' {
 
     It 'StopViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/stop"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/stop"
             Stop-AzPostgreSqlFlexibleServer -InputObject $ID
             Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
         } | Should -Not -Throw

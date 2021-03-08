@@ -19,11 +19,11 @@ Creates an object to update NIC properties of a replicating server.
 .Description
 The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratenicmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput])]
-    [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -32,6 +32,8 @@ function New-AzMigrateNicMapping {
         ${NicID},
 
         [Parameter()]
+        [ValidateSet("primary" , "secondary", "donotcreate")]
+        [ArgumentCompleter({"primary" , "secondary", "donotcreate"})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
@@ -53,23 +55,25 @@ function New-AzMigrateNicMapping {
     process {
         $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtNicInput]::new()
         $NicObject.NicId = $NicID
-        if($PSBoundParameters.ContainsKey('TargetNicSelectionType')){
-            if($TargetNicSelectionType -eq 'primary'){
+        if ($PSBoundParameters.ContainsKey('TargetNicSelectionType')) {
+            if ($TargetNicSelectionType -eq 'primary') {
                 $NicObject.IsPrimaryNic = "true"
                 $NicObject.IsSelectedForMigration = "true"
-            }elseif($TargetNicSelectionType -eq 'secondary'){
+            }
+            elseif ($TargetNicSelectionType -eq 'secondary') {
                 $NicObject.IsPrimaryNic = "false"
                 $NicObject.IsSelectedForMigration = "true"
-            }elseif($TargetNicSelectionType -eq 'donotcreate'){
+            }
+            elseif ($TargetNicSelectionType -eq 'donotcreate') {
                 $NicObject.IsPrimaryNic = "false"
                 $NicObject.IsSelectedForMigration = "false"
             }
         }
-        if($PSBoundParameters.ContainsKey('TargetNicSubnet')){
+        if ($PSBoundParameters.ContainsKey('TargetNicSubnet')) {
             $NicObject.TargetSubnetName = $TargetNicSubnet
         }
        
-        if($PSBoundParameters.ContainsKey('TargetNicIP')){
+        if ($PSBoundParameters.ContainsKey('TargetNicIP')) {
             $NicObject.TargetStaticIPAddress = $TargetNicIP
         }
         return $NicObject

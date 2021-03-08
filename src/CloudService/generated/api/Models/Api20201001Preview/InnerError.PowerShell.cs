@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail = (string) content.GetValueForProperty("Errordetail",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Exceptiontype = (string) content.GetValueForProperty("Exceptiontype",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Exceptiontype, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail = (string) content.GetValueForProperty("Errordetail",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail = (string) content.GetValueForProperty("Errordetail",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Exceptiontype = (string) content.GetValueForProperty("Exceptiontype",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Exceptiontype, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail = (string) content.GetValueForProperty("Errordetail",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IInnerErrorInternal)this).Errordetail, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

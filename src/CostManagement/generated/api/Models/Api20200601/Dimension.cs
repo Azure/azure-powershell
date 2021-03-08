@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         public string Category { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionPropertiesInternal)Property).Category; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
-        public string[] Data { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionPropertiesInternal)Property).Data; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionPropertiesInternal)Property).Data = value; }
+        public string[] Data { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionPropertiesInternal)Property).Data; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionPropertiesInternal)Property).Data = value ?? null /* arrayOf */; }
 
         /// <summary>Dimension description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]
@@ -86,7 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionProperties _property;
 
-        /// <summary>Dimension properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.DimensionProperties()); set => this._property = value; }
 
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
         bool? GroupingEnabled { get; set; }
         /// <summary>The link (url) to the next page of results.</summary>
         string NextLink { get; set; }
-        /// <summary>Dimension properties</summary>
+
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IDimensionProperties Property { get; set; }
         /// <summary>Total number of data for the dimension.</summary>
         int? Total { get; set; }

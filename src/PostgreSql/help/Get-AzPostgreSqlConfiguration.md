@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.postgresql/get-azpostgresqlconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlconfiguration
 schema: 2.0.0
 ---
 

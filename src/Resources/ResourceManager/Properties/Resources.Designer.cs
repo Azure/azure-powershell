@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/blob/main/docs/installing.md to install Bicep..
+        /// </summary>
+        internal static string BicepNotFound {
+            get {
+                return ResourceManager.GetString("BicepNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please use bicep &apos;{0}&apos; or higher verison..
+        /// </summary>
+        internal static string BicepVersionRequirement {
+            get {
+                return ResourceManager.GetString("BicepVersionRequirement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling active deployment ....
         /// </summary>
         internal static string CancelDeploymentMessage {
@@ -445,6 +463,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string InvalidAssignableScopes {
             get {
                 return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Bicep file path..
+        /// </summary>
+        internal static string InvalidBicepFilePath {
+            get {
+                return ResourceManager.GetString("InvalidBicepFilePath", resourceCulture);
             }
         }
         
