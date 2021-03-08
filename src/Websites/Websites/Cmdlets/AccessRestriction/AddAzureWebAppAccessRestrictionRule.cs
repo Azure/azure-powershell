@@ -187,6 +187,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
                         if (!IgnoreMissingServiceEndpoint)
                         {
+                            var subnetSubcriptionId = CmdletHelpers.GetSubscriptionIdFromResourceId(subnetResourceId);
+                            if (subnetSubcriptionId != DefaultContext.Subscription.Id)
+                                throw new Exception("Service endpoint cannot be validated. Subnet is in another subscription. Use -IgnoreMissingServiceEndpoint and manually verify that 'Microsoft.Web' service endpoint is enabled on the subnet.");
                             var serviceEndpointServiceName = "Microsoft.Web";
                             var serviceEndpointLocations = new List<string>() { "*" };
                             NetworkClient.EnsureSubnetServiceEndpoint(subnetResourceId, serviceEndpointServiceName, serviceEndpointLocations);

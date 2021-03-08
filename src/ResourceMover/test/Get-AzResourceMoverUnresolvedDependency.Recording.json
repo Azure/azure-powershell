@@ -1,12 +1,13 @@
 {
-  "Get-AzResourceMoverUnresolvedDependency+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/unresolvedDependencies?api-version=2019-10-01-preview+1": {
+  "Get-AzResourceMoverUnresolvedDependency+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/unresolvedDependencies?dependencyLevel=Direct\u0026api-version=2021-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rg-my-moveCollection/providers/Microsoft.Migrate/moveCollections/my-movecollection/unresolvedDependencies?api-version=2019-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/MoveCollection-RG-rms/providers/Microsoft.Migrate/moveCollections/MoveCollection-rms/unresolvedDependencies?dependencyLevel=Direct\u0026api-version=2021-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "d8dbbfa1-775e-4e8f-a5d7-7180b8d51b5c" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "800f6fa8-2db8-4e70-9b24-93bf90f5a057" ],
         "CommandName": [ "Get-AzResourceMoverUnresolvedDependency" ],
         "FullCommandName": [ "Get-AzResourceMoverUnresolvedDependency_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,20 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "39efe24a-7c0f-4816-a9cf-bce5fc523b11" ],
-        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "16a13a5e-23bc-46b4-8c76-943bba240f16" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-correlation-request-id": [ "2557ada9-2c8a-4a65-bc33-f1c03db42882" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20200825T102439Z:2557ada9-2c8a-4a65-bc33-f1c03db42882" ],
-        "Date": [ "Tue, 25 Aug 2020 10:24:39 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "4fb55dc3-1e13-4621-a3f9-cf5e6569a55f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20210131T051034Z:4fb55dc3-1e13-4621-a3f9-cf5e6569a55f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 31 Jan 2021 05:10:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "28" ],
+        "Content-Length": [ "95" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[],\"nextLink\":null}"
+      "Content": "{\"value\":[],\"totalCount\":0,\"nextLink\":null,\"summaryCollection\":{\"fieldName\":null,\"summary\":[]}}",
+      "isContentBase64": false
     }
   }
 }
