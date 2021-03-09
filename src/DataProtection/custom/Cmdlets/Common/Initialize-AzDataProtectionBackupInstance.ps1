@@ -40,6 +40,7 @@ function Initialize-AzDataProtectionBackupInstance {
             {
                 $backupInstance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $backupInstance.DataSourceInfo
             }
+            $backupInstance.FriendlyName = $backupInstance.DataSourceInfo.ResourceName
         }
 
         if($PSBoundParameters.ContainsKey("PolicyId"))

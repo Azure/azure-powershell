@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     /// [OpenAPI] BackupInstances_AdhocBackup=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/backup"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Backup, @"AzDataProtectionBackupInstanceAdhoc_BackupExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(bool))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Trigger adhoc backup ")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
     public partial class BackupAzDataProtectionBackupInstanceAdhoc_BackupExpanded : global::System.Management.Automation.PSCmdlet,
@@ -117,13 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
-
-        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.HttpPipeline Pipeline { get; set; }
@@ -214,14 +207,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
-        /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
-        /// what happens on that response. Implement this method in a partial class to enable this behavior
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onNoContent method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo"
+        /// /> from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnNoContent(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// Intializes a new instance of the <see cref="BackupAzDataProtectionBackupInstanceAdhoc_BackupExpanded" /> cmdlet class.
@@ -422,7 +417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.BackupInstancesAdhocBackup(VaultName, ResourceGroupName, SubscriptionId, BackupInstanceName, ParametersBody, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.BackupInstancesAdhocBackup(VaultName, ResourceGroupName, SubscriptionId, BackupInstanceName, ParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.UndeclaredResponseException urexception)
@@ -488,27 +483,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
             }
         }
 
-        /// <summary>a delegate that is called when the remote service returns 204 (NoContent).</summary>
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo"
+        /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onNoContent(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo> response)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnNoContent(responseMessage, ref _returnNow);
-                // if overrideOnNoContent has returned true, then return right away.
+                overrideOnOk(responseMessage, response, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
-                // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
+                // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
+                WriteObject((await response));
             }
         }
     }

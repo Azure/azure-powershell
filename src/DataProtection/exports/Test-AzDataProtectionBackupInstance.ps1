@@ -32,13 +32,13 @@ Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForB
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BACKUPINSTANCE <IBackupInstance>: Backup instance
+BACKUPINSTANCE <IBackupInstance>: Backup Instance
   DataSourceInfo <IDatasource>: Gets or sets the data source information.
     ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
     [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
@@ -47,6 +47,8 @@ BACKUPINSTANCE <IBackupInstance>: Backup instance
     [ResourceType <String>]: Resource Type of Datasource.
     [ResourceUri <String>]: Uri of the resource.
     [Type <String>]: DatasourceType of the resource.
+  FriendlyName <String>: Gets or sets the Backup Instance friendly name.
+  ObjectType <String>: 
   PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
     PolicyId <String>: 
     [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
@@ -62,7 +64,6 @@ BACKUPINSTANCE <IBackupInstance>: Backup instance
     [ResourceName <String>]: Unique identifier of the resource in the context of parent.
     [ResourceType <String>]: Resource Type of Datasource.
     [ResourceUri <String>]: Uri of the resource.
-  [ObjectType <String>]: 
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupInstanceName <String>]: The name of the backup instance
@@ -77,7 +78,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [VaultName <String>]: The name of the backup vault.
 
 PARAMETER <IValidateForBackupRequest>: Validate for backup request
-  BackupInstance <IBackupInstance>: Backup instance
+  BackupInstance <IBackupInstance>: Backup Instance
     DataSourceInfo <IDatasource>: Gets or sets the data source information.
       ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
       [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
@@ -86,6 +87,8 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
       [Type <String>]: DatasourceType of the resource.
+    FriendlyName <String>: Gets or sets the Backup Instance friendly name.
+    ObjectType <String>: 
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
@@ -101,12 +104,11 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
       [ResourceName <String>]: Unique identifier of the resource in the context of parent.
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
-    [ObjectType <String>]: 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/test-azdataprotectionbackupinstance
 #>
 function Test-AzDataProtectionBackupInstance {
-[OutputType([System.Boolean])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -151,7 +153,7 @@ param(
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance]
-    # Backup instance
+    # Backup Instance
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
 
@@ -194,12 +196,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]

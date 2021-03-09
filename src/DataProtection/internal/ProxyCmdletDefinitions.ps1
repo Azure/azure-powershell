@@ -375,6 +375,18 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Query')]
+    [System.String]
+    # OData filter options.
+    ${Filter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Query')]
+    [System.String]
+    # skipToken Filter.
+    ${SkipToken},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]

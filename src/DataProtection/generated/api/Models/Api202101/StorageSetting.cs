@@ -8,12 +8,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IStorageSettingInternal
     {
 
-        /// <summary>Backing field for <see cref="DataStoreType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? _dataStoreType;
+        /// <summary>Backing field for <see cref="DatastoreType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? _datastoreType;
 
         /// <summary>Gets or sets the type of the datastore.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DataStoreType { get => this._dataStoreType; set => this._dataStoreType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DatastoreType { get => this._datastoreType; set => this._datastoreType = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes? _type;
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         Required = false,
         ReadOnly = false,
         Description = @"Gets or sets the type of the datastore.",
-        SerializedName = @"dataStoreType",
+        SerializedName = @"datastoreType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DataStoreType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DatastoreType { get; set; }
         /// <summary>Gets or sets the type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
 
     {
         /// <summary>Gets or sets the type of the datastore.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DataStoreType { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingStoreTypes? DatastoreType { get; set; }
         /// <summary>Gets or sets the type.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingTypes? Type { get; set; }
 

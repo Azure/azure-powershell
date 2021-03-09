@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         /// <summary>Backing field for <see cref="BackupInstance" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance _backupInstance;
 
-        /// <summary>Backup instance</summary>
+        /// <summary>Backup Instance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance BackupInstance { get => (this._backupInstance = this._backupInstance ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstance()); set => this._backupInstance = value; }
 
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
     public partial interface IValidateForBackupRequest :
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IJsonSerializable
     {
-        /// <summary>Backup instance</summary>
+        /// <summary>Backup Instance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Backup instance",
+        Description = @"Backup Instance",
         SerializedName = @"backupInstance",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance) })]
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance BackupInstance { get; set; }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
     internal partial interface IValidateForBackupRequestInternal
 
     {
-        /// <summary>Backup instance</summary>
+        /// <summary>Backup Instance</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstance BackupInstance { get; set; }
 
     }

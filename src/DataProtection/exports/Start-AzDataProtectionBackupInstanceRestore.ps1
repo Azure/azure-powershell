@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupR
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +57,7 @@ PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 #>
 function Start-AzDataProtectionBackupInstanceRestore {
-[OutputType([System.Boolean])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='TriggerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Trigger', Mandatory)]
@@ -173,12 +173,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]

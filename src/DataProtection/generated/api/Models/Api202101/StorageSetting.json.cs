@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
                 return;
             }
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_dataStoreType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("dataStoreType"), out var __jsonDataStoreType) ? (string)__jsonDataStoreType : (string)DataStoreType;}
+            {_datastoreType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("datastoreType"), out var __jsonDatastoreType) ? (string)__jsonDatastoreType : (string)DatastoreType;}
             AfterFromJson(json);
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
                 return container;
             }
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            AddIf( null != (((object)this._dataStoreType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._dataStoreType.ToString()) : null, "dataStoreType" ,container.Add );
+            AddIf( null != (((object)this._datastoreType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._datastoreType.ToString()) : null, "datastoreType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

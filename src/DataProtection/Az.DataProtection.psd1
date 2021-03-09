@@ -16,7 +16,7 @@
                     'Search-AzDataProtectionBackupInstanceInAzGraph',
                     'Get-AzDataProtectionBackupPolicy',
                     'Get-AzDataProtectionBackupVault',
-                    'Get-AzDataProtectionBackupVaultStorageSetting',
+                    'New-AzDataProtectionBackupVaultStorageSettingObject',
                     'Get-AzDataProtectionExportJobsOperationResult',
                     'Get-AzDataProtectionJob',
                     'Search-AzDataProtectionJobInAzGraph', 'Get-AzDataProtectionOperationResult',
@@ -29,7 +29,7 @@
                     'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance',
                     'Set-AzDataProtectionBackupPolicy', 'Set-AzDataProtectionBackupVault',
                     'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore',
-                    'Start-AzDataProtectionExportJob', 'Update-AzDataProtectionBackupVault',
+                    'Update-AzDataProtectionBackupVault',
                     'Edit-AzDataProtectionPolicyRetentionRuleClientObject', 'Edit-AzDataProtectionPolicyTagClientObject',
                     'Edit-AzDataProtectionPolicyTriggerClientObject'
   AliasesToExport = '*'

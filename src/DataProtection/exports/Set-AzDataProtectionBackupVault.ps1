@@ -45,11 +45,11 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   [Tag <IDppTrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [StorageSetting <IStorageSetting[]>]: Storage Settings
-    [DataStoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
+    [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
     [Type <StorageSettingTypes?>]: Gets or sets the type.
 
 STORAGESETTING <IStorageSetting[]>: Storage Settings
-  [DataStoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
+  [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
   [Type <StorageSettingTypes?>]: Gets or sets the type.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackupvault

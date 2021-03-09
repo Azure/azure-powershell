@@ -46,9 +46,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string DataSourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).DataSourceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).DataSourceType = value; }
 
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
+        public string DestinationDataStoreName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).DestinationDataStoreName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).DestinationDataStoreName = value; }
+
         /// <summary>Total run time of the job. ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public string Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Duration; }
+        public string Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Duration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Duration = value; }
 
         /// <summary>EndTime of the job(in UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
@@ -57,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         /// <summary>A List, detailing the errors related to the job</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingError[] ErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).ErrorDetail; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
+        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Etag = value; }
 
         /// <summary>Job's Additional Details</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
@@ -88,9 +94,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
 
         /// <summary>Internal Acessors for BackupInstanceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobResourceInternal.BackupInstanceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).BackupInstanceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).BackupInstanceId = value; }
-
-        /// <summary>Internal Acessors for Duration</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobResourceInternal.Duration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Duration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).Duration = value; }
 
         /// <summary>Internal Acessors for EndTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobResourceInternal.EndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).EndTime = value; }
@@ -158,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
 
         /// <summary>It indicates the type of Job i.e. Backup/Restore/Tiering/Management</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperationCategory OperationCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).OperationCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).OperationCategory = value; }
+        public string OperationCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).OperationCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).OperationCategory = value; }
 
         /// <summary>ARM ID of the policy</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
@@ -188,6 +191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string RestoreType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).RestoreType; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
+        public string SourceDataStoreName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).SourceDataStoreName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).SourceDataStoreName = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string SourceRecoverPointRecoveryPointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).SourceRecoverPointRecoveryPointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupJobInternal)Property).SourceRecoverPointRecoveryPointId = value; }
@@ -326,14 +332,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         SerializedName = @"dataSourceType",
         PossibleTypes = new [] { typeof(string) })]
         string DataSourceType { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"destinationDataStoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DestinationDataStoreName { get; set; }
         /// <summary>Total run time of the job. ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Description = @"Total run time of the job. ISO 8601 format.",
         SerializedName = @"duration",
         PossibleTypes = new [] { typeof(string) })]
-        string Duration { get;  }
+        string Duration { get; set; }
         /// <summary>EndTime of the job(in UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -350,6 +364,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         SerializedName = @"errorDetails",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingError) })]
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingError[] ErrorDetail { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        string Etag { get; set; }
         /// <summary>Job's Additional Details</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -414,8 +436,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         ReadOnly = false,
         Description = @"It indicates the type of Job i.e. Backup/Restore/Tiering/Management",
         SerializedName = @"operationCategory",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperationCategory) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperationCategory OperationCategory { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationCategory { get; set; }
         /// <summary>ARM ID of the policy</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -458,6 +480,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         SerializedName = @"restoreType",
         PossibleTypes = new [] { typeof(string) })]
         string RestoreType { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"sourceDataStoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SourceDataStoreName { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -568,12 +598,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         string DataSourceSetName { get; set; }
         /// <summary>Type of DataSource</summary>
         string DataSourceType { get; set; }
+
+        string DestinationDataStoreName { get; set; }
         /// <summary>Total run time of the job. ISO 8601 format.</summary>
         string Duration { get; set; }
         /// <summary>EndTime of the job(in UTC)</summary>
         global::System.DateTime? EndTime { get; set; }
         /// <summary>A List, detailing the errors related to the job</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingError[] ErrorDetail { get; set; }
+
+        string Etag { get; set; }
         /// <summary>Extended Information about the job</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IJobExtendedInfo ExtendedInfo { get; set; }
         /// <summary>Job's Additional Details</summary>
@@ -597,7 +631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         /// </summary>
         string Operation { get; set; }
         /// <summary>It indicates the type of Job i.e. Backup/Restore/Tiering/Management</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperationCategory OperationCategory { get; set; }
+        string OperationCategory { get; set; }
         /// <summary>ARM ID of the policy</summary>
         string PolicyId { get; set; }
         /// <summary>Name of the policy</summary>
@@ -612,6 +646,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         /// It indicates the sub type of operation i.e. in case of Restore it can be ALR/OLR
         /// </summary>
         string RestoreType { get; set; }
+
+        string SourceDataStoreName { get; set; }
 
         string SourceRecoverPointRecoveryPointId { get; set; }
 

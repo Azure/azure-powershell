@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="backupInstanceName">The name of the backup instance</param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackup(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackup(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesAdhocBackup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesAdhocBackup_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Trigger adhoc backup</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -121,13 +121,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesAdhocBackup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesAdhocBackup_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="BackupInstancesAdhocBackup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task BackupInstancesAdhocBackup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task BackupInstancesAdhocBackup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -243,10 +243,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                     switch ( _response.StatusCode )
                     {
-                        case global::System.Net.HttpStatusCode.NoContent:
+                        case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.OperationJobExtendedInfo.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1464,7 +1464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="backupInstanceName">The name of the backup instance</param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1472,7 +1472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestore(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestore(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -1505,14 +1505,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesTriggerRestore_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesTriggerRestore_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Triggers restore for a BackupInstance</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -1566,13 +1566,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesTriggerRestore_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesTriggerRestore_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="BackupInstancesTriggerRestore" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1580,7 +1580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task BackupInstancesTriggerRestore_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task BackupInstancesTriggerRestore_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1688,10 +1688,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                     switch ( _response.StatusCode )
                     {
-                        case global::System.Net.HttpStatusCode.NoContent:
+                        case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.OperationJobExtendedInfo.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1743,7 +1743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="resourceGroupName">The name of the resource group where the backup vault is present.</param>
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackup(string vaultName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackup(string vaultName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -1782,14 +1782,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesValidateForBackup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesValidateForBackup_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Validate whether adhoc backup will be successful or not</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1797,7 +1797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -1840,13 +1840,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesValidateForBackup_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesValidateForBackup_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="BackupInstancesValidateForBackup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1854,7 +1854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task BackupInstancesValidateForBackup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task BackupInstancesValidateForBackup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1962,10 +1962,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                     switch ( _response.StatusCode )
                     {
-                        case global::System.Net.HttpStatusCode.NoContent:
+                        case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.OperationJobExtendedInfo.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2016,7 +2016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="backupInstanceName">The name of the backup instance</param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2024,7 +2024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesValidateRestore(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesValidateRestore(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -2057,14 +2057,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesValidateRestore_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesValidateRestore_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Validates if Restore can be triggered for a DataSource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2072,7 +2072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BackupInstancesValidateRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BackupInstancesValidateRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -2118,13 +2118,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.BackupInstancesValidateRestore_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.BackupInstancesValidateRestore_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="BackupInstancesValidateRestore" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2132,7 +2132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task BackupInstancesValidateRestore_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task BackupInstancesValidateRestore_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2240,10 +2240,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                     switch ( _response.StatusCode )
                     {
-                        case global::System.Net.HttpStatusCode.NoContent:
+                        case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.OperationJobExtendedInfo.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5640,7 +5640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="operationId"></param>
         /// <param name="location"></param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5648,7 +5648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationResultGet(string subscriptionId, string operationId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationResultGet(string subscriptionId, string operationId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -5674,13 +5674,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationResultGet_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.OperationResultGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Gets the operation result for a resource</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5688,7 +5688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationResultGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationResultGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -5726,13 +5726,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationResultGet_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.OperationResultGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="OperationResultGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5740,7 +5740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationResultGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationResultGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5754,10 +5754,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
                     switch ( _response.StatusCode )
                     {
-                        case global::System.Net.HttpStatusCode.NoContent:
+                        case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.OperationJobExtendedInfo.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6125,6 +6125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="resourceGroupName">The name of the resource group where the backup vault is present.</param>
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="backupInstanceName">The name of the backup instance</param>
+        /// <param name="Filter">OData filter options.</param>
+        /// <param name="SkipToken">skipToken Filter.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6133,7 +6135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsGetList(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsGetList(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, string Filter, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -6152,6 +6154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                         + "/recoveryPoints"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(SkipToken) ? global::System.String.Empty : "$skipToken=" + global::System.Uri.EscapeDataString(SkipToken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6168,6 +6174,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
 
         /// <summary>Returns a list of Recovery Points for a DataSource in a vault.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Filter">OData filter options.</param>
+        /// <param name="SkipToken">skipToken Filter.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6176,7 +6184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsGetListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsGetListViaIdentity(global::System.String viaIdentity, string Filter, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-01-01";
             // Constant Parameters
@@ -6208,6 +6216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                         + "/recoveryPoints"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + global::System.Uri.EscapeDataString(Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(SkipToken) ? global::System.String.Empty : "$skipToken=" + global::System.Uri.EscapeDataString(SkipToken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -6278,11 +6290,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// <param name="resourceGroupName">The name of the resource group where the backup vault is present.</param>
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="backupInstanceName">The name of the backup instance</param>
+        /// <param name="Filter">OData filter options.</param>
+        /// <param name="SkipToken">skipToken Filter.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecoveryPointsGetList_Validate(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecoveryPointsGetList_Validate(string vaultName, string resourceGroupName, string subscriptionId, string backupInstanceName, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6290,6 +6304,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(backupInstanceName),backupInstanceName);
+                await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(SkipToken),SkipToken);
             }
         }
     }

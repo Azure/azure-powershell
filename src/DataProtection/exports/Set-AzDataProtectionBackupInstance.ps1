@@ -51,6 +51,8 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
       [Type <String>]: DatasourceType of the resource.
+    FriendlyName <String>: Gets or sets the Backup Instance friendly name.
+    ObjectType <String>: 
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
@@ -66,7 +68,6 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
       [ResourceName <String>]: Unique identifier of the resource in the context of parent.
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
-    [ObjectType <String>]: 
 
 PARAMETER <IBackupInstanceResource>: BackupInstance Resource
   [Property <IBackupInstance>]: BackupInstanceResource properties
@@ -78,6 +79,8 @@ PARAMETER <IBackupInstanceResource>: BackupInstance Resource
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
       [Type <String>]: DatasourceType of the resource.
+    FriendlyName <String>: Gets or sets the Backup Instance friendly name.
+    ObjectType <String>: 
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
@@ -93,7 +96,6 @@ PARAMETER <IBackupInstanceResource>: BackupInstance Resource
       [ResourceName <String>]: Unique identifier of the resource in the context of parent.
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
-    [ObjectType <String>]: 
 
 PROPERTY <IBackupInstance>: BackupInstanceResource properties
   DataSourceInfo <IDatasource>: Gets or sets the data source information.
@@ -104,6 +106,8 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
     [ResourceType <String>]: Resource Type of Datasource.
     [ResourceUri <String>]: Uri of the resource.
     [Type <String>]: DatasourceType of the resource.
+  FriendlyName <String>: Gets or sets the Backup Instance friendly name.
+  ObjectType <String>: 
   PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
     PolicyId <String>: 
     [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
@@ -119,7 +123,6 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
     [ResourceName <String>]: Unique identifier of the resource in the context of parent.
     [ResourceType <String>]: Resource Type of Datasource.
     [ResourceUri <String>]: Uri of the resource.
-  [ObjectType <String>]: 
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/set-azdataprotectionbackupinstance
 #>

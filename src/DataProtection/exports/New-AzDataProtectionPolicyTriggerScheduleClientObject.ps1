@@ -19,13 +19,15 @@ Creates new Schedule object
 .Description
 Creates new Schedule object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Daily -IntervalCount 1
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/P1D
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $date = get-date
+PS C:\> New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
 
-{{ Add output here }}
+R/2021-03-03T12:49:55+05:30/PT4H
 
 .Outputs
 System.String[]

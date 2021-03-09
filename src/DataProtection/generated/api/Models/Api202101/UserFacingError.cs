@@ -51,6 +51,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string Message { get => this._message; set => this._message = value; }
 
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingErrorProperties _property;
+
+        /// <summary>Any key value pairs that can be injected inside error object</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingErrorProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.UserFacingErrorProperties()); set => this._property = value; }
+
         /// <summary>Backing field for <see cref="RecommendedAction" /> property.</summary>
         private string[] _recommendedAction;
 
@@ -123,6 +130,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         SerializedName = @"message",
         PossibleTypes = new [] { typeof(string) })]
         string Message { get; set; }
+        /// <summary>Any key value pairs that can be injected inside error object</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Any key value pairs that can be injected inside error object",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingErrorProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingErrorProperties Property { get; set; }
         /// <summary>RecommendedAction � localized.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -157,6 +172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         bool? IsUserError { get; set; }
 
         string Message { get; set; }
+        /// <summary>Any key value pairs that can be injected inside error object</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IUserFacingErrorProperties Property { get; set; }
         /// <summary>RecommendedAction � localized.</summary>
         string[] RecommendedAction { get; set; }
         /// <summary>Target of the error.</summary>

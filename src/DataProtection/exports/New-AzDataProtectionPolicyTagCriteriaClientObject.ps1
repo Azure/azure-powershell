@@ -19,13 +19,17 @@ Creates a new criteria object
 .Description
 Creates a new criteria object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- ------------- ------------ ------------ ---------------
+ScheduleBasedBackupCriteria {FirstOfDay}
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionPolicyTagCriteriaClientObject -DaysOfWeek @("Sunday", "Monday")
 
-{{ Add output here }}
+ObjectType                  AbsoluteCriterion DaysOfTheWeek    MonthsOfYear ScheduleTime WeeksOfTheMonth
+----------                  ----------------- -------------    ------------ ------------ ---------------
+ScheduleBasedBackupCriteria                   {Sunday, Monday}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IScheduleBasedBackupCriteria
@@ -72,6 +76,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Days of the month.
+    # Allowed values are 1 to 28 and Last
     ${DaysOfMonth}
 )
 

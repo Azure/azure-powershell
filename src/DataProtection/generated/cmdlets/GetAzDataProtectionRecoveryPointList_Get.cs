@@ -64,6 +64,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Backing field for <see cref="Filter" /> property.</summary>
+        private string _filter;
+
+        /// <summary>OData filter options.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "OData filter options.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"OData filter options.",
+        SerializedName = @"$filter",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Query)]
+        public string Filter { get => this._filter; set => this._filter = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -121,6 +135,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SkipToken" /> property.</summary>
+        private string _skipToken;
+
+        /// <summary>skipToken Filter.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "skipToken Filter.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"skipToken Filter.",
+        SerializedName = @"$skipToken",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Query)]
+        public string SkipToken { get => this._skipToken; set => this._skipToken = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
@@ -319,13 +347,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.RecoveryPointsGetList(VaultName, ResourceGroupName, SubscriptionId, BackupInstanceName, onOk, onDefault, this, Pipeline);
+                        await this.Client.RecoveryPointsGetList(VaultName, ResourceGroupName, SubscriptionId, BackupInstanceName, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  VaultName=VaultName,ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,BackupInstanceName=BackupInstanceName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  VaultName=VaultName,ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,BackupInstanceName=BackupInstanceName,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -371,14 +399,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VaultName=VaultName, ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, BackupInstanceName=BackupInstanceName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VaultName=VaultName, ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, BackupInstanceName=BackupInstanceName, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VaultName=VaultName, ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, BackupInstanceName=BackupInstanceName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { VaultName=VaultName, ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, BackupInstanceName=BackupInstanceName, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

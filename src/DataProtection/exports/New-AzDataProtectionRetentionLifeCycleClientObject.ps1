@@ -19,13 +19,21 @@ Creates new Lifecycle object
 .Description
 Creates new Lifecycle object
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
 
-{{ Add output here }}
+DeleteAfterDuration        : P30D
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 20
 
-{{ Add output here }}
+DeleteAfterDuration        : P20W
+DeleteAfterObjectType      : AbsoluteDeleteOption
+SourceDataStoreObjectType  : DataStoreInfoBase
+SourceDataStoreType        : OperationalStore
+TargetDataStoreCopySetting :
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ISourceLifeCycle

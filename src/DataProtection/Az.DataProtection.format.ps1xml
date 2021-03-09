@@ -445,6 +445,15 @@
             <Label>FriendlyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PolicyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PolicyVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RecoveryPointId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>RecoveryPointTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -465,6 +474,15 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PolicyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PolicyVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RecoveryPointId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RecoveryPointTime</PropertyName>
@@ -515,10 +533,16 @@
             <Label>DataSourceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DestinationDataStoreName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Duration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Etag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsUserTriggered</Label>
@@ -543,6 +567,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RestoreType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceDataStoreName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SourceResourceGroup</Label>
@@ -594,10 +621,16 @@
                 <PropertyName>DataSourceType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DestinationDataStoreName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Duration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsUserTriggered</PropertyName>
@@ -622,6 +655,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RestoreType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceDataStoreName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SourceResourceGroup</PropertyName>
@@ -1103,6 +1139,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CurrentProtectionState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ObjectType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1112,6 +1154,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CurrentProtectionState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ObjectType</PropertyName>
               </TableColumnItem>
@@ -2698,6 +2746,58 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RecoveryPointsFilters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RecoveryPointsFilters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtendedInfo</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsVisible</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestorePointDataStoreId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestorePointState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartDate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtendedInfo</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsVisible</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestorePointDataStoreId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestorePointState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartDate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RestoreFilesTargetInfo</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.RestoreFilesTargetInfo</TypeName>
@@ -2937,7 +3037,7 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DataStoreType</Label>
+            <Label>DatastoreType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Type</Label>
@@ -2947,7 +3047,7 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DataStoreType</PropertyName>
+                <PropertyName>DatastoreType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
@@ -3173,6 +3273,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.UserFacingErrorProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.UserFacingErrorProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -110,6 +110,18 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.DateTime]
+    # Start Time filter for recovery points
+    ${StartTime},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.DateTime]
+    # End Time filter for recovery points
+    ${EndTime},
+
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
     [Alias('AzureRMContext', 'AzureCredential')]

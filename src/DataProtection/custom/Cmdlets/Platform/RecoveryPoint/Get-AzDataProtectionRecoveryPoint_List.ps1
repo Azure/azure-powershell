@@ -19,10 +19,49 @@
 
         [Parameter(HelpMessage='Unique Name of protected backup instance')]
         [System.String]
-        ${BackupInstanceName}
+        ${BackupInstanceName},
+
+        [Parameter(HelpMessage='Start Time filter for recovery points')]
+        [System.DateTime]
+        ${StartTime},
+
+        [Parameter(HelpMessage='End Time filter for recovery points')]
+        [System.DateTime]
+        ${EndTime}
     )
 
-    process {
+    process
+    {
+        $filter = ""
+        if($PSBoundParameters.ContainsKey("StartTime"))
+        {
+            $utcStartTime = $StartTime.ToUniversalTime()
+            $startTimeFilter = $utcStartTime.ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+            $filter = "startDate eq '" + $startTimeFilter + "'"
+
+        }
+        if($PSBoundParameters.ContainsKey("EndTime"))
+        {
+            if($PSBoundParameters.ContainsKey("StartTime"))
+            {
+                $filter += " and "
+            }
+            $utcEndTime = $EndTime.ToUniversalTime()
+            $endTimeFilter = $utcEndTime.ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+            $filter += "endDate eq '" + $endTimeFilter + "'"
+            $null = $PSBoundParameters.Remove("EndTime")
+        }
+
+        if($PSBoundParameters.ContainsKey("StartTime"))
+        {
+            $null = $PSBoundParameters.Remove("StartTime")
+        }
+
+        if($filter -ne "")
+        {
+            $null = $PSBoundParameters.Add("Filter", $filter)
+        }
+
         $rps = Az.DataProtection.internal\Get-AzDataProtectionRecoveryPointList @PSBoundParameters
         return $rps
     }

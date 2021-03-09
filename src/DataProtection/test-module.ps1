@@ -53,10 +53,10 @@ if($Record) {
 }
 try {
   if ($TestMode -ne 'playback') {
-    setupEnv
+    # setupEnv
   }
   $testFolder = Join-Path $PSScriptRoot 'test'
-  Invoke-Pester -Script @{ Path = $testFolder } -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
+  Invoke-Pester -Script @{ Path = $testFolder } -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml") -OutputFormat "NUnitXml"
 }
 Finally
 {

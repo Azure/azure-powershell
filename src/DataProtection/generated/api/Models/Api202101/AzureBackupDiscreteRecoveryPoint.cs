@@ -23,11 +23,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inherited)]
         public string ObjectType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointInternal)__azureBackupRecoveryPoint).ObjectType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointInternal)__azureBackupRecoveryPoint).ObjectType = value; }
 
+        /// <summary>Backing field for <see cref="PolicyName" /> property.</summary>
+        private string _policyName;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string PolicyName { get => this._policyName; set => this._policyName = value; }
+
+        /// <summary>Backing field for <see cref="PolicyVersion" /> property.</summary>
+        private string _policyVersion;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string PolicyVersion { get => this._policyVersion; set => this._policyVersion = value; }
+
         /// <summary>Backing field for <see cref="RecoveryPointDataStoresDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRecoveryPointDataStoreDetails[] _recoveryPointDataStoresDetail;
 
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRecoveryPointDataStoreDetails[] RecoveryPointDataStoresDetail { get => this._recoveryPointDataStoresDetail; set => this._recoveryPointDataStoresDetail = value; }
+
+        /// <summary>Backing field for <see cref="RecoveryPointId" /> property.</summary>
+        private string _recoveryPointId;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string RecoveryPointId { get => this._recoveryPointId; set => this._recoveryPointId = value; }
 
         /// <summary>Backing field for <see cref="RecoveryPointTime" /> property.</summary>
         private global::System.DateTime _recoveryPointTime;
@@ -88,9 +106,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
         Required = false,
         ReadOnly = false,
         Description = @"",
+        SerializedName = @"policyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PolicyName { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"policyVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string PolicyVersion { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
         SerializedName = @"recoveryPointDataStoresDetails",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRecoveryPointDataStoreDetails) })]
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRecoveryPointDataStoreDetails[] RecoveryPointDataStoresDetail { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"recoveryPointId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RecoveryPointId { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = true,
@@ -131,7 +173,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
     {
         string FriendlyName { get; set; }
 
+        string PolicyName { get; set; }
+
+        string PolicyVersion { get; set; }
+
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IRecoveryPointDataStoreDetails[] RecoveryPointDataStoresDetail { get; set; }
+
+        string RecoveryPointId { get; set; }
 
         global::System.DateTime RecoveryPointTime { get; set; }
 

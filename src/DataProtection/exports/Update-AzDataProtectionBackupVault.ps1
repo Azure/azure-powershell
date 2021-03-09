@@ -21,13 +21,12 @@ For example, updating tags for a resource.
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $tag = @{"Owner"="sarath";"Purpose"="AzureBackupTesting"}
+PS C:\> Update-AzDataProtectionBackupVault -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Tag $tag
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+ETag IdentityPrincipalId                  IdentityTenantId                     IdentityType   Location      Name         Type
+---- -------------------                  ----------------                     ------------   --------      ----         ----
+     2ca1d5f7-38b3-4b61-aa45-8147d7e0edbc 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap sarath-vault Microsoft.DataProtection/backupVaults
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IPatchResourceRequestInput
