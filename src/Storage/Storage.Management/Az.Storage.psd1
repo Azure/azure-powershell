@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.4.0'
+ModuleVersion = '3.4.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -234,23 +234,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
-* Supported resource access rule in NetworkRuleSet
-    - ''Update-AzStorageAccountNetworkRuleSet''
-    - ''Add-AzStorageAccountNetworkRule''
-    - ''Remove-AzStorageAccountNetworkRule''
-* Supported Blob version and Append Blob type in Management Policy
-    - ''Add-AzStorageAccountManagementPolicyAction''
-    - ''New-AzStorageAccountManagementPolicyFilter''
-    - ''Set-AzStorageAccountManagementPolicy''
-* Supported create/update account with AllowSharedKeyAccess
-    - ''New-AzStorageAccount''
-    - ''Set-AzStorageAccount''
-* Supported create Encryption Scope with RequireInfrastructureEncryption
-    - ''New-AzStorageEncryptionScope''
-* Supported copy block blob synchronously, with encryption scope
-    - ''Copy-AzStorageBlob''
-* Fixed issue that Get-AzStorageBlobContent use wrong directory separator char on Linux and MacOS [#14234]'
+        ReleaseNotes = '* Supported secure SMB setting in File service properties
+        - `Update-AzStorageFileServiceProperty`
+    * Supported create account with EnableNfsV3
+        - `New-AzStorageAccount`'
 
         # Prerelease string of this module
         Prerelease = 'preview'
