@@ -18,9 +18,9 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
  [-CosmosKeyVaultKeyUri <String>] [-Authority <String>] [-Audience <String>] [-EnableSmartProxy]
  [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
  [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential] [-ExportStorageAccountName <String>]
- [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>]
- [-AsJob] [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcrLoginServers <String[]>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
+ [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob] [-PublicNetworkAccess <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -28,10 +28,10 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>]
  [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
  [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
- [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AccessPolicyObjectId <String[]>]
- [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
- [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AcrLoginServers <String[]>]
+ [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>]
+ -ResourceId <String> [-AsJob] [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -104,6 +104,21 @@ SmartProxyEnabled       : False
 
 ### -AccessPolicyObjectId
 List of Access Policy Object IDs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcrLoginServers
+HealthcareApis FhirService List of Acr Login Servers.
 
 ```yaml
 Type: System.String[]

@@ -25,8 +25,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
-    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisAcrLoginServers", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
-    public class ResetAzureRmHealthcareapisAcrLoginServers : HealthcareApisBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisAcrLoginServer", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
+    public class RemoveAzureRmHealthcareapisAcrLoginServer : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -60,13 +60,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = ServiceNameParameterSet,
-            HelpMessage = "List of Login Servers that Will Be Added.")]
+            HelpMessage = "List of Login Server That Will Be Removed.")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "List of Login Servers that Will Be Added.")]
+            HelpMessage = "List of Login Server That Will Be Removed.")]
+        [ValidateNotNullOrEmpty]
         public string[] AcrLoginServers { get; set; }
 
         public override void ExecuteCmdlet()
@@ -92,10 +93,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                     var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
 
-                    healthcareApisAccount.Properties.AcrConfiguration = new ServiceAcrConfigurationInfo
+                    var oldLoginServers = healthcareApisAccount.Properties.AcrConfiguration?.LoginServers;
+                    if (oldLoginServers != null && oldLoginServers.Count != 0)
                     {
-                        LoginServers = AcrLoginServers
-                    };
+                        var mergedLoginServers = RemoveLoginServers(healthcareApisAccount);
+                        healthcareApisAccount.Properties.AcrConfiguration = new ServiceAcrConfigurationInfo
+                        {
+                            LoginServers = mergedLoginServers
+                        };
+                    }
 
                     try
                     {
@@ -123,18 +129,18 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
         }
 
-        private IList<string> MergeLoginServers(ServicesDescription healthcareApisAccount)
+        private IList<string> RemoveLoginServers(ServicesDescription healthcareApisAccount)
         {
             var mergedLoginServers = healthcareApisAccount.
                                 Properties.
-                                AcrConfiguration?.
-                                LoginServers ?? new List<string>();
+                                AcrConfiguration.
+                                LoginServers;
 
             foreach (string loginServer in AcrLoginServers)
             {
-                if (!mergedLoginServers.Contains(loginServer))
+                if (mergedLoginServers.Contains(loginServer))
                 {
-                    mergedLoginServers.Add(loginServer);
+                    mergedLoginServers.Remove(loginServer);
                 }
             }
 

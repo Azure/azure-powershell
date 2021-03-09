@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.0'
+ModuleVersion = '1.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -76,8 +76,8 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzHealthcareApisService', 'Remove-AzHealthcareApisService', 
                'Set-AzHealthcareApisService', 'Get-AzHealthcareApisService',
-               'Add-AzHealthcareApisAcrLoginServers', 'Remove-AzHealthcareApisAcrLoginServers',
-               'Reset-AzHealthcareApisAcrLoginServers'
+               'Add-AzHealthcareApisAcrLoginServer', 'Remove-AzHealthcareApisAcrLoginServer',
+               'Reset-AzHealthcareApisAcrLoginServer'
 
 # Variables to export from this module
 # VariablesToExport = @()

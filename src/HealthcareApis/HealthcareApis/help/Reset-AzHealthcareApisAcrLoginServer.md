@@ -5,33 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Add-AzHealthcareApisAcrLoginServers
+# Reset-AzHealthcareApisAcrLoginServer
 
 ## SYNOPSIS
-Add registries to a service.
+Reset registries of a service.
 
 ## SYNTAX
 
 ### ServiceNameParameterSet (Default)
 ```
-Add-AzHealthcareApisAcrLoginServers -ResourceGroupName <String> -Name <String> -AcrLoginServers <String[]>
+Reset-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> [-AcrLoginServers <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Add-AzHealthcareApisAcrLoginServers -ResourceId <String> -AcrLoginServers <String[]>
+Reset-AzHealthcareApisAcrLoginServer -ResourceId <String> [-AcrLoginServers <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
- Add a list of registries to an existing service, repeated ones will be ignored.
+Reset registries of an existing service.
 
 ## EXAMPLES
 
-### Example 1 : Add two registries to an existing healthcareapis service with empty AcrLoginServers named MyService in the resource group MyResourceGroup, in which AcrLoginServers was empty originally.
+### Example 1 : Reset registries of an existing healthcareapis service to {test1.azurecr.io, test2.azurecr.io, test3.azurecr.io}.
 ```powershell
-PS C:\>  Add-AzHealthcareApisAcrLoginServers  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\> Reset-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -43,7 +43,7 @@ CorsMethods             : {}
 CorsOrigins             : {}
 CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
-AcrLoginServers         : {test1.azurecr.io, test2.azurecr.io}
+AcrLoginServers         : {test1.azurecr.io,test2.azurecr.io,test3.azurecr.io}
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
@@ -56,10 +56,10 @@ ResourceType            : Microsoft.HealthcareApis/services
 SmartProxyEnabled       : False
 ```
 
-### Example 2 : Add three registries to an existing healthcareapis service named MyService in the resource group MyResourceGroup, in which AcrLoginServers was empty originally.
+### Example 2 : Reset registries of an existing healthcareapis service to empty.
 ```powershell
 PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
-PS C:\>  Add-AzHealthcareApisAcrLoginServers  -ResourceId ResourceId -AcrLoginServers test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
+PS C:\>  Reset-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -71,7 +71,7 @@ CorsMethods             : {}
 CorsOrigins             : {}
 CosmosDbKeyVaultKeyUri  :
 CosmosDbOfferThroughput : 400
-AcrLoginServers         : {test1.azurecr.io, test2.azurecr.io, test3.azurecr.io}
+AcrLoginServers         : {}
 Etag                    : "00000000-0000-0000-0000-000000000000"
 Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                           .HealthcareApis/services/MyService
@@ -87,14 +87,14 @@ SmartProxyEnabled       : False
 ## PARAMETERS
 
 ### -AcrLoginServers
-List of Login Servers that Will Be Added.
+List of Login Server That Will Replace The Existing One.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 HealthcareApis Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases: HealthcareApisName, FhirServiceName
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Resource Id Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +181,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

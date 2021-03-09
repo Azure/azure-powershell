@@ -25,8 +25,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisAcrLoginServers", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
-    public class AddAzureRmHealthcareapisAcrLoginServers : HealthcareApisBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisAcrLoginServer", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
+    public class AddAzureRmHealthcareapisAcrLoginServer : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
             Mandatory = true,
             ParameterSetName = ServiceNameParameterSet,
-            HelpMessage = "List of Login Servers that Will Be Added.")]
+            HelpMessage = "List of Login Server That Will Be Added.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "List of Login Servers that Will Be Added.")]
+            HelpMessage = "List of Login Server That Will Be Added.")]
         [ValidateNotNullOrEmpty]
         public string[] AcrLoginServers { get; set; }
 

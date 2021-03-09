@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzHealthcareApisAcrLoginServers
+# Remove-AzHealthcareApisAcrLoginServer
 
 ## SYNOPSIS
 Remove registries from a service. 
@@ -14,13 +14,13 @@ Remove registries from a service.
 
 ### ServiceNameParameterSet (Default)
 ```
-Remove-AzHealthcareApisAcrLoginServers -ResourceGroupName <String> -Name <String> -AcrLoginServers <String[]>
+Remove-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> -AcrLoginServers <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzHealthcareApisAcrLoginServers -ResourceId <String> -AcrLoginServers <String[]>
+Remove-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServers <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Remove-AzHealthcareApisAcrLoginServers -ResourceId <String> -AcrLoginServers <St
 
 ### Example 1 : Remove 2 registries from an existing healthcareapis service named MyService which originally have {test1.azurecr.io, test2.azurecr.io, test3.azurecr.io}.
 ```powershell
-PS C:\> Remove-AzHealthcareApisAcrLoginServers  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\> Remove-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -59,7 +59,7 @@ SmartProxyEnabled       : False
 ### Example 2 : Remove 2 registries from an existing healthcareapis service named MyService which originally have {test1.azurecr.io, test2.azurecr.io}.
 ```powershell
 PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
-PS C:\>  Remove-AzHealthcareApisAcrLoginServers  -ResourceId ResourceId -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\>  Remove-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId -AcrLoginServers test1.azurecr.io,test2.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -87,10 +87,10 @@ SmartProxyEnabled       : False
 ## PARAMETERS
 
 ### -AcrLoginServers
-List of Login Servers that Will Be Added.
+List of Login Servers that Will Be Removed.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 HealthcareApis Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases: HealthcareApisName, FhirServiceName
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Resource Id Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +181,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
