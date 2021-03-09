@@ -16,7 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,14 +45,35 @@ namespace Microsoft.Azure.Commands.Common
         ICommandRuntime _runtime;
         TelemetryProvider _telemetry;
         AdalLogger _logger;
-        internal static readonly string[] ClientHeaders = {"x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
+        internal static readonly string[] ClientHeaders = { "x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
+
+        private static JsonSerializerSettings DeserializationSettings = null;
+        static AzModule()
+        {
+            DeserializationSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
+                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
+                ContractResolver = new ReadOnlyJsonContractResolver(),
+                Converters = new List<JsonConverter>
+                    {
+                        new Iso8601TimeSpanConverter()
+                    }
+            };
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
+            DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
+        }
+
+
         public AzModule(ICommandRuntime runtime, IEventStore eventHandler)
         {
             _runtime = runtime;
             _deferredEvents = eventHandler;
             _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
             _telemetry = TelemetryProvider.Create(
-                _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger()); 
+                _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger());
         }
 
         public AzModule(ICommandRuntime runtime) : this(runtime, new EventStore())
@@ -174,9 +198,9 @@ namespace Microsoft.Azure.Commands.Common
             if (data?.ResponseMessage is HttpResponseMessage response)
             {
                 try {
-                // Print formatted response message
-                await signal(Events.Debug, cancellationToken,
-                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+                    // Print formatted response message
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
                 } catch {
                     // response was disposed, ignore
                 }
@@ -221,9 +245,21 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     if(!response.IsSuccessStatusCode && qos.Exception == null)
                     {
+                        // add "InternalException" as message because it is just for telemtry tracking.
                         AzPSCloudException ex = (response.StatusCode == HttpStatusCode.NotFound) ?
-                            new AzPSResourceNotFoundCloudException(String.Empty) : new AzPSCloudException(String.Empty);
-                        ex.Response = new HttpResponseMessageWrapper(response, String.Empty);
+                            new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
+                        try
+                        {
+                            string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            CloudError cloudError = SafeJsonConvert.DeserializeObject<CloudError>(responseContent, DeserializationSettings);
+                            ex.Body = cloudError;
+                            ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = cloudError.Code;
+                        }
+                        catch (Exception exception)
+                        {
+                            await signal(Events.Debug, cancellationToken,
+                                () => EventHelper.CreateLogEvent($"[{id}]: Cannot deserialize due to {exception.Message}"));
+                        }
                         qos.Exception = ex;
                         await signal(Events.Debug, cancellationToken,
                             () => EventHelper.CreateLogEvent($"[{id}]: Getting exception '{qos.Exception}' from response"));

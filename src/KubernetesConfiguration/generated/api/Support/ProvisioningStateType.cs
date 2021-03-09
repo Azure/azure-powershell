@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>The provisioning state of the resource provider.</summary>
     public partial struct ProvisioningStateType :
         System.IEquatable<ProvisioningStateType>
     {

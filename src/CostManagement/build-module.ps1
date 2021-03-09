@@ -122,7 +122,7 @@ $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
 if($NoDocs) {
   Write-Host -ForegroundColor Green 'Creating exports...'
-  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs
+  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs -ExamplesFolder $examplesFolder
 } else {
   Write-Host -ForegroundColor Green 'Creating exports and docs...'
   $moduleDescription = 'Microsoft Azure PowerShell: Cost cmdlets'

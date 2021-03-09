@@ -5,7 +5,7 @@ branches:
     - master
 environment:
   github_access_token:
-    secure: VMFbecLLHzDq/09YDPbcM0VDDSwwgY57vr5GXK6cZZ4Ti/Xs5RZoylzV8MMr1350
+    secure: HIJXIKgTzYsRJu2WfSlzBzunQd8dgrXu4Dm8GeYfdiDFwYQzyr4Aj8is5UCd9Oia
 
 before_build:
   - git config --global credential.helper store

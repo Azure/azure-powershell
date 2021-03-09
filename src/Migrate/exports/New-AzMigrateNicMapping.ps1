@@ -29,7 +29,7 @@ false        false                  a2399354-653a-464e-a567-d30ef5467a31
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratenicmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput])]
@@ -42,6 +42,7 @@ param(
     ${NicID},
 
     [Parameter()]
+    [ArgumentCompleter({"primary" , "secondary", "donotcreate"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies whether the NIC to be updated will be the primary, secondary or not migrated.

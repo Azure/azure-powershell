@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.FormatTable(Index = 1)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Location = value ; }
 
         /// <summary>The master server id of a replica server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Inlined)]
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

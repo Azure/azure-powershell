@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>The provisioning state of the resource provider.</summary>
+    /// <summary>TypeConverter implementation for ProvisioningStateType.</summary>
     public partial class ProvisioningStateTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

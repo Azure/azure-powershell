@@ -19,19 +19,19 @@ Creates or updates a move collection.
 .Description
 Creates or updates a move collection.
 .Example
-PS C:\> New-AzResourceMoverMoveCollection -Name PS-centralus-westcentralus-demoRM  -ResourceGroupName RG-MoveCollection-demoRM -SourceRegion centralus -TargetRegion westcentralus -Location eastus2
+PS C:\> New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
 
-Location Name                               Type
--------- ----                               ----
-eastus2  PS-centralus-westcentralus-demoRM  Microsoft.Migrate/moveCollections
+Etag                                   Location      Name                               Type                             
+----                                   --------      ----                               ----                             
+"0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/new-azresourcemovermovecollection
+https://docs.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 #>
 function New-AzResourceMoverMoveCollection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -70,7 +70,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType]
-    # The type of identity used for the region move service.
+    # The type of identity used for the resource mover service.
     ${IdentityType},
 
     [Parameter()]
@@ -87,7 +87,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollectionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

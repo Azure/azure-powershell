@@ -21,10 +21,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Management.Automation;
     using System.Threading.Tasks;
     using OpContext = Microsoft.Azure.Storage.OperationContext;
+    using System.Collections.Generic;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
         protected const int size4MB = 4 * 1024 * 1024;
+
+        /// <summary>
+        /// block blob type
+        /// </summary>
+        protected const string BlockBlobType = "Block";
+
+        /// <summary>
+        /// page blob type
+        /// </summary>
+        protected const string PageBlobType = "Page";
+
+        /// <summary>
+        /// append blob type
+        /// </summary>
+        protected const string AppendBlobType = "Append";
 
         /// <summary>
         /// Blob Transfer Manager
@@ -155,6 +171,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 this.TransferManager = null;
             }
+        }
+
+        /// <summary>
+        /// Get the block size from block blob length
+        /// </summary>
+        public static long GetBlockLength(long contentLength)
+        {
+            long blockLength = contentLength / 50000;
+            if (blockLength % (8 * 1024 * 1024) != 0)
+            {
+                blockLength = (blockLength / (8 * 1024 * 1024) + 1) * (8 * 1024 * 1024);
+            }
+            return blockLength;
+        }
+
+        /// <summary>
+        /// Get the block id arrary from block blob length, block size and blob name
+        /// </summary>
+        public static string[] GetBlockIDs(long contentLength, long blockLength, string blobname)
+        {
+            long blockCount = 0;
+            if (blockLength != 0)
+            {
+                blockCount = contentLength / blockLength;
+            }
+            if (blockCount * blockLength != contentLength)
+            {
+                blockCount++;
+            }
+            List<string> blockIDs = new List<string>();
+            for (int i = 0; i < (int)blockCount; i++)
+            {
+                string idNo = i.ToString();
+                while (idNo.Length < 5)
+                {
+                    idNo = "0" + idNo;
+                }
+                string blockID = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(blobname + idNo));
+                blockIDs.Add(blockID);
+            }
+            return blockIDs.ToArray();
         }
     }
 }

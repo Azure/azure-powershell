@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BotService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azbotservice
+online version: https://docs.microsoft.com/powershell/module/az.botservice/get-azbotservice
 schema: 2.0.0
 ---
 
