@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed te issue that complex object cannot be serialized correctly.
 
 ## Version 1.5.0
 * Fixed the issue that string cannot be serialized correctly. [#14215]
