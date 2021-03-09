@@ -168,8 +168,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed the issue that string cannot be serialized correctly. [#14215]
-* Added Support for Python3 Runbook Type'
+        ReleaseNotes = '* Fixed te issue that complex object cannot be serialized correctly. [#14431]'
 
         # Prerelease string of this module
         # Prerelease = ''
