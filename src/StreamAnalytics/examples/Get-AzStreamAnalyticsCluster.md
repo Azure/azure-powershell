@@ -1,43 +1,18 @@
-### Example 1: Get all the stream analytics clusters under a subscription
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster
+PS C:\> {{ Add code here }}
 
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters 77ba5ccb-3005-40b6-b9ac-3ae9d7fb21c9
+{{ Add output here }}
 ```
 
-This command gets all the stream analytics clusters under a subscription.
+{{ Add description here }}
 
-### Example 2: Get all the stream analytics clusters under a resource group
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test
+PS C:\> {{ Add code here }}
 
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
+{{ Add output here }}
 ```
 
-This command gets all the stream analytics clusters under a resource group.
+{{ Add description here }}
 
-### Example 3: Get a stream analytics cluster by name
-```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
-
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
-```
-
-This command gets a stream analytics cluster by name.
-
-### Example 4: Get a stream analytics cluster by pipeline
-```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Get-AzStreamAnalyticsCluster
-
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
-```
-
-This command gets a stream analytics cluster by pipeline.

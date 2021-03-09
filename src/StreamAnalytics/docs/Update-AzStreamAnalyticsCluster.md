@@ -21,19 +21,6 @@ Update-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> [-Sub
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> -Cluster <ICluster>
- [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzStreamAnalyticsCluster -InputObject <IStreamAnalyticsIdentity> -Cluster <ICluster>
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStreamAnalyticsCluster -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
@@ -48,28 +35,23 @@ update one or two properties) a cluster without affecting the rest of the cluste
 
 ## EXAMPLES
 
-### Example 1: Update a stream analytics cluster by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 -Tag @{'key4'=4}
+PS C:\> {{ Add code here }}
 
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters
+{{ Add output here }}
 ```
 
-This command updates a stream analytics cluster by name.
+{{ Add description here }}
 
-### Example 2: Update a stream analytics cluster by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $sac = Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
-PS C:\> Update-AzStreamAnalyticsCluster -InputObject $sac -Tag @{'key2'=2;'key3'=3}
+PS C:\> {{ Add code here }}
 
-Location        Name         Type                               Etag
---------        ----         ----                               ----
-West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters
+{{ Add output here }}
 ```
 
-This command updates a stream analytics cluster by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -85,22 +67,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Cluster
-A Stream Analytics Cluster object
-To construct, see NOTES section for CLUSTER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -142,7 +108,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -157,7 +123,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -172,7 +138,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: ClusterName
 
 Required: True
@@ -203,7 +169,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -220,7 +186,7 @@ Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -236,7 +202,7 @@ Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ClusterSkuName
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -251,7 +217,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -266,7 +232,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -312,8 +278,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
@@ -328,13 +292,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CLUSTER <ICluster>: A Stream Analytics Cluster object
-  - `[Location <String>]`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SkuCapacity <Int32?>]`: Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
-  - `[SkuName <ClusterSkuName?>]`: Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.

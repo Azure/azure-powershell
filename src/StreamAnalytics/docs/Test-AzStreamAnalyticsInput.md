@@ -15,9 +15,8 @@ Tests whether an input’s datasource is reachable and usable by the Azure Strea
 ### TestExpanded (Default)
 ```
 Test-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CompressionType <String>] [-PartitionKey <String>] [-PropertiesType <String>]
- [-SerializationType <EventSerializationType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Property <IInputProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Test
@@ -35,8 +34,7 @@ Test-AzStreamAnalyticsInput -InputObject <IStreamAnalyticsIdentity> -Input <IInp
 
 ### TestViaIdentityExpanded
 ```
-Test-AzStreamAnalyticsInput -InputObject <IStreamAnalyticsIdentity> [-CompressionType <String>]
- [-PartitionKey <String>] [-PropertiesType <String>] [-SerializationType <EventSerializationType>]
+Test-AzStreamAnalyticsInput -InputObject <IStreamAnalyticsIdentity> [-Property <IInputProperties>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,21 +69,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CompressionType
-.
-
-```yaml
-Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -188,27 +171,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartitionKey
-partitionKey Describes a key in the input data which is used for partitioning the input data
-
-```yaml
-Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesType
-Indicates whether the input is a source of reference data or stream data.
+### -Property
+The properties that are associated with an input.
 Required on PUT (CreateOrReplace) requests.
+To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInputProperties
 Parameter Sets: TestExpanded, TestViaIdentityExpanded
 Aliases:
 
@@ -229,22 +198,6 @@ Parameter Sets: Test, TestExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SerializationType
-Indicates the type of serialization that the input or output uses.
-Required on PUT (CreateOrReplace) requests.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventSerializationType
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -320,11 +273,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUT <IInput>: An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-  - `[CompressionType <String>]`: 
   - `[ETag <String>]`: 
-  - `[PartitionKey <String>]`: partitionKey Describes a key in the input data which is used for partitioning the input data
-  - `[PropertiesType <String>]`: Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
-  - `[SerializationType <EventSerializationType?>]`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+  - `[Property <IInputProperties>]`: The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
+    - `Type <String>`: Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
+    - `[Compression <ICompression>]`: Describes how input data is compressed
+      - `Type <String>`: 
+    - `[PartitionKey <String>]`: partitionKey Describes a key in the input data which is used for partitioning the input data
+    - `[Serialization <ISerialization>]`: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
+      - `Type <EventSerializationType>`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
@@ -337,6 +293,14 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[TransformationName <String>]`: The name of the transformation.
+
+PROPERTY <IInputProperties>: The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
+  - `Type <String>`: Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
+  - `[Compression <ICompression>]`: Describes how input data is compressed
+    - `Type <String>`: 
+  - `[PartitionKey <String>]`: partitionKey Describes a key in the input data which is used for partitioning the input data
+  - `[Serialization <ISerialization>]`: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
+    - `Type <EventSerializationType>`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 
 ## RELATED LINKS
 

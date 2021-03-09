@@ -105,9 +105,7 @@ This can be used to partially update (ie.
 update one or two properties) an input without affecting the rest the job or input definition.
 
 ### [Update-AzStreamAnalyticsJob](Update-AzStreamAnalyticsJob.md)
-Updates an existing streaming job.
-This can be used to partially update (ie.
-update one or two properties) a streaming job without affecting the rest the job definition.
+Creates a streaming job or replaces an already existing streaming job.
 
 ### [Update-AzStreamAnalyticsOutput](Update-AzStreamAnalyticsOutput.md)
 Updates an existing output under an existing streaming job.

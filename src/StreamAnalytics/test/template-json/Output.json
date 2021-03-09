@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "datasource": {
+      "type": "Microsoft.Storage/Blob",
+      "properties": {
+        "blobPathPrefix": "cluster1/{client_id}",
+        "storageAccounts": [
+          {
+            "accountName": "storage01portal",
+            "accountKey": "lltcNBUF4xPHBkREXgpCxqF+HYoHfNGWpyRjxicMwGnqT6szV3hKg2djxPQXPX51Wt1CVJ64GWJfkgSHZVWfDQ=="
+          }
+        ],
+        "container": "blobtest",
+        "pathPattern": "cluster1/{client_id}",
+        "dateFormat": "yyyy/MM/dd",
+        "timeFormat": "HH",
+        "authenticationMode": "ConnectionString"
+      }
+    },
+    "timeWindow": "01:20:00",
+    "sizeWindow": 10,
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8",
+        "format": "LineSeparated"
+      }
+    }
+  }
+}

@@ -47,6 +47,9 @@ module-version: 2.0.1
 subject-prefix: StreamAnalytics
 
 directive:
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourcegroups\/\{resourceGroupName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}")
 # Deleted etag of the properties, because the etag exist in the response header.
   - from: swagger-document
     where: $.definitions.FunctionProperties.properties
@@ -84,16 +87,74 @@ directive:
           "description": "Resource type"
         }
       }
-# Hide cmdlets
+
+# Remove cmdlets
   - where:
       verb: Set
     remove: true
+
 # Rename cmdlet name
   - where:
       verb: Get|New|Remove|Update|Start|Stop
       subject: ^StreamingJob$
     set:
       subject: Job
+
+# Hide cmdlets for custom
+  - where:
+      verb: New|Update
+      subject: Job$
+    hide: true
+  - where:
+      verb: New|Update
+      subject: Function$
+    hide: true
+  - where:
+      verb: New|Update
+      subject: Input$
+    hide: true
+  - where:
+      verb: New|Update
+      subject: Output$
+    hide: true
+
+# Remove variant of cmdlet
+  - where:
+      verb: Start
+      subject: Job$
+      variant: ^Start$|^StartViaIdentity$
+    remove: true
+  - where:
+      verb: New
+      subject: Cluster$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Update
+      subject: Cluster$
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      verb: New
+      subject: Transformation$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Update
+      subject: Transformation$
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  # - where:
+  #     verb: New
+  #     subject: Job$
+  #     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  #   remove: true
+  # - where:
+  #     verb: Update
+  #     subject: Job$
+  #     variant: ^Update$|^UpdateViaIdentity$
+  #   remove: true
+
 # Rename parameter name
   - where:
       verb: Get
@@ -112,4 +173,11 @@ directive:
       subject: SubscriptionQuota$
     set:
       subject: Quota
+
+  #  Object is forbidden to be expanded  
+  - no-inline:
+    - FunctionConfiguration
+    - InputProperties
+    - OutputDataSource
+
 ```

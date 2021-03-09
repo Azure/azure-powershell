@@ -15,7 +15,7 @@ Tests whether an output’s datasource is reachable and usable by the Azure Stre
 ### TestExpanded (Default)
 ```
 Test-AzStreamAnalyticsOutput -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DatasourceType <String>] [-SerializationType <EventSerializationType>]
+ [-SubscriptionId <String>] [-Datasource <IOutputDataSource>] [-SerializationType <EventSerializationType>]
  [-SizeWindow <Single>] [-TimeWindow <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Test-AzStreamAnalyticsOutput -InputObject <IStreamAnalyticsIdentity> -Output <IO
 
 ### TestViaIdentityExpanded
 ```
-Test-AzStreamAnalyticsOutput -InputObject <IStreamAnalyticsIdentity> [-DatasourceType <String>]
+Test-AzStreamAnalyticsOutput -InputObject <IStreamAnalyticsIdentity> [-Datasource <IOutputDataSource>]
  [-SerializationType <EventSerializationType>] [-SizeWindow <Single>] [-TimeWindow <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -80,12 +80,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatasourceType
-Indicates the type of data source output will be written to.
+### -Datasource
+Describes the data source that output will be written to.
 Required on PUT (CreateOrReplace) requests.
+To construct, see NOTES section for DATASOURCE properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutputDataSource
 Parameter Sets: TestExpanded, TestViaIdentityExpanded
 Aliases:
 
@@ -319,6 +320,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+DATASOURCE <IOutputDataSource>: Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
+  - `Type <String>`: Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
+
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
@@ -332,7 +336,8 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[TransformationName <String>]`: The name of the transformation.
 
 OUTPUT <IOutput>: An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-  - `[DatasourceType <String>]`: Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
+  - `[Datasource <IOutputDataSource>]`: Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
+    - `Type <String>`: Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   - `[ETag <String>]`: 
   - `[SerializationType <EventSerializationType?>]`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
   - `[SizeWindow <Single?>]`: 

@@ -1,16 +1,18 @@
-### Example 1: Remove a stream analytics by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test02
+PS C:\> {{ Add code here }}
 
-```
-This command removes a stream analytics by name.
-**Please remove all jobs of the stream analytics cluster brefore invoke Remove-AzStreamAnalyticsCluster.**
-
-### Example 2: Remove a stream analytics by pipeline
-```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Remove-AzStreamAnalyticsCluster
-
+{{ Add output here }}
 ```
 
-This command removes a stream analytics by pipeline.
-**Please remove all jobs of the stream analytics cluster brefore invoke Remove-AzStreamAnalyticsCluster.**
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

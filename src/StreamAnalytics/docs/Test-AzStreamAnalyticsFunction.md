@@ -16,7 +16,7 @@ This can range from testing the connection to the underlying web service behind 
 ### TestExpanded (Default)
 ```
 Test-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-BindingType <String>] [-Input <IFunctionInput[]>] [-OutputDataType <String>]
+ [-SubscriptionId <String>] [-FunctionConfigurationProperty <IFunctionConfiguration>]
  [-PropertiesType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -36,8 +36,8 @@ Test-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity> -Function
 
 ### TestViaIdentityExpanded
 ```
-Test-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity> [-BindingType <String>]
- [-Input <IFunctionInput[]>] [-OutputDataType <String>] [-PropertiesType <String>]
+Test-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity>
+ [-FunctionConfigurationProperty <IFunctionConfiguration>] [-PropertiesType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,21 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BindingType
-Indicates the function binding type.
-
-```yaml
-Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -129,12 +114,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Input
+### -FunctionConfigurationProperty
 .
-To construct, see NOTES section for INPUT properties and create a hash table.
+To construct, see NOTES section for FUNCTIONCONFIGURATIONPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionConfiguration
 Parameter Sets: TestExpanded, TestViaIdentityExpanded
 Aliases:
 
@@ -197,22 +182,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutputDataType
-The (Azure Stream Analytics supported) data type of the function output.
-A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-
-```yaml
-Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -322,17 +291,25 @@ To create the parameters described below, construct a hash table containing the 
 
 
 FUNCTION <IFunction>: A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-  - `[BindingType <String>]`: Indicates the function binding type.
+  - `[ConfigurationProperty <IFunctionConfiguration>]`: 
+    - `[Binding <IFunctionBinding>]`: The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
+      - `Type <String>`: Indicates the function binding type.
+    - `[Input <IFunctionInput[]>]`: 
+      - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
+      - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
+    - `[Output <IFunctionOutput>]`: Describes the output of a function.
+      - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
   - `[ETag <String>]`: 
+  - `[PropertiesType <String>]`: Indicates the type of function.
+
+FUNCTIONCONFIGURATIONPROPERTY <IFunctionConfiguration>: .
+  - `[Binding <IFunctionBinding>]`: The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
+    - `Type <String>`: Indicates the function binding type.
   - `[Input <IFunctionInput[]>]`: 
     - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
     - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-  - `[OutputDataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  - `[PropertiesType <String>]`: Indicates the type of function.
-
-INPUT <IFunctionInput[]>: .
-  - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
+  - `[Output <IFunctionOutput>]`: Describes the output of a function.
+    - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.

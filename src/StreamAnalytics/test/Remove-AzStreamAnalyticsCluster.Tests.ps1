@@ -13,10 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzStreamAnalyticsCluster' {
     # The Remove- is long time operation. The exception thrown after the resource has been successfully deleted.
-    It 'Delete' -skip {
-        Remove-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster01
-        $clusterList = Get-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup
-        $clusterList.Name | Should -Not -Contain $env.cluster01
+    It 'Delete' {
+        Remove-AzStreamAnalyticsCluster -ResourceGroupName 'lucas-rg-test' -Name "sacluster-01-portal"
+        # $clusterList = Get-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup
+        # $clusterList.Name | Should -Not -Contain $env.cluster01
     }
 
     It 'DeleteViaIdentity' -skip {

@@ -14,31 +14,16 @@ update one or two properties) a function without affecting the rest the job or f
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Update (Default)
 ```
-Update-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-BindingType <String>] [-Input <IFunctionInput[]>]
- [-OutputDataType <String>] [-PropertiesType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzStreamAnalyticsFunction -File <String> -JobName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- -Function <IFunction> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity> -Function <IFunction>
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
- [-BindingType <String>] [-Input <IFunctionInput[]>] [-OutputDataType <String>] [-PropertiesType <String>]
+Update-AzStreamAnalyticsFunction -File <String> -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,22 +54,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -BindingType
-Indicates the function binding type.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
+[Parameter(ParameterSetName='UpdateExpanded')]
+[Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+[System.String]
+# Indicates the type of function.
+${PropertiesType},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -99,20 +75,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Function
-A function object, containing all information associated with the named function.
-All functions are contained under a streaming job.
-To construct, see NOTES section for FUNCTION properties and create a hash table.
+### -File
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
-Parameter Sets: Update, UpdateViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -133,29 +108,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
-.
-To construct, see NOTES section for INPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionInput[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -170,7 +129,7 @@ The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -185,41 +144,10 @@ The name of the function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update
 Aliases: FunctionName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutputDataType
-The (Azure Stream Analytics supported) data type of the function output.
-A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesType
-Indicates the type of function.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -232,7 +160,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -247,7 +175,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -293,8 +221,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
@@ -309,19 +235,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-FUNCTION <IFunction>: A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-  - `[BindingType <String>]`: Indicates the function binding type.
-  - `[ETag <String>]`: 
-  - `[Input <IFunctionInput[]>]`: 
-    - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-    - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-  - `[OutputDataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  - `[PropertiesType <String>]`: Indicates the type of function.
-
-INPUT <IFunctionInput[]>: .
-  - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.

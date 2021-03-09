@@ -1,12 +1,13 @@
 {
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai?api-version=2020-03-01-preview+1": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal?api-version=2020-03-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,35 +22,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "6837cf69-3d17-4a13-9b10-f5bbd02f2473" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055151Z:6837cf69-3d17-4a13-9b10-f5bbd02f2473" ],
+        "x-ms-correlation-request-id": [ "4dce6090-3c8c-4f4a-aa13-b20ed6844982" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070651Z:4dce6090-3c8c-4f4a-aa13-b20ed6844982" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:51:51 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:06:50 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+2": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,35 +66,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "f4b9a7f9-e461-4a0f-b78b-cadbd0b9e5c2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055202Z:f4b9a7f9-e461-4a0f-b78b-cadbd0b9e5c2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "1e6bf40b-35b3-43c6-bb3d-6a24cb047059" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070701Z:1e6bf40b-35b3-43c6-bb3d-6a24cb047059" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:01 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:00 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+3": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -105,35 +110,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "b410fe14-7ac6-45d5-abe2-7c4da0233540" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055212Z:b410fe14-7ac6-45d5-abe2-7c4da0233540" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "f62252bf-e80e-44eb-98ec-3607cdd9efc8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070711Z:f62252bf-e80e-44eb-98ec-3607cdd9efc8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:12 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:11 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+4": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -147,35 +154,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "3691643b-8014-41dd-ade7-c1721b03542c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055223Z:3691643b-8014-41dd-ade7-c1721b03542c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "3e120c48-faa9-419b-9a08-27fd8feb82f8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070722Z:3e120c48-faa9-419b-9a08-27fd8feb82f8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:22 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:21 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+5": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -189,35 +198,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "2b1df13e-f461-42ac-aaab-226e90bf6863" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055233Z:2b1df13e-f461-42ac-aaab-226e90bf6863" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "2b9a92a2-fd4f-412f-a43f-96df5ed87fa9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070732Z:2b9a92a2-fd4f-412f-a43f-96df5ed87fa9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:32 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:31 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+6": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -231,35 +242,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "c0182e4b-2502-4825-9b9b-761da234463e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055243Z:c0182e4b-2502-4825-9b9b-761da234463e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "014500ea-7588-4388-8bd1-133617ffdb5b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070742Z:014500ea-7588-4388-8bd1-133617ffdb5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:43 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:42 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+7": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -273,35 +286,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "10afd121-97b2-49e1-8567-5abc1d2d52f6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055254Z:10afd121-97b2-49e1-8567-5abc1d2d52f6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "0ebc8791-5ce6-47d1-a6c4-ac98cfc1cfba" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070753Z:0ebc8791-5ce6-47d1-a6c4-ac98cfc1cfba" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:52:54 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:07:52 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+8": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -315,35 +330,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "c48df6cb-1a70-49f0-849d-25dbbb15c206" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055305Z:c48df6cb-1a70-49f0-849d-25dbbb15c206" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "1b2a3b8f-f42d-4246-95a7-3523f2a90746" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070803Z:1b2a3b8f-f42d-4246-95a7-3523f2a90746" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:04 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:02 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+9": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -357,35 +374,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "f8539d78-eaa5-4a8e-b44e-3acdaed2be4d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055315Z:f8539d78-eaa5-4a8e-b44e-3acdaed2be4d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "bed1108e-573f-4375-bd11-d9593bc7b97c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070814Z:bed1108e-573f-4375-bd11-d9593bc7b97c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:15 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:13 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+10": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -399,35 +418,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "x-ms-correlation-request-id": [ "aae827a4-3230-4ec3-b30a-8ef4f66d6b5c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055325Z:aae827a4-3230-4ec3-b30a-8ef4f66d6b5c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "61929ee4-8b84-43ae-8347-2ee8c4b364da" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070824Z:61929ee4-8b84-43ae-8347-2ee8c4b364da" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:25 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:23 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+11": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -441,35 +462,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "61c542b6-7c69-46fd-a243-da9fdddccf79" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055336Z:61c542b6-7c69-46fd-a243-da9fdddccf79" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "a32ff2d2-4ccd-4b12-b42e-4260e0aaac0b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070834Z:a32ff2d2-4ccd-4b12-b42e-4260e0aaac0b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:35 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:33 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+12": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -483,35 +506,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
-        "x-ms-correlation-request-id": [ "c5d9ba38-575a-4ca9-bf42-2cc2c36e0e61" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055346Z:c5d9ba38-575a-4ca9-bf42-2cc2c36e0e61" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "49a27784-94a3-4638-8262-e1c1c673555a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070845Z:49a27784-94a3-4638-8262-e1c1c673555a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:46 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:45 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+13": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -525,35 +550,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-correlation-request-id": [ "40c2153a-00b6-457d-bddf-d6cc40342346" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055357Z:40c2153a-00b6-457d-bddf-d6cc40342346" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "cf4537b8-6ee6-43d2-be29-7d1103ea2455" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070855Z:cf4537b8-6ee6-43d2-be29-7d1103ea2455" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:53:56 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:08:55 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+14": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -567,35 +594,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-correlation-request-id": [ "addb4a80-b06a-4c87-8eca-4a4763cd6025" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055407Z:addb4a80-b06a-4c87-8eca-4a4763cd6025" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "ec8abadc-53d5-48a8-aef9-453e1cb3651f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070906Z:ec8abadc-53d5-48a8-aef9-453e1cb3651f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:06 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:05 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+15": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -609,35 +638,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
-        "x-ms-correlation-request-id": [ "f27f781c-4e5f-4b7f-8caa-f0558a717704" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055417Z:f27f781c-4e5f-4b7f-8caa-f0558a717704" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "d12a2673-fd95-4321-976e-3232dc66db21" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070916Z:d12a2673-fd95-4321-976e-3232dc66db21" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:17 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:16 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+16": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -651,35 +682,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
-        "x-ms-correlation-request-id": [ "d3e50aea-a62e-481b-a1d3-4eb3668d37fe" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055428Z:d3e50aea-a62e-481b-a1d3-4eb3668d37fe" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "9de76b0c-f3b0-455f-ae7f-7fa9edcde4c1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070926Z:9de76b0c-f3b0-455f-ae7f-7fa9edcde4c1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:27 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:26 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+17": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -693,35 +726,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
-        "x-ms-correlation-request-id": [ "13dc3238-d357-40d0-81a7-590e3449ba54" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055438Z:13dc3238-d357-40d0-81a7-590e3449ba54" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "2261d72a-0408-40d5-950b-0a06d8fa6de4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070937Z:2261d72a-0408-40d5-950b-0a06d8fa6de4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:37 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:36 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+18": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -735,35 +770,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
-        "x-ms-correlation-request-id": [ "ccbc2535-2e83-488c-b6b6-ef0ed445699a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055448Z:ccbc2535-2e83-488c-b6b6-ef0ed445699a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "4806407c-bd50-4f0e-8147-0656f6de6a97" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070947Z:4806407c-bd50-4f0e-8147-0656f6de6a97" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:48 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:47 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+19": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -777,35 +814,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
-        "x-ms-correlation-request-id": [ "648e9219-f2fe-4c0c-a692-2be0e26f623d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055459Z:648e9219-f2fe-4c0c-a692-2be0e26f623d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "fc54789c-a34f-4c63-a9dc-f1ec3490d539" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T070958Z:fc54789c-a34f-4c63-a9dc-f1ec3490d539" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:54:58 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:09:57 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+20": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -819,35 +858,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
-        "x-ms-correlation-request-id": [ "f627841a-28b2-455a-958c-23f4e5faf9ff" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055509Z:f627841a-28b2-455a-958c-23f4e5faf9ff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "9383de8e-480b-49fe-96e7-7d3cfaf22495" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071008Z:9383de8e-480b-49fe-96e7-7d3cfaf22495" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:55:08 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:07 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+21": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -861,35 +902,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
-        "x-ms-correlation-request-id": [ "aba5d8a5-7bda-4cfd-bfd2-60ffbad6f44f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055519Z:aba5d8a5-7bda-4cfd-bfd2-60ffbad6f44f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "748777c9-4005-4c6a-9a16-2eecc2c04e7b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071018Z:748777c9-4005-4c6a-9a16-2eecc2c04e7b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:55:19 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:18 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+22": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -903,35 +946,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
-        "x-ms-correlation-request-id": [ "c50e23b2-6ce2-470f-89b4-50f4bfb7bcf9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055530Z:c50e23b2-6ce2-470f-89b4-50f4bfb7bcf9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "1c54fbe8-ae78-443f-8459-cd6f6f48c15b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071029Z:1c54fbe8-ae78-443f-8459-cd6f6f48c15b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:55:30 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:28 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+23": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -945,35 +990,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
-        "x-ms-correlation-request-id": [ "09cc9bbc-9bb1-4a4f-8a62-31170e790db2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055540Z:09cc9bbc-9bb1-4a4f-8a62-31170e790db2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "3332df46-29ea-4f5d-b9d8-844e1112205f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071039Z:3332df46-29ea-4f5d-b9d8-844e1112205f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:55:40 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:38 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+24": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -987,35 +1034,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
-        "x-ms-correlation-request-id": [ "7e309124-fb47-4db2-ab24-3071c6535946" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055551Z:7e309124-fb47-4db2-ab24-3071c6535946" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "64df99df-51f1-4387-a69b-1b6b3083e557" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071050Z:64df99df-51f1-4387-a69b-1b6b3083e557" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:55:51 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+25": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1029,35 +1078,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
-        "x-ms-correlation-request-id": [ "627a0edc-5fd6-41a4-ba7a-9d7acca17e30" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055601Z:627a0edc-5fd6-41a4-ba7a-9d7acca17e30" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "68750f1f-7137-406a-9c01-7b31b6f25164" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071100Z:68750f1f-7137-406a-9c01-7b31b6f25164" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:01 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:10:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+26": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1071,35 +1122,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
-        "x-ms-correlation-request-id": [ "8a8f7d8b-18d3-45c7-b724-fbb0aa92e321" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055612Z:8a8f7d8b-18d3-45c7-b724-fbb0aa92e321" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "4a2b8a95-9592-4b01-b3bf-fff38744f89f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071110Z:4a2b8a95-9592-4b01-b3bf-fff38744f89f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:11 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:11:09 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+27": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1113,35 +1166,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
-        "x-ms-correlation-request-id": [ "9d42274c-adba-4450-b8c8-131e443b6829" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055622Z:9d42274c-adba-4450-b8c8-131e443b6829" ],
+        "x-ms-correlation-request-id": [ "0351f6ba-abea-4851-bde2-d617ed6ab746" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071121Z:0351f6ba-abea-4851-bde2-d617ed6ab746" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:22 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:11:21 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+28": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1155,35 +1210,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
-        "x-ms-correlation-request-id": [ "9bddd052-a6fa-4c8c-9360-9b32a194b63e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055632Z:9bddd052-a6fa-4c8c-9360-9b32a194b63e" ],
+        "x-ms-correlation-request-id": [ "7d760f85-03b5-4d3c-a9c3-96db6a7d9cfc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071131Z:7d760f85-03b5-4d3c-a9c3-96db6a7d9cfc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:32 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:11:31 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+29": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1197,35 +1254,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
-        "x-ms-correlation-request-id": [ "47a75148-890e-4f62-8f84-561a5c11995b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055643Z:47a75148-890e-4f62-8f84-561a5c11995b" ],
+        "x-ms-correlation-request-id": [ "9dce6a60-17e4-4135-961a-e9bbbd801664" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071142Z:9dce6a60-17e4-4135-961a-e9bbbd801664" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:42 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:11:41 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+30": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1239,35 +1298,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
-        "x-ms-correlation-request-id": [ "e0e732fd-d052-4304-bc39-a77df48424e9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055653Z:e0e732fd-d052-4304-bc39-a77df48424e9" ],
+        "x-ms-correlation-request-id": [ "b1218b2a-84fe-4476-b469-1ede2f27a051" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071152Z:b1218b2a-84fe-4476-b469-1ede2f27a051" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:56:53 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:11:52 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+31": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+31": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1281,35 +1342,37 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview" ],
         "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
-        "x-ms-correlation-request-id": [ "8f4b86f6-2eac-47cc-b81f-8ac99f69c292" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055703Z:8f4b86f6-2eac-47cc-b81f-8ac99f69c292" ],
+        "x-ms-correlation-request-id": [ "3179213a-de91-4e9d-bf91-8bd2b67bb95c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071202Z:3179213a-de91-4e9d-bf91-8bd2b67bb95c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:03 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:12:02 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+32": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1319,39 +1382,40 @@
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
         "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "7846f283-e7ed-442b-bf3f-d0952d9db5bd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055714Z:7846f283-e7ed-442b-bf3f-d0952d9db5bd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-correlation-request-id": [ "1e73221f-c1fe-4a7a-8109-2ad669033c79" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071213Z:1e73221f-c1fe-4a7a-8109-2ad669033c79" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:13 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:12:13 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "34" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": null
+      "Content": "{\"status\":\"Deleting\",\"error\":null}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+33": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+33": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1361,627 +1425,37 @@
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
-        "x-ms-correlation-request-id": [ "0a7c4748-ea9f-45f5-b679-7e287ecb60c2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055725Z:0a7c4748-ea9f-45f5-b679-7e287ecb60c2" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "d40aec7f-6262-4795-9f40-1f6ab1f4438d" ],
+        "x-ms-correlation-request-id": [ "d40aec7f-6262-4795-9f40-1f6ab1f4438d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071243Z:d40aec7f-6262-4795-9f40-1f6ab1f4438d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:25 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:12:43 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "239" ]
       },
-      "Content": null
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StreamAnalytics/clusters/sacluster-01-portal\u0027 under resource group \u0027lucas-rg-test\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+34": {
+  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview+34": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/clusters/sacluster-01-portal/OperationResults/0637504128000000000.71f1d753-b0d9-4177-9720-0c9c116d3b92?api-version=2020-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
-        "x-ms-correlation-request-id": [ "376a61cb-b755-4d52-84d7-8eda6c215fcc" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055736Z:376a61cb-b755-4d52-84d7-8eda6c215fcc" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:35 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+35": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
-        "x-ms-correlation-request-id": [ "f9d45b7d-d58a-474f-9ca7-e81e5fef46b6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055746Z:f9d45b7d-d58a-474f-9ca7-e81e5fef46b6" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:45 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+36": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
-        "x-ms-correlation-request-id": [ "f183f543-4354-4dfd-a883-0c0d57fb0faf" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055757Z:f183f543-4354-4dfd-a883-0c0d57fb0faf" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:57:56 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+37": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
-        "x-ms-correlation-request-id": [ "14d52b16-2958-4ad8-8ac5-39575dfadf7d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055807Z:14d52b16-2958-4ad8-8ac5-39575dfadf7d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:06 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+38": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
-        "x-ms-correlation-request-id": [ "bf887a8b-325b-4168-adb8-633ef83aca2d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055817Z:bf887a8b-325b-4168-adb8-633ef83aca2d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:17 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+39": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
-        "x-ms-correlation-request-id": [ "b56aa21b-1e40-4040-97b5-27f8109a8677" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055828Z:b56aa21b-1e40-4040-97b5-27f8109a8677" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:28 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+40": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
-        "x-ms-correlation-request-id": [ "236fd41d-eb2f-47ab-9fa1-265ff4409058" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055838Z:236fd41d-eb2f-47ab-9fa1-265ff4409058" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:38 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+41": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "x-ms-correlation-request-id": [ "4b6e41b3-0fd9-4d8f-994d-5a3d5bc25513" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055849Z:4b6e41b3-0fd9-4d8f-994d-5a3d5bc25513" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+42": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
-        "x-ms-correlation-request-id": [ "ad47c0e6-2c08-4139-b0eb-933adfb7ae5a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055859Z:ad47c0e6-2c08-4139-b0eb-933adfb7ae5a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:58:59 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+43": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
-        "x-ms-correlation-request-id": [ "0993cfe9-7341-4197-b1aa-f4178c413112" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055909Z:0993cfe9-7341-4197-b1aa-f4178c413112" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:59:09 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+44": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
-        "x-ms-correlation-request-id": [ "81890f88-2778-45a6-b0e0-5d90beac3696" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055920Z:81890f88-2778-45a6-b0e0-5d90beac3696" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:59:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+45": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
-        "x-ms-correlation-request-id": [ "3fdbca25-b13b-4e63-8348-1017e85ad541" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055930Z:3fdbca25-b13b-4e63-8348-1017e85ad541" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:59:29 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+46": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-correlation-request-id": [ "bba61ec6-189b-4861-9695-124616f1e72f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055940Z:bba61ec6-189b-4861-9695-124616f1e72f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:59:40 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+47": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview" ],
-        "Retry-After": [ "10" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
-        "x-ms-correlation-request-id": [ "f4a6aeb1-7d23-40c2-966e-668aa7b3ed60" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T055951Z:f4a6aeb1-7d23-40c2-966e-668aa7b3ed60" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 05:59:50 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+48": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
+        "x-ms-client-request-id": [ "573c265c-ea85-4fed-93f2-8ac688d06e80" ],
         "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1996,57 +1470,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "e8e56ccc-2e98-4488-a218-270183032084" ],
-        "x-ms-correlation-request-id": [ "e8e56ccc-2e98-4488-a218-270183032084" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T060002Z:e8e56ccc-2e98-4488-a218-270183032084" ],
+        "x-ms-request-id": [ "22a2eb5e-35c4-4dd8-aa67-13472f3d0c85" ],
+        "x-ms-correlation-request-id": [ "22a2eb5e-35c4-4dd8-aa67-13472f3d0c85" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210304T071244Z:22a2eb5e-35c4-4dd8-aa67-13472f3d0c85" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 06:00:01 GMT" ]
+        "Date": [ "Thu, 04 Mar 2021 07:12:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "248" ]
+        "Content-Length": [ "239" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StreamAnalytics/clusters/sac-lc5eai\u0027 under resource group \u0027streamanalyticscluster-rgn94wzr\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
-    }
-  },
-  "Remove-AzStreamAnalyticsCluster+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview+49": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalyticscluster-rgn94wzr/providers/Microsoft.StreamAnalytics/clusters/sac-lc5eai/OperationResults/0637432416000000000.b4ce086a-b672-4591-b2f0-653e3c8bc989?api-version=2020-03-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "ea974664-a997-4a9c-bf0d-1d3e32b59d0b" ],
-        "CommandName": [ "Remove-AzStreamAnalyticsCluster" ],
-        "FullCommandName": [ "Remove-AzStreamAnalyticsCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "dac80bfe-bdab-47d3-a22e-219e09de400f" ],
-        "x-ms-correlation-request-id": [ "dac80bfe-bdab-47d3-a22e-219e09de400f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201211T060002Z:dac80bfe-bdab-47d3-a22e-219e09de400f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 11 Dec 2020 06:00:01 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "248" ]
-      },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StreamAnalytics/clusters/sac-lc5eai\u0027 under resource group \u0027streamanalyticscluster-rgn94wzr\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StreamAnalytics/clusters/sacluster-01-portal\u0027 under resource group \u0027lucas-rg-test\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
     }
   }
 }

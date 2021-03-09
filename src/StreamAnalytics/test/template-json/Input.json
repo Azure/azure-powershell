@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "type": "Stream",
+    "datasource": {
+      "type": "Microsoft.Storage/Blob",
+      "properties": {
+        "sourcePartitionCount": 32,
+        "storageAccounts": [
+          {
+            "accountName": "storage01portal",
+            "accountKey": "lltcNBUF4xPHBkREXgpCxqF+HYoHfNGWpyRjxicMwGnqT6szV3hKg2djxPQXPX51Wt1CVJ64GWJfkgSHZVWfDQ=="
+          }
+        ],
+        "container": "blobtest",
+        "pathPattern": "cluster1/logs/{date}",
+        "dateFormat": "yyyy/MM/dd",
+        "timeFormat": "HH",
+        "authenticationMode": "ConnectionString"
+      }
+    },
+    "compression": {
+      "type": "None"
+    },
+    "partitionKey": "test-key",
+    "serialization": {
+      "type": "Csv",
+      "properties": {
+        "fieldDelimiter": "|",
+        "encoding": "UTF8"
+      }
+    }
+  }
+}

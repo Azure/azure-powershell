@@ -1,13 +1,18 @@
-### Example 1: Create a new stream analytics cluster
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-ps-test01 -Location "West Central US" -SkuName "Default" -SkuCapacity 36
+PS C:\> {{ Add code here }}
 
-Location        Name          Type                               Etag
---------        ----          ----                               ----
-West Central US sac-ps-test01 Microsoft.StreamAnalytics/clusters
+{{ Add output here }}
 ```
 
-This command creates a new stream analytics cluster.
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
