@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+
 using StaticAnalysis.ProblemIds;
 using System;
 using System.Collections.Generic;
@@ -119,7 +121,10 @@ namespace StaticAnalysis.SignatureVerifier
                     cmdletResult = powershell.Invoke();
                     var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
-                    if (!nestedModules.Any()) continue;
+                    if (!nestedModules.Any())
+                    {
+                        nestedModules = new List<string> { psd1FileName.Replace(".psd1", "") };
+                    }
 
                     Directory.SetCurrentDirectory(directory);
 
@@ -135,17 +140,13 @@ namespace StaticAnalysis.SignatureVerifier
                     foreach (var nestedModule in nestedModules)
                     {
                         var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                        var assemblyFileName = Path.GetFileName(assemblyFile);
                         if (!File.Exists(assemblyFile)) continue;
 
                         issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFile, "AssemblyFileName");
                         processedHelpFiles.Add(assemblyFile);
-// TODO: Remove IfDef
-#if NETSTANDARD
-                        var proxy = new CmdletLoader();
-#else
-                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-#endif
-                        var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+                        var filePath = Path.Combine(directory, $"{assemblyFileName}.json");
+                        var module = ModuleMetadata.DeserializeCmdlets(filePath);
                         var cmdlets = module.Cmdlets;
 
                         if (cmdletFilter != null)
@@ -497,6 +498,7 @@ namespace StaticAnalysis.SignatureVerifier
 
             return analysisReport;
         }
+        
     }
 
     public static class LogExtensions

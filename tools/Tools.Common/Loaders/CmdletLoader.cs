@@ -58,6 +58,11 @@ namespace Tools.Common.Loaders
             return GetModuleMetadata(assemblyPath);
         }
 
+        public static ModuleMetadata GetModuleMetadata()
+        {
+            return new ModuleMetadata();
+        }
+
         /// <summary>
         /// Get the ModuleMetadata from a cmdlet assembly.
         /// </summary>

@@ -231,6 +231,7 @@ namespace StaticAnalysis.HelpAnalyzer
             powershell.AddScript(script);
             var cmdletResult = powershell.Invoke();
             var nestedModules = new List<string>();
+
             foreach (var module in cmdletResult)
             {
                 if (module != null && module.ToString().StartsWith("."))
@@ -241,6 +242,10 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     nestedModules.Add(module.ToString());
                 }
+            }
+            if (!nestedModules.Any())
+            {
+                nestedModules = new List<string> { psd1FileName.Replace(".psd1", "") };
             }
 
             script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
@@ -272,13 +277,8 @@ namespace StaticAnalysis.HelpAnalyzer
                         h.Assembly = assemblyFileName;
                     }, "Cmdlet");
                     processedHelpFiles.Add(assemblyFileName);
-                    // TODO: Remove IfDef
-#if NETSTANDARD
-                    var proxy = new CmdletLoader();
-#else
-                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-#endif
-                    var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+                    var filePath = Path.Combine(directory, $"{assemblyFileName}.json");
+                    var module = ModuleMetadata.DeserializeCmdlets(filePath);
                     var cmdlets = module.Cmdlets;
                     allCmdlets.AddRange(cmdlets);
                     helpLogger.Decorator.Remove("Cmdlet");
