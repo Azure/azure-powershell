@@ -803,12 +803,12 @@ function Test-VirtualNetworkGatewayOpenVPN
         Assert-AreEqual 3 @($authTypes).Count
         Assert-AreEqual $aadAudience $actual.VpnClientConfiguration.AadAudience
         Assert-AreEqual "1.2.3.4" $actual.VpnClientConfiguration.RadiusServerAddress
-        Assert-NotNull $actual.VpnClientRootCertificates
+        Assert-NotNull $actual.VpnClientConfiguration.VpnClientRootCertificates
 	}
 	finally
     {
 		# Cleanup
-        #Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname
     }
 }
 
