@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTY0Nj9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -127,7 +127,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTY0Nj9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -191,7 +191,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTY0Nj9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -261,7 +261,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTY0Nj9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -331,7 +331,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTY0Nj9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.0.0/24\",\r\n          \"addressPrefixes\": [],\r\n          \"serviceEndpoints\": [],\r\n          \"serviceEndpointPolicies\": [],\r\n          \"ipAllocations\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"name\": \"ps8303\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"ipAllocations\": []\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -369,7 +369,7 @@
           "246b04a6-8d01-44d4-9a39-8d5fe979881d"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/246b04a6-8d01-44d4-9a39-8d5fe979881d?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/246b04a6-8d01-44d4-9a39-8d5fe979881d?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "c1e519b7-825f-4588-a98b-a24a5414780b"
@@ -413,7 +413,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/246b04a6-8d01-44d4-9a39-8d5fe979881d?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/246b04a6-8d01-44d4-9a39-8d5fe979881d?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvMjQ2YjA0YTYtOGQwMS00NGQ0LTlhMzktOGQ1ZmU5Nzk4ODFkP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -474,7 +474,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNTcwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -534,7 +534,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNTcwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -598,7 +598,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNTcwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -668,7 +668,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNTcwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -738,7 +738,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps570?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNTcwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"11.0.0.0/8\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"11.0.1.0/24\",\r\n          \"addressPrefixes\": [],\r\n          \"serviceEndpoints\": [],\r\n          \"serviceEndpointPolicies\": [],\r\n          \"ipAllocations\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"name\": \"ps722\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"ipAllocations\": []\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -776,7 +776,7 @@
           "e88227f3-6e46-4c6f-b59c-c72e6d91949d"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/e88227f3-6e46-4c6f-b59c-c72e6d91949d?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/e88227f3-6e46-4c6f-b59c-c72e6d91949d?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "3ba594a2-bb18-4ae0-bb22-0806cb62bb4f"
@@ -820,7 +820,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/e88227f3-6e46-4c6f-b59c-c72e6d91949d?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/e88227f3-6e46-4c6f-b59c-c72e6d91949d?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg4MjI3ZjMtNmU0Ni00YzZmLWI1OWMtYzcyZTZkOTE5NDlkP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -881,7 +881,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHMyOTkwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -941,7 +941,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHMyOTkwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1005,7 +1005,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHMyOTkwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1075,7 +1075,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHMyOTkwP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"ipTags\": []\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"westus\"\r\n}",
@@ -1113,7 +1113,7 @@
           "678be8b3-42b8-4943-a096-c2b912a28f63"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/678be8b3-42b8-4943-a096-c2b912a28f63?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/678be8b3-42b8-4943-a096-c2b912a28f63?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "87b4c55f-4dd9-42bb-ab27-2d01c3e5f662"
@@ -1157,7 +1157,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/678be8b3-42b8-4943-a096-c2b912a28f63?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/678be8b3-42b8-4943-a096-c2b912a28f63?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvNjc4YmU4YjMtNDJiOC00OTQzLWEwOTYtYzJiOTEyYTI4ZjYzP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1218,7 +1218,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2xpc3RlbmVyaHR0cFBvbGljeT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1278,7 +1278,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2xpc3RlbmVyaHR0cFBvbGljeT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1348,7 +1348,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2xpc3RlbmVyaHR0cFBvbGljeT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1418,7 +1418,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2xpc3RlbmVyaHR0cFBvbGljeT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 128,\r\n      \"fileUploadLimitInMb\": 300\r\n    },\r\n    \"customRules\": [],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.0\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -1453,7 +1453,7 @@
           "d2318d4e-4dee-47e6-9a20-d946da9a0666"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/d2318d4e-4dee-47e6-9a20-d946da9a0666?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/d2318d4e-4dee-47e6-9a20-d946da9a0666?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "368bf03d-42ea-4c34-8966-c3918117632f"
@@ -1497,7 +1497,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3ZpZGVvUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1557,7 +1557,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3ZpZGVvUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1627,7 +1627,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3ZpZGVvUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1697,7 +1697,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3ZpZGVvUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 128,\r\n      \"fileUploadLimitInMb\": 150\r\n    },\r\n    \"customRules\": [],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.0\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -1732,7 +1732,7 @@
           "6687d3a7-42d4-4736-997d-99face327fd5"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/6687d3a7-42d4-4736-997d-99face327fd5?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/6687d3a7-42d4-4736-997d-99face327fd5?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "afa9423c-3ef3-4304-98b6-e5d8b4e8c959"
@@ -1776,7 +1776,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2ltYWdlUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1836,7 +1836,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2ltYWdlUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1906,7 +1906,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2ltYWdlUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1976,7 +1976,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2ltYWdlUG9saWN5TmFtZT9hcGktdmVyc2lvbj0yMDIwLTA3LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 128,\r\n      \"fileUploadLimitInMb\": 50\r\n    },\r\n    \"customRules\": [],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.0\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -2011,7 +2011,7 @@
           "6cac2566-698a-447e-849f-e50a0bdfc742"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/6cac2566-698a-447e-849f-e50a0bdfc742?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/6cac2566-698a-447e-849f-e50a0bdfc742?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "2582756e-7323-4ad3-aab4-c59ecec20169"
@@ -2055,7 +2055,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2115,7 +2115,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2179,7 +2179,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2249,7 +2249,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2319,7 +2319,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2383,7 +2383,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2453,7 +2453,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2523,7 +2523,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2593,7 +2593,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2657,7 +2657,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2727,7 +2727,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2797,7 +2797,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2867,7 +2867,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2937,7 +2937,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3001,7 +3001,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3071,7 +3071,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3141,7 +3141,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
@@ -3180,7 +3180,7 @@
           "8207f323-ef5f-489b-8da8-cc6fa5b95ec7"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "f20f2ff5-b84f-4e12-a25f-cd9b25e4a9fa"
@@ -3224,7 +3224,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"WAF_v2\",\r\n      \"tier\": \"WAF_v2\"\r\n    },\r\n    \"gatewayIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646/subnets/ps8303\"\r\n          }\r\n        },\r\n        \"name\": \"ps1771\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/gatewayIPConfigurations/ps1771\"\r\n      }\r\n    ],\r\n    \"authenticationCertificates\": [],\r\n    \"trustedRootCertificates\": [\r\n      {\r\n        \"properties\": {\r\n          \"data\": \"MIIDTzCCAjegAwIBAgIQj5oTlR6oyJ1NlX9Wb9aFyjANBgkqhkiG9w0BAQsFADAwMS4wLAYDVQQDEyVBcHBsaWNhdGlvbkdhdGV3YXlTc2xDZXJ0LVVuaXRUZXN0LTAxMB4XDTE2MDIxNzA3MDc1M1oXDTM5MTIzMTIzNTk1OVowMDEuMCwGA1UEAxMlQXBwbGljYXRpb25HYXRld2F5U3NsQ2VydC1Vbml0VGVzdC0wMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANOUOFVmm+P4ht/qaiGZaiMzZSXwqGP8W/XWZRfJSc1mS6B4zBm8MtndmO9NbPUeGetk3E4jI0egP7NufuTAtfZY5nG9/gsZh8Hp4o+x+6F1wCUtK5pQ5Fne4Vwg0Q9k1CgUfQfK0zEoanOTEylcyp1nVpoGc3v4FZ9pQr8/xQ7+PSwgNpmGpU1gmgorDlXIO8jiKb+WfSoPAhHcavoPFg6DeGv30AK2m8ULFezOqbprrozRxXaKzt8fBaDSP1XMakFaO6ffZU4uNgrehW4zMnpdgAjT5koymDKGAfl/7+5QpLxSKc2478J+PvTwy/rfWKJLbEImoM7WE3imWgrHUNMCAwEAAaNlMGMwYQYDVR0BBFowWIAQxDXqD2PYxSlriJ6HuzZ+b6EyMDAxLjAsBgNVBAMTJUFwcGxpY2F0aW9uR2F0ZXdheVNzbENlcnQtVW5pdFRlc3QtMDGCEI+aE5UeqMidTZV/Vm/WhcowDQYJKoZIhvcNAQELBQADggEBADSC6PHkVYmoVOyyW2g7q3GG3MmXa43/HQNTM+pT3HENAlhGg8T9EFrOQ/0QAoEQbrtsP8Isj5u2Bd4MOlYA180ExyfL/NFb7QpXq/pRLbePMQAQicdSvk/9RyrNRBfNjT2KNlBp3RZtCkJjQWlc5ylWydPy4JPUZxit/5ygCRT+cmN1ioF469Ki8hzBlKmrDg8jkFUwFyD7B0fEfPP0gSZI3F6HqgCK2hzBTjujZjddZyn2XxXlxLu57C83CNPP8fbsGW2CwolgmYvt+dJsdDnT7VKX5RS4cOPp/JGG7QdhzqVBoK0vZP6gHEAOPoqBVUWf8SmlVuAVGmDl8EjLnK8=\"\r\n        },\r\n        \"name\": \"ps2115\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/trustedRootCertificates/ps2115\"\r\n      }\r\n    ],\r\n    \"trustedClientCertificates\": [],\r\n    \"sslCertificates\": [\r\n      {\r\n        \"name\": \"ps1087\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n      }\r\n    ],\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990\"\r\n          }\r\n        },\r\n        \"name\": \"ps2317\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n      }\r\n    ],\r\n    \"frontendPorts\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 80\r\n        },\r\n        \"name\": \"ps252\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443\r\n        },\r\n        \"name\": \"ps7052\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Http\",\r\n          \"path\": \"/path/path.htm\",\r\n          \"interval\": 89,\r\n          \"timeout\": 88,\r\n          \"unhealthyThreshold\": 8,\r\n          \"pickHostNameFromBackendHttpSettings\": true,\r\n          \"minServers\": 1,\r\n          \"match\": {}\r\n        },\r\n        \"name\": \"ps9248\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/probes/ps9248\"\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"ipAddress\": \"www.microsoft.com\"\r\n            },\r\n            {\r\n              \"ipAddress\": \"www.bing.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps4044\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"fqdn\": \"www.bing.com\"\r\n            },\r\n            {\r\n              \"fqdn\": \"www.microsoft.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps8050\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps8050\"\r\n      }\r\n    ],\r\n    \"backendHttpSettingsCollection\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443,\r\n          \"protocol\": \"Https\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 30,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"pickHostNameFromBackendAddress\": true\r\n        },\r\n        \"name\": \"ps7809\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 1234,\r\n          \"protocol\": \"Http\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 42,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"hostName\": \"test\",\r\n          \"affinityCookieName\": \"test\",\r\n          \"path\": \"/test\"\r\n        },\r\n        \"name\": \"ps7993\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7993\"\r\n      }\r\n    ],\r\n    \"httpListeners\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n          },\r\n          \"protocol\": \"Http\",\r\n          \"requireServerNameIndication\": false,\r\n          \"customErrorConfigurations\": [\r\n            {\r\n              \"statusCode\": \"HttpStatus403\",\r\n              \"customErrorPageUrl\": \"https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm\"\r\n            }\r\n          ],\r\n          \"firewallPolicy\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy\"\r\n          },\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9766\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestHostName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9811\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps6314\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps6314\"\r\n      }\r\n    ],\r\n    \"sslProfiles\": [],\r\n    \"urlPathMaps\": [\r\n      {\r\n        \"properties\": {\r\n          \"defaultBackendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"defaultBackendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps5866\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"defaultRewriteRuleSet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n          },\r\n          \"defaultRedirectConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/image\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5857\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps6361\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n      }\r\n    ],\r\n    \"requestRoutingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"Basic\",\r\n          \"priority\": 100,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"backendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          }\r\n        },\r\n        \"name\": \"ps7339\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7339\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"PathBasedRouting\",\r\n          \"priority\": 100,\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n          },\r\n          \"urlPathMap\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n          }\r\n        },\r\n        \"name\": \"ps7810\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7810\"\r\n      }\r\n    ],\r\n    \"rewriteRuleSets\": [\r\n      {\r\n        \"properties\": {\r\n          \"rewriteRules\": [\r\n            {\r\n              \"name\": \"ps6310\",\r\n              \"ruleSequence\": 100,\r\n              \"conditions\": [],\r\n              \"actionSet\": {\r\n                \"requestHeaderConfigurations\": [\r\n                  {\r\n                    \"headerName\": \"abc\",\r\n                    \"headerValue\": \"def\"\r\n                  }\r\n                ],\r\n                \"responseHeaderConfigurations\": []\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps7550\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n      }\r\n    ],\r\n    \"redirectConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"redirectType\": \"Permanent\",\r\n          \"targetListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          },\r\n          \"includePath\": true,\r\n          \"includeQueryString\": true,\r\n          \"requestRoutingRules\": [],\r\n          \"urlPathMaps\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n            }\r\n          ],\r\n          \"pathRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps3977\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n      }\r\n    ],\r\n    \"autoscaleConfiguration\": {\r\n      \"minCapacity\": 3\r\n    },\r\n    \"privateLinkConfigurations\": [],\r\n    \"customErrorConfigurations\": []\r\n  },\r\n  \"zones\": [],\r\n  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259\",\r\n  \"location\": \"westus\"\r\n}",
@@ -3262,7 +3262,7 @@
           "77533faa-1f72-4e51-a8e6-f9f8a2307235"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "9bd4bd6b-f8f1-4f54-b3b2-c92d2eb6716d"
@@ -3306,7 +3306,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"WAF_v2\",\r\n      \"tier\": \"WAF_v2\"\r\n    },\r\n    \"gatewayIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646/subnets/ps8303\"\r\n          }\r\n        },\r\n        \"name\": \"ps1771\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/gatewayIPConfigurations/ps1771\"\r\n      }\r\n    ],\r\n    \"authenticationCertificates\": [],\r\n    \"trustedRootCertificates\": [\r\n      {\r\n        \"properties\": {\r\n          \"data\": \"MIIDTzCCAjegAwIBAgIQj5oTlR6oyJ1NlX9Wb9aFyjANBgkqhkiG9w0BAQsFADAwMS4wLAYDVQQDEyVBcHBsaWNhdGlvbkdhdGV3YXlTc2xDZXJ0LVVuaXRUZXN0LTAxMB4XDTE2MDIxNzA3MDc1M1oXDTM5MTIzMTIzNTk1OVowMDEuMCwGA1UEAxMlQXBwbGljYXRpb25HYXRld2F5U3NsQ2VydC1Vbml0VGVzdC0wMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANOUOFVmm+P4ht/qaiGZaiMzZSXwqGP8W/XWZRfJSc1mS6B4zBm8MtndmO9NbPUeGetk3E4jI0egP7NufuTAtfZY5nG9/gsZh8Hp4o+x+6F1wCUtK5pQ5Fne4Vwg0Q9k1CgUfQfK0zEoanOTEylcyp1nVpoGc3v4FZ9pQr8/xQ7+PSwgNpmGpU1gmgorDlXIO8jiKb+WfSoPAhHcavoPFg6DeGv30AK2m8ULFezOqbprrozRxXaKzt8fBaDSP1XMakFaO6ffZU4uNgrehW4zMnpdgAjT5koymDKGAfl/7+5QpLxSKc2478J+PvTwy/rfWKJLbEImoM7WE3imWgrHUNMCAwEAAaNlMGMwYQYDVR0BBFowWIAQxDXqD2PYxSlriJ6HuzZ+b6EyMDAxLjAsBgNVBAMTJUFwcGxpY2F0aW9uR2F0ZXdheVNzbENlcnQtVW5pdFRlc3QtMDGCEI+aE5UeqMidTZV/Vm/WhcowDQYJKoZIhvcNAQELBQADggEBADSC6PHkVYmoVOyyW2g7q3GG3MmXa43/HQNTM+pT3HENAlhGg8T9EFrOQ/0QAoEQbrtsP8Isj5u2Bd4MOlYA180ExyfL/NFb7QpXq/pRLbePMQAQicdSvk/9RyrNRBfNjT2KNlBp3RZtCkJjQWlc5ylWydPy4JPUZxit/5ygCRT+cmN1ioF469Ki8hzBlKmrDg8jkFUwFyD7B0fEfPP0gSZI3F6HqgCK2hzBTjujZjddZyn2XxXlxLu57C83CNPP8fbsGW2CwolgmYvt+dJsdDnT7VKX5RS4cOPp/JGG7QdhzqVBoK0vZP6gHEAOPoqBVUWf8SmlVuAVGmDl8EjLnK8=\"\r\n        },\r\n        \"name\": \"ps2115\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/trustedRootCertificates/ps2115\"\r\n      }\r\n    ],\r\n    \"trustedClientCertificates\": [],\r\n    \"sslCertificates\": [\r\n      {\r\n        \"name\": \"ps1087\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n      }\r\n    ],\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990\"\r\n          }\r\n        },\r\n        \"name\": \"ps2317\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n      }\r\n    ],\r\n    \"frontendPorts\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 80\r\n        },\r\n        \"name\": \"ps252\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443\r\n        },\r\n        \"name\": \"ps7052\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Http\",\r\n          \"path\": \"/path/path.htm\",\r\n          \"interval\": 89,\r\n          \"timeout\": 88,\r\n          \"unhealthyThreshold\": 8,\r\n          \"pickHostNameFromBackendHttpSettings\": true,\r\n          \"minServers\": 1,\r\n          \"match\": {}\r\n        },\r\n        \"name\": \"ps9248\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/probes/ps9248\"\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"ipAddress\": \"www.microsoft.com\"\r\n            },\r\n            {\r\n              \"ipAddress\": \"www.bing.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps4044\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"fqdn\": \"www.bing.com\"\r\n            },\r\n            {\r\n              \"fqdn\": \"www.microsoft.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps8050\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps8050\"\r\n      }\r\n    ],\r\n    \"backendHttpSettingsCollection\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443,\r\n          \"protocol\": \"Https\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 30,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"pickHostNameFromBackendAddress\": true\r\n        },\r\n        \"name\": \"ps7809\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 1234,\r\n          \"protocol\": \"Http\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 42,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"hostName\": \"test\",\r\n          \"pickHostNameFromBackendAddress\": false,\r\n          \"affinityCookieName\": \"test\",\r\n          \"path\": \"/test\"\r\n        },\r\n        \"name\": \"ps7993\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7993\"\r\n      }\r\n    ],\r\n    \"httpListeners\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n          },\r\n          \"protocol\": \"Http\",\r\n          \"requireServerNameIndication\": false,\r\n          \"customErrorConfigurations\": [\r\n            {\r\n              \"statusCode\": \"HttpStatus403\",\r\n              \"customErrorPageUrl\": \"https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm\"\r\n            }\r\n          ],\r\n          \"firewallPolicy\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy\"\r\n          },\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9766\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestHostName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9811\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps6314\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps6314\"\r\n      }\r\n    ],\r\n    \"sslProfiles\": [],\r\n    \"urlPathMaps\": [\r\n      {\r\n        \"properties\": {\r\n          \"defaultBackendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"defaultBackendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps5866\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"defaultRewriteRuleSet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n          },\r\n          \"defaultRedirectConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/image\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5857\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps6361\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n      }\r\n    ],\r\n    \"requestRoutingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"Basic\",\r\n          \"priority\": 100,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"backendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          }\r\n        },\r\n        \"name\": \"ps7339\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7339\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"PathBasedRouting\",\r\n          \"priority\": 100,\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n          },\r\n          \"urlPathMap\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n          }\r\n        },\r\n        \"name\": \"ps7810\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7810\"\r\n      }\r\n    ],\r\n    \"rewriteRuleSets\": [\r\n      {\r\n        \"properties\": {\r\n          \"rewriteRules\": [\r\n            {\r\n              \"name\": \"ps6310\",\r\n              \"ruleSequence\": 100,\r\n              \"conditions\": [],\r\n              \"actionSet\": {\r\n                \"requestHeaderConfigurations\": [\r\n                  {\r\n                    \"headerName\": \"abc\",\r\n                    \"headerValue\": \"def\"\r\n                  }\r\n                ],\r\n                \"responseHeaderConfigurations\": []\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps7550\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n      }\r\n    ],\r\n    \"redirectConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"redirectType\": \"Permanent\",\r\n          \"targetListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          },\r\n          \"includePath\": true,\r\n          \"includeQueryString\": true,\r\n          \"requestRoutingRules\": [],\r\n          \"urlPathMaps\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n            }\r\n          ],\r\n          \"pathRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps3977\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n      }\r\n    ],\r\n    \"firewallPolicy\": {\r\n      \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\"\r\n    },\r\n    \"autoscaleConfiguration\": {\r\n      \"minCapacity\": 3\r\n    },\r\n    \"privateLinkConfigurations\": [],\r\n    \"customErrorConfigurations\": []\r\n  },\r\n  \"zones\": [],\r\n  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259\",\r\n  \"location\": \"westus\"\r\n}",
@@ -3344,7 +3344,7 @@
           "89fa745c-a49f-41f9-bb69-8755e8abc2b7"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "6eec37e1-8c94-42ba-8c02-72ea394ea320"
@@ -3388,7 +3388,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXBwbGljYXRpb25HYXRld2F5cy9wczUyNTk/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"WAF_v2\",\r\n      \"tier\": \"WAF_v2\"\r\n    },\r\n    \"gatewayIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/virtualNetworks/ps1646/subnets/ps8303\"\r\n          }\r\n        },\r\n        \"name\": \"ps1771\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/gatewayIPConfigurations/ps1771\"\r\n      }\r\n    ],\r\n    \"authenticationCertificates\": [],\r\n    \"trustedRootCertificates\": [\r\n      {\r\n        \"properties\": {\r\n          \"data\": \"MIIDTzCCAjegAwIBAgIQj5oTlR6oyJ1NlX9Wb9aFyjANBgkqhkiG9w0BAQsFADAwMS4wLAYDVQQDEyVBcHBsaWNhdGlvbkdhdGV3YXlTc2xDZXJ0LVVuaXRUZXN0LTAxMB4XDTE2MDIxNzA3MDc1M1oXDTM5MTIzMTIzNTk1OVowMDEuMCwGA1UEAxMlQXBwbGljYXRpb25HYXRld2F5U3NsQ2VydC1Vbml0VGVzdC0wMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANOUOFVmm+P4ht/qaiGZaiMzZSXwqGP8W/XWZRfJSc1mS6B4zBm8MtndmO9NbPUeGetk3E4jI0egP7NufuTAtfZY5nG9/gsZh8Hp4o+x+6F1wCUtK5pQ5Fne4Vwg0Q9k1CgUfQfK0zEoanOTEylcyp1nVpoGc3v4FZ9pQr8/xQ7+PSwgNpmGpU1gmgorDlXIO8jiKb+WfSoPAhHcavoPFg6DeGv30AK2m8ULFezOqbprrozRxXaKzt8fBaDSP1XMakFaO6ffZU4uNgrehW4zMnpdgAjT5koymDKGAfl/7+5QpLxSKc2478J+PvTwy/rfWKJLbEImoM7WE3imWgrHUNMCAwEAAaNlMGMwYQYDVR0BBFowWIAQxDXqD2PYxSlriJ6HuzZ+b6EyMDAxLjAsBgNVBAMTJUFwcGxpY2F0aW9uR2F0ZXdheVNzbENlcnQtVW5pdFRlc3QtMDGCEI+aE5UeqMidTZV/Vm/WhcowDQYJKoZIhvcNAQELBQADggEBADSC6PHkVYmoVOyyW2g7q3GG3MmXa43/HQNTM+pT3HENAlhGg8T9EFrOQ/0QAoEQbrtsP8Isj5u2Bd4MOlYA180ExyfL/NFb7QpXq/pRLbePMQAQicdSvk/9RyrNRBfNjT2KNlBp3RZtCkJjQWlc5ylWydPy4JPUZxit/5ygCRT+cmN1ioF469Ki8hzBlKmrDg8jkFUwFyD7B0fEfPP0gSZI3F6HqgCK2hzBTjujZjddZyn2XxXlxLu57C83CNPP8fbsGW2CwolgmYvt+dJsdDnT7VKX5RS4cOPp/JGG7QdhzqVBoK0vZP6gHEAOPoqBVUWf8SmlVuAVGmDl8EjLnK8=\"\r\n        },\r\n        \"name\": \"ps2115\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/trustedRootCertificates/ps2115\"\r\n      }\r\n    ],\r\n    \"trustedClientCertificates\": [],\r\n    \"sslCertificates\": [\r\n      {\r\n        \"name\": \"ps1087\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n      }\r\n    ],\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/publicIPAddresses/ps2990\"\r\n          }\r\n        },\r\n        \"name\": \"ps2317\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n      }\r\n    ],\r\n    \"frontendPorts\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 80\r\n        },\r\n        \"name\": \"ps252\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443\r\n        },\r\n        \"name\": \"ps7052\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"Http\",\r\n          \"path\": \"/path/path.htm\",\r\n          \"interval\": 89,\r\n          \"timeout\": 88,\r\n          \"unhealthyThreshold\": 8,\r\n          \"pickHostNameFromBackendHttpSettings\": true,\r\n          \"minServers\": 1,\r\n          \"match\": {}\r\n        },\r\n        \"name\": \"ps9248\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/probes/ps9248\"\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"ipAddress\": \"www.microsoft.com\"\r\n            },\r\n            {\r\n              \"ipAddress\": \"www.bing.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps4044\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"backendAddresses\": [\r\n            {\r\n              \"fqdn\": \"www.bing.com\"\r\n            },\r\n            {\r\n              \"fqdn\": \"www.microsoft.com\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps8050\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps8050\"\r\n      }\r\n    ],\r\n    \"backendHttpSettingsCollection\": [\r\n      {\r\n        \"properties\": {\r\n          \"port\": 443,\r\n          \"protocol\": \"Https\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 30,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"pickHostNameFromBackendAddress\": true\r\n        },\r\n        \"name\": \"ps7809\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"port\": 1234,\r\n          \"protocol\": \"Http\",\r\n          \"cookieBasedAffinity\": \"Enabled\",\r\n          \"requestTimeout\": 42,\r\n          \"authenticationCertificates\": [],\r\n          \"trustedRootCertificates\": [],\r\n          \"hostName\": \"test\",\r\n          \"pickHostNameFromBackendAddress\": false,\r\n          \"affinityCookieName\": \"test\",\r\n          \"path\": \"/test\"\r\n        },\r\n        \"name\": \"ps7993\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7993\"\r\n      }\r\n    ],\r\n    \"httpListeners\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps252\"\r\n          },\r\n          \"protocol\": \"Http\",\r\n          \"requireServerNameIndication\": false,\r\n          \"customErrorConfigurations\": [\r\n            {\r\n              \"statusCode\": \"HttpStatus403\",\r\n              \"customErrorPageUrl\": \"https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm\"\r\n            }\r\n          ],\r\n          \"firewallPolicy\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/listenerhttpPolicy\"\r\n          },\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9766\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestHostName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps9811\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendIPConfigurations/ps2317\"\r\n          },\r\n          \"frontendPort\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/frontendPorts/ps7052\"\r\n          },\r\n          \"protocol\": \"Https\",\r\n          \"hostName\": \"TestName\",\r\n          \"sslCertificate\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/sslCertificates/ps1087\"\r\n          },\r\n          \"requireServerNameIndication\": true,\r\n          \"customErrorConfigurations\": [],\r\n          \"hostNames\": []\r\n        },\r\n        \"name\": \"ps6314\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps6314\"\r\n      }\r\n    ],\r\n    \"sslProfiles\": [],\r\n    \"urlPathMaps\": [\r\n      {\r\n        \"properties\": {\r\n          \"defaultBackendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"defaultBackendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps5866\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"defaultRewriteRuleSet\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n          },\r\n          \"defaultRedirectConfiguration\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n          },\r\n          \"pathRules\": [\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/video\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/videoPolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5903\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"properties\": {\r\n                \"paths\": [\r\n                  \"/image\"\r\n                ],\r\n                \"redirectConfiguration\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n                },\r\n                \"rewriteRuleSet\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n                },\r\n                \"firewallPolicy\": {\r\n                  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/imagePolicyName\"\r\n                }\r\n              },\r\n              \"name\": \"ps5857\",\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps6361\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n      }\r\n    ],\r\n    \"requestRoutingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"Basic\",\r\n          \"priority\": 100,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendAddressPools/ps4044\"\r\n          },\r\n          \"backendHttpSettings\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/backendHttpSettingsCollection/ps7809\"\r\n          },\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          }\r\n        },\r\n        \"name\": \"ps7339\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7339\"\r\n      },\r\n      {\r\n        \"properties\": {\r\n          \"ruleType\": \"PathBasedRouting\",\r\n          \"priority\": 100,\r\n          \"httpListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9811\"\r\n          },\r\n          \"urlPathMap\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866\"\r\n          }\r\n        },\r\n        \"name\": \"ps7810\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/requestRoutingRules/ps7810\"\r\n      }\r\n    ],\r\n    \"rewriteRuleSets\": [\r\n      {\r\n        \"properties\": {\r\n          \"rewriteRules\": [\r\n            {\r\n              \"name\": \"ps6310\",\r\n              \"ruleSequence\": 100,\r\n              \"conditions\": [],\r\n              \"actionSet\": {\r\n                \"requestHeaderConfigurations\": [\r\n                  {\r\n                    \"headerName\": \"abc\",\r\n                    \"headerValue\": \"def\"\r\n                  }\r\n                ],\r\n                \"responseHeaderConfigurations\": []\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps7550\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/rewriteRuleSets/ps7550\"\r\n      }\r\n    ],\r\n    \"redirectConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"redirectType\": \"Permanent\",\r\n          \"targetListener\": {\r\n            \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/httpListeners/ps9766\"\r\n          },\r\n          \"includePath\": true,\r\n          \"includeQueryString\": true,\r\n          \"requestRoutingRules\": [],\r\n          \"urlPathMaps\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361\"\r\n            }\r\n          ],\r\n          \"pathRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps5866/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5903\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/urlPathMaps/ps6361/pathRules/ps5857\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"ps3977\",\r\n        \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259/redirectConfigurations/ps3977\"\r\n      }\r\n    ],\r\n    \"firewallPolicy\": {\r\n      \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2\"\r\n    },\r\n    \"autoscaleConfiguration\": {\r\n      \"minCapacity\": 3\r\n    },\r\n    \"privateLinkConfigurations\": [],\r\n    \"customErrorConfigurations\": []\r\n  },\r\n  \"zones\": [],\r\n  \"id\": \"/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/applicationGateways/ps5259\",\r\n  \"location\": \"westus\"\r\n}",
@@ -3426,7 +3426,7 @@
           "c54dbf30-93a2-49b7-af03-5f03121d9e0e"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "a17733bf-0008-43d0-87e1-8e32b353053e"
@@ -3470,7 +3470,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3534,7 +3534,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3598,7 +3598,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3662,7 +3662,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3726,7 +3726,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3790,7 +3790,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3854,7 +3854,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3918,7 +3918,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/8207f323-ef5f-489b-8da8-cc6fa5b95ec7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODIwN2YzMjMtZWY1Zi00ODliLThkYTgtY2M2ZmE1Yjk1ZWM3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3979,7 +3979,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvNzc1MzNmYWEtMWY3Mi00ZTUxLWE4ZTYtZjlmOGEyMzA3MjM1P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4043,7 +4043,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvNzc1MzNmYWEtMWY3Mi00ZTUxLWE4ZTYtZjlmOGEyMzA3MjM1P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4107,7 +4107,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvNzc1MzNmYWEtMWY3Mi00ZTUxLWE4ZTYtZjlmOGEyMzA3MjM1P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4171,7 +4171,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/77533faa-1f72-4e51-a8e6-f9f8a2307235?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvNzc1MzNmYWEtMWY3Mi00ZTUxLWE4ZTYtZjlmOGEyMzA3MjM1P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4232,7 +4232,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4292,7 +4292,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4362,7 +4362,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4432,7 +4432,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4502,7 +4502,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70\r\n    },\r\n    \"customRules\": [],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.0\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -4537,7 +4537,7 @@
           "290be66b-0292-4c1c-90e4-cd8a68c7eb5b"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/290be66b-0292-4c1c-90e4-cd8a68c7eb5b?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/290be66b-0292-4c1c-90e4-cd8a68c7eb5b?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "30ac20bd-d260-488d-b0d1-8013f91d76be"
@@ -4581,7 +4581,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODlmYTc0NWMtYTQ5Zi00MWY5LWJiNjktODc1NWU4YWJjMmI3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4645,7 +4645,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/89fa745c-a49f-41f9-bb69-8755e8abc2b7?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvODlmYTc0NWMtYTQ5Zi00MWY5LWJiNjktODc1NWU4YWJjMmI3P2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4706,7 +4706,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2dsb2JhbHBvbGljeTI/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4766,7 +4766,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2dsb2JhbHBvbGljeTI/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4836,7 +4836,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2dsb2JhbHBvbGljeTI/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4906,7 +4906,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2dsb2JhbHBvbGljeTI/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -4976,7 +4976,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/resourceGroups/ps4234/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/globalpolicy2?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Jlc291cmNlR3JvdXBzL3BzNDIzNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL2dsb2JhbHBvbGljeTI/YXBpLXZlcnNpb249MjAyMC0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Detection\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 128,\r\n      \"fileUploadLimitInMb\": 100\r\n    },\r\n    \"customRules\": [],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.0\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -5011,7 +5011,7 @@
           "4c057566-540e-426a-b4e8-c0ae101a2b56"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/4c057566-540e-426a-b4e8-c0ae101a2b56?api-version=2020-07-01"
+          "https://management.azure.com/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/4c057566-540e-426a-b4e8-c0ae101a2b56?api-version=2020-11-01"
         ],
         "x-ms-correlation-request-id": [
           "8131c442-1f11-4104-94e5-24c47ecfde20"
@@ -5055,7 +5055,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvYzU0ZGJmMzAtOTNhMi00OWI3LWFmMDMtNWYwMzEyMWQ5ZTBlP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5119,7 +5119,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-07-01",
+      "RequestUri": "/subscriptions/f7e1a56e-347b-4103-87c7-e775a3e11ac5/providers/Microsoft.Network/locations/westus/operations/c54dbf30-93a2-49b7-af03-5f03121d9e0e?api-version=2020-11-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjdlMWE1NmUtMzQ3Yi00MTAzLTg3YzctZTc3NWEzZTExYWM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvYzU0ZGJmMzAtOTNhMi00OWI3LWFmMDMtNWYwMzEyMWQ5ZTBlP2FwaS12ZXJzaW9uPTIwMjAtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
