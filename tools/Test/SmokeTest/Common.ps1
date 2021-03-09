@@ -8,10 +8,10 @@ function Get-ModulePreviousVersion{
   $moduleName
   ) 
   if ($gallery -eq "LocalRepo") {
-    $modules = Find-Module $moduleName -Repository PSGallery -AllVersions | Sort-Object -Property @{Expression = {[System.Version]$_.Version}} -Descending
+    $modules = Find-Module $moduleName -Repository PSGallery -AllVersions | Sort-Object {[System.Version]$_.Version} -Descending
     $previousVersion = $modules[0].Version
   } else {
-    $modules = Find-Module $moduleName -Repository $gallery -AllVersions | Sort-Object -Property @{Expression = {[System.Version]$_.Version}} -Descending
+    $modules = Find-Module $moduleName -Repository $gallery -AllVersions | Sort-Object {[System.Version]$_.Version} -Descending
     $previousVersion = $modules[1].Version
   }
 
