@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Fixed te issue that complex object cannot be serialized correctly. [#14431]
 
 ## Version 1.5.0
