@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClearExpiration
-whether clear the expiration date and time of the updated policy exemption
+If set, this switch clears the expiration date and time on the updated policy exemption.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

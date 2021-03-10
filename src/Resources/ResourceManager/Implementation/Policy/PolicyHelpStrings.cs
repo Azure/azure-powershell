@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyExemptionDisplayNameHelp = "The display name for the updated policy exemption.";
         public const string SetPolicyExemptionDescriptionHelp = "The description for the updated policy exemption.";
         public const string SetPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the updated policy exemption.";
-        public const string SetPolicyExemptionClearExpirationHelp = "The switch is to clear the expiration date and time of the updated policy exemption.";
+        public const string SetPolicyExemptionClearExpirationHelp = "If set, this switch clears the expiration date and time on the updated policy exemption.";
         public const string SetPolicyExemptionPolicyDefinitionReferenceIdsHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
         public const string SetPolicyExemptionMetadataHelp = "The metadata for the updated policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
         public const string SetPolicyExemptionInputObjectHelp = "The policy exemption object to update that was output from another cmdlet.";
