@@ -359,6 +359,33 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="databaseName">The database name.</param>
         /// <param name="backupName">The backup name.</param>
         /// <param name="resourceGroupName">The resource group name</param>
+        public Management.Sql.Models.LongTermRetentionBackupOperationResult UpdateDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            Management.Sql.Models.UpdateLongTermRetentionBackupParameters parameters)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.Update(locationName, serverName, databaseName, backupName, parameters);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.UpdateByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+            }
+        }
+
+
+        /// <summary>
+        /// Removes a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
         public void RemoveDatabaseLongTermRetentionBackup(
             string locationName,
             string serverName,

@@ -495,3 +495,89 @@ function Test-ShortTermRetentionPolicy
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-CopyLongTermRetentionBackup
+{
+
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
+	$resourceGroupName = "testrg"
+	$sourceLocationName = "eastasia"
+	$sourceServerName = "ayang-eas"
+	$sourceDatabaseName = "ltr3"
+	$targetLocationName = "southeastasia"
+	$targetServerName= "ayang-stage-seas"
+	$targetDatabaseName = "ltr1"
+
+	# Basic Get Tests
+	$sourceBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ResourceGroupName $resourceGroupName
+	Assert-AreNotEqual $backups.Count 
+
+	Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ResourceGroup
+
+	# Test Remove with Piping
+	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
+
+	# drop the restored db
+	Remove-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase -Force
+}
+
+function Test-UpdateLongTermRetentionBackup
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+ 	try
+	{
+		# Create db with default values
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+
+ 		# Test default parameter set
+		$retention = 28
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $retention
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retention $policy[0].RetentionDays
+
+ 		# Test InputObject
+		$retention = 21
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+
+ 		# Test ResourceId
+		$retention = 14
+		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+
+ 		# Test Piping
+		$retention = 7
+		$policy = $db | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+ 	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

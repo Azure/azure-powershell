@@ -315,6 +315,39 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Update a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, De
+        /// leted.</param>
+        internal AzureSqlDatabaseLongTermRetentionBackupModel SetDatabaseLongTermRetentionBackup(
+            AzureSqlDatabaseLongTermRetentionBackupModel model)
+        {
+            Management.Sql.Models.LongTermRetentionBackupOperationResult response = Communicator.UpdateDatabaseLongTermRetentionBackup(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName,
+                new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(model.RequestedBackupStorageRedundancy));
+
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                Location = model.Location,
+                ServerName = model.ServerName,
+                DatabaseName = model.DatabaseName,
+                BackupName = model.BackupName,
+                ResourceGroupName = model.ResourceGroupName,
+                RequestedBackupStorageRedundancy = response.TargetBackupStorageRedundancy
+            };
+        }
+
+        /// <summary>
         /// Create or update a backup LongTermRetention vault for a given Azure SQL Server
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
@@ -559,7 +592,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
             };
 
             if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)

@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyChosenIsGeoWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyChosenIsGeoWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
         /// </summary>
         internal static string BackupRedundancyNotChosenTakeGeoWarning {
@@ -570,15 +579,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string FailoverGroupRemoveDatabaseNotExists {
             get {
                 return ResourceManager.GetString("FailoverGroupRemoveDatabaseNotExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
-        /// </summary>
-        internal static string GeoBackupRedundancyChosenWarning {
-            get {
-                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
             }
         }
         

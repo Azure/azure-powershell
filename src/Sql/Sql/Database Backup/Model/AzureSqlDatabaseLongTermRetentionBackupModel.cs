@@ -71,5 +71,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the resource group name.
         /// </summary>
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current backup storage redundancy for the database
+        /// </summary>
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested backup storage redundancy for the database
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
     }
 }

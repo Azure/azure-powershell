@@ -634,7 +634,7 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
-  <data name="GeoBackupRedundancyChosenWarning" xml:space="preserve">
+  <data name="BackupRedundancyChosenIsGeoWarning" xml:space="preserve">
     <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
   <data name="BackupRedundancyNotChosenTakeGeoWarning" xml:space="preserve">

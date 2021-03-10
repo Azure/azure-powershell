@@ -368,7 +368,7 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.BackupStorageRedundancy
-		Assert-AreEqual $db.BackupStorageRedundancy "Local"
+		Assert-AreEqual $db.RequestedBackupStorageRedundancy "Local"
 	}
 	finally
 	{
