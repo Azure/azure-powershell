@@ -17,11 +17,11 @@ Gets information about the specified cluster.
 ### [Get-AzStreamAnalyticsClusterStreamingJob](Get-AzStreamAnalyticsClusterStreamingJob.md)
 Lists all of the streaming jobs in the given cluster.
 
+### [Get-AzStreamAnalyticsDefaultFunctionDefinition](Get-AzStreamAnalyticsDefaultFunctionDefinition.md)
+Retrieves the default definition of a function based on the parameters specified.
+
 ### [Get-AzStreamAnalyticsFunction](Get-AzStreamAnalyticsFunction.md)
 Gets details about the specified function.
-
-### [Get-AzStreamAnalyticsFunctionDefaultDefinition](Get-AzStreamAnalyticsFunctionDefaultDefinition.md)
-Retrieves the default definition of a function based on the parameters specified.
 
 ### [Get-AzStreamAnalyticsInput](Get-AzStreamAnalyticsInput.md)
 Gets details about the specified input.

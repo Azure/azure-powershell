@@ -87,7 +87,19 @@ directive:
           "description": "Resource type"
         }
       }
-
+  - from: swagger-document
+    where: $.definitions.AzureMachineLearningServiceFunctionBindingRetrievalProperties.properties
+    transform: >-
+      return {
+        "endpoint": {
+          "type": "string",
+          "description": "The Request-Response execute endpoint of the Azure Machine Learning web service."
+        },
+        "udfType": {
+          "$ref": "#/definitions/UdfType",
+          "description": "The function type."
+        }
+      }
 # Remove cmdlets
   - where:
       verb: Set
@@ -99,6 +111,11 @@ directive:
       subject: ^StreamingJob$
     set:
       subject: Job
+  - where:
+      verb: Get
+      subject: ^FunctionDefaultDefinition$
+    set:
+      subject: DefaultFunctionDefinition
 
 # Hide cmdlets for custom
   - where:
@@ -116,6 +133,10 @@ directive:
   - where:
       verb: New|Update
       subject: Output$
+    hide: true
+  - where:
+      verb: Get
+      subject: DefaultFunctionDefinition$
     hide: true
 
 # Remove variant of cmdlet
@@ -144,21 +165,11 @@ directive:
       subject: Transformation$
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
-  # - where:
-  #     verb: New
-  #     subject: Job$
-  #     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  #   remove: true
-  # - where:
-  #     verb: Update
-  #     subject: Job$
-  #     variant: ^Update$|^UpdateViaIdentity$
-  #   remove: true
 
 # Rename parameter name
   - where:
       verb: Get
-      subject: FunctionDefaultDefinition$
+      subject: DefaultFunctionDefinition$
       parameter-name: FunctionName
     set:
       parameter-name: Name
@@ -174,10 +185,8 @@ directive:
     set:
       subject: Quota
 
-  #  Object is forbidden to be expanded  
   - no-inline:
-    - FunctionConfiguration
-    - InputProperties
-    - OutputDataSource
-
+      - FunctionConfiguration
+      - InputProperties
+      - OutputDataSource
 ```
