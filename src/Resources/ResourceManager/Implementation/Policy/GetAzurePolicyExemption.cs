@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string PolicyAssignmentIdFilter { get; set; }
 
         /// <summary>
-        /// Gets or sets the all switch
+        /// Gets or sets the descendent scope switch
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionIncludeDescendentsHelp)]
         public SwitchParameter IncludeDescendent { get; set; }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Queries the ARM cache and returns the cached resource that match the query specified.
+        /// Queries the ARM cache and returns the cached resource that matches the query specified.
         /// </summary>
         /// <param name="defaultApiVersion">The default api version</param>
         private async Task<ResponseWithContinuation<JObject[]>> GetResources(string defaultApiVersion)
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Returns true if it is scope level policy exemption list call
+        /// Returns true if it is a management group level policy exemption list call
         /// </summary>
         private bool IsManagementGroupScope(string resourceId)
         {

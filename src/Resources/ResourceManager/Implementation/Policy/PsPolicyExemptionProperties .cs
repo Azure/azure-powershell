@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         }
 
         /// <summary>
-        /// Gets or sets the policy assignment Id associate with the policy exemption.
+        /// Gets or sets the policy assignment Id associated with the policy exemption.
         /// </summary>
         public string PolicyAssignmentId { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy definition reference Id when the associated policy assignment is an assignment of policy set.
+        /// Gets or sets the policy definition reference Ids when the associated policy assignment is for a policy set (initiative).
         /// </summary>
         public string[] PolicyDefinitionReferenceIds { get; set; }
 

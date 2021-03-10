@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PsPolicyAssignment PolicyAssignment { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
+        /// Gets or sets the policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyExemptionPolicyDefinitionReferenceIdsHelp)]
         [ValidateNotNullOrEmpty]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (this.PolicyAssignment != null && this.PolicyAssignment.PolicyAssignmentId == null)
             {
-                throw new PSInvalidOperationException("The supplied PolicyAssignment object is invalid.");
+                throw new PSInvalidOperationException("The supplied PolicyAssignment must have a valid resource ID.");
             }
 
             if (string.IsNullOrEmpty(this.ExemptionCategory))

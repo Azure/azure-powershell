@@ -215,17 +215,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        protected string MakePolicyAssignmentId(string scope, string resourceName)
-        {
-            return ResourceIdUtility.GetResourceId(
-                resourceId: scope ?? $"/{Constants.Subscriptions}/{DefaultContext.Subscription.Id}",
-                extensionResourceType: Constants.MicrosoftAuthorizationPolicyAssignmentType,
-                extensionResourceName: resourceName);
-        }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
         protected string GetPolicyArtifactFullyQualifiedId(string scope, string resourceType, string resourceName)
         {
             return ResourceIdUtility.GetResourceId(

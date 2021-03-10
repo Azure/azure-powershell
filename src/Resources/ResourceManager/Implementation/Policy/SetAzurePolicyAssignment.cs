@@ -192,15 +192,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var policyAssignmentObject = new PolicyAssignment
             {
-                Name = this.Name ?? this?.InputObject?.Name ?? resource.Name,
+                Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
                 Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
                 Location = this.Location ?? this.InputObject?.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? this?.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? this?.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
                     Scope = resource.Properties["scope"]?.ToString(),
-                    NotScopes = this.NotScope ?? this?.InputObject?.Properties?.NotScopes ?? resource.Properties["NotScopes"]?.ToString()?.Split(','),
+                    NotScopes = this.NotScope ?? this.InputObject?.Properties?.NotScopes ?? resource.Properties["NotScopes"]?.ToString()?.Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"]?.ToString(),
                     Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties["metadata"] as JObject,
                     EnforcementMode = this.EnforcementMode ?? inputMode ?? existingMode,

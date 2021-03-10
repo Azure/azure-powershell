@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy exemption scope parameter
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionScopeHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ExemptionCategory { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
+        /// Gets or sets the policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionPolicyDefinitionReferenceIdsHelp)]
         [ValidateNotNullOrEmpty]
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public DateTime? ExpiresOn { get; set; }
 
         /// <summary>
-        /// Gets or sets a flag indicating whether clear the expiration date and time of the policy exemption.
+        /// Gets or sets a flag indicating whether to clear the expiration date and time of the policy exemption.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionClearExpirationHelp)]
         public SwitchParameter ClearExpiration { get; set; }
 
         /// <summary>
-        /// Gets or sets the new policy exemption metadata parameter
+        /// Gets or sets the policy exemption metadata parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionMetadataHelp)]
         [ValidateNotNullOrEmpty]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             // get incoming object properties if present
             JObject inputMetadata = null;
-            if (this?.InputObject != null)
+            if (this.InputObject != null)
             {
                 var newProperties = this.InputObject.Properties?.ToJToken();
                 inputMetadata = newProperties["metadata"] as JObject;
@@ -159,15 +159,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var parameterMetadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
             var policyExemption = new PolicyExemption
             {
-                Name = this.Name ?? this?.InputObject?.Name ?? resource.Name,
+                Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
                 Properties = new PolicyExemptionProperties
                 {
-                    DisplayName = this.DisplayName ?? this?.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? this?.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
-                    ExemptionCategory = this.ExemptionCategory ?? this?.InputObject?.Properties?.ExemptionCategory ?? resource.Properties["exemptionCategory"]?.ToString(),
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
+                    ExemptionCategory = this.ExemptionCategory ?? this.InputObject?.Properties?.ExemptionCategory ?? resource.Properties["exemptionCategory"]?.ToString(),
                     PolicyAssignmentId = resource.Properties["policyAssignmentId"]?.ToString(),
-                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceIds ?? this?.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties["policyDefinitionReferenceIds"]?.ToString()?.Split(','),
-                    ExpiresOn = this.ClearExpiration.IsPresent ? null : this.ExpiresOn?.ToUniversalTime() ?? this?.InputObject?.Properties?.ExpiresOn ?? existingExpiration,
+                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceIds ?? this.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties["policyDefinitionReferenceIds"]?.ToString()?.Split(','),
+                    ExpiresOn = this.ClearExpiration.IsPresent ? null : this.ExpiresOn?.ToUniversalTime() ?? this.InputObject?.Properties?.ExpiresOn ?? existingExpiration,
                     Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties["metadata"] as JObject,
                 }
             };
