@@ -77,7 +77,7 @@
 
                 if($tagIndex -ne -1)
                 {
-                    $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion[$index].Criterion = $Criteria
+                    $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion[$tagIndex].Criterion = $Criteria
                     return $Policy
                 }
                 
