@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
@@ -124,7 +125,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
-                
+            Management.NetApp.Models.SnapshotPolicy existingSnapshotPolicy = null;
+            try
+            {
+                existingSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, Name);
+            }
+            catch
+            {
+                existingSnapshotPolicy = null;
+            }
+            if (existingSnapshotPolicy == null)
+            {
+                throw new Exception(string.Format("A Snapshot Policy with name '{0}' in resource group '{1}' does not exists. Please use New-AzNetAppFilesSnapshotPolicy to create a Snapshot Policy.", this.Name, this.ResourceGroupName));
+            }
+
             var snapshotPolicyBody = new Management.NetApp.Models.SnapshotPolicy()
             {
                 Location = Location,
@@ -135,7 +149,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
                 MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null                
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Create(snapshotPolicyBody, ResourceGroupName, AccountName, snapshotPolicyName: Name);
                 WriteObject(anfSnapshotPolicy.ConvertToPs());

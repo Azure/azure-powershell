@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/set-aznetappfilesbackuppolicy
 schema: 2.0.0
 ---
 
 # Set-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) Backup Policy with the new data set. 
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Set-AzNetAppFilesBackupPolicy -Name <String> [-Enabled] [-DailyBackupsToKeep <In
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetAppFilesBackupPolicy** cmdlet modifies an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzNetAppFilesBackupPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MyBackupPolicy" -Tag @{"tag1" = "tagValue"} -Enabled -DailyBackupsToKeep 1 -WeeklyBackupsToKeep 2 -MonthlyBackupsToKeep 2 -YearlyBackupsToKeep 1
 ```
 
-{{ Add example description here }}
+This command performs an update on the given backup policy. 
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/set-aznetappfilessnapshotpolicy
 schema: 2.0.0
 ---
 
 # Set-AzNetAppFilesSnapshotPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set. 
 
 ## SYNTAX
 
@@ -30,16 +30,37 @@ Set-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled] -HourlySchedule <PSNet
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetAppFilesPool** cmdlet modifies an ANF Snapshot Policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$hourlySchedule = @{        
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $dailySchedule = @{
+        Hour = 1
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $weeklySchedule = @{
+        Minute = 2    
+        Hour = 1		        
+        Day = "Sunday,Monday"
+        SnapshotsToKeep = 6
+    }
+    $monthlySchedule = @{
+        Minute = 2    
+        Hour = 1        
+        DaysOfMonth = "2,11,21"
+        SnapshotsToKeep = 6
+    }
+PS C:\> Set-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
 ```
 
-{{ Add example description here }}
+This command creates the new ANF snapshot policy for ANF account named account "MyAccount".
 
 ## PARAMETERS
 

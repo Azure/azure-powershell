@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/set-aznetappfilespool
 schema: 2.0.0
 ---
 
 # Set-AzNetAppFilesPool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) Capacity Pool with the new data set. 
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetAppFilesPool** cmdlet modifies an ANF Capacity Pool.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Set-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool" -l "westus2" -PoolSize 4398046511104 -ServiceLevel "Premium" -QosType "Auto"
 ```
 
-{{ Add example description here }}
+This command updates the new ANF pool "MyAnfPool" within the account "MyAnfAccount".
 
 ## PARAMETERS
 

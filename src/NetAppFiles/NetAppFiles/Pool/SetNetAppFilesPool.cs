@@ -119,6 +119,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 }
             }
 
+            CapacityPool existingPool = null;
+            try
+            {
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, ResourceGroupName, Name);
+            }
+            catch
+            {
+                existingPool = null;
+            }
+            if (existingPool == null)
+            {
+                throw new Exception(string.Format("A Capacity Pool with name '{0}' in resource group '{1}' does not exist. Please use New-AzNetAppFilesPool to create a new Capacity Pool.", this.Name, this.ResourceGroupName));
+            }
+
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
@@ -135,7 +149,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 QosType = QosType
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
                 WriteObject(anfPool.ToPsNetAppFilesPool());
