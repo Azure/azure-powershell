@@ -29,7 +29,7 @@ New-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-N
 ```
 
 ## DESCRIPTION
-Creates a new Server Trust Group with specified location, members, trust scope, name and resource group.}
+Creates a new Server Trust Group with specified location, members, trust scope, name and resource group.
 
 ## EXAMPLES
 
