@@ -5,27 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzAfdEndpoint
+# New-AzAfdCustomDomain
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Get-AzAfdEndpoint [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Get-AzAfdEndpoint -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Get-AzAfdEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzAfdCustomDomain -CustomDomainName <String> -HostName <String> -ProfileName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +32,21 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -CustomDomainName
+The Azure Front Door custom domain name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -57,33 +62,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-The Azure Front Door endpoint name.
+### -HostName
+The host name of the domain.
+Must be a domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Profile
-The Azure Front Door profile object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
-Parameter Sets: ByObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -92,7 +83,7 @@ The Azure Front Door profile name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -107,7 +98,7 @@ The Azure resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,15 +108,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Azure resource id.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.AfdEndpoint.PSAfdEndpoint
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdCustomDomain
 
 ## NOTES
 

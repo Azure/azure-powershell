@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzAfdEndpoint
+# Set-AzAfdProfile
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,18 +14,14 @@ schema: 2.0.0
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzAfdEndpoint [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzAfdProfile [-ProfileName <String>] [-ResourceGroupName <String>] [-Tags <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzAfdEndpoint -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Get-AzAfdEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzAfdProfile -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,21 +53,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-The Azure Front Door endpoint name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Profile
 The Azure Front Door profile object.
 
@@ -95,7 +76,7 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,22 +91,53 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Azure resource id.
+### -Tags
+The tags associated to the Azure resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: System.Collections.Hashtable
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,11 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.AfdEndpoint.PSAfdEndpoint
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
 
 ## NOTES
 

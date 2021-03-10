@@ -5,27 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzAfdEndpoint
+# New-AzAfdRule
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Get-AzAfdEndpoint [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Get-AzAfdEndpoint -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Get-AzAfdEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzAfdRule [-CacheExpirationAction <PSAfdRuleCacheExpirationAction>] -ProfileName <String>
+ -ResourceGroupName <String> -RuleSetName <String> -RuleName <String> -Order <Int32>
+ [-MatchProcessingBehavior <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +32,21 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -CacheExpirationAction
+The cache expiration rule action object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRuleCacheExpirationAction
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -57,12 +62,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-The Azure Front Door endpoint name.
+### -MatchProcessingBehavior
+If this rule is a match should the rules engine continue running the remaining rules or stop.
+If not present, defaults to Continue.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -72,18 +78,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Profile
-The Azure Front Door profile object.
+### -Order
+The order in which the rules are applied for the endpoint.
+Possible values {0,1,2,3,………}.
+A rule with a lesser order will be applied before a rule with a greater order.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
-Parameter Sets: ByObjectParameterSet
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -92,7 +100,7 @@ The Azure Front Door profile name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -107,7 +115,7 @@ The Azure resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,12 +125,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Azure resource id.
+### -RuleName
+The Azure Front Door rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetName
+The Azure Front Door rule set name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -141,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.AfdEndpoint.PSAfdEndpoint
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdRule
 
 ## NOTES
 

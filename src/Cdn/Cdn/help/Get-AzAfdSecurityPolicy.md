@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzAfdEndpoint
+# Get-AzAfdSecurityPolicy
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,18 +14,18 @@ schema: 2.0.0
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzAfdEndpoint [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
+Get-AzAfdSecurityPolicy -ProfileName <String> -ResourceGroupName <String> [-SecurityPolicyName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzAfdEndpoint -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAfdSecurityPolicy -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzAfdEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAfdSecurityPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,24 +46,9 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointName
-The Azure Front Door endpoint name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
 
 Required: False
 Position: Named
@@ -76,7 +61,7 @@ Accept wildcard characters: False
 The Azure Front Door profile object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
+Type: PSAfdProfile
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -91,7 +76,7 @@ Accept wildcard characters: False
 The Azure Front Door profile name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -106,7 +91,7 @@ Accept wildcard characters: False
 The Azure resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -121,11 +106,26 @@ Accept wildcard characters: False
 The Azure resource id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityPolicyName
+The Azure Front Door security policy name.
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,11 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdProfile
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.AfdEndpoint.PSAfdEndpoint
+### Microsoft.Azure.Commands.Cdn.AfdModels.PSAfdSecurityPolicy
 
 ## NOTES
 
