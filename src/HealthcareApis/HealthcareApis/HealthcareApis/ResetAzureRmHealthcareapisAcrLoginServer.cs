@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             Mandatory = false,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "List of Login Server That Will Replace The Existing One.")]
-        public string[] AcrLoginServers { get; set; }
+        public string[] AcrLoginServer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                     healthcareApisAccount.Properties.AcrConfiguration = new ServiceAcrConfigurationInfo
                     {
-                        LoginServers = AcrLoginServers
+                        LoginServers = AcrLoginServer
                     };
 
                     try

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "List of Login Server That Will Be Removed.")]
         [ValidateNotNullOrEmpty]
-        public string[] AcrLoginServers { get; set; }
+        public string[] AcrLoginServer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                                 AcrConfiguration.
                                 LoginServers;
 
-            foreach (string loginServer in AcrLoginServers)
+            foreach (string loginServer in AcrLoginServer)
             {
                 if (mergedLoginServers.Contains(loginServer))
                 {
