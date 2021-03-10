@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Vault
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVault))]
     [Alias("Get-AnfVault")]
     public class GetAzureRmNetAppFilesVault: AzureNetAppFilesCmdletBase
     {
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Vault
                 AccountName = NameParts[0];
             }
 
-            var anfBackups = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
-            WriteObject(anfBackups, true);
+            var anfVault = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
+            WriteObject(anfVault, true);
         }
     }
 }

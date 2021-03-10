@@ -145,6 +145,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         public string[] SecurityOperator { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "When AES is enabled, set if AES encryption will be enabled for SMB communication.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AesEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When LDAP over SSL/TLS is enabled, Specifies whether or not the LDAP traffic needs to be signed.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter LdapSigning { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When LDAP over SSL/TLS is enabled, specifies whether or not the LDAP traffic needs to be secured via TLS.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter LdapOverTLS { get; set; }
+
+        [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -203,6 +221,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                     anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
                     anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
+                    if (AesEncryption)
+                    {
+                        anfADConfig.AesEncryption = AesEncryption;
+                    }
+                    if (LdapSigning)
+                    {
+                        anfADConfig.LdapSigning = LdapSigning;
+                    }
+                    if (LdapOverTLS)
+                    {
+                        anfADConfig.LdapOverTLS = LdapOverTLS;
+                    }
                 }
                 else
                 {
@@ -225,6 +255,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                         anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                         anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
                         anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
+                        if (AesEncryption)
+                        {
+                            anfADConfig.AesEncryption = AesEncryption;
+                        }
+                        if (LdapSigning)
+                        {
+                            anfADConfig.LdapSigning = LdapSigning;
+                        }
+                        if (LdapOverTLS)
+                        {
+                            anfADConfig.LdapOverTLS = LdapOverTLS;
+                        }
                     }
                 }
                 

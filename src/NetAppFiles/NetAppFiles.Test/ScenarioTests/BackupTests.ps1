@@ -28,9 +28,11 @@ function Test-BackupCrud
     $backupName1 = Get-ResourceName
     $backupName2 = Get-ResourceName    
     $backupPolicyName1 = Get-ResourceName
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
-    #$backupLocation = "southcentralus"
-    $backupLocation = "eastus2euap"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
+    #$backupLocation = "eastus2euap"
+    $backupLocation = "southcentralusstage"
+    $backupVNetLocation = "southcentralus"
+    #$backupLocation = "centralus"
     $label = "powershellBackupTest"
     $labelUpdate = "powershellBackupTestUpdate"
     $label2 = "powershellBackupTest2"
@@ -70,15 +72,16 @@ function Test-BackupCrud
 
     function WaitForSucceeded #($sourceOnly)
     {
-        $i = 1 
+        $i = 0 
         do
         {
-            $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1            
+            $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
             Start-Sleep -Seconds 10.0
             $i++
-        }
-        while (($sourceVolume.ProvisioningState -ne "Succeeded") -or ($i -le 10));
+        }               
+        until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);        
     }    
+
     function SleepDuringRecord
     {
         if ($env:AZURE_TEST_MODE -eq "Record")
@@ -91,10 +94,10 @@ function Test-BackupCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation
 
         # create virtual network
-        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
@@ -106,7 +109,8 @@ function Test-BackupCrud
 
         # create and check BackupPolicy
         $retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
-        
+        Assert-NotNull $retrievedBackupPolicy.Id
+
         # create pool
         $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
 
@@ -130,8 +134,12 @@ function Test-BackupCrud
             VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $true
+            BackupPolicyId = $retrievedBackupPolicy.Id
         }
+
         SleepDuringRecord
+        WaitForSucceeded 
+
          # volume update with backup policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
         SleepDuringRecord

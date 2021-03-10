@@ -21,6 +21,10 @@
 * Added SecurityOperators to ActiveDirectory
 * Volume list now gets all volumes instead of first over 100 volumes
 * Added SnapshotPolicyId to NewAzNetAppFilesVolume to set snapshot policy to volume
+* Added AesEncryption, ldapOverTLS, LdapSigning to ActiveDirectory
+* Added failureReason to Backup and backup patch  
+* Added encryption and systemData to NetAppAccount
+* Added encryptionKeySource to volume
 
 ## Version 0.3.0
 * Added aesEncryption, ldapSigning properties to ActiveDirectory

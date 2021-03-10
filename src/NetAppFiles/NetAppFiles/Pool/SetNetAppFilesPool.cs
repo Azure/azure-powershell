@@ -26,12 +26,12 @@ using Microsoft.Azure.Management.NetApp.Models;
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
     [Cmdlet(
-        "New",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesPool",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesPool))]
-    [Alias("New-AnfPool")]
-    public class NewAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfPool")]
+    public class SetAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -117,21 +117,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 {
                     tagPairs.Add(key, Tag[key].ToString());
                 }
-            }
-
-            CapacityPool existingPool = null;
-
-            try
-            {
-                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, ResourceGroupName,  Name);
-            }
-            catch
-            {
-                existingPool = null;
-            }
-            if (existingPool != null)
-            {
-                throw new Exception(string.Format("A Capacity Pool with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.", this.Name, this.ResourceGroupName));
             }
 
             if (ParameterSetName == ParentObjectParameterSet)

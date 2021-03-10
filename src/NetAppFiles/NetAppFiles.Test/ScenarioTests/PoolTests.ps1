@@ -43,6 +43,11 @@ function Test-PoolCrud
         Assert-AreEqual True $retrievedPool.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedPool.Tags[$newTagName].ToString()
 
+        #update with set
+        $setNewTagValue = "tagValue1-set"
+        $retrievedPool = Set-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel -Tag @{$newTagName = $setNewTagValue}
+        Assert-AreEqual $setNewTagValue $retrievedPool.Tags[$newTagName].ToString()
+
         # create and check pool 2 using the confirm flag
         $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel -Confirm:$false
         Assert-AreEqual "$accName/$poolName2" $retrievedPool.Name

@@ -22,18 +22,16 @@ using Microsoft.Azure.Management.NetApp;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
-using System.Collections.Generic;
-using System;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
+namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
     [Cmdlet(
-        "New",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
+        "Set",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSnapshotPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [Alias("New-AnfBackupPolicy")]
-    public class NewAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesSnapshotPolicy))]
+    [Alias("Set-AnfSnapshotPolicy")]
+    public class SetAzureRmNetAppFilesSnapshotPolicy : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The location of the resource")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.NetApp/netAppAccounts/backupPolicies")]
+        [LocationCompleter("Microsoft.NetApp/netAppAccounts/snapshotPolicies")]
         public string Location { get; set; }
 
         [Parameter(
@@ -63,11 +61,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF backup policy")]
+            HelpMessage = "The name of the ANF snapshot policy")]
         [ValidateNotNullOrEmpty]
-        [Alias("BackupPolicyName")]
+        [Alias("SnapshotPolicyName")]
         [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/backupPolicies",
+            "Microsoft.NetApp/netAppAccounts/snapshotPolicies",
             nameof(ResourceGroupName),
             nameof(AccountName))]
         public string Name { get; set; }
@@ -77,30 +75,30 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             HelpMessage = "The property to decide policy is enabled or not")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Enabled { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Daily backups count to keep")]
-        [ValidateNotNullOrEmpty]
-        public int? DailyBackupsToKeep { get; set; }
         
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Weekly backups count to keep")]
+            Mandatory = true,
+            HelpMessage = "A hashtable array which represents the hourly Schedule")]
         [ValidateNotNullOrEmpty]
-        public int? WeeklyBackupsToKeep { get; set; }
+        public PSNetAppFilesHourlySchedule HourlySchedule { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Monthly backups count to keep")]
+            Mandatory = true,
+            HelpMessage = "A hashtable array which represents the daily Schedule")]
         [ValidateNotNullOrEmpty]
-        public int? MonthlyBackupsToKeep { get; set; }
+        public PSNetAppFilesDailySchedule DailySchedule { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Yearly backups count to keep")]
+            Mandatory = true,
+            HelpMessage = "A hashtable array which represents the montly Schedule")]
         [ValidateNotNullOrEmpty]
-        public int? YearlyBackupsToKeep { get; set; }
+        public PSNetAppFilesWeeklySchedule WeeklySchedule { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "A hashtable array which represents the montly Schedule")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesMonthlySchedule MonthlySchedule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Account object for the new Backup Policy")]
+            HelpMessage = "The Account for the new Snapshot Policy object")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
@@ -126,48 +124,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
-            IDictionary<string, string> tagPairs = null;
-
-            if (Tag != null)
-            {
-                tagPairs = new Dictionary<string, string>();
-
-                foreach (string key in Tag.Keys)
-                {
-                    tagPairs.Add(key, Tag[key].ToString());
-                }
-            }
-
-            Management.NetApp.Models.BackupPolicy existingBackupPolicy = null;
-
-            try
-            {
-                existingBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, Name);
-            }
-            catch
-            {
-                existingBackupPolicy = null;
-            }
-            if (existingBackupPolicy != null)
-            {
-                throw new Exception(string.Format("A Backup Policy with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesBackupPolicy to update an existing Backup Policy.", this.Name, this.ResourceGroupName));
-            }
-
-            var backupPolicyBody = new Management.NetApp.Models.BackupPolicy()
+                
+            var snapshotPolicyBody = new Management.NetApp.Models.SnapshotPolicy()
             {
                 Location = Location,
                 Enabled = Enabled,
-                Tags = tagPairs,
-                DailyBackupsToKeep = DailyBackupsToKeep,
-                WeeklyBackupsToKeep = WeeklyBackupsToKeep,
-                MonthlyBackupsToKeep = MonthlyBackupsToKeep,
-                YearlyBackupsToKeep = YearlyBackupsToKeep
+                HourlySchedule = (HourlySchedule != null) ? HourlySchedule.ConvertFromPs() : null,
+                DailySchedule = (DailySchedule != null) ? DailySchedule.ConvertFromPs() : null,
+                WeeklySchedule = (WeeklySchedule != null) ? WeeklySchedule.ConvertFromPs() : null,
+                MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null                
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Create(ResourceGroupName, AccountName, backupPolicyName: Name, body: backupPolicyBody);
-                WriteObject(anfBackupPolicy.ConvertToPs());
+                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Create(snapshotPolicyBody, ResourceGroupName, AccountName, snapshotPolicyName: Name);
+                WriteObject(anfSnapshotPolicy.ConvertToPs());
             }
         }
     }
