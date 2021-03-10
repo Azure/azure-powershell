@@ -1527,7 +1527,8 @@ function Test-AzureFirewallCRUDAllowActiveFTP {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-    
+}
+
 <#
 .SYNOPSIS
 Tests AzureFirewall NoDataPip
