@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             CapacityPool existingPool = null;
             try
             {
-                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, ResourceGroupName, Name);
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName, Name);
             }
             catch
             {
