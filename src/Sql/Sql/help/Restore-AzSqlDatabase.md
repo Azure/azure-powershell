@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 72E0E558-74D7-4A50-A975-FA7D0C0B301E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/restore-azsqldatabase
+online version: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
 schema: 2.0.0
 ---
 

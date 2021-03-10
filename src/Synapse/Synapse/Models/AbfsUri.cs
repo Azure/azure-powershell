@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
 using System;
 using System.Text.RegularExpressions;
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
             else 
             {
-                throw new SynapseException("Unsupported ADLS Gen2 Uri Scheme: " + rawUri);
+                throw new AzPSInvalidOperationException("Unsupported ADLS Gen2 Uri Scheme: " + rawUri);
             }
 
             if (matcher.Success) 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return abfsUri;
             }
 
-            throw new SynapseException("Unmatched ADLS Gen2 Uri: " + rawUri);
+            throw new AzPSInvalidOperationException("Unmatched ADLS Gen2 Uri: " + rawUri);
         }
 
         public static bool IsType(string uri)

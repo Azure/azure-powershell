@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: C71C486E-34EB-42B5-B38A-D85B7DAA2F74
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchpool
+online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchpool
 schema: 2.0.0
 ---
 

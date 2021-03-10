@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 21E9F441-A00B-4F79-8FF1-968D92982471
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/unpublish-azcdnendpointcontent
+online version: https://docs.microsoft.com/powershell/module/az.cdn/unpublish-azcdnendpointcontent
 schema: 2.0.0
 ---
 

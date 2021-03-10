@@ -28,7 +28,7 @@ Etag                                   Name                              Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratesolution
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]

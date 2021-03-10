@@ -39,7 +39,7 @@ To create the parameters described below, construct a hash table containing the 
 PARAMETER <IServerKey>: A MySQL Server key.
   [Uri <String>]: The URI of the key.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/set-azmysqlflexibleserverkey
+https://docs.microsoft.com/powershell/module/az.mysql/set-azmysqlflexibleserverkey
 #>
 function Set-AzMySqlFlexibleServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey])]

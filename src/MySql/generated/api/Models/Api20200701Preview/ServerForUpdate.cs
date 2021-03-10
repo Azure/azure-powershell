@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword = value ?? null; }
+        public System.Security.SecureString AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerPropertiesForUpdateInternal)Property).AdministratorLoginPassword = value ?? null; }
 
         /// <summary>delegated subnet arm resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string AdministratorLoginPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>delegated subnet arm resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
     {
         /// <summary>The password of the administrator login.</summary>
-        string AdministratorLoginPassword { get; set; }
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>Delegated subnet arguments.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDelegatedSubnetArguments DelegatedSubnetArgument { get; set; }
         /// <summary>delegated subnet arm resource id.</summary>

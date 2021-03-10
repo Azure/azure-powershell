@@ -27,6 +27,7 @@
   <ItemGroup>
     <None Update="Resources\*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="*.bicep" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\*.pfx" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

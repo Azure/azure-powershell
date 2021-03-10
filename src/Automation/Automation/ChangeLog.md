@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+## Version 1.4.3
+* Fixed the issue of processing `PSCustomObject` and `Array`.
+
 ## Version 1.4.2
 * Fixed issue where description was not populated for update management schedules
 

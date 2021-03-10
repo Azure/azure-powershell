@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlert[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlert>(__y, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.AlertTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlert[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlert>(__y, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.AlertTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IAlertsResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

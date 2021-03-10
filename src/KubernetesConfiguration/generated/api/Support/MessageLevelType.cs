@@ -6,7 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Level of the message.</summary>
     public partial struct MessageLevelType :
         System.IEquatable<MessageLevelType>
     {

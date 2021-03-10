@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
-        public string UserId { get; }
+        public string HashUserId { get; }
 
         /// <summary>
         /// Gets the hashed MAC address.
@@ -50,6 +50,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Gets the current Az module version.
         /// </summary>
         public Version AzVersion { get; }
+
+        /// <summary>
+        /// Gets whether the user is an internal user.
+        /// </summary>
+        public bool IsInternal { get; }
 
         /// <summary>
         /// Updates the Az context.

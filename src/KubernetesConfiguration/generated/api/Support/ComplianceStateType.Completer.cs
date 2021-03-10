@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>The compliance state of the configuration.</summary>
+    /// <summary>Argument completer implementation for ComplianceStateType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ComplianceStateTypeTypeConverter))]
     public partial struct ComplianceStateType :
         System.Management.Automation.IArgumentCompleter
