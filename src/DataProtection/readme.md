@@ -25,3 +25,58 @@ AutoRest does not generate authentication code for the module. Authentication is
 ## Development
 For information on how to develop for `Az.DataProtection`, see [how-to.md](how-to.md).
 <!-- endregion -->
+
+# My API 
+
+This file contains the configuration for generating My API from the OpenAPI specification.
+
+> see https://aka.ms/autorest
+
+``` yaml
+# it's the same options as command line options, just drop the double-dash!
+require:
+  - $(this-folder)/readme.azure.noprofile.md
+input-file: dataprotection_preview.json
+output-folder: ../../azure-powershell/src/dataprotection
+title: DataProtectionClient
+directive:
+  - where:
+      verb: Get
+      subject: BackupVaultResource.*
+    hide: true
+  - where:
+      verb: Get
+      subject: RecoveryPointList.*
+    hide: true
+  - where:
+      verb: Set
+      subject: BackupPolicy.*
+    hide: true
+  - no-inline:
+    - UserFacingError
+    - InnerError
+    - BackupInstance
+    - RestoreTargetInfo
+    - PolicyParameters
+    - SystemData
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBaseBackupPolicy Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerContext Trigger');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupParameters BackupParameter');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPoint Property');
+```
+
+## Alternate settings
+
+This section is only activated if the `--make-it-rain` switch is added to the command line
+
+``` yaml $(make-it-rain)
+namespace: MyCompany.Special.Rest
+```
