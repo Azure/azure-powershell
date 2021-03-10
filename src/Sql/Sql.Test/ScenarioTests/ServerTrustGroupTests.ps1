@@ -42,15 +42,15 @@ function Test-ServerTrustGroup()
 		Assert-Null $serverTrustGroup "Server Trust Group with name $stgName exists."
 
 		# Create new Server Trust Group
-		$serverTrustGroup = New-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location -Name $stgName -GroupMembers $managedInstance1.ManagedInstanceName,$managedInstance2.ManagedInstanceName -TrustScope GlobalTransactions,ServiceBroker
+		$serverTrustGroup = New-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location -Name $stgName -GroupMember $managedInstance1,$managedInstance2 -TrustScope GlobalTransactions
 		Assert-NotNull $serverTrustGroup "Server Trust Group is not created."
 
 		# Get specified Server Trust Group
 		$serverTrustGroup = Get-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location -Name $stgName
 		Assert-NotNull $serverTrustGroup "Server Trust Group $stgName does not exist."
 		Assert-AreEqual $serverTrustGroup.Name $stgName "Got unexpected name."
-		Assert-AreEqual $serverTrustGroup.TrustScope.Count 2 "Got unexpected trust scope."
-		Assert-AreEqual $serverTrustGroup.GroupMembers.Count 2 "Got unexpected number of group members."
+		Assert-AreEqual $serverTrustGroup.TrustScope.Count 1 "Got unexpected trust scope."
+		Assert-AreEqual $serverTrustGroup.GroupMember.Count 2 "Got unexpected number of group members."
 
 		# Get Server Trust Group in specified locaiton
 		$serverTrustGroups = Get-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location
@@ -75,6 +75,12 @@ function Test-ServerTrustGroup()
 		}
 		catch { }
 		Assert-Null $serverTrustGroup "Server Trust Group with name $stgName exists."
+
+		# Create new Server Trust Group with Group Member Resource Id
+		$serverTrustGroup = New-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location -Name $stgName -GroupMemberResourceId $managedInstance1.Id,$managedInstance2.Id -TrustScope GlobalTransactions
+		Assert-NotNull $serverTrustGroup "Server Trust Group is not created."
+
+		Remove-AzSqlServerTrustGroup -ResourceGroupName $rg.ResourceGroupName -Location $location -Name $stgName
 	}
 	finally
 	{

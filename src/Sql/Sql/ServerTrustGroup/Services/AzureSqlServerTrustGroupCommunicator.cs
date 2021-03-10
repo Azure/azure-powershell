@@ -31,8 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Server Trust Group
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
         public AzureSqlServerTrustGroupCommunicator(IAzureContext context)
         {
             Context = context;
@@ -70,9 +68,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services
         /// <summary>
         /// Gets the Azure Sql Server Trust Groups by Instance
         /// </summary>
-        public IPage<Management.Sql.Models.ServerTrustGroup> ListGroupsByInstance(string resourceGroupName, string serverTrustGroupName)
+        public IPage<Management.Sql.Models.ServerTrustGroup> ListGroupsByInstance(string resourceGroupName, string managedInstanceName)
         {
-            return GetCurrentSqlClient().ServerTrustGroups.ListByInstance(resourceGroupName, serverTrustGroupName);
+            return GetCurrentSqlClient().ServerTrustGroups.ListByInstance(resourceGroupName, managedInstanceName);
         }
 
         /// <summary>

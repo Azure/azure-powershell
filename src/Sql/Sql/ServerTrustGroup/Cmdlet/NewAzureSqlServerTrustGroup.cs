@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model;
+using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	/// <summary>
 	/// Cmdlet to create a new Azure Sql Server Trust Group.
 	/// </summary>
-	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "Default"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
+	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "GroupMemberObjectSet"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
 	public class NewAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
@@ -62,10 +64,21 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		/// Gets or sets group members of the ServerTrustGroup to use.
 		/// </summary>
 		[Parameter(Mandatory = true,
+			ParameterSetName = "GroupMemberObjectSet",
 			Position = 3,
 			HelpMessage = "Group members of the Server Trust Group to create.")]
 		[ValidateNotNullOrEmpty]
-		public List<String> GroupMembers { get; set; }
+		public List<ManagedInstance.Model.AzureSqlManagedInstanceModel> GroupMember { get; set; }
+
+		/// <summary>
+		/// Gets or sets group members of the ServerTrustGroup to use.
+		/// </summary>
+		[Parameter(Mandatory = true,
+			ParameterSetName = "GroupMemberResourceIdSet",
+			Position = 3,
+			HelpMessage = "Group members of the Server Trust Group to create.")]
+		[ValidateNotNullOrEmpty]
+		public List<string> GroupMemberResourceId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the trust scope of the ServerTrustGroup to use.
@@ -97,6 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 
 		protected override IEnumerable<AzureSqlServerTrustGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerTrustGroupModel> model)
 		{
+			bool objectSet = string.Equals(this.ParameterSetName, "GroupMemberObjectSet", System.StringComparison.OrdinalIgnoreCase);
 			List<AzureSqlServerTrustGroupModel> newEntity = new List<AzureSqlServerTrustGroupModel>();
 			newEntity.Add(new AzureSqlServerTrustGroupModel()
 			{
@@ -104,8 +118,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 				Location = this.Location,
 				Name = this.Name,
 				TrustScope = this.TrustScope,
-				GroupMembers = this.GroupMembers
-			});
+				GroupMember = objectSet ? ProcessGroupMembers(this.GroupMember) : GroupMemberResourceId
+			}); ;
 			return newEntity;
 		}
 
@@ -115,6 +129,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 			{
 				ModelAdapter.CreateServerTrustGroup(entity.First())
 			};
+		}
+
+		private List<string> ProcessGroupMembers(List<ManagedInstance.Model.AzureSqlManagedInstanceModel> groupMembers)
+		{
+			List<string> output = new List<string>();
+			foreach(ManagedInstance.Model.AzureSqlManagedInstanceModel member in groupMembers)
+			{
+				output.Add(member.Id);
+			}
+
+			return output;
 		}
 	}
 }

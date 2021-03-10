@@ -10,8 +10,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model
         /// Gets or sets the Id of the Server Trust Group.
         /// </summary>
         public string Id { get; set; }
+
         /// <summary>
-        /// Gets or sets the name of the primary location.
+        /// Gets or sets the name of the location.
         /// </summary>
         public string Location { get; set; }
 
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Model
         /// <summary>
         /// Gets or sets Server Trust Group members.
         /// </summary>
-        public IList<string> GroupMembers { get; set; }
+        public IList<string> GroupMember { get; set; }
 
         /// <summary>
         /// Gets or sets Server Trust Group trust scope.

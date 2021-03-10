@@ -43,21 +43,21 @@ The **Get-AzSqlServerTrustGroup** cmdlet get information about Server Trust Grou
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -Location "West Europe" -Name "ServerTrustGroup01" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe" -Name "ServerTrustGroup01"
 ```
 
-Gets information about Server Trust Group named ServerTrustGroup in resource group ResourceGroup in location West Europe.
+Gets information about Server Trust Group named ServerTrustGroup01 in resource group ResourceGroup01 in location West Europe.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -Location "West Europe" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe"
 ```
 
 Gets information about all Server Trust Groups in location West Europe in resource group ResourceGroup01.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSqlServerTrustGroup -InstanceName "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
 Gets information about all Server Trust Groups that have managed instance ManagedInstance01 as a member.
@@ -75,7 +75,7 @@ Gets information about Server Trust Group specified by its id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -90,12 +90,12 @@ Accept wildcard characters: False
 The name of the managed instance that is member of Server Trust Groups to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByInstanceSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The location of the Server Trust Group to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName, ListByLocationSet
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The name of the Server Trust Group to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName, ListByInstanceSet, ListByLocationSet
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 The resource id of instance to use
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
 Aliases:
 

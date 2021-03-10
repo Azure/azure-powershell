@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		/// Gets or sets the name of the instance to use for retrieving ServerTrustGroups.
 		/// </summary>
 		[Parameter(Mandatory = true,
-			Position = 3,
+			Position = 1,
 			ParameterSetName = "ListByInstanceSet",
 			HelpMessage = "The name of the managed instance that is member of Server Trust Groups to retrieve.")]
 		[ValidateNotNullOrEmpty]
