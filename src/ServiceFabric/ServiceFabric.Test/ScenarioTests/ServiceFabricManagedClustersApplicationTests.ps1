@@ -55,7 +55,7 @@ function Test-ManagedAppType
 
 	$tags = @{"test"="tag"}
 
-	$appType = $appTypeFromGet | Set-AzServiceFabricManagedClusterApplicationType -Tags $tags -Verbose
+	$appType = $appTypeFromGet | Set-AzServiceFabricManagedClusterApplicationType -Tag $tags -Verbose
 	Assert-AreEqual  "Succeeded" $appType.ProvisioningState
 
 	$appTypeFromGet = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
@@ -103,7 +103,7 @@ function Test-ManagedAppTypeVersion
 
 	$tags = @{"test"="tag"}
 
-	$appTypeVersion = $appTypeVersionFromGet | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tags $tags -Verbose
+	$appTypeVersion = $appTypeVersionFromGet | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tag $tags -Verbose
 	Assert-AreEqual "Succeeded" $appTypeVersion.ProvisioningState
 
 	$appTypeVersionFromGet = Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $v1
