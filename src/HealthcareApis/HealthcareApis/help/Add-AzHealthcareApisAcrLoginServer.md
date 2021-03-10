@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
 Module Name: Az.HealthcareApis
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/add-azhealthcareapisacrloginserver
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Add registries to a service.
 
 ### ServiceNameParameterSet (Default)
 ```
-Add-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> -AcrLoginServers <String[]>
+Add-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> -AcrLoginServer <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Add-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServers <String[]>
+Add-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServer <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,9 +29,9 @@ Add-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServers <String
 
 ## EXAMPLES
 
-### Example 1 : Add two registries to an existing healthcareapis service with empty AcrLoginServers named MyService in the resource group MyResourceGroup, in which AcrLoginServers was empty originally.
+### Example 1 : Add two registries to an existing healthcareapis service with empty AcrLoginServer named MyService in the resource group MyResourceGroup, in which AcrLoginServer was empty originally.
 ```powershell
-PS C:\>  Add-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\>  Add-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServer test1.azurecr.io,test2.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -56,10 +56,10 @@ ResourceType            : Microsoft.HealthcareApis/services
 SmartProxyEnabled       : False
 ```
 
-### Example 2 : Add three registries to an existing healthcareapis service named MyService in the resource group MyResourceGroup, in which AcrLoginServers was empty originally.
+### Example 2 : Add three registries to an existing healthcareapis service named MyService in the resource group MyResourceGroup, in which AcrLoginServer was empty originally.
 ```powershell
 PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
-PS C:\>  Add-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId -AcrLoginServers test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
+PS C:\>  Add-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId -AcrLoginServer test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -86,7 +86,7 @@ SmartProxyEnabled       : False
 
 ## PARAMETERS
 
-### -AcrLoginServers
+### -AcrLoginServer
 List of Login Servers that Will Be Added.
 
 ```yaml

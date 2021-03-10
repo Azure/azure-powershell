@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
 Module Name: Az.HealthcareApis
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/reset-azhealthcareapisacrloginserver
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Reset registries of a service.
 
 ### ServiceNameParameterSet (Default)
 ```
-Reset-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> [-AcrLoginServers <String[]>]
+Reset-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> [-AcrLoginServer <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Reset-AzHealthcareApisAcrLoginServer -ResourceId <String> [-AcrLoginServers <String[]>]
+Reset-AzHealthcareApisAcrLoginServer -ResourceId <String> [-AcrLoginServer <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Reset registries of an existing service.
 
 ### Example 1 : Reset registries of an existing healthcareapis service to {test1.azurecr.io, test2.azurecr.io, test3.azurecr.io}.
 ```powershell
-PS C:\> Reset-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
+PS C:\> Reset-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServer test1.azurecr.io,test2.azurecr.io,test3.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -86,7 +86,7 @@ SmartProxyEnabled       : False
 
 ## PARAMETERS
 
-### -AcrLoginServers
+### -AcrLoginServer
 List of Login Server That Will Replace The Existing One.
 
 ```yaml

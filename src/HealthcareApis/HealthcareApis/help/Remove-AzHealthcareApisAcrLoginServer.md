@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
 Module Name: Az.HealthcareApis
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisacrloginserver
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Remove registries from a service.
 
 ### ServiceNameParameterSet (Default)
 ```
-Remove-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> -AcrLoginServers <String[]>
+Remove-AzHealthcareApisAcrLoginServer -ResourceGroupName <String> -Name <String> -AcrLoginServer <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServers <String[]>
+Remove-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServer <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Remove-AzHealthcareApisAcrLoginServer -ResourceId <String> -AcrLoginServers <Str
 
 ### Example 1 : Remove 2 registries from an existing healthcareapis service named MyService which originally have {test1.azurecr.io, test2.azurecr.io, test3.azurecr.io}.
 ```powershell
-PS C:\> Remove-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\> Remove-AzHealthcareApisAcrLoginServer  -ResourceGroupName MyResourceGroup -Name MyService -AcrLoginServer test1.azurecr.io,test2.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -59,7 +59,7 @@ SmartProxyEnabled       : False
 ### Example 2 : Remove 2 registries from an existing healthcareapis service named MyService which originally have {test1.azurecr.io, test2.azurecr.io}.
 ```powershell
 PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
-PS C:\>  Remove-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId -AcrLoginServers test1.azurecr.io,test2.azurecr.io
+PS C:\>  Remove-AzHealthcareApisAcrLoginServer  -ResourceId ResourceId -AcrLoginServer test1.azurecr.io,test2.azurecr.io
 
 AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
 Audience                : https://azurehealthcareapis.com
@@ -86,7 +86,7 @@ SmartProxyEnabled       : False
 
 ## PARAMETERS
 
-### -AcrLoginServers
+### -AcrLoginServer
 List of Login Servers that Will Be Removed.
 
 ```yaml
