@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackuppolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackuppolicy
 schema: 2.0.0
 ---
 
@@ -35,23 +35,28 @@ Gets a backup policy belonging to a backup vault
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all backup policies in a backup vault.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
+Name              Type
+----              ----
+DiskPolicy1       Microsoft.DataProtection/backupVaults/backupPolicies
+DiskDailyPolicy   Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
-{{ Add description here }}
+This command gets backup policies created in a given backup vault.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get backup policy by Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name "MyPolicy"
 
-{{ Add output here }}
+Name        Type
+----        ----
+MyPolicy Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
-{{ Add description here }}
+This command gets a backup policy by name.
 
 ## PARAMETERS
 
@@ -171,7 +176,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.

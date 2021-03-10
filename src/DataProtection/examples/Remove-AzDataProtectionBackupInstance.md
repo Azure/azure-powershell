@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a protected backup instance
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command stops backup and deletes backup data of a given protected backup instance.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

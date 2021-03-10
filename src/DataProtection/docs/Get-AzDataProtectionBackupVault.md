@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 schema: 2.0.0
 ---
 
@@ -12,7 +12,13 @@ Returns a resource belonging to a resource group.
 
 ## SYNTAX
 
-### Get (Default)
+### multiple (Default)
+```
+Get-AzDataProtectionBackupVault [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -29,23 +35,43 @@ Returns a resource belonging to a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all backup vaults in a given subscription
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupVault
 
-{{ Add output here }}
+ETag IdentityPrincipalId                  IdentityTenantId                     IdentityType   Location      Name                          Type
+---- -------------------                  ----------------                     ------------   --------      ----                          ----
+     2a21f108-07bc-4c22-a221-f26c9de554ba 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned westus        adigupt-backupcenter-ga-Vault Microsoft.DataProtection/backupV�
+     34237b3f-8f2c-4ae7-bbff-2896491976fb 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned westcentralus BC-Usability-Vault-WCUS       Microsoft.DataProtection/backupV�
+     41155247-420f-4052-a894-84814f0b983c 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap NilayBackupVault              Microsoft.DataProtection/backupV�
+     26da260b-e232-419c-8586-9157e4f6260e 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap dpprunnervaultus              Microsoft.DataProtection/backupV�
 ```
 
-{{ Add description here }}
+This command gets all backup vaults in current subscription context.
+Provide SubscriptionId parameter to retrieve backup vaults in a different subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get all backup vaults in a given resource Group.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg
 
-{{ Add output here }}
+ETag IdentityPrincipalId                  IdentityTenantId                     IdentityType   Location      Name            Type
+---- -------------------                  ----------------                     ------------   --------      ----            ----
+     05400379-2551-4dc9-86e0-cf59ab05405a 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap sarath-dppvault Microsoft.DataProtection/backupVaults
+     2ca1d5f7-38b3-4b61-aa45-8147d7e0edbc 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap sarath-vault    Microsoft.DataProtection/backupVaults
 ```
 
-{{ Add description here }}
+This command gets all backup vaults in a given resource group.
+
+### Example 3: Get a specific vault.
+```powershell
+PS C:\> Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+
+ETag IdentityPrincipalId                  IdentityTenantId                     IdentityType   Location      Name            Type
+---- -------------------                  ----------------                     ------------   --------      ----            ----
+     2ca1d5f7-38b3-4b61-aa45-8147d7e0edbc 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned centraluseuap sarath-vault    Microsoft.DataProtection/backupVaults
+```
+
+This command gets a specific vault by given vault name.
 
 ## PARAMETERS
 
@@ -54,7 +80,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -85,7 +111,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, multiple
 Aliases:
 
 Required: True
@@ -100,7 +126,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, multiple
 Aliases:
 
 Required: False
@@ -125,6 +151,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -135,6 +192,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
+
+### System.Management.Automation.PSObject
 
 ## NOTES
 
@@ -150,7 +209,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.

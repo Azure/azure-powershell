@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/test-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -272,6 +272,7 @@ BACKUPINSTANCE <IBackupInstance>: Backup Instance
       - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
         - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
         - `ObjectType <String>`: Type of the specific object - used for deserializing
+        - `[ResourceGroupId <String>]`: Gets or sets the Resource Group Uri.
   - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
     - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
     - `[DatasourceType <String>]`: DatasourceType of the resource.
@@ -286,7 +287,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
@@ -311,6 +312,7 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
         - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
           - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
           - `ObjectType <String>`: Type of the specific object - used for deserializing
+          - `[ResourceGroupId <String>]`: Gets or sets the Resource Group Uri.
     - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
       - `[DatasourceType <String>]`: DatasourceType of the resource.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -41,23 +41,29 @@ Gets a backup instances belonging to a backup vault
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all the backup instances protected in a specified backup vault.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-{{ Add output here }}
+Name                                                         Type                                                  BackupInstanceName
+----                                                         ----                                                  ------------------
+sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166   Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f�
+sarathdisk2-sarathdisk2-74b127dc-7bf0-48ef-bcef-dab186cc6f10 Microsoft.DataProtection/backupVaults/backupInstances sarathdisk2-sarathdisk2-74b127dc-7bf0-48ef-bcef-dab186c�
+
 ```
 
-{{ Add description here }}
+This command gets all the backup instances in a vault.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a backup instance by name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name "BackupInstanceName"
 
-{{ Add output here }}
+Name                                                       Type                                                  BackupInstanceName
+----                                                       ----                                                  ------------------
+sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166 Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166
 ```
 
-{{ Add description here }}
+This command gets a specific backup instance protected in a backup vault.
 
 ## PARAMETERS
 
@@ -177,7 +183,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.

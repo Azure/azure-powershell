@@ -1,5 +1,5 @@
 @{
-  GUID = 'f93d4912-a7fb-4df5-a251-edc09c325452'
+  GUID = '0796af7c-0a7c-417f-8d0d-19f9179dac7a'
   RootModule = './Az.DataProtection.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,27 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataProtection.private.dll'
   FormatsToProcess = './Az.DataProtection.format.ps1xml'
-  FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc', 'Get-AzDataProtectionBackupInstance', 'Get-AzDataProtectionBackupPolicy', 'Get-AzDataProtectionBackupVault', 'Get-AzDataProtectionExportJobsOperationResult', 'Get-AzDataProtectionJob', 'Get-AzDataProtectionOperationResult', 'Get-AzDataProtectionOperationResultPatch', 'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionRecoveryPoint', 'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy', 'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance', 'Set-AzDataProtectionBackupVault', 'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore', 'Start-AzDataProtectionExportJob', 'Test-AzDataProtectionBackupInstance', 'Test-AzDataProtectionBackupInstanceRestore', 'Test-AzDataProtectionBackupVaultNameAvailability', 'Test-AzDataProtectionFeatureSupport', 'Update-AzDataProtectionBackupVault', '*'
+  FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
+                    'Get-AzDataProtectionBackupInstance',
+                    'Search-AzDataProtectionBackupInstanceInAzGraph',
+                    'Get-AzDataProtectionBackupPolicy',
+                    'Get-AzDataProtectionBackupVault',
+                    'New-AzDataProtectionBackupVaultStorageSettingObject',
+                    'Get-AzDataProtectionExportJobsOperationResult',
+                    'Get-AzDataProtectionJob',
+                    'Search-AzDataProtectionJobInAzGraph', 'Get-AzDataProtectionOperationResult',
+                    'Get-AzDataProtectionOperationStatus', 'Get-AzDataProtectionPolicyTemplate',
+                    'Get-AzDataProtectionRecoveryPoint',
+                    'Initialize-AzDataProtectionBackupInstance', 'Initialize-AzDataProtectionRestoreRequest',
+                    'New-AzDataProtectionPolicyTagCriteriaClientObject',
+                    'New-AzDataProtectionPolicyTriggerScheduleClientObject', 'New-AzDataProtectionRetentionLifeCycleClientObject',
+                    'Remove-AzDataProtectionBackupInstance', 'Remove-AzDataProtectionBackupPolicy',
+                    'Remove-AzDataProtectionBackupVault', 'Set-AzDataProtectionBackupInstance',
+                    'Set-AzDataProtectionBackupPolicy', 'Set-AzDataProtectionBackupVault',
+                    'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore',
+                    'Update-AzDataProtectionBackupVault',
+                    'Edit-AzDataProtectionPolicyRetentionRuleClientObject', 'Edit-AzDataProtectionPolicyTagClientObject',
+                    'Edit-AzDataProtectionPolicyTriggerClientObject'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

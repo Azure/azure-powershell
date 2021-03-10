@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 schema: 2.0.0
 ---
 
@@ -48,23 +48,16 @@ Triggers restore for a BackupInstance
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Trigger restore for a protected azure disk.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault"
+PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName "sarath-rg" -VaultName "sarath-vault" -BackupInstanceName $instance.Name
+PS C:\> $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "westus"  -RestoreType AlternateLocation -TargetResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{DiskName}" -RecoveryPoint $rp[0].name
+PS C:\> Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName sarath-rg -VaultName sarath-vault -SubscriptionId "xxx-xxx-xxx" -Parameter $restorerequest
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+this command triggers restore for a protected azure disk backup instance.
 
 ## PARAMETERS
 
@@ -323,7 +316,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.

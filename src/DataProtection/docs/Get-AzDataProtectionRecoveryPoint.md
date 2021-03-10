@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 schema: 2.0.0
 ---
 
@@ -12,7 +12,14 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzDataProtectionRecoveryPoint [-BackupInstanceName <String>] [-ResourceGroupName <String>]
+ [-SubscriptionId <String[]>] [-VaultName <String>] [-EndTime <DateTime>] [-StartTime <DateTime>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzDataProtectionRecoveryPoint -BackupInstanceName <String> -Id <String> -ResourceGroupName <String>
  -VaultName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -29,23 +36,34 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all recovery points of a given backup instance
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+PS C:\> Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name
 
-{{ Add output here }}
+Name                             Type
+----                             ----
+aded40a562134f97b732f30d0b486fef Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
+f458438d5ebb4098adbf67e9655cb624 Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
+515ba70e49d34b2bbff033dcc08593fe Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
+e61293fdd1064fbdb4f42b7f5927a927 Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
+aecc362b85484f4eb905bb05ef445e3e Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
+dc814d61a9624c36a1f9d635bc0b80f0 Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
 ```
 
-{{ Add description here }}
+This command lists all available recovery points of a given backup instance
 
-### Example 2: {{ Add title here }}
+### Example 2: Get recovery point with given recovery point id.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+PS C:\> Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name -Id 892e5c5014dc4a96807d22924f5745c9
 
-{{ Add output here }}
+Name                             Type
+----                             ----
+892e5c5014dc4a96807d22924f5745c9 Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints
 ```
 
-{{ Add description here }}
+This command returns a recovery point with given id.
 
 ## PARAMETERS
 
@@ -54,7 +72,7 @@ The name of the backup instance
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -69,8 +87,23 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndTime
+End Time filter for recovery points
+
+```yaml
+Type: System.DateTime
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
@@ -115,10 +148,25 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Start Time filter for recovery points
+
+```yaml
+Type: System.DateTime
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,7 +178,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -145,10 +193,41 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,6 +245,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource
 
+### System.Management.Automation.PSObject
+
 ## NOTES
 
 ALIASES
@@ -180,7 +261,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.

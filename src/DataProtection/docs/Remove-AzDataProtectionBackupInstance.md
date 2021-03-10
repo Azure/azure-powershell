@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -30,23 +30,14 @@ Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-D
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a protected backup instance
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+PS C:\> Remove-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name $instance[0].name
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command stops backup and deletes backup data of a given protected backup instance.
 
 ## PARAMETERS
 
@@ -242,7 +233,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
+  - `[Location <String>]`: 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
