@@ -49,8 +49,18 @@ directive:
     hide: true
   - where:
       verb: Set
+    remove: true
+  - where:
+      verb: New
+      subject: BackupInstance.*
+    hide: true
+  - where:
+      verb: New
       subject: BackupPolicy.*
     hide: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
   - no-inline:
     - UserFacingError
     - InnerError
