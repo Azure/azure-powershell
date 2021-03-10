@@ -12,9 +12,18 @@ Creates a new Server Trust Group.
 
 ## SYNTAX
 
+### GroupMemberObjectSet (Default)
 ```
 New-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
- [-GroupMembers] <System.Collections.Generic.List`1[System.String]>
+ [-GroupMember] <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel]>
+ [[-TrustScope] <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GroupMemberResourceIdSet
+```
+New-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-GroupMemberResourceId] <System.Collections.Generic.List`1[System.String]>
  [[-TrustScope] <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -26,10 +35,24 @@ Creates a new Server Trust Group with specified location, members, trust scope, 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSqlServerTrustGroup -Location "West Europe" -Name "ServerTrustGroup01" -GroupMembers "ManagedInstance01","ManagedInstance02" -TrustScope "GlobalTransactions" -ResourceGroupName "ResourceGroup01" 
+PS C:\> $managedInstanceList = @()
+PS C:\> $mi = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $managedInstanceList += $mi
+PS C:\> $mi = Get-AzSqlInstance -Name "ManagedInstance02" -ResourceGroupName "ResourceGroup02"
+PS C:\> $managedInstanceList += $mi
+PS C:\> New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMember $managedInstanceList -TrustScope "GlobalTransactions"
 ```
 
-Creates a new Server Trust Group in location Wet Europe with name ServerTrustGroup01. Its members are AzureSQL Managed Instances ManagedInstance01 and ManagedInstance02. Its trust scope is GlobalTransactions and its resource group is ResourceGroup01.
+Creates a new Server Trust Group in location West Europe with name ServerTrustGroup01. Its members are AzureSQL Managed Instances ManagedInstance01 and ManagedInstance02. Its trust scope is GlobalTransactions and its resource group is ResourceGroup03.
+
+### Example 2
+```powershell
+PS C:\> $mi1 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
+PS C:\> $mi2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup02/providers/Microsoft.Sql/managedInstances/ManagedInstance02"
+PS C:\> New-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup03" -Location "West Europe" -Name "ServerTrustGroup01" -GroupMemberResourceId $mi1,$mi2 -TrustScope "GlobalTransactions"
+```
+
+Creates a new Server Trust Group in location West Europe with name ServerTrustGroup01. Its members are AzureSQL Managed Instances ManagedInstance01 and ManagedInstance02, given by its Resource ids. Its trust scope is GlobalTransactions and its resource group is ResourceGroup03.
 
 ## PARAMETERS
 
@@ -37,7 +60,7 @@ Creates a new Server Trust Group in location Wet Europe with name ServerTrustGro
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -48,12 +71,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupMembers
+### -GroupMember
+Group members of the Server Trust Group to create.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel]
+Parameter Sets: GroupMemberObjectSet
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupMemberResourceId
 Group members of the Server Trust Group to create.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: GroupMemberResourceIdSet
 Aliases:
 
 Required: True
@@ -67,7 +105,7 @@ Accept wildcard characters: False
 The location of the Server Trust Group to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +120,7 @@ Accept wildcard characters: False
 The name of the Server Trust Group to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +135,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
