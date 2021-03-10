@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Microsoft Azure PowerShell – Batch service cmdlets.
+* This module is outdated and will go out of support on 29 February 2024.
+* The Az.Batch module has all the capabilities of AzureRM.Batch and provides the following improvements:
+    - Az.Batch takes advantage of greater security with token cache encryption and improved authentication.
+    - Availability in Azure Cloud Shell and on Linux and macOS.
+* We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
+* [Update your scripts](https://aka.ms/azpsmigrate) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024.
+* To automatically update your scripts, follow the [quickstart guide](https://aka.ms/azpsmigratequick).
 
 ## Version 4.1.5
 * Fixed issue with default resource groups not being set.
