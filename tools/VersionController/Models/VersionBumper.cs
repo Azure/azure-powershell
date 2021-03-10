@@ -158,8 +158,10 @@ namespace VersionController.Models
             }
 
             var file = File.ReadAllLines(rollupModuleManifestPath);
-            var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
-            var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; RequiredVersion = '" + _newVersion + "'"));
+            var patternReplaceRequiredVersion = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
+            var patternReplaceModuleVersion = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
+            var updatedFile = file.Select(l => Regex.Replace(l, patternReplaceRequiredVersion, $"ModuleName = '{moduleName}'; RequiredVersion = '{_newVersion}'"))
+                      .Select(l => Regex.Replace(l, patternReplaceModuleVersion, $"ModuleName = '{moduleName}'; ModuleVersion = '{_newVersion}'"));
             File.WriteAllLines(rollupModuleManifestPath, updatedFile);
         }
 
@@ -217,10 +219,10 @@ namespace VersionController.Models
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var projectModuleManifestPath = _fileHelper.ProjectModuleManifestPath;
             var tempModuleManifestPath = Path.Combine(outputModuleDirectory, moduleName + "-temp.psd1");
-            File.Copy(outputModuleManifestPath, tempModuleManifestPath);
+            File.Copy(outputModuleManifestPath, tempModuleManifestPath, true);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
-            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Debug\\Storage\";";
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Release\\Storage\";";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
             {

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EventRequestMessage": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
               "EventResponseMessage": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage",
@@ -130,7 +130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -371,7 +371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -605,7 +605,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -774,7 +774,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1468,7 +1468,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1983,7 +1983,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -2547,7 +2547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -2672,7 +2672,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -2947,7 +2947,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -3159,7 +3159,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -3397,7 +3397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3523,7 +3523,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -3840,7 +3840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -4100,7 +4100,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -4410,7 +4410,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -4514,7 +4514,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -4875,7 +4875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -5350,7 +5350,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5519,7 +5519,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -6316,7 +6316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -7019,7 +7019,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -7304,7 +7304,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -7687,7 +7687,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7973,7 +7973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8490,7 +8490,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Username": "System.String",
               "Password": "System.String",
@@ -8590,7 +8590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -8813,7 +8813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -9051,7 +9051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String"
             },
@@ -9168,7 +9168,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9412,7 +9412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9646,7 +9646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -11198,7 +11198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -11463,7 +11463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -11773,7 +11773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -12258,7 +12258,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Username": "System.String",
               "Password": "System.String",
@@ -12358,7 +12358,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -12799,7 +12799,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
@@ -13504,7 +13504,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Content": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent",
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13557,7 +13557,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Request": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest",
         "Source": "Microsoft.Azure.Commands.ContainerRegistry.PSSource",
@@ -13612,7 +13612,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSRequest": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Addr": "System.String",
@@ -13675,7 +13675,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSSource": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSSource, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSSource, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Addr": "System.String",
         "InstanceID": "System.String"
@@ -13725,7 +13725,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSTarget": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Size": "System.Nullable`1[System.Int64]",
         "Length": "System.Nullable`1[System.Int64]",

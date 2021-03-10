@@ -1,4 +1,19 @@
-﻿## 6.13.0 - November 2018
+﻿## 6.13.2 - March 2021
+Azure Resource Manager Module
+
+This module is outdated and will go out of support on 29 February 2024.
+
+[The Az PowerShell Module](https://aka.ms/azpsmodule) provides the following improvements:
+* Greater security with token cache encryption and improved authentication.
+* Availability in Azure Cloud Shell and on Linux and macOS.
+* Support for all Azure services.
+* Allows use of Azure access tokens. 
+
+We encourage you to start using the Az module as soon as possible to take advantage of these improvements.  
+
+[Update your scripts](https://aka.ms/azpsmigrate) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024. To automatically update your scripts, follow the [quickstart guide](https://aka.ms/azpsmigratequick).
+
+## 6.13.0 - November 2018
 #### AzureRM.Profile
 * Update common code to use latest version of ClientRuntime
 

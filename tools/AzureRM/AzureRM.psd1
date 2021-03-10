@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.13.1'
+ModuleVersion = '6.13.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,61 +51,58 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.3'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.8.4'; }, 
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.6.1'; }, 
-               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.14'; }, 
+               @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.15'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.4'; }, 
-               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.7'; }, 
-               @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.8'; }, 
-               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '6.1.1'; }, 
-               @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.11'; }, 
-               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.5'; }, 
-               @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
-               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.6'; }, 
-               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.12'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.9.1'; }, 
-               @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.7'; }, 
-               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.12'; }, 
-               @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.10'; }, 
-               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '5.0.3'; }, 
-               @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.11'; }, 
-               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.4'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.2.1'; }, 
-               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.9'; }, 
-               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.1.0'; }, 
-               @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.7'; }, 
-               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.7.0'; }, 
-               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.1.8'; }, 
-               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.5'; }, 
-               @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.8'; }, 
-               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '5.2.1'; }, 
-               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.1.4'; }, 
-               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.18.5'; }, 
-               @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.8'; }, 
-               @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.7'; }, 
-               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.4'; }, 
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.11.1'; }, 
-               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.3'; }, 
-               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.6'; }, 
-               @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.1.10'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.9'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.5.2'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.12'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.1.0'; }, 
-               @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.12'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.7.3'; }, 
-               @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.13'; }, 
-               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.15'; }, 
-               @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.12.1'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.2.0'; }, 
-               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.10'; }, 
-               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.5'; }, 
-               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.1.3'; }, 
-               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.5'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.2.0'; })
+               @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.8'; }, 
+               @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.9'; }, 
+               @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '6.1.2'; }, 
+               @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.6'; }, 
+               @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.7'; }, 
+               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.7'; }, 
+               @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.13'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.9.2'; }, 
+               @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.8'; }, 
+               @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.13'; }, 
+               @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.11'; }, 
+               @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '5.0.4'; }, 
+               @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.12'; }, 
+               @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.5'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.2.2'; }, 
+               @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.10'; }, 
+               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.1.1'; }, 
+               @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.8'; }, 
+               @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.7.1'; }, 
+               @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.1.9'; }, 
+               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.6'; }, 
+               @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.9'; }, 
+               @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '5.2.2'; }, 
+               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.1.5'; }, 
+               @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.18.6'; }, 
+               @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.8'; }, 
+               @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.5'; }, 
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.11.2'; }, 
+               @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.4'; }, 
+               @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.7'; }, 
+               @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.1.1'; }, 
+               @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.1.11'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.10'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.5.3'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.13'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.1.1'; }, 
+               @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.13'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.7.4'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.14'; }, 
+               @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.16'; }, 
+               @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.1'; }, 
+               @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.12.2'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.2.1'; }, 
+               @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.11'; }, 
+               @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.6'; }, 
+               @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.1.4'; }, 
+               @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.6'; }, 
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.2.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -161,73 +158,20 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.13.0 - November 2018
-AzureRM.Profile
-* Update common code to use latest version of ClientRuntime
+        ReleaseNotes = '6.13.2 - March 2021
+Azure Resource Manager Module
 
-AzureRM.ApiManagement
-* Update dependencies for type mapping issue
+This module is outdated and will go out of support on 29 February 2024.
+        
+* Greater security with token cache encryption and improved authentication.
+* Availability in Azure Cloud Shell and on Linux and macOS.
+* Support for all Azure services.
+* Allows use of Azure access tokens.
 
-AzureRM.Automation
-* Swagger based Azure Automation cmdlets
-* Added Update Management cmdlets
-* Added Source Control cmdlets
-* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
-* Fixed the DSC Register Node command
+We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
 
-AzureRM.Compute
-* Fixed identity issue for SystemAssigned identity
-* Update dependencies for type mapping issue
-
-AzureRM.ContainerInstance
-* Update dependencies for type mapping issue
-
-AzureRM.MarketplaceOrdering
-* update the examples description for marketplace cmdlets
-
-AzureRM.Network
-* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
-* Added ICMP back to supported AzureFirewall Network Protocols
-* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
-* Fix issues with memory usage in VirtualNetwork map
-
-AzureRM.RecoveryServices.Backup
-* Fix for modifying policy for a protected file share.
-* Converted policy timezone to uppercase.
-
-AzureRM.RecoveryServices.SiteRecovery
-* Corrected example in New-AzureRmRecoveryServicesAsrProtectableItem
-* Update dependencies for type mapping issue
-
-AzureRM.Relay
-* Added optional Parameter -KeyValue to New-AzureRmRelayKey cmdlet, which enables user to provide KeyValue.
-
-AzureRM.Resources
-* Update help documentation for resource identity related parameters in New-AzureRmPolicyAssignment and Set-AzureRmPolicyAssignment
-* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
-* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
-
-AzureRM.ServiceFabric
-* Add deprecation messages for upcoming breaking changes
-
-AzureRM.Sql
-* Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
-	- Get-AzureRmSqlInstance
-	- New-AzureRmSqlInstance
-	- Set-AzureRmSqlInstance
-	- Remove-AzureRmSqlInstance
-	- Get-AzureRmSqlInstanceDatabase
-	- New-AzureRmSqlInstanceDatabase
-	- Restore-AzureRmSqlInstanceDatabase
-	- Remove-AzureRmSqlInstanceDatabase
-* Enabled Extended Auditing Policy management on a server or a database.
-	- New parameter (PredicateExpression) was added to enable filtering of audit logs.
-	- Cmdlets were modified to use SQL clients instead of Legacy clients.
-	- Set-AzureRmSqlServerAuditing.
-	- Get-AzureRmSqlServerAuditing.
-	- Set-AzureRmSqlDatabaseAuditing.
-	- Get-AzureRmSqlDatabaseAuditing.
-* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+[Update your scripts](https://aka.ms/azpsmigrate) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024. To automatically update your scripts, follow the [quickstart guide](https://aka.ms/azpsmigratequick).
+[The Az PowerShell Module](https://aka.ms/azpsmodule) provides the following improvements:
 '
 
         # Prerelease string of this module

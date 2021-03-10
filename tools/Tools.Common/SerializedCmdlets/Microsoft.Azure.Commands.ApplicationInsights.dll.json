@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiKey": "System.String",
               "CreatedDate": "System.String",
@@ -76,7 +76,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -273,7 +273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -713,7 +713,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -780,7 +780,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -977,7 +977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -1417,7 +1417,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApiKey, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiKey": "System.String",
               "CreatedDate": "System.String",
@@ -1479,7 +1479,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -1698,7 +1698,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -2250,7 +2250,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -2317,7 +2317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -2579,7 +2579,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -3370,7 +3370,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -3585,7 +3585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -4140,7 +4140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -4355,7 +4355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -4891,7 +4891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StopSendNotificationWhenHitCap": "System.Boolean",
               "Cap": "System.Nullable`1[System.Double]",
@@ -4961,7 +4961,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -5178,7 +5178,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -5722,7 +5722,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StopSendNotificationWhenHitCap": "System.Boolean",
               "Cap": "System.Nullable`1[System.Double]",
@@ -5792,7 +5792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -6031,7 +6031,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -6687,7 +6687,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportId": "System.String",
               "StorageName": "System.String",
@@ -6754,7 +6754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -7052,7 +7052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8016,7 +8016,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8423,7 +8423,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -8978,7 +8978,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
             "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -9175,7 +9175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
                   "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -9813,7 +9813,7 @@
     "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent": {
       "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
       "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -10079,7 +10079,7 @@
     "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan": {
       "Namespace": "Microsoft.Azure.Commands.ApplicationInsights.Models",
       "Name": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan, Microsoft.Azure.Commands.ApplicationInsights, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StopSendNotificationWhenHitCap": "System.Boolean",
         "Cap": "System.Nullable`1[System.Double]",
