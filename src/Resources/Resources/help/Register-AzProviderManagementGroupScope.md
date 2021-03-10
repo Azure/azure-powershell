@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D5067FD8-2FB1-413C-9F59-84E83A74343E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azresourceprovidermanagementgroupscope
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azprovidermanagementgroupscope
 schema: 2.0.0
 ---
 
-# Register-AzResourceProviderManagementGroupScope
+# Register-AzProviderManagementGroupScope
 
 ## SYNOPSIS
 Registers a resource provider to a management group.
@@ -14,18 +14,18 @@ Registers a resource provider to a management group.
 ## SYNTAX
 
 ```
-Register-AzResourceProviderManagementGroupScope -ProviderNamespace <String> [-GroupName] <String> [-ApiVersion <String>] [-Pre]
+Register-AzProviderManagementGroupScope -ProviderNamespace <String> [-GroupName] <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Register-AzResourceProviderManagementGroupScope** cmdlet registers an Azure resource provider to a management group.
+The **Register-AzProviderManagementGroupScope** cmdlet registers an Azure resource provider to a management group.
 
 ## EXAMPLES
 
 ### Example 1: Register a provider to a management group
 ```
-PS C:\>Register-AzResourceProviderManagementGroupScope -ProviderNamespace Microsoft.Network -GroupName TestMG
+PS C:\>Register-AzProviderManagementGroupScope -ProviderNamespace Microsoft.Network -GroupName TestMG
 ```
 
 This registers the Microsoft.Network provider to the TestMG management group.

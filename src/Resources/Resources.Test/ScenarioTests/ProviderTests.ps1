@@ -170,6 +170,22 @@ function Test-AzureProviderOperation
 	Assert-Throws {Get-AzProviderOperation Microsoft.Sql/servers/*/rea? } $exceptionMessage
  }
 
+  <#
+    .SYNOPSIS
+    Tests querying for a resource provider's operations/actions
+#>
+function Test-AzureProviderRegisterManagementGroup
+{
+
+	New-AzManagementGroup -GroupName TestPSGetGroup1
+
+    $reponse = Register-AzResourceProviderManagementGroupScope -ProviderNamespace "Microsoft.ApiManagement" -GroupName TestPSGetGroup1
+
+	Assert-Null $reponse
+	Remove-AzManagementGroup -GroupName TestPSGetGroup1
+
+ }
+
  <#
     .SYNOPSIS
     Tests querying for a resource provider's operations/actions

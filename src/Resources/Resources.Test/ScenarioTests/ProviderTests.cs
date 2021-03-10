@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderRegisterManagement()
         {
-            TestRunner.RunTestScript("Test-AzureProviderRegisterManagement");
+            TestRunner.RunTestScript("Test-AzureProviderRegisterManagementGroup");
         }
     }
 }
