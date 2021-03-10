@@ -52,5 +52,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureProviderOperationDataActions");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureProviderRegisterManagement()
+        {
+            TestRunner.RunTestScript("Test-AzureProviderRegisterManagement");
+        }
     }
 }

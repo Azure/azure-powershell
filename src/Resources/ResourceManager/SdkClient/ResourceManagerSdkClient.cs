@@ -164,6 +164,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return response.ToPSResourceProvider();
         }
 
+        public virtual void RegisterAtManagementGroupScope(string providerName, string groupId)
+        {
+            this.ResourceManagementClient.Providers.RegisterAtManagementGroupScope(providerName, groupId);
+        }
+
         private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);

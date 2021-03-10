@@ -906,7 +906,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
                 return ResourceManager.GetString("RegisterProviderMessage", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registering management group ....
+        /// </summary>
+        internal static string RegisterProviderManagementGroupMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("RegisterProviderManagementGroupMessage", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Removing application ....
         /// </summary>
