@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleDeleteMessage = "Deleting the Azure Front Door rule.";
         public const string AfdRuleSetCreateMessage = "Creating the Azure Front Door rule set.";
         public const string AfdRuleSetDeleteMessage = "Deleting the Azure Front Door rule set.";
+        public const string AfdSecurityPolicyCreateMessage = "Creating the Azure Front Door security policy.";
+        public const string AfdSecurityPolicyDeleteMessage = "Deleting the Azure Front Door security policy.";
+        public const string AfdSecurityPolicyUpdateMessage = "Updating the Azure Front Door security policy.";
     }
 
     public static class AfdSkuConstants
@@ -103,6 +106,11 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
         public const string AfdRuleSetName = "The Azure Front Door rule set name.";
         public const string AfdRuleSetObject = "The Azure Front Door rule set object.";
+        public const string AfdSecurityPolicyDomainIds = "The resource ids of the domains which will be linked to the Azure Front Door web application firewall.";
+        public const string AfdSecurityPolicyObject = "The Azure Front Door security policy object.";
+        public const string AfdSecurityPolicyName = "The Azure Front Door security policy name.";
+        public const string AfdSecurityPolicyWafPolicyId = "The resource id of the Azure Front Door web application firewall.";
+        public const string PassThruParameter = "Set by the user to signal that they would like to receive output from a cmdlet which does not return anything.";
         public const string ResourceId = "The Azure resource id.";
         public const string ResourceGroupName = "The Azure resource group name.";
         public const string TagsDescription = "The tags associated to the Azure resource.";

@@ -25,6 +25,7 @@ using SdkAfdProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 using SdkAfdRoute = Microsoft.Azure.Management.Cdn.Models.Route;
 using SdkAfdRule = Microsoft.Azure.Management.Cdn.Models.Rule;
 using SdkAfdRuleSet = Microsoft.Azure.Management.Cdn.Models.RuleSet;
+using SdkAfdSecurityPolicy = Microsoft.Azure.Management.Cdn.Models.SecurityPolicy;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 {
@@ -178,6 +179,22 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Name = sdkAfdRuleSet.Name,
                 Type = sdkAfdRuleSet.Type,
                 ProvisioningState = sdkAfdRuleSet.ProvisioningState
+            };
+        }
+
+        public static PSAfdSecurityPolicy ToPSAfdSecurityPolicy(this SdkAfdSecurityPolicy sdkAfdSecurityPolicy)
+        {
+            SecurityPolicyWebApplicationFirewallParameters securityPolicyWafParameters = (SecurityPolicyWebApplicationFirewallParameters)sdkAfdSecurityPolicy.Parameters;
+            
+            return new PSAfdSecurityPolicy
+            {
+                Id = sdkAfdSecurityPolicy.Id,
+                Name = sdkAfdSecurityPolicy.Name,
+                Type = sdkAfdSecurityPolicy.Type,
+                ProvisioningState = sdkAfdSecurityPolicy.ProvisioningState,
+                WafPolicyId = securityPolicyWafParameters.WafPolicy?.Id,
+                Domains = (List<ResourceReference>)securityPolicyWafParameters?.Associations[0]?.Domains,
+                PatternsToMatch = (List<string>)securityPolicyWafParameters?.Associations[0]?.PatternsToMatch
             };
         }
     }

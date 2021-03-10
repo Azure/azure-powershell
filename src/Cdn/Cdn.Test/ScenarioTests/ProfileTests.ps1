@@ -174,7 +174,7 @@ function Test-ProfilePipeline
 
     $profiles = Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
-    Assert-True { $profiles.Count -eq 2 }
+    Assert-True { $profiles.Count -eq 0 }
 
     Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzCdnProfile -Force
 

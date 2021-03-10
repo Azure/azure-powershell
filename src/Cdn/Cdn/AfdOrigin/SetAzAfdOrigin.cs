@@ -207,13 +207,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
             bool isPrivateLinkLocation = this.MyInvocation.BoundParameters.ContainsKey("PrivateLinkLocation");
             bool isPrivateLinkRequestMessage = this.MyInvocation.BoundParameters.ContainsKey("PrivateLinkRequestMessage");
 
-            SharedPrivateLinkResourceProperties sharedPrivateLinkResource = new SharedPrivateLinkResourceProperties
-            {
-                PrivateLink = new ResourceReference(currentPsAfdOrigin.PrivateLinkId),
-                PrivateLinkLocation = currentPsAfdOrigin.PrivateLinkLocation,
-                RequestMessage = currentPsAfdOrigin.PrivateLinkRequestMessage
-            };
-
             AFDOriginUpdateParameters afdOrigin = new AFDOriginUpdateParameters
             {
                 HostName = currentPsAfdOrigin.HostName,
@@ -222,7 +215,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
                 OriginHostHeader = currentPsAfdOrigin.OriginHostHeader,
                 Priority = currentPsAfdOrigin.Priority,
                 Weight = currentPsAfdOrigin.Weight,
-                SharedPrivateLinkResource = sharedPrivateLinkResource
             };
 
             if (isHostName)
@@ -249,20 +241,31 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOrigin
             {
                 afdOrigin.OriginHostHeader = this.OriginHostHeader;
             }
-            if (isPrivateLinkId)
+
+            if (isPrivateLinkId || isPrivateLinkLocation || isPrivateLinkRequestMessage)
             {
-                sharedPrivateLinkResource.PrivateLink.Id = this.PrivateLinkId;
-                afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
-            }
-            if (isPrivateLinkLocation)
-            {
-                sharedPrivateLinkResource.PrivateLinkLocation = this.PrivateLinkLocation;
-                afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
-            }
-            if (isPrivateLinkRequestMessage)
-            {
-                sharedPrivateLinkResource.RequestMessage = this.PrivateLinkRequestMessage;
-                afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
+                SharedPrivateLinkResourceProperties sharedPrivateLinkResource = new SharedPrivateLinkResourceProperties
+                {
+                    PrivateLink = new ResourceReference(currentPsAfdOrigin.PrivateLinkId),
+                    PrivateLinkLocation = currentPsAfdOrigin.PrivateLinkLocation,
+                    RequestMessage = currentPsAfdOrigin.PrivateLinkRequestMessage
+                };
+
+                if (isPrivateLinkId)
+                {
+                    sharedPrivateLinkResource.PrivateLink.Id = this.PrivateLinkId;
+                    afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
+                }
+                if (isPrivateLinkLocation)
+                {
+                    sharedPrivateLinkResource.PrivateLinkLocation = this.PrivateLinkLocation;
+                    afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
+                }
+                if (isPrivateLinkRequestMessage)
+                {
+                    sharedPrivateLinkResource.RequestMessage = this.PrivateLinkRequestMessage;
+                    afdOrigin.SharedPrivateLinkResource = sharedPrivateLinkResource;
+                }
             }
 
             return afdOrigin;

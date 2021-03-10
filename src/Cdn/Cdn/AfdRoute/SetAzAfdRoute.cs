@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRoute
         [ValidateNotNullOrEmpty]
         public string OriginPath { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdRouteObject, ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSAfdRoute Route { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]

@@ -12,25 +12,23 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Subscription resource usage
-#>
-function Test-SubscriptionGetResourceUsage
+function Test-GetAfdSecurityPolicy
 {
-    $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage
+	# Set up required fields
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+	$profileName = getAssetName
 
-    Assert-True {$subscriptionResourceUsage.Count -eq 1}
-	Assert-True {$subscriptionResourceUsage[0].CurrentValue -eq 96}
+	 # Profile specific properties
+    $profileSku = "Standard_AzureFrontDoor"
+
+    # Create a Microsoft AFD Profile
+    $profile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+
+    $securityPolicyName = getAssetName
+
+    Assert-ThrowsContains { Get-AzAfdSecurityPolicy -ResourceGroupName $resourceGroupName -ProfileName $profileName -SecurityPolicyName $securityPolicyName } "NotFound"
+
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-<#
-.SYNOPSIS
-Edge node
-#>
-function Test-SubscriptionEdgeNode
-{
-    $edgeNodes = Get-AzCdnEdgeNodes
-
-    Assert-False {$edgeNodes -eq $null}
-}
