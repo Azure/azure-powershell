@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Az.Accounts</id>
+    <version>2.2.3</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://aka.ms/azps-license</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <description>Microsoft Azure PowerShell - Accounts credential management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
+
+For more information on account credential management, please visit the following: https://docs.microsoft.com/powershell/azure/authenticate-azureps</description>
+    <releaseNotes>* Fixed the issue that Http proxy is not respected in Windows PowerShell [#13647]
+* Improved debug log of long running operations in generated modules</releaseNotes>
+    <copyright>Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Azure ResourceManager ARM Accounts Authentication Environment Subscription PSModule PSIncludes_Cmdlet PSCmdlet_Disable-AzDataCollection PSCmdlet_Disable-AzContextAutosave PSCmdlet_Enable-AzDataCollection PSCmdlet_Enable-AzContextAutosave PSCmdlet_Remove-AzEnvironment PSCmdlet_Get-AzEnvironment PSCmdlet_Set-AzEnvironment PSCmdlet_Add-AzEnvironment PSCmdlet_Get-AzSubscription PSCmdlet_Connect-AzAccount PSCmdlet_Get-AzContext PSCmdlet_Set-AzContext PSCmdlet_Import-AzContext PSCmdlet_Save-AzContext PSCmdlet_Get-AzTenant PSCmdlet_Send-Feedback PSCmdlet_Resolve-AzError PSCmdlet_Select-AzContext PSCmdlet_Rename-AzContext PSCmdlet_Remove-AzContext PSCmdlet_Clear-AzContext PSCmdlet_Disconnect-AzAccount PSCmdlet_Get-AzContextAutosaveSetting PSCmdlet_Set-AzDefault PSCmdlet_Get-AzDefault PSCmdlet_Clear-AzDefault PSCmdlet_Register-AzModule PSCmdlet_Enable-AzureRmAlias PSCmdlet_Disable-AzureRmAlias PSCmdlet_Uninstall-AzureRm PSCmdlet_Invoke-AzRestMethod PSCmdlet_Get-AzAccessToken PSCommand_Disable-AzDataCollection PSCommand_Disable-AzContextAutosave PSCommand_Enable-AzDataCollection PSCommand_Enable-AzContextAutosave PSCommand_Remove-AzEnvironment PSCommand_Get-AzEnvironment PSCommand_Set-AzEnvironment PSCommand_Add-AzEnvironment PSCommand_Get-AzSubscription PSCommand_Connect-AzAccount PSCommand_Get-AzContext PSCommand_Set-AzContext PSCommand_Import-AzContext PSCommand_Save-AzContext PSCommand_Get-AzTenant PSCommand_Send-Feedback PSCommand_Resolve-AzError PSCommand_Select-AzContext PSCommand_Rename-AzContext PSCommand_Remove-AzContext PSCommand_Clear-AzContext PSCommand_Disconnect-AzAccount PSCommand_Get-AzContextAutosaveSetting PSCommand_Set-AzDefault PSCommand_Get-AzDefault PSCommand_Clear-AzDefault PSCommand_Register-AzModule PSCommand_Enable-AzureRmAlias PSCommand_Disable-AzureRmAlias PSCommand_Uninstall-AzureRm PSCommand_Invoke-AzRestMethod PSCommand_Get-AzAccessToken PSCommand_Add-AzAccount PSCommand_Login-AzAccount PSCommand_Remove-AzAccount PSCommand_Logout-AzAccount PSCommand_Select-AzSubscription PSCommand_Resolve-Error PSCommand_Save-AzProfile PSCommand_Get-AzDomain PSCommand_Invoke-AzRest</tags>
+  </metadata>
+</package>
