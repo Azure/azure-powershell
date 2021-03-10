@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
            MNM.VpnAuthenticationType.Radius,
            MNM.VpnAuthenticationType.AAD)]
         [ValidateNotNullOrEmpty]
-        public string[] VpnAuthenticationTypes { get; set; }
+        public string[] VpnAuthenticationType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -282,9 +282,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol?.ToList();
             }
 
-            if (this.VpnAuthenticationTypes != null)
+            if (this.VpnAuthenticationType != null)
             {
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationTypes?.ToList();
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationType?.ToList();
             }
 
             if (this.VpnClientRootCertificates != null)
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
             }
 
-            if (!string.IsNullOrEmpty(this.RadiusServerAddress))
+            if (!string.IsNullOrEmpty(this.RadiusServerAddress) && this.RadiusServerSecret != null && !string.IsNullOrEmpty(SecureStringExtensions.ConvertToString(this.RadiusServerSecret)))
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);

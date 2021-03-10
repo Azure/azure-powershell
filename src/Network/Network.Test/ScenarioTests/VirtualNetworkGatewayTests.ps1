@@ -212,7 +212,7 @@ param
       $RadiusIP = "1.2.3.4"
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationTypes Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -777,9 +777,9 @@ function Test-VirtualNetworkGatewayOpenVPN
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get OpenVPN virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationTypes Certificate,Radius -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert  
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert  
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationTypes Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
@@ -790,14 +790,14 @@ function Test-VirtualNetworkGatewayOpenVPN
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
         Assert-AreEqual 3 @($authTypes).Count
 
-        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnAuthenticationTypes Certificate
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnAuthenticationType Certificate
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
         Assert-AreEqual 1 @($authTypes).Count
         Assert-AreEqual "" $actual.VpnClientConfiguration.AadAudience
         Assert-AreEqual "" $actual.VpnClientConfiguration.RadiusServerAddress
 
-        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationTypes Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
         Assert-AreEqual 3 @($authTypes).Count

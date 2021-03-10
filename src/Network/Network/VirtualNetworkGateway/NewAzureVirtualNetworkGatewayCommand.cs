@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnAuthenticationType.Radius,
             MNM.VpnAuthenticationType.AAD)]
         [ValidateNotNullOrEmpty]
-        public string[] VpnAuthenticationTypes { get; set; }
+        public string[] VpnAuthenticationType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -388,9 +388,9 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol?.ToList();
                 }
 
-                if (this.VpnAuthenticationTypes != null)
+                if (this.VpnAuthenticationType != null)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationTypes?.ToList();
+                    vnetGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationType?.ToList();
                 }
 
                 if (this.VpnClientRootCertificates != null)
