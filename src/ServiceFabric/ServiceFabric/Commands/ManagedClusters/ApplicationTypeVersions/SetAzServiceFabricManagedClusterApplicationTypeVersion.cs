@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByResourceGroup, HelpMessage = "Specify the tags as key/value pairs.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByResourceId, HelpMessage = "Specify the tags as key/value pairs.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ByInputObject, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Arm ResourceId of the managed application type version.")]
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 currentAppTypeVersion.AppPackageUrl = this.PackageUrl;
             }
-            if (this.IsParameterBound(c => c.Tags))
+            if (this.IsParameterBound(c => c.Tag))
             {
-                currentAppTypeVersion.Tags = this.Tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+                currentAppTypeVersion.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
             return currentAppTypeVersion;

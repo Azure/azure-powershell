@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                     else
                     {
-                        var appType = CreateManagedApplicationType(this.Name, cluster.Location, this.Tags);
+                        var appType = CreateManagedApplicationType(this.Name, cluster.Location, this.Tag);
                         WriteObject(new PSManagedApplicationType(appType), false);
                     }
                 }
