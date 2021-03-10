@@ -12,10 +12,8 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $rstr1 = RandomString -allChars $false -len 6
     write-host "creating test resource group..."
-    #$resourceGroupName = "powershelldnsresolvertestrg" + $rstr1
-    $resourceGroupName = "powershell-test-rg"
+    $resourceGroupName = "powershelldnsresolvertestrg" + (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $resourceGroupName -Location eastus
     $env.Add("ResourceGroupName", $resourceGroupName)
 
@@ -71,14 +69,6 @@ function setupEnv() {
         $null = $env.Add($subnetIdEnvKey, $subnetId);
     }
 
-    $unpairedVirtualNetworkIdEnvKeyPrefix = "UnpairedVirtualNetwork"
-    For($i=0; $i -le 10; $i++){
-        $virtualNetworkName = $env.VirtualNetworkNamePrefix + "unpaired"+ $i + (RandomString -allChars $false -len 6)
-        $virtualNetworkIdEnvKey = $unpairedVirtualNetworkIdEnvKeyPrefix + $i
-        $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
-        $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId)
-    }
-
     # 
     $dnsResolverName = $env.DnsResolverName60
     $virtualNetworkId = $env.VirtualNetworkId60
@@ -100,6 +90,7 @@ function setupEnv() {
         write-host "creating test Inbound Endpoint for get ...name = "  + $inboundEndpointName
         New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
     }
+    
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
