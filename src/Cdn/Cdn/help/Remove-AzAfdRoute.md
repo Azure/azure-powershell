@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdroute
 schema: 2.0.0
 ---
 
 # Remove-AzAfdRoute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an AFD route.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzAfdRoute -Route <PSAfdRoute> [-PassThru] [-DefaultProfile <IAzureContex
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdRoute command removes the AFD route.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName
 ```
 
-{{ Add example description here }}
+Remove-AzAfdRoute command removes the AFD route.
 
 ## PARAMETERS
 

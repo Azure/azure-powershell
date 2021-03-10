@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdrulecacheexpirationaction
 schema: 2.0.0
 ---
 
 # New-AzAfdRuleCacheExpirationAction
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a cache expiration rule action.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ New-AzAfdRuleCacheExpirationAction [-SetIfMissing] -CacheDuration <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdRuleCacheExpirationAction command creates an AFD cache expiration rule action.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdRuleCacheExpirationAction -BypassCache
 ```
 
-{{ Add example description here }}
+New-AzAfdRuleCacheExpirationAction command creates an AFD cache expiration rule action.
 
 ## PARAMETERS
 

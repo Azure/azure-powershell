@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdrule
 schema: 2.0.0
 ---
 
 # Get-AzAfdRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an AFD rule. 
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Get-AzAfdRule -RuleSet <PSAfdRuleSet> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdRule command retrieves an AFD rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdRule -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName -RuleName $ruleName
 ```
 
-{{ Add example description here }}
+Get-AzAfdRule command retrieves an AFD rule.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdprofile
 schema: 2.0.0
 ---
 
 # Remove-AzAfdProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes the AFD profile.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzAfdProfile -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdProfiles command removes the AFD profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName
 ```
 
-{{ Add example description here }}
+Remove-AzAfdProfiles command removes the AFD profile.
 
 ## PARAMETERS
 

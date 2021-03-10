@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdprofile
 schema: 2.0.0
 ---
 
 # New-AzAfdProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD profile.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzAfdProfile -ProfileName <String> -ResourceGroupName <String> -Sku <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdProfile command creates an AFD profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $sku
 ```
 
-{{ Add example description here }}
+New-AzAfdProfile command creates an AFD profile.
 
 ## PARAMETERS
 

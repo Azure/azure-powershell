@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdorigingroup 
 schema: 2.0.0
 ---
 
 # Get-AzAfdOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an AFD origin group.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Get-AzAfdOriginGroup -ResourceId <String> [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdOriginGroup command retrieves the origin group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
 ```
 
-{{ Add example description here }}
+Get-AzAfdOriginGroup command retrieves the origin group.
 
 ## PARAMETERS
 

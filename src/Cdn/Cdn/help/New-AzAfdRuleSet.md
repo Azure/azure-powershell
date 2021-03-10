@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdruleset
 schema: 2.0.0
 ---
 
 # New-AzAfdRuleSet
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD rule set.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzAfdRuleSet -ProfileName <String> -ResourceGroupName <String> -RuleSetName 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdRuleSet command creates an AFD rule set.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
 ```
 
-{{ Add example description here }}
+New-AzAfdRuleSet command creates an AFD rule set.
 
 ## PARAMETERS
 

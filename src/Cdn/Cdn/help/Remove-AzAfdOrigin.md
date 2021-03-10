@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdorigin
 schema: 2.0.0
 ---
 
 # Remove-AzAfdOrigin
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an AFD origin.
 
 ## SYNTAX
 
@@ -32,16 +32,15 @@ Remove-AzAfdOrigin -Origin <PSAfdOrigin> [-PassThru] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdOrigin command removes an AFD origin.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName
 ```
-
-{{ Add example description here }}
+Remove-AzAfdOrigin command removes an AFD origin.
 
 ## PARAMETERS
 

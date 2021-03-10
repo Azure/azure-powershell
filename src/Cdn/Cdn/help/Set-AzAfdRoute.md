@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azafdroute
 schema: 2.0.0
 ---
 
 # Set-AzAfdRoute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an AFD route.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Set-AzAfdRoute -Route <PSAfdRoute> [-DefaultProfile <IAzureContextContainer>] [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdRoute command updates the AFD route.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName -OriginGroupId $originGroupId
 ```
 
-{{ Add example description here }}
+Set-AzAfdRoute command updates the AFD route.
 
 ## PARAMETERS
 

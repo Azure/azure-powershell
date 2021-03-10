@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdroute
+
 schema: 2.0.0
 ---
 
 # Get-AzAfdRoute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an AFD route.
 
 ## SYNTAX
 
@@ -31,16 +32,16 @@ Get-AzAfdRoute -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdRoute command retrieves the AFD route.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName
 ```
 
-{{ Add example description here }}
+Get-AzAfdRoute command retrieves the AFD route.
 
 ## PARAMETERS
 

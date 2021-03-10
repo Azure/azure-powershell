@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdsecuritypolicy
 schema: 2.0.0
 ---
 
 # Remove-AzAfdSecurityPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an AFD security policy.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzAfdSecurityPolicy -SecurityPolicy <PSAfdSecurityPolicy> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdSecurityPolicy removes the AFD security policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdSecurityPolicy -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName
 ```
 
-{{ Add example description here }}
+Remove-AzAfdSecurityPolicy removes the AFD security policy.
 
 ## PARAMETERS
 

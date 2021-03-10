@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azafdprofile
 schema: 2.0.0
 ---
 
 # Set-AzAfdProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an AFD profile.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Set-AzAfdProfile -Profile <PSAfdProfile> [-DefaultProfile <IAzureContextContaine
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdProfiles command updates the AFD profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> PS C:\> Set-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Tags $tags
 ```
 
-{{ Add example description here }}
+Set-AzAfdProfiles command updates the AFD profile.
 
 ## PARAMETERS
 

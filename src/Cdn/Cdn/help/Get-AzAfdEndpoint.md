@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdendpoint
 schema: 2.0.0
 ---
 
 # Get-AzAfdEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the AFD endpoint.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Get-AzAfdEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdEndpoint command retrieves the AFD endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName 
 ```
 
-{{ Add example description here }}
+Get-AzAfdEndpoint command retrieves the AFD endpoint.
 
 ## PARAMETERS
 

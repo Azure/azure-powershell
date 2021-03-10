@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdendpoint
 schema: 2.0.0
 ---
 
 # Remove-AzAfdEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an AFD endpoint.
 
 ## SYNTAX
 
@@ -31,16 +31,15 @@ Remove-AzAfdEndpoint -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdEndpoint removes an AFD endpoint.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```powershell 
+PS C:\> Remove-AzAfdEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
 ```
-
-{{ Add example description here }}
+Remove-AzAfdEndpoint removes an AFD endpoint.
 
 ## PARAMETERS
 

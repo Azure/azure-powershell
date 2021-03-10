@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azafdorigin
 schema: 2.0.0
 ---
 
 # Set-AzAfdOrigin
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the AFD origin.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Set-AzAfdOrigin -Origin <PSAfdOrigin> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdOrigin command updates an AFD origin.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -Priority 2 -Weight 10
 ```
 
-{{ Add example description here }}
+Set-AzAfdOrigin command updates an AFD origin.
 
 ## PARAMETERS
 

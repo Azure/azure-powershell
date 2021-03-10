@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdsecuritypolicy
 schema: 2.0.0
 ---
 
 # Get-AzAfdSecurityPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets and AFD security policy.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Get-AzAfdSecurityPolicy -ResourceId <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdSecurityPolicy command retrieves an AFD security policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdSecurityPolicy -ResourceGroupName $resourceGroupName -ProfileName $profileName -SecurityPolicyName $securityPolicyName
 ```
 
-{{ Add example description here }}
+Get-AzAfdSecurityPolicy command retrieves an AFD security policy.
 
 ## PARAMETERS
 

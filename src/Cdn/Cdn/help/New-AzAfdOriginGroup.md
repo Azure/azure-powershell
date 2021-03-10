@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdorigingroup 
 schema: 2.0.0
 ---
 
 # New-AzAfdOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD origin group.
 
 ## SYNTAX
 
@@ -21,16 +21,16 @@ New-AzAfdOriginGroup [-AdditionalLatencyInMilliseconds <Int32>] -OriginGroupName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdOriginGroup command creates the origin group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
 ```
 
-{{ Add example description here }}
+New-AzAfdOriginGroup command creates the origin group.
 
 ## PARAMETERS
 

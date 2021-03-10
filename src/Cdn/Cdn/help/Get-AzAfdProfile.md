@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdprofile
 schema: 2.0.0
 ---
 
 # Get-AzAfdProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an AFD profile.
 
 ## SYNTAX
 
@@ -24,16 +24,16 @@ Get-AzAfdProfile -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdProfile command retrieves the AFD profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName
 ```
 
-{{ Add example description here }}
+Get-AzAfdProfile command retrieves the AFD profile.
 
 ## PARAMETERS
 

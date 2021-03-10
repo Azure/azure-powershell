@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azafdorigingroup 
 schema: 2.0.0
 ---
 
 # Set-AzAfdOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an AFD origin group.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ Set-AzAfdOriginGroup -OriginGroup <PSAfdOriginGroup> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdOriginGroup command updates an AFD origin group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -ProbeProtocol "Https" -ProbePath "/health.aspx"
 ```
 
-{{ Add example description here }}
+Set-AzAfdOriginGroup command updates an AFD origin group.
 
 ## PARAMETERS
 

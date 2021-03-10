@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdrule
 schema: 2.0.0
 ---
 
 # New-AzAfdRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD rule.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzAfdRule [-CacheExpirationAction <PSAfdRuleCacheExpirationAction>] -Profile
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdRule command creates an AFD rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdRule -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName -RuleName $ruleName -CacheExpirtationAction $ruleAction
 ```
 
-{{ Add example description here }}
+New-AzAfdRule command creates an AFD rule.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdsecuritypolicy
 schema: 2.0.0
 ---
 
 # New-AzAfdSecurityPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD security policy.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzAfdSecurityPolicy -ProfileName <String> -ResourceGroupName <String> -Secur
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdSecurityPolicy creates an AFD security policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdSecurityPolicy -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -WafPolicyId $wafPolicyId -DomainId $domainIds
 ```
 
-{{ Add example description here }}
+New-AzAfdSecurityPolicy creates an AFD security policy.
 
 ## PARAMETERS
 

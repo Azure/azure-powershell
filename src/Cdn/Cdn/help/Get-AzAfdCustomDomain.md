@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azafdcustomdomain 
 schema: 2.0.0
 ---
 
 # Get-AzAfdCustomDomain
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets an AFD custom domain.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ Get-AzAfdCustomDomain -ResourceId <String> [-DefaultProfile <IAzureContextContai
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get-AzAfdCustomDomain command retrieves an AFD custom domain.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName
 ```
 
-{{ Add example description here }}
+Get-AzAfdCustomDomain command retrieves an AFD custom domain.
 
 ## PARAMETERS
 

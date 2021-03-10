@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/set-azafdendpoint
 schema: 2.0.0
 ---
 
 # Set-AzAfdEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the AFD endpoint.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Set-AzAfdEndpoint -Endpoint <PSAfdEndpoint> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdEndpoint command updates an AFD endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAfdEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName -Tags $tags
 ```
 
-{{ Add example description here }}
+Set-AzAfdEndpoint command updates an AFD endpoint.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version:  https://docs.microsoft.com/powershell/module/az.cdn/set-azafdsecuritypolicy
 schema: 2.0.0
 ---
 
 # Set-AzAfdSecurityPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an AFD security policy.
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Set-AzAfdSecurityPolicy -SecurityPolicy <PSAfdSecurityPolicy> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set-AzAfdSecurityPolicy updates the AFD security policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAfdSecurityPolicy -ProfileName $profileName -ResourceGroupName $resourceGroupName -SecurityPolicyName $securityPolicyName -DomainId $domainIds
 ```
 
-{{ Add example description here }}
+Set-AzAfdSecurityPolicy updates the AFD security policy.
 
 ## PARAMETERS
 

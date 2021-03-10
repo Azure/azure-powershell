@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdruleset
 schema: 2.0.0
 ---
 
 # Remove-AzAfdRuleSet
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an AFD rule set.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzAfdRuleSet -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdRuleSet command removes an AFD rule set.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
 ```
 
-{{ Add example description here }}
+Remove-AzAfdRuleSet command removes an AFD rule set.
 
 ## PARAMETERS
 

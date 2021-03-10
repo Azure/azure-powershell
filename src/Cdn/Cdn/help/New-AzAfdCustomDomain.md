@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdcustomdomain 
 schema: 2.0.0
 ---
 
 # New-AzAfdCustomDomain
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD custom domain.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzAfdCustomDomain -CustomDomainName <String> -HostName <String> -ProfileName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdCustomDomain command creates an AFD custom domain.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
 ```
 
-{{ Add example description here }}
+New-AzAfdCustomDomain command creates an AFD custom domain.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdroute
 schema: 2.0.0
 ---
 
 # New-AzAfdRoute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD route.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzAfdRoute -CustomDomainId <System.Collections.Generic.List`1[System.String]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+New-AzAfdRoute command creates the AFD route.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName -OriginGroupId $originGroupId -DomainId $domainIds
 ```
 
-{{ Add example description here }}
+New-AzAfdRoute command creates the AFD route.
 
 ## PARAMETERS
 

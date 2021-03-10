@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azafdorigingroup 
 schema: 2.0.0
 ---
 
 # Remove-AzAfdOriginGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes the AFD origin group.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzAfdOriginGroup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove-AzAfdOriginGroup command removes an AFD origin group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
 ```
 
-{{ Add example description here }}
+Remove-AzAfdOriginGroup command removes an AFD origin group.
 
 ## PARAMETERS
 

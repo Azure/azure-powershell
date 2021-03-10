@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azafdorigin
 schema: 2.0.0
 ---
 
 # New-AzAfdOrigin
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an AFD origin.
 
 ## SYNTAX
 
@@ -30,16 +30,16 @@ New-AzAfdOrigin -HostName <String> [-HttpPort <Int32>] [-HttpsPort <Int32>] -Ori
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzAfdOrigin command creates the AFD origin.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName
 ```
 
-{{ Add example description here }}
+The New-AzAfdOrigin command creates the AFD origin.
 
 ## PARAMETERS
 
