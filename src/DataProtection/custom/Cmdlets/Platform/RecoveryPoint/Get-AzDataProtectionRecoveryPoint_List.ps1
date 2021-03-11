@@ -1,7 +1,7 @@
 ﻿function Get-AzDataProtectionRecoveryPoint_List
 {
 	[OutputType('PSObject')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Gets list of recovery point associated with a protected backup instance.')]
 
     param(

@@ -1,7 +1,7 @@
 ﻿
 function New-AzDataProtectionBackupVaultStorageSettingObject{
 	[OutputType('PSObject')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Vault storage setting object')]
 
     param(
@@ -15,7 +15,7 @@ function New-AzDataProtectionBackupVaultStorageSettingObject{
     )
 
     process {
-        $storageSetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.StorageSetting]::new()
+        $storageSetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.StorageSetting]::new()
         $storageSetting.Type = $Type
         $storageSetting.DataStoreType = $DataStoreType
 

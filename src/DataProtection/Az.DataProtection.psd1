@@ -31,7 +31,8 @@
                     'Start-AzDataProtectionBackupInstanceRehydrate', 'Start-AzDataProtectionBackupInstanceRestore',
                     'Update-AzDataProtectionBackupVault',
                     'Edit-AzDataProtectionPolicyRetentionRuleClientObject', 'Edit-AzDataProtectionPolicyTagClientObject',
-                    'Edit-AzDataProtectionPolicyTriggerClientObject'
+                    'Edit-AzDataProtectionPolicyTriggerClientObject',
+                    'Update-AzDataProtectionBackupInstanceAssociatedPolicy''
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

@@ -1,7 +1,7 @@
 ﻿function Search-AzDataProtectionBackupInstanceInAzGraph
 {
 	[OutputType('PSObject')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup instances in Azure Resource Graph and retrieves the expected entries')]
     
     param (
@@ -55,7 +55,7 @@
         foreach($argResponse in $argInstanceResponse)
         {
             $jsonStringResponse = $argResponse | ConvertTo-Json -Depth 100
-            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstanceResource]::FromJsonString($jsonStringResponse)
+            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.BackupInstanceResource]::FromJsonString($jsonStringResponse)
         }
         return $backupInstances
     }

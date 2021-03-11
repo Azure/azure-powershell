@@ -1,7 +1,7 @@
 ﻿function Search-AzDataProtectionJobInAzGraph
 {
 	[OutputType('PSObject')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries')]
     
     param (
@@ -83,7 +83,7 @@
         foreach($jobresponse in $argJobResponse)
         {
             $jsonStringResponse = $jobresponse | ConvertTo-Json -Depth 100
-            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
+            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
         }
         return $backupJobs
     }

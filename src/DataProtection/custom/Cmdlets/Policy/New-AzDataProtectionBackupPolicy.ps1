@@ -1,5 +1,10 @@
 ﻿function New-AzDataProtectionBackupPolicy
 {
+
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBaseBackupPolicyResource')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a new backup policy in a given backup vault')]
+
 	param(
         [Parameter(Mandatory=$false, HelpMessage='Subscription Id')]
         [System.String]
@@ -18,7 +23,7 @@
         ${Name},
 
         [Parameter(Mandatory, HelpMessage='Policy Request Object')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupPolicy]
         ${Policy}
     )
 
@@ -69,7 +74,7 @@
             $index += 1
         }
 
-        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BaseBackupPolicyResource]::new()
+        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.BaseBackupPolicyResource]::new()
         $policyObject.Property = $Policy
 
         $null = $PSBoundParameters.Remove("Policy")

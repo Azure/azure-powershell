@@ -1,7 +1,7 @@
 ﻿function Get-AzDataProtectionBackupVault_list
 {
 	[OutputType('PSObject')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Get Backup Vault object')]
 
     param(

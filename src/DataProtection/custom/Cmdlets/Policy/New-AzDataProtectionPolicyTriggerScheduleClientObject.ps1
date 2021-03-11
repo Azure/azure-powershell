@@ -1,7 +1,7 @@
 ﻿
 function New-AzDataProtectionPolicyTriggerScheduleClientObject{
 	[OutputType('System.String[]')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new Schedule object')]
 
     param (
