@@ -138,7 +138,14 @@ directive:
       verb: Get
       subject: DefaultFunctionDefinition$
     hide: true
-
+  # - where:
+  #     verb: Test
+  #     subject: Input$
+  #   hide: true
+  # - where:
+  #     verb: Test
+  #     subject: Output$
+  #   hide: true
 # Remove variant of cmdlet
   - where:
       verb: Start

@@ -24,7 +24,8 @@ Describe 'Test-AzStreamAnalyticsFunction' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'TestViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'TestViaIdentity' {
+      $func = Get-AzStreamAnalyticsFunction -ResourceGroupName lucas-rg-test -JobName sajob-01-cli -Name score
+      Test-AzStreamAnalyticsFunction -InputObject '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/streamingjobs/sajob-01-cli/functions/score/test' -Function $func
     }
 }

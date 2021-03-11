@@ -16,8 +16,8 @@ Describe 'Get-AzStreamAnalyticsInput' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+      Get-AzStreamAnalyticsInput -ResourceGroupName lucas-rg-test -JobName sajob-01-cli -Name input-01
     }
 
     It 'GetViaIdentity' -skip {
