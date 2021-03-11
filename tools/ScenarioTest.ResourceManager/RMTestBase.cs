@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// Set up the command runtime to return true for all confirmation prompts
         /// </summary>
         /// <param name="mock">The mock command runtiem to set up</param>
-        public static void SetupConfirmation(Mock<ICommandRuntime> mock)
+        public static void SetupConfirmation(Mock<ICommandRuntime2> mock)
         {
             mock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
             mock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);

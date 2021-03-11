@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -36,6 +37,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Xunit.Sdk;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -49,7 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private Mock<ITemplateSpecVersionsOperations> templateSpecsVersionOperationsMock;
 
-        private Mock<ICommandRuntime> commandRuntimeMock;
+        private Mock<ICommandRuntime2> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
 
@@ -57,9 +60,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string lastDeploymentName = "oldfooDeployment";
 
+        private string queryString = "foo";
+
         private Dictionary<string, string> deploymentTags = Enumerable.Range(0, 2).ToDictionary(i => $"tagname{i}", i => $"tagvalue{i}");
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+
+        private string templateUri = "http://mytemplate.com";
 
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
@@ -71,7 +78,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             templateSpecsClientMock.Setup(m => m.TemplateSpecVersions).Returns(templateSpecsVersionOperationsMock.Object);
 
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            commandRuntimeMock = new Mock<ICommandRuntime>();
+            commandRuntimeMock = new Mock<ICommandRuntime2>();
             SetupConfirmation(commandRuntimeMock);
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
@@ -355,6 +362,118 @@ namespace Microsoft.Azure.Commands.Resources.Test
             dynamicParams.Should().NotBeNull();
             dynamicParams.Count().Should().Be(template.Parameters.Count);
             dynamicParams.Keys.Should().Contain(template.Parameters.Keys);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreatesNewDeploymentUsingQueryStringParam()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateUri,
+                DeploymentName = deploymentName,
+                QueryString = queryString,
+                Tags = new Dictionary<string, string>(this.deploymentTags)
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+            PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
+            {
+                Mode = DeploymentMode.Incremental,
+                DeploymentName = deploymentName,
+                CorrelationId = "123",
+                Outputs = new Dictionary<string, DeploymentVariable>()
+                {
+                    { "Variable1", new DeploymentVariable() { Value = "true", Type = "bool" } },
+                    { "Variable2", new DeploymentVariable() { Value = "10", Type = "int" } },
+                    { "Variable3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
+                },
+                Parameters = new Dictionary<string, DeploymentVariable>()
+                {
+                    { "Parameter1", new DeploymentVariable() { Value = "true", Type = "bool" } },
+                    { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
+                    { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
+                },
+                ProvisioningState = ProvisioningState.Succeeded.ToString(),
+                ResourceGroupName = resourceGroupName,
+                TemplateLink = new TemplateLink()
+                {
+                    ContentVersion = "1.0",
+                    Uri = "http://mytemplate.com",
+                    QueryString = "foo"
+                },
+                Timestamp = new DateTime(2014, 2, 13)
+            };
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expected)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = expectedParameters.DeploymentName;
+            cmdlet.TemplateUri = expectedParameters.TemplateFile;
+            cmdlet.QueryString = expectedParameters.QueryString;
+            cmdlet.Tag = new Hashtable(this.deploymentTags);
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+            actualParameters.QueryString.Should().Equals(expectedParameters.QueryString);
+            actualParameters.TemplateParameterObject.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Should().BeNull();
+            actualParameters.Tags.Should().NotBeNull();
+
+            var differenceTags = actualParameters.Tags
+                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
+            differenceTags.Should().BeEmpty();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewWhatIfDeploymentUsingQueryStringParam()
+        {
+            PSDeploymentWhatIfCmdletParameters expectedParameters = new PSDeploymentWhatIfCmdletParameters()
+            {
+                TemplateUri = templateUri,
+                DeploymentName = deploymentName,
+                QueryString = queryString
+            };
+            PSDeploymentWhatIfCmdletParameters actualParameters = new PSDeploymentWhatIfCmdletParameters();
+            WhatIfOperationResult expectedWhatIf = new WhatIfOperationResult()
+            {
+                Status = "Succeeded",
+                Error = null
+            };
+            PSWhatIfOperationResult expected = new PSWhatIfOperationResult(expectedWhatIf);
+
+            resourcesClientMock.Setup(f => f.ExecuteDeploymentWhatIf(
+                It.IsAny<PSDeploymentWhatIfCmdletParameters>()))
+                .Returns(expected)
+                .Callback((PSDeploymentWhatIfCmdletParameters p) => { actualParameters = p; });
+
+            //This is a step that is performed within ExecuteDeploymentWhatIf. We test that all reqd params are sent with the request.
+            DeploymentWhatIf deploymentWhatIf = expectedParameters.ToDeploymentWhatIf();
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = expectedParameters.DeploymentName;
+            cmdlet.TemplateUri = expectedParameters.TemplateUri;
+            cmdlet.QueryString = expectedParameters.QueryString;
+
+            //Since -WhatIf is a powershell inbuilt SwitchParameter that cannot be directly accessed, we are simulating that by manually
+            //adding a bound parameter for "WhatIf" and associating it with the -AsJob SwitchParameter so that the flag in the code that checks for the presence of -WhatIf is cleared.
+            //We are then un-setting the -AsJob switch parameter as we don't really need it for the test.
+            cmdlet.SetBoundParameters(new Dictionary<string, object> { { "WhatIf", cmdlet.AsJob = true } });
+            cmdlet.AsJob = false;
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateUri.Should().Equals(expectedParameters.TemplateUri);
+            actualParameters.QueryString.Should().Equals(expectedParameters.QueryString);
+            deploymentWhatIf.Properties.TemplateLink.Uri.Should().Equals(expectedParameters.TemplateUri);
+            deploymentWhatIf.Properties.TemplateLink.QueryString.Should().Equals(expectedParameters.QueryString);
         }
     }
 }
