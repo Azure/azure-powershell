@@ -12,7 +12,7 @@ Remove App Service Environment.
 
 ## SYNTAX
 
-### InputValuesParameterSet
+### InputValuesParameterSet (Default)
 ```
 Remove-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
