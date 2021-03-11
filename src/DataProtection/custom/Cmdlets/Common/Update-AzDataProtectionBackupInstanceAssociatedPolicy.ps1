@@ -11,7 +11,7 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandtory, HelpMessage='Resource Group of the backup vault')]
+        [Parameter(Mandatory, HelpMessage='Resource Group of the backup vault')]
         [System.String]
         ${ResourceGroupName},
 

@@ -8,7 +8,7 @@ function New-AzDataProtectionBackupInstance {
 
     param(
         [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
-        [System.String[]]
+        [System.String]
         ${SubscriptionId},
 
         [Parameter(Mandatory, HelpMessage='Resource Group of the backup vault')]
