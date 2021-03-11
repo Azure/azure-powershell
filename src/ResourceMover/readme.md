@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ResourceMover service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -60,15 +60,15 @@ module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/regionmove/resource-manager/Microsoft.Migrate/preview/2019-10-01-preview
+aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-01-01
 input-file:
-	- $(aks)/regionmovecollection.json
+	- $(aks)/resourcemovercollection.json
 module-version: 0.1.0
 
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$  
+      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$|^Bulk$|^BulkViaIdentity$|^BulkViaIdentityExpanded$  
     remove: true
   - where:
       subject: OperationsDiscovery
@@ -102,7 +102,22 @@ directive:
   - where:      
       variant: CommitExpanded            
     set:
-      subject: Commit 
+      subject: Commit
+  - where:
+      variant: BulkExpanded
+    set:
+      subject: BulkRemove
+  - where:
+      verb: Add
+      subject: MoveResource
+    set:
+      alias:
+        - Update-AzResourceMoverMoveResource
+  - where:
+      verb: Get
+      subject: MoveCollectionRequired
+    set:
+      subject: RequiredForResources
   - where:
       model-name: MoveResource
     set:
@@ -115,4 +130,9 @@ directive:
       model-name: UnresolvedDependency
     set:
        suppress-format: true
+  - no-inline:
+    - ResourceSettings
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/error = true;/g, '//error = true;');
 ```

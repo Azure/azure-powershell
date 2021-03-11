@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected void BuildAndUseBicepTemplate()
         {
-            TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, this.ResolvePath(TemplateFile));
+            TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose);
         }
     }
 }
