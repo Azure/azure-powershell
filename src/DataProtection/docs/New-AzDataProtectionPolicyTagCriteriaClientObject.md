@@ -15,20 +15,19 @@ Creates a new criteria object
 ### ScheduleCriteria (Default)
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>]
- [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [-WeeksOfMonth <WeeksOfMonth[]>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
+ [<CommonParameters>]
 ```
 
 ### AbsoluteCriteria
 ```
-New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria> [<CommonParameters>]
 ```
 
 ### MonthlyCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject -DaysOfMonth <String[]> [-MonthsOfYear <MonthsOfYear[]>]
- [-ScheduleTimes <DateTime[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScheduleTimes <DateTime[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,37 +142,6 @@ Weeks of the month.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.WeeksOfMonth[]
 Parameter Sets: ScheduleCriteria
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

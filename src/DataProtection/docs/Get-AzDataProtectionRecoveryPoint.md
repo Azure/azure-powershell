@@ -15,8 +15,8 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 ### List (Default)
 ```
 Get-AzDataProtectionRecoveryPoint [-BackupInstanceName <String>] [-ResourceGroupName <String>]
- [-SubscriptionId <String[]>] [-VaultName <String>] [-EndTime <DateTime>] [-StartTime <DateTime>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-VaultName <String>] [-EndTime <DateTime>] [-StartTime <DateTime>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -197,37 +197,6 @@ Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

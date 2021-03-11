@@ -95,7 +95,7 @@ Prepares Datasource object for backup
 Configures Backup for supported azure resources
 
 ### [New-AzDataProtectionBackupPolicy](New-AzDataProtectionBackupPolicy.md)
-
+Creates a new backup policy in a given backup vault
 
 ### [New-AzDataProtectionBackupVault](New-AzDataProtectionBackupVault.md)
 Creates or updates a BackupVault resource belonging to a resource group.
@@ -147,6 +147,9 @@ API to check for resource name availability
 
 ### [Test-AzDataProtectionFeatureSupport](Test-AzDataProtectionFeatureSupport.md)
 Validates if a feature is supported
+
+### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
+Updates associated policy for a given backup instance
 
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.

@@ -15,7 +15,7 @@ Initializes Restore Request object for triggering restore on a protected backup 
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RecoveryPoint <String>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
- [-TargetResourceId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,37 +122,6 @@ Target resource Id to which backup data will be restored.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

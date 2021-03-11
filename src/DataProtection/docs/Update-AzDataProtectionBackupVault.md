@@ -20,20 +20,6 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Patch
-```
-Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String>
- -Parameter <IPatchResourceRequestInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaIdentity
-```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
- -Parameter <IPatchResourceRequestInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### PatchViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-IdentityType <String>]
@@ -96,7 +82,7 @@ The identityType which can be either SystemAssigned or None
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -112,7 +98,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
+Parameter Sets: PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -137,28 +123,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Patch Request content for Microsoft.DataProtection resources
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IPatchResourceRequestInput
-Parameter Sets: Patch, PatchViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: True
@@ -173,7 +143,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: False
@@ -188,7 +158,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -203,7 +173,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded
 Aliases:
 
 Required: True
@@ -249,8 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IPatchResourceRequestInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
@@ -277,11 +245,6 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
-
-PARAMETER <IPatchResourceRequestInput>: Patch Request content for Microsoft.DataProtection resources
-  - `[IdentityType <String>]`: The identityType which can be either SystemAssigned or None
-  - `[Tag <IPatchResourceRequestInputTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

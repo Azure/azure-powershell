@@ -13,8 +13,8 @@ Configures Backup for supported azure resources
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupInstance -BackupInstance <IBackupInstanceResource> -VaultId <String> [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzDataProtectionBackupInstance -BackupInstance <IBackupInstanceResource> -ResourceGroupName <String>
+ -VaultName <String> [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,10 +27,9 @@ Configures Backup for supported azure resources
 PS C:\> $sub = "xxxx-xxx-xx"
 PS C:\> $DiskId = "/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/disks/{diskname}"
 PS C:\> $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault -Name "MyPolicy"
-PS C:\> $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault
 PS C:\> $instance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation $vault.Location -PolicyId $policy.Id -DatasourceId $DiskId 
 PS C:\> $instance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = "/subscriptions/{subscription}/resourceGroups/{resourceGroup}"
-PS C:\> New-AzDataProtectionBackupInstance -VaultId $vault.ID -BackupInstance $instance
+PS C:\> New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstance $instance
 
 
 Name                                                       Type                                                  BackupInstanceName
@@ -39,8 +38,7 @@ sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166 Microsoft.DataProtect
 ```
 
 The third command gets the policy with which disk will be backed up.
-The fourth stores the backup vault object in $vault variable.
-The fifth command initializes the backup instance request.
+The fourth command initializes the backup instance request.
 The last command configures backup of the given azure disk in the backup vault.
 
 ## PARAMETERS
@@ -61,8 +59,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultId
-Id of the backup vault
+### -ResourceGroupName
+Resource Group of the backup vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id of the vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+Name of the backup vault
 
 ```yaml
 Type: System.String

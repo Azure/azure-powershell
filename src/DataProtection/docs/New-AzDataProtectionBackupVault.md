@@ -23,23 +23,18 @@ Creates or updates a BackupVault resource belonging to a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new backup vault
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $sub = "xxxx-xxxx-xxxxx"
+PS C:\> $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+PS C:\> New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
 
-{{ Add output here }}
+ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
+---- ------------------- ---------------- ------------ -------- ----    ----
+                                                       westus   MyVault Microsoft.DataProtection/backupVaults
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a new backup vault.
 
 ## PARAMETERS
 

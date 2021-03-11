@@ -15,13 +15,13 @@ Adds or removes Retention Rule to existing Policy
 ### RemoveRetention (Default)
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Name <RetentionRuleName> -Policy <IBackupPolicy>
- -RemoveRule [-Confirm] [-WhatIf] [<CommonParameters>]
+ -RemoveRule [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
- -Name <RetentionRuleName> -Policy <IBackupPolicy> [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Name <RetentionRuleName> -Policy <IBackupPolicy> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,37 +128,6 @@ Parameter Sets: RemoveRetention
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

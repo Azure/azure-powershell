@@ -14,14 +14,14 @@ Adds or removes schedule tag in an existing backup policy.
 
 ### RemoveTag (Default)
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Name <TagName> -Policy <IBackupPolicy> -RemoveRule [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Edit-AzDataProtectionPolicyTagClientObject -Name <TagName> -Policy <IBackupPolicy> -RemoveRule
+ [<CommonParameters>]
 ```
 
 ### updateTag
 ```
 Edit-AzDataProtectionPolicyTagClientObject -Criteria <IScheduleBasedBackupCriteria[]> -Name <TagName>
- -Policy <IBackupPolicy> [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Policy <IBackupPolicy> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,37 +110,6 @@ Parameter Sets: RemoveTag
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
