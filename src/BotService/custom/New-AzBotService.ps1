@@ -222,7 +222,7 @@ function New-AzBotService {
                     $ServerFarmId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/serverfarms/$Name"
                     $CreateServerFarm = $true
                 }
-                $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'webappv4.template.json')
+                $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, 'webappv4.template.json')
                 $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
                 $Parameter = @{
                     'location' = $Location;

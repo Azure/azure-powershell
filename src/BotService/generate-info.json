@@ -2,7 +2,7 @@
   "autorest_core": "3.0.6375",
   "autorest_modelerfour": "4.15.414",
   "autorest_powershell": "3.0.423",
-  "swagger_commit": "3d53f802d3857a9671d6cee84cc3f90632d2fd4c",
+  "swagger_commit": "abfe5f82e8ac29a05070957bc828874a625079f1",
   "node": "v10.16.3",
   "autorest": "3.0.6149"
 }
