@@ -1300,11 +1300,11 @@ function Test-PolicyExemptionCRUD
     Assert-Null $exemption.Properties.ExpiresOn
 
     # update the policy exemption, validate the result
-    $future1 = [DateTime]::Parse('03/08/3021 23:30:10')
+    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
     $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future1 -Metadata '{}'
     Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
     Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
-    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
     Assert-Null $exemption.Properties.Metadata.$metadataName
 
     # update the exemption to clear the expiration
@@ -1368,10 +1368,10 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-AreEqual $description $exemption.Properties.DisplayName
     Assert-Null $exemption.Properties.Metadata
     Assert-Null $exemption.Properties.PolicyDefinitionReferenceIds
-    Assert-AreEqual $future1.ToLocalTime() $exemption.Properties.ExpiresOn
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
 
     # update the policy exemption set policy definition reference Id, validate the result
-    $future2 = $future1.AddDays(1)
+    $future2 = $future1.AddDays(1).ToUniversalTime()
     $exemption.Properties.DisplayName = 'testDisplay'
     $exemption.Properties.ExemptionCategory = 'Mitigated'
     $exemption.Properties.ExpiresOn = $future2
@@ -1379,7 +1379,7 @@ function Test-PolicyExemptionCRUDOnPolicySet
     $exemption = $exemption | Set-AzPolicyExemption 
     Assert-AreEqual 'testDisplay' $exemption.Properties.DisplayName
     Assert-AreEqual 'Mitigated' $exemption.Properties.ExemptionCategory
-    Assert-AreEqual $future2.ToLocalTime() $exemption.Properties.ExpiresOn
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
     Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
     Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
@@ -1421,7 +1421,7 @@ function Test-PolicyExemptionCRUDAtManagementGroup
     $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $managementGroupScope -DisplayName $description
 
     # create the policy exemption to the MG
-    $future1 = [DateTime]::Parse('03/08/3021 23:30:10')
+    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
     $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata -ExpiresOn $future1
     Assert-AreEqual "testExemption" $exemption.Name 
     Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
@@ -1430,16 +1430,16 @@ function Test-PolicyExemptionCRUDAtManagementGroup
     Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
     Assert-AreEqual $description $exemption.Properties.Description
     Assert-AreEqual $description $exemption.Properties.DisplayName
-    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
     Assert-NotNull $exemption.Properties.Metadata
     Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
 
     # update the policy exemption, validate the result
-    $future2 = $future1.AddDays(1)
+    $future2 = $future1.AddDays(1).ToUniversalTime()
     $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future2 -Metadata '{}'
     Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
     Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
-    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
     Assert-Null $exemption.Properties.Metadata.$metadataName
 
     # update the exemption to clear the expiration
