@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdRule
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRuleCacheExpirationAction"), OutputType(typeof(PSAfdRuleCacheExpirationAction))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRuleCacheExpirationAction", DefaultParameterSetName = AfdParameterSet.AfdRuleBypassCache), OutputType(typeof(PSAfdRuleCacheExpirationAction))]
     public class NewAzAfdRuleCacheExpirationAction : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleBypassCache, ParameterSetName = AfdParameterSet.AfdRuleBypassCache)]
