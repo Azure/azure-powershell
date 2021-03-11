@@ -1300,7 +1300,7 @@ function Test-PolicyExemptionCRUD
     Assert-Null $exemption.Properties.ExpiresOn
 
     # update the policy exemption, validate the result
-    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
     $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future1 -Metadata '{}'
     Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
     Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
@@ -1360,7 +1360,7 @@ function Test-PolicyExemptionCRUDOnPolicySet
     $assignment = New-AzPolicyAssignment -Name testPA -PolicySetDefinition $policySet -DisplayName $description
 
     # create the policy exemption to the subscription
-    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
     $exemption = $assignment | New-AzPolicyExemption -Name testExemption -ExemptionCategory Waiver -DisplayName $description -ExpiresOn $future1
     Assert-AreEqual 'testExemption' $exemption.Name 
     Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
@@ -1421,7 +1421,7 @@ function Test-PolicyExemptionCRUDAtManagementGroup
     $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $managementGroupScope -DisplayName $description
 
     # create the policy exemption to the MG
-    $future1 = [DateTime]::Parse('03/08/3021 23:30:10').ToUniversalTime()
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
     $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata -ExpiresOn $future1
     Assert-AreEqual "testExemption" $exemption.Name 
     Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
