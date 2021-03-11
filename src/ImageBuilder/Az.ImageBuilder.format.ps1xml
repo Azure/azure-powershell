@@ -516,6 +516,9 @@
             <Label>Inline</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>RunAsSystem</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>RunElevated</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -539,6 +542,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Inline</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunAsSystem</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RunElevated</PropertyName>
