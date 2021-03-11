@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisAcrLoginServer", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
-    public class AddAzureRmHealthcareapisAcrLoginServer : HealthcareApisBaseCmdlet
+    public class AddAzureRmHealthcareApisAcrLoginServer : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";

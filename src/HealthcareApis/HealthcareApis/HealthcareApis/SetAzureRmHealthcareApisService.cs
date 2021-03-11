@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AcrConfiguration = new ServiceAcrConfigurationInfo()
                     {
-                        LoginServers = AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration.LoginServers
+                        LoginServers = AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
                     },
                     AccessPolicies = accessPolicies,
                     PublicNetworkAccess = PublicNetworkAccess ?? healthcareApisAccount.Properties.PublicNetworkAccess
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AcrConfiguration = new ServiceAcrConfigurationInfo()
                     {
-                        LoginServers = InputObject.AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration.LoginServers
+                        LoginServers = InputObject.AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
                     },
                     AccessPolicies = accessPolicies,
                     PublicNetworkAccess = healthcareApisAccount.Properties.PublicNetworkAccess
