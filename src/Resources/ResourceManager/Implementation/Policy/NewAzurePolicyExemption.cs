@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
 
     using Newtonsoft.Json.Linq;
     using Policy;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a policy exemption.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyExemption))]
+    [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsPolicyExemption))]
     public class NewAzurePolicyExemptionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy exemption policy assignment Id.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyExemptionPolicyAssignmentIdHelp)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyExemptionPolicyAssignmentIdHelp)]
         public PsPolicyAssignment PolicyAssignment { get; set; }
 
         /// <summary>
@@ -107,30 +108,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException("The supplied ExemptionCategory is invalid.");
             }
 
-            string resourceId = GetResourceId();
+            if (this.ShouldProcess(this.Name, "Create Policy Exemption"))
+            {
+                string resourceId = GetResourceId();
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyExemptionApiVersion : this.ApiVersion;
+                var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyExemptionApiVersion : this.ApiVersion;
 
-            var operationResult = this.GetResourcesClient()
-                .PutResource(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    resource: this.GetResource(),
-                    cancellationToken: this.CancellationToken.Value,
-                    odataQuery: null)
-                .Result;
+                var operationResult = this.GetResourcesClient()
+                    .PutResource(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        resource: this.GetResource(),
+                        cancellationToken: this.CancellationToken.Value,
+                        odataQuery: null)
+                    .Result;
 
-            var managementUri = this.GetResourcesClient()
-              .GetResourceManagementRequestUri(
-                  resourceId: resourceId,
-                  apiVersion: apiVersion,
-                  odataQuery: null);
+                var managementUri = this.GetResourcesClient()
+                  .GetResourceManagementRequestUri(
+                      resourceId: resourceId,
+                      apiVersion: apiVersion,
+                      odataQuery: null);
 
-            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                .WaitOnOperation(operationResult: operationResult);
+                var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+                var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                    .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputPolicyExemptions(JObject.Parse(result)), enumerateCollection: true);
+                this.WriteObject(this.GetOutputPolicyExemptions(JObject.Parse(result)), enumerateCollection: true);
+            }
         }
 
         /// <summary>

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
 
     using Policy;
     using System.Management.Automation;
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Removes the policy assignment.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyExemption", SupportsShouldProcess = true, DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzurePolicyExemptionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -46,6 +47,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyExemptionIdHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the force switch.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Gets or sets the policy exemption input object parameter.
@@ -73,6 +80,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyExemptionApiVersion : this.ApiVersion;
 
             this.ConfirmAction(
+                this.Force,
+                string.Format("Are you sure you want to delete the following policy exemption: {0}", resourceId),
                 "Deleting the policy exemption...",
                 resourceId,
                 () =>

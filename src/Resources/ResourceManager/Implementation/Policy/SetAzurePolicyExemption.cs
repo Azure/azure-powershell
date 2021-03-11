@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
 
     using Newtonsoft.Json.Linq;
     using Policy;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy exemption.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyExemption))]
+    [Cmdlet(VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsPolicyExemption))]
     public class SetAzurePolicyExemptionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -110,29 +111,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string resourceId = this.GetResourceId();
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyExemptionApiVersion : this.ApiVersion;
+            if (this.ShouldProcess(this.Name, "Update Policy Exemption"))
+            {
+                string resourceId = this.GetResourceId();
+                var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyExemptionApiVersion : this.ApiVersion;
 
-            var operationResult = this.GetResourcesClient()
-                .PutResource(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    resource: this.GetResource(resourceId, apiVersion),
-                    cancellationToken: this.CancellationToken.Value,
-                    odataQuery: null)
-                .Result;
+                var operationResult = this.GetResourcesClient()
+                    .PutResource(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        resource: this.GetResource(resourceId, apiVersion),
+                        cancellationToken: this.CancellationToken.Value,
+                        odataQuery: null)
+                    .Result;
 
-            var managementUri = this.GetResourcesClient()
-               .GetResourceManagementRequestUri(
-                   resourceId: resourceId,
-                   apiVersion: apiVersion,
-                   odataQuery: null);
+                var managementUri = this.GetResourcesClient()
+                   .GetResourceManagementRequestUri(
+                       resourceId: resourceId,
+                       apiVersion: apiVersion,
+                       odataQuery: null);
 
-            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                .WaitOnOperation(operationResult: operationResult);
+                var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+                var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                    .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputPolicyExemptions(JObject.Parse(result)), enumerateCollection: true);
+                this.WriteObject(this.GetOutputPolicyExemptions(JObject.Parse(result)), enumerateCollection: true);
+            }
         }
 
         /// <summary>

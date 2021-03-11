@@ -1332,10 +1332,10 @@ function Test-PolicyExemptionCRUD
     Assert-AreEqual 0 @($list).Count
 
     # clean up just in case
-    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId -Force
     Assert-AreEqual True $remove
 
-    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $rg.ResourceId
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $rg.ResourceId -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
@@ -1395,10 +1395,10 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-AreEqual 2 @($list).Count
 
     # clean up just in case
-    $remove = $exemption | Remove-AzPolicyExemption
+    $remove = $exemption | Remove-AzPolicyExemption -Force
     Assert-AreEqual True $remove
 
-    $remove = $exemption2 | Remove-AzPolicyExemption
+    $remove = $exemption2 | Remove-AzPolicyExemption -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyAssignment -Name testPA
@@ -1452,10 +1452,10 @@ function Test-PolicyExemptionCRUDAtManagementGroup
     Assert-AreEqual 2 @($list).Count
 
     # clean up
-    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $managementGroupScope
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $managementGroupScope -Force
     Assert-AreEqual True $remove
 
-    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $managementGroupScope
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $managementGroupScope -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyAssignment -Name testPA -Scope $managementGroupScope
@@ -2101,9 +2101,9 @@ function Test-RemovePolicyExemptionParameters
     Assert-ThrowsContains { Remove-AzPolicyExemption } $missingParameters
 
     # validate parameter combinations starting with -Name
-    $ok = Remove-AzPolicyExemption -Name $someName
+    $ok = Remove-AzPolicyExemption -Name $someName -Force
     Assert-AreEqual True $ok
-    $ok = Remove-AzPolicyExemption -Name $someName -Scope $goodScope
+    $ok = Remove-AzPolicyExemption -Name $someName -Scope $goodScope -Force
     Assert-AreEqual True $ok
     Assert-ThrowsContains { Remove-AzPolicyExemption -Name $someName -Id $someId } $parameterSetError
     Assert-ThrowsContains { Remove-AzPolicyExemption -Name $someName -Scope $someScope -Id $someId } $parameterSetError
@@ -2113,7 +2113,7 @@ function Test-RemovePolicyExemptionParameters
     Assert-ThrowsContains { Remove-AzPolicyExemption -Scope $someScope -Id $someId } $parameterSetError
 
     # validate remaining parameter combinations starting with -Id
-    $ok = Remove-AzPolicyExemption -Id $goodId
+    $ok = Remove-AzPolicyExemption -Id $goodId -Force
     Assert-AreEqual True $ok
 }
 

@@ -12,13 +12,7 @@ Gets policy exemptions.
 
 ## SYNTAX
 
-### DefaultParameterSet (Default)
-```
-Get-AzPolicyExemption [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NameParameterSet
+### NameParameterSet (Default)
 ```
 Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
