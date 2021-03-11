@@ -71,7 +71,7 @@
 * Supported copy block blob synchronously, with encryption scope
     - 'Copy-AzStorageBlob'
 * Fixed issue that Get-AzStorageBlobContent use wrong directory separator char on Linux and MacOS [#14234]
-* Deleted Invoke-AzStorageSyncFileRecall doc since we are deprecating this cmdlet
+* [Breaking Change] Deleted Invoke-AzStorageSyncFileRecall doc since we are deprecating this cmdlet
 
 #### Az.Websites
 * Introduced an option to give custom timeout for 'Publish-AzWebApp' 
