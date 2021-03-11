@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Cross Zonal Restore for managed virtual machines. 
+
+## Version 3.4.1
 * Added null check for target storage account in FileShare restore.
 
 ## Version 3.4.0

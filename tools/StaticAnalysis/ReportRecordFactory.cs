@@ -15,6 +15,7 @@
 
 using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
+using StaticAnalysis.HelpAnalyzer;
 
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ namespace StaticAnalysis
             if (type.Equals(typeof(ExtraAssembly).FullName))
             {
                 return new ExtraAssembly();
+            }
+            if (type.Equals(typeof(HelpIssue).FullName))
+            {
+                return new HelpIssue();
             }
 
             return null;

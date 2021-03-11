@@ -14,6 +14,9 @@
 
 using System.Collections.Generic;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -22,6 +25,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     /// </summary>
     sealed class MockAzPredictorService : AzPredictorService
     {
+        /// <summary>
+        /// Gets or sets the value to indicate whether it throws exception in it's implementation.
+        /// </summary>
+        public bool ThrowException { get; set; }
+
         /// <summary>
         /// Gets or sets the commands in history to request prediction for.
         /// </summary>
@@ -33,6 +41,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public CommandAst History { get; set; }
 
         /// <summary>
+        /// The task that a test can wait on until RequestPredictionsAsync is complete.
+        /// </summary>
+        public TaskCompletionSource<bool> RequestPredictionTaskCompletionSource { get; private set; }
+
+        /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
         /// </summary>
         /// <param name="history">The history that the suggestion is for</param>
@@ -40,6 +53,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <param name="commands">The commands collection</param>
         public MockAzPredictorService(string history, IList<PredictiveCommand> suggestions, IList<PredictiveCommand> commands)
         {
+            ResetRequestPredictionTask();
             if (history != null)
             {
                 SetCommandToRequestPrediction(history);
@@ -57,9 +71,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override void RequestPredictions(IEnumerable<string> commands)
+        public override Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, CancellationToken cancellationToken)
         {
+            if (ThrowException)
+            {
+                RequestPredictionTaskCompletionSource.TrySetResult(false);
+                throw new MockTestException("Test Exception");
+            }
+
             Commands = commands;
+            RequestPredictionTaskCompletionSource.TrySetResult(true);
+            return RequestPredictionTaskCompletionSource.Task;
+        }
+
+        /// <inheritdoc/>
+        public override CommandLineSuggestion GetSuggestion(PredictionContext context, int suggestionCount, int maxAllowedCommandDuplicate, CancellationToken cancellationToken)
+        {
+            if (ThrowException)
+            {
+                throw new MockTestException("Test Exception");
+            }
+
+            return base.GetSuggestion(context, suggestionCount, maxAllowedCommandDuplicate, cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -72,6 +105,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public override void RecordHistory(CommandAst history)
         {
             History = history;
+        }
+
+        public void ResetRequestPredictionTask()
+        {
+            RequestPredictionTaskCompletionSource = new TaskCompletionSource<bool>();
         }
     }
 }

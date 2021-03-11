@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
     {
 
         /// <summary>Backing field for <see cref="AdministratorLoginPassword" /> property.</summary>
-        private string _administratorLoginPassword;
+        private System.Security.SecureString _administratorLoginPassword;
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Owned)]
-        public string AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
+        public System.Security.SecureString AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
 
         /// <summary>Backing field for <see cref="DelegatedSubnetArgument" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDelegatedSubnetArguments _delegatedSubnetArgument;
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string AdministratorLoginPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>delegated subnet arm resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview
 
     {
         /// <summary>The password of the administrator login.</summary>
-        string AdministratorLoginPassword { get; set; }
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>Delegated subnet arguments.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IDelegatedSubnetArguments DelegatedSubnetArgument { get; set; }
         /// <summary>delegated subnet arm resource id.</summary>

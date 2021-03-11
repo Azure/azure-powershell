@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureUpdateReplicationConfiguration
-Specifies the disk configuration to udpated for managed disk Vm (Azure to Azure DR scenrio).
+Specifies the disk configuration to updated for managed disk Vm (Azure to Azure DR scenrio).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryNic
-Specifies the NIC which will be used as primary NIC for recvcovery VM after after failover.
+Specifies the NIC which will be used as primary NIC for recovery VM after after failover.
 
 ```yaml
 Type: System.String
@@ -517,7 +517,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateNic
-Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to udpated.
+Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to updated.
 
 ```yaml
 Type: System.String
