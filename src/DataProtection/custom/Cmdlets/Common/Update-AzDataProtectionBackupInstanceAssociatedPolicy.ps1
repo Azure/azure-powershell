@@ -25,7 +25,7 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
 
         [Parameter(Mandatory, HelpMessage='Id of the Policy to be associated with the backup instance')]
         [System.String]
-        ${PolicyId},
+        ${PolicyId}
     )
 
     process
