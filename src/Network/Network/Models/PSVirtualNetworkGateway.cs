@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string VpnGatewayGeneration { get; set; }
 
-        public string VirtualNetworkExtendedLocationResourceId { get; set; }
+        public string VNetExtendedLocationResourceId { get; set; }
 
-        public PSExtendedLocation ExtendedLocation { get; set; }
+        public PSExtendedLocation VirtualNetworkExtendedLocation { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
