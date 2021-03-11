@@ -101,11 +101,8 @@ function Test-CustomDomainEnableDisableWithRunningEndpoint
     $enabled = $customDomain | Enable-AzCdnCustomDomainHttps -PassThru
     Assert-True{$enabled}
 
-    SleepInRecordMode 900
-
-    Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     $customDomain = $endpoint | Get-AzCdnCustomDomain -CustomDomainName $customDomainName
-    Assert-AreEqual "Disabling" $customDomain.CustomHttpsProvisioningState
+    Assert-AreEqual "Enabling" $customDomain.CustomHttpsProvisioningState
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

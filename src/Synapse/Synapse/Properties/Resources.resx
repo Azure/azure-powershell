@@ -259,13 +259,13 @@
     <value>Pausing SQL pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
   </data>
   <data name="SynapseSparkPoolExists" xml:space="preserve">
-    <value>A Spark pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Set-AzSynapseSparkPool to update an existing Spark pool.</value>
+    <value>A Spark pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseSparkPool to update an existing Spark pool.</value>
   </data>
   <data name="SynapseSqlPoolExists" xml:space="preserve">
-    <value>A SQL pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Set-AzSynapseSqlPool to update an existing SQL pool.</value>
+    <value>A SQL pool with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseSqlPool to update an existing SQL pool.</value>
   </data>
   <data name="SynapseWorkspaceExists" xml:space="preserve">
-    <value>A workspace with name '{0}' in resource group '{1}' already exists. Please use Set-AzSynapseWorkspace to update an existing workspace.</value>
+    <value>A workspace with name '{0}' in resource group '{1}' already exists. Please use Update-AzSynapseWorkspace to update an existing workspace.</value>
   </data>
   <data name="UpdatingSynapseSparkPool" xml:space="preserve">
     <value>Updating Spark pool '{0}' in resource group '{1}' under workspace '{2}'.</value>
@@ -632,5 +632,35 @@ Are you sure you want to continue?</value>
   </data>
   <data name="VulnerabilityAssessmentWrongParameterType" xml:space="preserve">
     <value>Wrong parameter type</value>
+  </data>
+  <data name="UpdatingManagedIdentity" xml:space="preserve">
+    <value>Updating managed identity control permissions to SQL pools for pipeline integration on workspace '{0}'.</value>
+  </data>
+  <data name="CreatingSynapseWorkspaceKey" xml:space="preserve">
+    <value>Creating a new workspace key in resource group '{0}' under parent Workspace '{1}' with name '{2}'.</value>
+  </data>
+  <data name="FailedToDiscoverKey" xml:space="preserve">
+    <value>A workspace key with name '{0}' in resource group '{1}' under workspace '{2}' does not exist. Please use New-AzSynapseWorkspaceKey to create a workspace key with these properties.</value>
+  </data>
+  <data name="KeyDoesNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified workspace key '{0}' does not exist.</value>
+  </data>
+  <data name="ManagedVirtualNetworkNotExist" xml:space="preserve">
+    <value>This workspace doesn't have managed virtual network settings</value>
+  </data>
+  <data name="RemoveWorkspaceKey" xml:space="preserve">
+    <value>Are you sure you want to remove workspace key '{0}'?</value>
+  </data>
+  <data name="RemovingWorkspaceKey" xml:space="preserve">
+    <value>Deleting workspace key '{0}' in resource group '{1}' under workspace '{2}'.</value>
+  </data>
+  <data name="UpdatingWorkspaceKey" xml:space="preserve">
+    <value>Updating workspace key '{0}' in resource group '{1}' under Workspace '{2}'.</value>
+  </data>
+  <data name="WorkspaceKeyExists" xml:space="preserve">
+    <value>A workspace key with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key.</value>
+  </data>
+  <data name="ScanIdParameterIsRequired" xml:space="preserve">
+    <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
 </root>

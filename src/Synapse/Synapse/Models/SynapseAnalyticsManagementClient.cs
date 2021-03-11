@@ -36,6 +36,7 @@ using TriggerType = Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Mod
 using Action = System.Action;
 using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
 using Microsoft.Azure.Commands.Synapse.Model;
+using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -2816,6 +2817,147 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 integrationRuntimeName,
                 nodeName,
                 request);
+        }
+
+        #endregion
+
+        #region Managed Identity Sql Control
+
+        public ManagedIdentitySqlControlSettingsModel GetManagedIdentitySqlControlSetting(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return this._synapseManagementClient.WorkspaceManagedIdentitySqlControlSettings.Get(resourceGroupName, workspaceName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public ManagedIdentitySqlControlSettingsModel UpdateManagedIdentitySqlControlSetting(string resourceGroupName, string workspaceName, ManagedIdentitySqlControlSettingsState desiredState)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var managedIdentitySqlControlSettings = new ManagedIdentitySqlControlSettingsModel
+                {
+                    GrantSqlControlToManagedIdentity = new ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity(desiredState: desiredState.ToString())
+                };
+                
+                return this._synapseManagementClient.WorkspaceManagedIdentitySqlControlSettings.CreateOrUpdate(resourceGroupName, workspaceName, managedIdentitySqlControlSettings);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        #endregion
+
+        #region Workspace Key
+
+        public Key CreateOrUpdateKey(string resourceGroupName, string workspaceName, string keyName, Key createOrUpdateParams)
+        {
+            try
+            {
+                return _synapseManagementClient.Keys.CreateOrUpdate(resourceGroupName, workspaceName, keyName, createOrUpdateParams);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        internal Key GetKey(string resourceGroupName, string workspaceName, string KeyName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                return _synapseManagementClient.Keys.Get(resourceGroupName, workspaceName, KeyName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        internal Key GetKeyOrDefault(string resourceGroupName, string workspaceName, string KeyName)
+        {
+            try
+            {
+                return GetKey(resourceGroupName, workspaceName, KeyName);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Key> ListKeys(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                var firstPage = this._synapseManagementClient.Keys.ListByWorkspace(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.Keys.ListByWorkspaceNext);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public void DeleteKey(string resourceGroupName, string workspaceName, string KeyName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                if (!TestKey(resourceGroupName, workspaceName, KeyName))
+                {
+                    throw new InvalidOperationException(string.Format(Properties.Resources.KeyDoesNotExist, KeyName));
+                }
+
+                _synapseManagementClient.Keys.Delete(resourceGroupName, workspaceName, KeyName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public bool TestKey(string resourceGroupName, string workspaceName, string KeyName)
+        {
+            try
+            {
+                GetKey(resourceGroupName, workspaceName, KeyName);
+                return true;
+            }
+            catch (AzPSResourceNotFoundCloudException)
+            {
+                return false;
+            }
         }
 
         #endregion

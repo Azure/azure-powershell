@@ -284,9 +284,10 @@ Accept wildcard characters: False
 ### -PatchMode
 Specifies the mode of in-guest patching to IaaS virtual machine.<br><br>
 Possible values are:<br>
-**Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br>
-**AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br >
-**AutomaticByPlatform** - the virtual machine will automatically updated by the OS. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+**AutomaticByPlatform** - Patch installation for the virtual machine will be managed by Azure. Use with -Windows or -Linux. Requires -ProvisionVMAgent. Requires -EnableAutoUpdate when used with -Windows. <br>
+**AutomaticByOS** - Patch installation for the virtual machine will be managed by the OS. Use with -Windows. Requires -ProvisionVMAgent and -EnableAutoUpdate.<br>
+**Manual** - You control the application of patches to a virtual machine. Use with -Windows. Requires -ProvisionVMAgent.<br>
+**ImageDefault** - Patch installation managed by the default settings on the OS image. Use with -Linux.
 
 ```yaml
 Type: System.String
