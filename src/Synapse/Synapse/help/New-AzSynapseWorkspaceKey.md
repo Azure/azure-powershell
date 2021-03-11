@@ -12,7 +12,7 @@ Creates a workspace key.
 
 ## SYNTAX
 
-### CreateByNameParameterSet
+### CreateByNameParameterSet (Default)
 ```
 New-AzSynapseWorkspaceKey [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  -EncryptionKeyIdentifier <String> [-Activate] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

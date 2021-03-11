@@ -1,6 +1,6 @@
 ---
-external help file: microsoft.azure.powershell.cmdlets.synapse.dll-help.xml
-module name: az.synapse
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
+module name: Az.Synapse
 online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseworkspacekey
 schema: 2.0.0
 ---
@@ -12,7 +12,7 @@ Gets a workspace key.
 
 ## SYNTAX
 
-### GetByNameParameterSet
+### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseWorkspaceKey [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
