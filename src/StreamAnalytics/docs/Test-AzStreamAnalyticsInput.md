@@ -12,30 +12,10 @@ Tests whether an input’s datasource is reachable and usable by the Azure Strea
 
 ## SYNTAX
 
-### TestExpanded (Default)
 ```
 Test-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Property <IInputProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Test
-```
-Test-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String> -Input <IInput>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### TestViaIdentity
-```
-Test-AzStreamAnalyticsInput -InputObject <IStreamAnalyticsIdentity> -Input <IInput>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentityExpanded
-```
-Test-AzStreamAnalyticsInput -InputObject <IStreamAnalyticsIdentity> [-Property <IInputProperties>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +59,14 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+[Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
+[Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput]
+# An input object, containing all information associated with the named input.
+# All inputs are contained under a streaming job.
+# To construct, see NOTES section for INPUT properties and create a hash table.
+${Input},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -93,45 +81,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
-An input object, containing all information associated with the named input.
-All inputs are contained under a streaming job.
-To construct, see NOTES section for INPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
-Parameter Sets: Test, TestViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JobName
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -146,7 +101,7 @@ The name of the input.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases: InputName
 
 Required: True
@@ -171,30 +126,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-The properties that are associated with an input.
-Required on PUT (CreateOrReplace) requests.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInputProperties
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -209,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -266,41 +204,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUT <IInput>: An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
-  - `[ETag <String>]`: 
-  - `[Property <IInputProperties>]`: The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
-    - `Type <String>`: Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
-    - `[Compression <ICompression>]`: Describes how input data is compressed
-      - `Type <String>`: 
-    - `[PartitionKey <String>]`: partitionKey Describes a key in the input data which is used for partitioning the input data
-    - `[Serialization <ISerialization>]`: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-      - `Type <EventSerializationType>`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
-
-PROPERTY <IInputProperties>: The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
-  - `Type <String>`: Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
-  - `[Compression <ICompression>]`: Describes how input data is compressed
-    - `Type <String>`: 
-  - `[PartitionKey <String>]`: partitionKey Describes a key in the input data which is used for partitioning the input data
-  - `[Serialization <ISerialization>]`: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-    - `Type <EventSerializationType>`: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 
 ## RELATED LINKS
 

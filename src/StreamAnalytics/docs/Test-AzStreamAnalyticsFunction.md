@@ -13,32 +13,10 @@ This can range from testing the connection to the underlying web service behind 
 
 ## SYNTAX
 
-### TestExpanded (Default)
 ```
 Test-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FunctionConfigurationProperty <IFunctionConfiguration>]
- [-PropertiesType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Test
-```
-Test-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- -Function <IFunction> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentity
-```
-Test-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity> -Function <IFunction>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentityExpanded
-```
-Test-AzStreamAnalyticsFunction -InputObject <IStreamAnalyticsIdentity>
- [-FunctionConfigurationProperty <IFunctionConfiguration>] [-PropertiesType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +61,14 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+[Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
+[Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction]
+# A function object, containing all information associated with the named function.
+# All functions are contained under a streaming job.
+# To construct, see NOTES section for FUNCTION properties and create a hash table.
+${Function},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
@@ -97,61 +83,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Function
-A function object, containing all information associated with the named function.
-All functions are contained under a streaming job.
-To construct, see NOTES section for FUNCTION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
-Parameter Sets: Test, TestViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -FunctionConfigurationProperty
-.
-To construct, see NOTES section for FUNCTIONCONFIGURATIONPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionConfiguration
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JobName
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +103,7 @@ The name of the function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases: FunctionName
 
 Required: True
@@ -191,28 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesType
-Indicates the type of function.
-
-```yaml
-Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -227,7 +149,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -284,44 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-FUNCTION <IFunction>: A function object, containing all information associated with the named function. All functions are contained under a streaming job.
-  - `[ConfigurationProperty <IFunctionConfiguration>]`: 
-    - `[Binding <IFunctionBinding>]`: The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
-      - `Type <String>`: Indicates the function binding type.
-    - `[Input <IFunctionInput[]>]`: 
-      - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-      - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-    - `[Output <IFunctionOutput>]`: Describes the output of a function.
-      - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  - `[ETag <String>]`: 
-  - `[PropertiesType <String>]`: Indicates the type of function.
-
-FUNCTIONCONFIGURATIONPROPERTY <IFunctionConfiguration>: .
-  - `[Binding <IFunctionBinding>]`: The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
-    - `Type <String>`: Indicates the function binding type.
-  - `[Input <IFunctionInput[]>]`: 
-    - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-    - `[IsConfigurationParameter <Boolean?>]`: A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-  - `[Output <IFunctionOutput>]`: Describes the output of a function.
-    - `[DataType <String>]`: The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

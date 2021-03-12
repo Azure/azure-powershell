@@ -100,6 +100,11 @@ directive:
           "description": "The function type."
         }
       }
+  # Changed csharp code
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/case "canceled":/g, 'case "canceled":\ncase "testsucceeded":')
+
 # Remove cmdlets
   - where:
       verb: Set
@@ -138,14 +143,19 @@ directive:
       verb: Get
       subject: DefaultFunctionDefinition$
     hide: true
-  # - where:
-  #     verb: Test
-  #     subject: Input$
-  #   hide: true
-  # - where:
-  #     verb: Test
-  #     subject: Output$
-  #   hide: true
+  - where:
+      verb: Test
+      subject: Input$
+    hide: true
+  - where:
+      verb: Test
+      subject: Output$
+    hide: true
+  - where:
+      verb: Test
+      subject: Function$
+    hide: true
+
 # Remove variant of cmdlet
   - where:
       verb: Start
@@ -196,4 +206,5 @@ directive:
       - FunctionConfiguration
       - InputProperties
       - OutputDataSource
+
 ```
