@@ -1729,6 +1729,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"MJACGhspCPVFseK29uJAJLrXWWwLQNdefVYJ7YiyZoXLM7YOChXlJg81I/bKM3KB3rzhaR948okBSCLa/H4G0Q==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"RvP8vS4Er1iNZ1bh4TpKWekgP93ZRm+o+gVGgqt+TnVEQD9NUHGy4gyuCvYzDwEaP87gf+i0IzXRPAx8j/GIlw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -1792,6 +1793,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"oYYpm+Gqz9OH2wC/jqIO42vzNuPqV8Wuaf1xeRFSbCj3NgvuD2v5K17N+6pMp8fWnBQJQtmK9ce80yElfNPW7w==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"P6poJjY/UDH0R7tdzf4XHFEGay1Jq8mWvMMuHUd0+lhhLS5dC2DiNUq4hF/zfejg6CYHnxx1aa7KycOHoFXoQg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
