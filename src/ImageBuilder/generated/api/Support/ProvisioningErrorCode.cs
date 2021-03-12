@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
+    /// <summary>Error code of the provisioning failure</summary>
     public partial struct ProvisioningErrorCode :
         System.IEquatable<ProvisioningErrorCode>
     {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         /// <param name="value">the value to convert to an instance of <see cref="ProvisioningErrorCode" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ProvisioningErrorCode(System.Convert.ToString(value));
+            return new ProvisioningErrorCode(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ProvisioningErrorCode</summary>
