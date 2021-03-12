@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common
             }
         }
 
-        public static X509Certificate2 CertficateFromPem(string certificatePem)
+        public static X509Certificate2 CertificateFromPem(string certificatePem)
         {
             // Remove the header
             string base64cert = certificatePem.Replace("-----BEGIN CERTIFICATE-----\n", "");

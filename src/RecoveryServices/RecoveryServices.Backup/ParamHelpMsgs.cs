@@ -154,6 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoreOnlyOSDisk = "Use this switch to restore only OS disks of a backed up VM";
             public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
             public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
+            public const string TargetZone = "Target zone to restore the disks";
         }
 
         internal static class RestoreFS

@@ -52,5 +52,23 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 _logger,
                 "Test-SynapseWorkspaceSecurity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSynapseManagedIdentitySqlControlSetting()
+        {
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
+                "Test-SynapseManagedIdentitySqlControlSetting");
+        }
+
+        [Fact(Skip = "This test requires to create KeyVault beforehand and calls Graph API.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSynapseWorkspaceKey()
+        {
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
+                "Test-SynapseWorkspaceKey");
+        }
     }
 }
