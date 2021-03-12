@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
           Mandatory = false,
           HelpMessage = "HealthcareApis Fhir Service List of Acr Login Server.")]
         [ValidateNotNullOrEmpty]
-        public string[] AcrLoginServers { get; set; }
+        public string[] AcrLoginServer { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput(), KeyVaultKeyUri = GetCosmosDBKeyVaultKeyUri() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
                             ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName },
-                            AcrConfiguration = new ServiceAcrConfigurationInfo { LoginServers = AcrLoginServers },
+                            AcrConfiguration = new ServiceAcrConfigurationInfo { LoginServers = AcrLoginServer },
                             AccessPolicies = accessPolicies,
                         }
                     };

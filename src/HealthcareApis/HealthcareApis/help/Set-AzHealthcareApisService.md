@@ -18,7 +18,7 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
  [-CosmosKeyVaultKeyUri <String>] [-Authority <String>] [-Audience <String>] [-EnableSmartProxy]
  [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
  [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential] [-ExportStorageAccountName <String>]
- [-AcrLoginServers <String[]>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
+ [-AcrLoginServer <String[]>] [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity]
  [-DisableManagedIdentity] [-Tag <Hashtable>] [-AsJob] [-PublicNetworkAccess <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>]
  [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
  [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
- [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AcrLoginServers <String[]>]
+ [-DisableCorsCredential] [-ExportStorageAccountName <String>] [-AcrLoginServer <String[]>]
  [-AccessPolicyObjectId <String[]>] [-EnableManagedIdentity] [-DisableManagedIdentity] [-Tag <Hashtable>]
  -ResourceId <String> [-AsJob] [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -117,7 +117,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AcrLoginServers
+### -AcrLoginServer
 HealthcareApis FhirService List of Acr Login Servers.
 
 ```yaml

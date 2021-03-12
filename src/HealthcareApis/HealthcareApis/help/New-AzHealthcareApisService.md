@@ -17,7 +17,7 @@ New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location
  [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
  [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
  [-CosmosKeyVaultKeyUri <String>] [-CosmosOfferThroughput <Int32>] [-ExportStorageAccountName <String>]
- [-AcrLoginServers <String[]>] [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>]
+ [-AcrLoginServer <String[]>] [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>]
  [-Tag <Hashtable>] [-AsJob] [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -96,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AcrLoginServers
+### -AcrLoginServer
 HealthcareApis Fhir Service List of Acr Login Server.
 
 ```yaml

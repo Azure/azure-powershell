@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "HealthcareApis FhirService List of Acr Login Servers.")]
         [ValidateNotNullOrEmpty]
-        public string[] AcrLoginServers { get; set; }
+        public string[] AcrLoginServer { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AcrConfiguration = new ServiceAcrConfigurationInfo()
                     {
-                        LoginServers = AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
+                        LoginServers = AcrLoginServer ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
                     },
                     AccessPolicies = accessPolicies,
                     PublicNetworkAccess = PublicNetworkAccess ?? healthcareApisAccount.Properties.PublicNetworkAccess
