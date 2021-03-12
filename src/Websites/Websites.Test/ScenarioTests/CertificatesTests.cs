@@ -53,5 +53,11 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAzWebAppCertificate");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportAzWebAppKeyVaultCertificate()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ImportAzWebAppKeyVaultCertificate");
+        }
     }
 }

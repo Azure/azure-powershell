@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdapplication
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplication
 schema: 2.0.0
 ---
 

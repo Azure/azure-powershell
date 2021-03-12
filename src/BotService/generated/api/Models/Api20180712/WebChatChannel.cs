@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IChannelInternal)__channel).Name = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatChannelProperties _property;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712
 
         /// <summary>The list of Web Chat sites</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatSite[] Site { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatChannelPropertiesInternal)Property).Site; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatChannelPropertiesInternal)Property).Site = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatSite[] Site { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatChannelPropertiesInternal)Property).Site; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IWebChatChannelPropertiesInternal)Property).Site = value ?? null /* arrayOf */; }
 
         /// <summary>Web chat control embed code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inlined)]

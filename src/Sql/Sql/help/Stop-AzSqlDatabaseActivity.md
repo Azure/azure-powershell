@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: B5C909D7-6087-463A-83BF-99DD196B9862
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/stop-azsqldatabaseactivity
+online version: https://docs.microsoft.com/powershell/module/az.sql/stop-azsqldatabaseactivity
 schema: 2.0.0
 ---
 

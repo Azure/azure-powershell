@@ -54,7 +54,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 PARAMETER <IServerKey>: A MySQL Server key.
   [Uri <String>]: The URI of the key.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlflexibleserverkey
+https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverkey
 #>
 function New-AzMySqlFlexibleServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerKey])]

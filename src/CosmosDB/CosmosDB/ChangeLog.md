@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.0
+* Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
+* Introduced ServerVersion parameter to Update-AzCosmosDBAccount.
+* Introduced BackupInterval and BackupRetention for Database Account cmdlets
+
+## Version 1.0.0
 * General availability of 'Az.CosmosDB' module
 * Restricting New-AzCosmosDBAccount cmdlet to make update calls to existing Database Accounts.
 * Introducing AnalyticalStorageTTL in SqlContainer.

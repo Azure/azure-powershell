@@ -29,7 +29,7 @@ ETag Location      Name                Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratesite
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]

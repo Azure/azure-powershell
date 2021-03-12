@@ -28,7 +28,7 @@ DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/new-azmigratediskmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput])]
@@ -41,14 +41,16 @@ param(
     ${DiskID},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({ "true" , "false" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies whether the disk contains the Operating System for the source server to be migrated.
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType]
+    [System.String]
     # Specifies the type of disks to be used for the Azure VM.
     ${DiskType},
 

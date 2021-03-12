@@ -35,11 +35,12 @@ function Test-PolicyCrud
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
     Assert-AreEqual $Name $retrievedPolicy.Name
+    Assert-AreEqual "Disabled" $retrievedPolicy.RequestBodyCheck
     Assert-AreEqual $customRule1.Name $retrievedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule1.RuleType $retrievedPolicy.CustomRules[0].RuleType
     Assert-AreEqual $customRule1.Action $retrievedPolicy.CustomRules[0].Action
@@ -100,12 +101,13 @@ function Test-PolicyCrudWithPiping
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
 
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
     $updatedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
+    Assert-AreEqual "Disabled" $updatedPolicy.RequestBodyCheck
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule2.Action $updatedPolicy.CustomRules[0].Action
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
@@ -123,20 +125,24 @@ WAF managed rule set definitions retrieval
 function Test-ManagedRuleSetDefinition
 {
     $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition
-    Assert-AreEqual $definitions.Count 4
-    Assert-AreEqual $definitions[0].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[0].RuleSetVersion "1.0"
-    Assert-AreEqual $definitions[0].RuleGroups.Count 9
+    Assert-AreEqual $definitions.Count 5
+    Assert-AreEqual $definitions[0].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[0].RuleSetVersion "1.1"
+    Assert-AreEqual $definitions[0].RuleGroups.Count 13
 
-    Assert-AreEqual $definitions[1].RuleSetType "Microsoft_BotManagerRuleSet"
+    Assert-AreEqual $definitions[1].RuleSetType "DefaultRuleSet"
     Assert-AreEqual $definitions[1].RuleSetVersion "1.0"
-    Assert-AreEqual $definitions[1].RuleGroups.Count 3
+    Assert-AreEqual $definitions[1].RuleGroups.Count 9
 
-    Assert-AreEqual $definitions[2].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[2].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[2].RuleGroups.Count 8
+    Assert-AreEqual $definitions[2].RuleSetType "Microsoft_BotManagerRuleSet"
+    Assert-AreEqual $definitions[2].RuleSetVersion "1.0"
+    Assert-AreEqual $definitions[2].RuleGroups.Count 3
 
-    Assert-AreEqual $definitions[3].RuleSetType "BotProtection"
+    Assert-AreEqual $definitions[3].RuleSetType "DefaultRuleSet"
     Assert-AreEqual $definitions[3].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[3].RuleGroups.Count 1
+    Assert-AreEqual $definitions[3].RuleGroups.Count 8
+
+    Assert-AreEqual $definitions[4].RuleSetType "BotProtection"
+    Assert-AreEqual $definitions[4].RuleSetVersion "preview-0.1"
+    Assert-AreEqual $definitions[4].RuleGroups.Count 1
 }

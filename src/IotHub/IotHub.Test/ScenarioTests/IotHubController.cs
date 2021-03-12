@@ -14,6 +14,7 @@
 
 using System.Diagnostics;
 using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Internal.Resources;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public IotHubClient IotHubClient { get; private set; }
+
+        public StorageManagementClient StorageClient { get; private set; }
 
         public EventHubManagementClient EHClient { get; private set; }
 
@@ -75,6 +78,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
+                {"Microsoft.Storage", null },
                 {"Microsoft.Authorization", null}
             };
             var providersToIgnore = new Dictionary<string, string>
@@ -98,6 +102,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
                     _helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.Storage.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -120,10 +125,12 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             IotHubClient = GetIotHubClient(context);
+            StorageClient = GetStorageManagementClient(context);
             EHClient = GetEHClient(context);
 
             _helper.SetupManagementClients(ResourceManagementClient,
                 IotHubClient,
+                StorageClient,
                 EHClient);
         }
 
@@ -135,6 +142,10 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         private static IotHubClient GetIotHubClient(MockContext context)
         {
             return context.GetServiceClient<IotHubClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static EventHubManagementClient GetEHClient(MockContext context)

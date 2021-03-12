@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`..
+        ///   Looks up a localized string similar to Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`..
         /// </summary>
         internal static string ADGraphPermissionWarning {
             get {
@@ -334,6 +334,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When &apos;-CurveName&apos; is specified, &apos;-KeyType&apos; must be &apos;EC&apos;..
+        /// </summary>
+        internal static string CurveNameButNotEc {
+            get {
+                return ResourceManager.GetString("CurveNameButNotEc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct..
         /// </summary>
         internal static string DecryptSecurityDomainFailure {
@@ -388,7 +397,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        ///   Looks up a localized string similar to Failed to export security domain data..
         /// </summary>
         internal static string DownloadSecurityDomainFail {
             get {
@@ -402,6 +411,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string DownloadSecurityDomainKeyFail {
             get {
                 return ResourceManager.GetString("DownloadSecurityDomainKeyFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please input a valid &apos;CurveName&apos; when KeyType is &apos;EC&apos;..
+        /// </summary>
+        internal static string EcButNoCurveName {
+            get {
+                return ResourceManager.GetString("EcButNoCurveName", resourceCulture);
             }
         }
         
@@ -622,7 +640,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid key vault managed storage acccount name..
+        ///   Looks up a localized string similar to Invalid key vault managed storage account name..
         /// </summary>
         internal static string InvalidManagedStorageAccountName {
             get {
@@ -1225,7 +1243,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to restore security domain from backup..
+        ///   Looks up a localized string similar to Failed to import security domain..
         /// </summary>
         internal static string RestoreSecurityDomainFailure {
             get {
@@ -1234,7 +1252,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt exported security domain data..
         /// </summary>
         internal static string RestoreSecurityDomainNotEnoughKey {
             get {
@@ -1423,7 +1441,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault..
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modify the Access Policies of this vault..
         /// </summary>
         internal static string VaultDoesNotExist {
             get {

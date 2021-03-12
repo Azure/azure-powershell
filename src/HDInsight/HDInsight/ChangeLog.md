@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+* Added new parameter `-EnableComputeIsolation` and `-ComputeIsolationHostSku` to the cmdlet `New-AzHDInsightCluster` to support compute isolation feature
+* Added property `ComputeIsolationProperties` and `ConnectivityEndpoints` in the class AzureHDInsightCluster.
+
+
 ## Version 4.1.1
 * Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
 

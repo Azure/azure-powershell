@@ -8,7 +8,7 @@ src/local-artifacts/*
 
 obj
 bin
-TestResults
+**/*TestResults*
 *.orig
 *.ncrunchsolution
 *.patch

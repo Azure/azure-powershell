@@ -45,6 +45,68 @@ function Test-ExportLogAnalyticRequestRateByIntervalNegative
 
 <#
 .SYNOPSIS
+Test Export Log Analytics group by parameters
+#>
+function Test-ExportLogAnalyticGroupByParameters
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $container = "contain";
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        Assert-NotNull $key;
+
+        $from = Get-Date -Year 2021 -Month 1 -Day 4 -Hour 9;
+        $to = Get-Date -Year 2021 -Month 1 -Day 5 -Hour 9;
+
+        $context = New-AzStorageContext -StorageAccountName $stoname -StorageAccountKey $key.Value[0];
+
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            New-AzStorageContainer -Name $container -Context $context;
+            $sastoken = Get-AzStorageContainer -Name $container -Context $context | New-AzStorageContainerSASToken -Permission rwdl -Context $context;
+        }
+
+        $sasuri = "https://$stoname.blob.core.windows.net/$container$sastoken";
+
+        $result = Export-AzLogAnalyticThrottledRequest -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByUserAgent;
+        Assert-AreEqual "Succeeded" $result.Status;
+
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            $blobs = Get-AzStorageBlob -Container $container -Context $context;
+            $throttle_blob = $blobs | where {$_.name.contains("ThrottledRequests")};
+            Assert-NotNull $throttle_blob;
+        }
+
+        $result = Export-AzLogAnalyticThrottledRequest -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByApplicationId;
+        Assert-AreEqual "Succeeded" $result.Status;
+
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            $blobs = Get-AzStorageBlob -Container $container -Context $context;
+            $throttle_blob = $blobs | where {$_.name.contains("ThrottledRequests")};
+            Assert-NotNull $throttle_blob;
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Export Log Analytics positive scenario
 #>
 function Test-ExportLogAnalytics

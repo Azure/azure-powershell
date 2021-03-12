@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesasrreplicationprotecteditem
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesasrreplicationprotecteditem
 schema: 2.0.0
 ---
 
@@ -17,8 +17,9 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
  [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-RecoveryProximityPlacementGroupId <String>]
- [-EnableAcceleratedNetworkingOnRecovery] [-RecoveryBootDiagStorageAccountId <String>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryAvailabilityZone <String>]
+ [-RecoveryProximityPlacementGroupId <String>] [-EnableAcceleratedNetworkingOnRecovery]
+ [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
@@ -87,7 +88,6 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -In
 
 Start the update operation for the specified replication protected item to use the supplied proximity placement group for failover VM.
 
-
 ## PARAMETERS
 
 ### -ASRVMNicConfiguration
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureUpdateReplicationConfiguration
-Specifies the disk configuration to udpated for managed disk Vm (Azure to Azure DR scenrio).
+Specifies the disk configuration to updated for managed disk Vm (Azure to Azure DR scenrio).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryNic
-Specifies the NIC which will be used as primary NIC for recvcovery VM after after failover.
+Specifies the NIC which will be used as primary NIC for recovery VM after after failover.
 
 ```yaml
 Type: System.String
@@ -307,6 +307,21 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySet
 Availability set for replication protected item after failover.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAvailabilityZone
+Specifies availability zone for replication protected item after failover.
 
 ```yaml
 Type: System.String
@@ -502,7 +517,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateNic
-Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to udpated.
+Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to updated.
 
 ```yaml
 Type: System.String

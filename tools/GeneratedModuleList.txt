@@ -1,8 +1,10 @@
+Az.ADDomainServices
 Az.AppConfiguration
 Az.Blockchain
 Az.BotService
 Az.CloudService
 Az.Communication
+Az.Confluent
 Az.ConnectedKubernetes
 Az.CostManagement
 Az.CustomProviders
@@ -11,6 +13,7 @@ Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.Functions
 Az.HanaOnAzure
+Az.HealthBot
 Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
@@ -25,4 +28,5 @@ Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud
 Az.TimeSeriesInsights
+Az.VMware
 Az.WindowsIotServices

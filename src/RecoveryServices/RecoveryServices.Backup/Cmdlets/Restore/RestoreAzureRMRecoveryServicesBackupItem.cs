@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -208,14 +207,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public SwitchParameter RestoreAsUnmanagedDisks { get; set; }
 
         /// <summary>
-        /// Disk Encryption Set to encrypt the restored VM   // add more param sets 
+        /// Disk Encryption Set to encrypt the restored VM
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet, 
             HelpMessage = ParamHelpMsgs.Encryption.DES)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
             HelpMessage = ParamHelpMsgs.Encryption.DES)]
-        /* [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
-            HelpMessage = ParamHelpMsgs.RestoreFS.MultipleSourceFilePath)]*/
         public string DiskEncryptionSetId { get; set; }
 
         /// <summary>
@@ -224,6 +221,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.UseSecondaryReg)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter RestoreToSecondaryRegion { get; set; }
+
+        /// <summary>
+        /// Target Zone Number to restore the VM disks
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
+        public int? TargetZoneNumber { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -270,7 +276,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         providerParameters.Add(RestoreVMBackupItemParams.DiskEncryptionSetId, DiskEncryptionSetId);
                     }
-                }                
+                }
+
+                if (TargetZoneNumber != null)
+                {   
+                    // get storage type 
+                    BackupResourceConfigResource getStorageResponse = ServiceClientAdapter.GetVaultStorageType(resourceGroupName, vaultName);
+                    string storageType = getStorageResponse.Properties.StorageType;
+                    bool crrEnabled = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
+
+                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||
+                    (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
+                    {
+                        AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
+                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)  // RP recovery type should be vault only
+                        {
+                            if (rp.Zones != null)
+                            {
+                                //target region should support Zones 
+                                /*if (RestoreToSecondaryRegion.IsPresent)
+                                {
+                                    FeatureSupportRequest iaasvmFeatureRequest = new FeatureSupportRequest();
+                                    ServiceClientAdapter.BmsAdapter.Client.FeatureSupport.ValidateWithHttpMessagesAsync(secondaryRegion, iaasvmFeatureRequest);
+                                }*/
+                                providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
+                            }
+                            else
+                            {
+                                throw new ArgumentException(string.Format(Resources.RecoveryPointZonePinnedException));
+                            }
+                        }
+                        else
+                        {
+                            throw new ArgumentException(string.Format(Resources.RecoveryPointVaultRecoveryTypeException));
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException(string.Format(Resources.ZonalRestoreVaultStorageRedundancyException));
+                    }
+                }
 
                 if (StorageAccountName != null)
                 {
@@ -310,17 +355,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     psBackupProvider = providerManager.GetProviderInstance(
                         WorkloadType.MSSQL, BackupManagementType.AzureWorkload);
                 }
-                var jobResponse = psBackupProvider.TriggerRestore();                                
+                var jobResponse = psBackupProvider.TriggerRestore();
 
                 if (RestoreToSecondaryRegion.IsPresent)
-                {                    
-                    var operationId = jobResponse.Request.RequestUri.Segments.Last();   
+                {
+                    var operationId = jobResponse.Request.RequestUri.Segments.Last();
                     var response = ServiceClientAdapter.GetCrrOperationStatus(secondaryRegion, operationId);
 
                     string jobIDJson = JsonConvert.SerializeObject(response.Body.Properties);
                     string[] jobSplits = jobIDJson.Split(new char[] { '\"' });
                     string jobID = jobSplits[jobSplits.Length - 2];
-                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID)); 
+                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID));
                 }
                 else
                 {
