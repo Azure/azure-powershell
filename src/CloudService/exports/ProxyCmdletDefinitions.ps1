@@ -3877,7 +3877,7 @@ PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-azcloudservicediagnosticsextension
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
@@ -4303,7 +4303,7 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-azcloudserviceremotedesktopextensionobject
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
