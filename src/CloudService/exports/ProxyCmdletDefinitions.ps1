@@ -1658,7 +1658,7 @@ Create or update a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -1683,7 +1683,7 @@ $cloudService = New-AzCloudService                                              
                   -NetworkProfile $networkProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -1715,7 +1715,7 @@ $cloudService = New-AzCloudService                                              
                   -ExtensionProfile $extensionProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -1747,8 +1747,8 @@ $cloudService = New-AzCloudService                                              
                   -OSProfile $osProfile
 .Example
 # Create role profile object
-PS C:\> $role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $role2 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
@@ -3877,7 +3877,7 @@ PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceDiagnosticsExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
@@ -4303,7 +4303,7 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
