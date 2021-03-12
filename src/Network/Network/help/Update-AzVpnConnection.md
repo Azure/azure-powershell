@@ -15,7 +15,7 @@ Updates a VPN connection.
 ### ByVpnConnectionName (Default)
 ```
 Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
+ [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,7 +24,7 @@ Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> 
 ### ByVpnConnectionResourceId
 ```
 Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
- [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
+ [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
  [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -33,7 +33,7 @@ Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-Connec
 ### ByVpnConnectionObject
 ```
 Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-EnableBgp <Boolean>]
  [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -255,6 +255,20 @@ Type: PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficSelectorPolicy
+A list of Traffic Selector policies.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
+Parameter Sets: (All)
+Aliases:
 Required: False
 Position: Named
 Default value: None
