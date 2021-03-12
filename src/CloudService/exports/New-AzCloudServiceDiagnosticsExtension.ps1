@@ -26,7 +26,7 @@ PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceDiagnosticsExtension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
