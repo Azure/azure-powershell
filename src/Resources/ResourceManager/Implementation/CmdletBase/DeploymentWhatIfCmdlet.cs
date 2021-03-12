@@ -35,27 +35,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             var clearMessage = new string(' ', statusMessage.Length);
             var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
             var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
-            InformationRecord informationRec = new InformationRecord(information, "WhatIf");
-            InformationRecord clearRec = new InformationRecord(clearInformation, "WhatIf");
-            informationRec.Tags.Add("PSHOST");
-            clearRec.Tags.Add("PSHOST");
+            var tags = new[] { "PSHOST" };
 
             try
             {
                 // Write status message.
-                this.WriteInformation(informationRec);
+                this.WriteInformation(information, tags);
 
                 PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
 
                 // Clear status before returning result.
-                this.WriteInformation(clearRec);
+                this.WriteInformation(clearInformation, tags);
 
                 return whatIfResult;
             }
             catch (Exception)
             {
                 // Clear status before on exception.
-                this.WriteInformation(clearRec);
+                this.WriteInformation(clearInformation, tags);
                 throw;
             }
         }

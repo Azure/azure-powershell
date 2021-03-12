@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -37,8 +36,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
-using Xunit.Sdk;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -52,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private Mock<ITemplateSpecVersionsOperations> templateSpecsVersionOperationsMock;
 
-        private Mock<ICommandRuntime2> commandRuntimeMock;
+        private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
 
@@ -78,7 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             templateSpecsClientMock.Setup(m => m.TemplateSpecVersions).Returns(templateSpecsVersionOperationsMock.Object);
 
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            commandRuntimeMock = new Mock<ICommandRuntime2>();
+            commandRuntimeMock = new Mock<ICommandRuntime>();
             SetupConfirmation(commandRuntimeMock);
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
@@ -428,52 +425,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             differenceTags.Should().BeEmpty();
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewWhatIfDeploymentUsingQueryStringParam()
-        {
-            PSDeploymentWhatIfCmdletParameters expectedParameters = new PSDeploymentWhatIfCmdletParameters()
-            {
-                TemplateUri = templateUri,
-                DeploymentName = deploymentName,
-                QueryString = queryString
-            };
-            PSDeploymentWhatIfCmdletParameters actualParameters = new PSDeploymentWhatIfCmdletParameters();
-            WhatIfOperationResult expectedWhatIf = new WhatIfOperationResult()
-            {
-                Status = "Succeeded",
-                Error = null
-            };
-            PSWhatIfOperationResult expected = new PSWhatIfOperationResult(expectedWhatIf);
-
-            resourcesClientMock.Setup(f => f.ExecuteDeploymentWhatIf(
-                It.IsAny<PSDeploymentWhatIfCmdletParameters>()))
-                .Returns(expected)
-                .Callback((PSDeploymentWhatIfCmdletParameters p) => { actualParameters = p; });
-
-            //This is a step that is performed within ExecuteDeploymentWhatIf. We test that all reqd params are sent with the request.
-            DeploymentWhatIf deploymentWhatIf = expectedParameters.ToDeploymentWhatIf();
-
-            cmdlet.ResourceGroupName = resourceGroupName;
-            cmdlet.Name = expectedParameters.DeploymentName;
-            cmdlet.TemplateUri = expectedParameters.TemplateUri;
-            cmdlet.QueryString = expectedParameters.QueryString;
-
-            //Since -WhatIf is a powershell inbuilt SwitchParameter that cannot be directly accessed, we are simulating that by manually
-            //adding a bound parameter for "WhatIf" and associating it with the -AsJob SwitchParameter so that the flag in the code that checks for the presence of -WhatIf is cleared.
-            //We are then un-setting the -AsJob switch parameter as we don't really need it for the test.
-            cmdlet.SetBoundParameters(new Dictionary<string, object> { { "WhatIf", cmdlet.AsJob = true } });
-            cmdlet.AsJob = false;
-
-            cmdlet.ExecuteCmdlet();
-
-            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
-            actualParameters.TemplateUri.Should().Equals(expectedParameters.TemplateUri);
-            actualParameters.QueryString.Should().Equals(expectedParameters.QueryString);
-            deploymentWhatIf.Properties.TemplateLink.Uri.Should().Equals(expectedParameters.TemplateUri);
-            deploymentWhatIf.Properties.TemplateLink.QueryString.Should().Equals(expectedParameters.QueryString);
         }
     }
 }
