@@ -15,19 +15,19 @@ Reset a Virtual Network Gateway Connection
 ### ByName (Default)
 ```
 Reset-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Reset-AzVirtualNetworkGatewayConnection -InputObject <PSVirtualNetworkGatewayConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Reset-AzVirtualNetworkGatewayConnection -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ Resets the Virtual Network Gateway Connection with the name "myTunnel" within th
 Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The virtual network gateway connection object which has to be reset.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
+Type: PSVirtualNetworkGatewayConnection
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The virtual network gateway connection name for which has to be reset.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases: ResourceName, ConnectionName
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The Azure resource ID of the Virtual Network Gateway Connection which has to be reset.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -131,36 +131,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -174,7 +144,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS
