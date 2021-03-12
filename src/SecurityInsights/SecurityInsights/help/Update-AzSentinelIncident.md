@@ -61,6 +61,20 @@ Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "m
 This example first creates an "*owner object*" which contains the owner information, then the **Update-AzSentinelIncident** cmdlet is used to pass the ownerObject to update the incident. <br/>
 Note: you can retrieve the "*ownerObject*" from the Azure Active Directory portal (listed as *ObjectID*), or when using the Azure AD PowerShell module.
 
+### Example 3
+```powershell
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"  -IncidentID "561c5184-f8da-4d8b-8544-c89e422bbf6f" -Classification FalsePositive -Status "Closed"
+```
+This example closes a specific incident with the **Classification** of "False Positive" <br/>
+*Note: providing a Classification upon closing is mandatory*
+
+### Example 4
+```powershell
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" 
+-IncidentID "561c5184-f8da-4d8b-8544-c89e422bbf6f" -Classification FalsePositive  -ClassificationComment "my comment" -ClassificationReason InaccurateData -Status "Closed"
+```
+This example closes a specific incident and provides a classification comment and reason
+
 ## PARAMETERS
 
 ### -Classification
