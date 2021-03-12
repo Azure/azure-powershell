@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default ssh key file {0} already exists. Please use parameter -SshKeyVaule &apos;{0}&apos; instead of -GenerateSshKey..
+        ///   Looks up a localized string similar to Default ssh key file {0} already exists. Please use parameter -SshKeyValue &apos;{0}&apos; instead of -GenerateSshKey..
         /// </summary>
         internal static string DefaultSshKeyAlreadyExist {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t use -GenerateSshKey and -SshKeyVaule at the same time..
+        ///   Looks up a localized string similar to Don&apos;t use -GenerateSshKey and -SshKeyValue at the same time..
         /// </summary>
         internal static string DonotUseGenerateSshKeyWithSshKeyValue {
             get {

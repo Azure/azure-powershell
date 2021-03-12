@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/new-azsynapseworkspace
+online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapseworkspace
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Creates a Synapse Analytics workspace.
 ```
 New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
  -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
- -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <String>] [-AsJob]
+ -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
+ [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,6 +96,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionKeyIdentifier
+Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyName
+The workspace encryption key name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Azure region where the resource should be created.
 
@@ -114,10 +145,9 @@ Accept wildcard characters: False
 Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Synapse.Models.PSManagedVirtualNetworkSettings
 Parameter Sets: (All)
 Aliases:
-Accepted values: default
 
 Required: False
 Position: Named

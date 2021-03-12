@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 
     /// <summary>Updates the role instances in the specified update domain.</summary>
     /// <remarks>
-    /// [OpenAPI] CloudServicesUpdateDomain_WalkUpdateDomain=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}"
+    /// [OpenAPI] WalkUpdateDomain=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/updateDomains/{updateDomain}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzCloudServiceUpdateDomain_WalkExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

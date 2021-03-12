@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
+* Az.Migrate GA
+* Incorporated Initialize-AzMigrateReplicationInfrastructure as a cmdlet in the Az.Migrate module, from the external script that is run currently today.
+* Made some parameters of New-AzMigrateServerReplication, New-AzMigrateDiskMapping case insensitive.
+* Added support for scale appliance change, to handle new V3 keys.
+
 ## Version 0.2.0
 * Bug fixed in update replication migration item to pass all properties (changed/unchanged) to service, and not just the changed ones.
 * Bug fixed in enable migrate to pick correct run as account id for VMware Cbt provider.

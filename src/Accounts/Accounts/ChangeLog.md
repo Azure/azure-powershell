@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.6
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
+
+## Version 2.2.5
 * Tracked CloudError code in exception
 * Raised 'ContextCleared' event when `Clear-AzContext` was executed
 

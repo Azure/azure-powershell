@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Maintenance
 Module Guid: 9b895a4cb333f6bf9176b1eeb9260782R21
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.maintenance
+Download Help Link: https://docs.microsoft.com/powershell/module/az.maintenance
 Help Version: 0.2.5.0
 Locale: en-us
 ---

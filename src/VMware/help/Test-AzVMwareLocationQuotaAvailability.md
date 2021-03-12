@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
+Module Name: Az.VMWare
+online version: https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
 schema: 2.0.0
 ---
 
-# Test-AzVMwareLocationQuotaAvailability
+# Test-AzVMWareLocationQuotaAvailability
 
 ## SYNOPSIS
 Return quota for subscription by region
@@ -14,13 +14,13 @@ Return quota for subscription by region
 
 ### Check (Default)
 ```
-Test-AzVMwareLocationQuotaAvailability -Location <String> [-SubscriptionId <String>]
+Test-AzVMWareLocationQuotaAvailability -Location <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzVMwareLocationQuotaAvailability -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+Test-AzVMWareLocationQuotaAvailability -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Return quota for subscription by region
 
 ### Example 1: Check quota availability
 ```powershell
-PS C:\> Test-AzVMwareLocationQuotaAvailability -Location eastus
+PS C:\> Test-AzVMWareLocationQuotaAvailability -Location eastus
 
 Enabled
 -------
@@ -62,7 +62,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 Parameter Sets: CheckViaIdentity
 Aliases:
 
@@ -139,11 +139,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IQuota
 
 ## NOTES
 
@@ -154,7 +154,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+INPUTOBJECT <IVMWareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementidentityprovider
+online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementidentityprovider
 schema: 2.0.0
 ---
 

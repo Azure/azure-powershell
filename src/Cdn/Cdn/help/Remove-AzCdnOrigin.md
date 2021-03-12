@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdnorigin
+online version: https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnorigin
 schema: 2.0.0
 ---
 
@@ -38,8 +38,9 @@ Remove-AzCdnOrigin will delete a CDN origin from the given endpoint. If the orig
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName 
+PS C:\> Remove-AzCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginName $originName
 ```
+
 This cmdlet will remove the specified origin from the given endpoint. 
 
 ## PARAMETERS

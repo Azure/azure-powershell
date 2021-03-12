@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0143CE35-3B1D-4829-B880-A5CA25B83883
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroupdeployment
+online version: https://docs.microsoft.com/powershell/module/az.resources/test-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Specifies the full path of a JSON template file.
+Specifies the full path of a template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String
@@ -369,7 +369,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateUri
-Specifies the URI of a JSON template file.
+Specifies the URI of a template file.
 
 ```yaml
 Type: System.String

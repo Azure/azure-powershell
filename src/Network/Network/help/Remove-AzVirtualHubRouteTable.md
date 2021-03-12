@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualhubroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualhubroutetable
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Deletes the specified route table that is associated with the specified virtual 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub" -Name "routeTable1"
+PS C:\> Remove-AzVirtualHubRouteTableï¿½-ResourceGroupNameï¿½"testRg"ï¿½-HubNameï¿½"westushub"ï¿½-Nameï¿½"routeTable1"
 ```
 
 This command deletes the routeTable1 of the virtual hub westushub.

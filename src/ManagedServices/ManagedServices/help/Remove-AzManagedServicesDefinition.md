@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.dll-Help.xml
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+online version: https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
 schema: 2.0.0
 ---
 

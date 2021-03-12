@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Added FrontDoorId to properties
 * Added JSON Exclusions and RequestBodyCheck support to managed rules
 

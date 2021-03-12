@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/update-azvmwareprivatecloud
+Module Name: Az.VMWare
+online version: https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
 schema: 2.0.0
 ---
 
-# Update-AzVMwarePrivateCloud
+# Update-AzVMWarePrivateCloud
 
 ## SYNOPSIS
 Update a private cloud
@@ -14,14 +14,14 @@ Update a private cloud
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzVMWarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentitySource <IIdentitySource[]>] [-Internet <InternetEnum>] [-ManagementClusterSize <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-IdentitySource <IIdentitySource[]>]
+Update-AzVMWarePrivateCloud -InputObject <IVMWareIdentity> [-IdentitySource <IIdentitySource[]>]
  [-Internet <InternetEnum>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Update a private cloud
 
 ### Example 1: Update size of private cloud by name
 ```powershell
-PS C:\> Update-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -ManagementClusterSize 4
+PS C:\> Update-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -ManagementClusterSize 4
 
 Location      Name            Type
 --------      ----            ----
@@ -44,7 +44,7 @@ Update size of private cloud by name
 
 ### Example 2: Update size of private cloud by input object
 ```powershell
-PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud | Update-AzVMwarePrivateCloud -ManagementClusterSize 4
+PS C:\> Get-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud | Update-AzVMWarePrivateCloud -ManagementClusterSize 4
 
 Location      Name            Type
 --------      ----            ----
@@ -90,7 +90,7 @@ vCenter Single Sign On Identity Sources
 To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.InternetEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -259,11 +259,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPrivateCloud
 
 ## NOTES
 
@@ -286,7 +286,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   - `[Ssl <SslEnum?>]`: Protect LDAP communication using SSL certificate (LDAPS)
   - `[Username <String>]`: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 
-INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+INPUTOBJECT <IVMWareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

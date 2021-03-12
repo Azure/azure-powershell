@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 23C6C9D3-A745-46C8-AB2C-B874223FBFFF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.media/get-azmediaservicenameavailability
+online version: https://docs.microsoft.com/powershell/module/az.media/get-azmediaservicenameavailability
 schema: 2.0.0
 ---
 

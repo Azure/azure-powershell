@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/remove-azvmwareauthorization
+Module Name: Az.VMWare
+online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
 schema: 2.0.0
 ---
 
-# Remove-AzVMwareAuthorization
+# Remove-AzVMWareAuthorization
 
 ## SYNOPSIS
 Delete an ExpressRoute Circuit Authorization in a private cloud
@@ -14,14 +14,14 @@ Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ### Delete (Default)
 ```
-Remove-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Remove-AzVMWareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzVMWareAuthorization -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ### Example 1: Delete authorization for private cloud
 ```powershell
-PS C:\> Remove-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Remove-AzVMWareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 ```
 
@@ -75,7 +75,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -213,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 
 ## OUTPUTS
 
@@ -228,7 +228,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+INPUTOBJECT <IVMWareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

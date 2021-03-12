@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FD27C755-9AAF-42DA-8425-1661C92B6C68
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/stop-azhdinsightjob
+online version: https://docs.microsoft.com/powershell/module/az.hdinsight/stop-azhdinsightjob
 schema: 2.0.0
 ---
 

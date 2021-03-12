@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigratemachine
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratemachine
 #>
 function Get-AzMigrateMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]

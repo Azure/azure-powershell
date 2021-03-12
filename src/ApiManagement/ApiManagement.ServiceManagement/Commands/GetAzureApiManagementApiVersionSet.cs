@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 apiVersionSetId = apiVersionSet.ApiVersionSetId;
             }
 
-            if (string.IsNullOrEmpty(ApiVersionSetId))
+            if (string.IsNullOrEmpty(apiVersionSetId))
             {
                 WriteObject(Client.GetApiVersionSets(resourceGroupName, serviceName), true);
             }
             else
             {
-                WriteObject(Client.GetApiVersionSet(resourceGroupName, serviceName, ApiVersionSetId));
+                WriteObject(Client.GetApiVersionSet(resourceGroupName, serviceName, apiVersionSetId));
             }
         }
     }

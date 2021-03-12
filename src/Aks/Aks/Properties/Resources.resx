@@ -373,10 +373,10 @@
     <value>WorkspaceResourceId must not be null when enabling add-on Monitoring.</value>
   </data>
   <data name="DonotUseGenerateSshKeyWithSshKeyValue" xml:space="preserve">
-    <value>Don't use -GenerateSshKey and -SshKeyVaule at the same time.</value>
+    <value>Don't use -GenerateSshKey and -SshKeyValue at the same time.</value>
   </data>
   <data name="DefaultSshKeyAlreadyExist" xml:space="preserve">
-    <value>Default ssh key file {0} already exists. Please use parameter -SshKeyVaule '{0}' instead of -GenerateSshKey.</value>
+    <value>Default ssh key file {0} already exists. Please use parameter -SshKeyValue '{0}' instead of -GenerateSshKey.</value>
   </data>
   <data name="UpdatingNodePoolMode" xml:space="preserve">
     <value>Updating NodePoolMode.</value>

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMware
-online version: https://docs.microsoft.com/en-us/powershell/module/az.vmware/get-azvmwarecluster
+Module Name: Az.VMWare
+online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarecluster
 schema: 2.0.0
 ---
 
-# Get-AzVMwareCluster
+# Get-AzVMWareCluster
 
 ## SYNOPSIS
 Get a cluster by name in a private cloud
@@ -14,19 +14,19 @@ Get a cluster by name in a private cloud
 
 ### List (Default)
 ```
-Get-AzVMwareCluster -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzVMWareCluster -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMWareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVMwareCluster -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMWareCluster -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Get a cluster by name in a private cloud
 
 ### Example 1: Get cluster
 ```powershell
-PS C:\> Get-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 Name              Type
 ----              ----
@@ -47,7 +47,7 @@ Get cluster
 
 ### Example 2: List clusters
 ```powershell
-PS C:\> Get-AzVMwareCluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMWareCluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
 
 Name              Type
 ----              ----
@@ -78,7 +78,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -155,11 +155,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.ICluster
 
 ## NOTES
 
@@ -170,7 +170,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+INPUTOBJECT <IVMWareIdentity>: Identity Parameter
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud

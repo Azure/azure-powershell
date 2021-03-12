@@ -174,7 +174,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
   [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]

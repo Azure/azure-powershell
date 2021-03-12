@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 40054224-52FF-4AF6-A090-9F6D07A2BA99
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasereplicationlink
+online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink
 schema: 2.0.0
 ---
 

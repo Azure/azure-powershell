@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvm
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvm
 schema: 2.0.0
 ---
 

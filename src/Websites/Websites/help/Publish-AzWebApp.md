@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/publish-azwebapp
+online version: https://docs.microsoft.com/powershell/module/az.websites/publish-azwebapp
 schema: 2.0.0
 ---
 
@@ -63,6 +63,14 @@ PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
 ```
 
 Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG.
+
+### Example 6
+```powershell
+PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Timeout 300000 -Force
+```
+
+Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. User can Sets the timespan in Milliseconds to wait before the request times out.
 
 ## PARAMETERS
 
@@ -168,6 +176,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Timeout
+Sets the timespan in Milliseconds to wait before the request times out.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

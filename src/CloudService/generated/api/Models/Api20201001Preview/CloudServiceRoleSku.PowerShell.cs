@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Tier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             AfterDeserializeDictionary(content);
         }
 
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Tier, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleSkuInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             AfterDeserializePSObject(content);
         }
 

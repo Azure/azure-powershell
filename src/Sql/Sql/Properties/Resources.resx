@@ -655,4 +655,10 @@
   <data name="UnsupportedDatabaseEditionForAuditingPolicy" xml:space="preserve">
     <value>Auditing policy cannot be defined for database edition {0}</value>
   </data>
+  <data name="RemoveAzureSqlServerTrustGroupDescription" xml:space="preserve">
+    <value>Removing Azure Sql Server Trust Group '{0}' in location '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerTrustGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Trust Group '{0}' in location '{1}'?</value>
+  </data>
 </root>

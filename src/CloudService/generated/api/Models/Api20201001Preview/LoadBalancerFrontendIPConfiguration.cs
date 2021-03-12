@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 
         /// <summary>The private IP address referenced by the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string PrivateIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PrivateIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PrivateIPAddress = value; }
+        public string PrivateIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PrivateIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PrivateIPAddress = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationProperties _property;
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string PublicIPAddressId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PublicIPAddressId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PublicIPAddressId = value; }
+        public string PublicIPAddressId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PublicIPAddressId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).PublicIPAddressId = value ?? null; }
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Inlined)]
-        public string SubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).SubnetId = value; }
+        public string SubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfigurationPropertiesInternal)Property).SubnetId = value ?? null; }
 
         /// <summary>Creates an new <see cref="LoadBalancerFrontendIPConfiguration" /> instance.</summary>
         public LoadBalancerFrontendIPConfiguration()

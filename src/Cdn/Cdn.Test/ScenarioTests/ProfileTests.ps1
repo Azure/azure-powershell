@@ -86,20 +86,17 @@ function Test-ProfileCrud
 
     $updatedProfile = Set-AzCdnProfile -CdnProfile $retrievedProfile
 
-    Assert-NotNull $updatedProfile
-    Assert-AreEqual $profileName $updatedProfile.Name
-    Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
-    Assert-Tags $newTags $updatedProfile.Tags
+     Assert-NotNull $updatedProfile
+     Assert-AreEqual $profileName $updatedProfile.Name
+     Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
+     Assert-Tags $newTags $updatedProfile.Tags
 
-    $sso = Get-AzCdnProfileSsoUrl -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
-    Assert-NotNull $sso.SsoUriValue
+     $sso = Get-AzCdnProfileSsoUrl -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
+     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 
-    Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
-
-    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+     Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 }
 
 <#
@@ -118,12 +115,8 @@ function Test-ProfileDeleteWithEndpoints
 
     New-AzCdnEndpoint -CdnProfile $createdProfile -OriginName "contoso" -OriginHostName "www.contoso.com" -EndpointName $endpointName
 
-    $removed = Remove-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
-
-    Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
-
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 }
 
 <#
@@ -144,12 +137,8 @@ function Test-ProfileDeleteAndSsoWithPiping
     $sso = Get-AzCdnProfileSsoUrl -CdnProfile $createdProfile
     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzCdnProfile -CdnProfile $createdProfile -PassThru
-
-    Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
-
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Assert-ThrowsContains { Get-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 }
 
 <#
@@ -174,7 +163,7 @@ function Test-ProfilePipeline
 
     $profiles = Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
-    Assert-True { $profiles.Count -eq 2 }
+    Assert-True { $profiles.Count -eq 0 }
 
     Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzCdnProfile -Force
 
