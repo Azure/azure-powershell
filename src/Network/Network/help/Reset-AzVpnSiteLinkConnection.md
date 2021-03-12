@@ -12,7 +12,7 @@ Reset a VPN Site Link Connection
 
 ## SYNTAX
 
-### ByName (Default)
+### ByName
 ```
 Reset-AzVpnSiteLinkConnection -ResourceGroupName <String> -VpnGatewayName <String> -VpnConnectionName <String>
  -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

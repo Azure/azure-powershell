@@ -12,7 +12,7 @@ Reset a Virtual Network Gateway Connection
 
 ## SYNTAX
 
-### ByName (Default)
+### ByName
 ```
 Reset-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
