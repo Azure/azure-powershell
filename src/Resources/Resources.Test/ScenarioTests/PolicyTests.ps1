@@ -1370,15 +1370,24 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-Null $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
 
-    # update the policy exemption set policy definition reference Id, validate the result
+    # update the policy exemption set policy definition reference Id using piping, validate the result
     $future2 = $future1.AddDays(1).ToUniversalTime()
     $exemption.Properties.DisplayName = 'testDisplay'
     $exemption.Properties.ExemptionCategory = 'Mitigated'
     $exemption.Properties.ExpiresOn = $future2
     $exemption.Properties.PolicyDefinitionReferenceIds = @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
-    $exemption = $exemption | Set-AzPolicyExemption 
+    $exemption = $exemption | Set-AzPolicyExemption
     Assert-AreEqual 'testDisplay' $exemption.Properties.DisplayName
     Assert-AreEqual 'Mitigated' $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
+    Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+
+    # update the policy exemption set policy definition reference Id using parameters, validate the result
+    $exemption = Set-AzPolicyExemption -Name testExemption -DisplayName 'testDisplay1' -ExemptionCategory Waiver -PolicyDefinitionReferenceId @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
+    Assert-AreEqual 'testDisplay1' $exemption.Properties.DisplayName
+    Assert-AreEqual 'Waiver' $exemption.Properties.ExemptionCategory
     Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
     Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
@@ -2079,7 +2088,7 @@ function Test-NewPolicyExemptionParameters
     Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -PolicyAssignment $goodPolicyAssignment } $missingParameters
     Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $someScope -ExemptionCategory Waiver -PolicyAssignment $goodPolicyAssignment } $missingSubscription
     Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $someScope -ExemptionCategory $someName -PolicyAssignment $goodPolicyAssignment } $invalidParameterValue
-    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -ExemptionCategory Waiver -PolicyAssignment $goodPolicyAssignment -PolicyDefinitionReferenceIds @( $someId) } $invalidPolicyDefinitionReference
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -ExemptionCategory Waiver -PolicyAssignment $goodPolicyAssignment -PolicyDefinitionReferenceId @( $someId) } $invalidPolicyDefinitionReference
 
     # validate parameter combinations starting with -Scope
     Assert-ThrowsContains { New-AzPolicyExemption -Scope $someScope } $missingParameters

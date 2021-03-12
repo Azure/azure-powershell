@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyExemptionDescriptionHelp = "The description for the new policy exemption.";
         public const string NewPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the new policy exemption.";
         public const string NewPolicyExemptionPolicyAssignmentIdHelp = "The referenced policy assignment Id for the new policy exemption.";
-        public const string NewPolicyExemptionPolicyDefinitionReferenceIdsHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
+        public const string NewPolicyExemptionPolicyDefinitionReferenceIdHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
         public const string NewPolicyExemptionMetadataHelp = "The metadata for the new policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
         public const string RemovePolicyExemptionNameHelp = "The name of the policy exemption to delete.";
         public const string RemovePolicyExemptionScopeHelp = "The scope of the policy exemption to delete, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyExemptionDescriptionHelp = "The description for the updated policy exemption.";
         public const string SetPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the updated policy exemption.";
         public const string SetPolicyExemptionClearExpirationHelp = "If set, this switch clears the expiration date and time on the updated policy exemption.";
-        public const string SetPolicyExemptionPolicyDefinitionReferenceIdsHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
+        public const string SetPolicyExemptionPolicyDefinitionReferenceIdHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
         public const string SetPolicyExemptionMetadataHelp = "The metadata for the updated policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
         public const string SetPolicyExemptionInputObjectHelp = "The policy exemption object to update that was output from another cmdlet.";
     }

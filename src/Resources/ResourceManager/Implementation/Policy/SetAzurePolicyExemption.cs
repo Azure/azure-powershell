@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionPolicyDefinitionReferenceIdsHelp)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionPolicyDefinitionReferenceIdHelp)]
         [ValidateNotNullOrEmpty]
-        public string[] PolicyDefinitionReferenceIds { get; set; }
+        public string[] PolicyDefinitionReferenceId { get; set; }
 
         /// <summary>
         /// Gets or sets the expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
                     ExemptionCategory = this.ExemptionCategory ?? this.InputObject?.Properties?.ExemptionCategory ?? resource.Properties["exemptionCategory"]?.ToString(),
                     PolicyAssignmentId = resource.Properties["policyAssignmentId"]?.ToString(),
-                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceIds ?? this.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties["policyDefinitionReferenceIds"]?.ToString()?.Split(','),
+                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceId ?? this.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties["policyDefinitionReferenceIds"]?.ToString()?.Split(','),
                     ExpiresOn = this.ClearExpiration.IsPresent ? null : this.ExpiresOn?.ToUniversalTime() ?? this.InputObject?.Properties?.ExpiresOn ?? existingExpiration,
                     Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties["metadata"] as JObject,
                 }

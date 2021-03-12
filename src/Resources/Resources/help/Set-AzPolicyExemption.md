@@ -15,7 +15,7 @@ Modifies a policy exemption.
 ### NameParameterSet (Default)
 ```
 Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [-Description <String>]
- [-ExemptionCategory <String>] [-PolicyDefinitionReferenceIds <String[]>] [-ExpiresOn <DateTime>]
+ [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [
 ### IdParameterSet
 ```
 Set-AzPolicyExemption -Id <String> [-DisplayName <String>] [-Description <String>]
- [-ExemptionCategory <String>] [-PolicyDefinitionReferenceIds <String[]>] [-ExpiresOn <DateTime>]
+ [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Set-AzPolicyExemption -Id <String> [-DisplayName <String>] [-Description <String
 ### InputObjectParameterSet
 ```
 Set-AzPolicyExemption [-DisplayName <String>] [-Description <String>] [-ExemptionCategory <String>]
- [-PolicyDefinitionReferenceIds <String[]>] [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>]
  -InputObject <PsPolicyExemption> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -262,7 +262,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PolicyDefinitionReferenceIds
+### -PolicyDefinitionReferenceId
 The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
 
 ```yaml

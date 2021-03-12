@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyExemptionPolicyDefinitionReferenceIdsHelp)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyExemptionPolicyDefinitionReferenceIdHelp)]
         [ValidateNotNullOrEmpty]
-        public string[] PolicyDefinitionReferenceIds { get; set; }
+        public string[] PolicyDefinitionReferenceId { get; set; }
 
         /// <summary>
         /// Gets or sets the expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     ExemptionCategory = this.ExemptionCategory,
                     PolicyAssignmentId = this.PolicyAssignment.PolicyAssignmentId,
-                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceIds,
+                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceId,
                     ExpiresOn = this.ExpiresOn?.ToUniversalTime(),
                     Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
                 }
