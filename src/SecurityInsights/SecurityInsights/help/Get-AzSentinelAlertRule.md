@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelAlertRule
 
 ## SYNOPSIS
-Gets an Analytic (Alert Rule).
+Gets a specific or all Analytic Rules (Alert Rule).
 
 ## SYNTAX
 
@@ -30,21 +30,31 @@ Get-AzSentinelAlertRule -ResourceId <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-The **Get-AzSentinelAlertRule** cmdlet gets an Analytic (Alert Rule) from the specified workspace.
+The **Get-AzSentinelAlertRule** cmdlet gets one or more Analytic Rules (Alert Rules) from the specified workspace.
 If you specify the *AlertRuleId* parameter, a single **AlertRule** object is returned.
-If you do not specify the *AlertRuleId* parameter, an array containing all of the Alert Rules in the specified workspace are returned.
-You can use the **AlertRule** object to update the AlertRule, for example you can disable the **AlertRule**.
+If you do not specify the *AlertRuleId* parameter, an array containing all of the Alert Rules in the specified workspace is returned.
+You can use the **AlertRule** object to update the AlertRule. For example you can enable or disable the **AlertRule**.
 
 ## EXAMPLES
-
 ### Example 1
+For a shorter and faster way to provide your Azure Sentinel resource group and workspace name, you can optionally use a connection object, like this:
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+Get-AzSentinelAlertRule @SentinelConnection
+```
+This example gets all the the **AlertRules** using a connection object
+
+### Example 2
 ```powershell
 PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
 This example gets all of the **AlertRules** in the specified workspace, and then stores it in the $AlertRules variable.
 
-### Example 2
+### Example 3
 ```powershell
 PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
 ```
