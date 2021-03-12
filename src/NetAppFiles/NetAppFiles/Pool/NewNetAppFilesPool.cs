@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
-
+            //check existing 
             CapacityPool existingPool = null;
 
             try
