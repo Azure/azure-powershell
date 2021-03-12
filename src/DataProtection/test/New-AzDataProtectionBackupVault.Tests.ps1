@@ -12,8 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataProtectionBackupVault' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
+        $vault.Location | Should be "centraluseuap"
+        $vault.Name | Should be $env.TestBackupVault.NewVaultName
+        Remove-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
     }
 
     It 'Create' -skip {

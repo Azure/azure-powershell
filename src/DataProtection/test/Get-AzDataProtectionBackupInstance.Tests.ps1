@@ -12,19 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataProtectionBackupInstance' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetAll' {
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
+        $instance.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName -Name $instances[0].Name
+        $instance.Name | should be $instances[0].Name
     }
 }

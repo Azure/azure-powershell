@@ -15,8 +15,8 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 ### List (Default)
 ```
 Get-AzDataProtectionRecoveryPoint [-BackupInstanceName <String>] [-ResourceGroupName <String>]
- [-SubscriptionId <String[]>] [-VaultName <String>] [-EndTime <DateTime>] [-StartTime <DateTime>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-EndTime <DateTime>]
+ [-StartTime <DateTime>] [<CommonParameters>]
 ```
 
 ### Get
@@ -87,7 +87,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False

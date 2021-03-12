@@ -13,11 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzDataProtectionJob' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+        $jobs.Length | Should -BeGreaterThan 0
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+        $jobs.Length | Should -BeGreaterThan 0
+        $job = Get-AzDataProtectionJob -Id $jobs[0].Id -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+        $job.Id | Should be $jobs[0].Id
     }
 
     It 'GetViaIdentity' -skip {

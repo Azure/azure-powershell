@@ -12,10 +12,55 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    
+    $BackupInstanceTestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+    }
+
+    $BackupPolicyTestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+        DiskNewPolicyName = "sarath-disk-generated-policy"
+    }
+
+    $randomstring = RandomString -allChars $false -len 10
+    $newVaultName = "new-testing-vault-" +  $randomstring
+    $BackupVaultTestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+        NewVaultName = $newVaultName
+    }
+
+    $BackupJobTestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+    }
+
+    $newPolicyName = "newdiskpolicy-" + $randomstring
+    $restoreDiskId ="/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg/providers/Microsoft.Compute/disks/sarathdisk2-restored" + $randomstring
+    $DiskE2ETestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk2"
+        SnapshotRG = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-snapshot-rg"
+        RestoreRG = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg"
+        NewPolicyName = $newPolicyName
+        RestoreDiskId = $restoreDiskId
+    }
+
+    $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
+    $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
+    $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
+    $env.add("TestBackupJob", $BackupJobTestVariables) | Out-Null
+    $env.add("TestDiskBackupScenario", $DiskE2ETestVariables) | Out-Null
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {

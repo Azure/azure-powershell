@@ -40,7 +40,7 @@ function GetTaggingPriority {
 	)
 
 	process{
-		$priorityMap = @{"Default"=99;"Weekly"=20;"Monthly"=15;"Yearly"=10}
+		$priorityMap = @{"Default"=99;"Daily"=25;"Weekly"=20;"Monthly"=15;"Yearly"=10}
 		return $priorityMap[$Name]
 	}
 }

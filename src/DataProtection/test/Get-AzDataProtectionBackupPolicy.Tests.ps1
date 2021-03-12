@@ -12,8 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataProtectionBackupPolicy' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $policies = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupPolicy.ResourceGroupName -VaultName $env.TestBackupPolicy.VaultName
+        $policies.Count | Should -BeGreaterThan 0
     }
 
     It 'Get' -skip {
