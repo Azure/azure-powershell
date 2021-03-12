@@ -55,7 +55,7 @@ function Test-CreatePremiumAfdProfile
     $profileTags = @{"ps-test-tag-name"="ps-test-tag-value"}
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku -Tags $profileTags
+    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku -Tag $profileTags
 
     Assert-AreEqual $profileName $createdProfile.Name
     Assert-AreEqual $profileSku $createdProfile.Sku

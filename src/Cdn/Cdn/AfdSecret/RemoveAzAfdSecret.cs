@@ -20,53 +20,56 @@ using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
+namespace Microsoft.Azure.Commands.Cdn.AfdSecret
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdEndpoint", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzAfdEndpoint : AzureCdnCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdSecret", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzAfdSecret : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessageConstants.AfdEndpointObject, ParameterSetName = ObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSAfdEndpoint Endpoint { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdEndpointName, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceId, ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName, ParameterSetName = FieldsParameterSet)]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdSecretObject, ParameterSetName = ObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSAfdSecret Secret { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdSecretName, ParameterSetName = FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string SecretName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.PassThruParameter)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // no case for FieldsParameterSet since required parameters will be present
             switch (ParameterSetName)
             {
                 case ObjectParameterSet:
                     this.ObjectParameterSetCmdlet();
                     break;
+
                 case ResourceIdParameterSet:
                     this.ResourceIdParameterSetCmdlet();
                     break;
             }
 
-            ConfirmAction(AfdResourceProcessMessage.AfdEndpointDeleteMessage, this.EndpointName, this.DeleteAfdEndpoint);    
+            ConfirmAction(AfdResourceProcessMessage.AfdSecretDeleteMessage, this.SecretName, this.DeleteAfdSecret);
         }
 
-        private void DeleteAfdEndpoint()
+        private void DeleteAfdSecret()
         {
             try
             {
-                this.CdnManagementClient.AFDEndpoints.Delete(this.ResourceGroupName, this.ProfileName, this.EndpointName);
+                this.CdnManagementClient.Secrets.Delete(this.ResourceGroupName, this.ProfileName, this.SecretName);
             }
             catch (AfdErrorResponseException errorResponseException)
             {
@@ -81,20 +84,20 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         private void ObjectParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.Endpoint.Id);
+            ResourceIdentifier parsedAfdSecretResourceId = new ResourceIdentifier(this.Secret.Id);
 
-            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
-            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
+            this.ProfileName = parsedAfdSecretResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdSecretResourceId.ResourceGroupName;
+            this.SecretName = parsedAfdSecretResourceId.ResourceName;
         }
 
         private void ResourceIdParameterSetCmdlet()
         {
-            ResourceIdentifier parsedAfdEndpointResourceId = new ResourceIdentifier(this.ResourceId);
+            ResourceIdentifier parsedAfdSecretResourceId = new ResourceIdentifier(this.ResourceId);
 
-            this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
-            this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
-            this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
+            this.ProfileName = parsedAfdSecretResourceId.GetResourceName("profiles");
+            this.ResourceGroupName = parsedAfdSecretResourceId.ResourceGroupName;
+            this.SecretName = parsedAfdSecretResourceId.ResourceName;
         }
     }
 }

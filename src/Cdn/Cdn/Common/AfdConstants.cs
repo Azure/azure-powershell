@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleDeleteMessage = "Deleting the Azure Front Door rule.";
         public const string AfdRuleSetCreateMessage = "Creating the Azure Front Door rule set.";
         public const string AfdRuleSetDeleteMessage = "Deleting the Azure Front Door rule set.";
+        public const string AfdSecretCreateMessage = "Creating the Azure Front Door secret.";
+        public const string AfdSecretDeleteMessage = "Deleteing the Azure Front Door secret.";
+        public const string AfdSecretUpdateMessage = "Updating the Azure Front Door secret.";
         public const string AfdSecurityPolicyCreateMessage = "Creating the Azure Front Door security policy.";
         public const string AfdSecurityPolicyDeleteMessage = "Deleting the Azure Front Door security policy.";
         public const string AfdSecurityPolicyUpdateMessage = "Updating the Azure Front Door security policy.";
@@ -110,7 +113,13 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
         public const string AfdRuleSetName = "The Azure Front Door rule set name.";
         public const string AfdRuleSetObject = "The Azure Front Door rule set object.";
+        public const string AfdSecretCertificateAuthority = "The certificate issuing authority.";
         public const string AfdSecretName = "The Azure Front Door secret name.";
+        public const string AfdSecretObject = "The Azure Front Door secret object.";
+        public const string AfdSecretSubjectAlternativeNames = "The list of the subject alternative names.";
+        public const string AfdSecretSource = "The resource reference to the Azure Key Vault secret.";
+        public const string AfdSecretUseLatestVersion = "Whether to use the latest version for the certificate.";
+        public const string AfdSecretVersion = "The version of the secret to be used";
         public const string AfdSecurityPolicyDomainIds = "The resource ids of the domains which will be linked to the Azure Front Door web application firewall.";
         public const string AfdSecurityPolicyObject = "The Azure Front Door security policy object.";
         public const string AfdSecurityPolicyName = "The Azure Front Door security policy name.";

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSeconds { get; set; }
+        public int OriginResponseTimeoutSecond { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                 AFDEndpoint afdEndpoint = new AFDEndpoint
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
-                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSeconds : 60,
+                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSecond : 60,
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
                 };
 
