@@ -36,7 +36,7 @@ function Test-GetAppServiceEnvironment
 		$vNet = New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix "10.0.0.0/16" -Subnet $aseSubnet
 		Assert-AreEqual $VNetName $vNet.Name
 
-		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName
+		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName -LoadBalancerMode 'External'
 		$actual = Get-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName
 		Assert-AreEqual $AseName $actual.Name
 		Assert-AreEqual "ASEV2" $actual.Kind
@@ -73,7 +73,7 @@ function Test-RemoveAppServiceEnvironment
 		$vNet = New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix "10.0.0.0/16" -Subnet $aseSubnet
 		Assert-AreEqual $VNetName $vNet.Name
 
-		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName
+		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName -LoadBalancerMode 'External'
 		Get-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName | Remove-AzAppServiceEnvironment -Force
 	}
 	finally
@@ -107,7 +107,7 @@ function Test-E2EAppServiceEnvironment
 		$vNet = New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix "10.0.0.0/16" -Subnet $aseSubnet
 		Assert-AreEqual $VNetName $vNet.Name
 
-		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName
+		New-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName -Location $Location -VirtualNetworkName $VNetName -SubnetName $SubnetName -LoadBalancerMode 'External'
 		$actual = Get-AzAppServiceEnvironment -ResourceGroupName $ResourceGroupName -Name $AseName
 		Assert-AreEqual $AseName $actual.Name
 		Assert-AreEqual "ASEV2" $actual.Kind
