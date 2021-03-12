@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncident
 
 ## SYNOPSIS
-Get an Incident.
+Gets one or more Azure Sentinel Incidents.
 
 ## SYNTAX
 
@@ -30,26 +30,42 @@ Get-AzSentinelIncident -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzSentinelIncident** cmdlet gets an Incident from the specified workspace.
+The **Get-AzSentinelIncident** cmdlet gets a specific or multiple Incidents from the specified workspace.
 If you specify the *IncidentId* parameter, a single **Incident** object is returned.
-If you do not specify the *IncidentId* parameter, an array containing all of the Incidents in the specified workspace are returned.
-You can use the **Incident** object to update the Incident, for example you can add Notes the **Incident**.
+If you do not specify the *IncidentId* parameter, an array containing all of the Incidents in the specified workspace is returned.
+You can use the **Incident** object to update the Incident. For example you can add comments, change the severity, assign an owner, etc. to the **Incident**.
 
 ## EXAMPLES
-
 ### Example 1
+For a shorter and faster way to provide your Azure Sentinel resource group and workspace name, you can optionally use a connection object, like this:
 ```powershell
-PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+Get-AzSentinelIncident @SentinelConnection
 ```
-
-This example gets all of the **Incidents** in the specified workspace, and then stores it in the $Incidents variable.
+This example gets all the the **Incidents** using a connection object
 
 ### Example 2
 ```powershell
-PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
+PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"
 ```
+This example gets all of the **Incidents** in the specified workspace, and then stores it in the $Incidents variable.
 
-This example gets an **Incident** in the specified workspace, and then stores it in the $Incident variable.
+### Example 3
+```powershell
+PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+```
+This example gets a specific **Incident** in the specified workspace, and then stores it in the $Incident variable.<br/>
+Please note that **IncidentId** is in this format: 168d330b-219b-4191-a5b1-742c211adb05
+
+### Example 4
+```powershell
+Get-AzSentinelIncident @SentinelConnection | Where-Object {$_.Title -eq "Failed AzureAD logons but success logon to host"}
+```
+This example uses a connection object and returns incidents with a specific title. <br/>
+Using a **Where-Object** condition you can retrieve incidents with a specific title, status, severity, owner, etc.
 
 ## PARAMETERS
 
