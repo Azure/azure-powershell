@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
                     OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSecond : 60,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
                 };
 
                 PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpoint).ToPSAfdEndpoint();
