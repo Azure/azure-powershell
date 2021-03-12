@@ -8,7 +8,7 @@ Try it out in Azure Cloud Shell!
 * Direct link: Open a browser to https://shell.azure.com
 * Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
 
-[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
+  [![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](https://portal.azure.com/)
 
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.
