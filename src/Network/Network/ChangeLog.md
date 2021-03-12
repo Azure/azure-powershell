@@ -19,25 +19,19 @@
 --->
 
 ## Upcoming Release
-* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
-* Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
-    - `New-AzVpnSiteLinkConnection`
-    - `Update-AzVpnConnection`
-* Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
-    - `Get-VpnSiteLinkConnectionIkeSa`
-* Added new cmdlet to reset a Virtual Network Gateway Connection.
-    - `Reset-AzVirtualNetworkGatewayConnection`
-* Added new cmdlet to reset a Vpn Site Link Connection.
-    - `Reset-VpnSiteLinkConnection`
-* Updated cmdlets to enable setting an optional parameter -TrafficSelectorPolicies
-    - `New-AzVpnConnection`
-    - `Update-AzVpnConnection`
-* Bug fix for update vpnServerConfiguration.
-* Add scenarioTest for p2s multi auth VWAN.
-* Added multi auth feature support for VNG
-	- `Get-AzVpnClientConfiguration`
-	- `New-AzVirtualNetworkGateway`
-	- `Set-AzVirtualNetworkGateway`
+
+
+## Version 4.7.0
+* Added new api version 2020-11-01
+* Fixed property names for Vpn Gateway
+           - No Snat firewall policy
+           - Added insights property for Firewall policy
+           - Support for Listing IKE Security Associations for VPN Link Connections
+           - Added subnet property for Load Balancer Backend Address
+           - Support for ResetConnection for VNG and VPN Link connections
+           - Added support for Traffic selector param in VpnConnection for virtualWan
+           - Added auth type property to vng config
+           - Fixed mistyping in App Gw property
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
