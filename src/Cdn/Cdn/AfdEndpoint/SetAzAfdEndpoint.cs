@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                 }
 
                 Dictionary<string, string> afdEndpointTags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+
                 afdEndpointParameters.Tags = afdEndpointTags;
 
                 PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Update(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpointParameters).ToPSAfdEndpoint();
@@ -95,6 +96,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
             this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
             this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
+            
             this.Tag = this.Endpoint.Tags;
 
             if (this.Endpoint.OriginResponseTimeoutSeconds != null)

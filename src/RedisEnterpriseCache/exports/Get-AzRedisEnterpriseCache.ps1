@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a Redis Enterprise cluster and its associated databases.
 .Description
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a Redis Enterprise cluster and its associated databases.
 .Example
 PS C:\> Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 
@@ -33,36 +33,47 @@ Location Name     Type                            Zone      Database
 East US  MyCache1 Microsoft.Cache/redisEnterprise           {default}
 East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
+.Example
+PS C:\> Get-AzRedisEnterpriseCache
+
+Location    Name     Type                            Zone      Database
+--------    ----     ----                            ----      --------
+East US     MyCache1 Microsoft.Cache/redisEnterprise           {default}
+East US     MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+West US     MyCache3 Microsoft.Cache/redisEnterprise           {default}
+Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
+
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 function Get-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster])]
-[CmdletBinding(PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster])]
+[CmdletBinding(DefaultParameterSetName='ListBySubscriptionId', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Alias('Name')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
-    [System.String]
-    # The name of the RedisEnterprise cluster.
-    ${ClusterName},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('Name')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [System.String]
+    # The name of the Redis Enterprise cluster.
+    ${ClusterName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -120,9 +131,11 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            __AllParameterSets = 'Az.RedisEnterpriseCache.custom\Get-AzRedisEnterpriseCache';
+            ListBySubscriptionId = 'Az.RedisEnterpriseCache.custom\Get-AzRedisEnterpriseCache';
+            ListByResourceGroup = 'Az.RedisEnterpriseCache.custom\Get-AzRedisEnterpriseCache';
+            Get = 'Az.RedisEnterpriseCache.custom\Get-AzRedisEnterpriseCache';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('ListBySubscriptionId', 'ListByResourceGroup', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

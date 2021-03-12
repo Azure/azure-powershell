@@ -43,7 +43,7 @@ INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/remove-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/remove-azbotservice
 #>
 function Remove-AzBotService {
 [OutputType([System.Boolean])]

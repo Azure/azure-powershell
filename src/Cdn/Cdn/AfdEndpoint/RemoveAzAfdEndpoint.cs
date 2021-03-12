@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.PassThruParameter)]
+
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

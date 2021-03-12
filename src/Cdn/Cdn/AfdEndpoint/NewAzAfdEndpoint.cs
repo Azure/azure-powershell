@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+
         public int OriginResponseTimeoutSecond { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
@@ -58,8 +59,14 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                 AFDEndpoint afdEndpoint = new AFDEndpoint
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
+
                     OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSecond : 60,
+<<<<<<< HEAD
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
+=======
+
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+>>>>>>> e67fc76e04a2464605b55602e33da20092d952e5
                 };
 
                 PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpoint).ToPSAfdEndpoint();

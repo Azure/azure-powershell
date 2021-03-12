@@ -356,6 +356,9 @@ Gets service objectives for an Azure SQL Database server.
 ### [Get-AzSqlServerTransparentDataEncryptionProtector](Get-AzSqlServerTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector
 
+### [Get-AzSqlServerTrustGroup](Get-AzSqlServerTrustGroup.md)
+Gets information about Server Trust Group.
+
 ### [Get-AzSqlServerUpgradeHint](Get-AzSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
 
@@ -460,6 +463,9 @@ This command creates a new Azure SQL Server DNS Alias.
 
 ### [New-AzSqlServerFirewallRule](New-AzSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
+
+### [New-AzSqlServerTrustGroup](New-AzSqlServerTrustGroup.md)
+Creates a new Server Trust Group.
 
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
 Creates an Azure SQL Server Virtual Network Rule. 
@@ -574,6 +580,9 @@ Removes a Key Vault key from a SQL server.
 
 ### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
 Removes the Microsoft support operations auditing settings of an Azure SQL server.
+
+### [Remove-AzSqlServerTrustGroup](Remove-AzSqlServerTrustGroup.md)
+Deletes a Server Trust Group.
 
 ### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
