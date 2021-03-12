@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Sku / RuleSetAction parameters for WAF
 
 ## Version 1.7.0
 * Added FrontDoorId to properties
