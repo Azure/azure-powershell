@@ -37,6 +37,7 @@
 * `Remove-AzServiceFabricNodeType` was incorrectly blocking Bronze durability node types for removal, and this has been updated
     to only block when the Bronze durability level differs between the SF node type and VMSS setting.
 * Added cmdlet `Update-AzServiceFabricVmImage` to update the delivered SF runtime package type. This must be changed when migrating from Ubuntu 16 to 18.
+* Added cmdlet `Update-AzServiceFabricNodeType` to update the properties of a cluster node type. For now this is solely used to update whether the node type is primary via bool parameter `-IsPrimaryNodeType $false`.
 * `Update-AzServiceFabricReliability` is now able to update reliability level when the cluster has more than one primary node type.
     To do this, the name of the node type is supplied via the new -NodeType parameter.
 
@@ -63,7 +64,7 @@
     - `Add-AzServiceFabricManagedNodeTypeVMExtension`
     - `Add-AzServiceFabricManagedNodeTypeVMSecret`
     - `Remove-AzServiceFabricManagedNodeTypeVMExtension`
-    - `Restart-AzServiceFabricManagedNodeTyp`
+    - `Restart-AzServiceFabricManagedNodeType`
 * Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2020-03-01 for the current model and 2020-01-01-preview for managed clusters.
 
 ## Version 2.1.0

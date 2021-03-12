@@ -112,6 +112,7 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Add-AzServiceFabricManagedNodeTypeVMSecret', 
                'Remove-AzServiceFabricManagedNodeTypeVMExtension', 
                'Restart-AzServiceFabricManagedNodeType',
+               'Update-AzServiceFabricNodeType',
                'Update-AzServiceFabricVmImage'
 
 # Variables to export from this module
