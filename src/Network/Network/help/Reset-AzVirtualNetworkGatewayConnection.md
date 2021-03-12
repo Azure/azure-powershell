@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual network gateway connection name for which has to be reset.
+The virtual network gateway connection name which has to be reset.
 
 ```yaml
 Type: String
