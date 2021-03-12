@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncident
 
 ## SYNOPSIS
-Gets one or more Azure Sentinel Incidents.
+Get one or more Azure Sentinel Incidents.
 
 ## SYNTAX
 

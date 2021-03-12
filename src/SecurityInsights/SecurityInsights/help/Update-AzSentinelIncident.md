@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelIncident
 
 ## SYNOPSIS
-Update an Incident.
+Updates an Incident
 
 ## SYNTAX
 
@@ -49,10 +49,17 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -Severity High
+PS C:\> Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Severity High
 ```
+This example gets the Incident by *IncidentId* and sets the *Severity* property to *High*.  All other properties remain unchanged.
 
-The command gets the Incident by *IncidentId* and sets the *Severity* property to *High*.  All other properties remain the same.
+### Example 2
+```powershell
+$ownerObject = @{"AssignedTo" = "John Doe"; "Email" = "johndoe@contoso.com"; "ObjectId" = "f4e959b4-feda-4345-a1e7-16b4af2fc226";"UserPrincipalName" = "johndoe@contoso.com"}
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"  -IncidentId a4b586c8-97d8-4cc5-9154-b723c62d26d8 -Owner $ownerObject
+```
+This example first creates an "*owner object*" which contains the owner information, then the **Update-AzSentinelIncident** cmdlet is used to pass the ownerObject to update the incident. <br/>
+Note: you can retrieve the "*ownerObject*" from the Azure Active Directory portal (listed as *ObjectID*), or when using the Azure AD PowerShell module.
 
 ## PARAMETERS
 
