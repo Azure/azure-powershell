@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetAppFilesBackupPolicy
 
 ## SYNOPSIS
-Updates an Azure NetApp Files (ANF) Backup Policy with the new data set.
+Updates an Azure NetApp Files (ANF) Backup Policy with the new data set. 
 
 ## SYNTAX
 
