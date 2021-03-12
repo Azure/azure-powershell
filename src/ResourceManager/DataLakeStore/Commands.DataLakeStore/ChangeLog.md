@@ -18,14 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Microsoft Azure PowerShell – DataLakeStore service cmdlets.
-* This module is outdated and will go out of support on 29 February 2024.
-* The Az.DataLakeStore module has all the capabilities of AzureRM.DataLakeStore and provides the following improvements:
-    - Az.DataLakeStore takes advantage of greater security with token cache encryption and improved authentication.
-    - Availability in Azure Cloud Shell and on Linux and macOS.
-* We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
-* [Update your scripts](https://aka.ms/azpsmigrate) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024.
-* To automatically update your scripts, follow the [quickstart guide](https://aka.ms/azpsmigratequick).
+Microsoft Azure PowerShell - DataLakeStore service cmdlets.
+
+This module is outdated and will go out of support on 29 February 2024.
+
+The Az.DataLakeStore module has all the capabilities of AzureRM.DataLakeStore and provides the following improvements:
+* Az.DataLakeStore takes advantage of greater security with token cache encryption and improved authentication.
+* Availability in Azure Cloud Shell and on Linux and macOS.
+
+We encourage you to start using the Az module as soon as possible to take advantage of these improvements.
+
+[Update your scripts](https://aka.ms/azpsmigrate) that use AzureRM PowerShell modules to use Az PowerShell modules by 29 February 2024. To automatically update your scripts, follow the [quickstart guide](https://aka.ms/azpsmigratequick).
 
 ## Version 6.2.1
 * Update the DataLake package to 1.1.10.
