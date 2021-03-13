@@ -1,41 +1,39 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricdurability
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricnodetype
 schema: 2.0.0
 ---
-
-# Update-AzServiceFabricDurability
+# Update-AzServiceFabricNodeType
 
 ## SYNOPSIS
-
-Update the durability tier or VmSku of a node type in the cluster.
+Update a node type within the cluster.
 
 ## SYNTAX
 
 ```
-Update-AzServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -DurabilityLevel <DurabilityLevel> [-Sku <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
+ [-IsPrimaryNodeType <Bool>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Use **Update-AzServiceFabricDurability** to update durability or SKU of the cluster.
+Use the **Update-AzServiceFabricNodeType** to update node type related settings. When a node type to stop acting as a
+primary node type using '-IsPrimaryNodeType $false', another primary node type must already be registered within the cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
+PS c:> Update-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -IsPrimaryNodeType $false
 ```
 
-This command changes durability tier of the NodeType 'nt1' to silver.
+This command will update NodeType 'nt1' to stop acting as a primary node type. It may be done after adding another primary node type, in order to migrate seed nodes and system services.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -49,16 +47,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DurabilityLevel
-Specify durability level.
+### -IsPrimaryNodeType
+Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+Type: System.Nullable<System.Boolean>
 Parameter Sets: (All)
-Aliases: Level
-Accepted values: Bronze, Silver, Gold
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -66,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -81,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Specify Service Fabric node type name.
+The node type name
 
 ```yaml
 Type: System.String
@@ -96,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -107,21 +104,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Sku
-Specify the SKU of the node type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -141,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -162,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+### System.Nullable<System.Boolean>
 
 ## OUTPUTS
 

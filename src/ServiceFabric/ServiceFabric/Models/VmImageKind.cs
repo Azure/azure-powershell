@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,12 +13,11 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum OperatingSystem
+    public enum VmImageKind
     {
-        WindowsServer2012R2Datacenter,
-        WindowsServer2016Datacenter,
-        WindowsServer2016DatacenterwithContainers,
-        UbuntuServer1604,
-        UbuntuServer1804
+        Windows,
+        Linux,
+        Ubuntu,
+        Ubuntu18_04
     }
 }

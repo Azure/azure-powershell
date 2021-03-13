@@ -1,41 +1,47 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricdurability
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage
 schema: 2.0.0
 ---
 
-# Update-AzServiceFabricDurability
+# Update-AzServiceFabricVmImage
 
 ## SYNOPSIS
 
-Update the durability tier or VmSku of a node type in the cluster.
+Update the cluster resource vmImage setting which maps the appropriate runtime package to be delivered based on the target operating system.
 
 ## SYNTAX
 
 ```
-Update-AzServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -DurabilityLevel <DurabilityLevel> [-Sku <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzServiceFabricVmImage [-ResourceGroupName] <String> [-Name] <String> -VmImage <VmImageKind>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Use **Update-AzServiceFabricDurability** to update durability or SKU of the cluster.
+Use **Update-AzServiceFabricVmImage** to update the vmImage setting of the cluster, responsible for runtime package delivery.
+
+Important Note: VmImage 'Linux' as well as 'Ubuntu' map to the delivery of the Ubuntu 16.04 package,
+so if the intent is to run Ubuntu18+, use Ubuntu18_04.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
+Update-AzServiceFabricVmImage -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster' -VmImage Ubuntu18_04
 ```
 
-This command changes durability tier of the NodeType 'nt1' to silver.
+This command changes vmImage of the of the cluster 'Contoso01SFCluster' to 'Ubuntu18_04',
+for the purpose of migrating future upgrades to use the Ubuntu 18 SF runtime deb package.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -49,46 +55,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DurabilityLevel
-Specify durability level.
-
-```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
-Parameter Sets: (All)
-Aliases: Level
-Accepted values: Bronze, Silver, Gold
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster.
+
+Specify the name of the cluster, if not given it will be same as resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByDefaultArmTemplate
 Aliases: ClusterName
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NodeType
-Specify Service Fabric node type name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -96,7 +72,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -110,15 +87,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Sku
-Specify the SKU of the node type.
+### -VmImage
+Specify common target vmImage to be used for the cluster.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 Parameter Sets: (All)
-Aliases:
+Aliases: Level
+Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -126,6 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -141,7 +120,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -162,11 +143,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+### Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult
 
 ## NOTES
 
