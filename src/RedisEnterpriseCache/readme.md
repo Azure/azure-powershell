@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the RedisEnterpriseCache servi
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -39,9 +39,9 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/150da63a09d1cb156cb0b6d8fe575cb9ccf7b6de/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2020-10-01-preview/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/17d2a303b798b1675705efccb577b8f77da8389f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2021-03-01/redisenterprise.json
 
-module-version: 0.1.0
+module-version: 1.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
@@ -55,13 +55,44 @@ directive:
     set:
       subject: $2
 
-  # Cmdlet renames
+  # Other cmdlet renames and aliases
   - where:
-      verb: Invoke
-      subject: OperationGetStatus
+      subject: OperationsStatus
     set:
-      verb: Get
       subject: OperationStatus
+  - where:
+      subject: DatabaseKey
+    set:
+      subject: Key
+  - where:
+      verb: New
+      subject: Key
+    set:
+      alias:
+        - New-AzRedisEnterpriseCacheDatabaseKey
+        - New-AzRedisEnterpriseCacheAccessKey
+  - where:
+      verb: Get
+      subject: Key
+    set:
+      alias:
+        - Get-AzRedisEnterpriseCacheDatabaseKey
+        - Get-AzRedisEnterpriseCacheAccessKey
+  - where:
+      verb: Import|Export
+      subject: (^Database)(.*)
+    set:
+      subject: $2
+  - where:
+      verb: Import
+      subject: ^$
+    set:
+      alias: Import-AzRedisEnterpriseCacheDatabase
+  - where:
+      verb: Export
+      subject: ^$
+    set:
+      alias: Export-AzRedisEnterpriseCacheDatabase
 
   # Parameter renames and aliases
   - where:
@@ -80,6 +111,22 @@ directive:
     set:
       parameter-name: Sku
       alias: SkuName
+  - where:
+      parameter-name: PersistenceAofEnabled
+    set:
+      parameter-name: AofPersistenceEnabled
+  - where:
+      parameter-name: PersistenceAofFrequency
+    set:
+      parameter-name: AofPersistenceFrequency
+  - where:
+      parameter-name: PersistenceRdbEnabled
+    set:
+      parameter-name: RdbPersistenceEnabled
+  - where:
+      parameter-name: PersistenceRdbFrequency
+    set:
+      parameter-name: RdbPersistenceFrequency
 
   # Remove unused variants
   - where:
@@ -101,8 +148,13 @@ directive:
     remove: true
   - where:
       verb: New
-      subject: DatabaseKey
+      subject: Key
       variant: ^Regenerate$|ViaIdentity
+    remove: true
+  - where:
+      verb: New
+      subject: ^$|Database
+      variant: ^Create$|ViaIdentity
     remove: true
   - where:
       verb: Update
@@ -113,11 +165,15 @@ directive:
   # Hide cmdlets
   - where:
       verb: New|Get
-      subject: ^$|^Database$|^DatabaseKey$
+      subject: ^$|^Database$|^Key$
     hide: true
   - where:
-      verb: Remove|Update|Import|Export
+      verb: Remove|Update
       subject: Database
+    hide: true
+  - where:
+      verb: Import|Export
+      subject: ^$
     hide: true
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource

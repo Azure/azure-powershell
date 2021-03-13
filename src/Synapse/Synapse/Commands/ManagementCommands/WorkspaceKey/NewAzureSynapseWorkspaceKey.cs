@@ -11,7 +11,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse.Commands.ManagementCommands
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.WorkspaceKey, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.WorkspaceKey, SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet)]
     [OutputType(typeof(PSWorkspaceKey))]
     public class NewAzureSynapseWorkspaceKey : SynapseManagementCmdletBase
     {
