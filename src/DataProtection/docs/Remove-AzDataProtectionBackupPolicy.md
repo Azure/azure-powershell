@@ -198,6 +198,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+  - `[BackupInstance <String>]`: 
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path

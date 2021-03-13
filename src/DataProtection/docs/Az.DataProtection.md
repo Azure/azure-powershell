@@ -35,22 +35,8 @@ Gets a backup policy belonging to a backup vault
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
 Returns a resource belonging to a resource group.
 
-### [Get-AzDataProtectionExportJobsOperationResult](Get-AzDataProtectionExportJobsOperationResult.md)
-Gets the operation result of operation triggered by Export Jobs API.
-If the operation is successful, then it also contains URL of a Blob and a SAS key to access the same.
-The blob contains exported jobs in JSON serialized format.
-
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
-
-### [Get-AzDataProtectionOperationResult](Get-AzDataProtectionOperationResult.md)
-Gets the operation result for a resource
-
-### [Get-AzDataProtectionOperationResultPatch](Get-AzDataProtectionOperationResultPatch.md)
-
-
-### [Get-AzDataProtectionOperationStatus](Get-AzDataProtectionOperationStatus.md)
-Gets the operation status for a resource.
 
 ### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
 Gets default policy template for a selected datasource type.
@@ -127,26 +113,8 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
-### [Start-AzDataProtectionBackupInstanceRehydrate](Start-AzDataProtectionBackupInstanceRehydrate.md)
-rehydrate recovery point for restore for a BackupInstance
-
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
-
-### [Start-AzDataProtectionExportJob](Start-AzDataProtectionExportJob.md)
-Triggers export of jobs and returns an OperationID to track.
-
-### [Test-AzDataProtectionBackupInstance](Test-AzDataProtectionBackupInstance.md)
-Validate whether adhoc backup will be successful or not
-
-### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
-Validates if Restore can be triggered for a DataSource
-
-### [Test-AzDataProtectionBackupVaultNameAvailability](Test-AzDataProtectionBackupVaultNameAvailability.md)
-API to check for resource name availability
-
-### [Test-AzDataProtectionFeatureSupport](Test-AzDataProtectionFeatureSupport.md)
-Validates if a feature is supported
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

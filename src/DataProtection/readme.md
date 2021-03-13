@@ -36,7 +36,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 # it's the same options as command line options, just drop the double-dash!
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file: dataprotection_preview.json
+input-file: https://github.com/Azure/azure-rest-api-specs/blob/master/specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2021-02-01-preview/dataprotection.json
 title: DataProtection
 directive:
   - where:
@@ -62,10 +62,37 @@ directive:
       variant: ^CreateViaIdentity$|^Patch$|^PatchViaIdentity$|^Backup$|^BackupViaIdentity$|^TriggerViaIdentity|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
+      verb: Get
+      subject: ExportJobsOperationResult
+    remove: true
+  - where:
+      verb: Get
+      subject: OperationResult
+    remove: true
+  - where:
+      verb: Get
+      subject: OperationStatus
+    remove: true
+  - where:
+      verb: Start
+      subject: BackupInstanceRehydrate
+    remove: true
+  - where:
+      verb: Start
+      subject: ExportJob
+    remove: true
+  - where:
+      verb: Get
+      subject: OperationResultPatch
+    remove: true
+  - where:
       verb: New
       subject: BackupVault
       variant: Create
     hide: true
+  - where:
+      verb: Invoke|Test
+    remove: true
   - no-inline:
     - UserFacingError
     - InnerError
