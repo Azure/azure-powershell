@@ -24,46 +24,46 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Gets the policy assignment.
+    /// Gets the policy exemption.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyAssignment))]
-    public class GetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
+    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyExemption))]
+    public class GetAzurePolicyExemptionCmdlet : PolicyCmdletBase
     {
         /// <summary>
-        /// Gets or sets the policy assignment name parameter.
+        /// Gets or sets the policy exemption name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionNameHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment scope parameter.
+        /// Gets or sets the policy exemption scope parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionScopeHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment id parameter
+        /// Gets or sets the policy exemption id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentIdHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionIdHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy assignment policy definition id parameter
+        /// Gets or sets the policy exemption policy assignment id filter parameter
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyDefinitionFilterHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentDoesNothingHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionFilterHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionDoesNothingHelp)]
         [ValidateNotNullOrEmpty]
-        public string PolicyDefinitionId { get; set; }
+        public string PolicyAssignmentIdFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the descendent scope switch
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentIncludeDescendentsHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyExemptionIncludeDescendentsHelp)]
         public SwitchParameter IncludeDescendent { get; set; }
 
         /// <summary>
@@ -82,23 +82,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private void RunCmdlet()
         {
             PaginatedResponseHelper.ForEach(
-                getFirstPage: () => this.GetResources(),
+                getFirstPage: () => this.GetResources(Constants.PolicyExemptionApiVersion),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: this.GetOutputPolicyAssignments(resources), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: this.GetOutputPolicyExemptions(resources), enumerateCollection: true));
         }
 
         /// <summary>
         /// Queries the ARM cache and returns the cached resource that matches the query specified.
         /// </summary>
-        private async Task<ResponseWithContinuation<JObject[]>> GetResources()
+        /// <param name="defaultApiVersion">The default api version</param>
+        private async Task<ResponseWithContinuation<JObject[]>> GetResources(string defaultApiVersion)
         {
             string resourceId = this.GetResourceId();
             string filter = this.GetFilterParam(resourceId);
 
-            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyAssignmentApiVersion : this.ApiVersion;
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? defaultApiVersion : this.ApiVersion;
 
-            if (IsScopeLevelList(resourceId))   // if scope is given, but neither name nor ID, this is a list assignments call
+            if (IsScopeLevelList(resourceId))
             {
                 return await this
                     .GetResourcesClient()
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Returns true if it is scope level policy assignment list call
+        /// Returns true if it is scope level policy exemption list call
         /// </summary>
         private bool IsScopeLevelList(string resourceId)
         {
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Returns true if it is a management group level policy assignment list call
+        /// Returns true if it is a management group level policy exemption list call
         /// </summary>
         private bool IsManagementGroupScope(string resourceId)
         {
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
-        /// Returns true if it is a single policy assignment get
+        /// Returns true if it is a single policy exemption get
         /// </summary>
         /// <param name="resourceId"></param>
         private bool IsResourceGet(string resourceId)
@@ -170,9 +171,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyAssignmentType, this.Name);
+            return this.Id ?? this.GetPolicyArtifactFullyQualifiedId(this.Scope, Constants.MicrosoftAuthorizationPolicyExemptionType, this.Name);
         }
 
+        /// <summary>
+        /// Get exemption filters
+        /// </summary>
+        /// <param name="resourceId">The resource Id of the exemption</param>
         private string GetFilterParam(string resourceId)
         {
             var isManagementGroupScope = IsManagementGroupScope(resourceId);
@@ -181,9 +186,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new PSInvalidOperationException($"The -{nameof(this.IncludeDescendent)} switch is not supported for management group scopes.");
             }
 
-            if (!string.IsNullOrEmpty(this.PolicyDefinitionId))
+            if (!string.IsNullOrEmpty(this.PolicyAssignmentIdFilter))
             {
-                return $"$filter=policyDefinitionId eq '{this.PolicyDefinitionId}'";
+                return $"$filter=policyAssignmentId eq '{this.PolicyAssignmentIdFilter}'";
             }
 
             return this.IncludeDescendent ? null : "$filter=atScope()";
