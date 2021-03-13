@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdCustomDomain))]
-    public class NewAzAfdCustomDomain : AzureCdnCmdletBase
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAfdCustomDomain))]
+    public class SetAzAfdCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdCustomDomainAzureDnsZoneId)]
         [ValidateNotNullOrEmpty]
@@ -31,10 +31,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainName)]
         [ValidateNotNullOrEmpty]
         public string CustomDomainName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainHostName)]
-        [ValidateNotNullOrEmpty]
-        public string HostName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainMinimumTlsVersion, ParameterSetName = AfdParameterSet.AfdCustomDomainCustomerCertificate)]
         [PSArgumentCompleter("TLS10", "TLS12")]
@@ -45,37 +41,35 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainSecretId, ParameterSetName = AfdParameterSet.AfdCustomDomainCustomerCertificate)]
+        [ValidateNotNullOrEmpty]
+        public string SecretId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.ResourceGroupName)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdCustomDomainSecretId, ParameterSetName = AfdParameterSet.AfdCustomDomainCustomerCertificate)]
-        [ValidateNotNullOrEmpty]
-        public string SecretId { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(AfdResourceProcessMessage.AfdCustomDomainCreateMessage, this.CustomDomainName, this.CreateAfdCustomDomain);
+            ConfirmAction(AfdResourceProcessMessage.AfdCustomDomainUpdateMessage, this.CustomDomainName, this.UpdateAfdCustomDomain);
         }
 
-        private void CreateAfdCustomDomain()
+        private void UpdateAfdCustomDomain()
         {
             try
             {
-                AFDDomain afdCustomDomain = new AFDDomain
-                {
-                    HostName = this.HostName,
-                };
+                AFDDomainHttpsParameters tlsSettings = null;
+                ResourceReference azureDnsZoneId = null;
 
                 if (MyInvocation.BoundParameters.ContainsKey("AzureDnsZoneId"))
                 {
-                    afdCustomDomain.AzureDnsZone = new ResourceReference(this.AzureDnsZoneId);
+                    azureDnsZoneId = new ResourceReference(this.AzureDnsZoneId);
                 }
 
                 if (ParameterSetName == AfdParameterSet.AfdCustomDomainCustomerCertificate)
                 {
-                    afdCustomDomain.TlsSettings = new AFDDomainHttpsParameters
+                    tlsSettings = new AFDDomainHttpsParameters
                     {
                         CertificateType = "CustomerCertificate",
                         MinimumTlsVersion = AfdUtilities.CreateMinimumTlsVersion(this.MinimumTlsVersion),
@@ -83,8 +77,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdCustomDomain
                     };
                 }
                 
-                PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Create(this.ResourceGroupName, this.ProfileName, this.CustomDomainName, afdCustomDomain).ToPSAfdCustomDomain();
-                
+                PSAfdCustomDomain psAfdCustomDomain = this.CdnManagementClient.AFDCustomDomains.Update(this.ResourceGroupName, this.ProfileName, this.CustomDomainName, tlsSettings, azureDnsZoneId).ToPSAfdCustomDomain();
+
                 WriteObject(psAfdCustomDomain);
             }
             catch (AfdErrorResponseException errorResponse)

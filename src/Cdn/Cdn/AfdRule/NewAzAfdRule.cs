@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Cdn.AfdRule
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRule"), OutputType(typeof(PSAfdRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AfdRule", SupportsShouldProcess = true), OutputType(typeof(PSAfdRule))]
     public class NewAzAfdRule : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdRuleCacheExpirationActionObject)]
