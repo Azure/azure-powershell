@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Security;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -58,6 +61,8 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var computePath = _helper.GetRMModulePath(@"AzureRM.Compute.psd1");
+                var networkPath = _helper.GetRMModulePath(@"AzureRM.Network.psd1");
+                var operationalInsightsPath = _helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1");
 
                 var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(
@@ -65,10 +70,11 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Security.psd1"),
                     computePath,
+                    networkPath,
+                    operationalInsightsPath,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
-                    "Az.Compute.ps1",
                     "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
@@ -81,7 +87,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
             var securityCenterClient = GetSecurityCenterClient(context);
             var storageClient = GetStorageManagementClient(context);
             var computeClient = GetComputeManagementClient(context);
-            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient, computeClient);
+            var networkClient = GetNetworkManagementClient(context);
+            var operationalInsightsClient = GetOperationalInsightsManagementClient(context);
+            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient, computeClient, networkClient, operationalInsightsClient);
         }
 
         private static SecurityCenterClient GetSecurityCenterClient(MockContext context)
@@ -97,9 +105,19 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static ComputeManagementClient GetComputeManagementClient(MockContext context)
+        private static Management.Compute.ComputeManagementClient GetComputeManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Management.Compute.ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
