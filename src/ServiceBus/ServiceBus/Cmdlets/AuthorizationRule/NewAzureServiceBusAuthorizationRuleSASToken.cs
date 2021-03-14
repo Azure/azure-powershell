@@ -101,10 +101,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-                string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), ExpiryTime, KeyType);
-                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
-                WriteObject(psSastoken, true);
 
+                string sasToken = String.Format(CultureInfo.InvariantCulture,
+                                                "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}",
+                                                HttpUtility.UrlEncode(resourceUri),
+                                                HttpUtility.UrlEncode(signature),
+                                                ExpiryTime,
+                                                KeyType);
+
+                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
+
+                WriteObject(psSastoken, true);
             }
             catch (Management.ServiceBus.Models.ErrorResponseException ex)
             {
