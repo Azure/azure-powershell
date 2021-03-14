@@ -14,12 +14,11 @@ Creates a streaming job or replaces an already existing streaming job.
 
 ```
 New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ -SkuName <StreamingJobSkuName> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
  [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
- [-SkuName <StreamingJobSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,18 +28,11 @@ Creates a streaming job or replaces an already existing streaming job.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Location        Name          Type                                    ETag
+--------        ----          ----                                    ----
+West Central US sajob-02-pwsh Microsoft.StreamAnalytics/streamingjobs a687c464-82ce-45cc-b88a-1f72ba2b1dc2
 ```
 
 {{ Add description here }}
@@ -274,7 +266,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSku
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,0 +1,30 @@
+{
+  "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/streamingjobs/sajob-01-pwsh/outputs/output-01",
+  "name": "output-01",
+  "type": "Microsoft.StreamAnalytics/streamingjobs/outputs",
+  "properties": {
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8",
+        "format": "LineSeparated"
+      }
+    },
+    "datasource": {
+      "type": "Microsoft.Storage/Blob",
+      "properties": {
+        "storageAccounts": [
+          {
+            "accountName": "staaccountt01",
+            "accountKey": "+FiOikgn5XCUeP91Kzka6K6lTfIduLOxWNfnYZKAel25D3EOHRO4Uu//roQkImAVGOLTBJDwsZj46t2s/4uz0Q=="
+          }
+        ],
+        "container": "container01",
+        "pathPattern": "cluster1/{client_id}",
+        "dateFormat": "yyyy/MM/dd",
+        "timeFormat": "HH",
+        "authenticationMode": "ConnectionString"
+      }
+    }
+  }
+}

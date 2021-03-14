@@ -229,7 +229,7 @@ param(
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName])]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName]

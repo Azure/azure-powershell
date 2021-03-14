@@ -24,18 +24,12 @@ Retrieves the subscription's current quota information in a particular region.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name              Type
+----              ----
+StreamingUnits    Microsoft.StreamAnalytics/quotas
+StreamingClusters Microsoft.StreamAnalytics/quotas
 ```
 
 {{ Add description here }}

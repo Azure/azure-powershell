@@ -13,16 +13,9 @@ This will cause a running streaming job to stop processing input events and prod
 
 ## SYNTAX
 
-### Stop (Default)
 ```
 Stop-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StopViaIdentity
-```
-Stop-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,28 +74,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-Parameter Sets: StopViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -148,7 +125,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -163,7 +140,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,8 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -218,23 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

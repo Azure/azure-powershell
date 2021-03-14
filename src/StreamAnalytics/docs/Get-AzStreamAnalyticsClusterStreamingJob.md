@@ -24,18 +24,12 @@ Lists all of the streaming jobs in the given cluster.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStreamAnalyticsClusterStreamingJob -ResourceGroupName lucas-rg-test -ClusterName sacluster-01-portal
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+JobState StreamingUnit
+-------- -------------
+Created
+Created  1
 ```
 
 {{ Add description here }}

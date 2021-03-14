@@ -31,18 +31,16 @@ Deletes an input from the streaming job.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStreamAnalyticsInput -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name input-01
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStreamAnalyticsInput -ResourceGroupName lucas-rg-test -JobName sajob-02-pwsh -Name input-01 | Remove-AzStreamAnalyticsInput
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

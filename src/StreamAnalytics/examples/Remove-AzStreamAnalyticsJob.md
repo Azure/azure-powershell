@@ -1,17 +1,15 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-pwsh
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh | Remove-AzStreamAnalyticsJob
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

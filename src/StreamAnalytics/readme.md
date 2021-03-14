@@ -160,7 +160,12 @@ directive:
   - where:
       verb: Start
       subject: Job$
-      variant: ^Start$|^StartViaIdentity$
+      variant: ^Start$|^StartViaIdentity$|^StartViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Stop
+      subject: Job$
+      variant: ^StopViaIdentity$
     remove: true
   - where:
       verb: New

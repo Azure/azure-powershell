@@ -27,18 +27,11 @@ This can range from testing the connection to the underlying web service behind 
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzStreamAnalyticsFunction -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Status
+------
+TestSucceeded
 ```
 
 {{ Add description here }}
