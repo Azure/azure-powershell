@@ -91,12 +91,23 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                         }
                 }
 
-                TimeSpan secondsFromBaseTime = ExpiryTime.Value.Subtract(EpochTime);
-                long seconds = Convert.ToInt64(secondsFromBaseTime.TotalSeconds, CultureInfo.InvariantCulture);
-                string stringToSign = StartTime.HasValue ? StartTime.ToString() + "\n" + System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + seconds : System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + seconds;
+                long start;
+                long expiry;
+                if (StartTime != null)
+                {
+                    TimeSpan startUnix = StartTime.Value.Subtract(EpochTime);
+                    start = Convert.ToInt64(startUnix.TotalSeconds, CultureInfo.InvariantCulture);
+                }
+                if (ExpiryTime != null)
+                {
+                    TimeSpan expiryUnix = ExpiryTime.Value.Subtract(EpochTime);
+                    expiry = Convert.ToInt64(expiryUnix.TotalSeconds, CultureInfo.InvariantCulture);
+                }
+
+                string stringToSign = (start ? start + "\n" : "") + System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-                string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), seconds, KeyType);
+                string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, KeyType);
                 PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
                 WriteObject(psSastoken, true);
 
