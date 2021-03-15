@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixing `Remove-AzVmssDataDisk` bug. Now the cmdlet will work when there is just one data disk attached to a Vmss. 
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
