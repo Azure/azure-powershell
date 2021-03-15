@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 		/// Gets or sets the trust scope of the ServerTrustGroup to use.
 		/// </summary>
 		[Parameter(Mandatory = false,
-			Position = 4,
 			HelpMessage = "The trust scope of the Server Trust Group to create.")]
 		[ValidateNotNullOrEmpty]
 		public List<String> TrustScope { get; set; }
