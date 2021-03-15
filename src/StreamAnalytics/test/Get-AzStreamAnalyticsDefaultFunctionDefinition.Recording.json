@@ -1,0 +1,40 @@
+{
+  "Get-AzStreamAnalyticsDefaultFunctionDefinition+[NoContext]+RetrieveExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job-4ro3z9/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job-4ro3z9/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"bindingType\": \"Microsoft.MachineLearningServices\",\r\n  \"bindingRetrievalProperties\": {\r\n    \"endpoint\": \"http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score\",\r\n    \"udfType\": \"Scalar\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "219" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "c61e35a8-47d7-42ba-b17a-6d18a9615734" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "bf240dd9-9f61-4a7d-8a2c-a8272701c456" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210315T091400Z:bf240dd9-9f61-4a7d-8a2c-a8272701c456" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Mar 2021 09:13:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "498" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"mlsfunction\",\"properties\":{\"type\":\"Scalar\",\"properties\":{\"inputs\":[{\"dataType\":\"record\",\"isConfigurationParameter\":null}],\"output\":{\"dataType\":\"bigint\"},\"binding\":{\"type\":\"Microsoft.MachineLearningServices\",\"properties\":{\"endpoint\":\"http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score\",\"apiKey\":null,\"inputs\":[{\"name\":\"data\",\"dataType\":\"object\",\"mapTo\":0}],\"outputs\":[{\"name\":\"output\",\"dataType\":\"int64\",\"mapTo\":0}],\"batchSize\":1000,\"numberOfParallelRequests\":1}}}}}",
+      "isContentBase64": false
+    }
+  }
+}

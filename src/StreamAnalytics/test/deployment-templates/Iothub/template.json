@@ -2,14 +2,14 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "IotHubs_lothub01_connectionString": {
+        "IotHubs_lucasiothub02_connectionString": {
             "type": "SecureString"
         },
-        "IotHubs_lothub01_containerName": {
+        "IotHubs_lucasiothub02_containerName": {
             "type": "SecureString"
         },
-        "IotHubs_lothub01_name": {
-            "defaultValue": "lothub01",
+        "IotHubs_lucasiothub02_name": {
+            "defaultValue": "lucasiothub02",
             "type": "String"
         }
     },
@@ -18,7 +18,7 @@
         {
             "type": "Microsoft.Devices/IotHubs",
             "apiVersion": "2020-08-31",
-            "name": "[parameters('IotHubs_lothub01_name')]",
+            "name": "[parameters('IotHubs_lucasiothub02_name')]",
             "location": "eastus",
             "sku": {
                 "name": "S1",
@@ -33,7 +33,7 @@
                 "eventHubEndpoints": {
                     "events": {
                         "retentionTimeInDays": 1,
-                        "partitionCount": 2
+                        "partitionCount": 4
                     }
                 },
                 "routing": {
@@ -57,8 +57,8 @@
                 "storageEndpoints": {
                     "$default": {
                         "sasTtlAsIso8601": "PT1H",
-                        "connectionString": "[parameters('IotHubs_lothub01_connectionString')]",
-                        "containerName": "[parameters('IotHubs_lothub01_containerName')]"
+                        "connectionString": "[parameters('IotHubs_lucasiothub02_connectionString')]",
+                        "containerName": "[parameters('IotHubs_lucasiothub02_containerName')]"
                     }
                 },
                 "messagingEndpoints": {

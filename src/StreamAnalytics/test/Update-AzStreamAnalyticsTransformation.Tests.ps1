@@ -12,19 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzStreamAnalyticsTransformation' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.trnasf01 -StreamingUnit 1 } | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+      $result = Get-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.trnasf01
+      { Update-AzStreamAnalyticsTransformation -InputObject $result -StreamingUnit 1 } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

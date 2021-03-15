@@ -12,19 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzStreamAnalyticsTransformation' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+  It 'CreateExpanded' {
+    New-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job03 -Name $env.trnasf01 -StreamingUnit 6 -Query "SELECT * INTO $($env.output01) FROM $($env.input01) HAVING Temperature > 27"
+    $result = Get-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job03 -Name $env.trnasf01
+    $result.Name | Should -Be $env.trnasf01
+  }
 }

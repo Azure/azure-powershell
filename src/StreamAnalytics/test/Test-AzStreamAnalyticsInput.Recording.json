@@ -1,0 +1,127 @@
+{
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/test?api-version=2017-04-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/test?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubxt7dqe\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "522" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/OperationResults/e744e1d4-e2c4-4294-abbb-65564b1b417b?api-version=2017-04-01-preview" ],
+        "Retry-After": [ "10" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "a03bfe75-2165-4d17-9336-25ddeb2d1d0a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "c4297a11-2f5f-4d13-afce-89ac899cf6f9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210315T114229Z:c4297a11-2f5f-4d13-afce-89ac899cf6f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Mar 2021 11:42:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/OperationResults/e744e1d4-e2c4-4294-abbb-65564b1b417b?api-version=2017-04-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/OperationResults/e744e1d4-e2c4-4294-abbb-65564b1b417b?api-version=2017-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "a03bfe75-2165-4d17-9336-25ddeb2d1d0a" ],
+        "CommandName": [ "Test-AzStreamAnalyticsInput" ],
+        "FullCommandName": [ "Test-AzStreamAnalyticsInput_TestViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "a03bfe75-2165-4d17-9336-25ddeb2d1d0a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-correlation-request-id": [ "263035e4-3827-4602-9baf-9322ddefcd9b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210315T114240Z:263035e4-3827-4602-9baf-9322ddefcd9b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Mar 2021 11:42:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "39" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"TestSucceeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzStreamAnalyticsInput+[NoContext]+TestExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/OperationResults/e744e1d4-e2c4-4294-abbb-65564b1b417b?api-version=2017-04-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-l1e6tw/providers/Microsoft.StreamAnalytics/streamingjobs/job4ro3z9/inputs/input5sut9k/OperationResults/e744e1d4-e2c4-4294-abbb-65564b1b417b?api-version=2017-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "a03bfe75-2165-4d17-9336-25ddeb2d1d0a" ],
+        "CommandName": [ "Test-AzStreamAnalyticsInput" ],
+        "FullCommandName": [ "Test-AzStreamAnalyticsInput_TestViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "a03bfe75-2165-4d17-9336-25ddeb2d1d0a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
+        "x-ms-correlation-request-id": [ "979fa92f-8275-4a07-87c6-17f7e6b6511d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210315T114240Z:979fa92f-8275-4a07-87c6-17f7e6b6511d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 15 Mar 2021 11:42:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "39" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"TestSucceeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  }
+}

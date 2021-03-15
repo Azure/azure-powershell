@@ -12,11 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStreamAnalyticsInput' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+  It 'Delete' {
+    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01 -File .\test\template-json\IotHub.json
+    Remove-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01
+    $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02
+    $result.Name | Should -Not -Contain $env.input01
+  }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+  It 'DeleteViaIdentity' {
+    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input02 -File .\test\template-json\IotHub.json
+    $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input02
+    Remove-AzStreamAnalyticsInput -InputObject $result
+    $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02
+    $result.Name | Should -Not -Contain $env.input02
+  }
 }

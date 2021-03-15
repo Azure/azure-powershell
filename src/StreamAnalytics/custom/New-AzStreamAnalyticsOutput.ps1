@@ -194,7 +194,7 @@ begin {
         }
         
         $PSBoundParameters.Add("Output", $function)
-        $PSBoundParameters.Remove("File");
+        $null = $PSBoundParameters.Remove("File");
 
         $outBuffer = $null
         if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {

@@ -12,19 +12,24 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStreamAnalyticsJob' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $result = Get-AzStreamAnalyticsJob
+        $result.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01
+        $result.Name | Should -Be $env.job01
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup
+        $result.Count | Should -Be 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01
+        $result = Get-AzStreamAnalyticsJob -InputObject $result
+        $result.Name | Should -Be $env.job01
     }
 }

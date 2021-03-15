@@ -12,19 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzStreamAnalyticsOutput' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+  It 'CreateExpanded' {
+    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output01 -File .\test\template-json\StroageAccount.json
+    $result = Get-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output01
+    $result.Name | Should -Be $env.output01
+  }
 }

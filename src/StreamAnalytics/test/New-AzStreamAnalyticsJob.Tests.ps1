@@ -12,19 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzStreamAnalyticsJob' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded'  {
+      $result = New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job03 -Location $env.location -SkuName 'Standard'
+      $result.ProvisioningState | Should -Be 'Succeeded'
     }
 }

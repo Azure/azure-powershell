@@ -156,12 +156,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Runtime')]
     [System.Uri]
@@ -187,25 +181,25 @@ param(
 
     $InputObject = Get-AzStreamAnalyticsFunction -ResourceGroupName $ResourceGroupName -JobName $JobName -Name $Name
 
-    $resourceId = $InputObject.Id + "/test"
+    $resourceId = $InputObject.Id
     $PSBoundParameters.Add("InputObject", $resourceId)
     $PSBoundParameters.Add("Function", $InputObject)
 
     if ($PSBoundParameters.ContainsKey("JobName"))
     {
-      $PSBoundParameters.Remove("JobName")
+      $null = $PSBoundParameters.Remove("JobName") 
     }
     if ($PSBoundParameters.ContainsKey("Name"))
     {
-      $PSBoundParameters.Remove("Name")
+      $null = $PSBoundParameters.Remove("Name")
     }
     if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
     {
-      $PSBoundParameters.Remove("ResourceGroupName")
+      $null = $PSBoundParameters.Remove("ResourceGroupName")
     }
     if ($PSBoundParameters.ContainsKey("SubscriptionId"))
     {
-      $PSBoundParameters.Remove("SubscriptionId")
+      $null = $PSBoundParameters.Remove("SubscriptionId")
     }
     Az.StreamAnalytics.Internal\Test-AzStreamAnalyticsFunction @PSBoundParameters
   }

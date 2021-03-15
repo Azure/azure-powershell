@@ -12,19 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzStreamAnalyticsJob' {
-    It 'StartExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartExpanded' {
+        $result = Start-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 
+        $result.JobState | Should -Be 'Running'
+        Stop-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 
     }
 
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartViaIdentityExpanded' {
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 
+        $result = Start-AzStreamAnalyticsJob -InputObject $result
+        $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 
+        $result.JobState | Should -Be 'Running'    
     }
 
-    It 'StartViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

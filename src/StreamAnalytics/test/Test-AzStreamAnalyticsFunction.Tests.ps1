@@ -12,20 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzStreamAnalyticsFunction' {
-    It 'TestExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Test' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'TestViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'TestViaIdentity' {
-      $func = Get-AzStreamAnalyticsFunction -ResourceGroupName lucas-rg-test -JobName sajob-01-cli -Name score
-      Test-AzStreamAnalyticsFunction -InputObject '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.StreamAnalytics/streamingjobs/sajob-01-cli/functions/score/test' -Function $func
+    It 'TestExpanded' {
+      $result = Test-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.mlsfunction
+      $result.Status | Should -Be "TestSucceeded"
     }
 }

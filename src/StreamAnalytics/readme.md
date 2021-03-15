@@ -45,6 +45,7 @@ input-file:
 title: StreamAnalytics
 module-version: 2.0.1
 subject-prefix: StreamAnalytics
+identity-correction-for-post: true
 
 directive:
   - from: swagger-document
@@ -160,12 +161,7 @@ directive:
   - where:
       verb: Start
       subject: Job$
-      variant: ^Start$|^StartViaIdentity$|^StartViaIdentityExpanded$
-    remove: true
-  - where:
-      verb: Stop
-      subject: Job$
-      variant: ^StopViaIdentity$
+      variant: ^Start$|^StartViaIdentity$
     remove: true
   - where:
       verb: New

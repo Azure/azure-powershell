@@ -94,23 +94,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    # [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='TestViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
-    # # Identity Parameter
-    # # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    # ${InputObject},
-
-    # [Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput]
-    # # An output object, containing all information associated with the named output.
-    # # All outputs are contained under a streaming job.
-    # # To construct, see NOTES section for OUTPUT properties and create a hash table.
-    # ${Output},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -145,12 +128,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Runtime')]
     [System.Uri]
@@ -175,25 +152,25 @@ param(
 
     $InputObject = Get-AzStreamAnalyticsOutput -ResourceGroupName $ResourceGroupName -JobName $JobName -Name $Name
 
-    $resourceId = $InputObject.Id + "/test"
+    $resourceId = $InputObject.Id
     $PSBoundParameters.Add("InputObject", $resourceId)
     $PSBoundParameters.Add("Output", $InputObject)
 
     if ($PSBoundParameters.ContainsKey("JobName"))
     {
-      $PSBoundParameters.Remove("JobName")
+      $null = $PSBoundParameters.Remove("JobName")
     }
     if ($PSBoundParameters.ContainsKey("Name"))
     {
-      $PSBoundParameters.Remove("Name")
+      $null = $PSBoundParameters.Remove("Name")
     }
     if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
     {
-      $PSBoundParameters.Remove("ResourceGroupName")
+      $null = $PSBoundParameters.Remove("ResourceGroupName")
     }
     if ($PSBoundParameters.ContainsKey("SubscriptionId"))
     {
-      $PSBoundParameters.Remove("SubscriptionId")
+      $null = $PSBoundParameters.Remove("SubscriptionId")
     }
     Az.StreamAnalytics.Internal\Test-AzStreamAnalyticsOutput @PSBoundParameters
   }

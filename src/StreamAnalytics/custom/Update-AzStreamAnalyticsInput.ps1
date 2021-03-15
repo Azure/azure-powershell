@@ -187,17 +187,17 @@ param(
 
 begin {
     try {
-      $inputParameters = Get-Content -Path $File | Out-String
-          
-      if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::CanConvertFrom($inputParameters))
-      {
-        $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::ConvertFrom($inputParameters)
-      } else {
-        throw "The json format is invalid"
-      }
-      
-      $PSBoundParameters.Add("Input", $function)
-      $PSBoundParameters.Remove("File");
+        $inputParameters = Get-Content -Path $File | Out-String
+            
+        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::CanConvertFrom($inputParameters))
+        {
+          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::ConvertFrom($inputParameters)
+        } else {
+          throw "The json format is invalid"
+        }
+        
+        $PSBoundParameters.Add("Input", $function)
+        $null = $PSBoundParameters.Remove("File");
 
         $outBuffer = $null
         if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
