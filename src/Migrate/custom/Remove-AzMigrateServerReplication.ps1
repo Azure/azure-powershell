@@ -19,19 +19,19 @@ Stops replication for the migrated server.
 .Description
 The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server. 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/remove-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
-    [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the replcating server for which the replicatio needs to be disabled. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
 
-        [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
         # Specifies the machine object of the replicating server.
@@ -45,7 +45,7 @@ function Remove-AzMigrateServerReplication {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
@@ -99,46 +99,46 @@ function Remove-AzMigrateServerReplication {
     )
     
     process {            
-            $hasDeleteOption = $PSBoundParameters.ContainsKey('ForceRemove')
-            $null = $PSBoundParameters.Remove('ForceRemove')
-            $null = $PSBoundParameters.Remove('TargetObjectID')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('ProjectName')
-            $null = $PSBoundParameters.Remove('MachineName')
-            $null = $PSBoundParameters.Remove('InputObject')
-            $parameterSet = $PSCmdlet.ParameterSetName
+        $hasDeleteOption = $PSBoundParameters.ContainsKey('ForceRemove')
+        $null = $PSBoundParameters.Remove('ForceRemove')
+        $null = $PSBoundParameters.Remove('TargetObjectID')
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('ProjectName')
+        $null = $PSBoundParameters.Remove('MachineName')
+        $null = $PSBoundParameters.Remove('InputObject')
+        $parameterSet = $PSCmdlet.ParameterSetName
 
-            if($parameterSet -eq 'ByInputObjectVMwareCbt'){
-                $TargetObjectID = $InputObject.Id
-            }
-            $MachineIdArray = $TargetObjectID.Split("/")
-            $ResourceGroupName = $MachineIdArray[4]
-            $VaultName = $MachineIdArray[8]
-            $FabricName = $MachineIdArray[10]
-            $ProtectionContainerName = $MachineIdArray[12]
-            $MachineName = $MachineIdArray[14]
+        if ($parameterSet -eq 'ByInputObjectVMwareCbt') {
+            $TargetObjectID = $InputObject.Id
+        }
+        $MachineIdArray = $TargetObjectID.Split("/")
+        $ResourceGroupName = $MachineIdArray[4]
+        $VaultName = $MachineIdArray[8]
+        $FabricName = $MachineIdArray[10]
+        $ProtectionContainerName = $MachineIdArray[12]
+        $MachineName = $MachineIdArray[14]
             
-            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-            $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-            $null = $PSBoundParameters.Add("FabricName", $FabricName)
-            $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-            $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-            if($hasDeleteOption){$null = $PSBoundParameters.Add('DeleteOption', $ForceRemove)}
-            $null = $PSBoundParameters.Add('NoWait', $true)
-            $output = Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters      
-            $JobName = $output.Target.Split("/")[12].Split("?")[0]
-            $null = $PSBoundParameters.Remove('NoWait')
-            $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("ResourceName")
-            $null = $PSBoundParameters.Remove("FabricName")
-            $null = $PSBoundParameters.Remove("MigrationItemName")
-            $null = $PSBoundParameters.Remove("ProtectionContainerName")
+        $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+        $null = $PSBoundParameters.Add("ResourceName", $VaultName)
+        $null = $PSBoundParameters.Add("FabricName", $FabricName)
+        $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
+        $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
+        if ($hasDeleteOption) { $null = $PSBoundParameters.Add('DeleteOption', $ForceRemove) }
+        $null = $PSBoundParameters.Add('NoWait', $true)
+        $output = Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters
+        $JobName = $output.Target.Split("/")[12].Split("?")[0]
+        $null = $PSBoundParameters.Remove('NoWait')
+        $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
+        $null = $PSBoundParameters.Remove("ResourceGroupName")
+        $null = $PSBoundParameters.Remove("ResourceName")
+        $null = $PSBoundParameters.Remove("FabricName")
+        $null = $PSBoundParameters.Remove("MigrationItemName")
+        $null = $PSBoundParameters.Remove("ProtectionContainerName")
 
-            $null = $PSBoundParameters.Add('JobName', $JobName)
-            $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $null = $PSBoundParameters.Add('JobName', $JobName)
+        $null = $PSBoundParameters.Add('ResourceName', $VaultName)
+        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         
-            return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
-        }  
+        return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
+    }
 }   

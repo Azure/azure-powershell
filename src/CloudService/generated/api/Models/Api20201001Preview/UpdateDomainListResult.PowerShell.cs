@@ -100,8 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomain[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomain>(__y, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.UpdateDomainTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomain[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomain>(__y, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.UpdateDomainTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IUpdateDomainListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
     }

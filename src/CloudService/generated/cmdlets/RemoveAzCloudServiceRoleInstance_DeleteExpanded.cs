@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 
     /// <summary>Deletes role instances in a cloud service.</summary>
     /// <remarks>
-    /// [OpenAPI] CloudServices_DeleteInstances=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/delete"
+    /// [OpenAPI] DeleteInstances=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/delete"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzCloudServiceRoleInstance_DeleteExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

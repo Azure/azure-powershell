@@ -25,8 +25,19 @@
     - `Update-AzVpnConnection`
 * Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
     - `Get-VpnSiteLinkConnectionIkeSa`
+* Added new cmdlet to reset a Virtual Network Gateway Connection.
+    - `Reset-AzVirtualNetworkGatewayConnection`
+* Added new cmdlet to reset a Vpn Site Link Connection.
+    - `Reset-VpnSiteLinkConnection`
+* Updated cmdlets to enable setting an optional parameter -TrafficSelectorPolicies
+    - `New-AzVpnConnection`
+    - `Update-AzVpnConnection`
 * Bug fix for update vpnServerConfiguration.
-* Add scenarioTest for p2s multi auth.
+* Add scenarioTest for p2s multi auth VWAN.
+* Added multi auth feature support for VNG
+	- `Get-AzVpnClientConfiguration`
+	- `New-AzVirtualNetworkGateway`
+	- `Set-AzVirtualNetworkGateway`
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
@@ -75,10 +86,6 @@
     - Updated New-AzVpnServerConfiguration and Update-AzVpnServerConfiguration to allow multiple authentication parameters to be set.
 * Updated `New-AzVpnGateway` and `New-AzP2sVpnGateway` cmdlet:
     - Added parameter EnableRoutingPreferenceInternetFlag
-* Added new cmdlet to reset a Virtual Network Gateway Connection.
-    - `Reset-AzVirtualNetworkGatewayConnection`
-* Added new cmdlet to reset a Vpn Site Link Connection.
-    - `Reset-VpnSiteLinkConnection`
 
 ## Version 4.4.0
 * Fixed issue in remove peering and connection cmdlet for ExpressRouteCircuit scenario

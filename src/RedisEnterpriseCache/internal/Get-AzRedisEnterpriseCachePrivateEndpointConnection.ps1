@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivateendpointconnection
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivateendpointconnection
 #>
 function Get-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection])]
@@ -46,6 +46,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -59,8 +60,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]

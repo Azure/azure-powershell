@@ -21,13 +21,15 @@ if(-not $Isolated) {
   return
 }
 
-function DownloadModule ([bool]$predicate, [string]$path, [string]$moduleName, [string]$versionMinimum) {
+function DownloadModule ([bool]$predicate, [string]$path, [string]$moduleName, [string]$versionMinimum, [string]$requiredVersion) {
   if($predicate) {
     $module = Get-Module -ListAvailable -Name $moduleName
     if((-not $module) -or ($versionMinimum -and ($module | ForEach-Object { $_.Version } | Where-Object { $_ -ge [System.Version]$versionMinimum } | Measure-Object).Count -eq 0)) {
       $null = New-Item -ItemType Directory -Force -Path $path
       Write-Host -ForegroundColor Green "Installing local $moduleName module into '$path'..."
-      if($versionMinimum) {
+      if ($requiredVersion) {
+        Find-Module -Name $moduleName -RequiredVersion $requiredVersion -Repository PSGallery | Save-Module -Path $path
+      }elseif($versionMinimum) {
         Find-Module -Name $moduleName -MinimumVersion $versionMinimum -Repository PSGallery | Save-Module -Path $path
       } else {
         Find-Module -Name $moduleName -Repository PSGallery | Save-Module -Path $path
@@ -44,8 +46,8 @@ if(Test-Path -Path $localModulesPath) {
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
 
-DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '1.7.4'
-DownloadModule -predicate ($all -or $Pester) -path $localModulesPath -moduleName 'Pester' -versionMinimum ''
+DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '1.8.1'
+DownloadModule -predicate ($all -or $Pester) -path $localModulesPath -moduleName 'Pester' -requiredVersion '4.10.1'
 
 $tools = Join-Path $PSScriptRoot 'tools'
 $resourceDir = Join-Path $tools 'Resources'

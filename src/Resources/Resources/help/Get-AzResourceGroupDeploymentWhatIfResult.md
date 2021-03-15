@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzResourceGroupDeploymentWhatIfResult
 
 ## SYNOPSIS
-Gets an ARM template What-If result for a deployment at resource group scope. 
+Gets a template What-If result for a deployment at resource group scope. 
 
 ## SYNTAX
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-Local path to the template file.
+Local path to the template file. Supported template file type: json and bicep.
 
 ```yaml
 Type: System.String

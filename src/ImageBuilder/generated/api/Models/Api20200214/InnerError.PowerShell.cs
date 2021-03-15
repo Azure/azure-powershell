@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail = (string) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ExceptionType = (string) content.GetValueForProperty("ExceptionType",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ExceptionType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail = (string) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail = (string) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ExceptionType = (string) content.GetValueForProperty("ExceptionType",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ExceptionType, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail = (string) content.GetValueForProperty("ErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IInnerErrorInternal)this).ErrorDetail, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

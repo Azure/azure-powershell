@@ -22,7 +22,7 @@ Create a in-memory object for Extension
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceExtensionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]

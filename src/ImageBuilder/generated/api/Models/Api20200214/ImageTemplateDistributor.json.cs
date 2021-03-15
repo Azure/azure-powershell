@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_artifactTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("artifactTags"), out var __jsonArtifactTags) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateDistributorArtifactTags.FromJson(__jsonArtifactTags) : ArtifactTag;}
             {_runOutputName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("runOutputName"), out var __jsonRunOutputName) ? (string)__jsonRunOutputName : (string)RunOutputName;}
+            {_artifactTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("artifactTags"), out var __jsonArtifactTags) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateDistributorArtifactTags.FromJson(__jsonArtifactTags) : ArtifactTag;}
             AfterFromJson(json);
         }
 
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            AddIf( null != this._artifactTag ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._artifactTag.ToJson(null,serializationMode) : null, "artifactTags" ,container.Add );
             AddIf( null != (((object)this._runOutputName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._runOutputName.ToString()) : null, "runOutputName" ,container.Add );
+            AddIf( null != this._artifactTag ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._artifactTag.ToJson(null,serializationMode) : null, "artifactTags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

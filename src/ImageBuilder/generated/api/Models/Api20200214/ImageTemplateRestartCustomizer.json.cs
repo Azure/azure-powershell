@@ -73,8 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             __imageTemplateCustomizer = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateCustomizer(json);
-            {_restartCheckCommand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("restartCheckCommand"), out var __jsonRestartCheckCommand) ? (string)__jsonRestartCheckCommand : (string)RestartCheckCommand;}
             {_restartCommand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("restartCommand"), out var __jsonRestartCommand) ? (string)__jsonRestartCommand : (string)RestartCommand;}
+            {_restartCheckCommand = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("restartCheckCommand"), out var __jsonRestartCheckCommand) ? (string)__jsonRestartCheckCommand : (string)RestartCheckCommand;}
             {_restartTimeout = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("restartTimeout"), out var __jsonRestartTimeout) ? (string)__jsonRestartTimeout : (string)RestartTimeout;}
             AfterFromJson(json);
         }
@@ -99,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             __imageTemplateCustomizer?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._restartCheckCommand)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._restartCheckCommand.ToString()) : null, "restartCheckCommand" ,container.Add );
             AddIf( null != (((object)this._restartCommand)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._restartCommand.ToString()) : null, "restartCommand" ,container.Add );
+            AddIf( null != (((object)this._restartCheckCommand)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._restartCheckCommand.ToString()) : null, "restartCheckCommand" ,container.Add );
             AddIf( null != (((object)this._restartTimeout)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._restartTimeout.ToString()) : null, "restartTimeout" ,container.Add );
             AfterToJson(ref container);
             return container;

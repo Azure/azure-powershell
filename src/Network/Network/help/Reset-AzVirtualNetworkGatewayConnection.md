@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/powershell/module/az.network/reset-azvirtualnetworkgatewayconnection
@@ -14,7 +14,7 @@ Reset a Virtual Network Gateway Connection
 
 ### ByName
 ```
-Reset-AzVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <String> [-AsJob]
+Reset-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Reset-AzVirtualNetworkGatewayConnection -InputObject <PSVirtualNetworkGatewayCon
 
 ### ByResourceId
 ```
-Reset-AzVirtualNetworkGatewayConnection [-ResourceId <String>] [-AsJob]
+Reset-AzVirtualNetworkGatewayConnection -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,6 +51,7 @@ Run cmdlet in the background.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -65,6 +66,7 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -79,21 +81,23 @@ The virtual network gateway connection object which has to be reset.
 Type: PSVirtualNetworkGatewayConnection
 Parameter Sets: ByInputObject
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual network gateway connection name for which has to be reset.
+The virtual network gateway connection name which has to be reset.
 
 ```yaml
 Type: String
 Parameter Sets: ByName
 Aliases: ResourceName, ConnectionName
-Required: False
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,6 +111,7 @@ The resource group name.
 Type: String
 Parameter Sets: ByName
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -121,10 +126,11 @@ The Azure resource ID of the Virtual Network Gateway Connection which has to be 
 Type: String
 Parameter Sets: ByResourceId
 Aliases:
-Required: False
+
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -134,6 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+## OUTPUTS
 
 ## NOTES
 

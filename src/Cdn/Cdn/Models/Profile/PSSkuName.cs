@@ -28,5 +28,7 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Profile
         StandardPlus_ChinaCdn,
         StandardPlus_955BandWidth_ChinaCdn,
         StandardPlus_AvgBandWidth_ChinaCdn,
+        Standard_AzureFrontDoor,
+        Premium_AzureFrontDoor
     }
 }
