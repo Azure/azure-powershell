@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
         // <summary>
         /// Gets or sets a value indicating the policy to use for the initial download sync.
-        /// </summary>
+        /// </summary> Update
         /// <value>The initial download policy.</value>
         [Parameter(
           Mandatory = false,
