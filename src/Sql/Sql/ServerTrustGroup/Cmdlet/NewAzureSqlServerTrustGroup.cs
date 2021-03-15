@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.ServerTrustGroup.Services;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	/// <summary>
 	/// Cmdlet to create a new Azure Sql Server Trust Group.
 	/// </summary>
-	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "GroupMemberObjectSet"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
+	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "GroupMemberObjectSet", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTrustGroupModel))]
 	public class NewAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
