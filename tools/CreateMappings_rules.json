@@ -494,7 +494,7 @@
     "alias": "Alerts Management"
   },
   {
-    "regex": "HealthcareApisService",
+    "regex": "HealthcareApis",
     "alias": "HealthcareApis Service"
   },
   {

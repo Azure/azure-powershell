@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
             this.ExportStorageAccountName = serviceDescription.Properties.ExportConfiguration?.StorageAccountName;
+            this.AcrLoginServers = serviceDescription.Properties.AcrConfiguration?.LoginServers;
             this.IdentityType = serviceDescription.Identity?.Type;
             this.IdentityPrincipalId = serviceDescription.Identity?.PrincipalId;
             this.IdentityTenantId = serviceDescription.Identity?.TenantId;
@@ -76,6 +77,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
         public int? CosmosDbOfferThroughput { get; private set; }
 
         public string ExportStorageAccountName { get; private set; }
+
+        public IList<string> AcrLoginServers { get; private set; }
 
         public string Etag { get; private set; }
 

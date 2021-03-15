@@ -195,6 +195,17 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
             Mandatory = false,
             ParameterSetName = ServiceNameParameterSet,
+            HelpMessage = "HealthcareApis FhirService List of Acr Login Servers.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "HealthcareApis FhirService List of Acr Login Servers.")]
+        [ValidateNotNullOrEmpty]
+        public string[] AcrLoginServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ServiceNameParameterSet,
             HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(
             Mandatory = false,
@@ -410,6 +421,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     {
                         StorageAccountName = ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
                     },
+                    AcrConfiguration = new ServiceAcrConfigurationInfo()
+                    {
+                        LoginServers = AcrLoginServer ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
+                    },
                     AccessPolicies = accessPolicies,
                     PublicNetworkAccess = PublicNetworkAccess ?? healthcareApisAccount.Properties.PublicNetworkAccess
                 },
@@ -512,6 +527,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     ExportConfiguration = new ServiceExportConfigurationInfo()
                     {
                         StorageAccountName = InputObject.ExportStorageAccountName ?? healthcareApisAccount.Properties.ExportConfiguration.StorageAccountName
+                    },
+                    AcrConfiguration = new ServiceAcrConfigurationInfo()
+                    {
+                        LoginServers = InputObject.AcrLoginServers ?? healthcareApisAccount.Properties.AcrConfiguration?.LoginServers
                     },
                     AccessPolicies = accessPolicies,
                     PublicNetworkAccess = healthcareApisAccount.Properties.PublicNetworkAccess
