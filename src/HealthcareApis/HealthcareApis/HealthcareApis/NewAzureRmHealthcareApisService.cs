@@ -133,12 +133,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         public string ExportStorageAccountName { get; set; }
 
         [Parameter(
-          Mandatory = false,
-          HelpMessage = "HealthcareApis Fhir Service List of Acr Login Server.")]
-        [ValidateNotNullOrEmpty]
-        public string[] AcrLoginServer { get; set; }
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service EnableSmartProxy.")]
         public SwitchParameter EnableSmartProxy { get; set; }
@@ -195,7 +189,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput(), KeyVaultKeyUri = GetCosmosDBKeyVaultKeyUri() },
                             CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
                             ExportConfiguration = new ServiceExportConfigurationInfo() { StorageAccountName = ExportStorageAccountName },
-                            AcrConfiguration = new ServiceAcrConfigurationInfo { LoginServers = AcrLoginServer },
                             AccessPolicies = accessPolicies,
                         }
                     };
