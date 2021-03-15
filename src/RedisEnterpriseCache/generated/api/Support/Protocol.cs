@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="Protocol" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Protocol(System.Convert.ToString(value));
+            return new Protocol(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Protocol</summary>

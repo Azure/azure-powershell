@@ -22,7 +22,7 @@ Create or update a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -47,7 +47,7 @@ $cloudService = New-AzCloudService                                              
                   -NetworkProfile $networkProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -79,7 +79,7 @@ $cloudService = New-AzCloudService                                              
                   -ExtensionProfile $extensionProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -111,8 +111,8 @@ $cloudService = New-AzCloudService                                              
                   -OSProfile $osProfile
 .Example
 # Create role profile object
-PS C:\> $role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $role2 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
@@ -195,7 +195,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
     [SkuName <String>]: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
     [SkuTier <String>]: Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/new-azcloudservice
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]

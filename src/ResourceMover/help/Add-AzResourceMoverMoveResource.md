@@ -343,7 +343,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-### Update-AzResourceMoverMoveResource
+Update-AzResourceMoverMoveResource
 
 COMPLEX PARAMETER PROPERTIES
 
