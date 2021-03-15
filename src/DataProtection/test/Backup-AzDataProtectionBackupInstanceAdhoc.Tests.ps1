@@ -12,8 +12,26 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
-    It 'BackupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'BackupExpanded' {
+        $sub = $env.SubscriptionId
+        $rgName = $env.TestTriggerBackup.ResourceGroupName
+        $vaultName = $env.TestTriggerBackup.VaultName
+        $diskId = $env.TestTriggerBackup.DiskId
+        $backupRuleName = $env.TestTriggerBackup.BackupRuleName
+
+        $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+        $instance = $instances | where-object {$_.Property.DataSourceInfo.ResourceId -eq $diskId}
+        Backup-AzDataProtectionBackupInstanceAdhoc -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $instance.Name -BackupRuleOptionRuleName $backupRuleName -TriggerOptionRetentionTagOverride Default
+
+        $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroup $rgName -Vault $vaultName -DatasourceType AzureDisk -Operation OnDemandBackup -Status InProgress
+
+        $jobstatus = $job[0].Status
+        while($jobstatus -ne "Completed")
+        {
+            Start-Sleep -Seconds 5
+            $currentjob = Get-AzDataProtectionJob -Id $job[0].Name -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
     }
 
     It 'Backup' -skip {

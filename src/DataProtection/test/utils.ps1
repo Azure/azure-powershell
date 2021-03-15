@@ -50,11 +50,19 @@ function setupEnv() {
         RestoreDiskId = $restoreDiskId
     }
 
+    $TriggerBackupTestVariables = @{
+        ResourceGroupName = "sarath-rg"
+        VaultName = "sarath-vault"
+        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk"
+        BackupRuleName = "BackupHourly"
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
     $env.add("TestBackupJob", $BackupJobTestVariables) | Out-Null
     $env.add("TestDiskBackupScenario", $DiskE2ETestVariables) | Out-Null
+    $env.add("TestTriggerBackup", $TriggerBackupTestVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
