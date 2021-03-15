@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string RoleDefinition = nameof(RoleDefinition);
 
+        public const string RoleScope = nameof(RoleScope);
+
         public const string SparkDotNetJarFile = "local:///usr/hdp/current/spark2-client/jars/microsoft-spark.jar";
 
         public const string SparkDotNetClassName = "org.apache.spark.deploy.dotnet.DotnetRunner";
