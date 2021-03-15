@@ -1,4 +1,4 @@
-﻿
+
 <!--
     Please leave this section at the top of the change log.
 
@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.8
 Microsoft Azure PowerShell - Reservations service cmdlets.
 
 This module is outdated and will go out of support on 29 February 2024.

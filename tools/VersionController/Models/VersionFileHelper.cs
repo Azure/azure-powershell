@@ -17,9 +17,9 @@ namespace VersionController.Models
 
             _outputDirectories = new List<string>
             {
-                Path.Combine(DebugDirectory, @"ResourceManager\AzureResourceManager\"),
-                Path.Combine(DebugDirectory, @"ServiceManagement\"),
-                Path.Combine(DebugDirectory, @"Storage\")
+                Path.Combine(ReleaseDirectory, @"ResourceManager\AzureResourceManager\"),
+                Path.Combine(ReleaseDirectory, @"ServiceManagement\"),
+                Path.Combine(ReleaseDirectory, @"Storage\")
             };
 
             _projectDirectories = new List<string>
@@ -37,6 +37,8 @@ namespace VersionController.Models
         public string PackageDirectory => Path.Combine(SrcDirectory, @"Package");
 
         public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
+
+        public string ReleaseDirectory => Path.Combine(PackageDirectory, @"Release");
 
         public string ExceptionsDirectory => Path.Combine(PackageDirectory, @"Exceptions");
 

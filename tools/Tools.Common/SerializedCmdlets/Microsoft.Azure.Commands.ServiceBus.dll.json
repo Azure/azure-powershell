@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -799,7 +799,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -1580,7 +1580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -2427,7 +2427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "SecondaryConnectionString": "System.String",
@@ -3498,7 +3498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -3691,7 +3691,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -3933,7 +3933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -4201,7 +4201,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -4469,7 +4469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -4640,7 +4640,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -4808,7 +4808,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
               "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -5056,7 +5056,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -5304,7 +5304,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -5552,7 +5552,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -5748,7 +5748,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                     "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.AccessRights]]",
@@ -5921,7 +5921,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -6274,7 +6274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -7138,7 +7138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -7479,7 +7479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -7869,7 +7869,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -8012,7 +8012,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -8210,7 +8210,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -8346,7 +8346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -8744,7 +8744,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -9649,7 +9649,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -10015,7 +10015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -10404,7 +10404,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -10546,7 +10546,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -10743,7 +10743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -10878,7 +10878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Action": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
               "CorrelationFilter": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
@@ -11307,7 +11307,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Action": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
               "CorrelationFilter": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
@@ -12132,7 +12132,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -12565,7 +12565,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -12912,7 +12912,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Action": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
               "CorrelationFilter": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
@@ -13079,7 +13079,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Action": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
               "CorrelationFilter": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
@@ -13313,7 +13313,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Action": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
                     "CorrelationFilter": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
@@ -13437,7 +13437,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -13794,7 +13794,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -14922,7 +14922,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -15267,7 +15267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -15661,7 +15661,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -15808,7 +15808,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -16010,7 +16010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
@@ -16150,7 +16150,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -16256,7 +16256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -16515,7 +16515,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -16823,7 +16823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -16929,7 +16929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -17314,7 +17314,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -17911,7 +17911,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -18235,7 +18235,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -18689,7 +18689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -18973,7 +18973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -19353,7 +19353,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -19635,7 +19635,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -19942,7 +19942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PendingReplicationOperationsCount": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
@@ -20048,7 +20048,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -20265,7 +20265,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -20501,7 +20501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -20928,7 +20928,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -21228,7 +21228,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -21664,7 +21664,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -21924,7 +21924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -22286,7 +22286,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
               "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -22544,7 +22544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.ProvisioningStateDR]",
                     "Role": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.RoleDisasterRecovery]",
@@ -22851,7 +22851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reason": "System.Nullable`1[Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes]",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
@@ -23268,7 +23268,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -23519,7 +23519,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -24009,7 +24009,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -24314,7 +24314,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -24694,7 +24694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
@@ -25125,7 +25125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
             "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Display": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationDisplayAttributes",
               "Name": "System.String"
@@ -26004,7 +26004,7 @@
     "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes": {
       "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSActionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RequiresPreprocessing": "System.Nullable`1[System.Boolean]",
         "CompatibilityLevel": "System.Nullable`1[System.Int32]",
@@ -26078,7 +26078,7 @@
     "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes": {
       "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "RequiresPreprocessing": "System.Nullable`1[System.Boolean]",
@@ -26141,7 +26141,7 @@
     "Microsoft.Azure.Commands.ServiceBus.Models.PSSQLFilterAttributes": {
       "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSQLFilterAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSQLFilterAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSQLFilterAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RequiresPreprocessing": "System.Nullable`1[System.Boolean]",
         "CompatibilityLevel": "System.Nullable`1[System.Int32]",
@@ -26807,7 +26807,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -26819,7 +26819,7 @@
     "Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes": {
       "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.UnavailableReasonAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -26914,7 +26914,7 @@
     "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationDisplayAttributes": {
       "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationDisplayAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationDisplayAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.13.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSOperationDisplayAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.14.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Provider": "System.String",
         "Resource": "System.String",

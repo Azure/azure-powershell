@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -402,7 +402,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -634,7 +634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -1061,7 +1061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -1228,7 +1228,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -1519,7 +1519,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -2196,7 +2196,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -2662,7 +2662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -3017,7 +3017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -3208,7 +3208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -3368,7 +3368,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -3693,7 +3693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -4007,7 +4007,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -4241,7 +4241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -4698,7 +4698,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -5251,7 +5251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -5669,7 +5669,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -6122,7 +6122,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -6359,7 +6359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -6537,7 +6537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -6974,7 +6974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -7543,7 +7543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -7940,7 +7940,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -8222,7 +8222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -8480,7 +8480,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -8684,7 +8684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -8844,7 +8844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -9102,7 +9102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -9306,7 +9306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -9885,7 +9885,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -11132,7 +11132,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -11883,7 +11883,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -12352,7 +12352,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -12609,7 +12609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -12769,7 +12769,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -13027,7 +13027,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -13231,7 +13231,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -13391,7 +13391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -13649,7 +13649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -13908,7 +13908,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -13984,7 +13984,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -14175,7 +14175,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -14366,7 +14366,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -14461,7 +14461,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -14620,7 +14620,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -14724,7 +14724,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SnapshotTime": "System.DateTime",
               "ResourceGroupName": "System.String",
@@ -14834,7 +14834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -15092,7 +15092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -15635,7 +15635,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -16587,7 +16587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -17032,7 +17032,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -17392,7 +17392,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -17837,7 +17837,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -18305,7 +18305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -18816,7 +18816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -19085,7 +19085,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DeletionTime": "System.DateTime",
               "DeletedSiteId": "System.Int32",
@@ -19357,7 +19357,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSCertificate, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "PfxBlob": "System.Byte[]",
@@ -19777,7 +19777,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -20126,7 +20126,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -20453,7 +20453,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -21090,7 +21090,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -21342,7 +21342,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -21799,7 +21799,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -22248,7 +22248,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -22483,7 +22483,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -22689,7 +22689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -23230,7 +23230,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -23511,7 +23511,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -23652,7 +23652,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -24001,7 +24001,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -24186,7 +24186,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -24302,7 +24302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -24560,7 +24560,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -24764,7 +24764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -24887,7 +24887,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -25145,7 +25145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -25458,7 +25458,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -25855,7 +25855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -26137,7 +26137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -26395,7 +26395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -26834,7 +26834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -27363,7 +27363,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -27763,7 +27763,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -28192,7 +28192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -28429,7 +28429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -28571,7 +28571,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
               "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -28805,7 +28805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models.WebApp",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
                     "Sku": "Microsoft.Azure.Management.WebSites.Models.SkuDescription",
@@ -29058,7 +29058,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -29199,7 +29199,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -29548,7 +29548,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -29824,7 +29824,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -30173,7 +30173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -30449,7 +30449,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -30822,7 +30822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -31031,7 +31031,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -31211,7 +31211,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -31942,7 +31942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -32970,7 +32970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -33319,7 +33319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -33559,7 +33559,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -33793,7 +33793,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -33997,7 +33997,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -34139,7 +34139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -34373,7 +34373,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -34577,7 +34577,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -35156,7 +35156,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -36110,7 +36110,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -36367,7 +36367,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -36509,7 +36509,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -36743,7 +36743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -36947,7 +36947,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -37089,7 +37089,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
             "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
               "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -37323,7 +37323,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
                   "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
                     "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
@@ -42051,7 +42051,7 @@
     "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Utilities",
       "Name": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

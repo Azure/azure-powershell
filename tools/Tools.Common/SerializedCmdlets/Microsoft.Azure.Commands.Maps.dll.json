@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -461,7 +461,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -559,7 +559,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -782,7 +782,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1021,7 +1021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1540,7 +1540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1860,7 +1860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2168,7 +2168,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maps.Models",
             "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2433,7 +2433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maps.Models",
                   "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2875,7 +2875,7 @@
     "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku": {
       "Namespace": "Microsoft.Azure.Commands.Maps.Models",
       "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -2948,7 +2948,7 @@
     "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount": {
       "Namespace": "Microsoft.Azure.Commands.Maps.Models",
       "Name": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccount, Microsoft.Azure.Commands.Maps, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.Maps.Models.PSMapsAccountSku",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
