@@ -1,18 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a provider registration by resource provider name.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

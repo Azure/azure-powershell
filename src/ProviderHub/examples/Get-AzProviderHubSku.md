@@ -1,17 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the resource SKU definition.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
 ```
 
 {{ Add description here }}
