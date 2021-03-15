@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support
 {
 
-    /// <summary>TypeConverter implementation for TargetAvailabilityZone.</summary>
+    /// <summary>Gets or sets the target availability zone.</summary>
     public partial class TargetAvailabilityZoneTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

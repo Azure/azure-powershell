@@ -1700,7 +1700,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
             
-            if (runbook != null && runbook.RunbookType == "Python2") {
+            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3")) {
                 int i = 1;
 
                 foreach (var key in parameters.Keys) {

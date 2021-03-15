@@ -28,7 +28,7 @@ mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserver
+https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

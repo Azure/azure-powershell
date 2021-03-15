@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>TypeConverter implementation for ResourceIdentityType.</summary>
+    /// <summary>
+    /// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
+    /// </summary>
     public partial class ResourceIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

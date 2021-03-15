@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
-        public string UserId { get; }
+        public string HashUserId { get; }
 
         /// <summary>
         /// Gets the hashed MAC address.

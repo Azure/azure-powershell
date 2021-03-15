@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported upcoming new API design for `Export-AzKeyVaultSecurityDomain`
+* Fixed several typos in cmdlet messages [#14341]
 
 ## Version 3.4.0
 * Supported specifying key type and curve name when importing keys via a BYOK file

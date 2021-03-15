@@ -11,6 +11,7 @@ Locale: en-US
 Provides CRUD Management for HealthcareApis Service
 
 ## Az.HealthcareApis Cmdlets
+
 ### [Get-AzHealthcareApisService](Get-AzHealthcareApisService.md)
 Get the metadata of a service instance.
 
