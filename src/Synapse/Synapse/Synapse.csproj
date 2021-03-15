@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Synapse" Version="1.0.0-preview.5" />
     <PackageReference Include="Azure.Analytics.Synapse.Spark" Version="1.0.0-beta.1" />
     <PackageReference Include="Azure.Analytics.Synapse.AccessControl" Version="1.0.0-betazesluotest.1" />
-    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-beta.1" />
+    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.6" />
   </ItemGroup>
 
   <ItemGroup>

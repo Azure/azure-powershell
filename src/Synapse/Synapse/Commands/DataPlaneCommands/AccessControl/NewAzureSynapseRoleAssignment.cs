@@ -133,7 +133,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
             {
-                string RoleAssignmentId = this.RoleDefinitionId + "-" + this.ObjectId;
+                int index = this.RoleDefinitionId.LastIndexOf("-");
+                string RoleAssignmentId = this.RoleDefinitionId.Substring(0, index) + this.ObjectId.Substring(index);
+                //this.Scope = "Workspaces/zes0219test/linkedServices/zes0219test-WorkspaceDefaultSqlServer";
                 PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(RoleAssignmentId, this.RoleDefinitionId, this.ObjectId, this.Scope));
                 WriteObject(roleAssignmentDetails);
             }
