@@ -12,19 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzProviderHubCustomRollout-CRUD' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Create and get a CustomRollout' {
+        $customRollout = New-AzProviderHubCustomRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psCustomRollout" -CanaryRegion "eastus2euap"
+        $customRollout | Should -Not -BeNullOrEmpty
+        $customRollout.Name | Should -BeExactly "psCustomRollout"
+        $customRollout.ProvisioningState | Should -BeExactly "Succeeded"
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $customRollout = Get-AzProviderHubCustomRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psCustomRollout"
+        $customRollout.Name | Should -BeExactly "psCustomRollout"
     }
 }
