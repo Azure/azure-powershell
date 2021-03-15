@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
         public string Sku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
                     Sku = afdSku,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
                 };
 
                 PSAfdProfile psAfdProfile = this.CdnManagementClient.Profiles.Create(this.ResourceGroupName, this.ProfileName, afdProfile).ToPSAfdProfile();

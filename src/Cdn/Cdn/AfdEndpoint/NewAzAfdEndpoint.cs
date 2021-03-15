@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSeconds { get; set; }
+
+        public int OriginResponseTimeoutSecond { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,8 +59,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
                 AFDEndpoint afdEndpoint = new AFDEndpoint
                 {
                     Location = AfdResourceConstants.AfdResourceLocation,
-                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSeconds : 60,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tags, true)
+
+                    OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin ? this.OriginResponseTimeoutSecond : 60,
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
                 };
 
                 PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Create(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpoint).ToPSAfdEndpoint();

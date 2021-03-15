@@ -22,6 +22,7 @@
 * Redirected bicep message to verbose stream
 * Removed the logic of copying Bicep template file to temp folder.
 * Fixed what-if functionality when using `-QueryString` parameter.
+* Add support of policy exemption resource type
 
 ## Version 3.3.0
 * Added support for Azure resources deployment in Bicep language

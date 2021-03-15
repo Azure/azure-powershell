@@ -68,30 +68,30 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/4e680cd578ba4e57b650d9f89cd20835"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/b4bfdec635514591bc1ee087b9b61772"
 }
 
 function Get-InitialThumbprint
 {
-    return "3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B"
+    return "ED1647D7E58F9F69E473B4700A0CCED50F7F65B0"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC"
+    return "D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/599d307311bf4508b7511ed482fa746f"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/f052a9de0e9249cc8e84f9951a96afe4"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "3B892D25432FDA538F54B1EADD0B28BA82C488CC"
+    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
 }
 
 function Get-CACertCommonName
@@ -106,12 +106,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/219a6d1803c34447b686db16ecd6285a"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/c0770e09071f41b38cbb49204dd2f820"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/5236086354ac470e8efa4e0426b6144d"
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/4159eda1fcea468e9bf40a361021f18d"
 }
 
 function Get-DurabilityLevel
@@ -122,6 +122,11 @@ function Get-DurabilityLevel
 function Get-ReliabilityLevel
 {
 	return "Bronze"
+}
+
+function Get-VmImage
+{
+	return "Windows"
 }
 
 function Get-NewNodeTypeName
