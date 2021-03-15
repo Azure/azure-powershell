@@ -30,7 +30,7 @@ Describe 'Get-AzPostgreSqlFlexibleServerFirewallRule' {
 
     It 'GetViaIdentity' {
         { 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
             $rule = Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
             $rule.StartIPAddress | Should -Be 0.0.0.0
             $rule.EndIPAddress | Should -Be 0.0.0.1

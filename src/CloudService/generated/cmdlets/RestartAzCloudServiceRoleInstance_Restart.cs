@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// The Reboot Role Instance asynchronous operation requests a reboot of a role instance in the cloud service.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] CloudServiceRoleInstances_Restart=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart"
+    /// [OpenAPI] Restart=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/restart"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Restart, @"AzCloudServiceRoleInstance_Restart", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

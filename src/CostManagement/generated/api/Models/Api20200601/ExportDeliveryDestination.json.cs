@@ -64,8 +64,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return;
             }
-            {_container = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("container"), out var __jsonContainer) ? (string)__jsonContainer : (string)Container;}
             {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)ResourceId;}
+            {_container = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("container"), out var __jsonContainer) ? (string)__jsonContainer : (string)Container;}
             {_rootFolderPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString>("rootFolderPath"), out var __jsonRootFolderPath) ? (string)__jsonRootFolderPath : (string)RootFolderPath;}
             AfterFromJson(json);
         }
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601
             {
                 return container;
             }
-            AddIf( null != (((object)this._container)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._container.ToString()) : null, "container" ,container.Add );
             AddIf( null != (((object)this._resourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._resourceId.ToString()) : null, "resourceId" ,container.Add );
+            AddIf( null != (((object)this._container)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._container.ToString()) : null, "container" ,container.Add );
             AddIf( null != (((object)this._rootFolderPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonString(this._rootFolderPath.ToString()) : null, "rootFolderPath" ,container.Add );
             AfterToJson(ref container);
             return container;

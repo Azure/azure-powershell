@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// in the response to get the next page of Cloud Services. Do this till nextLink is null to fetch all the Cloud Services.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] CloudServices_ListAll=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/cloudServices"
+    /// [OpenAPI] ListAll=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/cloudServices"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudService_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService))]

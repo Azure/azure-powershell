@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Cdn
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn
+Download Help Link: https://docs.microsoft.com/powershell/module/az.cdn
 Help Version: 4.2.4.0
 Locale: en-US
 ---
@@ -25,6 +25,33 @@ Enables Custom Domain HTTPS (Deprecated).
 
 ### [Enable-AzCdnCustomDomainHttps](Enable-AzCdnCustomDomainHttps.md)
 Enables custom HTTPS.
+
+### [Get-AzAfdCustomDomain](Get-AzAfdCustomDomain.md)
+Gets the AFD custom domain.
+
+### [Get-AzAfdEndpoint](Get-AzAfdEndpoint.md)
+Gets the AFD endpoint.
+
+### [Get-AzAfdOrigin](Get-AzAfdOrigin.md)
+Gets the AFD origin.
+
+### [Get-AzAfdOriginGroup](Get-AzAfdOriginGroup.md)
+Gets the AFD origin group.
+
+### [Get-AzAfdProfile](Get-AzAfdProfile.md)
+Gets the AFD profile.
+
+### [Get-AzAfdRoute](Get-AzAfdRoute.md)
+Gets the AFD route.
+
+### [Get-AzAfdRule](Get-AzAfdRule.md)
+Gets the AFD rule.
+
+### [Get-AzAfdRuleSet](Get-AzAfdRuleSet.md)
+Gets the AFD rule set.
+
+### [Get-AzAfdSecurityPolicy](Get-AzAfdSecurityPolicy.md)
+Gets the AFD security policy.
 
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets a CDN custom domain.
@@ -62,6 +89,36 @@ Gets the supported optimization types for a CDN profile.
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Gets the resource usage for a subscription.
 
+### [New-AzAfdCustomDomain](New-AzAfdCustomDomain.md)
+Creates an AFD custom domain.
+
+### [New-AzAfdEndpoint](New-AzAfdEndpoint.md)
+Creates an AFD endpoint.
+
+### [New-AzAfdOrigin](New-AzAfdOrigin.md)
+Creates an AFD origin.
+
+### [New-AzAfdOriginGroup](New-AzAfdOriginGroup.md)
+Creates an AFD origin group.
+
+### [New-AzAfdProfile](New-AzAfdProfile.md)
+Creates an AFD profile.
+
+### [New-AzAfdRoute](New-AzAfdRoute.md)
+Creates an AFD route.
+
+### [New-AzAfdRule](New-AzAfdRule.md)
+Creates an AFD rule.
+
+### [New-AzAfdRuleCacheExpirationAction](New-AzAfdRuleCacheExpirationAction.md)
+Creates an AFD cache expiration rule action. 
+
+### [New-AzAfdRuleSet](New-AzAfdRuleSet.md)
+Creates an AFD rule set.
+
+### [New-AzAfdSecurityPolicy](New-AzAfdSecurityPolicy.md)
+Creates the AFD security policy.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
 
@@ -81,16 +138,43 @@ Creates a delivery rule condition.
 Creates a CDN endpoint.
 
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
-Creates a CDN origin
+Creates a new CDN origin
 
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
-Creates a CDN origin group
+Creates a new CDN origin group
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
 ### [Publish-AzCdnEndpointContent](Publish-AzCdnEndpointContent.md)
 Loads content to an endpoint.
+
+### [Remove-AzAfdCustomDomain](Remove-AzAfdCustomDomain.md)
+Removes an AFD custom domain.
+
+### [Remove-AzAfdEndpoint](Remove-AzAfdEndpoint.md)
+Removes an AFD endpoint.
+
+### [Remove-AzAfdOrigin](Remove-AzAfdOrigin.md)
+Removes an AFD origin.
+
+### [Remove-AzAfdOriginGroup](Remove-AzAfdOriginGroup.md)
+Removes an AFD origin group.
+
+### [Remove-AzAfdProfile](Remove-AzAfdProfile.md)
+Removes an AFD profile.
+
+### [Remove-AzAfdRoute](Remove-AzAfdRoute.md)
+Removes an AFD route.
+
+### [Remove-AzAfdRule](Remove-AzAfdRule.md)
+Removes an AFD rule.
+
+### [Remove-AzAfdRuleSet](Remove-AzAfdRuleSet.md)
+Removes an AFD rule set.
+
+### [Remove-AzAfdSecurityPolicy](Remove-AzAfdSecurityPolicy.md)
+Removes the AFD security policy.
 
 ### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Removes a custom domain.
@@ -107,6 +191,24 @@ Removes a CDN origin group
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Removes a CDN profile.
 
+### [Set-AzAfdEndpoint](Set-AzAfdEndpoint.md)
+Removes an AFD endpoint.
+
+### [Set-AzAfdOrigin](Set-AzAfdOrigin.md)
+Removes an AFD origin.
+
+### [Set-AzAfdOriginGroup](Set-AzAfdOriginGroup.md)
+Removes an AFD origin group.
+
+### [Set-AzAfdProfile](Set-AzAfdProfile.md)
+Removes an AFD profile.
+
+### [Set-AzAfdRoute](Set-AzAfdRoute.md)
+Removes an AFD route.
+
+### [Set-AzAfdSecurityPolicy](Set-AzAfdSecurityPolicy.md)
+Sets the AFD security policy.
+
 ### [Set-AzCdnEndpoint](Set-AzCdnEndpoint.md)
 Updates a CDN endpoint.
 
@@ -114,7 +216,7 @@ Updates a CDN endpoint.
 Updates a CDN origin server.
 
 ### [Set-AzCdnOriginGroup](Set-AzCdnOriginGroup.md)
-Updates a CDN origin group
+Updates the CDN origin group
 
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.

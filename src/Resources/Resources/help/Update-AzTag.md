@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 07c6e327-05f4-4279-a5fb-d4e860c897d4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-aztag
+online version: https://docs.microsoft.com/powershell/module/az.resources/update-aztag
 schema: 2.0.0
 ---
 

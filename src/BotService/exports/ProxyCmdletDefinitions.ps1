@@ -67,7 +67,7 @@ INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/get-azbotservice
 #>
 function Get-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -237,7 +237,7 @@ INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/remove-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/remove-azbotservice
 #>
 function Remove-AzBotService {
 [OutputType([System.Boolean])]
@@ -414,7 +414,7 @@ INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/update-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/update-azbotservice
 #>
 function Update-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -662,7 +662,7 @@ d----          2020/12/15    13:45                youriechobottest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/export-azbotserviceapp
+https://docs.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 #>
 function Export-AzBotServiceApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -806,7 +806,7 @@ PS C:\> Initialize-AzBotServicePrepareDeploy -CodeDir D:\zips\MyEchoBot -ProjFil
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
+https://docs.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 #>
 function Initialize-AzBotServicePrepareDeploy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -957,7 +957,7 @@ Etag                                   Kind Location Name            SkuName Sku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/new-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -1156,7 +1156,7 @@ PS C:\> Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips
 
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/publish-azbotserviceapp
+https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 #>
 function Publish-AzBotServiceApp {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

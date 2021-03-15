@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
 {
 
-    /// <summary>TypeConverter implementation for ForecastType.</summary>
+    /// <summary>The type of the forecast.</summary>
     public partial class ForecastTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

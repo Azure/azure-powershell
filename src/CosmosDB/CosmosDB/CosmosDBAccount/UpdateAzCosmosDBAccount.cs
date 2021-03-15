@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -97,6 +98,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (NetworkAclBypass != null)
+            {
+                databaseAccountUpdateParameters.NetworkAclBypass = 
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
@@ -132,6 +138,42 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
                 databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
+            }
+
+            if (ServerVersion != null)
+            {
+                if (databaseAccountUpdateParameters.ApiProperties == null)
+                {
+                    databaseAccountUpdateParameters.ApiProperties = new ApiProperties();
+                }
+
+                databaseAccountUpdateParameters.ApiProperties.ServerVersion = ServerVersion;
+            }
+
+            if (NetworkAclBypassResourceId != null)
+            {
+                Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
+                databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
+            }
+
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            {
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
+                    {
+                        PeriodicModeProperties = new PeriodicModeProperties()
+                        {
+                            BackupIntervalInMinutes = BackupIntervalInMinutes,
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        }
+                    };
+                }
+                else
+                {
+                    WriteWarning("Can accept BackupInterval or BackupRetention parameters only for accounts with PeriodicMode backup policy");
+                    return;
+                }
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

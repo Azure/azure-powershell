@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksnodepool
+online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksnodepool
 schema: 2.0.0
 ---
 
 # Get-AzAksNodePool
 
 ## SYNOPSIS
-Create note pool in specified cluster.
+List node pools in specified cluster.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzAksNodePool -ClusterObject <PSKubernetesCluster> [-Name <String>]
 ```
 
 ## DESCRIPTION
-Create note pool in specified cluster.
+List node pools in specified cluster.
 
 ## EXAMPLES
 

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ServiceFabric
 Module Guid: 60f3ba88-443f-46ff-88a3-318cfd11c1da
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric
+Download Help Link: https://docs.microsoft.com/powershell/module/az.servicefabric
 Help Version: 0.3.4.0
 Locale: en-US
 ---
@@ -33,13 +33,13 @@ Add nodes to the specific node type in the cluster.
 Add a new node type to the existing cluster.
 
 ### [Get-AzServiceFabricApplication](Get-AzServiceFabricApplication.md)
-Get Service Fabric application details.
+Get Service Fabric application details. Only supports ARM deployed applications.
 
 ### [Get-AzServiceFabricApplicationType](Get-AzServiceFabricApplicationType.md)
-Get Service Fabric application type details.
+Get Service Fabric application type details. Only supports ARM deployed application types.
 
 ### [Get-AzServiceFabricApplicationTypeVersion](Get-AzServiceFabricApplicationTypeVersion.md)
-Get Service Fabric application type version details.
+Get Service Fabric application type version details. Only supports ARM deployed application type versions.
 
 ### [Get-AzServiceFabricCluster](Get-AzServiceFabricCluster.md)
 Get the cluster resource details.
@@ -51,7 +51,7 @@ Get the managed cluster resource details.
 Get the managed node type resource details.
 
 ### [Get-AzServiceFabricService](Get-AzServiceFabricService.md)
-Get Service Fabric service details under the specified application and cluster.
+Get Service Fabric service details under the specified application and cluster. Only supports ARM deployed services.
 
 ### [New-AzServiceFabricApplication](New-AzServiceFabricApplication.md)
 Create new service fabric application under the specified resource group and cluster.
@@ -75,13 +75,13 @@ Create new node type resource.
 Create new service fabric service under the specified application and cluster.
 
 ### [Remove-AzServiceFabricApplication](Remove-AzServiceFabricApplication.md)
-Remove an application from the cluster. This will remove all the services under the application.
+Remove an application from the cluster. This will remove all the services under the application. Only supports ARM deployed applications.
 
 ### [Remove-AzServiceFabricApplicationType](Remove-AzServiceFabricApplicationType.md)
-Remove Service fabric an application type from the cluster. This will remove all type versions under this resource.
+Remove Service fabric an application type from the cluster. This will remove all type versions under this resource. Only supports ARM deployed application types.
 
 ### [Remove-AzServiceFabricApplicationTypeVersion](Remove-AzServiceFabricApplicationTypeVersion.md)
-Remove Service fabric an application type version from the cluster.
+Remove Service fabric an application type version from the cluster. Only supports ARM deployed application type versions.
 
 ### [Remove-AzServiceFabricClientCertificate](Remove-AzServiceFabricClientCertificate.md)
 Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
@@ -108,7 +108,7 @@ Remove nodes from the specific node type from a cluster.
 Remove a complete node type from a cluster.
 
 ### [Remove-AzServiceFabricService](Remove-AzServiceFabricService.md)
-Remove a service from the cluster.
+Remove a service from the cluster. Only supports ARM deployed services.
 
 ### [Remove-AzServiceFabricSetting](Remove-AzServiceFabricSetting.md)
 Remove one or multiple Service Fabric setting from the cluster.
@@ -129,7 +129,7 @@ Add or update one or multiple Service Fabric settings to the cluster.
 Change the Service Fabric upgrade type of the cluster.
 
 ### [Update-AzServiceFabricApplication](Update-AzServiceFabricApplication.md)
-Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade.
+Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade. Only supports ARM deployed applications.
 
 ### [Update-AzServiceFabricDurability](Update-AzServiceFabricDurability.md)
 Update the durability tier or VmSku of a node type in the cluster.
@@ -137,3 +137,8 @@ Update the durability tier or VmSku of a node type in the cluster.
 ### [Update-AzServiceFabricReliability](Update-AzServiceFabricReliability.md)
 Update the reliability tier of the primary node type in a cluster.
 
+### [Update-AzServiceFabricNodeType](Update-AzServiceFabricNodeType.md)
+Update a node type within the cluster.
+
+### [Update-AzServiceFabricVmImage](Update-AzServiceFabricVmImage.md)
+Update the cluster resource vmImage setting which maps the appropriate runtime package to be delivered based on the target operating system.

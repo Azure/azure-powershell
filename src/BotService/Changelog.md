@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Used the '3.0.414' version of autorest to generate code
+
+## Version 0.3.0
+* Updated the online links.
+
+## Version 0.2.0
+* Fixed the issue that didn't pack template files into nupkg.
 
 ## Version 0.1.0
 * First preview release for module Az.BotService

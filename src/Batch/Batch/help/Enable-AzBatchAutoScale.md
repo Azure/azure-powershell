@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 3107D061-7F25-45D0-8029-C99120A156DA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/enable-azbatchautoscale
+online version: https://docs.microsoft.com/powershell/module/az.batch/enable-azbatchautoscale
 schema: 2.0.0
 ---
 

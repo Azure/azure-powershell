@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue for starting Python3 runbooks with parameters
+
+## Version 1.5.0
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+## Version 1.4.3
 * Fixed the issue of processing `PSCustomObject` and `Array`.
 
 ## Version 1.4.2

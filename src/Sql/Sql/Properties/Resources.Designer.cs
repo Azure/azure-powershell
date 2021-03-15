@@ -1006,6 +1006,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Sql Server Trust Group &apos;{0}&apos; in location &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerTrustGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerTrustGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Trust Group &apos;{0}&apos; in location &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerTrustGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerTrustGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
         /// </summary>
         internal static string RemoveAzureSqlServerVirtualNetworkRuleDescription {

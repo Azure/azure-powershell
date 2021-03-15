@@ -13,7 +13,7 @@ while (-not $mockingPath) {
 
 Describe 'Invoke-AzResourceMoverCommit' {
     It 'CommitExpanded' {
-            $commitResponse = Invoke-AzResourceMoverCommit -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "my-sRgVm1"
-            $commitResponse.Status.Length | Should -BeGreaterOrEqual 6
+           $commitResponse = Invoke-AzResourceMoverCommit -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -MoveResource "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg" -MoveResourceInputType "MoveResourceSourceId"
+           $commitResponse.Status | Should -Be "Succeeded"
     }
 }

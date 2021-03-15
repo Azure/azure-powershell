@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
 
 ## Version 1.4.0

@@ -57,6 +57,12 @@ function New-AzDatabricksWorkspace {
         # The ID of the target subscription.
         ${SubscriptionId},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${EnableNoPublicIP},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]

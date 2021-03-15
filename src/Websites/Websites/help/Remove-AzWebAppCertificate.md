@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version:https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-AzWebAppCertificate
+online version:https://docs.microsoft.com/powershell/module/az.websites/remove-AzWebAppCertificate
 schema: 2.0.0
 ---
 
 # Remove-AzWebAppCertificate
 
 ## SYNOPSIS
-Creates an App service managed certificate for an Azure Web App. 
+Removes an App service managed certificate for an Azure Web App. 
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-ThumbPrint] <String> 
 ```
 
 ## DESCRIPTION
-The **Remove-AzWebAppCertificate** cmdlet creates an Azure App Service Managed Certificate
+The **Remove-AzWebAppCertificate** cmdlet Removes an Azure App Service Managed Certificate
 
 ## EXAMPLES
 

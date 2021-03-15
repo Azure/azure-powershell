@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricnodetype
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricnodetype
 schema: 2.0.0
 ---
 
@@ -15,8 +15,9 @@ Add a new node type to the existing cluster.
 ```
 Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capacity <Int32>
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
- [-DurabilityLevel <DurabilityLevel>] -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
+ [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] -NodeType <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,23 @@ PS C:\> Add-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01
 ```
 
 This command will add a new NodeType 'n2' with capacity of 5, and the vm admin name is 'adminName'.
+
+### Example 2
+New node type will be a primary node type and will copy the VM image reference of the first
+discovered preexiting Node Type VMSS, substituting ImageSku with 18.04-LTS.
+- Existing node type image reference: ImagePublisher: Canonical, ImageOffer: UbuntuServer, ImageSku: 16.04-LTS, ImageVersion: latest
+- New node type image reference: ImagePublisher: Canonical, ImageOffer: UbuntuServer, ImageSku: 18.04-LTS, ImageVersion: latest
+
+
+```powershell
+PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+PS c:\> $resourceGroup = "Group2"
+PS c:\> $clusterName = "Contoso01SFCluster"
+PS c:\> $nodeTypeName = "n3"
+PS C:\> Add-AzServiceFabricNodeType -ResourceGroupName $resourceGroup -Name $clusterName -NodeType $nodeTypeName -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd -DurabilityLevel Silver -Verbose -VMImageSku 18.04-LTS -IsPrimaryNodeType $true
+```
+
+This command will add a new NodeType 'n3' with capacity of 5, the vm admin name is 'adminName', Durability level Silver (tenant and infrastructure jobs are safely brokered using the Infrastructure Service), and VMSS is created using VM image profile publisher-offer-sku-version with sku interchanged to '18.04-LTS'.
 
 ## PARAMETERS
 
@@ -72,6 +90,21 @@ Type: Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
 Parameter Sets: (All)
 Aliases:
 Accepted values: Bronze, Silver, Gold
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IsPrimaryNodeType
+Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -127,6 +160,66 @@ Accept wildcard characters: False
 
 ### -Tier
 Vm Sku Tier
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMImageOffer
+Specify the VM image reference Offer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMImagePublisher
+Specify the VM image reference Publisher.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMImageSku
+Specify the VM image reference Sku.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMImageVersion
+Specify the VM image reference Version.
 
 ```yaml
 Type: System.String
@@ -228,6 +321,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Security.SecureString
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+
+### System.Nullable<System.Boolean>
 
 ## OUTPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchquerykey
+online version: https://docs.microsoft.com/powershell/module/az.search/get-azsearchquerykey
 schema: 2.0.0
 ---
 

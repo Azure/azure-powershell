@@ -613,4 +613,16 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetResourcegroupNotSupported" xml:space="preserve">
     <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
   </data>
+  <data name="InvalidTargetStorageAccount" xml:space="preserve">
+    <value>Please provide a vaild target storage account</value>
+  </data>
+  <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
+    <value>Please ensure that the given RP recovery type is 'VaultStandard' or remove TargetZone</value>
+  </data>
+  <data name="RecoveryPointZonePinnedException" xml:space="preserve">
+    <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
+  </data>
+  <data name="ZonalRestoreVaultStorageRedundancyException" xml:space="preserve">
+    <value>Please check whether the vault storageRedundancy is ZRS or RA-GRS  or remove TargetZone</value>
+  </data>
 </root>

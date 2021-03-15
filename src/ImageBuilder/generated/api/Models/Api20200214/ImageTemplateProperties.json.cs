@@ -70,14 +70,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 return;
             }
-            {_lastRunStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("lastRunStatus"), out var __jsonLastRunStatus) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateLastRunStatus.FromJson(__jsonLastRunStatus) : LastRunStatus;}
-            {_provisioningError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("provisioningError"), out var __jsonProvisioningError) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ProvisioningError.FromJson(__jsonProvisioningError) : ProvisioningError;}
             {_source = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("source"), out var __jsonSource) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateSource.FromJson(__jsonSource) : Source;}
+            {_provisioningError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("provisioningError"), out var __jsonProvisioningError) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ProvisioningError.FromJson(__jsonProvisioningError) : ProvisioningError;}
+            {_lastRunStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("lastRunStatus"), out var __jsonLastRunStatus) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateLastRunStatus.FromJson(__jsonLastRunStatus) : LastRunStatus;}
             {_vMProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonObject>("vmProfile"), out var __jsonVMProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateVMProfile.FromJson(__jsonVMProfile) : VMProfile;}
-            {_buildTimeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber>("buildTimeoutInMinutes"), out var __jsonBuildTimeoutInMinutes) ? (int?)__jsonBuildTimeoutInMinutes : BuildTimeoutInMinute;}
             {_customize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("customize"), out var __jsonCustomize) ? If( __jsonCustomize as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer) (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateCustomizer.FromJson(__u) )) ))() : null : Customize;}
             {_distribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("distribute"), out var __jsonDistribute) ? If( __jsonDistribute as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor) (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateDistributor.FromJson(__p) )) ))() : null : Distribute;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_buildTimeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber>("buildTimeoutInMinutes"), out var __jsonBuildTimeoutInMinutes) ? (int?)__jsonBuildTimeoutInMinutes : BuildTimeoutInMinute;}
             AfterFromJson(json);
         }
 
@@ -100,17 +100,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SerializationMode.IncludeReadOnly))
-            {
-                AddIf( null != this._lastRunStatus ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._lastRunStatus.ToJson(null,serializationMode) : null, "lastRunStatus" ,container.Add );
-            }
+            AddIf( null != this._source ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._source.ToJson(null,serializationMode) : null, "source" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._provisioningError ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._provisioningError.ToJson(null,serializationMode) : null, "provisioningError" ,container.Add );
             }
-            AddIf( null != this._source ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._source.ToJson(null,serializationMode) : null, "source" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != this._lastRunStatus ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._lastRunStatus.ToJson(null,serializationMode) : null, "lastRunStatus" ,container.Add );
+            }
             AddIf( null != this._vMProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) this._vMProfile.ToJson(null,serializationMode) : null, "vmProfile" ,container.Add );
-            AddIf( null != this._buildTimeoutInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber((int)this._buildTimeoutInMinute) : null, "buildTimeoutInMinutes" ,container.Add );
             if (null != this._customize)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.XNodeArray();
@@ -133,6 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            AddIf( null != this._buildTimeoutInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNumber((int)this._buildTimeoutInMinute) : null, "buildTimeoutInMinutes" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

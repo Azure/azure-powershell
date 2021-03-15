@@ -13,14 +13,14 @@ Each test scenario is marked with one priority P0, P1, P2 based on two factors:
 
 |Scenario\AuthN Method|Interactive|Device Code (`-DeviceCode`)|User Name+Password (`-Credential`)|Access Token (`-AccessToken`)|SP Secret (`-ServicePrincipal -Credential`)|SP Cert (`-ServicePrincipal -CertificateThumbprint`)|System MSI (`-Identity`)|User MSI (`-Identity -AccountId`)|User MSI-Func App published by VS Code (`-Identity -AccountId`)|
 |----|----|----|----|----|----|----|----|----|----|
-|`No Subscrption/Tenant`|P0 (SemiAuto)|P0|P0 (Auto-No)|P0 (SemiAuto-No)|P0 (Auto-No)|P0 (SemiAuto-No)|P0|P0|P0|
-|`-Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P2 (SemiAuto-No)|P1|P1|P1|
-|`-Subscription sub-name`|P1 (SemiAuto)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|P2|P2|P2|
-|`-Subscription sub-id-in-2nd-tenant`|P0 (SemiAuto-No)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
-|`-Tenant tenant-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P2 (SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id`|P1 (SemiAuto-No)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P1 (SemiAuto-No)|NA|NA|NA|
+|`No Subscrption/Tenant`|P0 (SemiAuto)|P0|P0 (Auto-No)|P0 (SemiAuto-No)|NA|NA|P0|P0|P0|
+|`-Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|NA|NA|P1|P1|P1|
+|`-Subscription sub-name`|P1 (SemiAuto)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|P2|P2|P2|
+|`-Subscription sub-id-in-2nd-tenant`|P0 (SemiAuto-No)|P2|P2 (Auto-No)|NA|NA|NA|NA|NA|NA|
+|`-Tenant tenant-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P0 (Auto-No)|P0 (SemiAuto-No)|P1|P1|P1|
+|`-Tenant 2nd-tenant-id`|P1 (SemiAuto-No)|P1|P1 (Auto-No)|NA|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
 |`-Tenant tenant-id -Subscription sub-id`|P0 (SemiAuto)|P1|P1 (Auto-No)|P1 (SemiAuto-No)|P1 (Auto-No)|P1 (SemiAuto-No)|P1|P1|P1|
-|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1 (SemiAuto-No)|P2|P2 (Auto-No)|P2 (SemiAuto-No)|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
+|`-Tenant 2nd-tenant-id -Subscription sub-id-in-2nd-tenant`|P1 (SemiAuto-No)|P2|P2 (Auto-No)|NA|P2 (Auto-No)|P2 (SemiAuto-No)|NA|NA|NA|
 |`No Parameter` Click back button before inputing password(Negative)|P2|P2|NA|NA|NA|NA|NA|NA|NA|
 |`-Subscripiton -sub-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|
 |`-Tenant -tenant-id-no-permission`(Negative)|P2|P2|P2|P2|P2|P2|P2|P2|P2|

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageblobserviceproperty
+online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageblobserviceproperty
 schema: 2.0.0
 ---
 
@@ -15,22 +15,23 @@ Modifies the service properties for the Azure Storage Blob service.
 ### AccountName (Default)
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
+ [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
- [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
- [-EnableChangeFeed <Boolean>] [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,14 +51,15 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : 
+ChangeFeed.RetentionInDays    :
 IsVersioningEnabled           :
 ```
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
-### Example 2: Enable Changefeed on Blob service of a Storage account
+### Example 2: Enable Changefeed on Blob service of a Storage account with ChangeFeedRetentionInDays as 5 days
 ```
-C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true
+C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true -ChangeFeedRetentionInDays 5
 
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
@@ -67,13 +69,15 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : True
+ChangeFeed.RetentionInDays    : 5
 IsVersioningEnabled           :
 ```
 
-This command enables Changefeed on Blob service of a Storage account
+This command enables Changefeed on Blob service of a Storage account with ChangeFeedRetentionInDays as 5 days.
 Change feed support in Azure Blob Storage works by listening to a GPv2 or Blob storage account for any blob level creation, modification, or deletion events. 
 It then outputs an ordered log of events for the blobs stored in the $blobchangefeed container within the storage account. 
 The serialized changes are persisted as an Apache Avro file and can be processed asynchronously and incrementally.
+If not specify ChangeFeedRetentionInDays, will get null value in service properties, indicates an infinite retention of the change feed.
 
 ### Example 3: Enable Versioning on Blob service of a Storage account
 ```
@@ -87,12 +91,29 @@ DeleteRetentionPolicy.Days    :
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
 ChangeFeed                    : 
+ChangeFeed.RetentionInDays    :
 IsVersioningEnabled           : True
 ```
 
 This command enables Versioning on Blob service of a Storage account
 
 ## PARAMETERS
+
+### -ChangeFeedRetentionInDays
+Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). 
+Never specify it when enabled changeFeed will get null value in service properties, indicates an infinite retention of the change feed.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
