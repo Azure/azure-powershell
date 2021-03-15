@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	/// <summary>
 	/// Cmdlet to retrieve a Azure Sql Server Trust Group.
 	/// </summary>
-	[Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "GetByName"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
+	[Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "ListByLocationSet"), OutputType(typeof(AzureSqlServerTrustGroupModel))]
 	public class GetAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
