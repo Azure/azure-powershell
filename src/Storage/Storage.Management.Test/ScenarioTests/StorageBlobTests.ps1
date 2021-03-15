@@ -672,4 +672,51 @@ function Test-StorageBlobORS
     }
 }
 
+<#
+.SYNOPSIS
+Test StorageAccount ChangeFeed
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobChangeFeed
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# Enable Blob  Changefeed 
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true -ChangeFeedRetentionInDays 5
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.ChangeFeed.Enabled
+		Assert-AreEqual 5 $property.ChangeFeed.RetentionInDays
+
+		# Disable Blob  Changefeed 
+		Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $false
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $false $property.ChangeFeed.Enabled
+		Assert-AreEqual $null $property.ChangeFeed.RetentionInDays
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 

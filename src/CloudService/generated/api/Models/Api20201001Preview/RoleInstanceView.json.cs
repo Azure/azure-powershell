@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             {
                 return;
             }
-            {_platformFaultDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("platformFaultDomain"), out var __jsonPlatformFaultDomain) ? (int?)__jsonPlatformFaultDomain : PlatformFaultDomain;}
             {_platformUpdateDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("platformUpdateDomain"), out var __jsonPlatformUpdateDomain) ? (int?)__jsonPlatformUpdateDomain : PlatformUpdateDomain;}
+            {_platformFaultDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("platformFaultDomain"), out var __jsonPlatformFaultDomain) ? (int?)__jsonPlatformFaultDomain : PlatformFaultDomain;}
             {_privateId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("privateId"), out var __jsonPrivateId) ? (string)__jsonPrivateId : (string)PrivateId;}
             {_statuses = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("statuses"), out var __jsonStatuses) ? If( __jsonStatuses as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IResourceInstanceViewStatus[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IResourceInstanceViewStatus) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ResourceInstanceViewStatus.FromJson(__u) )) ))() : null : Statuses;}
             AfterFromJson(json);
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._platformFaultDomain ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((int)this._platformFaultDomain) : null, "platformFaultDomain" ,container.Add );
+                AddIf( null != this._platformUpdateDomain ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((int)this._platformUpdateDomain) : null, "platformUpdateDomain" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._platformUpdateDomain ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((int)this._platformUpdateDomain) : null, "platformUpdateDomain" ,container.Add );
+                AddIf( null != this._platformFaultDomain ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((int)this._platformFaultDomain) : null, "platformFaultDomain" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SerializationMode.IncludeReadOnly))
             {

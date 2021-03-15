@@ -42,23 +42,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>End time of the last run (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public global::System.DateTime? LastRunStatusEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).EndTime = value; }
+        public global::System.DateTime? LastRunStatusEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).EndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Verbose information about the last run state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string LastRunStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).Message = value; }
+        public string LastRunStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).Message = value ?? null; }
 
         /// <summary>State of the last run</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState? LastRunStatusRunState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunState = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState? LastRunStatusRunState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunState = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunState)""); }
 
         /// <summary>Sub-state of the last run</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState? LastRunStatusRunSubState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunSubState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunSubState = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState? LastRunStatusRunSubState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunSubState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).RunSubState = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState)""); }
 
         /// <summary>Start time of the last run (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public global::System.DateTime? LastRunStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).StartTime = value; }
+        public global::System.DateTime? LastRunStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatusInternal)LastRunStatus).StartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for LastRunStatus</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateLastRunStatus Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplatePropertiesInternal.LastRunStatus { get => (this._lastRunStatus = this._lastRunStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateLastRunStatus()); set { {_lastRunStatus = value;} } }
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>Error code of the provisioning failure</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode? ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Code = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode? ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Code = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningErrorCode)""); }
 
         /// <summary>Verbose error message about the provisioning failure</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Message = value; }
+        public string ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IProvisioningErrorInternal)ProvisioningError).Message = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningState? _provisioningState;
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
         /// <summary>Specifies the type of source image you want to start with.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string SourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSourceInternal)Source).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSourceInternal)Source).Type = value; }
+        public string SourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSourceInternal)Source).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSourceInternal)Source).Type = value ; }
 
         /// <summary>Backing field for <see cref="VMProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfile _vMProfile;
@@ -122,18 +122,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         /// Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public int? VMProfileOsdiskSizeGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).OSDiskSizeGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).OSDiskSizeGb = value; }
+        public int? VMProfileOsdiskSizeGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).OSDiskSizeGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).OSDiskSizeGb = value ?? default(int); }
 
         /// <summary>
         /// Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default
         /// (Standard_D1_v2).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string VMProfileVmsize { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VMSize = value; }
+        public string VMProfileVmsize { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VMSize = value ?? null; }
 
         /// <summary>Resource id of a pre-existing subnet.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inlined)]
-        public string VnetConfigSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VnetConfigSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VnetConfigSubnetId = value; }
+        public string VnetConfigSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VnetConfigSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVMProfileInternal)VMProfile).VnetConfigSubnetId = value ?? null; }
 
         /// <summary>Creates an new <see cref="ImageTemplateProperties" /> instance.</summary>
         public ImageTemplateProperties()
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         ReadOnly = false,
         Description = @"Specifies the properties used to describe the customization steps of the image, like Image source etc",
         SerializedName = @"customize",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateShellCustomizer),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateRestartCustomizer),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateWindowsUpdateCustomizer),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplatePowerShellCustomizer),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateFileCustomizer) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer) })]
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[] Customize { get; set; }
         /// <summary>The distribution targets where the image output needs to go to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
         ReadOnly = false,
         Description = @"The distribution targets where the image output needs to go to.",
         SerializedName = @"distribute",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateManagedImageDistributor),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSharedImageDistributor),typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateVhdDistributor) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor) })]
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[] Distribute { get; set; }
         /// <summary>End time of the last run (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(

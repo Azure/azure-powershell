@@ -95,13 +95,14 @@ namespace StaticAnalysis
                 if (args.Any(a => a.Equals("--modules-to-analyze") || a.Equals("-m")))
                 {
                     int idx = Array.FindIndex(args, a => a.Equals("--modules-to-analyze") || a.Equals("-m"));
-                    if (idx + 1 == args.Length)
+                    if (args[idx + 1] == null || args[idx + 1].StartsWith("-"))
                     {
                         Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
                     }
                     else
                     {
-                        modulesToAnalyze = args[idx + 1].Split(';').ToList();
+                        var modules = args[idx + 1].Trim(' ', '\'', '"');
+                        modulesToAnalyze = modules.Split(';').ToList();
                     }
                 }
 
@@ -110,6 +111,8 @@ namespace StaticAnalysis
                     Console.WriteLine(string.Format("Module: {0}", moduleName));
                 }
 
+                // We want to run analyzers separately and different modules for each analyzer. But we also want previous analyzer will not stop the subsequent ones.
+                // So we make normal analyzer will not throw exception but write them into files and add a new issue checker to check the exceptions in files and throw them together if there is any.
                 bool needToCheckIssue = false;
                 if (args.Any(a => a.Equals("--analyzers")))
                 {
@@ -180,7 +183,6 @@ namespace StaticAnalysis
                     var analyzer = new IssueChecker.IssueChecker();
                     analyzer.Analyze(new[] { reportsDirectory });
                 }
-                //analysisLogger.CheckForIssues(2);
             }
             finally
             {

@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
             NetworkAclBypass = databaseAccountGetResults.NetworkAclBypass;
             NetworkAclBypassResourceIds = databaseAccountGetResults.NetworkAclBypassResourceIds;
+            BackupPolicy = new PSBackupPolicy(databaseAccountGetResults.BackupPolicy);
         }
 
         //
@@ -190,5 +191,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets list of Network Acl Bypass Resource Ids.
         public IList<string> NetworkAclBypassResourceIds { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the backup policy of the database account.
+        public PSBackupPolicy BackupPolicy { get; set; }
     }
 }

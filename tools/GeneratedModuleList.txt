@@ -4,6 +4,7 @@ Az.Blockchain
 Az.BotService
 Az.CloudService
 Az.Communication
+Az.Confluent
 Az.ConnectedKubernetes
 Az.CostManagement
 Az.CustomProviders

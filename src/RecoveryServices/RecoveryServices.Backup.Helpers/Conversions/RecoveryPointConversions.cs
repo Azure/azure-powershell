@@ -158,7 +158,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     recoveryPoint.IsManagedVirtualMachine.Value : false,
                 OriginalSAEnabled = recoveryPoint.OriginalStorageAccountOption.HasValue ?
                     recoveryPoint.OriginalStorageAccountOption.Value : false,
+                Zones = recoveryPoint.Zones,
+                RehydrationExpiryTime = (DateTime?)null,
             };
+
+            if (recoveryPoint.RecoveryPointTierDetails != null)
+            {
+                bool isHardenedRP = false;
+                bool isInstantRecoverable = false;
+                bool isArchived = false;
+                bool isRehydrated = false;
+
+                foreach (ServiceClientModel.RecoveryPointTierInformation tierInfo in recoveryPoint.RecoveryPointTierDetails)
+                {
+                    if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Rehydrated)
+                    {
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
+                        {
+                            isRehydrated = true;
+
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
+                        }
+                    }
+
+                    if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Valid)
+                    {
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.InstantRP)
+                        {
+                            isInstantRecoverable = true;
+                        }
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.HardenedRP)
+                        {
+                            isHardenedRP = true;
+                        }
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
+                        {
+                            isArchived = true;
+                        }
+                    }
+                }
+
+                if ((isHardenedRP && isArchived) || (isRehydrated))
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultStandardRehydrated;
+                }
+                else if (isInstantRecoverable && isHardenedRP)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultStandard;
+                }
+                else if (isInstantRecoverable && isArchived)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultArchive;
+                }
+                else if (isArchived)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultArchive;
+                }
+                else if (isInstantRecoverable)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.Snapshot;
+                }
+                else if (isHardenedRP)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultStandard;
+                }
+            }
+
 
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {

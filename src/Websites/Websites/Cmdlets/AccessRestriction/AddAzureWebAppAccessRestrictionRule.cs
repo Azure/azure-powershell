@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         break;
 
                     case ServiceTagParameterSet:
+                        ValidateServiceTagNames(ServiceTag, webApp.Location);
                         CheckDuplicateIPRestriction(ServiceTag, accessRestrictionList);
                         ipSecurityRestriction = new IpSecurityRestriction(ServiceTag, null, null, null, null, Action, "ServiceTag", intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);
@@ -178,16 +179,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     case SubnetNameParameterSet:
                     case SubnetIdParameterSet:
-                        var Subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
+                        var subnet = ParameterSetName == SubnetNameParameterSet ? SubnetName : SubnetId;
                         //Fetch RG of given SubNet
-                        var subNetResourceGroupName = CmdletHelpers.GetSubnetResourceGroupName(DefaultContext, Subnet, VirtualNetworkName);
+                        var subNetResourceGroupName = NetworkClient.GetSubnetResourceGroupName(subnet, VirtualNetworkName);
                         //If unble to fetch SubNet rg from above step, use the input RG to get validation error from api call.
                         subNetResourceGroupName = !String.IsNullOrEmpty(subNetResourceGroupName) ? subNetResourceGroupName : ResourceGroupName;
-                        var subnetResourceId = CmdletHelpers.ValidateSubnet(Subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
+                        var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, subNetResourceGroupName, DefaultContext.Subscription.Id);
                         CheckDuplicateServiceEndpointRestriction(subnetResourceId, accessRestrictionList);
                         if (!IgnoreMissingServiceEndpoint)
                         {
-                            CmdletHelpers.VerifySubnetDelegation(subnetResourceId);
+                            var subnetSubcriptionId = CmdletHelpers.GetSubscriptionIdFromResourceId(subnetResourceId);
+                            if (subnetSubcriptionId != DefaultContext.Subscription.Id)
+                                throw new Exception("Service endpoint cannot be validated. Subnet is in another subscription. Use -IgnoreMissingServiceEndpoint and manually verify that 'Microsoft.Web' service endpoint is enabled on the subnet.");
+                            var serviceEndpointServiceName = "Microsoft.Web";
+                            var serviceEndpointLocations = new List<string>() { "*" };
+                            NetworkClient.EnsureSubnetServiceEndpoint(subnetResourceId, serviceEndpointServiceName, serviceEndpointLocations);
                         }
                         
                         ipSecurityRestriction = new IpSecurityRestriction(null, null, subnetResourceId, null, null, Action, null, intPriority, Name, Description, httpHeader);
@@ -251,6 +257,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 if (accessRestriction.VnetSubnetResourceId == subnetResourceId)
                     throw new Exception($"Rule for '{subnetResourceId}' already exist");
+            }
+        }
+
+        private void ValidateServiceTagNames(string serviceTags, string location)
+        {
+            var serviceTagList = serviceTags.Split(',');
+            var supportedServiceTagList = NetworkClient.GetServiceTags(location);
+            foreach (var tag in serviceTagList)
+            {
+                if (!supportedServiceTagList.Any(t => t.Name.Equals(tag, StringComparison.OrdinalIgnoreCase)))
+                    throw new Exception($"Unknown Service Tag '{tag}'.");
             }
         }
     }

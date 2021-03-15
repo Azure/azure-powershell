@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
 online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsedroppedsqlpool
@@ -14,19 +14,18 @@ Gets a dropped Sql pool backup of a Synapse Sql Pool.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseDroppedSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseDroppedSqlPool -ResourceGroupName <String> -WorkspaceName <String> [-Name <String>]
+ [-DeletionDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### DroppedSqlPoolResourceId
+### GetByResourceIdParameterSet
 ```
-Get-AzSynapseDroppedSqlPool [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSynapseDroppedSqlPool [-DeletionDate <DateTime>] [-ResourceId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzSynapseDroppedSqlPool** cmdlet gets a specified deleted SQL pool backup that you can restore, or all deleted backups that you can restore in a workspace. 
-
 
 ## EXAMPLES
 
@@ -34,12 +33,14 @@ The **Get-AzSynapseDroppedSqlPool** cmdlet gets a specified deleted SQL pool bac
 ```powershell
 PS C:\> Get-AzSynapseDroppedSqlPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name "ContosoSqlPool"
 ```
+
 The cmdlet retrieves dropped sqlpools for a sql pool.
 
 ### Example 2: Get all dropped sqlpool on a workspace
 ```
 PS C:\>Get-AzSynapseDroppedSqlPool -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
+
 This command gets all available dropped sqlpool on a specified workspace.
 
 ## PARAMETERS
@@ -59,13 +60,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeletionDate
+The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)
+
+```yaml
+Type: System.Nullable`1[System.DateTime]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The Synapse Sql pool.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
-Aliases: AzSynapseDroppedSqlPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -79,28 +110,13 @@ Input a Dropped Sql Pool Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: DroppedSqlPoolResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

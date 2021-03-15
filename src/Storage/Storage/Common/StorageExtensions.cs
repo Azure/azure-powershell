@@ -10,6 +10,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
     using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Sas;
     using Microsoft.Azure.Storage.Auth;
@@ -231,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private static string GetBlobSasToken(BlobBaseClient blob, AzureStorageContext context)
         {
             if (null == context.StorageAccount.Credentials
-                || context.StorageAccount.Credentials.IsAnonymous)
+                || (context.StorageAccount.Credentials.IsAnonymous && !context.StorageAccount.Credentials.IsToken))
             {
                 return string.Empty;
             }
@@ -253,8 +254,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blob.Uri);
             }
-            sasBuilder.SetPermissions("r");
-            string sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            sasBuilder.SetPermissions("rt");
+
+            string sasToken = null;
+            if (context != null && context.StorageAccount.Credentials.IsToken) //oauth
+            {
+                global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
+                BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, null);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime());
+
+                sasToken = sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else // sharedkey
+            {
+                sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+
             if (sasToken[0] != '?')
             {
                 sasToken = "?" + sasToken;

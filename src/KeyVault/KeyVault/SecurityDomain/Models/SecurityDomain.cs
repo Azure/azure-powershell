@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
     {
         public EncData EncData { get; set; }
 
-        // Because the deserializer isn't very picky, the struct 
+        // Because the deserializer isn't very picky, the struct
         // can contain both the new and the old members, and we can just use the one we need
         public SplitKeys SplitKeys { get; set; }
         public SharedKeys SharedKeys { get; set; }
@@ -81,5 +81,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
     public class SecurityDomainWrapper
     {
         public string value { get; set; }
+    }
+
+    public class PollingResult
+    {
+        [JsonProperty("status")]
+        public string Status { get; private set; }
     }
 }
