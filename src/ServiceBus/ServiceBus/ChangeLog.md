@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix for issue #12975 : New-AzServiceBusAuthorizationRuleSASToken returns invalid token
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
 
 ## Version 1.4.1
 * Update references in .psd1 to use relative path
