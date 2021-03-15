@@ -47,17 +47,8 @@ Creates or updates a notification registration.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
 ```
-
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
 
 ## PARAMETERS
 
@@ -280,16 +271,16 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
-  - `[Location <String[]>]`: 
-  - `[NotificationDestination <String>]`: 
+  - `[Location <String[]>]`:
+  - `[NotificationDestination <String>]`:
 
 PROPERTY <INotificationRegistration>: The notification registration definition.
-  - `[IncludedEvent <String[]>]`: 
-  - `[MessageScope <MessageScope?>]`: 
-  - `[NotificationEndpoint <INotificationEndpoint[]>]`: 
-    - `[Location <String[]>]`: 
-    - `[NotificationDestination <String>]`: 
-  - `[NotificationMode <NotificationMode?>]`: 
+  - `[IncludedEvent <String[]>]`:
+  - `[MessageScope <MessageScope?>]`:
+  - `[NotificationEndpoint <INotificationEndpoint[]>]`:
+    - `[Location <String[]>]`:
+    - `[NotificationDestination <String>]`:
+  - `[NotificationMode <NotificationMode?>]`:
 
 ## RELATED LINKS
 

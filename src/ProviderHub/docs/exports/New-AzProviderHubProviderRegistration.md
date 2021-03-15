@@ -76,17 +76,8 @@ Creates or updates the provider registration.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso" -ProviderHubMetadataProviderAuthenticationAllowedAudience "https://management.core.windows.net/" -ProviderHubMetadataProviderAuthorization @{ApplicationId = "00000000-0000-0000-0000-000000000000"; RoleDefinitionId = "00000000-0000-0000-0000-000000000000"} -Namespace "Microsoft.Contoso" -ProviderVersion "2.0" -ProviderType "Internal" -ManagementManifestOwner "SPARTA-PlatformServiceAdministrator" -ManagementIncidentContactEmail "rpaascore@microsoft.com" -ManagementIncidentRoutingService "Resource Provider Service as a Service" -ManagementIncidentRoutingTeam "RPaaS" -ManagementServiceTreeInfo @{ComponentId = "00000000-0000-0000-0000-000000000000"; ServiceId = "00000000-0000-0000-0000-000000000000"} -Capability @{QuotaId = "CSP_2015-05-01"; Effect = "Allow"}, @{QuotaId = "CSP_MG_2017-12-01"; Effect = "Allow"}
 ```
-
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
 
 ## PARAMETERS
 
@@ -662,9 +653,9 @@ To create the parameters described below, construct a hash table containing the 
 
 
 CAPABILITY <IResourceProviderCapabilities[]>: .
-  - `Effect <ResourceProviderCapabilitiesEffect>`: 
-  - `QuotaId <String>`: 
-  - `[RequiredFeature <String[]>]`: 
+  - `Effect <ResourceProviderCapabilitiesEffect>`:
+  - `QuotaId <String>`:
+  - `[RequiredFeature <String[]>]`:
 
 INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
@@ -679,67 +670,67 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 MANAGEMENTSERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`: 
-  - `[ServiceId <String>]`: 
+  - `[ComponentId <String>]`:
+  - `[ServiceId <String>]`:
 
 PROPERTY <IProviderRegistration>: .
-  - `[Capability <IResourceProviderCapabilities[]>]`: 
-    - `Effect <ResourceProviderCapabilitiesEffect>`: 
-    - `QuotaId <String>`: 
-    - `[RequiredFeature <String[]>]`: 
-  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`: 
-  - `[ManagementIncidentContactEmail <String>]`: 
-  - `[ManagementIncidentRoutingService <String>]`: 
-  - `[ManagementIncidentRoutingTeam <String>]`: 
-  - `[ManagementManifestOwner <String[]>]`: 
-  - `[ManagementResourceAccessPolicy <String>]`: 
-  - `[ManagementResourceAccessRole <IAny[]>]`: 
-  - `[ManagementSchemaOwner <String[]>]`: 
-  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
-    - `[ComponentId <String>]`: 
-    - `[ServiceId <String>]`: 
+  - `[Capability <IResourceProviderCapabilities[]>]`:
+    - `Effect <ResourceProviderCapabilitiesEffect>`:
+    - `QuotaId <String>`:
+    - `[RequiredFeature <String[]>]`:
+  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
+  - `[ManagementIncidentContactEmail <String>]`:
+  - `[ManagementIncidentRoutingService <String>]`:
+  - `[ManagementIncidentRoutingTeam <String>]`:
+  - `[ManagementManifestOwner <String[]>]`:
+  - `[ManagementResourceAccessPolicy <String>]`:
+  - `[ManagementResourceAccessRole <IAny[]>]`:
+  - `[ManagementSchemaOwner <String[]>]`:
+  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
+    - `[ComponentId <String>]`:
+    - `[ServiceId <String>]`:
   - `[Metadata <IAny>]`: Any object
-  - `[Namespace <String>]`: 
-  - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
-  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 
-    - `[ApplicationId <String>]`: 
-    - `[ManagedByRoleDefinitionId <String>]`: 
-    - `[RoleDefinitionId <String>]`: 
-  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`: 
-  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`: 
-  - `[ProviderType <ResourceProviderType?>]`: 
-  - `[ProviderVersion <String>]`: 
-  - `[ProvisioningState <ProvisioningState?>]`: 
-  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
-  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
-    - `Action <SubscriptionNotificationOperation>`: 
-    - `State <SubscriptionTransitioningState>`: 
-  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`: 
-  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
-  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`: 
-    - `PrincipalId <String>`: 
-    - `RoleDefinitionId <String>`: 
-  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`: 
+  - `[Namespace <String>]`:
+  - `[ProviderAuthenticationAllowedAudience <String[]>]`:
+  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:
+    - `[ApplicationId <String>]`:
+    - `[ManagedByRoleDefinitionId <String>]`:
+    - `[RoleDefinitionId <String>]`:
+  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`:
+  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`:
+  - `[ProviderType <ResourceProviderType?>]`:
+  - `[ProviderVersion <String>]`:
+  - `[ProvisioningState <ProvisioningState?>]`:
+  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`:
+  - `[RequiredFeature <String[]>]`:
+  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
+  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
+    - `Action <SubscriptionNotificationOperation>`:
+    - `State <SubscriptionTransitioningState>`:
+  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`:
+  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
+  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`:
+    - `PrincipalId <String>`:
+    - `RoleDefinitionId <String>`:
+  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`:
 
 PROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`: 
-  - `[ManagedByRoleDefinitionId <String>]`: 
-  - `[RoleDefinitionId <String>]`: 
+  - `[ApplicationId <String>]`:
+  - `[ManagedByRoleDefinitionId <String>]`:
+  - `[RoleDefinitionId <String>]`:
 
 PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`: 
-  - `[ManagedByRoleDefinitionId <String>]`: 
-  - `[RoleDefinitionId <String>]`: 
+  - `[ApplicationId <String>]`:
+  - `[ManagedByRoleDefinitionId <String>]`:
+  - `[RoleDefinitionId <String>]`:
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <SubscriptionNotificationOperation>`: 
-  - `State <SubscriptionTransitioningState>`: 
+  - `Action <SubscriptionNotificationOperation>`:
+  - `State <SubscriptionTransitioningState>`:
 
 THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ <ILightHouseAuthorization[]>: .
-  - `PrincipalId <String>`: 
-  - `RoleDefinitionId <String>`: 
+  - `PrincipalId <String>`:
+  - `RoleDefinitionId <String>`:
 
 ## RELATED LINKS
 

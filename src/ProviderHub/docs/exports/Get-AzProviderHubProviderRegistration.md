@@ -12,12 +12,6 @@ Gets the provider registration details.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzProviderHubProviderRegistration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String[]>]
@@ -37,17 +31,8 @@ Gets the provider registration details.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Get-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
-
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
 
 ## PARAMETERS
 

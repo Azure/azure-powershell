@@ -31,17 +31,8 @@ Deletes a notification registration.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-{{ Add code here }}
+Remove-AzProviderHubNotificationRegistration -ProviderNamespace $env.ProviderNamespace -Name "notificationRegistrationTest"
 ```
-
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
 
 ## PARAMETERS
 
