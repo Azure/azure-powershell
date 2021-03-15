@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasebackupshorttermretentionpolicy
+online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasebackupshorttermretentionpolicy
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -Resour
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
+The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet sets the short term retention policy for this database.
 The policy is the retention period, in days, for point-in-time restore backups.
 
 ## EXAMPLES

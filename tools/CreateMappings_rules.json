@@ -18,6 +18,14 @@
     "alias": "Image Builder"
   },
   {
+    "regex": "VMware",
+    "alias": "VMware"
+  },
+  {
+    "regex": "VMGuest",
+    "alias": "Guest Configuration"
+  },
+  {
     "regex": "Snapshot",
     "group": "Virtual Machines",
     "alias": "VM Snapshots"
@@ -304,6 +312,10 @@
     "alias": "Traffic Manager"
   },
   {
+    "regex": "MarketplaceTerms",
+    "alias": "Marketplace Ordering"
+  },
+  {
     "regex": "Marketplace",
     "alias": "Marketplace"
   },
@@ -359,6 +371,10 @@
     "alias": "Policy"
   },
   {
+    "regex": "ADDomainService",
+    "alias": "Active Directory Domain Service"
+  },
+  {
     "regex": "AD",
     "group": "Resources",
     "alias": "Active Directory"
@@ -402,6 +418,10 @@
   {
     "regex": "ResourceGraph",
     "alias": "ResourceGraph"
+  },
+  {
+    "regex": "Sentinel",
+    "alias": "Sentinel"
   },
   {
     "regex": "Security",
@@ -474,7 +494,7 @@
     "alias": "Alerts Management"
   },
   {
-    "regex": "HealthcareApisService",
+    "regex": "HealthcareApis",
     "alias": "HealthcareApis Service"
   },
   {
@@ -514,6 +534,14 @@
     "alias": "Database for PostgreSQL"
   },
   {
+    "regex": "SqlVM",
+    "alias": "SqlVM"
+  },
+  {
+    "regex": "AvailabilityGroupListener",
+    "alias": "SqlVM"
+  },
+  {
     "regex": "Sql",
     "alias": "SQL"
   },
@@ -551,7 +579,7 @@
   },
   {
     "regex": "ApplicationInsights",
-    "alias": "Monitor"
+    "alias": "Application Insights"
   },
   {
     "regex": "Monitor",
@@ -575,54 +603,58 @@
   },
   {
     "regex": "SpringCloud",
-    "alias": "SpringCloud"
+    "alias": "Spring Cloud"
   },
   {
     "regex": "ResourceMover",
-    "alias": "ResourceMover"
+    "alias": "Resource Mover"
   },
   {
-    "alias": "ConnectedMachine",
-    "regex": "ConnectedMachine"
+    "regex": "ConnectedMachine",
+    "alias": "Connected Machine"
   },
   {
-    "regex": "VMWare",
-    "alias": "VMWare"
+    "regex": "DedicatedHsm",
+    "alias": "Dedicated HSM"
   },
   {
-    "alias": "Dedicated HSM",
-    "regex": "DedicatedHsm"
-  },
-  {
-    "alias": "Migrate",
-    "regex": "Migrate"
+    "regex": "Migrate",
+    "alias": "Migrate"
   },
   {
     "regex": "DigitalTwins",
-    "alias": "DigitalTwins"
+    "alias": "Digital Twins"
   },
   {
     "regex": "CloudService",
-    "alias": "CloudService"
+    "alias": "Cloud Services"
   },
   {
-    "alias": "WindowsIotServices",
-    "regex": "WindowsIotServices"
+    "regex": "WindowsIotServices",
+    "alias": "WindowsIotServices"
   },
   {
     "regex": "CostManagement",
-    "alias": "CostManagement"
+    "alias": "Cost Management"
   },
   {
     "regex": "Communication",
-    "alias": "Communication"
+    "alias": "Communication Services"
   },
   {
     "regex": "RedisEnterpriseCache",
-    "alias": "RedisEnterpriseCache"
+    "alias": "Redis Enterprise"
   },
   {
     "regex": "BotService",
-    "alias": "BotService"
+    "alias": "Bot Services"
+  },
+  {
+    "regex": "HealthBot",
+    "alias": "Health Bot"
+  },
+  {
+    "regex": "Confluent",
+    "alias": "Confluent"
   }
 ]

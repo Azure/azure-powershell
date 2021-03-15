@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetLocation,
         KeyFileDownloadLocation,
         FileDownloadLocation,
-        RestorePointQueryType
+        RestorePointQueryType,
+        TargetZone
     }
 
     public enum RestoreBackupItemParams
@@ -78,6 +79,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum RestoreWLBackupItemParams
     {
         WLRecoveryConfig
+    }
+
+    public enum CRRParams
+    {
+        UseSecondaryRegion,
+        SecondaryRegion
     }
 
     public enum WorkloadRecoveryConfigParams

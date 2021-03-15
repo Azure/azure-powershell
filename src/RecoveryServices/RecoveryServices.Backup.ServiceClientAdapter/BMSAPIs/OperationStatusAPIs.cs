@@ -39,6 +39,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Gets status of a generic operation on the protected item using the operation ID
+        /// </summary>
+        /// <param name="operationId">ID of the operation in progress</param>
+        /// <returns>Operation status response returned by the service</returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetCrrOperationStatus(
+                string secondaryRegion,
+                string operationId)
+        {
+            return BmsAdapter.Client.CrrOperationStatus.GetWithHttpMessagesAsync(
+                secondaryRegion,
+                operationId).Result;
+        }
+
+        /// <summary>
         /// Gets result of a generic operation on the protection policy using the operation ID
         /// </summary>
         /// <param name="policyName">Name of the policy associated with the operation</param>
@@ -129,13 +144,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string vaultName = null,
             string resourceGroupName = null)
         {
-            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.BeginGetWithHttpMessagesAsync(
+            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
                                 vaultName,
                                 resourceGroupName,
                                 operationId).Result.Body;
 
             var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
             PrepareDataMoveResponse prepareResponseDerived = JsonConvert.DeserializeObject<PrepareDataMoveResponse>(prepareResponseSerialized);
+            
             return prepareResponseDerived;
         }
 

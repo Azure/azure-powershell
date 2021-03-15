@@ -23,16 +23,50 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountManagementPolicyFilter"), OutputType(typeof(PSManagementPolicyRuleFilter))]
     public class NewAzureStorageAccountManagementPolicyFilterCommand : StorageAccountBaseCmdlet
     {
+        /// <summary>
+        /// block blob type
+        /// </summary>
+        private const string BlockBlobType = "Block";
+
+        /// <summary>
+        /// append blob type
+        /// </summary>
+        private const string AppendBlobType = "Append";
+
         [Parameter(Mandatory = false,
             HelpMessage = "An array of strings for prefixes to be match. A prefix string must start with a container name.")]
         [ValidateNotNullOrEmpty]
         public string[] PrefixMatch { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "An array of strings for blobtypes to be match. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.")]
+        [ValidateSet(AzureBlobType.BlockBlob, AzureBlobType.AppendBlob, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] BlobType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             string[] blobType = new string[] { AzureBlobType.BlockBlob };
+
+            if (this.BlobType != null)
+            {
+                blobType = new string[this.BlobType.Length];
+                for (int i=0;i< this.BlobType.Length; i++)
+                {
+
+                    if (this.BlobType[i].ToLower() == AzureBlobType.AppendBlob.ToLower())
+                    {
+                        blobType[i] = AzureBlobType.AppendBlob;
+                    }
+                    else
+                    {
+                        blobType[i] = AzureBlobType.BlockBlob;
+                    }
+                }
+            }
+
             PSManagementPolicyRuleFilter filter = new PSManagementPolicyRuleFilter()
             {
                 BlobTypes = blobType,

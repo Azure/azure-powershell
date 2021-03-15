@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/set-Azstorageaccountmanagementpolicy
+online version: https://docs.microsoft.com/powershell/module/Az.storage/set-Azstorageaccountmanagementpolicy
 schema: 2.0.0
 ---
 
@@ -64,8 +64,9 @@ PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $actio
 PS C:\>$filter1 = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
 PS C:\>$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action1 -Filter $filter1
 
-PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-PS C:\>$filter2 = New-AzStorageAccountManagementPolicyFilter
+PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100
+PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -InputObject $action2 -BlobVersionAction Delete -daysAfterCreationGreaterThan 100
+PS C:\>$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob
 PS C:\>$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $action2 -Filter $filter2
 
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule1,$rule2
@@ -75,7 +76,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 10:29:29 AM
+LastModifiedTime   : 2/19/2021 10:13:00 AM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -96,13 +97,16 @@ Rules              : [
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
                                                                                                 "DaysAfterCreationGreaterThan":  100
-                                                                                            }
-                                                                             }
+                                                                                            },
+                                                                                 "TierToCool":  null,
+                                                                                 "TierToArchive":  null
+                                                                             },
+                                                                "Version":  null
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  [
-                                                                                    "prefix1",
-                                                                                    "prefix2"
+                                                                                    "ab",
+                                                                                    "cd"
                                                                                 ],
                                                                 "BlobTypes":  [
                                                                                   "blockBlob"
@@ -115,18 +119,26 @@ Rules              : [
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  null,
-                                                                                 "TierToArchive":  null,
+                                                                "BaseBlob":  null,
+                                                                "Snapshot":  {
                                                                                  "Delete":  {
-                                                                                                "DaysAfterModificationGreaterThan":  100
-                                                                                            }
+                                                                                                "DaysAfterCreationGreaterThan":  100
+                                                                                            },
+                                                                                 "TierToCool":  null,
+                                                                                 "TierToArchive":  null
                                                                              },
-                                                                "Snapshot":  null
+                                                                "Version":  {
+                                                                                "Delete":  {
+                                                                                               "DaysAfterCreationGreaterThan":  100
+                                                                                           },
+                                                                                "TierToCool":  null,
+                                                                                "TierToArchive":  null
+                                                                            }
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  null,
                                                                 "BlobTypes":  [
+                                                                                  "appendBlob",
                                                                                   "blockBlob"
                                                                               ]
                                                             }
@@ -152,6 +164,13 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
                 });
                 Snapshot=(@{
                     Delete=@{DaysAfterCreationGreaterThan=100};
+                    TierToArchive=@{DaysAfterCreationGreaterThan=50};
+                    TierToCool=@{DaysAfterCreationGreaterThan=60};
+                });
+                Version=(@{
+                    Delete=@{DaysAfterCreationGreaterThan=100};
+                    TierToArchive=@{DaysAfterCreationGreaterThan=50};
+                    TierToCool=@{DaysAfterCreationGreaterThan=60};
                 });
             });
             Filters=(@{
@@ -165,12 +184,12 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         Name="Test2";
         Definition=(@{
             Actions=(@{
-                BaseBlob=(@{
-                    TierToCool=@{DaysAfterModificationGreaterThan=80};
+                Version=(@{
+                    Delete=@{DaysAfterCreationGreaterThan=100};
                 });
             });
             Filters=(@{
-                BlobTypes=@("blockBlob");
+                BlobTypes=@("blockBlob","appendBlob");
             })
         })
     })
@@ -181,7 +200,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 3/12/2019 10:24:55 AM
+LastModifiedTime   : 2/19/2021 10:16:32 AM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -202,8 +221,25 @@ Rules              : [
                                                                 "Snapshot":  {
                                                                                  "Delete":  {
                                                                                                 "DaysAfterCreationGreaterThan":  100
-                                                                                            }
-                                                                             }
+                                                                                            },
+                                                                                 "TierToCool":  {
+                                                                                                    "DaysAfterCreationGreaterThan":  60
+                                                                                                },
+                                                                                 "TierToArchive":  {
+                                                                                                       "DaysAfterCreationGreaterThan":  50
+                                                                                                   }
+                                                                             },
+                                                                "Version":  {
+                                                                                "Delete":  {
+                                                                                               "DaysAfterCreationGreaterThan":  100
+                                                                                           },
+                                                                                "TierToCool":  {
+                                                                                                   "DaysAfterCreationGreaterThan":  60
+                                                                                               },
+                                                                                "TierToArchive":  {
+                                                                                                      "DaysAfterCreationGreaterThan":  50
+                                                                                                  }
+                                                                            }
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  [
@@ -221,19 +257,21 @@ Rules              : [
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {
-                                                                "BaseBlob":  {
-                                                                                 "TierToCool":  {
-                                                                                                    "DaysAfterModificationGreaterThan":  80
-                                                                                                },
-                                                                                 "TierToArchive":  null,
-                                                                                 "Delete":  null
-                                                                             },
-                                                                "Snapshot":  null
+                                                                "BaseBlob":  null,
+                                                                "Snapshot":  null,
+                                                                "Version":  {
+                                                                                "Delete":  {
+                                                                                               "DaysAfterCreationGreaterThan":  100
+                                                                                           },
+                                                                                "TierToCool":  null,
+                                                                                "TierToArchive":  null
+                                                                            }
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  null,
                                                                 "BlobTypes":  [
-                                                                                  "blockBlob"
+                                                                                  "blockBlob",
+                                                                                  "appendBlob"
                                                                               ]
                                                             }
                                             }

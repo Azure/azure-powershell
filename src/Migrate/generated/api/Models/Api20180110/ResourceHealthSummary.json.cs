@@ -72,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return;
             }
-            {_categorizedResourceCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("categorizedResourceCounts"), out var __jsonCategorizedResourceCounts) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummaryCategorizedResourceCounts.FromJson(__jsonCategorizedResourceCounts) : CategorizedResourceCount;}
-            {_issue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("issues"), out var __jsonIssues) ? If( __jsonIssues as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.HealthErrorSummary.FromJson(__u) )) ))() : null : Issue;}
             {_resourceCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("resourceCount"), out var __jsonResourceCount) ? (int?)__jsonResourceCount : ResourceCount;}
+            {_issue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("issues"), out var __jsonIssues) ? If( __jsonIssues as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IHealthErrorSummary) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.HealthErrorSummary.FromJson(__u) )) ))() : null : Issue;}
+            {_categorizedResourceCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("categorizedResourceCounts"), out var __jsonCategorizedResourceCounts) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ResourceHealthSummaryCategorizedResourceCounts.FromJson(__jsonCategorizedResourceCounts) : CategorizedResourceCount;}
             AfterFromJson(json);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
             {
                 return container;
             }
-            AddIf( null != this._categorizedResourceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._categorizedResourceCount.ToJson(null,serializationMode) : null, "categorizedResourceCounts" ,container.Add );
+            AddIf( null != this._resourceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._resourceCount) : null, "resourceCount" ,container.Add );
             if (null != this._issue)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.XNodeArray();
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110
                 }
                 container.Add("issues",__w);
             }
-            AddIf( null != this._resourceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._resourceCount) : null, "resourceCount" ,container.Add );
+            AddIf( null != this._categorizedResourceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._categorizedResourceCount.ToJson(null,serializationMode) : null, "categorizedResourceCounts" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

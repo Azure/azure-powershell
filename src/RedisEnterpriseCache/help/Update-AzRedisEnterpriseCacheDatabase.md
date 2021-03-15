@@ -1,39 +1,40 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 schema: 2.0.0
 ---
 
 # Update-AzRedisEnterpriseCacheDatabase
 
 ## SYNOPSIS
-Updates a database
+Updates an existing Redis Enterprise database
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
- [-EvictionPolicy <EvictionPolicy>] [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
+ [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>] [-RdbPersistenceEnabled]
+ [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
- [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
- [-Module <IModule[]>] [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity> [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a database
+Updates an existing Redis Enterprise database
 
 ## EXAMPLES
 
-### Example 1: Update client protocol
+### Example 1: Update client protocol property of a database
 ```powershell
 PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Plaintext"
 
@@ -43,9 +44,9 @@ default Microsoft.Cache/redisEnterprise/databases
 
 ```
 
-This command updates the client protocol of the database for the Redis Enterprise Cache named MyCache.
+This command updates the client protocol of the database for the Redis Enterprise cache named MyCache.
 
-### Example 2: Update client protocol and eviction policy
+### Example 2: Update client protocol and eviction policy properties of a database
 ```powershell
 PS C:\> Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction"
 
@@ -55,9 +56,42 @@ default Microsoft.Cache/redisEnterprise/databases
 
 ```
 
-This command updates the client protocol and eviction policy of the database for the Redis Enterprise Cache named MyCache.
+This command updates the client protocol and eviction policy of the database for the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
+
+### -AofPersistenceEnabled
+[Preview] Sets whether AOF persistence is enabled.
+After enabling AOF persistence, you will be unable to disable it.
+Support for disabling AOF persistence after enabling will be added at a later date.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AofPersistenceFrequency
+[Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
+Allowed values: 1s, always
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -76,7 +110,7 @@ Accept wildcard characters: False
 
 ### -ClientProtocol
 Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
-Default is TLS-encrypted.
+Allowed values: Encrypted, Plaintext
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
@@ -90,24 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusteringPolicy
-Clustering policy - default is OSSCluster.
-Specified at create time.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -137,7 +155,8 @@ Accept wildcard characters: False
 ```
 
 ### -EvictionPolicy
-Redis eviction policy - default is VolatileLRU
+Redis eviction policy.
+Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy
@@ -167,22 +186,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Module
-Optional set of redis modules to enable in this database - modules can only be added at creation time.
-To construct, see NOTES section for MODULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -198,13 +201,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Port
-TCP port of the database endpoint.
-Specified at create time.
-Defaults to an available port.
+### -RdbPersistenceEnabled
+[Preview] Sets whether RDB persistence is enabled.
+After enabling RDB persistence, you will be unable to disable it.
+Support for disabling RDB persistence after enabling will be added at a later date.
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RdbPersistenceFrequency
+[Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
+Allowed values: 1h, 6h, 12h
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency
 Parameter Sets: (All)
 Aliases:
 
@@ -217,6 +236,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -231,8 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -286,7 +305,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
 
 ## NOTES
 
@@ -304,12 +323,8 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[Location <String>]`: The region the operation is in.
   - `[OperationId <String>]`: The operation's unique identifier.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
-  - `Name <String>`: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
-  - `[Arg <String>]`: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

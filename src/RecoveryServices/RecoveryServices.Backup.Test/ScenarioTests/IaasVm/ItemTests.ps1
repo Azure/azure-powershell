@@ -12,6 +12,36 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMCrossRegionRestore
+{
+	$location = "centraluseuap"
+	$resourceGroupName = Create-ResourceGroup $location 24
+
+	try
+	{
+		# Setup
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location 25
+
+		# waiting for service to reflect
+		Start-TestSleep 20000
+
+		# Enable CRR
+		Set-AzRecoveryServicesBackupProperty -Vault $vault -EnableCrossRegionRestore
+
+		# waiting for service to reflect
+		Start-TestSleep 30000
+
+		# Assert that the vault is now CRR enabled
+		$crr = Get-AzRecoveryServicesBackupProperty -Vault $vault
+		Assert-True { $crr.CrossRegionRestore -eq $true }
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
 function Test-AzureRSVaultMSI
 {
 	try

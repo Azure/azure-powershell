@@ -32,6 +32,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlPool = nameof(SqlPool);
 
+        public const string SqlPoolGeoBackup = nameof(SqlPoolGeoBackup);
+
+        public const string DroppedSqlPool = nameof(DroppedSqlPool);
+
+        public const string VulnerabilityAssessmentScanRecord = nameof(VulnerabilityAssessmentScanRecord);
+
+        public const string VulnerabilityAssessmentScan = nameof(VulnerabilityAssessmentScan);
+
         public const string SqlPoolName = nameof(SqlPoolName);
 
         public const string RestorePoint = nameof(RestorePoint);
@@ -51,6 +59,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string AdvancedDataSecurity = nameof(AdvancedDataSecurity);
 
         public const string AdvancedDataSecurityPolicy = nameof(AdvancedDataSecurityPolicy);
+
+        public const string ManagedIdentitySqlControlSetting = nameof(ManagedIdentitySqlControlSetting);
 
         public const string SqlDatabase = nameof(SqlDatabase);
 
@@ -134,6 +144,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string DataFlow = nameof(DataFlow);
 
         public const string SensitivityRecommendation = nameof(SensitivityRecommendation);
+
+        public const string PointInTime = nameof(PointInTime);
+
+        public const string TargetSqlPoolName = nameof(TargetSqlPoolName);
+
+        public const string DefaultName = "default";
+
+        public const string ManagedVirtualNetworkConfig = nameof(ManagedVirtualNetworkConfig);
+
+        public const string EncryptionConfig = nameof(EncryptionConfig);
+
+        public const string WorkspaceKey = nameof(WorkspaceKey);
+
+        public const string WorkspaceKeyName = nameof(WorkspaceKeyName);
+
+        public const string KeyName = nameof(KeyName);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {

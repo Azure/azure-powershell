@@ -42,15 +42,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public void OnRequestPrediction(RequestPredictionTelemetryData telemetryData);
 
         /// <summary>
+        /// Collects when we return a suggestion.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
+
+        /// <summary>
+        /// Collects when a suggestion is displayed.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData);
+
+        /// <summary>
         /// Collects when a suggestion is accepted.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
         public void OnSuggestionAccepted(SuggestionAcceptedTelemetryData telemetryData);
 
         /// <summary>
-        /// Collects when we return a suggestion
+        /// Collects when we load parameter map file.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
-        public void OnGetSuggestion(GetSuggestionTelemetryData telemetryData);
+        public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData);
     }
 }

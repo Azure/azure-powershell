@@ -1,13 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/update-azservicefabricdurability
+online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricdurability
 schema: 2.0.0
 ---
 
 # Update-AzServiceFabricDurability
 
 ## SYNOPSIS
+
 Update the durability tier or VmSku of a node type in the cluster.
 
 ## SYNTAX
@@ -19,13 +20,14 @@ Update-AzServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
+
 Use **Update-AzServiceFabricDurability** to update durability or SKU of the cluster.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS c:> Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
+```powershell
+Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
 This command changes durability tier of the NodeType 'nt1' to silver.

@@ -23,7 +23,7 @@ PS C:\> Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips
 
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/publish-azbotserviceapp
+https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 #>
 function Publish-AzBotServiceApp {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

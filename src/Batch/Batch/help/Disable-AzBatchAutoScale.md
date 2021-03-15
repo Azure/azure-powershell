@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 9C755BE8-0624-4CF7-AE7C-34DAF44678E8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchautoscale
+online version: https://docs.microsoft.com/powershell/module/az.batch/disable-azbatchautoscale
 schema: 2.0.0
 ---
 

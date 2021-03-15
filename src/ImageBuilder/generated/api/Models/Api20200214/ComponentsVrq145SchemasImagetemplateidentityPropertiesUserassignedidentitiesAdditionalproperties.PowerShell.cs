@@ -60,8 +60,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalpropertiesInternal)this).ClientId, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

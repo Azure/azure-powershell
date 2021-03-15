@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return;
             }
-            {_disabledAlert = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("disabledAlerts"), out var __jsonDisabledAlerts) ? If( __jsonDisabledAlerts as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : DisabledAlert;}
-            {_emailAccountAdmin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean>("emailAccountAdmins"), out var __jsonEmailAccountAdmins) ? (bool?)__jsonEmailAccountAdmins : EmailAccountAdmin;}
-            {_emailAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("emailAddresses"), out var __jsonEmailAddresses) ? If( __jsonEmailAddresses as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : EmailAddress;}
-            {_retentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("retentionDays"), out var __jsonRetentionDays) ? (int?)__jsonRetentionDays : RetentionDay;}
             {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
-            {_storageAccountAccessKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("storageAccountAccessKey"), out var __jsonStorageAccountAccessKey) ? (string)__jsonStorageAccountAccessKey : (string)StorageAccountAccessKey;}
+            {_disabledAlert = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("disabledAlerts"), out var __jsonDisabledAlerts) ? If( __jsonDisabledAlerts as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : DisabledAlert;}
+            {_emailAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray>("emailAddresses"), out var __jsonEmailAddresses) ? If( __jsonEmailAddresses as Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : EmailAddress;}
+            {_emailAccountAdmin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean>("emailAccountAdmins"), out var __jsonEmailAccountAdmins) ? (bool?)__jsonEmailAccountAdmins : EmailAccountAdmin;}
             {_storageEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("storageEndpoint"), out var __jsonStorageEndpoint) ? (string)__jsonStorageEndpoint : (string)StorageEndpoint;}
+            {_storageAccountAccessKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("storageAccountAccessKey"), out var __jsonStorageAccountAccessKey) ? (string)__jsonStorageAccountAccessKey : (string)StorageAccountAccessKey;}
+            {_retentionDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber>("retentionDays"), out var __jsonRetentionDays) ? (int?)__jsonRetentionDays : RetentionDay;}
             AfterFromJson(json);
         }
 
@@ -99,6 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
             {
                 return container;
             }
+            AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
             if (null != this._disabledAlert)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.XNodeArray();
@@ -108,7 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 }
                 container.Add("disabledAlerts",__w);
             }
-            AddIf( null != this._emailAccountAdmin ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean((bool)this._emailAccountAdmin) : null, "emailAccountAdmins" ,container.Add );
             if (null != this._emailAddress)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.XNodeArray();
@@ -118,10 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
                 }
                 container.Add("emailAddresses",__r);
             }
-            AddIf( null != this._retentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._retentionDay) : null, "retentionDays" ,container.Add );
-            AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
-            AddIf( null != (((object)this._storageAccountAccessKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._storageAccountAccessKey.ToString()) : null, "storageAccountAccessKey" ,container.Add );
+            AddIf( null != this._emailAccountAdmin ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonBoolean((bool)this._emailAccountAdmin) : null, "emailAccountAdmins" ,container.Add );
             AddIf( null != (((object)this._storageEndpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._storageEndpoint.ToString()) : null, "storageEndpoint" ,container.Add );
+            AddIf( null != (((object)this._storageAccountAccessKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString(this._storageAccountAccessKey.ToString()) : null, "storageAccountAccessKey" ,container.Add );
+            AddIf( null != this._retentionDay ? (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNumber((int)this._retentionDay) : null, "retentionDays" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

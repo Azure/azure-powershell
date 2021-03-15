@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: A8C6F3BC-EE93-49A4-BF7B-8420967EEB7B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnendpoint
+online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
 schema: 2.0.0
 ---
 
@@ -281,7 +281,7 @@ Accept wildcard characters: False
 The number of seconds between health probes.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

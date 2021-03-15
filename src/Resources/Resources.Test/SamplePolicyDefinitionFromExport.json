@@ -1,0 +1,144 @@
+{
+  "properties": {
+    "displayName": "SqlTest",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Policy borrowed from Contoso Infra1 subscription to test evaluation on Microsoft.Sql/servers/databases resource type",
+    "metadata": {
+      "category": "SQL",
+      "createdBy": "3d826307-2481-45a0-a271-bcf9333f914a",
+      "createdOn": "2020-08-12T21:47:47.0192865Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "parameters": {
+      "logAnalytics": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Log Analyitcs workspace",
+          "description": "Select the Log Analytics workspace from dropdown list",
+          "strongType": "omsWorkspace"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Sql/servers/databases"
+      },
+      "then": {
+        "effect": "deployIfNotExists",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "name": "setByPolicy",
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+            "/providers/microsoft.authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "sqlName": {
+                    "type": "string"
+                  },
+                  "databaseName": {
+                    "type": "string",
+                    "metadata": {
+                      "description": "Name of the SQL database to create"
+                    }
+                  },
+                  "logAnalytics": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                },
+                "variables": {},
+                "resources": [
+                  {
+                    "type": "Microsoft.Sql/servers/databases/providers/diagnosticSettings",
+                    "apiVersion": "2017-05-01-preview",
+                    "name": "[concat(parameters('sqlName'), '/', parameters('databaseName'), '/', 'Microsoft.Insights/setByPolicy')]",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [],
+                    "properties": {
+                      "workspaceId": "[parameters('logAnalytics')]",
+                      "metrics": [
+                        {
+                          "timeGrain": "PT1M",
+                          "enabled": true,
+                          "retentionPolicy": {
+                            "enabled": false,
+                            "days": 0
+                          }
+                        }
+                      ],
+                      "logs": [
+                        {
+                          "category": "QueryStoreRuntimeStatistics",
+                          "enabled": true
+                        },
+                        {
+                          "category": "QueryStoreWaitStatistics",
+                          "enabled": true
+                        },
+                        {
+                          "category": "Errors",
+                          "enabled": true
+                        },
+                        {
+                          "category": "DatabaseWaitStatistics",
+                          "enabled": true
+                        },
+                        {
+                          "category": "Blocks",
+                          "enabled": true
+                        },
+                        {
+                          "category": "SQLInsights",
+                          "enabled": true
+                        },
+                        {
+                          "category": "Audit",
+                          "enabled": true
+                        },
+                        {
+                          "category": "SQLSecurityAuditEvents",
+                          "enabled": true
+                        },
+                        {
+                          "category": "Timeouts",
+                          "enabled": true
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "outputs": {}
+              },
+              "parameters": {
+                "logAnalytics": {
+                  "value": "[parameters('logAnalytics')]"
+                },
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "databaseName": {
+                  "value": "[field('name')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "/subscriptions/885cd661-f134-4585-9242-584ebe226794/providers/Microsoft.Authorization/policyDefinitions/fdd1d4d3-6c90-4efc-91e6-7476b7eb1372",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "fdd1d4d3-6c90-4efc-91e6-7476b7eb1372"
+}

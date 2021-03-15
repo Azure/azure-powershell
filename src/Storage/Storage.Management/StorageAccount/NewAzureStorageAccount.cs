@@ -198,6 +198,48 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
         public SwitchParameter EnableLargeFileShare { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'")]
+        [ValidateSet(
+            Microsoft.Azure.Management.Storage.Models.RoutingChoice.MicrosoftRouting,
+            Microsoft.Azure.Management.Storage.Models.RoutingChoice.InternetRouting,
+            IgnoreCase = true)]
+        public string RoutingChoice;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether microsoft routing storage endpoints are to be published")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishMicrosoftEndpoint
+        {
+            get
+            {
+                return publishMicrosoftEndpoint.Value;
+            }
+            set
+            {
+                publishMicrosoftEndpoint = value;
+            }
+        }
+        private bool? publishMicrosoftEndpoint = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether internet  routing storage endpoints are to be published")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishInternetEndpoint
+        {
+            get
+            {
+                return publishInternetEndpoint.Value;
+            }
+            set
+            {
+                publishInternetEndpoint = value;
+            }
+        }
+        private bool? publishInternetEndpoint = null;
+
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable Azure Files Active Directory Domain Service Authentication for the storage account.",
@@ -313,6 +355,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private string minimumTlsVersion = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " + 
+            "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
+            "The default value is null, which is equivalent to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowSharedKeyAccess
+        {
+            get
+            {
+                return allowSharedKeyAccess.Value;
+            }
+            set
+            {
+                allowSharedKeyAccess = value;
+            }
+        }
+        private bool? allowSharedKeyAccess = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -359,7 +420,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (AssignIdentity.IsPresent)
             {
-                createParameters.Identity = new Identity();
+                createParameters.Identity = new Identity() {  Type = IdentityType.SystemAssigned };
             }
             if (NetworkRuleSet != null)
             {
@@ -405,7 +466,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                 }
             }
-            if(this.EnableLargeFileShare.IsPresent)
+            if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }
@@ -442,6 +503,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.allowBlobPublicAccess != null)
             {
                 createParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
+            }
+            if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+            {
+                createParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+            }
+            if (allowSharedKeyAccess != null)
+            {
+                createParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

@@ -18,7 +18,7 @@ Describe 'Update-AzPostgreSqlConfiguration' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/$($env.serverName)/configurations/deadlock_timeout"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSQL/servers/$($env.serverName)/configurations/deadlock_timeout"
         $config = Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
         $config.Value | Should -Be 2000
     }

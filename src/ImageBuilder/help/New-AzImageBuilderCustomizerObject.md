@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
+online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ New-AzImageBuilderCustomizerObject -CustomizerName <String> -FileCustomizer [-De
 ### PowerShellCustomizer
 ```
 New-AzImageBuilderCustomizerObject -CustomizerName <String> -PowerShellCustomizer [-Inline <String[]>]
- [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>] [-ValidExitCode <Int32[]>]
- [<CommonParameters>]
+ [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>]
+ [-ValidExitCode <Int32[]>] [<CommonParameters>]
 ```
 
 ### RestartCustomizer
@@ -256,6 +256,22 @@ Restart timeout specified as a string of magnitude and unit, e.g.
 ```yaml
 Type: System.String
 Parameter Sets: RestartCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunAsSystem
+If specified, the PowerShell script will be run with elevated privileges using the Local System user.
+Can only be true when the runElevated field above is set to true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: PowerShellCustomizer
 Aliases:
 
 Required: False

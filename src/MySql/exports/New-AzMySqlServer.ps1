@@ -28,7 +28,7 @@ mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlserver
+https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
@@ -88,6 +88,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
     # Enable ssl enforcement or not when connect to server.
     ${SslEnforcement},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+    # Set the minimal TLS version for connections to server when SSL is enabled.
+    # Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
+    ${MinimalTlsVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
