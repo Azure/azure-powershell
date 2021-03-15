@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Profile
         public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            profileClient.WarningLog = (s) => WriteWarning(s);
 
             WriteObject(profileClient.ListTenants(TenantId).Select((t) => new PSAzureTenant(t)), enumerateCollection: true);
         }

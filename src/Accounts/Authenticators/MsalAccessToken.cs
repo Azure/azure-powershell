@@ -30,26 +30,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class MsalAccessToken : IAccessToken, IClaimsChallengeProcessor
     {
-
-        class CAEAuthenticationFailedException : AuthenticationFailedException
-        {
-            CAEAuthenticationFailedException(string message)
-                :base(message)
-            {
-            }
-
-            CAEAuthenticationFailedException(string message, Exception e)
-                :base(message, e)
-            {
-            }
-
-            public static CAEAuthenticationFailedException FromExceptionAndAdditionalMessage(AuthenticationFailedException e, string additonal)
-            {
-                var errorMessage = new StringBuilder(e.Message);
-                errorMessage.Append(Environment.NewLine).Append("-").Append(additonal);
-                return new CAEAuthenticationFailedException(errorMessage.ToString(), e);
-            }
-        }
         public string AccessToken { get; private set; }
 
         public string UserId { get; }
@@ -148,9 +128,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 ExpiresOn = token.ExpiresOn;
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", AccessToken);
             }
-            catch (CredentialUnavailableException e)
+            catch (AuthenticationFailedException)
             {
-                throw CAEAuthenticationFailedException.FromExceptionAndAdditionalMessage(e, wwwAuthenticateHeader);
+                return false;
+                //throw CAEAuthenticationFailedException.FromExceptionAndAdditionalMessage(e, wwwAuthenticateHeader);
             }
             return true;
         }

@@ -18,8 +18,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         //TODO: TokenCredential may not support CAE: SP; MSI(?)
         private IClaimsChallengeProcessor ClaimsChallengeProcessor { get; set; }
 
-
         public ClaimsChallengeHandler(IClaimsChallengeProcessor claimsChallengeProcessor)
+        {
+            ClaimsChallengeProcessor = claimsChallengeProcessor;
+        }
+
+
+        public ClaimsChallengeHandler(IClaimsChallengeProcessor claimsChallengeProcessor, HttpMessageHandler innerHandler):base(innerHandler)
         {
             ClaimsChallengeProcessor = claimsChallengeProcessor;
         }
@@ -56,8 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (!string.IsNullOrEmpty(claimsChallenge))
             {
-                await ClaimsChallengeProcessor.OnClaimsChallenageAsync(requestMessage, claimsChallenge, ClaimsChallengeUtilities.GetErrorMessage(responseMessage), cancellationToken);
-                return true;
+                return await ClaimsChallengeProcessor.OnClaimsChallenageAsync(requestMessage, claimsChallenge, ClaimsChallengeUtilities.GetErrorMessage(responseMessage), cancellationToken);
             }
 
             return false;
