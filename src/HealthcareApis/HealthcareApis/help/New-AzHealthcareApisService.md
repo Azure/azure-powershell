@@ -16,10 +16,10 @@ Creates the metadata of a service instance.
 New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
  [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
  [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
- [-CosmosKeyVaultKeyUri <String>] [-CosmosOfferThroughput <Int32>] [-ExportStorageAccountName <String>]
- [-AcrLoginServer <String[]>] [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>]
- [-Tag <Hashtable>] [-AsJob] [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CosmosOfferThroughput <Int32>] [-CosmosKeyVaultKeyUri <String>] [-ExportStorageAccountName <String>]
+ [-EnableSmartProxy] [-ManagedIdentity] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob]
+ [-PublicNetworkAccess <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,21 +83,6 @@ SmartProxyEnabled       : False
 
 ### -AccessPolicyObjectId
 List of Access Policy Object IDs.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AcrLoginServer
-HealthcareApis Fhir Service List of Acr Login Server.
 
 ```yaml
 Type: System.String[]
