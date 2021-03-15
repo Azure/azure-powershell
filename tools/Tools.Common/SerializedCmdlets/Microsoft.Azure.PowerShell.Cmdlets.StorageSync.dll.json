@@ -7547,6 +7547,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -8385,6 +8386,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -8976,6 +8978,7 @@
                     "ResourceId": "System.String",
                     "LocalCacheMode": "System.String",
                     "InitialDownloadPolicy": "System.String",
+                    "InitialUploadPolicy": "System.String",
                     "OfflineDataTransferStorageAccountTenantId": "System.String",
                     "OfflineDataTransferStorageAccountResourceId": "System.String",
                     "OfflineDataTransferShareName": "System.String",
@@ -9342,6 +9345,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -9731,6 +9735,27 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "InitialUploadPolicy",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Merge",
+            "ServerAuthoritative"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "AsJob",
           "AliasList": [],
           "Type": {
@@ -10103,6 +10128,33 @@
                 "ValidateSet": [
                   "DownloadNewAndModifiedFiles",
                   "UpdateLocallyCachedFiles"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InitialUploadPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Merge",
+                  "ServerAuthoritative"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -10502,6 +10554,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "InitialUploadPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Merge",
+                  "ServerAuthoritative"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
@@ -10849,6 +10928,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "InitialUploadPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Merge",
+                  "ServerAuthoritative"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
@@ -11170,6 +11276,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "InitialUploadPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Merge",
+                  "ServerAuthoritative"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
@@ -11278,6 +11411,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -11536,6 +11670,7 @@
                     "ResourceId": "System.String",
                     "LocalCacheMode": "System.String",
                     "InitialDownloadPolicy": "System.String",
+                    "InitialUploadPolicy": "System.String",
                     "OfflineDataTransferStorageAccountTenantId": "System.String",
                     "OfflineDataTransferStorageAccountResourceId": "System.String",
                     "OfflineDataTransferShareName": "System.String",
@@ -12208,6 +12343,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -12379,6 +12515,7 @@
               "ResourceId": "System.String",
               "LocalCacheMode": "System.String",
               "InitialDownloadPolicy": "System.String",
+              "InitialUploadPolicy": "System.String",
               "OfflineDataTransferStorageAccountTenantId": "System.String",
               "OfflineDataTransferStorageAccountResourceId": "System.String",
               "OfflineDataTransferShareName": "System.String",
@@ -13123,6 +13260,7 @@
                     "ResourceId": "System.String",
                     "LocalCacheMode": "System.String",
                     "InitialDownloadPolicy": "System.String",
+                    "InitialUploadPolicy": "System.String",
                     "OfflineDataTransferStorageAccountTenantId": "System.String",
                     "OfflineDataTransferStorageAccountResourceId": "System.String",
                     "OfflineDataTransferShareName": "System.String",
