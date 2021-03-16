@@ -40,7 +40,7 @@ This command gets all the Azure Synapse Analytics workspaces under the current s
 PS C:\> Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup
 ```
 
-This command gets all the Azure Synapse Analytics workspaces under the current subscription.
+This command gets all the Azure Synapse Analytics workspaces under the current subscription within the Resource Group ContosoResourceGroup.
 
 ### Example 3
 ```powershell

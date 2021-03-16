@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Vault
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVault))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
     [Alias("Get-AnfVault")]
     public class GetAzureRmNetAppFilesVault: AzureNetAppFilesCmdletBase
     {

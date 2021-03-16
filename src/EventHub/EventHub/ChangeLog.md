@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
 
 ## Version 1.7.1
 * Fixed Cluster commands for EventHub cluster without tags
