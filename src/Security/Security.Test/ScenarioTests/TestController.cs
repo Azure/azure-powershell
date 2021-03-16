@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -105,9 +104,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static Management.Compute.ComputeManagementClient GetComputeManagementClient(MockContext context)
+        private static ComputeManagementClient GetComputeManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Management.Compute.ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
