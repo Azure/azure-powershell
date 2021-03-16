@@ -43,11 +43,6 @@ namespace VersionController.Models
             (_oldVersion, _isPreview) = GetOldVersion();
 
             _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
-            if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
-            {
-                Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
-                _newVersion = MinimalVersion.ToString();
-            }
 
             if (_oldVersion == _newVersion)
             {
@@ -150,7 +145,13 @@ namespace VersionController.Models
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
 
-            List<AzurePSVersion> galleryVersion = GetGalleryVersion();
+            if (MinimalVersion != null && MinimalVersion > bumpedVersion)
+            {
+                _logger.LogWarning($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
+                bumpedVersion = MinimalVersion;
+            }
+
+            List<AzurePSVersion> galleryVersion = GetGalleryVersion(moduleName);
 
             AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
             foreach(var version in galleryVersion)
@@ -167,8 +168,9 @@ namespace VersionController.Models
             }
             else if (maxGalleryGAVersion >= bumpedVersion)
             {
-                _logger.LogError("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
-                throw new Exception("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+                var message = $"The GA version of {moduleName}({maxGalleryGAVersion}) in gallery is greater or equal to the bumped version({bumpedVersion}).";
+                _logger.LogError(message);
+                throw new Exception(message);
             }
             else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
             {
@@ -210,9 +212,8 @@ namespace VersionController.Models
         /// Get version from PSGallery and TestGallery and merge into one list.
         /// </summary>
         /// <returns>A list of version</returns>
-        private List<AzurePSVersion> GetGalleryVersion()
+        private List<AzurePSVersion> GetGalleryVersion(string moduleName)
         {
-            var moduleName = _fileHelper.ModuleName;
             HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
             using (PowerShell powershell = PowerShell.Create())
             {
