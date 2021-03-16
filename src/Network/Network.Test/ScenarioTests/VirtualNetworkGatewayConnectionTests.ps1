@@ -372,6 +372,9 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
 
       $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1      
 	  Assert-NotNull $connection1.TunnelConnectionStatus
+
+      # Reset VirtualNetworkGatewayConnection
+      Reset-AzVirtualNetworkGatewayConnection -InputObject $connection1
       
       # Delete VirtualNetworkGatewayConnections
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
@@ -859,3 +862,4 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
       Clean-ResourceGroup $rgname
      }
 }
+
