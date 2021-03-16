@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndScopeParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.Scope)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndScopeParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.Scope)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
@@ -131,7 +131,12 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
+            //if (this.IsParameterBound(c => c.Scope))
+            //{
+            //    this.Scope = this.Scope;
+            //}
+
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId, this.Scope)))
             {
                 int index = this.RoleDefinitionId.LastIndexOf("-");
                 string RoleAssignmentId = this.RoleDefinitionId.Substring(0, index) + this.ObjectId.Substring(index);
