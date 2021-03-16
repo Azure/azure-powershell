@@ -102,19 +102,16 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the backup storage redundancy to assign to the Azure SQL Database
+        /// Gets or sets the backup storage redundancy of the long term retention backup.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
             ParameterSetName = UpdateBackupDefaultSet)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
+            ParameterSetName = UpdateBackupByResourceIdSet)]
+        [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -172,8 +169,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         {
             if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                ParseLongTermRentionBackupResourceId(ResourceId);
+                ParseLongTermRetentionBackupResourceId(ResourceId);
             }
+
+            ShowBackupStorageRedundancyWarningIfNeeded(BackupStorageRedundancy, Location);
 
             if (ShouldProcess(this.BackupName))
             {
@@ -182,34 +181,54 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         }
 
         /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdSegmentsLength = 12;
+
+        /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength = 14;
+
+        /// <summary>
         /// Parse the longTermRetentionBackup resource Id
         /// </summary>
         /// <param name="resourceId"></param>
-        private void ParseLongTermRentionBackupResourceId(string resourceId)
+        private void ParseLongTermRetentionBackupResourceId(string resourceId)
         {
-            int offset = 0;
+            Dictionary<string, string> resourceSegments = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length == 14 || tokens.Length == 12)
-            {
-                if (tokens.Length == 14)
-                {
-                    ResourceGroupName = tokens[3];
-                    offset = 2;
-                }
-                else
-                {
-                    ResourceGroupName = null;
-                }
 
-                Location = tokens[5 + offset];
-                ServerName = tokens[7 + offset];
-                DatabaseName = tokens[9 + offset];
-                BackupName = tokens[11 + offset];
+            if (tokens.Length != LongTermRetentionBackupResourceIdSegmentsLength
+                && tokens.Length != LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength)
+            {
+                throw new Exception($"Invalid ResourceId. resourceID: {resourceId}, tokens.Length {tokens.Length}");
             }
-            else
-            {
-                throw new ArgumentException("Invalid parameter", "ResourceId");
 
+            int i = 0;
+            string type;
+            string name;
+            while (i < tokens.Length)
+            {
+                type = tokens[i++];
+                name = tokens[i++];
+                resourceSegments[type] = name;
+            }
+
+            try
+            {
+                ResourceGroupName = resourceSegments["resourceGroups"];
+                Location = resourceSegments["locations"];
+                ServerName = resourceSegments["longTermRetentionServers"];
+                DatabaseName = resourceSegments["longTermRetentionDatabases"];
+                BackupName = resourceSegments["longTermRetentionBackups"];
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new ArgumentException(
+                    "Invalid format of the resource identifier. ResourceID should follow one of the following formats: \n" +
+                    "/subscriptions/<subscriptionId>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName> \n" +
+                    "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName>");
             }
         }
     }

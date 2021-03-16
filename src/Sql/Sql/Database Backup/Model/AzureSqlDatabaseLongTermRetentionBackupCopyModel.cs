@@ -25,32 +25,32 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the backup name.
         /// </summary>
-        public string BackupName { get; set; }
+        public string SourceBackupName { get; set; }
 
         /// <summary>
         /// Gets or sets the database name.
         /// </summary>
-        public string DatabaseName { get; set; }
+        public string SourceDatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the location name.
         /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource ID.
-        /// </summary>
-        public string ResourceId { get; set; }
+        public string SourceLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the server name.
         /// </summary>
-        public string ServerName { get; set; }
+        public string SourceServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
-        public string ResourceGroupName { get; set; }
+        public string SourceResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source backup's backup storage redundancy.
+        /// </summary>
+        public string SourceBackupStorageRedundancy { get; set; }
 
         /// <summary>
         /// Gets or sets the target database name.

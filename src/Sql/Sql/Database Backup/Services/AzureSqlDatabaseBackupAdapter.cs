@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -293,11 +294,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             AzureSqlDatabaseLongTermRetentionBackupCopyModel model)
         {
             Management.Sql.Models.LongTermRetentionBackupOperationResult response = Communicator.CopyDatabaseLongTermRetentionBackup(
-                model.Location,
-                model.ServerName,
-                model.DatabaseName,
-                model.BackupName,
-                model.ResourceGroupName,
+                model.SourceLocation,
+                model.SourceServerName,
+                model.SourceDatabaseName,
+                model.SourceBackupName,
+                model.SourceResourceGroupName,
                 new Management.Sql.Models.CopyLongTermRetentionBackupParameters()
                 {
                     TargetServerFullyQualifiedDomainName = model.TargetServerFullyQualifiedDomainName,
@@ -307,11 +308,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     TargetResourceGroup = model.TargetResourceGroupName
                 });
 
-            return new AzureSqlDatabaseLongTermRetentionBackupCopyModel()
-            {
-                SourceBackupResourceId = response.FromBackupResourceId,
-                TargetBackupResourceId = response.ToBackupResourceId
-            };
+            Management.Sql.Models.LongTermRetentionBackup sourceBackup = Communicator.GetDatabaseLongTermRetentionBackup(
+                model.SourceLocation,
+                model.SourceServerName,
+                model.SourceDatabaseName,
+                model.SourceBackupName,
+                model.SourceResourceGroupName);
+
+            model.SourceBackupResourceId = response.FromBackupResourceId;
+            model.SourceBackupStorageRedundancy = sourceBackup.BackupStorageRedundancy;
+            model.TargetBackupResourceId = response.ToBackupResourceId;
+
+            return model;
         }
 
         /// <summary>
@@ -336,15 +344,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.ResourceGroupName,
                 new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(model.RequestedBackupStorageRedundancy));
 
-            return new AzureSqlDatabaseLongTermRetentionBackupModel()
-            {
-                Location = model.Location,
-                ServerName = model.ServerName,
-                DatabaseName = model.DatabaseName,
-                BackupName = model.BackupName,
-                ResourceGroupName = model.ResourceGroupName,
-                RequestedBackupStorageRedundancy = response.TargetBackupStorageRedundancy
-            };
+            Management.Sql.Models.LongTermRetentionBackup backup = Communicator.GetDatabaseLongTermRetentionBackup(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName);
+
+            AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
+            backupModel.RequestedBackupStorageRedundancy = response.TargetBackupStorageRedundancy;
+            return backupModel;
         }
 
         /// <summary>
@@ -461,7 +470,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceId = backup.Id,
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName,
-                ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
+                ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
+                BackupStorageRedundancy = backup.BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = backup.RequestedBackupStorageRedundancy
             };
         }
 
@@ -703,6 +714,29 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 default:
                     return null;
             }
+        }
+
+        private Dictionary<string, string> ParseLongTermRentionBackupResourceId(string resourceId)
+        {
+            Dictionary<string, string> resourceElements = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (tokens.Length != 12 && tokens.Length != 14)
+            {
+                throw new Exception($"Invalid ResourceId. resourceID: {resourceId}, tokens.Length {tokens.Length}");
+            }
+
+            int i = 0;
+            string type;
+            string name;
+            while (i < tokens.Length)
+            {
+                type = tokens[i++];
+                name = tokens[i++];
+                resourceElements[type] = name;
+            }
+
+            return resourceElements;
         }
     }
 }

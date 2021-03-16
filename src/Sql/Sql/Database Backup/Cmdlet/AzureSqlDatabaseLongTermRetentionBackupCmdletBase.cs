@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Linq;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
@@ -34,6 +36,23 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
+        }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        protected void ShowBackupStorageRedundancyWarningIfNeeded(string backupStorageRedundancy, string location)
+        {
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (backupStorageRedundancy == null)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeSourceWarning));
+                }
+                else if (string.Equals(backupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
+                }
+            }
         }
     }
 }

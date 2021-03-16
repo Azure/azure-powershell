@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Removes a Long Term Retention backup.
+        /// Copies a Long Term Retention backup to another server/database.
         /// </summary>
         /// <param name="locationName">The location name.</param>
         /// <param name="serverName">The server name.</param>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Removes a Long Term Retention backup.
+        /// Updates a Long Term Retention backup.
         /// </summary>
         /// <param name="locationName">The location name.</param>
         /// <param name="serverName">The server name.</param>

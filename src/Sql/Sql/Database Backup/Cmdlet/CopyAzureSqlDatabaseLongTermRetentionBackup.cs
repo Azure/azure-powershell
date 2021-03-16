@@ -156,16 +156,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string TargetResourceGroupName { get; set; }
 
         /// <summary>
-        /// Defines whether the cmdlets will output the model object at the end of its execution
-        /// </summary>
-        public SwitchParameter PassThru { get; set; }
-
-        /// <summary>
-        /// Returns true if the model object that was constructed by this cmdlet should be written out
-        /// </summary>
-        protected override bool WriteResult() { return PassThru; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -193,11 +183,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             {
                 new AzureSqlDatabaseLongTermRetentionBackupCopyModel()
                 {
-                    Location = Location,
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    DatabaseName = DatabaseName,
-                    BackupName = BackupName,
+                    SourceLocation = Location,
+                    SourceResourceGroupName = ResourceGroupName,
+                    SourceServerName = ServerName,
+                    SourceDatabaseName = DatabaseName,
+                    SourceBackupName = BackupName,
                     TargetServerFullyQualifiedDomainName = TargetServerFullyQualifiedDomainName,
                     TargetDatabaseName = TargetDatabaseName,
                     TargetServerResourceId = targetServerResourceId, 

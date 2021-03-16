@@ -243,10 +243,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                DatabaseName = identifier.ResourceName;
-                ResourceGroupName = identifier.ResourceGroupName;
-                ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                ParseLongTermRetentionBackupResourceId(ResourceId);
             }
 
             return SubResourceWildcardFilter(BackupName, ModelAdapter.GetDatabaseLongTermRetentionBackups(
@@ -279,6 +276,58 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
             return entity;
+        }
+
+        /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdSegmentsLength = 12;
+
+        /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength = 14;
+
+        /// <summary>
+        /// Parse the longTermRetentionBackup resource Id
+        /// </summary>
+        /// <param name="resourceId"></param>
+        private void ParseLongTermRetentionBackupResourceId(string resourceId)
+        {
+            Dictionary<string, string> resourceSegments = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (tokens.Length != LongTermRetentionBackupResourceIdSegmentsLength
+                && tokens.Length != LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength)
+            {
+                throw new Exception($"Invalid ResourceId. resourceID: {resourceId}, tokens.Length {tokens.Length}");
+            }
+
+            int i = 0;
+            string type;
+            string name;
+            while (i < tokens.Length)
+            {
+                type = tokens[i++];
+                name = tokens[i++];
+                resourceSegments[type] = name;
+            }
+
+            try
+            {
+                ResourceGroupName = resourceSegments["resourceGroups"];
+                Location = resourceSegments["locations"];
+                ServerName = resourceSegments["longTermRetentionServers"];
+                DatabaseName = resourceSegments["longTermRetentionDatabases"];
+                BackupName = resourceSegments["longTermRetentionBackups"];
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new ArgumentException(
+                    "Invalid format of the resource identifier. ResourceID should follow one of the following formats: \n" +
+                    "/subscriptions/<subscriptionId>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName> \n" +
+                    "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName>");
+            }
         }
     }
 }
