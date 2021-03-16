@@ -75,9 +75,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzHealthcareApisService', 'Remove-AzHealthcareApisService', 
-               'Set-AzHealthcareApisService', 'Get-AzHealthcareApisService',
-               'Add-AzHealthcareApisAcrLoginServer', 'Remove-AzHealthcareApisAcrLoginServer',
-               'Reset-AzHealthcareApisAcrLoginServer'
+               'Set-AzHealthcareApisService', 'Get-AzHealthcareApisService'
 
 # Variables to export from this module
 # VariablesToExport = @()
