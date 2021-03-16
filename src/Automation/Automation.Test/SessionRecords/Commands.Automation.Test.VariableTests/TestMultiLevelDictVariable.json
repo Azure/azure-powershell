@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8fb0a520-a8d8-47be-aaf7-206aeb6c0463"
+          "ed1d8d97-b700-4c8a-bb23-7ee749397b2b"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,10 +27,10 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "1f2cbd06-83a6-470d-b1bc-af146f663017"
+          "6a3ce67c-0407-469f-9df4-bcc0c1db784b"
         ],
         "x-ms-request-id": [
-          "8fb0a520-a8d8-47be-aaf7-206aeb6c0463"
+          "ed1d8d97-b700-4c8a-bb23-7ee749397b2b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,19 +45,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "5f014350-6f58-4d6d-a720-84dfe7787dc6"
+          "50fe4117-b1b2-434d-a091-8e0e8c7046cd"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093559Z:5f014350-6f58-4d6d-a720-84dfe7787dc6"
+          "SOUTHEASTASIA:20210309T091755Z:50fe4117-b1b2-434d-a091-8e0e8c7046cd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:35:58 GMT"
+          "Tue, 09 Mar 2021 09:17:55 GMT"
         ],
         "Content-Length": [
           "624"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"test-automation-0\",\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://1f2cbd06-83a6-470d-b1bc-af146f663017.agentsvc.eus.azure-automation.net/accounts/1f2cbd06-83a6-470d-b1bc-af146f663017\",\r\n    \"creationTime\": \"2021-02-26T15:25:27.07+08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-02-26T15:25:27.07+08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"test-automation-0\",\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://6a3ce67c-0407-469f-9df4-bcc0c1db784b.agentsvc.eus.azure-automation.net/accounts/6a3ce67c-0407-469f-9df4-bcc0c1db784b\",\r\n    \"creationTime\": \"2021-03-09T15:58:59.54+08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-03-09T15:58:59.54+08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aa49c613-848a-47a6-a528-e187c42f5c16"
+          "7cb1a517-2907-4355-a000-49230ab9393d"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "aa49c613-848a-47a6-a528-e187c42f5c16"
+          "7cb1a517-2907-4355-a000-49230ab9393d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,19 +114,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "1ed9309a-750f-46c4-b1ef-ad194edfb177"
+          "1f784b4b-fb82-4d28-87ac-9be586c27689"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093600Z:1ed9309a-750f-46c4-b1ef-ad194edfb177"
+          "SOUTHEASTASIA:20210309T091757Z:1f784b4b-fb82-4d28-87ac-9be586c27689"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:35:59 GMT"
+          "Tue, 09 Mar 2021 09:17:56 GMT"
         ],
         "Content-Length": [
           "51"
@@ -148,7 +148,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cde70944-0e9f-4205-a03a-2ee8b0fe8d21"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Accept-Language": [
           "en-US"
@@ -168,7 +168,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cde70944-0e9f-4205-a03a-2ee8b0fe8d21"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,22 +183,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "3a2dbcbb-fc01-46f0-abf9-e5fb5c8dd34e"
+          "d106e839-ed82-430d-bcd1-ef1be8fea09c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093601Z:3a2dbcbb-fc01-46f0-abf9-e5fb5c8dd34e"
+          "SOUTHEASTASIA:20210309T091800Z:d106e839-ed82-430d-bcd1-ef1be8fea09c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:01 GMT"
+          "Tue, 09 Mar 2021 09:18:00 GMT"
         ],
         "Content-Length": [
-          "479"
+          "489"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,7 +207,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"lastModifiedTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -217,7 +217,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Accept-Language": [
           "en-US"
@@ -237,7 +237,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -252,22 +252,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "fd959fe2-a67b-4a0f-bf2d-0c40e81bc8c6"
+          "3ece4088-13b8-4185-ad0c-53649e31c9e1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093601Z:fd959fe2-a67b-4a0f-bf2d-0c40e81bc8c6"
+          "SOUTHEASTASIA:20210309T091802Z:3ece4088-13b8-4185-ad0c-53649e31c9e1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:01 GMT"
+          "Tue, 09 Mar 2021 09:18:02 GMT"
         ],
         "Content-Length": [
-          "479"
+          "503"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -276,7 +276,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"lastModifiedTime\": \"2021-03-09T17:18:01.8733333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -286,7 +286,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "efe5a62b-337c-4944-9ba4-9d2bf2f96b37"
         ],
         "Accept-Language": [
           "en-US"
@@ -306,7 +306,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "efe5a62b-337c-4944-9ba4-9d2bf2f96b37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -321,157 +321,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "b4d2c047-7713-4b7d-9ee9-1475d7b79126"
+          "d6c6fbee-71fd-4704-acfb-cc59c9626b16"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093602Z:b4d2c047-7713-4b7d-9ee9-1475d7b79126"
+          "SOUTHEASTASIA:20210309T091807Z:d6c6fbee-71fd-4704-acfb-cc59c9626b16"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:02 GMT"
-        ],
-        "Content-Length": [
-          "498"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:02.4033333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3d5dW5jaGktYXV0b21hdGlvbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL3Rlc3QtYXV0b21hdGlvbi0wL3ZhcmlhYmxlcy9NdWx0aUxldmVsRGljdD9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "42a96ae5-ea0f-4410-bc86-263c9340f28c"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29719.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "42a96ae5-ea0f-4410-bc86-263c9340f28c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
-        ],
-        "x-ms-correlation-request-id": [
-          "b9c5191b-40d4-4436-85ef-c49b245afd83"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093604Z:b9c5191b-40d4-4436-85ef-c49b245afd83"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 26 Feb 2021 09:36:03 GMT"
-        ],
-        "Content-Length": [
-          "498"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:02.4033333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL3d5dW5jaGktYXV0b21hdGlvbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL3Rlc3QtYXV0b21hdGlvbi0wL3ZhcmlhYmxlcy9NdWx0aUxldmVsRGljdD9hcGktdmVyc2lvbj0yMDE1LTEwLTMx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b52cf3a2-d80d-4233-9c8e-f1b7f003b795"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29719.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b52cf3a2-d80d-4233-9c8e-f1b7f003b795"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "e05cd4b4-573c-48b9-9ac1-4b7be66820d6"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093608Z:e05cd4b4-573c-48b9-9ac1-4b7be66820d6"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 26 Feb 2021 09:36:08 GMT"
+          "Tue, 09 Mar 2021 09:18:07 GMT"
         ],
         "Content-Length": [
           "51"
@@ -493,7 +355,7 @@
       "RequestBody": "{\r\n  \"name\": \"MultiLevelDict\",\r\n  \"properties\": {\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\",\r\n    \"isEncrypted\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aa49c613-848a-47a6-a528-e187c42f5c16"
+          "7cb1a517-2907-4355-a000-49230ab9393d"
         ],
         "Accept-Language": [
           "en-US"
@@ -522,7 +384,7 @@
           "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict?api-version=2015-10-31"
         ],
         "x-ms-request-id": [
-          "aa49c613-848a-47a6-a528-e187c42f5c16"
+          "7cb1a517-2907-4355-a000-49230ab9393d"
         ],
         "x-ms-location": [
           "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict?api-version=2015-10-31"
@@ -543,22 +405,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "06dc7515-5959-4b51-a6c1-7c91124c59c5"
+          "88a9e738-cc4d-4ec5-bdd3-563b4b27df71"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093600Z:06dc7515-5959-4b51-a6c1-7c91124c59c5"
+          "SOUTHEASTASIA:20210309T091758Z:88a9e738-cc4d-4ec5-bdd3-563b4b27df71"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:00 GMT"
+          "Tue, 09 Mar 2021 09:17:57 GMT"
         ],
         "Content-Length": [
-          "479"
+          "489"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -567,7 +429,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"lastModifiedTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":\\\"subvalue\\\"}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -577,7 +439,7 @@
       "RequestBody": "{\r\n  \"name\": \"MultiLevelDict\",\r\n  \"properties\": {\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Accept-Language": [
           "en-US"
@@ -603,7 +465,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b6dc17bc-8571-48ab-8222-2607ba18e910"
+          "b0a337be-4976-4e63-b754-e6e60d350338"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -621,19 +483,19 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "2b6d1b0b-915b-43eb-9909-8f678b7b4916"
+          "32cdf233-bc09-4255-b538-011a5d418618"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093602Z:2b6d1b0b-915b-43eb-9909-8f678b7b4916"
+          "SOUTHEASTASIA:20210309T091802Z:32cdf233-bc09-4255-b538-011a5d418618"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:02 GMT"
+          "Tue, 09 Mar 2021 09:18:01 GMT"
         ],
         "Content-Length": [
-          "498"
+          "503"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -642,7 +504,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-02-26T17:36:00.43+08:00\",\r\n    \"lastModifiedTime\": \"2021-02-26T17:36:02.4033333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-automation/providers/Microsoft.Automation/automationAccounts/test-automation-0/variables/MultiLevelDict\",\r\n  \"name\": \"MultiLevelDict\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-03-09T17:17:58.2133333+08:00\",\r\n    \"lastModifiedTime\": \"2021-03-09T17:18:01.8733333+08:00\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":{\\\"subkey\\\":{\\\"3rdkey\\\":\\\"3rd-value\\\"}}}\",\r\n    \"description\": \"MultiLevelDict\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -652,7 +514,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c66b94d8-56c0-461f-af1e-3b32487ee28c"
+          "d5c9cb28-a820-4ae1-ae5b-2d68bfc11afe"
         ],
         "Accept-Language": [
           "en-US"
@@ -672,7 +534,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c66b94d8-56c0-461f-af1e-3b32487ee28c"
+          "d5c9cb28-a820-4ae1-ae5b-2d68bfc11afe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -687,19 +549,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "84a116ec-4924-4aad-8f46-66aed52962c0"
+          "7107ad36-e1bc-4a6c-b634-43371e8e6e7f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210226T093608Z:84a116ec-4924-4aad-8f46-66aed52962c0"
+          "SOUTHEASTASIA:20210309T091806Z:7107ad36-e1bc-4a6c-b634-43371e8e6e7f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 26 Feb 2021 09:36:08 GMT"
+          "Tue, 09 Mar 2021 09:18:05 GMT"
         ],
         "Expires": [
           "-1"
