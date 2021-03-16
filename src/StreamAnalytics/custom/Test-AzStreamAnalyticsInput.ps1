@@ -157,12 +157,16 @@ param(
 
 begin {
     try {
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
+
         $outBuffer = $null
         if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
             $PSBoundParameters['OutBuffer'] = 1
         }
 
-        $inputInstance = Get-AzStreamAnalyticsInput -ResourceGroupName $ResourceGroupName -JobName $JobName -Name $Name
+        $inputInstance = Get-AzStreamAnalyticsInput @PSBoundParameters
         
         $resourceId = $inputInstance.Id
         $PSBoundParameters.Add("InputObject", $resourceId)
@@ -185,6 +189,10 @@ begin {
           $null = $PSBoundParameters.Remove("SubscriptionId")
         }
 
+        if ($hasAsJob) {
+          $PSBoundParameters.Add('AsJob', $true)
+        }
+        
         $command = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsInput_TestViaIdentity';
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($command, [System.Management.Automation.CommandTypes]::Cmdlet)

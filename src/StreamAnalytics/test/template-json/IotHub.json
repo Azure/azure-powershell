@@ -14,9 +14,9 @@
     "datasource": {
       "type": "Microsoft.Devices/IotHubs",
       "properties": {
-        "iotHubNamespace": "iothubxt7dqe",
+        "iotHubNamespace": "iothubn0lj1p",
         "sharedAccessPolicyName": "iothubowner",
-        "sharedAccessPolicyKey": "sDRIMn2RqRf3kwQCCWRHhczr/RHy+srAvVMlIEM/+Ag=",
+        "sharedAccessPolicyKey": "jmCxPVMQC1Fp4tGJh4Kz70mIXPfG5rsf8j7qP0kqIsY=",
         "consumerGroupName": "$Default",
         "endpoint": "messages/events"
       }

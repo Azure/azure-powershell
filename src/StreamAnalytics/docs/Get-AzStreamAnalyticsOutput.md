@@ -35,39 +35,38 @@ Gets details about the specified output.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get information about job outputs
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-02-pwsh
+PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
 
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs
 ```
 
-{{ Add description here }}
+This command returns information about the outputs defined on the job.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about a specific job output
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-02-pwsh -Name output-01
+PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
 
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e1-d3149596f8d0
 ```
 
-{{ Add description here }}
+This command returns information about the output defined on the job.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get information about a specific job output by pipeline
 ```powershell
-PS C:\> $output = Get-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-02-pwsh -Name output-01
-PS C:\> Get-AzStreamAnalyticsOutput -InputObject $output
+PS C:\>New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
 
 Name      Type                                            ETag
 ----      ----                                            ----
-output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e1-d3149596f8d0
+output-05 Microsoft.StreamAnalytics/streamingjobs/outputs 3a11e210-2a7f-4856-8d5a-25d4ecabee06
 ```
 
-{{ Add description here }}
+This command returns information about the output defined on the job.
 
 ## PARAMETERS
 

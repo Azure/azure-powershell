@@ -7,12 +7,16 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 $env = @{}
 
-<# Pre-step: Manual operate in portal for test cmdlet
-1. Test for Get-AzStreamAnalyticsDefaultFunctionDefinition and Test-AzStreamAnalyticsFunction cmdlet:
-   Please add function of the stream analytics job in portal that type is Microsoft.MachineLearningServices. Then get endpoint of the machine learning services
-   Create machine learning services doc link:https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
+<# Pre-Step:
+  1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
+  2. Get endpoint of the deployment model that type into the .\test\template-json\MachineLearningServices.json
 #>
 function setupEnv() {
+    Write-Warning "
+    Pre-step:
+    1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
+    2. Get endpoint of the deployment model that type into the .\test\template-json\MachineLearningServices.json
+    "
     # Import modules for test.
     Import-Module -Name Az.IotHub
     Import-Module -Name Az.Storage
@@ -94,14 +98,13 @@ function setupEnv() {
 
     Write-Host -ForegroundColor Green "Create three stream analytics clusters for test"
     Write-Host -ForegroundColor Yellow "Deploying stream analytics cluster could take around an hour to complete. "
-    New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster00 -Location $env.location -SkuName "Default" -SkuCapacity 36
-    New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster01 -Location $env.location -SkuName "Default" -SkuCapacity 36
-    New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster02 -Location $env.location -SkuName "Default" -SkuCapacity 36
+    $cluster00 = New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster00 -Location $env.location -SkuName "Default" -SkuCapacity 36
+    $cluster01 = New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster01 -Location $env.location -SkuName "Default" -SkuCapacity 36
     Write-Host -ForegroundColor Green "Create completed"
 
     Write-Host -ForegroundColor Green "Create job, input, output, function, transformation for test"
-    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 -Location $env.location -SkuName 'Standard'
-    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job02 -Location $env.location -SkuName 'Standard'
+    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id 
+    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job02 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id
     
     New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01 -File .\test\template-json\IotHub.json
     New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File .\test\template-json\StroageAccount.json
@@ -111,6 +114,7 @@ function setupEnv() {
 
     New-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.trnasf01 -StreamingUnit 6 -Query "SELECT * INTO $($env.output01) FROM $($env.input01) HAVING Temperature > 27"
     
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -119,6 +123,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

@@ -8,4 +8,3 @@ West Central US sac-ps-test01 Microsoft.StreamAnalytics/clusters
 ```
 
 This command creates a new stream analytics cluster.
-

@@ -15,7 +15,7 @@ Creates a streaming job or replaces an already existing streaming job.
 ```
 New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String>
  -SkuName <StreamingJobSkuName> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
+ [-ClusterId <String>] [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
  [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -26,16 +26,16 @@ Creates a streaming job or replaces an already existing streaming job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a stream analytics job
 ```powershell
-PS C:\> New-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
+PS C:\> New-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
 West Central US sajob-02-pwsh Microsoft.StreamAnalytics/streamingjobs a687c464-82ce-45cc-b88a-1f72ba2b1dc2
 ```
 
-{{ Add description here }}
+This command creates a stream analytics job.
 
 ## PARAMETERS
 
@@ -44,6 +44,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterId
+The resource id of cluster.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -29,21 +29,21 @@ Deletes a streaming job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a stream analytics job
 ```powershell
-PS C:\> Remove-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-pwsh
+PS C:\> Remove-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh
 
 ```
 
-{{ Add description here }}
+This command removes the stream analytics job.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a stream analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh | Remove-AzStreamAnalyticsJob
+PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh | Remove-AzStreamAnalyticsJob
 
 ```
 
-{{ Add description here }}
+This command removes the stream analytics job by pipeline.
 
 ## PARAMETERS
 

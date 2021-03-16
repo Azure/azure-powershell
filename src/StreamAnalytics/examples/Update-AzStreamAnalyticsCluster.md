@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a stream analytics cluster by name
 ```powershell
-PS C:\> Update-AzStreamAnalyticsCluster -ResourceGroupName lucas-rg-test -ClusterName sacluster-01-portal -Tag @{'key01'='01';'key02'='02'}
+PS C:\> Update-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 -Tag @{'key4'=4}
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters
 ```
 
-{{ Add description here }}
+This command updates a stream analytics cluster by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a stream analytics cluster by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName lucas-rg-test -ClusterName sacluster-01-portal |Update-AzStreamAnalyticsCluster  -Tag @{'key01'='01';'key02'='02'}
+PS C:\> $sac = Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
+PS C:\> Update-AzStreamAnalyticsCluster -InputObject $sac -Tag @{'key2'=2;'key3'=3}
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters
 ```
 
-{{ Add description here }}
-
+This command updates a stream analytics cluster by pipeline.

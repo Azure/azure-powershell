@@ -1,16 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Stop a Stream Analytics job
 ```powershell
-PS C:\> Stop-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-portal
+PS C:\> Stop-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
 
 ```
 
-{{ Add description here }}
+This command stops the job StreamingJob.
 
-### Example 2: {{ Add title here }}
+### Example 2: Stop a Stream Analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-portal | Stop-AzStreamAnalyticsJob
+PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Stop-AzStreamAnalyticsJob
 
 ```
 
-{{ Add description here }}
-
+This command stops the job StreamingJob by pipeline.

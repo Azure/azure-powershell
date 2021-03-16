@@ -1,12 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test a Stream Analytics function
 ```powershell
-PS C:\> Test-AzStreamAnalyticsFunction -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
+PS C:\> Test-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
 
 Status
 ------
 TestSucceeded
 ```
 
-{{ Add description here }}
-
+This command tests the connection status of the function in streaming job.
 

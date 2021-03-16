@@ -22,7 +22,7 @@ Retrieves the subscription's current quota information in a particular region.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get information about the Streaming Unit quota for a region
 ```powershell
 PS C:\> Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
 
@@ -32,7 +32,7 @@ StreamingUnits    Microsoft.StreamAnalytics/quotas
 StreamingClusters Microsoft.StreamAnalytics/quotas
 ```
 
-{{ Add description here }}
+This command returns information about Streaming Unit quota and usage in the WestCentralUS region.
 
 ## PARAMETERS
 

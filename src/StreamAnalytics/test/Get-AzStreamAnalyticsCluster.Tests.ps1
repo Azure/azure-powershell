@@ -24,7 +24,7 @@ Describe 'Get-AzStreamAnalyticsCluster' {
 
     It 'List1' {
       $clusterList = Get-AzStreamAnalyticsCluster -ResourceGroup $env.resourceGroup
-      $clusterList.Count | Should -Be 3
+      $clusterList.Count | Should -Be 2
     }
 
     It 'GetViaIdentity' {

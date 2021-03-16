@@ -22,7 +22,7 @@ Tests whether an output’s datasource is reachable and usable by the Azure Stre
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test the connection status of an output
 ```powershell
 PS C:\> Test-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name output-01
 
@@ -31,7 +31,7 @@ Status
 TestSucceeded
 ```
 
-{{ Add description here }}
+This command tests the connection status of the output in streaming job.
 
 ## PARAMETERS
 

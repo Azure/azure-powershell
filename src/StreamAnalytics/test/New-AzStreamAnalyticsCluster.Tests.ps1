@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'New-AzStreamAnalyticsCluster' {
     It 'CreateExpanded' {
       $cluster = New-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster03 -Location $env.location -SkuName "Default" -SkuCapacity 36
-      $cluster.ProvisioningState | Should -Be 'InProgress'
+      $cluster.ProvisioningState | Should -Be 'Succeeded'
     }
 }

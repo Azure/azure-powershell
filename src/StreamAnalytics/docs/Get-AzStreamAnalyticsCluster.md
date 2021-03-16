@@ -40,50 +40,49 @@ Gets information about the specified cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all the stream analytics clusters under a subscription
 ```powershell
 PS C:\> Get-AzStreamAnalyticsCluster
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters cf87edfa-f78f-413a-9d71-be872b7640ee
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters 77ba5ccb-3005-40b6-b9ac-3ae9d7fb21c9
 ```
 
-{{ Add description here }}
+This command gets all the stream analytics clusters under a subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get all the stream analytics clusters under a resource group
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName lucas-rg-test
+PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters cf87edfa-f78f-413a-9d71-be872b7640ee
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
 ```
 
-{{ Add description here }}
+This command gets all the stream analytics clusters under a resource group.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get a stream analytics cluster by name
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName lucas-rg-test -Name sacluster-01-portal
+PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
 ```
 
-{{ Add description here }}
+This command gets a stream analytics cluster by name.
 
-### Example 4: {{ Add title here }}
+### Example 4: Get a stream analytics cluster by pipeline
 ```powershell
-PS C:\> $cluster = Get-AzStreamAnalyticsCluster -ResourceGroupName lucas-rg-test -Name sacluster-01-portal
-PS C:\> Get-AzStreamAnalyticsCluster -InputObject $cluster
+PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Get-AzStreamAnalyticsCluster
 
-Location        Name                Type                               Etag
---------        ----                ----                               ----
-West Central US sacluster-01-portal Microsoft.StreamAnalytics/clusters
+Location        Name         Type                               Etag
+--------        ----         ----                               ----
+West Central US sac-m-test01 Microsoft.StreamAnalytics/clusters c2bcffd8-b35d-430b-9759-13af9c18ed72
 ```
 
-{{ Add description here }}
+This command gets a stream analytics cluster by pipeline.
 
 ## PARAMETERS
 

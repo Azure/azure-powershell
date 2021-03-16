@@ -149,8 +149,11 @@ param(
 )
 
   process {
+    $hasAsJob = $PSBoundParameters.Remove('AsJob')
+    $null = $PSBoundParameters.Remove('WhatIf')
+    $null = $PSBoundParameters.Remove('Confirm')
 
-    $InputObject = Get-AzStreamAnalyticsOutput -ResourceGroupName $ResourceGroupName -JobName $JobName -Name $Name
+    $InputObject = Get-AzStreamAnalyticsOutput @PSBoundParameters
 
     $resourceId = $InputObject.Id
     $PSBoundParameters.Add("InputObject", $resourceId)
@@ -172,6 +175,11 @@ param(
     {
       $null = $PSBoundParameters.Remove("SubscriptionId")
     }
+
+    if ($hasAsJob) {
+      $PSBoundParameters.Add('AsJob', $true)
+    }
+
     Az.StreamAnalytics.Internal\Test-AzStreamAnalyticsOutput @PSBoundParameters
   }
 }

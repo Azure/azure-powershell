@@ -15,7 +15,7 @@ Creates a streaming job or replaces an already existing streaming job.
 ### UpdateExpanded (Default)
 ```
 Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DataLocale <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-ClusterId <String>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
  [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,10 +24,10 @@ Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-Subscri
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DataLocale <String>] [-EventsLateArrivalMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>]
- [-OutputErrorPolicy <OutputErrorPolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-ClusterId <String>] [-DataLocale <String>]
+ [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
+ [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,27 +35,27 @@ Creates a streaming job or replaces an already existing streaming job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a stream analytics job
 ```powershell
-PS C:\> Update-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-pwsh -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
+PS C:\> Update-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
 West Central US sajob-01-pwsh Microsoft.StreamAnalytics/streamingjobs a5eb4626-ab6c-45bb-be0d-86593ad92021
 ```
 
-{{ Add description here }}
+This command updates a stream analytics job.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a stream analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-pwsh | Update-AzStreamAnalyticsJob -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
+PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh | Update-AzStreamAnalyticsJob -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
 West Central US sajob-01-pwsh Microsoft.StreamAnalytics/streamingjobs c1aa3d2a-1784-4586-926f-df5bfd084e31
 ```
 
-{{ Add description here }}
+This command updates a stream analytics job by pipeline.
 
 ## PARAMETERS
 
@@ -64,6 +64,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterId
+The resource id of cluster.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

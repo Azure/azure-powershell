@@ -1,15 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start a Stream Analytics job
 ```powershell
-PS C:\> Start-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-portal
+PS C:\> Start-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
 
 ```
 
-{{ Add description here }}
+This command starts the job StreamingJob.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a Stream Analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-01-portal | Start-AzStreamAnalyticsJob
+PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Start-AzStreamAnalyticsJob
 
 ```
 
-{{ Add description here }}
+This command starts the job StreamingJob by pipeline.

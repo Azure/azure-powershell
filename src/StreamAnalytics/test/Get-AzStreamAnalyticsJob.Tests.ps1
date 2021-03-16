@@ -24,7 +24,7 @@ Describe 'Get-AzStreamAnalyticsJob' {
 
     It 'List' {
         $result = Get-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup
-        $result.Count | Should -Be 1
+        $result.Count | Should -Be 2
     }
 
     It 'GetViaIdentity' {
