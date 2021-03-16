@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add-AzWebAppAccessRestrictionRule: Allow all supported Service Tags and validate against Service Tag API.
+* Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
 
 ## Version 2.4.0
 * Introduced an option to give custom timeout for `Publish-AzWebApp` 
