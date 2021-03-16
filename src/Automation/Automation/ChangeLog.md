@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue for starting Python3 runbooks with parameters
 
 ## Version 1.5.1
 * Fixed te issue that complex object cannot be serialized correctly. [#14431]

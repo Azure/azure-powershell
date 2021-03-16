@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Acr LoginServers
 
 ## Version 1.2.0
 * Added support for customer managed keys
