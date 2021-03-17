@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string NetworkAclBypassHelpMessage = "Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.";
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
 
+        //Backup specific help messages
+        public const string BackupIntervalInMinHelpMessage = "The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)";
+        public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";

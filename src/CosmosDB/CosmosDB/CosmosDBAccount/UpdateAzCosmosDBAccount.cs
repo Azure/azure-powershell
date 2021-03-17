@@ -140,10 +140,40 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
             }
 
+            if (ServerVersion != null)
+            {
+                if (databaseAccountUpdateParameters.ApiProperties == null)
+                {
+                    databaseAccountUpdateParameters.ApiProperties = new ApiProperties();
+                }
+
+                databaseAccountUpdateParameters.ApiProperties.ServerVersion = ServerVersion;
+            }
+
             if (NetworkAclBypassResourceId != null)
             {
                 Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
                 databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
+            }
+
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            {
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
+                    {
+                        PeriodicModeProperties = new PeriodicModeProperties()
+                        {
+                            BackupIntervalInMinutes = BackupIntervalInMinutes,
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        }
+                    };
+                }
+                else
+                {
+                    WriteWarning("Can accept BackupInterval or BackupRetention parameters only for accounts with PeriodicMode backup policy");
+                    return;
+                }
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))

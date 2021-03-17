@@ -13,6 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $managementGroup = 'AzGovPerfTest'
+$managementGroupScope = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
 $description = 'Unit test junk: sorry for littering. Please delete me!'
 $updatedDescription = "Updated $description"
 $metadataName = 'testName'
@@ -67,11 +68,24 @@ function Test-PolicyDefinitionCRUD
     $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
     Assert-True { $builtIns.Count -eq 0 }
 
+    # make a policy definition from export format, get it back and validate
+    $expected = New-AzPolicyDefinition -Name test3 -Policy "$TestOutputRoot\SamplePolicyDefinitionFromExport.json" -Description $description
+    $actual = Get-AzPolicyDefinition -Name test3
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual $expected.Properties.Mode $actual.Properties.Mode
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+
     # clean up
     $remove = Remove-AzPolicyDefinition -Name $policyName -Force
     Assert-AreEqual True $remove
 
     $remove = Remove-AzPolicyDefinition -Name 'test2' -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name 'test3' -Force
     Assert-AreEqual True $remove
 }
 
@@ -1117,19 +1131,20 @@ function Test-PolicyObjectPiping
     $policySetDefName = Get-ResourceName
     $policyDefName = Get-ResourceName
     $policyAssName = Get-ResourceName
-    $subscriptionId = (Get-AzureRmContext).Subscription.Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $array = @("westus", "eastus")
 
     # make a policy definition and policy set definition that references it
-    $policyDefinition = New-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+    $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinitionObject.json" -Description $description
     $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
-    $expected = New-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
+    $expected = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
 
-    # make a policy assignment by piping the policy definition to New-AzureRmPolicyAssignment
-    $rg = New-AzureRmResourceGroup -Name $rgname -Location "west us"
+    # make a policy assignment by piping the policy definition to New-AzPolicyAssignment
+    $rg = New-AzResourceGroup -Name $rgname -Location "west us"
 
     # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-NotNull $actual.Properties.PolicyDefinitionId
@@ -1137,13 +1152,38 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations
+    Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations.value
+    Assert-NotNull $expected.Properties.Parameters.effectParam
+    Assert-AreEqual 2 $expected.Properties.Parameters.listOfAllowedLocations.value.Length
+    Assert-AreEqual "westus" $expected.Properties.Parameters.listOfAllowedLocations.value[0]
+    Assert-AreEqual "eastus" $expected.Properties.Parameters.listOfAllowedLocations.value[1]
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.value
+
+    # update some properties, including parameters
+    $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId
+    $assignment.Properties.Parameters.effectParam.value = "Disabled"
+    $assignment.Properties.Parameters.listOfAllowedLocations.value = @("eastus")
+    $assignment.Properties.Description = $updatedDescription
+    $assignment | Set-AzPolicyAssignment
+
+    # get it back and validate the new values
+    $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId
+    Assert-NotNull $assignment.Properties.Parameters.listOfAllowedLocations
+    Assert-NotNull $assignment.Properties.Parameters.effectParam
+    Assert-NotNull $assignment.Properties.Parameters.listOfAllowedLocations.value
+    Assert-AreEqual 1 $assignment.Properties.Parameters.listOfAllowedLocations.value.Length
+    Assert-AreEqual "eastus" $assignment.Properties.Parameters.listOfAllowedLocations.value[0]
+    Assert-AreEqual "disabled" $assignment.Properties.Parameters.effectParam.value
+    Assert-AreEqual $updatedDescription $assignment.Properties.Description
+
     # delete the policy assignment
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
+    $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment
     Assert-AreEqual True $remove
 
     # assign the policy set definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-NotNull $actual.Properties.PolicyDefinitionId
@@ -1153,8 +1193,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
 
     # update the policy definition
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName | Set-AzureRmPolicyDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicyDefinition -Name $policyDefName
+    $actual = Get-AzPolicyDefinition -Name $policyDefName | Set-AzPolicyDefinition -Description $updatedDescription
+    $expected = Get-AzPolicyDefinition -Name $policyDefName
     Assert-AreEqual $policyDefName $expected.Name
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.ResourceName $actual.ResourceName
@@ -1166,8 +1206,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # update the policy set definition
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName | Set-AzureRmPolicySetDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicySetDefinition -Name $policySetDefName
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName | Set-AzPolicySetDefinition -Description $updatedDescription
+    $expected = Get-AzPolicySetDefinition -Name $policySetDefName
     Assert-AreEqual $policySetDefName $expected.Name
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.ResourceName $actual.ResourceName
@@ -1179,8 +1219,8 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # update the policy assignment
-    $actual = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Set-AzureRmPolicyAssignment -Description $updatedDescription
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+    $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Set-AzPolicyAssignment -Description $updatedDescription
+    $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-AreEqual $expected.ResourceType $actual.ResourceType
@@ -1193,16 +1233,241 @@ function Test-PolicyObjectPiping
     Assert-AreEqual $updatedDescription $expected.Properties.Description
 
     # clean up
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
+    $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment
     Assert-AreEqual True $remove
 
-    $remove = Remove-AzureRmResourceGroup -Name $rgname -Force
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
     Assert-AreEqual True $remove
 
-    $remove = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicySetDefinition -Force
+    $remove = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzPolicySetDefinition -Force
     Assert-AreEqual True $remove
 
-    $remove = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicyDefinition -Force
+    $remove = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzPolicyDefinition -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations at resource group level
+#>
+function Test-PolicyExemptionCRUD
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a new resource group, policy assignment
+    $rgname = Get-ResourceGroupName
+    $rg = New-AzResourceGroup -Name $rgname -Location "westus"
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -DisplayName $description
+
+    # create the policy exemption to the resource group
+    $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $rg.ResourceId -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # get the exemption by name
+    $exemption = Get-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # get the exemption by id
+    $exemption = Get-AzPolicyExemption -Id $exemption.ResourceId
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$($rg.ResourceId)/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # update the policy exemption, validate the result
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future1 -Metadata '{}'
+    Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
+    Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-Null $exemption.Properties.Metadata.$metadataName
+
+    # update the exemption to clear the expiration
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -ClearExpiration
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # make another policy exemption, ensure both are present in resource group scope listing
+    $future2 = $future1.AddDays(1)
+    $exemption2 = New-AzPolicyExemption -Name testExemption2 -PolicyAssignment $assignment -Scope $rg.ResourceId -ExemptionCategory Mitigated -ExpiresOn $future2
+    $list = Get-AzPolicyExemption -Scope $rg.ResourceId | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # ensure both are present in full listing
+    $list = Get-AzPolicyExemption -IncludeDescendent | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # ensure both are present when filtering by assignment Id
+    $list = Get-AzPolicyExemption -PolicyAssignmentIdFilter $assignment.ResourceId | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+    $list = Get-AzPolicyExemption -PolicyAssignmentIdFilter "$($assignment.ResourceId)notexist" | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 0 @($list).Count
+
+    # ensure neither are present in default listing (at subscription)
+    $list = Get-AzPolicyExemption | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 0 @($list).Count
+
+    # clean up just in case
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $rg.ResourceId -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations on a policySet at subscription level and test object piping
+#>
+function Test-PolicyExemptionCRUDOnPolicySet
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a new policySet, policy assignment
+    $policyRef = "[{""policyDefinitionId"":""" + $policy.PolicyDefinitionId + """}]"
+    $policySet = New-AzPolicySetDefinition -Name testPSD -PolicyDefinition $policyRef -DisplayName $description
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicySetDefinition $policySet -DisplayName $description
+
+    # create the policy exemption to the subscription
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
+    $exemption = $assignment | New-AzPolicyExemption -Name testExemption -ExemptionCategory Waiver -DisplayName $description -ExpiresOn $future1
+    Assert-AreEqual 'testExemption' $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-Null $exemption.Properties.Metadata
+    Assert-Null $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
+
+    # update the policy exemption set policy definition reference Id using piping, validate the result
+    $future2 = $future1.AddDays(1).ToUniversalTime()
+    $exemption.Properties.DisplayName = 'testDisplay'
+    $exemption.Properties.ExemptionCategory = 'Mitigated'
+    $exemption.Properties.ExpiresOn = $future2
+    $exemption.Properties.PolicyDefinitionReferenceIds = @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
+    $exemption = $exemption | Set-AzPolicyExemption
+    Assert-AreEqual 'testDisplay' $exemption.Properties.DisplayName
+    Assert-AreEqual 'Mitigated' $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
+    Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+
+    # update the policy exemption set policy definition reference Id using parameters, validate the result
+    $exemption = Set-AzPolicyExemption -Name testExemption -DisplayName 'testDisplay1' -ExemptionCategory Waiver -PolicyDefinitionReferenceId @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
+    Assert-AreEqual 'testDisplay1' $exemption.Properties.DisplayName
+    Assert-AreEqual 'Waiver' $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
+    Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
+    Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+
+    # update the exemption to clear the expiration
+    $exemption.Properties.PolicyDefinitionReferenceIds = @()
+    $exemption = $exemption | Set-AzPolicyExemption 
+    Assert-AreEqual 0 @($exemption.Properties.PolicyDefinitionReferenceIds).Count
+
+    # make another policy exemption, ensure both are present
+    $exemption2 = $assignment | New-AzPolicyExemption -Name testExemption2 -ExemptionCategory Mitigated -DisplayName $description
+    $list = Get-AzPolicyExemption | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # clean up just in case
+    $remove = $exemption | Remove-AzPolicyExemption -Force
+    Assert-AreEqual True $remove
+
+    $remove = $exemption2 | Remove-AzPolicyExemption -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicySetDefinition -Name testPSD -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy exemption CRUD operations at management group level
+#>
+function Test-PolicyExemptionCRUDAtManagementGroup
+{
+    # Get built-in Audit resource location matches resource group location
+    $policy = Get-AzPolicyDefinition -Id "/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a"
+
+    # make a policy assignment at MG level
+    $assignment = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $managementGroupScope -DisplayName $description
+
+    # create the policy exemption to the MG
+    $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
+    $exemption = New-AzPolicyExemption -Name testExemption -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Waiver -Description $description -DisplayName $description -Metadata $metadata -ExpiresOn $future1
+    Assert-AreEqual "testExemption" $exemption.Name 
+    Assert-AreEqual Microsoft.Authorization/policyExemptions $exemption.ResourceType
+    Assert-AreEqual "$managementGroupScope/providers/Microsoft.Authorization/policyExemptions/testExemption" $exemption.ResourceId
+    Assert-AreEqual $assignment.ResourceId $exemption.Properties.PolicyAssignmentId
+    Assert-AreEqual "Waiver" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $description $exemption.Properties.Description
+    Assert-AreEqual $description $exemption.Properties.DisplayName
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-NotNull $exemption.Properties.Metadata
+    Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
+
+    # update the policy exemption, validate the result
+    $future2 = $future1.AddDays(1).ToUniversalTime()
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -DisplayName testDisplay -ExemptionCategory Mitigated -ExpiresOn $future2 -Metadata '{}'
+    Assert-AreEqual "testDisplay" $exemption.Properties.DisplayName
+    Assert-AreEqual "Mitigated" $exemption.Properties.ExemptionCategory
+    Assert-AreEqual $future2 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-Null $exemption.Properties.Metadata.$metadataName
+
+    # update the exemption to clear the expiration
+    $exemption = Set-AzPolicyExemption -Id $exemption.ResourceId -ClearExpiration
+    Assert-Null $exemption.Properties.ExpiresOn
+
+    # make another policy exemption, ensure both are present in management group scope listing
+    $exemption2 = New-AzPolicyExemption -Name testExemption2 -PolicyAssignment $assignment -Scope $managementGroupScope -ExemptionCategory Mitigated -ExpiresOn $future2
+    $list = Get-AzPolicyExemption -Scope $managementGroupScope | ?{ $_.Name -in @('testExemption', 'testExemption2') }
+    Assert-AreEqual 2 @($list).Count
+
+    # clean up
+    $remove = Remove-AzPolicyExemption -Name testExemption -Scope $managementGroupScope -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyExemption -Name testExemption2 -Scope $managementGroupScope -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $managementGroupScope
     Assert-AreEqual True $remove
 }
 
@@ -1243,6 +1508,7 @@ $onlyDefinitionOrSetDefinition = 'Only one of PolicyDefinition or PolicySetDefin
 $policyAssignmentNotFound = 'PolicyAssignmentNotFound : '
 $policySetDefinitionNotFound = 'PolicySetDefinitionNotFound : '
 $policyDefinitionNotFound = 'PolicyDefinitionNotFound : '
+$policyExemptionNotFound = 'PolicyExemptionNotFound : '
 $invalidRequestContent = 'InvalidRequestContent : The request content was invalid and could not be deserialized: '
 $missingSubscription = 'MissingSubscription : The request did not have a subscription or a valid tenant level resource provider.'
 $undefinedPolicyParameter = 'UndefinedPolicyParameter : The policy assignment'
@@ -1251,6 +1517,9 @@ $authorizationFailed = 'AuthorizationFailed : '
 $allSwitchNotSupported = 'The -IncludeDescendent switch is not supported for management group scopes.'
 $httpMethodNotSupported = "HttpMethodNotSupported : The http method 'DELETE' is not supported for a resource collection."
 $parameterNullOrEmpty = '. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.'
+$invalidParameterValue = 'Cannot validate argument on parameter'
+$invalidPolicyDefinitionReference = 'InvalidPolicyDefinitionReference'
+
 <#
 .SYNOPSIS
 Tests Get-AzPolicyAssignment parameter combinations
@@ -1750,4 +2019,145 @@ function Test-SetPolicySetDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Set-AzPolicySetDefinition -SubscriptionId $subscriptionId } $missingParameters
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzPolicyExemption parameter combinations
+#>
+function Test-GetPolicyExemptionParameters
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $goodScope = "/subscriptions/$subscriptionId"
+    $mgScope = "/providers/Microsoft.Management/managementGroups/$someManagementGroup"
+    $goodId = "$goodScope/providers/Microsoft.Authorization/policyExemptions/$someName"
+
+    # validate with no parameters
+    $ok = Get-AzPolicyExemption
+
+    # validate parameter combinations starting with -Name
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName } $policyExemptionNotFound
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -Scope $goodScope } $policyExemptionNotFound
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -PolicyAssignmentIdFilter $someId } $policyExemptionNotFound
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -IncludeDescendent } $parameterSetError
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -Scope $someScope -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -Scope $someScope -PolicyAssignmentIdFilter $someId } $missingSubscription
+    Assert-ThrowsContains { Get-AzPolicyExemption -Name $someName -Scope $someScope -IncludeDescendent } $parameterSetError
+
+    # validate remaining parameter combinations starting with -Scope
+    $ok = Get-AzPolicyExemption -Scope $goodScope
+    Assert-ThrowsContains { Get-AzPolicyExemption -Scope $someScope -Id $someId } $parameterSetError
+    $ok = Get-AzPolicyExemption -Scope $goodScope -PolicyAssignmentIdFilter $someId
+    Assert-AreEqual 0 $ok.Count
+    $ok = Get-AzPolicyExemption -Scope $goodScope -IncludeDescendent
+    Assert-ThrowsContains { Get-AzPolicyExemption -Scope $mgScope -IncludeDescendent } $allSwitchNotSupported
+    Assert-ThrowsContains { Get-AzPolicyExemption -Scope $someScope -PolicyAssignmentIdFilter $someId -IncludeDescendent } $parameterSetError
+
+    # validate remaining parameter combinations starting with -Id
+    Assert-ThrowsContains { Get-AzPolicyExemption -Id $goodId } $policyExemptionNotFound
+    Assert-ThrowsContains { Get-AzPolicyExemption -Id $someId -PolicyAssignmentIdFilter $someId } $missingSubscription
+    Assert-ThrowsContains { Get-AzPolicyExemption -Id $someId -IncludeDescendent } $parameterSetError
+
+    # validate remaining parameter combinations starting with -PolicyAssignmentIdFilter
+    $ok = Get-AzPolicyExemption -PolicyAssignmentIdFilter $someId
+    Assert-AreEqual 0 $ok.Count
+    Assert-ThrowsContains { Get-AzPolicyExemption -PolicyAssignmentIdFilter $someId -IncludeDescendent } $parameterSetError
+
+    # validate remaining parameter combinations starting with -IncludeDescendent
+    $ok = Get-AzPolicyExemption -IncludeDescendent
+}
+
+<#
+.SYNOPSIS
+Tests New-AzPolicyExemption parameter combinations
+#>
+function Test-NewPolicyExemptionParameters
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $goodScope = "/subscriptions/$subscriptionId"
+    $goodPolicyAssignment = Get-AzPolicyAssignment | select -First 1
+
+    # validate with no parameters
+    Assert-ThrowsContains { New-AzPolicyExemption } $missingParameters
+
+    # validate parameter combinations starting with -Name
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -ExemptionCategory Waiver } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -PolicyAssignment $goodPolicyAssignment } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $someScope -ExemptionCategory Waiver -PolicyAssignment $goodPolicyAssignment } $missingSubscription
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $someScope -ExemptionCategory $someName -PolicyAssignment $goodPolicyAssignment } $invalidParameterValue
+    Assert-ThrowsContains { New-AzPolicyExemption -Name $someName -Scope $goodScope -ExemptionCategory Waiver -PolicyAssignment $goodPolicyAssignment -PolicyDefinitionReferenceId @( $someId) } $invalidPolicyDefinitionReference
+
+    # validate parameter combinations starting with -Scope
+    Assert-ThrowsContains { New-AzPolicyExemption -Scope $someScope } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Scope $someScope -ExemptionCategory Waiver } $missingParameters
+    Assert-ThrowsContains { New-AzPolicyExemption -Scope $someScope -PolicyAssignment $goodPolicyAssignment } $missingParameters
+}
+
+<#
+.SYNOPSIS
+Tests Remove-AzPolicyExemption parameter combinations
+#>
+function Test-RemovePolicyExemptionParameters
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $goodScope = "/subscriptions/$subscriptionId"
+    $goodId = "$goodScope/providers/Microsoft.Authorization/policyExemptions/$someName"
+
+    # validate with no parameters
+    Assert-ThrowsContains { Remove-AzPolicyExemption } $missingParameters
+
+    # validate parameter combinations starting with -Name
+    $ok = Remove-AzPolicyExemption -Name $someName -Force
+    Assert-AreEqual True $ok
+    $ok = Remove-AzPolicyExemption -Name $someName -Scope $goodScope -Force
+    Assert-AreEqual True $ok
+    Assert-ThrowsContains { Remove-AzPolicyExemption -Name $someName -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Remove-AzPolicyExemption -Name $someName -Scope $someScope -Id $someId } $parameterSetError
+
+    # validate remaining parameter combinations starting with -Scope
+    Assert-ThrowsContains { Remove-AzPolicyExemption -Scope $someScope } $missingParameters
+    Assert-ThrowsContains { Remove-AzPolicyExemption -Scope $someScope -Id $someId } $parameterSetError
+
+    # validate remaining parameter combinations starting with -Id
+    $ok = Remove-AzPolicyExemption -Id $goodId -Force
+    Assert-AreEqual True $ok
+}
+
+<#
+.SYNOPSIS
+Tests Set-AzPolicyExemption parameter combinations
+#>
+function Test-SetPolicyExemptionParameters
+{
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $goodScope = "/subscriptions/$subscriptionId"
+    $goodId = "$goodScope/providers/Microsoft.Authorization/policyExemptions/$someName"
+
+    # validate with no parameters
+    Assert-ThrowsContains { Set-AzPolicyExemption } $missingParameters
+
+    # validate parameter combinations starting with -Name
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Scope $goodScope } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -DisplayName $someDisplayName } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Description $description } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Metadata $metadata } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Scope $someScope -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyExemption -Name $someName -Scope $someScope -ExemptionCategory $someName } $invalidParameterValue
+
+    # validate parameter combinations starting with -Scope
+    Assert-ThrowsContains { Set-AzPolicyExemption -Scope $someScope } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyExemption -Scope $someScope -ExemptionCategory Waiver } $missingParameters
+
+	#validation parameter combinations starting with -Id
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $goodId } $policyExemptionNotFound
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $someId -Scope $someScope } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $someId -Name $someName } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $someId -DisplayName $someDisplayName } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $someId -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyExemption -Id $someId -Metadata $metadata } $missingSubscription
 }

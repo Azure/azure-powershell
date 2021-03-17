@@ -47,6 +47,9 @@ Method to get a site.
 ### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
 Gets a solution in the migrate project.
 
+### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
+
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 

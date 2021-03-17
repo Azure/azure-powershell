@@ -41,7 +41,7 @@ PROPERTY <IPrivateEndpointConnection>: The Private Endpoint Connection resource.
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
+https://docs.microsoft.com/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
 #>
 function Set-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -64,14 +64,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]

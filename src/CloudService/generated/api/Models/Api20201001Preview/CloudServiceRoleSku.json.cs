@@ -59,8 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_capacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("capacity"), out var __jsonCapacity) ? (long?)__jsonCapacity : Capacity;}
             {_tier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("tier"), out var __jsonTier) ? (string)__jsonTier : (string)Tier;}
+            {_capacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber>("capacity"), out var __jsonCapacity) ? (long?)__jsonCapacity : Capacity;}
             AfterFromJson(json);
         }
 
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Prev
                 return container;
             }
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != this._capacity ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((long)this._capacity) : null, "capacity" ,container.Add );
             AddIf( null != (((object)this._tier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._tier.ToString()) : null, "tier" ,container.Add );
+            AddIf( null != this._capacity ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNumber((long)this._capacity) : null, "capacity" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

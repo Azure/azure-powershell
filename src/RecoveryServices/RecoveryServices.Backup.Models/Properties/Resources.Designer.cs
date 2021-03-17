@@ -1863,5 +1863,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("InvalidTargetStorageAccount", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointZonePinnedException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointZonePinnedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the given RP tier is VaultStandard tier or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointVaultRecoveryTypeException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointVaultRecoveryTypeException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please check whether the vault storageRedundancy is ZRS or RA-GRS or remove TargetZone.
+        /// </summary>
+        public static string ZonalRestoreVaultStorageRedundancyException
+        {
+            get
+            {
+                return ResourceManager.GetString("ZonalRestoreVaultStorageRedundancyException", resourceCulture);
+            }
+        }
     }
 }

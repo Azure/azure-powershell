@@ -28,7 +28,7 @@ ETag Location      Name             Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/get-azmigrateproject
+https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]

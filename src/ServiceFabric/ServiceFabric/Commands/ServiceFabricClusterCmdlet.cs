@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
-using Newtonsoft.Json.Linq;
-using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
-
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ServiceFabric.Common;
+    using Microsoft.Azure.Commands.ServiceFabric.Models;
+    using Microsoft.Azure.Management.ServiceFabric;
+    using Microsoft.Azure.Management.ServiceFabric.Models;
+    using Newtonsoft.Json.Linq;
+    using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+    using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+    using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+
     public abstract class ServiceFabricClusterCmdlet : ServiceFabricCmdletBase
     {
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
@@ -45,6 +45,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             WriteVerboseWithTimestamp("Begin to update the cluster");
             Cluster cluster = StartRequestAndWait<Cluster>(
                         () => this.SFRPClient.Clusters.BeginUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, request),
+                        () => string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, GetCurrentClusterState()));
+
+            return new PSCluster(cluster);
+        }
+
+        protected PSCluster SendDynamicPatchRequest(dynamic request)
+        {
+            WriteVerboseWithTimestamp("Begin to update the cluster with dynamic object");
+            Cluster cluster = StartRequestAndWait<Cluster>(
+                        () => ClusterOperations.BeginUpdateWithHttpMessagesAsync(this.SFRPClient, this.ResourceGroupName, this.Name, request),
                         () => string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, GetCurrentClusterState()));
 
             return new PSCluster(cluster);
@@ -152,14 +162,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+        protected VmImageKind GetVmImage(Cluster cluster)
+        {
+            var vmImage = cluster.VmImage;
+            VmImageKind vmImageKind;
+            if (Enum.TryParse(vmImage, out vmImageKind))
+            {
+                return vmImageKind;
+            }
+            else
+            {
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotParseVmImage,
+                        vmImage));
+            }
+        }
+
         #endregion
 
         protected IDictionary<string, string> GetServiceFabricTags()
         {
             return new Dictionary<string, string>()
             {
-                { "clusterName",this.Name },
-                { "resourceType" ,Constants.ServieFabricTag }
+                { "clusterName", this.Name },
+                { "resourceType", Constants.ServieFabricTag }
             };
         }
 
