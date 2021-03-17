@@ -18,13 +18,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterClientCertificate", DefaultParameterSetName = ClientCertByTpByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
-    public class AddAzServiceFabricManagedClusterClientCertificate : ServiceFabricCommonCmdletBase
+    public class AddAzServiceFabricManagedClusterClientCertificate : ServiceFabricManagedCmdletBase
     {
         protected const string ClientCertByTpByName = "ClientCertByTpByName";
         protected const string ClientCertByCnByName = "ClientCertByCnByName";
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     ManagedCluster updatedCluster = this.GetClusterWithAddedClientCert();
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedCluster)
+                    var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedCluster)
                         .GetAwaiter().GetResult();
 
                     var cluster = this.PollLongRunningOperation(beginRequestResponse);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetClusterWithAddedClientCert()
         {
-            ManagedCluster currentCluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+            ManagedCluster currentCluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
 
             if (currentCluster.Clients == null)
             {

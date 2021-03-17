@@ -19,13 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
-    public class NewAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class NewAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Ephemeral end port of a range of ports.")]
         public int? EphemeralEndPort { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The size of virtual machines in the pool. All virtual machines in a pool are the same size. Default: Standard_D2.")]
-        public string VmSize { get; set; } = "Standard_D2";
+        [Parameter(Mandatory = false, HelpMessage = "The size of virtual machines in the pool. All virtual machines in a pool are the same size. Default: Standard_D2_v2.")]
+        public string VmSize { get; set; } = "Standard_D2_v2";
 
         [Parameter(Mandatory = false, HelpMessage = "The publisher of the Azure Virtual Machines Marketplace image. Default: MicrosoftWindowsServer.")]
         public string VmImagePublisher { get; set; } = "MicrosoftWindowsServer";
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    NodeType nodeType = SafeGetResource(() => this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name));
+                    NodeType nodeType = SafeGetResource(() => this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name));
                     if (nodeType != null)
                     {
                         WriteError(new ErrorRecord(new InvalidOperationException(string.Format("Node type '{0}' already exists.", this.Name)),
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     else
                     {
                         NodeType newNodeTypeParams = this.GetNewNodeTypeParameters();
-                        var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
+                        var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
                             .GetAwaiter().GetResult();
 
                         nodeType = this.PollLongRunningOperation(beginRequestResponse);

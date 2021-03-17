@@ -18,13 +18,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMExtension", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
-    public class AddAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricCommonCmdletBase
+    public class AddAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricManagedCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ByObj = "ByObj";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     NodeType updatedNodeTypeParams = this.GetNodeTypeWithAddedExtension();
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.NodeTypeName, updatedNodeTypeParams)
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.NodeTypeName, updatedNodeTypeParams)
                         .GetAwaiter().GetResult();
 
                     var nodeType = this.PollLongRunningOperation(beginRequestResponse);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private NodeType GetNodeTypeWithAddedExtension()
         {
-            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
+            NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
 
             if (currentNodeType.VmExtensions == null)
             {
