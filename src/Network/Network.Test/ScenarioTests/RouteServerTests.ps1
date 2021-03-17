@@ -41,16 +41,6 @@ function Test-RouteServerCRUD
       Assert-AreEqual $expectedvr.Name $actualvr.Name
       Assert-AreEqual $expectedvr.Location $actualvr.Location
 
-      # Update route server with branch to branch traffic
-      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -AllowBranchToBranchTraffic
-      $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
-      Assert-True { $expectedvr.AllowBranchToBranchTraffic }
-
-      # Block branch to branch traffic
-      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
-      $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
-      Assert-False { $expectedvr.AllowBranchToBranchTraffic } 
-        
       # List route servers
       $list = Get-AzRouteServer -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
