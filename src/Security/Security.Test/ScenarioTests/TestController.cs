@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                 var computePath = _helper.GetRMModulePath(@"AzureRM.Compute.psd1");
                 var networkPath = _helper.GetRMModulePath(@"AzureRM.Network.psd1");
                 var operationalInsightsPath = _helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1");
+                var monitoringSolutionsPath = _helper.GetRMModulePath(@"AzureRM.monitoringsolutions.psd1"); 
 
                 var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                     computePath,
                     networkPath,
                     operationalInsightsPath,
+                    monitoringSolutionsPath,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
