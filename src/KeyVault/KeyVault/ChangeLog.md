@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.1
 * Supported upcoming new API design for `Export-AzKeyVaultSecurityDomain`
 * Fixed several typos in cmdlet messages [#14341]
 

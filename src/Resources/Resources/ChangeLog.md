@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.4.0
 * Redirected bicep message to verbose stream
 * Removed the logic of copying Bicep template file to temp folder.
 * Add support of policy exemption resource type
