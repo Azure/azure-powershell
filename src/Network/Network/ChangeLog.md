@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
+    - `Get-AzRouteServerPeerAdvertisedRoute`
+    - `Get-AzRouteServerPeerAdvertisedRoute`
+    - Added deprecation attribute warning to the old cmdlets.
 * Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
 * Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
     - `New-AzVpnSiteLinkConnection`
