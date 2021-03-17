@@ -29,7 +29,7 @@ Statuses           PlatformFaultDomain PlatformUpdateDomain
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstanceView
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
+https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 #>
 function Get-AzCloudServiceRoleInstanceView {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstanceView])]

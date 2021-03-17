@@ -373,8 +373,12 @@
                 <ScriptBlock>$_.RestorePolicy.MinRestoreTime</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>ChangeFeed</Label>
+                <Label>ChangeFeed.Enabled</Label>
                 <ScriptBlock>$_.ChangeFeed.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ChangeFeed.RetentionInDays</Label>
+                <ScriptBlock>$_.ChangeFeed.RetentionInDays</ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>IsVersioningEnabled</PropertyName>

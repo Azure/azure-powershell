@@ -23,6 +23,19 @@
 * Added support for operation of getting droppedsqlpool and geobackup
     - Add `Get-AzSynapseDroppedSqlPool` cmdlet
     - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
+* Switched to Azure PowerShell official exception types
+* Added support for workspace key encryption management
+	- Add `New-AzSynapseWorkspaceKey` cmdlet
+    - Add `Get-AzSynapseWorkspaceKey` cmdlet
+    - Add `Remove-AzSynapseWorkspaceKey` cmdlet
+    - Add `Update-AzSynapseWorkspaceKey` cmdlet
+* Added support for managed identity SQL control
+	- Add `Set-AzSynapseManagedIdentitySqlControlSetting` cmdlet
+    - Add `Get-AzSynapseManagedIdentitySqlControlSetting` cmdlet
+* Added support for data exfiltration
+	- Update `New-AzSynapseWorkspace` cmdlet to accpet `-ManagedVirtualNetwork`
+    - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
+    - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
 
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
