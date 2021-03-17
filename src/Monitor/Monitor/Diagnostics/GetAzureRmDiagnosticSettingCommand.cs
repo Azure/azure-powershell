@@ -25,17 +25,10 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// Gets the logs and metrics for the resource.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
-    public class GetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+    public class GetAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
 
         #region Parameters declarations
-
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceId")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the diagnostics setting name parameter of the cmdlet
@@ -48,6 +41,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
+            Validate();
+
             IList<PSServiceDiagnosticSettings> output;
             if (string.IsNullOrWhiteSpace(this.Name))
             {

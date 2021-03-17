@@ -84,5 +84,11 @@ namespace Microsoft.Azure.Commands.Insights
             using (TextReader reader = new StreamReader(path))
                 return reader.ReadToEnd();
         }
+
+        public static bool IsGuid(string str)
+        {
+            Guid g;
+            return Guid.TryParse(str, out g);
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// Removes a named diagnostic setting or disables the setting called 'service' if the name argument is not present or if is 'service'.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+    public class RemoveAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
         /// <summary>
         /// This is a temporary constant to provide backwards compatibility
@@ -38,13 +38,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         internal const string TempServiceName = "service";
 
         #region Parameters declarations
-
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
@@ -57,6 +50,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
+            Validate();
+
             string requestId;
             HttpStatusCode statusCode;
 
