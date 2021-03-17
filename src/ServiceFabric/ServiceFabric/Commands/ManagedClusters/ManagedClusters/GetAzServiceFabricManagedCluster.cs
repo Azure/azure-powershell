@@ -18,12 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = BySubscription), OutputType(typeof(PSManagedCluster))]
-    public class GetServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
+    public class GetServiceFabricManagedCluster : ServiceFabricManagedCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ByResourceGroup = "ByResourceGroup";
@@ -55,20 +55,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 switch(ParameterSetName)
                 {
                     case ByName:
-                        var cluster = this.SFRPClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+                        var cluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
                         WriteObject(new PSManagedCluster(cluster), false);
                         break;
                     case ByResourceGroup:
                         var clusterList = this.ReturnListByPageResponse(
-                            this.SFRPClient.ManagedClusters.ListByResourceGroup(this.ResourceGroupName),
-                            this.SFRPClient.ManagedClusters.ListByResourceGroupNext);
+                            this.SfrpMcClient.ManagedClusters.ListByResourceGroup(this.ResourceGroupName),
+                            this.SfrpMcClient.ManagedClusters.ListByResourceGroupNext);
 
                         WriteObject(clusterList.Select(c => new PSManagedCluster(c)), true);
                         break;
                     case BySubscription:
                         var cluster2List = this.ReturnListByPageResponse(
-                            this.SFRPClient.ManagedClusters.ListBySubscription(),
-                            this.SFRPClient.ManagedClusters.ListBySubscriptionNext);
+                            this.SfrpMcClient.ManagedClusters.ListBySubscription(),
+                            this.SfrpMcClient.ManagedClusters.ListBySubscriptionNext);
 
                         WriteObject(cluster2List.Select(c => new PSManagedCluster(c)), true);
                         break;

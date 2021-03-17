@@ -12,19 +12,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMExtension", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
-    public class RemoveAzServiceFabricManagedNodeTypeVMExtension : ServiceFabricCommonCmdletBase
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeTypeVMSecret", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedNodeType))]
+    public class AddAzServiceFabricManagedNodeTypeVMSecret : ServiceFabricManagedCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ByObj = "ByObj";
@@ -48,21 +49,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
-        public string NodeTypeName { get; set; }
+        [Alias("NodeTypeName")]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ByObj,
-            HelpMessage = "Node type resource")]
+            HelpMessage = "Node Type resource")]
         [ValidateNotNull]
         public PSManagedNodeType InputObject { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "extension name.")]
-        [Alias("ExtensionName")]
-        public string Name { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Key Vault resource id containing the certificates.")]
+        public string SourceVaultId { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  \"data\":\"<Base64-encoded-certificate>\",<br>  \"dataType\":\"pfx\",<br>  \"password\":\"<pfx-file-password>\"<br>}/")]
+        public string CertificateUrl { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account.")]
+        public string CertificateStore { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
@@ -72,24 +76,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             this.SetParams();
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove Extenions {0} from node type {1}", this.Name, this.NodeTypeName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add Secret to node type {0}", this.Name)))
             {
                 try
                 {
-                    NodeType updatedNodeTypeParams = this.GetNodeTypeWithRemovedExtension();
-                    var beginRequestResponse = this.SFRPClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.NodeTypeName, updatedNodeTypeParams)
+                    NodeType updatedNodeTypeParams = this.GetNodeTypeWithAddedSecret();
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedNodeTypeParams)
                         .GetAwaiter().GetResult();
 
                     var nodeType = this.PollLongRunningOperation(beginRequestResponse);
 
-                    if (this.PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                    else
-                    {
-                        WriteObject(new PSManagedNodeType(nodeType), false);
-                    }
+                    WriteObject(new PSManagedNodeType(nodeType), false);
                 }
                 catch (Exception ex)
                 {
@@ -99,18 +96,41 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        private NodeType GetNodeTypeWithRemovedExtension()
+        private NodeType GetNodeTypeWithAddedSecret()
         {
-            NodeType currentNodeType = this.SFRPClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
+            NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
 
-            if (currentNodeType.VmExtensions != null)
+            if (currentNodeType.VmSecrets == null)
             {
-                var originalLength = currentNodeType.VmExtensions.Count();
-                currentNodeType.VmExtensions = currentNodeType.VmExtensions.Where(ext => !string.Equals(ext.Name, this.Name, StringComparison.OrdinalIgnoreCase)).ToList();
-                if (originalLength == currentNodeType.VmExtensions.Count())
+                currentNodeType.VmSecrets = new List<VaultSecretGroup>();
+            }
+
+            var vault = currentNodeType.VmSecrets.FirstOrDefault(v => string.Equals(v.SourceVault.Id, this.SourceVaultId, StringComparison.OrdinalIgnoreCase));
+            bool newVaultSecretGroup = false;
+            if (vault == null)
+            {
+                newVaultSecretGroup = true;
+                vault = new VaultSecretGroup()
                 {
-                    throw new ArgumentException(string.Format("extension with name {0} not found", this.Name));
-                }
+                    SourceVault = new SubResource(this.SourceVaultId)
+                };
+            }
+            
+            if (vault.VaultCertificates == null)
+            {
+                vault.VaultCertificates = new List<VaultCertificate>()
+                {
+                    new VaultCertificate()
+                    {
+                        CertificateStore = this.CertificateStore,
+                        CertificateUrl = this.CertificateUrl
+                    }
+                };
+            }
+
+            if (newVaultSecretGroup)
+            {
+                currentNodeType.VmSecrets.Add(vault);
             }
 
             return currentNodeType;
@@ -128,6 +148,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
+
             }
         }
 
@@ -135,7 +156,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             this.GetParametersByResourceId(resourceId, Constants.ManagedNodeTypeProvider, out string resourceGroup, out string resourceName, out string parentResourceName);
             this.ResourceGroupName = resourceGroup;
-            this.NodeTypeName = resourceName;
+            this.Name = resourceName;
             this.ClusterName = parentResourceName;
         }
     }

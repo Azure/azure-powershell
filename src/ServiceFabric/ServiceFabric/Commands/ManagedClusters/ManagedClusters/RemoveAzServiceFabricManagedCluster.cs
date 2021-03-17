@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveServiceFabricManagedCluster : ServiceFabricCommonCmdletBase
+    public class RemoveServiceFabricManagedCluster : ServiceFabricManagedCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ById = "ById";
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    var beginRequestResponse = this.SFRPClient.ManagedClusters.BeginDeleteWithHttpMessagesAsync(
+                    var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginDeleteWithHttpMessagesAsync(
                                                     this.ResourceGroupName,
                                                     this.Name).GetAwaiter().GetResult();
 

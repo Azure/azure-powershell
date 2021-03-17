@@ -16,12 +16,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = DeleteNodeTypeByObj, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzServiceFabricManagedNodeType : ServiceFabricCommonCmdletBase
+    public class RemoveAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         protected const string DeleteNodeTypeByName = "DeleteNodeTypeByName";
         protected const string DeleteNodeTypeByObj = "DeleteNodeTypeByObj";
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
 
                             var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRemoveNode.IsPresent);
-                            var beginRequestResponse = this.SFRPClient.NodeTypes.BeginDeleteNodeWithHttpMessagesAsync(
+                            var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginDeleteNodeWithHttpMessagesAsync(
                                     this.ResourceGroupName,
                                     this.ClusterName,
                                     this.Name,
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     case DeleteNodeTypeById:
                         if (ShouldProcess(target: this.Name, action: string.Format("Remove node type: {0} on cluster {1}, resource group {2}", this.Name, this.ClusterName, this.ResourceGroupName)))
                         {
-                            var beginRequestResponse = this.SFRPClient.NodeTypes.BeginDeleteWithHttpMessagesAsync(
+                            var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginDeleteWithHttpMessagesAsync(
                                     this.ResourceGroupName,
                                     this.ClusterName,
                                     this.Name).GetAwaiter().GetResult();
