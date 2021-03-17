@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Common
 {
     /// <summary>
@@ -44,6 +46,7 @@ namespace Microsoft.Azure.Commands.Common
     /// <summary>
     /// Represent Error Kind
     /// </summary>
+    [Serializable]
     public class ErrorKind
     {
         public string Value { get; private set; }

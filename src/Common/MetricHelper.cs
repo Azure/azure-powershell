@@ -566,7 +566,7 @@ public class AzurePSQoSEvent
             "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2}", CommandName, IsSuccess, Duration);
         if (Exception != null)
         {
-            ret = $"{ret}; Exception - {Exception};";
+            ret = $"{ret}; Exception - {Exception.Message};";
         }
         return ret;
     }
