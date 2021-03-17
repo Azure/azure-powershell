@@ -21,7 +21,7 @@ Enable the addons for aks.
 List Kubernetes managed clusters.
 
 ### [Get-AzAksNodePool](Get-AzAksNodePool.md)
-Create note pool in specified cluster.
+Create node pool in specified cluster.
 
 ### [Get-AzAksVersion](Get-AzAksVersion.md)
 List available version for creating managed Kubernetes cluster.
