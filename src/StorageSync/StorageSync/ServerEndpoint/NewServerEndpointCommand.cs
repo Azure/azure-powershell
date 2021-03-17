@@ -200,14 +200,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.InitialDownloadPolicyParameter)]
-        // #TODO : Update swagger to make them string constants
-        //[ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("AvoidTieredFiles",
-            "NamespaceOnly",
-            "NamespaceThenModifiedFiles",
+        [ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
             IgnoreCase = true)]
         public string InitialDownloadPolicy { get; set; }
 
@@ -219,11 +214,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.LocalCacheModeParameter)]
-        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
-        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("DownloadNewAndModifiedFiles",
-            "UpdateLocallyCachedFiles",
+        [ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+            StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
 
@@ -235,12 +227,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.InitialUploadPolicyParameter)]
-        // #TODO : Update swagger to make them string constants
-        //[ValidateSet(StorageSyncModels.InitialUploadPolicy.Merge,
-        //    StorageSyncModels.InitialUploadPolicy.ServerAuthoritative,
-        //    IgnoreCase = true)]
-        [ValidateSet("Merge",
-            "ServerAuthoritative",
+        [ValidateSet(StorageSyncModels.InitialUploadPolicy.Merge,
+            StorageSyncModels.InitialUploadPolicy.ServerAuthoritative,
             IgnoreCase = true)]
         public string InitialUploadPolicy { get; set; }
 
@@ -294,34 +282,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
-                StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;
                 if (this.IsParameterBound(c => c.InitialDownloadPolicy))
                 {
-                    if (!Enum.TryParse(InitialDownloadPolicy, true, out initialDownloadPolicy))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
-                    }
-                    createParameters.InitialDownloadPolicy = initialDownloadPolicy;
+                    createParameters.InitialDownloadPolicy = InitialDownloadPolicy;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
-                    createParameters.LocalCacheMode = localCacheMode;
+                    createParameters.LocalCacheMode = LocalCacheMode;
                 }
 
-                StorageSyncModels.InitialUploadPolicy initialUploadPolicy;
                 if (this.IsParameterBound(c => c.InitialUploadPolicy))
                 {
-                    if (!Enum.TryParse(InitialUploadPolicy, true, out initialUploadPolicy))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidInitialUploadPolicyErrorMessage);
-                    }
-                    createParameters.InitialUploadPolicy = initialUploadPolicy;
+                    createParameters.InitialUploadPolicy = InitialUploadPolicy;
                 }
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;

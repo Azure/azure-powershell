@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.OfflineDataTransferStorageAccountResourceId,
                 source.OfflineDataTransferStorageAccountTenantId,
                 source.OfflineDataTransferShareName,
-                initialDownloadPolicy:source.InitialDownloadPolicy != null ? (StorageSyncModels.InitialDownloadPolicy)System.Enum.Parse(typeof(StorageSyncModels.InitialDownloadPolicy),source.InitialDownloadPolicy,ignoreCase:true): default(StorageSyncModels.InitialDownloadPolicy?),
-                localCacheMode: source.LocalCacheMode != null ? (StorageSyncModels.LocalCacheMode)System.Enum.Parse(typeof(StorageSyncModels.LocalCacheMode), source.LocalCacheMode, ignoreCase: true) : default(StorageSyncModels.LocalCacheMode?),
-                initialUploadPolicy:source.InitialUploadPolicy != null ? (StorageSyncModels.InitialUploadPolicy)System.Enum.Parse(typeof(StorageSyncModels.InitialUploadPolicy),source.InitialUploadPolicy,ignoreCase:true): default(StorageSyncModels.InitialUploadPolicy?));
+                initialDownloadPolicy:source.InitialDownloadPolicy,
+                localCacheMode: source.LocalCacheMode,
+                initialUploadPolicy:source.InitialUploadPolicy);
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 OfflineDataTransferShareName = source.OfflineDataTransferShareName,
                 OfflineDataTransferStorageAccountResourceId = source.OfflineDataTransferStorageAccountResourceId,
                 OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId,
-                InitialDownloadPolicy= source.InitialDownloadPolicy.HasValue ? source.InitialDownloadPolicy.Value.ToString() : null,
-                LocalCacheMode=source.LocalCacheMode.HasValue ? source.LocalCacheMode.Value.ToString() : null,
-                InitialUploadPolicy= source.InitialUploadPolicy.HasValue ? source.InitialUploadPolicy.Value.ToString() : null
+                InitialDownloadPolicy= source.InitialDownloadPolicy,
+                LocalCacheMode=source.LocalCacheMode,
+                InitialUploadPolicy= source.InitialUploadPolicy
             };
         }
     }

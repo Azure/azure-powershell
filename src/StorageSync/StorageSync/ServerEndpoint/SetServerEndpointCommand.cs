@@ -260,14 +260,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
-                    updateParameters.LocalCacheMode = localCacheMode;
+                    updateParameters.LocalCacheMode = LocalCacheMode;
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);

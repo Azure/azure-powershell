@@ -42,11 +42,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>StorageSyncModels.RegisteredServer.</returns>
         protected override StorageSyncModels.RegisteredServer Transform(PSRegisteredServer source)
         {
-            return new StorageSyncModels.RegisteredServer(source.ResourceId,
+            return new StorageSyncModels.RegisteredServer(
+                source.ResourceId,
                 source.ServerName,
                 StorageSyncConstants.RegisteredServerType,
                 source.ServerCertificate,
                 source.AgentVersion,
+                source.AgentVersionStatus,
+                source.AgentVersionExpirationDate,
                 source.ServerOSVersion,
                 source.ServerManagementErrorCode,
                 source.LastHeartBeat,
@@ -88,7 +91,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ClusterName = source.ClusterName,
                 DiscoveryEndpointUri = source.DiscoveryEndpointUri?.Trim('"'),
                 FriendlyName = source.FriendlyName,
-                LastHeartBeat = source.LastHeartBeat?.Trim('"'),
+                LastHeartBeat = source.LastHeartBeat,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId?.Trim('"'),
                 ManagementEndpointUri = source.ManagementEndpointUri?.Trim('"'),
