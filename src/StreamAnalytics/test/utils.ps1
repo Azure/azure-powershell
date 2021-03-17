@@ -81,19 +81,19 @@ function setupEnv() {
 
     # Get primary key of resource group
     $resourceKey = Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount00
-    $env.storageAccountKey = $resourceKey[0].Value
+    $storageAccountKey = $resourceKey[0].Value
     $resourceKey = Get-AzIotHubKey -ResourceGroupName $env.resourceGroup -Name $env.iothub00 -KeyName 'iothubowner'
-    $env.iothubKey = $resourceKey.PrimaryKey
+    $iothubKey = $resourceKey.PrimaryKey
 
     # Update value of the template json.
     $storageAccountParam = Get-Content .\test\template-json\StroageAccount.json | ConvertFrom-Json
     $storageAccountParam.properties.datasource.properties.storageAccounts[0].accountName = $env.storageAccount00
-    $storageAccountParam.properties.datasource.properties.storageAccounts[0].accountKey = $env.storageAccountKey
+    $storageAccountParam.properties.datasource.properties.storageAccounts[0].accountKey = $storageAccountKey
     Set-Content -Path .\test\template-json\StroageAccount.json -Value (ConvertTo-Json -InputObject $storageAccountParam -Depth 10)
 
     $iothubParam = Get-Content .\test\template-json\IotHub.json | ConvertFrom-Json
     $iothubParam.properties.datasource.properties.iotHubNamespace = $env.iothub00
-    $iothubParam.properties.datasource.properties.sharedAccessPolicyKey = $env.iothubKey
+    $iothubParam.properties.datasource.properties.sharedAccessPolicyKey = $iothubKey
     Set-Content -Path .\test\template-json\IotHub.json -Value (ConvertTo-Json -InputObject $iothubParam -Depth 10)
 
     Write-Host -ForegroundColor Green "Create three stream analytics clusters for test"
