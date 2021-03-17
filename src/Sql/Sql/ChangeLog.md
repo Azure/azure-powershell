@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.17.0
 * Added cmdlet `New-AzSqlServerTrustGroup`
 * Added cmdlet `Remove-AzSqlServerTrustGroup`
 * Added cmdlet `Get-AzSqlServerTrustGroup`
