@@ -84,8 +84,9 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         $instance = Az.DataProtection\Get-AzDataProtectionBackupInstance @PSBoundParameters
         $instance.Property.PolicyInfo.PolicyId = $PolicyId
         $null = $PSBoundParameters.Remove("BackupInstanceName")
-        $null = $PSBoundParameters.Add("BackupInstance", $instance)
+        $null = $PSBoundParameters.Add("Parameter", $instance)
+        $null = $PSBoundParameters.Add("Name", $instance.Name)
 
-        Az.DataProtection\New-AzDataProtectionBackupInstance  @PSBoundParameters
+        Az.DataProtection.Internal\New-AzDataProtectionBackupInstance  @PSBoundParameters
     }
 }
