@@ -303,8 +303,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 GalleryUrl = armMetadata.Gallery,
                 SqlDatabaseDnsSuffix = armMetadata.Suffixes.SqlServerHostname,
                 GraphUrl = armMetadata.Graph,
+                //TODO, ARM endpoint doesn't have TrafficManagerDnsSuffix
                 TrafficManagerDnsSuffix = GetTrafficManagerDnsSuffix(armMetadata.Name),
                 AzureKeyVaultDnsSuffix = armMetadata.Suffixes.KeyVaultDns,
+                //Default ARM endpoint doens't provide KeyVault service resource id. Keep it here just in case.
                 AzureKeyVaultServiceEndpointResourceId = GetKeyVaultServiceEndpointResourceId(armMetadata.Name),
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = armMetadata.Suffixes.AzureDataLakeAnalyticsCatalogAndJob,
                 AzureDataLakeStoreFileSystemEndpointSuffix = armMetadata.Suffixes.AzureDataLakeStoreFileSystem,
@@ -314,6 +316,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AdTenant = armMetadata.Authentication.Tenant,
                 ContainerRegistryEndpointSuffix = armMetadata.Suffixes.AcrLoginServer
             };
+
+            //We reuse the value of KeyVaultDns
+            if (string.IsNullOrEmpty(azureEnvironment.AzureKeyVaultServiceEndpointResourceId))
+            {
+                azureEnvironment.AzureKeyVaultServiceEndpointResourceId = $"https://{azureEnvironment.AzureKeyVaultDnsSuffix}";
+            }
 
             // There are mismatches between metadata built in Azure PowerShell/CLI and from ARM endpoint.
             // Considering compatibility, below hard coded logic accommodates those mismatches
