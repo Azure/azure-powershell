@@ -24,6 +24,11 @@
     - 'Remove-AzContainerService'
     - 'Remove-AzContainerServiceAgentPoolProfile'
     - 'Update-AzContainerService'
+* Added new cmdlet `Set-AzVmUefi`
+* Added new cmdlet `Set-AzVmSecurityType`
+* Added new cmdlet `Set-AzVmssUefi`
+* Added new cmdlet `Set-AzVmssSecurityType`
+
 
 #### Az.ContainerRegistry
 * Fixed authentication for `Connect-AzContainerRegistry`
