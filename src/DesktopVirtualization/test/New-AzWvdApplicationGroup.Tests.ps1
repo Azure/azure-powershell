@@ -25,7 +25,6 @@ Describe 'New-AzWvdApplicationGroup' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `

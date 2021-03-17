@@ -80,6 +80,10 @@ function New-AzImageBuilderCustomizerObject {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Boolean]
         ${RunElevated},
+        [Parameter(ParameterSetName='PowerShellCustomizer', HelpMessage="If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+        [Boolean]
+        ${RunAsSystem},
         [Parameter(ParameterSetName='PowerShellCustomizer', HelpMessage="Valid exit codes for the PowerShell script. [Default: 0].")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [int[]]
@@ -131,6 +135,7 @@ function New-AzImageBuilderCustomizerObject {
             $Customizer.Type = "PowerShell"
             $Customizer.Inline = $Inline
             $Customizer.RunElevated = $RunElevated
+            $Customizer.RunAsSystem = $RunAsSystem
             $Customizer.ScriptUri = $ScriptUri
             $Customizer.Sha256Checksum = $Sha256Checksum
             $Customizer.ValidExitCode = $ValidExitCode
