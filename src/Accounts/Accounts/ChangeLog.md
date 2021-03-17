@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed incorrect warning message on Windows PowerShell [#14556]
+* Set Azure Environment variable `AzureKeyVaultServiceEndpointResourceId` according to the value of `AzureKeyVaultDnsSuffix` when discovering environment 
 
 ## Version 2.2.6
 * Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
