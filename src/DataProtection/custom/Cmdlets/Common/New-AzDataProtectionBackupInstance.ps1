@@ -29,8 +29,9 @@ function New-AzDataProtectionBackupInstance {
         
 
         $name = $BackupInstance.BackupInstanceName
-
-
+        $null = $PSBoundParameters.Remove("BackupInstance")
+        $null = $PSBoundParameters.Add("BackupInstance", $BackupInstance.Property)
+        $null = Az.DataProtection.Internal\Test-AzDataProtectionBackupInstance @PSBoundParameters
         $null = $PSBoundParameters.Remove("BackupInstance")
         $null = $PSBoundParameters.Add("Name", $name)
         $null = $PSBoundParameters.Add("Parameter", $BackupInstance)

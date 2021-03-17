@@ -14,7 +14,8 @@ while(-not $mockingPath) {
 Describe 'Get-AzDataProtectionBackupInstance' {
     It 'GetAll' {
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
-        $instance.Count | Should -BeGreaterThan 0
+        $assert = $instance.Count -gt 0
+        $assert | Should be $true
     }
 
     It 'Get' {

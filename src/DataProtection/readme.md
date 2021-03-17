@@ -88,11 +88,22 @@ directive:
   - where:
       verb: New
       subject: BackupVault
-      variant: Create
     hide: true
   - where:
-      verb: Invoke|Test
+      verb: Invoke
     remove: true
+  - where:
+      verb: Test
+    hide: true
+  - where:
+      model-name: BackupVaultResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Type
+          - IdentityType
   - no-inline:
     - UserFacingError
     - InnerError

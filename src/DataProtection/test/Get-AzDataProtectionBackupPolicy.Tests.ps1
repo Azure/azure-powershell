@@ -14,7 +14,8 @@ while(-not $mockingPath) {
 Describe 'Get-AzDataProtectionBackupPolicy' {
     It 'List'  {
         $policies = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupPolicy.ResourceGroupName -VaultName $env.TestBackupPolicy.VaultName
-        $policies.Count | Should -BeGreaterThan 0
+        $assert = $policies.Count -gt 0
+        $assert | Should be $true
     }
 
     It 'Get' -skip {

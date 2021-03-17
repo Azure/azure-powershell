@@ -13,9 +13,10 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-ETag <String>] [-IdentityType <String>] [-Location <String>] [-StorageSetting <IStorageSetting[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
+ -StorageSetting <IStorageSetting[]> -VaultName <String> [-DefaultProfile <PSObject>] [-ETag <String>]
+ [-IdentityType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,23 +39,8 @@ This command creates a new backup vault.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType which can be either SystemAssigned or None
+The identityType which can be either SystemAssigned or None.
 
 ```yaml
 Type: System.String
@@ -106,22 +92,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+Resource Group Name of the backup vault
 
 ```yaml
 Type: System.String
@@ -144,7 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageSetting
-Storage Settings
+Storage Settings of the vault.
+Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
@@ -152,7 +124,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Previe
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+Subscription Id of the vault
 
 ```yaml
 Type: System.String
@@ -169,7 +141,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -190,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+Name of the backup vault
 
 ```yaml
 Type: System.String
@@ -242,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupVaultResource
+### System.Management.Automation.PSObject
 
 ## NOTES
 
@@ -253,7 +225,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-STORAGESETTING <IStorageSetting[]>: Storage Settings
+STORAGESETTING <IStorageSetting[]>: Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
   - `[DatastoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.
   - `[Type <StorageSettingTypes?>]`: Gets or sets the type.
 

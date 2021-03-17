@@ -21,15 +21,15 @@ Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
 
         $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $instance = $instances | where-object {$_.Property.DataSourceInfo.ResourceId -eq $diskId}
-        Backup-AzDataProtectionBackupInstanceAdhoc -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $instance.Name -BackupRuleOptionRuleName $backupRuleName -TriggerOptionRetentionTagOverride Default
+        $job = Backup-AzDataProtectionBackupInstanceAdhoc -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $instance.Name -BackupRuleOptionRuleName $backupRuleName -TriggerOptionRetentionTagOverride Default
 
-        $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroup $rgName -Vault $vaultName -DatasourceType AzureDisk -Operation OnDemandBackup -Status InProgress
+        $jobid = $job.JobId.Split("/")[-1]
 
-        $jobstatus = $job[0].Status
+        $jobstatus = "InProgress"
         while($jobstatus -ne "Completed")
         {
             Start-Sleep -Seconds 5
-            $currentjob = Get-AzDataProtectionJob -Id $job[0].Name -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
     }
