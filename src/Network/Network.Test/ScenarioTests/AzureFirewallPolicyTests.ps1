@@ -1425,24 +1425,21 @@ Tests AzureFirewall Policy PrivateRange
 #>
 function Test-AzureFirewallPolicyPrivateRangeCRUD {
     $rgname = Get-ResourceGroupName
-    $azureFirewallName = Get-ResourceName
-    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = Get-ProviderLocation $resourceTypeParent "eastus"
-
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
     $vnetName = Get-ResourceName
-    $subnetName = "AzureFirewallSubnet"
-    $publicIpName = Get-ResourceName
+    $privateRange2 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
+    $privateRange1 = @("3.3.0.0/24", "98.0.0.0/8")
+    $privateRange2Translated = @("0.0.0.0/0", "66.92.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "100.64.0.0/10")
 
-    $privateRange1 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
-    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
-    
     try {
 
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -PrivateRange @("99.99.99.0/24", "66.66.0.0/16")
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -PrivateRange $privateRange1
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -1458,7 +1455,7 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
         $azureFirewallPolicy.PrivateRange = $privateRange2
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
-        Assert-AreEqualArray $privateRange2 $getAzureFirewallPolicy.PrivateRange
+        Assert-AreEqualArray $privateRange2Translated $getAzureFirewallPolicy.PrivateRange
     }
     finally {
         # Cleanup
