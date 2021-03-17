@@ -1,7 +1,7 @@
 @{
   GUID = 'f3678192-db41-439b-99e7-6fda95f6c601'
   RootModule = './Az.StreamAnalytics.psm1'
-  ModuleVersion = '2.0.1'
+  ModuleVersion = '2.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

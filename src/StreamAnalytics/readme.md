@@ -43,7 +43,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/operations.json
 
 title: StreamAnalytics
-module-version: 2.0.1
+module-version: 2.0.0
 subject-prefix: StreamAnalytics
 identity-correction-for-post: true
 
