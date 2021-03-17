@@ -116,24 +116,6 @@ param(
     # Other values will result in a 412 Pre-condition Failed response.
     ${IfNoneMatch},
 
-    # [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput]
-    # # An output object, containing all information associated with the named output.
-    # # All outputs are contained under a streaming job.
-    # # To construct, see NOTES section for OUTPUT properties and create a hash table.
-    # ${Output},
-
-    # [Parameter(ParameterSetName='CreateExpanded')]
-    # [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutputDataSource]
-    # # Describes the data source that output will be written to.
-    # # Required on PUT (CreateOrReplace) requests.
-    # # To construct, see NOTES section for DATASOURCE properties and create a hash table.
-    # ${Datasource},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

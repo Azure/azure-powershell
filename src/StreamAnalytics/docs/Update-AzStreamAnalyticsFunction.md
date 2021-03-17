@@ -59,12 +59,6 @@ This command updates a function from the file MachineLearningServices.json by pi
 ## PARAMETERS
 
 ### -DefaultProfile
-[Parameter(ParameterSetName='UpdateExpanded')]
-[Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-[System.String]
-# Indicates the type of function.
-${PropertiesType},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml

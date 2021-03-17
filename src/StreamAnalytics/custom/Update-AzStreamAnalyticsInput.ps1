@@ -127,16 +127,6 @@ param(
     # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
     ${IfMatch},
 
-    # [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput]
-    # # An input object, containing all information associated with the named input.
-    # # All inputs are contained under a streaming job.
-    # # To construct, see NOTES section for INPUT properties and create a hash table.
-    # ${Input},
-
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

@@ -131,30 +131,6 @@ param(
     # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
     ${IfMatch},
 
-    # [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction]
-    # # A function object, containing all information associated with the named function.
-    # # All functions are contained under a streaming job.
-    # # To construct, see NOTES section for FUNCTION properties and create a hash table.
-    # ${Function},
-
-    # [Parameter(ParameterSetName='UpdateExpanded')]
-    # [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionConfiguration]
-    # # .
-    # # To construct, see NOTES section for FUNCTIONCONFIGURATIONPROPERTY properties and create a hash table.
-    # ${FunctionConfigurationProperty},
-
-    # [Parameter(ParameterSetName='UpdateExpanded')]
-    # [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [System.String]
-    # # Indicates the type of function.
-    # ${PropertiesType},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

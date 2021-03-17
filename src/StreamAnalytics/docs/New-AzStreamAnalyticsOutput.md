@@ -68,14 +68,6 @@ This command creates a new output in the stream analytics job.
 ## PARAMETERS
 
 ### -DefaultProfile
-[Parameter(ParameterSetName='CreateExpanded')]
-[Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutputDataSource]
-# Describes the data source that output will be written to.
-# Required on PUT (CreateOrReplace) requests.
-# To construct, see NOTES section for DATASOURCE properties and create a hash table.
-${Datasource},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml

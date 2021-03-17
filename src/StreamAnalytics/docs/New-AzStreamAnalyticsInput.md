@@ -106,14 +106,6 @@ This command creates an input from the file IotHub.json.
 ## PARAMETERS
 
 ### -DefaultProfile
-[Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-[Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput]
-# An input object, containing all information associated with the named input.
-# All inputs are contained under a streaming job.
-# To construct, see NOTES section for INPUT properties and create a hash table.
-${Input},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
