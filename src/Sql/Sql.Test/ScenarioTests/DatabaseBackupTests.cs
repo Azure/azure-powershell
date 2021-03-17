@@ -125,19 +125,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-LongTermRetentionV2");
+                RunPowerShellTest("Test-CopyLongTermRetentionBackup");
             }
         }
 
-        //[Fact(Skip = "This is not recordable test")]
-        [Fact]
+        [Fact(Skip = "This is not recordable test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateLongTermRetentionBackup()
+        public void TestSetLongTermRetentionBackup()
         {
 
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-LongTermRetentionV2");
+                RunPowerShellTest("Test-SetLongTermRetentionBackup");
             }
         }
 

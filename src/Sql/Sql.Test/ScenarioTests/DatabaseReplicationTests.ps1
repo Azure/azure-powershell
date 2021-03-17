@@ -401,10 +401,10 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 	{
 		# Create a local database copy
 		$dbLocalCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy zone
+		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy 'Zone'
 
 		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $copyDatabaseName
-		Assert-AreEqual "Zone" $newDb.BackupStorageRedundancy 
+		Assert-AreEqual "Zone" $newDb.CurrentBackupStorageRedundancy 
 
 		# Create a cross server copy
 	}
@@ -422,7 +422,7 @@ function Test-CreateDatabaseCopyWithBackupStorageRedundancy()
 function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 {
 	# Setup
-    $location = "westcentralus"
+    $location = "southeastasia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -434,7 +434,7 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy local
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy local -Force
 
 		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
 		Assert-AreEqual $secondaryDb.BackupStorageRedundancy "Local"
