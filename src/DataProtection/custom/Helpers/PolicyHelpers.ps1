@@ -1,5 +1,6 @@
 ﻿
 function GetBackupFrequencyString {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -32,6 +33,7 @@ function GetBackupFrequencyString {
 }
 
 function GetTaggingPriority {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -47,6 +49,7 @@ function GetTaggingPriority {
 
 function ValidateBackupSchedule
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -79,6 +82,7 @@ function ValidateBackupSchedule
 
 function GetBackupFrequenceFromTimeInterval
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]

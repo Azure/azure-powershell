@@ -14,9 +14,9 @@ Creates or updates a BackupVault resource belonging to a resource group.
 
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
- -StorageSetting <IStorageSetting[]> -VaultName <String> [-DefaultProfile <PSObject>] [-ETag <String>]
- [-IdentityType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ [-ETag <String>] [-IdentityType <String>] [-NoWait] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 This command creates a new backup vault.
 
 ## PARAMETERS
+
+### -AsJob
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 
@@ -93,6 +108,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

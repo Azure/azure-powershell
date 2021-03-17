@@ -1,4 +1,5 @@
 ﻿function AddFilterToQuery {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -31,6 +32,7 @@
 
 function CheckResourceGraphModuleDependency
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param() 
 
 	process
@@ -46,6 +48,7 @@ function CheckResourceGraphModuleDependency
 
 function GetBackupInstanceARGQuery
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param()
 
 	process
@@ -60,6 +63,7 @@ function GetBackupInstanceARGQuery
 
 function GetBackupJobARGQuery
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param()
 
 	process

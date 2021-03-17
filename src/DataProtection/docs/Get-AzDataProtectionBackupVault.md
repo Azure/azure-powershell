@@ -15,7 +15,7 @@ Returns a resource belonging to a resource group.
 ### list (Default)
 ```
 Get-AzDataProtectionBackupVault [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -80,7 +80,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False

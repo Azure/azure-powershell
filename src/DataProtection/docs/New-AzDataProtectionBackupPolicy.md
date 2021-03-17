@@ -14,7 +14,8 @@ Creates a new backup policy in a given backup vault
 
 ```
 New-AzDataProtectionBackupPolicy -Name <String> -Policy <IBackupPolicy> -ResourceGroupName <String>
- -VaultName <String> [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,21 @@ MyPolicy       Microsoft.DataProtection/backupVaults/backupPolicies
 This command creates a default policy for Azure disk datasource type.
 
 ## PARAMETERS
+
+### -DefaultProfile
+
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Policy Name

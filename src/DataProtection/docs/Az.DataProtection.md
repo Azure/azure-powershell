@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: DataProtection cmdlets
 
 ## Az.DataProtection Cmdlets
-### [AddFilterToQuery](AddFilterToQuery.md)
-
-
 ### [Backup-AzDataProtectionBackupInstanceAdhoc](Backup-AzDataProtectionBackupInstanceAdhoc.md)
 Trigger adhoc backup
 
@@ -44,38 +41,11 @@ Gets default policy template for a selected datasource type.
 ### [Get-AzDataProtectionRecoveryPoint](Get-AzDataProtectionRecoveryPoint.md)
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
-### [GetBackupFrequenceFromTimeInterval](GetBackupFrequenceFromTimeInterval.md)
-
-
-### [GetBackupFrequencyString](GetBackupFrequencyString.md)
-
-
-### [GetClientDatasourceType](GetClientDatasourceType.md)
-
-
-### [GetDatasourceInfo](GetDatasourceInfo.md)
-
-
-### [GetDatasourceSetInfo](GetDatasourceSetInfo.md)
-
-
-### [GetDatasourceTypes](GetDatasourceTypes.md)
-Prepares Datasource object for backup
-
-### [GetRestoreType](GetRestoreType.md)
-
-
-### [GetTaggingPriority](GetTaggingPriority.md)
-
-
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
 Initializes Backup instance Request object for configuring backup
 
 ### [Initialize-AzDataProtectionRestoreRequest](Initialize-AzDataProtectionRestoreRequest.md)
 Initializes Restore Request object for triggering restore on a protected backup instance.
-
-### [LoadManifest](LoadManifest.md)
-Prepares Datasource object for backup
 
 ### [New-AzDataProtectionBackupInstance](New-AzDataProtectionBackupInstance.md)
 Configures Backup for supported azure resources
@@ -122,10 +92,4 @@ Updates associated policy for a given backup instance
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
 Updates a BackupVault resource belonging to a resource group.
 For example, updating tags for a resource.
-
-### [ValidateBackupSchedule](ValidateBackupSchedule.md)
-
-
-### [ValidateRestoreOptions](ValidateRestoreOptions.md)
-
 

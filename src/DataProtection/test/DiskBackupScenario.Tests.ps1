@@ -23,8 +23,8 @@ Describe 'DiskBackupScenario' {
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $defaultPolicy = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
-        $policy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -Name $policyName -Policy $defaultPolicy
-        $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policy.Id -DatasourceId $diskId 
+        $policyId = "/subscriptions/" + $sub + "/resourceGroups/" + $rgName + "/providers/Microsoft.DataProtection/backupVaults/" + $vaultName + "/backupPolicies/" + $policyName
+        $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policyId -DatasourceId $diskId 
         $backupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = $snapshotRg
         
         $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
@@ -62,8 +62,6 @@ Describe 'DiskBackupScenario' {
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
-
-        $null = Remove-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -Name $policyName
      }
 
 }

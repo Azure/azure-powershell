@@ -43,6 +43,11 @@
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
     
         [Parameter(DontShow)]
         [System.Management.Automation.SwitchParameter]
@@ -65,6 +70,11 @@
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]

@@ -1,5 +1,6 @@
 ﻿
 function GetRestoreType {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -16,6 +17,7 @@ function GetRestoreType {
 }
 
 function ValidateRestoreOptions {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]

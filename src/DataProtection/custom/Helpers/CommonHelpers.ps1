@@ -1,6 +1,7 @@
 ﻿
 function GetDatasourceSetInfo
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -27,6 +28,7 @@ function GetDatasourceSetInfo
 
 function GetDatasourceInfo
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -66,6 +68,7 @@ function GetDatasourceInfo
 
 function GetClientDatasourceType
 {
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
