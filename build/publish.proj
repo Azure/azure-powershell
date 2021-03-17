@@ -11,18 +11,12 @@
   </PropertyGroup>
 
   <Target Name="CheckRequiredParameters">
-    <Error Text="NuGetApiKey is not assigned a value!" Condition="'$(NuGetApiKey)' == ''" />
-    <Error Text="GitHubAccessToken is not assigned a value!" Condition="'$(GitHubAccessToken)' == ''" />
+  <Error Text="GitHubAccessToken is not assigned a value!" Condition="'$(GitHubAccessToken)' == ''" />
     <Error Text="ReleaseVersion is not assigned a value!" Condition="'$(ReleaseVersion)' == ''" />
     <Error Text="CommitId is not assigned a value!" Condition="'$(CommitId)' == ''" />
   </Target>
 
   <Target Name="All">
-    <Message Importance="high" Text="Publish: All started" />
-    <ItemGroup>
-      <PackagePaths Include="$(PackDir)*.nupkg" Exclude="$(PackDir)*symbols.nupkg" />
-    </ItemGroup>
-    <Exec Command="$(NuGet) push %(PackagePaths.FullPath) -ApiKey $(NuGetApiKey) -Source https://www.myget.org/F/azure-powershell/api/v2/package -SymbolSource https://www.myget.org/F/azure-powershell/symbols/api/v2/package -SymbolApiKey $(NuGetApiKey)" />
     <PropertyGroup>
       <!-- https://stackoverflow.com/a/41618979/294804 -->
       <!-- https://stackoverflow.com/a/38054505/294804 -->

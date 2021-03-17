@@ -1,0 +1,106 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  name: Hosted VS2017
+
+variables:
+- group: GitHub Release Variables
+
+steps:
+- powershell: |
+   # Write your PowerShell commands here.
+   if (-not ($env:VERSION -match "\d+\.\d+\.\d+"))
+   {
+     throw "The value of Version $env:VERSION must be format of X.X.X"
+   }
+   
+  displayName: 'Check Version'
+
+- task: UseDotNet@2
+  displayName: 'Use dotnet sdk 2.1.302'
+  inputs:
+    version: 2.1.302
+
+- powershell: '$(Agent.ToolsDirectory)/dotnet/dotnet msbuild build.proj /t:Build /p:Configuration=Release /p:FileVersion=$env:VERSION /NoLogo'
+  displayName: build
+
+- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  displayName: 'dll Signing'
+  inputs:
+    ConnectedServiceName: 'ESRP Signing Service'
+    FolderPath: artifacts
+    Pattern: |
+     Release\netstandard2.0\Microsoft.Azure.PowerShell*.dll
+     !Release\netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll
+    UseMinimatch: true
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [
+       {
+         "KeyCode": "CP-233863-SN",
+         "OperationCode": "StrongNameSign",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-233863-SN",
+         "OperationCode": "StrongNameVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolSign",
+         "Parameters": {
+           "OpusName": "Microsoft",
+           "OpusInfo": "http://www.microsoft.com",
+           "FileDigest": "/fd \"SHA256\"",
+           "PageHash": "/NPH",
+           "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+         },
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       }
+     ]
+
+- powershell: |
+   $(Agent.ToolsDirectory)/dotnet/dotnet msbuild build.proj  /t:Pack /p:Configuration=Release /p:PackageVersion=$env:VERSION /NoLogo
+  displayName: pack
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+  condition: and(succeeded(), ne(variables['publish'], 'false'))
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  condition: and(succeeded(), ne(variables['publish'], 'false'))
+  inputs:
+    command: push
+    packagesToPush: 'artifacts/Package/Release/Microsoft.Azure.PowerShell.*.nupkg; !artifacts/Package/Release/*.symbols.nupkg'
+    publishVstsFeed: public/azure-powershell
+
+- powershell: |
+   dotnet msbuild build\publish.proj /p:Configuration=Release /p:ReleaseVersion=$env:VERSION /p:CommitId=$env:Build_SourceVersion /p:GitHubAccessToken=$(Github-azuresdkci-personalaccesstoken)  /NoLogo
+  displayName: 'publish package github'
+  condition: and(succeeded(), ne(variables['publish'], 'false'))
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: artifacts/Package/Release/
+    ArtifactName: aitifacts
