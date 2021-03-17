@@ -58,7 +58,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
                'Microsoft.Azure.KeyVault.WebKey.dll', 
-               'Microsoft.Azure.Management.ServiceFabric.dll'
+               'Microsoft.Azure.Management.ServiceFabric.dll',
+               'Microsoft.Azure.Management.ServiceFabricManagedClusters.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -113,7 +114,23 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Remove-AzServiceFabricManagedNodeTypeVMExtension', 
                'Restart-AzServiceFabricManagedNodeType',
                'Update-AzServiceFabricNodeType',
-               'Update-AzServiceFabricVmImage'
+               'Update-AzServiceFabricVmImage',
+               'New-AzServiceFabricManagedClusterApplication', 
+               'Get-AzServiceFabricManagedClusterApplication', 
+               'Set-AzServiceFabricManagedClusterApplication', 
+               'Remove-AzServiceFabricManagedClusterApplication',
+               'New-AzServiceFabricManagedClusterApplicationType', 
+               'Get-AzServiceFabricManagedClusterApplicationType', 
+               'Set-AzServiceFabricManagedClusterApplicationType', 
+               'Remove-AzServiceFabricManagedClusterApplicationType',
+               'New-AzServiceFabricManagedClusterApplicationTypeVersion', 
+               'Get-AzServiceFabricManagedClusterApplicationTypeVersion', 
+               'Set-AzServiceFabricManagedClusterApplicationTypeVersion', 
+               'Remove-AzServiceFabricManagedClusterApplicationTypeVersion',
+               'New-AzServiceFabricManagedClusterService', 
+               'Get-AzServiceFabricManagedClusterService', 
+               'Set-AzServiceFabricManagedClusterService', 
+               'Remove-AzServiceFabricManagedClusterService'
 
 # Variables to export from this module
 # VariablesToExport = @()
