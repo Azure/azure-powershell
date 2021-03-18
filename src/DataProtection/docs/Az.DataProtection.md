@@ -69,7 +69,7 @@ Creates new Schedule object
 Creates new Lifecycle object
 
 ### [Remove-AzDataProtectionBackupInstance](Remove-AzDataProtectionBackupInstance.md)
-
+Delete a backupInstances
 
 ### [Remove-AzDataProtectionBackupPolicy](Remove-AzDataProtectionBackupPolicy.md)
 Deletes a backup policy belonging to a backup vault
