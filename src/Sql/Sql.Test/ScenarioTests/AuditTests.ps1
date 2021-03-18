@@ -1371,7 +1371,7 @@ function Test-ServerAuditingToStorageInVNet
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-BlobAuditingTestEnvironment $testSuffix "southeast asia" "12.0" $True
+	Create-BlobAuditingTestEnvironment $testSuffix "West Central US" "12.0" $True
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 
@@ -1420,7 +1420,7 @@ function Test-MSSupportServerAuditingToStorageInVNet
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-BlobAuditingTestEnvironment $testSuffix "southeast asia" "12.0" $True
+	Create-BlobAuditingTestEnvironment $testSuffix "West Central US" "12.0" $True
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 
@@ -1463,7 +1463,7 @@ function Test-DatabaseAuditingToStorageInVNet
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-BlobAuditingTestEnvironment $testSuffix "southeast asia" "12.0" $True
+	Create-BlobAuditingTestEnvironment $testSuffix "West Central US" "12.0" $True
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 
