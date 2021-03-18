@@ -204,10 +204,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultCollation = "SQL_Latin1_General_CP1_CI_AS";
 
-        public const string AllowAllStartIpAddress = "0.0.0.0";
-
-        public const string AllowAllEndIpAddress = "255.255.255.255";
-
         public const string StorageBlobDataContributorRoleName = "Azure Blob Data Contributor";
 
         public class Security
