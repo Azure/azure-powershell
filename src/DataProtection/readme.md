@@ -39,6 +39,9 @@ require:
 input-file: https://github.com/Azure/azure-rest-api-specs/blob/26128b7117bb4d2df4937bed3e366b7841fe5aed/specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2021-02-01-preview/dataprotection.json
 title: DataProtection
 directive:
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
+    transform: $["description"] = "Delete a backupInstances"
   - where:
       verb: Get
       subject: BackupVaultResource.*

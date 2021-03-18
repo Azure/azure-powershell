@@ -19,7 +19,12 @@ Creates a new backup policy in a given backup vault
 .Description
 Creates a new backup policy in a given backup vault
 .Example
+PS C:\> $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
+PS C:\> New-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Name "MyPolicy" -Policy $defaultPol
 
+Name              Type
+----              ----
+MyPolicy       Microsoft.DataProtection/backupVaults/backupPolicies
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBaseBackupPolicyResource
