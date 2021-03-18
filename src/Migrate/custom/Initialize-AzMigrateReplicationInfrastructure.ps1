@@ -203,7 +203,7 @@ public static int hashForArtifact(String artifact)
 
         if ($null -eq $solution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
              $null -eq $solution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
-            throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
+            throw "Server Migration Solution missing Appliance Details. Invalid Solution."           
         }
 
         foreach ($eachApp in $appMap.GetEnumerator()) {
