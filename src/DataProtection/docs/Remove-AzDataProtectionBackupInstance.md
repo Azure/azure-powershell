@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-
+Delete a backupInstances
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-D
 ```
 
 ## DESCRIPTION
-
+Delete a backupInstances
 
 ## EXAMPLES
 
