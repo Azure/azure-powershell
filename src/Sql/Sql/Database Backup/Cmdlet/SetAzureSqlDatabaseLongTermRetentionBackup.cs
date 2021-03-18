@@ -182,5 +182,20 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 base.ExecuteCmdlet();
             }
         }
+
+        // show warning only for Geo selected, not for none specified
+        protected new void ShowBackupStorageRedundancyWarningIfNeeded(string backupStorageRedundancy, string location)
+        {
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (backupStorageRedundancy != null)
+                {
+                    if (string.Equals(backupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
+                    }
+                }
+            }
+        }
     }
 }

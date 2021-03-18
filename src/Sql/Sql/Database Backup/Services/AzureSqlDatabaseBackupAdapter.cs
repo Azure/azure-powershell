@@ -315,18 +315,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.SourceBackupName,
                 model.SourceResourceGroupName);
 
-            Dictionary<string, string> targetBackupResourceIdSegments = ParseLongTermRentionBackupResourceId(response.ToBackupResourceId);          
+            Dictionary<string, string> targetBackupResourceIdSegments = ParseLongTermRentionBackupResourceId(response.ToBackupResourceId);
+
+            string targetLocationName = targetBackupResourceIdSegments["locations"];
+            string targetServerName = targetBackupResourceIdSegments["longTermRetentionServers"];
+            string targetDatabaseName = targetBackupResourceIdSegments["longTermRetentionDatabases"];
+            string targetBackupName = targetBackupResourceIdSegments["longTermRetentionBackups"];
+            string targetResourceGroupName = targetBackupResourceIdSegments.ContainsKey("resourceGroups") ? targetBackupResourceIdSegments["resourceGroups"] : null;
 
             Management.Sql.Models.LongTermRetentionBackup targetBackup = Communicator.GetDatabaseLongTermRetentionBackup(
-                targetBackupResourceIdSegments["locations"],
-                targetBackupResourceIdSegments["longTermRetentionServers"],
-                targetBackupResourceIdSegments["longTermRetentionDatabases"],
-                targetBackupResourceIdSegments["longTermRetentionBackups"],
-                targetBackupResourceIdSegments.ContainsKey("resourceGroups") ? targetBackupResourceIdSegments["resourceGroups"] : null);
+                targetLocationName,
+                targetServerName,
+                targetDatabaseName,
+                targetBackupName,
+                targetResourceGroupName);
 
             model.SourceBackupResourceId = response.FromBackupResourceId;
             model.SourceBackupStorageRedundancy = sourceBackup.BackupStorageRedundancy;
-            model.TargetLocation = targetBackupResourceIdSegments["locations"];
+            model.TargetLocation = targetLocationName;
             model.TargetServerName = targetBackup.ServerName;
             model.TargetBackupName = targetBackup.Name;
             model.TargetBackupResourceId = response.ToBackupResourceId;
