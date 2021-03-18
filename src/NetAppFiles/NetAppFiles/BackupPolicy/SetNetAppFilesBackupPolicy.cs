@@ -24,16 +24,17 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
     [Cmdlet(
-        "New",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [Alias("New-AnfBackupPolicy")]
-    public class NewAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfBackupPolicy")]
+    public class SetAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -117,8 +118,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResources = resourceIdentifier.ParentResource.Split('/');
+                AccountName = parentResources[1];
+                Name = resourceIdentifier.ResourceName;
+            }
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
@@ -137,9 +154,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
-
             Management.NetApp.Models.BackupPolicy existingBackupPolicy = null;
-
             try
             {
                 existingBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, Name);
@@ -148,9 +163,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             {
                 existingBackupPolicy = null;
             }
-            if (existingBackupPolicy != null)
+            if (existingBackupPolicy == null)
             {
-                throw new Exception(string.Format("A Backup Policy with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesBackupPolicy to update an existing Backup Policy.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A Backup Policy with name '{0}' in resource group '{1}' does not exist. Please use New-AzNetAppFilesBackupPolicy to create a new Backup Policy.", this.Name, this.ResourceGroupName));
             }
 
             var backupPolicyBody = new Management.NetApp.Models.BackupPolicy()
@@ -164,7 +179,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 YearlyBackupsToKeep = YearlyBackupsToKeep
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Create(ResourceGroupName, AccountName, backupPolicyName: Name, body: backupPolicyBody);
                 WriteObject(anfBackupPolicy.ConvertToPs());

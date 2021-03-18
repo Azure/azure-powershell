@@ -20,18 +20,19 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
     [Cmdlet(
-        "New",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesPool",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesPool))]
-    [Alias("New-AnfPool")]
-    public class NewAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfPool")]
+    public class SetAzureRmNetAppFilesPool : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -105,10 +106,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IDictionary<string, string> tagPairs = null;
-
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResources = resourceIdentifier.ParentResource.Split('/');
+                AccountName = parentResources[1];
+                Name = resourceIdentifier.ResourceName;
+            }
             if (Tag != null)
             {
                 tagPairs = new Dictionary<string, string>();
@@ -118,20 +134,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
-            //check existing 
-            CapacityPool existingPool = null;
 
+            CapacityPool existingPool = null;
             try
             {
-                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName,  Name);
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName, Name);
             }
             catch
             {
                 existingPool = null;
             }
-            if (existingPool != null)
+            if (existingPool == null)
             {
-                throw new Exception(string.Format("A Capacity Pool with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.", this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format("A Capacity Pool with name '{0}' in resource group '{1}' does not exist. Please use New-AzNetAppFilesPool to create a new Capacity Pool.", this.Name, this.ResourceGroupName));
             }
 
             if (ParameterSetName == ParentObjectParameterSet)
@@ -150,7 +165,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 QosType = QosType
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
                 WriteObject(anfPool.ToPsNetAppFilesPool());

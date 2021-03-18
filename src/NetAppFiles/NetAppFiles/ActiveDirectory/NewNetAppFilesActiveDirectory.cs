@@ -113,7 +113,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public string[] BackupOperator { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.")]
@@ -125,7 +124,33 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             HelpMessage = "Name of the active directory machine. This optional parameter is used only while creating kerberos volume")]
         [ValidateNotNullOrEmpty]
         public string AdName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier")]
+        [ValidateNotNullOrEmpty]
+        public string[] SecurityOperator { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When AES is enabled, set if AES encryption will be enabled for SMB communication.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AesEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When LDAP over SSL/TLS is enabled, Specifies whether or not the LDAP traffic needs to be signed.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter LdapSigning { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When LDAP over SSL/TLS is enabled, specifies whether or not the LDAP traffic needs to be secured via TLS.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter LdapOverTLS { get; set; }
         
+
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
@@ -163,7 +188,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     OrganizationalUnit = OrganizationalUnit,
                     BackupOperators = BackupOperator,
                     KdcIP = KdcIP,
-                    ServerRootCACertificate = ServerRootCACertificate
+                    ServerRootCACertificate = ServerRootCACertificate,
+                    SecurityOperators = SecurityOperator,
+                    AesEncryption = AesEncryption,
+                    LdapSigning = LdapSigning,
+                    LdapOverTLS = LdapOverTLS
                 };
                 if (anfAccount.ActiveDirectories == null)
                 {
