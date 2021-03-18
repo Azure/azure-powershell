@@ -1308,6 +1308,22 @@
     {
       "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
       "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnSiteLinkConnectionGetIkeSa.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnConnectionPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnGatewayPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\ScenarioTests\\CortexTests.ps1",
+      "_justification": "Generated test resource groups are deleted after test execution"
     }
   ]
 }

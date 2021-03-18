@@ -54,6 +54,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public SecureString SqlAdministratorLoginPassword { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
+        [ValidateNotNull]
+        public PSManagedVirtualNetworkSettings ManagedVirtualNetwork { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyName)]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionKeyName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -96,6 +104,18 @@ namespace Microsoft.Azure.Commands.Synapse
             WorkspacePatchInfo patchInfo = new WorkspacePatchInfo();
             patchInfo.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : TagsConversionHelper.CreateTagDictionary(this.InputObject?.Tags, validate:true);
             patchInfo.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : null;
+            patchInfo.ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : this.InputObject?.ManagedVirtualNetworkSettings?.ToSdkObject();
+            string encrptionKeyName = this.IsParameterBound(c => c.EncryptionKeyName) ? this.EncryptionKeyName : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.Key?.Name;
+            patchInfo.Encryption = !string.IsNullOrEmpty(encrptionKeyName) ? new EncryptionDetails
+            {
+                Cmk = new CustomerManagedKeyDetails
+                {
+                    Key = new WorkspaceKeyDetails
+                    {
+                        Name = encrptionKeyName
+                    }
+                }
+            } : null;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {

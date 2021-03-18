@@ -19,6 +19,25 @@
 --->
 
 ## Upcoming Release
+* Updated `set-azExpressRouteGateway` to allow parameter -MinScaleUnits without specifying -MaxScaleUnits
+* Updated cmdlets to enable setting of VpnLinkConnectionMode on VpnSiteLinkConnections.
+    - `New-AzVpnSiteLinkConnection`
+    - `Update-AzVpnConnection`
+* Added new cmdlet to fetch IKE Security Associations for VPN Site Link Connections.
+    - `Get-VpnSiteLinkConnectionIkeSa`
+* Added new cmdlet to reset a Virtual Network Gateway Connection.
+    - `Reset-AzVirtualNetworkGatewayConnection`
+* Added new cmdlet to reset a Vpn Site Link Connection.
+    - `Reset-VpnSiteLinkConnection`
+* Updated cmdlets to enable setting an optional parameter -TrafficSelectorPolicies
+    - `New-AzVpnConnection`
+    - `Update-AzVpnConnection`
+* Bug fix for update vpnServerConfiguration.
+* Add scenarioTest for p2s multi auth VWAN.
+* Added multi auth feature support for VNG
+	- `Get-AzVpnClientConfiguration`
+	- `New-AzVirtualNetworkGateway`
+	- `Set-AzVirtualNetworkGateway`
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
@@ -33,6 +52,7 @@
     - Added deprecation attribute warning to the old cmdlets.
 * Bug fix in ExpressRouteLink MacSecConfig. Added new property `SciState` to `PSExpressRouteLinkMacSecConfig`
 * Updated format list and format table views for Get-AzVirtualNetworkGatewayConnectionIkeSa
+* Updated New-AzFirewall to no longer require data public IP for force tunneling firewall (with management IP and subnet)
 
 ## Version 4.5.0
 * Added new cmdlets for CRUD of VpnGatewayNATRule.

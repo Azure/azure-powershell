@@ -98,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName = (string) content.GetValueForProperty("ImageTemplateName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName = (string) content.GetValueForProperty("RunOutputName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName = (string) content.GetValueForProperty("ImageTemplateName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName = (string) content.GetValueForProperty("RunOutputName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName = (string) content.GetValueForProperty("ImageTemplateName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName = (string) content.GetValueForProperty("RunOutputName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName = (string) content.GetValueForProperty("ImageTemplateName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).ImageTemplateName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName = (string) content.GetValueForProperty("RunOutputName",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).RunOutputName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentityInternal)this).Id, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

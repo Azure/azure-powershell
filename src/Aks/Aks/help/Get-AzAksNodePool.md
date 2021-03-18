@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAksNodePool
 
 ## SYNOPSIS
-Create note pool in specified cluster.
+List node pools in specified cluster.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzAksNodePool -ClusterObject <PSKubernetesCluster> [-Name <String>]
 ```
 
 ## DESCRIPTION
-Create note pool in specified cluster.
+List node pools in specified cluster.
 
 ## EXAMPLES
 

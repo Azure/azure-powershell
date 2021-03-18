@@ -175,6 +175,7 @@ function Test-CreateVolumeFromSnapshot
     $accName = Get-ResourceName
     $poolName = Get-ResourceName
     $volName = Get-ResourceName
+    $volName2 = Get-ResourceName
     $snName1 = Get-ResourceName
     $snName2 = Get-ResourceName
     $gibibyte = 1024 * 1024 * 1024
