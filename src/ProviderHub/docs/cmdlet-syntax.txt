@@ -1,0 +1,462 @@
+PS C:\> Get-Help Get-AzProviderHubCustomRollout
+SYNTAX
+    Get-AzProviderHubCustomRollout -ProviderNamespace <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubCustomRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubCustomRollout
+SYNTAX
+    New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String>] [-CanaryRegion <String[]>] [-ProvisioningState <ProvisioningState>]
+    [-SpecificationProviderRegistration <IProviderRegistration>] [-SpecificationResourceTypeRegistration
+    <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>] [-StatusFailedOrSkippedRegion
+    <Hashtable>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String>] -Property <ICustomRollout> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubCustomRollout -InputObject <IProviderHubIdentity> [-CanaryRegion <String[]>]
+    [-ProvisioningState <ProvisioningState>] [-SpecificationProviderRegistration <IProviderRegistration>]
+    [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>] [-StatusCompletedRegion
+    <String[]>] [-StatusFailedOrSkippedRegion <Hashtable>] [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubCustomRollout -InputObject <IProviderHubIdentity> -Property <ICustomRollout>
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Get-AzProviderHubDefaultRollout
+SYNTAX
+    Get-AzProviderHubDefaultRollout -ProviderNamespace <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubDefaultRollout
+SYNTAX
+    New-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String>] [-CanaryRegion <String[]>] [-CanarySkipRegion <String[]>] [-HighTrafficRegion <String[]>]
+    [-HighTrafficWaitDuration <TimeSpan>] [-LowTrafficRegion <String[]>] [-LowTrafficWaitDuration
+    <TimeSpan>] [-MediumTrafficRegion <String[]>] [-MediumTrafficWaitDuration <TimeSpan>]
+    [-ProvisioningState <ProvisioningState>] [-RestOfTheWorldGroupOneRegion <String[]>]
+    [-RestOfTheWorldGroupOneWaitDuration <TimeSpan>] [-RestOfTheWorldGroupTwoRegion <String[]>]
+    [-RestOfTheWorldGroupTwoWaitDuration <TimeSpan>] [-SpecificationProviderRegistration
+    <IProviderRegistration>] [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>]
+    [-StatusCompletedRegion <String[]>] [-StatusFailedOrSkippedRegion <Hashtable>]
+    [-StatusNextTrafficRegion <TrafficRegionCategory>] [-StatusNextTrafficRegionScheduledTime <DateTime>]
+    [-StatusSubscriptionReregistrationResult <SubscriptionReregistrationResult>] [-DefaultProfile
+    <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String>] -Property <IDefaultRollout> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-CanaryRegion <String[]>]
+    [-CanarySkipRegion <String[]>] [-HighTrafficRegion <String[]>] [-HighTrafficWaitDuration <TimeSpan>]
+    [-LowTrafficRegion <String[]>] [-LowTrafficWaitDuration <TimeSpan>] [-MediumTrafficRegion <String[]>]
+    [-MediumTrafficWaitDuration <TimeSpan>] [-ProvisioningState <ProvisioningState>]
+    [-RestOfTheWorldGroupOneRegion <String[]>] [-RestOfTheWorldGroupOneWaitDuration <TimeSpan>]
+    [-RestOfTheWorldGroupTwoRegion <String[]>] [-RestOfTheWorldGroupTwoWaitDuration <TimeSpan>]
+    [-SpecificationProviderRegistration <IProviderRegistration>] [-SpecificationResourceTypeRegistration
+    <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>] [-StatusFailedOrSkippedRegion
+    <Hashtable>] [-StatusNextTrafficRegion <TrafficRegionCategory>] [-StatusNextTrafficRegionScheduledTime
+    <DateTime>] [-StatusSubscriptionReregistrationResult <SubscriptionReregistrationResult>]
+    [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> -Property <IDefaultRollout>
+    [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Remove-AzProviderHubDefaultRollout
+SYNTAX
+    Remove-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId
+    <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    Remove-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+
+PS C:\> Get-Help Get-AzProviderHubNotificationRegistration
+SYNTAX
+    Get-AzProviderHubNotificationRegistration -ProviderNamespace <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String> [-SubscriptionId
+    <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubNotificationRegistration
+SYNTAX
+    New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String> [-SubscriptionId
+    <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>] [-NotificationEndpoint
+    <INotificationEndpoint[]>] [-NotificationMode <NotificationMode>] [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String> [-SubscriptionId
+    <String>] -Property <INotificationRegistration> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-IncludedEvent
+    <String[]>] [-MessageScope <MessageScope>] [-NotificationEndpoint <INotificationEndpoint[]>]
+    [-NotificationMode <NotificationMode>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> -Property
+    <INotificationRegistration> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Remove-AzProviderHubNotificationRegistration
+SYNTAX
+    Remove-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
+    [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    Remove-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
+    [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Get-AzProviderHubProviderRegistration
+SYNTAX
+    Get-AzProviderHubProviderRegistration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubProviderRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubProviderRegistration
+SYNTAX
+    New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
+    [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>]
+    [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
+    [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
+    [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
+    [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata
+    <IAny>] [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
+    [-ProviderAuthorization <IResourceProviderAuthorization[]>]
+    [-ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]
+    [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>] [-ProviderType
+    <ResourceProviderType>] [-ProviderVersion <String>] [-ProvisioningState <ProvisioningState>]
+    [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+    [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+    [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction
+    <ISubscriptionStateOverrideAction[]>] [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>]
+    [-TemplateDeploymentOptionPreflightSupported] [-ThirdPartyProviderAuthorizationAuthorizationszzz
+    <ILightHouseAuthorization[]>] [-ThirdPartyProviderAuthorizationManagedByTenantId <String>]
+    [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>] -Property
+    <IProviderRegistration> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubProviderRegistration -InputObject <IProviderHubIdentity> [-Capability
+    <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>]
+    [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
+    [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
+    [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
+    [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata
+    <IAny>] [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
+    [-ProviderAuthorization <IResourceProviderAuthorization[]>]
+    [-ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]
+    [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>] [-ProviderType
+    <ResourceProviderType>] [-ProviderVersion <String>] [-ProvisioningState <ProvisioningState>]
+    [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+    [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+    [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction
+    <ISubscriptionStateOverrideAction[]>] [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>]
+    [-TemplateDeploymentOptionPreflightSupported] [-ThirdPartyProviderAuthorizationAuthorizationszzz
+    <ILightHouseAuthorization[]>] [-ThirdPartyProviderAuthorizationManagedByTenantId <String>]
+    [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubProviderRegistration -InputObject <IProviderHubIdentity> -Property
+    <IProviderRegistration> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Remove-AzProviderHubProviderRegistration
+SYNTAX
+    Remove-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    Remove-AzProviderHubProviderRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
+    [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Get-AzProviderHubResourceTypeRegistration
+SYNTAX
+    Get-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+    [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubResourceTypeRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubResourceTypeRegistration
+SYNTAX
+    New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+    [-SubscriptionId <String>] [-AllowedUnauthorizedAction <String[]>] [-AuthorizationActionMapping
+    <IAuthorizationActionMapping[]>] [-CheckNameAvailabilitySpecificationEnableDefaultValidation]
+    [-CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>] [-DefaultApiVersion
+    <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation] [-EnableThirdPartyS2S] [-Endpoint
+    <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
+    [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>] [-IdentityManagementApplicationId <String>]
+    [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy] [-LinkedAccessCheck
+    <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
+    [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>] [-RequestHeaderOptionOptInHeader
+    <OptInHeaderType>] [-RequiredFeature <String[]>] [-ResourceCreationBeginRequest
+    <ExtensionOptionType[]>] [-ResourceCreationBeginResponse <ExtensionOptionType[]>]
+    [-ResourceDeletionPolicy <ResourceDeletionPolicy>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
+    [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
+    [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+    [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+    [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction
+    <ISubscriptionStateOverrideAction[]>] [-SubscriptionStateRule <ISubscriptionStateRule[]>]
+    [-SwaggerSpecification <ISwaggerSpecification[]>] [-TemplateDeploymentOptionPreflightOption
+    <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported] [-ThrottlingRule
+    <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+    [-SubscriptionId <String>] -Property <IResourceTypeRegistration> [-DefaultProfile <PSObject>] [-AsJob]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubResourceTypeRegistration -InputObject <IProviderHubIdentity>
+    [-AllowedUnauthorizedAction <String[]>] [-AuthorizationActionMapping <IAuthorizationActionMapping[]>]
+    [-CheckNameAvailabilitySpecificationEnableDefaultValidation]
+    [-CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>] [-DefaultApiVersion
+    <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation] [-EnableThirdPartyS2S] [-Endpoint
+    <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
+    [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>] [-IdentityManagementApplicationId <String>]
+    [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy] [-LinkedAccessCheck
+    <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
+    [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>] [-RequestHeaderOptionOptInHeader
+    <OptInHeaderType>] [-RequiredFeature <String[]>] [-ResourceCreationBeginRequest
+    <ExtensionOptionType[]>] [-ResourceCreationBeginResponse <ExtensionOptionType[]>]
+    [-ResourceDeletionPolicy <ResourceDeletionPolicy>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
+    [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
+    [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+    [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+    [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction
+    <ISubscriptionStateOverrideAction[]>] [-SubscriptionStateRule <ISubscriptionStateRule[]>]
+    [-SwaggerSpecification <ISwaggerSpecification[]>] [-TemplateDeploymentOptionPreflightOption
+    <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported] [-ThrottlingRule
+    <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubResourceTypeRegistration -InputObject <IProviderHubIdentity> -Property
+    <IResourceTypeRegistration> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Remove-AzProviderHubResourceTypeRegistration
+SYNTAX
+    Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+    [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    Remove-AzProviderHubResourceTypeRegistration -InputObject <IProviderHubIdentity> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
+    [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help Get-AzProviderHubSku
+SYNTAX
+    Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
+    -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String> -NestedResourceTypeThird <String>
+    [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend
+    <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+    [<CommonParameters>]
+
+    Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
+    -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String> [-DefaultProfile <PSObject>]
+    [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
+    -NestedResourceTypeFirst <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String> [-SubscriptionId
+    <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+    Get-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubSku
+SYNTAX
+    New-AzProviderHubSku -InputObject <IProviderHubIdentity> -Property <IResourceTypeSku> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String> [-SubscriptionId
+    <String>] -SkuSetting <ISkuSetting[]> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String> [-SubscriptionId
+    <String>] -Property <IResourceTypeSku> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    New-AzProviderHubSku -InputObject <IProviderHubIdentity> -SkuSetting <ISkuSetting[]> [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+
+PS C:\> Get-Help Remove-AzProviderHubSku
+SYNTAX
+    Remove-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
+    [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    Remove-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy
+    <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+
+PS C:\> Get-Help Invoke-AzProviderHubManifestCheckin
+SYNTAX
+    Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> [-SubscriptionId <String>]
+    -BaselineArmManifestLocation <String> -Environment <String> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> [-SubscriptionId <String>]
+    -CheckinManifestParam <ICheckinManifestParams> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity> -BaselineArmManifestLocation
+    <String> -Environment <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend
+    <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential
+    <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+    Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity> -CheckinManifestParam
+    <ICheckinManifestParams> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+    [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+    [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+PS C:\> Get-Help New-AzProviderHubManifest
+SYNTAX
+    New-AzProviderHubManifest -ProviderNamespace <String> [-SubscriptionId <String>] [-DefaultProfile
+    <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>]
+    [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+    New-AzProviderHubManifest -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-Break]
+    [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+    [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+
+
