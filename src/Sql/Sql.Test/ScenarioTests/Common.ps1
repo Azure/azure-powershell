@@ -224,7 +224,7 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 	New-AzResourceGroup -Name $params.rgname -Location "West Central US"
     New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials
 	New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
-	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -Force
 
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
@@ -353,7 +353,7 @@ function Create-ServerKeyVaultKeyTestEnvironment ($params)
 	Assert-AreEqual $server.ServerName $params.serverName
 
 	# Create database
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName -Force
 	Assert-AreEqual $db.DatabaseName $params.databaseName
 
 	#Set permissions on key Vault
@@ -694,7 +694,7 @@ function Remove-ServerForTest ($server)
 function Create-DatabaseForTest ($server)
 {
 	$dbName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dbName -Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	$db = New-AzSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dbName -Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0 -Force
 	return $db
 }
 

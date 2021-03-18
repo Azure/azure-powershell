@@ -358,7 +358,7 @@ function Test-FailoverSecondaryDatabase()
 function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition -Force
 }
 
 <#
@@ -368,7 +368,7 @@ function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType $licenseType -Force
 }
 
 <#
@@ -378,7 +378,7 @@ function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType
 function Create-HyperscaleDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType -Force
 }
 
 <#
@@ -434,14 +434,14 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy local -Force
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy 'Local'
 
 		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
-		Assert-AreEqual $secondaryDb.BackupStorageRedundancy "Local"
+		Assert-AreEqual $secondaryDb.CurrentBackupStorageRedundancy "Local"
 	}
 	finally
 	{
-		Remove-ResourceGroupForTest $rg
-		Remove-ResourceGroupForTest $partRg
+		Remove-ResourceGroupForTest $rg 
+		Remove-ResourceGroupForTest $partRg 
 	}
 }
