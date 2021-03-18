@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supporting try to get default vmsize from backend if customer does not provide the related parameters: `-WorkerNodeSize`, `-HeadNodeSize`, `-ZookeeperNodeSize`, `-EdgeNodeSize`, `-KafkaManagementNodeSize`. However, we suggest customer to specify the concrete vm size manually.
 
 ## Version 4.2.0
 * Added new parameter `-EnableComputeIsolation` and `-ComputeIsolationHostSku` to the cmdlet `New-AzHDInsightCluster` to support compute isolation feature

@@ -349,18 +349,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             };
         }
 
-        public static string GetNodeSize(string clusterType, ClusterNodeType nodeType)
+        public static string GetNodeSize(string clusterType, string nodeRoleType)
         {
-            switch (nodeType)
+            switch (nodeRoleType)
             {
-                case ClusterNodeType.HeadNode:
+                case Constants.ClusterRoleType.HeadNodeRole:
                     return DefaultVmSizes.HeadNode.GetSize(clusterType);
-                case ClusterNodeType.WorkerNode:
+                case Constants.ClusterRoleType.WorkerNodeRole:
                     return DefaultVmSizes.WorkerNode.GetSize(clusterType);
-                case ClusterNodeType.ZookeeperNode:
+                case Constants.ClusterRoleType.ZookeeperNodeRole:
                     return DefaultVmSizes.ZookeeperNode.GetSize(clusterType);
-                case ClusterNodeType.EdgeNode:
+                case Constants.ClusterRoleType.EdgeNodeRole:
                     return DefaultVmSizes.EdgeNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.KafkaManagementNodeRole:
+                    return DefaultVmSizes.KafkaManagementNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.HIBNodeRole:
+                    return DefaultVmSizes.IdBrokerNode.GetSize(clusterType);
                 default:
                     throw new ArgumentOutOfRangeException("nodeType");
             }
@@ -368,7 +372,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public static string GetNodeSize(string clusterType, string nodeRoleType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations)
         {
-            return GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations);
+            string vmSize=GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations);
+            if (vmSize == null)
+            {
+                vmSize = GetNodeSize(clusterType, nodeRoleType);
+            }
+            return vmSize;
         }
 
         public static SecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile, string assignedIdentity)

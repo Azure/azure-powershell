@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             public const string HeadNodeRole = "HEADNODEROLE";
             public const string WorkerNodeRole = "WORKERNODEROLE";
-            public const string ZookeeperNodeRole = "ZOOKEEPERNODEROLE";
+            public const string ZookeeperNodeRole = "ZOOKEEPERROLE";
             public const string EdgeNodeRole = "EDGENODEROLE";
             public const string KafkaManagementNodeRole = "KAFKAMANAGEMENTNODEROLE";
             public const string HIBNodeRole = "HIBROLE";
