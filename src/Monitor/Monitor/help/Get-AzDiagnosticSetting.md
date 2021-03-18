@@ -13,8 +13,15 @@ Gets the logged categories and time grains.
 
 ## SYNTAX
 
+### ResourceIdParameterSet
 ```
-Get-AzDiagnosticSetting [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDiagnosticSetting [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Get-AzDiagnosticSetting [-Name <String>] -SubscriptionId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -75,11 +82,26 @@ Specifies the ID of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceIdParameterSet
+Aliases: TargetResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription id
+
+```yaml
+Type: System.String
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

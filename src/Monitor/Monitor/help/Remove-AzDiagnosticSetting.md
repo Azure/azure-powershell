@@ -13,8 +13,15 @@ Remove a diagnostic setting for the a resource.
 
 ## SYNTAX
 
+### ResourceIdParameterSet
 ```
-Remove-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDiagnosticSetting [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Remove-AzDiagnosticSetting [-Name <String>] -SubscriptionId <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,7 +82,22 @@ Specifies the ID of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceIdParameterSet
+Aliases: TargetResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription id
+
+```yaml
+Type: System.String
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             {
                 categories.Add(new PSSubscriptionDiagnosticSettingCategory(value.LocalizedValue, PSDiagnosticSettingCategoryType.Logs));
             }
-            WriteObject(categories);
+            WriteObject(categories, true);
         }
     }
 }

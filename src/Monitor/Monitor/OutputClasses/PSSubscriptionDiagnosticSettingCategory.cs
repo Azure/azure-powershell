@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
         public PSSubscriptionDiagnosticSettingCategory() { }
 
-        public PSSubscriptionDiagnosticSettingCategory(string Name, PSDiagnosticSettingCategoryType type) { }
+        public PSSubscriptionDiagnosticSettingCategory(string name, PSDiagnosticSettingCategoryType type) 
+        {
+            Name = name;
+            CategoryType = type;
+        }
     }
 }
