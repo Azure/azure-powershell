@@ -518,7 +518,7 @@ function Test-CopyLongTermRetentionBackup
 
 	# Copy backup
 	$copyBackupResults = Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ServerName $sourceBackup.ServerName -DatabaseName $sourceBackup.DatabaseName -BackupName $sourceBackup.BackupName -ResourceGroupName $resourceGroupName -TargetDatabaseName $targetDatabaseName -TargetServerName $TargetServerName -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName $resourceGroupName
-	$targetBackup = Get-AzSqlDatabaseLongTermRetentionBackup -Location $targetLocationName -ResourceId $copyBackupResults.TargetBackupResourceId
+	$targetBackup = Get-AzSqlDatabaseLongTermRetentionBackup -Location $copyBackupResults.TargetLocation -ResourceGroup $copyBackupResults.TargetResourceGroupName -ServerName $copyBackupResults.TargetServerName -DatabaseName $copyBackupResults.TargetDatabaseName -BackupName $copyBackupResults.TargetBackupName
 	Assert-AreEqual $targetDatabaseName $targetBackup.DatabaseName 
 	Assert-AreEqual $targetServerName $targetBackup.ServerName
 }

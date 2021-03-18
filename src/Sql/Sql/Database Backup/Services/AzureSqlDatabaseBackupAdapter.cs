@@ -315,8 +315,20 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.SourceBackupName,
                 model.SourceResourceGroupName);
 
+            Dictionary<string, string> targetBackupResourceIdSegments = ParseLongTermRentionBackupResourceId(response.ToBackupResourceId);          
+
+            Management.Sql.Models.LongTermRetentionBackup targetBackup = Communicator.GetDatabaseLongTermRetentionBackup(
+                targetBackupResourceIdSegments["locations"],
+                targetBackupResourceIdSegments["longTermRetentionServers"],
+                targetBackupResourceIdSegments["longTermRetentionDatabases"],
+                targetBackupResourceIdSegments["longTermRetentionBackups"],
+                targetBackupResourceIdSegments.ContainsKey("resourceGroups") ? targetBackupResourceIdSegments["resourceGroups"] : null);
+
             model.SourceBackupResourceId = response.FromBackupResourceId;
             model.SourceBackupStorageRedundancy = sourceBackup.BackupStorageRedundancy;
+            model.TargetLocation = targetBackupResourceIdSegments["locations"];
+            model.TargetServerName = targetBackup.ServerName;
+            model.TargetBackupName = targetBackup.Name;
             model.TargetBackupResourceId = response.ToBackupResourceId;
 
             return model;
@@ -691,40 +703,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(resourceGroup, serverName, databaseName, baPolicy);
         }
 
-        /// <summary>
-        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
-        /// </summary>
-        /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
-        /// <returns>internal backupStorageRedundancy</returns>
-        private static string MapExternalBackupStorageRedundancyToInternal(string backupStorageRedundancy)
-        {
-            if (string.IsNullOrWhiteSpace(backupStorageRedundancy))
-            {
-                return null;
-            }
-
-            switch (backupStorageRedundancy.ToLower())
-            {
-                case "geo":
-                    return "GRS";
-                case "local":
-                    return "LRS";
-                case "zone":
-                    return "ZRS";
-                default:
-                    return null;
-            }
-        }
-
         private Dictionary<string, string> ParseLongTermRentionBackupResourceId(string resourceId)
         {
             Dictionary<string, string> resourceElements = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (tokens.Length != 12 && tokens.Length != 14)
-            {
-                throw new Exception($"Invalid ResourceId. resourceID: {resourceId}, tokens.Length {tokens.Length}");
-            }
 
             int i = 0;
             string type;

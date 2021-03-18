@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                     SourceDatabaseName = DatabaseName,
                     SourceBackupName = BackupName,
                     TargetServerFullyQualifiedDomainName = TargetServerFullyQualifiedDomainName,
+                    TargetServerResourceId = targetServerResourceId,
                     TargetDatabaseName = TargetDatabaseName,
-                    TargetServerResourceId = targetServerResourceId, 
-                    TargetSubscriptionId = TargetSubscriptionId, 
+                    TargetSubscriptionId = TargetSubscriptionId,
                     TargetResourceGroupName = TargetResourceGroupName
-                }  
+                }
             };
         }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 
             return newEntity;
         }
-         /// <summary>
+        /// <summary>
         /// Persist changes to server
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
@@ -225,10 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                     ModelAdapter.CopyDatabaseLongTermRetentionBackup(entity.First())
                 };
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         /// <summary>
@@ -246,44 +243,17 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                ParseLongTermRentionBackupResourceId(ResourceId);
+                Dictionary<string, string> resourceIdSegments = ParseLongTermRetentionBackupResourceId(ResourceId);
+                Location = resourceIdSegments["locations"];
+                ServerName = resourceIdSegments["longTermRetentionServers"];
+                DatabaseName = resourceIdSegments["longTermRetentionDatabases"];
+                BackupName = resourceIdSegments["longTermRetentionBackups"];
+                ResourceGroupName = resourceIdSegments.ContainsKey("resourceGroupname") ? resourceIdSegments["resourceGroups"] : null;
             }
 
             if (ShouldProcess(this.BackupName))
             {
                 base.ExecuteCmdlet();
-            }
-        }
-
-        /// <summary>
-        /// Parse the longTermRetentionBackup resource Id
-        /// </summary>
-        /// <param name="resourceId"></param>
-        private void ParseLongTermRentionBackupResourceId(string resourceId)
-        {
-            int offset = 0;
-            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length == 14 || tokens.Length == 12)
-            {
-                if (tokens.Length == 14)
-                {
-                    ResourceGroupName = tokens[3];
-                    offset = 2;
-                }
-                else
-                {
-                    ResourceGroupName = null;
-                }
-
-                Location = tokens[5 + offset];
-                ServerName = tokens[7 + offset];
-                DatabaseName = tokens[9 + offset];
-                BackupName = tokens[11 + offset];
-            }
-            else
-            {
-                throw new ArgumentException("Invalid parameter", "ResourceId");
-
             }
         }
 

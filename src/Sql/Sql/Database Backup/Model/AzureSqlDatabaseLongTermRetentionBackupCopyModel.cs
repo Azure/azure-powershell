@@ -23,14 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
     public class AzureSqlDatabaseLongTermRetentionBackupCopyModel
     {
         /// <summary>
-        /// Gets or sets the backup name.
+        /// Gets or sets the resource group name.
         /// </summary>
-        public string SourceBackupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the database name.
-        /// </summary>
-        public string SourceDatabaseName { get; set; }
+        public string SourceResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the location name.
@@ -43,29 +38,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         public string SourceServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name.
+        /// Gets or sets the database name.
         /// </summary>
-        public string SourceResourceGroupName { get; set; }
+        public string SourceDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup name.
+        /// </summary>
+        public string SourceBackupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source backup resource ID.
+        /// </summary>
+        public string SourceBackupResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the source backup's backup storage redundancy.
         /// </summary>
         public string SourceBackupStorageRedundancy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the target database name.
-        /// </summary>
-        public string TargetDatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the fully qualified domain name of the target server.
-        /// </summary>
-        public string TargetServerFullyQualifiedDomainName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the target server resource id.
-        /// </summary>
-        public string TargetServerResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the target subscription ID.
@@ -78,9 +68,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         public string TargetResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the source backup resource ID.
+        /// Gets or sets the target location name.
         /// </summary>
-        public string SourceBackupResourceId { get; set; }
+        public string TargetLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target server name.
+        /// </summary>
+        public string TargetServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fully qualified domain name of the target server.
+        /// </summary>
+        public string TargetServerFullyQualifiedDomainName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target server resource id.
+        /// </summary>
+        public string TargetServerResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target database name.
+        /// </summary>
+        public string TargetDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup name.
+        /// </summary>
+        public string TargetBackupName { get; set; }
 
         /// <summary>
         /// Gets or sets the target backup resource ID.
