@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Gets the logs and metrics for the resource.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class GetAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
 

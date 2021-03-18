@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class NewAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
         #region Parameters declarations
