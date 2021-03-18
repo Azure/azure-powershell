@@ -335,7 +335,7 @@ function Test-GetAzDiagnosticSettingCategory
 .SYNOPSIS
 This is a live only test and example of how it could be tested.
 #>
-function Test-GetAzDiagnosticSettingCategory
+function Test-SubscriptionDiagnosticSetting
 {
 	$list = @()
 	Get-AzSubscriptionDiagnosticSettingCategory | ForEach-Object {
