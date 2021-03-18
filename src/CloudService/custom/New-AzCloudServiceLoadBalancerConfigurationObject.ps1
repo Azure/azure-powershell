@@ -20,17 +20,17 @@ Create a in-memory object for LoadBalancerConfiguration
 Create a in-memory object for LoadBalancerConfiguration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceLoadBalancerConfigurationObject
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="FrontendIPConfiguration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration[]]
         $FrontendIPConfiguration,
         [Parameter(HelpMessage="Name of LoadBalancerConfiguration.")]
         [string]
@@ -38,7 +38,7 @@ function New-AzCloudServiceLoadBalancerConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration]::New()
 
         $Object.FrontendIPConfiguration = $FrontendIPConfiguration
         $Object.Name = $Name
