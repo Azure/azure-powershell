@@ -656,9 +656,5 @@
   {
     "regex": "Confluent",
     "alias": "Confluent"
-  },
-  {
-    "regex": "DataProtection",
-    "alias": "Data Protection"
   }
 ]
