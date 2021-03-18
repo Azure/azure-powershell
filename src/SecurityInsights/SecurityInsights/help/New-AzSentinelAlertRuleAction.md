@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-Add an Automated Response to an Analatic.
+Add an Automated Response to an Analytic Rule.
 
 ## SYNTAX
 
@@ -20,19 +20,41 @@ New-AzSentinelAlertRuleAction -ResourceGroupName <String> -WorkspaceName <String
 
 ## DESCRIPTION
 The **New-AzSentinelAlertRuleAction** cmdlet creates an Automated Response for an Alert Rule in the specified workspace.
-You must provide the Logic App Resorce Id and Trigger Uri which can be found using the Logic App module.
+You must provide the Logic App ResourceId and Trigger Uri which can be found using the [Azure Logic Apps PowerShell module](https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapp?view=azps-5.6.0).
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword"
-PS C:\>$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword" -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
-PS C:\>$AlertRuleAction = New-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
+$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword"
+$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword" -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
+$AlertRuleAction = New-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
+This example creates an AlertRuleAction for the specified Alert Rule using properties of the Logic App, and then stores it in the $AlertRuleAction variable.<br/>
+Then we use the New-AzSentinelAlertRuleAction cmdlet to add the Logic App as an action to a specifc AlertRule.
 
-This example creates an **AlertRuleAction** for the specified Alert Rule using properties of the Logic App, and then stores it in the $AlertRuleAction variable.
+### Example 2
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "mySentinelWorkspaceName"
+}
+
+$LogicAppConnection = @{
+    ResourceGroupName = "myLogicAppResourceGroupName"
+    Name = "Reset-AADPassword"
+}
+
+$LogicAppResourceId = Get-AzLogicApp @LogicAppConnection
+$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl @LogicAppConnection -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
+$AnalyticsRule = Get-AzSentinelAlertRule @SentinelConnection |
+Where-Object {$PSItem.DisplayName -eq "Mimikatz Detected"}
+$AlertRuleAction = New-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId
+$AnalyticsRule.Name -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value) 
+```
+This example uses 2 connection objects to connect with Azure Sentinel and to get a specific Logic App. <br/>
+Then a specific Analytics Rule, based on the display name, is retrieved and being used in the final **New-AzSentinelAlertRuleAction** cmdlet to add the Logic App to the Analytics Rule.
 
 ## PARAMETERS
 

@@ -31,36 +31,32 @@ Get-AzSentinelAlertRule -ResourceId <String> [-DefaultProfile <IAzureContextCont
 
 ## DESCRIPTION
 The **Get-AzSentinelAlertRule** cmdlet gets one or more Analytic Rules (Alert Rules) from the specified workspace.
-If you specify the *AlertRuleId* parameter, a single **AlertRule** object is returned.
+If you specify the *AlertRuleId* parameter, a single AlertRule object is returned.
 If you do not specify the *AlertRuleId* parameter, an array containing all of the Alert Rules in the specified workspace is returned.
-You can use the **AlertRule** object to update the AlertRule. For example you can enable or disable the **AlertRule**.
+You can use the AlertRule object to update the AlertRule. For example you can enable or disable the AlertRule. <br/>
+
+*Note: An AlertRuleId is in the following format: c464bcd7-daee-47ff-ac58-1fbb73cf1d6b and can be found in the Azure Sentinel Analytics view under the rule details pane on your right in the field "Id"*
 
 ## EXAMPLES
-### Example 1
-For a shorter and faster way to provide your Azure Sentinel resource group and workspace name, you can optionally use a connection object, like this:
-```powershell
-$SentinelConnection = @{
-    ResourceGroupName = "myResourceGroupName"
-    WorkspaceName = "myWorkspaceName"
-}
-Get-AzSentinelAlertRule @SentinelConnection
-```
-This example gets all the the **AlertRules** using a connection object
 
-### Example 2
+### Example 1
 ```powershell
 PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"
 ```
+This example gets all  the AlertRules in the specified workspace, and then stores it in the $AlertRules variable.
 
-This example gets all  the **AlertRules** in the specified workspace, and then stores it in the $AlertRules variable.
-
-### Example 3
+### Example 2
 ```powershell
 PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -AlertRuleId "myAlertRuleId"
 ```
+This example gets an AlertRule in the specified workspace, and then stores it in the $AlertRule variable.<br/>
+*Please note that **AlertRuleId** is in this format: 168d330b-219b-4191-a5b1-742c211adb05*
 
-This example gets an **AlertRule** in the specified workspace, and then stores it in the $AlertRule variable.
-Please note that **AlertRuleId** is in this format: 168d330b-219b-4191-a5b1-742c211adb05
+### Example 3
+```powershell
+Get-AzSentinelAlertRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {$_.DisplayName -like "*Azure Security Center*"}
+```
+This example gets an AlertRule with a displayname which contains "Azure Security Center"
 
 ## PARAMETERS
 

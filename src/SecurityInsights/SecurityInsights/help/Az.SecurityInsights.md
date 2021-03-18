@@ -8,7 +8,25 @@ Locale: en-US
 
 # Az.SecurityInsights Module
 ## Description
-Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.
+Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.<br/>
+
+The Azure Sentinel PowerShell module (Az.SecurityInsights) allows you to interact with the following  components:
+* Incidents
+* Analytics Rules (Alert Rules)
+* Analytics Rules Templates
+* Analytics Rules Actions (like attaching an Azure Logic Apps Playbooks to your rule)
+* Bookmarks
+* Data Connectors
+* Comments
+
+All cmdlets are able to work with a connection object to provide your **resourceGroupName** and **workspaceName** like in the following example:
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "mySentinelWorkspaceName"
+}
+Get-AzSentinelIncident @SentinelConnection
+```
 
 ## Az.SecurityInsights Cmdlets
 ### [Get-AzSentinelAlertRule](Get-AzSentinelAlertRule.md)
