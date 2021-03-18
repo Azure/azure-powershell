@@ -68,7 +68,7 @@ This command creates the new ANF snapshot policy for ANF account named account "
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The Account for the new Snapshot Policy object
 
 ```yaml
-Type: PSNetAppFilesAccount
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 A hashtable array which represents the daily Schedule
 
 ```yaml
-Type: PSNetAppFilesDailySchedule
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesDailySchedule
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 The property to decide policy is enabled or not
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 A hashtable array which represents the hourly Schedule
 
 ```yaml
-Type: PSNetAppFilesHourlySchedule
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesHourlySchedule
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 A hashtable array which represents the montly Schedule
 
 ```yaml
-Type: PSNetAppFilesMonthlySchedule
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesMonthlySchedule
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 The name of the ANF snapshot policy
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SnapshotPolicyName
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 A hashtable array which represents resource tags
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 A hashtable array which represents the montly Schedule
 
 ```yaml
-Type: PSNetAppFilesWeeklySchedule
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesWeeklySchedule
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -264,7 +264,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

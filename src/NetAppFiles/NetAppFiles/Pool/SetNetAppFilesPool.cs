@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 
@@ -105,10 +106,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IDictionary<string, string> tagPairs = null;
-
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResources = resourceIdentifier.ParentResource.Split('/');
+                AccountName = parentResources[1];
+                Name = resourceIdentifier.ResourceName;
+            }
             if (Tag != null)
             {
                 tagPairs = new Dictionary<string, string>();
