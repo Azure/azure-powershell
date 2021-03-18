@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Added support for operation of getting droppedsqlpool and geobackup
     - Add `Get-AzSynapseDroppedSqlPool` cmdlet
     - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
+* Switched to Azure PowerShell official exception types
 
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet

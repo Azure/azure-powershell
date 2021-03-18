@@ -20,8 +20,16 @@ Gets the move collection.
 ### [Get-AzResourceMoverMoveResource](Get-AzResourceMoverMoveResource.md)
 Gets the Move Resource.
 
+### [Get-AzResourceMoverRequiredForResources](Get-AzResourceMoverRequiredForResources.md)
+List of the move resources for which an arm resource is required for.
+
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
 Gets a list of unresolved dependencies.
+
+### [Invoke-AzResourceMoverBulkRemove](Invoke-AzResourceMoverBulkRemove.md)
+Removes the set of move resources included in the request body from move collection.
+The orchestration is done by service.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
 Commits the set of resources included in the request body.

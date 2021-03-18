@@ -126,6 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public IPeeringServicesOperations PeeringServicesClient => this.PeeringManagementClient.PeeringServices;
 
         /// <summary>
+        /// The cdn peering prefix client
+        /// </summary>
+        public ICdnPeeringPrefixesOperations CdnPeeringPrefixesOperationsClient => this.PeeringManagementClient.CdnPeeringPrefixes;
+
+        /// <summary>
         /// The to peering.
         /// </summary>
         /// <param name="pSPeering">
@@ -278,10 +283,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        /// The top s peering location.
+        /// The to ps peering location.
         /// </summary>
         /// <param name="peering">
-        /// The oc.
+        /// The peering.
         /// </param>
         /// <returns>
         /// The <see cref="PSPeeringLocation"/>.
@@ -291,6 +296,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             try
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSPeeringLocation>(peering);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Convert to powershell cdn peering prefix
+        /// </summary>
+        /// <param name="cdnPrefix">
+        /// The cdn prefix.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSPeeringLocation"/>.
+        /// </returns>
+        public PSCdnPeeringPrefix ToPSCdnPeeringPrefix(object cdnPrefix)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSCdnPeeringPrefix>(cdnPrefix);
             }
             catch (InvalidOperationException mapException)
             {
@@ -317,9 +343,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (bandwidthInMbps % Constants.MinRange != 0)
                 throw new PSArgumentException(
                     string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange));
-            if (bandwidthInMbps > Constants.MaxRange)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_BandwidthTooHigh, bandwidthInMbps, Constants.MaxRange));
             return true;
         }
 

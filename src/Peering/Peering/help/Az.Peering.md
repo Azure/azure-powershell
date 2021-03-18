@@ -11,6 +11,9 @@ Locale: e-US
 Microsoft Peering Service allows customers and Microsoft to connect to Azure and represent their network resources as ARM objects.
 
 ## Az.Peering Cmdlets
+### [Get-AzCdnPeeringPrefix](Get-AzCdnPeeringPrefix.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
 Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Resources. 
 

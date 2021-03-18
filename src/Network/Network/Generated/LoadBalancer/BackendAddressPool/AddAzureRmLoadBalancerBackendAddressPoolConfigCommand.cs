@@ -52,17 +52,16 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            // BackendAddressPools
+            if (this.LoadBalancer.BackendAddressPools == null)
+            {
+                this.LoadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
+            }
 
             var existingBackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
             if (existingBackendAddressPool != null)
             {
                 throw new ArgumentException("BackendAddressPool with the specified name already exists");
-            }
-
-            // BackendAddressPools
-            if (this.LoadBalancer.BackendAddressPools == null)
-            {
-                this.LoadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
             }
 
             var vBackendAddressPools = new PSBackendAddressPool();

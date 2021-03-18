@@ -21,6 +21,7 @@ using System.IO;
 
 using Tools.Common.Issues;
 using Tools.Common.Loggers;
+using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 
@@ -30,6 +31,7 @@ namespace StaticAnalysis.IssueChecker
     {
         private readonly List<(string, string)> exceptionLogInfoList = new List<(string, string)>()
         {
+            ("HelpIssues.csv", typeof(HelpIssue).FullName),
             ("BreakingChangeIssues.csv", typeof(BreakingChangeIssue).FullName),
             ("AssemblyVersionConflict.csv", typeof(AssemblyVersionConflict).FullName),
             ("SharedAssemblyConflict.csv", typeof(SharedAssemblyConflict).FullName),

@@ -26,7 +26,7 @@ True
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.migrate/register-azmigrateprojecttool
+https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
 [OutputType([System.Boolean])]
