@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceoperatingsystemosfamily
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
 schema: 2.0.0
 ---
 
-# Get-AzCloudServiceOperatingSystemOSFamily
+# Get-AzCloudServiceOSVersion
 
 ## SYNOPSIS
-Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzCloudServiceOperatingSystemOSFamily -Location <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudServiceOSVersion -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCloudServiceOperatingSystemOSFamily -Location <String> -OSFamilyName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudServiceOSVersion -Location <String> -OSVersionName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCloudServiceOperatingSystemOSFamily -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
+Get-AzCloudServiceOSVersion -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## EXAMPLES
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Name of the location that the OS family pertains to.
+Name of the location that the OS version pertains to.
 
 ```yaml
 Type: System.String
@@ -101,8 +101,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OSFamilyName
-Name of the OS family.
+### -OSVersionName
+Name of the OS version.
 
 ```yaml
 Type: System.String
@@ -141,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion
 
 ## NOTES
 

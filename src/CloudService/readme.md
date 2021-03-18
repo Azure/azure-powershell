@@ -61,6 +61,14 @@ identity-correction-for-post: true
 
 directive:
   - where:
+      subject: ^CloudServiceOperatingSystemOSFamily$
+    set:
+      subject: CloudServiceOSFamily
+  - where:
+      subject: ^CloudServiceOperatingSystemOSVersion$
+    set:
+      subject: CloudServiceOSVersion
+  - where:
       variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
       subject: ^CloudService$|^RebuildCloudService$
     remove: true
