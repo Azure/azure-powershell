@@ -1,0 +1,8 @@
+﻿{
+  "allowedRestoreModes": [ "PointInTimeBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation" ],
+  "datasourceType": "Microsoft.Storage/storageAccounts/blobServices",
+  "isProxyResource": false,
+  "parentResourceType": "",
+  "resourceType": ""
+}
