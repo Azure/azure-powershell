@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -47,13 +48,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Temporary service name constant provided for backwards compatibility
-                IList<DiagnosticSettingsResource> results = this.MonitorManagementClient.DiagnosticSettings.List(resourceUri: this.ResourceId).Value;
+                IList<DiagnosticSettingsResource> results = this.MonitorManagementClient.DiagnosticSettings.List(resourceUri: GetTargetUri()).Value;
                 output = results.Select(e => new PSServiceDiagnosticSettings(e)).ToList();
             }
             else
             {
                 // Temporary service name constant provided for backwards compatibility
-                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(resourceUri: this.ResourceId, name: this.Name);
+                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(resourceUri: GetTargetUri(), name: this.Name);
                 output = new List<PSServiceDiagnosticSettings> { new PSServiceDiagnosticSettings(result) };
             }
             WriteObject(sendToPipeline: output, enumerateCollection: true);

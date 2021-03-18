@@ -48,5 +48,10 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             return string.Format("/subscriptions/{0}", this.SubscriptionId);
         }
+
+        protected string GetTargetUri()
+        {
+            return this.IsParameterBound(c => c.ResourceId) ? this.ResourceId : GetSubscription(this.SubscriptionId);
+        }
     }
 }

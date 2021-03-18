@@ -29,12 +29,12 @@ Name            CategoryType
 ----            ------------
 Administrative          Logs
 Security                Logs
-Service Health          Logs
+ServiceHealth           Logs
 Alert                   Logs
 Recommendation          Logs
 Policy                  Logs
 Autoscale               Logs
-Resource Health         Logs
+ResourceHealth          Logs
 ```
 
 Get diagnostic setting categories.

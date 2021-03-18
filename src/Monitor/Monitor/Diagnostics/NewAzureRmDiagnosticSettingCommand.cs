@@ -107,9 +107,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
             }
 
-            string target = this.IsParameterBound(c => c.ResourceId) ? this.ResourceId : GetSubscription(this.SubscriptionId);
-
-            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: target + "/providers/microsoft.insights/diagnosticSettings/" + this.Name, name: this.Name)
+            PSServiceDiagnosticSettings DiagnosticSetting = new PSServiceDiagnosticSettings(id: GetTargetUri() + "/providers/microsoft.insights/diagnosticSettings/" + this.Name, name: this.Name)
             {
                 StorageAccountId = this.IsParameterBound(c => c.StorageAccountId) ? this.StorageAccountId : null,
                 ServiceBusRuleId = this.IsParameterBound(c => c.ServiceBusRuleId) ? this.ServiceBusRuleId : null,

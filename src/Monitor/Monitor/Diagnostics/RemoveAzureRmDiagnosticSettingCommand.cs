@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -54,11 +55,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             string requestId;
             HttpStatusCode statusCode;
-
+            string target = GetTargetUri();
             if (string.IsNullOrWhiteSpace(this.Name))
             {
-                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", this.ResourceId));
-                IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: this.ResourceId).Result.Value;
+                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", target));
+                IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: target).Result.Value;
 
                 if (listSettings.Any())
                 {
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("No setting to delete for resource: {0}", this.ResourceId);
+                    WriteDebugWithTimestamp("No setting to delete for resource: {0}", target);
                     return;
                 }
 
@@ -120,12 +121,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
 
             if (ShouldProcess(
-                target: string.Format("Remove a diagnostic setting for resource Id: {0}", this.ResourceId),
+                target: string.Format("Remove a diagnostic setting for resource Id: {0}", target),
                 action: "Remove a diagnostic setting"))
             {
                 WriteDebugWithTimestamp("Removing named diagnostic setting: {0}", this.Name);
                 Rest.Azure.AzureOperationResponse resultDelete = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
-                    resourceUri: this.ResourceId,
+                    resourceUri: target,
                     name: this.Name).Result;
 
                 requestId = resultDelete.RequestId;

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             IList<PSSubscriptionDiagnosticSettingCategory> categories = new List<PSSubscriptionDiagnosticSettingCategory>();
             foreach (LocalizableString value in rawData)
             {
-                categories.Add(new PSSubscriptionDiagnosticSettingCategory(value.LocalizedValue, PSDiagnosticSettingCategoryType.Logs));
+                categories.Add(new PSSubscriptionDiagnosticSettingCategory(value.Value, PSDiagnosticSettingCategoryType.Logs));
             }
             WriteObject(categories, true);
         }
