@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             if (this.IsParameterBound(c => c.ResourceId) && Utilities.IsGuid(this.ResourceId))
             {
-                throw new PSArgumentException("Please use parameter 'TargetSubscriptionId' instead of 'TargetResourceId'");
+                throw new PSArgumentException("Please use parameter 'SubscriptionId' instead of 'ResourceId'");
             }
         }
 
