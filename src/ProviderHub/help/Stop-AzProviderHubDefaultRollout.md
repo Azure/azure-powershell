@@ -1,31 +1,37 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout
 schema: 2.0.0
 ---
 
-# Remove-AzProviderHubProviderRegistration
+# Stop-AzProviderHubDefaultRollout
 
 ## SYNOPSIS
-Deletes a provider registration.
+Stops or cancels the rollout, if in progress.
 
 ## SYNTAX
 
-### Delete (Default)
+### Stop (Default)
 ```
-Remove-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
+Stop-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopViaIdentity
+```
+Stop-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Deletes a provider registration.
+Stops or cancels the rollout, if in progress.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 ```
 
 ## PARAMETERS
@@ -35,7 +41,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -45,12 +51,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: StopViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -65,7 +87,22 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RolloutName
+The rollout name.
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -80,7 +117,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: False
@@ -95,7 +132,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: cf
 
 Required: False
@@ -111,7 +148,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: wi
 
 Required: False

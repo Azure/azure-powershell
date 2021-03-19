@@ -19,6 +19,25 @@ Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> -BaselineArmMani
  [<CommonParameters>]
 ```
 
+### Manifest
+```
+Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> -CheckinManifestParam <ICheckinManifestParams>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManifestViaIdentity
+```
+Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity>
+ -CheckinManifestParam <ICheckinManifestParams> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ManifestViaIdentityExpanded
+```
+Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity> -BaselineArmManifestLocation <String>
+ -Environment <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Checkin the manifest.
 
@@ -36,7 +55,7 @@ The baseline ARM manifest location supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded
+Parameter Sets: ManifestExpanded, ManifestViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -46,12 +65,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CheckinManifestParam
+.
+To construct, see NOTES section for CHECKINMANIFESTPARAM properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestParams
+Parameter Sets: Manifest, ManifestViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: ManifestExpanded
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -66,7 +101,7 @@ The environment supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded
+Parameter Sets: ManifestExpanded, ManifestViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -76,12 +111,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: ManifestViaIdentity, ManifestViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProviderNamespace
 The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded
+Parameter Sets: Manifest, ManifestExpanded
 Aliases:
 
 Required: True
@@ -96,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded
+Parameter Sets: Manifest, ManifestExpanded
 Aliases:
 
 Required: False
@@ -111,7 +162,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManifestExpanded
+Parameter Sets: (All)
 Aliases: cf
 
 Required: False
@@ -127,7 +178,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManifestExpanded
+Parameter Sets: (All)
 Aliases: wi
 
 Required: False
