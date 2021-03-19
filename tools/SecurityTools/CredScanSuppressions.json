@@ -1324,6 +1324,10 @@
     {
       "file": "src\\Network\\Network.Test\\ScenarioTests\\CortexTests.ps1",
       "_justification": "Generated test resource groups are deleted after test execution"
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestWhatIfWithQueryString.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
     }
   ]
 }

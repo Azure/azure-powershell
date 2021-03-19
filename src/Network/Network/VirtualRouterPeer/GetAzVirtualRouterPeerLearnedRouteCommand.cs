@@ -10,9 +10,11 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Common;
 using Newtonsoft.Json.Linq;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzRouteServerPeerLearnedRoute")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeerLearnedRoute", DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterPeerName), OutputType(typeof(PSPeerRoute))]
     public class GetVirtualRouterPeerLearnedRouteCommand : NetworkBaseCmdlet
     {
