@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
+* Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
 
 ## Version 0.8.0
 * Added support for operation of getting droppedsqlpool and geobackup
