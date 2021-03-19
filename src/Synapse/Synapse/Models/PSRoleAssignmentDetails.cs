@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSRoleAssignmentDetails(RoleAssignmentDetails roleAssignmentDetails)
         {
             this.RoleAssignmentId = roleAssignmentDetails.Id;
-            this.RoleDefinitionId = roleAssignmentDetails.RoleDefinitionId.ToString();
-            this.ObjectId = roleAssignmentDetails.PrincipalId.ToString();
+            this.RoleDefinitionId = roleAssignmentDetails.RoleDefinitionId?.ToString();
+            this.ObjectId = roleAssignmentDetails.PrincipalId?.ToString();
         }
 
         public string RoleAssignmentId { get; set; }

@@ -9,15 +9,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSSynapseRole(SynapseRoleDefinition synapseRole)
         {
-            this.Id = synapseRole.Id.ToString();
+            this.Id = synapseRole.Id?.ToString();
             this.Name = synapseRole.Name;
-            this.IsBuiltIn = synapseRole.IsBuiltIn;
+            this.IsBuiltIn = synapseRole.IsBuiltIn.Value;
         }
 
         public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public bool? IsBuiltIn { get; set; }
+        public bool IsBuiltIn { get; set; }
     }
 }

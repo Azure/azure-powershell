@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet = "NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet";
         private const string NewByWorkspaceNameAndServicePrincipalNameParameterSet = "NewByWorkspaceNameAndServicePrincipalNameParameterSet";
         private const string NewByWorkspaceObjectAndServicePrincipalNameParameterSet = "NewByWorkspaceObjectAndServicePrincipalNameParameterSet";
+        private const string NewByWorkspaceNameAndItemParameterSet = "NewByWorkspaceNameAndItemParameterSet";
+        private const string NewByWorkspaceObjectAndItemParameterSet = "NewByWorkspaceObjectAndItemParameterSet";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -33,6 +35,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -45,6 +49,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndServicePrincipalNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -61,6 +67,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
@@ -68,6 +78,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionId { get; set; }
 
@@ -75,6 +89,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
         [Alias("Email", "UserPrincipalName")]
         [ValidateNotNullOrEmpty]
         public string SignInName { get; set; }
@@ -83,6 +101,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.ServicePrincipalName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.ServicePrincipalName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
@@ -94,28 +116,28 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
         [Alias("Id", "PrincipalId")]
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.Scope)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.Scope)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItemType)]
         [ValidateNotNullOrEmpty]
-        public string Scope { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentItemType)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentItemType)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("bigDataPools", "integrationRuntimes", "linkedServices", "credentials")]
+        //[ValidateSet("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
+        [PSArgumentCompleter("bigDataPools", "integrationRuntimes", "linkedServices", "credentials")]
         public string ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentItem)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItem)]
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
@@ -144,24 +166,18 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
             }
 
-            if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
-            {
-                this.Scope = "workspaces/" + this.WorkspaceName + "/" + this.ItemType + "/" + this.Item;
-            }
-
-            if ((this.IsParameterBound(c => c.ItemType) && !this.IsParameterBound(c => c.Item)) || (!this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item)))
-            {
-                throw new ArgumentException(Resources.NeedItemTypeOrItem);
-            }
-
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
             {
-                int index = this.RoleDefinitionId.LastIndexOf("-");
-                Guid RoleAssignmentId = Guid.NewGuid();
-                if (string.IsNullOrEmpty(this.Scope)) {
-                    this.Scope = "workspaces/" + this.WorkspaceName;
+                Guid roleAssignmentId = Guid.NewGuid();
+                string scope;
+                if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
+                {
+                    scope = "workspaces/" + this.WorkspaceName + "/" + this.ItemType + "/" + this.Item;
+                } else {
+                    scope = "workspaces/" + this.WorkspaceName;
                 }
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(RoleAssignmentId.ToString(), this.RoleDefinitionId, this.ObjectId, this.Scope));
+
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId.ToString(), this.RoleDefinitionId, this.ObjectId, scope));
                 WriteObject(roleAssignmentDetails);
             }
         }

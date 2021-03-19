@@ -55,13 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
-        public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId)
-        {
-            int index = roleDefinitionId.LastIndexOf("-");
-            string roleAssignmentId = roleDefinitionId.Substring(0, index) + objectId.Substring(index);
-            _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
-        }
-
         public IReadOnlyList<string> ListRoleScopes()
         {
             return _roleDefinitionsClient.ListScopes().Value;

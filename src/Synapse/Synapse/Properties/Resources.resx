@@ -370,9 +370,6 @@ Are you sure you want to continue?</value>
   <data name="NeedIntegrationRuntimeType" xml:space="preserve">
     <value>Pramater 'Type' must be provided when creating new integration runtime.</value>
   </data>
-  <data name="NeedItemTypeOrItem" xml:space="preserve">
-    <value>Pramater 'ItemType' and 'Item' must be provided together when creating new role assigment.</value>
-  </data>
   <data name="UpdateAuthKeyNotAllowed" xml:space="preserve">
     <value>Updating the authentication key of linked integration runtime '{0}' is not allowed.</value>
   </data>

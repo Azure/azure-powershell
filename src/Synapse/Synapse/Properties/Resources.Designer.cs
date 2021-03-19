@@ -766,15 +766,6 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pramater &apos;ItemType&apos; and &apos;Item&apos; must be provided together when creating new role assigment..
-        /// </summary>
-        internal static string NeedItemTypeOrItem {
-            get {
-                return ResourceManager.GetString("NeedItemTypeOrItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please provide valid value for StorageAccountName or BlobStorageSasUri parameter..
         /// </summary>
         internal static string NoStorageAccountSpecified {
