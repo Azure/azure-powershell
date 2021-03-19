@@ -17,10 +17,10 @@ Describe 'AzProviderHubDefaultRollout-CRUD' {
 
         $defaultRollout = New-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psDefaultRollout" -RestOfTheWorldGroupTwoWaitDuration $row2Timespan -CanarySkipRegion "brazilus"
         $defaultRollout | Should -Not -BeNullOrEmpty
-        $defaultRollout.Name | Should -BeExactly "psDefaultRollout"
 
         $defaultRollout = Get-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psDefaultRollout"
         $defaultRollout | Should -Not -BeNullOrEmpty
+        $defaultRollout.Name | Should -BeExactly "psDefaultRollout"
 
         $defaultRolloutList = Get-AzProviderHubDefaultRollout -ProviderNamespace $env.ProviderNamespace
         $defaultRolloutList.Count | Should -BeGreaterOrEqual 1
