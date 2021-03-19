@@ -53,6 +53,21 @@ title: ImportExport
 module-version: 0.1.0
 subject-prefix: ''
 directive:
+  - from: swagger-document
+    where: $..get
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..post
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..delete
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..put
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..patch
+    transform: delete $.externalDocs
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
