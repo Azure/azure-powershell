@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                     string[] tokens = TargetServerFullyQualifiedDomainName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string targetServerNameFromFQDN = tokens[0];
 
-                    if (TargetServerName.ToLower() != targetServerNameFromFQDN.ToLower())
+                    if (!TargetServerName.Equals(targetServerNameFromFQDN, StringComparison.OrdinalIgnoreCase))
                     {
                         throw new Exception("TargetServerName and TargetServerFullyQualifiedDomainName specify different target servers.");
                     }
