@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.2
 * Fixed the issue for starting Python3 runbooks with parameters
 
 ## Version 1.5.1

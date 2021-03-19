@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added parameters `VMImagePublisher`, `VMImageOffer`, `VMImageSku`, `VMImageVersion` to `Add-AzServiceFabricNodeType` to facilitate easy alternate OS image creation for new node type.
 * Added parameter `IsPrimaryNodeType` to `Add-AzServiceFabricNodeType` to be able to create an additional primary node type, for the purpose of transitioning the primary node type to another one in the case of OS migration.
 * `Add-AzServiceFabricNodeType` now correctly copies the LinuxDiagnostic extension. This was previously not working for Linux.

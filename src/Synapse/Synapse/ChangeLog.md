@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.9.0
 * Added support for workspace key encryption management
 	- Add `New-AzSynapseWorkspaceKey` cmdlet
     - Add `Get-AzSynapseWorkspaceKey` cmdlet
@@ -27,7 +29,7 @@
 	- Add `Set-AzSynapseManagedIdentitySqlControlSetting` cmdlet
     - Add `Get-AzSynapseManagedIdentitySqlControlSetting` cmdlet
 * Added support for data exfiltration
-	- Update `New-AzSynapseWorkspace` cmdlet to accpet `-ManagedVirtualNetwork`
+	- Update `New-AzSynapseWorkspace` cmdlet to accept `-ManagedVirtualNetwork`
     - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
     - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
 
