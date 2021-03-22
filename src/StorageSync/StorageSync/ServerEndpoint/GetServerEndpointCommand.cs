@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             HelpMessage = HelpMessages.ServerEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ServerEndpointNameAlias)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/serverEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups/serverEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         public string Name { get; set; }
 
         /// <summary>

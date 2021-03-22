@@ -214,5 +214,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Change detection recurse parameter
         /// </summary>
         public const string ChangeDetectionRecurseParameter = "Indication whether directory change detection is recursive.";
+        /// <summary>
+        /// The initial upload policy parameter.
+        /// </summary>
+        public const string InitialUploadPolicyParameter = "Initial Upload Policy Parameter.";
     }
 }

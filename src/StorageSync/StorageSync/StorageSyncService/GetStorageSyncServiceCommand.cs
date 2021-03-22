@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices", "ResourceGroupName")]
         [Alias(StorageSyncAliases.StorageSyncServiceNameAlias)]
         public string Name { get; set; }
 

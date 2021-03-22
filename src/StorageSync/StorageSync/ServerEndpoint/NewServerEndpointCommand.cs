@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
         /// <summary>
@@ -200,14 +200,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.InitialDownloadPolicyParameter)]
-        // #TODO : Update swagger to make them string constants
-        //[ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("AvoidTieredFiles",
-            "NamespaceOnly",
-            "NamespaceThenModifiedFiles",
+        [ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
             IgnoreCase = true)]
         public string InitialDownloadPolicy { get; set; }
 
@@ -219,13 +214,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.LocalCacheModeParameter)]
-        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
-        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("DownloadNewAndModifiedFiles",
-            "UpdateLocallyCachedFiles",
+        [ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+            StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
+
+        // <summary>
+        /// Gets or sets a value indicating the policy to use for the initial upload sync.
+        /// </summary>
+        /// <value>The initial upload policy.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.InitialUploadPolicyParameter)]
+        [ValidateSet(StorageSyncModels.InitialUploadPolicy.Merge,
+            StorageSyncModels.InitialUploadPolicy.ServerAuthoritative,
+            IgnoreCase = true)]
+        public string InitialUploadPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -277,24 +282,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
-                StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;
                 if (this.IsParameterBound(c => c.InitialDownloadPolicy))
                 {
-                    if (!Enum.TryParse(InitialDownloadPolicy, true, out initialDownloadPolicy))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
-                    }
-                    createParameters.InitialDownloadPolicy = initialDownloadPolicy;
+                    createParameters.InitialDownloadPolicy = InitialDownloadPolicy;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
-                    createParameters.LocalCacheMode = localCacheMode;
+                    createParameters.LocalCacheMode = LocalCacheMode;
+                }
+
+                if (this.IsParameterBound(c => c.InitialUploadPolicy))
+                {
+                    createParameters.InitialUploadPolicy = InitialUploadPolicy;
                 }
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
