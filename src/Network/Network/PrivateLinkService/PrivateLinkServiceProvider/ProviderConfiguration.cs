@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Synapse/workspaces", "2019-06-01-preview");
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01");
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01");
+            RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01");
         }
 
         private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true)
