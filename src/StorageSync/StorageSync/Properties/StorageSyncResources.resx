@@ -288,4 +288,7 @@
   <data name="InvalidLocalCacheModeErrorMessage" xml:space="preserve">
     <value>LocalCacheMode parameter has invalid value.</value>
   </data>
+  <data name="InvalidInitialUploadPolicyErrorMessage" xml:space="preserve">
+    <value>InitialUploadPolicy parameter has invalid value.</value>
+  </data>
 </root>

@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets the action required.
         /// </summary>
         /// <value></value>
-        public string ActionRequired { get; internal set; }
+        public string ActionsRequired { get; internal set; }
     }
 }

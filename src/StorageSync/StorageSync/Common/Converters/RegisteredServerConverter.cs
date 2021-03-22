@@ -42,11 +42,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>StorageSyncModels.RegisteredServer.</returns>
         protected override StorageSyncModels.RegisteredServer Transform(PSRegisteredServer source)
         {
-            return new StorageSyncModels.RegisteredServer(source.ResourceId,
+            return new StorageSyncModels.RegisteredServer(
+                source.ResourceId,
                 source.ServerName,
                 StorageSyncConstants.RegisteredServerType,
                 source.ServerCertificate,
                 source.AgentVersion,
+                source.AgentVersionStatus,
+                source.AgentVersionExpirationDate,
                 source.ServerOSVersion,
                 source.ServerManagementErrorCode,
                 source.LastHeartBeat,
@@ -83,24 +86,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.RegisteredServerType,
                 AgentVersion = source.AgentVersion,
-                ClusterId = source.ClusterId?.Trim('"'),
+                ClusterId = source.ClusterId,
                 ProvisioningState = source.ProvisioningState,
                 ClusterName = source.ClusterName,
-                DiscoveryEndpointUri = source.DiscoveryEndpointUri?.Trim('"'),
+                DiscoveryEndpointUri = source.DiscoveryEndpointUri,
                 FriendlyName = source.FriendlyName,
-                LastHeartBeat = source.LastHeartBeat?.Trim('"'),
+                LastHeartBeat = source.LastHeartBeat,
                 LastOperationName = source.LastOperationName,
-                LastWorkflowId = source.LastWorkflowId?.Trim('"'),
-                ManagementEndpointUri = source.ManagementEndpointUri?.Trim('"'),
+                LastWorkflowId = source.LastWorkflowId,
+                ManagementEndpointUri = source.ManagementEndpointUri,
                 MonitoringEndpointUri = source.MonitoringEndpointUri,
                 ResourceLocation = source.ResourceLocation,
-                ServerCertificate = source.ServerCertificate?.Trim('"'),
-                ServerId = source.ServerId?.Trim('"'),
+                ServerCertificate = source.ServerCertificate,
+                ServerId = source.ServerId,
                 ServerManagementErrorCode = source.ServerManagementErrorCode,
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
-                StorageSyncServiceUid = source.StorageSyncServiceUid?.Trim('"'),
+                StorageSyncServiceUid = source.StorageSyncServiceUid,
                 MonitoringConfiguration = source.MonitoringConfiguration
             };
         }

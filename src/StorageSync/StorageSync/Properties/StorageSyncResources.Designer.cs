@@ -572,5 +572,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
                 return ResourceManager.GetString("UnsupportedErrorFormat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InitialUploadPolicy parameter has invalid value..
+        /// </summary>
+        internal static string InvalidInitialUploadPolicyErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidInitialUploadPolicyErrorMessage", resourceCulture);
+            }
+        }
     }
 }
