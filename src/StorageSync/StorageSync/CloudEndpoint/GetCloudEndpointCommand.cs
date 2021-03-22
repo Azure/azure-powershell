@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.StorageSyncServiceObjectParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         [Alias(StorageSyncAliases.SyncGroupAlias)]
         public PSSyncGroup ParentObject { get; set; }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups/cloudEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups/cloudEndpoints", "ResourceGroupName", "StorageSyncServiceName", "SyncGroupName")]
         [Alias(StorageSyncAliases.CloudEndpointNameAlias)]
         public string Name { get; set; }
 

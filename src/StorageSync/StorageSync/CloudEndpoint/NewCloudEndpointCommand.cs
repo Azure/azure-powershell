@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.ParentNameAlias)]
         public string StorageSyncServiceName { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
         // TODO : Place ResourceNameCompleter for all non root resources. https://github.com/Azure/azure-powershell/issues/8620
-        [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
+        [ResourceNameCompleter("Microsoft.StorageSyncInt/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
         /// <summary>
