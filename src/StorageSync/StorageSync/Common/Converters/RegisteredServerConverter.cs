@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.AgentVersionExpirationDate,
                 source.ServerOSVersion,
                 source.ServerManagementErrorCode,
-                source.LastHeartBeat,
+                null,
                 source.ProvisioningState,
                 source.ServerRole,
                 source.ClusterId,
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ClusterName = source.ClusterName,
                 DiscoveryEndpointUri = source.DiscoveryEndpointUri,
                 FriendlyName = source.FriendlyName,
-                LastHeartBeat = source.LastHeartBeat,
+                LastHeartBeat = source.LastHeartBeat?.ToString(),
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,
                 ManagementEndpointUri = source.ManagementEndpointUri,
