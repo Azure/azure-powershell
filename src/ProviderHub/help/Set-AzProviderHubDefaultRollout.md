@@ -1,0 +1,858 @@
+---
+external help file: Az.ProviderHub-help.xml
+Module Name: Az.ProviderHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubdefaultrollout
+schema: 2.0.0
+---
+
+# Set-AzProviderHubDefaultRollout
+
+## SYNOPSIS
+Creates or updates the rollout details.
+
+## SYNTAX
+
+### UpdateExpanded (Default)
+```
+Set-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
+ [-CanaryRegion <String[]>] [-CanarySkipRegion <String[]>] [-HighTrafficRegion <String[]>]
+ [-HighTrafficWaitDuration <TimeSpan>] [-LowTrafficRegion <String[]>] [-LowTrafficWaitDuration <TimeSpan>]
+ [-MediumTrafficRegion <String[]>] [-MediumTrafficWaitDuration <TimeSpan>]
+ [-ProvisioningState <ProvisioningState>] [-RestOfTheWorldGroupOneRegion <String[]>]
+ [-RestOfTheWorldGroupOneWaitDuration <TimeSpan>] [-RestOfTheWorldGroupTwoRegion <String[]>]
+ [-RestOfTheWorldGroupTwoWaitDuration <TimeSpan>] [-SpecificationProviderRegistration <IProviderRegistration>]
+ [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>]
+ [-StatusFailedOrSkippedRegion <Hashtable>] [-StatusNextTrafficRegion <TrafficRegionCategory>]
+ [-StatusNextTrafficRegionScheduledTime <DateTime>]
+ [-StatusSubscriptionReregistrationResult <SubscriptionReregistrationResult>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
+ [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
+ -Property <IDefaultRollout> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Creates or updates the rollout details.
+
+## EXAMPLES
+
+### EXAMPLE 1
+```
+{{ Add code here }}
+```
+
+{{ Add output here }}
+
+### EXAMPLE 2
+```
+{{ Add code here }}
+```
+
+{{ Add output here }}
+
+## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CanaryRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CanarySkipRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighTrafficRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighTrafficWaitDuration
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LowTrafficRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LowTrafficWaitDuration
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MediumTrafficRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MediumTrafficWaitDuration
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+Default rollout definition.
+To construct, see NOTES section for PROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProviderNamespace
+The name of the resource provider hosted within ProviderHub.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestOfTheWorldGroupOneRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestOfTheWorldGroupOneWaitDuration
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestOfTheWorldGroupTwoRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestOfTheWorldGroupTwoWaitDuration
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RolloutName
+The rollout name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpecificationProviderRegistration
+.
+To construct, see NOTES section for SPECIFICATIONPROVIDERREGISTRATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpecificationResourceTypeRegistration
+.
+To construct, see NOTES section for SPECIFICATIONRESOURCETYPEREGISTRATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusCompletedRegion
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusFailedOrSkippedRegion
+Dictionary of \<ExtendedErrorInfo\>
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusNextTrafficRegion
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusNextTrafficRegionScheduledTime
+.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusSubscriptionReregistrationResult
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY \<IDefaultRollout\>: Default rollout definition.
+  \[CanaryRegion \<String\[\]\>\]:
+  \[CanarySkipRegion \<String\[\]\>\]:
+  \[HighTrafficRegion \<String\[\]\>\]:
+  \[HighTrafficWaitDuration \<TimeSpan?\>\]:
+  \[LowTrafficRegion \<String\[\]\>\]:
+  \[LowTrafficWaitDuration \<TimeSpan?\>\]:
+  \[MediumTrafficRegion \<String\[\]\>\]:
+  \[MediumTrafficWaitDuration \<TimeSpan?\>\]:
+  \[ProvisioningState \<ProvisioningState?\>\]:
+  \[RestOfTheWorldGroupOneRegion \<String\[\]\>\]:
+  \[RestOfTheWorldGroupOneWaitDuration \<TimeSpan?\>\]:
+  \[RestOfTheWorldGroupTwoRegion \<String\[\]\>\]:
+  \[RestOfTheWorldGroupTwoWaitDuration \<TimeSpan?\>\]:
+  \[SpecificationProviderRegistration \<IProviderRegistration\>\]:
+    \[Capability \<IResourceProviderCapabilities\[\]\>\]:
+      Effect \<ResourceProviderCapabilitiesEffect\>:
+      QuotaId \<String\>:
+      \[RequiredFeature \<String\[\]\>\]:
+    \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+    \[ManagementIncidentContactEmail \<String\>\]:
+    \[ManagementIncidentRoutingService \<String\>\]:
+    \[ManagementIncidentRoutingTeam \<String\>\]:
+    \[ManagementManifestOwner \<String\[\]\>\]:
+    \[ManagementResourceAccessPolicy \<String\>\]:
+    \[ManagementResourceAccessRole \<IAny\[\]\>\]:
+    \[ManagementSchemaOwner \<String\[\]\>\]:
+    \[ManagementServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
+      \[ComponentId \<String\>\]:
+      \[ServiceId \<String\>\]:
+    \[Metadata \<IAny\>\]: Any object
+    \[Namespace \<String\>\]:
+    \[ProviderAuthenticationAllowedAudience \<String\[\]\>\]:
+    \[ProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
+      \[ApplicationId \<String\>\]:
+      \[ManagedByRoleDefinitionId \<String\>\]:
+      \[RoleDefinitionId \<String\>\]:
+    \[ProviderHubMetadataProviderAuthenticationAllowedAudience \<String\[\]\>\]:
+    \[ProviderHubMetadataProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
+    \[ProviderType \<ResourceProviderType?\>\]:
+    \[ProviderVersion \<String\>\]:
+    \[ProvisioningState \<ProvisioningState?\>\]:
+    \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+    \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
+    \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
+      Action \<SubscriptionNotificationOperation\>:
+      State \<SubscriptionTransitioningState\>:
+    \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
+    \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
+    \[ThirdPartyProviderAuthorizationAuthorizationszzz \<ILightHouseAuthorization\[\]\>\]:
+      PrincipalId \<String\>:
+      RoleDefinitionId \<String\>:
+    \[ThirdPartyProviderAuthorizationManagedByTenantId \<String\>\]:
+  \[SpecificationResourceTypeRegistration \<IResourceTypeRegistration\[\]\>\]:
+    \[AllowedUnauthorizedAction \<String\[\]\>\]:
+    \[AuthorizationActionMapping \<IAuthorizationActionMapping\[\]\>\]:
+      \[Desired \<String\>\]:
+      \[Original \<String\>\]:
+    \[CheckNameAvailabilitySpecificationEnableDefaultValidation \<Boolean?\>\]:
+    \[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation \<String\[\]\>\]:
+    \[DefaultApiVersion \<String\>\]:
+    \[DisallowedActionVerb \<String\[\]\>\]:
+    \[EnableAsyncOperation \<Boolean?\>\]:
+    \[EnableThirdPartyS2S \<Boolean?\>\]:
+    \[Endpoint \<IResourceTypeEndpoint\[\]\>\]:
+      \[ApiVersion \<String\[\]\>\]:
+      \[Enabled \<Boolean?\>\]:
+      \[Extension \<IResourceTypeExtension\[\]\>\]:
+        \[EndpointUri \<String\>\]:
+        \[ExtensionCategory \<ExtensionCategory\[\]\>\]:
+        \[Timeout \<TimeSpan?\>\]:
+      \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+      \[Location \<String\[\]\>\]:
+      \[RequiredFeature \<String\[\]\>\]:
+      \[Timeout \<TimeSpan?\>\]:
+    \[ExtendedLocation \<IExtendedLocationOptions\[\]\>\]:
+      \[SupportedPolicy \<String\>\]:
+      \[Type \<String\>\]:
+    \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+    \[IdentityManagementApplicationId \<String\>\]:
+    \[IdentityManagementType \<IdentityManagementTypes?\>\]:
+    \[IsPureProxy \<Boolean?\>\]:
+    \[LinkedAccessCheck \<ILinkedAccessCheck\[\]\>\]:
+      \[ActionName \<String\>\]:
+      \[LinkedAction \<String\>\]:
+      \[LinkedActionVerb \<String\>\]:
+      \[LinkedProperty \<String\>\]:
+      \[LinkedType \<String\>\]:
+    \[LoggingRule \<ILoggingRule\[\]\>\]:
+      Action \<String\>:
+      DetailLevel \<LoggingDetails\>:
+      Direction \<LoggingDirections\>:
+      \[HiddenPropertyPathHiddenPathsOnRequest \<String\[\]\>\]:
+      \[HiddenPropertyPathHiddenPathsOnResponse \<String\[\]\>\]:
+    \[MarketplaceType \<String\>\]:
+    \[ProvisioningState \<ProvisioningState?\>\]:
+    \[Regionality \<Regionality?\>\]:
+    \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+    \[ResourceCreationBeginRequest \<ExtensionOptionType\[\]\>\]:
+    \[ResourceCreationBeginResponse \<ExtensionOptionType\[\]\>\]:
+    \[ResourceDeletionPolicy \<ResourceDeletionPolicy?\>\]:
+    \[ResourceMovePolicyCrossResourceGroupMoveEnabled \<Boolean?\>\]:
+    \[ResourceMovePolicyCrossSubscriptionMoveEnabled \<Boolean?\>\]:
+    \[ResourceMovePolicyValidationRequired \<Boolean?\>\]:
+    \[RoutingType \<RoutingType?\>\]:
+    \[ServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
+    \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
+    \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
+    \[SubscriptionStateRule \<ISubscriptionStateRule\[\]\>\]:
+      \[AllowedAction \<String\[\]\>\]:
+      \[State \<SubscriptionState?\>\]:
+    \[SwaggerSpecification \<ISwaggerSpecification\[\]\>\]:
+      \[ApiVersion \<String\[\]\>\]:
+      \[SwaggerSpecFolderUri \<String\>\]:
+    \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
+    \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
+    \[ThrottlingRule \<IThrottlingRule\[\]\>\]:
+      Action \<String\>:
+      Metric \<IThrottlingMetric\[\]\>:
+        Limit \<Int64\>:
+        Type \<ThrottlingMetricType\>:
+        \[Interval \<TimeSpan?\>\]:
+      \[RequiredFeature \<String\[\]\>\]:
+  \[StatusCompletedRegion \<String\[\]\>\]:
+  \[StatusFailedOrSkippedRegion \<IRolloutStatusBaseFailedOrSkippedRegions\>\]: Dictionary of \<ExtendedErrorInfo\>
+    \[(Any) \<IExtendedErrorInfo\>\]: This indicates any property can be added to this object.
+  \[StatusNextTrafficRegion \<TrafficRegionCategory?\>\]:
+  \[StatusNextTrafficRegionScheduledTime \<DateTime?\>\]:
+  \[StatusSubscriptionReregistrationResult \<SubscriptionReregistrationResult?\>\]:
+
+SPECIFICATIONPROVIDERREGISTRATION \<IProviderRegistration\>: .
+  \[Capability \<IResourceProviderCapabilities\[\]\>\]:
+    Effect \<ResourceProviderCapabilitiesEffect\>:
+    QuotaId \<String\>:
+    \[RequiredFeature \<String\[\]\>\]:
+  \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+  \[ManagementIncidentContactEmail \<String\>\]:
+  \[ManagementIncidentRoutingService \<String\>\]:
+  \[ManagementIncidentRoutingTeam \<String\>\]:
+  \[ManagementManifestOwner \<String\[\]\>\]:
+  \[ManagementResourceAccessPolicy \<String\>\]:
+  \[ManagementResourceAccessRole \<IAny\[\]\>\]:
+  \[ManagementSchemaOwner \<String\[\]\>\]:
+  \[ManagementServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
+    \[ComponentId \<String\>\]:
+    \[ServiceId \<String\>\]:
+  \[Metadata \<IAny\>\]: Any object
+  \[Namespace \<String\>\]:
+  \[ProviderAuthenticationAllowedAudience \<String\[\]\>\]:
+  \[ProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
+    \[ApplicationId \<String\>\]:
+    \[ManagedByRoleDefinitionId \<String\>\]:
+    \[RoleDefinitionId \<String\>\]:
+  \[ProviderHubMetadataProviderAuthenticationAllowedAudience \<String\[\]\>\]:
+  \[ProviderHubMetadataProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
+  \[ProviderType \<ResourceProviderType?\>\]:
+  \[ProviderVersion \<String\>\]:
+  \[ProvisioningState \<ProvisioningState?\>\]:
+  \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
+    Action \<SubscriptionNotificationOperation\>:
+    State \<SubscriptionTransitioningState\>:
+  \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
+  \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
+  \[ThirdPartyProviderAuthorizationAuthorizationszzz \<ILightHouseAuthorization\[\]\>\]:
+    PrincipalId \<String\>:
+    RoleDefinitionId \<String\>:
+  \[ThirdPartyProviderAuthorizationManagedByTenantId \<String\>\]:
+
+SPECIFICATIONRESOURCETYPEREGISTRATION \<IResourceTypeRegistration\[\]\>: .
+  \[AllowedUnauthorizedAction \<String\[\]\>\]:
+  \[AuthorizationActionMapping \<IAuthorizationActionMapping\[\]\>\]:
+    \[Desired \<String\>\]:
+    \[Original \<String\>\]:
+  \[CheckNameAvailabilitySpecificationEnableDefaultValidation \<Boolean?\>\]:
+  \[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation \<String\[\]\>\]:
+  \[DefaultApiVersion \<String\>\]:
+  \[DisallowedActionVerb \<String\[\]\>\]:
+  \[EnableAsyncOperation \<Boolean?\>\]:
+  \[EnableThirdPartyS2S \<Boolean?\>\]:
+  \[Endpoint \<IResourceTypeEndpoint\[\]\>\]:
+    \[ApiVersion \<String\[\]\>\]:
+    \[Enabled \<Boolean?\>\]:
+    \[Extension \<IResourceTypeExtension\[\]\>\]:
+      \[EndpointUri \<String\>\]:
+      \[ExtensionCategory \<ExtensionCategory\[\]\>\]:
+      \[Timeout \<TimeSpan?\>\]:
+    \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+    \[Location \<String\[\]\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+    \[Timeout \<TimeSpan?\>\]:
+  \[ExtendedLocation \<IExtendedLocationOptions\[\]\>\]:
+    \[SupportedPolicy \<String\>\]:
+    \[Type \<String\>\]:
+  \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+  \[IdentityManagementApplicationId \<String\>\]:
+  \[IdentityManagementType \<IdentityManagementTypes?\>\]:
+  \[IsPureProxy \<Boolean?\>\]:
+  \[LinkedAccessCheck \<ILinkedAccessCheck\[\]\>\]:
+    \[ActionName \<String\>\]:
+    \[LinkedAction \<String\>\]:
+    \[LinkedActionVerb \<String\>\]:
+    \[LinkedProperty \<String\>\]:
+    \[LinkedType \<String\>\]:
+  \[LoggingRule \<ILoggingRule\[\]\>\]:
+    Action \<String\>:
+    DetailLevel \<LoggingDetails\>:
+    Direction \<LoggingDirections\>:
+    \[HiddenPropertyPathHiddenPathsOnRequest \<String\[\]\>\]:
+    \[HiddenPropertyPathHiddenPathsOnResponse \<String\[\]\>\]:
+  \[MarketplaceType \<String\>\]:
+  \[ProvisioningState \<ProvisioningState?\>\]:
+  \[Regionality \<Regionality?\>\]:
+  \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[ResourceCreationBeginRequest \<ExtensionOptionType\[\]\>\]:
+  \[ResourceCreationBeginResponse \<ExtensionOptionType\[\]\>\]:
+  \[ResourceDeletionPolicy \<ResourceDeletionPolicy?\>\]:
+  \[ResourceMovePolicyCrossResourceGroupMoveEnabled \<Boolean?\>\]:
+  \[ResourceMovePolicyCrossSubscriptionMoveEnabled \<Boolean?\>\]:
+  \[ResourceMovePolicyValidationRequired \<Boolean?\>\]:
+  \[RoutingType \<RoutingType?\>\]:
+  \[ServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
+    \[ComponentId \<String\>\]:
+    \[ServiceId \<String\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
+    Action \<SubscriptionNotificationOperation\>:
+    State \<SubscriptionTransitioningState\>:
+  \[SubscriptionStateRule \<ISubscriptionStateRule\[\]\>\]:
+    \[AllowedAction \<String\[\]\>\]:
+    \[State \<SubscriptionState?\>\]:
+  \[SwaggerSpecification \<ISwaggerSpecification\[\]\>\]:
+    \[ApiVersion \<String\[\]\>\]:
+    \[SwaggerSpecFolderUri \<String\>\]:
+  \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
+  \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
+  \[ThrottlingRule \<IThrottlingRule\[\]\>\]:
+    Action \<String\>:
+    Metric \<IThrottlingMetric\[\]\>:
+      Limit \<Int64\>:
+      Type \<ThrottlingMetricType\>:
+      \[Interval \<TimeSpan?\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+
+## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubdefaultrollout](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubdefaultrollout)
+

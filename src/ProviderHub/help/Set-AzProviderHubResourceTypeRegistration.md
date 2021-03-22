@@ -1,0 +1,1000 @@
+---
+external help file: Az.ProviderHub-help.xml
+Module Name: Az.ProviderHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubresourcetyperegistration
+schema: 2.0.0
+---
+
+# Set-AzProviderHubResourceTypeRegistration
+
+## SYNOPSIS
+Creates or updates a resource type.
+
+## SYNTAX
+
+### UpdateExpanded (Default)
+```
+Set-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String>] [-AllowedUnauthorizedAction <String[]>]
+ [-AuthorizationActionMapping <IAuthorizationActionMapping[]>]
+ [-CheckNameAvailabilitySpecificationEnableDefaultValidation]
+ [-CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]
+ [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
+ [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
+ [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>] [-IdentityManagementApplicationId <String>]
+ [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
+ [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <ProvisioningState>]
+ [-Regionality <Regionality>] [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+ [-ResourceCreationBeginRequest <ExtensionOptionType[]>]
+ [-ResourceCreationBeginResponse <ExtensionOptionType[]>] [-ResourceDeletionPolicy <ResourceDeletionPolicy>]
+ [-ResourceMovePolicyCrossResourceGroupMoveEnabled] [-ResourceMovePolicyCrossSubscriptionMoveEnabled]
+ [-ResourceMovePolicyValidationRequired] [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+ [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+ [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
+ [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
+ [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String>] -Property <IResourceTypeRegistration> [-DefaultProfile <PSObject>] [-AsJob]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
+ [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+Creates or updates a resource type.
+
+## EXAMPLES
+
+### EXAMPLE 1
+```
+{{ Add code here }}
+```
+
+{{ Add output here }}
+
+### EXAMPLE 2
+```
+{{ Add code here }}
+```
+
+{{ Add output here }}
+
+## PARAMETERS
+
+### -AllowedUnauthorizedAction
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthorizationActionMapping
+.
+To construct, see NOTES section for AUTHORIZATIONACTIONMAPPING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IAuthorizationActionMapping[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckNameAvailabilitySpecificationEnableDefaultValidation
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultApiVersion
+.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisallowedActionVerb
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAsyncOperation
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableThirdPartyS2S
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Endpoint
+.
+To construct, see NOTES section for ENDPOINT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeEndpoint[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocation
+.
+To construct, see NOTES section for EXTENDEDLOCATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FeatureRuleRequiredFeaturesPolicy
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityManagementApplicationId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityManagementType
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsPureProxy
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LinkedAccessCheck
+.
+To construct, see NOTES section for LINKEDACCESSCHECK properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoggingRule
+.
+To construct, see NOTES section for LOGGINGRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceType
+.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+.
+To construct, see NOTES section for PROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProviderNamespace
+The name of the resource provider hosted within ProviderHub.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Regionality
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestHeaderOptionOptInHeader
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequiredFeature
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceCreationBeginRequest
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceCreationBeginResponse
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceDeletionPolicy
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceMovePolicyCrossResourceGroupMoveEnabled
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceMovePolicyCrossSubscriptionMoveEnabled
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceMovePolicyValidationRequired
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceType
+The resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingType
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTreeInfo
+.
+To construct, see NOTES section for SERVICETREEINFO properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl
+.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction
+.
+To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionStateRule
+.
+To construct, see NOTES section for SUBSCRIPTIONSTATERULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateRule[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SwaggerSpecification
+.
+To construct, see NOTES section for SWAGGERSPECIFICATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISwaggerSpecification[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateDeploymentOptionPreflightOption
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateDeploymentOptionPreflightSupported
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ThrottlingRule
+.
+To construct, see NOTES section for THROTTLINGRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTHORIZATIONACTIONMAPPING \<IAuthorizationActionMapping\[\]\>: .
+  \[Desired \<String\>\]:
+  \[Original \<String\>\]:
+
+ENDPOINT \<IResourceTypeEndpoint\[\]\>: .
+  \[ApiVersion \<String\[\]\>\]:
+  \[Enabled \<Boolean?\>\]:
+  \[Extension \<IResourceTypeExtension\[\]\>\]:
+    \[EndpointUri \<String\>\]:
+    \[ExtensionCategory \<ExtensionCategory\[\]\>\]:
+    \[Timeout \<TimeSpan?\>\]:
+  \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+  \[Location \<String\[\]\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[Timeout \<TimeSpan?\>\]:
+
+EXTENDEDLOCATION \<IExtendedLocationOptions\[\]\>: .
+  \[SupportedPolicy \<String\>\]:
+  \[Type \<String\>\]:
+
+LINKEDACCESSCHECK \<ILinkedAccessCheck\[\]\>: .
+  \[ActionName \<String\>\]:
+  \[LinkedAction \<String\>\]:
+  \[LinkedActionVerb \<String\>\]:
+  \[LinkedProperty \<String\>\]:
+  \[LinkedType \<String\>\]:
+
+LOGGINGRULE \<ILoggingRule\[\]\>: .
+  Action \<String\>:
+  DetailLevel \<LoggingDetails\>:
+  Direction \<LoggingDirections\>:
+  \[HiddenPropertyPathHiddenPathsOnRequest \<String\[\]\>\]:
+  \[HiddenPropertyPathHiddenPathsOnResponse \<String\[\]\>\]:
+
+PROPERTY \<IResourceTypeRegistration\>: .
+  \[AllowedUnauthorizedAction \<String\[\]\>\]:
+  \[AuthorizationActionMapping \<IAuthorizationActionMapping\[\]\>\]:
+    \[Desired \<String\>\]:
+    \[Original \<String\>\]:
+  \[CheckNameAvailabilitySpecificationEnableDefaultValidation \<Boolean?\>\]:
+  \[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation \<String\[\]\>\]:
+  \[DefaultApiVersion \<String\>\]:
+  \[DisallowedActionVerb \<String\[\]\>\]:
+  \[EnableAsyncOperation \<Boolean?\>\]:
+  \[EnableThirdPartyS2S \<Boolean?\>\]:
+  \[Endpoint \<IResourceTypeEndpoint\[\]\>\]:
+    \[ApiVersion \<String\[\]\>\]:
+    \[Enabled \<Boolean?\>\]:
+    \[Extension \<IResourceTypeExtension\[\]\>\]:
+      \[EndpointUri \<String\>\]:
+      \[ExtensionCategory \<ExtensionCategory\[\]\>\]:
+      \[Timeout \<TimeSpan?\>\]:
+    \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+    \[Location \<String\[\]\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+    \[Timeout \<TimeSpan?\>\]:
+  \[ExtendedLocation \<IExtendedLocationOptions\[\]\>\]:
+    \[SupportedPolicy \<String\>\]:
+    \[Type \<String\>\]:
+  \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
+  \[IdentityManagementApplicationId \<String\>\]:
+  \[IdentityManagementType \<IdentityManagementTypes?\>\]:
+  \[IsPureProxy \<Boolean?\>\]:
+  \[LinkedAccessCheck \<ILinkedAccessCheck\[\]\>\]:
+    \[ActionName \<String\>\]:
+    \[LinkedAction \<String\>\]:
+    \[LinkedActionVerb \<String\>\]:
+    \[LinkedProperty \<String\>\]:
+    \[LinkedType \<String\>\]:
+  \[LoggingRule \<ILoggingRule\[\]\>\]:
+    Action \<String\>:
+    DetailLevel \<LoggingDetails\>:
+    Direction \<LoggingDirections\>:
+    \[HiddenPropertyPathHiddenPathsOnRequest \<String\[\]\>\]:
+    \[HiddenPropertyPathHiddenPathsOnResponse \<String\[\]\>\]:
+  \[MarketplaceType \<String\>\]:
+  \[ProvisioningState \<ProvisioningState?\>\]:
+  \[Regionality \<Regionality?\>\]:
+  \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[ResourceCreationBeginRequest \<ExtensionOptionType\[\]\>\]:
+  \[ResourceCreationBeginResponse \<ExtensionOptionType\[\]\>\]:
+  \[ResourceDeletionPolicy \<ResourceDeletionPolicy?\>\]:
+  \[ResourceMovePolicyCrossResourceGroupMoveEnabled \<Boolean?\>\]:
+  \[ResourceMovePolicyCrossSubscriptionMoveEnabled \<Boolean?\>\]:
+  \[ResourceMovePolicyValidationRequired \<Boolean?\>\]:
+  \[RoutingType \<RoutingType?\>\]:
+  \[ServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
+    \[ComponentId \<String\>\]:
+    \[ServiceId \<String\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
+  \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
+    Action \<SubscriptionNotificationOperation\>:
+    State \<SubscriptionTransitioningState\>:
+  \[SubscriptionStateRule \<ISubscriptionStateRule\[\]\>\]:
+    \[AllowedAction \<String\[\]\>\]:
+    \[State \<SubscriptionState?\>\]:
+  \[SwaggerSpecification \<ISwaggerSpecification\[\]\>\]:
+    \[ApiVersion \<String\[\]\>\]:
+    \[SwaggerSpecFolderUri \<String\>\]:
+  \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
+  \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
+  \[ThrottlingRule \<IThrottlingRule\[\]\>\]:
+    Action \<String\>:
+    Metric \<IThrottlingMetric\[\]\>:
+      Limit \<Int64\>:
+      Type \<ThrottlingMetricType\>:
+      \[Interval \<TimeSpan?\>\]:
+    \[RequiredFeature \<String\[\]\>\]:
+
+SERVICETREEINFO \<IServiceTreeInfo\[\]\>: .
+  \[ComponentId \<String\>\]:
+  \[ServiceId \<String\>\]:
+
+SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION \<ISubscriptionStateOverrideAction\[\]\>: .
+  Action \<SubscriptionNotificationOperation\>:
+  State \<SubscriptionTransitioningState\>:
+
+SUBSCRIPTIONSTATERULE \<ISubscriptionStateRule\[\]\>: .
+  \[AllowedAction \<String\[\]\>\]:
+  \[State \<SubscriptionState?\>\]:
+
+SWAGGERSPECIFICATION \<ISwaggerSpecification\[\]\>: .
+  \[ApiVersion \<String\[\]\>\]:
+  \[SwaggerSpecFolderUri \<String\>\]:
+
+THROTTLINGRULE \<IThrottlingRule\[\]\>: .
+  Action \<String\>:
+  Metric \<IThrottlingMetric\[\]\>:
+    Limit \<Int64\>:
+    Type \<ThrottlingMetricType\>:
+    \[Interval \<TimeSpan?\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+
+## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubresourcetyperegistration](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubresourcetyperegistration)
+
