@@ -290,8 +290,21 @@ function Test-VolumeReplication
     {
         do
         {
-            $replicationStatus = Get-AnfReplicationStatus -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
-
+            try
+            {
+                $replicationStatus = Get-AnfReplicationStatus -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
+            }
+            catch [Microsoft.Rest.Azure.CloudException]
+            {
+                $ErrorMessage = $_.Exception.Message
+                #Send-MailMessage -From audunn@netapp.com -To audunn@netapp.com -Subject "Test Failed!" -SmtpServer localhost -Body "We failed to get replication status. The error message was $ErrorMessage"
+                if ($ErrorMessage -notlike "*Cannot get replication status, the volume replication is*")
+                {
+                    # Send-MailMessage -From audunn@netapp.com -To audunn@netapp.com -Subject "Test Thrown!" -SmtpServer localhost -Body "We Are Throwing the exception to get replication status. The error message was $ErrorMessage"
+                    throw 
+                }
+                #Send-MailMessage -From audunn@netapp.com -To audunn@netapp.com -Subject "Test Continued!" -SmtpServer localhost -Body "We Are Continuing from the exception to get replication status. The error message was $ErrorMessage"
+            }
             Start-Sleep -Seconds 1.0
         }
         while ($replicationStatus.MirrorState -ne $targetState)

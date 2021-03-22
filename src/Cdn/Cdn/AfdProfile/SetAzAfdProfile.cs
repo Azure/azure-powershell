@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
                 throw new PSArgumentException($"You are attempting to update a {profile.Sku} profile. Please use Set-AzCdnProfile instead.");
             }
 
-            Dictionary<string, string> afdProfileTags = TagsConversionHelper.CreateTagDictionary(this.Tags, true);
+            Dictionary<string, string> afdProfileTags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
 
             PSAfdProfile psAfdProfile = this.CdnManagementClient.Profiles.Update(this.ResourceGroupName, this.ProfileName, afdProfileTags).ToPSAfdProfile();
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdProfile
 
             this.ProfileName = parsedAfdProfileResourceId.ResourceName;
             this.ResourceGroupName = parsedAfdProfileResourceId.ResourceGroupName;
-            this.Tags = this.Profile.Tags;
+            this.Tag = this.Profile.Tags;
         }
     }
 }

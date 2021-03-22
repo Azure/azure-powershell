@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -77,7 +77,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 
                'Remove-AzNetAppFilesAccount', 'Set-AzNetAppFilesAccount', 
                'Update-AzNetAppFilesAccount', 'Get-AzNetAppFilesPool', 
-               'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool', 
+               'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool', 'Set-AzNetAppFilesPool',
                'Remove-AzNetAppFilesPool', 'Get-AzNetAppFilesVolume', 
                'New-AzNetAppFilesVolume', 'Remove-AzNetAppFilesVolume', 
                'Update-AzNetAppFilesVolume', 'Get-AzNetAppFilesSnapshot', 
@@ -86,12 +86,13 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesReplicationStatus', 
                'Suspend-AzNetAppFilesReplication', 
                'Remove-AzNetAppFilesReplication', 
+               'Initialize-AzNetAppFilesReplication',
                'Resume-AzNetAppFilesReplication', 'Restore-AzNetAppFilesVolume', 
-               'Set-AzNetAppFilesVolumePool', 'New-AzNetAppFilesSnapshotPolicy', 
+               'Set-AzNetAppFilesVolumePool', 'New-AzNetAppFilesSnapshotPolicy', 'Set-AzNetAppFilesSnapshotPolicy', 
                'Get-AzNetAppFilesSnapshotPolicy', 
                'Update-AzNetAppFilesSnapshotPolicy', 
                'Remove-AzNetAppFilesSnapshotPolicy', 
-               'New-AzNetAppFilesBackupPolicy', 'Get-AzNetAppFilesBackupPolicy', 
+               'New-AzNetAppFilesBackupPolicy', 'Get-AzNetAppFilesBackupPolicy', 'Set-AzNetAppFilesBackupPolicy',
                'Update-AzNetAppFilesBackupPolicy', 
                'Remove-AzNetAppFilesBackupPolicy', 'New-AzNetAppFilesBackup', 
                'Get-AzNetAppFilesBackup', 'Update-AzNetAppFilesBackup', 
@@ -106,15 +107,16 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 
-               'Set-AnfAccount', 'Update-AnfAccount', 'Get-AnfPool', 'New-AnfPool', 
+               'Set-AnfAccount', 'Update-AnfAccount', 'Get-AnfPool', 'New-AnfPool', 'Set-AnfPool', 
                'Update-AnfPool', 'Remove-AnfPool', 'Get-AnfVolume', 'New-AnfVolume', 
                'Remove-AnfVolume', 'Update-AnfVolume', 'Get-AnfSnapshot', 
                'New-AnfSnapshot', 'Remove-AnfSnapshot', 'Approve-AnfReplication', 
                'Get-AnfReplicationStatus', 'Suspend-AnfReplication', 
-               'Remove-AnfReplication', 'Resume-AnfReplication', 'Restore-AnfVolume', 
-               'Set-AnfVolumePool', 'Get-AnfSnapshotPolicy', 'New-AnfSnapshotPolicy', 
+               'Remove-AnfReplication', 'Resume-AnfReplication', 'Restore-AnfVolume',
+               "Initialize-AnfReplication",
+               'Set-AnfVolumePool', 'Get-AnfSnapshotPolicy', 'New-AnfSnapshotPolicy', 'Set-AnfSnapshotPolicy', 
                'Remove-AnfSnapshotPolicy', 'Update-AnfSnapshotPolicy', 
-               'Get-AnfBackupPolicy', 'New-AnfBackupPolicy', 
+               'Get-AnfBackupPolicy', 'New-AnfBackupPolicy', 'Set-AnfBackupPolicy',
                'Remove-AnfBackupPolicy', 'Update-AnfBackupPolicy', 'Get-AnfBackup', 
                'New-AnfBackup', 'Remove-AnfBackup', 'Update-AnfBackup', 
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 

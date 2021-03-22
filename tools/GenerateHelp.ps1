@@ -70,7 +70,7 @@ if ($ValidateMarkdownHelp)
     $Exceptions = Import-Csv "$NewExceptionsPath\ValidateHelpIssues.csv"
     if (($Exceptions | Measure-Object).Count -gt 0)
     {
-        $Exceptions | ft
+        $Exceptions | Format-List
         throw "A markdown file containing the help for a cmdlet is incomplete. Please check the exceptions provided for more details."
     }
     else

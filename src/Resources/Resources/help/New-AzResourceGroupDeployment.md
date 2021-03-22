@@ -225,7 +225,7 @@ PS C:\> New-AzResourceGroupDeployment -ResourceGroupName "RGName" -TemplateUri "
 ```
 
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
-Running this command effectively accesses the template using the url https://example.com/example.json?foo.
+Running this command effectively accesses the template using the url `https://example.com/example.json?foo`.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
 
 ## PARAMETERS
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 ### -Mode
 Specifies the deployment mode. The acceptable values for this parameter are:
 - Complete: In complete mode, Resource Manager deletes resources that exist in the resource group but are not
-specified in the template. 
+specified in the template.
 - Incremental: In incremental mode, Resource Manager leaves unchanged resources that
 exist in the resource group but are not specified in the template.
 

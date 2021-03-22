@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = activeDirectory.BackupOperators,
                 KdcIP = activeDirectory.KdcIP,
                 AdName = activeDirectory.AdName,
-                ServerRootCACertificate = activeDirectory.ServerRootCACertificate
+                ServerRootCACertificate = activeDirectory.ServerRootCACertificate,
+                SecurityOperators = activeDirectory.SecurityOperators
             };
             return psActiveDirectory;
         }
@@ -309,7 +310,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupId = volume.BackupId,
                 SecurityStyle = volume.SecurityStyle,
                 ThroughputMibps = volume.ThroughputMibps,
-                KerberosEnabled = volume.KerberosEnabled
+                KerberosEnabled = volume.KerberosEnabled,
+                SmbEncryption = volume.SmbEncryption,
+                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable
+
             };
         }
 

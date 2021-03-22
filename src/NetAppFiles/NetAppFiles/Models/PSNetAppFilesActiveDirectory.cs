@@ -139,5 +139,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <value>Specifies whether or not the LDAP traffic needs to be signed
         /// </value>
         public bool? LdapSigning { get; set; }
+
+        /// <summary>
+        /// Gets or sets SecurityOperators
+        /// </summary>
+        /// <value>
+        /// Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+        /// </value>
+        public IList<string> SecurityOperators { get; set; }
+
+        /// <summary>
+        /// Gets or sets LdapOverTLS
+        /// </summary>
+        /// <value>Specifies whether or not the LDAP specifies whether or not the LDAP traffic needs to be
+        /// secured via TLS.
+        /// </value>
+        public bool? LdapOverTLS { get; set; }
+
     }
 }

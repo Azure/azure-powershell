@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
 * Updated Tools binaries to have Compute cmdlets support `Standard_GZRS` and `RAGZRS` storage accounts.
 
 ## Version 4.10.0
