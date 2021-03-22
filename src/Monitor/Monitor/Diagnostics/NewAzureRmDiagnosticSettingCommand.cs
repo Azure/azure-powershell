@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -132,12 +133,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 !this.IsParameterBound(c => c.EventHubAuthorizationRuleId) && 
                 !this.IsParameterBound(c => c.WorkspaceId))
             {
-                throw new PSArgumentException("No operation is specified, please specify storage account Id/service bus rule Id/eventhub name/eventhub authorization rule Id/workspace Id");
+                throw new AzPSInvalidOperationException("No operation is specified, please specify storage account Id/service bus rule Id/eventhub name/eventhub authorization rule Id/workspace Id");
             }
 
             if (!this.IsParameterBound(c => c.WorkspaceId) && this.IsParameterBound(c => c.DedicatedLogAnalyticsDestinationType))
             {
-                throw new PSArgumentException("Please provide workspace Id if want to use dedicated log analytics destination type");
+                throw new AzPSInvalidOperationException("Please provide workspace Id if want to use dedicated log analytics destination type");
             }
         }
     }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
@@ -35,12 +36,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (this.IsParameterBound(c => c.SubscriptionId) && !Utilities.IsGuid(this.SubscriptionId))
             {
-                throw new PSArgumentException("Please specify a valid subscription Id");
+                throw new AzPSArgumentException("Please specify a valid subscription Id", "SubscriptionId");
             }
 
             if (this.IsParameterBound(c => c.ResourceId) && Utilities.IsGuid(this.ResourceId))
             {
-                throw new PSArgumentException("Please use parameter 'SubscriptionId' instead of 'ResourceId'");
+                throw new AzPSArgumentException("Please use parameter 'SubscriptionId' instead of 'ResourceId'", "ResourceId");
             }
         }
 
