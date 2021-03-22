@@ -47,7 +47,7 @@ Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, m
 ...
 ```
 
-This example gets all location which supports resource provider "Microsoft.AppConfiguration".
+This example gets all locations which supports resource provider "Microsoft.AppConfiguration".
 
 ## PARAMETERS
 
