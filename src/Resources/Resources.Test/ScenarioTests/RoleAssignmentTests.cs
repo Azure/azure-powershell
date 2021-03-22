@@ -216,6 +216,41 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateRa");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForGroup()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForGuest()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForGuest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForMember()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForMember");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForServicePrincipal()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForServicePrincipal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAWhenIdNotExist()
+        {
+            TestRunner.RunTestScript("Test-CreateRAWhenIdNotExist");
+        }
+
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()

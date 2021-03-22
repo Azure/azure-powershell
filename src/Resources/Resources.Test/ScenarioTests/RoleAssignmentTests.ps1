@@ -908,3 +908,109 @@ function Test-UpdateRa{
     $data = Remove-AzRoleAssignment -InputObject $dataNew
     Assert-Null $data "Role assignment was not deleted properly"
 }
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not exist
+#>
+function Test-CreateRAForGroup
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="c795d5c0-412b-4942-9a89-25665e796340" #daorozco_test group
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d1
+
+    Assert-True {$data.ObjectType -eq "Group"}
+}
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not exist
+#>
+function Test-CreateRAForGuest
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="9338059e-8359-4991-bb51-2b67c8bd82cd" #Daniel Orozco Guest User
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
+
+    Assert-True {$data.ObjectType -eq "User"}
+}
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not exist
+#>
+function Test-CreateRAForMember
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="11b1042e-d5b6-4f65-b308-d69565f16f1e" #dagoroz_test_user
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d3
+
+    Assert-True {$data.ObjectType -eq "User"}
+}
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not exist
+#>
+function Test-CreateRAForServicePrincipal
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="6bcd9ef1-e203-4048-a1b3-55e6099605cf" #dummy app
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d4
+
+    Assert-True {$data.ObjectType -eq "ServicePrincipal"}
+}
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not exist
+#>
+function Test-CreateRAWhenIdNotExist
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="77666677-1111-2222-3333-2b4444bd5555" #garbage ID
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "No AD object was found with the parameters provided please ensure that the display name or GUID is written properly"'
+
+    #When
+    $function = {New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d5}
+
+    Assert-Throws $function $ExpectedError
+}
