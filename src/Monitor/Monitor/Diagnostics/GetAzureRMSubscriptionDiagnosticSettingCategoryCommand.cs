@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
@@ -26,12 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         protected override void ProcessRecordInternal()
         {
             IEnumerable<LocalizableString> rawData = this.MonitorManagementClient.EventCategories.List();
-            IList<PSSubscriptionDiagnosticSettingCategory> categories = new List<PSSubscriptionDiagnosticSettingCategory>();
-            foreach (LocalizableString value in rawData)
-            {
-                categories.Add(new PSSubscriptionDiagnosticSettingCategory(value.Value, PSDiagnosticSettingCategoryType.Logs));
-            }
-            WriteObject(categories, true);
+            WriteObject(rawData.Select(value => new PSSubscriptionDiagnosticSettingCategory(value.Value, PSDiagnosticSettingCategoryType.Logs)).ToList(), true); ;
         }
     }
 }
