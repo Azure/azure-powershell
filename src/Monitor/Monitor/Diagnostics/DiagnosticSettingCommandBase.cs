@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        protected string GetSubscription(string str)
+        private string GetSubscription()
         {
             return string.Format("/subscriptions/{0}", this.SubscriptionId);
         }
 
         protected string GetTargetUri()
         {
-            return this.IsParameterBound(c => c.ResourceId) ? this.ResourceId : GetSubscription(this.SubscriptionId);
+            return this.IsParameterBound(c => c.SubscriptionId) ? GetSubscription() : this.ResourceId;
         }
     }
 }
