@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
-            ReadReplicaCount = database.HighAvailabilityReplicaCount;
+            HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
             CurrentBackupStorageRedundancy = database.CurrentBackupStorageRedundancy;
             RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
             SecondaryType = database.SecondaryType;
