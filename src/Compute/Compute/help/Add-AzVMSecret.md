@@ -4,6 +4,8 @@ Module Name: Az.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
 online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret
 schema: 2.0.0
+ms.service: virtual-machines
+ms.subservice: test
 ---
 
 # Add-AzVMSecret
