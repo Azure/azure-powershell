@@ -19,154 +19,14 @@ Creates or updates the rollout details.
 .Description
 Creates or updates the rollout details.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -CanaryRegion "Eastus2EUAP"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [NestedResourceTypeFirst <String>]: The first child resource type.
-  [NestedResourceTypeSecond <String>]: The second child resource type.
-  [NestedResourceTypeThird <String>]: The third child resource type.
-  [NotificationRegistrationName <String>]: The notification registration.
-  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
-  [ResourceType <String>]: The resource type.
-  [RolloutName <String>]: The rollout name.
-  [Sku <String>]: The SKU.
-  [SubscriptionId <String>]: The ID of the target subscription.
-
-PROPERTY <ICustomRollout>: Rollout details.
-  [CanaryRegion <String[]>]: 
-  [ProvisioningState <ProvisioningState?>]: 
-  [SpecificationProviderRegistration <IProviderRegistration>]: 
-    [Capability <IResourceProviderCapabilities[]>]: 
-      Effect <ResourceProviderCapabilitiesEffect>: 
-      QuotaId <String>: 
-      [RequiredFeature <String[]>]: 
-    [FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]: 
-    [ManagementIncidentContactEmail <String>]: 
-    [ManagementIncidentRoutingService <String>]: 
-    [ManagementIncidentRoutingTeam <String>]: 
-    [ManagementManifestOwner <String[]>]: 
-    [ManagementResourceAccessPolicy <String>]: 
-    [ManagementResourceAccessRole <IAny[]>]: 
-    [ManagementSchemaOwner <String[]>]: 
-    [ManagementServiceTreeInfo <IServiceTreeInfo[]>]: 
-      [ComponentId <String>]: 
-      [ServiceId <String>]: 
-    [Metadata <IAny>]: Any object
-    [Namespace <String>]: 
-    [ProviderAuthenticationAllowedAudience <String[]>]: 
-    [ProviderAuthorization <IResourceProviderAuthorization[]>]: 
-      [ApplicationId <String>]: 
-      [ManagedByRoleDefinitionId <String>]: 
-      [RoleDefinitionId <String>]: 
-    [ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]: 
-    [ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]: 
-    [ProviderType <ResourceProviderType?>]: 
-    [ProviderVersion <String>]: 
-    [ProvisioningState <ProvisioningState?>]: 
-    [RequestHeaderOptionOptInHeader <OptInHeaderType?>]: 
-    [RequiredFeature <String[]>]: 
-    [SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]: 
-    [SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]: 
-      Action <SubscriptionNotificationOperation>: 
-      State <SubscriptionTransitioningState>: 
-    [TemplateDeploymentOptionPreflightOption <PreflightOption[]>]: 
-    [TemplateDeploymentOptionPreflightSupported <Boolean?>]: 
-    [ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]: 
-      PrincipalId <String>: 
-      RoleDefinitionId <String>: 
-    [ThirdPartyProviderAuthorizationManagedByTenantId <String>]: 
-  [SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>]: 
-    [AllowedUnauthorizedAction <String[]>]: 
-    [AuthorizationActionMapping <IAuthorizationActionMapping[]>]: 
-      [Desired <String>]: 
-      [Original <String>]: 
-    [CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]: 
-    [CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]: 
-    [DefaultApiVersion <String>]: 
-    [DisallowedActionVerb <String[]>]: 
-    [EnableAsyncOperation <Boolean?>]: 
-    [EnableThirdPartyS2S <Boolean?>]: 
-    [Endpoint <IResourceTypeEndpoint[]>]: 
-      [ApiVersion <String[]>]: 
-      [Enabled <Boolean?>]: 
-      [Extension <IResourceTypeExtension[]>]: 
-        [EndpointUri <String>]: 
-        [ExtensionCategory <ExtensionCategory[]>]: 
-        [Timeout <TimeSpan?>]: 
-      [FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]: 
-      [Location <String[]>]: 
-      [RequiredFeature <String[]>]: 
-      [Timeout <TimeSpan?>]: 
-    [ExtendedLocation <IExtendedLocationOptions[]>]: 
-      [SupportedPolicy <String>]: 
-      [Type <String>]: 
-    [FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]: 
-    [IdentityManagementApplicationId <String>]: 
-    [IdentityManagementType <IdentityManagementTypes?>]: 
-    [IsPureProxy <Boolean?>]: 
-    [LinkedAccessCheck <ILinkedAccessCheck[]>]: 
-      [ActionName <String>]: 
-      [LinkedAction <String>]: 
-      [LinkedActionVerb <String>]: 
-      [LinkedProperty <String>]: 
-      [LinkedType <String>]: 
-    [LoggingRule <ILoggingRule[]>]: 
-      Action <String>: 
-      DetailLevel <LoggingDetails>: 
-      Direction <LoggingDirections>: 
-      [HiddenPropertyPathHiddenPathsOnRequest <String[]>]: 
-      [HiddenPropertyPathHiddenPathsOnResponse <String[]>]: 
-    [MarketplaceType <String>]: 
-    [ProvisioningState <ProvisioningState?>]: 
-    [Regionality <Regionality?>]: 
-    [RequestHeaderOptionOptInHeader <OptInHeaderType?>]: 
-    [RequiredFeature <String[]>]: 
-    [ResourceCreationBeginRequest <ExtensionOptionType[]>]: 
-    [ResourceCreationBeginResponse <ExtensionOptionType[]>]: 
-    [ResourceDeletionPolicy <ResourceDeletionPolicy?>]: 
-    [ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]: 
-    [ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]: 
-    [ResourceMovePolicyValidationRequired <Boolean?>]: 
-    [RoutingType <RoutingType?>]: 
-    [ServiceTreeInfo <IServiceTreeInfo[]>]: 
-    [SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]: 
-    [SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]: 
-    [SubscriptionStateRule <ISubscriptionStateRule[]>]: 
-      [AllowedAction <String[]>]: 
-      [State <SubscriptionState?>]: 
-    [SwaggerSpecification <ISwaggerSpecification[]>]: 
-      [ApiVersion <String[]>]: 
-      [SwaggerSpecFolderUri <String>]: 
-    [TemplateDeploymentOptionPreflightOption <PreflightOption[]>]: 
-    [TemplateDeploymentOptionPreflightSupported <Boolean?>]: 
-    [ThrottlingRule <IThrottlingRule[]>]: 
-      Action <String>: 
-      Metric <IThrottlingMetric[]>: 
-        Limit <Int64>: 
-        Type <ThrottlingMetricType>: 
-        [Interval <TimeSpan?>]: 
-      [RequiredFeature <String[]>]: 
-  [StatusCompletedRegion <String[]>]: 
-  [StatusFailedOrSkippedRegion <ICustomRolloutStatusFailedOrSkippedRegions>]: Dictionary of <ExtendedErrorInfo>
-    [(Any) <IExtendedErrorInfo>]: This indicates any property can be added to this object.
 
 SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
   [Capability <IResourceProviderCapabilities[]>]: 
@@ -291,84 +151,59 @@ function New-AzProviderHubCustomRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The name of the resource provider hosted within ProviderHub.
     ${ProviderNamespace},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The rollout name.
     ${RolloutName},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout]
-    # Rollout details.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
-    ${Property},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${CanaryRegion},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
     # .
     ${ProvisioningState},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration]
     # .
     # To construct, see NOTES section for SPECIFICATIONPROVIDERREGISTRATION properties and create a hash table.
     ${SpecificationProviderRegistration},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration[]]
     # .
     # To construct, see NOTES section for SPECIFICATIONRESOURCETYPEREGISTRATION properties and create a hash table.
     ${SpecificationResourceTypeRegistration},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String[]]
     # .
     ${StatusCompletedRegion},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRolloutStatusFailedOrSkippedRegions]))]
     [System.Collections.Hashtable]
@@ -431,12 +266,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'ProviderHub.private\New-AzProviderHubCustomRollout_Create';
             CreateExpanded = 'ProviderHub.private\New-AzProviderHubCustomRollout_CreateExpanded';
-            CreateViaIdentity = 'ProviderHub.private\New-AzProviderHubCustomRollout_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'ProviderHub.private\New-AzProviderHubCustomRollout_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

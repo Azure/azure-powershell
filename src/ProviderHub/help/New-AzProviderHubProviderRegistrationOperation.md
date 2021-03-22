@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubsku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubproviderregistrationoperation
 schema: 2.0.0
 ---
 
-# Get-AzProviderHubSku
+# New-AzProviderHubProviderRegistrationOperation
 
 ## SYNOPSIS
-Gets the sku details for the given resource type and sku name.
+Generates the operations api for the given provider.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzProviderHubProviderRegistrationOperation -ProviderNamespace <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the sku details for the given resource type and sku name.
+Generates the operations api for the given provider.
 
 ## EXAMPLES
 
-### Example 1: Get the resource SKU definition.
+### Example 1: Create/Update the Operations API
 ```powershell
-PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
+PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
+```
+
+{{ Add description here }}
+
+### Example 2: Create/Update the Operations API
+```powershell
+PS C:\> PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
 ```
 
 {{ Add description here }}
@@ -68,47 +68,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceType
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sku
-The SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -120,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition
 
 ## NOTES
 

@@ -2,3 +2,11 @@
 ```powershell
 PS C:\> Remove-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
 ```
+
+
+### Example 2: Delete a resource SKU definition.
+```powershell
+PS C:\> Remove-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
+```
+
+

@@ -3,3 +3,10 @@
 PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
 
+
+### Example 2: Delete a provider registration by resource provider name.
+```powershell
+PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+```
+
+

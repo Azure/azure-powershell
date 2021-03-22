@@ -12,7 +12,6 @@ Creates or updates a notification registration.
 
 ## SYNTAX
 
-### CreateExpanded
 ```
 New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
  [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>]
@@ -25,10 +24,19 @@ Creates or updates a notification registration.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create/Update a notification registration.
 ```powershell
-New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
+PS C:\> New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
 ```
+
+
+
+### Example 2: Create/Update a notification registration.
+```powershell
+PS C:\> New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
+```
+
+
 
 ## PARAMETERS
 
@@ -37,7 +45,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -52,7 +60,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -67,7 +75,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -82,7 +90,7 @@ The notification registration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: NotificationRegistrationName
 
 Required: True
@@ -98,7 +106,7 @@ To construct, see NOTES section for NOTIFICATIONENDPOINT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,7 +121,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,7 +136,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -143,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +166,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: cf
 
 Required: False
@@ -174,7 +182,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: wi
 
 Required: False
@@ -189,10 +197,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
@@ -206,29 +210,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
-  - `[Location <String[]>]`:
-  - `[NotificationDestination <String>]`:
-
-PROPERTY <INotificationRegistration>: The notification registration definition.
-  - `[IncludedEvent <String[]>]`:
-  - `[MessageScope <MessageScope?>]`:
-  - `[NotificationEndpoint <INotificationEndpoint[]>]`:
-    - `[Location <String[]>]`:
-    - `[NotificationDestination <String>]`:
-  - `[NotificationMode <NotificationMode?>]`:
+  - `[Location <String[]>]`: 
+  - `[NotificationDestination <String>]`: 
 
 ## RELATED LINKS
 

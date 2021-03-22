@@ -12,30 +12,10 @@ Checkin the manifest.
 
 ## SYNTAX
 
-### ManifestExpanded (Default)
 ```
 Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> -BaselineArmManifestLocation <String>
  -Environment <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Manifest
-```
-Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> -CheckinManifestParam <ICheckinManifestParams>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ManifestViaIdentity
-```
-Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity>
- -CheckinManifestParam <ICheckinManifestParams> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ManifestViaIdentityExpanded
-```
-Invoke-AzProviderHubManifestCheckin -InputObject <IProviderHubIdentity> -BaselineArmManifestLocation <String>
- -Environment <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,10 +23,19 @@ Checkin the manifest.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Checkin the resource provider manifest.
 ```powershell
-Invoke-AzProviderHubManifestCheckin -ProviderNamespace $env.ProviderNamespace -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Canary"
+PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace $env.ProviderNamespace -BaselineArmManifestLocation "NorthEurope" -Environment "Canary"
 ```
+
+
+
+### Example 2: Checkin the resource provider manifest.
+```powershell
+PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace $env.ProviderNamespace -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Prod"
+```
+
+
 
 ## PARAMETERS
 
@@ -55,29 +44,13 @@ The baseline ARM manifest location supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded, ManifestViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CheckinManifestParam
-.
-To construct, see NOTES section for CHECKINMANIFESTPARAM properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestParams
-Parameter Sets: Manifest, ManifestViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -101,7 +74,7 @@ The environment supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManifestExpanded, ManifestViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -111,28 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-Parameter Sets: ManifestViaIdentity, ManifestViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProviderNamespace
 The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Manifest, ManifestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -147,7 +104,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Manifest, ManifestExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -193,10 +150,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestParams
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
@@ -204,27 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CHECKINMANIFESTPARAM <ICheckinManifestParams>: .
-  - `BaselineArmManifestLocation <String>`: The baseline ARM manifest location supplied to the checkin manifest operation.
-  - `Environment <String>`: The environment supplied to the checkin manifest operation.
-
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

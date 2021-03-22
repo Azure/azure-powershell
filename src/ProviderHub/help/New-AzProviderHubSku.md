@@ -12,7 +12,6 @@ Creates or updates the resource type skus in the given resource type.
 
 ## SYNTAX
 
-### CreateExpanded
 ```
 New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
  -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -24,19 +23,19 @@ Creates or updates the resource type skus in the given resource type.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create/Update a resource SKU definition.
 ```powershell
-{{ Add code here }}
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1", Kind = "Standard"}
 ```
 
-{{ Add output here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+
+### Example 2: Create/Update a resource SKU definition.
 ```powershell
-{{ Add code here }}
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1", Kind = "Standard"}
 ```
 
-{{ Add output here }}
+
 
 ## PARAMETERS
 
@@ -45,7 +44,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -60,7 +59,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -75,7 +74,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -90,7 +89,7 @@ The SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -106,7 +105,7 @@ To construct, see NOTES section for SKUSETTING properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -121,7 +120,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,7 +135,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: cf
 
 Required: False
@@ -152,7 +151,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: wi
 
 Required: False
@@ -167,10 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
@@ -184,76 +179,34 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-PROPERTY <IResourceTypeSku>: .
-  - `SkuSetting <ISkuSetting[]>`:
-    - `Name <String>`:
-    - `[Capability <ISkuCapability[]>]`:
-      - `Name <String>`:
-      - `Value <String>`:
-    - `[CapacityDefault <Int32?>]`:
-    - `[CapacityMaximum <Int32?>]`:
-    - `[CapacityMinimum <Int32?>]`:
-    - `[CapacityScaleType <SkuScaleType?>]`:
-    - `[Cost <ISkuCost[]>]`:
-      - `MeterId <String>`:
-      - `[ExtendedUnit <String>]`:
-      - `[Quantity <Int32?>]`:
-    - `[Family <String>]`:
-    - `[Kind <String>]`:
-    - `[Location <String[]>]`:
-    - `[LocationInfo <ISkuLocationInfo[]>]`:
-      - `Location <String>`:
-      - `[ExtendedLocation <String[]>]`:
-      - `[Type <String>]`:
-      - `[Zone <String[]>]`:
-      - `[ZoneDetail <ISkuZoneDetail[]>]`:
-        - `[Capability <ISkuCapability[]>]`:
-        - `[Name <String[]>]`:
-    - `[RequiredFeature <String[]>]`:
-    - `[RequiredQuotaId <String[]>]`:
-    - `[Size <String>]`:
-    - `[Tier <String>]`:
-
 SKUSETTING <ISkuSetting[]>: .
-  - `Name <String>`:
-  - `[Capability <ISkuCapability[]>]`:
-    - `Name <String>`:
-    - `Value <String>`:
-  - `[CapacityDefault <Int32?>]`:
-  - `[CapacityMaximum <Int32?>]`:
-  - `[CapacityMinimum <Int32?>]`:
-  - `[CapacityScaleType <SkuScaleType?>]`:
-  - `[Cost <ISkuCost[]>]`:
-    - `MeterId <String>`:
-    - `[ExtendedUnit <String>]`:
-    - `[Quantity <Int32?>]`:
-  - `[Family <String>]`:
-  - `[Kind <String>]`:
-  - `[Location <String[]>]`:
-  - `[LocationInfo <ISkuLocationInfo[]>]`:
-    - `Location <String>`:
-    - `[ExtendedLocation <String[]>]`:
-    - `[Type <String>]`:
-    - `[Zone <String[]>]`:
-    - `[ZoneDetail <ISkuZoneDetail[]>]`:
-      - `[Capability <ISkuCapability[]>]`:
-      - `[Name <String[]>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[RequiredQuotaId <String[]>]`:
-  - `[Size <String>]`:
-  - `[Tier <String>]`:
+  - `Name <String>`: 
+  - `[Capability <ISkuCapability[]>]`: 
+    - `Name <String>`: 
+    - `Value <String>`: 
+  - `[CapacityDefault <Int32?>]`: 
+  - `[CapacityMaximum <Int32?>]`: 
+  - `[CapacityMinimum <Int32?>]`: 
+  - `[CapacityScaleType <SkuScaleType?>]`: 
+  - `[Cost <ISkuCost[]>]`: 
+    - `MeterId <String>`: 
+    - `[ExtendedUnit <String>]`: 
+    - `[Quantity <Int32?>]`: 
+  - `[Family <String>]`: 
+  - `[Kind <String>]`: 
+  - `[Location <String[]>]`: 
+  - `[LocationInfo <ISkuLocationInfo[]>]`: 
+    - `Location <String>`: 
+    - `[ExtendedLocation <String[]>]`: 
+    - `[Type <String>]`: 
+    - `[Zone <String[]>]`: 
+    - `[ZoneDetail <ISkuZoneDetail[]>]`: 
+      - `[Capability <ISkuCapability[]>]`: 
+      - `[Name <String[]>]`: 
+  - `[RequiredFeature <String[]>]`: 
+  - `[RequiredQuotaId <String[]>]`: 
+  - `[Size <String>]`: 
+  - `[Tier <String>]`: 
 
 ## RELATED LINKS
 

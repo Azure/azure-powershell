@@ -12,7 +12,6 @@ Creates or updates the rollout details.
 
 ## SYNTAX
 
-### CreateExpanded
 ```
 New-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
  [-CanaryRegion <String[]>] [-CanarySkipRegion <String[]>] [-HighTrafficRegion <String[]>]
@@ -33,10 +32,12 @@ Creates or updates the rollout details.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create/Update a resource provider default rollout.
 ```powershell
-New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -RestOfTheWorldGroupTwoWaitDuration New-TimeSpan -Hours 24 -CanarySkipRegion "brazilus"
+PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -RestOfTheWorldGroupTwoWaitDuration New-TimeSpan -Hours 24 -CanarySkipRegion "brazilus"
 ```
+
+
 
 ## PARAMETERS
 
@@ -45,7 +46,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -75,7 +76,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -90,7 +91,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -120,7 +121,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -180,7 +181,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +196,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,7 +211,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -240,7 +241,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +256,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -270,7 +271,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +286,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -300,7 +301,7 @@ The rollout name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -316,7 +317,7 @@ To construct, see NOTES section for SPECIFICATIONPROVIDERREGISTRATION properties
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -332,7 +333,7 @@ To construct, see NOTES section for SPECIFICATIONRESOURCETYPEREGISTRATION proper
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -347,7 +348,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -362,7 +363,7 @@ Dictionary of \<ExtendedErrorInfo\>
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -377,7 +378,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -392,7 +393,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -407,7 +408,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -422,7 +423,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -437,7 +438,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: cf
 
 Required: False
@@ -453,7 +454,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: wi
 
 Required: False
@@ -468,10 +469,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
@@ -485,266 +482,122 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-PROPERTY <IDefaultRollout>: Default rollout definition.
-  - `[CanaryRegion <String[]>]`:
-  - `[CanarySkipRegion <String[]>]`:
-  - `[HighTrafficRegion <String[]>]`:
-  - `[HighTrafficWaitDuration <TimeSpan?>]`:
-  - `[LowTrafficRegion <String[]>]`:
-  - `[LowTrafficWaitDuration <TimeSpan?>]`:
-  - `[MediumTrafficRegion <String[]>]`:
-  - `[MediumTrafficWaitDuration <TimeSpan?>]`:
-  - `[ProvisioningState <ProvisioningState?>]`:
-  - `[RestOfTheWorldGroupOneRegion <String[]>]`:
-  - `[RestOfTheWorldGroupOneWaitDuration <TimeSpan?>]`:
-  - `[RestOfTheWorldGroupTwoRegion <String[]>]`:
-  - `[RestOfTheWorldGroupTwoWaitDuration <TimeSpan?>]`:
-  - `[SpecificationProviderRegistration <IProviderRegistration>]`:
-    - `[Capability <IResourceProviderCapabilities[]>]`:
-      - `Effect <ResourceProviderCapabilitiesEffect>`:
-      - `QuotaId <String>`:
-      - `[RequiredFeature <String[]>]`:
-    - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-    - `[ManagementIncidentContactEmail <String>]`:
-    - `[ManagementIncidentRoutingService <String>]`:
-    - `[ManagementIncidentRoutingTeam <String>]`:
-    - `[ManagementManifestOwner <String[]>]`:
-    - `[ManagementResourceAccessPolicy <String>]`:
-    - `[ManagementResourceAccessRole <IAny[]>]`:
-    - `[ManagementSchemaOwner <String[]>]`:
-    - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
-      - `[ComponentId <String>]`:
-      - `[ServiceId <String>]`:
-    - `[Metadata <IAny>]`: Any object
-    - `[Namespace <String>]`:
-    - `[ProviderAuthenticationAllowedAudience <String[]>]`:
-    - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:
-      - `[ApplicationId <String>]`:
-      - `[ManagedByRoleDefinitionId <String>]`:
-      - `[RoleDefinitionId <String>]`:
-    - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`:
-    - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`:
-    - `[ProviderType <ResourceProviderType?>]`:
-    - `[ProviderVersion <String>]`:
-    - `[ProvisioningState <ProvisioningState?>]`:
-    - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`:
-    - `[RequiredFeature <String[]>]`:
-    - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-    - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-      - `Action <SubscriptionNotificationOperation>`:
-      - `State <SubscriptionTransitioningState>`:
-    - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`:
-    - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-    - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`:
-      - `PrincipalId <String>`:
-      - `RoleDefinitionId <String>`:
-    - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`:
-  - `[SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>]`:
-    - `[AllowedUnauthorizedAction <String[]>]`:
-    - `[AuthorizationActionMapping <IAuthorizationActionMapping[]>]`:
-      - `[Desired <String>]`:
-      - `[Original <String>]`:
-    - `[CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]`:
-    - `[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]`:
-    - `[DefaultApiVersion <String>]`:
-    - `[DisallowedActionVerb <String[]>]`:
-    - `[EnableAsyncOperation <Boolean?>]`:
-    - `[EnableThirdPartyS2S <Boolean?>]`:
-    - `[Endpoint <IResourceTypeEndpoint[]>]`:
-      - `[ApiVersion <String[]>]`:
-      - `[Enabled <Boolean?>]`:
-      - `[Extension <IResourceTypeExtension[]>]`:
-        - `[EndpointUri <String>]`:
-        - `[ExtensionCategory <ExtensionCategory[]>]`:
-        - `[Timeout <TimeSpan?>]`:
-      - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-      - `[Location <String[]>]`:
-      - `[RequiredFeature <String[]>]`:
-      - `[Timeout <TimeSpan?>]`:
-    - `[ExtendedLocation <IExtendedLocationOptions[]>]`:
-      - `[SupportedPolicy <String>]`:
-      - `[Type <String>]`:
-    - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-    - `[IdentityManagementApplicationId <String>]`:
-    - `[IdentityManagementType <IdentityManagementTypes?>]`:
-    - `[IsPureProxy <Boolean?>]`:
-    - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`:
-      - `[ActionName <String>]`:
-      - `[LinkedAction <String>]`:
-      - `[LinkedActionVerb <String>]`:
-      - `[LinkedProperty <String>]`:
-      - `[LinkedType <String>]`:
-    - `[LoggingRule <ILoggingRule[]>]`:
-      - `Action <String>`:
-      - `DetailLevel <LoggingDetails>`:
-      - `Direction <LoggingDirections>`:
-      - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
-      - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
-    - `[MarketplaceType <String>]`:
-    - `[ProvisioningState <ProvisioningState?>]`:
-    - `[Regionality <Regionality?>]`:
-    - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`:
-    - `[RequiredFeature <String[]>]`:
-    - `[ResourceCreationBeginRequest <ExtensionOptionType[]>]`:
-    - `[ResourceCreationBeginResponse <ExtensionOptionType[]>]`:
-    - `[ResourceDeletionPolicy <ResourceDeletionPolicy?>]`:
-    - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`:
-    - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`:
-    - `[ResourceMovePolicyValidationRequired <Boolean?>]`:
-    - `[RoutingType <RoutingType?>]`:
-    - `[ServiceTreeInfo <IServiceTreeInfo[]>]`:
-    - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-    - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-    - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`:
-      - `[AllowedAction <String[]>]`:
-      - `[State <SubscriptionState?>]`:
-    - `[SwaggerSpecification <ISwaggerSpecification[]>]`:
-      - `[ApiVersion <String[]>]`:
-      - `[SwaggerSpecFolderUri <String>]`:
-    - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`:
-    - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-    - `[ThrottlingRule <IThrottlingRule[]>]`:
-      - `Action <String>`:
-      - `Metric <IThrottlingMetric[]>`:
-        - `Limit <Int64>`:
-        - `Type <ThrottlingMetricType>`:
-        - `[Interval <TimeSpan?>]`:
-      - `[RequiredFeature <String[]>]`:
-  - `[StatusCompletedRegion <String[]>]`:
-  - `[StatusFailedOrSkippedRegion <IRolloutStatusBaseFailedOrSkippedRegions>]`: Dictionary of <ExtendedErrorInfo>
-    - `[(Any) <IExtendedErrorInfo>]`: This indicates any property can be added to this object.
-  - `[StatusNextTrafficRegion <TrafficRegionCategory?>]`:
-  - `[StatusNextTrafficRegionScheduledTime <DateTime?>]`:
-  - `[StatusSubscriptionReregistrationResult <SubscriptionReregistrationResult?>]`:
-
 SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
-  - `[Capability <IResourceProviderCapabilities[]>]`:
-    - `Effect <ResourceProviderCapabilitiesEffect>`:
-    - `QuotaId <String>`:
-    - `[RequiredFeature <String[]>]`:
-  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-  - `[ManagementIncidentContactEmail <String>]`:
-  - `[ManagementIncidentRoutingService <String>]`:
-  - `[ManagementIncidentRoutingTeam <String>]`:
-  - `[ManagementManifestOwner <String[]>]`:
-  - `[ManagementResourceAccessPolicy <String>]`:
-  - `[ManagementResourceAccessRole <IAny[]>]`:
-  - `[ManagementSchemaOwner <String[]>]`:
-  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
-    - `[ComponentId <String>]`:
-    - `[ServiceId <String>]`:
+  - `[Capability <IResourceProviderCapabilities[]>]`: 
+    - `Effect <ResourceProviderCapabilitiesEffect>`: 
+    - `QuotaId <String>`: 
+    - `[RequiredFeature <String[]>]`: 
+  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`: 
+  - `[ManagementIncidentContactEmail <String>]`: 
+  - `[ManagementIncidentRoutingService <String>]`: 
+  - `[ManagementIncidentRoutingTeam <String>]`: 
+  - `[ManagementManifestOwner <String[]>]`: 
+  - `[ManagementResourceAccessPolicy <String>]`: 
+  - `[ManagementResourceAccessRole <IAny[]>]`: 
+  - `[ManagementSchemaOwner <String[]>]`: 
+  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
+    - `[ComponentId <String>]`: 
+    - `[ServiceId <String>]`: 
   - `[Metadata <IAny>]`: Any object
-  - `[Namespace <String>]`:
-  - `[ProviderAuthenticationAllowedAudience <String[]>]`:
-  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:
-    - `[ApplicationId <String>]`:
-    - `[ManagedByRoleDefinitionId <String>]`:
-    - `[RoleDefinitionId <String>]`:
-  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`:
-  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`:
-  - `[ProviderType <ResourceProviderType?>]`:
-  - `[ProviderVersion <String>]`:
-  - `[ProvisioningState <ProvisioningState?>]`:
-  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-    - `Action <SubscriptionNotificationOperation>`:
-    - `State <SubscriptionTransitioningState>`:
-  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`:
-  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`:
-    - `PrincipalId <String>`:
-    - `RoleDefinitionId <String>`:
-  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`:
+  - `[Namespace <String>]`: 
+  - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
+  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 
+    - `[ApplicationId <String>]`: 
+    - `[ManagedByRoleDefinitionId <String>]`: 
+    - `[RoleDefinitionId <String>]`: 
+  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`: 
+  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`: 
+  - `[ProviderType <ResourceProviderType?>]`: 
+  - `[ProviderVersion <String>]`: 
+  - `[ProvisioningState <ProvisioningState?>]`: 
+  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`: 
+  - `[RequiredFeature <String[]>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
+    - `Action <SubscriptionNotificationOperation>`: 
+    - `State <SubscriptionTransitioningState>`: 
+  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`: 
+  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
+  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`: 
+    - `PrincipalId <String>`: 
+    - `RoleDefinitionId <String>`: 
+  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`: 
 
 SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
-  - `[AllowedUnauthorizedAction <String[]>]`:
-  - `[AuthorizationActionMapping <IAuthorizationActionMapping[]>]`:
-    - `[Desired <String>]`:
-    - `[Original <String>]`:
-  - `[CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]`:
-  - `[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]`:
-  - `[DefaultApiVersion <String>]`:
-  - `[DisallowedActionVerb <String[]>]`:
-  - `[EnableAsyncOperation <Boolean?>]`:
-  - `[EnableThirdPartyS2S <Boolean?>]`:
-  - `[Endpoint <IResourceTypeEndpoint[]>]`:
-    - `[ApiVersion <String[]>]`:
-    - `[Enabled <Boolean?>]`:
-    - `[Extension <IResourceTypeExtension[]>]`:
-      - `[EndpointUri <String>]`:
-      - `[ExtensionCategory <ExtensionCategory[]>]`:
-      - `[Timeout <TimeSpan?>]`:
-    - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-    - `[Location <String[]>]`:
-    - `[RequiredFeature <String[]>]`:
-    - `[Timeout <TimeSpan?>]`:
-  - `[ExtendedLocation <IExtendedLocationOptions[]>]`:
-    - `[SupportedPolicy <String>]`:
-    - `[Type <String>]`:
-  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`:
-  - `[IdentityManagementApplicationId <String>]`:
-  - `[IdentityManagementType <IdentityManagementTypes?>]`:
-  - `[IsPureProxy <Boolean?>]`:
-  - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`:
-    - `[ActionName <String>]`:
-    - `[LinkedAction <String>]`:
-    - `[LinkedActionVerb <String>]`:
-    - `[LinkedProperty <String>]`:
-    - `[LinkedType <String>]`:
-  - `[LoggingRule <ILoggingRule[]>]`:
-    - `Action <String>`:
-    - `DetailLevel <LoggingDetails>`:
-    - `Direction <LoggingDirections>`:
-    - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
-    - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
-  - `[MarketplaceType <String>]`:
-  - `[ProvisioningState <ProvisioningState?>]`:
-  - `[Regionality <Regionality?>]`:
-  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[ResourceCreationBeginRequest <ExtensionOptionType[]>]`:
-  - `[ResourceCreationBeginResponse <ExtensionOptionType[]>]`:
-  - `[ResourceDeletionPolicy <ResourceDeletionPolicy?>]`:
-  - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`:
-  - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`:
-  - `[ResourceMovePolicyValidationRequired <Boolean?>]`:
-  - `[RoutingType <RoutingType?>]`:
-  - `[ServiceTreeInfo <IServiceTreeInfo[]>]`:
-    - `[ComponentId <String>]`:
-    - `[ServiceId <String>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-    - `Action <SubscriptionNotificationOperation>`:
-    - `State <SubscriptionTransitioningState>`:
-  - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`:
-    - `[AllowedAction <String[]>]`:
-    - `[State <SubscriptionState?>]`:
-  - `[SwaggerSpecification <ISwaggerSpecification[]>]`:
-    - `[ApiVersion <String[]>]`:
-    - `[SwaggerSpecFolderUri <String>]`:
-  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`:
-  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-  - `[ThrottlingRule <IThrottlingRule[]>]`:
-    - `Action <String>`:
-    - `Metric <IThrottlingMetric[]>`:
-      - `Limit <Int64>`:
-      - `Type <ThrottlingMetricType>`:
-      - `[Interval <TimeSpan?>]`:
-    - `[RequiredFeature <String[]>]`:
+  - `[AllowedUnauthorizedAction <String[]>]`: 
+  - `[AuthorizationActionMapping <IAuthorizationActionMapping[]>]`: 
+    - `[Desired <String>]`: 
+    - `[Original <String>]`: 
+  - `[CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]`: 
+  - `[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]`: 
+  - `[DefaultApiVersion <String>]`: 
+  - `[DisallowedActionVerb <String[]>]`: 
+  - `[EnableAsyncOperation <Boolean?>]`: 
+  - `[EnableThirdPartyS2S <Boolean?>]`: 
+  - `[Endpoint <IResourceTypeEndpoint[]>]`: 
+    - `[ApiVersion <String[]>]`: 
+    - `[Enabled <Boolean?>]`: 
+    - `[Extension <IResourceTypeExtension[]>]`: 
+      - `[EndpointUri <String>]`: 
+      - `[ExtensionCategory <ExtensionCategory[]>]`: 
+      - `[Timeout <TimeSpan?>]`: 
+    - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`: 
+    - `[Location <String[]>]`: 
+    - `[RequiredFeature <String[]>]`: 
+    - `[Timeout <TimeSpan?>]`: 
+  - `[ExtendedLocation <IExtendedLocationOptions[]>]`: 
+    - `[SupportedPolicy <String>]`: 
+    - `[Type <String>]`: 
+  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`: 
+  - `[IdentityManagementApplicationId <String>]`: 
+  - `[IdentityManagementType <IdentityManagementTypes?>]`: 
+  - `[IsPureProxy <Boolean?>]`: 
+  - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`: 
+    - `[ActionName <String>]`: 
+    - `[LinkedAction <String>]`: 
+    - `[LinkedActionVerb <String>]`: 
+    - `[LinkedProperty <String>]`: 
+    - `[LinkedType <String>]`: 
+  - `[LoggingRule <ILoggingRule[]>]`: 
+    - `Action <String>`: 
+    - `DetailLevel <LoggingDetails>`: 
+    - `Direction <LoggingDirections>`: 
+    - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
+    - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
+  - `[MarketplaceType <String>]`: 
+  - `[ProvisioningState <ProvisioningState?>]`: 
+  - `[Regionality <Regionality?>]`: 
+  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`: 
+  - `[RequiredFeature <String[]>]`: 
+  - `[ResourceCreationBeginRequest <ExtensionOptionType[]>]`: 
+  - `[ResourceCreationBeginResponse <ExtensionOptionType[]>]`: 
+  - `[ResourceDeletionPolicy <ResourceDeletionPolicy?>]`: 
+  - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`: 
+  - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`: 
+  - `[ResourceMovePolicyValidationRequired <Boolean?>]`: 
+  - `[RoutingType <RoutingType?>]`: 
+  - `[ServiceTreeInfo <IServiceTreeInfo[]>]`: 
+    - `[ComponentId <String>]`: 
+    - `[ServiceId <String>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
+    - `Action <SubscriptionNotificationOperation>`: 
+    - `State <SubscriptionTransitioningState>`: 
+  - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`: 
+    - `[AllowedAction <String[]>]`: 
+    - `[State <SubscriptionState?>]`: 
+  - `[SwaggerSpecification <ISwaggerSpecification[]>]`: 
+    - `[ApiVersion <String[]>]`: 
+    - `[SwaggerSpecFolderUri <String>]`: 
+  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`: 
+  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
+  - `[ThrottlingRule <IThrottlingRule[]>]`: 
+    - `Action <String>`: 
+    - `Metric <IThrottlingMetric[]>`: 
+      - `Limit <Int64>`: 
+      - `Type <ThrottlingMetricType>`: 
+      - `[Interval <TimeSpan?>]`: 
+    - `[RequiredFeature <String[]>]`: 
 
 ## RELATED LINKS
 

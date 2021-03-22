@@ -19,66 +19,16 @@ Creates or updates the resource type skus in the given resource type.
 .Description
 Creates or updates the resource type skus in the given resource type.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1", Kind = "Standard"}
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1", Kind = "Standard"}
 
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [NestedResourceTypeFirst <String>]: The first child resource type.
-  [NestedResourceTypeSecond <String>]: The second child resource type.
-  [NestedResourceTypeThird <String>]: The third child resource type.
-  [NotificationRegistrationName <String>]: The notification registration.
-  [ProviderNamespace <String>]: The name of the resource provider hosted within ProviderHub.
-  [ResourceType <String>]: The resource type.
-  [RolloutName <String>]: The rollout name.
-  [Sku <String>]: The SKU.
-  [SubscriptionId <String>]: The ID of the target subscription.
-
-PROPERTY <IResourceTypeSku>: .
-  SkuSetting <ISkuSetting[]>: 
-    Name <String>: 
-    [Capability <ISkuCapability[]>]: 
-      Name <String>: 
-      Value <String>: 
-    [CapacityDefault <Int32?>]: 
-    [CapacityMaximum <Int32?>]: 
-    [CapacityMinimum <Int32?>]: 
-    [CapacityScaleType <SkuScaleType?>]: 
-    [Cost <ISkuCost[]>]: 
-      MeterId <String>: 
-      [ExtendedUnit <String>]: 
-      [Quantity <Int32?>]: 
-    [Family <String>]: 
-    [Kind <String>]: 
-    [Location <String[]>]: 
-    [LocationInfo <ISkuLocationInfo[]>]: 
-      Location <String>: 
-      [ExtendedLocation <String[]>]: 
-      [Type <String>]: 
-      [Zone <String[]>]: 
-      [ZoneDetail <ISkuZoneDetail[]>]: 
-        [Capability <ISkuCapability[]>]: 
-        [Name <String[]>]: 
-    [RequiredFeature <String[]>]: 
-    [RequiredQuotaId <String[]>]: 
-    [Size <String>]: 
-    [Tier <String>]: 
 
 SKUSETTING <ISkuSetting[]>: .
   Name <String>: 
@@ -113,55 +63,34 @@ https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azprovider
 #>
 function New-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The name of the resource provider hosted within ProviderHub.
     ${ProviderNamespace},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The SKU.
     ${Sku},
 
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku]
-    # .
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
-    ${Property},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]]
     # .
@@ -224,12 +153,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Create = 'ProviderHub.private\New-AzProviderHubSku_Create';
             CreateExpanded = 'ProviderHub.private\New-AzProviderHubSku_CreateExpanded';
-            CreateViaIdentity = 'ProviderHub.private\New-AzProviderHubSku_CreateViaIdentity';
-            CreateViaIdentityExpanded = 'ProviderHub.private\New-AzProviderHubSku_CreateViaIdentityExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -29,15 +29,6 @@ Gets a resource type details in the given subscription and provider.
 ### [Get-AzProviderHubSku](Get-AzProviderHubSku.md)
 Gets the sku details for the given resource type and sku name.
 
-### [Get-AzProviderHubSkuNestedResourceTypeFirst](Get-AzProviderHubSkuNestedResourceTypeFirst.md)
-Gets the sku details for the given resource type and sku name.
-
-### [Get-AzProviderHubSkuNestedResourceTypeSecond](Get-AzProviderHubSkuNestedResourceTypeSecond.md)
-Gets the sku details for the given resource type and sku name.
-
-### [Get-AzProviderHubSkuNestedResourceTypeThird](Get-AzProviderHubSkuNestedResourceTypeThird.md)
-Gets the sku details for the given resource type and sku name.
-
 ### [Invoke-AzProviderHubManifestCheckin](Invoke-AzProviderHubManifestCheckin.md)
 Checkin the manifest.
 
@@ -65,15 +56,6 @@ Creates or updates a resource type.
 ### [New-AzProviderHubSku](New-AzProviderHubSku.md)
 Creates or updates the resource type skus in the given resource type.
 
-### [New-AzProviderHubSkuNestedResourceTypeFirst](New-AzProviderHubSkuNestedResourceTypeFirst.md)
-Creates or updates the resource type skus in the given resource type.
-
-### [New-AzProviderHubSkuNestedResourceTypeSecond](New-AzProviderHubSkuNestedResourceTypeSecond.md)
-Creates or updates the resource type skus in the given resource type.
-
-### [New-AzProviderHubSkuNestedResourceTypeThird](New-AzProviderHubSkuNestedResourceTypeThird.md)
-Creates or updates the resource type skus in the given resource type.
-
 ### [Remove-AzProviderHubDefaultRollout](Remove-AzProviderHubDefaultRollout.md)
 Deletes the rollout resource.
 Rollout must be in terminal state.
@@ -89,42 +71,6 @@ Deletes a resource type
 
 ### [Remove-AzProviderHubSku](Remove-AzProviderHubSku.md)
 Deletes a resource type sku.
-
-### [Remove-AzProviderHubSkuNestedResourceTypeFirst](Remove-AzProviderHubSkuNestedResourceTypeFirst.md)
-Deletes a resource type sku.
-
-### [Remove-AzProviderHubSkuNestedResourceTypeSecond](Remove-AzProviderHubSkuNestedResourceTypeSecond.md)
-Deletes a resource type sku.
-
-### [Remove-AzProviderHubSkuNestedResourceTypeThird](Remove-AzProviderHubSkuNestedResourceTypeThird.md)
-Deletes a resource type sku.
-
-### [Set-AzProviderHubCustomRollout](Set-AzProviderHubCustomRollout.md)
-Creates or updates the rollout details.
-
-### [Set-AzProviderHubDefaultRollout](Set-AzProviderHubDefaultRollout.md)
-Creates or updates the rollout details.
-
-### [Set-AzProviderHubNotificationRegistration](Set-AzProviderHubNotificationRegistration.md)
-Creates or updates a notification registration.
-
-### [Set-AzProviderHubProviderRegistration](Set-AzProviderHubProviderRegistration.md)
-Creates or updates the provider registration.
-
-### [Set-AzProviderHubResourceTypeRegistration](Set-AzProviderHubResourceTypeRegistration.md)
-Creates or updates a resource type.
-
-### [Set-AzProviderHubSku](Set-AzProviderHubSku.md)
-Creates or updates the resource type skus in the given resource type.
-
-### [Set-AzProviderHubSkuNestedResourceTypeFirst](Set-AzProviderHubSkuNestedResourceTypeFirst.md)
-Creates or updates the resource type skus in the given resource type.
-
-### [Set-AzProviderHubSkuNestedResourceTypeSecond](Set-AzProviderHubSkuNestedResourceTypeSecond.md)
-Creates or updates the resource type skus in the given resource type.
-
-### [Set-AzProviderHubSkuNestedResourceTypeThird](Set-AzProviderHubSkuNestedResourceTypeThird.md)
-Creates or updates the resource type skus in the given resource type.
 
 ### [Stop-AzProviderHubDefaultRollout](Stop-AzProviderHubDefaultRollout.md)
 Stops or cancels the rollout, if in progress.
