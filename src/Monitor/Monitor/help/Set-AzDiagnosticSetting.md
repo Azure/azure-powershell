@@ -127,15 +127,15 @@ This command uses the PowerShell pipeline to set (no change made) a diagnostic s
 
 ### Example 7: Enable all categories for a subscription
 ```powershell
-	$list = @()
-	Get-AzSubscriptionDiagnosticSettingCategory | ForEach-Object {
-		$list += (New-AzDiagnosticDetailSetting -Log -Category $_.Name -Enabled)
-	}
-	$DiagnosticSettingName = 'please use your setting name here'
-	$SubscriptionId = 'please use your subscription Id here'
-	$WorkspaceId = 'please use your workspace Id here'
-	$setting = New-AzDiagnosticSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId -WorkspaceId $WorkspaceId -Setting $list
-	Set-AzDiagnosticSetting -InputObject $setting
+$list = @()
+Get-AzSubscriptionDiagnosticSettingCategory | ForEach-Object {
+	$list += (New-AzDiagnosticDetailSetting -Log -Category $_.Name -Enabled)
+}
+$DiagnosticSettingName = 'please use your setting name here'
+$SubscriptionId = 'please use your subscription Id here'
+$WorkspaceId = 'please use your workspace Id here'
+$setting = New-AzDiagnosticSetting -Name $DiagnosticSettingName -SubscriptionId $SubscriptionId -WorkspaceId $WorkspaceId -Setting $list
+Set-AzDiagnosticSetting -InputObject $setting
 ```
 
 This command enabled all categories of logs for subscription.
