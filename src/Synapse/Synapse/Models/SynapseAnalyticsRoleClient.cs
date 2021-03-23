@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
+        public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId)
+        {
+            var roleAssignment = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, null).Value.Value.Select(element => new PSRoleAssignmentDetails(element));
+            string roleAssignmentId = roleAssignment.SingleOrDefault().RoleAssignmentId;
+            _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
+        }
+
         public IReadOnlyList<string> ListRoleScopes()
         {
             return _roleDefinitionsClient.ListScopes().Value;

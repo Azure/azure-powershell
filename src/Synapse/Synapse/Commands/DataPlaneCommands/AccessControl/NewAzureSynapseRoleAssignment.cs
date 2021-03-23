@@ -129,9 +129,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItemType)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("bigDataPools", "integrationRuntimes", "linkedServices", "credentials")]
-        //[ValidateSet("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
-        [PSArgumentCompleter("bigDataPools", "integrationRuntimes", "linkedServices", "credentials")]
+        [ValidateSet("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
+        [PSArgumentCompleter("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
         public string ItemType { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
@@ -172,7 +171,24 @@ namespace Microsoft.Azure.Commands.Synapse
                 string scope;
                 if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
                 {
-                    scope = "workspaces/" + this.WorkspaceName + "/" + this.ItemType + "/" + this.Item;
+                    string itemType = "";
+                    switch (this.ItemType)
+                    {
+                        case "Apache Spark pool":
+                            itemType = "bigDataPools";
+                            break;
+                        case "Integration runtime":
+                            itemType = "integrationRuntimes";
+                            break;
+                        case "Linked service":
+                            itemType = "linkedServices";
+                            break;
+                        case "Credential":
+                            itemType = "credentials";
+                            break;
+                    }
+
+                    scope = "workspaces/" + this.WorkspaceName + "/" + itemType + "/" + this.Item;
                 } else {
                     scope = "workspaces/" + this.WorkspaceName;
                 }

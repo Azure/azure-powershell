@@ -133,6 +133,32 @@ namespace Microsoft.Azure.Commands.Synapse
                     }
                 }
             }
+            else
+            {
+                if (this.IsParameterBound(c => c.RoleDefinitionName))
+                {
+                    this.RoleDefinitionId = SynapseAnalyticsClient.GetRoleDefinitionIdFromRoleDefinitionName(this.RoleDefinitionName);
+                }
+
+                if (this.IsParameterBound(c => c.SignInName))
+                {
+                    this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromSignInName(this.SignInName);
+                }
+
+                if (this.IsParameterBound(c => c.ServicePrincipalName))
+                {
+                    this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
+                }
+
+                if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseRoleAssignment, this.RoleDefinitionId, this.ObjectId, this.WorkspaceName)))
+                {
+                    SynapseAnalyticsClient.DeleteRoleAssignmentByName(this.RoleDefinitionId, this.ObjectId);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+            }
         }
     }
 }
