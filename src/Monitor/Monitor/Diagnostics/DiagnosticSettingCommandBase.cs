@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string SubscriptionIdParameterSet = "SubscriptionIdParameterSet";
 
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         [Alias("TargetResourceId")]
         public string ResourceId { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription id")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
