@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
