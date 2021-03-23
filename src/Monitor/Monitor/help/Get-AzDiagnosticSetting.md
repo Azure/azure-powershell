@@ -13,15 +13,15 @@ Gets the logged categories and time grains.
 
 ## SYNTAX
 
-### ResourceIdParameterSet
+### ResourceIdParameterSet (Default)
 ```
-Get-AzDiagnosticSetting [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDiagnosticSetting [-Name <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SubscriptionIdParameterSet
 ```
-Get-AzDiagnosticSetting [-Name <String>] -SubscriptionId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDiagnosticSetting [-Name <String>] [-SubscriptionId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Parameter Sets: ResourceIdParameterSet
 Aliases: TargetResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -101,7 +101,7 @@ Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

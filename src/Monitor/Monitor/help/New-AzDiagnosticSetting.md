@@ -12,11 +12,11 @@ Create PSServiceDiagnosticSettings object.
 
 ## SYNTAX
 
-### ResourceIdParameterSet
+### ResourceIdParameterSet (Default)
 ```
 New-AzDiagnosticSetting -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-WorkspaceId <String>]
- [-DedicatedLogAnalyticsDestinationType] [-Setting <PSDiagnosticDetailSettings[]>] -ResourceId <String>
+ [-DedicatedLogAnalyticsDestinationType] [-Setting <PSDiagnosticDetailSettings[]>] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,8 +24,8 @@ New-AzDiagnosticSetting -Name <String> [-StorageAccountId <String>] [-ServiceBus
 ```
 New-AzDiagnosticSetting -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-WorkspaceId <String>]
- [-Setting <PSDiagnosticDetailSettings[]>] -SubscriptionId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Setting <PSDiagnosticDetailSettings[]>] [-SubscriptionId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,7 +163,7 @@ Parameter Sets: ResourceIdParameterSet
 Aliases: TargetResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -223,7 +223,7 @@ Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
