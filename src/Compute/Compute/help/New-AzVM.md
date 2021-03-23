@@ -620,7 +620,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_DS1_v2
+Default value: Standard_D2s_v3
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
