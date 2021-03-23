@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             //TODO: Credential may not support
             var newRequestContext = new TokenRequestContext(TokenRequestContext.Scopes, null, claimsChallenge);
-            var token = await TokenCredential.GetTokenAsync(newRequestContext, cancellationToken);
+            var token = await TokenCredential.GetTokenAsync(newRequestContext, cancellationToken).ConfigureAwait(false);
             AccessToken = token.Token;
             ExpiresOn = token.ExpiresOn;
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", AccessToken);

@@ -24,12 +24,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private IAccessToken _token;
 
-
         public RenewingTokenCredential(IAccessToken token)
         {
             _token = token;
         }
-
         public ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
         {
             if(_token is IClaimsChallengeProcessor processor)

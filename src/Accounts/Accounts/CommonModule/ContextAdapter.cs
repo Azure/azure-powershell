@@ -26,6 +26,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System.Linq.Expressions;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -164,11 +166,19 @@ namespace Microsoft.Azure.Commands.Common
                     //get token again with claims challenge
                     if(accessToken is IClaimsChallengeProcessor processor)
                     {
-                        var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
-                        if (!string.IsNullOrEmpty(claimsChallenge))
+                        try
                         {
-                            await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken);
-                            response = await next(request, cancelToken, cancelToken, signal);
+                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
+                            if (!string.IsNullOrEmpty(claimsChallenge))
+                            {
+                                await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
+                                response = await next(request, cancelToken, cancelAction, signal);
+                            }
+                        }
+                        catch (AuthenticationFailedException e)
+                        {
+                            string message = response?.GetWwwAuthenticateMessage() ?? string.Empty;
+                            throw e.FromExceptionAndAdditionalMessage(message);
                         }
                     }
                 }

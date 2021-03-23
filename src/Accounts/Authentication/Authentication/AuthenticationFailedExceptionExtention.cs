@@ -12,14 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+using Azure.Identity;
+using System;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public interface IClaimsChallengeProcessor
+    public static class AuthenticationFailedExceptionExtention
     {
-        ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken);
+        public static AuthenticationFailedException FromExceptionAndAdditionalMessage(this AuthenticationFailedException e, string additonal)
+        {
+            var errorMessage = new StringBuilder(e.Message);
+            errorMessage.Append(Environment.NewLine).Append(additonal);
+            return new AuthenticationFailedException(errorMessage.ToString(), e);
+        }
     }
 }
