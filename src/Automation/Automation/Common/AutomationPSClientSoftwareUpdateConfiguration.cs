@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime.ToUniversalTime(),
                         Frequency = configuration.ScheduleConfiguration.Frequency.ToString(),
                         Interval = configuration.ScheduleConfiguration.Interval,
-                        IsEnabled = configuration.ScheduleConfiguration.IsEnabled,
+                        IsEnabled = true,
                         TimeZone = configuration.ScheduleConfiguration.TimeZone,
                         AdvancedSchedule = configuration.ScheduleConfiguration.GetAdvancedSchedule(),
                         Description = configuration.ScheduleConfiguration.Description
