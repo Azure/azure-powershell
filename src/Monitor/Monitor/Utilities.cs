@@ -87,8 +87,7 @@ namespace Microsoft.Azure.Commands.Insights
 
         public static bool IsGuid(string str)
         {
-            Guid g;
-            return Guid.TryParse(str, out g);
+            return Guid.TryParse(str, out _);
         }
     }
 }
