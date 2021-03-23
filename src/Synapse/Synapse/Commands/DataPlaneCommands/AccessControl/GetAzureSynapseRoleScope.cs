@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentResourceId)]
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceResourceId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentResourceId)]
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

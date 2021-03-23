@@ -269,8 +269,6 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RoleAssignmentItem = "Item of the Role that is assigned to the principal.";
 
-        public const string RoleAssignmentResourceId = "ResourceId of the role assignment.";
-
         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
