@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 LicenseType = model.Database.LicenseType,
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
-                HighAvailabilityReplicaCount = model.Database.ReadReplicaCount,
+                HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
                 RequestedBackupStorageRedundancy = model.Database.RequestedBackupStorageRedundancy,
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),

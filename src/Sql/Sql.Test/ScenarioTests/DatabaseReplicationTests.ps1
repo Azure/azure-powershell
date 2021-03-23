@@ -378,7 +378,7 @@ function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType
 function Create-HyperscaleDatabaseForTest  ($rg, $server, $numCores = 2, $licenseType = "LicenseIncluded")
 {
 	$databaseName = Get-DatabaseName
-	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType -BackupStorageRedundancy Local -Force
+	New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType $licenseType -Force
 }
 
 <#

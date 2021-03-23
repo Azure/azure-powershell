@@ -22,7 +22,7 @@ function Test-AdvancedDataSecurityPolicyTest
 	$testSuffix = getAssetName
 	Create-AdvancedDataSecurityTestEnvironment $testSuffix
 	$params = Get-SqlAdvancedDataSecurityTestEnvironmentParameters $testSuffix
-	
+
 	try
 	{
 		# Get Advanced Data Security Policy
