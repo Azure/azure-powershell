@@ -62,6 +62,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
         private bool autoAddNode;
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+           HelpMessage = "The node type name")]
+        public virtual string NodeType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var cluster = GetCurrentCluster();
@@ -72,7 +76,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 return;
             }
 
-            var primaryVmss = GetPrimaryVmss();
+            var primaryNodeType = GetPrimaryNodeType(this.NodeType);
+            var primaryVmss = GetPrimaryVmss(cluster, primaryNodeType);
             var instanceNumber = (int)ReliabilityLevel;
 
             if (primaryVmss.Sku.Capacity == null)
@@ -107,8 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 }
 
-                var primayNodeType = cluster.NodeTypes.Single(n => n.IsPrimary);
-                primayNodeType.VmInstanceCount = Convert.ToInt32(primaryVmss.Sku.Capacity);
+                primaryNodeType.VmInstanceCount = Convert.ToInt32(primaryVmss.Sku.Capacity);
                 var request = new ClusterUpdateParameters
                 {
                     ReliabilityLevel = this.ReliabilityLevel.ToString(),
@@ -121,13 +125,51 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected VirtualMachineScaleSet GetPrimaryVmss()
+        protected VirtualMachineScaleSet GetPrimaryVmss(Cluster cluster, string nodeTypeName)
+        {
+            NodeTypeDescription primaryNodeType = GetPrimaryNodeType(nodeTypeName);
+            var vmss = GetPrimaryVmss(cluster, primaryNodeType);
+            return vmss;
+        }
+
+        protected VirtualMachineScaleSet GetPrimaryVmss(Cluster cluster, NodeTypeDescription primaryNodeType)
+        {
+            var vmss = GetVmss(primaryNodeType.Name, cluster.ClusterId);
+            return vmss;
+        }
+
+        protected NodeTypeDescription GetPrimaryNodeType(string nodeTypeName)
         {
             var clusterRes = GetCurrentCluster();
-            var nodeTypes = clusterRes.NodeTypes;
-            var primaryNodeType = nodeTypes.Single(nt => nt.IsPrimary);
-            var vmss = GetVmss(primaryNodeType.Name, clusterRes.ClusterId);
-            return vmss;
+            IList<NodeTypeDescription> nodeTypes = clusterRes.NodeTypes;
+
+            NodeTypeDescription primaryNodeType;
+            if (string.IsNullOrEmpty(nodeTypeName))
+            {
+                var primaryNodeTypes = nodeTypes.Where(nt => nt.IsPrimary);
+                if (primaryNodeTypes.Count() > 1)
+                {
+                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.MultiplePrimaryNodeTypesTargetUndefined);
+                }
+
+                primaryNodeType = primaryNodeTypes.First();
+            }
+            else
+            {
+                var nodeType = nodeTypes.FirstOrDefault(nt => string.Equals(nt.Name, nodeTypeName, StringComparison.InvariantCulture));
+                if (nodeType == null)
+                {
+                    throw new PSInvalidOperationException(string.Format(ServiceFabricProperties.Resources.CannotFindTheNodeType, nodeTypeName));
+                }
+                else if (!nodeType.IsPrimary)
+                {
+                    throw new PSInvalidOperationException(string.Format(ServiceFabricProperties.Resources.NodeTypeNotPrimary, nodeTypeName));
+                }
+
+                primaryNodeType = nodeType;
+            }
+
+            return primaryNodeType;
         }
     }
 }

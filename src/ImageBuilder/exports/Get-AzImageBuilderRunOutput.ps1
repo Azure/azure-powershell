@@ -54,7 +54,7 @@ INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
   [RunOutputName <String>]: The name of the run output
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/get-azimagebuilderrunoutput
+https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderrunoutput
 #>
 function Get-AzImageBuilderRunOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IRunOutput])]

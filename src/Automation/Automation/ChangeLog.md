@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
+
+## Version 1.5.2
 * Fixed the issue for starting Python3 runbooks with parameters
+
+## Version 1.5.1
+* Fixed te issue that complex object cannot be serialized correctly. [#14431]
 
 ## Version 1.5.0
 * Fixed the issue that string cannot be serialized correctly. [#14215]

@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
 * Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
 
 ## Version 4.10.0

@@ -95,7 +95,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -AddressPrefixType
-Specifies the address family that needs to be removed from the config 
+Specifies the address family that needs to be removed from the config
 
 ```yaml
 Type: System.String
@@ -105,7 +105,7 @@ Accepted values: IPv4, IPv6, All
 
 Required: False
 Position: Named
-Default value: IPv4 
+Default value: IPv4
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -162,8 +162,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzExpressRouteCircuitConnectionConfig](Add-AzExpressRouteCircuitConnectionConfig.md)
 
 [Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
-
-[New-AzExpressRouteCircuitConnectionConfig](New-AzExpressRouteCircuitConnectionConfig.md)
 
 [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 
