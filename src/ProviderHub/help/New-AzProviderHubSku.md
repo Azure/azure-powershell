@@ -178,35 +178,64 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+PROPERTY <IResourceTypeSku>: .
+  - `SkuSetting <ISkuSetting[]>`:
+    - `Name <String>`:
+    - `[Capability <ISkuCapability[]>]`:
+      - `Name <String>`:
+      - `Value <String>`:
+    - `[CapacityDefault <Int32?>]`:
+    - `[CapacityMaximum <Int32?>]`:
+    - `[CapacityMinimum <Int32?>]`:
+    - `[CapacityScaleType <String>]`:
+    - `[Cost <ISkuCost[]>]`:
+      - `MeterId <String>`:
+      - `[ExtendedUnit <String>]`:
+      - `[Quantity <Int32?>]`:
+    - `[Family <String>]`:
+    - `[Kind <String>]`:
+    - `[Location <String[]>]`:
+    - `[LocationInfo <ISkuLocationInfo[]>]`:
+      - `Location <String>`:
+      - `[ExtendedLocation <String[]>]`:
+      - `[Type <String>]`:
+      - `[Zone <String[]>]`:
+      - `[ZoneDetail <ISkuZoneDetail[]>]`:
+        - `[Capability <ISkuCapability[]>]`:
+        - `[Name <String[]>]`:
+    - `[RequiredFeature <String[]>]`:
+    - `[RequiredQuotaId <String[]>]`:
+    - `[Size <String>]`:
+    - `[Tier <String>]`:
 
 SKUSETTING <ISkuSetting[]>: .
-  - `Name <String>`: 
-  - `[Capability <ISkuCapability[]>]`: 
-    - `Name <String>`: 
-    - `Value <String>`: 
-  - `[CapacityDefault <Int32?>]`: 
-  - `[CapacityMaximum <Int32?>]`: 
-  - `[CapacityMinimum <Int32?>]`: 
-  - `[CapacityScaleType <SkuScaleType?>]`: 
-  - `[Cost <ISkuCost[]>]`: 
-    - `MeterId <String>`: 
-    - `[ExtendedUnit <String>]`: 
-    - `[Quantity <Int32?>]`: 
-  - `[Family <String>]`: 
-  - `[Kind <String>]`: 
-  - `[Location <String[]>]`: 
-  - `[LocationInfo <ISkuLocationInfo[]>]`: 
-    - `Location <String>`: 
-    - `[ExtendedLocation <String[]>]`: 
-    - `[Type <String>]`: 
-    - `[Zone <String[]>]`: 
-    - `[ZoneDetail <ISkuZoneDetail[]>]`: 
-      - `[Capability <ISkuCapability[]>]`: 
-      - `[Name <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[RequiredQuotaId <String[]>]`: 
-  - `[Size <String>]`: 
-  - `[Tier <String>]`: 
+  - `Name <String>`:
+  - `[Capability <ISkuCapability[]>]`:
+    - `Name <String>`:
+    - `Value <String>`:
+  - `[CapacityDefault <Int32?>]`:
+  - `[CapacityMaximum <Int32?>]`:
+  - `[CapacityMinimum <Int32?>]`:
+  - `[CapacityScaleType <String>]`:
+  - `[Cost <ISkuCost[]>]`:
+    - `MeterId <String>`:
+    - `[ExtendedUnit <String>]`:
+    - `[Quantity <Int32?>]`:
+  - `[Family <String>]`:
+  - `[Kind <String>]`:
+  - `[Location <String[]>]`:
+  - `[LocationInfo <ISkuLocationInfo[]>]`:
+    - `Location <String>`:
+    - `[ExtendedLocation <String[]>]`:
+    - `[Type <String>]`:
+    - `[Zone <String[]>]`:
+    - `[ZoneDetail <ISkuZoneDetail[]>]`:
+      - `[Capability <ISkuCapability[]>]`:
+      - `[Name <String[]>]`:
+  - `[RequiredFeature <String[]>]`:
+  - `[RequiredQuotaId <String[]>]`:
+  - `[Size <String>]`:
+  - `[Tier <String>]`:
 
 ## RELATED LINKS
 

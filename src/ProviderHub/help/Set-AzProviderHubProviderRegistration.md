@@ -1,5 +1,5 @@
 ---
-external help file: Az.ProviderHub-help.xml
+external help file:
 Module Name: Az.ProviderHub
 online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubproviderregistration
 schema: 2.0.0
@@ -15,7 +15,7 @@ Creates or updates the provider registration.
 ### UpdateExpanded (Default)
 ```
 Set-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
- [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>]
+ [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <String>]
  [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
  [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
  [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
@@ -23,24 +23,21 @@ Set-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
  [-ProviderAuthorization <IResourceProviderAuthorization[]>]
  [-ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]
- [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]
- [-ProviderType <ResourceProviderType>] [-ProviderVersion <String>] [-ProvisioningState <ProvisioningState>]
- [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
- [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+ [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>] [-ProviderType <String>]
+ [-ProviderVersion <String>] [-ProvisioningState <String>] [-RequestHeaderOptionOptInHeader <String>]
+ [-RequiredFeature <String[]>] [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
- [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]
- [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
- -Property <IProviderRegistration> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzProviderHubProviderRegistration -ProviderNamespace <String> -Property <IProviderRegistration>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,15 +45,15 @@ Creates or updates the provider registration.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### -------------------------- EXAMPLE 1 --------------------------
+```powershell
 {{ Add code here }}
 ```
 
 {{ Add output here }}
 
-### EXAMPLE 2
-```
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
 {{ Add code here }}
 ```
 
@@ -74,22 +71,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,38 +111,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy
+Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -331,7 +283,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -433,7 +385,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -463,7 +415,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -474,56 +426,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RequestHeaderOptionOptInHeader
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -559,7 +466,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -599,7 +506,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
+Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -620,7 +527,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -693,84 +600,87 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+
 ## NOTES
+
+ALIASES
+
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CAPABILITY \<IResourceProviderCapabilities\[\]\>: .
-  Effect \<ResourceProviderCapabilitiesEffect\>:
-  QuotaId \<String\>:
-  \[RequiredFeature \<String\[\]\>\]:
 
-MANAGEMENTSERVICETREEINFO \<IServiceTreeInfo\[\]\>: .
-  \[ComponentId \<String\>\]:
-  \[ServiceId \<String\>\]:
+CAPABILITY <IResourceProviderCapabilities[]>: .
+  - `Effect <String>`: 
+  - `QuotaId <String>`: 
+  - `[RequiredFeature <String[]>]`: 
 
-PROPERTY \<IProviderRegistration\>: .
-  \[Capability \<IResourceProviderCapabilities\[\]\>\]:
-    Effect \<ResourceProviderCapabilitiesEffect\>:
-    QuotaId \<String\>:
-    \[RequiredFeature \<String\[\]\>\]:
-  \[FeatureRuleRequiredFeaturesPolicy \<FeaturesPolicy?\>\]:
-  \[ManagementIncidentContactEmail \<String\>\]:
-  \[ManagementIncidentRoutingService \<String\>\]:
-  \[ManagementIncidentRoutingTeam \<String\>\]:
-  \[ManagementManifestOwner \<String\[\]\>\]:
-  \[ManagementResourceAccessPolicy \<String\>\]:
-  \[ManagementResourceAccessRole \<IAny\[\]\>\]:
-  \[ManagementSchemaOwner \<String\[\]\>\]:
-  \[ManagementServiceTreeInfo \<IServiceTreeInfo\[\]\>\]:
-    \[ComponentId \<String\>\]:
-    \[ServiceId \<String\>\]:
-  \[Metadata \<IAny\>\]: Any object
-  \[Namespace \<String\>\]:
-  \[ProviderAuthenticationAllowedAudience \<String\[\]\>\]:
-  \[ProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
-    \[ApplicationId \<String\>\]:
-    \[ManagedByRoleDefinitionId \<String\>\]:
-    \[RoleDefinitionId \<String\>\]:
-  \[ProviderHubMetadataProviderAuthenticationAllowedAudience \<String\[\]\>\]:
-  \[ProviderHubMetadataProviderAuthorization \<IResourceProviderAuthorization\[\]\>\]:
-  \[ProviderType \<ResourceProviderType?\>\]:
-  \[ProviderVersion \<String\>\]:
-  \[ProvisioningState \<ProvisioningState?\>\]:
-  \[RequestHeaderOptionOptInHeader \<OptInHeaderType?\>\]:
-  \[RequiredFeature \<String\[\]\>\]:
-  \[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl \<TimeSpan?\>\]:
-  \[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction \<ISubscriptionStateOverrideAction\[\]\>\]:
-    Action \<SubscriptionNotificationOperation\>:
-    State \<SubscriptionTransitioningState\>:
-  \[TemplateDeploymentOptionPreflightOption \<PreflightOption\[\]\>\]:
-  \[TemplateDeploymentOptionPreflightSupported \<Boolean?\>\]:
-  \[ThirdPartyProviderAuthorizationAuthorizationszzz \<ILightHouseAuthorization\[\]\>\]:
-    PrincipalId \<String\>:
-    RoleDefinitionId \<String\>:
-  \[ThirdPartyProviderAuthorizationManagedByTenantId \<String\>\]:
+MANAGEMENTSERVICETREEINFO <IServiceTreeInfo[]>: .
+  - `[ComponentId <String>]`: 
+  - `[ServiceId <String>]`: 
 
-PROVIDERAUTHORIZATION \<IResourceProviderAuthorization\[\]\>: .
-  \[ApplicationId \<String\>\]:
-  \[ManagedByRoleDefinitionId \<String\>\]:
-  \[RoleDefinitionId \<String\>\]:
+PROPERTY <IProviderRegistration>: .
+  - `[Capability <IResourceProviderCapabilities[]>]`: 
+    - `Effect <String>`: 
+    - `QuotaId <String>`: 
+    - `[RequiredFeature <String[]>]`: 
+  - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
+  - `[ManagementIncidentContactEmail <String>]`: 
+  - `[ManagementIncidentRoutingService <String>]`: 
+  - `[ManagementIncidentRoutingTeam <String>]`: 
+  - `[ManagementManifestOwner <String[]>]`: 
+  - `[ManagementResourceAccessPolicy <String>]`: 
+  - `[ManagementResourceAccessRole <IAny[]>]`: 
+  - `[ManagementSchemaOwner <String[]>]`: 
+  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
+    - `[ComponentId <String>]`: 
+    - `[ServiceId <String>]`: 
+  - `[Metadata <IAny>]`: Any object
+  - `[Namespace <String>]`: 
+  - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
+  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 
+    - `[ApplicationId <String>]`: 
+    - `[ManagedByRoleDefinitionId <String>]`: 
+    - `[RoleDefinitionId <String>]`: 
+  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`: 
+  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`: 
+  - `[ProviderType <String>]`: 
+  - `[ProviderVersion <String>]`: 
+  - `[ProvisioningState <String>]`: 
+  - `[RequestHeaderOptionOptInHeader <String>]`: 
+  - `[RequiredFeature <String[]>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
+  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
+    - `Action <String>`: 
+    - `State <String>`: 
+  - `[TemplateDeploymentOptionPreflightOption <String[]>]`: 
+  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
+  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`: 
+    - `PrincipalId <String>`: 
+    - `RoleDefinitionId <String>`: 
+  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`: 
 
-PROVIDERHUBMETADATAPROVIDERAUTHORIZATION \<IResourceProviderAuthorization\[\]\>: .
-  \[ApplicationId \<String\>\]:
-  \[ManagedByRoleDefinitionId \<String\>\]:
-  \[RoleDefinitionId \<String\>\]:
+PROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
-SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION \<ISubscriptionStateOverrideAction\[\]\>: .
-  Action \<SubscriptionNotificationOperation\>:
-  State \<SubscriptionTransitioningState\>:
+PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
-THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ \<ILightHouseAuthorization\[\]\>: .
-  PrincipalId \<String\>:
-  RoleDefinitionId \<String\>:
+SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
+  - `Action <String>`: 
+  - `State <String>`: 
+
+THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ <ILightHouseAuthorization[]>: .
+  - `PrincipalId <String>`: 
+  - `RoleDefinitionId <String>`: 
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubproviderregistration](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/set-azproviderhubproviderregistration)
 

@@ -20,19 +20,18 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]
  [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
  [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
- [-FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy>] [-IdentityManagementApplicationId <String>]
- [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy]
- [-LinkedAccessCheck <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
- [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>]
- [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
- [-ResourceCreationBeginRequest <ExtensionOptionType[]>]
- [-ResourceCreationBeginResponse <ExtensionOptionType[]>] [-ResourceDeletionPolicy <ResourceDeletionPolicy>]
- [-ResourceMovePolicyCrossResourceGroupMoveEnabled] [-ResourceMovePolicyCrossSubscriptionMoveEnabled]
- [-ResourceMovePolicyValidationRequired] [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+ [-FeatureRuleRequiredFeaturesPolicy <String>] [-IdentityManagementApplicationId <String>]
+ [-IdentityManagementType <String>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
+ [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <String>]
+ [-Regionality <String>] [-RequestHeaderOptionOptInHeader <String>] [-RequiredFeature <String[]>]
+ [-ResourceCreationBeginRequest <String[]>] [-ResourceCreationBeginResponse <String[]>]
+ [-ResourceDeletionPolicy <String>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
+ [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
+ [-RoutingType <String>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
  [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
- [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -245,7 +244,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -275,7 +274,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -382,7 +381,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -397,7 +396,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +411,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -442,7 +441,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -457,7 +456,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -472,7 +471,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -547,7 +546,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -656,7 +655,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -748,62 +747,138 @@ To create the parameters described below, construct a hash table containing the 
 
 
 AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
-  - `[Desired <String>]`: 
-  - `[Original <String>]`: 
+  - `[Desired <String>]`:
+  - `[Original <String>]`:
 
 ENDPOINT <IResourceTypeEndpoint[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[Enabled <Boolean?>]`: 
-  - `[Extension <IResourceTypeExtension[]>]`: 
-    - `[EndpointUri <String>]`: 
-    - `[ExtensionCategory <ExtensionCategory[]>]`: 
-    - `[Timeout <TimeSpan?>]`: 
-  - `[FeatureRuleRequiredFeaturesPolicy <FeaturesPolicy?>]`: 
-  - `[Location <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[Timeout <TimeSpan?>]`: 
+  - `[ApiVersion <String[]>]`:
+  - `[Enabled <Boolean?>]`:
+  - `[Extension <IResourceTypeExtension[]>]`:
+    - `[EndpointUri <String>]`:
+    - `[ExtensionCategory <String[]>]`:
+    - `[Timeout <TimeSpan?>]`:
+  - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
+  - `[Location <String[]>]`:
+  - `[RequiredFeature <String[]>]`:
+  - `[Timeout <TimeSpan?>]`:
 
 EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
-  - `[SupportedPolicy <String>]`: 
-  - `[Type <String>]`: 
+  - `[SupportedPolicy <String>]`:
+  - `[Type <String>]`:
 
 LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
-  - `[ActionName <String>]`: 
-  - `[LinkedAction <String>]`: 
-  - `[LinkedActionVerb <String>]`: 
-  - `[LinkedProperty <String>]`: 
-  - `[LinkedType <String>]`: 
+  - `[ActionName <String>]`:
+  - `[LinkedAction <String>]`:
+  - `[LinkedActionVerb <String>]`:
+  - `[LinkedProperty <String>]`:
+  - `[LinkedType <String>]`:
 
 LOGGINGRULE <ILoggingRule[]>: .
-  - `Action <String>`: 
-  - `DetailLevel <LoggingDetails>`: 
-  - `Direction <LoggingDirections>`: 
-  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
-  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
+  - `Action <String>`:
+  - `DetailLevel <String>`:
+  - `Direction <String>`:
+  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
+  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
+
+PROPERTY <IResourceTypeRegistration>: .
+  - `[AllowedUnauthorizedAction <String[]>]`:
+  - `[AuthorizationActionMapping <IAuthorizationActionMapping[]>]`:
+    - `[Desired <String>]`:
+    - `[Original <String>]`:
+  - `[CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]`:
+  - `[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]`:
+  - `[DefaultApiVersion <String>]`:
+  - `[DisallowedActionVerb <String[]>]`:
+  - `[EnableAsyncOperation <Boolean?>]`:
+  - `[EnableThirdPartyS2S <Boolean?>]`:
+  - `[Endpoint <IResourceTypeEndpoint[]>]`:
+    - `[ApiVersion <String[]>]`:
+    - `[Enabled <Boolean?>]`:
+    - `[Extension <IResourceTypeExtension[]>]`:
+      - `[EndpointUri <String>]`:
+      - `[ExtensionCategory <String[]>]`:
+      - `[Timeout <TimeSpan?>]`:
+    - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
+    - `[Location <String[]>]`:
+    - `[RequiredFeature <String[]>]`:
+    - `[Timeout <TimeSpan?>]`:
+  - `[ExtendedLocation <IExtendedLocationOptions[]>]`:
+    - `[SupportedPolicy <String>]`:
+    - `[Type <String>]`:
+  - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
+  - `[IdentityManagementApplicationId <String>]`:
+  - `[IdentityManagementType <String>]`:
+  - `[IsPureProxy <Boolean?>]`:
+  - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`:
+    - `[ActionName <String>]`:
+    - `[LinkedAction <String>]`:
+    - `[LinkedActionVerb <String>]`:
+    - `[LinkedProperty <String>]`:
+    - `[LinkedType <String>]`:
+  - `[LoggingRule <ILoggingRule[]>]`:
+    - `Action <String>`:
+    - `DetailLevel <String>`:
+    - `Direction <String>`:
+    - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
+    - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
+  - `[MarketplaceType <String>]`:
+  - `[ProvisioningState <String>]`:
+  - `[Regionality <String>]`:
+  - `[RequestHeaderOptionOptInHeader <String>]`:
+  - `[RequiredFeature <String[]>]`:
+  - `[ResourceCreationBeginRequest <String[]>]`:
+  - `[ResourceCreationBeginResponse <String[]>]`:
+  - `[ResourceDeletionPolicy <String>]`:
+  - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`:
+  - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`:
+  - `[ResourceMovePolicyValidationRequired <Boolean?>]`:
+  - `[RoutingType <String>]`:
+  - `[ServiceTreeInfo <IServiceTreeInfo[]>]`:
+    - `[ComponentId <String>]`:
+    - `[ServiceId <String>]`:
+  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
+  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
+    - `Action <String>`:
+    - `State <String>`:
+  - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`:
+    - `[AllowedAction <String[]>]`:
+    - `[State <String>]`:
+  - `[SwaggerSpecification <ISwaggerSpecification[]>]`:
+    - `[ApiVersion <String[]>]`:
+    - `[SwaggerSpecFolderUri <String>]`:
+  - `[TemplateDeploymentOptionPreflightOption <String[]>]`:
+  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
+  - `[ThrottlingRule <IThrottlingRule[]>]`:
+    - `Action <String>`:
+    - `Metric <IThrottlingMetric[]>`:
+      - `Limit <Int64>`:
+      - `Type <String>`:
+      - `[Interval <TimeSpan?>]`:
+    - `[RequiredFeature <String[]>]`:
 
 SERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`: 
-  - `[ServiceId <String>]`: 
+  - `[ComponentId <String>]`:
+  - `[ServiceId <String>]`:
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <SubscriptionNotificationOperation>`: 
-  - `State <SubscriptionTransitioningState>`: 
+  - `Action <String>`:
+  - `State <String>`:
 
 SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  - `[AllowedAction <String[]>]`: 
-  - `[State <SubscriptionState?>]`: 
+  - `[AllowedAction <String[]>]`:
+  - `[State <String>]`:
 
 SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[SwaggerSpecFolderUri <String>]`: 
+  - `[ApiVersion <String[]>]`:
+  - `[SwaggerSpecFolderUri <String>]`:
 
 THROTTLINGRULE <IThrottlingRule[]>: .
-  - `Action <String>`: 
-  - `Metric <IThrottlingMetric[]>`: 
-    - `Limit <Int64>`: 
-    - `Type <ThrottlingMetricType>`: 
-    - `[Interval <TimeSpan?>]`: 
-  - `[RequiredFeature <String[]>]`: 
+  - `Action <String>`:
+  - `Metric <IThrottlingMetric[]>`:
+    - `Limit <Int64>`:
+    - `Type <String>`:
+    - `[Interval <TimeSpan?>]`:
+  - `[RequiredFeature <String[]>]`:
 
 ## RELATED LINKS
 

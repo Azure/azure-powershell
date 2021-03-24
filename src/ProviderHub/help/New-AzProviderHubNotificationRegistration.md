@@ -14,8 +14,28 @@ Creates or updates a notification registration.
 
 ```
 New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
- [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>]
- [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <NotificationMode>]
+ [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <String>]
+ [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
+ -Property <INotificationRegistration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity>
+ -Property <INotificationRegistration> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-IncludedEvent <String[]>]
+ [-MessageScope <String>] [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -74,7 +94,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +140,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,8 +231,16 @@ To create the parameters described below, construct a hash table containing the 
 
 
 NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
-  - `[Location <String[]>]`: 
-  - `[NotificationDestination <String>]`: 
+  - `[Location <String[]>]`:
+  - `[NotificationDestination <String>]`:
+
+PROPERTY <INotificationRegistration>: The notification registration definition.
+  - `[IncludedEvent <String[]>]`:
+  - `[MessageScope <String>]`:
+  - `[NotificationEndpoint <INotificationEndpoint[]>]`:
+    - `[Location <String[]>]`:
+    - `[NotificationDestination <String>]`:
+  - `[NotificationMode <String>]`:
 
 ## RELATED LINKS
 

@@ -12,8 +12,15 @@ Generates the operations api for the given provider.
 
 ## SYNTAX
 
+### Generate (Default)
 ```
 New-AzProviderHubProviderRegistrationOperation -ProviderNamespace <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaIdentity
+```
+New-AzProviderHubProviderRegistrationOperation -InputObject <IProviderHubIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -22,19 +29,19 @@ Generates the operations api for the given provider.
 
 ## EXAMPLES
 
-### Example 1: Create/Update the Operations API
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
-### Example 2: Create/Update the Operations API
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -53,12 +60,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: GenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProviderNamespace
 The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -73,7 +96,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generate
 Aliases:
 
 Required: False
