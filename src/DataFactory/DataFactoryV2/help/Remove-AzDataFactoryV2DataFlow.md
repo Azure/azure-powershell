@@ -221,7 +221,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzDataFactoryDataFlow](./Get-AzDataFactoryDataFlow.md)
+[Get-AzDataFactoryV2DataFlow](./get-azdatafactoryv2dataflow.md)
 
-[Set-AzDataFactoryDataFlow](./Set-AzDataFactoryDataFlow.md)
+[Set-AzDataFactoryV2DataFlow](./set-azdatafactoryv2dataflow.md)
 

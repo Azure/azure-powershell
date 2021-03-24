@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="EvictionPolicy" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new EvictionPolicy(System.Convert.ToString(value));
+            return new EvictionPolicy(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type EvictionPolicy</summary>

@@ -9,6 +9,7 @@ Az.ConnectedKubernetes
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
+Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.Functions

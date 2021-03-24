@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
     {
         public const string AfdCustomDomainCreateMessage = "Creating the Azure Front Door custom domain.";
         public const string AfdCustomDomainDeleteMessage = "Deleting the Azure Front Door custom domain.";
+        public const string AfdCustomDomainUpdateMessage = "Updating the Azure Front Door custom domain.";
         public const string AfdEndpointCreateMessage = "Creating the Azure Front Door endpoint.";
         public const string AfdEndpointDeleteMessage = "Deleting the Azure Front Door endpoint";
         public const string AfdEndpointUpdateMessage = "Updating the Azure Front Door endpoint.";
@@ -42,6 +43,9 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleDeleteMessage = "Deleting the Azure Front Door rule.";
         public const string AfdRuleSetCreateMessage = "Creating the Azure Front Door rule set.";
         public const string AfdRuleSetDeleteMessage = "Deleting the Azure Front Door rule set.";
+        public const string AfdSecretCreateMessage = "Creating the Azure Front Door secret.";
+        public const string AfdSecretDeleteMessage = "Deleteing the Azure Front Door secret.";
+        public const string AfdSecretUpdateMessage = "Updating the Azure Front Door secret.";
         public const string AfdSecurityPolicyCreateMessage = "Creating the Azure Front Door security policy.";
         public const string AfdSecurityPolicyDeleteMessage = "Deleting the Azure Front Door security policy.";
         public const string AfdSecurityPolicyUpdateMessage = "Updating the Azure Front Door security policy.";
@@ -55,10 +59,13 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
     public static class HelpMessageConstants
     {
+        public const string AfdCustomDomainAzureDnsZoneId = "The resource reference to the Azure DNS zone.";
         public const string AfdCustomDomainHostName = "The host name of the domain. Must be a domain name.";
         public const string AfdCustomDomainIds = "The resource ids of the Azure Front Door custom domains.";
+        public const string AfdCustomDomainMinimumTlsVersion = "TLS protocol version that will be used for Https";
         public const string AfdCustomDomainName = "The Azure Front Door custom domain name.";
         public const string AfdCustomDomainObject = "The Azure Front Door custom domain object.";
+        public const string AfdCustomDomainSecretId = "The resource reference to the secret.";
         public const string AfdEndpointObject = "The Azure Front Door endpoint object.";
         public const string AfdEndpointOriginResponseTimeoutSeconds = "The send and receive timeout on forwarding request to origin.";
         public const string AfdEndpointName = "The Azure Front Door endpoint name.";
@@ -106,6 +113,13 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
         public const string AfdRuleSetName = "The Azure Front Door rule set name.";
         public const string AfdRuleSetObject = "The Azure Front Door rule set object.";
+        public const string AfdSecretCertificateAuthority = "The certificate issuing authority.";
+        public const string AfdSecretName = "The Azure Front Door secret name.";
+        public const string AfdSecretObject = "The Azure Front Door secret object.";
+        public const string AfdSecretSubjectAlternativeNames = "The list of the subject alternative names.";
+        public const string AfdSecretSource = "The resource reference to the Azure Key Vault secret.";
+        public const string AfdSecretUseLatestVersion = "Whether to use the latest version for the certificate.";
+        public const string AfdSecretVersion = "The version of the secret to be used";
         public const string AfdSecurityPolicyDomainIds = "The resource ids of the domains which will be linked to the Azure Front Door web application firewall.";
         public const string AfdSecurityPolicyObject = "The Azure Front Door security policy object.";
         public const string AfdSecurityPolicyName = "The Azure Front Door security policy name.";
@@ -122,5 +136,6 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleOverride = "AfdRuleOverride";
         public const string AfdRuleSetIfMissing = "AfdRuleSetIfMissing";
         public const string SharedPrivateLinkResource = "SharedPrivateLinkResource";
+        public const string AfdCustomDomainCustomerCertificate = "AfdCustomDomainCustomerCertificate";
     }
 }

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Cdn.AfdModels;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Management.Automation;
 
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.PassThruParameter)]
+
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             {
                 this.CdnManagementClient.AFDEndpoints.Delete(this.ResourceGroupName, this.ProfileName, this.EndpointName);
             }
-            catch (Microsoft.Azure.Management.Cdn.Models.AfdErrorResponseException errorResponseException)
+            catch (AfdErrorResponseException errorResponseException)
             {
                 throw new PSArgumentException(errorResponseException.Response.Content);
             }
