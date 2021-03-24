@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [GenericBreakingChange("Database property 'BackupStorageRedundancy' has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
+    [GenericBreakingChange("Database property 'BackupStorageRedundancy' in the returned Database object has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseModel))]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseCreateOrUpdateModel>
     {

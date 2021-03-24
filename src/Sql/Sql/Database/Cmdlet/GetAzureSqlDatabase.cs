@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [GenericBreakingChange("Database property 'BackupStorageRedundancy' has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
+    [GenericBreakingChange("Database property 'BackupStorageRedundancy' in the returned Database object has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModel))]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>

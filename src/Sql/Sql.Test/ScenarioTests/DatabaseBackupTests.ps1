@@ -524,7 +524,7 @@ function Test-CopyLongTermRetentionBackup
 	Assert-AreEqual $targetServerName $targetBackup.ServerName
 }
 
-function Test-SetLongTermRetentionBackup
+function Test-UpdateLongTermRetentionBackup
 {
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
@@ -532,10 +532,10 @@ function Test-SetLongTermRetentionBackup
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroupName = "ayang-rg"
-	$locationName = "southeastasia"
-	$serverName = "ayang-southeastasia"
-	$databaseName = "dbcopysource"
+	$resourceGroupName = "testrg"
+	$locationName = "eastasia"
+	$serverName = "ayang-eas"
+	$databaseName = "ltr1"
 
 	# Fetch a backup
 	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName
@@ -547,8 +547,8 @@ function Test-SetLongTermRetentionBackup
 	Set-AzSqlDatabase -DatabaseName $databaseName -ServerName $serverName -ResourceGroupName $resourceGroupName -BackupStorageRedundancy Local
 
 	# Change backup's backup storage redundancy 
-	$backupAfterSet = Set-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $backup.ServerName -DatabaseName $backup.DatabaseName -BackupName $backup.BackupName -ResourceGroupName $backup.ResourceGroupName -BackupStorageRedundancy Local
+	$backupAfterSet = Update-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $backup.ServerName -DatabaseName $backup.DatabaseName -BackupName $backup.BackupName -ResourceGroupName $backup.ResourceGroupName -BackupStorageRedundancy Local
 
-	# Set-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
-	Assert-AreEqual $backupAfterSet.RequestedBackupStorageRedundancy $backupAfterSet.BackupStorageRedundancy 
+	# Update-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
+	Assert-AreEqual "Local" $backupAfterSet.BackupStorageRedundancy 
 }

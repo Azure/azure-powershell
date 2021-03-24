@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
-    [GenericBreakingChange("Database property 'BackupStorageRedundancy' has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
+    [GenericBreakingChange("Database property 'BackupStorageRedundancy' in the returned Database object has been changed to 'CurrentBackupStorageRedundancy' and 'RequestedBackupStorageRedundancy' in this version.")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecondary", SupportsShouldProcess = true), OutputType(typeof(AzureReplicationLinkModel))]
     public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {

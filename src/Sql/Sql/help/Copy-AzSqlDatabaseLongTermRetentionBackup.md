@@ -38,7 +38,7 @@ Copy-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseLongTe
 ```
 
 ## DESCRIPTION
-Copies a long term retention backup to a target database.  Target database can be in different cluster or environment from backup source.  
+Copies a long term retention backup to a target database.  Target database may be in different cluster than backup source.  
 
 ## EXAMPLES
 
@@ -66,31 +66,6 @@ TargetBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9
 ```
 
 This copies a long term retention backup from a source database in Southeast Asia to a target database in East Asia.
-
-### Example 2: Copy a long term retention backup to another server within the same environment.  
-```powershell
-PS C:\> Copy-AzSqlDatabaseLongTermRetentionBackup -Location germanycentral -ServerName gc-test-server -DatabaseName test -BackupName '9cafbde7-ce3d-43e7-9027-9628588ece3f;132586562480000000' -ResourceGroupName SQL-test -TargetDatabaseName target -TargetServerFullyQualifiedDomainName gwc-test-server.database.windows.net -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName test-rg
-
-
-SourceResourceGroupName              : SQL-test
-SourceLocation                       : germanycentral
-SourceServerName                     : gwc-test-server
-SourceDatabaseName                   : test
-SourceBackupName                     : 9cafbde7-ce3d-43e7-9027-9628588ece3f;132586562480000000
-SourceBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/SQL-test/providers/Microsoft.Sql/locations/germanycentral/longTermRetentionServers/gc-test-server/longTermRetentionDatabases/test/longTermRetentionBackups/9cafbde7-ce3d-43e7-9027-9628588ece3f;132586562480000000
-SourceBackupStorageRedundancy        : Geo
-TargetSubscriptionId                 : 01c4ec88-e179-44f7-9eb0-e9719a5087ab
-TargetResourceGroupName              : test-rg
-TargetLocation                       : germanywestcentral
-TargetServerName                     : 
-TargetServerFullyQualifiedDomainName : gwc-test-server.database.windows.net
-TargetServerResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/test-rg/providers/Microsoft.Sql/servers/gwc-test-server
-TargetDatabaseName                   : target
-TargetBackupName                     : 776d39a1e-4db3-45c2-8b6b-0475983b0f6c;132586562480000000
-TargetBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/germanywestcentral/longTermRetentionServers/gwc-test-server/longTermRetentionDatabases/target/longTermRetentionBackups/76d39a1e-4db3-45c2-8b6b-0475983b0f6c;132586562480000000
-```
-
-This copies a long term retention backup from a source database in Germany Central to a target database in Germany West Central.  Note that -TargetServerFullyQualifiedDomainName is required when migrating long term retention backups cross-cloud.  
 
 ## PARAMETERS
 
@@ -245,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetServerFullyQualifiedDomainName
-The fully qualified domain name of the target server (used check for cross-cloud copies).
+The fully qualified domain name of the target server.
 
 ```yaml
 Type: System.String

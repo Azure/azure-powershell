@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the LTR Backup object to remove.
+        /// Gets or sets the LTR Backup object to copy.
         /// </summary>
         [Parameter(ParameterSetName = CopyBackupByInputObjectSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Long Term Retention Backup object to remove.")]
+            HelpMessage = "The Database Long Term Retention Backup object to copy.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Gets or sets the fully qualified domain name of the target server.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The fully qualified domain name of the target server (used check for cross-cloud copies).")]
+            HelpMessage = "The fully qualified domain name of the target server.")]
         public string TargetServerFullyQualifiedDomainName { get; set; }
 
         /// <summary>

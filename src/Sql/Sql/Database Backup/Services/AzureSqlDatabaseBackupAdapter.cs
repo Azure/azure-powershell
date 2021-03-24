@@ -319,22 +319,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
 
             string targetLocationName = targetBackupResourceIdSegments["locations"];
             string targetServerName = targetBackupResourceIdSegments["longTermRetentionServers"];
-            string targetDatabaseName = targetBackupResourceIdSegments["longTermRetentionDatabases"];
             string targetBackupName = targetBackupResourceIdSegments["longTermRetentionBackups"];
-            string targetResourceGroupName = targetBackupResourceIdSegments.ContainsKey("resourceGroups") ? targetBackupResourceIdSegments["resourceGroups"] : null;
-
-            Management.Sql.Models.LongTermRetentionBackup targetBackup = Communicator.GetDatabaseLongTermRetentionBackup(
-                targetLocationName,
-                targetServerName,
-                targetDatabaseName,
-                targetBackupName,
-                targetResourceGroupName);
 
             model.SourceBackupResourceId = response.FromBackupResourceId;
             model.SourceBackupStorageRedundancy = sourceBackup.BackupStorageRedundancy;
             model.TargetLocation = targetLocationName;
-            model.TargetServerName = targetBackup.ServerName;
-            model.TargetBackupName = targetBackup.Name;
+            model.TargetServerName = targetServerName;
+            model.TargetBackupName = targetBackupName;
             model.TargetBackupResourceId = response.ToBackupResourceId;
 
             return model;
@@ -351,8 +342,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
         /// <param name="databaseState">The state of databases to get backups for: All, Live, De
         /// leted.</param>
-        internal AzureSqlDatabaseLongTermRetentionBackupModel SetDatabaseLongTermRetentionBackup(
-            AzureSqlDatabaseLongTermRetentionBackupModel model)
+        internal AzureSqlDatabaseLongTermRetentionBackupModel UpdateDatabaseLongTermRetentionBackup(
+            AzureSqlDatabaseLongTermRetentionBackupModel model,
+            Management.Sql.Models.UpdateLongTermRetentionBackupParameters updateParameters)
         {
             Management.Sql.Models.LongTermRetentionBackupOperationResult response = Communicator.UpdateDatabaseLongTermRetentionBackup(
                 model.Location,
@@ -360,7 +352,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.DatabaseName,
                 model.BackupName,
                 model.ResourceGroupName,
-                new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(model.RequestedBackupStorageRedundancy));
+                updateParameters);
 
             Management.Sql.Models.LongTermRetentionBackup backup = Communicator.GetDatabaseLongTermRetentionBackup(
                 model.Location,
@@ -370,7 +362,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.ResourceGroupName);
 
             AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
-            backupModel.RequestedBackupStorageRedundancy = response.TargetBackupStorageRedundancy;
             return backupModel;
         }
 
@@ -489,8 +480,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
-                CurrentBackupStorageRedundancy = backup.BackupStorageRedundancy,
-                RequestedBackupStorageRedundancy = backup.RequestedBackupStorageRedundancy
+                BackupStorageRedundancy = backup.BackupStorageRedundancy
             };
         }
 

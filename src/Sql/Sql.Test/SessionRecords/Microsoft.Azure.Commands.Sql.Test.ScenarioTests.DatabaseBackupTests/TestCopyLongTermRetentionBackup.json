@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "41be2d02-8054-47a1-be48-99a91b987511"
+          "95661819-602b-49de-a7e2-268b16a4fe60"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,19 +27,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f9c567c5-400e-4bbd-8fbb-d4a7031f410e"
+          "df8a9fdc-1c2e-432a-b95c-4d5963719073"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "0ab163ac-ab83-49b3-a710-031c278139bb"
+          "0058573a-9084-47c0-ae6d-45faebb747b4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024245Z:0ab163ac-ab83-49b3-a710-031c278139bb"
+          "CENTRALUS:20210324T193142Z:0058573a-9084-47c0-ae6d-45faebb747b4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,10 +48,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:42:44 GMT"
+          "Wed, 24 Mar 2021 19:31:41 GMT"
         ],
         "Content-Length": [
-          "9465"
+          "9405"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,17 +60,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-02-21T14:02:40Z\",\r\n        \"backupExpirationTime\": \"2021-03-23T14:02:40Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132583897600000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132583897600000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-02-28T14:08:52Z\",\r\n        \"backupExpirationTime\": \"2021-03-30T14:08:52Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-03-07T14:09:32Z\",\r\n        \"backupExpirationTime\": \"2021-04-06T14:09:32Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132595997720000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132595997720000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-03-14T14:09:23Z\",\r\n        \"backupExpirationTime\": \"2021-04-13T14:09:23Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132602045630000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132602045630000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr2\",\r\n        \"backupTime\": \"2021-03-14T12:02:39Z\",\r\n        \"backupExpirationTime\": \"2021-03-21T12:02:39Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr2/longTermRetentionBackups/ec575737-4db4-4711-baef-33f6a38c028e;132601969590000000\",\r\n      \"name\": \"ec575737-4db4-4711-baef-33f6a38c028e;132601969590000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr1\",\r\n        \"backupTime\": \"2021-03-14T10:00:58Z\",\r\n        \"backupExpirationTime\": \"2021-03-21T10:00:58Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr1/longTermRetentionBackups/089a4d92-86fd-4e55-afe9-49e8ac4f8cb6;132601896580000000\",\r\n      \"name\": \"089a4d92-86fd-4e55-afe9-49e8ac4f8cb6;132601896580000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"tgt-ltr1\",\r\n        \"databaseDeletionTime\": \"2021-03-16T06:28:11.137Z\",\r\n        \"backupTime\": \"2021-02-17T01:33:52Z\",\r\n        \"backupExpirationTime\": \"2021-03-19T01:33:52Z\",\r\n        \"backupStorageRedundancy\": \"Local\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/7c0ddf6c-fc8e-4671-87a7-585dc101990b;132579992320000000\",\r\n      \"name\": \"7c0ddf6c-fc8e-4671-87a7-585dc101990b;132579992320000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-01-28T09:47:48Z\",\r\n        \"backupExpirationTime\": \"2021-03-29T09:47:48Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132563008680000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132563008680000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-07T16:06:54Z\",\r\n        \"backupExpirationTime\": \"2021-04-08T16:06:54Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132571876140000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132571876140000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-14T16:09:23Z\",\r\n        \"backupExpirationTime\": \"2021-04-15T16:09:23Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132577925630000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132577925630000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-21T16:09:26Z\",\r\n        \"backupExpirationTime\": \"2021-04-22T16:09:26Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132583973660000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132583973660000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-28T16:08:24Z\",\r\n        \"backupExpirationTime\": \"2021-04-29T16:08:24Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132590021040000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132590021040000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-03-07T16:03:20Z\",\r\n        \"backupExpirationTime\": \"2021-05-06T16:03:20Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132596066000000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132596066000000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-03-14T16:04:58Z\",\r\n        \"backupExpirationTime\": \"2021-05-13T16:04:58Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132602114980000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132602114980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-02-28T14:08:52Z\",\r\n        \"backupExpirationTime\": \"2021-03-30T14:08:52Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-03-07T14:09:32Z\",\r\n        \"backupExpirationTime\": \"2021-04-06T14:09:32Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132595997720000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132595997720000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-03-14T14:09:23Z\",\r\n        \"backupExpirationTime\": \"2021-04-13T14:09:23Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132602045630000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132602045630000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr3\",\r\n        \"backupTime\": \"2021-03-21T14:04:50Z\",\r\n        \"backupExpirationTime\": \"2021-04-20T14:04:50Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132608090900000000\",\r\n      \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132608090900000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr2\",\r\n        \"backupTime\": \"2021-03-21T12:03:41Z\",\r\n        \"backupExpirationTime\": \"2021-03-28T12:03:41Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr2/longTermRetentionBackups/ec575737-4db4-4711-baef-33f6a38c028e;132608018210000000\",\r\n      \"name\": \"ec575737-4db4-4711-baef-33f6a38c028e;132608018210000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr1\",\r\n        \"backupTime\": \"2021-03-21T10:01:53Z\",\r\n        \"backupExpirationTime\": \"2021-03-28T10:01:53Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr1/longTermRetentionBackups/089a4d92-86fd-4e55-afe9-49e8ac4f8cb6;132607945130000000\",\r\n      \"name\": \"089a4d92-86fd-4e55-afe9-49e8ac4f8cb6;132607945130000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-01-28T09:47:48Z\",\r\n        \"backupExpirationTime\": \"2021-03-29T09:47:48Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132563008680000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132563008680000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-07T16:06:54Z\",\r\n        \"backupExpirationTime\": \"2021-04-08T16:06:54Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132571876140000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132571876140000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-14T16:09:23Z\",\r\n        \"backupExpirationTime\": \"2021-04-15T16:09:23Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132577925630000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132577925630000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-21T16:09:26Z\",\r\n        \"backupExpirationTime\": \"2021-04-22T16:09:26Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132583973660000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132583973660000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-02-28T16:08:24Z\",\r\n        \"backupExpirationTime\": \"2021-04-29T16:08:24Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132590021040000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132590021040000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-03-07T16:03:20Z\",\r\n        \"backupExpirationTime\": \"2021-05-06T16:03:20Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132596066000000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132596066000000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-03-14T16:04:58Z\",\r\n        \"backupExpirationTime\": \"2021-05-13T16:04:58Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132602114980000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132602114980000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"ayang-eas\",\r\n        \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n        \"databaseName\": \"ltr4\",\r\n        \"backupTime\": \"2021-03-21T16:04:31Z\",\r\n        \"backupExpirationTime\": \"2021-05-20T16:04:31Z\",\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      },\r\n      \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr4/longTermRetentionBackups/771c8b74-6cdd-4e39-9b32-cd12225fe496;132608162710000000\",\r\n      \"name\": \"771c8b74-6cdd-4e39-9b32-cd12225fe496;132608162710000000\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e%3B132583897600000000/copy?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdGFzaWEvbG9uZ1Rlcm1SZXRlbnRpb25TZXJ2ZXJzL2F5YW5nLWVhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9sdHIzL2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy9iODgwZDZjZi1hMmZlLTQ4ZDYtODgxMy0xZmIyZjUzYmRmOWUlM0IxMzI1ODM4OTc2MDAwMDAwMDAvY29weT9hcGktdmVyc2lvbj0yMDIwLTExLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e%3B132589949320000000/copy?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdGFzaWEvbG9uZ1Rlcm1SZXRlbnRpb25TZXJ2ZXJzL2F5YW5nLWVhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9sdHIzL2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy9iODgwZDZjZi1hMmZlLTQ4ZDYtODgxMy0xZmIyZjUzYmRmOWUlM0IxMzI1ODk5NDkzMjAwMDAwMDAvY29weT9hcGktdmVyc2lvbj0yMDIwLTExLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"targetSubscriptionId\": \"01c4ec88-e179-44f7-9eb0-e9719a5087ab\",\r\n    \"targetResourceGroup\": \"testrg\",\r\n    \"targetServerResourceId\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/servers/ayang-stage-seas\",\r\n    \"targetDatabaseName\": \"tgt-ltr1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cdef11c-7a58-4684-a732-383c799539ea"
+          "7e471a03-065f-434e-8a9f-ad5babb57dac"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,28 +96,28 @@
           "no-cache"
         ],
         "Location": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupOperationResults/fc864150-1291-4b1c-9b09-2550d275f280?api-version=2020-11-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupOperationResults/09f48c5b-9eaa-4d44-a330-b21191505b78?api-version=2020-11-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://api-dogfood.resources.windows-int.net/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupAzureAsyncOperation/fc864150-1291-4b1c-9b09-2550d275f280?api-version=2020-11-01-preview"
+          "https://api-dogfood.resources.windows-int.net/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupAzureAsyncOperation/09f48c5b-9eaa-4d44-a330-b21191505b78?api-version=2020-11-01-preview"
         ],
         "x-ms-request-id": [
-          "fc864150-1291-4b1c-9b09-2550d275f280"
+          "09f48c5b-9eaa-4d44-a330-b21191505b78"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "65986263-2321-466d-95ff-d0a7589b834c"
+          "0e3c0922-a37d-4e2e-9479-55a4db89b994"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024246Z:65986263-2321-466d-95ff-d0a7589b834c"
+          "CENTRALUS:20210324T193143Z:0e3c0922-a37d-4e2e-9479-55a4db89b994"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -126,10 +126,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:42:46 GMT"
+          "Wed, 24 Mar 2021 19:31:43 GMT"
         ],
         "Content-Length": [
-          "65"
+          "61"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,17 +138,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"CopyBackup\",\r\n  \"startTime\": \"2021-03-18T02:42:46.013Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"CopyBackup\",\r\n  \"startTime\": \"2021-03-24T19:31:43Z\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupAzureAsyncOperation/fc864150-1291-4b1c-9b09-2550d275f280?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0YXNpYS9sb25nVGVybVJldGVudGlvbkJhY2t1cEF6dXJlQXN5bmNPcGVyYXRpb24vZmM4NjQxNTAtMTI5MS00YjFjLTliMDktMjU1MGQyNzVmMjgwP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupAzureAsyncOperation/09f48c5b-9eaa-4d44-a330-b21191505b78?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0YXNpYS9sb25nVGVybVJldGVudGlvbkJhY2t1cEF6dXJlQXN5bmNPcGVyYXRpb24vMDlmNDhjNWItOWVhYS00ZDQ0LWEzMzAtYjIxMTkxNTA1Yjc4P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cdef11c-7a58-4684-a732-383c799539ea"
+          "7e471a03-065f-434e-8a9f-ad5babb57dac"
         ],
         "User-Agent": [
           "FxVersion/4.6.29812.02",
@@ -168,19 +168,19 @@
           "15"
         ],
         "x-ms-request-id": [
-          "9990e57e-cfb7-4b83-a0fd-b7413f904d5a"
+          "4b723f7f-d800-4c46-8fc9-68779025af20"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "3fdd0f41-5409-400a-b2cd-111eb53ccc53"
+          "01e049dd-c36f-48e9-94a3-0c2526e13bcd"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024301Z:3fdd0f41-5409-400a-b2cd-111eb53ccc53"
+          "CENTRALUS:20210324T193158Z:01e049dd-c36f-48e9-94a3-0c2526e13bcd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,10 +189,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:43:01 GMT"
+          "Wed, 24 Mar 2021 19:31:58 GMT"
         ],
         "Content-Length": [
-          "107"
+          "104"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -201,17 +201,80 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"fc864150-1291-4b1c-9b09-2550d275f280\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-03-18T02:42:46.013Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"09f48c5b-9eaa-4d44-a330-b21191505b78\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-03-24T19:31:43Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupOperationResults/fc864150-1291-4b1c-9b09-2550d275f280?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0YXNpYS9sb25nVGVybVJldGVudGlvbkJhY2t1cE9wZXJhdGlvblJlc3VsdHMvZmM4NjQxNTAtMTI5MS00YjFjLTliMDktMjU1MGQyNzVmMjgwP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupAzureAsyncOperation/09f48c5b-9eaa-4d44-a330-b21191505b78?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0YXNpYS9sb25nVGVybVJldGVudGlvbkJhY2t1cEF6dXJlQXN5bmNPcGVyYXRpb24vMDlmNDhjNWItOWVhYS00ZDQ0LWEzMzAtYjIxMTkxNTA1Yjc4P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cdef11c-7a58-4684-a732-383c799539ea"
+          "7e471a03-065f-434e-8a9f-ad5babb57dac"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.50.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "adc0e522-eb95-453f-b449-d0a3c5967efa"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "799191d5-9950-47ef-8413-f7badd6799b5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20210324T193213Z:799191d5-9950-47ef-8413-f7badd6799b5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Mar 2021 19:32:13 GMT"
+        ],
+        "Content-Length": [
+          "103"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"09f48c5b-9eaa-4d44-a330-b21191505b78\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-03-24T19:31:43Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/providers/Microsoft.Sql/locations/eastasia/longTermRetentionBackupOperationResults/09f48c5b-9eaa-4d44-a330-b21191505b78?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0YXNpYS9sb25nVGVybVJldGVudGlvbkJhY2t1cE9wZXJhdGlvblJlc3VsdHMvMDlmNDhjNWItOWVhYS00ZDQ0LWEzMzAtYjIxMTkxNTA1Yjc4P2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e471a03-065f-434e-8a9f-ad5babb57dac"
         ],
         "User-Agent": [
           "FxVersion/4.6.29812.02",
@@ -228,19 +291,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0571a0cf-4c0d-46e0-ad9e-f7cec75cfe22"
+          "91991edd-49d3-4a47-85bf-3a2f6718fb14"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "0f3002ad-a2ff-4fb3-b946-8c25f37df72c"
+          "ea8f4bd0-f8e8-42bb-98fb-e31ebb76082e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024301Z:0f3002ad-a2ff-4fb3-b946-8c25f37df72c"
+          "CENTRALUS:20210324T193214Z:ea8f4bd0-f8e8-42bb-98fb-e31ebb76082e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -249,7 +312,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:43:01 GMT"
+          "Wed, 24 Mar 2021 19:32:13 GMT"
         ],
         "Content-Length": [
           "1055"
@@ -261,17 +324,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"requestId\": \"fc864150-1291-4b1c-9b09-2550d275f280\",\r\n    \"operationType\": \"CopyBackup\",\r\n    \"fromBackupResourceId\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132583897600000000\",\r\n    \"toBackupResourceId\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd;132583897600000000\",\r\n    \"status\": \"Succeeded\",\r\n    \"message\": \"Complete\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionBackupOperationResults/fc864150-1291-4b1c-9b09-2550d275f280\",\r\n  \"name\": \"fc864150-1291-4b1c-9b09-2550d275f280\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionBackupOperationResults\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"requestId\": \"09f48c5b-9eaa-4d44-a330-b21191505b78\",\r\n    \"operationType\": \"CopyBackup\",\r\n    \"fromBackupResourceId\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n    \"toBackupResourceId\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd;132589949320000000\",\r\n    \"status\": \"Succeeded\",\r\n    \"message\": \"Complete\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionBackupOperationResults/09f48c5b-9eaa-4d44-a330-b21191505b78\",\r\n  \"name\": \"09f48c5b-9eaa-4d44-a330-b21191505b78\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionBackupOperationResults\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e%3B132583897600000000?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdGFzaWEvbG9uZ1Rlcm1SZXRlbnRpb25TZXJ2ZXJzL2F5YW5nLWVhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9sdHIzL2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy9iODgwZDZjZi1hMmZlLTQ4ZDYtODgxMy0xZmIyZjUzYmRmOWUlM0IxMzI1ODM4OTc2MDAwMDAwMDA/YXBpLXZlcnNpb249MjAyMC0xMS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e%3B132589949320000000?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdGFzaWEvbG9uZ1Rlcm1SZXRlbnRpb25TZXJ2ZXJzL2F5YW5nLWVhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy9sdHIzL2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy9iODgwZDZjZi1hMmZlLTQ4ZDYtODgxMy0xZmIyZjUzYmRmOWUlM0IxMzI1ODk5NDkzMjAwMDAwMDA/YXBpLXZlcnNpb249MjAyMC0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cdef11c-7a58-4684-a732-383c799539ea"
+          "7e471a03-065f-434e-8a9f-ad5babb57dac"
         ],
         "Accept-Language": [
           "en-US"
@@ -291,19 +354,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9183035b-3730-4acc-ab77-16fbdef1d0d8"
+          "11e4c4a7-59e2-43cc-a15f-0da977704b49"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "c9636fb4-6924-4c7a-91d2-7acbd4cba4ba"
+          "7344713b-305f-43e5-b168-b7d7ec77b401"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024302Z:c9636fb4-6924-4c7a-91d2-7acbd4cba4ba"
+          "CENTRALUS:20210324T193214Z:7344713b-305f-43e5-b168-b7d7ec77b401"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -312,7 +375,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:43:01 GMT"
+          "Wed, 24 Mar 2021 19:32:13 GMT"
         ],
         "Content-Length": [
           "670"
@@ -324,17 +387,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"ayang-eas\",\r\n    \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n    \"databaseName\": \"ltr3\",\r\n    \"backupTime\": \"2021-02-21T14:02:40Z\",\r\n    \"backupExpirationTime\": \"2021-03-23T14:02:40Z\",\r\n    \"backupStorageRedundancy\": \"Geo\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132583897600000000\",\r\n  \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132583897600000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"ayang-eas\",\r\n    \"serverCreateTime\": \"2021-01-28T08:54:24.823Z\",\r\n    \"databaseName\": \"ltr3\",\r\n    \"backupTime\": \"2021-02-28T14:08:52Z\",\r\n    \"backupExpirationTime\": \"2021-03-30T14:08:52Z\",\r\n    \"backupStorageRedundancy\": \"Geo\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/eastasia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n  \"name\": \"b880d6cf-a2fe-48d6-8813-1fb2f53bdf9e;132589949320000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast%20Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd%3B132583897600000000?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvU291dGhlYXN0JTIwQXNpYS9sb25nVGVybVJldGVudGlvblNlcnZlcnMvYXlhbmctc3RhZ2Utc2Vhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90Z3QtbHRyMS9sb25nVGVybVJldGVudGlvbkJhY2t1cHMvODJlODI4NTAtZjE3Mi00NzI2LTk0NTUtOWFhZmFmODY2M2JkJTNCMTMyNTgzODk3NjAwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast%20Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd%3B132589949320000000?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvU291dGhlYXN0JTIwQXNpYS9sb25nVGVybVJldGVudGlvblNlcnZlcnMvYXlhbmctc3RhZ2Utc2Vhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90Z3QtbHRyMS9sb25nVGVybVJldGVudGlvbkJhY2t1cHMvODJlODI4NTAtZjE3Mi00NzI2LTk0NTUtOWFhZmFmODY2M2JkJTNCMTMyNTg5OTQ5MzIwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cdef11c-7a58-4684-a732-383c799539ea"
+          "43c72b65-0a26-41cf-8fea-9af3aaa2f010"
         ],
         "Accept-Language": [
           "en-US"
@@ -354,19 +417,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "12fc65ed-48df-4185-9a30-53474612cb58"
+          "d65ef977-0ba3-4718-9631-37fde72fda7f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "d73a288e-240c-4e84-8707-0ae13d320518"
+          "e0a6cb88-0ef9-41d7-be8b-4403c324b14a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024303Z:d73a288e-240c-4e84-8707-0ae13d320518"
+          "CENTRALUS:20210324T193215Z:e0a6cb88-0ef9-41d7-be8b-4403c324b14a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -375,7 +438,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 18 Mar 2021 02:43:02 GMT"
+          "Wed, 24 Mar 2021 19:32:15 GMT"
         ],
         "Content-Length": [
           "698"
@@ -387,70 +450,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"ayang-stage-seas\",\r\n    \"serverCreateTime\": \"2020-04-22T21:58:33.283Z\",\r\n    \"databaseName\": \"tgt-ltr1\",\r\n    \"backupTime\": \"2021-02-21T14:02:40Z\",\r\n    \"backupExpirationTime\": \"2021-03-23T14:02:40Z\",\r\n    \"backupStorageRedundancy\": \"Geo\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd;132583897600000000\",\r\n  \"name\": \"82e82850-f172-4726-9455-9aafaf8663bd;132583897600000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast%20Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd%3B132583897600000000?api-version=2020-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDFjNGVjODgtZTE3OS00NGY3LTllYjAtZTk3MTlhNTA4N2FiL3Jlc291cmNlR3JvdXBzL3Rlc3RyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvU291dGhlYXN0JTIwQXNpYS9sb25nVGVybVJldGVudGlvblNlcnZlcnMvYXlhbmctc3RhZ2Utc2Vhcy9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90Z3QtbHRyMS9sb25nVGVybVJldGVudGlvbkJhY2t1cHMvODJlODI4NTAtZjE3Mi00NzI2LTk0NTUtOWFhZmFmODY2M2JkJTNCMTMyNTgzODk3NjAwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMjAtMTEtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d60f8445-1b40-4d23-a800-501dfdebd8be"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29812.02",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.14393.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.50.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c7570f2e-80f2-481f-8742-2084408a8372"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
-        ],
-        "x-ms-correlation-request-id": [
-          "638312e2-1d4b-4d30-acea-945246154178"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20210318T024303Z:638312e2-1d4b-4d30-acea-945246154178"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 18 Mar 2021 02:43:02 GMT"
-        ],
-        "Content-Length": [
-          "698"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"ayang-stage-seas\",\r\n    \"serverCreateTime\": \"2020-04-22T21:58:33.283Z\",\r\n    \"databaseName\": \"tgt-ltr1\",\r\n    \"backupTime\": \"2021-02-21T14:02:40Z\",\r\n    \"backupExpirationTime\": \"2021-03-23T14:02:40Z\",\r\n    \"backupStorageRedundancy\": \"Geo\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd;132583897600000000\",\r\n  \"name\": \"82e82850-f172-4726-9455-9aafaf8663bd;132583897600000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"ayang-stage-seas\",\r\n    \"serverCreateTime\": \"2020-04-22T21:58:33.283Z\",\r\n    \"databaseName\": \"tgt-ltr1\",\r\n    \"backupTime\": \"2021-02-28T14:08:52Z\",\r\n    \"backupExpirationTime\": \"2021-03-30T14:08:52Z\",\r\n    \"backupStorageRedundancy\": \"Geo\"\r\n  },\r\n  \"id\": \"/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/Southeast Asia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/tgt-ltr1/longTermRetentionBackups/82e82850-f172-4726-9455-9aafaf8663bd;132589949320000000\",\r\n  \"name\": \"82e82850-f172-4726-9455-9aafaf8663bd;132589949320000000\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
       "StatusCode": 200
     }
   ],

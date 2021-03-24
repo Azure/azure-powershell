@@ -77,8 +77,7 @@ ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceG
 ServerName						 : server01
 ServerCreateTime				 : 2/29/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy			 : Geo
 
 BackupExpirationTime			 : 3/22/2018 11:43:18 PM
 BackupName						 : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
@@ -90,8 +89,7 @@ ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers
 ServerName						 : server02
 ServerCreateTime				 : 2/28/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy			 : Geo
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) in southeastasia, resource group will be set only if server is live.
@@ -111,8 +109,7 @@ ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceG
 ServerName						 : server01
 ServerCreateTime				 : 2/29/2018 12:12:19 AM
 ResourceGroupName                : resourceGroup01
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy			 : Geo
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) under a resource group in northeurope.
@@ -132,8 +129,7 @@ ResourceId					     : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resour
 ServerName						 : server01
 ServerCreateTime				 : 2/29/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy			 : Geo
 ```
 
 This command gets the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
@@ -153,8 +149,7 @@ ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceG
 ServerName						 : server01
 ServerCreateTime				 : 2/29/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy			 : Geo
 ```
 
 This command gets all long term retention backups for database01
@@ -173,8 +168,7 @@ ResourceId					     : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resour
 ServerName						 : server01
 ServerCreateTime				 : 2/28/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy		     : Geo
 
 BackupExpirationTime			 : 3/22/2018 5:50:55 AM
 BackupName						 : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
@@ -186,8 +180,7 @@ ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceG
 ServerName						 : server01
 ServerCreateTime				 : 2/29/2018 12:12:19 AM
 ResourceGroupName                : 
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy :
+BackupStorageRedundancy		     : Geo
 ```
 
 This command gets all backups with name that starts with "601061b7"

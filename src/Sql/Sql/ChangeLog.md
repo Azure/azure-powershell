@@ -23,7 +23,7 @@
 * Added cmdlet `Get-AzSqlServerTrustGroup`
 * Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
     - Copy LTR backups to different servers
-* Added cmdlet `Set-AzSqlDatabaseLongTermRetentionBackup`
+* Added cmdlet `Update-AzSqlDatabaseLongTermRetentionBackup`
     - Update Backup Storage Redundancy values for LTR backups
 * Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
     - Changed StorageAccountType value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made

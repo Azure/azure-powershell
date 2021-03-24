@@ -131,11 +131,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact(Skip = "This is not recordable test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetLongTermRetentionBackup()
+        public void TestUpdateLongTermRetentionBackup()
         {
             if (TestMockSupport.RunningMocked)
             {
-                RunPowerShellTest("Test-SetLongTermRetentionBackup");
+                RunPowerShellTest("Test-UpdateLongTermRetentionBackup");
             }
         }
 

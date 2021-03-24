@@ -25,8 +25,8 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = UpdateBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
-    public class SetAzureSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = UpdateBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
+    public class UpdateAzureSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
     {
         /// <summary>
         /// Parameter set name for remove with an input object.
@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Parameter set name for remove with a resource ID.
         /// </summary>
         private const string UpdateBackupByResourceIdSet = "UpdateBackupByResourceId";
+
+        /// <summary>
+        /// Parameter set name for update with an input object.
+        /// </summary>
+        private const string UpdateBackupByInputObjectSet = "UpdateByInputObjectSet";
 
         /// <summary>
         /// Gets or sets the name of the location the backup is in.
@@ -111,8 +116,22 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
             ParameterSetName = UpdateBackupByResourceIdSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
+            ParameterSetName = UpdateBackupByInputObjectSet)]
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LTR Backup object to update.
+        /// </summary>
+        [Parameter(ParameterSetName = UpdateBackupByInputObjectSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The Database Long Term Retention Backup object to update.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -138,7 +157,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> ApplyUserInputToModel(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> model)
         {
-            model.First().RequestedBackupStorageRedundancy = BackupStorageRedundancy;
             return model;
         }
 
@@ -152,9 +170,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         {
             if (ShouldProcess(DatabaseName))
             {
+                Management.Sql.Models.UpdateLongTermRetentionBackupParameters updateParameters = new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(BackupStorageRedundancy);
+
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {
-                    ModelAdapter.SetDatabaseLongTermRetentionBackup(entity.First())
+                    ModelAdapter.UpdateDatabaseLongTermRetentionBackup(entity.First(), updateParameters)
                 };
             }
             return null;

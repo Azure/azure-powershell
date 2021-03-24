@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaselongtermretentionbackup
+online version: https://docs.microsoft.com/powershell/module/az.sql/update-azsqldatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
-# Set-AzSqlDatabaseLongTermRetentionBackup
+# Update-AzSqlDatabaseLongTermRetentionBackup
 
 ## SYNOPSIS
 Updates a long term retention backup.
@@ -14,14 +14,14 @@ Updates a long term retention backup.
 
 ### UpdateBackupDefault (Default)
 ```
-Set-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
+Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-BackupName] <String> [-ResourceGroupName <String>] [-BackupStorageRedundancy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateBackupByResourceId
 ```
-Set-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-BackupStorageRedundancy <String>]
+Update-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-BackupStorageRedundancy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Updates the properties of a long term retention backup.
 
 ### Example 1: Set Backup Storage Redundancy of a long term retention backup.
 ```powershell
-PS C:\> Set-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -BackupStorageRedundancy Geo
+PS C:\> Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -BackupStorageRedundancy Geo
 
 
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
@@ -46,15 +46,14 @@ ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a
 ServerName                       : ayang-stage-seas
 ServerCreateTime                 : 4/22/2020 9:58:33 PM
 ResourceGroupName                : testrg
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy : Geo
+BackupStorageRedundancy			 : Geo
 ```
 
 This command sets the Backup Storage Redundancy of the specified backup using location and Resource Group, Server, Database, and Backup names.  
 
 ### Example 2: Set Backup Storage Redundancy of a long term retention backup (using Resource Id).
 ```powershell
-PS C:\> Set-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -BackupStorageRedundancy Geo
+PS C:\> Update-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -BackupStorageRedundancy Geo
 
 
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
@@ -67,8 +66,7 @@ ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a
 ServerName                       : ayang-stage-seas
 ServerCreateTime                 : 4/22/2020 9:58:33 PM
 ResourceGroupName                : testrg
-CurrentBackupStorageRedundancy   : Geo
-RequestedBackupStorageRedundancy : Geo
+BackupStorageRedundancy			 : Geo
 ```
 
 This command sets the Backup Storage Redundancy of the specified backup using a backup Resource Id. 
