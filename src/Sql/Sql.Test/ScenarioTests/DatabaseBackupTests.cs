@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetLongTermRetentionBackup()
         {
-
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-SetLongTermRetentionBackup");

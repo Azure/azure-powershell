@@ -22,7 +22,7 @@
 * Added cmdlet `Remove-AzSqlServerTrustGroup`
 * Added cmdlet `Get-AzSqlServerTrustGroup`
 * Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
-    - Copy LTR backups to different databases
+    - Copy LTR backups to different servers
 * Added cmdlet `Set-AzSqlDatabaseLongTermRetentionBackup`
     - Update Backup Storage Redundancy values for LTR backups
 * Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`

@@ -504,7 +504,8 @@ function Test-CopyLongTermRetentionBackup
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroupName = "testrg"
+	$sourceResourceGroupName = "testrg"
+	$targetResourceGroupName = "testrg"
 	$sourceLocationName = "eastasia"
 	$sourceServerName = "ayang-eas"
 	$targetLocationName = "southeastasia"
@@ -517,7 +518,7 @@ function Test-CopyLongTermRetentionBackup
 	$sourceBackup = $sourceBackups[0]
 
 	# Copy backup
-	$copyBackupResults = Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ServerName $sourceBackup.ServerName -DatabaseName $sourceBackup.DatabaseName -BackupName $sourceBackup.BackupName -ResourceGroupName $resourceGroupName -TargetDatabaseName $targetDatabaseName -TargetServerName $TargetServerName -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName $resourceGroupName
+	$copyBackupResults = Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ServerName $sourceBackup.ServerName -DatabaseName $sourceBackup.DatabaseName -BackupName $sourceBackup.BackupName -ResourceGroupName $sourceResourceGroupName -TargetDatabaseName $targetDatabaseName -TargetServerName $TargetServerName -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName $targetResourceGroupName
 	$targetBackup = Get-AzSqlDatabaseLongTermRetentionBackup -Location $copyBackupResults.TargetLocation -ResourceGroup $copyBackupResults.TargetResourceGroupName -ServerName $copyBackupResults.TargetServerName -DatabaseName $copyBackupResults.TargetDatabaseName -BackupName $copyBackupResults.TargetBackupName
 	Assert-AreEqual $targetDatabaseName $targetBackup.DatabaseName 
 	Assert-AreEqual $targetServerName $targetBackup.ServerName
@@ -549,5 +550,5 @@ function Test-SetLongTermRetentionBackup
 	$backupAfterSet = Set-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $backup.ServerName -DatabaseName $backup.DatabaseName -BackupName $backup.BackupName -ResourceGroupName $backup.ResourceGroupName -BackupStorageRedundancy Local
 
 	# Set-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
-	Assert-AreEqual $backupAfterSet.RequestedBackupStorageRedundancy $backupAfterSet. BackupStorageRedundancy 
+	Assert-AreEqual $backupAfterSet.RequestedBackupStorageRedundancy $backupAfterSet.BackupStorageRedundancy 
 }
