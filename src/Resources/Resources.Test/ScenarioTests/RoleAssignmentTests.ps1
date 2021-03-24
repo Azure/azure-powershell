@@ -250,6 +250,7 @@ function Test-RaByResource
                         -ResourceName $resource.Name `
                         -RoleAssignmentId db6e0231-1be9-4bcd-bf16-79de537439fe
 
+
     # cleanup
     DeleteRoleAssignment $newAssignment
 
@@ -707,20 +708,23 @@ function Test-RaCreatedBySP
     #Setup
     # Conect to azure with SP
     # If you need to re-record replace this setup
-    $passwd = ConvertTo-SecureString 'MCg1SVb3MX' -AsPlainText -Force
-    $pscredential = New-Object System.Management.Automation.PSCredential('c82180ed-2f4b-4cb2-965f-ec5088751710' , $passwd)
-    $tenantId = '1462fd46-afe5-491b-a340-31ebae81d1ce'
-    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
+    $sp = New-AzAdServicePrincipal -DisplayName PoshTestSP
+    $tenantId = '395544B0-BF41-429D-921F-E1CA2252FCF4'
+    $subscriptionId = 'a1823fbb-9653-4c45-9218-4e90c7f7789a'
+    $pscredential = New-Object -TypeName System.Management.Automation.PSCredential($sp.ApplicationId, $sp.Secret)
+    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId -Subscription $subscriptionId
+
+    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions."'
 
     # Create role assignment
-    $testUser = '1d2121a7-1943-4c7a-a872-b1b2069db55a'
-    $data = New-AzRoleAssignmentWithId `
+    $testUser = 'c6088b74-3c61-46cf-b3fe-15283315fcd9'
+    $data = {New-AzRoleAssignmentWithId `
     -ObjectId $testUser `
-    -RoleDefinitionName 'Contributor' `
-    -Scope '/subscriptions/3e123c33-5ffc-400f-a9f8-a073bf35f8ca/resourceGroups/daorozco_bug_repro' `
-    -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca
+    -RoleDefinitionName 'Reader' `
+    -Scope '/subscriptions/a1823fbb-9653-4c45-9218-4e90c7f7789a' `
+    -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca}
 
-    Assert-NotNull $data
+    Assert-Throws $data $ExpectedError
 }
 
 <#
@@ -759,7 +763,7 @@ function Test-RaWithV2Conditions{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -785,6 +789,7 @@ function Test-RaWithV2Conditions{
 
     #Cleanup
     $data = Remove-AzRoleAssignment -InputObject $data
+
     Assert-Null $data "Role assignment was not deleted properly"
 }
 
@@ -796,7 +801,7 @@ function Test-RaWithV2ConditionsOnly{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
 
@@ -820,6 +825,7 @@ function Test-RaWithV2ConditionsOnly{
 
     #Cleanup
     $data = Remove-AzRoleAssignment -InputObject $data
+
     Assert-Null $data "Role assignment was not deleted properly"
 }
 
@@ -856,8 +862,8 @@ function Test-UpdateRa{
 
     # Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $PrincipalId = "9338059e-8359-4991-bb51-2b67c8bd82cd"
+    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
     $Description1 = "This test should not fail"
     $Condition1 = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -906,6 +912,7 @@ function Test-UpdateRa{
 
     #Cleanup
     $data = Remove-AzRoleAssignment -InputObject $dataNew
+
     Assert-Null $data "Role assignment was not deleted properly"
 }
 
@@ -916,9 +923,9 @@ Verifies that role assignment does not exist
 function Test-CreateRAForGroup
 {    
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="c795d5c0-412b-4942-9a89-25665e796340" #daorozco_test group
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
+    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
+    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -937,9 +944,9 @@ Verifies that role assignment does not exist
 function Test-CreateRAForGuest
 {    
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="9338059e-8359-4991-bb51-2b67c8bd82cd" #Daniel Orozco Guest User
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
+    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
+    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -958,9 +965,9 @@ Verifies that role assignment does not exist
 function Test-CreateRAForMember
 {    
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="11b1042e-d5b6-4f65-b308-d69565f16f1e" #dagoroz_test_user
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
+    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
+    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -979,9 +986,9 @@ Verifies that role assignment does not exist
 function Test-CreateRAForServicePrincipal
 {    
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="6bcd9ef1-e203-4048-a1b3-55e6099605cf" #dummy app
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
+    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
+    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -1000,9 +1007,9 @@ Verifies that role assignment does not exist
 function Test-CreateRAWhenIdNotExist
 {    
     #Given
-    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="77666677-1111-2222-3333-2b4444bd5555" #garbage ID
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/daorozco_bug_repro'
+    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
+    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
+    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
     $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "No AD object was found with the parameters provided please ensure that the display name or GUID is written properly"'
 
     #When
