@@ -23,4 +23,3 @@ Name Label
 ```
 
 This command gets OS family named 5 that is located in westus2.
-

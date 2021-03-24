@@ -23,4 +23,3 @@ WA-GUEST-OS-6.7_201905-01 Windows Azure Guest OS 6.7 (Release 201905-01) False  
 ```
 
 This command gets OS version named WA-GUEST-OS-6.7_201905-01 that is located in westus2.
-
