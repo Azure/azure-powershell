@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelDataConnector
 
 ## SYNOPSIS
-Create a Data Connector.
+Creates a Data Connector.
 
 ## SYNTAX
 
@@ -69,10 +69,18 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ```
 
 ## DESCRIPTION
-The **New-AzSentinelAlertRule** cmdlet creates an Analytic (Alert Rule) in the specified workspace.
-You must specify one of the parameters, for example -AzureActiveDirectory, to specify the kind of Alert rule to create.  Each Kind has different required paramaters.
-You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-Note:  Not all data connectors available in the portal are avaialble via API.
+The **New-AzSentinelDataConnector** cmdlet configures and enables a data connector in the specified workspace.
+You must specify one of the parameters, for example -AzureActiveDirectory, to specify the kind of Alert rule to create.  Each Kind has different required parameters.<br/><br/>
+Please note that only the following data connectors have automation support through PowerShell or the *Security.Insights* API:
+* **AADDataConnector** - Represents AAD (Azure Active Directory Identity Protection) data connector
+* **AATPDataConnector**	- Represents AATP (Azure Advanced Threat Protection) data connector
+* **ASCDataConnector** - Represents ASC (Azure Security Center) data connector
+* **AwsCloudTrailDataConnector** - Represents Amazon Web Services CloudTrail data connector
+* **MCASDataConnector**	- Represents MCAS (Microsoft Cloud App Security) data connector
+* **MDATPDataConnector** - Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector
+* **OfficeDataConnector** - Represents office data connector
+* **TIDataConnector** - Represents threat intelligence data connector
+
 
 ## EXAMPLES
 
@@ -80,15 +88,23 @@ Note:  Not all data connectors available in the portal are avaialble via API.
 ```powershell
 PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 ```
-
-This example creates a **DataConnector** for Azure Security Center in the specified workspace, and then stores it in the $DataConnector variable.
+This example creates a **DataConnector** for *Azure Security Center* in the specified workspace, and then stores it in the $DataConnector variable.
 
 ### Example 2
 ```powershell
 PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
 ```
+This example creates a **DataConnector** for *Microsoft Cloud App Security* in the specified workspace, and then stores it in the $DataConnector variable.
 
-This example creates a **DataConnector** for Microsoft Cloud App Security in the specified workspace, and then stores it in the $DataConnector variable.
+### Examples 3
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+New-AzSentinelDataConnector @SentinelConnection -Office365 -Exchange Enabled -SharePoint Enabled -Teams Enabled
+```
+This example uses a connection object to pass the resourceGroupName and workspaceName. It then configures the *Office 365* data connector to collect Exchange, SharePoint and Teams logs.
 
 ## PARAMETERS
 
