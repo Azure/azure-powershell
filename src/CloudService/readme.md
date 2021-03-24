@@ -247,6 +247,24 @@ directive:
           - Location
           - SkuName
           - SkuTier
+  - where:
+      model-name: OSVersion
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
+          - IsDefault
+          - IsActive
+          - Family
+          - FamilyLabel
+  - where:
+      model-name: OSFamily
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
 
   - where:
       model-name: CloudServiceInstanceView
