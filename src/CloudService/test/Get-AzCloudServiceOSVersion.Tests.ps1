@@ -12,15 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzCloudServiceOSVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List OS versions in location' {
+        $osVersions = Get-AzCloudServiceOSVersion -Location $env.Location
+        $osVersions.Count | Should BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get OS version' {
+        $osVersion = Get-AzCloudServiceOSVersion -Location $env.Location -OSVersionName $env.OSVersionName
+        $osVersion.Name | Should Not BeNullOrEmpty
+        $osVersion.Family | Should Not BeNullOrEmpty
+        $osVersion.FamilyLabel | Should Not BeNullOrEmpty
+        $osVersion.Version | Should Not BeNullOrEmpty
+        $osVersion.Label | Should Not BeNullOrEmpty
     }
 }

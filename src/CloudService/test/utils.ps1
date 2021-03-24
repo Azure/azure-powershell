@@ -67,7 +67,7 @@ function setupEnv() {
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
     $env.Location = "EastUS2EUAP"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
-    
+
     $env.CscfgFile = "test-artifacts\CSCmdletTest.cscfg"
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
     $env.RoleInstanceName = "WebRole_IN_0"
@@ -103,6 +103,12 @@ function setupEnv() {
     $env.NewCSPublicIPId = $publicIp.Id
 
     CreateCloudService "cscmdlettestip" $env.CloudServiceName
+
+    # Get and OS version/family to validate
+    $osVersions = Get-AzCloudServiceOSVersion -Location $env.Location
+    $osFamilies = Get-AzCloudServiceOSFamily -Location $env.Location
+    $env.OSVersionName = $osVersions[0].Name
+    $env.OSFamilyName = $osFamilies[0].Name
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
