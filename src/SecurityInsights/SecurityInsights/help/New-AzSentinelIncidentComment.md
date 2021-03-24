@@ -19,7 +19,7 @@ New-AzSentinelIncidentComment -ResourceGroupName <String> -WorkspaceName <String
 ```
 
 ## DESCRIPTION
-The **New-AzSentinelIncidentComment** cmdlet creates a Incident Comment from the specified workspace.
+The **New-AzSentinelIncidentComment** cmdlet creates a Incident Comment.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES

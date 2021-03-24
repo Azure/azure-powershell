@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelBookmark
 
 ## SYNOPSIS
-Create a Bookmark for a specific incident.<br/>
+Creates a Bookmark for a specific incident.<br/>
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Boo
 ```
 
 ## DESCRIPTION
-The **New-AzSentinelBookmark** cmdlet creates a Bookmark from the specified workspace.<br/>
+The **New-AzSentinelBookmark** cmdlet creates a Bookmark in the specified workspace.<br/>
 Bookmarks are used to save a query, comment or tag for a specific incident.<br/>
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
@@ -43,6 +43,7 @@ $BookmarkQuery = @"
 SecurityAlert
 |take 1
 "@
+
 $DisplayName = "My Bookmark Query"
 $Notes = "This is a comment"
 New-AzSentinelBookmark @SentinelConnection -DisplayName $DisplayName -Query $BookmarkQuery -Note $Notes

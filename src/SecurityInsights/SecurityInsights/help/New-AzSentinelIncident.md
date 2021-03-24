@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelIncident
 
 ## SYNOPSIS
-Create an Incident.
+Creates an Incident.
 
 ## SYNTAX
 
@@ -22,17 +22,19 @@ New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Inc
 ```
 
 ## DESCRIPTION
-The **New-AzSentinelIncident** cmdlet creates a Incident from the specified workspace.
+The **New-AzSentinelIncident** cmdlet creates a Incident in the specified workspace.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Severity Low -Status New
+PS C:\> $Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Description "My Description" -Severity Low -Status New
 ```
+This example creates an **Incident** in the specified workspace, and then stores it in the $Incident variable.<br/><br/>
 
-This example creates an **Incident** in the specified workspace, and then stores it in the $Incident variable.
+*Please note that you currently cannot add entities to a new created incident through automation, which means that you cannot use the investigation feature for new created incidents through automation. <br/>
+The feature to add entities to incidents is planned and will be added in the future.*
 
 ## PARAMETERS
 
