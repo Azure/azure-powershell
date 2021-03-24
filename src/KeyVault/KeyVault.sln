@@ -20,6 +20,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Abstractions", "..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj", "{9C46805D-F731-4992-AEEC-76671C3E487D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\..\azure-powershell-common\src\Common\Common.csproj", "{F327C36F-B5C9-4085-ADB4-94B4A43116F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj", "{AEE6C165-65DF-4393-86E8-BCF35CCE8BF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Rbac", "..\..\..\azure-powershell-common\src\Graph.Rbac\Graph.Rbac.csproj", "{6EE5809C-A263-4EA9-AB08-B1DD930562D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +66,22 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C46805D-F731-4992-AEEC-76671C3E487D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C46805D-F731-4992-AEEC-76671C3E487D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C46805D-F731-4992-AEEC-76671C3E487D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C46805D-F731-4992-AEEC-76671C3E487D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F327C36F-B5C9-4085-ADB4-94B4A43116F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F327C36F-B5C9-4085-ADB4-94B4A43116F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F327C36F-B5C9-4085-ADB4-94B4A43116F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F327C36F-B5C9-4085-ADB4-94B4A43116F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE6C165-65DF-4393-86E8-BCF35CCE8BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE6C165-65DF-4393-86E8-BCF35CCE8BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE6C165-65DF-4393-86E8-BCF35CCE8BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE6C165-65DF-4393-86E8-BCF35CCE8BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE5809C-A263-4EA9-AB08-B1DD930562D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE5809C-A263-4EA9-AB08-B1DD930562D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE5809C-A263-4EA9-AB08-B1DD930562D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE5809C-A263-4EA9-AB08-B1DD930562D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

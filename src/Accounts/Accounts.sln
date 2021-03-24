@@ -20,6 +20,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "Authentic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Test", "Authentication.Test\Authentication.Test.csproj", "{43BE9983-BD21-4474-92E5-1FFC0220B2AD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Abstractions", "..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj", "{955949A9-C832-4D74-9EBE-AF4008B5FC79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\..\azure-powershell-common\src\Common\Common.csproj", "{13D87E95-FE75-447E-ACA9-D598D54C1159}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj", "{2642FBE3-7AB1-435C-ADBA-92AB04FC4217}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Rbac", "..\..\..\azure-powershell-common\src\Graph.Rbac\Graph.Rbac.csproj", "{DEEA86E6-2DE3-4B37-B2D7-444D6A490325}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +66,22 @@ Global
 		{43BE9983-BD21-4474-92E5-1FFC0220B2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43BE9983-BD21-4474-92E5-1FFC0220B2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43BE9983-BD21-4474-92E5-1FFC0220B2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955949A9-C832-4D74-9EBE-AF4008B5FC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955949A9-C832-4D74-9EBE-AF4008B5FC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955949A9-C832-4D74-9EBE-AF4008B5FC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955949A9-C832-4D74-9EBE-AF4008B5FC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D87E95-FE75-447E-ACA9-D598D54C1159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D87E95-FE75-447E-ACA9-D598D54C1159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D87E95-FE75-447E-ACA9-D598D54C1159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D87E95-FE75-447E-ACA9-D598D54C1159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2642FBE3-7AB1-435C-ADBA-92AB04FC4217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2642FBE3-7AB1-435C-ADBA-92AB04FC4217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2642FBE3-7AB1-435C-ADBA-92AB04FC4217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2642FBE3-7AB1-435C-ADBA-92AB04FC4217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEA86E6-2DE3-4B37-B2D7-444D6A490325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEA86E6-2DE3-4B37-B2D7-444D6A490325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEA86E6-2DE3-4B37-B2D7-444D6A490325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEA86E6-2DE3-4B37-B2D7-444D6A490325}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,6 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Graph.Rbac\Graph.Rbac.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

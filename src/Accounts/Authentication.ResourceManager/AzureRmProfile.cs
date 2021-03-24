@@ -64,13 +64,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                if (_cachedDefaultContext != null)
+                {
+                    return _cachedDefaultContext;
+                }
+
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
                     RefreshContextsFromCache();
                 }
 
-                IAzureContext result = null;
+                //IAzureContext result = null;
                 if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
                 {
                     // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
@@ -79,20 +84,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
-                    result = this.Contexts[DefaultContextKey];
+                    _cachedDefaultContext = this.Contexts[DefaultContextKey]?.Clone();
                 }
                 else if (DefaultContextKey == null)
                 {
                     throw new PSInvalidOperationException(Resources.DefaultContextMissing);
                 }
 
-                return result;
+                return _cachedDefaultContext;
             }
             set
             {
                 this.Contexts[DefaultContextKey] = value;
+                _cachedDefaultContext = value.Clone();
             }
         }
+
+        private IAzureContext _cachedDefaultContext;
 
         [JsonIgnore]
         [XmlIgnore]
