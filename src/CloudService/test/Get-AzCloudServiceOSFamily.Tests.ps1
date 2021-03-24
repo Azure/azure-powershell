@@ -23,6 +23,7 @@ Describe 'Get-AzCloudServiceOSFamily' {
         $osFamily.Label | Should Not BeNullOrEmpty
     }
 
+    # TODO: add this test once id is fixed on server side to match case sensitive req
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
