@@ -1,18 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all OS families in a location
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2'
 
-{{ Add output here }}
+Name Label
+---- -----
+5    Windows Server 2016
+4    Windows Server 2012 R2
+6    Windows Server 2019
+3    Windows Server 2012
+2    Windows Server 2008 R2
 ```
 
-{{ Add description here }}
+This command gets all OS families in location westus2
 
-### Example 2: {{ Add title here }}
+### Example 2: Get OS family
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2' -OSFamilyName 5
 
-{{ Add output here }}
+Name Label
+---- -----
+5    Windows Server 2016
 ```
 
-{{ Add description here }}
-
+This command gets OS family named 5 that is located in westus2.
