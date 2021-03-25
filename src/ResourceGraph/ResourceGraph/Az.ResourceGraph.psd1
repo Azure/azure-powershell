@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.8.0'
+ModuleVersion = '0.9.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets to support query resource'
+        ReleaseNotes = '* Added support for the new api version with the ability to query for management group, deprecated tenant and subscription display names support'
 
         # Prerelease string of this module
         # Prerelease = ''
