@@ -128,8 +128,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            // TODO check if the ID is already set, if so skip ID resolve
-            // TODO resolve anything non-ID into something ID like
             var asignee = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             var test = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asignee }).SingleOrDefault();
             if (asignee == null || test == null)
