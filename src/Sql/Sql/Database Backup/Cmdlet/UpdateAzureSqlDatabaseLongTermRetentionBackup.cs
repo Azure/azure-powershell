@@ -191,7 +191,15 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(ResourceId))
+            if (InputObject != null)
+            {
+                Location = InputObject.Location;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+                BackupName = InputObject.BackupName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 Dictionary<string, string> resourceIdSegments = ParseLongTermRetentionBackupResourceId(ResourceId);
                 Location = resourceIdSegments["locations"];
