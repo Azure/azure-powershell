@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// The rows per page
         /// </summary>
-        private const int RowsPerPage = 1000;
+        private const int MaxRowsPerPage = 1000;
 
         /// <summary>
         /// Maximum number of subscriptions for request
@@ -138,19 +138,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             var subscriptions = this.Subscription?.ToList();
-            var managementGroups = this.ManagementGroup?.ToList();
-            if (subscriptions != null && subscriptions.Count > 0 && managementGroups != null && managementGroups.Count > 0)
-            {
-                var exception = new ArgumentException("The query request cannot include both Subscription and ManagementGroup params at the same time. " +
-                    "Please try to pass only one param with scopes to query at a time");
-
-                var errorRecord = new ErrorRecord(
-                            exception, "400",
-                            ErrorCategory.InvalidArgument, null);
-                this.WriteError(errorRecord);
-                return;
-            }
-
             if (subscriptions!= null && subscriptions.Count > SubscriptionLimit)
             {
                 subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
@@ -159,6 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
             }
 
+            var managementGroups = this.ManagementGroup?.ToList();
             if (managementGroups != null && managementGroups.Count > ManagementGroupLimit)
             {
                 managementGroups = managementGroups.Take(ManagementGroupLimit).ToList();
@@ -167,8 +155,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     $"To use more than {ManagementGroupLimit} management groups, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
             }
 
-            var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
-            var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
+            var first = this.MyInvocation.BoundParameters.ContainsKey("First")
+                ? Math.Min(First, MaxRowsPerPage)
+                : 100;
+            var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip")
+                ? this.Skip
+                : 0;
             var skipToken = this.SkipToken ?? null;
 
             var results = new List<PSObject>();
@@ -178,13 +170,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             try
             {
                 var allowPartialScopes = AllowPartialScope.IsPresent;
-                var requestTop = RowsPerPage;
-                var requestSkip = skip ;
+                var requestSkip = skip;
                 var requestSkipToken = skipToken;
-                this.WriteVerbose($"Sent top={requestTop} skip={requestSkip} skipToken={requestSkipToken}");
+                this.WriteVerbose($"Sent top={first} skip={requestSkip} skipToken={requestSkipToken}");
 
                 var requestOptions = new QueryRequestOptions(
-                    top: requestTop,
+                    top: first,
                     skip: requestSkip,
                     skipToken: requestSkipToken,
                     resultFormat: ResultFormat.ObjectArray,
