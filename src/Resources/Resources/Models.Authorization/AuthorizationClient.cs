@@ -128,19 +128,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            var asignee = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
-            var test = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asignee }).SingleOrDefault();
-            if (asignee == null || test == null)
+            var asigneeID = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+            var asigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asigneeID }).SingleOrDefault();
+            if (asigneeID == null || asigneeObject == null)
             {
                 throw new ArgumentException(ProjectResources.NoADObjectFound);
             }
-            if (test is PSErrorHelperObject)
+            if (asigneeObject is PSErrorHelperObject)
             {
                 throw new Rest.Azure.CloudException(ProjectResources.NotAuthorizedInGraph);
             }
 
-            string principalId = asignee;
-            string principalType = test.Type;
+            string principalId = asigneeID;
+            string principalType = asigneeObject.Type;
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
