@@ -19,13 +19,9 @@ Gets a resource type details in the given subscription and provider.
 .Description
 Gets a resource type details in the given subscription and provider.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity

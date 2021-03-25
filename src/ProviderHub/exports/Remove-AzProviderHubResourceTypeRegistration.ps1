@@ -19,13 +19,9 @@ Deletes a resource type
 .Description
 Deletes a resource type
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity

@@ -19,13 +19,9 @@ Stops or cancels the rollout, if in progress.
 .Description
 Stops or cancels the rollout, if in progress.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity

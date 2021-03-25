@@ -19,13 +19,9 @@ Deletes a provider registration.
 .Description
 Deletes a provider registration.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity

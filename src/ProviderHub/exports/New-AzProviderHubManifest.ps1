@@ -19,13 +19,9 @@ Generates the manifest for the given provider.
 .Description
 Generates the manifest for the given provider.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzProviderHubManifest -ProviderNamespace "Microsoft.Contoso"
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzProviderHubManifest -ProviderNamespace "Microsoft.Contoso"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
