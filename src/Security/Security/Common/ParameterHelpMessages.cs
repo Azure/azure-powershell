@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Server = "Server name";
         public const string Database = "Database name";
         public const string ComputerName = "Computer full name - on premise parameter";
-        public const string Vmuuid = "Virtual machine universal unique identifier - on premise parameter";
+        public const string VmUuid = "Virtual machine universal unique identifier - on premise parameter";
         public const string AgentId = "Agent ID - on premise parameter";
         public const string WorkspaceResourceId = "Workspace resource ID - on premise parameter";
         public const string UseLatest = "Use latest results for the operation";
