@@ -174,6 +174,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string ScanId = "Vulnerability Assessment scan ID - use scanId = 'latest' to get latest results";
         public const string Baseline = "Vulnerability Assessment baseline object";
         public const string ForceRemoveBaseline = "Force remove baseline without confirmation";
+        public const string ForceSetBaseline = "Force set baseline without confirmation";
 
         #endregion
     }
