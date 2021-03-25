@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelBookmark
 
 ## SYNOPSIS
-Update a Bookmark.
+Updates a Bookmark.
 
 ## SYNTAX
 
@@ -47,17 +47,15 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ```powershell
 PS C:\> Update-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId" -Notes "Found something interesting"
 ```
-
-The command updates the Bookmark by setting the *Notes* property.  All other propreties stay the same.
+The command updates the Bookmark by setting the *Notes* property.  All other properties stay the same.
 
 ### Example 2
 ```powershell
 PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
 PS C:\> $Bookmark | Set-AzSentinelBookmark -Notes "Found something interesting"
 ```
-
 The first command gets the Bookmark by *BookmarkId* from the specified workspace, and then stores it in the $Bookmark variable.
-The second command updates the Notes property.   All other propreties stay the same.
+The second command updates the Notes property. All other properties stay the same.
 
 ## PARAMETERS
 

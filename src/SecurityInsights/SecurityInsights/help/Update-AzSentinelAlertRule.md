@@ -53,7 +53,7 @@ Update-AzSentinelAlertRule [-AlertRuleTemplateName <String>] [-Enabled] [-Disabl
 ```
 
 ## DESCRIPTION
-The **Update-AzSentinelAlertRule** cmdlet updates an Analytic (Alert Rule) in the specified workspace.
+The **Update-AzSentinelAlertRule** cmdlet updates an Analytic (Alert) Rule in the specified workspace.
 You can use an -InputObject or -ResourceId or -AlertId.  You can update 1 or more property parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
@@ -64,7 +64,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ```powershell
 PS C:\> Update-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -Disabled -DisplayName "Disabled-AlertRuleDisplayName"
 ```
-This example updates an **AlertRule** setting it to *Disabled* and renames to *Disabled-AlertRuleDisplayName*.  All other properties will remain the same.
+This example updates an **AlertRule** setting it to *Disabled* and renames the AlertRule to *Disabled-AlertRuleDisplayName*.  All other properties will remain the same.
 
 ### Example 2
 ```powershell
@@ -73,6 +73,16 @@ PS C:\> Update-AzSentinelAlertRule -InputObject $AlertRule -Disabled
 ```
 This example updates an **AlertRule** using an InputObject setting it to *Disabled*.  All other properties will remain the same.
 
+### Example 3
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+$ruleToDisable = Get-AzSentinelAlertRule @SentinelConnection | Where-Object {$_.DisplayName -eq "Mimikatz Detected"}
+Update-AzSentinelAlertRule @SentinelConnection -AlertRuleId $ruleToDisable.Name -Disabled
+```
+This example uses a connection object to pass the resourceGroupName and workspaceName. It then gets a specific AlertRule based on the display name and disables the rule.
 
 ## PARAMETERS
 

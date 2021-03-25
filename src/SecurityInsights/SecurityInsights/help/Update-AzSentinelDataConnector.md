@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelDataConnector
 
 ## SYNOPSIS
-Update a Data Connector.
+Updates a Data Connector.
 
 ## SYNTAX
 
@@ -46,8 +46,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ```powershell
 PS C:\> Update-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId" -Alerts Disabled
 ```
-
-The command gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.
+This example gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.
 
 ## PARAMETERS
 
