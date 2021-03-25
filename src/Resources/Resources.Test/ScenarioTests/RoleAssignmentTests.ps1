@@ -708,20 +708,19 @@ function Test-RaCreatedBySP
     #Setup
     # Conect to azure with SP
     # If you need to re-record replace this setup
-    $sp = New-AzAdServicePrincipal -DisplayName PoshTestSP
+    $passwd = ConvertTo-SecureString 'password' -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('15362c03-9e28-4743-bec2-ce3de3699fc9' , $passwd)
     $tenantId = '395544B0-BF41-429D-921F-E1CA2252FCF4'
-    $subscriptionId = 'a1823fbb-9653-4c45-9218-4e90c7f7789a'
-    $pscredential = New-Object -TypeName System.Management.Automation.PSCredential($sp.ApplicationId, $sp.Secret)
-    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId -Subscription $subscriptionId
+    Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
 
     $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions."'
 
     # Create role assignment
-    $testUser = 'c6088b74-3c61-46cf-b3fe-15283315fcd9'
+    $testUser = '4b269cfb-d915-410a-8a4b-e47872464ac5'
     $data = {New-AzRoleAssignmentWithId `
     -ObjectId $testUser `
     -RoleDefinitionName 'Reader' `
-    -Scope '/subscriptions/a1823fbb-9653-4c45-9218-4e90c7f7789a' `
+    -Scope '/subscriptions/f12d26d1-53cd-4eeb-b4de-5014c09fc5d1' `
     -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca}
 
     Assert-Throws $data $ExpectedError
